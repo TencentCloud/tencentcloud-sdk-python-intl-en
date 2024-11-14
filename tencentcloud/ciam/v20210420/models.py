@@ -41,6 +41,9 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
+        """User directory ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -49,6 +52,9 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Page(self):
+        """Number of queried pages
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -57,6 +63,9 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Size(self):
+        """Number of entries per page
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -65,6 +74,9 @@ class ListUserGroupsRequest(AbstractModel):
 
     @property
     def Condition(self):
+        """Query conditions (user group ID or user group name)
+        :rtype: str
+        """
         return self._Condition
 
     @Condition.setter
@@ -113,6 +125,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
+        """User group list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserGroup
+        """
         return self._Content
 
     @Content.setter
@@ -121,6 +137,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Total number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -129,6 +149,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pageable(self):
+        """Pagination
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ciam.v20210420.models.Pageable`
+        """
         return self._Pageable
 
     @Pageable.setter
@@ -137,6 +161,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -175,6 +202,9 @@ class Pageable(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -183,6 +213,9 @@ class Pageable(AbstractModel):
 
     @property
     def PageNumber(self):
+        """Current page number
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -230,6 +263,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserGroupId(self):
+        """User group ID
+        :rtype: str
+        """
         return self._UserGroupId
 
     @UserGroupId.setter
@@ -238,6 +274,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
+        """User group name
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -246,6 +285,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """User group description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -254,6 +297,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserStoreId(self):
+        """User directory ID
+        :rtype: str
+        """
         return self._UserStoreId
 
     @UserStoreId.setter
@@ -262,6 +308,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TenantId(self):
+        """Tenant ID
+        :rtype: str
+        """
         return self._TenantId
 
     @TenantId.setter

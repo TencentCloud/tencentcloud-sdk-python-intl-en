@@ -77,6 +77,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def SecretName(self):
+        """Credential name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens, and underscores and must begin with a letter or digit.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -85,6 +88,15 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def UserNamePrefix(self):
+        """Prefix of the user account name, which is specified by you and can contain up to 8 characters.
+Supported character sets include:
+Digits: [0, 9].
+Lowercase letters: [a, z].
+Uppercase letters: [A, Z].
+Special symbols: underscore.
+The prefix must begin with a letter.
+        :rtype: str
+        """
         return self._UserNamePrefix
 
     @UserNamePrefix.setter
@@ -93,6 +105,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def ProductName(self):
+        """Name of the Tencent Cloud service bound to the credential, such as `Mysql`. The `DescribeSupportedProducts` API can be used to get the names of the supported Tencent Cloud services.
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -101,6 +116,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def InstanceID(self):
+        """Tencent Cloud service instance ID.
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -109,6 +127,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def Domains(self):
+        """Domain name of the account in the form of IP. You can enter `%`.
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -117,6 +138,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def PrivilegesList(self):
+        """List of permissions that need to be granted when the credential is bound to a Tencent Cloud service.
+        :rtype: list of ProductPrivilegeUnit
+        """
         return self._PrivilegesList
 
     @PrivilegesList.setter
@@ -125,6 +149,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def Description(self):
+        """Description, which is used to describe the purpose in detail and can contain up to 2,048 bytes.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -133,6 +160,11 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def KmsKeyId(self):
+        """Specifies the KMS CMK that encrypts the credential.
+If this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.
+You can also specify a custom KMS CMK created in the same region for encryption.
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -141,6 +173,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def Tags(self):
+        """List of tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -149,6 +184,10 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def RotationBeginTime(self):
+        """User-Defined rotation start time in the format of 2006-01-02 15:04:05.
+When `EnableRotation` is `True`, this parameter is required.
+        :rtype: str
+        """
         return self._RotationBeginTime
 
     @RotationBeginTime.setter
@@ -157,6 +196,12 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def EnableRotation(self):
+        """Specifies whether to enable rotation
+True - enable
+False - do not enable
+If this parameter is not specified, `False` will be used by default.
+        :rtype: bool
+        """
         return self._EnableRotation
 
     @EnableRotation.setter
@@ -165,6 +210,9 @@ If this parameter is not specified, `False` will be used by default.
 
     @property
     def RotationFrequency(self):
+        """Rotation frequency in days. Default value: 1 day.
+        :rtype: int
+        """
         return self._RotationFrequency
 
     @RotationFrequency.setter
@@ -234,6 +282,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretName(self):
+        """Name of the created credential.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -242,6 +293,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagCode(self):
+        """Tag operation return code. 0: success; 1: internal error; 2: business processing error.
+Note: this field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -250,6 +306,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagMsg(self):
+        """Tag operation return message.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -258,6 +318,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowID(self):
+        """ID of the created Tencent Cloud service credential async task.
+        :rtype: int
+        """
         return self._FlowID
 
     @FlowID.setter
@@ -266,6 +329,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -312,6 +378,9 @@ You can also specify a custom KMS CMK created in the same region for encryption.
 
     @property
     def SecretName(self):
+        """Secret name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens and underscores and must begin with a letter or digit.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -320,6 +389,9 @@ You can also specify a custom KMS CMK created in the same region for encryption.
 
     @property
     def ProjectId(self):
+        """ID of the project to which the created SSH key belongs.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -328,6 +400,9 @@ You can also specify a custom KMS CMK created in the same region for encryption.
 
     @property
     def Description(self):
+        """Description, such as what it is used for. It contains up to 2,048 bytes.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -336,6 +411,11 @@ You can also specify a custom KMS CMK created in the same region for encryption.
 
     @property
     def KmsKeyId(self):
+        """Specifies a KMS CMK to encrypt the secret.
+If this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.
+You can also specify a custom KMS CMK created in the same region for encryption.
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -344,6 +424,9 @@ You can also specify a custom KMS CMK created in the same region for encryption.
 
     @property
     def Tags(self):
+        """List of tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -352,6 +435,9 @@ You can also specify a custom KMS CMK created in the same region for encryption.
 
     @property
     def SSHKeyName(self):
+        """Name of the SSH key pair, which only contains digits, letters and underscores and must start with a digit or letter. The maximum length is 25 characters.
+        :rtype: str
+        """
         return self._SSHKeyName
 
     @SSHKeyName.setter
@@ -412,6 +498,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecretName(self):
+        """Name of the created secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -420,6 +509,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SSHKeyID(self):
+        """ID of the created SSH key.
+        :rtype: str
+        """
         return self._SSHKeyID
 
     @SSHKeyID.setter
@@ -428,6 +520,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SSHKeyName(self):
+        """Name of the created SSH key.
+        :rtype: str
+        """
         return self._SSHKeyName
 
     @SSHKeyName.setter
@@ -436,6 +531,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagCode(self):
+        """Tag return code. `0`: success; `1`: internal error; `2`: business processing error.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -444,6 +543,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagMsg(self):
+        """Tag return message.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -452,6 +555,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -506,6 +612,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Secret name, which must be unique in the same region. It can contain 128 bytes ([a-z], [A-Z], [0-9], [-_]). It must begin with a letter or digit. Note that it cannot be modified once created. 
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -514,6 +623,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """Secret version. It can contain up to 64 bytes ([a-z], [A-Z], [0-9], [-_.]). It must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information. If it is left empty, the initial Secret version number is used by default.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -522,6 +634,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Description information, such as the detailed use cases. It can be up to 2048 bytes.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -530,6 +645,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def KmsKeyId(self):
+        """KMS CMK used for Secret encryption. If this parameter is left empty, SecretsManager will create a CMK by default. You can also specify a KMS CMK that is created in the same region.
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -538,6 +656,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretType(self):
+        """Secret type. It defaults to `custom`.
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -546,6 +667,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretBinary(self):
+        """Base64-encoded plaintext of a binary Secret. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -554,6 +678,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def SecretString(self):
+        """Plaintext of a Secret, in text format. Base64 encoding is not required. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -562,6 +689,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def AdditionalConfig(self):
+        """Additional configuration of the Secret in JSON format
+        :rtype: str
+        """
         return self._AdditionalConfig
 
     @AdditionalConfig.setter
@@ -570,6 +700,9 @@ class CreateSecretRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """List of tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -630,6 +763,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SecretName(self):
+        """Name of the new Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -638,6 +774,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def VersionId(self):
+        """ID of the new Secret version.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -646,6 +785,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TagCode(self):
+        """Return code of tag operation. `0`: success; `1`: internal error; `2`: business processing error
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -654,6 +797,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TagMsg(self):
+        """Return message of tag operation.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -662,6 +809,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -700,6 +850,9 @@ For an SSH key secret, this field can only be `0`.
 
     @property
     def SecretName(self):
+        """Name of the Secret to be deleted.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -708,6 +861,10 @@ For an SSH key secret, this field can only be `0`.
 
     @property
     def RecoveryWindowInDays(self):
+        """Scheduled deletion time (in days), indicating the number of retention days for the secret. Value range: 0-30. If it is `0`, the secret is deleted immediately.
+For an SSH key secret, this field can only be `0`.
+        :rtype: int
+        """
         return self._RecoveryWindowInDays
 
     @RecoveryWindowInDays.setter
@@ -716,6 +873,11 @@ For an SSH key secret, this field can only be `0`.
 
     @property
     def CleanSSHKey(self):
+        """Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only valid for SSH key secrets. Valid values:
+`True`: deletes SSH key from both the secret and SSH key list in the CVM console. Note that the deletion will fail if the SSH key is already bound to a CVM instance.
+`False`: only deletes the SSH key information in the secret.
+        :rtype: bool
+        """
         return self._CleanSSHKey
 
     @CleanSSHKey.setter
@@ -757,6 +919,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of deleted Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -765,6 +930,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """Secret deletion time, formatted as a Unix timestamp.
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -773,6 +941,9 @@ class DeleteSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -803,6 +974,9 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -811,6 +985,9 @@ class DeleteSecretVersionRequest(AbstractModel):
 
     @property
     def VersionId(self):
+        """ID of the Secret version to be deleted.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -851,6 +1028,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -859,6 +1039,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """Version ID of the Secret.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -867,6 +1050,9 @@ class DeleteSecretVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -894,6 +1080,9 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     @property
     def FlowID(self):
+        """Async task ID.
+        :rtype: int
+        """
         return self._FlowID
 
     @FlowID.setter
@@ -933,6 +1122,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """0: processing, 1: processing succeeded, 2: processing failed
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -941,6 +1133,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Task description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -949,6 +1144,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -976,6 +1174,9 @@ class DescribeRotationDetailRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Specifies the name of the credential for which to get the credential rotation details.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1024,6 +1225,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableRotation(self):
+        """Whether to enable rotation. `true`: enabled; `false`: disabled.
+        :rtype: bool
+        """
         return self._EnableRotation
 
     @EnableRotation.setter
@@ -1032,6 +1236,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Frequency(self):
+        """Rotation frequency in days. Default value: 1 day.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -1040,6 +1248,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestRotateTime(self):
+        """Last rotation time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestRotateTime
 
     @LatestRotateTime.setter
@@ -1048,6 +1260,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextRotateBeginTime(self):
+        """Next rotation start time, which is an explicitly visible time string in the format of 2006-01-02 15:04:05.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NextRotateBeginTime
 
     @NextRotateBeginTime.setter
@@ -1056,6 +1272,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1085,6 +1304,9 @@ class DescribeRotationHistoryRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Specifies the name of the credential for which to get the credential rotation records.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1124,6 +1346,9 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def VersionIDs(self):
+        """List of version numbers.
+        :rtype: list of str
+        """
         return self._VersionIDs
 
     @VersionIDs.setter
@@ -1132,6 +1357,9 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of version numbers. The maximum number of version numbers that can be shown to users is 10.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1140,6 +1368,9 @@ class DescribeRotationHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1167,6 +1398,9 @@ class DescribeSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of a Secret whose detailed information is to be obtained.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1261,6 +1495,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1269,6 +1506,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Description of the Secret.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1277,6 +1517,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KmsKeyId(self):
+        """ID of the KMS CMK used for encryption.
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -1285,6 +1528,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
+        """Creator UIN.
+        :rtype: int
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -1293,6 +1539,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1301,6 +1550,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteTime(self):
+        """Deletion time, formatted as a Unix timestamp. For a Secret that is not in `PendingDelete` status, this value is 0.
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -1309,6 +1561,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1317,6 +1572,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretType(self):
+        """`0`: user-defined secret; `1`: database credential; `2`: SSH key secret.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -1325,6 +1584,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductName(self):
+        """Tencent Cloud service name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -1333,6 +1596,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceID(self):
+        """Tencent Cloud service instance ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceID
 
     @ResourceID.setter
@@ -1341,6 +1608,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RotationStatus(self):
+        """Whether to enable rotation. `True`: enable rotation; `False`: disable rotation.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._RotationStatus
 
     @RotationStatus.setter
@@ -1349,6 +1620,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RotationFrequency(self):
+        """Rotation frequency in days by default.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RotationFrequency
 
     @RotationFrequency.setter
@@ -1357,6 +1632,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
+        """Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -1365,6 +1644,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectID(self):
+        """Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -1373,6 +1656,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedInstanceIDs(self):
+        """ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AssociatedInstanceIDs
 
     @AssociatedInstanceIDs.setter
@@ -1381,6 +1668,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetUin(self):
+        """UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -1389,6 +1680,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdditionalConfig(self):
+        """Additional configuration of the Secret
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AdditionalConfig
 
     @AdditionalConfig.setter
@@ -1397,6 +1692,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1451,6 +1749,9 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     @property
     def Products(self):
+        """List of supported services.
+        :rtype: list of str
+        """
         return self._Products
 
     @Products.setter
@@ -1459,6 +1760,9 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of supported services
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1467,6 +1771,9 @@ class DescribeSupportedProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1494,6 +1801,9 @@ class DisableSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret to be disabled.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1530,6 +1840,9 @@ class DisableSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the disabled Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1538,6 +1851,9 @@ class DisableSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1564,6 +1880,9 @@ class EnableSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret to be enabled.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1600,6 +1919,9 @@ class EnableSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the enabled Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1608,6 +1930,9 @@ class EnableSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1643,6 +1968,9 @@ class GetRegionsResponse(AbstractModel):
 
     @property
     def Regions(self):
+        """List of regions.
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -1651,6 +1979,9 @@ class GetRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1680,6 +2011,9 @@ class GetSSHKeyPairValueRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Secret name. This field is only valid for SSH key secrets.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1688,6 +2022,9 @@ class GetSSHKeyPairValueRequest(AbstractModel):
 
     @property
     def SSHKeyId(self):
+        """ID of the key pair, which is the unique identifier of the key pair in the CVM.
+        :rtype: str
+        """
         return self._SSHKeyId
 
     @SSHKeyId.setter
@@ -1742,6 +2079,9 @@ The name can be modified in the CVM console.
 
     @property
     def SSHKeyID(self):
+        """ID of the SSH key.
+        :rtype: str
+        """
         return self._SSHKeyID
 
     @SSHKeyID.setter
@@ -1750,6 +2090,9 @@ The name can be modified in the CVM console.
 
     @property
     def PublicKey(self):
+        """Plaintext value of the Base64-encoded public key.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -1758,6 +2101,9 @@ The name can be modified in the CVM console.
 
     @property
     def PrivateKey(self):
+        """Plaintext value of the Base64-encoded private key.
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -1766,6 +2112,9 @@ The name can be modified in the CVM console.
 
     @property
     def ProjectID(self):
+        """ID of the project to which the SSH key belongs.
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -1774,6 +2123,10 @@ The name can be modified in the CVM console.
 
     @property
     def SSHKeyDescription(self):
+        """Description of the SSH key.
+The description can be modified in the CVM console.
+        :rtype: str
+        """
         return self._SSHKeyDescription
 
     @SSHKeyDescription.setter
@@ -1782,6 +2135,10 @@ The name can be modified in the CVM console.
 
     @property
     def SSHKeyName(self):
+        """Name of the SSH key.
+The name can be modified in the CVM console.
+        :rtype: str
+        """
         return self._SSHKeyName
 
     @SSHKeyName.setter
@@ -1790,6 +2147,9 @@ The name can be modified in the CVM console.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1825,6 +2185,9 @@ For Tencent Cloud service credentials such as MySQL credentials, this API is use
 
     @property
     def SecretName(self):
+        """Name of a Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1833,6 +2196,10 @@ For Tencent Cloud service credentials such as MySQL credentials, this API is use
 
     @property
     def VersionId(self):
+        """Specifies the version number of the corresponding credential.
+For Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1881,6 +2248,9 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -1889,6 +2259,9 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def VersionId(self):
+        """ID of the Secret version.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -1897,6 +2270,10 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def SecretBinary(self):
+        """When creating a credential (CreateSecret), if you specify binary data, this field will be the Base64-encoded returned result. The application needs to Base64-decode the result to get the original data.
+Either `SecretBinary` or `SecretString` cannot be empty.
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -1905,6 +2282,10 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def SecretString(self):
+        """When creating a credential (CreateSecret), if you specify general text data, this field will be the returned result.
+Either `SecretBinary` or `SecretString` cannot be empty.
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -1913,6 +2294,9 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1958,6 +2342,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ServiceEnabled(self):
+        """`true`: The service is activated; `false`: The service is not activated.
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -1966,6 +2353,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def InvalidType(self):
+        """Invalid service type. `0`: not purchased; `1`: normal; `2`: suspended due to arrears; `3`: resource released
+        :rtype: int
+        """
         return self._InvalidType
 
     @InvalidType.setter
@@ -1974,6 +2364,10 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def AccessKeyEscrowEnabled(self):
+        """`true`: Allow SSM to manage Tencent Cloud API key secrets.
+`false`: Forbid SSM to manage Tencent Cloud API key secrets.
+        :rtype: bool
+        """
         return self._AccessKeyEscrowEnabled
 
     @AccessKeyEscrowEnabled.setter
@@ -1982,6 +2376,9 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2010,6 +2407,9 @@ class ListSecretVersionIdsRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2050,6 +2450,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2058,6 +2461,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Versions(self):
+        """`VersionId` list.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of VersionInfo
+        """
         return self._Versions
 
     @Versions.setter
@@ -2066,6 +2473,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2115,11 +2525,8 @@ The `PendingCreate` and `CreateFailed` status only take effect when `SecretType`
 `2`: SSH key secret.
 `3`: Tencent Cloud API key secret.
         :type SecretType: int
-        :param _ProductName: This parameter is valid only when SecretType is `1`.
- 
-An empty value indicates querying all types of Tencent Cloud service secrets.
-`Mysql`: queries MySQL database credentials.
-`Tdsql-mysql`: queries TDSQL MySQL database credentials.
+        :param _ProductName: This parameter only takes effect when the value of the SecretType parameter is 1.\nWhen the value of SecretType is `1`:
+If the ProductName value is empty, it means querying all types of Tencent Cloud product secrets;If the ProductName value is a specific cloud product value such as MySQL, it means querying MySQL database credential;If the ProductName value is multiple cloud product values, such as: Mysql, Tdsql-mysql, Tdsql_C_Mysql (multiple values are separated by commas in English), it means querying the secrets of three cloud product types;To query the list of supported cloud products, use the interface: `DescribeSupportedProducts`.
         :type ProductName: str
         """
         self._Offset = None
@@ -2133,6 +2540,9 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def Offset(self):
+        """Starting position of the list, starting at 0. If not specified, 0 is used by default.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2141,6 +2551,9 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def Limit(self):
+        """Maximum number of returned Secrets in a query. If not set or set to 0, 20 is used by default.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2149,6 +2562,9 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def OrderType(self):
+        """Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -2157,6 +2573,16 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def State(self):
+        """Filter based on credential status.
+The default value is 0, indicating to query all.
+1: query the list of credentials in `Enabled` status.
+2: query the list of credentials in `Disabled` status.
+3: query the list of credentials in `PendingDelete` status.
+4: query the list of credentials in `PendingCreate` status.
+5: query the list of credentials in `CreateFailed` status.
+The `PendingCreate` and `CreateFailed` status only take effect when `SecretType` is Tencent Cloud service credential
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -2165,6 +2591,9 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def SearchSecretName(self):
+        """Filter according to Secret names. If left empty, this filter is not applied.
+        :rtype: str
+        """
         return self._SearchSecretName
 
     @SearchSecretName.setter
@@ -2173,6 +2602,9 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def TagFilters(self):
+        """Tag filter.
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -2181,6 +2613,12 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def SecretType(self):
+        """`0` (default): user-defined secret.
+`1`: Tencent Cloud services secret.
+`2`: SSH key secret.
+`3`: Tencent Cloud API key secret.
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -2189,6 +2627,10 @@ An empty value indicates querying all types of Tencent Cloud service secrets.
 
     @property
     def ProductName(self):
+        """This parameter only takes effect when the value of the SecretType parameter is 1.\nWhen the value of SecretType is `1`:
+If the ProductName value is empty, it means querying all types of Tencent Cloud product secrets;If the ProductName value is a specific cloud product value such as MySQL, it means querying MySQL database credential;If the ProductName value is multiple cloud product values, such as: Mysql, Tdsql-mysql, Tdsql_C_Mysql (multiple values are separated by commas in English), it means querying the secrets of three cloud product types;To query the list of supported cloud products, use the interface: `DescribeSupportedProducts`.
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2231,7 +2673,7 @@ class ListSecretsResponse(AbstractModel):
         :type TotalCount: int
         :param _SecretMetadatas: List of Secret information.
         :type SecretMetadatas: list of SecretMetadata
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2240,6 +2682,9 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of filtered Secrets according to `State` and `SearchSecretName`.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2248,6 +2693,9 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def SecretMetadatas(self):
+        """List of Secret information.
+        :rtype: list of SecretMetadata
+        """
         return self._SecretMetadatas
 
     @SecretMetadatas.setter
@@ -2256,6 +2704,9 @@ class ListSecretsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2325,6 +2776,19 @@ TableName: explicitly indicate the table
 
     @property
     def PrivilegeName(self):
+        """Permission name. Valid values:
+GlobalPrivileges
+DatabasePrivileges
+TablePrivileges
+ColumnPrivileges
+
+When the permission is `DatabasePrivileges`, the database name must be specified by the `Database` parameter;
+
+When the permission is `TablePrivileges`, the database name and the table name in the database must be specified by the `Database` and `TableName` parameters;
+
+When the permission is `ColumnPrivileges`, the database name, table name in the database, and column name in the table must be specified by the `Database`, `TableName`, and `ColumnName` parameters.
+        :rtype: str
+        """
         return self._PrivilegeName
 
     @PrivilegeName.setter
@@ -2333,6 +2797,22 @@ TableName: explicitly indicate the table
 
     @property
     def Privileges(self):
+        """Permission list.
+For the `Mysql` service, optional permission values are:
+
+1. Valid values of `GlobalPrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER".
+Note: if this parameter is not passed in, it means to clear the permission.
+
+2. Valid values of `DatabasePrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER".
+Note: if this parameter is not passed in, it means to clear the permission.
+
+3. Valid values of `TablePrivileges`: "SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER".
+Note: if this parameter is not passed in, it means to clear the permission.
+
+4. Valid values of `ColumnPrivileges`: "SELECT","INSERT","UPDATE","REFERENCES".
+Note: if this parameter is not passed in, it means to clear the permission.
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -2341,6 +2821,9 @@ TableName: explicitly indicate the table
 
     @property
     def Database(self):
+        """This value takes effect only when `PrivilegeName` is `DatabasePrivileges`.
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -2349,6 +2832,9 @@ TableName: explicitly indicate the table
 
     @property
     def TableName(self):
+        """This value takes effect only when `PrivilegeName` is `TablePrivileges`, and the `Database` parameter is required in this case to explicitly indicate the database instance.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -2357,6 +2843,11 @@ TableName: explicitly indicate the table
 
     @property
     def ColumnName(self):
+        """This value takes effect only when `PrivilegeName` is `ColumnPrivileges`, and the following parameters are required in this case:
+Database: explicitly indicate the database instance.
+TableName: explicitly indicate the table
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -2404,6 +2895,9 @@ Either `SecretBinary` or `SecretString` must be set.
 
     @property
     def SecretName(self):
+        """Name of a Secret where the version is added to.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2412,6 +2906,9 @@ Either `SecretBinary` or `SecretString` must be set.
 
     @property
     def VersionId(self):
+        """ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -2420,6 +2917,10 @@ Either `SecretBinary` or `SecretString` must be set.
 
     @property
     def SecretBinary(self):
+        """Base64-encoded binary credential information.
+Either `SecretBinary` or `SecretString` must be set.
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -2428,6 +2929,9 @@ Either `SecretBinary` or `SecretString` must be set.
 
     @property
     def SecretString(self):
+        """Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -2470,6 +2974,9 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2478,6 +2985,9 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """Version ID that is newly added.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -2486,6 +2996,9 @@ class PutSecretValueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2513,6 +3026,9 @@ class RestoreSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret to be restored.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2549,6 +3065,9 @@ class RestoreSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2557,6 +3076,9 @@ class RestoreSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2583,6 +3105,9 @@ class RotateProductSecretRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the credential to be rotated.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2619,6 +3144,9 @@ class RotateProductSecretResponse(AbstractModel):
 
     @property
     def FlowID(self):
+        """Asynchronous rotation task ID. This field is valid when `SecretType` is `1` (i.e., the secret type is Tencent Cloud services secret, such as MySQL/TDSQL credentials).
+        :rtype: int
+        """
         return self._FlowID
 
     @FlowID.setter
@@ -2627,6 +3155,9 @@ class RotateProductSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2668,11 +3199,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _NextRotationTime: Start time of the next rotation in UNIX timestamp format
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NextRotationTime: int
-        :param _SecretType: `0`: user-defined secret.
-`1`: Tencent Cloud services secret.
-`2`: SSH key secret.
-`3`: Tencent Cloud API key secret.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _SecretType: 0: custom secret;1: database credential;2: SSH key secret;3: cloud API key secret;4: Redis secret;Note: This field may return `null`, indicating no valid value can be obtained.
         :type SecretType: int
         :param _ProductName: Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2721,6 +3248,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretName(self):
+        """Credential name
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -2729,6 +3259,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Credential description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2737,6 +3270,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KmsKeyId(self):
+        """KMS `KeyId` used to encrypt the credential
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -2745,6 +3281,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
+        """Creator UIN
+        :rtype: int
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -2753,6 +3292,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2761,6 +3303,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteTime(self):
+        """Credential deletion date, which takes effect for credentials in `PendingDelete` status and is in UNIX timestamp format
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -2769,6 +3314,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Credential creation time in UNIX timestamp format
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2777,6 +3325,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KmsKeyType(self):
+        """Type of the KMS CMK used to encrypt the credential. `DEFAULT` represents the default key created by Secrets Manager, and `CUSTOMER` represents the user-specified key
+        :rtype: str
+        """
         return self._KmsKeyType
 
     @KmsKeyType.setter
@@ -2785,6 +3336,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RotationStatus(self):
+        """1: enable rotation; 0: disable rotation
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RotationStatus
 
     @RotationStatus.setter
@@ -2793,6 +3348,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextRotationTime(self):
+        """Start time of the next rotation in UNIX timestamp format
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._NextRotationTime
 
     @NextRotationTime.setter
@@ -2801,6 +3360,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecretType(self):
+        """0: custom secret;1: database credential;2: SSH key secret;3: cloud API key secret;4: Redis secret;Note: This field may return `null`, indicating no valid value can be obtained.
+        :rtype: int
+        """
         return self._SecretType
 
     @SecretType.setter
@@ -2809,6 +3371,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductName(self):
+        """Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2817,6 +3383,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
+        """Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2825,6 +3395,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectID(self):
+        """Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -2833,6 +3407,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedInstanceIDs(self):
+        """ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AssociatedInstanceIDs
 
     @AssociatedInstanceIDs.setter
@@ -2841,6 +3419,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetUin(self):
+        """UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TargetUin
 
     @TargetUin.setter
@@ -2849,6 +3431,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RotationFrequency(self):
+        """Rotation frequency in days. It takes effect when the rotation feature is enabled. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RotationFrequency
 
     @RotationFrequency.setter
@@ -2857,6 +3443,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceID(self):
+        """ID of Tencent Cloud resource corresponding with the Secret. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceID
 
     @ResourceID.setter
@@ -2865,6 +3455,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RotationBeginTime(self):
+        """The rotation start time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RotationBeginTime
 
     @RotationBeginTime.setter
@@ -2919,6 +3513,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2927,6 +3524,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2964,6 +3564,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2972,6 +3575,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -3009,6 +3615,9 @@ class UpdateDescriptionRequest(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of a Secret whose description is to be updated.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3017,6 +3626,9 @@ class UpdateDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """New description information, which can be up to 2048 bytes.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3054,6 +3666,9 @@ class UpdateDescriptionResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3062,6 +3677,9 @@ class UpdateDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3100,6 +3718,9 @@ When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the curre
 
     @property
     def SecretName(self):
+        """Tencent Cloud service credential name.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3108,6 +3729,11 @@ When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the curre
 
     @property
     def EnableRotation(self):
+        """Specifies whether to enable rotation.
+`true`: enables rotation.
+`false`: disables rotation.
+        :rtype: bool
+        """
         return self._EnableRotation
 
     @EnableRotation.setter
@@ -3116,6 +3742,9 @@ When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the curre
 
     @property
     def Frequency(self):
+        """Rotation frequency in days. Value range: 30–365.
+        :rtype: int
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -3124,6 +3753,10 @@ When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the curre
 
     @property
     def RotationBeginTime(self):
+        """User-defined rotation start time in the format of 2006-01-02 15:04:05.
+When `EnableRotation` is `true` and `RotationBeginTime` is left empty, the current time will be entered by default.
+        :rtype: str
+        """
         return self._RotationBeginTime
 
     @RotationBeginTime.setter
@@ -3160,6 +3793,9 @@ class UpdateRotationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3195,6 +3831,9 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def SecretName(self):
+        """Name of a Secret whose content is to be updated.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3203,6 +3842,9 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def VersionId(self):
+        """ID of the Secret version whose content is to be updated.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -3211,6 +3853,10 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def SecretBinary(self):
+        """This field should be used and Base64-encoded if the content of the new credential is binary.
+Either `SecretBinary` or `SecretString` cannot be empty.
+        :rtype: str
+        """
         return self._SecretBinary
 
     @SecretBinary.setter
@@ -3219,6 +3865,9 @@ Either `SecretBinary` or `SecretString` cannot be empty.
 
     @property
     def SecretString(self):
+        """This field should be used without being Base64-encoded if the content of the new credential is text. Either `SecretBinary` or `SecretString` cannot be empty.
+        :rtype: str
+        """
         return self._SecretString
 
     @SecretString.setter
@@ -3261,6 +3910,9 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
+        """Name of the Secret.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -3269,6 +3921,9 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def VersionId(self):
+        """Version ID of the Secret.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -3277,6 +3932,9 @@ class UpdateSecretResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3307,6 +3965,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def VersionId(self):
+        """Version ID.
+        :rtype: str
+        """
         return self._VersionId
 
     @VersionId.setter
@@ -3315,6 +3976,9 @@ class VersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time, formatted as a Unix timestamp.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter

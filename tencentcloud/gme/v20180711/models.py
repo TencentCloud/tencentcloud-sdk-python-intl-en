@@ -60,6 +60,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealtimeSpeechStatisticsItem(self):
+        """Voice Chat statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.RealTimeSpeechStatisticsItem`
+        """
         return self._RealtimeSpeechStatisticsItem
 
     @RealtimeSpeechStatisticsItem.setter
@@ -68,6 +72,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VoiceMessageStatisticsItem(self):
+        """Voice Message statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageStatisticsItem`
+        """
         return self._VoiceMessageStatisticsItem
 
     @VoiceMessageStatisticsItem.setter
@@ -76,6 +84,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VoiceFilterStatisticsItem(self):
+        """Phrase Filtering statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterStatisticsItem`
+        """
         return self._VoiceFilterStatisticsItem
 
     @VoiceFilterStatisticsItem.setter
@@ -84,6 +96,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Date(self):
+        """Reference period
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -92,6 +107,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AudioTextStatisticsItem(self):
+        """Recording-to-Text usage statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.AudioTextStatisticsItem`
+        """
         return self._AudioTextStatisticsItem
 
     @AudioTextStatisticsItem.setter
@@ -100,6 +119,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StreamTextStatisticsItem(self):
+        """Stream-to-Text usage statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.StreamTextStatisticsItem`
+        """
         return self._StreamTextStatisticsItem
 
     @StreamTextStatisticsItem.setter
@@ -108,6 +131,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OverseaTextStatisticsItem(self):
+        """Usage statistics of Voice-to-Text of outside-MLC requests
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.OverseaTextStatisticsItem`
+        """
         return self._OverseaTextStatisticsItem
 
     @OverseaTextStatisticsItem.setter
@@ -116,6 +143,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealtimeTextStatisticsItem(self):
+        """Real-time Voice-to-Text usage statistics
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeTextStatisticsItem`
+        """
         return self._RealtimeTextStatisticsItem
 
     @RealtimeTextStatisticsItem.setter
@@ -206,6 +237,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -214,6 +248,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataNum(self):
+        """Number of DAU metrics
+        :rtype: int
+        """
         return self._DauDataNum
 
     @DauDataNum.setter
@@ -222,6 +259,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataMainland(self):
+        """DAUs in the Chinese mainland
+        :rtype: list of StatisticsItem
+        """
         return self._DauDataMainland
 
     @DauDataMainland.setter
@@ -230,6 +270,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataOversea(self):
+        """DAUs outside the Chinese mainland
+        :rtype: list of StatisticsItem
+        """
         return self._DauDataOversea
 
     @DauDataOversea.setter
@@ -238,6 +281,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DauDataSum(self):
+        """Total DAUs
+        :rtype: list of StatisticsItem
+        """
         return self._DauDataSum
 
     @DauDataSum.setter
@@ -246,6 +292,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataNum(self):
+        """Number of Voice Chat metrics
+        :rtype: int
+        """
         return self._DurationDataNum
 
     @DurationDataNum.setter
@@ -254,6 +303,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataMainland(self):
+        """Duration of Voice Chat in the Chinese mainland (in minutes)
+        :rtype: list of StatisticsItem
+        """
         return self._DurationDataMainland
 
     @DurationDataMainland.setter
@@ -262,6 +314,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataOversea(self):
+        """Duration of Voice Chat outside the Chinese mainland (in minutes)
+        :rtype: list of StatisticsItem
+        """
         return self._DurationDataOversea
 
     @DurationDataOversea.setter
@@ -270,6 +325,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def DurationDataSum(self):
+        """Total duration of Voice Chat (in minutes)
+        :rtype: list of StatisticsItem
+        """
         return self._DurationDataSum
 
     @DurationDataSum.setter
@@ -278,6 +336,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataNum(self):
+        """Number of PCU metrics
+        :rtype: int
+        """
         return self._PcuDataNum
 
     @PcuDataNum.setter
@@ -286,6 +347,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataMainland(self):
+        """PCUs in the Chinese mainland
+        :rtype: list of StatisticsItem
+        """
         return self._PcuDataMainland
 
     @PcuDataMainland.setter
@@ -294,6 +358,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataOversea(self):
+        """PCUs outside the Chinese mainland
+        :rtype: list of StatisticsItem
+        """
         return self._PcuDataOversea
 
     @PcuDataOversea.setter
@@ -302,6 +369,9 @@ class ApplicationDataStatistics(AbstractModel):
 
     @property
     def PcuDataSum(self):
+        """Total PCUs
+        :rtype: list of StatisticsItem
+        """
         return self._PcuDataSum
 
     @PcuDataSum.setter
@@ -392,6 +462,9 @@ class AsrConf(AbstractModel):
 
     @property
     def Status(self):
+        """Speech-to-Text status. Valid values: `open`, `close`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -426,6 +499,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
+        """Statistical value (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Data
 
     @Data.setter
@@ -485,6 +562,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def AppName(self):
+        """Application name
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -493,6 +573,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def ProjectId(self):
+        """Tencent Cloud project ID. Default value: 0, which means that the default project is used.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -501,6 +584,10 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def EngineList(self):
+        """List of engines to be supported.
+Valid values: `android`, `ios`, `unity`, `cocos`, `unreal`, `windows`. All values are selected by default.
+        :rtype: list of str
+        """
         return self._EngineList
 
     @EngineList.setter
@@ -509,6 +596,10 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def RegionList(self):
+        """List of regions.
+Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan (China)), `sea` (Southeast Asia), `na` (North America), `eu` (Europe), `jpkr` (Japan, Korea and Asia Pacific), `sa` (South America), `oc` (Oceania), `me` (Middle East). All values are selected by default.
+        :rtype: list of str
+        """
         return self._RegionList
 
     @RegionList.setter
@@ -517,6 +608,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def RealtimeSpeechConf(self):
+        """Configuration information of Voice Chat
+        :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
+        """
         return self._RealtimeSpeechConf
 
     @RealtimeSpeechConf.setter
@@ -525,6 +619,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def VoiceMessageConf(self):
+        """Configuration information of Voice Messaging
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
+        """
         return self._VoiceMessageConf
 
     @VoiceMessageConf.setter
@@ -533,6 +630,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def VoiceFilterConf(self):
+        """Configuration information of Voice Analysis Service
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
+        """
         return self._VoiceFilterConf
 
     @VoiceFilterConf.setter
@@ -541,6 +641,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def AsrConf(self):
+        """Configuration information of Speech-to-Text
+        :rtype: :class:`tencentcloud.gme.v20180711.models.AsrConf`
+        """
         return self._AsrConf
 
     @AsrConf.setter
@@ -549,6 +652,9 @@ Valid values: `mainland` (Chinese mainland), `hmt` (Hong Kong, Macao and Taiwan 
 
     @property
     def Tags(self):
+        """List of tags to be added
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -627,6 +733,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID, automatically generated by the backend.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -635,6 +744,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def AppName(self):
+        """Application name, the input of `AppName`.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -643,6 +755,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID, the input of `ProjectId`.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -651,6 +766,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def SecretKey(self):
+        """Application key, used to initialize GME SDK.
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -659,6 +777,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Timestamp, indicating when the service is created.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -667,6 +788,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def RealtimeSpeechConf(self):
+        """Configuration information of Voice Chat
+        :rtype: :class:`tencentcloud.gme.v20180711.models.RealtimeSpeechConf`
+        """
         return self._RealtimeSpeechConf
 
     @RealtimeSpeechConf.setter
@@ -675,6 +799,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def VoiceMessageConf(self):
+        """Configuration information of Voice Messaging
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceMessageConf`
+        """
         return self._VoiceMessageConf
 
     @VoiceMessageConf.setter
@@ -683,6 +810,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def VoiceFilterConf(self):
+        """Configuration information of Voice Analysis Service
+        :rtype: :class:`tencentcloud.gme.v20180711.models.VoiceFilterConf`
+        """
         return self._VoiceFilterConf
 
     @VoiceFilterConf.setter
@@ -691,6 +821,9 @@ class CreateAppResp(AbstractModel):
 
     @property
     def AsrConf(self):
+        """Configuration information of Speech-to-Text
+        :rtype: :class:`tencentcloud.gme.v20180711.models.AsrConf`
+        """
         return self._AsrConf
 
     @AsrConf.setter
@@ -743,6 +876,9 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Returned data
+        :rtype: :class:`tencentcloud.gme.v20180711.models.CreateAppResp`
+        """
         return self._Data
 
     @Data.setter
@@ -751,6 +887,9 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -782,6 +921,9 @@ class DeleteResult(AbstractModel):
 
     @property
     def Code(self):
+        """Status code. `0`: Succeeded. Others: Failed\
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -790,6 +932,9 @@ class DeleteResult(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """Description
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -833,6 +978,9 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """ID of the target room
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -841,6 +989,9 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def Uids(self):
+        """List of the members to remove
+        :rtype: list of str
+        """
         return self._Uids
 
     @Uids.setter
@@ -849,6 +1000,9 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def DeleteType(self):
+        """Operation type. `1`: Delete a room; `2`: Remove members
+        :rtype: int
+        """
         return self._DeleteType
 
     @DeleteType.setter
@@ -857,6 +1011,9 @@ class DeleteRoomMemberRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -896,6 +1053,9 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     @property
     def DeleteResult(self):
+        """Result of the operation to delete a room or remove a member
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
+        """
         return self._DeleteResult
 
     @DeleteResult.setter
@@ -904,6 +1064,9 @@ class DeleteRoomMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -941,6 +1104,9 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """GME application ID
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -949,6 +1115,9 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -957,6 +1126,9 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -965,6 +1137,9 @@ class DescribeAppStatisticsRequest(AbstractModel):
 
     @property
     def Services(self):
+        """List of services to be queried. Valid values: `RealTimeSpeech`, `VoiceMessage`, `VoiceFilter`, `SpeechToText`.
+        :rtype: list of str
+        """
         return self._Services
 
     @Services.setter
@@ -1001,6 +1176,9 @@ class DescribeAppStatisticsResp(AbstractModel):
 
     @property
     def AppStatistics(self):
+        """Application usage statistics
+        :rtype: list of AppStatisticsItem
+        """
         return self._AppStatistics
 
     @AppStatistics.setter
@@ -1042,6 +1220,9 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Application usage statistics
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
+        """
         return self._Data
 
     @Data.setter
@@ -1050,6 +1231,9 @@ class DescribeAppStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1084,6 +1268,9 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1092,6 +1279,9 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Data start date in the format of yyyy-mm-dd, such as 2018-07-13.
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -1100,6 +1290,9 @@ class DescribeApplicationDataRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """Data end date in the format of yyyy-mm-dd, such as 2018-07-13.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -1138,6 +1331,9 @@ class DescribeApplicationDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Application statistics
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
+        """
         return self._Data
 
     @Data.setter
@@ -1146,6 +1342,9 @@ class DescribeApplicationDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1177,6 +1376,9 @@ class DescribeRecordInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the ongoing task, which is returned from the `StartRecord` API.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1185,6 +1387,9 @@ class DescribeRecordInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1229,6 +1434,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordInfo(self):
+        """Information about the recording task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of RecordInfo
+        """
         return self._RecordInfo
 
     @RecordInfo.setter
@@ -1237,6 +1446,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordMode(self):
+        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        :rtype: int
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -1245,6 +1457,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1253,6 +1468,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1289,6 +1507,9 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1297,6 +1518,9 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1343,6 +1567,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """ID of the ongoing task, which is returned from the `StartRecord` API.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1351,6 +1579,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordMode(self):
+        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -1359,6 +1591,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeRecordUserIds(self):
+        """Allowlist or blocklist for stream subscription.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
         return self._SubscribeRecordUserIds
 
     @SubscribeRecordUserIds.setter
@@ -1367,6 +1603,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1400,6 +1639,9 @@ class ModifyAppStatusRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID, which is generated and returned by the backend after the application creation.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1408,6 +1650,9 @@ class ModifyAppStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Application status. Valid values: `open`, `close`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1445,6 +1690,9 @@ class ModifyAppStatusResp(AbstractModel):
 
     @property
     def BizId(self):
+        """GME application ID
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1453,6 +1701,9 @@ class ModifyAppStatusResp(AbstractModel):
 
     @property
     def Status(self):
+        """Application status. Valid values: `open`, `close`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1490,6 +1741,9 @@ class ModifyAppStatusResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Returned data
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResp`
+        """
         return self._Data
 
     @Data.setter
@@ -1498,6 +1752,9 @@ class ModifyAppStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1535,6 +1792,9 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the ongoing task, which is returned from the `StartRecord` API.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1543,6 +1803,9 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def RecordMode(self):
+        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        :rtype: int
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -1551,6 +1814,9 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1559,6 +1825,9 @@ class ModifyRecordInfoRequest(AbstractModel):
 
     @property
     def SubscribeRecordUserIds(self):
+        """Allowlist or blocklist for stream subscription.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
         return self._SubscribeRecordUserIds
 
     @SubscribeRecordUserIds.setter
@@ -1597,6 +1866,9 @@ class ModifyRecordInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1623,6 +1895,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
+        """Statistical value (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Data
 
     @Data.setter
@@ -1671,6 +1947,9 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def MainLandDau(self):
+        """DAUs in the Chinese mainland
+        :rtype: int
+        """
         return self._MainLandDau
 
     @MainLandDau.setter
@@ -1679,6 +1958,9 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def MainLandPcu(self):
+        """PCUs in the Chinese mainland
+        :rtype: int
+        """
         return self._MainLandPcu
 
     @MainLandPcu.setter
@@ -1687,6 +1969,9 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def MainLandDuration(self):
+        """Total duration of use in the Chinese mainland (in minutes)
+        :rtype: int
+        """
         return self._MainLandDuration
 
     @MainLandDuration.setter
@@ -1695,6 +1980,9 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def OverseaDau(self):
+        """DAUs outside the Chinese mainland
+        :rtype: int
+        """
         return self._OverseaDau
 
     @OverseaDau.setter
@@ -1703,6 +1991,9 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def OverseaPcu(self):
+        """PCUs outside the Chinese mainland
+        :rtype: int
+        """
         return self._OverseaPcu
 
     @OverseaPcu.setter
@@ -1711,6 +2002,9 @@ class RealTimeSpeechStatisticsItem(AbstractModel):
 
     @property
     def OverseaDuration(self):
+        """Total duration of use outside the Chinese mainland (in minutes)
+        :rtype: int
+        """
         return self._OverseaDuration
 
     @OverseaDuration.setter
@@ -1752,6 +2046,9 @@ class RealtimeSpeechConf(AbstractModel):
 
     @property
     def Status(self):
+        """Voice Chat status. Valid values: `open`, `close`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1760,6 +2057,9 @@ class RealtimeSpeechConf(AbstractModel):
 
     @property
     def Quality(self):
+        """Voice Chat sound quality type. Valid values: `high` (HD), `ordinary` (SD).
+        :rtype: str
+        """
         return self._Quality
 
     @Quality.setter
@@ -1795,6 +2095,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
+        """Statistical value (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Data
 
     @Data.setter
@@ -1838,6 +2142,9 @@ class RecordInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID. The value is `0` in mixed streams recording mode.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1846,6 +2153,9 @@ class RecordInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """Recording filename.
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -1854,6 +2164,9 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordBeginTime(self):
+        """Recording start time, which is a Unix timestamp. Example: 1234567868.
+        :rtype: int
+        """
         return self._RecordBeginTime
 
     @RecordBeginTime.setter
@@ -1862,6 +2175,9 @@ class RecordInfo(AbstractModel):
 
     @property
     def RecordStatus(self):
+        """Recording status. Valid values: `2`: recording; `10`: to be transcoded; `11`: transcoding; `12`: uploading; `13`: uploaded; `14`: user notified.
+        :rtype: int
+        """
         return self._RecordStatus
 
     @RecordStatus.setter
@@ -1916,6 +2232,9 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -1924,6 +2243,9 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1932,6 +2254,9 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def RecordMode(self):
+        """Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.
+        :rtype: int
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -1940,6 +2265,9 @@ class StartRecordRequest(AbstractModel):
 
     @property
     def SubscribeRecordUserIds(self):
+        """Allowlist or blocklist for stream subscription. If you do not specify this parameter, the audio streams of all the users in the room are subscribed to by default.
+        :rtype: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
+        """
         return self._SubscribeRecordUserIds
 
     @SubscribeRecordUserIds.setter
@@ -1981,6 +2309,9 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1989,6 +2320,9 @@ class StartRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2018,6 +2352,9 @@ class StatisticsItem(AbstractModel):
 
     @property
     def StatDate(self):
+        """Date in the format of yyyy-mm-dd, such as 2018-07-13
+        :rtype: str
+        """
         return self._StatDate
 
     @StatDate.setter
@@ -2026,6 +2363,9 @@ class StatisticsItem(AbstractModel):
 
     @property
     def Data(self):
+        """Statistical value
+        :rtype: int
+        """
         return self._Data
 
     @Data.setter
@@ -2063,6 +2403,9 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2071,6 +2414,9 @@ class StopRecordRequest(AbstractModel):
 
     @property
     def BizId(self):
+        """Application ID.
+        :rtype: int
+        """
         return self._BizId
 
     @BizId.setter
@@ -2105,6 +2451,9 @@ class StopRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2131,6 +2480,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
+        """Usage of the service (in seconds)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Data
 
     @Data.setter
@@ -2169,6 +2522,10 @@ Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` a
 
     @property
     def UnSubscribeUserIds(self):
+        """Blocklist for audio subscription. For example, `["1", "2", "3"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.
+Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.
+        :rtype: list of str
+        """
         return self._UnSubscribeUserIds
 
     @UnSubscribeUserIds.setter
@@ -2177,6 +2534,10 @@ Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` a
 
     @property
     def SubscribeUserIds(self):
+        """Allowlist for audio subscription. For example, `["1", "2", "3"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.
+Note: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.
+        :rtype: list of str
+        """
         return self._SubscribeUserIds
 
     @SubscribeUserIds.setter
@@ -2216,6 +2577,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagKey(self):
+        """Tag key
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2224,6 +2589,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagValue(self):
+        """Tag value
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2262,6 +2631,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Phrase Filtering status. Valid values: `open`, `close`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2270,6 +2642,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SceneInfos(self):
+        """Scenario configuration information, such as status and callback URL.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SceneInfo
+        """
         return self._SceneInfos
 
     @SceneInfos.setter
@@ -2309,6 +2685,9 @@ class VoiceFilterStatisticsItem(AbstractModel):
 
     @property
     def Duration(self):
+        """Total duration of phrase filtering (in minutes)
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -2345,6 +2724,9 @@ class VoiceMessageConf(AbstractModel):
 
     @property
     def Status(self):
+        """Voice Message Service status. Valid values: `open`, `close`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2353,6 +2735,9 @@ class VoiceMessageConf(AbstractModel):
 
     @property
     def Language(self):
+        """Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -2387,6 +2772,9 @@ class VoiceMessageStatisticsItem(AbstractModel):
 
     @property
     def Dau(self):
+        """DAUs of Voice Message Service
+        :rtype: int
+        """
         return self._Dau
 
     @Dau.setter

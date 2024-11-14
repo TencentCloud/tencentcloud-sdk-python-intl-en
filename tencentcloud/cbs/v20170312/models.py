@@ -45,6 +45,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Days(self):
+        """Retains one latest snapshot each day within `Days` days. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Days
 
     @Days.setter
@@ -53,6 +57,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Weeks(self):
+        """Retains one latest snapshot each week within `Weeks` weeks. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Weeks
 
     @Weeks.setter
@@ -61,6 +69,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Months(self):
+        """Retains one latest snapshot each month within `Months` months. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Months
 
     @Months.setter
@@ -69,6 +81,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Years(self):
+        """Retains one latest snapshot each year within `Years` years. Value range: [0, 100].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Years
 
     @Years.setter
@@ -108,6 +124,9 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """ID of the cloud disk backup point, which can be queried through the `DescribeDiskBackups` API.
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -116,6 +135,9 @@ class ApplyDiskBackupRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the original cloud disk of the backup point, which can be queried through the `DescribeDisks` API.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -150,6 +172,9 @@ class ApplyDiskBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -184,6 +209,9 @@ class ApplySnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -192,6 +220,9 @@ class ApplySnapshotRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the original cloud disk corresponding to the snapshot, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -200,6 +231,9 @@ class ApplySnapshotRequest(AbstractModel):
 
     @property
     def AutoStopInstance(self):
+        """Specifies whether to shut down a CVM automatically before a rollback
+        :rtype: bool
+        """
         return self._AutoStopInstance
 
     @AutoStopInstance.setter
@@ -208,6 +242,9 @@ class ApplySnapshotRequest(AbstractModel):
 
     @property
     def AutoStartInstance(self):
+        """Specifies whether to start up a CVM automatically after a rollback
+        :rtype: bool
+        """
         return self._AutoStartInstance
 
     @AutoStartInstance.setter
@@ -244,6 +281,9 @@ class ApplySnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -275,6 +315,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -283,6 +326,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def AttachedDiskCount(self):
+        """The number of instances mounted to data disk.
+        :rtype: int
+        """
         return self._AttachedDiskCount
 
     @AttachedDiskCount.setter
@@ -291,6 +337,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def MaxAttachCount(self):
+        """The maximum number of instances that can be mounted to data disk.
+        :rtype: int
+        """
         return self._MaxAttachCount
 
     @MaxAttachCount.setter
@@ -335,6 +384,9 @@ class AttachDisksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the CVM instance on which the cloud disk will be mounted. It can be queried via the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/15728?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -343,6 +395,9 @@ class AttachDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """ID of the elastic cloud disk to be mounted, which can be queried through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). A maximum of 10 elastic cloud disks can be mounted in a single request.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -351,6 +406,9 @@ class AttachDisksRequest(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
+        """Optional parameter. If this is not passed only the mount operation is executed. If `True` is passed, the cloud disk will be configured to be terminated when the server it is mounted to is terminated. This is only valid for pay-as-you-go cloud disks.
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -359,6 +417,9 @@ class AttachDisksRequest(AbstractModel):
 
     @property
     def AttachMode(self):
+        """(Optional) Specifies the cloud disk mounting method. It’s only valid for BM models. Valid values: <br><li>PF<br><li>VF
+        :rtype: str
+        """
         return self._AttachMode
 
     @AttachMode.setter
@@ -395,6 +456,9 @@ class AttachDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -426,6 +490,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to which the cloud disk is attached.
+        :rtype: list of str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -434,6 +501,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def MountPoint(self):
+        """Mount point in the instance.
+        :rtype: list of str
+        """
         return self._MountPoint
 
     @MountPoint.setter
@@ -442,6 +512,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def FileSystemType(self):
+        """File system type. Valid values: `ext4`, `xfs`.
+        :rtype: str
+        """
         return self._FileSystemType
 
     @FileSystemType.setter
@@ -536,6 +609,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskIdSet(self):
+        """The list of cloud disk IDs that the current scheduled snapshot policy is bound to.
+        :rtype: list of str
+        """
         return self._DiskIdSet
 
     @DiskIdSet.setter
@@ -544,6 +620,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsActivated(self):
+        """Whether scheduled snapshot policy is activated.
+        :rtype: bool
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -552,6 +631,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoSnapshotPolicyState(self):
+        """Scheduled snapshot policy state. Value range:<br><li>NORMAL: Normal<br><li>ISOLATED: Isolated.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyState
 
     @AutoSnapshotPolicyState.setter
@@ -560,6 +642,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsCopyToRemote(self):
+        """Whether it is to replicate a snapshot across accounts. `1`: yes, `0`: no.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsCopyToRemote
 
     @IsCopyToRemote.setter
@@ -568,6 +654,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPermanent(self):
+        """Whether the snapshot created by this scheduled snapshot policy is retained permanently.
+        :rtype: bool
+        """
         return self._IsPermanent
 
     @IsPermanent.setter
@@ -576,6 +665,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextTriggerTime(self):
+        """The time the scheduled snapshot will be triggered again.
+        :rtype: str
+        """
         return self._NextTriggerTime
 
     @NextTriggerTime.setter
@@ -584,6 +676,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoSnapshotPolicyName(self):
+        """Scheduled snapshot policy name.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyName
 
     @AutoSnapshotPolicyName.setter
@@ -592,6 +687,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Scheduled snapshot policy ID.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -600,6 +698,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Policy(self):
+        """The policy for executing the scheduled snapshot.
+        :rtype: list of Policy
+        """
         return self._Policy
 
     @Policy.setter
@@ -608,6 +709,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The time the scheduled snapshot policy was created.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -616,6 +720,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionDays(self):
+        """Number of days the snapshot created by this scheduled snapshot policy is retained.
+        :rtype: int
+        """
         return self._RetentionDays
 
     @RetentionDays.setter
@@ -624,6 +731,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CopyToAccountUin(self):
+        """ID of the replication target account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CopyToAccountUin
 
     @CopyToAccountUin.setter
@@ -632,6 +743,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIdSet(self):
+        """List of IDs of the instances associated with the scheduled snapshot policy.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -640,6 +755,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionMonths(self):
+        """The number of months for which the snapshots created by this scheduled snapshot policy can be retained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RetentionMonths
 
     @RetentionMonths.setter
@@ -648,6 +767,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionAmount(self):
+        """The maximum number of snapshots created by this scheduled snapshot policy that can be retained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RetentionAmount
 
     @RetentionAmount.setter
@@ -656,6 +779,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedRetentionPolicy(self):
+        """Retention policy for scheduled snapshots.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.AdvancedRetentionPolicy`
+        """
         return self._AdvancedRetentionPolicy
 
     @AdvancedRetentionPolicy.setter
@@ -664,6 +791,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CopyFromAccountUin(self):
+        """Source account ID of the copied snapshot policy
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CopyFromAccountUin
 
     @CopyFromAccountUin.setter
@@ -672,6 +803,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -737,6 +872,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """ID of scheduled snapshot policy to be bound.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -745,6 +883,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs to be bound. Maximum of 80 cloud disks can be bound per request.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -779,6 +920,9 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -810,6 +954,9 @@ class CopySnapshotCrossRegionsRequest(AbstractModel):
 
     @property
     def DestinationRegions(self):
+        """Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://intl.cloud.tencent.com/document/product/213/9456?from_cn_redirect=1) API. Note that you can only specify regions that support snapshots.
+        :rtype: list of str
+        """
         return self._DestinationRegions
 
     @DestinationRegions.setter
@@ -818,6 +965,9 @@ class CopySnapshotCrossRegionsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID, which can be queried via the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -826,6 +976,9 @@ class CopySnapshotCrossRegionsRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """Name of the snapshot replica. If it’s not specified, it defaults to “Copied [source snapshot ID from [region name]”
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -864,6 +1017,9 @@ class CopySnapshotCrossRegionsResponse(AbstractModel):
 
     @property
     def SnapshotCopyResultSet(self):
+        """Result of the cross-region replication task. The ID of the new snapshot replica is returned if the request succeeds. Otherwise `Error` is returned.
+        :rtype: list of SnapshotCopyResult
+        """
         return self._SnapshotCopyResultSet
 
     @SnapshotCopyResultSet.setter
@@ -872,6 +1028,9 @@ class CopySnapshotCrossRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -918,6 +1077,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """The policy for executing the scheduled snapshot.
+        :rtype: list of Policy
+        """
         return self._Policy
 
     @Policy.setter
@@ -926,6 +1088,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyName(self):
+        """The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyName
 
     @AutoSnapshotPolicyName.setter
@@ -934,6 +1099,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IsActivated(self):
+        """Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.
+        :rtype: bool
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -942,6 +1110,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IsPermanent(self):
+        """Whether the snapshot created by this scheduled snapshot policy is retained permanently. FALSE: Not retained permanently. TRUE: Retained permanently. The default value is FALSE.
+        :rtype: bool
+        """
         return self._IsPermanent
 
     @IsPermanent.setter
@@ -950,6 +1121,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def RetentionDays(self):
+        """The number of days that a snapshot created by this scheduled snapshot policy is retained. The default value is 7. If this parameter is specified, the IsPermanent input parameter can not be TRUE, otherwise a conflict will occur.
+        :rtype: int
+        """
         return self._RetentionDays
 
     @RetentionDays.setter
@@ -958,6 +1132,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """Whether to create an execution policy for the scheduled snapshot. TRUE: Only the time of the initial backup needs to be obtained, and no scheduled snapshot policy is actually created. FALSE: Create. The default value is FALSE.
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -1007,6 +1184,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """The ID of the newly created scheduled snapshot policy.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -1015,6 +1195,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def NextTriggerTime(self):
+        """The time that initial backup will start.
+        :rtype: str
+        """
         return self._NextTriggerTime
 
     @NextTriggerTime.setter
@@ -1023,6 +1206,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1053,6 +1239,9 @@ class CreateDiskBackupRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """Name of the cloud disk for which to create a backup point.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1061,6 +1250,9 @@ class CreateDiskBackupRequest(AbstractModel):
 
     @property
     def DiskBackupName(self):
+        """Name of the cloud disk backup point, which can contain up to 100 characters.
+        :rtype: str
+        """
         return self._DiskBackupName
 
     @DiskBackupName.setter
@@ -1098,6 +1290,9 @@ class CreateDiskBackupResponse(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """ID of the cloud disk backup point.
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -1106,6 +1301,9 @@ class CreateDiskBackupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1180,6 +1378,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """Location of the instance. You can use this parameter to specify the attributes of the instance, such as its availability zone and project. If no project is specified, the default project will be used.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -1188,6 +1389,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargeType(self):
+        """Cloud disk billing mode. POSTPAID_BY_HOUR: Pay-as-you-go by hour<br><li>CDCPAID: Billed together with the bound dedicated cluster<br>For more information on the pricing in each mode, see [Pricing Overview](https://intl.cloud.tencent.com/document/product/362/2413?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -1196,6 +1400,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_BSSD: Balanced SSD<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1204,6 +1411,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskName(self):
+        """Cloud disk name. If it is not specified, "Unnamed" will be used by default. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -1212,6 +1422,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tags bound to the cloud disk.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1220,6 +1433,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID. If this parameter is specified, the cloud disk will be created based on the snapshot. The snapshot must be a data disk snapshot. To query the type of a snapshot, call the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API and see the `DiskUsage` field in the response.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1228,6 +1444,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
+        """Number of cloud disks to be created. If it is not specified, `1` will be used by default. There is an upper limit on the maximum number of cloud disks that can be created in a single request. For more information, see [Use Limits](https://intl.cloud.tencent.com/doc/product/362/5145?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -1236,6 +1455,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
+        """Extra performance purchased for a cloud disk.<br>This optional parameter is only valid for ulTra SSD (CLOUD_TSSD) and Enhanced SSD (CLOUD_HSSD).
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -1244,6 +1466,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size in GB. <br><li>`DiskSize` is not required if `SnapshotId` is specified. In this case, the size of the cloud disk will be equal to that of the snapshot. <br><li>If you specify both `SnapshotId` and `DiskSize`, the specified disk size cannot be smaller than the snapshot size. <br><li>For the value range of cloud disk size, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1252,6 +1477,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Shareable(self):
+        """Optional parameter. Default value: `False`. If `True` is specified, the new cloud disk will be shared.
+        :rtype: bool
+        """
         return self._Shareable
 
     @Shareable.setter
@@ -1260,6 +1488,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1268,6 +1499,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Encrypt(self):
+        """This parameter is used to create encrypted cloud disks. It is fixed at `ENCRYPT`.
+        :rtype: str
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -1276,6 +1510,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
+        """Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk. 
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        """
         return self._DiskChargePrepaid
 
     @DiskChargePrepaid.setter
@@ -1284,6 +1521,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DeleteSnapshot(self):
+        """Whether to delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default value). `1`: Yes. To check whether a snapshot is permanently reserved, see the `IsPermanent` field returned by the `DescribeSnapshots` API.
+        :rtype: int
+        """
         return self._DeleteSnapshot
 
     @DeleteSnapshot.setter
@@ -1292,6 +1532,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def AutoMountConfiguration(self):
+        """Specifies whether to automatically attach and initialize the newly created data disk.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
+        """
         return self._AutoMountConfiguration
 
     @AutoMountConfiguration.setter
@@ -1300,6 +1543,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Specifies the cloud disk backup point quota.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -1308,6 +1554,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def BurstPerformance(self):
+        """Specifies whether to enable disk bursting.
+        :rtype: bool
+        """
         return self._BurstPerformance
 
     @BurstPerformance.setter
@@ -1371,6 +1620,9 @@ class CreateDisksResponse(AbstractModel):
 
     @property
     def DiskIdSet(self):
+        """ID list of the created cloud disks. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DiskIdSet
 
     @DiskIdSet.setter
@@ -1379,6 +1631,9 @@ class CreateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1417,6 +1672,9 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the cloud disk for which to create a snapshot, which can be queried through the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1425,6 +1683,9 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """Snapshot name. If it is not specified, "Unnamed" will be used by default.
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -1433,6 +1694,9 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def Deadline(self):
+        """Expiration time of the snapshot. It must be in UTC ISO-8601 format, eg. 2022-01-08T09:47:55+00:00. The snapshot will be automatically deleted when it expires.
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -1441,6 +1705,9 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """ID of the cloud disk backup point. When this parameter is specified, the snapshot will be created from the backup point.
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -1449,6 +1716,9 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tags bound to the snapshot.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1494,6 +1764,9 @@ class CreateSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """ID of the created snapshot <br/>Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1502,6 +1775,9 @@ class CreateSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1528,6 +1804,9 @@ class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyIds(self):
+        """List of scheduled snapshot policy IDs to be deleted.
+        :rtype: list of str
+        """
         return self._AutoSnapshotPolicyIds
 
     @AutoSnapshotPolicyIds.setter
@@ -1561,6 +1840,9 @@ class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1586,6 +1868,9 @@ class DeleteDiskBackupsRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
+        """ID of the cloud disk backup point to be deleted.
+        :rtype: list of str
+        """
         return self._DiskBackupIds
 
     @DiskBackupIds.setter
@@ -1619,6 +1904,9 @@ class DeleteDiskBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1647,6 +1935,9 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """List of IDs of snapshots to be deleted, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -1655,6 +1946,9 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def DeleteBindImages(self):
+        """Whether to forcibly delete the image associated with the snapshot
+        :rtype: bool
+        """
         return self._DeleteBindImages
 
     @DeleteBindImages.setter
@@ -1689,6 +1983,9 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1729,6 +2026,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyIds(self):
+        """List of scheduled snapshot policy IDs to be queried. The parameter does not support specifying both `SnapshotIds` and `Filters`.
+        :rtype: list of str
+        """
         return self._AutoSnapshotPolicyIds
 
     @AutoSnapshotPolicyIds.setter
@@ -1737,6 +2037,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. Specification of both the `AutoSnapshotPolicyIds` and `Filters` parameters is not supported.<br><li>auto-snapshot-policy-id - Array of String - Required or not: No - (Filter condition) Filters according to the scheduled snapshot policy ID. The format of the scheduled snapshot policy ID is as follows: `asp-11112222`. <br><li>auto-snapshot-policy-state - Array of String - Required or not: No - (Filter condition) Filters according to the status of the scheduled snapshot policy. The format of the scheduled snapshot policy ID is as follows: `asp-11112222`. (NORMAL: normal | ISOLATED: isolated)<br><li>auto-snapshot-policy-name - Array of String - Required or not: No - (Filter condition) Filters according to the name of the scheduled snapshot policy.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1745,6 +2048,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default is 20. Maximum is 100. For more information on `Limit`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1753,6 +2059,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1761,6 +2070,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Outputs the ordering of the scheduled snapshot lists. Value range: <br><li>ASC: Ascending order <br><li>DESC: Descending order.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -1769,6 +2081,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """The sorting filter applied to the scheduled snapshot list. Value range: <Sort by creation time of scheduled snapshot. By default, this is sorted by creation time.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -1818,6 +2133,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The quantity of valid scheduled snapshot policies.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1826,6 +2144,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicySet(self):
+        """List of scheduled snapshot policies.
+        :rtype: list of AutoSnapshotPolicy
+        """
         return self._AutoSnapshotPolicySet
 
     @AutoSnapshotPolicySet.setter
@@ -1834,6 +2155,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1866,6 +2190,9 @@ class DescribeDiskAssociatedAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """The ID of the queried cloud disk.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1905,6 +2232,9 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The quantity of scheduled snapshots binded to cloud disk.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1913,6 +2243,9 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicySet(self):
+        """List of scheduled snapshots bound to cloud disk.
+        :rtype: list of AutoSnapshotPolicy
+        """
         return self._AutoSnapshotPolicySet
 
     @AutoSnapshotPolicySet.setter
@@ -1921,6 +2254,9 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1970,6 +2306,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def DiskBackupIds(self):
+        """List of IDs of the backup points to be queried. `DiskBackupIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._DiskBackupIds
 
     @DiskBackupIds.setter
@@ -1978,6 +2317,11 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter. `DiskBackupIds` and `Filters` cannot be specified at the same time. Valid values: <br><li>disk-backup-id - Array of String - Required: No - (Filter) Filter by backup point ID in the format of `dbp-11112222`.
+<br><li>disk-id - Array of String - Required: No - (Filter) Filter by ID of the cloud disk for which backup points are created.
+<br><li>disk-usage - Array of String - Required: No - (Filter) Filter by type of the cloud disk for which backup points are created. (SYSTEM_DISK: System disk | DATA_DISK: Data disk)
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1986,6 +2330,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1994,6 +2341,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2002,6 +2352,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Sorting order of cloud disk backup points. Valid values:<br><li>ASC: Ascending<br><li>DESC: Descending
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2010,6 +2363,9 @@ class DescribeDiskBackupsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """The field by which cloud disk backup points are sorted. Valid values:<br><li>CREATE_TIME: Sort by creation time<br>Backup points are sorted by creation time by default.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2059,6 +2415,9 @@ class DescribeDiskBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible cloud disk backup points.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2067,6 +2426,9 @@ class DescribeDiskBackupsResponse(AbstractModel):
 
     @property
     def DiskBackupSet(self):
+        """List of details of cloud disk backup points.
+        :rtype: list of DiskBackup
+        """
         return self._DiskBackupSet
 
     @DiskBackupSet.setter
@@ -2075,6 +2437,9 @@ class DescribeDiskBackupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2128,6 +2493,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def InquiryType(self):
+        """Inquiry type. Value range: INQUIRY_CBS_CONFIG: query the configuration list of cloud disks <br><li>INQUIRY_CVM_CONFIG: query the configuration list of cloud disks and instances.
+        :rtype: str
+        """
         return self._InquiryType
 
     @InquiryType.setter
@@ -2136,6 +2504,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """Query configuration under one or more [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo).
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -2144,6 +2515,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def DiskChargeType(self):
+        """Billing mode. Value range: <br><li>POSTPAID_BY_HOUR: postpaid.
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -2152,6 +2526,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def DiskTypes(self):
+        """Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD
+        :rtype: list of str
+        """
         return self._DiskTypes
 
     @DiskTypes.setter
@@ -2160,6 +2537,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def DiskUsage(self):
+        """The system disk or data disk. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -2168,6 +2548,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def InstanceFamilies(self):
+        """Filter by the instance model series, such as S1, I1 and M1. For more information, please see [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1)
+        :rtype: list of str
+        """
         return self._InstanceFamilies
 
     @InstanceFamilies.setter
@@ -2176,6 +2559,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def CPU(self):
+        """Instance CPU cores.
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -2184,6 +2570,9 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """Instance memory size.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -2227,6 +2616,9 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
 
     @property
     def DiskConfigSet(self):
+        """List of cloud disk configurations.
+        :rtype: list of DiskConfig
+        """
         return self._DiskConfigSet
 
     @DiskConfigSet.setter
@@ -2235,6 +2627,9 @@ class DescribeDiskConfigQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2273,6 +2668,10 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. The following conditions are supported:
+<li>disk-id - Array of String - Required or not: Yes - Filter by cloud disk ID, with maximum of 10 cloud disk IDs able to be specified per request.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2281,6 +2680,9 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00"
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -2289,6 +2691,9 @@ class DescribeDiskOperationLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59"
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2332,6 +2737,9 @@ class DescribeDiskOperationLogsResponse(AbstractModel):
 
     @property
     def DiskOperationLogSet(self):
+        """List of cloud disk operation logs.
+        :rtype: list of DiskOperationLog
+        """
         return self._DiskOperationLogSet
 
     @DiskOperationLogSet.setter
@@ -2340,6 +2748,9 @@ class DescribeDiskOperationLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2389,6 +2800,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """Query by one or more cloud disk IDs, such as `disk-11112222`. For the format of this parameter, please see the ids.N section of the API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1). This parameter does not support specifying both `DiskIds` and `Filters`.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -2397,6 +2811,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters. You cannot specify `DiskIds` and `Filters` at the same time. <br><li>disk-usage - Array of String - Optional - Filters by cloud disk type. (SYSTEM_DISK: system disk | DATA_DISK: data disk) <br><li>disk-charge-type - Array of String - Optional - Filters by cloud disk billing method. (POSTPAID_BY_HOUR: pay-as-you-go) <br><li>portable - Array of String- Optional - Filters by whether the cloud disk is elastic or not. (TRUE: elastic | FALSE: non-elastic) <br><li>project-id - Array of Integer - Optional - Filters by the ID of the project to which a cloud disk belongs. <br><li>disk-id - Array of String - Optional - Filters by cloud disk ID, such as `disk-11112222`. <br><li>disk-name - Array of String - Optional - Filters by cloud disk name. <br><li>disk-type - Array of String - Optional - Filters by cloud disk media type (CLOUD_BASIC: HDD cloud disk | CLOUD_PREMIUM: Premium Cloud Storage | CLOUD_SSD: SSD cloud disk.) <br><li>disk-state - Array of String - Optional - Filters by cloud disk state. (UNATTACHED: not mounted | ATTACHING: being mounted | ATTACHED: mounted | DETACHING: being unmounted | EXPANDING: being expanded | ROLLBACKING: being rolled back | TORECYCLE: to be repossessed.) <br><li>instance-id - Array of String - Optional - Filters by the ID of the CVM instance on which a cloud disk is mounted. You can use this parameter to query the cloud disks mounted on specific CVMs. <br><li>zone - Array of String - Optional - Filters by [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) <br><li>instance-ip-address - Array of String - Optional - Filters by the private or public IP of the CVM on which a cloud disk is mounted. <br><li>instance-name - Array of String - Optional - Filters by the name of the instance on which a cloud disk is mounted. <br><li>tag-key - Array of String - Optional - Filters by tag key. <br><li>tag-value - Array of String - Optional - Filters by tag value. <br><li>tag:tag-key - Array of String - Optional - Filters by tag key-value pair. Please replace `tag-key` with a specific tag key.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2405,6 +2822,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2413,6 +2833,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default is 20. Maximum is 100. For more information on `Limit`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2421,6 +2844,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Outputs the ordering of the cloud disk list. Value range: <br><li>ASC: Ascending order <br><li>DESC: Descending order.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2429,6 +2855,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """The field by which the cloud disk list is sorted. Value range: <br><li>CREATE_TIME: sorted by the creation time of cloud disks <br><li>DEADLINE: sorted by the expiration time of cloud disks<br>By default, the cloud disk list is sorted by the creation time of cloud disks.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2437,6 +2866,9 @@ class DescribeDisksRequest(AbstractModel):
 
     @property
     def ReturnBindAutoSnapshotPolicy(self):
+        """Whether the ID of the periodic snapshot policy bound to the cloud disk needs to be returned in the cloud disk details. TRUE: return; FALSE: do not return.
+        :rtype: bool
+        """
         return self._ReturnBindAutoSnapshotPolicy
 
     @ReturnBindAutoSnapshotPolicy.setter
@@ -2487,6 +2919,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The quantity of cloud disks meeting the conditions.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2495,6 +2930,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def DiskSet(self):
+        """List of cloud disk details.
+        :rtype: list of Disk
+        """
         return self._DiskSet
 
     @DiskSet.setter
@@ -2503,6 +2941,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2535,6 +2976,9 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """ID of the CVM instance can be queried via the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/15728?from_cn_redirect=1).
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2571,6 +3015,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def AttachDetail(self):
+        """The quantity of mounted and mountable elastic cloud disks for each cloud virtual machine
+        :rtype: list of AttachDetail
+        """
         return self._AttachDetail
 
     @AttachDetail.setter
@@ -2579,6 +3026,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2617,6 +3067,10 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. The following conditions are supported:
+<li>snapshot-id - Array of String - Required or not: Yes - Filter by snapshot ID, with maximum of 10 snapshot IDs able to be specified per request.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2625,6 +3079,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00"
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -2633,6 +3090,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59"
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2676,6 +3136,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def SnapshotOperationLogSet(self):
+        """List of snapshot operation logs.
+        :rtype: list of SnapshotOperationLog
+        """
         return self._SnapshotOperationLogSet
 
     @SnapshotOperationLogSet.setter
@@ -2684,6 +3147,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2715,6 +3181,9 @@ class DescribeSnapshotSharePermissionRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """The ID of the snapshot to be queried. You can obtain this by using [DescribeSnapshots](https://intl.cloud.tencent.com/document/api/362/15647?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2751,6 +3220,9 @@ class DescribeSnapshotSharePermissionResponse(AbstractModel):
 
     @property
     def SharePermissionSet(self):
+        """The set of snapshot sharing information
+        :rtype: list of SharePermission
+        """
         return self._SharePermissionSet
 
     @SharePermissionSet.setter
@@ -2759,6 +3231,9 @@ class DescribeSnapshotSharePermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2807,6 +3282,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """List of snapshot IDs to be queried. The parameter does not support specifying both `SnapshotIds` and `Filters`.
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -2815,6 +3293,11 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters. It cannot be specified together with `SnapshotIds`.<br><li>snapshot-id - Array of String - Optional - Filters by snapshot ID, such as `snap-11112222`.<br><li>snapshot-name - Array of String - Optional - Filters by snapshot name. <br><li>snapshot-state - Array of String - Optional - Filters by snapshot state (NORMAL: normal | CREATING: creating | ROLLBACKING: rolling back). <br><li>disk-usage - Array of String - Optional - Filters by the type of the cloud disk from which a snapshot is created (SYSTEM_DISK: system disk | DATA_DISK: data disk).<br><li>project-id - Array of String - Optional - Filters by the ID of the project to which a cloud disk belongs. <br><li>disk-id - Array of String - Optional - Filters by the ID of the cloud disk from which a snapshot is created.<br><li>zone - Array of String - Optional - Filters by [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo).<br><li>encrypt - Array of String - Optional - Filters by whether a snapshot is created from an encrypted cloud disk. (TRUE: a snapshot of an encrypted cloud disk | FALSE: not a snapshot of an encrypted cloud disk.)
+<li>snapshot-type- Array of String - Optional - Filters by the snapshot type specified in `snapshot-type`.
+(SHARED_SNAPSHOT: a shared snapshot | PRIVATE_SNAPSHOT: a private snapshot.)
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2823,6 +3306,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2831,6 +3317,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default is 20. Maximum is 100. For more information on `Limit`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2839,6 +3328,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Outputs the ordering of the cloud disk list. Value range: <br><li>ASC: Ascending order <br><li>DESC: Descending order.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2847,6 +3339,9 @@ class DescribeSnapshotsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """The field by which the snapshot list is sorted. Value range: <br><li>CREATE_TIME: sorted by the creation time of the snapshots <br>By default, the snapshot list is sorted by the creation time of snapshots.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2896,6 +3391,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of snapshots.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2904,6 +3402,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def SnapshotSet(self):
+        """List of snapshot details.
+        :rtype: list of Snapshot
+        """
         return self._SnapshotSet
 
     @SnapshotSet.setter
@@ -2912,6 +3413,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2947,6 +3451,9 @@ class DetachDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """IDs of the cloud disks to be unmounted, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API. Up to 10 elastic cloud disks can be unmounted in a single request.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -2955,6 +3462,9 @@ class DetachDisksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Indicates the CVM from which you want to unmount the disks. This parameter is only available for shared cloud disks.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2989,6 +3499,9 @@ class DetachDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3054,6 +3567,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceTitle(self):
+        """Name of the billable item.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PriceTitle
 
     @PriceTitle.setter
@@ -3062,6 +3579,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceName(self):
+        """Name of the billable item displayed in the console.
+        :rtype: str
+        """
         return self._PriceName
 
     @PriceName.setter
@@ -3070,6 +3590,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPrice(self):
+        """Original price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -3078,6 +3602,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPrice(self):
+        """Discounted price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -3086,6 +3614,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPrice(self):
+        """Original unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -3094,6 +3626,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
+        """Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -3102,6 +3638,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeUnit(self):
+        """Billing unit for pay-as-you-go cloud disks. Valid value: `HOUR` (billed hourly).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -3110,6 +3650,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPriceHigh(self):
+        """Original highly-precise price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginalPriceHigh
 
     @OriginalPriceHigh.setter
@@ -3118,6 +3662,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPriceHigh(self):
+        """Discounted highly-precise price of a monthly subscribed cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiscountPriceHigh
 
     @DiscountPriceHigh.setter
@@ -3126,6 +3674,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceHigh(self):
+        """Original highly-precise unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UnitPriceHigh
 
     @UnitPriceHigh.setter
@@ -3134,6 +3686,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscountHigh(self):
+        """Discounted highly-precise unit price of a pay-as-you-go cloud disk, in USD.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UnitPriceDiscountHigh
 
     @UnitPriceDiscountHigh.setter
@@ -3315,6 +3871,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteWithInstance(self):
+        """Whether the cloud disk terminates along with the instance mounted to it. <br><li>true: Cloud disk will also be terminated when instance terminates, so only hourly postpaid cloud disk are supported.<br><li>false: Cloud disk does not terminate when instance terminates.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -3323,6 +3883,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
+        """Auto renewal flag. Supported values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically<br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -3331,6 +3895,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Cloud disk types. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk <br><li>CLOUD_PREMIUM: Premium Cloud Disk <br><li>CLOUD_BSSD: General Purpose SSD <br><li>CLOUD_SSD: SSD <br><li>CLOUD_HSSD: Enhanced SSD <br><li>CLOUD_TSSD: Tremendous SSD
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3339,6 +3906,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskState(self):
+        """The state of the cloud disk. Value range: <br><li>UNATTACHED: Not mounted <br><li>ATTACHING: Mounting <br><li>ATTACHED: Mounted <br><li>DETACHING: Un-mounting <br><li>EXPANDING: Expanding <br><li>ROLLBACKING: Rolling back <br><li>TORECYCE: Pending recycling. <br><li>DUMPING: Copying the hard drive.
+        :rtype: str
+        """
         return self._DiskState
 
     @DiskState.setter
@@ -3347,6 +3917,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotCount(self):
+        """The total number of snapshots of the cloud disk.
+        :rtype: int
+        """
         return self._SnapshotCount
 
     @SnapshotCount.setter
@@ -3355,6 +3928,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlagError(self):
+        """Cloud disk already mounted to CVM, and both CVM and cloud disk use monthly subscription.<br><li>true: CVM has auto-renewal flag set up, but cloud disk does not.<br><li>false: Cloud disk auto-renewal flag set up normally.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._AutoRenewFlagError
 
     @AutoRenewFlagError.setter
@@ -3363,6 +3940,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rollbacking(self):
+        """Whether the cloud disk is in the status of snapshot rollback. Value range: <br><li>false: No <br><li>true: Yes
+        :rtype: bool
+        """
         return self._Rollbacking
 
     @Rollbacking.setter
@@ -3371,6 +3951,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIdList(self):
+        """For non-shareable cloud disks, this parameter is null. For shareable cloud disks, this parameters indicates this cloud disk's Instance IDs currently mounted to the CVM.
+        :rtype: list of str
+        """
         return self._InstanceIdList
 
     @InstanceIdList.setter
@@ -3379,6 +3962,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Encrypt(self):
+        """Whether the cloud disk is encrypted. Value range: <br><li>false: Not encrypted <br><li>true: Encrypted.
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -3387,6 +3973,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskName(self):
+        """Cloud disk name.
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -3395,6 +3984,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupDisk(self):
+        """Specifies whether to create a snapshot when the cloud disk is terminated due to overdue payment or expiration. `true`: create snapshot; `false`: do not create snapshot.
+        :rtype: bool
+        """
         return self._BackupDisk
 
     @BackupDisk.setter
@@ -3403,6 +3995,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """The tag bound to the cloud disk. The value Null is used when no tag is bound to the cloud disk.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3411,6 +4007,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """ID of the CVM to which the cloud disk is mounted.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3419,6 +4018,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachMode(self):
+        """Cloud disk mount method. Valid values: <br><li>PF: mount as a PF (Physical Function)<br><li>VF: mount as a VF (Virtual Function)
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._AttachMode
 
     @AttachMode.setter
@@ -3427,6 +4030,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoSnapshotPolicyIds(self):
+        """ID of the periodic snapshot associated to the cloud disk. This parameter is returned only if the value of parameter ReturnBindAutoSnapshotPolicy is TRUE when the API DescribeDisks is called.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: list of str
+        """
         return self._AutoSnapshotPolicyIds
 
     @AutoSnapshotPolicyIds.setter
@@ -3435,6 +4042,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThroughputPerformance(self):
+        """Extra performance for a cloud disk, in MB/sec.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -3443,6 +4054,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Migrating(self):
+        """Whether cloud disk is in process of type change. Value range: <br><li>false: Cloud disk not in process of type change. <br><li>true: Cloud disk type change has been launched, and migration is in process.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._Migrating
 
     @Migrating.setter
@@ -3451,6 +4066,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskId(self):
+        """Cloud disk ID.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -3459,6 +4077,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotSize(self):
+        """The total capacity of the snapshots of the cloud disk. Unit: MB.
+        :rtype: int
+        """
         return self._SnapshotSize
 
     @SnapshotSize.setter
@@ -3467,6 +4088,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Placement(self):
+        """Location of the cloud disk.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -3475,6 +4099,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsReturnable(self):
+        """Determines whether or not prepaid cloud disk supports active return. <br><li>true: Active return supported.<br><li>false: Active return not supported.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._IsReturnable
 
     @IsReturnable.setter
@@ -3483,6 +4111,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadlineTime(self):
+        """Expiration time of the cloud disk.
+        :rtype: str
+        """
         return self._DeadlineTime
 
     @DeadlineTime.setter
@@ -3491,6 +4122,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Attached(self):
+        """Whether the cloud disk is mounted to the CVM. Value range: <br><li>false: Unmounted <br><li>true: Mounted.
+        :rtype: bool
+        """
         return self._Attached
 
     @Attached.setter
@@ -3499,6 +4133,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Cloud disk size (in GB).
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3507,6 +4144,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigratePercent(self):
+        """Migration progress of cloud disk type change, from 0 to 100.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._MigratePercent
 
     @MigratePercent.setter
@@ -3515,6 +4156,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskUsage(self):
+        """Cloud disk type. Value range:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -3523,6 +4167,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskChargeType(self):
+        """Billing method. Value range: <br><li>PREPAID: Prepaid, that is, monthly subscription<br><li>POSTPAID_BY_HOUR: Postpaid, that is, pay as you go.
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -3531,6 +4178,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Portable(self):
+        """Whether it is an elastic cloud disk. false: Non-elastic cloud disk; true: Elastic cloud disk.
+        :rtype: bool
+        """
         return self._Portable
 
     @Portable.setter
@@ -3539,6 +4189,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotAbility(self):
+        """Whether the cloud disk has the capability to create snapshots. Value range: <br><li>false: Cannot create snapshots. true: Can create snapshots.
+        :rtype: bool
+        """
         return self._SnapshotAbility
 
     @SnapshotAbility.setter
@@ -3547,6 +4200,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadlineError(self):
+        """This field is only applicable when the instance is already mounted to the cloud disk, and both the instance and the cloud disk use monthly subscription. <br><li>true: Expiration time of cloud disk is earlier than that of the instance.<br><li>false:Expiration time of cloud disk is later than that of the instance.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._DeadlineError
 
     @DeadlineError.setter
@@ -3555,6 +4212,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RollbackPercent(self):
+        """Rollback progress of a cloud disk snapshot.
+        :rtype: int
+        """
         return self._RollbackPercent
 
     @RollbackPercent.setter
@@ -3563,6 +4223,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DifferDaysOfDeadline(self):
+        """Number of days from current time until disk expiration (only applicable for prepaid disks).
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._DifferDaysOfDeadline
 
     @DifferDaysOfDeadline.setter
@@ -3571,6 +4235,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReturnFailCode(self):
+        """In circumstances where the prepaid cloud disk does not support active return, this parameter indicates the reason that return is not supported. Value range: <br><li>1: The cloud disk has already been returned. <br><li>2: The cloud disk has already expired. <br><li>3: The cloud disk does not support return. <br><li> 8: The limit on the number of returns is exceeded.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._ReturnFailCode
 
     @ReturnFailCode.setter
@@ -3579,6 +4247,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Shareable(self):
+        """Whether or not cloud disk is shareable cloud disk.
+        :rtype: bool
+        """
         return self._Shareable
 
     @Shareable.setter
@@ -3587,6 +4258,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of the cloud disk.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3595,6 +4269,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteSnapshot(self):
+        """Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. 
+        :rtype: int
+        """
         return self._DeleteSnapshot
 
     @DeleteSnapshot.setter
@@ -3603,6 +4280,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskBackupQuota(self):
+        """Quota of cloud disk backup points, i.e., the maximum number of backup points that a cloud disk can have.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -3611,6 +4291,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskBackupCount(self):
+        """Number of used cloud disk backups.
+        :rtype: int
+        """
         return self._DiskBackupCount
 
     @DiskBackupCount.setter
@@ -3619,6 +4302,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Type of the instance mounted to the cloud disk. Valid values: <br><li>CVM<br><li>EKS
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3627,6 +4313,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastAttachInsId(self):
+        """ID of the last instance to which the cloud disk is attached
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastAttachInsId
 
     @LastAttachInsId.setter
@@ -3635,6 +4325,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorPrompt(self):
+        """Error message for the last operation of the cloud disk
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorPrompt
 
     @ErrorPrompt.setter
@@ -3643,6 +4337,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BurstPerformance(self):
+        """Whether the cloud disk has enabled disk bursting. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._BurstPerformance
 
     @BurstPerformance.setter
@@ -3748,6 +4445,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupId(self):
+        """Cloud disk backup point ID.
+        :rtype: str
+        """
         return self._DiskBackupId
 
     @DiskBackupId.setter
@@ -3756,6 +4456,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the cloud disk with which the backup point is associated.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -3764,6 +4467,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size in GB.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3772,6 +4478,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskUsage(self):
+        """Cloud disk type. Valid values:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -3780,6 +4489,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupName(self):
+        """Backup point name.
+        :rtype: str
+        """
         return self._DiskBackupName
 
     @DiskBackupName.setter
@@ -3788,6 +4500,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def DiskBackupState(self):
+        """Cloud disk backup point status. Valid values:<br><li>NORMAL: Normal<br><li>CREATING: Creating<br><li>ROLLBACKING: Rolling back
+        :rtype: str
+        """
         return self._DiskBackupState
 
     @DiskBackupState.setter
@@ -3796,6 +4511,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def Percent(self):
+        """Cloud disk creation progress in percentage.
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -3804,6 +4522,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the cloud disk backup point.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3812,6 +4533,9 @@ class DiskBackup(AbstractModel):
 
     @property
     def Encrypt(self):
+        """Whether the cloud disk is encrypted. Valid values: <br><li>false: Not encrypted <br><li>true: Encrypted
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -3859,6 +4583,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """Subscription period of the cloud disk in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -3867,6 +4594,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -3875,6 +4605,9 @@ class DiskChargePrepaid(AbstractModel):
 
     @property
     def CurInstanceDeadline(self):
+        """You can specify this parameter when you need to ensure that a cloud disk and the CVM instance to which it is attached have the same expiration time. This parameter represents the current expiration time of the instance. In this case, if you specify `Period`, `Period` will represent how long you want to renew the instance, and the cloud disk will be renewed based on the new expiration time of the instance. For example, the value of this parameter can be `2018-03-30 20:15:03`.
+        :rtype: str
+        """
         return self._CurInstanceDeadline
 
     @CurInstanceDeadline.setter
@@ -3948,6 +4681,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Available(self):
+        """Whether the configuration is available.
+        :rtype: bool
+        """
         return self._Available
 
     @Available.setter
@@ -3956,6 +4692,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskChargeType(self):
+        """Billing method. Value range: <br><li>PREPAID: Prepaid, that is, monthly subscription<br><li>POSTPAID_BY_HOUR: Postpaid, that is, pay as you go.
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -3964,6 +4703,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """The [Availability Region](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) of the cloud drive.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -3972,6 +4714,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceFamily(self):
+        """Instance model series. For more information, please see [Instance Models](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1)
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InstanceFamily
 
     @InstanceFamily.setter
@@ -3980,6 +4726,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Type of cloud disk medium. Value range: <br><li>CLOUD_BASIC: Ordinary cloud disk <br><li>CLOUD_PREMIUM: Premium cloud storage <br><li>CLOUD_SSD: SSD cloud disk.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3988,6 +4737,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepSize(self):
+        """Minimum increment of cloud disk size adjustment in GB.
+Note: This field might return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepSize
 
     @StepSize.setter
@@ -3996,6 +4749,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraPerformanceRange(self):
+        """Additional performance range.
+Note: This field might return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._ExtraPerformanceRange
 
     @ExtraPerformanceRange.setter
@@ -4004,6 +4761,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceClass(self):
+        """Instance model.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._DeviceClass
 
     @DeviceClass.setter
@@ -4012,6 +4773,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskUsage(self):
+        """Cloud disk type. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -4020,6 +4784,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinDiskSize(self):
+        """The minimum configurable cloud disk size (in GB).
+        :rtype: int
+        """
         return self._MinDiskSize
 
     @MinDiskSize.setter
@@ -4028,6 +4795,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxDiskSize(self):
+        """The maximum configurable cloud disk size (in GB).
+        :rtype: int
+        """
         return self._MaxDiskSize
 
     @MaxDiskSize.setter
@@ -4036,6 +4806,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Price(self):
+        """Price of a monthly subscribed or pay-as-you-go cloud disk.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -4109,6 +4883,9 @@ PROCESSING: Operation in process
 
     @property
     def Operator(self):
+        """UIN of operator.
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -4117,6 +4894,18 @@ PROCESSING: Operation in process
 
     @property
     def Operation(self):
+        """Operation type. Value range:
+CBS_OPERATION_ATTACH: Mount cloud disk
+CBS_OPERATION_DETACH: Unmount cloud disk
+CBS_OPERATION_RENEW: Renew
+CBS_OPERATION_EXPAND: Expand
+CBS_OPERATION_CREATE: Create
+CBS_OPERATION_ISOLATE: Isolate
+CBS_OPERATION_MODIFY: Modify cloud disk attributes
+ASP_OPERATION_BIND: Associate scheduled snapshot policy
+ASP_OPERATION_UNBIND: Cancel associated scheduled snapshot policy
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -4125,6 +4914,9 @@ PROCESSING: Operation in process
 
     @property
     def DiskId(self):
+        """Cloud disk ID of operation.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -4133,6 +4925,12 @@ PROCESSING: Operation in process
 
     @property
     def OperationState(self):
+        """Status of operation. Value range:
+SUCCESS: Operation successful 
+FAILED: Operation failed 
+PROCESSING: Operation in process
+        :rtype: str
+        """
         return self._OperationState
 
     @OperationState.setter
@@ -4141,6 +4939,9 @@ PROCESSING: Operation in process
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4149,6 +4950,9 @@ PROCESSING: Operation in process
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4190,6 +4994,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Name of filter key.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4198,6 +5005,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """One or more filter values.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -4250,6 +5060,9 @@ class GetSnapOverviewResponse(AbstractModel):
 
     @property
     def TotalSize(self):
+        """The total snapshot size of the user
+        :rtype: float
+        """
         return self._TotalSize
 
     @TotalSize.setter
@@ -4258,6 +5071,9 @@ class GetSnapOverviewResponse(AbstractModel):
 
     @property
     def RealTradeSize(self):
+        """The total billed snapshot size of the user
+        :rtype: float
+        """
         return self._RealTradeSize
 
     @RealTradeSize.setter
@@ -4266,6 +5082,9 @@ class GetSnapOverviewResponse(AbstractModel):
 
     @property
     def FreeQuota(self):
+        """Free tier of snapshot
+        :rtype: float
+        """
         return self._FreeQuota
 
     @FreeQuota.setter
@@ -4274,6 +5093,9 @@ class GetSnapOverviewResponse(AbstractModel):
 
     @property
     def TotalNums(self):
+        """Total number of snapshots
+        :rtype: int
+        """
         return self._TotalNums
 
     @TotalNums.setter
@@ -4282,6 +5104,9 @@ class GetSnapOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4314,6 +5139,9 @@ class Image(AbstractModel):
 
     @property
     def ImageId(self):
+        """Image instance ID.
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -4322,6 +5150,9 @@ class Image(AbstractModel):
 
     @property
     def ImageName(self):
+        """Image name.
+        :rtype: str
+        """
         return self._ImageName
 
     @ImageName.setter
@@ -4356,6 +5187,9 @@ class InitializeDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """ID list of the cloud disks to be reinitialized. Up to 20 disks can be reinitialized at a time.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -4389,6 +5223,9 @@ class InitializeDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4417,6 +5254,9 @@ class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """Cloud disk ID, which can be queried through the `DescribeDisks` API.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -4425,6 +5265,9 @@ class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Cloud disk backup point quota after the modification, i.e., the number of backup points that a cloud disk can have.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -4462,6 +5305,9 @@ class InquirePriceModifyDiskBackupQuotaResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """Price of the cloud disk after its backup point quota is modified.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Price`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -4470,6 +5316,9 @@ class InquirePriceModifyDiskBackupQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4501,6 +5350,9 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """Cloud disk ID, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -4509,6 +5361,9 @@ class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
+        """The extra throughput to purchase, in MB/s
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -4546,6 +5401,9 @@ class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """Price for purchasing the extra performance
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Price`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -4554,6 +5412,9 @@ class InquirePriceModifyDiskExtraPerformanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4603,6 +5464,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargeType(self):
+        """Cloud disk billing mode. <br><li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -4611,6 +5475,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -4619,6 +5486,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size in GB. For the value range, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -4627,6 +5497,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID of the project to which the cloud disk belongs.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4635,6 +5508,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
+        """Number of cloud disks to be purchased. If it is not specified, `1` will be used by default.
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -4643,6 +5519,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
+        """Extra performance in MB/s purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and ulTra SSD (CLOUD_TSSD).
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -4651,6 +5530,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
+        """Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        """
         return self._DiskChargePrepaid
 
     @DiskChargePrepaid.setter
@@ -4659,6 +5541,9 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Specifies the cloud disk backup point quota.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -4704,6 +5589,9 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """Describes the price of newly purchased cloud disks.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Price`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -4712,6 +5600,9 @@ class InquiryPriceCreateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4746,6 +5637,9 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the cloud disk, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -4754,6 +5648,9 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size after scale out (in GB). This cannot be smaller than the current size of the cloud disk. For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -4762,6 +5659,9 @@ class InquiryPriceResizeDiskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID of project the cloud disk belongs to. If selected, it can only be used for authentication.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4800,6 +5700,9 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """Describes the price of expanding the cloud disk.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.PrepayPrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -4808,6 +5711,9 @@ class InquiryPriceResizeDiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4851,6 +5757,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Scheduled snapshot policy ID.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -4859,6 +5768,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def IsActivated(self):
+        """Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.
+        :rtype: bool
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -4867,6 +5779,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def IsPermanent(self):
+        """Whether the snapshot created by this scheduled snapshot policy is retained permanently. FALSE: Not retained permanently. TRUE: Retained permanently. The default value is FALSE.
+        :rtype: bool
+        """
         return self._IsPermanent
 
     @IsPermanent.setter
@@ -4875,6 +5790,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyName(self):
+        """The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyName
 
     @AutoSnapshotPolicyName.setter
@@ -4883,6 +5801,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """The policy for executing the scheduled snapshot.
+        :rtype: list of Policy
+        """
         return self._Policy
 
     @Policy.setter
@@ -4891,6 +5812,9 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
 
     @property
     def RetentionDays(self):
+        """Number of days to retain the snapshots created according to this scheduled snapshot policy. If this parameter is specified, `IsPermanent` cannot be specified as `TRUE`; otherwise, they will conflict with each other.
+        :rtype: int
+        """
         return self._RetentionDays
 
     @RetentionDays.setter
@@ -4934,6 +5858,9 @@ class ModifyAutoSnapshotPolicyAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4977,6 +5904,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """IDs of one or more cloud disks to be operated. If multiple cloud disk IDs are selected, it only supports modifying all cloud disks with the same attributes.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -4985,6 +5915,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def DiskName(self):
+        """Name of new cloud disk.
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -4993,6 +5926,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def Portable(self):
+        """Whether it is an elastic cloud disk. FALSE: non-elastic cloud disk; TRUE: elastic cloud disk. You can only modify non-elastic cloud disks to elastic cloud disks.
+        :rtype: bool
+        """
         return self._Portable
 
     @Portable.setter
@@ -5001,6 +5937,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """The new project ID of the cloud disk. Only the project ID of elastic cloud disk can be modified. The available projects and their IDs can be queried via the API [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5009,6 +5948,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
+        """Whether the cloud disk is terminated with the CVM after it has been successfully mounted. `TRUE` indicates that it is terminated with the CVM. `FALSE` indicates that it is not terminated with the CVM. This is only supported for cloud disks and data disks that are pay-as-you-go.
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -5017,6 +5959,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """When changing the type of a cloud disk, this parameter can be passed to indicate the desired cloud disk type. Value range: <br><li>CLOUD_PREMIUM: Premium cloud storage.  <br><li>CLOUD_SSD: SSD cloud disk. <br>Currently, batch operations are not supported for changing type. That is, when `DiskType` is passed, only one cloud disk can be passed through `DiskIds`. <br>When the cloud disk type is changed, the changing of other attributes is not supported concurrently.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -5025,6 +5970,9 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
     @property
     def BurstPerformanceOperation(self):
+        """Enable/disable disk bursting.
+        :rtype: str
+        """
         return self._BurstPerformanceOperation
 
     @BurstPerformanceOperation.setter
@@ -5064,6 +6012,9 @@ class ModifyDiskAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5092,6 +6043,9 @@ class ModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """Cloud disk ID.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -5100,6 +6054,9 @@ class ModifyDiskBackupQuotaRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Cloud disk backup point quota after the adjustment
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -5134,6 +6091,9 @@ class ModifyDiskBackupQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5162,6 +6122,9 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the cloud disk to create a snapshot, which can be obtained via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -5170,6 +6133,9 @@ class ModifyDiskExtraPerformanceRequest(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
+        """The extra throughput to purchase, in MB/s
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -5204,6 +6170,9 @@ class ModifyDiskExtraPerformanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5238,6 +6207,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -5246,6 +6218,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """Name of new snapshot. Maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -5254,6 +6229,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def IsPermanent(self):
+        """Snapshot retention mode. Valid values: `FALSE`: non-permanent retention; `TRUE`: permanent retention.
+        :rtype: bool
+        """
         return self._IsPermanent
 
     @IsPermanent.setter
@@ -5262,6 +6240,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def Deadline(self):
+        """Expiration time of the snapshot. Setting this parameter will set the snapshot retention mode to `FALSE` (non-permanent retention) and the snapshot will be automatically deleted upon expiration.
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -5298,6 +6279,9 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5329,6 +6313,9 @@ class ModifySnapshotsSharePermissionRequest(AbstractModel):
 
     @property
     def AccountIds(self):
+        """List of account IDs with which a snapshot is shared. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1). You can find the account ID in [Account Information](https://console.cloud.tencent.com/developer).
+        :rtype: list of str
+        """
         return self._AccountIds
 
     @AccountIds.setter
@@ -5337,6 +6324,9 @@ class ModifySnapshotsSharePermissionRequest(AbstractModel):
 
     @property
     def Permission(self):
+        """Operations. Valid values: `SHARE`, sharing an image; `CANCEL`, cancelling the sharing of an image.
+        :rtype: str
+        """
         return self._Permission
 
     @Permission.setter
@@ -5345,6 +6335,9 @@ class ModifySnapshotsSharePermissionRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """The ID of the snapshot. You can obtain this by using [DescribeSnapshots](https://intl.cloud.tencent.com/document/api/362/15647?from_cn_redirect=1).
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -5380,6 +6373,9 @@ class ModifySnapshotsSharePermissionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5427,6 +6423,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Zone(self):
+        """The ID of the [Availability Zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) to which the cloud disk belongs. This parameter can be obtained from the Zone field in the returned values of [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5435,6 +6434,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CageId(self):
+        """Cage ID. When it is an input parameter, the specified CageID resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the cage the resource belongs to, and it can be left blank.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._CageId
 
     @CageId.setter
@@ -5443,6 +6446,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectId(self):
+        """ID of the project to which the instance belongs. This parameter can be obtained from the projectId field in the returned values of [DescribeProject](https://intl.cloud.tencent.com/document/api/378/4400?from_cn_redirect=1). If this is left empty, default project is used.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5451,6 +6457,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def ProjectName(self):
+        """Project name of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -5459,6 +6469,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CdcName(self):
+        """Dedicated cluster name. When it is an input parameter, it is ignored.  When it is an output parameter, it is the name of the dedicated cluster the cloud disk belongs to, and it can be left blank.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._CdcName
 
     @CdcName.setter
@@ -5467,6 +6481,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def CdcId(self):
+        """ID of dedicated cluster which the instance belongs to. When it is an input parameter, the specified CdcId dedicated cluster resource is operated, and it can be left blank. When it is an output parameter, it is the ID of the dedicated cluster which the resource belongs to, and it can be left blank.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -5475,6 +6493,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def DedicatedClusterId(self):
+        """Dedicated cluster ID
+        :rtype: str
+        """
         return self._DedicatedClusterId
 
     @DedicatedClusterId.setter
@@ -5523,6 +6544,9 @@ class Policy(AbstractModel):
 
     @property
     def Hour(self):
+        """Specifies the time that that the scheduled snapshot policy will be triggered. The unit is hour. The value range is [0-23]. 00:00-23:00 is a total of 24 time points that can be selected. 1 indicates 01:00, and so on.
+        :rtype: list of int non-negative
+        """
         return self._Hour
 
     @Hour.setter
@@ -5531,6 +6555,9 @@ class Policy(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """Specifies the days of the week, from Monday to Sunday, on which a scheduled snapshot will be triggered. Value range: [0, 6]. 0 indicates triggering on Sunday, 1-6 indicate triggering on Monday-Saturday.
+        :rtype: list of int non-negative
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -5539,6 +6566,9 @@ class Policy(AbstractModel):
 
     @property
     def DayOfMonth(self):
+        """Specifies the dates of the month on which a scheduled snapshot will be triggered. Value range: [1, 31]. `1` to `31` indicate the specific dates of the month; for example, `5` indicates the 5th day of the month. Note: If you set a date that does not exist in some months such as 29, 30, and 31, these months will be skipped for scheduled snapshot creation.
+        :rtype: list of int non-negative
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -5547,6 +6577,9 @@ class Policy(AbstractModel):
 
     @property
     def IntervalDays(self):
+        """Specifies the interval for creating scheduled snapshots in days. Value range: [1, 365]. For example, if it is set to `5`, scheduled snapshots will be created every 5 days. Note: If you choose to back up by day, the time for the first backup is theoretically the day when the backup policy is created. If the backup policy creation time on the current day is later than the set backup time, the first backup will be performed in the second backup cycle.
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -5616,6 +6649,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPrice(self):
+        """Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -5624,6 +6660,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeUnit(self):
+        """Billing unit for pay-as-you-go cloud disks. Valid value: <br><li>HOUR: billed hourly.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -5632,6 +6672,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceHigh(self):
+        """Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UnitPriceHigh
 
     @UnitPriceHigh.setter
@@ -5640,6 +6684,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPriceHigh(self):
+        """Original payment of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.
+        :rtype: str
+        """
         return self._OriginalPriceHigh
 
     @OriginalPriceHigh.setter
@@ -5648,6 +6695,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPrice(self):
+        """Original payment of a monthly-subscribed cloud disk or a snapshot, in USD.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -5656,6 +6706,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
+        """Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -5664,6 +6718,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscountHigh(self):
+        """Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UnitPriceDiscountHigh
 
     @UnitPriceDiscountHigh.setter
@@ -5672,6 +6730,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPriceHigh(self):
+        """Discounted price of a monthly-subscribed cloud disk or a snapshot, in USD, with six decimal places.
+        :rtype: str
+        """
         return self._DiscountPriceHigh
 
     @DiscountPriceHigh.setter
@@ -5680,6 +6741,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPrice(self):
+        """Original unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -5688,6 +6753,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailPrices(self):
+        """Detailed billing items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DetailPrice
+        """
         return self._DetailPrices
 
     @DetailPrices.setter
@@ -5768,6 +6837,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalPrice(self):
+        """Original price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -5776,6 +6849,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountPrice(self):
+        """Discounted price of a monthly-subscribed cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -5784,6 +6861,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnitPrice(self):
+        """Original unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -5792,6 +6873,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChargeUnit(self):
+        """Billing unit of a postpaid cloud disk. Value range: <br><li>HOUR: Billed by hour.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -5800,6 +6885,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnitPriceDiscount(self):
+        """Discount unit price of a pay-as-you-go cloud disk, in USD.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -5808,6 +6897,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalPriceHigh(self):
+        """Original payment of a monthly-subscribed cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginalPriceHigh
 
     @OriginalPriceHigh.setter
@@ -5816,6 +6909,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountPriceHigh(self):
+        """Discounted payment price of a monthly-subscribed cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiscountPriceHigh
 
     @DiscountPriceHigh.setter
@@ -5824,6 +6921,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnitPriceHigh(self):
+        """Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UnitPriceHigh
 
     @UnitPriceHigh.setter
@@ -5832,6 +6933,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnitPriceDiscountHigh(self):
+        """Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UnitPriceDiscountHigh
 
     @UnitPriceDiscountHigh.setter
@@ -5876,6 +6981,9 @@ class ResizeDiskRequest(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the cloud disk, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -5884,6 +6992,9 @@ class ResizeDiskRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size after scale out (in GB). This must be larger than the current size of the cloud disk. For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -5918,6 +7029,9 @@ class ResizeDiskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5946,6 +7060,9 @@ class SharePermission(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Snapshot sharing time
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -5954,6 +7071,9 @@ class SharePermission(AbstractModel):
 
     @property
     def AccountId(self):
+        """ID of the shared account
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -6045,6 +7165,9 @@ class Snapshot(AbstractModel):
 
     @property
     def Placement(self):
+        """Location of the snapshot.
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -6053,6 +7176,9 @@ class Snapshot(AbstractModel):
 
     @property
     def CopyFromRemote(self):
+        """Whether the snapshot is replicated across regions. Value range: <br><li>true: Indicates that the snapshot is replicated across regions. <br><li>false: Indicates that the snapshot belongs to the local region.
+        :rtype: bool
+        """
         return self._CopyFromRemote
 
     @CopyFromRemote.setter
@@ -6061,6 +7187,9 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotState(self):
+        """Snapshot status. Valid values: <br><li>NORMAL: normal <br><li>CREATING: creating<br><li>ROLLBACKING: rolling back<br><li>COPYING_FROM_REMOTE: cross-region replicating<li>CHECKING_COPIED: verifying the cross-region replicated data<br><li>TORECYCLE: to be repossessed.
+        :rtype: str
+        """
         return self._SnapshotState
 
     @SnapshotState.setter
@@ -6069,6 +7198,9 @@ class Snapshot(AbstractModel):
 
     @property
     def IsPermanent(self):
+        """Whether it is a permanent snapshot. Value range: <br><li>true: Permanent snapshot <br><li>false: Non-permanent snapshot.
+        :rtype: bool
+        """
         return self._IsPermanent
 
     @IsPermanent.setter
@@ -6077,6 +7209,9 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """Snapshot name, the user-defined snapshot alias. Call [ModifySnapshotAttribute](https://intl.cloud.tencent.com/document/product/362/15650?from_cn_redirect=1) to modify this field.
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -6085,6 +7220,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DeadlineTime(self):
+        """The expiration time of the snapshot. If the snapshot is permanently retained, this field is blank.
+        :rtype: str
+        """
         return self._DeadlineTime
 
     @DeadlineTime.setter
@@ -6093,6 +7231,9 @@ class Snapshot(AbstractModel):
 
     @property
     def Percent(self):
+        """The progress percentage for snapshot creation. This field is always 100 after the snapshot is created successfully.
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -6101,6 +7242,9 @@ class Snapshot(AbstractModel):
 
     @property
     def Images(self):
+        """List of images associated with snapshot.
+        :rtype: list of Image
+        """
         return self._Images
 
     @Images.setter
@@ -6109,6 +7253,9 @@ class Snapshot(AbstractModel):
 
     @property
     def ShareReference(self):
+        """Number of snapshots currently shared
+        :rtype: int
+        """
         return self._ShareReference
 
     @ShareReference.setter
@@ -6117,6 +7264,9 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotType(self):
+        """Snapshot type. This value can currently be either PRIVATE_SNAPSHOT or SHARED_SNAPSHOT.
+        :rtype: str
+        """
         return self._SnapshotType
 
     @SnapshotType.setter
@@ -6125,6 +7275,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Size of the cloud disk used to create this snapshot (in GB).
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -6133,6 +7286,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskId(self):
+        """ID of the cloud disk used to create this snapshot.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -6141,6 +7297,9 @@ class Snapshot(AbstractModel):
 
     @property
     def CopyingToRegions(self):
+        """The destination region to which the snapshot is being replicated. Default value is [ ].
+        :rtype: list of str
+        """
         return self._CopyingToRegions
 
     @CopyingToRegions.setter
@@ -6149,6 +7308,9 @@ class Snapshot(AbstractModel):
 
     @property
     def Encrypt(self):
+        """Whether the snapshot is created from an encrypted disk. Value range: <br><li>true: Yes <br><li>false: No.
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -6157,6 +7319,9 @@ class Snapshot(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the snapshot.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6165,6 +7330,9 @@ class Snapshot(AbstractModel):
 
     @property
     def ImageCount(self):
+        """Number of images associated with snapshot.
+        :rtype: int
+        """
         return self._ImageCount
 
     @ImageCount.setter
@@ -6173,6 +7341,9 @@ class Snapshot(AbstractModel):
 
     @property
     def DiskUsage(self):
+        """The type of the cloud disk used to create the snapshot. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -6181,6 +7352,9 @@ class Snapshot(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6189,6 +7363,9 @@ class Snapshot(AbstractModel):
 
     @property
     def TimeStartShare(self):
+        """The time when the snapshot sharing starts
+        :rtype: str
+        """
         return self._TimeStartShare
 
     @TimeStartShare.setter
@@ -6197,6 +7374,9 @@ class Snapshot(AbstractModel):
 
     @property
     def Tags(self):
+        """List of tags associated with the snapshot.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6270,6 +7450,9 @@ class SnapshotCopyResult(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """ID of the snapshot replica
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6278,6 +7461,9 @@ class SnapshotCopyResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message. It’s null if the request succeeds.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6286,6 +7472,9 @@ class SnapshotCopyResult(AbstractModel):
 
     @property
     def Code(self):
+        """Error code. It’s `Success` if the request succeeds.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -6294,6 +7483,9 @@ class SnapshotCopyResult(AbstractModel):
 
     @property
     def DestinationRegion(self):
+        """Destination region of the replication task
+        :rtype: str
+        """
         return self._DestinationRegion
 
     @DestinationRegion.setter
@@ -6356,6 +7548,12 @@ ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
 
     @property
     def OperationState(self):
+        """Status of operation. Value range:
+SUCCESS: Operation successful 
+FAILED: Operation failed 
+PROCESSING: Operation in process
+        :rtype: str
+        """
         return self._OperationState
 
     @OperationState.setter
@@ -6364,6 +7562,9 @@ ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6372,6 +7573,10 @@ ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
 
     @property
     def Operator(self):
+        """UIN of operator.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -6380,6 +7585,9 @@ ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
 
     @property
     def SnapshotId(self):
+        """ID of snapshot being operated.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6388,6 +7596,16 @@ ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
 
     @property
     def Operation(self):
+        """Operation type. Value range:
+SNAP_OPERATION_DELETE: Delete snapshot
+SNAP_OPERATION_ROLLBACK: Roll back snapshot
+SNAP_OPERATION_MODIFY: Modify snapshot attributes
+SNAP_OPERATION_CREATE: Create snapshot
+SNAP_OPERATION_COPY: Cross-region replication of snapshot
+ASP_OPERATION_CREATE_SNAP: Create snapshot with scheduled snapshot policy
+ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -6396,6 +7614,9 @@ ASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6437,6 +7658,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6445,6 +7669,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6482,6 +7709,9 @@ class TerminateDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs required to be returned.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -6490,6 +7720,9 @@ class TerminateDisksRequest(AbstractModel):
 
     @property
     def DeleteSnapshot(self):
+        """Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. 
+        :rtype: int
+        """
         return self._DeleteSnapshot
 
     @DeleteSnapshot.setter
@@ -6524,6 +7757,9 @@ class TerminateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6552,6 +7788,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs scheduled snapshot policy to be unbound from.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -6560,6 +7799,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """ID of scheduled snapshot policy to be unbound.
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -6594,6 +7836,9 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

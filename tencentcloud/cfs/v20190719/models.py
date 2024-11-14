@@ -76,6 +76,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -84,6 +87,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyName(self):
+        """Snapshot policy name
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -92,6 +98,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTime(self):
+        """Snapshot policy creation time
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -100,6 +109,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSystemNums(self):
+        """Number of bound file systems
+        :rtype: int
+        """
         return self._FileSystemNums
 
     @FileSystemNums.setter
@@ -108,6 +120,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DayOfWeek(self):
+        """The specific day of the week on which to create a snapshot. This parameter is mutually exclusive with `DayOfMonth` and `IntervalDays`.
+        :rtype: str
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -116,6 +131,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Hour(self):
+        """The hour of a day at which to regularly back up the snapshot
+        :rtype: str
+        """
         return self._Hour
 
     @Hour.setter
@@ -124,6 +142,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsActivated(self):
+        """Whether to activate the scheduled snapshot feature
+        :rtype: int
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -132,6 +153,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextActiveTime(self):
+        """Next time to trigger snapshot
+        :rtype: str
+        """
         return self._NextActiveTime
 
     @NextActiveTime.setter
@@ -140,6 +164,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Snapshot policy status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -148,6 +175,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """Account ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -156,6 +186,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AliveDays(self):
+        """Retention period
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -164,6 +197,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
+        """Region
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -172,6 +208,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSystems(self):
+        """File system information
+        :rtype: list of FileSystemByPolicy
+        """
         return self._FileSystems
 
     @FileSystems.setter
@@ -180,6 +219,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DayOfMonth(self):
+        """The specific day of the month on which to create a snapshot. This parameter is mutually exclusive with `DayOfWeek` and `IntervalDays`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -188,6 +231,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntervalDays(self):
+        """The snapshot interval (1 to 365 days). This parameter is mutually exclusive with `DayOfWeek` and `DayOfMonth`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -243,6 +290,9 @@ class AvailableProtoStatus(AbstractModel):
 
     @property
     def SaleStatus(self):
+        """Sale status. Valid values: sale_out (sold out), saling (purchasable), no_saling (non-purchasable)
+        :rtype: str
+        """
         return self._SaleStatus
 
     @SaleStatus.setter
@@ -251,6 +301,9 @@ class AvailableProtoStatus(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol type. Valid values: NFS, CIFS
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -297,6 +350,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def Region(self):
+        """Region name, such as "ap-beijing"
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -305,6 +361,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def RegionName(self):
+        """Region name, such as "bj"
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -313,6 +372,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def RegionStatus(self):
+        """Region availability. If a region has at least one AZ where resources are purchasable, this value will be `AVAILABLE`; otherwise, it will be `UNAVAILABLE`
+        :rtype: str
+        """
         return self._RegionStatus
 
     @RegionStatus.setter
@@ -321,6 +383,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def Zones(self):
+        """Array of AZs
+        :rtype: list of AvailableZone
+        """
         return self._Zones
 
     @Zones.setter
@@ -329,6 +394,9 @@ class AvailableRegion(AbstractModel):
 
     @property
     def RegionCnName(self):
+        """Region name, such as "Guangzhou"
+        :rtype: str
+        """
         return self._RegionCnName
 
     @RegionCnName.setter
@@ -377,6 +445,9 @@ class AvailableType(AbstractModel):
 
     @property
     def Protocols(self):
+        """Protocol and sale details
+        :rtype: list of AvailableProtoStatus
+        """
         return self._Protocols
 
     @Protocols.setter
@@ -385,6 +456,9 @@ class AvailableType(AbstractModel):
 
     @property
     def Type(self):
+        """Storage class. Valid values: `SD` (standard storage) and `HP` (high-performance storage)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -393,6 +467,9 @@ class AvailableType(AbstractModel):
 
     @property
     def Prepayment(self):
+        """Indicates whether prepaid is supported. `true`: yes; `false`: no
+        :rtype: bool
+        """
         return self._Prepayment
 
     @Prepayment.setter
@@ -445,6 +522,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def Zone(self):
+        """AZ name
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -453,6 +533,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def ZoneId(self):
+        """AZ ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -461,6 +544,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def ZoneCnName(self):
+        """Chinese name of an AZ
+        :rtype: str
+        """
         return self._ZoneCnName
 
     @ZoneCnName.setter
@@ -469,6 +555,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def Types(self):
+        """Array of classes
+        :rtype: list of AvailableType
+        """
         return self._Types
 
     @Types.setter
@@ -477,6 +566,9 @@ class AvailableZone(AbstractModel):
 
     @property
     def ZoneName(self):
+        """Chinese and English names of an AZ
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -522,6 +614,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -530,6 +625,9 @@ class BindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
+        """List of file systems
+        :rtype: str
+        """
         return self._FileSystemIds
 
     @FileSystemIds.setter
@@ -567,6 +665,9 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -575,6 +676,9 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -605,6 +709,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Bucket name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -613,6 +720,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Bucket region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -662,6 +773,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def Hour(self):
+        """The time point when to repeat the snapshot operation
+        :rtype: str
+        """
         return self._Hour
 
     @Hour.setter
@@ -670,6 +784,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """Policy name
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -678,6 +795,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """The day of the week on which to repeat the snapshot operation
+        :rtype: str
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -686,6 +806,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AliveDays(self):
+        """Snapshot retention period
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -694,6 +817,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
+        """The specific day (day 1 to day 31) of the month on which to automatically create a snapshot.
+        :rtype: str
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -702,6 +828,9 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IntervalDays(self):
+        """The snapshot interval, in days.
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -743,6 +872,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -751,6 +883,9 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -816,6 +951,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """AZ name, such as "ap-beijing-1". For the list of regions and AZs, please see [Overview](https://intl.cloud.tencent.com/document/product/582/13225?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -824,6 +962,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def NetInterface(self):
+        """Network type. Valid values: `VPC` and `CCN`. Select `VPC` for a Standard or High-Performance file system, and `CCN` for a Standard Turbo or High-Performance Turbo one.
+        :rtype: str
+        """
         return self._NetInterface
 
     @NetInterface.setter
@@ -832,6 +973,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -840,6 +984,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """File system protocol. Valid values: `NFS`, `CIFS`, `TURBO`. If this parameter is left empty, `NFS` is used by default. For the Turbo series, you must set this parameter to `TURBO`.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -848,6 +995,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """Storage type of the file system. Valid values: `SD` (Standard), `HP` (High-Performance), `TB` (Standard Turbo), and `TP` (High-Performance Turbo). Default value: `SD`.
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -856,6 +1006,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID. This field is required if network type is VPC.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -864,6 +1017,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet ID. This field is required if network type is VPC.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -872,6 +1028,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def MountIP(self):
+        """IP address (this parameter supports only the VPC network type, and the Turbo series is not supported). If this parameter is left empty, a random IP in the subnet will be assigned.
+        :rtype: str
+        """
         return self._MountIP
 
     @MountIP.setter
@@ -880,6 +1039,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def FsName(self):
+        """Custom file system name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -888,6 +1050,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """File system tag
+        :rtype: list of TagInfo
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -896,6 +1061,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed. This string is valid for 2 hours.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -904,6 +1072,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """CCN instance ID (required if the network type is CCN)
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -912,6 +1083,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """CCN IP range used by the CFS (required if the network type is CCN), which cannot conflict with other IP ranges bound in CCN
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -920,6 +1094,9 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Capacity(self):
+        """File system capacity, in GiB (required for the Turbo series). For Standard Turbo, the minimum purchase required is 40,960 GiB (40 TiB) and the expansion increment is 20,480 GiB (20 TiB). For High-Performance Turbo, the minimum purchase required is 20,480 GiB (20 TiB) and the expansion increment is 10,240 GiB (10 TiB).
+        :rtype: int
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -995,6 +1172,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def CreationTime(self):
+        """File system creation time
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -1003,6 +1183,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def CreationToken(self):
+        """Custom file system name
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -1011,6 +1194,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1019,6 +1205,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def LifeCycleState(self):
+        """File system status. Valid values: `creating`, `create_failed`, `available`, `unserviced`, `upgrading`, `deleting`
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -1027,6 +1216,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def SizeByte(self):
+        """Storage used by the file system, in bytes
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -1035,6 +1227,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def ZoneId(self):
+        """AZ ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1043,6 +1238,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def FsName(self):
+        """Custom file system name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -1051,6 +1249,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def Encrypted(self):
+        """Whether a file system is encrypted
+        :rtype: bool
+        """
         return self._Encrypted
 
     @Encrypted.setter
@@ -1059,6 +1260,9 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1095,6 +1299,9 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1103,6 +1310,9 @@ class CreateCfsPGroupRequest(AbstractModel):
 
     @property
     def DescInfo(self):
+        """Permission group description, which can contain 1-255 characters
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -1152,6 +1362,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1160,6 +1373,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def Name(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1168,6 +1384,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def DescInfo(self):
+        """Permission group description
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -1176,6 +1395,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def BindCfsNum(self):
+        """The number of file systems bound to this permission group
+        :rtype: int
+        """
         return self._BindCfsNum
 
     @BindCfsNum.setter
@@ -1184,6 +1406,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def CDate(self):
+        """Permission group creation time
+        :rtype: str
+        """
         return self._CDate
 
     @CDate.setter
@@ -1192,6 +1417,9 @@ class CreateCfsPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1234,6 +1462,9 @@ class CreateCfsRuleRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1242,6 +1473,9 @@ class CreateCfsRuleRequest(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -1250,6 +1484,9 @@ class CreateCfsRuleRequest(AbstractModel):
 
     @property
     def Priority(self):
+        """Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -1258,6 +1495,9 @@ class CreateCfsRuleRequest(AbstractModel):
 
     @property
     def RWPermission(self):
+        """Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -1266,6 +1506,9 @@ class CreateCfsRuleRequest(AbstractModel):
 
     @property
     def UserPermission(self):
+        """User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -1321,6 +1564,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1329,6 +1575,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1337,6 +1586,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """Client IP
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -1345,6 +1597,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def RWPermission(self):
+        """Read & write permissions
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -1353,6 +1608,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def UserPermission(self):
+        """User permission
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -1361,6 +1619,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """Priority
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -1369,6 +1630,9 @@ class CreateCfsRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1406,6 +1670,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1414,6 +1681,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """Snapshot name
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -1422,6 +1692,9 @@ class CreateCfsSnapshotRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """Snapshot tag
+        :rtype: list of TagInfo
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -1465,6 +1738,9 @@ class CreateCfsSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """File system snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1473,6 +1749,9 @@ class CreateCfsSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1541,6 +1820,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Migration task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1549,6 +1831,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationType(self):
+        """Migration type. Valid values: `0` (bucket) and `1` (list). Default value: `0`.
+        :rtype: int
+        """
         return self._MigrationType
 
     @MigrationType.setter
@@ -1557,6 +1842,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationMode(self):
+        """Migration mode. Default value: `0` (full migration).
+        :rtype: int
+        """
         return self._MigrationMode
 
     @MigrationMode.setter
@@ -1565,6 +1853,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretId(self):
+        """SecretId of the data source account
+        :rtype: str
+        """
         return self._SrcSecretId
 
     @SrcSecretId.setter
@@ -1573,6 +1864,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretKey(self):
+        """SecretKey of the data source account
+        :rtype: str
+        """
         return self._SrcSecretKey
 
     @SrcSecretKey.setter
@@ -1581,6 +1875,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system instance ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1589,6 +1886,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsPath(self):
+        """File system path
+        :rtype: str
+        """
         return self._FsPath
 
     @FsPath.setter
@@ -1597,6 +1897,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def CoverType(self):
+        """Overwrite policy for files with the same name. Valid values: `0` (retain the file with the latest modified time), `1` (overwrite); and `2` (not overwrite). Default value: `0`.
+        :rtype: int
+        """
         return self._CoverType
 
     @CoverType.setter
@@ -1605,6 +1908,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcService(self):
+        """Data source service provider. Valid values: `COS` (Tencent Cloud COS), `OSS` (Alibaba Cloud OSS), and `OBS` (Huawei Cloud OBS).
+        :rtype: str
+        """
         return self._SrcService
 
     @SrcService.setter
@@ -1613,6 +1919,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketName(self):
+        """Data source bucket name. Specify at least one of the bucket name or address.
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -1621,6 +1930,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
+        """Data source bucket region
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -1629,6 +1941,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketAddress(self):
+        """Data source bucket address. Specify at least one of the bucket name or address.
+        :rtype: str
+        """
         return self._BucketAddress
 
     @BucketAddress.setter
@@ -1637,6 +1952,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def ListAddress(self):
+        """List address. This parameter is required if `MigrationType` is set to `1` (list).
+        :rtype: str
+        """
         return self._ListAddress
 
     @ListAddress.setter
@@ -1645,6 +1963,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsName(self):
+        """Target file system name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -1653,6 +1974,9 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketPath(self):
+        """Source bucket path, which defaults to `/`
+        :rtype: str
+        """
         return self._BucketPath
 
     @BucketPath.setter
@@ -1703,6 +2027,9 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1711,6 +2038,9 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1737,6 +2067,9 @@ class DeleteAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -1773,6 +2106,9 @@ class DeleteAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -1781,6 +2117,9 @@ class DeleteAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1807,6 +2146,9 @@ class DeleteCfsFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID. Note: please call the `DeleteMountTarget` API to delete the mount target first before deleting a file system; otherwise, the delete operation will fail.
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1840,6 +2182,9 @@ class DeleteCfsFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1865,6 +2210,9 @@ class DeleteCfsPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1904,6 +2252,9 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1912,6 +2263,9 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     @property
     def AppId(self):
+        """User ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1920,6 +2274,9 @@ class DeleteCfsPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1950,6 +2307,9 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -1958,6 +2318,9 @@ class DeleteCfsRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1998,6 +2361,9 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2006,6 +2372,9 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -2014,6 +2383,9 @@ class DeleteCfsRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2044,6 +2416,9 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """File system snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2052,6 +2427,9 @@ class DeleteCfsSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """The list of the IDs of the file system snapshots to be deleted. At least one of `SnapshotId` and `SnapshotIds` must be specified.
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -2089,6 +2467,9 @@ class DeleteCfsSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2097,6 +2478,9 @@ class DeleteCfsSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2123,6 +2507,9 @@ class DeleteMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2156,6 +2543,9 @@ class DeleteMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2184,6 +2574,9 @@ class DeleteMountTargetRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2192,6 +2585,9 @@ class DeleteMountTargetRequest(AbstractModel):
 
     @property
     def MountTargetId(self):
+        """Mount target ID
+        :rtype: str
+        """
         return self._MountTargetId
 
     @MountTargetId.setter
@@ -2226,6 +2622,9 @@ class DeleteMountTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2266,6 +2665,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -2274,6 +2676,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2282,6 +2687,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Page length
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2290,6 +2698,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2298,6 +2709,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Ascending or descending order
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2306,6 +2720,9 @@ class DescribeAutoSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Sorting field
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2355,6 +2772,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of snapshot policies
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2363,6 +2783,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicies(self):
+        """Snapshot policy information
+        :rtype: list of AutoSnapshotPolicyInfo
+        """
         return self._AutoSnapshotPolicies
 
     @AutoSnapshotPolicies.setter
@@ -2371,6 +2794,9 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2412,6 +2838,9 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     @property
     def RegionZones(self):
+        """Information such as resource availability in each AZ and the supported storage classes and protocols
+        :rtype: list of AvailableRegion
+        """
         return self._RegionZones
 
     @RegionZones.setter
@@ -2420,6 +2849,9 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2458,6 +2890,9 @@ class DescribeBucketListRequest(AbstractModel):
 
     @property
     def SrcService(self):
+        """Data source service provider. Valid values: `COS` (Tencent Cloud COS), `OSS` (Alibaba Cloud OSS), and `OBS` (Huawei Cloud OBS).
+        :rtype: str
+        """
         return self._SrcService
 
     @SrcService.setter
@@ -2466,6 +2901,10 @@ class DescribeBucketListRequest(AbstractModel):
 
     @property
     def SrcSecretId(self):
+        """SecretId of the data source account
+
+        :rtype: str
+        """
         return self._SrcSecretId
 
     @SrcSecretId.setter
@@ -2474,6 +2913,9 @@ class DescribeBucketListRequest(AbstractModel):
 
     @property
     def SrcSecretKey(self):
+        """SecretKey of the data source account
+        :rtype: str
+        """
         return self._SrcSecretKey
 
     @SrcSecretKey.setter
@@ -2515,6 +2957,9 @@ class DescribeBucketListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of buckets
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2523,6 +2968,9 @@ class DescribeBucketListResponse(AbstractModel):
 
     @property
     def BucketList(self):
+        """Bucket list
+        :rtype: list of BucketInfo
+        """
         return self._BucketList
 
     @BucketList.setter
@@ -2531,6 +2979,9 @@ class DescribeBucketListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2563,6 +3014,9 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2599,6 +3053,9 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     @property
     def ClientList(self):
+        """Client list
+        :rtype: list of FileSystemClient
+        """
         return self._ClientList
 
     @ClientList.setter
@@ -2607,6 +3064,9 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2644,6 +3104,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2652,6 +3115,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2660,6 +3126,9 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2701,6 +3170,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def FileSystems(self):
+        """File system information
+        :rtype: list of FileSystemInfo
+        """
         return self._FileSystems
 
     @FileSystems.setter
@@ -2709,6 +3181,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of file systems
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2717,6 +3192,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2758,6 +3236,9 @@ class DescribeCfsPGroupsResponse(AbstractModel):
 
     @property
     def PGroupList(self):
+        """Permission group information list
+        :rtype: list of PGroupInfo
+        """
         return self._PGroupList
 
     @PGroupList.setter
@@ -2766,6 +3247,9 @@ class DescribeCfsPGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2797,6 +3281,9 @@ class DescribeCfsRulesRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -2833,6 +3320,9 @@ class DescribeCfsRulesResponse(AbstractModel):
 
     @property
     def RuleList(self):
+        """List of permission group rules
+        :rtype: list of PGroupRuleInfo
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -2841,6 +3331,9 @@ class DescribeCfsRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2881,6 +3374,9 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
 
     @property
     def CfsServiceStatus(self):
+        """Current status of the CFS service for this user. Valid values: none (not activated), creating (activating), created (activated)
+        :rtype: str
+        """
         return self._CfsServiceStatus
 
     @CfsServiceStatus.setter
@@ -2889,6 +3385,9 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2924,6 +3423,9 @@ class DescribeCfsSnapshotOverviewResponse(AbstractModel):
 
     @property
     def StatisticsList(self):
+        """Statistics
+        :rtype: list of SnapshotStatistics
+        """
         return self._StatisticsList
 
     @StatisticsList.setter
@@ -2932,6 +3434,9 @@ class DescribeCfsSnapshotOverviewResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2981,6 +3486,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2989,6 +3497,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -2997,6 +3508,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The starting position of paging
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3005,6 +3519,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Page length
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3013,6 +3530,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3021,6 +3541,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Order field
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3029,6 +3552,9 @@ class DescribeCfsSnapshotsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Sorting order (ascending or descending)
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -3082,6 +3608,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3090,6 +3619,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def Snapshots(self):
+        """Snapshot information description
+        :rtype: list of SnapshotInfo
+        """
         return self._Snapshots
 
     @Snapshots.setter
@@ -3098,6 +3630,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def TotalSize(self):
+        """Total size of snapshots
+        :rtype: int
+        """
         return self._TotalSize
 
     @TotalSize.setter
@@ -3106,6 +3641,9 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3159,6 +3697,9 @@ Each request can have up to 10 `Filters` and 100 `Filter.Values`.
 
     @property
     def Offset(self):
+        """The pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3167,6 +3708,9 @@ Each request can have up to 10 `Filters` and 100 `Filter.Values`.
 
     @property
     def Limit(self):
+        """Maximum number of entries per page. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3175,6 +3719,23 @@ Each request can have up to 10 `Filters` and 100 `Filter.Values`.
 
     @property
     def Filters(self):
+        """<br><li> taskId
+
+Filter by **migration task ID**
+Type: String
+
+Required: No
+
+<br><li> taskName
+
+Fuzzy filter by **migration task name**
+Type: String
+
+Required: No
+
+Each request can have up to 10 `Filters` and 100 `Filter.Values`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3221,6 +3782,9 @@ class DescribeMigrationTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of migration tasks
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3229,6 +3793,9 @@ class DescribeMigrationTasksResponse(AbstractModel):
 
     @property
     def MigrationTasks(self):
+        """Migration task details
+        :rtype: list of MigrationTaskInfo
+        """
         return self._MigrationTasks
 
     @MigrationTasks.setter
@@ -3237,6 +3804,9 @@ class DescribeMigrationTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3269,6 +3839,9 @@ class DescribeMountTargetsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3308,6 +3881,9 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     @property
     def MountTargets(self):
+        """Mount target details
+        :rtype: list of MountInfo
+        """
         return self._MountTargets
 
     @MountTargets.setter
@@ -3316,6 +3892,9 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     @property
     def NumberOfMountTargets(self):
+        """The number of mount targets
+        :rtype: int
+        """
         return self._NumberOfMountTargets
 
     @NumberOfMountTargets.setter
@@ -3324,6 +3903,9 @@ class DescribeMountTargetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3362,6 +3944,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """File system snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3370,6 +3955,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3378,6 +3966,9 @@ class DescribeSnapshotOperationLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3419,6 +4010,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3427,6 +4021,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def SnapshotOperates(self):
+        """Operation log
+        :rtype: list of SnapshotOperateLog
+        """
         return self._SnapshotOperates
 
     @SnapshotOperates.setter
@@ -3435,6 +4032,9 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3485,6 +4085,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def CreationToken(self):
+        """File system name
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -3493,6 +4096,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3501,6 +4107,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def SizeByte(self):
+        """File system size
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -3509,6 +4118,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def StorageType(self):
+        """Storage class
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -3517,6 +4129,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def TotalSnapshotSize(self):
+        """Total snapshot size
+        :rtype: int
+        """
         return self._TotalSnapshotSize
 
     @TotalSnapshotSize.setter
@@ -3525,6 +4140,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def CreationTime(self):
+        """File system creation time
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -3533,6 +4151,9 @@ class FileSystemByPolicy(AbstractModel):
 
     @property
     def ZoneId(self):
+        """Region ID of the file system
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3587,6 +4208,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def CfsVip(self):
+        """IP address of the file system
+        :rtype: str
+        """
         return self._CfsVip
 
     @CfsVip.setter
@@ -3595,6 +4219,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def ClientIp(self):
+        """Client IP
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -3603,6 +4230,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def VpcId(self):
+        """File system VPCID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3611,6 +4241,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def Zone(self):
+        """Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -3619,6 +4252,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def ZoneName(self):
+        """AZ name
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -3627,6 +4263,9 @@ class FileSystemClient(AbstractModel):
 
     @property
     def MountDirectory(self):
+        """Path in which the file system is mounted to the client
+        :rtype: str
+        """
         return self._MountDirectory
 
     @MountDirectory.setter
@@ -3735,6 +4374,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -3743,6 +4385,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationToken(self):
+        """Custom name
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -3751,6 +4396,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -3759,6 +4407,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifeCycleState(self):
+        """File system status. Valid values:
+- creating
+- mounting
+- create_failed
+- available
+- unserviced
+- upgrading
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -3767,6 +4424,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SizeByte(self):
+        """Used file system capacity
+        :rtype: int
+        """
         return self._SizeByte
 
     @SizeByte.setter
@@ -3775,6 +4435,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SizeLimit(self):
+        """Maximum storage limit of a file system
+        :rtype: int
+        """
         return self._SizeLimit
 
     @SizeLimit.setter
@@ -3783,6 +4446,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """Region ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3791,6 +4457,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Region name
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -3799,6 +4468,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """File system protocol type
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -3807,6 +4479,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageType(self):
+        """File system storage class
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -3815,6 +4490,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageResourcePkg(self):
+        """Prepaid storage pack bound with the file system
+        :rtype: str
+        """
         return self._StorageResourcePkg
 
     @StorageResourcePkg.setter
@@ -3823,6 +4501,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BandwidthResourcePkg(self):
+        """Prepaid bandwidth pack bound to a file system (not supported currently)
+        :rtype: str
+        """
         return self._BandwidthResourcePkg
 
     @BandwidthResourcePkg.setter
@@ -3831,6 +4512,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PGroup(self):
+        """Information of permission groups bound to a file system
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.PGroup`
+        """
         return self._PGroup
 
     @PGroup.setter
@@ -3839,6 +4523,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FsName(self):
+        """Custom name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -3847,6 +4534,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Encrypted(self):
+        """Whether a file system is encrypted
+        :rtype: bool
+        """
         return self._Encrypted
 
     @Encrypted.setter
@@ -3855,6 +4545,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KmsKeyId(self):
+        """Key used for encryption, which can be the key ID or ARN
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -3863,6 +4556,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """Application ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -3871,6 +4567,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BandwidthLimit(self):
+        """The upper limit on the file system’s throughput, which is determined based on its current usage, and bound resource packs for both storage and throughput
+        :rtype: float
+        """
         return self._BandwidthLimit
 
     @BandwidthLimit.setter
@@ -3879,6 +4578,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Capacity(self):
+        """Total capacity of the file system
+        :rtype: int
+        """
         return self._Capacity
 
     @Capacity.setter
@@ -3887,6 +4589,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """File system tag list
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -3895,6 +4600,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TieringState(self):
+        """The lifecycle management status of a file system.
+        :rtype: str
+        """
         return self._TieringState
 
     @TieringState.setter
@@ -3903,6 +4611,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TieringDetail(self):
+        """The details about tiered storage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
+        """
         return self._TieringDetail
 
     @TieringDetail.setter
@@ -3969,6 +4681,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Value
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -3977,6 +4692,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4099,6 +4817,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskName(self):
+        """Migration task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -4107,6 +4828,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4115,6 +4839,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrationType(self):
+        """Migration type. Valid values: `0` (bucket) and `1` (list). Default value: `0`.
+        :rtype: int
+        """
         return self._MigrationType
 
     @MigrationType.setter
@@ -4123,6 +4850,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrationMode(self):
+        """Migration mode. Default value: `0` (full migration).
+        :rtype: int
+        """
         return self._MigrationMode
 
     @MigrationMode.setter
@@ -4131,6 +4861,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BucketName(self):
+        """Data source bucket name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -4139,6 +4873,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BucketRegion(self):
+        """Data source bucket region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BucketRegion
 
     @BucketRegion.setter
@@ -4147,6 +4885,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BucketAddress(self):
+        """Data source bucket address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BucketAddress
 
     @BucketAddress.setter
@@ -4155,6 +4897,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListAddress(self):
+        """List address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ListAddress
 
     @ListAddress.setter
@@ -4163,6 +4909,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FsName(self):
+        """File system instance name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -4171,6 +4921,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSystemId(self):
+        """File system instance ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4179,6 +4932,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FsPath(self):
+        """File system path
+        :rtype: str
+        """
         return self._FsPath
 
     @FsPath.setter
@@ -4187,6 +4943,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoverType(self):
+        """Overwrite policy for files with the same name. Valid values: `0` (retain the file with the latest modified time), `1` (overwrite); and `2` (not overwrite). Default value: `0`.
+        :rtype: int
+        """
         return self._CoverType
 
     @CoverType.setter
@@ -4195,6 +4954,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4203,6 +4965,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4211,6 +4977,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Migration status. Valid values: `0` (completed), `1` (in progress), and `2` (stopped).
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4219,6 +4988,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileTotalCount(self):
+        """Number of files
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FileTotalCount
 
     @FileTotalCount.setter
@@ -4227,6 +5000,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileMigratedCount(self):
+        """Number of migrated files
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FileMigratedCount
 
     @FileMigratedCount.setter
@@ -4235,6 +5012,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileFailedCount(self):
+        """Number of files that failed to be migrated
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FileFailedCount
 
     @FileFailedCount.setter
@@ -4243,6 +5024,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileTotalSize(self):
+        """File size, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FileTotalSize
 
     @FileTotalSize.setter
@@ -4251,6 +5036,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileMigratedSize(self):
+        """Size of migrated files, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FileMigratedSize
 
     @FileMigratedSize.setter
@@ -4259,6 +5048,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileFailedSize(self):
+        """Size of files that failed to be migrated, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FileFailedSize
 
     @FileFailedSize.setter
@@ -4267,6 +5060,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileTotalList(self):
+        """List of all files
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FileTotalList
 
     @FileTotalList.setter
@@ -4275,6 +5072,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileCompletedList(self):
+        """List of migrated files
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FileCompletedList
 
     @FileCompletedList.setter
@@ -4283,6 +5084,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileFailedList(self):
+        """List of files that failed to be migrated
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FileFailedList
 
     @FileFailedList.setter
@@ -4291,6 +5096,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BucketPath(self):
+        """Source bucket path
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BucketPath
 
     @BucketPath.setter
@@ -4358,6 +5167,9 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4366,6 +5178,9 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def ScaleUpThreshold(self):
+        """Threshold for triggering scaling. Value range: 10-90
+        :rtype: int
+        """
         return self._ScaleUpThreshold
 
     @ScaleUpThreshold.setter
@@ -4374,6 +5189,9 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def TargetThreshold(self):
+        """Target threshold after scaling. Value range: 10-90. The value of this parameter must be smaller than that of `ScaleUpThreshold`.
+        :rtype: int
+        """
         return self._TargetThreshold
 
     @TargetThreshold.setter
@@ -4382,6 +5200,10 @@ class ModifyFileSystemAutoScaleUpRuleRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Rule status. Valid values: `0` (disabled) and `1` (enabled).
+
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4430,6 +5252,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4438,6 +5263,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Rule status. Valid values: `0` (disabled) and `1` (enabled).
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4446,6 +5274,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def ScaleUpThreshold(self):
+        """Threshold for triggering scaling. Value range: 10-90
+        :rtype: int
+        """
         return self._ScaleUpThreshold
 
     @ScaleUpThreshold.setter
@@ -4454,6 +5285,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def TargetThreshold(self):
+        """Target threshold after scaling. Value range: 10-90
+        :rtype: int
+        """
         return self._TargetThreshold
 
     @TargetThreshold.setter
@@ -4462,6 +5296,9 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4524,6 +5361,9 @@ class MountInfo(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4532,6 +5372,9 @@ class MountInfo(AbstractModel):
 
     @property
     def MountTargetId(self):
+        """Mount target ID
+        :rtype: str
+        """
         return self._MountTargetId
 
     @MountTargetId.setter
@@ -4540,6 +5383,9 @@ class MountInfo(AbstractModel):
 
     @property
     def IpAddress(self):
+        """Mount target IP
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -4548,6 +5394,9 @@ class MountInfo(AbstractModel):
 
     @property
     def FSID(self):
+        """Mount root-directory
+        :rtype: str
+        """
         return self._FSID
 
     @FSID.setter
@@ -4556,6 +5405,9 @@ class MountInfo(AbstractModel):
 
     @property
     def LifeCycleState(self):
+        """Mount target status
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -4564,6 +5416,9 @@ class MountInfo(AbstractModel):
 
     @property
     def NetworkInterface(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetworkInterface
 
     @NetworkInterface.setter
@@ -4572,6 +5427,9 @@ class MountInfo(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4580,6 +5438,9 @@ class MountInfo(AbstractModel):
 
     @property
     def VpcName(self):
+        """VPC name
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -4588,6 +5449,9 @@ class MountInfo(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4596,6 +5460,9 @@ class MountInfo(AbstractModel):
 
     @property
     def SubnetName(self):
+        """Subnet name
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -4604,6 +5471,9 @@ class MountInfo(AbstractModel):
 
     @property
     def CcnID(self):
+        """CCN instance ID used by CFS Turbo
+        :rtype: str
+        """
         return self._CcnID
 
     @CcnID.setter
@@ -4612,6 +5482,9 @@ class MountInfo(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """CCN IP range used by CFS Turbo
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -4659,6 +5532,9 @@ class PGroup(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -4667,6 +5543,9 @@ class PGroup(AbstractModel):
 
     @property
     def Name(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4713,6 +5592,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -4721,6 +5603,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def Name(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4729,6 +5614,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def DescInfo(self):
+        """Description
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -4737,6 +5625,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def CDate(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CDate
 
     @CDate.setter
@@ -4745,6 +5636,9 @@ class PGroupInfo(AbstractModel):
 
     @property
     def BindCfsNum(self):
+        """The number of bound file system
+        :rtype: int
+        """
         return self._BindCfsNum
 
     @BindCfsNum.setter
@@ -4794,6 +5688,9 @@ class PGroupRuleInfo(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4802,6 +5699,9 @@ class PGroupRuleInfo(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """Client IP allowed for access
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -4810,6 +5710,9 @@ class PGroupRuleInfo(AbstractModel):
 
     @property
     def RWPermission(self):
+        """Read/write permission. ro: read-only; rw: read & write
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -4818,6 +5721,9 @@ class PGroupRuleInfo(AbstractModel):
 
     @property
     def UserPermission(self):
+        """User permission. all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions.
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -4826,6 +5732,9 @@ class PGroupRuleInfo(AbstractModel):
 
     @property
     def Priority(self):
+        """Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -4866,6 +5775,9 @@ class ScaleUpFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4874,6 +5786,9 @@ class ScaleUpFileSystemRequest(AbstractModel):
 
     @property
     def TargetCapacity(self):
+        """Target capacity after scaling
+        :rtype: int
+        """
         return self._TargetCapacity
 
     @TargetCapacity.setter
@@ -4914,6 +5829,9 @@ class ScaleUpFileSystemResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -4922,6 +5840,9 @@ class ScaleUpFileSystemResponse(AbstractModel):
 
     @property
     def TargetCapacity(self):
+        """Target capacity after scaling
+        :rtype: int
+        """
         return self._TargetCapacity
 
     @TargetCapacity.setter
@@ -4930,6 +5851,9 @@ class ScaleUpFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4966,6 +5890,9 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     @property
     def CfsServiceStatus(self):
+        """Current status of the CFS service for this user. Valid values: `creating` (activating); `created` (activated)
+        :rtype: str
+        """
         return self._CfsServiceStatus
 
     @CfsServiceStatus.setter
@@ -4974,6 +5901,9 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5040,6 +5970,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreationTime(self):
+        """Snapshot creation time
+        :rtype: str
+        """
         return self._CreationTime
 
     @CreationTime.setter
@@ -5048,6 +5981,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotName(self):
+        """Snapshot name
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -5056,6 +5992,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotId(self):
+        """Snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -5064,6 +6003,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Snapshot status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5072,6 +6014,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
+        """Region name
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -5080,6 +6025,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5088,6 +6036,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
+        """Snapshot size
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -5096,6 +6047,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AliveDay(self):
+        """Retention period in days
+        :rtype: int
+        """
         return self._AliveDay
 
     @AliveDay.setter
@@ -5104,6 +6058,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
+        """Snapshot progress
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -5112,6 +6069,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """Account ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -5120,6 +6080,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteTime(self):
+        """Snapshot deletion time
+        :rtype: str
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -5128,6 +6091,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FsName(self):
+        """File system name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -5136,6 +6102,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Snapshot tag
+        :rtype: list of TagInfo
+        """
         return self._Tags
 
     @Tags.setter
@@ -5144,6 +6113,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotType(self):
+        """Snapshot type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SnapshotType
 
     @SnapshotType.setter
@@ -5207,6 +6180,9 @@ class SnapshotOperateLog(AbstractModel):
 
     @property
     def Action(self):
+        """Operation type
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -5215,6 +6191,9 @@ class SnapshotOperateLog(AbstractModel):
 
     @property
     def ActionTime(self):
+        """Operation time
+        :rtype: str
+        """
         return self._ActionTime
 
     @ActionTime.setter
@@ -5223,6 +6202,9 @@ class SnapshotOperateLog(AbstractModel):
 
     @property
     def ActionName(self):
+        """Operation name
+        :rtype: str
+        """
         return self._ActionName
 
     @ActionName.setter
@@ -5231,6 +6213,9 @@ class SnapshotOperateLog(AbstractModel):
 
     @property
     def Operator(self):
+        """Operator
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -5239,6 +6224,9 @@ class SnapshotOperateLog(AbstractModel):
 
     @property
     def Result(self):
+        """Result
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -5282,6 +6270,9 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def Region(self):
+        """Region
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5290,6 +6281,9 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def SnapshotNumber(self):
+        """Total number of snapshots
+        :rtype: int
+        """
         return self._SnapshotNumber
 
     @SnapshotNumber.setter
@@ -5298,6 +6292,9 @@ class SnapshotStatistics(AbstractModel):
 
     @property
     def SnapshotSize(self):
+        """Total snapshot size
+        :rtype: int
+        """
         return self._SnapshotSize
 
     @SnapshotSize.setter
@@ -5333,6 +6330,9 @@ class StopMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Migration task name
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5372,6 +6372,9 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5380,6 +6383,9 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Migration status. Valid values: `0` (completed), `1` (in progress), and `2` (stopped).
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5388,6 +6394,9 @@ class StopMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5418,6 +6427,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -5426,6 +6438,9 @@ class TagInfo(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -5461,6 +6476,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TieringSizeInBytes(self):
+        """STANDARD_IA storage usage
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TieringSizeInBytes
 
     @TieringSizeInBytes.setter
@@ -5497,6 +6516,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def FileSystemIds(self):
+        """List of IDs of the file systems to be unbound, separated by comma
+        :rtype: str
+        """
         return self._FileSystemIds
 
     @FileSystemIds.setter
@@ -5505,6 +6527,9 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """ID of the snapshot to be unbound
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -5542,6 +6567,9 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -5550,6 +6578,9 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5597,6 +6628,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -5605,6 +6639,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
+        """Snapshot policy name
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -5613,6 +6650,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfWeek(self):
+        """The day of the week on which to regularly back up the snapshot
+        :rtype: str
+        """
         return self._DayOfWeek
 
     @DayOfWeek.setter
@@ -5621,6 +6661,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def Hour(self):
+        """The hour of a day at which to regularly back up the snapshot
+        :rtype: str
+        """
         return self._Hour
 
     @Hour.setter
@@ -5629,6 +6672,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def AliveDays(self):
+        """Snapshot retention period
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -5637,6 +6683,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IsActivated(self):
+        """Whether to activate the scheduled snapshot feature
+        :rtype: int
+        """
         return self._IsActivated
 
     @IsActivated.setter
@@ -5645,6 +6694,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def DayOfMonth(self):
+        """The specific day of the month on which to create a snapshot. This parameter is mutually exclusive with `DayOfWeek`.
+        :rtype: str
+        """
         return self._DayOfMonth
 
     @DayOfMonth.setter
@@ -5653,6 +6705,9 @@ class UpdateAutoSnapshotPolicyRequest(AbstractModel):
 
     @property
     def IntervalDays(self):
+        """The snapshot interval. This parameter is mutually exclusive with `DayOfWeek` and `DayOfMonth`.
+        :rtype: int
+        """
         return self._IntervalDays
 
     @IntervalDays.setter
@@ -5696,6 +6751,9 @@ class UpdateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._AutoSnapshotPolicyId
 
     @AutoSnapshotPolicyId.setter
@@ -5704,6 +6762,9 @@ class UpdateAutoSnapshotPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5733,6 +6794,9 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5741,6 +6805,9 @@ class UpdateCfsFileSystemNameRequest(AbstractModel):
 
     @property
     def FsName(self):
+        """Custom file system name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -5784,6 +6851,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def CreationToken(self):
+        """Custom file system name
+        :rtype: str
+        """
         return self._CreationToken
 
     @CreationToken.setter
@@ -5792,6 +6862,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5800,6 +6873,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def FsName(self):
+        """Custom file system name
+        :rtype: str
+        """
         return self._FsName
 
     @FsName.setter
@@ -5808,6 +6884,9 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5839,6 +6918,9 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -5847,6 +6929,9 @@ class UpdateCfsFileSystemPGroupRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5887,6 +6972,9 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -5895,6 +6983,9 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5903,6 +6994,9 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5933,6 +7027,9 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     @property
     def FsLimit(self):
+        """File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.
+        :rtype: int
+        """
         return self._FsLimit
 
     @FsLimit.setter
@@ -5941,6 +7038,9 @@ class UpdateCfsFileSystemSizeLimitRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID. Currently, only Standard file systems are supported.
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -5975,6 +7075,9 @@ class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6006,6 +7109,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6014,6 +7120,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6022,6 +7131,9 @@ class UpdateCfsPGroupRequest(AbstractModel):
 
     @property
     def DescInfo(self):
+        """Permission group description, which can contain 1-255 characters
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -6066,6 +7178,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6074,6 +7189,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def Name(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6082,6 +7200,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def DescInfo(self):
+        """Description
+        :rtype: str
+        """
         return self._DescInfo
 
     @DescInfo.setter
@@ -6090,6 +7211,9 @@ class UpdateCfsPGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6133,6 +7257,9 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6141,6 +7268,9 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -6149,6 +7279,9 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -6157,6 +7290,9 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     @property
     def RWPermission(self):
+        """Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -6165,6 +7301,9 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     @property
     def UserPermission(self):
+        """User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -6173,6 +7312,9 @@ class UpdateCfsRuleRequest(AbstractModel):
 
     @property
     def Priority(self):
+        """Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6229,6 +7371,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def PGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._PGroupId
 
     @PGroupId.setter
@@ -6237,6 +7382,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -6245,6 +7393,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def AuthClientIp(self):
+        """Client IP or IP range allowed for access
+        :rtype: str
+        """
         return self._AuthClientIp
 
     @AuthClientIp.setter
@@ -6253,6 +7404,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def RWPermission(self):
+        """Read & write permission
+        :rtype: str
+        """
         return self._RWPermission
 
     @RWPermission.setter
@@ -6261,6 +7415,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def UserPermission(self):
+        """User permission
+        :rtype: str
+        """
         return self._UserPermission
 
     @UserPermission.setter
@@ -6269,6 +7426,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def Priority(self):
+        """Priority
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -6277,6 +7437,9 @@ class UpdateCfsRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6314,6 +7477,9 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """File system snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6322,6 +7488,9 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """File system snapshot name
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -6330,6 +7499,9 @@ class UpdateCfsSnapshotAttributeRequest(AbstractModel):
 
     @property
     def AliveDays(self):
+        """File system snapshot retention period in days
+        :rtype: int
+        """
         return self._AliveDays
 
     @AliveDays.setter
@@ -6368,6 +7540,9 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """File system snapshot ID
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -6376,6 +7551,9 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

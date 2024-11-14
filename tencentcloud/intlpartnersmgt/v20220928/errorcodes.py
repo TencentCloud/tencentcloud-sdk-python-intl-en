@@ -20,14 +20,29 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# 
+FAILEDOPERATION_EXCEEDMAXBINDCOUNT = 'FailedOperation.ExceedMaxBindCount'
+
 # FailedOperation.MailIsRegistered
 FAILEDOPERATION_MAILISREGISTERED = 'FailedOperation.MailIsRegistered'
+
+# The number of registered accounts for the current mobile number has reached the maximum limit. Please change the phone number and try again.
+FAILEDOPERATION_PHONEBINDUPPER = 'FailedOperation.PhoneBindUpper'
+
+# Verification codes are sent too frequently. Please try again later.
+FAILEDOPERATION_SENDVERIFYCODELIMIT = 'FailedOperation.SendVerifyCodeLimit'
+
+# The interval for sending SMS verification codes should be greater than 60 seconds. Please try again later.
+FAILEDOPERATION_SENDVERIFYCODELIMIT60 = 'FailedOperation.SendVerifyCodeLimit60'
 
 # Invalid UIN
 FAILEDOPERATION_UININVALID = 'FailedOperation.UinInvalid'
 
 # UIN is not a reseller.
 FAILEDOPERATION_UINNOTAGENT = 'FailedOperation.UinNotAgent'
+
+# Incorrect verification code.
+FAILEDOPERATION_VERIFICATIONCODEILLEGAL = 'FailedOperation.VerificationCodeIllegal'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -103,6 +118,9 @@ INVALIDPARAMETERVALUE_PHONENUMEMPTY = 'InvalidParameterValue.PhoneNumEmpty'
 
 # Invalid UinList. Array length value: 1-50.
 INVALIDPARAMETERVALUE_UINLIST = 'InvalidParameterValue.UinList'
+
+# The current region does not support creating a Tencent Cloud International account.
+INVALIDPARAMETERVALUE_UNSUPPORTAREA = 'InvalidParameterValue.UnSupportArea'
 
 # Missing parameter
 MISSINGPARAMETER = 'MissingParameter'

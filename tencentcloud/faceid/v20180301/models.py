@@ -59,6 +59,9 @@ class Address(AbstractModel):
 
     @property
     def Country(self):
+        """Nationality.
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -67,6 +70,9 @@ class Address(AbstractModel):
 
     @property
     def PostalCode(self):
+        """Post code.
+        :rtype: str
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -75,6 +81,9 @@ class Address(AbstractModel):
 
     @property
     def Subdivision(self):
+        """Subregion.
+        :rtype: str
+        """
         return self._Subdivision
 
     @Subdivision.setter
@@ -83,6 +92,9 @@ class Address(AbstractModel):
 
     @property
     def City(self):
+        """City.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -91,6 +103,9 @@ class Address(AbstractModel):
 
     @property
     def FormattedAddress(self):
+        """Complete address.
+        :rtype: str
+        """
         return self._FormattedAddress
 
     @FormattedAddress.setter
@@ -99,6 +114,9 @@ class Address(AbstractModel):
 
     @property
     def LineOne(self):
+        """The first line of address.
+        :rtype: str
+        """
         return self._LineOne
 
     @LineOne.setter
@@ -107,6 +125,9 @@ class Address(AbstractModel):
 
     @property
     def LineTwo(self):
+        """The second line of address.
+        :rtype: str
+        """
         return self._LineTwo
 
     @LineTwo.setter
@@ -115,6 +136,9 @@ class Address(AbstractModel):
 
     @property
     def LineThree(self):
+        """The third line of address.
+        :rtype: str
+        """
         return self._LineThree
 
     @LineThree.setter
@@ -123,6 +147,9 @@ class Address(AbstractModel):
 
     @property
     def LineFour(self):
+        """The fourth line of address.
+        :rtype: str
+        """
         return self._LineFour
 
     @LineFour.setter
@@ -131,6 +158,9 @@ class Address(AbstractModel):
 
     @property
     def LineFive(self):
+        """The fifth line of address.
+        :rtype: str
+        """
         return self._LineFive
 
     @LineFive.setter
@@ -173,6 +203,7 @@ THA: Thailand
 MYS: Malaysia
 SGP: Singapore
 JPN: Japan
+TWN:Taiwan
 AUTO: Automatic Identification
         :type Nationality: str
         :param _CardType: Please select the type of ID document. The supported options are:
@@ -181,14 +212,18 @@ PASSPORT
 DRIVING_LICENSE
 AUTO
         :type CardType: str
-        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
+        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
 The image download takes no more than 3 seconds. Supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64 Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
         :type ImageBase64Front: str
-        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
         :type ImageBase64Back: str
-        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
         :type ImageUrlFront: str
-        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
         :type ImageUrlBack: str
         """
         self._Nationality = None
@@ -200,6 +235,17 @@ The image download takes no more than 3 seconds. Supported image resolution: 800
 
     @property
     def Nationality(self):
+        """Please select the country code of ID document.
+IDN: Indonesia
+HKG: Hong Kong
+THA: Thailand
+MYS: Malaysia
+SGP: Singapore
+JPN: Japan
+TWN:Taiwan
+AUTO: Automatic Identification
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -208,6 +254,13 @@ The image download takes no more than 3 seconds. Supported image resolution: 800
 
     @property
     def CardType(self):
+        """Please select the type of ID document. The supported options are:
+ID_CARD
+PASSPORT
+DRIVING_LICENSE
+AUTO
+        :rtype: str
+        """
         return self._CardType
 
     @CardType.setter
@@ -216,6 +269,11 @@ The image download takes no more than 3 seconds. Supported image resolution: 800
 
     @property
     def ImageBase64Front(self):
+        """Base64 value for the front of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
+The image download takes no more than 3 seconds. Supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64 Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :rtype: str
+        """
         return self._ImageBase64Front
 
     @ImageBase64Front.setter
@@ -224,6 +282,10 @@ The image download takes no more than 3 seconds. Supported image resolution: 800
 
     @property
     def ImageBase64Back(self):
+        """Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :rtype: str
+        """
         return self._ImageBase64Back
 
     @ImageBase64Back.setter
@@ -232,6 +294,10 @@ The image download takes no more than 3 seconds. Supported image resolution: 800
 
     @property
     def ImageUrlFront(self):
+        """The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :rtype: str
+        """
         return self._ImageUrlFront
 
     @ImageUrlFront.setter
@@ -240,6 +306,10 @@ The image download takes no more than 3 seconds. Supported image resolution: 800
 
     @property
     def ImageUrlBack(self):
+        """The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :rtype: str
+        """
         return self._ImageUrlBack
 
     @ImageUrlBack.setter
@@ -287,6 +357,9 @@ class ApplyCardVerificationResponse(AbstractModel):
 
     @property
     def CardVerificationToken(self):
+        """The token used to identify an verification process. It can be used to get the verification result after the process is completed.
+        :rtype: str
+        """
         return self._CardVerificationToken
 
     @CardVerificationToken.setter
@@ -295,6 +368,9 @@ class ApplyCardVerificationResponse(AbstractModel):
 
     @property
     def AsyncCardVerificationMaxPollingTimes(self):
+        """The maximum number of polls for calling the pull result interface polling.
+        :rtype: int
+        """
         return self._AsyncCardVerificationMaxPollingTimes
 
     @AsyncCardVerificationMaxPollingTimes.setter
@@ -303,6 +379,9 @@ class ApplyCardVerificationResponse(AbstractModel):
 
     @property
     def AsyncCardVerificationPollingWaitTime(self):
+        """The interval for polling when calling the pull result interface (in seconds).
+        :rtype: int
+        """
         return self._AsyncCardVerificationPollingWaitTime
 
     @AsyncCardVerificationPollingWaitTime.setter
@@ -311,6 +390,9 @@ class ApplyCardVerificationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -344,6 +426,14 @@ Their meanings are as follows:
 
     @property
     def SecureLevel(self):
+        """Enumerated value. Valid values: `1`, `2`, `3`, and `4`.
+Their meanings are as follows:
+1 - silent
+2 - blinking
+3 - light
+4 - blinking + light (default)
+        :rtype: str
+        """
         return self._SecureLevel
 
     @SecureLevel.setter
@@ -380,6 +470,9 @@ class ApplyLivenessTokenResponse(AbstractModel):
 
     @property
     def SdkToken(self):
+        """The token used to identify an SDK-based verification process. It is valid for 10 minutes and can be used to get the verification result after the process is completed.
+        :rtype: str
+        """
         return self._SdkToken
 
     @SdkToken.setter
@@ -388,6 +481,9 @@ class ApplyLivenessTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -440,6 +536,8 @@ Default value: 4
 17.ThailandDrivingLicense: Thailand Driving License
 18.SingaporeDrivingLicense: Singapore Driving License
 19.JapanDrivingLicense: Japan Driving License
+20.TaiWanIDCard:Taiwan ID Card
+21.HMTPermit: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
         :type IdCardType: str
         :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
@@ -452,6 +550,17 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         :type DisableCheckOcrWarnings: bool
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
+        :param _ActionList: This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
+        :type ActionList: str
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -461,9 +570,17 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         self._DisableChangeOcrResult = None
         self._DisableCheckOcrWarnings = None
         self._Extra = None
+        self._ActionList = None
 
     @property
     def CheckMode(self):
+        """The verification mode. Valid values:
+1: OCR + liveness detection + face comparison
+2: Liveness detection + face comparison
+3: Liveness detection
+Default value: 1
+        :rtype: int
+        """
         return self._CheckMode
 
     @CheckMode.setter
@@ -472,6 +589,14 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def SecurityLevel(self):
+        """The security level of the verification. Valid values:
+1: Video-based liveness detection
+2: Motion-based liveness detection
+3: Reflection-based liveness detection
+4: Motion- and reflection-based liveness detection
+Default value: 4
+        :rtype: int
+        """
         return self._SecurityLevel
 
     @SecurityLevel.setter
@@ -480,6 +605,30 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def IdCardType(self):
+        """The identity document type. Valid values: 
+1. HK (default): Identity card of Hong Kong (China)
+2. ML: Malaysian identity card
+3. IndonesiaIDCard: Indonesian identity card
+4. PhilippinesVoteID: Philippine voters ID card
+5. PhilippinesDrivingLicense: Philippine driver's license
+6. PhilippinesTinID: Philippine TIN ID card
+7. PhilippinesSSSID: Philippine SSS ID card
+8. PhilippinesUMID: Philippine UMID card
+9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
+10..MacaoIDCard: Macao ID Card
+11.ThailandIDCard: Thailand ID Card
+12.MainlandIDCard: Mainland ID Card
+13.SingaporeIDCard: Singapore ID Card
+14.JapanIDCard: Japan ID Card
+15.MLDrivingLicense: Malaysian Driving License
+16.IndonesiaDrivingLicense: Indonesia Driving License
+17.ThailandDrivingLicense: Thailand Driving License
+18.SingaporeDrivingLicense: Singapore Driving License
+19.JapanDrivingLicense: Japan Driving License
+20.TaiWanIDCard:Taiwan ID Card
+21.HMTPermit: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
+        :rtype: str
+        """
         return self._IdCardType
 
     @IdCardType.setter
@@ -488,6 +637,9 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def CompareImage(self):
+        """The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
+        :rtype: str
+        """
         return self._CompareImage
 
     @CompareImage.setter
@@ -498,6 +650,9 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
     def NeedVerifyIdCard(self):
         warnings.warn("parameter `NeedVerifyIdCard` is deprecated", DeprecationWarning) 
 
+        """Whether ID card authentication is required. If not, only document OCR will be performed. Currently, authentication is available only when the value of `IdCardType` is `HK`.
+        :rtype: bool
+        """
         return self._NeedVerifyIdCard
 
     @NeedVerifyIdCard.setter
@@ -508,6 +663,9 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def DisableChangeOcrResult(self):
+        """Whether to forbid the modification of the OCR result by users. Default value: `false` (modification allowed). (Currently, this parameter is not applied.)
+        :rtype: bool
+        """
         return self._DisableChangeOcrResult
 
     @DisableChangeOcrResult.setter
@@ -516,6 +674,10 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def DisableCheckOcrWarnings(self):
+        """Whether to disable the OCR warnings. Default value: `false` (not disable), where OCR warnings are enabled and the OCR result will not be returned if there is a warning.
+This feature applies only to Hong Kong (China) identity cards, Malaysian identity cards, and passports.
+        :rtype: bool
+        """
         return self._DisableCheckOcrWarnings
 
     @DisableCheckOcrWarnings.setter
@@ -524,11 +686,34 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
 
     @property
     def Extra(self):
+        """A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
     def Extra(self, Extra):
         self._Extra = Extra
+
+    @property
+    def ActionList(self):
+        """This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
+        :rtype: str
+        """
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
 
 
     def _deserialize(self, params):
@@ -540,6 +725,7 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         self._DisableChangeOcrResult = params.get("DisableChangeOcrResult")
         self._DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
         self._Extra = params.get("Extra")
+        self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -567,6 +753,9 @@ class ApplySdkVerificationTokenResponse(AbstractModel):
 
     @property
     def SdkToken(self):
+        """The token used to identify an SDK-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :rtype: str
+        """
         return self._SdkToken
 
     @SdkToken.setter
@@ -575,6 +764,9 @@ class ApplySdkVerificationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -614,6 +806,11 @@ Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
 
     @property
     def RedirectURL(self):
+        """The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
+After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
+Example: https://www.tencentcloud.com/products/faceid.
+        :rtype: str
+        """
         return self._RedirectURL
 
     @RedirectURL.setter
@@ -622,6 +819,10 @@ Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
 
     @property
     def CompareImageBase64(self):
+        """The Base64-encoded string (max 8 MB in size) of the photo to be compared.The Data URI scheme header needs to be removed from the encoded string
+Example: xhBQAAACBjSFJNAAB6****AAAASUVORK5CYII=
+        :rtype: str
+        """
         return self._CompareImageBase64
 
     @CompareImageBase64.setter
@@ -630,6 +831,9 @@ Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
 
     @property
     def Extra(self):
+        """The passthrough parameter of the business, max 1,000 characters, which will be returned in GetWebVerificationResultIntl.
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -638,6 +842,10 @@ Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
 
     @property
     def Config(self):
+        """The parameter control the page configuration.
+Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.WebVerificationConfigIntl`
+        """
         return self._Config
 
     @Config.setter
@@ -690,6 +898,10 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
     def VerificationUrl(self):
         warnings.warn("parameter `VerificationUrl` is deprecated", DeprecationWarning) 
 
+        """The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
+Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
+        :rtype: str
+        """
         return self._VerificationUrl
 
     @VerificationUrl.setter
@@ -700,6 +912,10 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
 
     @property
     def BizToken(self):
+        """The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.
+Example: 81EEF678-28EE-4759-A82E-6CBBBE6BC442
+        :rtype: str
+        """
         return self._BizToken
 
     @BizToken.setter
@@ -708,6 +924,10 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
 
     @property
     def VerificationURL(self):
+        """The verification URL to be opened with a browser to start the verification process.
+Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
+        :rtype: str
+        """
         return self._VerificationURL
 
     @VerificationURL.setter
@@ -716,6 +936,9 @@ Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBB
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -752,6 +975,9 @@ class ApplyWebVerificationTokenRequest(AbstractModel):
 
     @property
     def RedirectUrl(self):
+        """The web redirect URL after the verification is completed.
+        :rtype: str
+        """
         return self._RedirectUrl
 
     @RedirectUrl.setter
@@ -760,6 +986,11 @@ class ApplyWebVerificationTokenRequest(AbstractModel):
 
     @property
     def CompareImageUrl(self):
+        """The COS URL of the image for face comparison, which can be obtained with one of the following methods:
+1. Call the `CreateUploadUrl` API to generate a URL and call it again after the image is successfully uploaded.
+2. Use an existing COS URL. For a private bucket, grant the download permission with a pre-signed URL. The corresponding COS bucket must be in the same region as the input parameter `Region`.
+        :rtype: str
+        """
         return self._CompareImageUrl
 
     @CompareImageUrl.setter
@@ -768,6 +999,9 @@ class ApplyWebVerificationTokenRequest(AbstractModel):
 
     @property
     def CompareImageMd5(self):
+        """The MD5 hash values of the image for face comparison (CompareImageUrl).
+        :rtype: str
+        """
         return self._CompareImageMd5
 
     @CompareImageMd5.setter
@@ -809,6 +1043,9 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
 
     @property
     def VerificationUrl(self):
+        """The verification URL to be opened with a browser to start the verification process.
+        :rtype: str
+        """
         return self._VerificationUrl
 
     @VerificationUrl.setter
@@ -817,6 +1054,9 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
 
     @property
     def BizToken(self):
+        """The token used to identify a web-based verification process. It is valid for 7,200s and can be used to get the verification result after the process is completed.
+        :rtype: str
+        """
         return self._BizToken
 
     @BizToken.setter
@@ -825,6 +1065,9 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -836,6 +1079,48 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
         self._VerificationUrl = params.get("VerificationUrl")
         self._BizToken = params.get("BizToken")
         self._RequestId = params.get("RequestId")
+
+
+class AttackRiskDetail(AbstractModel):
+    """Suspected attack detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Suspected attack trace types
+SuspectedSpoofingAttack: Suspected spoofing attack
+ SuspectedSynthesisImage: Suspected synthesis image SuspectedSynthesisVideo: Suspected synthesis video SuspectedeAnomalyAttack: Suspected anomaly attack SuspectedAdversarialAttack: Suspected adversarial attack SuspectedBlackIndustry: Suspected batch generation attack
+SuspectedWatermark: Suspected watermark
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        """Suspected attack trace types
+SuspectedSpoofingAttack: Suspected spoofing attack
+ SuspectedSynthesisImage: Suspected synthesis image SuspectedSynthesisVideo: Suspected synthesis video SuspectedeAnomalyAttack: Suspected anomaly attack SuspectedAdversarialAttack: Suspected adversarial attack SuspectedBlackIndustry: Suspected batch generation attack
+SuspectedWatermark: Suspected watermark
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CardInfo(AbstractModel):
@@ -887,6 +1172,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MacaoIDCard: Macao ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
+        :param _TaiWanIDCard: TaiWan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        :param _JapanIDCard: Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -902,9 +1193,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ThailandIDCard = None
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
+        self._TaiWanIDCard = None
+        self._JapanIDCard = None
 
     @property
     def HKIDCard(self):
+        """Hong Kong ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.HKIDCard`
+        """
         return self._HKIDCard
 
     @HKIDCard.setter
@@ -913,6 +1210,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MLIDCard(self):
+        """Malaysia ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MLIDCard`
+        """
         return self._MLIDCard
 
     @MLIDCard.setter
@@ -921,6 +1222,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesVoteID(self):
+        """Philippines VoteID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesVoteID`
+        """
         return self._PhilippinesVoteID
 
     @PhilippinesVoteID.setter
@@ -929,6 +1234,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndonesiaIDCard(self):
+        """Indonesia ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IndonesiaIDCard`
+        """
         return self._IndonesiaIDCard
 
     @IndonesiaIDCard.setter
@@ -937,6 +1246,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesDrivingLicense(self):
+        """Philippines Driving License
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesDrivingLicense`
+        """
         return self._PhilippinesDrivingLicense
 
     @PhilippinesDrivingLicense.setter
@@ -945,6 +1258,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesTinID(self):
+        """Philippines TinID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesTinID`
+        """
         return self._PhilippinesTinID
 
     @PhilippinesTinID.setter
@@ -953,6 +1270,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesSSSID(self):
+        """Philippines SSSID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesSSSID`
+        """
         return self._PhilippinesSSSID
 
     @PhilippinesSSSID.setter
@@ -961,6 +1282,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesUMID(self):
+        """Philippines UMID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesUMID`
+        """
         return self._PhilippinesUMID
 
     @PhilippinesUMID.setter
@@ -969,6 +1294,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternationalIDPassport(self):
+        """ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.InternationalIDPassport`
+        """
         return self._InternationalIDPassport
 
     @InternationalIDPassport.setter
@@ -977,6 +1306,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GeneralCard(self):
+        """General license information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GeneralCard`
+        """
         return self._GeneralCard
 
     @GeneralCard.setter
@@ -985,6 +1318,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndonesiaDrivingLicense(self):
+        """Indonesia Driving License
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IndonesiaDrivingLicense`
+        """
         return self._IndonesiaDrivingLicense
 
     @IndonesiaDrivingLicense.setter
@@ -993,6 +1330,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThailandIDCard(self):
+        """Thailand ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ThailandIDCard`
+        """
         return self._ThailandIDCard
 
     @ThailandIDCard.setter
@@ -1001,6 +1342,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SingaporeIDCard(self):
+        """Singapore ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.SingaporeIDCard`
+        """
         return self._SingaporeIDCard
 
     @SingaporeIDCard.setter
@@ -1009,11 +1354,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MacaoIDCard(self):
+        """Macao ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
+        """
         return self._MacaoIDCard
 
     @MacaoIDCard.setter
     def MacaoIDCard(self, MacaoIDCard):
         self._MacaoIDCard = MacaoIDCard
+
+    @property
+    def TaiWanIDCard(self):
+        """TaiWan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        """
+        return self._TaiWanIDCard
+
+    @TaiWanIDCard.setter
+    def TaiWanIDCard(self, TaiWanIDCard):
+        self._TaiWanIDCard = TaiWanIDCard
+
+    @property
+    def JapanIDCard(self):
+        """Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
+        """
+        return self._JapanIDCard
+
+    @JapanIDCard.setter
+    def JapanIDCard(self, JapanIDCard):
+        self._JapanIDCard = JapanIDCard
 
 
     def _deserialize(self, params):
@@ -1059,6 +1432,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MacaoIDCard") is not None:
             self._MacaoIDCard = MacaoIDCard()
             self._MacaoIDCard._deserialize(params.get("MacaoIDCard"))
+        if params.get("TaiWanIDCard") is not None:
+            self._TaiWanIDCard = TaiWanIDCard()
+            self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
+        if params.get("JapanIDCard") is not None:
+            self._JapanIDCard = JapanIDCard()
+            self._JapanIDCard._deserialize(params.get("JapanIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1214,6 +1593,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPass(self):
+        """Whether the authentication or OCR process is successful.
+        :rtype: bool
+        """
         return self._IsPass
 
     @IsPass.setter
@@ -1222,6 +1604,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsEdit(self):
+        """Whether the user modified the card recognition result
+        :rtype: bool
+        """
         return self._IsEdit
 
     @IsEdit.setter
@@ -1230,6 +1615,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardVideo(self):
+        """The download URL of the video used for identity document verification, which is valid for 10 minutes. This parameter is returned only if video-based identity document verification is enabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._CardVideo
 
     @CardVideo.setter
@@ -1238,6 +1627,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardImage(self):
+        """The download URL of the identity document image, which is valid for 10 minutes.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._CardImage
 
     @CardImage.setter
@@ -1246,6 +1639,105 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardInfoOcrJson(self):
+        """The OCR result (in JSON) of the identity document image. If verification or OCR fails, this parameter is left empty. The URL is valid for 10 minutes.
+(1) Hong Kong (China) identity card
+When the value of `IdCardType` is `HK`:
+- CnName (string): Name in Chinese.
+- EnName (string): Name in English.
+- TelexCode (string): The code corresponding to the name in Chinese.
+- Sex (string): Gender. Valid values: `M` (male) and `F` (female).
+- Birthday (string): Date of birth.
+- Permanent (int): Whether it is a permanent residence identity card. Valid values: `0` (non-permanent), `1` (permanent), and `-1` (unknown).
+- IdNum (string): Identity card number.
+- Symbol (string): The ID symbol below the date of birth, such as "***AZ".
+- FirstIssueDate (string): Month and year of first registration.
+- CurrentIssueDate (string): The date of latest issuance.
+
+(2) Malaysian identity card
+When the value of `IdCardType` is `ML`:
+- Sex (string): Gender. Valid values: `LELAKI` (male) and `PEREMPUAN` (female).
+- Birthday (string): Date of birth.
+- ID (string): Identity card number.
+- Name (string): Name.
+- Address (string): Address.
+- Type (string): Identity document type.
+
+(3) Philippine identity document
+When the value of `IdCardType` is `PhilippinesVoteID`:
+- Birthday (string): Date of birth.
+- Address (string): Address.
+- LastName (string): Last name.
+- FirstName (string): First name.
+- VIN (string): Voter's identification number (VIN).
+- CivilStatus (string): Civil status.
+- Citizenship (string): Citizenship.
+- PrecinctNo (string): Precinct.
+
+When the value of `IdCardType` is `PhilippinesDrivingLicense`:
+- Sex (string): Gender.
+- Birthday (string): Date of birth.
+- Name (string): Name.
+- Address (string): Address.
+- LastName (string): Last name.
+- FirstName (string): First name.
+- MiddleName (string): Middle name.
+- Nationality (string): Nationality.
+- LicenseNo (string): License number.
+- ExpiresDate (string): Expiration date.
+- AgencyCode (string): Agency code.
+
+When the value of `IdCardType` is `PhilippinesTinID`:
+- LicenseNumber (string): Tax identification number (TIN).
+- FullName (string): Full name.
+- Address (string): Address.
+- Birthday (string): Date of birth.
+- IssueDate (string): Issue date.
+
+When the value of `IdCardType` is `PhilippinesSSSID`:
+- LicenseNumber (string): Common reference number (CRN).
+- FullName (string): Full name.
+- Birthday (string): Date of birth.
+
+When the value of `IdCardType` is `PhilippinesUMID`:
+- Surname (string): Surname.
+- MiddleName (string):Middle name.
+- GivenName (string): Given name.
+- Sex (string): Gender.
+- Birthday (string): Date of birth.
+- Address (string): Address.
+- CRN (string): Common reference number (CRN).
+
+(4) Indonesian identity card
+When the value of `IdCardType` is `IndonesiaIDCard`:
+- NIK (string): Single Identity Number.
+- Nama (string): Full name.
+- TempatTglLahir (string): Place and date of birth.
+- JenisKelamin (string): Gender.
+- GolDarah (string): Blood type.
+- Alamat (string): Address.
+- RTRW (string): Street.
+- KelDesa (string): Village.
+- Kecamatan (string): Region.
+- Agama (string): Religion.
+- StatusPerkawinan (string): Marital status.
+- Perkerjaan (string): Occupation.
+- KewargaNegaraan (string): Nationality.
+- BerlakuHingga (string): Expiry date.
+- IssuedDate (string): Issue date.
+
+(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
+When the value of `IdCardType` is `MLIDPassport`:
+- FullName (string): Full name.
+- Surname (string): Surname.
+- GivenName (string): Given name.
+- Birthday (string): Date of birth.
+- Sex (string): Gender. Valid values: `F` (female) and `M` (male).
+- DateOfExpiration (string): Expiration date.
+- IssuingCountry (string): Issuing country.
+- NationalityCode (string): Country/region code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._CardInfoOcrJson
 
     @CardInfoOcrJson.setter
@@ -1254,6 +1746,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The request ID of a single process.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1264,6 +1759,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CardInfo(self):
         warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
 
+        """The recognition results of ID card
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        """
         return self._CardInfo
 
     @CardInfo.setter
@@ -1274,6 +1772,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NormalCardInfo(self):
+        """License OCR result
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
+        """
         return self._NormalCardInfo
 
     @NormalCardInfo.setter
@@ -1282,6 +1783,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WarnCardInfos(self):
+        """Card warning information
+-9101 Alarm for covered certificate,
+-9102 Alarm for photocopied certificate,
+-9103 Alarm for photographed certificate,
+-9107 Alarm for reflective certificate,
+-9108 Alarm for blurry image,
+-9109 This capability is not enabled.
+        :rtype: list of int
+        """
         return self._WarnCardInfos
 
     @WarnCardInfos.setter
@@ -1290,6 +1800,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EditDetails(self):
+        """Details of the OCR modifications for this EKYC card, when the user manually modifies the card recognition results (IsEdit=true), EditDetails will return the modified fields. When IsEdit=false, EditDetails is empty.
+        :rtype: list of EditDetail
+        """
         return self._EditDetails
 
     @EditDetails.setter
@@ -1374,6 +1887,12 @@ Example value: ""
 
     @property
     def ImageBase64(self):
+        """Base64 value of photos used for face comparison. 
+The size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. 
+Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
+Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        :rtype: str
+        """
         return self._ImageBase64
 
     @ImageBase64.setter
@@ -1382,6 +1901,12 @@ Example value: ""
 
     @property
     def VideoBase64(self):
+        """Base64 value of videos used for face comparison. 
+The size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv are supported. 
+Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
+Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        :rtype: str
+        """
         return self._VideoBase64
 
     @VideoBase64.setter
@@ -1390,6 +1915,11 @@ Example value: ""
 
     @property
     def LivenessType(self):
+        """The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+Example value: "SILENT"
+        :rtype: str
+        """
         return self._LivenessType
 
     @LivenessType.setter
@@ -1398,6 +1928,19 @@ Example value: ""
 
     @property
     def ValidateData(self):
+        """When the "LivenessType" parameter is "ACTION", it must be specified.
+It is used to control the action sequence. Action types: 
+1 (open mouth)
+2 (blink)
+3 (nod)
+4 (shake head). 
+Select one or two from the four actions.
+Example of passing single action parameter: "1".
+Example of passing multiple action parameters: "4,2".
+When the "LivenessType" parameter value is "SILENT", it shall be unspecified.
+Example value: ""
+        :rtype: str
+        """
         return self._ValidateData
 
     @ValidateData.setter
@@ -1452,6 +1995,10 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
 
     @property
     def Result(self):
+        """Service error code. When the return value is "Success", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is "FailedOperation.CompareLowSimilarity", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). 
+Example Value: "Success".
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -1460,6 +2007,10 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
 
     @property
     def Description(self):
+        """Description of business results. 
+Example value: "Success"
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1468,6 +2019,11 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
 
     @property
     def Sim(self):
+        """This value is valid when the "Result" parameter is "Success" or "FailedOperation.CompareLowSimilarity." 
+This value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 10,000. 
+Example value: 80.00
+        :rtype: float
+        """
         return self._Sim
 
     @Sim.setter
@@ -1476,6 +2032,11 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
 
     @property
     def BestFrameBase64(self):
+        """The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. 
+Note: This field may return "null", indicating that no valid value can be obtained. 
+Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
+        :rtype: str
+        """
         return self._BestFrameBase64
 
     @BestFrameBase64.setter
@@ -1484,6 +2045,9 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1576,6 +2140,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
+        """The final verification result code.
+0: Success.
+1001: Failed to call the liveness detection engine.
+1004: Face detection failed.
+2004: The uploaded face image is too large or too small.
+2012: The face is not fully exposed.
+2013: No face is detected.
+2014: The resolution of the uploaded image is too low . Please upload a new one.
+2015: Face comparison failed.
+2016: The similarity did not reach the passing standard.
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -1584,6 +2160,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMsg(self):
+        """The description of the final verification result.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -1592,6 +2171,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveData(self):
+        """The liveness algorithm package generated during this SDK-based liveness detection.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._LiveData
 
     @LiveData.setter
@@ -1600,6 +2182,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveVideo(self):
+        """The download URL of the video used for verification, which is valid for 10 minutes.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._LiveVideo
 
     @LiveVideo.setter
@@ -1608,6 +2193,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveErrorCode(self):
+        """The liveness detection result code.
+0: Success.
+1001: Failed to call the liveness detection engine.
+1004: Face detection failed.
+        :rtype: str
+        """
         return self._LiveErrorCode
 
     @LiveErrorCode.setter
@@ -1616,6 +2207,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveErrorMsg(self):
+        """The description of the liveness detection result.
+        :rtype: str
+        """
         return self._LiveErrorMsg
 
     @LiveErrorMsg.setter
@@ -1624,6 +2218,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BestFrame(self):
+        """The download URL of the face screenshot during verification, which is valid for 10 minutes.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._BestFrame
 
     @BestFrame.setter
@@ -1632,6 +2230,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProfileImage(self):
+        """The download URL of the profile photo screenshot from the identity document, which is valid for 10 minutes.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._ProfileImage
 
     @ProfileImage.setter
@@ -1640,6 +2241,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareErrorCode(self):
+        """The face comparison result code.
+0: Success.
+2004: The uploaded face image is too large or too small.
+2012: The face is not fully exposed.
+2013: No face is detected.
+2014: The resolution of the uploaded image is too low . Please upload a new one.
+2015: Face comparison failed.
+2016: The similarity did not reach the passing standard.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._CompareErrorCode
 
     @CompareErrorCode.setter
@@ -1648,6 +2260,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareErrorMsg(self):
+        """The description of the face comparison result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CompareErrorMsg
 
     @CompareErrorMsg.setter
@@ -1656,6 +2272,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sim(self):
+        """The similarity score of face comparison.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Sim
 
     @Sim.setter
@@ -1664,6 +2284,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsNeedCharge(self):
+        """This parameter is disused.
+        :rtype: bool
+        """
         return self._IsNeedCharge
 
     @IsNeedCharge.setter
@@ -1672,6 +2295,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardInfoInputJson(self):
+        """The identity document photo info edited by the user. Currently, this parameter is not applied.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._CardInfoInputJson
 
     @CardInfoInputJson.setter
@@ -1680,6 +2307,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The request ID of this verification process.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1736,6 +2366,9 @@ class CreateUploadUrlRequest(AbstractModel):
 
     @property
     def TargetAction(self):
+        """Target API
+        :rtype: str
+        """
         return self._TargetAction
 
     @TargetAction.setter
@@ -1778,6 +2411,9 @@ class CreateUploadUrlResponse(AbstractModel):
 
     @property
     def UploadUrl(self):
+        """The URL for uploading contents with the `HTTP PUT` method.
+        :rtype: str
+        """
         return self._UploadUrl
 
     @UploadUrl.setter
@@ -1786,6 +2422,9 @@ class CreateUploadUrlResponse(AbstractModel):
 
     @property
     def ResourceUrl(self):
+        """The resource URL obtained after this upload is completed and to be passed in where it is required later.
+        :rtype: str
+        """
         return self._ResourceUrl
 
     @ResourceUrl.setter
@@ -1794,6 +2433,9 @@ class CreateUploadUrlResponse(AbstractModel):
 
     @property
     def ExpiredTimestamp(self):
+        """The point in time when the upload/download link expires, which is a 10-bit Unix timestamp.
+        :rtype: int
+        """
         return self._ExpiredTimestamp
 
     @ExpiredTimestamp.setter
@@ -1802,6 +2444,9 @@ class CreateUploadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1813,6 +2458,169 @@ class CreateUploadUrlResponse(AbstractModel):
         self._UploadUrl = params.get("UploadUrl")
         self._ResourceUrl = params.get("ResourceUrl")
         self._ExpiredTimestamp = params.get("ExpiredTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class DetectAIFakeFacesRequest(AbstractModel):
+    """DetectAIFakeFaces request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceInput: Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.
+        :type FaceInput: str
+        :param _FaceInputType: The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter
+        :type FaceInputType: int
+        :param _Encryption: Whether the request information needs to be fully encrypted; Supported encryption algorithms: AES-256-CBC, SM4-GCM; Users with encryption requirements can use this parameter, for details, please click the link on the left.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _EncryptedBody: Encrypted ciphertext; The data format before encryption is as follows:{"FaceInput":"AAAAA","FaceInputType":1}
+        :type EncryptedBody: str
+        """
+        self._FaceInput = None
+        self._FaceInputType = None
+        self._Encryption = None
+        self._EncryptedBody = None
+
+    @property
+    def FaceInput(self):
+        """Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.
+        :rtype: str
+        """
+        return self._FaceInput
+
+    @FaceInput.setter
+    def FaceInput(self, FaceInput):
+        self._FaceInput = FaceInput
+
+    @property
+    def FaceInputType(self):
+        """The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter
+        :rtype: int
+        """
+        return self._FaceInputType
+
+    @FaceInputType.setter
+    def FaceInputType(self, FaceInputType):
+        self._FaceInputType = FaceInputType
+
+    @property
+    def Encryption(self):
+        """Whether the request information needs to be fully encrypted; Supported encryption algorithms: AES-256-CBC, SM4-GCM; Users with encryption requirements can use this parameter, for details, please click the link on the left.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        """Encrypted ciphertext; The data format before encryption is as follows:{"FaceInput":"AAAAA","FaceInputType":1}
+        :rtype: str
+        """
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+
+    def _deserialize(self, params):
+        self._FaceInput = params.get("FaceInput")
+        self._FaceInputType = params.get("FaceInputType")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectAIFakeFacesResponse(AbstractModel):
+    """DetectAIFakeFaces response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttackRiskLevel: Whether the detected image is an attack: Low: No attack risk Mid: Moderately suspected attack High: Highly suspected attack
+        :type AttackRiskLevel: str
+        :param _AttackRiskDetailList: A list of suspected attack traces detected. Note: When no attack traces are detected, an empty array is returned. This parameter is only used as a reference for result judgment. In actual applications, it is still recommended to use the result of AttackRiskLevel.
+        :type AttackRiskDetailList: list of AttackRiskDetail
+        :param _ExtraInfo: Additional Information
+        :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AttackRiskLevel = None
+        self._AttackRiskDetailList = None
+        self._ExtraInfo = None
+        self._RequestId = None
+
+    @property
+    def AttackRiskLevel(self):
+        """Whether the detected image is an attack: Low: No attack risk Mid: Moderately suspected attack High: Highly suspected attack
+        :rtype: str
+        """
+        return self._AttackRiskLevel
+
+    @AttackRiskLevel.setter
+    def AttackRiskLevel(self, AttackRiskLevel):
+        self._AttackRiskLevel = AttackRiskLevel
+
+    @property
+    def AttackRiskDetailList(self):
+        """A list of suspected attack traces detected. Note: When no attack traces are detected, an empty array is returned. This parameter is only used as a reference for result judgment. In actual applications, it is still recommended to use the result of AttackRiskLevel.
+        :rtype: list of AttackRiskDetail
+        """
+        return self._AttackRiskDetailList
+
+    @AttackRiskDetailList.setter
+    def AttackRiskDetailList(self, AttackRiskDetailList):
+        self._AttackRiskDetailList = AttackRiskDetailList
+
+    @property
+    def ExtraInfo(self):
+        """Additional Information
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AttackRiskLevel = params.get("AttackRiskLevel")
+        if params.get("AttackRiskDetailList") is not None:
+            self._AttackRiskDetailList = []
+            for item in params.get("AttackRiskDetailList"):
+                obj = AttackRiskDetail()
+                obj._deserialize(item)
+                self._AttackRiskDetailList.append(obj)
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = ExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1839,6 +2647,9 @@ class DetectReflectLivenessAndCompareRequest(AbstractModel):
 
     @property
     def LiveDataUrl(self):
+        """URL of the liveness detection data package generated by the SDK
+        :rtype: str
+        """
         return self._LiveDataUrl
 
     @LiveDataUrl.setter
@@ -1847,6 +2658,9 @@ class DetectReflectLivenessAndCompareRequest(AbstractModel):
 
     @property
     def LiveDataMd5(self):
+        """MD5 hash value (32-bit) of the liveness detection data package generated by the SDK, which is used to verify the LiveData consistency.
+        :rtype: str
+        """
         return self._LiveDataMd5
 
     @LiveDataMd5.setter
@@ -1855,6 +2669,9 @@ class DetectReflectLivenessAndCompareRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """URL of the target image for comparison
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -1863,6 +2680,9 @@ class DetectReflectLivenessAndCompareRequest(AbstractModel):
 
     @property
     def ImageMd5(self):
+        """MD5 hash value (32-bit) of the target image for comparison, which is used to verify the `Image` consistency.
+        :rtype: str
+        """
         return self._ImageMd5
 
     @ImageMd5.setter
@@ -1914,6 +2734,9 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     @property
     def BestFrameUrl(self):
+        """Temporary URL of the best screenshot (.jpg) of the video after successful verification. Both the screenshot and the URL are valid for two hours only, so you need to download the screenshot within this period.
+        :rtype: str
+        """
         return self._BestFrameUrl
 
     @BestFrameUrl.setter
@@ -1922,6 +2745,9 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     @property
     def BestFrameMd5(self):
+        """MD5 hash value (32-bit) of the best screenshot of the video after successful verification, which is used to verify the `BestFrame` consistency.
+        :rtype: str
+        """
         return self._BestFrameMd5
 
     @BestFrameMd5.setter
@@ -1930,6 +2756,9 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -1938,6 +2767,9 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Service result description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1946,6 +2778,9 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     @property
     def Sim(self):
+        """Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
+        :rtype: float
+        """
         return self._Sim
 
     @Sim.setter
@@ -1954,6 +2789,9 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1990,6 +2828,9 @@ class EditDetail(AbstractModel):
 
     @property
     def FieldName(self):
+        """Modified Field Name
+        :rtype: str
+        """
         return self._FieldName
 
     @FieldName.setter
@@ -1998,6 +2839,9 @@ class EditDetail(AbstractModel):
 
     @property
     def OriginalFieldValue(self):
+        """Value of the field before modification, the original OCR result
+        :rtype: str
+        """
         return self._OriginalFieldValue
 
     @OriginalFieldValue.setter
@@ -2006,6 +2850,9 @@ class EditDetail(AbstractModel):
 
     @property
     def RevisedFieldValue(self):
+        """Value of the field after modification,the user's manually entered result
+        :rtype: str
+        """
         return self._RevisedFieldValue
 
     @RevisedFieldValue.setter
@@ -2017,6 +2864,143 @@ class EditDetail(AbstractModel):
         self._FieldName = params.get("FieldName")
         self._OriginalFieldValue = params.get("OriginalFieldValue")
         self._RevisedFieldValue = params.get("RevisedFieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Encryption(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptList: 
+        :type EncryptList: list of str
+        :param _CiphertextBlob: 
+        :type CiphertextBlob: str
+        :param _Iv: 
+        :type Iv: str
+        :param _Algorithm: 
+        :type Algorithm: str
+        :param _TagList: 
+        :type TagList: list of str
+        """
+        self._EncryptList = None
+        self._CiphertextBlob = None
+        self._Iv = None
+        self._Algorithm = None
+        self._TagList = None
+
+    @property
+    def EncryptList(self):
+        """
+        :rtype: list of str
+        """
+        return self._EncryptList
+
+    @EncryptList.setter
+    def EncryptList(self, EncryptList):
+        self._EncryptList = EncryptList
+
+    @property
+    def CiphertextBlob(self):
+        """
+        :rtype: str
+        """
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def Iv(self):
+        """
+        :rtype: str
+        """
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+    @property
+    def Algorithm(self):
+        """
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def TagList(self):
+        """
+        :rtype: list of str
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._EncryptList = params.get("EncryptList")
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._Iv = params.get("Iv")
+        self._Algorithm = params.get("Algorithm")
+        self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetrievalLivenessExtraInfo: 
+        :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
+        """
+        self._RetrievalLivenessExtraInfo = None
+
+    @property
+    def RetrievalLivenessExtraInfo(self):
+        """
+        :rtype: list of RetrievalLivenessExtraInfo
+        """
+        return self._RetrievalLivenessExtraInfo
+
+    @RetrievalLivenessExtraInfo.setter
+    def RetrievalLivenessExtraInfo(self, RetrievalLivenessExtraInfo):
+        self._RetrievalLivenessExtraInfo = RetrievalLivenessExtraInfo
+
+
+    def _deserialize(self, params):
+        if params.get("RetrievalLivenessExtraInfo") is not None:
+            self._RetrievalLivenessExtraInfo = []
+            for item in params.get("RetrievalLivenessExtraInfo"):
+                obj = RetrievalLivenessExtraInfo()
+                obj._deserialize(item)
+                self._RetrievalLivenessExtraInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2047,6 +3031,9 @@ class FileInfo(AbstractModel):
 
     @property
     def Url(self):
+        """The URL for downloading the file
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2055,6 +3042,9 @@ class FileInfo(AbstractModel):
 
     @property
     def MD5(self):
+        """The 32-bit MD5 checksum of the file
+        :rtype: str
+        """
         return self._MD5
 
     @MD5.setter
@@ -2063,6 +3053,9 @@ class FileInfo(AbstractModel):
 
     @property
     def Size(self):
+        """The file size
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -2177,6 +3170,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -2185,6 +3182,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PersonalNumber(self):
+        """Personal number, which is returned when it is a passport
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PersonalNumber
 
     @PersonalNumber.setter
@@ -2193,6 +3194,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PassportCodeFirst(self):
+        """The first line of passport machine reading code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PassportCodeFirst
 
     @PassportCodeFirst.setter
@@ -2201,6 +3206,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PassportCodeSecond(self):
+        """The first line of passport machine reading code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PassportCodeSecond
 
     @PassportCodeSecond.setter
@@ -2209,6 +3218,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationDate(self):
+        """Date of expiry in the format of YYYY-MM-DD
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -2217,6 +3230,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DueDate(self):
+        """Valid date in the format of YYYY-MM-DD
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DueDate
 
     @DueDate.setter
@@ -2225,6 +3242,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
+        """Date of issue in the format of YYYY-MM-DD
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedDate
 
     @IssuedDate.setter
@@ -2233,6 +3254,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedAuthority(self):
+        """Issuing authority
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedAuthority
 
     @IssuedAuthority.setter
@@ -2241,6 +3266,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedCountry(self):
+        """Issuing country, which is returned following the ISO 3166 country coding specification
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: MYS
+        :rtype: str
+        """
         return self._IssuedCountry
 
     @IssuedCountry.setter
@@ -2249,6 +3279,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Full Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -2257,6 +3291,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -2265,6 +3303,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -2273,6 +3315,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender on the license
+- M: male
+- F: female
+- X: other gender
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: M
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -2281,6 +3331,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Age(self):
+        """Age. 0 indicates that no valid information is obtained.
+Example: 0
+        :rtype: str
+        """
         return self._Age
 
     @Age.setter
@@ -2289,6 +3343,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -2297,6 +3355,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BirthPlace(self):
+        """Birth place
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BirthPlace
 
     @BirthPlace.setter
@@ -2305,6 +3367,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
+        """Nationality, which is returned following the ISO 3166 country coding specification
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: IND
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -2313,6 +3380,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegistrationNumber(self):
+        """Registration number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegistrationNumber
 
     @RegistrationNumber.setter
@@ -2321,6 +3392,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.Address`
+        """
         return self._Address
 
     @Address.setter
@@ -2383,6 +3458,9 @@ class GenerateReflectSequenceRequest(AbstractModel):
 
     @property
     def DeviceDataUrl(self):
+        """The resource URL of the data package generated by the SDK.
+        :rtype: str
+        """
         return self._DeviceDataUrl
 
     @DeviceDataUrl.setter
@@ -2391,6 +3469,9 @@ class GenerateReflectSequenceRequest(AbstractModel):
 
     @property
     def DeviceDataMd5(self):
+        """The MD5 hash value of the data package generated by the SDK.
+        :rtype: str
+        """
         return self._DeviceDataMd5
 
     @DeviceDataMd5.setter
@@ -2399,6 +3480,12 @@ class GenerateReflectSequenceRequest(AbstractModel):
 
     @property
     def SecurityLevel(self):
+        """1 - silent
+2 - blinking
+3 - light
+4 - blinking + light (default)
+        :rtype: str
+        """
         return self._SecurityLevel
 
     @SecurityLevel.setter
@@ -2440,6 +3527,9 @@ class GenerateReflectSequenceResponse(AbstractModel):
 
     @property
     def ReflectSequenceUrl(self):
+        """The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.
+        :rtype: str
+        """
         return self._ReflectSequenceUrl
 
     @ReflectSequenceUrl.setter
@@ -2448,6 +3538,9 @@ class GenerateReflectSequenceResponse(AbstractModel):
 
     @property
     def ReflectSequenceMd5(self):
+        """The MD5 hash value of the light sequence, which is used to check whether the light sequence is altered.
+        :rtype: str
+        """
         return self._ReflectSequenceMd5
 
     @ReflectSequenceMd5.setter
@@ -2456,6 +3549,9 @@ class GenerateReflectSequenceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2483,6 +3579,9 @@ class GetCardVerificationResultRequest(AbstractModel):
 
     @property
     def CardVerificationToken(self):
+        """The token used to identify an verification process. It can be used to get the verification result after the process is completed.
+        :rtype: str
+        """
         return self._CardVerificationToken
 
     @CardVerificationToken.setter
@@ -2550,6 +3649,13 @@ Example value: ID_CARD
 
     @property
     def Status(self):
+        """Pass status. When Warning and Rejected are returned, please check the specific reasons in the WarnInfo structure return. Example values are as follows:
+PASSED
+WARNING
+REJECTED
+PROCESSING
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2558,6 +3664,9 @@ Example value: ID_CARD
 
     @property
     def WarnInfo(self):
+        """Warning information returned by document verification.
+        :rtype: list of str
+        """
         return self._WarnInfo
 
     @WarnInfo.setter
@@ -2566,6 +3675,11 @@ Example value: ID_CARD
 
     @property
     def Nationality(self):
+        """Nationality code. Complies with standard ISO 3166-1 alpha-3. 
+
+Example value: IDN
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -2574,6 +3688,15 @@ Example value: ID_CARD
 
     @property
     def CardType(self):
+        """Card Type. The supported options are:
+ID_CARD
+PASSPORT
+DRIVING_LICENSE
+AUTO
+
+Example value: ID_CARD
+        :rtype: str
+        """
         return self._CardType
 
     @CardType.setter
@@ -2582,6 +3705,10 @@ Example value: ID_CARD
 
     @property
     def CardSubType(self):
+        """Subtype of the ID document.
+
+        :rtype: str
+        """
         return self._CardSubType
 
     @CardSubType.setter
@@ -2590,6 +3717,9 @@ Example value: ID_CARD
 
     @property
     def CardInfo(self):
+        """Recognition results of the ID document.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        """
         return self._CardInfo
 
     @CardInfo.setter
@@ -2598,6 +3728,9 @@ Example value: ID_CARD
 
     @property
     def IDVerificationToken(self):
+        """The token used to identify an verification process. It can be used to get the verification result after the process is completed.
+        :rtype: str
+        """
         return self._IDVerificationToken
 
     @IDVerificationToken.setter
@@ -2606,6 +3739,9 @@ Example value: ID_CARD
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2640,6 +3776,9 @@ class GetFaceIdResultIntlRequest(AbstractModel):
 
     @property
     def SdkToken(self):
+        """The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.	
+        :rtype: str
+        """
         return self._SdkToken
 
     @SdkToken.setter
@@ -2703,6 +3842,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
+        """The return code of the verification result.
+0: Succeeded.
+1001: System error.
+1004: Liveness detection and face comparison failed.
+2004: The image passed in is too large or too small.
+2012: Several faces were detected.
+2013: No face was detected, or the face detected was incomplete.
+2014: The image resolution is too low or the quality does not meet the requirements.
+2015: Face comparison failed.
+2016: The similarity did not reach the standard passing threshold.
+-999: The verification process wasn't finished.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2711,6 +3863,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """The description of the verification result.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2719,6 +3874,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BestFrame(self):
+        """The best frame screenshot (in Base64) obtained during the verification.
+        :rtype: str
+        """
         return self._BestFrame
 
     @BestFrame.setter
@@ -2727,6 +3885,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Video(self):
+        """The video file (Base64) for verification.
+        :rtype: str
+        """
         return self._Video
 
     @Video.setter
@@ -2735,6 +3896,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Similarity(self):
+        """The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -2743,6 +3908,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extra(self):
+        """The pass-through parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -2751,6 +3920,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2791,14 +3963,32 @@ Default value: `4`.
         :type Image: str
         :param _Extra: The pass-through parameter, which can be omitted if there are no special requirements.
         :type Extra: str
+        :param _ActionList: This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
+        :type ActionList: str
         """
         self._CheckMode = None
         self._SecureLevel = None
         self._Image = None
         self._Extra = None
+        self._ActionList = None
 
     @property
     def CheckMode(self):
+        """The detection mode. Valid values:
+`liveness`: Liveness detection only.
+`compare`: Liveness detection and face comparison.
+Default value: `liveness`.
+        :rtype: str
+        """
         return self._CheckMode
 
     @CheckMode.setter
@@ -2807,6 +3997,14 @@ Default value: `4`.
 
     @property
     def SecureLevel(self):
+        """The verification security level. Valid values:
+`1`: Video-based liveness detection.
+`2`: Motion-based liveness detection.
+`3`: Reflection-based liveness detection.
+`4`: Motion- and reflection-based liveness detection.
+Default value: `4`.
+        :rtype: str
+        """
         return self._SecureLevel
 
     @SecureLevel.setter
@@ -2815,6 +4013,9 @@ Default value: `4`.
 
     @property
     def Image(self):
+        """The photo (in Base64) to compare. This parameter is required when the value of `CheckMode` is `compare`.
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -2823,11 +4024,34 @@ Default value: `4`.
 
     @property
     def Extra(self):
+        """The pass-through parameter, which can be omitted if there are no special requirements.
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
     def Extra(self, Extra):
         self._Extra = Extra
+
+    @property
+    def ActionList(self):
+        """This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
+        :rtype: str
+        """
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
 
 
     def _deserialize(self, params):
@@ -2835,6 +4059,7 @@ Default value: `4`.
         self._SecureLevel = params.get("SecureLevel")
         self._Image = params.get("Image")
         self._Extra = params.get("Extra")
+        self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2862,6 +4087,9 @@ class GetFaceIdTokenIntlResponse(AbstractModel):
 
     @property
     def SdkToken(self):
+        """The SDK token, which is used throughout the verification process and to get the verification result.
+        :rtype: str
+        """
         return self._SdkToken
 
     @SdkToken.setter
@@ -2870,6 +4098,9 @@ class GetFaceIdTokenIntlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2896,6 +4127,9 @@ class GetLivenessResultRequest(AbstractModel):
 
     @property
     def SdkToken(self):
+        """The token used to identify an SDK-based verification process.
+        :rtype: str
+        """
         return self._SdkToken
 
     @SdkToken.setter
@@ -2941,6 +4175,9 @@ class GetLivenessResultResponse(AbstractModel):
 
     @property
     def Result(self):
+        """The final verification result.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2949,6 +4186,9 @@ class GetLivenessResultResponse(AbstractModel):
 
     @property
     def Description(self):
+        """The description of the final verification result.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2957,6 +4197,9 @@ class GetLivenessResultResponse(AbstractModel):
 
     @property
     def BestFrame(self):
+        """The face screenshot.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._BestFrame
 
     @BestFrame.setter
@@ -2965,6 +4208,9 @@ class GetLivenessResultResponse(AbstractModel):
 
     @property
     def Video(self):
+        """The video for the detection.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._Video
 
     @Video.setter
@@ -2973,6 +4219,9 @@ class GetLivenessResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3006,6 +4255,9 @@ class GetSdkVerificationResultRequest(AbstractModel):
 
     @property
     def SdkToken(self):
+        """The token used to identify an SDK-based verification process. 
+        :rtype: str
+        """
         return self._SdkToken
 
     @SdkToken.setter
@@ -3057,6 +4309,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def Result(self):
+        """The result code of the verification result.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -3065,6 +4320,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def Description(self):
+        """The verification result description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3073,6 +4331,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def ChargeCount(self):
+        """The charge count.
+        :rtype: int
+        """
         return self._ChargeCount
 
     @ChargeCount.setter
@@ -3081,6 +4342,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def CardVerifyResults(self):
+        """The results of multiple OCR processes (in order). The result of the final process is used as the valid result.
+        :rtype: list of CardVerifyResult
+        """
         return self._CardVerifyResults
 
     @CardVerifyResults.setter
@@ -3089,6 +4353,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def CompareResults(self):
+        """The results of multiple liveness detection processes (in order). The result of the final process is used as the valid result.
+        :rtype: list of CompareResult
+        """
         return self._CompareResults
 
     @CompareResults.setter
@@ -3097,6 +4364,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def Extra(self):
+        """Data passed through in the process of getting the token.
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3105,6 +4375,9 @@ class GetSdkVerificationResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3146,6 +4419,9 @@ class GetWebVerificationResultIntlRequest(AbstractModel):
 
     @property
     def BizToken(self):
+        """The token for the web-based verification, which is generated using the `ApplyWebVerificationBizTokenIntl` API.
+        :rtype: str
+        """
         return self._BizToken
 
     @BizToken.setter
@@ -3207,6 +4483,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
+        """The final result of this verification. `0` indicates that the person is the same as that in the photo.
+For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -3215,6 +4496,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMsg(self):
+        """The description of the final verification result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -3223,6 +4508,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerificationDetailList(self):
+        """The detailed verification result list of this process. Retries are allowed, so a verification process may have several entries of results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of VerificationDetail
+        """
         return self._VerificationDetailList
 
     @VerificationDetailList.setter
@@ -3231,6 +4520,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoBase64(self):
+        """The Base64-encoded string of the video collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no video is collected, null is returned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VideoBase64
 
     @VideoBase64.setter
@@ -3239,6 +4532,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BestFrameBase64(self):
+        """The Base64-encoded string of the best face screenshot collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BestFrameBase64
 
     @BestFrameBase64.setter
@@ -3247,6 +4544,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OCRResult(self):
+        """Card recognize result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of OCRResult
+        """
         return self._OCRResult
 
     @OCRResult.setter
@@ -3255,6 +4556,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extra(self):
+        """The passthrough parameter of the business, max 1,000 characters, which will be returned in GetWebVerificationResultIntl.
+        :rtype: str
+        """
         return self._Extra
 
     @Extra.setter
@@ -3263,6 +4567,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3305,6 +4612,9 @@ class GetWebVerificationResultRequest(AbstractModel):
 
     @property
     def BizToken(self):
+        """The token for the web-based verification, which is generated with the `ApplyWebVerificationToken` API.
+        :rtype: str
+        """
         return self._BizToken
 
     @BizToken.setter
@@ -3366,6 +4676,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
+        """The final result of this verification. `0` indicates that the person is the same as that in the photo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -3374,6 +4688,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMsg(self):
+        """The description of the final verification result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -3382,6 +4700,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoBestFrameUrl(self):
+        """The temporary URL of the best face screenshot collected from the video stream. It is valid for 10 minutes. Download the image if needed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VideoBestFrameUrl
 
     @VideoBestFrameUrl.setter
@@ -3390,6 +4712,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoBestFrameMd5(self):
+        """The MD5 hash value of the best face screenshot collected from the video stream. It can be used to check whether the image content is consistent with the file content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VideoBestFrameMd5
 
     @VideoBestFrameMd5.setter
@@ -3398,6 +4724,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerificationDetailList(self):
+        """The details list of this verification process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of VerificationDetail
+        """
         return self._VerificationDetailList
 
     @VerificationDetailList.setter
@@ -3406,6 +4736,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoUrl(self):
+        """The temporary URL of the video collected from the video stream. It is valid for 10 minutes. Download the video if needed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -3414,6 +4748,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoMd5(self):
+        """The MD5 hash value of the video collected from the video stream. It can be used to check whether the video content is consistent with the file content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VideoMd5
 
     @VideoMd5.setter
@@ -3422,6 +4760,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3498,6 +4839,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnName(self):
+        """
+        :rtype: str
+        """
         return self._CnName
 
     @CnName.setter
@@ -3506,6 +4850,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnName(self):
+        """English name
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: SAN, Nan
+        :rtype: str
+        """
         return self._EnName
 
     @EnName.setter
@@ -3514,6 +4863,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TelexCode(self):
+        """Telex code correspondint to the Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TelexCode
 
     @TelexCode.setter
@@ -3522,6 +4875,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender: "Male-M" or "Female-F"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -3530,6 +4887,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: 01-01-2001
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -3538,6 +4900,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Permanent(self):
+        """Permanent resident ID card: 0-non-permanent; 1-permanent; -1-unknown
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Permanent
 
     @Permanent.setter
@@ -3546,6 +4912,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IdNum(self):
+        """ID card number
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: C000000(E)
+        :rtype: str
+        """
         return self._IdNum
 
     @IdNum.setter
@@ -3554,6 +4925,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Symbol(self):
+        """Lisence symbol, which is the symbol below Birthday. Example: "***AZ"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Symbol
 
     @Symbol.setter
@@ -3562,6 +4937,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstIssueDate(self):
+        """The first date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstIssueDate
 
     @FirstIssueDate.setter
@@ -3570,6 +4949,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentIssueDate(self):
+        """The current date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CurrentIssueDate
 
     @CurrentIssueDate.setter
@@ -3588,6 +4971,147 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Symbol = params.get("Symbol")
         self._FirstIssueDate = params.get("FirstIssueDate")
         self._CurrentIssueDate = params.get("CurrentIssueDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HMTPermit(AbstractModel):
+    """Exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+        :type Name: str
+        :param _EnglishName: English name
+        :type EnglishName: str
+        :param _Number: License number
+        :type Number: str
+        :param _Sex: Gender
+        :type Sex: str
+        :param _ValidDate: Valid date
+        :type ValidDate: str
+        :param _IssueAuthority: Issued authority
+        :type IssueAuthority: str
+        :param _IssueAddress: Issued address
+        :type IssueAddress: str
+        :param _Birthday: Birthday
+        :type Birthday: str
+        """
+        self._Name = None
+        self._EnglishName = None
+        self._Number = None
+        self._Sex = None
+        self._ValidDate = None
+        self._IssueAuthority = None
+        self._IssueAddress = None
+        self._Birthday = None
+
+    @property
+    def Name(self):
+        """Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnglishName(self):
+        """English name
+        :rtype: str
+        """
+        return self._EnglishName
+
+    @EnglishName.setter
+    def EnglishName(self, EnglishName):
+        self._EnglishName = EnglishName
+
+    @property
+    def Number(self):
+        """License number
+        :rtype: str
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Sex(self):
+        """Gender
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def ValidDate(self):
+        """Valid date
+        :rtype: str
+        """
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def IssueAuthority(self):
+        """Issued authority
+        :rtype: str
+        """
+        return self._IssueAuthority
+
+    @IssueAuthority.setter
+    def IssueAuthority(self, IssueAuthority):
+        self._IssueAuthority = IssueAuthority
+
+    @property
+    def IssueAddress(self):
+        """Issued address
+        :rtype: str
+        """
+        return self._IssueAddress
+
+    @IssueAddress.setter
+    def IssueAddress(self, IssueAddress):
+        self._IssueAddress = IssueAddress
+
+    @property
+    def Birthday(self):
+        """Birthday
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._EnglishName = params.get("EnglishName")
+        self._Number = params.get("Number")
+        self._Sex = params.get("Sex")
+        self._ValidDate = params.get("ValidDate")
+        self._IssueAuthority = params.get("IssueAuthority")
+        self._IssueAddress = params.get("IssueAddress")
+        self._Birthday = params.get("Birthday")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3641,6 +5165,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -3649,6 +5177,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -3657,6 +5189,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -3665,6 +5201,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -3673,6 +5213,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -3681,6 +5225,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationDate(self):
+        """Expiration date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -3689,6 +5237,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
+        """Date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedDate
 
     @IssuedDate.setter
@@ -3697,6 +5249,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedCountry(self):
+        """Issuing country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedCountry
 
     @IssuedCountry.setter
@@ -3802,6 +5358,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NIK(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NIK
 
     @NIK.setter
@@ -3810,6 +5370,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nama(self):
+        """Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Nama
 
     @Nama.setter
@@ -3818,6 +5382,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TempatTglLahir(self):
+        """Birth place/Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TempatTglLahir
 
     @TempatTglLahir.setter
@@ -3826,6 +5394,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JenisKelamin(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JenisKelamin
 
     @JenisKelamin.setter
@@ -3834,6 +5406,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GolDarah(self):
+        """Blood type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._GolDarah
 
     @GolDarah.setter
@@ -3842,6 +5418,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alamat(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Alamat
 
     @Alamat.setter
@@ -3850,6 +5430,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RTRW(self):
+        """Street
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RTRW
 
     @RTRW.setter
@@ -3858,6 +5442,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KelDesa(self):
+        """Village
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._KelDesa
 
     @KelDesa.setter
@@ -3866,6 +5454,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Kecamatan(self):
+        """Region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Kecamatan
 
     @Kecamatan.setter
@@ -3874,6 +5466,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Agama(self):
+        """Religious beliefs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Agama
 
     @Agama.setter
@@ -3882,6 +5478,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusPerkawinan(self):
+        """Marital status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusPerkawinan
 
     @StatusPerkawinan.setter
@@ -3890,6 +5490,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Perkerjaan(self):
+        """Job
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Perkerjaan
 
     @Perkerjaan.setter
@@ -3898,6 +5502,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KewargaNegaraan(self):
+        """Nationality
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._KewargaNegaraan
 
     @KewargaNegaraan.setter
@@ -3906,6 +5514,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BerlakuHingga(self):
+        """ID card validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BerlakuHingga
 
     @BerlakuHingga.setter
@@ -3914,6 +5526,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
+        """Date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedDate
 
     @IssuedDate.setter
@@ -3922,6 +5538,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Provinsi(self):
+        """Province
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Provinsi
 
     @Provinsi.setter
@@ -3930,6 +5550,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Kota(self):
+        """City
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Kota
 
     @Kota.setter
@@ -4020,6 +5644,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """Passport ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -4028,6 +5656,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -4036,6 +5668,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Surname(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Surname
 
     @Surname.setter
@@ -4044,6 +5680,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GivenName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._GivenName
 
     @GivenName.setter
@@ -4052,6 +5692,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -4060,6 +5704,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender (F-Female, M-Male)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -4068,6 +5716,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfExpiration(self):
+        """Expiration date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DateOfExpiration
 
     @DateOfExpiration.setter
@@ -4076,6 +5728,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuingCountry(self):
+        """Issuing country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuingCountry
 
     @IssuingCountry.setter
@@ -4084,6 +5740,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NationalityCode(self):
+        """Nationality code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NationalityCode
 
     @NationalityCode.setter
@@ -4092,6 +5752,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PassportCodeFirst(self):
+        """The first line at the bottom, the MRZ Code sequence
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PassportCodeFirst
 
     @PassportCodeFirst.setter
@@ -4100,6 +5764,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PassportCodeSecond(self):
+        """The second line at the bottom, the MRZ Code sequence
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PassportCodeSecond
 
     @PassportCodeSecond.setter
@@ -4119,6 +5787,129 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NationalityCode = params.get("NationalityCode")
         self._PassportCodeFirst = params.get("PassportCodeFirst")
         self._PassportCodeSecond = params.get("PassportCodeSecond")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JapanIDCard(AbstractModel):
+    """Japan ID card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _ExpirationDate: Expire date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpirationDate: str
+        :param _FormattedAddress: Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormattedAddress: str
+        """
+        self._FullName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._ExpirationDate = None
+        self._FormattedAddress = None
+
+    @property
+    def FullName(self):
+        """Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        """Age
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def ExpirationDate(self):
+        """Expire date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def FormattedAddress(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FormattedAddress
+
+    @FormattedAddress.setter
+    def FormattedAddress(self, FormattedAddress):
+        self._FormattedAddress = FormattedAddress
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._FormattedAddress = params.get("FormattedAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4183,6 +5974,10 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def LivenessType(self):
+        """Liveness detection type. Valid values: LIP/ACTION/SILENT.
+LIP: numeric mode; ACTION: motion mode; SILENT: silent mode. You need to select a mode to input.
+        :rtype: str
+        """
         return self._LivenessType
 
     @LivenessType.setter
@@ -4191,6 +5986,13 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ImageBase64(self):
+        """Base64 string of the image for face comparison.
+The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
+
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.
+        :rtype: str
+        """
         return self._ImageBase64
 
     @ImageBase64.setter
@@ -4199,6 +6001,13 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ImageUrl(self):
+        """URL of the image for face comparison. The size of the downloaded image after Base64 encoding can be up to 3 MB. JPG and PNG formats are supported.
+
+Either the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageBase64` will be used.
+
+We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -4207,6 +6016,11 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def ValidateData(self):
+        """Lip mode: set this parameter to a custom 4-digit verification code.
+Action mode: set this parameter to a custom action sequence (e.g., `2,1` or `1,2`).
+Silent mode: do not pass in this parameter.
+        :rtype: str
+        """
         return self._ValidateData
 
     @ValidateData.setter
@@ -4215,6 +6029,12 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def Optional(self):
+        """Optional configuration (a JSON string)
+{
+"BestFrameNum": 2  // Return multiple best screenshots. Value range: 2−10
+}
+        :rtype: str
+        """
         return self._Optional
 
     @Optional.setter
@@ -4223,6 +6043,13 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def VideoBase64(self):
+        """Base64 string of the video for liveness detection.
+The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
+Please use the standard Base64 encoding scheme (with the "=" padding). For the encoding conventions, please see RFC 4648.
+
+Either the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.
+        :rtype: str
+        """
         return self._VideoBase64
 
     @VideoBase64.setter
@@ -4231,6 +6058,13 @@ We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can gu
 
     @property
     def VideoUrl(self):
+        """URL of the video for liveness detection. The size of the downloaded video after Base64 encoding can be up to 8 MB. It takes no more than 4 seconds to download. MP4, AVI, and FLV formats are supported.
+
+Either the `VideoUrl` or `VideoBase64` of the video must be provided. If both are provided, only `VideoBase64` will be used.
+
+We recommend you store the video in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -4285,6 +6119,9 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def BestFrameBase64(self):
+        """The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.
+        :rtype: str
+        """
         return self._BestFrameBase64
 
     @BestFrameBase64.setter
@@ -4293,6 +6130,9 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def Sim(self):
+        """Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).
+        :rtype: float
+        """
         return self._Sim
 
     @Sim.setter
@@ -4301,6 +6141,9 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4309,6 +6152,9 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Service result description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4317,6 +6163,9 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def BestFrameList(self):
+        """
+        :rtype: list of str
+        """
         return self._BestFrameList
 
     @BestFrameList.setter
@@ -4325,6 +6174,9 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4383,6 +6235,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Full Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4391,6 +6247,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -4399,6 +6259,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -4407,6 +6271,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -4415,6 +6283,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Lisence type
+MyKad ID card
+MyPR Permanent resident ID card
+MyTentera Military ID card
+MyKAS Temporary ID card
+POLIS Police ID card
+IKAD Labor ID card
+MyKid Juvenile ID card
+Example: MyKad
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4423,6 +6302,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday (Currently, this filed only supports IKAD labor ID card and MyKad ID card)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -4498,6 +6381,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -4506,6 +6393,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -4514,6 +6405,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -4522,6 +6417,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationDate(self):
+        """Expiration date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -4530,6 +6429,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -4538,6 +6441,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Sex
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -4546,6 +6453,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Age(self):
+        """Age
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Age
 
     @Age.setter
@@ -4554,6 +6465,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedCountry(self):
+        """Issued country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedCountry
 
     @IssuedCountry.setter
@@ -4562,6 +6477,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Field1(self):
+        """MRZ1 on card
+Note: This field may return null, indicating that no valid values can be obtained. 
+        :rtype: str
+        """
         return self._Field1
 
     @Field1.setter
@@ -4570,6 +6489,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Field2(self):
+        """MRZ2 on card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Field2
 
     @Field2.setter
@@ -4639,6 +6562,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -4647,6 +6575,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Sex
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -4655,6 +6587,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nation(self):
+        """Nation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Nation
 
     @Nation.setter
@@ -4663,6 +6599,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -4673,6 +6613,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Address(self):
         warnings.warn("parameter `Address` is deprecated", DeprecationWarning) 
 
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -4683,6 +6627,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -4691,6 +6640,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormattedAddress(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FormattedAddress
 
     @FormattedAddress.setter
@@ -4768,6 +6721,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MainlandIDCard: Mainland ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MainlandIDCard: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
+        :param _JapanIDCard: Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
+        :param _TaiWanIDCard: Taiwan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        :param _HMTPermitCard: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HMTPermitCard: :class:`tencentcloud.faceid.v20180301.models.HMTPermit`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -4784,9 +6746,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
         self._MainlandIDCard = None
+        self._JapanIDCard = None
+        self._TaiWanIDCard = None
+        self._HMTPermitCard = None
 
     @property
     def HKIDCard(self):
+        """Hong Kong ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalHKIDCard`
+        """
         return self._HKIDCard
 
     @HKIDCard.setter
@@ -4795,6 +6764,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MLIDCard(self):
+        """Malaysia ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalMLIDCard`
+        """
         return self._MLIDCard
 
     @MLIDCard.setter
@@ -4803,6 +6776,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesVoteID(self):
+        """Philippines VoteID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesVoteID`
+        """
         return self._PhilippinesVoteID
 
     @PhilippinesVoteID.setter
@@ -4811,6 +6788,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndonesiaIDCard(self):
+        """Indonesia ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalIndonesiaIDCard`
+        """
         return self._IndonesiaIDCard
 
     @IndonesiaIDCard.setter
@@ -4819,6 +6800,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesDrivingLicense(self):
+        """Philippines Driving License
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesDrivingLicense`
+        """
         return self._PhilippinesDrivingLicense
 
     @PhilippinesDrivingLicense.setter
@@ -4827,6 +6812,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesTinID(self):
+        """Philippines TinID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesTinID`
+        """
         return self._PhilippinesTinID
 
     @PhilippinesTinID.setter
@@ -4835,6 +6824,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesSSSID(self):
+        """Philippines SSSID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesSSSID`
+        """
         return self._PhilippinesSSSID
 
     @PhilippinesSSSID.setter
@@ -4843,6 +6836,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhilippinesUMID(self):
+        """Philippines UMID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PhilippinesUMID`
+        """
         return self._PhilippinesUMID
 
     @PhilippinesUMID.setter
@@ -4851,6 +6848,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternationalIDPassport(self):
+        """ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.InternationalIDPassport`
+        """
         return self._InternationalIDPassport
 
     @InternationalIDPassport.setter
@@ -4859,6 +6860,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GeneralCard(self):
+        """General license information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GeneralCard`
+        """
         return self._GeneralCard
 
     @GeneralCard.setter
@@ -4867,6 +6872,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndonesiaDrivingLicense(self):
+        """Indonesia Driving License
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.IndonesiaDrivingLicense`
+        """
         return self._IndonesiaDrivingLicense
 
     @IndonesiaDrivingLicense.setter
@@ -4875,6 +6884,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThailandIDCard(self):
+        """Thailand ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalThailandIDCard`
+        """
         return self._ThailandIDCard
 
     @ThailandIDCard.setter
@@ -4883,6 +6896,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SingaporeIDCard(self):
+        """Singapore ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.SingaporeIDCard`
+        """
         return self._SingaporeIDCard
 
     @SingaporeIDCard.setter
@@ -4891,6 +6908,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MacaoIDCard(self):
+        """Macao ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
+        """
         return self._MacaoIDCard
 
     @MacaoIDCard.setter
@@ -4899,11 +6920,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MainlandIDCard(self):
+        """Mainland ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
+        """
         return self._MainlandIDCard
 
     @MainlandIDCard.setter
     def MainlandIDCard(self, MainlandIDCard):
         self._MainlandIDCard = MainlandIDCard
+
+    @property
+    def JapanIDCard(self):
+        """Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
+        """
+        return self._JapanIDCard
+
+    @JapanIDCard.setter
+    def JapanIDCard(self, JapanIDCard):
+        self._JapanIDCard = JapanIDCard
+
+    @property
+    def TaiWanIDCard(self):
+        """Taiwan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        """
+        return self._TaiWanIDCard
+
+    @TaiWanIDCard.setter
+    def TaiWanIDCard(self, TaiWanIDCard):
+        self._TaiWanIDCard = TaiWanIDCard
+
+    @property
+    def HMTPermitCard(self):
+        """exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.HMTPermit`
+        """
+        return self._HMTPermitCard
+
+    @HMTPermitCard.setter
+    def HMTPermitCard(self, HMTPermitCard):
+        self._HMTPermitCard = HMTPermitCard
 
 
     def _deserialize(self, params):
@@ -4952,6 +7013,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MainlandIDCard") is not None:
             self._MainlandIDCard = MainlandIDCard()
             self._MainlandIDCard._deserialize(params.get("MainlandIDCard"))
+        if params.get("JapanIDCard") is not None:
+            self._JapanIDCard = JapanIDCard()
+            self._JapanIDCard._deserialize(params.get("JapanIDCard"))
+        if params.get("TaiWanIDCard") is not None:
+            self._TaiWanIDCard = TaiWanIDCard()
+            self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
+        if params.get("HMTPermitCard") is not None:
+            self._HMTPermitCard = HMTPermit()
+            self._HMTPermitCard._deserialize(params.get("HMTPermitCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5017,6 +7087,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChineseName(self):
+        """Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+
+        :rtype: str
+        """
         return self._ChineseName
 
     @ChineseName.setter
@@ -5025,6 +7100,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """English name
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: SAN, Nan
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -5033,6 +7113,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegistrationNumber(self):
+        """Telex code correspondint to the Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegistrationNumber
 
     @RegistrationNumber.setter
@@ -5041,6 +7125,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender: "Male-M" or "Female-F"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -5049,6 +7137,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: 01-01-2001
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -5057,6 +7150,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Permanent(self):
+        """Permanent resident ID card: 0-non-permanent; 1-permanent; -1-unknown
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Permanent
 
     @Permanent.setter
@@ -5065,6 +7162,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """ID card number
+Note: This field may return null, indicating that no valid values can be obtained.
+Example: C000000(E)
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -5073,6 +7175,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Symbol(self):
+        """Lisence symbol, which is the symbol below Birthday. Example: "***AZ"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Symbol
 
     @Symbol.setter
@@ -5081,6 +7187,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
+        """The first date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedDate
 
     @IssuedDate.setter
@@ -5089,6 +7199,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentIssueDate(self):
+        """The current date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CurrentIssueDate
 
     @CurrentIssueDate.setter
@@ -5196,6 +7310,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -5204,6 +7322,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -5212,6 +7334,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birth place/Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -5220,6 +7346,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -5228,6 +7358,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BloodType(self):
+        """Blood type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BloodType
 
     @BloodType.setter
@@ -5236,6 +7370,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormattedAddress(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FormattedAddress
 
     @FormattedAddress.setter
@@ -5244,6 +7382,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Street(self):
+        """Street
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Street
 
     @Street.setter
@@ -5252,6 +7394,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Village(self):
+        """Village
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Village
 
     @Village.setter
@@ -5260,6 +7406,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Area(self):
+        """Region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -5268,6 +7418,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Religion(self):
+        """Religious beliefs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Religion
 
     @Religion.setter
@@ -5276,6 +7430,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaritalStatus(self):
+        """Marital status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MaritalStatus
 
     @MaritalStatus.setter
@@ -5284,6 +7442,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Occupation(self):
+        """Job
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Occupation
 
     @Occupation.setter
@@ -5292,6 +7454,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
+        """Nationality
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -5300,6 +7466,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DueDate(self):
+        """ID card validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DueDate
 
     @DueDate.setter
@@ -5308,6 +7478,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
+        """Date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedDate
 
     @IssuedDate.setter
@@ -5316,6 +7490,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
+        """Province
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -5324,6 +7502,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
+        """City
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -5401,6 +7583,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Full Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -5409,6 +7595,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -5417,6 +7607,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -5425,6 +7619,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormattedAddress(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FormattedAddress
 
     @FormattedAddress.setter
@@ -5433,6 +7631,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Lisence type
+MyKad ID card
+MyPR Permanent resident ID card
+MyTentera Military ID card
+MyKAS Temporary ID card
+POLIS Police ID card
+IKAD Labor ID card
+MyKid Juvenile ID card
+Example: MyKad
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5441,6 +7650,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday (Currently, this filed only supports IKAD labor ID card and MyKad ID card)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -5528,6 +7741,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """LicenseNumber
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -5536,6 +7753,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Thailand name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -5544,6 +7765,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -5552,6 +7777,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -5560,6 +7789,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -5568,6 +7801,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FormattedAddress(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FormattedAddress
 
     @FormattedAddress.setter
@@ -5576,6 +7813,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpirationDate(self):
+        """Expiration date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -5584,6 +7825,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedDate(self):
+        """Issued date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedDate
 
     @IssuedDate.setter
@@ -5592,6 +7837,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegistrationNumber(self):
+        """Registration number 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegistrationNumber
 
     @RegistrationNumber.setter
@@ -5600,6 +7849,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Religion(self):
+        """Religion
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Religion
 
     @Religion.setter
@@ -5608,6 +7861,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThaiBirthday(self):
+        """Birthday in Thai
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ThaiBirthday
 
     @ThaiBirthday.setter
@@ -5616,6 +7873,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThaiExpirationDate(self):
+        """Expiration date in Thai
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ThaiExpirationDate
 
     @ThaiExpirationDate.setter
@@ -5624,6 +7885,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThaiIssueDate(self):
+        """Issued date in Thai
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ThaiIssueDate
 
     @ThaiIssueDate.setter
@@ -5669,22 +7934,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardImageBase64: str
         :param _CardInfo: OCR result of the ID card.
         :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        :param _NormalCardInfo: OCR result of the ID card.
+        :type NormalCardInfo: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
         :param _RequestId: The request id
         :type RequestId: str
         :param _CardCutImageBase64: Base64 of cropped image of ID card
         :type CardCutImageBase64: str
         :param _CardBackCutImageBase64: Base64 of the cropped image on the reverse side of the ID card
         :type CardBackCutImageBase64: str
+        :param _WarnCardInfos: Card Warning Information
+
+-9101 Alarm for covered certificate,
+-9102 Alarm for photocopied certificate,
+-9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
+-9107 Alarm for reflective certificate,
+-9108 Alarm for blurry image,
+-9109 This capability is not enabled.
+        :type WarnCardInfos: list of int
         """
         self._IsPass = None
         self._CardImageBase64 = None
         self._CardInfo = None
+        self._NormalCardInfo = None
         self._RequestId = None
         self._CardCutImageBase64 = None
         self._CardBackCutImageBase64 = None
+        self._WarnCardInfos = None
 
     @property
     def IsPass(self):
+        """Is the indentity verification or OCR process passed
+        :rtype: bool
+        """
         return self._IsPass
 
     @IsPass.setter
@@ -5693,6 +7975,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardImageBase64(self):
+        """The Base64 of ID card image
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CardImageBase64
 
     @CardImageBase64.setter
@@ -5701,14 +7987,35 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardInfo(self):
+        warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
+
+        """OCR result of the ID card.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        """
         return self._CardInfo
 
     @CardInfo.setter
     def CardInfo(self, CardInfo):
+        warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
+
         self._CardInfo = CardInfo
 
     @property
+    def NormalCardInfo(self):
+        """OCR result of the ID card.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
+        """
+        return self._NormalCardInfo
+
+    @NormalCardInfo.setter
+    def NormalCardInfo(self, NormalCardInfo):
+        self._NormalCardInfo = NormalCardInfo
+
+    @property
     def RequestId(self):
+        """The request id
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5717,6 +8024,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardCutImageBase64(self):
+        """Base64 of cropped image of ID card
+        :rtype: str
+        """
         return self._CardCutImageBase64
 
     @CardCutImageBase64.setter
@@ -5725,11 +8035,33 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardBackCutImageBase64(self):
+        """Base64 of the cropped image on the reverse side of the ID card
+        :rtype: str
+        """
         return self._CardBackCutImageBase64
 
     @CardBackCutImageBase64.setter
     def CardBackCutImageBase64(self, CardBackCutImageBase64):
         self._CardBackCutImageBase64 = CardBackCutImageBase64
+
+    @property
+    def WarnCardInfos(self):
+        """Card Warning Information
+
+-9101 Alarm for covered certificate,
+-9102 Alarm for photocopied certificate,
+-9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
+-9107 Alarm for reflective certificate,
+-9108 Alarm for blurry image,
+-9109 This capability is not enabled.
+        :rtype: list of int
+        """
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
 
 
     def _deserialize(self, params):
@@ -5738,9 +8070,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CardInfo") is not None:
             self._CardInfo = CardInfo()
             self._CardInfo._deserialize(params.get("CardInfo"))
+        if params.get("NormalCardInfo") is not None:
+            self._NormalCardInfo = NormalCardInfo()
+            self._NormalCardInfo._deserialize(params.get("NormalCardInfo"))
         self._RequestId = params.get("RequestId")
         self._CardCutImageBase64 = params.get("CardCutImageBase64")
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5807,6 +8143,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Full Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5815,6 +8155,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -5823,6 +8168,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -5831,6 +8180,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MiddleName(self):
+        """Middle name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MiddleName
 
     @MiddleName.setter
@@ -5839,6 +8192,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
+        """Nationality
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -5847,6 +8204,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -5855,6 +8216,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -5863,6 +8228,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNo(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNo
 
     @LicenseNo.setter
@@ -5871,6 +8240,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpiresDate(self):
+        """Date of expiry
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpiresDate
 
     @ExpiresDate.setter
@@ -5879,6 +8252,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AgencyCode(self):
+        """Agency code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AgencyCode
 
     @AgencyCode.setter
@@ -5887,6 +8264,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -5939,6 +8320,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -5947,6 +8332,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -5955,6 +8344,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -6007,6 +8400,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -6015,6 +8412,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -6023,6 +8424,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -6031,6 +8436,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -6039,6 +8448,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssueDate(self):
+        """Date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssueDate
 
     @IssueDate.setter
@@ -6101,6 +8514,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Surname(self):
+        """Surname
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Surname
 
     @Surname.setter
@@ -6109,6 +8526,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MiddleName(self):
+        """Middle Name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MiddleName
 
     @MiddleName.setter
@@ -6117,6 +8538,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GivenName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._GivenName
 
     @GivenName.setter
@@ -6125,6 +8550,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -6133,6 +8562,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -6141,6 +8574,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -6149,6 +8586,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CRN(self):
+        """CRN code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CRN
 
     @CRN.setter
@@ -6217,6 +8658,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VIN(self):
+        """VIN of Philippines VoteID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VIN
 
     @VIN.setter
@@ -6225,6 +8670,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -6233,6 +8682,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -6241,6 +8694,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -6249,6 +8706,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CivilStatus(self):
+        """Civil status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CivilStatus
 
     @CivilStatus.setter
@@ -6257,6 +8718,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Citizenship(self):
+        """Nationality
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Citizenship
 
     @Citizenship.setter
@@ -6265,6 +8730,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -6273,6 +8742,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrecinctNo(self):
+        """Region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PrecinctNo
 
     @PrecinctNo.setter
@@ -6289,6 +8762,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Citizenship = params.get("Citizenship")
         self._Address = params.get("Address")
         self._PrecinctNo = params.get("PrecinctNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetrievalLivenessExtraInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitGroup: 
+        :type HitGroup: str
+        :param _SimilarityScore: 
+        :type SimilarityScore: float
+        :param _HitTemplate: 
+        :type HitTemplate: str
+        """
+        self._HitGroup = None
+        self._SimilarityScore = None
+        self._HitTemplate = None
+
+    @property
+    def HitGroup(self):
+        """
+        :rtype: str
+        """
+        return self._HitGroup
+
+    @HitGroup.setter
+    def HitGroup(self, HitGroup):
+        self._HitGroup = HitGroup
+
+    @property
+    def SimilarityScore(self):
+        """
+        :rtype: float
+        """
+        return self._SimilarityScore
+
+    @SimilarityScore.setter
+    def SimilarityScore(self, SimilarityScore):
+        self._SimilarityScore = SimilarityScore
+
+    @property
+    def HitTemplate(self):
+        """
+        :rtype: str
+        """
+        return self._HitTemplate
+
+    @HitTemplate.setter
+    def HitTemplate(self, HitTemplate):
+        self._HitTemplate = HitTemplate
+
+
+    def _deserialize(self, params):
+        self._HitGroup = params.get("HitGroup")
+        self._SimilarityScore = params.get("SimilarityScore")
+        self._HitTemplate = params.get("HitTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6376,6 +8915,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ChName(self):
         warnings.warn("parameter `ChName` is deprecated", DeprecationWarning) 
 
+        """Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChName
 
     @ChName.setter
@@ -6386,6 +8929,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChineseName(self):
+        """Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChineseName
 
     @ChineseName.setter
@@ -6396,6 +8943,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def EnName(self):
         warnings.warn("parameter `EnName` is deprecated", DeprecationWarning) 
 
+        """English name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EnName
 
     @EnName.setter
@@ -6406,6 +8957,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FullName(self):
+        """English name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FullName
 
     @FullName.setter
@@ -6416,6 +8971,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ID(self):
         warnings.warn("parameter `ID` is deprecated", DeprecationWarning) 
 
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -6426,6 +8985,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -6434,6 +8997,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sex
 
     @Sex.setter
@@ -6444,6 +9011,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CountryOfBirth(self):
         warnings.warn("parameter `CountryOfBirth` is deprecated", DeprecationWarning) 
 
+        """Country of birth
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CountryOfBirth
 
     @CountryOfBirth.setter
@@ -6454,6 +9025,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Nationality(self):
+        """Nationality
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Nationality
 
     @Nationality.setter
@@ -6462,6 +9037,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Birthday(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -6470,6 +9049,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Address (on the back)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -6478,6 +9061,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Race(self):
+        """Race (on the back)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Race
 
     @Race.setter
@@ -6486,6 +9073,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NRICCode(self):
+        """ NRIC number (on the back)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NRICCode
 
     @NRICCode.setter
@@ -6494,6 +9085,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PostCode(self):
+        """Post number (on the front)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PostCode
 
     @PostCode.setter
@@ -6502,6 +9097,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfExpiration(self):
+        """Date of expiry (on the back)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DateOfExpiration
 
     @DateOfExpiration.setter
@@ -6510,6 +9109,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfIssue(self):
+        """Date of issue (on the back)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DateOfIssue
 
     @DateOfIssue.setter
@@ -6534,6 +9137,112 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PostCode = params.get("PostCode")
         self._DateOfExpiration = params.get("DateOfExpiration")
         self._DateOfIssue = params.get("DateOfIssue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaiWanIDCard(AbstractModel):
+    """Taiwan ID card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Sex: Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sex: str
+        :param _IssuedCountry: Issued country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        :param _RegistrationNumber: Registration number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegistrationNumber: str
+        """
+        self._FullName = None
+        self._LicenseNumber = None
+        self._Sex = None
+        self._IssuedCountry = None
+        self._RegistrationNumber = None
+
+    @property
+    def FullName(self):
+        """Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Sex(self):
+        """Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def IssuedCountry(self):
+        """Issued country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+    @property
+    def RegistrationNumber(self):
+        """Registration number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RegistrationNumber
+
+    @RegistrationNumber.setter
+    def RegistrationNumber(self, RegistrationNumber):
+        self._RegistrationNumber = RegistrationNumber
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Sex = params.get("Sex")
+        self._IssuedCountry = params.get("IssuedCountry")
+        self._RegistrationNumber = params.get("RegistrationNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6583,6 +9292,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastName(self):
+        """Last name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastName
 
     @LastName.setter
@@ -6591,6 +9304,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstName(self):
+        """First name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FirstName
 
     @FirstName.setter
@@ -6599,6 +9316,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseNumber(self):
+        """License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseNumber
 
     @LicenseNumber.setter
@@ -6607,6 +9328,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfBirth(self):
+        """Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DateOfBirth
 
     @DateOfBirth.setter
@@ -6615,6 +9340,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfExpiry(self):
+        """Date of expiry
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DateOfExpiry
 
     @DateOfExpiry.setter
@@ -6623,6 +9352,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateOfIssue(self):
+        """Date of issue
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DateOfIssue
 
     @DateOfIssue.setter
@@ -6631,6 +9364,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IssuedCountry(self):
+        """Issuing country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IssuedCountry
 
     @IssuedCountry.setter
@@ -6703,6 +9440,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
+        """The final result of this verification. `0` indicates that the person is the same as that in the photo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -6711,6 +9452,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMsg(self):
+        """The description of the final verification result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -6719,6 +9464,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LivenessErrorCode(self):
+        """The result of this liveness detection process. `0` indicates success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._LivenessErrorCode
 
     @LivenessErrorCode.setter
@@ -6727,6 +9476,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LivenessErrorMsg(self):
+        """The result description of this liveness detection process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LivenessErrorMsg
 
     @LivenessErrorMsg.setter
@@ -6735,6 +9488,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareErrorCode(self):
+        """The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CompareErrorCode
 
     @CompareErrorCode.setter
@@ -6743,6 +9500,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareErrorMsg(self):
+        """The result description of this comparison process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CompareErrorMsg
 
     @CompareErrorMsg.setter
@@ -6751,6 +9512,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReqTimestamp(self):
+        """The timestamp (ms) of this verification process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ReqTimestamp
 
     @ReqTimestamp.setter
@@ -6759,6 +9524,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Similarity(self):
+        """The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Value range: [0.00, 100.00]. By default, the person in the screenshot is determined to be the same person in the image if the similarity is greater than or equal to 70.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Similarity
 
     @Similarity.setter
@@ -6767,6 +9536,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Seq(self):
+        """Unique ID of this verification process.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Seq
 
     @Seq.setter
@@ -6830,6 +9603,11 @@ SILENT parameter: Null.
 
     @property
     def ImageUrl(self):
+        """The URL of the photo for face comparison. The downloaded image after Base64 encoding can be up to 3 MB and must be in JPG or PNG.
+
+The image must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate an image URL by using `CreateUploadUrl` or purchase the COS service.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -6838,6 +9616,9 @@ SILENT parameter: Null.
 
     @property
     def ImageMd5(self):
+        """The 32-bit MD5 checksum of the image for comparison
+        :rtype: str
+        """
         return self._ImageMd5
 
     @ImageMd5.setter
@@ -6846,6 +9627,11 @@ SILENT parameter: Null.
 
     @property
     def VideoUrl(self):
+        """The URL of the video for liveness detection. The downloaded video after Base64 encoding can be up to 8 MB and must be in MP4, AVI, or FLV. It takes no more than 4s to download the video.
+
+The video must be stored in a COS bucket in the region where the FaceID service resides to ensure a higher download speed and better stability. You can generate a video URL by using `CreateUploadUrl` or purchase the COS service.
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -6854,6 +9640,9 @@ SILENT parameter: Null.
 
     @property
     def VideoMd5(self):
+        """The 32-bit MD5 checksum of the video
+        :rtype: str
+        """
         return self._VideoMd5
 
     @VideoMd5.setter
@@ -6862,6 +9651,10 @@ SILENT parameter: Null.
 
     @property
     def LivenessType(self):
+        """The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+        :rtype: str
+        """
         return self._LivenessType
 
     @LivenessType.setter
@@ -6870,6 +9663,11 @@ SILENT parameter: Null.
 
     @property
     def ValidateData(self):
+        """LIP parameter: Pass in a custom 4-digit verification code.
+ACTION parameter: Pass in a custom action sequence (`2,1` or `1,2`).
+SILENT parameter: Null.
+        :rtype: str
+        """
         return self._ValidateData
 
     @ValidateData.setter
@@ -6921,6 +9719,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sim(self):
+        """The similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two persons are of the same person. You can adjust the threshold according to your specific scenario (the FARs at the thresholds of 70 and 80 are 0.1% and 0.01%, respectively).
+        :rtype: float
+        """
         return self._Sim
 
     @Sim.setter
@@ -6929,6 +9730,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
+        """The service error code. `Success` will be returned for success. For error information, see the `FailedOperation` section in the error code list below.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6937,6 +9741,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """The service result description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6945,6 +9752,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BestFrame(self):
+        """The best video screenshot after successful verification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
         return self._BestFrame
 
     @BestFrame.setter
@@ -6953,6 +9764,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6999,6 +9813,17 @@ Example value: 3
 7.PhilippinesSSSID: Philippines SSSID card
 8.PhilippinesUMID: Philippines UMID card
 9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+10.IndonesiaDrivingLicense:Indonesia driving license
+11.ThailandIDCard: Thailand ID card
+12.ThailandDrivingLicense: Thailand driving license
+13.MLDrivingLicense: Malaysia driving license
+14.SingaporeIDCard: Singapore ID card
+15.SingaporeDrivingLicense: Singapore driving license
+16.JapanIDCard: Japan ID card
+17.JapanDrivingLicense: Japan driving license
+18.PhilippinesIDCard: Philippines ID card
+19.MainlandIDCard: Mainland ID card
+20.MacaoIDCard: Macao ID card
 Example: HKIDCard
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
@@ -7015,6 +9840,17 @@ Example: HKIDCard
         :type Language: str
         :param _AutoDowngrade: Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.
         :type AutoDowngrade: int
+        :param _ActionList: This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+        :type ActionList: str
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -7027,9 +9863,13 @@ Example: HKIDCard
         self._ThemeColor = None
         self._Language = None
         self._AutoDowngrade = None
+        self._ActionList = None
 
     @property
     def AutoSkipStartPage(self):
+        """When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. The default is false. This configuration will not take effect if the downgrade policy is triggered.
+        :rtype: bool
+        """
         return self._AutoSkipStartPage
 
     @AutoSkipStartPage.setter
@@ -7038,6 +9878,10 @@ Example: HKIDCard
 
     @property
     def AutoSkip(self):
+        """When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.
+Example value: false
+        :rtype: bool
+        """
         return self._AutoSkip
 
     @AutoSkip.setter
@@ -7046,6 +9890,14 @@ Example: HKIDCard
 
     @property
     def CheckMode(self):
+        """Detection mode, parameter values are as follows:
+1: OCR+living detection & face comparison;
+2: Living detection & face comparison;
+3: Living detection;
+The default value is 2.
+Example value: 3
+        :rtype: int
+        """
         return self._CheckMode
 
     @CheckMode.setter
@@ -7054,6 +9906,30 @@ Example: HKIDCard
 
     @property
     def IDCardType(self):
+        """The type of lisence used for verification. The following types are supported.
+1.HKIDCard: Hong Kong (China) ID card
+2.MLIDCard: Malaysia ID card
+3.IndonesiaIDCard: Indonesia ID card
+4.PhilippinesVoteID: Philippines VoteID card
+5.PhilippinesDrivingLicense: Philippines driving license
+6.PhilippinesTinID: Philippines TinID card
+7.PhilippinesSSSID: Philippines SSSID card
+8.PhilippinesUMID: Philippines UMID card
+9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+10.IndonesiaDrivingLicense:Indonesia driving license
+11.ThailandIDCard: Thailand ID card
+12.ThailandDrivingLicense: Thailand driving license
+13.MLDrivingLicense: Malaysia driving license
+14.SingaporeIDCard: Singapore ID card
+15.SingaporeDrivingLicense: Singapore driving license
+16.JapanIDCard: Japan ID card
+17.JapanDrivingLicense: Japan driving license
+18.PhilippinesIDCard: Philippines ID card
+19.MainlandIDCard: Mainland ID card
+20.MacaoIDCard: Macao ID card
+Example: HKIDCard
+        :rtype: str
+        """
         return self._IDCardType
 
     @IDCardType.setter
@@ -7062,6 +9938,9 @@ Example: HKIDCard
 
     @property
     def DisableCheckOcrWarnings(self):
+        """Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
+        :rtype: bool
+        """
         return self._DisableCheckOcrWarnings
 
     @DisableCheckOcrWarnings.setter
@@ -7070,6 +9949,9 @@ Example: HKIDCard
 
     @property
     def SecurityLevel(self):
+        """Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;5:Action+Lighting(High security) mode; default value is 3
+        :rtype: int
+        """
         return self._SecurityLevel
 
     @SecurityLevel.setter
@@ -7078,6 +9960,9 @@ Example: HKIDCard
 
     @property
     def SkipPrivacyPolicy(self):
+        """Whether to skip the agreement page, the default is false. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page.
+        :rtype: bool
+        """
         return self._SkipPrivacyPolicy
 
     @SkipPrivacyPolicy.setter
@@ -7086,6 +9971,9 @@ Example: HKIDCard
 
     @property
     def IdCardCutReturn(self):
+        """The default value is false. If it is false, the original ID image will be displayed. If it is true, the cut ID image will be displayed.
+        :rtype: bool
+        """
         return self._IdCardCutReturn
 
     @IdCardCutReturn.setter
@@ -7094,6 +9982,9 @@ Example: HKIDCard
 
     @property
     def ThemeColor(self):
+        """Front-end theme color, in the format of RGB hexadecimal color code. The default value is "#2d72+1". If the format is incorrect, the default value color will be used.
+        :rtype: str
+        """
         return self._ThemeColor
 
     @ThemeColor.setter
@@ -7102,6 +9993,9 @@ Example: HKIDCard
 
     @property
     def Language(self):
+        """International language, the default value is en (English). Currently supported: th: Thai; en: English; zh-cn: Simplified Chinese; zh-tc: Tradionnal Chinese; id: Bahasa Indonesia.
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -7110,11 +10004,34 @@ Example: HKIDCard
 
     @property
     def AutoDowngrade(self):
+        """Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.
+        :rtype: int
+        """
         return self._AutoDowngrade
 
     @AutoDowngrade.setter
     def AutoDowngrade(self, AutoDowngrade):
         self._AutoDowngrade = AutoDowngrade
+
+    @property
+    def ActionList(self):
+        """This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+        :rtype: str
+        """
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
 
 
     def _deserialize(self, params):
@@ -7129,6 +10046,7 @@ Example: HKIDCard
         self._ThemeColor = params.get("ThemeColor")
         self._Language = params.get("Language")
         self._AutoDowngrade = params.get("AutoDowngrade")
+        self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

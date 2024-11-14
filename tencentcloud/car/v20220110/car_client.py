@@ -49,6 +49,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindConcurrentPackagesToProject(self, request):
+        """This API is used to bind a concurrency pack to a project.
+
+        :param request: Request instance for BindConcurrentPackagesToProject.
+        :type request: :class:`tencentcloud.car.v20220110.models.BindConcurrentPackagesToProjectRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.BindConcurrentPackagesToProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindConcurrentPackagesToProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindConcurrentPackagesToProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateApplication(self, request):
         """This API is used to create an application.
 
@@ -63,6 +86,29 @@ class CarClient(AbstractClient):
             body = self.call("CreateApplication", params, headers=headers)
             response = json.loads(body)
             model = models.CreateApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateApplicationProject(self, request):
+        """This API is used to create a cloud application project.
+
+        :param request: Request instance for CreateApplicationProject.
+        :type request: :class:`tencentcloud.car.v20220110.models.CreateApplicationProjectRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.CreateApplicationProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplicationProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApplicationProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -164,6 +210,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteApplicationProjects(self, request):
+        """This API is used to delete cloud application projects in batches.
+
+        :param request: Request instance for DeleteApplicationProjects.
+        :type request: :class:`tencentcloud.car.v20220110.models.DeleteApplicationProjectsRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DeleteApplicationProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationProjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApplicationProjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteApplicationVersion(self, request):
         """This API is used to delete a cloud application version.
 
@@ -256,6 +325,52 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApplicationProjectAdvancedConfig(self, request):
+        """This API is used to obtain the advanced configuration information of a cloud application project.
+
+        :param request: Request instance for DescribeApplicationProjectAdvancedConfig.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationProjectAdvancedConfigRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeApplicationProjectAdvancedConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationProjectAdvancedConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationProjectAdvancedConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApplicationProjects(self, request):
+        """This API is used to obtain the cloud application project list.
+
+        :param request: Request instance for DescribeApplicationProjects.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeApplicationProjectsRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeApplicationProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationProjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationProjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApplicationStatus(self, request):
         """This API is used to query the running status of a cloud application and update status information.
 
@@ -316,6 +431,52 @@ class CarClient(AbstractClient):
             body = self.call("DescribeConcurrentCount", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConcurrentCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConcurrentPackages(self, request):
+        """This API is used to obtain the cloud application concurrency pack list.
+
+        :param request: Request instance for DescribeConcurrentPackages.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentPackagesRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrentPackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrentPackagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConcurrentSummary(self, request):
+        """This API is used to query the concurrency overview.
+
+        :param request: Request instance for DescribeConcurrentSummary.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentSummaryRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrentSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrentSummaryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -394,6 +555,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyApplicationProject(self, request):
+        """This API is used to modify a cloud application project.
+
+        :param request: Request instance for ModifyApplicationProject.
+        :type request: :class:`tencentcloud.car.v20220110.models.ModifyApplicationProjectRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.ModifyApplicationProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplicationProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApplicationProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApplicationVersion(self, request):
         """This API is used to modify the version information of a cloud application.
 
@@ -417,6 +601,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConcurrentPackage(self, request):
+        """This API is used to modify a cloud application concurrency pack.
+
+        :param request: Request instance for ModifyConcurrentPackage.
+        :type request: :class:`tencentcloud.car.v20220110.models.ModifyConcurrentPackageRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.ModifyConcurrentPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConcurrentPackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConcurrentPackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMobileApplicationInfo(self, request):
         """This API is used to modify the mobile application data.
 
@@ -431,6 +638,29 @@ class CarClient(AbstractClient):
             body = self.call("ModifyMobileApplicationInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMobileApplicationInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetConcurrentPackages(self, request):
+        """This API is used to reset a concurrency pack and disconnect all user connections.
+
+        :param request: Request instance for ResetConcurrentPackages.
+        :type request: :class:`tencentcloud.car.v20220110.models.ResetConcurrentPackagesRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.ResetConcurrentPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetConcurrentPackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetConcurrentPackagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -464,7 +694,7 @@ class CarClient(AbstractClient):
 
 
     def StartPublishStream(self, request):
-        """This API is used to start cloud-based streaming. The codec for the cloud-based streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9.
+        """This API is used to start pushing your cloud application's video streams in real time to CSS. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9.
 
         :param request: Request instance for StartPublishStream.
         :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamRequest`
@@ -487,7 +717,7 @@ class CarClient(AbstractClient):
 
 
     def StartPublishStreamWithURL(self, request):
-        """This API is used to start cloud-based streaming to the specified URL. The codec for the cloud-based streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9. This streaming method will be billed separately. For details about the billing method, see [Charging for Streaming to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).
+        """This API is used to start pushing your cloud application's video streams to a specified URL. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9. This streaming method will be billed separately. For details about the billing method, see [Charging for Streaming to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).
 
         :param request: Request instance for StartPublishStreamWithURL.
         :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLRequest`
@@ -510,7 +740,7 @@ class CarClient(AbstractClient):
 
 
     def StopPublishStream(self, request):
-        """This API is used to stop cloud-based streaming.
+        """This API is used to stop pushing streams.
 
         :param request: Request instance for StopPublishStream.
         :type request: :class:`tencentcloud.car.v20220110.models.StopPublishStreamRequest`
@@ -523,6 +753,29 @@ class CarClient(AbstractClient):
             body = self.call("StopPublishStream", params, headers=headers)
             response = json.loads(body)
             model = models.StopPublishStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindConcurrentPackagesFromProject(self, request):
+        """This API is used to unbind a concurrency pack from a project.
+
+        :param request: Request instance for UnbindConcurrentPackagesFromProject.
+        :type request: :class:`tencentcloud.car.v20220110.models.UnbindConcurrentPackagesFromProjectRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.UnbindConcurrentPackagesFromProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindConcurrentPackagesFromProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindConcurrentPackagesFromProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -47,6 +47,9 @@ Notes:
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -55,6 +58,9 @@ Notes:
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -63,6 +69,9 @@ Notes:
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -71,6 +80,9 @@ Notes:
 
     @property
     def DelayTime(self):
+        """Delay time in seconds, up to 600s.
+        :rtype: int
+        """
         return self._DelayTime
 
     @DelayTime.setter
@@ -79,6 +91,12 @@ Notes:
 
     @property
     def ExpireTime(self):
+        """Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.
+Notes:
+1. The configuration will expire after 7 days by default and can last up to 7 days.
+2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -116,6 +134,9 @@ class AddDelayLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -173,6 +194,9 @@ If you do not pass a value, `dbCheck` will be used.
 
     @property
     def DomainName(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -181,6 +205,11 @@ If you do not pass a value, `dbCheck` will be used.
 
     @property
     def DomainType(self):
+        """Domain name type.
+0: push domain name.
+1: playback domain name.
+        :rtype: int
+        """
         return self._DomainType
 
     @DomainType.setter
@@ -189,6 +218,13 @@ If you do not pass a value, `dbCheck` will be used.
 
     @property
     def PlayType(self):
+        """Pull domain name type:
+1: Mainland China.
+2: global.
+3: outside Mainland China.
+Default value: 1.
+        :rtype: int
+        """
         return self._PlayType
 
     @PlayType.setter
@@ -197,6 +233,12 @@ If you do not pass a value, `dbCheck` will be used.
 
     @property
     def IsDelayLive(self):
+        """Whether it is LCB:
+0: LVB,
+1: LCB.
+Default value: 0.
+        :rtype: int
+        """
         return self._IsDelayLive
 
     @IsDelayLive.setter
@@ -205,6 +247,12 @@ If you do not pass a value, `dbCheck` will be used.
 
     @property
     def IsMiniProgramLive(self):
+        """Whether it is LVB on Mini Program.
+0: LVB.
+1: LVB on Mini Program.
+Default value: 0.
+        :rtype: int
+        """
         return self._IsMiniProgramLive
 
     @IsMiniProgramLive.setter
@@ -213,6 +261,14 @@ If you do not pass a value, `dbCheck` will be used.
 
     @property
     def VerifyOwnerType(self):
+        """The domain verification type.
+Valid values (the value of this parameter must be the same as `VerifyType` of the `AuthenticateDomainOwner` API):
+dnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.
+fileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.
+dbCheck: Check whether the domain has already been verified.
+If you do not pass a value, `dbCheck` will be used.
+        :rtype: str
+        """
         return self._VerifyOwnerType
 
     @VerifyOwnerType.setter
@@ -251,6 +307,9 @@ class AddLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -294,6 +353,11 @@ Up to 16 bytes.
 
     @property
     def PictureUrl(self):
+        """Watermark image URL.
+Unallowed characters in the URL:
+ ;(){}$>`#"\'|
+        :rtype: str
+        """
         return self._PictureUrl
 
     @PictureUrl.setter
@@ -302,6 +366,10 @@ Up to 16 bytes.
 
     @property
     def WatermarkName(self):
+        """Watermark name.
+Up to 16 bytes.
+        :rtype: str
+        """
         return self._WatermarkName
 
     @WatermarkName.setter
@@ -310,6 +378,9 @@ Up to 16 bytes.
 
     @property
     def XPosition(self):
+        """Display position: X-axis offset in %. Default value: 0.
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -318,6 +389,9 @@ Up to 16 bytes.
 
     @property
     def YPosition(self):
+        """Display position: Y-axis offset in %. Default value: 0.
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -326,6 +400,9 @@ Up to 16 bytes.
 
     @property
     def Width(self):
+        """Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -334,6 +411,9 @@ Up to 16 bytes.
 
     @property
     def Height(self):
+        """Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -375,6 +455,9 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     @property
     def WatermarkId(self):
+        """Watermark ID.
+        :rtype: int
+        """
         return self._WatermarkId
 
     @WatermarkId.setter
@@ -383,6 +466,9 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -415,6 +501,9 @@ dbCheck: Check whether the domain has already been successfully verified.
 
     @property
     def DomainName(self):
+        """The domain to verify.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -423,6 +512,12 @@ dbCheck: Check whether the domain has already been successfully verified.
 
     @property
     def VerifyType(self):
+        """The verification type. Valid values:
+dnsCheck: Check immediately whether the verification DNS record has been added successfully. If so, record this verification result.
+fileCheck: Check immediately whether the verification HTML file has been uploaded successfully. If so, record this verification result.
+dbCheck: Check whether the domain has already been successfully verified.
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -471,6 +566,11 @@ Verification is not required if another domain under the same primary domain has
 
     @property
     def Content(self):
+        """The content verified.
+If `VerifyType` is `dnsCheck`, this is the TXT record that should be added for verification.
+If `VerifyType` is `fileCheck`, this is the file that should be uploaded for verification.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -479,6 +579,11 @@ Verification is not required if another domain under the same primary domain has
 
     @property
     def Status(self):
+        """The verification status.
+If the value of this parameter is 0 or greater, the domain has been verified.
+If the value of this parameter is smaller than 0, the domain has not been verified.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -487,6 +592,10 @@ Verification is not required if another domain under the same primary domain has
 
     @property
     def MainDomain(self):
+        """The primary domain of the domain verified.
+Verification is not required if another domain under the same primary domain has been successfully verified.
+        :rtype: str
+        """
         return self._MainDomain
 
     @MainDomain.setter
@@ -495,6 +604,9 @@ Verification is not required if another domain under the same primary domain has
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -528,6 +640,11 @@ The time accuracy matches with the query granularity.
 
     @property
     def Time(self):
+        """Format of return value:
+yyyy-mm-dd HH:MM:SS
+The time accuracy matches with the query granularity.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -536,6 +653,9 @@ The time accuracy matches with the query granularity.
 
     @property
     def Bandwidth(self):
+        """Bandwidth.
+        :rtype: float
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -576,6 +696,9 @@ class BatchDomainOperateErrors(AbstractModel):
 
     @property
     def DomainName(self):
+        """The domain that the API failed to operate.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -584,6 +707,9 @@ class BatchDomainOperateErrors(AbstractModel):
 
     @property
     def Code(self):
+        """The API 3.0 error code.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -592,6 +718,9 @@ class BatchDomainOperateErrors(AbstractModel):
 
     @property
     def Message(self):
+        """The API 3.0 error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -636,6 +765,9 @@ class BillDataInfo(AbstractModel):
 
     @property
     def Time(self):
+        """Time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -644,6 +776,9 @@ class BillDataInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Bandwidth in Mbps.
+        :rtype: float
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -652,6 +787,9 @@ class BillDataInfo(AbstractModel):
 
     @property
     def Flux(self):
+        """Traffic in MB.
+        :rtype: float
+        """
         return self._Flux
 
     @Flux.setter
@@ -660,6 +798,9 @@ class BillDataInfo(AbstractModel):
 
     @property
     def PeakTime(self):
+        """Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.
+        :rtype: str
+        """
         return self._PeakTime
 
     @PeakTime.setter
@@ -710,6 +851,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CreateTime(self):
+        """The rule creation time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -718,6 +863,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def UpdateTime(self):
+        """The rule update time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -726,6 +875,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -734,6 +886,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -742,6 +897,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def AppName(self):
+        """Push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -814,6 +972,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -822,6 +983,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -830,6 +994,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -838,6 +1005,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamBeginNotifyUrl(self):
+        """Stream starting callback URL.
+        :rtype: str
+        """
         return self._StreamBeginNotifyUrl
 
     @StreamBeginNotifyUrl.setter
@@ -846,6 +1016,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamMixNotifyUrl(self):
+        """Stream mixing callback URL (disused)
+        :rtype: str
+        """
         return self._StreamMixNotifyUrl
 
     @StreamMixNotifyUrl.setter
@@ -854,6 +1027,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamEndNotifyUrl(self):
+        """Interruption callback URL.
+        :rtype: str
+        """
         return self._StreamEndNotifyUrl
 
     @StreamEndNotifyUrl.setter
@@ -862,6 +1038,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordNotifyUrl(self):
+        """Recording callback URL.
+        :rtype: str
+        """
         return self._RecordNotifyUrl
 
     @RecordNotifyUrl.setter
@@ -870,6 +1049,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotNotifyUrl(self):
+        """Screencapturing callback URL.
+        :rtype: str
+        """
         return self._SnapshotNotifyUrl
 
     @SnapshotNotifyUrl.setter
@@ -878,6 +1060,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PornCensorshipNotifyUrl(self):
+        """Porn detection callback URL.
+        :rtype: str
+        """
         return self._PornCensorshipNotifyUrl
 
     @PornCensorshipNotifyUrl.setter
@@ -886,6 +1071,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CallbackKey(self):
+        """Callback authentication key.
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -894,6 +1082,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PushExceptionNotifyUrl(self):
+        """The push error callback URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PushExceptionNotifyUrl
 
     @PushExceptionNotifyUrl.setter
@@ -902,6 +1094,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioAuditNotifyUrl(self):
+        """The audio/video moderation callback URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AudioAuditNotifyUrl
 
     @AudioAuditNotifyUrl.setter
@@ -947,6 +1143,10 @@ This value is the same as the `MixStreamSessionId` in `CreateCommonMixStream`.
 
     @property
     def MixStreamSessionId(self):
+        """ID of stream mix session (from applying for stream mix to canceling stream mix).
+This value is the same as the `MixStreamSessionId` in `CreateCommonMixStream`.
+        :rtype: str
+        """
         return self._MixStreamSessionId
 
     @MixStreamSessionId.setter
@@ -980,6 +1180,9 @@ class CancelCommonMixStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1017,6 +1220,9 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Time(self):
+        """Time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -1025,6 +1231,9 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Bandwidth in Mbps.
+        :rtype: float
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -1033,6 +1242,9 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Flux(self):
+        """Traffic in MB.
+        :rtype: float
+        """
         return self._Flux
 
     @Flux.setter
@@ -1041,6 +1253,9 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Request(self):
+        """Number of new requests.
+        :rtype: int
+        """
         return self._Request
 
     @Request.setter
@@ -1049,6 +1264,9 @@ class CdnPlayStatData(AbstractModel):
 
     @property
     def Online(self):
+        """Number of concurrent connections.
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -1111,6 +1329,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CertId(self):
+        """Certificate ID.
+        :rtype: int
+        """
         return self._CertId
 
     @CertId.setter
@@ -1119,6 +1340,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CertName(self):
+        """Certificate name.
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -1127,6 +1351,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def Description(self):
+        """Description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1135,6 +1362,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CreateTime(self):
+        """The creation time in UTC format.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1143,6 +1374,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def HttpsCrt(self):
+        """Certificate content.
+        :rtype: str
+        """
         return self._HttpsCrt
 
     @HttpsCrt.setter
@@ -1151,6 +1385,11 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CertType(self):
+        """Certificate type.
+0: user-added certificate
+1: Tencent Cloud-hosted certificate
+        :rtype: int
+        """
         return self._CertType
 
     @CertType.setter
@@ -1159,6 +1398,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CertExpireTime(self):
+        """The certificate expiration time in UTC format.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CertExpireTime
 
     @CertExpireTime.setter
@@ -1167,6 +1410,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def DomainList(self):
+        """List of domain names that use this certificate.
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -1222,6 +1468,9 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def ClientIp(self):
+        """Client IP in dotted-decimal notation.
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -1230,6 +1479,9 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def Province(self):
+        """District where the client is located.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -1238,6 +1490,9 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def TotalFlux(self):
+        """Total traffic.
+        :rtype: float
+        """
         return self._TotalFlux
 
     @TotalFlux.setter
@@ -1246,6 +1501,9 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def TotalRequest(self):
+        """Total number of requests.
+        :rtype: int
+        """
         return self._TotalRequest
 
     @TotalRequest.setter
@@ -1254,6 +1512,9 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def TotalFailedRequest(self):
+        """Total number of failed requests.
+        :rtype: int
+        """
         return self._TotalFailedRequest
 
     @TotalFailedRequest.setter
@@ -1262,6 +1523,9 @@ class ClientIpPlaySumInfo(AbstractModel):
 
     @property
     def CountryArea(self):
+        """Country/region where the client is located.
+        :rtype: str
+        """
         return self._CountryArea
 
     @CountryArea.setter
@@ -1309,6 +1573,10 @@ If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the i
 
     @property
     def UseMixCropCenter(self):
+        """Value range: [0,1]. 
+If 1 is entered, when the layer resolution in the parameter is different from the actual video resolution, the video will be automatically cropped according to the resolution set by the layer.
+        :rtype: int
+        """
         return self._UseMixCropCenter
 
     @UseMixCropCenter.setter
@@ -1317,6 +1585,10 @@ If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the i
 
     @property
     def AllowCopy(self):
+        """Value range: [0,1].
+If this parameter is set to 1, when both `InputStreamList` and `OutputParams.OutputStreamType` are set to 1, you can copy a stream instead of canceling it.
+        :rtype: int
+        """
         return self._AllowCopy
 
     @AllowCopy.setter
@@ -1325,6 +1597,10 @@ If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the i
 
     @property
     def PassInputSei(self):
+        """Valid values: 0, 1
+If you set this parameter to 1, SEI (Supplemental Enhanced Information) of the input streams will be passed through.
+        :rtype: int
+        """
         return self._PassInputSei
 
     @PassInputSei.setter
@@ -1369,6 +1645,9 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropWidth(self):
+        """Crop width. Value range: [0,2000].
+        :rtype: float
+        """
         return self._CropWidth
 
     @CropWidth.setter
@@ -1377,6 +1656,9 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropHeight(self):
+        """Crop height. Value range: [0,2000].
+        :rtype: float
+        """
         return self._CropHeight
 
     @CropHeight.setter
@@ -1385,6 +1667,9 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropStartLocationX(self):
+        """Starting crop X coordinate. Value range: [0,2000].
+        :rtype: float
+        """
         return self._CropStartLocationX
 
     @CropStartLocationX.setter
@@ -1393,6 +1678,9 @@ class CommonMixCropParams(AbstractModel):
 
     @property
     def CropStartLocationY(self):
+        """Starting crop Y coordinate. Value range: [0,2000].
+        :rtype: float
+        """
         return self._CropStartLocationY
 
     @CropStartLocationY.setter
@@ -1437,6 +1725,11 @@ The value can be a random name for identification, such as `Canvas1` or `Picture
 
     @property
     def InputStreamName(self):
+        """Input stream name, which can contain up to 80 bytes of letters, digits, and underscores.
+The value should be the name of an input stream for stream mix when `LayoutParams.InputType` is set to `0` (audio and video), `4` (pure audio), or `5` (pure video).
+The value can be a random name for identification, such as `Canvas1` or `Picture1`, when `LayoutParams.InputType` is set to `2` (image) or `3` (canvas).
+        :rtype: str
+        """
         return self._InputStreamName
 
     @InputStreamName.setter
@@ -1445,6 +1738,9 @@ The value can be a random name for identification, such as `Canvas1` or `Picture
 
     @property
     def LayoutParams(self):
+        """Input stream layout parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixLayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -1453,6 +1749,9 @@ The value can be a random name for identification, such as `Canvas1` or `Picture
 
     @property
     def CropParams(self):
+        """Input stream crop parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixCropParams`
+        """
         return self._CropParams
 
     @CropParams.setter
@@ -1548,6 +1847,12 @@ Gray: 0x999999
 
     @property
     def ImageLayer(self):
+        """Input layer. Value range: [1,16]
+(1) For the background stream, i.e., the room owner’s image or the canvas, set this parameter to `1`.
+(2) This parameter is required for audio-only stream mixing as well.
+Note that two inputs cannot have the same `ImageLayer` value.
+        :rtype: int
+        """
         return self._ImageLayer
 
     @ImageLayer.setter
@@ -1556,6 +1861,15 @@ Gray: 0x999999
 
     @property
     def InputType(self):
+        """Input type. Value range: [0,5].
+If this parameter is left empty, 0 will be used by default.
+0: the input stream is audio/video.
+2: the input stream is image.
+3: the input stream is canvas. 
+4: the input stream is audio.
+5: the input stream is pure video.
+        :rtype: int
+        """
         return self._InputType
 
     @InputType.setter
@@ -1564,6 +1878,13 @@ Gray: 0x999999
 
     @property
     def ImageHeight(self):
+        """Output height of input video image. Value range:
+Pixel: [0,2000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, the input stream height will be used by default.
+If percentage is used, the expected output is (percentage * background height).
+        :rtype: float
+        """
         return self._ImageHeight
 
     @ImageHeight.setter
@@ -1572,6 +1893,13 @@ Gray: 0x999999
 
     @property
     def ImageWidth(self):
+        """Output width of input video image. Value range:
+Pixel: [0,2000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, the input stream width will be used by default.
+If percentage is used, the expected output is (percentage * background width).
+        :rtype: float
+        """
         return self._ImageWidth
 
     @ImageWidth.setter
@@ -1580,6 +1908,14 @@ Gray: 0x999999
 
     @property
     def LocationX(self):
+        """X-axis offset of input in output video image. Value range:
+Pixel: [0,2000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, 0 will be used by default.
+Horizontal offset from the top-left corner of main host background video image. 
+If percentage is used, the expected output is (percentage * background width).
+        :rtype: float
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -1588,6 +1924,14 @@ Gray: 0x999999
 
     @property
     def LocationY(self):
+        """Y-axis offset of input in output video image. Value range:
+Pixel: [0,2000]
+Percentage: [0.01,0.99]
+If this parameter is left empty, 0 will be used by default.
+Vertical offset from the top-left corner of main host background video image. 
+If percentage is used, the expected output is (percentage * background width)
+        :rtype: float
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -1596,6 +1940,17 @@ Gray: 0x999999
 
     @property
     def Color(self):
+        """When `InputType` is 3 (canvas), this value indicates the canvas color.
+Commonly used colors include:
+Red: 0xcc0033.
+Yellow: 0xcc9900.
+Green: 0xcccc33.
+Blue: 0x99CCFF.
+Black: 0x000000.
+White: 0xFFFFFF.
+Gray: 0x999999
+        :rtype: str
+        """
         return self._Color
 
     @Color.setter
@@ -1604,6 +1959,9 @@ Gray: 0x999999
 
     @property
     def WatermarkId(self):
+        """When `InputType` is 2 (image), this value is the watermark ID.
+        :rtype: int
+        """
         return self._WatermarkId
 
     @WatermarkId.setter
@@ -1678,6 +2036,9 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputStreamName(self):
+        """Output stream name.
+        :rtype: str
+        """
         return self._OutputStreamName
 
     @OutputStreamName.setter
@@ -1686,6 +2047,13 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputStreamType(self):
+        """Output stream type. Valid values: [0,1].
+If this parameter is left empty, 0 will be used by default.
+If the output stream is a stream in the input stream list, enter 0.
+If you want the stream mix result to be a new stream, enter 1.
+If this value is 1, `output_stream_id` cannot appear in `input_stram_list`, and there cannot be a stream with the same ID on the LVB backend.
+        :rtype: int
+        """
         return self._OutputStreamType
 
     @OutputStreamType.setter
@@ -1694,6 +2062,10 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputStreamBitRate(self):
+        """The output bitrate. Value range: 1-10000.
+If you do not specify this, the system will select a bitrate automatically.
+        :rtype: int
+        """
         return self._OutputStreamBitRate
 
     @OutputStreamBitRate.setter
@@ -1702,6 +2074,10 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputStreamGop(self):
+        """Output stream GOP size. Value range: [1,10].
+If this parameter is left empty, the system will automatically determine.
+        :rtype: int
+        """
         return self._OutputStreamGop
 
     @OutputStreamGop.setter
@@ -1710,6 +2086,10 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputStreamFrameRate(self):
+        """Output stream frame rate. Value range: [1,60].
+If this parameter is left empty, the system will automatically determine.
+        :rtype: int
+        """
         return self._OutputStreamFrameRate
 
     @OutputStreamFrameRate.setter
@@ -1718,6 +2098,10 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputAudioBitRate(self):
+        """Output stream audio bitrate. Value range: [1,500]
+If this parameter is left empty, the system will automatically determine.
+        :rtype: int
+        """
         return self._OutputAudioBitRate
 
     @OutputAudioBitRate.setter
@@ -1726,6 +2110,10 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputAudioSampleRate(self):
+        """Output stream audio sample rate. Valid values: [96000, 88200, 64000, 48000, 44100, 32000,24000, 22050, 16000, 12000, 11025, 8000].
+If this parameter is left empty, the system will automatically determine.
+        :rtype: int
+        """
         return self._OutputAudioSampleRate
 
     @OutputAudioSampleRate.setter
@@ -1734,6 +2122,10 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def OutputAudioChannels(self):
+        """Output stream audio sound channel. Valid values: [1,2].
+If this parameter is left empty, the system will automatically determine.
+        :rtype: int
+        """
         return self._OutputAudioChannels
 
     @OutputAudioChannels.setter
@@ -1742,6 +2134,9 @@ If this parameter is left empty, the system will automatically determine.
 
     @property
     def MixSei(self):
+        """SEI information in output stream. If there are no special needs, leave it empty.
+        :rtype: str
+        """
         return self._MixSei
 
     @MixSei.setter
@@ -1786,6 +2181,9 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
     @property
     def Time(self):
+        """Time point.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -1794,6 +2192,9 @@ class ConcurrentRecordStreamNum(AbstractModel):
 
     @property
     def Num(self):
+        """Number of channels.
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -1846,6 +2247,9 @@ For six input sources, 610 is supported.
 
     @property
     def MixStreamSessionId(self):
+        """ID of a stream mix session (from applying for the stream mix to cancelling it). This parameter can contain up to 80 bytes of letters, digits, and underscores.
+        :rtype: str
+        """
         return self._MixStreamSessionId
 
     @MixStreamSessionId.setter
@@ -1854,6 +2258,9 @@ For six input sources, 610 is supported.
 
     @property
     def InputStreamList(self):
+        """Input stream list for stream mix.
+        :rtype: list of CommonMixInputParam
+        """
         return self._InputStreamList
 
     @InputStreamList.setter
@@ -1862,6 +2269,9 @@ For six input sources, 610 is supported.
 
     @property
     def OutputParams(self):
+        """Output stream parameter for stream mix.
+        :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixOutputParams`
+        """
         return self._OutputParams
 
     @OutputParams.setter
@@ -1870,6 +2280,15 @@ For six input sources, 610 is supported.
 
     @property
     def MixStreamTemplateId(self):
+        """Input template ID. If this parameter is set, the output will be generated according to the default template layout, and there is no need to enter the custom position parameters.
+If this parameter is left empty, 0 will be used by default.
+For two input sources, 10, 20, 30, 40, and 50 are supported.
+For three input sources, 310, 390, and 391 are supported.
+For four input sources, 410 is supported.
+For five input sources, 510 and 590 are supported.
+For six input sources, 610 is supported.
+        :rtype: int
+        """
         return self._MixStreamTemplateId
 
     @MixStreamTemplateId.setter
@@ -1878,6 +2297,9 @@ For six input sources, 610 is supported.
 
     @property
     def ControlParams(self):
+        """Special control parameter for stream mix. If there are no special needs, leave it empty.
+        :rtype: :class:`tencentcloud.live.v20180801.models.CommonMixControlParams`
+        """
         return self._ControlParams
 
     @ControlParams.setter
@@ -1924,6 +2346,9 @@ class CreateCommonMixStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1955,6 +2380,9 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -1963,6 +2391,9 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1971,6 +2402,9 @@ class CreateLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2006,6 +2440,9 @@ class CreateLiveCallbackRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2068,6 +2505,11 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def TemplateName(self):
+        """Template name.
+Maximum length: 255 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -2076,6 +2518,11 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def Description(self):
+        """Description.
+Maximum length: 1,024 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2084,6 +2531,10 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def StreamBeginNotifyUrl(self):
+        """Stream starting callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._StreamBeginNotifyUrl
 
     @StreamBeginNotifyUrl.setter
@@ -2092,6 +2543,10 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def StreamEndNotifyUrl(self):
+        """Interruption callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._StreamEndNotifyUrl
 
     @StreamEndNotifyUrl.setter
@@ -2100,6 +2555,10 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def RecordNotifyUrl(self):
+        """Recording callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._RecordNotifyUrl
 
     @RecordNotifyUrl.setter
@@ -2108,6 +2567,10 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def SnapshotNotifyUrl(self):
+        """Screencapturing callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._SnapshotNotifyUrl
 
     @SnapshotNotifyUrl.setter
@@ -2116,6 +2579,10 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def PornCensorshipNotifyUrl(self):
+        """Porn detection callback URL,
+Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32741?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._PornCensorshipNotifyUrl
 
     @PornCensorshipNotifyUrl.setter
@@ -2124,6 +2591,10 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def CallbackKey(self):
+        """Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -2132,6 +2603,9 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def StreamMixNotifyUrl(self):
+        """Disused
+        :rtype: str
+        """
         return self._StreamMixNotifyUrl
 
     @StreamMixNotifyUrl.setter
@@ -2140,6 +2614,9 @@ Protocol document: [Event Message Notification](https://intl.cloud.tencent.com/d
 
     @property
     def PushExceptionNotifyUrl(self):
+        """The push error callback URL.
+        :rtype: str
+        """
         return self._PushExceptionNotifyUrl
 
     @PushExceptionNotifyUrl.setter
@@ -2185,6 +2662,9 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2193,6 +2673,9 @@ class CreateLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2345,6 +2828,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def SourceType(self):
+        """The source type. Valid values:
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+PullPicPushLive: Images
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -2353,6 +2842,20 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def SourceUrls(self):
+        """The source URL(s).
+If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
+If `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.
+Supported file formats: FLV, MP4, HLS.
+Supported protocols: HTTP, HTTPS, RTMP, RTMPS, RTSP, SRT.
+Notes:
+1. We recommend you use FLV files as the source. Poorly interleaved MP4 files may result in playback stuttering. You can also re-interleave your MP4 files before adding them as the source.
+2. Do not use private network domains or malicious URLs. CSS will block accounts that do.
+3. To avoid push and playback issues, make sure the source files are properly interleaved.
+4. Supported video coding formats: H.264, H.265.
+5. Supported audio coding format: AAC.
+6. Use small video files, preferably not longer than one hour. Large files may take a long time to load or resume after pause. Relay may fail if the time consumed exceeds 15 seconds.
+        :rtype: list of str
+        """
         return self._SourceUrls
 
     @SourceUrls.setter
@@ -2361,6 +2864,11 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def DomainName(self):
+        """The push domain name.
+The pulled stream is pushed to this domain.
+Note: If the destination is not a CSS address and its format is different from that of CSS addresses, pass the full address to `ToUrl`. For details, see the description of the `ToUrl` parameter.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -2369,6 +2877,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def AppName(self):
+        """The application to push to.
+The pulled stream is pushed to this application.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2377,6 +2889,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def StreamName(self):
+        """The stream name.
+The pulled stream is pushed under this name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -2385,6 +2901,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def StartTime(self):
+        """The start time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2393,6 +2915,15 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def EndTime(self):
+        """The end time. Notes:
+1. The end time must be later than the start time.
+2. The end time and start time must be later than the current time.
+3. The end time and start time must be less than seven days apart.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2401,6 +2932,9 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def Operator(self):
+        """The operator.
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -2409,6 +2943,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def PushArgs(self):
+        """The push parameter.
+This is a custom parameter carried during push.
+Example:
+bak=1&test=2
+        :rtype: str
+        """
         return self._PushArgs
 
     @PushArgs.setter
@@ -2417,6 +2957,21 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def CallbackEvents(self):
+        """The events to listen for. If you do not pass this parameter, all events will be listened for.
+TaskStart: Callback for starting a task
+TaskExit: Callback for ending a task
+VodSourceFileStart: Callback for starting to pull from video files
+VodSourceFileFinish: Callback for stopping pulling from video files
+ResetTaskConfig: Callback for modifying a task
+
+`TaskAlarm` indicates a warning event. `AlarmType` examples:
+PullFileUnstable: Pull from video files is unstable.
+PushStreamUnstable: Push is unstable.
+PullFileFailed: Error pulling from video files.
+PushStreamFailed: Push error.
+FileEndEarly: The video file ended prematurely.
+        :rtype: list of str
+        """
         return self._CallbackEvents
 
     @CallbackEvents.setter
@@ -2425,6 +2980,13 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def VodLoopTimes(self):
+        """The number of times to loop video files. Default value: -1.
+-1: Loop indefinitely
+0: Do not loop
+> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
+This parameter is valid only when the source is video files.
+        :rtype: str
+        """
         return self._VodLoopTimes
 
     @VodLoopTimes.setter
@@ -2433,6 +2995,13 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def VodRefreshType(self):
+        """The behavior after the source video files (`SourceUrls`) are changed.
+ImmediateNewSource: Play the new videos immediately
+ContinueBreakPoint: Play the new videos after the current video is finished playing (the remaining videos in the old playlist will not be played).
+
+This parameter is valid only if the source before the change is video files.
+        :rtype: str
+        """
         return self._VodRefreshType
 
     @VodRefreshType.setter
@@ -2441,6 +3010,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def CallbackUrl(self):
+        """A custom callback URL.
+Callbacks about pull and relay events will be sent to this URL.
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -2449,6 +3022,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def ExtraCmd(self):
+        """Other parameters.
+For example, you can use `ignore_region` to ignore the region passed in and assign a region based on load distribution.
+        :rtype: str
+        """
         return self._ExtraCmd
 
     @ExtraCmd.setter
@@ -2457,6 +3034,9 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def Comment(self):
+        """The remarks for a task, not longer than 512 bytes.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -2465,6 +3045,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def ToUrl(self):
+        """The complete destination URL.
+If you specify this parameter, make sure you pass in an empty string for `DomainName`, `AppName`, and `StreamName`.
+
+Note: Make sure that the expiration time of the signature is later than the task end time.
+        :rtype: str
+        """
         return self._ToUrl
 
     @ToUrl.setter
@@ -2473,6 +3059,15 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def BackupSourceType(self):
+        """The backup source type.
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+Notes:
+1. Backup sources are supported only if the primary source type is live streaming.
+2. When pull from the primary source is interrupted, the system will pull from the backup source.
+3. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
+        :rtype: str
+        """
         return self._BackupSourceType
 
     @BackupSourceType.setter
@@ -2481,6 +3076,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def BackupSourceUrl(self):
+        """The URL of the backup source.
+You can specify only one backup source URL.
+        :rtype: str
+        """
         return self._BackupSourceUrl
 
     @BackupSourceUrl.setter
@@ -2489,6 +3088,13 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def WatermarkList(self):
+        """The information of watermarks to add.
+Notes:
+1. You can add up to four watermarks to different locations of the video.
+2. Make sure you use publicly accessible URLs for the watermark images.
+3. Supported image formats include PNG, JPG, and GIF.
+        :rtype: list of PullPushWatermarkInfo
+        """
         return self._WatermarkList
 
     @WatermarkList.setter
@@ -2497,6 +3103,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def VodLocalMode(self):
+        """Whether to use local mode when the source type is video files. The default is `0`.
+0: Do not use local mode
+1: Use local mode
+Note: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.
+        :rtype: int
+        """
         return self._VodLocalMode
 
     @VodLocalMode.setter
@@ -2557,6 +3169,9 @@ class CreateLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2565,6 +3180,9 @@ class CreateLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2635,6 +3253,9 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -2643,6 +3264,9 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2651,6 +3275,9 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def DomainName(self):
+        """Push domain name. This parameter must be set for multi-domain name push.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -2659,6 +3286,10 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def StartTime(self):
+        """Recording start time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:10:01 is 2017-01-01+10%3a10%3a01.
+In scheduled recording mode, this field must be set; in real-time video recording mode, this field is ignored.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2667,6 +3298,10 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def EndTime(self):
+        """Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.
+In scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the `Highlight` parameter, the set end time should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time, or left empty, the actual end time will be 30 minutes after the current time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2675,6 +3310,12 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def RecordType(self):
+        """Recording type.
+"video": Audio-video recording **(default)**.
+"audio": audio recording.
+In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
+        :rtype: str
+        """
         return self._RecordType
 
     @RecordType.setter
@@ -2683,6 +3324,11 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def FileFormat(self):
+        """Recording file format. Valid values:
+"flv" **(default)**, "hls", "mp4", "aac", "mp3".
+In both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.
+        :rtype: str
+        """
         return self._FileFormat
 
     @FileFormat.setter
@@ -2691,6 +3337,11 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def Highlight(self):
+        """Mark for enabling real-time video recording mode.
+0: Real-time video recording mode is not enabled, i.e., the scheduled recording mode is used **(default)**. See [Sample 1](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
+1: Real-time video recording mode is enabled. See [Sample 2](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).
+        :rtype: int
+        """
         return self._Highlight
 
     @Highlight.setter
@@ -2699,6 +3350,12 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def MixStream(self):
+        """Flag for enabling A+B=C mixed stream recording.
+0: A+B=C mixed stream recording is not enabled **(default)**.
+1: A+B=C mixed stream recording is enabled.
+In both scheduled and real-time video recording modes, this parameter is valid.
+        :rtype: int
+        """
         return self._MixStream
 
     @MixStream.setter
@@ -2707,6 +3364,14 @@ In both scheduled and real-time video recording modes, this parameter is valid.
 
     @property
     def StreamParam(self):
+        """Recording stream parameter. The following parameters are supported currently:
+record_interval: recording interval in seconds. Value range: 1800-7200.
+storage_time: recording file storage duration in seconds.
+Example: record_interval=3600&storage_time=2592000.
+Note: the parameter needs to be URL-encoded.
+In both scheduled and real-time video recording modes, this parameter is valid.
+        :rtype: str
+        """
         return self._StreamParam
 
     @StreamParam.setter
@@ -2752,6 +3417,9 @@ class CreateLiveRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID, which uniquely identifies a recording task globally.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2760,6 +3428,9 @@ class CreateLiveRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2796,6 +3467,9 @@ Note: If the parameter is a non-empty string, the rule will be only applicable t
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -2804,6 +3478,9 @@ Note: If the parameter is a non-empty string, the rule will be only applicable t
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -2812,6 +3489,9 @@ Note: If the parameter is a non-empty string, the rule will be only applicable t
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2820,6 +3500,10 @@ Note: If the parameter is a non-empty string, the rule will be only applicable t
 
     @property
     def StreamName(self):
+        """Stream name.
+Note: If the parameter is a non-empty string, the rule will be only applicable to the particular stream.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -2856,6 +3540,9 @@ class CreateLiveRecordRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2913,6 +3600,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name. Only letters, digits, underscores, and hyphens can be contained.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -2921,6 +3611,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Message description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2929,6 +3622,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvParam(self):
+        """FLV recording parameter, which is set when FLV recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._FlvParam
 
     @FlvParam.setter
@@ -2937,6 +3633,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsParam(self):
+        """HLS recording parameter, which is set when HLS recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._HlsParam
 
     @HlsParam.setter
@@ -2945,6 +3644,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp4Param(self):
+        """Mp4 recording parameter, which is set when Mp4 recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._Mp4Param
 
     @Mp4Param.setter
@@ -2953,6 +3655,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def AacParam(self):
+        """AAC recording parameter, which is set when AAC recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._AacParam
 
     @AacParam.setter
@@ -2961,6 +3666,11 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
+        """LVB type. Default value: 0.
+0: LVB.
+1: LCB.
+        :rtype: int
+        """
         return self._IsDelayLive
 
     @IsDelayLive.setter
@@ -2969,6 +3679,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsSpecialParam(self):
+        """HLS-specific recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
+        """
         return self._HlsSpecialParam
 
     @HlsSpecialParam.setter
@@ -2977,6 +3690,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp3Param(self):
+        """Mp3 recording parameter, which is set when Mp3 recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._Mp3Param
 
     @Mp3Param.setter
@@ -2985,6 +3701,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def RemoveWatermark(self):
+        """Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
+        :rtype: bool
+        """
         return self._RemoveWatermark
 
     @RemoveWatermark.setter
@@ -2993,6 +3712,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvSpecialParam(self):
+        """A special parameter for FLV recording.
+        :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
+        """
         return self._FlvSpecialParam
 
     @FlvSpecialParam.setter
@@ -3053,6 +3775,9 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3061,6 +3786,9 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3097,6 +3825,9 @@ Note: if this parameter is a non-empty string, the rule will take effect only fo
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -3105,6 +3836,9 @@ Note: if this parameter is a non-empty string, the rule will take effect only fo
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3113,6 +3847,9 @@ Note: if this parameter is a non-empty string, the rule will take effect only fo
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3121,6 +3858,10 @@ Note: if this parameter is a non-empty string, the rule will take effect only fo
 
     @property
     def StreamName(self):
+        """Stream name.
+Note: if this parameter is a non-empty string, the rule will take effect only for the particular stream.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -3157,6 +3898,9 @@ class CreateLiveSnapshotRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3226,6 +3970,11 @@ will be used.
 
     @property
     def TemplateName(self):
+        """Template name.
+Maximum length: 255 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3234,6 +3983,9 @@ will be used.
 
     @property
     def CosAppId(self):
+        """COS application ID.
+        :rtype: int
+        """
         return self._CosAppId
 
     @CosAppId.setter
@@ -3242,6 +3994,10 @@ will be used.
 
     @property
     def CosBucket(self):
+        """COS bucket name.
+Note: the value of `CosBucket` cannot contain `-[appid]`.
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -3250,6 +4006,9 @@ will be used.
 
     @property
     def CosRegion(self):
+        """COS region.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -3258,6 +4017,11 @@ will be used.
 
     @property
     def Description(self):
+        """Description.
+Maximum length: 1,024 bytes.
+Only letters, digits, underscores, and hyphens can be contained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3266,6 +4030,10 @@ will be used.
 
     @property
     def SnapshotInterval(self):
+        """Screencapturing interval (s). Default value: 10
+Value range: 2-300
+        :rtype: int
+        """
         return self._SnapshotInterval
 
     @SnapshotInterval.setter
@@ -3274,6 +4042,10 @@ will be used.
 
     @property
     def Width(self):
+        """Screenshot width. Default value: `0` (original width)
+Value range: 0-3000
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -3282,6 +4054,10 @@ will be used.
 
     @property
     def Height(self):
+        """Screenshot height. Default value: `0` (original height)
+Value range: 0-2000
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -3290,6 +4066,9 @@ will be used.
 
     @property
     def PornFlag(self):
+        """Whether to enable porn detection. 0: no, 1: yes. Default value: 0
+        :rtype: int
+        """
         return self._PornFlag
 
     @PornFlag.setter
@@ -3298,6 +4077,12 @@ will be used.
 
     @property
     def CosPrefix(self):
+        """COS Bucket folder prefix.
+If no value is entered, the default value
+`/{Year}-{Month}-{Day}`
+will be used.
+        :rtype: str
+        """
         return self._CosPrefix
 
     @CosPrefix.setter
@@ -3306,6 +4091,12 @@ will be used.
 
     @property
     def CosFileName(self):
+        """COS filename.
+If no value is entered, the default value 
+`{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}`
+will be used.
+        :rtype: str
+        """
         return self._CosFileName
 
     @CosFileName.setter
@@ -3352,6 +4143,9 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3360,6 +4154,9 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3396,6 +4193,9 @@ Note: If you pass in a non-empty string, the rule will only be applied to the sp
 
     @property
     def DomainName(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -3404,6 +4204,9 @@ Note: If you pass in a non-empty string, the rule will only be applied to the sp
 
     @property
     def AppName(self):
+        """The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3412,6 +4215,10 @@ Note: If you pass in a non-empty string, the rule will only be applied to the sp
 
     @property
     def StreamName(self):
+        """The stream name.
+Note: If you pass in a non-empty string, the rule will only be applied to the specified stream.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -3420,6 +4227,9 @@ Note: If you pass in a non-empty string, the rule will only be applied to the sp
 
     @property
     def TemplateId(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3456,6 +4266,9 @@ class CreateLiveTimeShiftRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3512,6 +4325,11 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def TemplateName(self):
+        """The template name.
+Maximum length: 255 bytes.
+Only letters, numbers, underscores, and hyphens are supported.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3520,6 +4338,10 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def Duration(self):
+        """The time shifting duration.
+Unit: Second.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -3528,6 +4350,10 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def Description(self):
+        """The template description.
+Only letters, numbers, underscores, and hyphens are supported.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3536,6 +4362,12 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def Area(self):
+        """The region.
+`Mainland`: The Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+Default value: `Mainland`.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -3544,6 +4376,12 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def ItemDuration(self):
+        """The segment size.
+Value range: 3-10.
+Unit: Second.
+Default value: 5
+        :rtype: int
+        """
         return self._ItemDuration
 
     @ItemDuration.setter
@@ -3552,6 +4390,11 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def RemoveWatermark(self):
+        """Whether to remove watermarks.
+If you pass in `true`, the original stream will be recorded.
+Default value: `false`.
+        :rtype: bool
+        """
         return self._RemoveWatermark
 
     @RemoveWatermark.setter
@@ -3560,6 +4403,10 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def TranscodeTemplateIds(self):
+        """The transcoding template IDs.
+This API works only if `RemoveWatermark` is `false`.
+        :rtype: list of int
+        """
         return self._TranscodeTemplateIds
 
     @TranscodeTemplateIds.setter
@@ -3602,6 +4449,9 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3610,6 +4460,9 @@ class CreateLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3645,6 +4498,9 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -3653,6 +4509,9 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The push path, which is the same as `AppName` in the push and playback addresses and is `live` by default. If you only want to bind the template to a domain, pass in an empty string.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -3661,6 +4520,9 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name. If only the domain name or path is bound, leave this parameter blank.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -3669,6 +4531,9 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Designates an existing template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -3705,6 +4570,9 @@ class CreateLiveTranscodeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3821,6 +4689,12 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def TemplateName(self):
+        """Template name, such as “900p”. This can be only a combination of letters and digits.
+Length limit:
+  Standard transcoding: 1-10 characters
+  Top speed codec transcoding: 3-10 characters
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3829,6 +4703,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def VideoBitrate(self):
+        """Video bitrate in Kbps. Value range: 100-8000.
+Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
+        :rtype: int
+        """
         return self._VideoBitrate
 
     @VideoBitrate.setter
@@ -3837,6 +4715,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Acodec(self):
+        """Audio codec. Default value: aac.
+Note: this parameter is unsupported now.
+        :rtype: str
+        """
         return self._Acodec
 
     @Acodec.setter
@@ -3845,6 +4727,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def AudioBitrate(self):
+        """Audio bitrate. Default value: 0.
+Value range: 0-500.
+        :rtype: int
+        """
         return self._AudioBitrate
 
     @AudioBitrate.setter
@@ -3853,6 +4739,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Vcodec(self):
+        """Video codec. Valid values: h264, h265, origin (default)
+
+origin: original codec as the output codec
+        :rtype: str
+        """
         return self._Vcodec
 
     @Vcodec.setter
@@ -3861,6 +4752,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Description(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3869,6 +4763,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def NeedVideo(self):
+        """Whether to keep the video. 0: no; 1: yes. Default value: 1.
+        :rtype: int
+        """
         return self._NeedVideo
 
     @NeedVideo.setter
@@ -3877,6 +4774,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Width(self):
+        """Width. Default value: 0.
+Value range: 0-3000
+It must be a multiple of 2. The original width is 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -3885,6 +4787,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def NeedAudio(self):
+        """Whether to keep the audio. 0: no; 1: yes. Default value: 1.
+        :rtype: int
+        """
         return self._NeedAudio
 
     @NeedAudio.setter
@@ -3893,6 +4798,12 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Height(self):
+        """Height. Default value: 0
+Value range: 0-3000
+The value must be a multiple of 2. The original height is `0`.
+This parameter is required for a top speed codec template (when `AiTransCode` is `1`).
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -3901,6 +4812,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Fps(self):
+        """Frame rate. Default value: 0.
+Value range: 0-60
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -3909,6 +4824,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Gop(self):
+        """Keyframe interval in seconds. Default value: original interval
+Value range: 2-6
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -3917,6 +4836,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Rotate(self):
+        """Rotation angle. Default value: 0.
+Valid values: 0, 90, 180, 270
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -3925,6 +4848,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Profile(self):
+        """Encoding quality:
+baseline/main/high. Default value: baseline.
+        :rtype: str
+        """
         return self._Profile
 
     @Profile.setter
@@ -3933,6 +4860,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def BitrateToOrig(self):
+        """Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._BitrateToOrig
 
     @BitrateToOrig.setter
@@ -3941,6 +4873,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def HeightToOrig(self):
+        """Whether to use the original height when the set height is higher than the original height.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._HeightToOrig
 
     @HeightToOrig.setter
@@ -3949,6 +4886,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def FpsToOrig(self):
+        """Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._FpsToOrig
 
     @FpsToOrig.setter
@@ -3957,6 +4899,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def AiTransCode(self):
+        """Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
+        :rtype: int
+        """
         return self._AiTransCode
 
     @AiTransCode.setter
@@ -3965,6 +4910,12 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def AdaptBitratePercent(self):
+        """Bitrate compression ratio of top speed codec video.
+Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
+
+Value range: 0.0-0.5.
+        :rtype: float
+        """
         return self._AdaptBitratePercent
 
     @AdaptBitratePercent.setter
@@ -3973,6 +4924,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def ShortEdgeAsHeight(self):
+        """Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
+        :rtype: int
+        """
         return self._ShortEdgeAsHeight
 
     @ShortEdgeAsHeight.setter
@@ -3981,6 +4935,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def DRMType(self):
+        """The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :rtype: str
+        """
         return self._DRMType
 
     @DRMType.setter
@@ -3989,6 +4947,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def DRMTracks(self):
+        """The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :rtype: str
+        """
         return self._DRMTracks
 
     @DRMTracks.setter
@@ -4046,6 +5008,9 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4054,6 +5019,9 @@ class CreateLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4089,6 +5057,9 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4097,6 +5068,9 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4105,6 +5079,9 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -4113,6 +5090,9 @@ class CreateLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4149,6 +5129,9 @@ class CreateLiveWatermarkRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4197,6 +5180,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -4205,6 +5191,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4213,6 +5202,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4221,6 +5213,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Recording end time in UNIX timestamp format. `EndTime` should be later than `StartTime` and the current time, and the duration between `EndTime` and `StartTime` is up to 24 hours.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4229,6 +5224,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Recording start time in UNIX timestamp format. Leaving this parameter empty means starting recording now. `StartTime` cannot be later than the current time plus 6 days.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4237,6 +5235,11 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StreamType(self):
+        """Push type. Default value: 0. Valid values:
+0: LVB push.
+1: mixed stream, i.e., A + B = C mixed stream.
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -4245,6 +5248,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Recording template ID, which is the returned value of `CreateLiveRecordTemplate`. If this parameter is left empty or incorrect, the stream will be recorded in HLS format and retained permanently by default.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4253,6 +5259,9 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def Extension(self):
+        """Extension field which is not defined now. It is empty by default.
+        :rtype: str
+        """
         return self._Extension
 
     @Extension.setter
@@ -4296,6 +5305,9 @@ class CreateRecordTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4304,6 +5316,9 @@ class CreateRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4353,6 +5368,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """The stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -4361,6 +5379,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4369,6 +5390,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4377,6 +5401,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The task end time, which must be a Unix timestamp and later than `StartTime` and the current time. The end time and start time cannot be more than 24 hours apart.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4385,6 +5412,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """The ID of the screencapturing template, which is returned by `CreateLiveSnapshotTemplate`. If an incorrect template ID is passed in, the screencapturing task will fail.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4393,6 +5423,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The task start time, which must be a Unix timestamp and cannot be later than six days from the current time. If you do not specify this parameter, the task will start immediately.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4401,6 +5434,11 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def StreamType(self):
+        """The publishing type. Valid values:
+`0` (default): Live stream
+`1`: Mixed stream
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -4409,6 +5447,9 @@ class CreateScreenshotTaskRequest(AbstractModel):
 
     @property
     def Extension(self):
+        """An extension field, which is not defined currently and is empty by default.
+        :rtype: str
+        """
         return self._Extension
 
     @Extension.setter
@@ -4452,6 +5493,9 @@ class CreateScreenshotTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """A unique task ID. If this parameter is returned, the screencapturing task is created successfully.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4460,6 +5504,9 @@ class CreateScreenshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4498,6 +5545,9 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Time(self):
+        """Data point in time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -4506,6 +5556,9 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Bandwidth in Mbps.
+        :rtype: float
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -4514,6 +5567,9 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Flux(self):
+        """Traffic in MB.
+        :rtype: float
+        """
         return self._Flux
 
     @Flux.setter
@@ -4522,6 +5578,9 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Request(self):
+        """Number of requests.
+        :rtype: int
+        """
         return self._Request
 
     @Request.setter
@@ -4530,6 +5589,9 @@ class DayStreamPlayInfo(AbstractModel):
 
     @property
     def Online(self):
+        """Number of online viewers.
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -4592,6 +5654,9 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4600,6 +5665,10 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def AppName(self):
+        """Push path, which is the same as the 
+ `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4608,6 +5677,9 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -4616,6 +5688,9 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def DelayInterval(self):
+        """Delay time in seconds.
+        :rtype: int
+        """
         return self._DelayInterval
 
     @DelayInterval.setter
@@ -4624,6 +5699,11 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def CreateTime(self):
+        """Creation time in UTC time.
+Note: the difference between UTC time and Beijing time is 8 hours.
+Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4632,6 +5712,11 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def ExpireTime(self):
+        """Expiration time in UTC time.
+Note: the difference between UTC time and Beijing time is 8 hours.
+Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -4640,6 +5725,11 @@ Example: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).
 
     @property
     def Status(self):
+        """Current status:
+-1: expired.
+1: in effect.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4682,6 +5772,9 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4690,6 +5783,9 @@ class DeleteLiveCallbackRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4724,6 +5820,9 @@ class DeleteLiveCallbackRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4751,6 +5850,11 @@ class DeleteLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -4784,6 +5888,9 @@ class DeleteLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4812,6 +5919,9 @@ class DeleteLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name to be deleted.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -4820,6 +5930,9 @@ class DeleteLiveDomainRequest(AbstractModel):
 
     @property
     def DomainType(self):
+        """Type. 0: push, 1: playback.
+        :rtype: int
+        """
         return self._DomainType
 
     @DomainType.setter
@@ -4854,6 +5967,9 @@ class DeleteLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4882,6 +5998,9 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4890,6 +6009,9 @@ class DeleteLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """The operator.
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -4924,6 +6046,9 @@ class DeleteLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4952,6 +6077,9 @@ class DeleteLiveRecordRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -4960,6 +6088,9 @@ class DeleteLiveRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID returned by the `CreateLiveRecord` API.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4994,6 +6125,9 @@ class DeleteLiveRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5028,6 +6162,10 @@ Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If
 
     @property
     def DomainName(self):
+        """Push domain name.
+Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -5036,6 +6174,10 @@ Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -5044,6 +6186,10 @@ Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If
 
     @property
     def StreamName(self):
+        """Stream name.
+Domain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -5079,6 +6225,9 @@ class DeleteLiveRecordRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5104,6 +6253,9 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID obtained through the `DescribeRecordTemplates` API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5137,6 +6289,9 @@ class DeleteLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5168,6 +6323,9 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -5176,6 +6334,9 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -5184,6 +6345,9 @@ class DeleteLiveSnapshotRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -5219,6 +6383,9 @@ class DeleteLiveSnapshotRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5246,6 +6413,11 @@ class DeleteLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+1. Get from the returned value of the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
+2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5279,6 +6451,9 @@ class DeleteLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5313,6 +6488,10 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """The push domain.
+`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -5321,6 +6500,10 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The push path, which should be the same as `AppName` in the push and playback URLs. The default value is `live`.
+`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -5329,6 +6512,10 @@ class DeleteLiveTimeShiftRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """The stream name.
+`Domain name+AppName+StreamName` uniquely identifies a time shifting rule. To delete a time shifting rule, exact match is required. This means if the `AppName` of a time shifting rule is empty, to delete the rule, you need to pass in an empty string for `AppName`.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -5364,6 +6551,9 @@ class DeleteLiveTimeShiftRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5389,6 +6579,9 @@ class DeleteLiveTimeShiftTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5422,6 +6615,9 @@ class DeleteLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5456,6 +6652,9 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -5464,6 +6663,9 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -5472,6 +6674,9 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -5480,6 +6685,9 @@ class DeleteLiveTranscodeRuleRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5516,6 +6724,9 @@ class DeleteLiveTranscodeRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5543,6 +6754,11 @@ class DeleteLiveTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
+2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -5576,6 +6792,9 @@ class DeleteLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5603,6 +6822,11 @@ Watermark ID returned by the `DescribeLiveWatermarks` API.
 
     @property
     def WatermarkId(self):
+        """Watermark ID.
+Watermark ID obtained in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
+Watermark ID returned by the `DescribeLiveWatermarks` API.
+        :rtype: int
+        """
         return self._WatermarkId
 
     @WatermarkId.setter
@@ -5636,6 +6860,9 @@ class DeleteLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5667,6 +6894,9 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -5675,6 +6905,9 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -5683,6 +6916,9 @@ class DeleteLiveWatermarkRuleRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -5718,6 +6954,9 @@ class DeleteLiveWatermarkRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5743,6 +6982,9 @@ class DeleteRecordTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID returned by `CreateRecordTask`. The recording task specified by `TaskId` will be deleted.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5776,6 +7018,9 @@ class DeleteRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5806,6 +7051,11 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def QueryTime(self):
+        """The query time of the request, supports data query for the last one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._QueryTime
 
     @QueryTime.setter
@@ -5814,6 +7064,9 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
+        """The playback domains to query. If you leave this empty, all playback domains will be queried.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -5854,6 +7107,9 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def QueryTime(self):
+        """The time point queried, whose format is the same as that of the corresponding request parameter.
+        :rtype: str
+        """
         return self._QueryTime
 
     @QueryTime.setter
@@ -5862,6 +7118,9 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """The playback data.
+        :rtype: list of MonitorStreamPlayInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -5870,6 +7129,9 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5941,6 +7203,11 @@ Africa
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last three years, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5949,6 +7216,11 @@ Africa
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last three years, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5957,6 +7229,9 @@ Africa
 
     @property
     def PlayDomains(self):
+        """LVB playback domain name. If this parameter is left empty, full data will be queried.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -5965,6 +7240,13 @@ Africa
 
     @property
     def MainlandOrOversea(self):
+        """Valid values:
+Mainland: query data for Mainland China,
+Oversea: query data for regions outside Mainland China,
+Default: query data for all regions.
+Note: LEB only supports querying data for all regions.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -5973,6 +7255,13 @@ Africa
 
     @property
     def Granularity(self):
+        """Data granularity. Valid values:
+5: 5-minute granularity (the query time span should be within 1 day),
+60: 1-hour granularity (the query time span should be within one month),
+1440: 1-day granularity (the query time span should be within one month).
+Default value: 5.
+        :rtype: int
+        """
         return self._Granularity
 
     @Granularity.setter
@@ -5981,6 +7270,9 @@ Africa
 
     @property
     def ServiceName(self):
+        """Service name. Valid values: LVB, LEB. The sum of LVB and LEB usage will be returned if this parameter is left empty.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -5989,6 +7281,18 @@ Africa
 
     @property
     def RegionNames(self):
+        """Region. Valid values:
+China Mainland
+Asia Pacific I
+Asia Pacific II
+Asia Pacific III
+Europe
+North America
+South America
+Middle East
+Africa
+        :rtype: list of str
+        """
         return self._RegionNames
 
     @RegionNames.setter
@@ -6033,7 +7337,7 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
         :type SumFlux: float
         :param _DataInfoList: Detailed data information.
         :type DataInfoList: list of BillDataInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._PeakBandwidthTime = None
@@ -6046,6 +7350,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def PeakBandwidthTime(self):
+        """Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._PeakBandwidthTime
 
     @PeakBandwidthTime.setter
@@ -6054,6 +7361,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def PeakBandwidth(self):
+        """Peak bandwidth in Mbps.
+        :rtype: float
+        """
         return self._PeakBandwidth
 
     @PeakBandwidth.setter
@@ -6062,6 +7372,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def P95PeakBandwidthTime(self):
+        """Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._P95PeakBandwidthTime
 
     @P95PeakBandwidthTime.setter
@@ -6070,6 +7383,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def P95PeakBandwidth(self):
+        """95th percentile bandwidth in Mbps.
+        :rtype: float
+        """
         return self._P95PeakBandwidth
 
     @P95PeakBandwidth.setter
@@ -6078,6 +7394,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def SumFlux(self):
+        """Total traffic in MB.
+        :rtype: float
+        """
         return self._SumFlux
 
     @SumFlux.setter
@@ -6086,6 +7405,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Detailed data information.
+        :rtype: list of BillDataInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -6094,6 +7416,9 @@ class DescribeBillBandwidthAndFluxListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6147,6 +7472,10 @@ NormalLive: LVB.
 
     @property
     def LiveType(self):
+        """Live streaming type. SlowLive: LCB.
+NormalLive: LVB.
+        :rtype: str
+        """
         return self._LiveType
 
     @LiveType.setter
@@ -6155,6 +7484,11 @@ NormalLive: LVB.
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last six months, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6163,6 +7497,11 @@ NormalLive: LVB.
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last six months, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6171,6 +7510,9 @@ NormalLive: LVB.
 
     @property
     def MainlandOrOversea(self):
+        """Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -6179,6 +7521,9 @@ NormalLive: LVB.
 
     @property
     def PushDomains(self):
+        """Playback domain name list. If this parameter is left empty, full data will be queried.
+        :rtype: list of str
+        """
         return self._PushDomains
 
     @PushDomains.setter
@@ -6219,6 +7564,9 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Statistics list.
+        :rtype: list of ConcurrentRecordStreamNum
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -6227,6 +7575,9 @@ class DescribeConcurrentRecordStreamNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6265,6 +7616,11 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed a month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6273,6 +7629,11 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed a month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6310,6 +7671,9 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Billable bandwidth of live stream relaying.
+        :rtype: list of BandwidthInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -6318,6 +7682,9 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6368,6 +7735,11 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6376,6 +7748,11 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6384,6 +7761,9 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
+        """Playback domain name. If this parameter is left empty, full data will be queried.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -6392,6 +7772,9 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def ProvinceNames(self):
+        """District list. If this parameter is left empty, data for all districts will be returned.
+        :rtype: list of str
+        """
         return self._ProvinceNames
 
     @ProvinceNames.setter
@@ -6400,6 +7783,9 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def IspNames(self):
+        """ISP list. If this parameter is left empty, data of all ISPs will be returned.
+        :rtype: list of str
+        """
         return self._IspNames
 
     @IspNames.setter
@@ -6408,6 +7794,9 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
+        """Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -6449,6 +7838,9 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Data content.
+        :rtype: list of GroupProIspDataInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -6457,6 +7849,9 @@ class DescribeGroupProIspPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6498,6 +7893,11 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6506,6 +7906,11 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6514,6 +7919,9 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
+        """Playback domain name list.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -6552,6 +7960,9 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Playback status code list.
+        :rtype: list of HttpStatusData
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -6560,6 +7971,9 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6600,6 +8014,9 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """Rule information list.
+        :rtype: list of CallBackRuleInfo
+        """
         return self._Rules
 
     @Rules.setter
@@ -6608,6 +8025,9 @@ class DescribeLiveCallbackRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6641,6 +8061,11 @@ class DescribeLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID.
+1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.
+2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -6677,6 +8102,9 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """Callback template information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.CallBackTemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -6685,6 +8113,9 @@ class DescribeLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6722,6 +8153,9 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """Template information list.
+        :rtype: list of CallBackTemplateInfo
+        """
         return self._Templates
 
     @Templates.setter
@@ -6730,6 +8164,9 @@ class DescribeLiveCallbackTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6761,6 +8198,9 @@ class DescribeLiveCertRequest(AbstractModel):
 
     @property
     def CertId(self):
+        """Certificate ID obtained through the `DescribeLiveCerts` API.
+        :rtype: int
+        """
         return self._CertId
 
     @CertId.setter
@@ -6797,6 +8237,9 @@ class DescribeLiveCertResponse(AbstractModel):
 
     @property
     def CertInfo(self):
+        """Certificate information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.CertInfo`
+        """
         return self._CertInfo
 
     @CertInfo.setter
@@ -6805,6 +8248,9 @@ class DescribeLiveCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6842,6 +8288,9 @@ class DescribeLiveCertsResponse(AbstractModel):
 
     @property
     def CertInfoSet(self):
+        """Certificate information list.
+        :rtype: list of CertInfo
+        """
         return self._CertInfoSet
 
     @CertInfoSet.setter
@@ -6850,6 +8299,9 @@ class DescribeLiveCertsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6890,6 +8342,9 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
     @property
     def DelayInfoList(self):
+        """Delayed playback information list.
+        :rtype: list of DelayInfo
+        """
         return self._DelayInfoList
 
     @DelayInfoList.setter
@@ -6898,6 +8353,9 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6944,6 +8402,9 @@ ExpireTimeDesc: Sort the records by certificate expiration time in descending or
 
     @property
     def DomainSearch(self):
+        """The keyword to use to search for domains.
+        :rtype: str
+        """
         return self._DomainSearch
 
     @DomainSearch.setter
@@ -6952,6 +8413,9 @@ ExpireTimeDesc: Sort the records by certificate expiration time in descending or
 
     @property
     def Offset(self):
+        """The number of records to skip before starting to return any results. 0 means to start from the first record and is the default.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6960,6 +8424,10 @@ ExpireTimeDesc: Sort the records by certificate expiration time in descending or
 
     @property
     def Length(self):
+        """The maximum number of records to return. The default is 50.
+If this parameter is not specified, up to 50 records will be returned.
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -6968,6 +8436,9 @@ ExpireTimeDesc: Sort the records by certificate expiration time in descending or
 
     @property
     def DomainName(self):
+        """The name of a particular domain to query.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -6976,6 +8447,11 @@ ExpireTimeDesc: Sort the records by certificate expiration time in descending or
 
     @property
     def OrderBy(self):
+        """Valid values:
+ExpireTimeAsc: Sort the records by certificate expiration time in ascending order.
+ExpireTimeDesc: Sort the records by certificate expiration time in descending order.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -7019,6 +8495,9 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def LiveDomainCertBindings(self):
+        """The information of domains that meet the query criteria.
+        :rtype: list of LiveDomainCertBindings
+        """
         return self._LiveDomainCertBindings
 
     @LiveDomainCertBindings.setter
@@ -7027,6 +8506,9 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """The number of records returned, which is needed for pagination.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -7035,6 +8517,9 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7067,6 +8552,9 @@ class DescribeLiveDomainCertRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -7103,6 +8591,9 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
     @property
     def DomainCertInfo(self):
+        """Certificate information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.DomainCertInfo`
+        """
         return self._DomainCertInfo
 
     @DomainCertInfo.setter
@@ -7111,6 +8602,9 @@ class DescribeLiveDomainCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7139,6 +8633,9 @@ class DescribeLiveDomainRefererRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -7175,6 +8672,9 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
     @property
     def RefererAuthConfig(self):
+        """Referer allowlist/blocklist configuration of a domain name
+        :rtype: :class:`tencentcloud.live.v20180801.models.RefererAuthConfig`
+        """
         return self._RefererAuthConfig
 
     @RefererAuthConfig.setter
@@ -7183,6 +8683,9 @@ class DescribeLiveDomainRefererResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7211,6 +8714,9 @@ class DescribeLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -7248,6 +8754,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DomainInfo(self):
+        """Domain name information.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: :class:`tencentcloud.live.v20180801.models.DomainInfo`
+        """
         return self._DomainInfo
 
     @DomainInfo.setter
@@ -7256,6 +8766,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7305,6 +8818,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def DomainStatus(self):
+        """Filter by domain name status. 0: disabled, 1: enabled.
+        :rtype: int
+        """
         return self._DomainStatus
 
     @DomainStatus.setter
@@ -7313,6 +8829,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def DomainType(self):
+        """Filter by domain name type. 0: push. 1: playback
+        :rtype: int
+        """
         return self._DomainType
 
     @DomainType.setter
@@ -7321,6 +8840,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: 10-100. Default value: 10.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -7329,6 +8851,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number to get. Value range: 1-100000. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -7337,6 +8862,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
+        """0: LVB, 1: LCB. Default value: 0.
+        :rtype: int
+        """
         return self._IsDelayLive
 
     @IsDelayLive.setter
@@ -7345,6 +8873,9 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def DomainPrefix(self):
+        """Domain name prefix.
+        :rtype: str
+        """
         return self._DomainPrefix
 
     @DomainPrefix.setter
@@ -7353,6 +8884,12 @@ class DescribeLiveDomainsRequest(AbstractModel):
 
     @property
     def PlayType(self):
+        """Playback region. This parameter is valid only when `DomainType` is set to `1`.
+`1`: Chinese mainland
+`2`: global
+`3`: outside Chinese mainland
+        :rtype: int
+        """
         return self._PlayType
 
     @PlayType.setter
@@ -7406,6 +8943,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllCount(self):
+        """Total number of results.
+        :rtype: int
+        """
         return self._AllCount
 
     @AllCount.setter
@@ -7414,6 +8954,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainList(self):
+        """List of domain name details.
+        :rtype: list of DomainInfo
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -7422,6 +8965,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateLimitCount(self):
+        """The number of domain names that can be added
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateLimitCount
 
     @CreateLimitCount.setter
@@ -7430,6 +8977,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlayTypeCount(self):
+        """The number of domains accelerated in the Chinese mainland, globally, and outside the Chinese mainland respectively.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._PlayTypeCount
 
     @PlayTypeCount.setter
@@ -7438,6 +8989,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7480,6 +9034,9 @@ Default value: 10.
 
     @property
     def PageNum(self):
+        """Page number to get. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -7488,6 +9045,11 @@ Default value: 10.
 
     @property
     def PageSize(self):
+        """Number of entries per page. Maximum value: 100. 
+Value: any integer between 1 and 100.
+Default value: 10.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -7496,6 +9058,9 @@ Default value: 10.
 
     @property
     def StreamName(self):
+        """Stream name for query
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -7546,6 +9111,9 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of eligible ones.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -7554,6 +9122,9 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -7562,6 +9133,9 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -7570,6 +9144,9 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries displayed per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -7578,6 +9155,9 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def ForbidStreamList(self):
+        """List of forbidden streams.
+        :rtype: list of ForbidStreamInfo
+        """
         return self._ForbidStreamList
 
     @ForbidStreamList.setter
@@ -7586,6 +9166,9 @@ class DescribeLiveForbidStreamListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7621,6 +9204,9 @@ class DescribeLivePlayAuthKeyRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -7657,6 +9243,9 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
     @property
     def PlayAuthKeyInfo(self):
+        """Playback authentication key information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.PlayAuthKeyInfo`
+        """
         return self._PlayAuthKeyInfo
 
     @PlayAuthKeyInfo.setter
@@ -7665,6 +9254,9 @@ class DescribeLivePlayAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7702,6 +9294,11 @@ Valid values: Any integer between 1 and 20.
 
     @property
     def TaskId(self):
+        """The task ID. 
+A task ID is returned by the `CreateLivePullStreamTask` API.
+If you do not pass this parameter, all tasks will be returned, sorted by last updated time in descending order.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7710,6 +9307,9 @@ Valid values: Any integer between 1 and 20.
 
     @property
     def PageNum(self):
+        """The number of page to start from. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -7718,6 +9318,10 @@ Valid values: Any integer between 1 and 20.
 
     @property
     def PageSize(self):
+        """The maximum number of records per page. Default value: 10.
+Valid values: Any integer between 1 and 20.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -7771,6 +9375,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
+        """The information of stream pulling tasks.
+        :rtype: list of PullStreamTaskInfo
+        """
         return self._TaskInfos
 
     @TaskInfos.setter
@@ -7779,6 +9386,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """The page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -7787,6 +9397,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """The number of records per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -7795,6 +9408,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """The total number of records.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -7803,6 +9419,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """The total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -7811,6 +9430,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def LimitTaskNum(self):
+        """The maximum number of tasks allowed.
+        :rtype: int
+        """
         return self._LimitTaskNum
 
     @LimitTaskNum.setter
@@ -7819,6 +9441,9 @@ class DescribeLivePullStreamTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7855,6 +9480,9 @@ class DescribeLivePushAuthKeyRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -7891,6 +9519,9 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
     @property
     def PushAuthKeyInfo(self):
+        """Push authentication key information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.PushAuthKeyInfo`
+        """
         return self._PushAuthKeyInfo
 
     @PushAuthKeyInfo.setter
@@ -7899,6 +9530,9 @@ class DescribeLivePushAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7936,6 +9570,9 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """List of rules.
+        :rtype: list of RuleInfo
+        """
         return self._Rules
 
     @Rules.setter
@@ -7944,6 +9581,9 @@ class DescribeLiveRecordRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7975,6 +9615,9 @@ class DescribeLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8011,6 +9654,9 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """Recording template information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordTemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -8019,6 +9665,9 @@ class DescribeLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8049,6 +9698,11 @@ class DescribeLiveRecordTemplatesRequest(AbstractModel):
 
     @property
     def IsDelayLive(self):
+        """Whether it is an LCB template. Default value: 0.
+0: LVB.
+1: LCB.
+        :rtype: int
+        """
         return self._IsDelayLive
 
     @IsDelayLive.setter
@@ -8085,6 +9739,9 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """Recording template information list.
+        :rtype: list of RecordTemplateInfo
+        """
         return self._Templates
 
     @Templates.setter
@@ -8093,6 +9750,9 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8133,6 +9793,9 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """Rule list.
+        :rtype: list of RuleInfo
+        """
         return self._Rules
 
     @Rules.setter
@@ -8141,6 +9804,9 @@ class DescribeLiveSnapshotRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8173,6 +9839,10 @@ Template ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tenc
 
     @property
     def TemplateId(self):
+        """Template ID.
+Template ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -8209,6 +9879,9 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """Screencapturing template information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.SnapshotTemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -8217,6 +9890,9 @@ class DescribeLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8254,6 +9930,9 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """Screencapturing template list.
+        :rtype: list of SnapshotTemplateInfo
+        """
         return self._Templates
 
     @Templates.setter
@@ -8262,6 +9941,9 @@ class DescribeLiveSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8338,6 +10020,11 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def StartTime(self):
+        """Start time. 
+In UTC format, such as 2018-12-29T19:00:00Z.
+This supports querying the history of 60 days.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8346,6 +10033,11 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def EndTime(self):
+        """End time.
+In UTC format, such as 2018-12-29T20:00:00Z.
+This cannot be after the current time and cannot be more than 30 days after the start time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8354,6 +10046,9 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -8362,6 +10057,9 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -8370,6 +10068,10 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def StreamName(self):
+        """Stream name; query with wildcard (*) is not supported; fuzzy match by default.
+The IsStrict field can be used to change to exact query.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -8378,6 +10080,11 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def PageNum(self):
+        """Page number to get.
+Default value: 1.
+Note: Currently, query for up to 10,000 entries is supported.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8386,6 +10093,13 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def PageSize(self):
+        """Number of entries per page.
+Maximum value: 100.
+Value range: any integer between 1 and 100.
+Default value: 10.
+Note: currently, query for up to 10,000 entries is supported.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8394,6 +10108,11 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def IsFilter(self):
+        """Whether to filter. No filtering by default.
+0: No filtering at all.
+1: Filter out the failing streams and return only the successful ones.
+        :rtype: int
+        """
         return self._IsFilter
 
     @IsFilter.setter
@@ -8402,6 +10121,12 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def IsStrict(self):
+        """Whether to query exactly. Fuzzy match by default.
+0: Fuzzy match.
+1: Exact query.
+Note: This parameter takes effect when StreamName is used.
+        :rtype: int
+        """
         return self._IsStrict
 
     @IsStrict.setter
@@ -8410,6 +10135,11 @@ Note: This parameter takes effect when StreamName is used.
 
     @property
     def IsAsc(self):
+        """Whether to display in ascending order by end time. Descending order by default.
+0: Descending.
+1: Ascending.
+        :rtype: int
+        """
         return self._IsAsc
 
     @IsAsc.setter
@@ -8467,6 +10197,9 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def EventList(self):
+        """List of streaming events.
+        :rtype: list of StreamEventInfo
+        """
         return self._EventList
 
     @EventList.setter
@@ -8475,6 +10208,9 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8483,6 +10219,9 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8491,6 +10230,9 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of eligible ones.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -8499,6 +10241,9 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -8507,6 +10252,9 @@ class DescribeLiveStreamEventListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8556,6 +10304,9 @@ Default value: 10.
 
     @property
     def DomainName(self):
+        """Push domain name. If you use multiple paths, enter the `DomainName`.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -8564,6 +10315,9 @@ Default value: 10.
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -8572,6 +10326,9 @@ Default value: 10.
 
     @property
     def PageNum(self):
+        """Page number to get. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8580,6 +10337,11 @@ Default value: 10.
 
     @property
     def PageSize(self):
+        """Number of entries per page. Maximum value: 100. 
+Value: any integer between 10 and 100.
+Default value: 10.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8588,6 +10350,9 @@ Default value: 10.
 
     @property
     def StreamName(self):
+        """Stream name, which is used for exact query.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -8640,6 +10405,9 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of eligible ones.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -8648,6 +10416,9 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -8656,6 +10427,9 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8664,6 +10438,9 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries displayed per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8672,6 +10449,9 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def OnlineInfo(self):
+        """Active push information list.
+        :rtype: list of StreamOnlineInfo
+        """
         return self._OnlineInfo
 
     @OnlineInfo.setter
@@ -8680,6 +10460,9 @@ class DescribeLiveStreamOnlineListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8742,6 +10525,9 @@ Default value: 10
 
     @property
     def DomainName(self):
+        """Your push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -8750,6 +10536,12 @@ Default value: 10
 
     @property
     def EndTime(self):
+        """End time.
+In UTC format, such as 2016-06-30T19:00:00Z.
+This cannot be after the current time.
+Note: The difference between EndTime and StartTime cannot be greater than 30 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8758,6 +10550,11 @@ Default value: 10
 
     @property
     def StartTime(self):
+        """Start time. 
+In UTC format, such as 2016-06-29T19:00:00Z.
+This supports querying data in the past 60 days.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8766,6 +10563,9 @@ Default value: 10
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -8774,6 +10574,10 @@ Default value: 10
 
     @property
     def PageNum(self):
+        """Page number to get.
+Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8782,6 +10586,12 @@ Default value: 10
 
     @property
     def PageSize(self):
+        """Number of entries per page.
+Maximum value: 100
+Valid values: integers between 10 and 100
+Default value: 10
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8790,6 +10600,9 @@ Default value: 10
 
     @property
     def StreamName(self):
+        """Stream name, which supports fuzzy match.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -8844,6 +10657,9 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def PublishInfo(self):
+        """Push record information.
+        :rtype: list of StreamName
+        """
         return self._PublishInfo
 
     @PublishInfo.setter
@@ -8852,6 +10668,9 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8860,6 +10679,9 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8868,6 +10690,9 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of eligible ones.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -8876,6 +10701,9 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -8884,6 +10712,9 @@ class DescribeLiveStreamPublishedListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8932,6 +10763,9 @@ Default value: 200.
 
     @property
     def PushDomain(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._PushDomain
 
     @PushDomain.setter
@@ -8940,6 +10774,9 @@ Default value: 200.
 
     @property
     def AppName(self):
+        """Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -8948,6 +10785,11 @@ Default value: 200.
 
     @property
     def PageNum(self):
+        """Number of pages,
+Value range: [1,10000],
+Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8956,6 +10798,11 @@ Default value: 200.
 
     @property
     def PageSize(self):
+        """Number of entries per page,
+Value range: [1,1000],
+Default value: 200.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9007,6 +10854,9 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Live stream statistics list.
+        :rtype: list of PushDataInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -9015,6 +10865,9 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of live streams.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -9023,6 +10876,9 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -9031,6 +10887,9 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number where the current data resides.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -9039,6 +10898,9 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of live streams per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9047,6 +10909,9 @@ class DescribeLiveStreamPushInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9088,6 +10953,9 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -9096,6 +10964,9 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Your push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -9104,6 +10975,9 @@ class DescribeLiveStreamStateRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -9145,6 +11019,12 @@ forbid: forbidden.
 
     @property
     def StreamState(self):
+        """Stream status,
+active: active
+inactive: Inactive
+forbid: forbidden.
+        :rtype: str
+        """
         return self._StreamState
 
     @StreamState.setter
@@ -9153,6 +11033,9 @@ forbid: forbidden.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9193,6 +11076,13 @@ Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.c
 
     @property
     def StartTime(self):
+        """The start time for query. You can query data from the past three months. The longest time period that can be queried is one month.
+
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9201,6 +11091,13 @@ Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.c
 
     @property
     def EndTime(self):
+        """The end time for query. You can query data from the past three months. The longest time period that can be queried is one month.
+
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9209,6 +11106,9 @@ Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.c
 
     @property
     def PushDomains(self):
+        """The push domains to query. If you leave this empty, the time shifting billing data of all push domains will be returned.
+        :rtype: list of str
+        """
         return self._PushDomains
 
     @PushDomains.setter
@@ -9247,6 +11147,9 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """The time shifting billing data.
+        :rtype: list of TimeShiftBillData
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -9255,6 +11158,9 @@ class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9295,6 +11201,9 @@ class DescribeLiveTimeShiftRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """The information of the rules.
+        :rtype: list of RuleInfo
+        """
         return self._Rules
 
     @Rules.setter
@@ -9303,6 +11212,9 @@ class DescribeLiveTimeShiftRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9343,6 +11255,9 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """The information of the templates.
+        :rtype: list of TimeShiftTemplate
+        """
         return self._Templates
 
     @Templates.setter
@@ -9351,6 +11266,9 @@ class DescribeLiveTimeShiftTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9381,7 +11299,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type StreamName: str
         :param _DayTime: Query date (UTC+8)
 Format: yyyymmdd
-Note: you can query the statistics for a day in the past three months, with yesterday as the latest date allowed.
+Note: you can query the statistics for a day in the past one month, with yesterday as the latest date allowed.
         :type DayTime: str
         :param _PageNum: Number of pages. Default value: 1.
 Up to 100 pages.
@@ -9391,11 +11309,11 @@ Value range: [10,1000].
         :type PageSize: int
         :param _StartDayTime: Start date (UTC+8)
 Format: yyyymmdd
-Note: details for the last three months can be queried.
+Note: details for the last one month can be queried.
         :type StartDayTime: str
         :param _EndDayTime: End date (UTC+8)
 Format: yyyymmdd
-Note: you can query the statistics for a period in the past three months, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
+Note: you can query the statistics for a period in the past one month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
         :type EndDayTime: str
         """
         self._PushDomain = None
@@ -9408,6 +11326,9 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def PushDomain(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._PushDomain
 
     @PushDomain.setter
@@ -9416,6 +11337,9 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -9424,6 +11348,11 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def DayTime(self):
+        """Query date (UTC+8)
+Format: yyyymmdd
+Note: you can query the statistics for a day in the past one month, with yesterday as the latest date allowed.
+        :rtype: str
+        """
         return self._DayTime
 
     @DayTime.setter
@@ -9432,6 +11361,10 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def PageNum(self):
+        """Number of pages. Default value: 1.
+Up to 100 pages.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -9440,6 +11373,10 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def PageSize(self):
+        """Number of entries per page. Default value: 20,
+Value range: [10,1000].
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9448,6 +11385,11 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def StartDayTime(self):
+        """Start date (UTC+8)
+Format: yyyymmdd
+Note: details for the last one month can be queried.
+        :rtype: str
+        """
         return self._StartDayTime
 
     @StartDayTime.setter
@@ -9456,6 +11398,11 @@ Note: you can query the statistics for a period in the past three months, with y
 
     @property
     def EndDayTime(self):
+        """End date (UTC+8)
+Format: yyyymmdd
+Note: you can query the statistics for a period in the past one month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
+        :rtype: str
+        """
         return self._EndDayTime
 
     @EndDayTime.setter
@@ -9498,7 +11445,7 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
         :type TotalNum: int
         :param _TotalPage: Total number of pages.
         :type TotalPage: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DataInfoList = None
@@ -9510,6 +11457,9 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Statistics list.
+        :rtype: list of TranscodeDetailInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -9518,6 +11468,9 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -9526,6 +11479,9 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -9534,6 +11490,9 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -9542,6 +11501,9 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -9550,6 +11512,9 @@ class DescribeLiveTranscodeDetailInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9588,6 +11553,9 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
+        """An array of template IDs to be filtered.
+        :rtype: list of int
+        """
         return self._TemplateIds
 
     @TemplateIds.setter
@@ -9596,6 +11564,9 @@ class DescribeLiveTranscodeRulesRequest(AbstractModel):
 
     @property
     def DomainNames(self):
+        """An array of domain names to be filtered.
+        :rtype: list of str
+        """
         return self._DomainNames
 
     @DomainNames.setter
@@ -9633,6 +11604,9 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """List of transcoding rules.
+        :rtype: list of RuleInfo
+        """
         return self._Rules
 
     @Rules.setter
@@ -9641,6 +11615,9 @@ class DescribeLiveTranscodeRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9673,6 +11650,10 @@ Note: get the template ID in the returned value of the [CreateLiveTranscodeTempl
 
     @property
     def TemplateId(self):
+        """Template ID.
+Note: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -9709,6 +11690,9 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def Template(self):
+        """Template information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.TemplateInfo`
+        """
         return self._Template
 
     @Template.setter
@@ -9717,6 +11701,9 @@ class DescribeLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9754,6 +11741,9 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
+        """List of transcoding templates.
+        :rtype: list of TemplateInfo
+        """
         return self._Templates
 
     @Templates.setter
@@ -9762,6 +11752,9 @@ class DescribeLiveTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9810,6 +11803,11 @@ By default, the data both in and outside the Chinese mainland is queried.
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed three months. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9818,6 +11816,11 @@ By default, the data both in and outside the Chinese mainland is queried.
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed three months. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9826,6 +11829,10 @@ By default, the data both in and outside the Chinese mainland is queried.
 
     @property
     def PushDomains(self):
+        """List of push domains to query. If this parameter is left empty, the data of all domains is queried.
+If this parameter is specified, the data returned will be on an hourly basis.
+        :rtype: list of str
+        """
         return self._PushDomains
 
     @PushDomains.setter
@@ -9834,6 +11841,12 @@ By default, the data both in and outside the Chinese mainland is queried.
 
     @property
     def MainlandOrOversea(self):
+        """Valid values:
+`Mainland`: queries transcoding data in the Chinese mainland
+`Oversea`: queries transcoding data outside the Chinese mainland
+By default, the data both in and outside the Chinese mainland is queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -9874,6 +11887,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def DataInfoList(self):
+        """List of transcoding data
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: list of TranscodeTotalInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -9882,6 +11899,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9913,6 +11933,9 @@ class DescribeLiveWatermarkRequest(AbstractModel):
 
     @property
     def WatermarkId(self):
+        """Watermark ID returned by the `DescribeLiveWatermarks` API.
+        :rtype: int
+        """
         return self._WatermarkId
 
     @WatermarkId.setter
@@ -9949,6 +11972,9 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
     @property
     def Watermark(self):
+        """Watermark information.
+        :rtype: :class:`tencentcloud.live.v20180801.models.WatermarkInfo`
+        """
         return self._Watermark
 
     @Watermark.setter
@@ -9957,6 +11983,9 @@ class DescribeLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9994,6 +12023,9 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """Watermarking rule list.
+        :rtype: list of RuleInfo
+        """
         return self._Rules
 
     @Rules.setter
@@ -10002,6 +12034,9 @@ class DescribeLiveWatermarkRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10045,6 +12080,9 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of watermarks.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -10053,6 +12091,9 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     @property
     def WatermarkList(self):
+        """Watermark information list.
+        :rtype: list of WatermarkInfo
+        """
         return self._WatermarkList
 
     @WatermarkList.setter
@@ -10061,6 +12102,9 @@ class DescribeLiveWatermarksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10113,6 +12157,11 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10121,6 +12170,11 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10129,6 +12183,10 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def Granularity(self):
+        """Query granularity:
+1: 1-minute granularity.
+        :rtype: int
+        """
         return self._Granularity
 
     @Granularity.setter
@@ -10137,6 +12195,9 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def StatType(self):
+        """Yes. Valid values: "4xx", "5xx". Mixed codes in the format of `4xx,5xx` are also supported.
+        :rtype: str
+        """
         return self._StatType
 
     @StatType.setter
@@ -10145,6 +12206,9 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
+        """Playback domain name list.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -10153,6 +12217,9 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
+        """Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -10197,6 +12264,9 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     @property
     def HttpCodeList(self):
+        """Statistics list.
+        :rtype: list of HttpCodeInfo
+        """
         return self._HttpCodeList
 
     @HttpCodeList.setter
@@ -10205,6 +12275,9 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     @property
     def StatType(self):
+        """Statistics type.
+        :rtype: str
+        """
         return self._StatType
 
     @StatType.setter
@@ -10213,6 +12286,9 @@ class DescribePlayErrorCodeDetailInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10270,6 +12346,11 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10278,6 +12359,11 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10286,6 +12372,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
+        """Playback domain name list. If this parameter is left empty, full data will be queried.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -10294,6 +12383,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """Number of pages. Value range: [1,1000]. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -10302,6 +12394,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: [1,1000]. Default value: 20.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10310,6 +12405,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
+        """Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -10318,6 +12416,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def GroupType(self):
+        """Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.
+        :rtype: str
+        """
         return self._GroupType
 
     @GroupType.setter
@@ -10326,6 +12427,9 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     @property
     def OutLanguage(self):
+        """Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
+        :rtype: str
+        """
         return self._OutLanguage
 
     @OutLanguage.setter
@@ -10399,6 +12503,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def ProIspInfoList(self):
+        """Information of error codes starting with 2, 3, 4, or 5 by district and ISP.
+        :rtype: list of ProIspPlayCodeDataInfo
+        """
         return self._ProIspInfoList
 
     @ProIspInfoList.setter
@@ -10407,6 +12514,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCodeAll(self):
+        """Total occurrences of all status codes.
+        :rtype: int
+        """
         return self._TotalCodeAll
 
     @TotalCodeAll.setter
@@ -10415,6 +12525,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode4xx(self):
+        """Occurrences of 4xx status codes.
+        :rtype: int
+        """
         return self._TotalCode4xx
 
     @TotalCode4xx.setter
@@ -10423,6 +12536,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode5xx(self):
+        """Occurrences of 5xx status codes.
+        :rtype: int
+        """
         return self._TotalCode5xx
 
     @TotalCode5xx.setter
@@ -10431,6 +12547,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCodeList(self):
+        """Total occurrences of each status code.
+        :rtype: list of PlayCodeTotalInfo
+        """
         return self._TotalCodeList
 
     @TotalCodeList.setter
@@ -10439,6 +12558,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -10447,6 +12569,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -10455,6 +12580,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -10463,6 +12591,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of results.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -10471,6 +12602,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode2xx(self):
+        """Occurrences of 2xx status codes.
+        :rtype: int
+        """
         return self._TotalCode2xx
 
     @TotalCode2xx.setter
@@ -10479,6 +12613,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def TotalCode3xx(self):
+        """Occurrences of 3xx status codes.
+        :rtype: int
+        """
         return self._TotalCode3xx
 
     @TotalCode3xx.setter
@@ -10487,6 +12624,9 @@ class DescribePlayErrorCodeSumInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10569,6 +12709,11 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10577,6 +12722,11 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10585,6 +12735,10 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def Granularity(self):
+        """Supported granularities:
+1: 1-minute granularity (the query interval should be within 1 day)
+        :rtype: int
+        """
         return self._Granularity
 
     @Granularity.setter
@@ -10593,6 +12747,14 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def StatType(self):
+        """Statistical metric type:
+"Bandwidth": bandwidth
+"FluxPerSecond": average traffic
+"Flux": traffic
+"Request": number of requests
+"Online": number of concurrent connections
+        :rtype: str
+        """
         return self._StatType
 
     @StatType.setter
@@ -10601,6 +12763,9 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def PlayDomains(self):
+        """Playback domain name list.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -10609,6 +12774,9 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def ProvinceNames(self):
+        """List of the districts to be queried, such as Beijing.
+        :rtype: list of str
+        """
         return self._ProvinceNames
 
     @ProvinceNames.setter
@@ -10617,6 +12785,9 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def IspNames(self):
+        """List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.
+        :rtype: list of str
+        """
         return self._IspNames
 
     @IspNames.setter
@@ -10625,6 +12796,9 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def MainlandOrOversea(self):
+        """Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -10633,6 +12807,11 @@ Data of all IPs will be returned if this parameter is left empty.
 
     @property
     def IpType(self):
+        """IP type:
+"Ipv6": IPv6 data
+Data of all IPs will be returned if this parameter is left empty.
+        :rtype: str
+        """
         return self._IpType
 
     @IpType.setter
@@ -10680,6 +12859,9 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Playback information list.
+        :rtype: list of PlayStatInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -10688,6 +12870,9 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     @property
     def StatType(self):
+        """Statistics type, which is the same as the input parameter.
+        :rtype: str
+        """
         return self._StatType
 
     @StatType.setter
@@ -10696,6 +12881,9 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10743,6 +12931,9 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the tasks to retrieve in Unix timestamp. The time range should not be earlier than 90 days before the current time, and the query span should not exceed one week.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10751,6 +12942,9 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the tasks to retrieve in Unix timestamp. The EndTime must be greater than the StartTime. The time range should not be earlier than 90 days before the current time, and the query span should not exceed one week. (Note: the start and end times of the task must be within the query time range).
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10759,6 +12953,9 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -10767,6 +12964,9 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -10775,6 +12975,9 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -10783,6 +12986,9 @@ class DescribeRecordTaskRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """Page token used for batch retrieval: If a single request cannot retrieve all data, the interface will return a ScrollToken. The next request carrying this token will start retrieving from the next record.
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -10827,6 +13033,9 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """Page token: When the request does not return all data, this field indicates the token of the next record. When this field is empty, it means there is no more data.
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -10835,6 +13044,9 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def TaskList(self):
+        """List of recording tasks. When this field is empty, it means all data has been returned.
+        :rtype: list of RecordTask
+        """
         return self._TaskList
 
     @TaskList.setter
@@ -10843,6 +13055,9 @@ class DescribeRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10887,6 +13102,9 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10895,6 +13113,9 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time in UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`. Data for the last year can be queried.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10903,6 +13124,9 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """Region information. Valid values: Mainland, Oversea. The former is to query data within Mainland China, while the latter outside Mainland China. If this parameter is left empty, data of all regions will be queried.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -10911,6 +13135,9 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def PushDomains(self):
+        """Push domain name (data at the domain name level after November 1, 2019 can be queried).
+        :rtype: list of str
+        """
         return self._PushDomains
 
     @PushDomains.setter
@@ -10919,6 +13146,9 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
 
     @property
     def Granularity(self):
+        """Data granularity. There is a 1.5-hour delay in data reporting. Valid values: `Minute` (5-minute granularity; query period of up to 31 days); `Day` (1-day granularity based on UTC+8:00; query period of up to 186 days)
+        :rtype: str
+        """
         return self._Granularity
 
     @Granularity.setter
@@ -10959,6 +13189,9 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Data information list.
+        :rtype: list of TimeValue
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -10967,6 +13200,9 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11017,6 +13253,10 @@ Default: query data for all regions.
 
     @property
     def DayTime(self):
+        """Date in the format of YYYY-mm-dd
+Data is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.
+        :rtype: str
+        """
         return self._DayTime
 
     @DayTime.setter
@@ -11025,6 +13265,9 @@ Default: query data for all regions.
 
     @property
     def PlayDomain(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._PlayDomain
 
     @PlayDomain.setter
@@ -11033,6 +13276,9 @@ Default: query data for all regions.
 
     @property
     def PageNum(self):
+        """Page number. Value range: [1,1000]. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -11041,6 +13287,9 @@ Default: query data for all regions.
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: [100,1000]. Default value: 1,000.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11049,6 +13298,12 @@ Default: query data for all regions.
 
     @property
     def MainlandOrOversea(self):
+        """Valid values:
+Mainland: query data for Mainland China,
+Oversea: query data for regions outside Mainland China,
+Default: query data for all regions.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -11057,6 +13312,9 @@ Default: query data for all regions.
 
     @property
     def ServiceName(self):
+        """Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -11110,6 +13368,9 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Playback data information list.
+        :rtype: list of PlayDataInfoByStream
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -11118,6 +13379,9 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -11126,6 +13390,9 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -11134,6 +13401,9 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number where the current data resides.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -11142,6 +13412,9 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11150,6 +13423,9 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11208,6 +13484,11 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed twenty-four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11216,6 +13497,11 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed twenty-four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11224,6 +13510,10 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
 
     @property
     def PlayDomain(self):
+        """Playback domain name,
+If this parameter is left empty, data of live streams of all playback domain names will be queried.
+        :rtype: str
+        """
         return self._PlayDomain
 
     @PlayDomain.setter
@@ -11232,6 +13522,10 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
 
     @property
     def StreamName(self):
+        """Stream name (exact match).
+If this parameter is left empty, full playback data will be queried.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -11240,6 +13534,11 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
 
     @property
     def AppName(self):
+        """Push address. Its value is the same as the `AppName` in playback address. It supports exact match, and takes effect only when `StreamName` is passed at the same time.
+If it is left empty, the full playback data will be queried.
+Note: to query by `AppName`, you need to submit a ticket first. After your application succeeds, it will take about 5 business days (subject to the time in the reply) for the configuration to take effect.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -11248,6 +13547,9 @@ Note: to query by `AppName`, you need to submit a ticket first. After your appli
 
     @property
     def ServiceName(self):
+        """Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -11289,6 +13591,9 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Statistics list at a 1-minute granularity.
+        :rtype: list of DayStreamPlayInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -11297,6 +13602,9 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11344,6 +13652,9 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """The stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -11352,6 +13663,11 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last seven days, the gap between the start time and the end time cannot exceed three hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11360,6 +13676,11 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last seven days, the gap between the start time and the end time cannot exceed three hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11368,6 +13689,9 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def PushDomain(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._PushDomain
 
     @PushDomain.setter
@@ -11376,6 +13700,9 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -11416,6 +13743,9 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Returned data list.
+        :rtype: list of PushQualityData
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -11424,6 +13754,9 @@ class DescribeStreamPushInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11473,6 +13806,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -11481,6 +13817,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -11489,6 +13828,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """The stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -11497,6 +13839,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time, which must be a Unix timestamp.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11505,6 +13850,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time, which must be a Unix timestamp. 
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11513,6 +13861,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def DomainGroup(self):
+        """The group the push domain belongs to. You don’t need to specify this parameter if the domain doesn’t belong to any group or the group name is an empty string.
+        :rtype: str
+        """
         return self._DomainGroup
 
     @DomainGroup.setter
@@ -11521,6 +13872,9 @@ class DescribeTimeShiftRecordDetailRequest(AbstractModel):
 
     @property
     def TransCodeId(self):
+        """The transcoding template ID. You don’t need to specify this parameter if the transcoding template ID is `0`.
+        :rtype: int
+        """
         return self._TransCodeId
 
     @TransCodeId.setter
@@ -11564,6 +13918,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordList(self):
+        """The number of sessions recorded.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TimeShiftRecord
+        """
         return self._RecordList
 
     @RecordList.setter
@@ -11572,6 +13930,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11622,6 +13983,9 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def StartTime(self):
+        """The start time, which must be a Unix timestamp.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11630,6 +13994,9 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def EndTime(self):
+        """The end time, which must be a Unix timestamp.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11638,6 +14005,9 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def StreamName(self):
+        """The stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -11646,6 +14016,9 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def Domain(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -11654,6 +14027,9 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def DomainGroup(self):
+        """The group the push domain belongs to.
+        :rtype: str
+        """
         return self._DomainGroup
 
     @DomainGroup.setter
@@ -11662,6 +14038,10 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def PageSize(self):
+        """The maximum number of records to return. Value range: 0-100. If you do not specify this parameter or pass in `0`, 
+the default value `100` will be used. If you pass in a negative number or a value greater than 100, an error will be returned.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11670,6 +14050,9 @@ the default value `100` will be used. If you pass in a negative number or a valu
 
     @property
     def PageNum(self):
+        """The number of page to pull records from. If you do not specify this parameter, the default value `1` will be used.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -11716,6 +14099,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalSize(self):
+        """The total number of records in the specified time period.
+        :rtype: int
+        """
         return self._TotalSize
 
     @TotalSize.setter
@@ -11724,6 +14110,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamList(self):
+        """The information of the streams.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TimeShiftStreamInfo
+        """
         return self._StreamList
 
     @StreamList.setter
@@ -11732,6 +14122,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11789,6 +14182,11 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11797,6 +14195,11 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11805,6 +14208,9 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def PlayDomains(self):
+        """Playback domain name. If this parameter is left empty, full data will be queried by default.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -11813,6 +14219,9 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number. Value range: [1,1000]. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -11821,6 +14230,9 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: [1,1000]. Default value: 20.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11829,6 +14241,9 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def OrderParam(self):
+        """Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.
+        :rtype: str
+        """
         return self._OrderParam
 
     @OrderParam.setter
@@ -11837,6 +14252,9 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def MainlandOrOversea(self):
+        """Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -11845,6 +14263,9 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     @property
     def OutLanguage(self):
+        """Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.
+        :rtype: str
+        """
         return self._OutLanguage
 
     @OutLanguage.setter
@@ -11903,6 +14324,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number. Value range: [1,1000]. Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -11911,6 +14335,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: [1,1000]. Default value: 20.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -11919,6 +14346,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def OrderParam(self):
+        """Sorting metric. Valid values: "TotalRequest", "FailedRequest", "TotalFlux".
+        :rtype: str
+        """
         return self._OrderParam
 
     @OrderParam.setter
@@ -11927,6 +14357,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """Total number of results.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -11935,6 +14368,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def TotalPage(self):
+        """Total number of result pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -11943,6 +14379,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Data content.
+        :rtype: list of ClientIpPlaySumInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -11951,6 +14390,9 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11997,6 +14439,11 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last forty days, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12005,6 +14452,11 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last forty days, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12013,6 +14465,9 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     @property
     def PushDomains(self):
+        """The push domains to query. If you do not pass a value, all push domains will be queried.
+        :rtype: list of str
+        """
         return self._PushDomains
 
     @PushDomains.setter
@@ -12051,6 +14506,9 @@ class DescribeTranscodeTaskNumResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """The number of tasks.
+        :rtype: list of TranscodeTaskNum
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -12059,6 +14517,9 @@ class DescribeTranscodeTaskNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12106,6 +14567,11 @@ Default value: 5
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12114,6 +14580,11 @@ Default value: 5
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12122,6 +14593,9 @@ Default value: 5
 
     @property
     def Domains(self):
+        """LVB domain names. If this parameter is left empty, data of all domain names will be queried.
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -12130,6 +14604,12 @@ Default value: 5
 
     @property
     def Granularity(self):
+        """Time granularity of the data. Valid values:
+5: 5-minute granularity (the query period is up to 1 day)
+1440: 1-day granularity (the query period is up to 1 month)
+Default value: 5
+        :rtype: int
+        """
         return self._Granularity
 
     @Granularity.setter
@@ -12169,6 +14649,9 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
+        """Detailed data.
+        :rtype: list of ConcurrentRecordStreamNum
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -12177,6 +14660,9 @@ class DescribeUploadStreamNumsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12233,6 +14719,11 @@ Default value: 20.
 
     @property
     def StartTime(self):
+        """The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -12241,6 +14732,11 @@ Default value: 20.
 
     @property
     def EndTime(self):
+        """The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -12249,6 +14745,9 @@ Default value: 20.
 
     @property
     def TopIndex(self):
+        """Bandwidth metric. Valid values: "Domain", "StreamId".
+        :rtype: str
+        """
         return self._TopIndex
 
     @TopIndex.setter
@@ -12257,6 +14756,9 @@ Default value: 20.
 
     @property
     def PlayDomains(self):
+        """Playback domain name. If this parameter is left empty, full data will be queried by default.
+        :rtype: list of str
+        """
         return self._PlayDomains
 
     @PlayDomains.setter
@@ -12265,6 +14767,11 @@ Default value: 20.
 
     @property
     def PageNum(self):
+        """Page number,
+Value range: [1,1000],
+Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -12273,6 +14780,10 @@ Default value: 20.
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: [1,1000].
+Default value: 20.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -12281,6 +14792,9 @@ Default value: 20.
 
     @property
     def OrderParam(self):
+        """Sorting metric. Valid values: "AvgFluxPerSecond", "TotalRequest" (default), "TotalFlux".
+        :rtype: str
+        """
         return self._OrderParam
 
     @OrderParam.setter
@@ -12344,6 +14858,11 @@ Default value: 20.
 
     @property
     def PageNum(self):
+        """Page number,
+Value range: [1,1000],
+Default value: 1.
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -12352,6 +14871,10 @@ Default value: 20.
 
     @property
     def PageSize(self):
+        """Number of entries per page. Value range: [1,1000].
+Default value: 20.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -12360,6 +14883,9 @@ Default value: 20.
 
     @property
     def TopIndex(self):
+        """Bandwidth metric. Valid values: "Domain", "StreamId".
+        :rtype: str
+        """
         return self._TopIndex
 
     @TopIndex.setter
@@ -12368,6 +14894,9 @@ Default value: 20.
 
     @property
     def OrderParam(self):
+        """Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.
+        :rtype: str
+        """
         return self._OrderParam
 
     @OrderParam.setter
@@ -12376,6 +14905,9 @@ Default value: 20.
 
     @property
     def TotalNum(self):
+        """Total number of results.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -12384,6 +14916,9 @@ Default value: 20.
 
     @property
     def TotalPage(self):
+        """Total number of result pages.
+        :rtype: int
+        """
         return self._TotalPage
 
     @TotalPage.setter
@@ -12392,6 +14927,9 @@ Default value: 20.
 
     @property
     def DataInfoList(self):
+        """Data content.
+        :rtype: list of PlaySumStatInfo
+        """
         return self._DataInfoList
 
     @DataInfoList.setter
@@ -12400,6 +14938,9 @@ Default value: 20.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12474,6 +15015,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertId(self):
+        """Certificate ID.
+        :rtype: int
+        """
         return self._CertId
 
     @CertId.setter
@@ -12482,6 +15026,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertName(self):
+        """Certificate name.
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -12490,6 +15037,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12498,6 +15048,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """The creation time in UTC format.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12506,6 +15060,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HttpsCrt(self):
+        """Certificate content.
+        :rtype: str
+        """
         return self._HttpsCrt
 
     @HttpsCrt.setter
@@ -12514,6 +15071,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertType(self):
+        """Certificate type.
+0: user-added certificate
+1: Tencent Cloud-hosted certificate.
+        :rtype: int
+        """
         return self._CertType
 
     @CertType.setter
@@ -12522,6 +15084,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertExpireTime(self):
+        """The certificate expiration time in UTC format.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CertExpireTime
 
     @CertExpireTime.setter
@@ -12530,6 +15096,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DomainName(self):
+        """Domain name that uses this certificate.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -12538,6 +15107,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Certificate status.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12546,6 +15118,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertDomains(self):
+        """List of domain names in the certificate.
+["*.x.com"] for example.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CertDomains
 
     @CertDomains.setter
@@ -12554,6 +15131,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CloudCertId(self):
+        """Tencent Cloud SSL certificate ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CloudCertId
 
     @CloudCertId.setter
@@ -12645,6 +15226,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """LVB domain name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12653,6 +15237,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Domain name type:
+0: push.
+1: playback.
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -12661,6 +15250,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Domain name status:
+0: deactivated.
+1: activated.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12669,6 +15263,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The time when the domain was added.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12677,6 +15275,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BCName(self):
+        """Whether there is a CNAME record pointing to a fixed rule domain name:
+0: no.
+1: yes.
+        :rtype: int
+        """
         return self._BCName
 
     @BCName.setter
@@ -12685,6 +15288,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetDomain(self):
+        """Domain name corresponding to CNAME record.
+        :rtype: str
+        """
         return self._TargetDomain
 
     @TargetDomain.setter
@@ -12693,6 +15299,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlayType(self):
+        """Playback region. This parameter is valid only if `Type` is 1.
+1: in Mainland China.
+2: global.
+3: outside Mainland China.
+        :rtype: int
+        """
         return self._PlayType
 
     @PlayType.setter
@@ -12701,6 +15313,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDelayLive(self):
+        """Whether it is LCB:
+0: LVB.
+1: LCB.
+        :rtype: int
+        """
         return self._IsDelayLive
 
     @IsDelayLive.setter
@@ -12709,6 +15326,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentCName(self):
+        """Information of currently used CNAME record.
+        :rtype: str
+        """
         return self._CurrentCName
 
     @CurrentCName.setter
@@ -12717,6 +15337,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RentTag(self):
+        """Disused parameter, which can be ignored.
+        :rtype: int
+        """
         return self._RentTag
 
     @RentTag.setter
@@ -12725,6 +15348,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RentExpireTime(self):
+        """A disused parameter.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._RentExpireTime
 
     @RentExpireTime.setter
@@ -12733,6 +15360,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMiniProgramLive(self):
+        """0: LVB.
+1: LVB on Mini Program.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsMiniProgramLive
 
     @IsMiniProgramLive.setter
@@ -12783,6 +15415,9 @@ class DropLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """The stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -12791,6 +15426,9 @@ class DropLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Your push domain.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -12799,6 +15437,9 @@ class DropLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The push path, which should be the same as `AppName` in the push and playback URL. The default value is `live`.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -12834,6 +15475,9 @@ class DropLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12859,6 +15503,9 @@ class EnableLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """LVB domain name to be enabled.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -12892,6 +15539,9 @@ class EnableLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12917,6 +15567,9 @@ class FlvSpecialParam(AbstractModel):
 
     @property
     def UploadInRecording(self):
+        """Whether to enable upload while recording. This parameter is only valid for FLV recording.
+        :rtype: bool
+        """
         return self._UploadInRecording
 
     @UploadInRecording.setter
@@ -12950,6 +15603,9 @@ class ForbidLiveDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """LVB domain name to be disabled.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -12983,6 +15639,9 @@ class ForbidLiveDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13025,6 +15684,9 @@ Length limit: 2,048 bytes.
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -13033,6 +15695,9 @@ Length limit: 2,048 bytes.
 
     @property
     def DomainName(self):
+        """Your push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -13041,6 +15706,9 @@ Length limit: 2,048 bytes.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -13049,6 +15717,12 @@ Length limit: 2,048 bytes.
 
     @property
     def ResumeTime(self):
+        """The time (in UTC format) to resume the stream, such as 2018-11-29T19:00:00Z.
+Notes:
+1. The default stream disabling period is seven days. A stream can be disabled for up to 90 days.
+2. Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._ResumeTime
 
     @ResumeTime.setter
@@ -13057,6 +15731,11 @@ Length limit: 2,048 bytes.
 
     @property
     def Reason(self):
+        """Reason for forbidding.
+Note: Be sure to enter the reason for forbidding to avoid any faulty operations.
+Length limit: 2,048 bytes.
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -13094,6 +15773,9 @@ class ForbidLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13135,6 +15817,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -13143,6 +15828,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The creation time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13151,6 +15840,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """The end time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -13159,6 +15852,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppName(self):
+        """The push path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -13167,6 +15864,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainName(self):
+        """The push domain name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -13210,6 +15911,9 @@ class GroupProIspDataInfo(AbstractModel):
 
     @property
     def ProvinceName(self):
+        """District.
+        :rtype: str
+        """
         return self._ProvinceName
 
     @ProvinceName.setter
@@ -13218,6 +15922,9 @@ class GroupProIspDataInfo(AbstractModel):
 
     @property
     def IspName(self):
+        """ISP.
+        :rtype: str
+        """
         return self._IspName
 
     @IspName.setter
@@ -13226,6 +15933,9 @@ class GroupProIspDataInfo(AbstractModel):
 
     @property
     def DetailInfoList(self):
+        """Detailed data at the minute level.
+        :rtype: list of CdnPlayStatData
+        """
         return self._DetailInfoList
 
     @DetailInfoList.setter
@@ -13267,6 +15977,10 @@ Value range: [0, 1,800].
 
     @property
     def FlowContinueDuration(self):
+        """Timeout period for restarting an interrupted HLS push.
+Value range: [0, 1,800].
+        :rtype: int
+        """
         return self._FlowContinueDuration
 
     @FlowContinueDuration.setter
@@ -13304,6 +16018,10 @@ Example: "2xx", "3xx", "4xx", "5xx".
 
     @property
     def HttpCode(self):
+        """HTTP return code.
+Example: "2xx", "3xx", "4xx", "5xx".
+        :rtype: str
+        """
         return self._HttpCode
 
     @HttpCode.setter
@@ -13312,6 +16030,9 @@ Example: "2xx", "3xx", "4xx", "5xx".
 
     @property
     def ValueList(self):
+        """Statistics. 0 will be added for points in time when there is no data.
+        :rtype: list of HttpCodeValue
+        """
         return self._ValueList
 
     @ValueList.setter
@@ -13357,6 +16078,9 @@ class HttpCodeValue(AbstractModel):
 
     @property
     def Time(self):
+        """Time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -13365,6 +16089,9 @@ class HttpCodeValue(AbstractModel):
 
     @property
     def Numbers(self):
+        """Occurrences.
+        :rtype: int
+        """
         return self._Numbers
 
     @Numbers.setter
@@ -13373,6 +16100,9 @@ class HttpCodeValue(AbstractModel):
 
     @property
     def Percentage(self):
+        """Proportion.
+        :rtype: float
+        """
         return self._Percentage
 
     @Percentage.setter
@@ -13412,6 +16142,10 @@ In the format of `yyyy-mm-dd HH:MM:SS`.
 
     @property
     def Time(self):
+        """Data point in time,
+In the format of `yyyy-mm-dd HH:MM:SS`.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -13420,6 +16154,9 @@ In the format of `yyyy-mm-dd HH:MM:SS`.
 
     @property
     def HttpStatusInfoList(self):
+        """Playback status code details.
+        :rtype: list of HttpStatusInfo
+        """
         return self._HttpStatusInfoList
 
     @HttpStatusInfoList.setter
@@ -13462,6 +16199,9 @@ class HttpStatusInfo(AbstractModel):
 
     @property
     def HttpStatus(self):
+        """Playback HTTP status code.
+        :rtype: str
+        """
         return self._HttpStatus
 
     @HttpStatus.setter
@@ -13470,6 +16210,9 @@ class HttpStatusInfo(AbstractModel):
 
     @property
     def Num(self):
+        """Quantity.
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -13510,6 +16253,9 @@ class LiveCertDomainInfo(AbstractModel):
 
     @property
     def DomainName(self):
+        """The domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -13518,6 +16264,12 @@ class LiveCertDomainInfo(AbstractModel):
 
     @property
     def Status(self):
+        """Whether to enable HTTPS for the domain.
+1: Enable
+0: Disable
+-1: Keep the current configuration
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13580,6 +16332,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainName(self):
+        """The domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -13588,6 +16343,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateAlias(self):
+        """The remarks for the certificate. This parameter is the same as `CertName`.
+        :rtype: str
+        """
         return self._CertificateAlias
 
     @CertificateAlias.setter
@@ -13596,6 +16354,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertType(self):
+        """The certificate type.
+0: Self-owned certificate
+1: Tencent Cloud-hosted certificate
+        :rtype: int
+        """
         return self._CertType
 
     @CertType.setter
@@ -13604,6 +16367,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Whether HTTPS is enabled.
+1: Enabled
+0: Disabled
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13612,6 +16380,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertExpireTime(self):
+        """The certificate expiration time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CertExpireTime
 
     @CertExpireTime.setter
@@ -13620,6 +16392,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+        :rtype: int
+        """
         return self._CertId
 
     @CertId.setter
@@ -13628,6 +16403,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CloudCertId(self):
+        """The SSL certificate ID assigned by Tencent Cloud.
+        :rtype: str
+        """
         return self._CloudCertId
 
     @CloudCertId.setter
@@ -13636,6 +16414,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+Note: Beijing time (UTC+8) is used.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13704,6 +16487,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID returned by the `DescribeLiveCallbackTemplates` API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -13712,6 +16498,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -13720,6 +16509,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -13728,6 +16520,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamBeginNotifyUrl(self):
+        """Stream starting callback URL.
+        :rtype: str
+        """
         return self._StreamBeginNotifyUrl
 
     @StreamBeginNotifyUrl.setter
@@ -13736,6 +16531,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def StreamEndNotifyUrl(self):
+        """Interruption callback URL.
+        :rtype: str
+        """
         return self._StreamEndNotifyUrl
 
     @StreamEndNotifyUrl.setter
@@ -13744,6 +16542,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def RecordNotifyUrl(self):
+        """Recording callback URL.
+        :rtype: str
+        """
         return self._RecordNotifyUrl
 
     @RecordNotifyUrl.setter
@@ -13752,6 +16553,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def SnapshotNotifyUrl(self):
+        """Screencapturing callback URL.
+        :rtype: str
+        """
         return self._SnapshotNotifyUrl
 
     @SnapshotNotifyUrl.setter
@@ -13760,6 +16564,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def PornCensorshipNotifyUrl(self):
+        """Porn detection callback URL.
+        :rtype: str
+        """
         return self._PornCensorshipNotifyUrl
 
     @PornCensorshipNotifyUrl.setter
@@ -13768,6 +16575,10 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Callback key. The callback URL is public. For the callback signature, please see the event message notification document.
+[Event Message Notification](https://intl.cloud.tencent.com/document/product/267/32744?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -13776,6 +16587,9 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
 
     @property
     def PushExceptionNotifyUrl(self):
+        """The push error callback URL.
+        :rtype: str
+        """
         return self._PushExceptionNotifyUrl
 
     @PushExceptionNotifyUrl.setter
@@ -13818,6 +16632,9 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13859,6 +16676,10 @@ You can specify either `CloudCertId` or the public/private key. If both are spec
 
     @property
     def DomainInfos(self):
+        """The playback domains to bind and whether to enable HTTPS for them.
+If neither `CloudCertId` nor the public/private key is specified, and a domain is already bound with a certificate, this API will only update the HTTPS configuration of the domain and, if the certificate is a self-owned certificate, upload it to Tencent Cloud.
+        :rtype: list of LiveCertDomainInfo
+        """
         return self._DomainInfos
 
     @DomainInfos.setter
@@ -13867,6 +16688,10 @@ You can specify either `CloudCertId` or the public/private key. If both are spec
 
     @property
     def CloudCertId(self):
+        """The SSL certificate ID assigned by Tencent Cloud.
+For details, see https://intl.cloud.tencent.com/document/api/400/41665?from_cn_redirect=1
+        :rtype: str
+        """
         return self._CloudCertId
 
     @CloudCertId.setter
@@ -13875,6 +16700,10 @@ You can specify either `CloudCertId` or the public/private key. If both are spec
 
     @property
     def CertificatePublicKey(self):
+        """The public key of the certificate.
+You can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -13883,6 +16712,10 @@ You can specify either `CloudCertId` or the public/private key. If both are spec
 
     @property
     def CertificatePrivateKey(self):
+        """The private key of the certificate.
+You can specify either `CloudCertId` or the public/private key. If both are specified, the private and public key parameters will be ignored. If you pass in only the public and private keys, the corresponding certificate will be uploaded to Tencent Cloud SSL Certificate Service, which will generate a `CloudCertId` for the certificate.
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -13891,6 +16724,9 @@ You can specify either `CloudCertId` or the public/private key. If both are spec
 
     @property
     def CertificateAlias(self):
+        """The remarks for the certificate in Tencent Cloud SSL Certificate Service. This parameter will be ignored if `CloudCertId` is specified.
+        :rtype: str
+        """
         return self._CertificateAlias
 
     @CertificateAlias.setter
@@ -13940,6 +16776,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MismatchedDomainNames(self):
+        """The domains skipped due to certificate mismatch.
+        :rtype: list of str
+        """
         return self._MismatchedDomainNames
 
     @MismatchedDomainNames.setter
@@ -13948,6 +16787,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
+        """The domains that the API failed to bind, including those in `MismatchedDomainNames`, and the error information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BatchDomainOperateErrors
+        """
         return self._Errors
 
     @Errors.setter
@@ -13956,6 +16799,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14000,6 +16846,9 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -14008,6 +16857,9 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Whether to enable referer allowlist/blocklist authentication for the current domain name
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -14016,6 +16868,9 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def Type(self):
+        """List type. Valid values: `0` (blocklist), `1` (allowlist)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -14024,6 +16879,9 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def AllowEmpty(self):
+        """Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
+        :rtype: int
+        """
         return self._AllowEmpty
 
     @AllowEmpty.setter
@@ -14032,6 +16890,9 @@ class ModifyLiveDomainRefererRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Referer list. Separate items in it with semicolons (;).
+        :rtype: str
+        """
         return self._Rules
 
     @Rules.setter
@@ -14069,6 +16930,9 @@ class ModifyLiveDomainRefererResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14110,6 +16974,9 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def DomainName(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -14118,6 +16985,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def Enable(self):
+        """Whether to enable. 0: disabled; 1: enabled.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -14126,6 +16997,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def AuthKey(self):
+        """Authentication key.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: str
+        """
         return self._AuthKey
 
     @AuthKey.setter
@@ -14134,6 +17009,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def AuthDelta(self):
+        """Validity period in seconds.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: int
+        """
         return self._AuthDelta
 
     @AuthDelta.setter
@@ -14142,6 +17021,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def AuthBackKey(self):
+        """Backup authentication key.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: str
+        """
         return self._AuthBackKey
 
     @AuthBackKey.setter
@@ -14179,6 +17062,9 @@ class ModifyLivePlayAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14207,6 +17093,9 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -14215,6 +17104,9 @@ class ModifyLivePlayDomainRequest(AbstractModel):
 
     @property
     def PlayType(self):
+        """Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China
+        :rtype: int
+        """
         return self._PlayType
 
     @PlayType.setter
@@ -14249,6 +17141,9 @@ class ModifyLivePlayDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14370,6 +17265,9 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -14378,6 +17276,9 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def Operator(self):
+        """The operator.
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -14386,6 +17287,11 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def SourceUrls(self):
+        """The source URL(s).
+If `SourceType` is `PullLivePushLive`, you can specify only one source URL.
+If `SourceType` is `PullVodPushLive`, you can specify at most 30 source URLs.
+        :rtype: list of str
+        """
         return self._SourceUrls
 
     @SourceUrls.setter
@@ -14394,6 +17300,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def StartTime(self):
+        """The start time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -14402,6 +17314,15 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def EndTime(self):
+        """The end time. Notes:
+1. The end time must be later than the start time.
+2. The end time and start time must be later than the current time.
+3. The end time and start time must be less than seven days apart.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -14410,6 +17331,13 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def VodLoopTimes(self):
+        """The number of times to loop video files.
+-1: Loop indefinitely
+0: Do not loop
+> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
+This parameter is valid only if the source is video files.
+        :rtype: int
+        """
         return self._VodLoopTimes
 
     @VodLoopTimes.setter
@@ -14418,6 +17346,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def VodRefreshType(self):
+        """The behavior after the source video files (`SourceUrls`) are changed.
+ImmediateNewSource: Play the new videos immediately
+ContinueBreakPoint: Finish the current video first and then pull from the new source.
+This parameter is valid only if the source is video files.
+        :rtype: str
+        """
         return self._VodRefreshType
 
     @VodRefreshType.setter
@@ -14426,6 +17360,11 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def Status(self):
+        """Whether to enable or pause the task. Valid values:
+enable
+pause
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -14434,6 +17373,14 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def CallbackEvents(self):
+        """The events to listen for. If you do not pass this parameter, all events will be listened for.
+TaskStart: Callback for starting a task
+TaskExit: Callback for ending a task
+VodSourceFileStart: Callback for starting to pull from video files
+VodSourceFileFinish: Callback for stopping pulling from video files
+ResetTaskConfig: Callback for modifying a task
+        :rtype: list of str
+        """
         return self._CallbackEvents
 
     @CallbackEvents.setter
@@ -14442,6 +17389,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def CallbackUrl(self):
+        """A custom callback URL.
+Callbacks will be sent to this URL.
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -14450,6 +17401,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def FileIndex(self):
+        """The index of the video to start from.
+The value of this parameter cannot be smaller than 1 or larger than the number of elements in `SourceUrls`.
+        :rtype: int
+        """
         return self._FileIndex
 
     @FileIndex.setter
@@ -14458,6 +17413,11 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def OffsetTime(self):
+        """The playback offset (seconds).
+Notes:
+1. This parameter should be used together with `FileIndex`.
+        :rtype: int
+        """
         return self._OffsetTime
 
     @OffsetTime.setter
@@ -14466,6 +17426,9 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def Comment(self):
+        """The remarks for the task.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -14474,6 +17437,16 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def BackupSourceType(self):
+        """The backup source type.
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+Notes:
+1. Backup sources are supported only if the primary source type is live streaming.
+2. Leaving this parameter empty will reset the backup source.
+3. When pull from the primary source is interrupted, the system will pull from the backup source.
+4. If the backup source is a video file, each time the video is finished, the system will check if the primary source is recovered and will switch back if it is.
+        :rtype: str
+        """
         return self._BackupSourceType
 
     @BackupSourceType.setter
@@ -14482,6 +17455,10 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def BackupSourceUrl(self):
+        """The URL of the backup source.
+You can specify only one backup source URL.
+        :rtype: str
+        """
         return self._BackupSourceUrl
 
     @BackupSourceUrl.setter
@@ -14490,6 +17467,17 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def WatermarkList(self):
+        """The information of watermarks to add.
+Notes:
+1. You can add up to four watermarks to different locations of the video.
+2. Make sure you use publicly accessible URLs for the watermark images.
+3. Supported image formats include PNG and JPG.
+4. If you change the watermark configuration of a task whose source is a list of video files, the new configuration will take effect for the next file in the list.
+5. If you change the watermark configuration of a task whose source is a live stream, the new configuration will take effect immediately.
+6. If you want to stop using watermarks, pass in an empty array.
+7. Currently, animated watermarks are not supported.
+        :rtype: list of PullPushWatermarkInfo
+        """
         return self._WatermarkList
 
     @WatermarkList.setter
@@ -14498,6 +17486,12 @@ Note: If you enable local mode, MP4 files will be downloaded to local storage, a
 
     @property
     def VodLocalMode(self):
+        """Whether to use local mode when the source type is video files. The default is `0`.
+0: Do not use local mode
+1: Use local mode
+Note: If you enable local mode, MP4 files will be downloaded to local storage, and the local files will be used for push. This ensures more reliable push. Pushing a local file will incur additional fees.
+        :rtype: int
+        """
         return self._VodLocalMode
 
     @VodLocalMode.setter
@@ -14552,6 +17546,9 @@ class ModifyLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14592,6 +17589,9 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -14600,6 +17600,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def Enable(self):
+        """Whether to enable. 0: disabled; 1: enabled.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -14608,6 +17612,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def MasterAuthKey(self):
+        """Master authentication key.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: str
+        """
         return self._MasterAuthKey
 
     @MasterAuthKey.setter
@@ -14616,6 +17624,10 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def BackupAuthKey(self):
+        """Backup authentication key.
+If this parameter is left empty, the current value will not be modified.
+        :rtype: str
+        """
         return self._BackupAuthKey
 
     @BackupAuthKey.setter
@@ -14624,6 +17636,9 @@ If this parameter is left empty, the current value will not be modified.
 
     @property
     def AuthDelta(self):
+        """Validity period in seconds.
+        :rtype: int
+        """
         return self._AuthDelta
 
     @AuthDelta.setter
@@ -14661,6 +17676,9 @@ class ModifyLivePushAuthKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14716,6 +17734,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID obtained through the `DescribeRecordTemplates` API.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -14724,6 +17745,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -14732,6 +17756,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Message description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14740,6 +17767,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvParam(self):
+        """FLV recording parameter, which is set when FLV recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._FlvParam
 
     @FlvParam.setter
@@ -14748,6 +17778,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsParam(self):
+        """HLS recording parameter, which is set when HLS recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._HlsParam
 
     @HlsParam.setter
@@ -14756,6 +17789,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp4Param(self):
+        """MP4 recording parameter, which is set when MP4 recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._Mp4Param
 
     @Mp4Param.setter
@@ -14764,6 +17800,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def AacParam(self):
+        """AAC recording parameter, which is set when AAC recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._AacParam
 
     @AacParam.setter
@@ -14772,6 +17811,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HlsSpecialParam(self):
+        """Custom HLS recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
+        """
         return self._HlsSpecialParam
 
     @HlsSpecialParam.setter
@@ -14780,6 +17822,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def Mp3Param(self):
+        """MP3 recording parameter, which is set when MP3 recording is enabled.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._Mp3Param
 
     @Mp3Param.setter
@@ -14788,6 +17833,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def RemoveWatermark(self):
+        """Whether to remove the watermark. This parameter is invalid if `IsDelayLive` is `1`.
+        :rtype: bool
+        """
         return self._RemoveWatermark
 
     @RemoveWatermark.setter
@@ -14796,6 +17844,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def FlvSpecialParam(self):
+        """A special parameter for FLV recording.
+        :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
+        """
         return self._FlvSpecialParam
 
     @FlvSpecialParam.setter
@@ -14853,6 +17904,9 @@ class ModifyLiveRecordTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14920,6 +17974,9 @@ Value range: 5-300s.
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -14928,6 +17985,10 @@ Value range: 5-300s.
 
     @property
     def CosAppId(self):
+        """The COS application ID.
+**Please note that this parameter is required now**.
+        :rtype: int
+        """
         return self._CosAppId
 
     @CosAppId.setter
@@ -14936,6 +17997,11 @@ Value range: 5-300s.
 
     @property
     def CosBucket(self):
+        """The COS bucket name.
+Note: Do not include the `-[appid]` part in the value of `CosBucket`.
+**Please note that this parameter is required now**.
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -14944,6 +18010,10 @@ Value range: 5-300s.
 
     @property
     def CosRegion(self):
+        """The COS region.
+**Please note that this parameter is required now**.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -14952,6 +18022,10 @@ Value range: 5-300s.
 
     @property
     def TemplateName(self):
+        """Template name.
+Maximum length: 255 bytes.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -14960,6 +18034,10 @@ Value range: 5-300s.
 
     @property
     def Description(self):
+        """Description.
+Maximum length: 1,024 bytes.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -14968,6 +18046,10 @@ Value range: 5-300s.
 
     @property
     def SnapshotInterval(self):
+        """Screencapturing interval in seconds. Default value: 10s.
+Value range: 5-300s.
+        :rtype: int
+        """
         return self._SnapshotInterval
 
     @SnapshotInterval.setter
@@ -14976,6 +18058,9 @@ Value range: 5-300s.
 
     @property
     def Width(self):
+        """Screenshot width. Default value: 0 (original width).
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -14984,6 +18069,9 @@ Value range: 5-300s.
 
     @property
     def Height(self):
+        """Screenshot height. Default value: 0 (original height).
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -14992,6 +18080,11 @@ Value range: 5-300s.
 
     @property
     def PornFlag(self):
+        """Whether to enable porn detection. Default value: 0.
+0: do not enable.
+1: enable.
+        :rtype: int
+        """
         return self._PornFlag
 
     @PornFlag.setter
@@ -15000,6 +18093,9 @@ Value range: 5-300s.
 
     @property
     def CosPrefix(self):
+        """COS bucket folder prefix.
+        :rtype: str
+        """
         return self._CosPrefix
 
     @CosPrefix.setter
@@ -15008,6 +18104,9 @@ Value range: 5-300s.
 
     @property
     def CosFileName(self):
+        """COS filename.
+        :rtype: str
+        """
         return self._CosFileName
 
     @CosFileName.setter
@@ -15052,6 +18151,9 @@ class ModifyLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15111,6 +18213,9 @@ Default value: `Mainland`.
 
     @property
     def TemplateId(self):
+        """The time shifting template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15119,6 +18224,10 @@ Default value: `Mainland`.
 
     @property
     def TemplateName(self):
+        """The template name.
+Only letters, numbers, underscores, and hyphens are supported.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -15127,6 +18236,11 @@ Default value: `Mainland`.
 
     @property
     def Description(self):
+        """The template description.
+Maximum length: 1,024 bytes.
+Only letters, numbers, underscores, and hyphens are supported.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -15135,6 +18249,10 @@ Default value: `Mainland`.
 
     @property
     def Duration(self):
+        """The time shifting duration.
+Unit: Second.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -15143,6 +18261,12 @@ Default value: `Mainland`.
 
     @property
     def ItemDuration(self):
+        """The segment size.
+Value range: 3-10.
+Unit: Second.
+Default value: 5
+        :rtype: int
+        """
         return self._ItemDuration
 
     @ItemDuration.setter
@@ -15151,6 +18275,11 @@ Default value: `Mainland`.
 
     @property
     def RemoveWatermark(self):
+        """Whether to remove watermarks.
+If you pass in `true`, the original stream will be recorded.
+Default value: `false`.
+        :rtype: bool
+        """
         return self._RemoveWatermark
 
     @RemoveWatermark.setter
@@ -15159,6 +18288,10 @@ Default value: `Mainland`.
 
     @property
     def TranscodeTemplateIds(self):
+        """The transcoding template IDs.
+This API works only if `RemoveWatermark` is `false`.
+        :rtype: list of int
+        """
         return self._TranscodeTemplateIds
 
     @TranscodeTemplateIds.setter
@@ -15167,6 +18300,12 @@ Default value: `Mainland`.
 
     @property
     def Area(self):
+        """The region.
+`Mainland`: The Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+Default value: `Mainland`.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -15207,6 +18346,9 @@ class ModifyLiveTimeShiftTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15314,6 +18456,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -15322,6 +18467,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Vcodec(self):
+        """Video codec. Valid values: h264, h265, origin (default)
+
+origin: original codec as the output codec
+        :rtype: str
+        """
         return self._Vcodec
 
     @Vcodec.setter
@@ -15330,6 +18480,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Acodec(self):
+        """Audio codec. Defaut value: aac.
+Note: this parameter is unsupported now.
+        :rtype: str
+        """
         return self._Acodec
 
     @Acodec.setter
@@ -15338,6 +18492,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def AudioBitrate(self):
+        """Audio bitrate. Default value: 0.
+Value range: 0-500.
+        :rtype: int
+        """
         return self._AudioBitrate
 
     @AudioBitrate.setter
@@ -15346,6 +18504,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Description(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -15354,6 +18515,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def VideoBitrate(self):
+        """Video bitrate in Kbps. Value range: 100-8000.
+Note: the transcoding template requires that the bitrate be unique. Therefore, the final saved bitrate may be different from the input bitrate.
+        :rtype: int
+        """
         return self._VideoBitrate
 
     @VideoBitrate.setter
@@ -15362,6 +18527,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Width(self):
+        """Width in pixels. Value range: 0-3000.
+It must be a multiple of 2. The original width is 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -15370,6 +18539,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def NeedVideo(self):
+        """Whether to keep the video. 0: no; 1: yes. Default value: 1.
+        :rtype: int
+        """
         return self._NeedVideo
 
     @NeedVideo.setter
@@ -15378,6 +18550,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def NeedAudio(self):
+        """Whether to keep the audio. 0: no; 1: yes. Default value: 1.
+        :rtype: int
+        """
         return self._NeedAudio
 
     @NeedAudio.setter
@@ -15386,6 +18561,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Height(self):
+        """Height in pixels. Value range: 0-3000.
+It must be a multiple of 2. The original height is 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -15394,6 +18573,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Fps(self):
+        """Frame rate in fps. Default value: 0.
+Value range: 0-60
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -15402,6 +18585,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Gop(self):
+        """Keyframe interval in seconds.
+Value range: 2-6
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -15410,6 +18597,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Rotate(self):
+        """Rotation angle. Default value: 0.
+Valid values: 0, 90, 180, 270
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -15418,6 +18609,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def Profile(self):
+        """Encoding quality:
+baseline/main/high.
+        :rtype: str
+        """
         return self._Profile
 
     @Profile.setter
@@ -15426,6 +18621,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def BitrateToOrig(self):
+        """Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._BitrateToOrig
 
     @BitrateToOrig.setter
@@ -15434,6 +18634,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def HeightToOrig(self):
+        """Whether to use the original height when the set height is higher than the original height.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._HeightToOrig
 
     @HeightToOrig.setter
@@ -15442,6 +18647,11 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def FpsToOrig(self):
+        """Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._FpsToOrig
 
     @FpsToOrig.setter
@@ -15450,6 +18660,12 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def AdaptBitratePercent(self):
+        """Bitrate compression ratio of top speed codec video.
+Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
+
+Value range: 0.0-0.5.
+        :rtype: float
+        """
         return self._AdaptBitratePercent
 
     @AdaptBitratePercent.setter
@@ -15458,6 +18674,9 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def ShortEdgeAsHeight(self):
+        """Whether to use the short side as the video height. 0: no, 1: yes. Default value: 0.
+        :rtype: int
+        """
         return self._ShortEdgeAsHeight
 
     @ShortEdgeAsHeight.setter
@@ -15466,6 +18685,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def DRMType(self):
+        """The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :rtype: str
+        """
         return self._DRMType
 
     @DRMType.setter
@@ -15474,6 +18697,10 @@ If you do not pass this parameter or pass in an empty string, the existing confi
 
     @property
     def DRMTracks(self):
+        """The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. You can choose only one video track (SD, HD, UHD1, or UHD2).
+If you do not pass this parameter or pass in an empty string, the existing configuration will be reset.
+        :rtype: str
+        """
         return self._DRMTracks
 
     @DRMTracks.setter
@@ -15527,6 +18754,9 @@ class ModifyLiveTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15570,6 +18800,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def PlayDomain(self):
+        """The playback domain.
+        :rtype: str
+        """
         return self._PlayDomain
 
     @PlayDomain.setter
@@ -15578,6 +18811,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def StreamName(self):
+        """The stream ID.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -15586,6 +18822,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Rate(self):
+        """The playback bitrate. `0` indicates the original bitrate.
+        :rtype: int
+        """
         return self._Rate
 
     @Rate.setter
@@ -15594,6 +18833,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """The playback protocol. Valid values: `Unknown`, `Flv`, `Hls`, `Rtmp`, `Huyap2p`.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -15602,6 +18844,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """The bandwidth (Mbps).
+        :rtype: float
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -15610,6 +18855,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Online(self):
+        """The number of online users, which is represented by the number of TCP connections (data collected every minute).
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -15618,6 +18866,9 @@ class MonitorStreamPlayInfo(AbstractModel):
 
     @property
     def Request(self):
+        """The number of requests.
+        :rtype: int
+        """
         return self._Request
 
     @Request.setter
@@ -15671,6 +18922,9 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -15679,6 +18933,11 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def Enable(self):
+        """Whether to enable:
+0: disable.
+1: enable.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -15687,6 +18946,9 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def AuthKey(self):
+        """Authentication key.
+        :rtype: str
+        """
         return self._AuthKey
 
     @AuthKey.setter
@@ -15695,6 +18957,9 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def AuthDelta(self):
+        """Validity period in seconds.
+        :rtype: int
+        """
         return self._AuthDelta
 
     @AuthDelta.setter
@@ -15703,6 +18968,9 @@ class PlayAuthKeyInfo(AbstractModel):
 
     @property
     def AuthBackKey(self):
+        """Authentication `BackKey`.
+        :rtype: str
+        """
         return self._AuthBackKey
 
     @AuthBackKey.setter
@@ -15744,6 +19012,10 @@ class PlayCodeTotalInfo(AbstractModel):
 
     @property
     def Code(self):
+        """HTTP code. Valid values:
+400, 403, 404, 500, 502, 503, 504.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -15752,6 +19024,9 @@ class PlayCodeTotalInfo(AbstractModel):
 
     @property
     def Num(self):
+        """Total occurrences.
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -15789,6 +19064,9 @@ class PlayDataInfoByStream(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -15797,6 +19075,9 @@ class PlayDataInfoByStream(AbstractModel):
 
     @property
     def TotalFlux(self):
+        """Total traffic in MB.
+        :rtype: float
+        """
         return self._TotalFlux
 
     @TotalFlux.setter
@@ -15835,6 +19116,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Time(self):
+        """Data point in time.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -15843,6 +19127,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Value of bandwidth/traffic/number of requests/number of concurrent connections/download speed. If there is no data returned, the value is 0.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -15888,6 +19176,9 @@ Calculation formula: average download speed per minute.
 
     @property
     def Name(self):
+        """Domain name or stream ID.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15896,6 +19187,11 @@ Calculation formula: average download speed per minute.
 
     @property
     def AvgFluxPerSecond(self):
+        """Average download speed,
+In MB/s.
+Calculation formula: average download speed per minute.
+        :rtype: float
+        """
         return self._AvgFluxPerSecond
 
     @AvgFluxPerSecond.setter
@@ -15904,6 +19200,9 @@ Calculation formula: average download speed per minute.
 
     @property
     def TotalFlux(self):
+        """Total traffic in MB.
+        :rtype: float
+        """
         return self._TotalFlux
 
     @TotalFlux.setter
@@ -15912,6 +19211,9 @@ Calculation formula: average download speed per minute.
 
     @property
     def TotalRequest(self):
+        """Total number of requests.
+        :rtype: int
+        """
         return self._TotalRequest
 
     @TotalRequest.setter
@@ -15966,6 +19268,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def CountryAreaName(self):
+        """Country or region.
+        :rtype: str
+        """
         return self._CountryAreaName
 
     @CountryAreaName.setter
@@ -15974,6 +19279,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def ProvinceName(self):
+        """District.
+        :rtype: str
+        """
         return self._ProvinceName
 
     @ProvinceName.setter
@@ -15982,6 +19290,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def IspName(self):
+        """ISP.
+        :rtype: str
+        """
         return self._IspName
 
     @IspName.setter
@@ -15990,6 +19301,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code2xx(self):
+        """Occurrences of 2xx error codes.
+        :rtype: int
+        """
         return self._Code2xx
 
     @Code2xx.setter
@@ -15998,6 +19312,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code3xx(self):
+        """Occurrences of 3xx error codes.
+        :rtype: int
+        """
         return self._Code3xx
 
     @Code3xx.setter
@@ -16006,6 +19323,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code4xx(self):
+        """Occurrences of 4xx error codes.
+        :rtype: int
+        """
         return self._Code4xx
 
     @Code4xx.setter
@@ -16014,6 +19334,9 @@ class ProIspPlayCodeDataInfo(AbstractModel):
 
     @property
     def Code5xx(self):
+        """Occurrences of 5xx error codes.
+        :rtype: int
+        """
         return self._Code5xx
 
     @Code5xx.setter
@@ -16054,6 +19377,10 @@ In UTC format, such as 2018-06-29T19:00:00Z.
 
     @property
     def PublishTime(self):
+        """Push time.
+In UTC format, such as 2018-06-29T19:00:00Z.
+        :rtype: str
+        """
         return self._PublishTime
 
     @PublishTime.setter
@@ -16108,6 +19435,11 @@ Characters not allowed:
 
     @property
     def PictureUrl(self):
+        """The watermark image URL.
+Characters not allowed:
+;(){}$>`#"'|
+        :rtype: str
+        """
         return self._PictureUrl
 
     @PictureUrl.setter
@@ -16116,6 +19448,9 @@ Characters not allowed:
 
     @property
     def XPosition(self):
+        """The horizontal offset (%) of the watermark. The default value is 0.
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -16124,6 +19459,9 @@ Characters not allowed:
 
     @property
     def YPosition(self):
+        """The vertical offset (%) of the watermark. The default value is 0.
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -16132,6 +19470,9 @@ Characters not allowed:
 
     @property
     def Width(self):
+        """The watermark width as a percentage of the video width. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original width of the watermark image is used.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -16140,6 +19481,9 @@ Characters not allowed:
 
     @property
     def Height(self):
+        """The watermark height as a percentage of the video height. To avoid distorted images, we recommend you specify only the width or height so that the other side can be scaled proportionally. By default, the original height of the watermark image is used.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -16148,6 +19492,13 @@ Characters not allowed:
 
     @property
     def Location(self):
+        """The origin. The default value is 0.
+0: Top left corner
+1: Top right corner
+2: Bottom right corner
+3: Bottom left corner
+        :rtype: int
+        """
         return self._Location
 
     @Location.setter
@@ -16333,6 +19684,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -16341,6 +19695,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceType(self):
+        """The source type. Valid values:
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+PullPicPushLive: Images
+        :rtype: str
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -16349,6 +19709,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceUrls(self):
+        """The source URL(s).
+If `SourceType` is `PullLiveToLive`, there can be only one source URL.
+If `SourceType` is `PullVodToLive`, there can be at most 10 source URLs.
+        :rtype: list of str
+        """
         return self._SourceUrls
 
     @SourceUrls.setter
@@ -16357,6 +19722,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainName(self):
+        """The push domain name.
+The pulled stream is pushed to this domain.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -16365,6 +19734,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppName(self):
+        """The application to push to.
+The pulled stream is pushed to this application.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -16373,6 +19746,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamName(self):
+        """The stream name.
+The pulled stream is pushed under this name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -16381,6 +19758,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PushArgs(self):
+        """The push parameter.
+A custom push parameter.
+        :rtype: str
+        """
         return self._PushArgs
 
     @PushArgs.setter
@@ -16389,6 +19770,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """The start time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -16397,6 +19784,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """The end time. Notes:
+1. The end time must be later than the start time.
+2. The end time and start time must be later than the current time.
+3. The end time and start time must be less than seven days apart.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -16405,6 +19801,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region where the task was created.
+`ap-beijing`: North China (Beijing)
+`ap-shanghai`: East China (Shanghai)
+`ap-guangzhou`: South China (Guangzhou)
+`ap-mumbai`: India
+`ap-hongkong`: Hong Kong
+`eu-frankfurt`: Germany
+`ap-seoul`: Korea
+`ap-bangkok`: Thailand
+`ap-singapore`: Singapore
+`na-siliconvalley`: Western US
+`na-ashburn`: Eastern US
+`ap-tokyo`: Japan
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -16413,6 +19824,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VodLoopTimes(self):
+        """The number of times to loop video files.
+-1: Loop indefinitely
+0: Do not loop
+> 0: The number of loop times. A task will end either when the videos are looped for the specified number of times or at the specified task end time, whichever is earlier.
+This parameter is valid only if the source is video files.
+        :rtype: int
+        """
         return self._VodLoopTimes
 
     @VodLoopTimes.setter
@@ -16421,6 +19839,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VodRefreshType(self):
+        """The behavior after the source video files (`SourceUrls`) are changed.
+ImmediateNewSource: Play the new videos immediately
+ContinueBreakPoint: Finish the current video first and then pull from the new source.
+
+This parameter is valid only if the source is video files.
+        :rtype: str
+        """
         return self._VodRefreshType
 
     @VodRefreshType.setter
@@ -16429,6 +19854,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The task creation time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -16437,6 +19868,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+It must be in UTC format.
+Example: 2019-01-08T10:00:00Z.
+Note: Beijing time is 8 hours ahead of UTC. The [ISO 8601 format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format) is used.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -16445,6 +19882,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateBy(self):
+        """The task creator.
+        :rtype: str
+        """
         return self._CreateBy
 
     @CreateBy.setter
@@ -16453,6 +19893,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateBy(self):
+        """The operator of the last update.
+        :rtype: str
+        """
         return self._UpdateBy
 
     @UpdateBy.setter
@@ -16461,6 +19904,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CallbackUrl(self):
+        """The callback URL.
+        :rtype: str
+        """
         return self._CallbackUrl
 
     @CallbackUrl.setter
@@ -16469,6 +19915,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CallbackEvents(self):
+        """The events to listen for.
+TaskStart: Callback for starting a task
+TaskExit: Callback for ending a task
+VodSourceFileStart: Callback for starting to pull from video files
+VodSourceFileFinish: Callback for stopping pulling from video files
+ResetTaskConfig: Callback for modifying a task
+        :rtype: list of str
+        """
         return self._CallbackEvents
 
     @CallbackEvents.setter
@@ -16477,6 +19931,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CallbackInfo(self):
+        """Note: This parameter is not returned currently.
+The information of the last callback.
+        :rtype: str
+        """
         return self._CallbackInfo
 
     @CallbackInfo.setter
@@ -16485,6 +19943,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorInfo(self):
+        """Note: This parameter is not returned currently.
+Error message.
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -16493,6 +19955,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The task status.
+enable: Enabled
+pause: Paused
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -16501,6 +19968,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecentPullInfo(self):
+        """Note: This parameter is returned only if one task is queried.
+The latest pull information.
+The information includes the source URL, offset, and report time.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
+        """
         return self._RecentPullInfo
 
     @RecentPullInfo.setter
@@ -16509,6 +19981,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Comment(self):
+        """The remarks for the task.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -16517,6 +19992,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupSourceType(self):
+        """The backup source type. Valid values:
+PullLivePushLive: Live streaming
+PullVodPushLive: Video files
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BackupSourceType
 
     @BackupSourceType.setter
@@ -16525,6 +20006,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupSourceUrl(self):
+        """The URL of the backup source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BackupSourceUrl
 
     @BackupSourceUrl.setter
@@ -16533,6 +20018,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkList(self):
+        """The information of watermarks to add.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PullPushWatermarkInfo
+        """
         return self._WatermarkList
 
     @WatermarkList.setter
@@ -16541,6 +20030,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VodLocalMode(self):
+        """Whether to use local mode when the source type is video files. The default is `0`.
+0: Do not use local mode
+1: Use local mode
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._VodLocalMode
 
     @VodLocalMode.setter
@@ -16549,6 +20044,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordTemplateId(self):
+        """ Recording template ID.
+        :rtype: str
+        """
         return self._RecordTemplateId
 
     @RecordTemplateId.setter
@@ -16557,6 +20055,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupToUrl(self):
+        """Newly added streaming address. Used for the scenario of pushing two streams with a single task.
+        :rtype: str
+        """
         return self._BackupToUrl
 
     @BackupToUrl.setter
@@ -16637,6 +20138,9 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -16645,6 +20149,9 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def Enable(self):
+        """Whether to enable. 0: disabled; 1: enabled.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -16653,6 +20160,9 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def MasterAuthKey(self):
+        """Master authentication key.
+        :rtype: str
+        """
         return self._MasterAuthKey
 
     @MasterAuthKey.setter
@@ -16661,6 +20171,9 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def BackupAuthKey(self):
+        """Standby authentication key.
+        :rtype: str
+        """
         return self._BackupAuthKey
 
     @BackupAuthKey.setter
@@ -16669,6 +20182,9 @@ class PushAuthKeyInfo(AbstractModel):
 
     @property
     def AuthDelta(self):
+        """Validity period in seconds.
+        :rtype: int
+        """
         return self._AuthDelta
 
     @AuthDelta.setter
@@ -16756,6 +20272,9 @@ Example: H.264.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -16764,6 +20283,9 @@ Example: H.264.
 
     @property
     def AppName(self):
+        """Push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -16772,6 +20294,9 @@ Example: H.264.
 
     @property
     def ClientIp(self):
+        """Push client IP.
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -16780,6 +20305,9 @@ Example: H.264.
 
     @property
     def ServerIp(self):
+        """IP of the server that receives the stream.
+        :rtype: str
+        """
         return self._ServerIp
 
     @ServerIp.setter
@@ -16788,6 +20316,9 @@ Example: H.264.
 
     @property
     def VideoFps(self):
+        """Pushed video frame rate in Hz.
+        :rtype: int
+        """
         return self._VideoFps
 
     @VideoFps.setter
@@ -16796,6 +20327,9 @@ Example: H.264.
 
     @property
     def VideoSpeed(self):
+        """Video bitrate (bps) for publishing
+        :rtype: int
+        """
         return self._VideoSpeed
 
     @VideoSpeed.setter
@@ -16804,6 +20338,9 @@ Example: H.264.
 
     @property
     def AudioFps(self):
+        """Pushed audio frame rate in Hz.
+        :rtype: int
+        """
         return self._AudioFps
 
     @AudioFps.setter
@@ -16812,6 +20349,9 @@ Example: H.264.
 
     @property
     def AudioSpeed(self):
+        """Audio bitrate (bps) for publishing
+        :rtype: int
+        """
         return self._AudioSpeed
 
     @AudioSpeed.setter
@@ -16820,6 +20360,9 @@ Example: H.264.
 
     @property
     def PushDomain(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._PushDomain
 
     @PushDomain.setter
@@ -16828,6 +20371,9 @@ Example: H.264.
 
     @property
     def BeginPushTime(self):
+        """Push start time.
+        :rtype: str
+        """
         return self._BeginPushTime
 
     @BeginPushTime.setter
@@ -16836,6 +20382,10 @@ Example: H.264.
 
     @property
     def Acodec(self):
+        """Audio codec,
+Example: AAC.
+        :rtype: str
+        """
         return self._Acodec
 
     @Acodec.setter
@@ -16844,6 +20394,10 @@ Example: H.264.
 
     @property
     def Vcodec(self):
+        """Video codec,
+Example: H.264.
+        :rtype: str
+        """
         return self._Vcodec
 
     @Vcodec.setter
@@ -16852,6 +20406,9 @@ Example: H.264.
 
     @property
     def Resolution(self):
+        """Resolution.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -16860,6 +20417,9 @@ Example: H.264.
 
     @property
     def AsampleRate(self):
+        """Sample rate.
+        :rtype: int
+        """
         return self._AsampleRate
 
     @AsampleRate.setter
@@ -16868,6 +20428,9 @@ Example: H.264.
 
     @property
     def MetaAudioSpeed(self):
+        """Audio bitrate (bps) in metadata
+        :rtype: int
+        """
         return self._MetaAudioSpeed
 
     @MetaAudioSpeed.setter
@@ -16876,6 +20439,9 @@ Example: H.264.
 
     @property
     def MetaVideoSpeed(self):
+        """Video bitrate (bps) in metadata
+        :rtype: int
+        """
         return self._MetaVideoSpeed
 
     @MetaVideoSpeed.setter
@@ -16884,6 +20450,9 @@ Example: H.264.
 
     @property
     def MetaFps(self):
+        """Frame rate in `metadata`.
+        :rtype: int
+        """
         return self._MetaFps
 
     @MetaFps.setter
@@ -17000,6 +20569,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Time(self):
+        """The time of the data in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -17008,6 +20580,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PushDomain(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._PushDomain
 
     @PushDomain.setter
@@ -17016,6 +20591,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppName(self):
+        """The push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -17024,6 +20602,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientIp(self):
+        """The IP address of the push client.
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -17032,6 +20613,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginPushTime(self):
+        """The push start time in the format of “%Y-%m-%d %H:%M:%S.%ms” (accurate to the millisecond).
+        :rtype: str
+        """
         return self._BeginPushTime
 
     @BeginPushTime.setter
@@ -17040,6 +20624,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resolution(self):
+        """The resolution.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -17048,6 +20635,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VCodec(self):
+        """The video codec.
+        :rtype: str
+        """
         return self._VCodec
 
     @VCodec.setter
@@ -17056,6 +20646,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ACodec(self):
+        """The audio codec.
+        :rtype: str
+        """
         return self._ACodec
 
     @ACodec.setter
@@ -17064,6 +20657,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sequence(self):
+        """The push sequence number, which uniquely identifies a push.
+        :rtype: str
+        """
         return self._Sequence
 
     @Sequence.setter
@@ -17072,6 +20668,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoFps(self):
+        """The video frame rate.
+        :rtype: int
+        """
         return self._VideoFps
 
     @VideoFps.setter
@@ -17080,6 +20679,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoRate(self):
+        """The video bitrate (bps).
+        :rtype: int
+        """
         return self._VideoRate
 
     @VideoRate.setter
@@ -17088,6 +20690,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioFps(self):
+        """The audio frame rate.
+        :rtype: int
+        """
         return self._AudioFps
 
     @AudioFps.setter
@@ -17096,6 +20701,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioRate(self):
+        """The audio bitrate (bps).
+        :rtype: int
+        """
         return self._AudioRate
 
     @AudioRate.setter
@@ -17104,6 +20712,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LocalTs(self):
+        """The local elapsed time (milliseconds). The greater the difference between the local elapsed time and audio/video elapsed time, the poorer the push quality and the more severe the upstream lag.
+        :rtype: int
+        """
         return self._LocalTs
 
     @LocalTs.setter
@@ -17112,6 +20723,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoTs(self):
+        """The video elapsed time (milliseconds).
+        :rtype: int
+        """
         return self._VideoTs
 
     @VideoTs.setter
@@ -17120,6 +20734,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioTs(self):
+        """The audio elapsed time (milliseconds).
+        :rtype: int
+        """
         return self._AudioTs
 
     @AudioTs.setter
@@ -17128,6 +20745,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaVideoRate(self):
+        """The video bitrate (Kbps) in the metadata.
+        :rtype: int
+        """
         return self._MetaVideoRate
 
     @MetaVideoRate.setter
@@ -17136,6 +20756,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaAudioRate(self):
+        """The audio bitrate (Kbps) in the metadata.
+        :rtype: int
+        """
         return self._MetaAudioRate
 
     @MetaAudioRate.setter
@@ -17144,6 +20767,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MateFps(self):
+        """The frame rate in the metadata.
+        :rtype: int
+        """
         return self._MateFps
 
     @MateFps.setter
@@ -17152,6 +20778,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamParam(self):
+        """The push parameter.
+        :rtype: str
+        """
         return self._StreamParam
 
     @StreamParam.setter
@@ -17160,6 +20789,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bandwidth(self):
+        """The bandwidth (Mbps).
+        :rtype: float
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -17168,6 +20800,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Flux(self):
+        """The traffic (MB).
+        :rtype: float
+        """
         return self._Flux
 
     @Flux.setter
@@ -17176,6 +20811,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServerIp(self):
+        """The IP address of the push client.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ServerIp
 
     @ServerIp.setter
@@ -17242,6 +20881,9 @@ Note: Beijing time is 8 hours ahead of UTC.
 
     @property
     def FileUrl(self):
+        """The URL of the file currently pulled.
+        :rtype: str
+        """
         return self._FileUrl
 
     @FileUrl.setter
@@ -17250,6 +20892,9 @@ Note: Beijing time is 8 hours ahead of UTC.
 
     @property
     def OffsetTime(self):
+        """The offset of the file currently pulled.
+        :rtype: int
+        """
         return self._OffsetTime
 
     @OffsetTime.setter
@@ -17258,6 +20903,11 @@ Note: Beijing time is 8 hours ahead of UTC.
 
     @property
     def ReportTime(self):
+        """The time when the offset is reported, in UTC format.
+Example: 2020-07-23T03:20:39Z
+Note: Beijing time is 8 hours ahead of UTC.
+        :rtype: str
+        """
         return self._ReportTime
 
     @ReportTime.setter
@@ -17266,6 +20916,9 @@ Note: Beijing time is 8 hours ahead of UTC.
 
     @property
     def LoopedTimes(self):
+        """The number of times looped.
+        :rtype: int
+        """
         return self._LoopedTimes
 
     @LoopedTimes.setter
@@ -17351,6 +21004,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RecordInterval(self):
+        """Max recording time per file
+Default value: `1800` (seconds)
+Value range: 30-7200
+This parameter is invalid for HLS. Only one HLS file will be generated from push start to push end.
+        :rtype: int
+        """
         return self._RecordInterval
 
     @RecordInterval.setter
@@ -17359,6 +21018,11 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StorageTime(self):
+        """Storage duration of the recording file
+Value range: 0-129600000 seconds (0-1500 days)
+`0`: permanent
+        :rtype: int
+        """
         return self._StorageTime
 
     @StorageTime.setter
@@ -17367,6 +21031,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Enable(self):
+        """Whether to enable recording in the current format. Default value: 0. 0: no, 1: yes.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -17375,6 +21042,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def VodSubAppId(self):
+        """VOD subapplication ID.
+        :rtype: int
+        """
         return self._VodSubAppId
 
     @VodSubAppId.setter
@@ -17383,6 +21053,27 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def VodFileName(self):
+        """Recording filename.
+Supported special placeholders include:
+{StreamID}: stream ID
+{StartYear}: start time - year
+{StartMonth}: start time - month
+{StartDay}: start time - day
+{StartHour}: start time - hour
+{StartMinute}: start time - minute
+{StartSecond}: start time - second
+{StartMillisecond}: start time - millisecond
+{EndYear}: end time - year
+{EndMonth}: end time - month
+{EndDay}: end time - day
+{EndHour}: end time - hour
+{EndMinute}: end time - minute
+{EndSecond}: end time - second
+{EndMillisecond}: end time - millisecond
+
+If this parameter is not set, the recording filename will be `{StreamID}_{StartYear}-{StartMonth}-{StartDay}-{StartHour}-{StartMinute}-{StartSecond}_{EndYear}-{EndMonth}-{EndDay}-{EndHour}-{EndMinute}-{EndSecond}` by default
+        :rtype: str
+        """
         return self._VodFileName
 
     @VodFileName.setter
@@ -17391,6 +21082,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Procedure(self):
+        """Task flow
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._Procedure
 
     @Procedure.setter
@@ -17399,6 +21094,12 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def StorageMode(self):
+        """Video storage class. Valid values:
+`normal`: STANDARD
+`cold`: STANDARD_IA
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._StorageMode
 
     @StorageMode.setter
@@ -17407,6 +21108,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ClassId(self):
+        """VOD subapplication category
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._ClassId
 
     @ClassId.setter
@@ -17468,6 +21173,9 @@ class RecordTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """Recording task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -17476,6 +21184,9 @@ class RecordTask(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -17484,6 +21195,9 @@ class RecordTask(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -17492,6 +21206,9 @@ class RecordTask(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -17500,6 +21217,9 @@ class RecordTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time of the recording task in Unix timestamp. 
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -17508,6 +21228,9 @@ class RecordTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time of the recording task in Unix timestamp. 
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -17516,6 +21239,9 @@ class RecordTask(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Recording template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -17524,6 +21250,9 @@ class RecordTask(AbstractModel):
 
     @property
     def Stopped(self):
+        """The StopRecordTask API call stops the task at the Unix timestamp. A value of 0 indicates that the API has not been called to stop the task.
+        :rtype: int
+        """
         return self._Stopped
 
     @Stopped.setter
@@ -17600,6 +21329,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -17608,6 +21340,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -17616,6 +21351,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Description(self):
+        """Message description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17624,6 +21362,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FlvParam(self):
+        """FLV recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._FlvParam
 
     @FlvParam.setter
@@ -17632,6 +21373,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HlsParam(self):
+        """HLS recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._HlsParam
 
     @HlsParam.setter
@@ -17640,6 +21384,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mp4Param(self):
+        """MP4 recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._Mp4Param
 
     @Mp4Param.setter
@@ -17648,6 +21395,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AacParam(self):
+        """AAC recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._AacParam
 
     @AacParam.setter
@@ -17656,6 +21406,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def IsDelayLive(self):
+        """0: LVB,
+1: LCB.
+        :rtype: int
+        """
         return self._IsDelayLive
 
     @IsDelayLive.setter
@@ -17664,6 +21418,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HlsSpecialParam(self):
+        """A special parameter for HLS recording.
+        :rtype: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
+        """
         return self._HlsSpecialParam
 
     @HlsSpecialParam.setter
@@ -17672,6 +21429,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Mp3Param(self):
+        """MP3 recording parameter.
+        :rtype: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        """
         return self._Mp3Param
 
     @Mp3Param.setter
@@ -17680,6 +21440,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RemoveWatermark(self):
+        """Whether the watermark is removed.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._RemoveWatermark
 
     @RemoveWatermark.setter
@@ -17688,6 +21452,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FlvSpecialParam(self):
+        """A special parameter for FLV recording.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
+        """
         return self._FlvSpecialParam
 
     @FlvSpecialParam.setter
@@ -17758,6 +21526,9 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -17766,6 +21537,9 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def Enable(self):
+        """Whether to enable referer. Valid values: `0` (no), `1` (yes)
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -17774,6 +21548,9 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def Type(self):
+        """List type. Valid values: `0` (blocklist), `1` (allowlist)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -17782,6 +21559,9 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def AllowEmpty(self):
+        """Whether to allow empty referer. Valid values: `0` (no), `1` (yes)
+        :rtype: int
+        """
         return self._AllowEmpty
 
     @AllowEmpty.setter
@@ -17790,6 +21570,9 @@ class RefererAuthConfig(AbstractModel):
 
     @property
     def Rules(self):
+        """Referer list. Separate items in it with semicolons (;).
+        :rtype: str
+        """
         return self._Rules
 
     @Rules.setter
@@ -17830,6 +21613,9 @@ class RestartLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task Id.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -17838,6 +21624,9 @@ class RestartLivePullStreamTaskRequest(AbstractModel):
 
     @property
     def Operator(self):
+        """task operator.
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -17872,6 +21661,9 @@ class RestartLivePullStreamTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17903,6 +21695,9 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -17911,6 +21706,9 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -17919,6 +21717,9 @@ class ResumeDelayLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -17954,6 +21755,9 @@ class ResumeDelayLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17985,6 +21789,9 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Push path, which is the same as the AppName in push and playback addresses and is "live" by default.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -17993,6 +21800,9 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Your push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -18001,6 +21811,9 @@ class ResumeLiveStreamRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -18036,6 +21849,9 @@ class ResumeLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18078,6 +21894,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CreateTime(self):
+        """The rule creation time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -18086,6 +21906,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def UpdateTime(self):
+        """The rule update time.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -18094,6 +21918,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -18102,6 +21929,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -18110,6 +21940,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def AppName(self):
+        """Push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -18118,6 +21951,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -18193,6 +22029,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -18201,6 +22040,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -18209,6 +22051,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotInterval(self):
+        """Screencapturing interval. Value range: 5-300s.
+        :rtype: int
+        """
         return self._SnapshotInterval
 
     @SnapshotInterval.setter
@@ -18217,6 +22062,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
+        """Screenshot width. Value range: 0-3000. 
+0: original width and fit to the original ratio.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -18225,6 +22074,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
+        """Screenshot height. Value range: 0-2000.
+0: original height and fit to the original ratio.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -18233,6 +22086,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PornFlag(self):
+        """Whether to enable porn detection. 0: no, 1: yes.
+        :rtype: int
+        """
         return self._PornFlag
 
     @PornFlag.setter
@@ -18241,6 +22097,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosAppId(self):
+        """COS application ID.
+        :rtype: int
+        """
         return self._CosAppId
 
     @CosAppId.setter
@@ -18249,6 +22108,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosBucket(self):
+        """COS bucket name.
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -18257,6 +22119,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosRegion(self):
+        """COS region.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -18265,6 +22130,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -18273,6 +22141,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosPrefix(self):
+        """COS bucket folder prefix.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CosPrefix
 
     @CosPrefix.setter
@@ -18281,6 +22153,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosFileName(self):
+        """COS filename.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CosFileName
 
     @CosFileName.setter
@@ -18328,6 +22204,9 @@ class StopLiveRecordRequest(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -18336,6 +22215,9 @@ class StopLiveRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID returned by the `CreateLiveRecord` API.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18370,6 +22252,9 @@ class StopLiveRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18395,6 +22280,9 @@ class StopRecordTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Recording task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18428,6 +22316,9 @@ class StopRecordTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18480,6 +22371,9 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -18488,6 +22382,9 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -18496,6 +22393,9 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -18504,6 +22404,10 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def StreamStartTime(self):
+        """Push start time.
+In UTC format, such as 2019-01-07T12:00:00Z.
+        :rtype: str
+        """
         return self._StreamStartTime
 
     @StreamStartTime.setter
@@ -18512,6 +22416,10 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def StreamEndTime(self):
+        """Push end time.
+In UTC format, such as 2019-01-07T15:00:00Z.
+        :rtype: str
+        """
         return self._StreamEndTime
 
     @StreamEndTime.setter
@@ -18520,6 +22428,9 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def StopReason(self):
+        """Stop reason.
+        :rtype: str
+        """
         return self._StopReason
 
     @StopReason.setter
@@ -18528,6 +22439,9 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def Duration(self):
+        """Push duration in seconds.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -18536,6 +22450,10 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def ClientIp(self):
+        """The IP address of the host.
+If the stream is published from a private network, this parameter will be `-`.
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -18544,6 +22462,9 @@ If the stream is published from a private network, this parameter will be `-`.
 
     @property
     def Resolution(self):
+        """Resolution.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -18611,6 +22532,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -18619,6 +22543,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -18627,6 +22554,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -18635,6 +22565,10 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def StreamStartTime(self):
+        """Push start time.
+In UTC format, such as 2019-01-07T12:00:00Z.
+        :rtype: str
+        """
         return self._StreamStartTime
 
     @StreamStartTime.setter
@@ -18643,6 +22577,10 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def StreamEndTime(self):
+        """Push end time.
+In UTC format, such as 2019-01-07T15:00:00Z.
+        :rtype: str
+        """
         return self._StreamEndTime
 
     @StreamEndTime.setter
@@ -18651,6 +22589,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def StopReason(self):
+        """Stop reason.
+        :rtype: str
+        """
         return self._StopReason
 
     @StopReason.setter
@@ -18659,6 +22600,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def Duration(self):
+        """Push duration in seconds.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -18667,6 +22611,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def ClientIp(self):
+        """Host IP.
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -18675,6 +22622,9 @@ In UTC format, such as 2019-01-07T15:00:00Z.
 
     @property
     def Resolution(self):
+        """Resolution.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -18725,6 +22675,9 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -18733,6 +22686,9 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def PublishTimeList(self):
+        """Push time list
+        :rtype: list of PublishTime
+        """
         return self._PublishTimeList
 
     @PublishTimeList.setter
@@ -18741,6 +22697,9 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -18749,6 +22708,9 @@ class StreamOnlineInfo(AbstractModel):
 
     @property
     def DomainName(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -18883,6 +22845,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vcodec(self):
+        """Codec: h264/h265/origin. Default value: h264.
+
+origin: keep the original codec.
+        :rtype: str
+        """
         return self._Vcodec
 
     @Vcodec.setter
@@ -18891,6 +22858,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoBitrate(self):
+        """Video bitrate. Value range: 0–8,000 Kbps.
+If the value is 0, the original bitrate will be retained.
+Note: transcoding templates require a unique bitrate. The final saved bitrate may differ from the input bitrate.
+        :rtype: int
+        """
         return self._VideoBitrate
 
     @VideoBitrate.setter
@@ -18899,6 +22871,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Acodec(self):
+        """Audio codec: aac. Default value: aac.
+Note: This parameter will not take effect for now and will be supported soon.
+        :rtype: str
+        """
         return self._Acodec
 
     @Acodec.setter
@@ -18907,6 +22883,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioBitrate(self):
+        """Audio bitrate. Value range: 0–500 Kbps.
+0 by default.
+        :rtype: int
+        """
         return self._AudioBitrate
 
     @AudioBitrate.setter
@@ -18915,6 +22895,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
+        """Width. Default value: 0.
+Value range: [0-3,000].
+The value must be a multiple of 2. The original width is 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -18923,6 +22908,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
+        """Height. Default value: 0.
+Value range: [0-3,000].
+The value must be a multiple of 2. The original width is 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -18931,6 +22921,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fps(self):
+        """Frame rate. Default value: 0.
+Range: 0-60 Fps.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -18939,6 +22933,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Gop(self):
+        """Keyframe interval, unit: second.
+Original interval by default
+Range: 2-6
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -18947,6 +22946,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rotate(self):
+        """Rotation angle. Default value: 0.
+Value range: 0, 90, 180, 270
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -18955,6 +22958,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Profile(self):
+        """Encoding quality:
+baseline/main/high. Default value: baseline.
+        :rtype: str
+        """
         return self._Profile
 
     @Profile.setter
@@ -18963,6 +22970,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BitrateToOrig(self):
+        """Whether to use the original bitrate when the set bitrate is larger than the original bitrate.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._BitrateToOrig
 
     @BitrateToOrig.setter
@@ -18971,6 +22983,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeightToOrig(self):
+        """Whether to use the original height when the set height is higher than the original height.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._HeightToOrig
 
     @HeightToOrig.setter
@@ -18979,6 +22996,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FpsToOrig(self):
+        """Whether to use the original frame rate when the set frame rate is larger than the original frame rate.
+0: no, 1: yes
+Default value: 0.
+        :rtype: int
+        """
         return self._FpsToOrig
 
     @FpsToOrig.setter
@@ -18987,6 +23009,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NeedVideo(self):
+        """Whether to keep the video. 0: no; 1: yes.
+        :rtype: int
+        """
         return self._NeedVideo
 
     @NeedVideo.setter
@@ -18995,6 +23020,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NeedAudio(self):
+        """Whether to keep the audio. 0: no; 1: yes.
+        :rtype: int
+        """
         return self._NeedAudio
 
     @NeedAudio.setter
@@ -19003,6 +23031,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateId(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -19011,6 +23042,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -19019,6 +23053,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -19027,6 +23064,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiTransCode(self):
+        """Whether it is a top speed codec template. 0: no, 1: yes. Default value: 0.
+        :rtype: int
+        """
         return self._AiTransCode
 
     @AiTransCode.setter
@@ -19035,6 +23075,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdaptBitratePercent(self):
+        """Bitrate compression ratio of top speed code video.
+Target bitrate of top speed code = VideoBitrate * (1-AdaptBitratePercent)
+
+Value range: 0.0-0.5.
+        :rtype: float
+        """
         return self._AdaptBitratePercent
 
     @AdaptBitratePercent.setter
@@ -19043,6 +23089,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShortEdgeAsHeight(self):
+        """Whether to take the shorter side as height. 0: no, 1: yes. Default value: 0.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._ShortEdgeAsHeight
 
     @ShortEdgeAsHeight.setter
@@ -19051,6 +23101,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DRMType(self):
+        """The DRM encryption type. Valid values: fairplay, normalaes, widevine.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DRMType
 
     @DRMType.setter
@@ -19059,6 +23113,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DRMTracks(self):
+        """The tracks to encrypt. Valid values: AUDIO, SD, HD, UHD1, UHD2. Separate multiple tracks with “|”. You can choose only one video track (SD, HD, UHD1, or UHD2).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DRMTracks
 
     @DRMTracks.setter
@@ -19126,6 +23184,9 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def Domain(self):
+        """The push domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -19134,6 +23195,9 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def Duration(self):
+        """The time-shift video length (minutes).
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -19142,6 +23206,9 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def StoragePeriod(self):
+        """The time-shift days.
+        :rtype: float
+        """
         return self._StoragePeriod
 
     @StoragePeriod.setter
@@ -19150,6 +23217,9 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def Time(self):
+        """The time for the data returned. Format: YYYY-MM-DDThh:mm:ssZ.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -19158,6 +23228,9 @@ class TimeShiftBillData(AbstractModel):
 
     @property
     def TotalDuration(self):
+        """The total time-shift duration (minutes).
+        :rtype: float
+        """
         return self._TotalDuration
 
     @TotalDuration.setter
@@ -19201,6 +23274,9 @@ class TimeShiftRecord(AbstractModel):
 
     @property
     def Sid(self):
+        """The session ID.
+        :rtype: str
+        """
         return self._Sid
 
     @Sid.setter
@@ -19209,6 +23285,9 @@ class TimeShiftRecord(AbstractModel):
 
     @property
     def StartTime(self):
+        """The recording start time, which is a Unix timestamp.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -19217,6 +23296,9 @@ class TimeShiftRecord(AbstractModel):
 
     @property
     def EndTime(self):
+        """The recording end time, which is a Unix timestamp.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19279,6 +23361,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainGroup(self):
+        """The group the push domain belongs to.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DomainGroup
 
     @DomainGroup.setter
@@ -19287,6 +23373,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The push domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -19295,6 +23384,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppName(self):
+        """The push path.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -19303,6 +23395,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamName(self):
+        """The stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -19311,6 +23406,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """The stream start time, which is a Unix timestamp.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -19319,6 +23417,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """The stream end time (for streams that ended before the time of query), which is a Unix timestamp.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19327,6 +23428,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransCodeId(self):
+        """The transcoding template ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TransCodeId
 
     @TransCodeId.setter
@@ -19335,6 +23440,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamType(self):
+        """The stream type. `0`: The original stream; `1`: The watermarked stream; `2`: The transcoded stream.
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -19343,6 +23451,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
+        """The storage duration (seconds) of the recording.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -19415,6 +23527,9 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def TemplateName(self):
+        """The template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -19423,6 +23538,10 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def Duration(self):
+        """The time shifting duration.
+Unit: second
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -19431,6 +23550,12 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def ItemDuration(self):
+        """The segment size.
+Value range: 3-10.
+Unit: Second.
+Default value: 5
+        :rtype: int
+        """
         return self._ItemDuration
 
     @ItemDuration.setter
@@ -19439,6 +23564,9 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def TemplateId(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -19447,6 +23575,9 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def Description(self):
+        """The template description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -19455,6 +23586,12 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def Area(self):
+        """The region. Valid values:
+`Mainland`: The Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+Default value: `Mainland`.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -19463,6 +23600,11 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def RemoveWatermark(self):
+        """Whether to remove watermarks.
+If you pass in `true`, the original stream will be recorded.
+Default value: `false`.
+        :rtype: bool
+        """
         return self._RemoveWatermark
 
     @RemoveWatermark.setter
@@ -19471,6 +23613,10 @@ This API works only if `RemoveWatermark` is `false`.
 
     @property
     def TranscodeTemplateIds(self):
+        """The transcoding template IDs.
+This API works only if `RemoveWatermark` is `false`.
+        :rtype: list of int non-negative
+        """
         return self._TranscodeTemplateIds
 
     @TranscodeTemplateIds.setter
@@ -19514,6 +23660,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Time(self):
+        """UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -19522,6 +23671,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Num(self):
+        """Value.
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -19591,6 +23743,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def StreamName(self):
+        """Stream name.
+        :rtype: str
+        """
         return self._StreamName
 
     @StreamName.setter
@@ -19599,6 +23754,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def StartTime(self):
+        """Start time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -19607,6 +23765,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def EndTime(self):
+        """End time (Beijing time) in the format of `yyyy-mm-dd HH:MM`.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -19615,6 +23776,10 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def Duration(self):
+        """Transcoding duration in minutes.
+Note: given the possible interruptions during push, duration here is the sum of actual duration of transcoding instead of the interval between the start time and end time.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -19623,6 +23788,14 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def ModuleCodec(self):
+        """Codec with modules,
+Example:
+liveprocessor_H264: LVB transcoding - H264,
+liveprocessor_H265: LVB transcoding - H265,
+topspeed_H264: top speed codec - H264,
+topspeed_H265: top speed codec - H265.
+        :rtype: str
+        """
         return self._ModuleCodec
 
     @ModuleCodec.setter
@@ -19631,6 +23804,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def Bitrate(self):
+        """Bitrate.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -19639,6 +23815,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def Type(self):
+        """The task type. Valid values: Transcode, MixStream, WaterMark, Webrtc.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19647,6 +23826,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def PushDomain(self):
+        """Push domain name.
+        :rtype: str
+        """
         return self._PushDomain
 
     @PushDomain.setter
@@ -19655,6 +23837,9 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def Resolution(self):
+        """Resolution.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -19663,6 +23848,11 @@ topspeed_H265: top speed codec - H265.
 
     @property
     def MainlandOrOversea(self):
+        """The region. Valid values:
+`Mainland`: Inside the Chinese mainland.
+`Overseas`: Outside the Chinese mainland.
+        :rtype: str
+        """
         return self._MainlandOrOversea
 
     @MainlandOrOversea.setter
@@ -19711,6 +23901,9 @@ class TranscodeTaskNum(AbstractModel):
 
     @property
     def Time(self):
+        """The time of query.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -19719,6 +23912,9 @@ class TranscodeTaskNum(AbstractModel):
 
     @property
     def CodeRate(self):
+        """The bitrate.
+        :rtype: int
+        """
         return self._CodeRate
 
     @CodeRate.setter
@@ -19727,6 +23923,9 @@ class TranscodeTaskNum(AbstractModel):
 
     @property
     def Num(self):
+        """The number of tasks.
+        :rtype: int
+        """
         return self._Num
 
     @Num.setter
@@ -19778,6 +23977,10 @@ Example: 540*480
 
     @property
     def Time(self):
+        """Usage time (Beijing time)
+Example: 2019-03-01 00:00:00
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -19786,6 +23989,9 @@ Example: 540*480
 
     @property
     def Duration(self):
+        """Transcoding duration in minutes
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -19794,6 +24000,14 @@ Example: 540*480
 
     @property
     def ModuleCodec(self):
+        """Codec, with modules
+Examples:
+`liveprocessor_H264`: live transcoding-H264
+`liveprocessor_H265`: live transcoding-H265
+`topspeed_H264`: top speed codec-H264
+`topspeed_H265`: top speed codec-H265
+        :rtype: str
+        """
         return self._ModuleCodec
 
     @ModuleCodec.setter
@@ -19802,6 +24016,10 @@ Example: 540*480
 
     @property
     def Resolution(self):
+        """Resolution
+Example: 540*480
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -19845,6 +24063,9 @@ class UnBindLiveDomainCertRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Playback domain name.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -19853,6 +24074,13 @@ class UnBindLiveDomainCertRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Valid values:
+`gray`: unbind the canary certificate
+`formal` (default): unbind the formal certificate
+
+`formal` will be used if no value is passed in
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19887,6 +24115,9 @@ class UnBindLiveDomainCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19934,6 +24165,10 @@ Up to 16 bytes.
 
     @property
     def WatermarkId(self):
+        """Watermark ID.
+Get the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.
+        :rtype: int
+        """
         return self._WatermarkId
 
     @WatermarkId.setter
@@ -19942,6 +24177,11 @@ Up to 16 bytes.
 
     @property
     def PictureUrl(self):
+        """Watermark image URL.
+Unallowed characters in the URL:
+ ;(){}$>`#"\'|
+        :rtype: str
+        """
         return self._PictureUrl
 
     @PictureUrl.setter
@@ -19950,6 +24190,9 @@ Up to 16 bytes.
 
     @property
     def XPosition(self):
+        """Display position: X-axis offset in %. Default value: 0.
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -19958,6 +24201,9 @@ Up to 16 bytes.
 
     @property
     def YPosition(self):
+        """Display position: Y-axis offset in %. Default value: 0.
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -19966,6 +24212,10 @@ Up to 16 bytes.
 
     @property
     def WatermarkName(self):
+        """Watermark name.
+Up to 16 bytes.
+        :rtype: str
+        """
         return self._WatermarkName
 
     @WatermarkName.setter
@@ -19974,6 +24224,9 @@ Up to 16 bytes.
 
     @property
     def Width(self):
+        """Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -19982,6 +24235,9 @@ Up to 16 bytes.
 
     @property
     def Height(self):
+        """Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -20021,6 +24277,9 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20071,6 +24330,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def WatermarkId(self):
+        """Watermark ID.
+        :rtype: int
+        """
         return self._WatermarkId
 
     @WatermarkId.setter
@@ -20079,6 +24341,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def PictureUrl(self):
+        """Watermark image URL.
+        :rtype: str
+        """
         return self._PictureUrl
 
     @PictureUrl.setter
@@ -20087,6 +24352,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def XPosition(self):
+        """Display position: X-axis offset.
+        :rtype: int
+        """
         return self._XPosition
 
     @XPosition.setter
@@ -20095,6 +24363,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def YPosition(self):
+        """Display position: Y-axis offset.
+        :rtype: int
+        """
         return self._YPosition
 
     @YPosition.setter
@@ -20103,6 +24374,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def WatermarkName(self):
+        """Watermark name.
+        :rtype: str
+        """
         return self._WatermarkName
 
     @WatermarkName.setter
@@ -20111,6 +24385,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def Status(self):
+        """Current status. 0: not used. 1: in use.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -20119,6 +24396,10 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def CreateTime(self):
+        """The time when the watermark was added.
+Note: Beijing time (UTC+8) is used.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -20127,6 +24408,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def Width(self):
+        """Watermark width.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -20135,6 +24419,9 @@ Note: Beijing time (UTC+8) is used.
 
     @property
     def Height(self):
+        """Watermark height.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter

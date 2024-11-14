@@ -116,7 +116,7 @@ INVALIDPARAMETER_VPGHAGROUPNOTFOUND = 'InvalidParameter.VpgHaGroupNotFound'
 # The two parameters cannot be specified at the same time, nor exist concurrently. EIP can only be bound to the instances or the specified private IPs of the specified ENIs.
 INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
-# Incorrect parameter value.
+# The parameter value is invalid.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # Attacked IP address.
@@ -229,6 +229,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = 'InvalidParameterValue
 
 # Operation failed: the status of the instance does not allow this operation.
 INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = 'InvalidParameterValue.InvalidInstanceState'
+
+# Invalid original bandwidth value.
+INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = 'InvalidParameterValue.InvalidOldBandwidth'
 
 # This Tag is invalid.
 INVALIDPARAMETERVALUE_INVALIDTAG = 'InvalidParameterValue.InvalidTag'

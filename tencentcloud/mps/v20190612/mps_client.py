@@ -187,6 +187,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateQualityControlTemplate(self, request):
+        """This API is used to create a media quality inspection template. Up to 50 templates can be created.
+
+        :param request: Request instance for CreateQualityControlTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateQualityControlTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateQualityControlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQualityControlTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQualityControlTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSampleSnapshotTemplate(self, request):
         """This API is used to create a custom sampled screencapturing template. Up to 16 templates can be created.
 
@@ -524,6 +547,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeletePersonSample", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePersonSampleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteQualityControlTemplate(self, request):
+        """This API is used to delete a media quality inspection template.
+
+        :param request: Request instance for DeleteQualityControlTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteQualityControlTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteQualityControlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteQualityControlTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteQualityControlTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -878,6 +924,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeQualityControlTemplates(self, request):
+        """This API is used to query custom media quality inspection templates, supporting paged queries by conditions.
+
+        :param request: Request instance for DescribeQualityControlTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeQualityControlTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeQualityControlTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQualityControlTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQualityControlTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSampleSnapshotTemplates(self, request):
         """This API is used to query the list of sampled screencapturing templates and supports paged queries by filters.
 
@@ -1134,19 +1203,19 @@ class MpsClient(AbstractClient):
 
 
     def EditMedia(self, request):
-        """This API is used to edit a video to generate a new video. Editing actions may include:
+        """This API is used to edit a video to generate a new one. Editing features include:
 
 
-        1. **Simple editing**: Simple video editing such as clipping and splicing
-        1.1 Clipping a file to generate a new video
-        1.2 Splicing multiple files to generate a new video
-        1.3 Clipping multiple files and then splicing the clips to generate a new video
+        1. **Editing task**: simple video editing, such as clipping and splicing.
+        1) Edit a file to generate a new video.
+        2) Splice multiple files to generate a new video.
+        3) Edit multiple files and then splice them to generate a new video.
 
-        2. **Compositing**: Composing a new video as required
-        2.1 Adding different tracks (video, audio, subtitles) or elements (video, image, audio, text, empty)
-        2.2 Image: Adding, scaling, rotating, or mirroring an image
-        2.3 Audio: Adjusting volume and adding audio effects such as fade and reverb
-        2.4 Video: Adding transition effects, changing playback speed, splicing and clipping videos, adding subtitles, playing videos picture-in-picture, separating audio from videos, adding animation effects, etc.
+        2. **Compositing task**: Generate a new video by describing information through APIs.
+        1) Multi-track (video, audio, and subtitles) and multi-type elements (video, image, audio, text, and empty).
+        2) Image level: mapping, zoom in/out, arbitrary rotation, mirroring, and more.
+        3) Audio level: volume control, fade in/out, mixing, and more.
+        4) Video level: transition, playback speed adjustment, splicing, clipping, subtitles, picture-in-picture, audio-video separation, entrance and exit animations, and more.
 
         :param request: Request instance for EditMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.EditMediaRequest`
@@ -1423,6 +1492,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyQualityControlTemplate(self, request):
+        """This API is used to modify a media quality inspection template.
+
+        :param request: Request instance for ModifyQualityControlTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyQualityControlTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyQualityControlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyQualityControlTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyQualityControlTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySampleSnapshotTemplate(self, request):
         """This API is used to modify a custom sampled screencapturing template.
 
@@ -1641,16 +1733,18 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """This API is used to initiate processing tasks for media specified by a URL or in COS. Such tasks may include the following:
-        1. Video transcoding (general transcoding, Top Speed Codec, audio/video enhancement)
-        2. Animated image generating
-        3. Time point screencapturing
-        4. Sampled screencapturing
-        5. Image sprite generating
-        6. Adaptive bitrate streaming
-        7. Intelligent content moderation (detection of pornographic and sensitive content)
-        8. Intelligent content analysis (labeling, categorization, thumbnail generation, labeling by frame, splitting, highlight generation, opening and closing segment recognition)
-        9. Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, speech translation, object recognition)
+        """This API is used to initiate a processing task for video URLs or media files in Cloud Object Storage (COS). Features include:
+        1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement);
+        2. Animated image generating;
+        3. Screenshot taking at specified time points;
+        4. Sampled screenshot taking;
+        5. Sprite screenshot taking;
+        6. Transcoding to adaptive bitrate streaming;
+        7. Intelligent auditing (porn detection and sensitive information detection);
+        8. Intelligent analysis (tagging, classification, thumbnail generating, frame-by-frame tagging, video splitting, highlights generating, opening and closing segments recognition, and game timestamping);
+        9. Intelligent identification (face, full text, text keyword, full speech, speech keyword, speech translation, and object recognition);
+
+        10. Media quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

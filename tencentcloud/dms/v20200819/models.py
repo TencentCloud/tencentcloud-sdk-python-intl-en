@@ -50,6 +50,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def FromAddress(self):
+        """Sender
+        :rtype: str
+        """
         return self._FromAddress
 
     @FromAddress.setter
@@ -58,6 +61,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def ToAddress(self):
+        """Recipient
+        :rtype: str
+        """
         return self._ToAddress
 
     @ToAddress.setter
@@ -66,6 +72,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
+        """Email summary
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -74,6 +83,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def FromName(self):
+        """Sender name
+        :rtype: str
+        """
         return self._FromName
 
     @FromName.setter
@@ -82,6 +94,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def ReplyAddress(self):
+        """Reply-to address
+        :rtype: str
+        """
         return self._ReplyAddress
 
     @ReplyAddress.setter
@@ -90,6 +105,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def HtmlContent(self):
+        """The body of an HTML email
+        :rtype: str
+        """
         return self._HtmlContent
 
     @HtmlContent.setter
@@ -98,6 +116,9 @@ class SendEmailRequest(AbstractModel):
 
     @property
     def TextContent(self):
+        """The body of a plain-text email
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -140,6 +161,9 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def Result(self):
+        """The result of creating an email task
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -148,6 +172,9 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -189,6 +216,9 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def FromAddress(self):
+        """Sender address.
+        :rtype: str
+        """
         return self._FromAddress
 
     @FromAddress.setter
@@ -197,6 +227,9 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def ToAddress(self):
+        """Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).
+        :rtype: str
+        """
         return self._ToAddress
 
     @ToAddress.setter
@@ -205,6 +238,9 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """The name of the template created in advance.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -213,6 +249,9 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def TemplateValue(self):
+        """Template variable value, which is a JSON string.
+        :rtype: str
+        """
         return self._TemplateValue
 
     @TemplateValue.setter
@@ -221,6 +260,9 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def FromName(self):
+        """Sender name.
+        :rtype: str
+        """
         return self._FromName
 
     @FromName.setter
@@ -229,6 +271,9 @@ class SendTemplatedEmailRequest(AbstractModel):
 
     @property
     def ReplyAddress(self):
+        """Reply-to address.
+        :rtype: str
+        """
         return self._ReplyAddress
 
     @ReplyAddress.setter
@@ -270,6 +315,9 @@ class SendTemplatedEmailResponse(AbstractModel):
 
     @property
     def Result(self):
+        """The result of creating a template email task
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -278,6 +326,9 @@ class SendTemplatedEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

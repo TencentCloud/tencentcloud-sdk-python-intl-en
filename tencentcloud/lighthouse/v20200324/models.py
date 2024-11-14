@@ -35,6 +35,9 @@ class ApplyInstanceSnapshotRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -43,6 +46,9 @@ class ApplyInstanceSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -77,6 +83,9 @@ class ApplyInstanceSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -105,6 +114,9 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """Key pair ID list. Each request can contain up to 100 key pairs.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -113,6 +125,9 @@ class AssociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -147,6 +162,9 @@ class AssociateInstancesKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -172,6 +190,9 @@ class AttachCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """CCN instance ID.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -205,6 +226,9 @@ class AttachCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -236,6 +260,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -244,6 +271,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def AttachedDiskCount(self):
+        """Number of elastic cloud disks attached to the instance
+        :rtype: int
+        """
         return self._AttachedDiskCount
 
     @AttachedDiskCount.setter
@@ -252,6 +282,9 @@ class AttachDetail(AbstractModel):
 
     @property
     def MaxAttachCount(self):
+        """Upper limit of attached elastic cloud disks
+        :rtype: int
+        """
         return self._MaxAttachCount
 
     @MaxAttachCount.setter
@@ -297,6 +330,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -305,6 +341,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -313,6 +352,13 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def RenewFlag(self):
+        """Specify whether to renew an instance automatically when it expires. Values: 
+
+`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically; `NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew; `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not trigger the notification and do not renew.
+
+Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -348,6 +394,9 @@ class AttachDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -379,6 +428,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be mounted to. The instance must be **Running**.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -387,6 +439,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def MountPoint(self):
+        """The mount point within the instance. Only Linux instances are supported. If it's not specified, the default mount point is "/data/disk".
+        :rtype: str
+        """
         return self._MountPoint
 
     @MountPoint.setter
@@ -395,6 +450,9 @@ class AutoMountConfiguration(AbstractModel):
 
     @property
     def FileSystemType(self):
+        """The file system type. Values: `ext4` (default) and `xfs`. Only Linux instances are supported. 
+        :rtype: str
+        """
         return self._FileSystemType
 
     @FileSystemType.setter
@@ -493,6 +551,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BlueprintId(self):
+        """Image ID, which is the unique identifier of `Blueprint`.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -501,6 +562,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisplayTitle(self):
+        """Image title to be displayed.
+        :rtype: str
+        """
         return self._DisplayTitle
 
     @DisplayTitle.setter
@@ -509,6 +573,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisplayVersion(self):
+        """Image version to be displayed.
+        :rtype: str
+        """
         return self._DisplayVersion
 
     @DisplayVersion.setter
@@ -517,6 +584,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Image description information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -525,6 +596,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OsName(self):
+        """OS name.
+        :rtype: str
+        """
         return self._OsName
 
     @OsName.setter
@@ -533,6 +607,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Platform(self):
+        """OS type.
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -541,6 +618,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PlatformType(self):
+        """OS type, such as LINUX_UNIX and WINDOWS.
+        :rtype: str
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -549,6 +629,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BlueprintType(self):
+        """Image type, such as APP_OS, PURE_OS, and PRIVATE.
+        :rtype: str
+        """
         return self._BlueprintType
 
     @BlueprintType.setter
@@ -557,6 +640,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ImageUrl(self):
+        """Image picture URL.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -565,6 +651,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequiredSystemDiskSize(self):
+        """System disk size required by image in GB.
+        :rtype: int
+        """
         return self._RequiredSystemDiskSize
 
     @RequiredSystemDiskSize.setter
@@ -573,6 +662,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BlueprintState(self):
+        """Image status.
+        :rtype: str
+        """
         return self._BlueprintState
 
     @BlueprintState.setter
@@ -581,6 +673,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -589,6 +686,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BlueprintName(self):
+        """Image name.
+        :rtype: str
+        """
         return self._BlueprintName
 
     @BlueprintName.setter
@@ -597,6 +697,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SupportAutomationTools(self):
+        """Whether the image supports automation tools.
+        :rtype: bool
+        """
         return self._SupportAutomationTools
 
     @SupportAutomationTools.setter
@@ -605,6 +708,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequiredMemorySize(self):
+        """Memory size required by image in GB.
+        :rtype: int
+        """
         return self._RequiredMemorySize
 
     @RequiredMemorySize.setter
@@ -613,6 +719,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ImageId(self):
+        """ID of the Lighthouse image shared from a CVM image
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -621,6 +731,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CommunityUrl(self):
+        """URL of official website of the open-source project
+        :rtype: str
+        """
         return self._CommunityUrl
 
     @CommunityUrl.setter
@@ -629,6 +742,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GuideUrl(self):
+        """Guide documentation URL
+        :rtype: str
+        """
         return self._GuideUrl
 
     @GuideUrl.setter
@@ -637,6 +753,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SceneIdSet(self):
+        """Array of IDs of scenes associated with an image
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SceneIdSet
 
     @SceneIdSet.setter
@@ -645,6 +765,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DockerVersion(self):
+        """Docker version.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DockerVersion
 
     @DockerVersion.setter
@@ -703,6 +827,9 @@ class BlueprintInstance(AbstractModel):
 
     @property
     def Blueprint(self):
+        """Image information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
+        """
         return self._Blueprint
 
     @Blueprint.setter
@@ -711,6 +838,9 @@ class BlueprintInstance(AbstractModel):
 
     @property
     def SoftwareSet(self):
+        """Software list.
+        :rtype: list of Software
+        """
         return self._SoftwareSet
 
     @SoftwareSet.setter
@@ -719,6 +849,9 @@ class BlueprintInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -770,6 +903,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def OriginalBlueprintPrice(self):
+        """Original image unit price in USD.
+        :rtype: float
+        """
         return self._OriginalBlueprintPrice
 
     @OriginalBlueprintPrice.setter
@@ -778,6 +914,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """Original image total price in USD.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -786,6 +925,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """Discount.
+        :rtype: int
+        """
         return self._Discount
 
     @Discount.setter
@@ -794,6 +936,9 @@ class BlueprintPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """Discounted image total price in USD.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -888,6 +1033,9 @@ Valid values:
 
     @property
     def BundleId(self):
+        """Package ID.
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -896,6 +1044,9 @@ Valid values:
 
     @property
     def Memory(self):
+        """Memory size in GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -904,6 +1055,11 @@ Valid values:
 
     @property
     def SystemDiskType(self):
+        """System disk type.
+Values: 
+<li>`CLOUD_SSD`: SSD cloud disks</li><li>`CLOUD_PREMIUM`: Premium cloud disks</li>
+        :rtype: str
+        """
         return self._SystemDiskType
 
     @SystemDiskType.setter
@@ -912,6 +1068,9 @@ Valid values:
 
     @property
     def SystemDiskSize(self):
+        """System disk size in GB.
+        :rtype: int
+        """
         return self._SystemDiskSize
 
     @SystemDiskSize.setter
@@ -920,6 +1079,9 @@ Valid values:
 
     @property
     def MonthlyTraffic(self):
+        """Monthly network traffic in GB.
+        :rtype: int
+        """
         return self._MonthlyTraffic
 
     @MonthlyTraffic.setter
@@ -928,6 +1090,9 @@ Valid values:
 
     @property
     def SupportLinuxUnixPlatform(self):
+        """Whether Linux/Unix is supported.
+        :rtype: bool
+        """
         return self._SupportLinuxUnixPlatform
 
     @SupportLinuxUnixPlatform.setter
@@ -936,6 +1101,9 @@ Valid values:
 
     @property
     def SupportWindowsPlatform(self):
+        """Whether Windows is supported.
+        :rtype: bool
+        """
         return self._SupportWindowsPlatform
 
     @SupportWindowsPlatform.setter
@@ -944,6 +1112,9 @@ Valid values:
 
     @property
     def Price(self):
+        """Current package unit price information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -952,6 +1123,9 @@ Valid values:
 
     @property
     def CPU(self):
+        """Number of CPU cores.
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -960,6 +1134,9 @@ Valid values:
 
     @property
     def InternetMaxBandwidthOut(self):
+        """Peak bandwidth in Mbps.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -968,6 +1145,9 @@ Valid values:
 
     @property
     def InternetChargeType(self):
+        """Network billing mode.
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -976,6 +1156,9 @@ Valid values:
 
     @property
     def BundleSalesState(self):
+        """Package sale status. Valid values: AVAILABLE, SOLD_OUT
+        :rtype: str
+        """
         return self._BundleSalesState
 
     @BundleSalesState.setter
@@ -984,6 +1167,18 @@ Valid values:
 
     @property
     def BundleType(self):
+        """Bundle type. 
+Valid values: 
+<li>STARTER_BUNDLE: Starter bundle</li>
+<li>GENERAL_BUNDLE: General bundle</li>
+<li>ENTERPRISE_BUNDLE: Enterprise bundle</li>
+<li>STORAGE_BUNDLE: Storage-optimized bundle</li>
+<li>EXCLUSIVE_BUNDLE: Dedicated bundle</li>
+<li>HK_EXCLUSIVE_BUNDLE: Hong Kong-dedicated bundle </li>
+<li>CAREFREE_BUNDLE: Lighthouse Care bundle</li>
+<li>BEFAST_BUNDLE: BeFast bundle </li>
+        :rtype: str
+        """
         return self._BundleType
 
     @BundleType.setter
@@ -992,6 +1187,10 @@ Valid values:
 
     @property
     def BundleTypeDescription(self):
+        """Bundle type description 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BundleTypeDescription
 
     @BundleTypeDescription.setter
@@ -1000,6 +1199,13 @@ Valid values:
 
     @property
     def BundleDisplayLabel(self):
+        """Package tag.
+Valid values:
+"ACTIVITY": promotional package
+"NORMAL": regular package
+"CAREFREE": carefree package
+        :rtype: str
+        """
         return self._BundleDisplayLabel
 
     @BundleDisplayLabel.setter
@@ -1072,6 +1278,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnId(self):
+        """CCN instance ID.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -1080,6 +1289,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CidrBlock(self):
+        """CIDR block of associated instance.
+        :rtype: list of str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -1088,6 +1300,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
+        """Associated instance status:
+
+•  PENDING: applying
+•  ACTIVE: connected
+•  EXPIRED: expired
+•  REJECTED: rejected
+•  DELETED: deleted
+•  FAILED: failed (it will be asynchronously unassociated after 2 hours)
+•  ATTACHING: associating
+•  DETACHING: unassociating
+•  DETACHFAILED: failed to unassociate (it will be asynchronously unassociated after 2 hours)
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -1096,6 +1321,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttachedTime(self):
+        """Association time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AttachedTime
 
     @AttachedTime.setter
@@ -1104,6 +1333,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1144,6 +1376,9 @@ class ContainerEnv(AbstractModel):
 
     @property
     def Key(self):
+        """Environment variable key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1152,6 +1387,9 @@ class ContainerEnv(AbstractModel):
 
     @property
     def Value(self):
+        """Environment variable value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1200,6 +1438,9 @@ Note that if you create an image when the instance is running, there might be da
 
     @property
     def BlueprintName(self):
+        """Image name, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._BlueprintName
 
     @BlueprintName.setter
@@ -1208,6 +1449,9 @@ Note that if you create an image when the instance is running, there might be da
 
     @property
     def Description(self):
+        """Image description, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1216,6 +1460,9 @@ Note that if you create an image when the instance is running, there might be da
 
     @property
     def InstanceId(self):
+        """ID of the instance for which to make an image.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1224,6 +1471,14 @@ Note that if you create an image when the instance is running, there might be da
 
     @property
     def ForcePowerOff(self):
+        """Whether to forcibly shut down the instance before creating the image 
+Valid values: 
+`True`: Shut down and instance first 
+`False`: Create the image when the instance is running 
+Default: `True` 
+Note that if you create an image when the instance is running, there might be data loss.
+        :rtype: bool
+        """
         return self._ForcePowerOff
 
     @ForcePowerOff.setter
@@ -1263,6 +1518,9 @@ class CreateBlueprintResponse(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """Custom image ID.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -1271,6 +1529,9 @@ class CreateBlueprintResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1321,6 +1582,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """Availability zone. You can call [DescribeZones](https://intl.cloud.tencent.com/document/product/1207/57513?from_cn_redirect=1) and get the information in the `Zone` parameter re 
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1329,6 +1593,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size in GB.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1337,6 +1604,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Cloud disk media type. Valid values: "CLOUD_PREMIUM" (premium cloud disk), "CLOUD_SSD" (SSD cloud disk).
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1345,6 +1615,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
+        """Parameters of monthly subscribed cloud disks
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        """
         return self._DiskChargePrepaid
 
     @DiskChargePrepaid.setter
@@ -1353,6 +1626,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskName(self):
+        """Image name, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -1361,6 +1637,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
+        """Number of cloud disks. Range: [1, 30]. Default value: 1.
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -1369,6 +1648,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -1377,6 +1659,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """Whether to use the vouchers automatically. It defaults to No.
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -1385,6 +1670,9 @@ class CreateDisksRequest(AbstractModel):
 
     @property
     def AutoMountConfiguration(self):
+        """Automatically mount and initialize the data disk.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.AutoMountConfiguration`
+        """
         return self._AutoMountConfiguration
 
     @AutoMountConfiguration.setter
@@ -1435,6 +1723,11 @@ You can call `DescribeDisks` API, and find the disk ID in the `DiskSet` returned
 
     @property
     def DiskIdSet(self):
+        """List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.
+
+You can call `DescribeDisks` API, and find the disk ID in the `DiskSet` returned to check its status. If the status changes from `PENDING` to `UNATTACHED` or `ATTACHED`, the instance is created successfully.
+        :rtype: list of str
+        """
         return self._DiskIdSet
 
     @DiskIdSet.setter
@@ -1443,6 +1736,9 @@ You can call `DescribeDisks` API, and find the disk ID in the `DiskSet` returned
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1475,6 +1771,9 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1483,6 +1782,9 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallRules(self):
+        """Firewall rule list.
+        :rtype: list of FirewallRule
+        """
         return self._FirewallRules
 
     @FirewallRules.setter
@@ -1491,6 +1793,9 @@ class CreateFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -1531,6 +1836,9 @@ class CreateFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1559,6 +1867,9 @@ class CreateInstanceSnapshotRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance for which to create a snapshot.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1567,6 +1878,9 @@ class CreateInstanceSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """Snapshot name, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -1604,6 +1918,9 @@ class CreateInstanceSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1612,6 +1929,9 @@ class CreateInstanceSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1672,6 +1992,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def BundleId(self):
+        """Bundle ID. You can get it via the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -1680,6 +2003,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def BlueprintId(self):
+        """Image ID. You can get it via the [DescribeBlueprints](https://intl.cloud.tencent.com/document/api/1207/47689?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -1688,6 +2014,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceChargePrepaid(self):
+        """Monthly subscription information for the instance, including the purchase period, setting of auto-renewal, etc.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -1696,6 +2025,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceName(self):
+        """Instance display name.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1704,6 +2036,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def InstanceCount(self):
+        """Number of the instances to purchase. For monthly subscribed instances, the value can be 1 to 30. The default value is `1`. Note that this number can not exceed the remaining quota under the current account.
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -1712,6 +2047,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def Zones(self):
+        """List of availability zones. A random AZ is selected by default.
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -1720,6 +2058,13 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def DryRun(self):
+        """Whether the request is a dry run only.
+`true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
+If the dry run fails, the corresponding error code will be returned.
+If the dry run succeeds, the RequestId will be returned.
+`false` (default value): send a normal request and create instance(s) if all the requirements are met.
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -1728,6 +2073,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def ClientToken(self):
+        """A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idem-potency of the request cannot be guaranteed.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1736,6 +2084,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def LoginConfiguration(self):
+        """Login password of the instance. It’s only available for Windows instances. If it’s not specified, it means that the user choose to set the login password after the instance creation.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
+        """
         return self._LoginConfiguration
 
     @LoginConfiguration.setter
@@ -1744,6 +2095,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def Containers(self):
+        """Configuration of the containers to create
+        :rtype: list of DockerContainerConfiguration
+        """
         return self._Containers
 
     @Containers.setter
@@ -1752,6 +2106,9 @@ If the dry run succeeds, the RequestId will be returned.
 
     @property
     def AutoVoucher(self):
+        """Whether to use the vouchers automatically. It defaults to No.
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -1809,6 +2166,11 @@ You can call `DescribeInstances` API, and find the instance ID in the `Instances
 
     @property
     def InstanceIdSet(self):
+        """List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.
+
+You can call `DescribeInstances` API, and find the instance ID in the `InstancesSet` returned to check its status. If the `status` is `running`, the instance is created successfully.
+        :rtype: list of str
+        """
         return self._InstanceIdSet
 
     @InstanceIdSet.setter
@@ -1817,6 +2179,9 @@ You can call `DescribeInstances` API, and find the instance ID in the `Instances
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1843,6 +2208,9 @@ class CreateKeyPairRequest(AbstractModel):
 
     @property
     def KeyName(self):
+        """Key pair name, which can contain up to 25 digits, letters, and underscores.
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -1879,6 +2247,9 @@ class CreateKeyPairResponse(AbstractModel):
 
     @property
     def KeyPair(self):
+        """Key pair information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.KeyPair`
+        """
         return self._KeyPair
 
     @KeyPair.setter
@@ -1887,6 +2258,9 @@ class CreateKeyPairResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1931,6 +2305,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiskId(self):
+        """Cloud disk ID.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1939,6 +2316,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalDiskPrice(self):
+        """Cloud disk unit price.
+        :rtype: float
+        """
         return self._OriginalDiskPrice
 
     @OriginalDiskPrice.setter
@@ -1947,6 +2327,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPrice(self):
+        """Total price of cloud disk
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -1955,6 +2338,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Discount(self):
+        """Discount.
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -1963,6 +2349,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPrice(self):
+        """Discounted total price.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -1971,6 +2360,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
+        """ID of the instance to which the data disk is mounted.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2009,6 +2402,9 @@ class DeleteBlueprintsRequest(AbstractModel):
 
     @property
     def BlueprintIds(self):
+        """Image ID list, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._BlueprintIds
 
     @BlueprintIds.setter
@@ -2042,6 +2438,9 @@ class DeleteBlueprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2073,6 +2472,9 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2081,6 +2483,9 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallRules(self):
+        """Firewall rule list.
+        :rtype: list of FirewallRule
+        """
         return self._FirewallRules
 
     @FirewallRules.setter
@@ -2089,6 +2494,9 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -2129,6 +2537,9 @@ class DeleteFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2154,6 +2565,9 @@ class DeleteKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """Key pair ID list. Each request can contain up to 10 key pairs.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2187,6 +2601,9 @@ class DeleteKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2212,6 +2629,9 @@ class DeleteSnapshotsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """List of IDs of snapshots to be deleted, which can be queried through `DescribeSnapshots`.
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -2245,6 +2665,9 @@ class DeleteSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2276,6 +2699,9 @@ class DeniedAction(AbstractModel):
 
     @property
     def Action(self):
+        """Restricted operation name.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -2284,6 +2710,9 @@ class DeniedAction(AbstractModel):
 
     @property
     def Code(self):
+        """Restricted operation message code.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -2292,6 +2721,9 @@ class DeniedAction(AbstractModel):
 
     @property
     def Message(self):
+        """Restricted operation message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2333,6 +2765,9 @@ class DescribeAllScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
+        """List of scene IDs
+        :rtype: list of str
+        """
         return self._SceneIds
 
     @SceneIds.setter
@@ -2341,6 +2776,9 @@ class DescribeAllScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2349,6 +2787,9 @@ class DescribeAllScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2390,6 +2831,9 @@ class DescribeAllScenesResponse(AbstractModel):
 
     @property
     def SceneInfoSet(self):
+        """List of scenes
+        :rtype: list of SceneInfo
+        """
         return self._SceneInfoSet
 
     @SceneInfoSet.setter
@@ -2398,6 +2842,9 @@ class DescribeAllScenesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total count of scenes
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2406,6 +2853,9 @@ class DescribeAllScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2438,6 +2888,9 @@ class DescribeBlueprintInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list, which currently can contain only one instance.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2477,6 +2930,9 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible image instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2485,6 +2941,9 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
 
     @property
     def BlueprintInstanceSet(self):
+        """Image instance list information.
+        :rtype: list of BlueprintInstance
+        """
         return self._BlueprintInstanceSet
 
     @BlueprintInstanceSet.setter
@@ -2493,6 +2952,9 @@ class DescribeBlueprintInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2556,6 +3018,9 @@ Each request can contain up to 10 `Filters`, each of which can contain up to 100
 
     @property
     def BlueprintIds(self):
+        """Image ID list.
+        :rtype: list of str
+        """
         return self._BlueprintIds
 
     @BlueprintIds.setter
@@ -2564,6 +3029,9 @@ Each request can contain up to 10 `Filters`, each of which can contain up to 100
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2572,6 +3040,9 @@ Each request can contain up to 10 `Filters`, each of which can contain up to 100
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2580,6 +3051,31 @@ Each request can contain up to 10 `Filters`, each of which can contain up to 100
 
     @property
     def Filters(self):
+        """Filter list.
+<li>blueprint-id</li>Filter by the **image ID**.
+Type: String
+Required: no
+<li>blueprint-type</li>Filter by the **image type**.
+Valid values: `APP_OS` (application image), `PURE_OS` (system image), `DOCKER` (Docker container image), `PRIVATE` (custom image), `SHARED` (shared image)
+Type: String
+Required: no
+<li>platform-type</li>Filter by the **image operating system**.
+Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
+Type: String
+Required: no
+<li>blueprint-name</li>Filter by the **image name**.
+Type: String
+Required: no
+<li>blueprint-state</li>Filter by the **image status**.
+Type: String
+Required: no
+<li>scene-id</li>Filter by the **scene ID**.
+Type: String
+Required: no
+
+Each request can contain up to 10 `Filters`, each of which can contain up to 100 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2627,6 +3123,9 @@ class DescribeBlueprintsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible images.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2635,6 +3134,9 @@ class DescribeBlueprintsResponse(AbstractModel):
 
     @property
     def BlueprintSet(self):
+        """Image details list.
+        :rtype: list of Blueprint
+        """
         return self._BlueprintSet
 
     @BlueprintSet.setter
@@ -2643,6 +3145,9 @@ class DescribeBlueprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2675,6 +3180,9 @@ class DescribeBundleDiscountRequest(AbstractModel):
 
     @property
     def BundleId(self):
+        """Package ID.
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -2714,6 +3222,9 @@ class DescribeBundleDiscountResponse(AbstractModel):
 
     @property
     def Currency(self):
+        """Currency: CNY, USD.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -2722,6 +3233,9 @@ class DescribeBundleDiscountResponse(AbstractModel):
 
     @property
     def DiscountDetail(self):
+        """Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).
+        :rtype: list of DiscountDetail
+        """
         return self._DiscountDetail
 
     @DiscountDetail.setter
@@ -2730,6 +3244,9 @@ class DescribeBundleDiscountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2790,6 +3307,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def BundleIds(self):
+        """Package ID list.
+        :rtype: list of str
+        """
         return self._BundleIds
 
     @BundleIds.setter
@@ -2798,6 +3318,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2806,6 +3329,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2814,6 +3340,25 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Filters(self):
+        """Filter list.
+<li>bundle-id</li>Filter by the **bundle ID**.
+Type: String
+Required: No
+<li>`support-platform-type`<li>Filter by the **system type**.
+Values: `LINUX_UNIX` (Linux/Unix), `WINDOWS` (Windows).
+Type: String
+Required: No
+<li>bundle-type</li>Filter by the **bundle type**.
+Values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle), `STARTER_BUNDLE` (Beginner bundle); `CAREFREE_BUNDLE` (Carefree bundle);
+Type: String
+Required: No
+<li>bundle-state</li>Filter by the **bundle status**.
+Values: `ONLINE`, `OFFLINE`
+Type: String
+Required: No
+Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2822,6 +3367,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Zones(self):
+        """AZ list, which contains all AZs by default.
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -2870,6 +3418,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def BundleSet(self):
+        """List of package details.
+        :rtype: list of Bundle
+        """
         return self._BundleSet
 
     @BundleSet.setter
@@ -2878,6 +3429,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of eligible packages, which is used for pagination.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2886,6 +3440,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2928,6 +3485,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnAttachedInstanceSet(self):
+        """List of instances associated with the CCN instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CcnAttachedInstance
+        """
         return self._CcnAttachedInstanceSet
 
     @CcnAttachedInstanceSet.setter
@@ -2936,6 +3497,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2970,6 +3534,12 @@ Required: no
 
     @property
     def Filters(self):
+        """Filter list.
+<li>zone</li>Filter by availability zone.
+Type: String
+Required: no
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3011,6 +3581,9 @@ class DescribeDiskConfigsResponse(AbstractModel):
 
     @property
     def DiskConfigSet(self):
+        """List of cloud disk configurations.
+        :rtype: list of DiskConfig
+        """
         return self._DiskConfigSet
 
     @DiskConfigSet.setter
@@ -3019,6 +3592,9 @@ class DescribeDiskConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3056,6 +3632,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Cloud disk type. Valid values: "CLOUD_PREMIUM".
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3064,6 +3643,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3072,6 +3654,9 @@ class DescribeDiskDiscountRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -3113,6 +3698,9 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def Currency(self):
+        """Currency: CNY, USD.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -3121,6 +3709,9 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def DiscountDetail(self):
+        """Discount tier details. The information of each tier includes the duration, discounted quantity, total price, discounted price, and discount details (user discount, official website discount, or final discount).
+        :rtype: list of DiscountDetail
+        """
         return self._DiscountDetail
 
     @DiscountDetail.setter
@@ -3129,6 +3720,9 @@ class DescribeDiskDiscountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3161,6 +3755,9 @@ class DescribeDisksDeniedActionsRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -3197,6 +3794,9 @@ class DescribeDisksDeniedActionsResponse(AbstractModel):
 
     @property
     def DiskDeniedActionSet(self):
+        """List of operation limits of cloud disks.
+        :rtype: list of DiskDeniedActions
+        """
         return self._DiskDeniedActionSet
 
     @DiskDeniedActionSet.setter
@@ -3205,6 +3805,9 @@ class DescribeDisksDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3278,6 +3881,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` a
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -3286,6 +3892,36 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` a
 
     @property
     def Filters(self):
+        """Filter list
+disk-id
+Filter by **cloud disk ID**.
+Type: String
+Required: No
+instance-id
+Filter by **instance ID**.
+Type: String
+Required: No
+disk-name
+Filter by **cloud disk name**.
+Type: String
+Required: No
+zone
+Filter by **availability zone**.
+Type: String
+Required: No
+disk-usage
+Filter by **cloud disk type**.
+Type: String
+Required: No
+Values: `SYSTEM_DISK` and `DATA_DISK`
+disk-state
+Filter by **cloud disk status**.
+Type: String
+Required: No
+Values: See `DiskState` in [Disk](https://intl.cloud.tencent.com/document/api/1207/47576?from_cn_redirect=1#Disk)
+Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3294,6 +3930,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` a
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3302,6 +3941,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` a
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3310,6 +3952,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` a
 
     @property
     def OrderField(self):
+        """The field by which the cloud disks are sorted. Valid values: "CREATED_TIME" (creation time), "EXPIRED_TIME" (expiration time), "DISK_SIZE" (size of cloud disks). Default value: "CREATED_TIME".
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3318,6 +3963,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. `DiskIds` a
 
     @property
     def Order(self):
+        """Sorting order of the output cloud disks. Valid values: "ASC" (ascending order), "DESC" (descending order). Default value: "DESC".
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -3367,6 +4015,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def DiskSet(self):
+        """List of cloud disk information.
+        :rtype: list of Disk
+        """
         return self._DiskSet
 
     @DiskSet.setter
@@ -3375,6 +4026,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible cloud disks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3383,6 +4037,9 @@ class DescribeDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3421,6 +4078,9 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -3429,6 +4089,9 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3437,6 +4100,9 @@ class DescribeDisksReturnableRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3478,6 +4144,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     @property
     def DiskReturnableSet(self):
+        """List of returnable cloud disks.
+        :rtype: list of DiskReturnable
+        """
         return self._DiskReturnableSet
 
     @DiskReturnableSet.setter
@@ -3486,6 +4155,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible cloud disks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3494,6 +4166,9 @@ class DescribeDisksReturnableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3532,6 +4207,9 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3540,6 +4218,9 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3548,6 +4229,9 @@ class DescribeFirewallRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3592,6 +4276,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible firewall rules.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3600,6 +4287,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def FirewallRuleSet(self):
+        """Firewall rule details list.
+        :rtype: list of FirewallRuleInfo
+        """
         return self._FirewallRuleSet
 
     @FirewallRuleSet.setter
@@ -3608,6 +4298,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """Firewall version number.
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -3616,6 +4309,9 @@ class DescribeFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3661,6 +4357,9 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible firewall rules.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3669,6 +4368,9 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
 
     @property
     def FirewallRuleSet(self):
+        """Firewall rule details list.
+        :rtype: list of FirewallRuleInfo
+        """
         return self._FirewallRuleSet
 
     @FirewallRuleSet.setter
@@ -3677,6 +4379,9 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3720,6 +4425,20 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
+        """Resource name list. Values:
+- `GENERAL_BUNDLE_INSTANCE`: General bundle
+- `STORAGE_BUNDLE_INSTANCE`:  Storage bundle 
+- `ENTERPRISE_BUNDLE_INSTANCE`: Enterprise bundle 
+- `EXCLUSIVE_BUNDLE_INSTANCE`： Dedicated bundle
+- `BEFAST_BUNDLE_INSTANCE`: BeFast bundle
+- `USER_KEY_PAIR`: Key pair
+- `SNAPSHOT`: Snapshot
+- `BLUEPRINT`: Custom image
+- `FREE_BLUEPRINT`: Free custom image
+- `DATA_DISK`: Data disk
+- `FIREWALL_RULE`: Firewall rules
+        :rtype: list of str
+        """
         return self._ResourceNames
 
     @ResourceNames.setter
@@ -3756,6 +4475,9 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
 
     @property
     def GeneralResourceQuotaSet(self):
+        """List of general resource quota details.
+        :rtype: list of GeneralResourceQuota
+        """
         return self._GeneralResourceQuotaSet
 
     @GeneralResourceQuotaSet.setter
@@ -3764,6 +4486,9 @@ class DescribeGeneralResourceQuotasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3795,6 +4520,9 @@ class DescribeInstanceLoginKeyPairAttributeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3831,6 +4559,9 @@ class DescribeInstanceLoginKeyPairAttributeResponse(AbstractModel):
 
     @property
     def PermitLogin(self):
+        """Whether to allow login with the default key pair. Valid values: YES, NO.
+        :rtype: str
+        """
         return self._PermitLogin
 
     @PermitLogin.setter
@@ -3839,6 +4570,9 @@ class DescribeInstanceLoginKeyPairAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3865,6 +4599,9 @@ class DescribeInstanceVncUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3901,6 +4638,9 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     @property
     def InstanceVncUrl(self):
+        """Instance VNC URL.
+        :rtype: str
+        """
         return self._InstanceVncUrl
 
     @InstanceVncUrl.setter
@@ -3909,6 +4649,9 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3935,6 +4678,9 @@ class DescribeInstancesDeniedActionsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3971,6 +4717,9 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
 
     @property
     def InstanceDeniedActionSet(self):
+        """List of instance operation limit details.
+        :rtype: list of InstanceDeniedActions
+        """
         return self._InstanceDeniedActionSet
 
     @InstanceDeniedActionSet.setter
@@ -3979,6 +4728,9 @@ class DescribeInstancesDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4010,6 +4762,9 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of instance IDs.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4049,6 +4804,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def AttachDetailSet(self):
+        """Information of all attached disks
+        :rtype: list of AttachDetail
+        """
         return self._AttachDetailSet
 
     @AttachDetailSet.setter
@@ -4057,6 +4815,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of attached cloud disks
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4065,6 +4826,9 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4131,6 +4895,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4139,6 +4906,34 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def Filters(self):
+        """Filter list. 
+<li>instance-name</li>Filter by the **instance name**. 
+Type: String 
+Required: No 
+<li>private-ip-address</li>Filter by the **private IP of instance primary ENI**. 
+Type: String 
+Required: No 
+<li>public-ip-address</li>Filter by the **public IP of instance primary ENI**. 
+Type: String 
+Required: No 
+<li>zone</li>Filter by the availability zone. 
+Type: String 
+Required: No 
+<li>instance-state</li>Filter by the **instance status**. 
+Type: String 
+Required: No 
+<li>tag-key</li>Filter by the **tag key**. 
+Type: String 
+Required: No 
+<li>tag-value</li>Filter by the **tag value**. 
+Type: String 
+Required: No 
+<li> tag:tag-key</li>Filter by tag key-value pair. The `tag-key` should be replaced with a specific tag key. 
+Type: String 
+Required: No 
+Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot specify both `InstanceIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4147,6 +4942,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4155,6 +4953,9 @@ Each request can contain up to 10 `Filters` and 100 `Filter.Values`. You cannot 
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4202,6 +5003,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4210,6 +5014,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """List of instance details
+        :rtype: list of Instance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -4218,6 +5025,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4256,6 +5066,9 @@ class DescribeInstancesReturnableRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4264,6 +5077,9 @@ class DescribeInstancesReturnableRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4272,6 +5088,9 @@ class DescribeInstancesReturnableRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4313,6 +5132,9 @@ class DescribeInstancesReturnableResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4321,6 +5143,9 @@ class DescribeInstancesReturnableResponse(AbstractModel):
 
     @property
     def InstanceReturnableSet(self):
+        """List of returnable instance details.
+        :rtype: list of InstanceReturnable
+        """
         return self._InstanceReturnableSet
 
     @InstanceReturnableSet.setter
@@ -4329,6 +5154,9 @@ class DescribeInstancesReturnableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4367,6 +5195,9 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4375,6 +5206,9 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4383,6 +5217,9 @@ class DescribeInstancesTrafficPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4424,6 +5261,9 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instance traffic package details.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4432,6 +5272,9 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
 
     @property
     def InstanceTrafficPackageSet(self):
+        """List of instance traffic package details.
+        :rtype: list of InstanceTrafficPackage
+        """
         return self._InstanceTrafficPackageSet
 
     @InstanceTrafficPackageSet.setter
@@ -4440,6 +5283,9 @@ class DescribeInstancesTrafficPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4488,6 +5334,9 @@ Each request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each
 
     @property
     def KeyIds(self):
+        """Key pair ID list.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -4496,6 +5345,9 @@ Each request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4504,6 +5356,9 @@ Each request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4512,6 +5367,16 @@ Each request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each
 
     @property
     def Filters(self):
+        """Filter list.
+<li>key-id</li>Filter by **key pair ID**.
+Type: String
+Required: no
+<li>key-name</li>Filter by the **key pair name**. Fuzzy match is supported.
+Type: String
+Required: no
+Each request can contain up to 10 `Filters` and up to 5 `Filter.Values` for each filter. `KeyIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4559,6 +5424,9 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible key pairs.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4567,6 +5435,9 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def KeyPairSet(self):
+        """List of key pair details.
+        :rtype: list of KeyPair
+        """
         return self._KeyPairSet
 
     @KeyPairSet.setter
@@ -4575,6 +5446,9 @@ class DescribeKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4632,6 +5506,9 @@ Each request can contain up to 10 `Filters`, and each filter can have up to 5 `F
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4640,6 +5517,25 @@ Each request can contain up to 10 `Filters`, and each filter can have up to 5 `F
 
     @property
     def Filters(self):
+        """Filter list
+<li>bundle-id</li>Filter by the **bundle ID**.
+Type: String
+Required: No
+<li>support-platform-type</li>Filter by the **OS type**.
+Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
+Type: String
+Required: No
+<li>bundle-type</li>Filter by the **bundle type**.
+Valid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)
+Type: String
+Required: No
+<li>bundle-state</li>Filter by the **bundle status**.
+Valid values: `ONLINE`, `OFFLINE`
+Type: String
+Required: No
+Each request can contain up to 10 `Filters`, and each filter can have up to 5 `Filter.Values`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4648,6 +5544,9 @@ Each request can contain up to 10 `Filters`, and each filter can have up to 5 `F
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4656,6 +5555,9 @@ Each request can contain up to 10 `Filters`, and each filter can have up to 5 `F
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4703,6 +5605,9 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matched instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4711,6 +5616,9 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
 
     @property
     def ModifyBundleSet(self):
+        """New package details
+        :rtype: list of ModifyBundle
+        """
         return self._ModifyBundleSet
 
     @ModifyBundleSet.setter
@@ -4719,6 +5627,9 @@ class DescribeModifyInstanceBundlesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4763,6 +5674,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of regions.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4771,6 +5685,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """Region information list.
+        :rtype: list of RegionInfo
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -4779,6 +5696,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4839,6 +5759,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4847,6 +5770,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, please see the relevant section in [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4855,6 +5781,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4863,6 +5792,28 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds
 
     @property
     def Filters(self):
+        """Filter list
+<li>blueprint-id</li>Filter by **image ID**.
+Type: String
+Required: no
+<li>blueprint-type</li>Filter by **image type**.
+Valid values: `APP_OS`: application image; `PURE_OS`: system image; `PRIVATE`: custom image
+Type: String
+Required: no
+<li>platform-type</li>Filter by **image platform type**.
+Valid values: `LINUX_UNIX`: Linux or Unix; `WINDOWS`: Windows
+Type: String
+Required: no
+<li>blueprint-name</li>Filter by **image name**.
+Type: String
+Required: no
+<li>blueprint-state</li>Filter by **image status**.
+Type: String
+Required: no
+
+Each request can contain up to 10 `Filters` and 5 `Filter.Values`. `BlueprintIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4910,6 +5861,9 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible images.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4918,6 +5872,9 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
 
     @property
     def ResetInstanceBlueprintSet(self):
+        """Image reset information list
+        :rtype: list of ResetInstanceBlueprint
+        """
         return self._ResetInstanceBlueprintSet
 
     @ResetInstanceBlueprintSet.setter
@@ -4926,6 +5883,9 @@ class DescribeResetInstanceBlueprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4964,6 +5924,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def SceneIds(self):
+        """List of scene IDs
+        :rtype: list of str
+        """
         return self._SceneIds
 
     @SceneIds.setter
@@ -4972,6 +5935,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4980,6 +5946,9 @@ class DescribeScenesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5021,6 +5990,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def SceneSet(self):
+        """List of scenes
+        :rtype: list of Scene
+        """
         return self._SceneSet
 
     @SceneSet.setter
@@ -5029,6 +6001,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of scenes
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5037,6 +6012,9 @@ class DescribeScenesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5069,6 +6047,9 @@ class DescribeSnapshotsDeniedActionsRequest(AbstractModel):
 
     @property
     def SnapshotIds(self):
+        """Snapshot ID list, which can be queried through `DescribeSnapshots`.
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -5105,6 +6086,9 @@ class DescribeSnapshotsDeniedActionsResponse(AbstractModel):
 
     @property
     def SnapshotDeniedActionSet(self):
+        """List of snapshot operation limit details.
+        :rtype: list of SnapshotDeniedActions
+        """
         return self._SnapshotDeniedActionSet
 
     @SnapshotDeniedActionSet.setter
@@ -5113,6 +6097,9 @@ class DescribeSnapshotsDeniedActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5167,6 +6154,10 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def SnapshotIds(self):
+        """List of IDs of snapshots to be queried.
+You cannot specify `SnapshotIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._SnapshotIds
 
     @SnapshotIds.setter
@@ -5175,6 +6166,22 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Filters(self):
+        """Filter list.
+<li>snapshot-id</li>Filter by **snapshot ID**.
+Type: String
+Required: no
+<li>disk-id</li>Filter by **disk ID**.
+Type: String
+Required: no
+<li>snapshot-name</li>Filter by **snapshot name**.
+Type: String
+Required: no
+<li>instance-id</li>Filter by **instance ID**.
+Type: String
+Required: no
+Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `SnapshotIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5183,6 +6190,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5191,6 +6201,9 @@ Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot sp
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5238,6 +6251,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of snapshots.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5246,6 +6262,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def SnapshotSet(self):
+        """List of snapshot details.
+        :rtype: list of Snapshot
+        """
         return self._SnapshotSet
 
     @SnapshotSet.setter
@@ -5254,6 +6273,9 @@ class DescribeSnapshotsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5295,6 +6317,12 @@ The default value is `ASC`.
 
     @property
     def OrderField(self):
+        """Sorting field. Valid values:
+<li>`ZONE`: Sort by the availability zone.
+<li>`INSTANCE_DISPLAY_LABEL`: Sort by visibility labels (`HIDDEN`, `NORMAL` and `SELECTED`). Default: ['HIDDEN', 'NORMAL', 'SELECTED'].
+The default value is `ZONE`.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -5303,6 +6331,12 @@ The default value is `ASC`.
 
     @property
     def Order(self):
+        """Specifies how availability zones are listed. Valid values:
+<li>ASC: Ascending sort. 
+<li>DESC: Descending sort.
+The default value is `ASC`.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5343,6 +6377,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of AZs
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5351,6 +6388,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneInfoSet(self):
+        """List of AZ details
+        :rtype: list of ZoneInfo
+        """
         return self._ZoneInfoSet
 
     @ZoneInfoSet.setter
@@ -5359,6 +6399,9 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5391,6 +6434,9 @@ class DetachCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """CCN instance ID.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -5424,6 +6470,9 @@ class DetachCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5449,6 +6498,9 @@ class DetachDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -5482,6 +6534,9 @@ class DetachDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5521,6 +6576,11 @@ class DetailPrice(AbstractModel):
 
     @property
     def PriceName(self):
+        """Values: 
+<li>"DiskSpace": Cloud disk space</li>
+<li>"DiskBackupQuota": Cloud disk backups</li>
+        :rtype: str
+        """
         return self._PriceName
 
     @PriceName.setter
@@ -5529,6 +6589,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginUnitPrice(self):
+        """Official unit price of the billable item
+        :rtype: float
+        """
         return self._OriginUnitPrice
 
     @OriginUnitPrice.setter
@@ -5537,6 +6600,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """Official total price of the billable item
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -5545,6 +6611,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """Discount of the billable item
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -5553,6 +6622,9 @@ class DetailPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """Discounted total price of the billable item
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -5593,6 +6665,9 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """Key pair ID list. Each request can contain up to 100 key pairs.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -5601,6 +6676,9 @@ class DisassociateInstancesKeyPairsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -5635,6 +6713,9 @@ class DisassociateInstancesKeyPairsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5675,6 +6756,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """Billing duration.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -5683,6 +6767,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """Billing unit.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -5691,6 +6778,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TotalCost(self):
+        """Total price.
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -5699,6 +6789,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
+        """Discounted total price.
+        :rtype: float
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -5707,6 +6800,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def Discount(self):
+        """Discount.
+        :rtype: int
+        """
         return self._Discount
 
     @Discount.setter
@@ -5715,6 +6811,9 @@ class DiscountDetail(AbstractModel):
 
     @property
     def PolicyDetail(self):
+        """Discount details.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
+        """
         return self._PolicyDetail
 
     @PolicyDetail.setter
@@ -5828,6 +6927,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskId(self):
+        """Disk ID
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -5836,6 +6938,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5844,6 +6949,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Availability zone
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5852,6 +6960,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskName(self):
+        """Disk name
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -5860,6 +6971,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskUsage(self):
+        """Disk type
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -5868,6 +6982,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Disk media type
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -5876,6 +6993,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskChargeType(self):
+        """Disk payment type
+        :rtype: str
+        """
         return self._DiskChargeType
 
     @DiskChargeType.setter
@@ -5884,6 +7004,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Disk size
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -5892,6 +7015,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
+        """Renewal flag
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -5900,6 +7026,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskState(self):
+        """Disk status. Values: 
+<li>`PENDING`: Creating</li>
+<li>`UNATTACHED`: Not attached</li>
+<li>`ATTACHING`: Attaching</li>
+<li>`ATTACHED`: Attached</li>
+<li>`DETACHING`: Detaching</li>
+<li>`SHUTDOWN`: Isolated</li>
+<li>`CREATED_FAILED`: Failed to create</li>
+<li>`TERMINATING`: Terminating</li>
+<li>`DELETING`: Deleting</li>
+<li>`FREEZING`: Freezing</li>
+        :rtype: str
+        """
         return self._DiskState
 
     @DiskState.setter
@@ -5908,6 +7047,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Attached(self):
+        """Whether the disk is attached to an instance
+        :rtype: bool
+        """
         return self._Attached
 
     @Attached.setter
@@ -5916,6 +7058,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteWithInstance(self):
+        """Whether to release the disk along with the instance
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -5924,6 +7069,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperation(self):
+        """Last operation
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -5932,6 +7080,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperationState(self):
+        """Last operation status
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -5940,6 +7091,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperationRequestId(self):
+        """Last request ID
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -5948,6 +7102,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -5956,6 +7115,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpiredTime(self):
+        """Expiration time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -5964,6 +7128,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolatedTime(self):
+        """Isolation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IsolatedTime
 
     @IsolatedTime.setter
@@ -5972,6 +7141,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskBackupCount(self):
+        """Total disk backups
+        :rtype: int
+        """
         return self._DiskBackupCount
 
     @DiskBackupCount.setter
@@ -5980,6 +7152,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskBackupQuota(self):
+        """Disk backup quota
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -6044,6 +7219,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def Period(self):
+        """Purchase duration.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6052,6 +7230,15 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def RenewFlag(self):
+        """Auto-Renewal flag. Valid values:
+
+`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically
+`NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew
+`u200cDISABLE_NOTIFY_AND_AUTO_RENEW`: Neither trigger expiration notification nor renew
+
+Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -6060,6 +7247,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def TimeUnit(self):
+        """Purchase duration unit. Default value: "m" (month)
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -6110,6 +7300,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def Zone(self):
+        """Availability zone.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -6118,6 +7311,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskType(self):
+        """Cloud disk type.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -6126,6 +7322,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskSalesState(self):
+        """Cloud disk sale status.
+        :rtype: str
+        """
         return self._DiskSalesState
 
     @DiskSalesState.setter
@@ -6134,6 +7333,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def MaxDiskSize(self):
+        """Maximum cloud disk size.
+        :rtype: int
+        """
         return self._MaxDiskSize
 
     @MaxDiskSize.setter
@@ -6142,6 +7344,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def MinDiskSize(self):
+        """Minimum cloud disk size.
+        :rtype: int
+        """
         return self._MinDiskSize
 
     @MinDiskSize.setter
@@ -6150,6 +7355,9 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskStepSize(self):
+        """Cloud disk increment.
+        :rtype: int
+        """
         return self._DiskStepSize
 
     @DiskStepSize.setter
@@ -6191,6 +7399,9 @@ class DiskDeniedActions(AbstractModel):
 
     @property
     def DiskId(self):
+        """Cloud disk ID.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -6199,6 +7410,9 @@ class DiskDeniedActions(AbstractModel):
 
     @property
     def DeniedActions(self):
+        """List of operation limits.
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -6250,6 +7464,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def OriginalDiskPrice(self):
+        """Cloud disk unit price.
+        :rtype: float
+        """
         return self._OriginalDiskPrice
 
     @OriginalDiskPrice.setter
@@ -6258,6 +7475,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """Total cloud disk price.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -6266,6 +7486,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def Discount(self):
+        """Discount.
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -6274,6 +7497,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """Discounted total price.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -6282,6 +7508,9 @@ class DiskPrice(AbstractModel):
 
     @property
     def DetailPrices(self):
+        """Detailed billing items
+        :rtype: list of DetailPrice
+        """
         return self._DetailPrices
 
     @DetailPrices.setter
@@ -6333,6 +7562,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def DiskId(self):
+        """Cloud disk ID.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -6341,6 +7573,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def IsReturnable(self):
+        """Whether the cloud disk can be returned.
+        :rtype: bool
+        """
         return self._IsReturnable
 
     @IsReturnable.setter
@@ -6349,6 +7584,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def ReturnFailCode(self):
+        """Error code of cloud disk return failure.
+        :rtype: int
+        """
         return self._ReturnFailCode
 
     @ReturnFailCode.setter
@@ -6357,6 +7595,9 @@ class DiskReturnable(AbstractModel):
 
     @property
     def ReturnFailMessage(self):
+        """Error message of cloud disk return failure.
+        :rtype: str
+        """
         return self._ReturnFailMessage
 
     @ReturnFailMessage.setter
@@ -6408,6 +7649,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def ContainerImage(self):
+        """Container image address
+        :rtype: str
+        """
         return self._ContainerImage
 
     @ContainerImage.setter
@@ -6416,6 +7660,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def ContainerName(self):
+        """Container name
+        :rtype: str
+        """
         return self._ContainerName
 
     @ContainerName.setter
@@ -6424,6 +7671,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def Envs(self):
+        """List of environment variables
+        :rtype: list of ContainerEnv
+        """
         return self._Envs
 
     @Envs.setter
@@ -6432,6 +7682,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def PublishPorts(self):
+        """List of mappings of container ports and host ports
+        :rtype: list of DockerContainerPublishPort
+        """
         return self._PublishPorts
 
     @PublishPorts.setter
@@ -6440,6 +7693,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def Volumes(self):
+        """List of container mount volumes
+        :rtype: list of DockerContainerVolume
+        """
         return self._Volumes
 
     @Volumes.setter
@@ -6448,6 +7704,9 @@ class DockerContainerConfiguration(AbstractModel):
 
     @property
     def Command(self):
+        """The command to run
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -6512,6 +7771,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostPort(self):
+        """Host port
+        :rtype: int
+        """
         return self._HostPort
 
     @HostPort.setter
@@ -6520,6 +7782,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContainerPort(self):
+        """Container port
+        :rtype: int
+        """
         return self._ContainerPort
 
     @ContainerPort.setter
@@ -6528,6 +7793,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """External IP. It defaults to 0.0.0.0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -6536,6 +7805,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """The protocol defaults to `tcp`. Valid values: `tcp`, `udp` and `sctp`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -6575,6 +7848,9 @@ class DockerContainerVolume(AbstractModel):
 
     @property
     def ContainerPath(self):
+        """Container path
+        :rtype: str
+        """
         return self._ContainerPath
 
     @ContainerPath.setter
@@ -6583,6 +7859,9 @@ class DockerContainerVolume(AbstractModel):
 
     @property
     def HostPath(self):
+        """Host path
+        :rtype: str
+        """
         return self._HostPath
 
     @HostPath.setter
@@ -6630,6 +7909,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Field to be filtered.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6638,6 +7920,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter value of field.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6684,6 +7969,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: TCP, UDP, ICMP, ALL.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -6692,6 +7980,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def Port(self):
+        """Port. Valid values: ALL, one single port, multiple ports separated by commas, or port range indicated by a minus sign
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -6700,6 +7991,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """IP range or IP (mutually exclusive). Default value: 0.0.0.0/0, which indicates all sources.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -6708,6 +8002,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def Action(self):
+        """Valid values: ACCEPT, DROP. Default value: ACCEPT.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -6716,6 +8013,9 @@ class FirewallRule(AbstractModel):
 
     @property
     def FirewallRuleDescription(self):
+        """Firewall rule description.
+        :rtype: str
+        """
         return self._FirewallRuleDescription
 
     @FirewallRuleDescription.setter
@@ -6768,6 +8068,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def AppType(self):
+        """Application type. Valid values: custom, HTTP (80), HTTPS (443), Linux login (22), Windows login (3389), MySQL (3306), SQL Server (1433), all TCP ports, all UDP ports, Ping-ICMP, ALL.
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -6776,6 +8079,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: TCP, UDP, ICMP, ALL.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -6784,6 +8090,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Port(self):
+        """Port. Valid values: ALL, one single port, multiple ports separated by commas, or port range indicated by a minus sign
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -6792,6 +8101,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """IP range or IP (mutually exclusive). Default value: 0.0.0.0/0, which indicates all sources.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -6800,6 +8112,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def Action(self):
+        """Valid values: ACCEPT, DROP. Default value: ACCEPT.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -6808,6 +8123,9 @@ class FirewallRuleInfo(AbstractModel):
 
     @property
     def FirewallRuleDescription(self):
+        """Firewall rule description.
+        :rtype: str
+        """
         return self._FirewallRuleDescription
 
     @FirewallRuleDescription.setter
@@ -6853,6 +8171,9 @@ class GeneralResourceQuota(AbstractModel):
 
     @property
     def ResourceName(self):
+        """Resource name.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -6861,6 +8182,9 @@ class GeneralResourceQuota(AbstractModel):
 
     @property
     def ResourceQuotaAvailable(self):
+        """Number of available resources.
+        :rtype: int
+        """
         return self._ResourceQuotaAvailable
 
     @ResourceQuotaAvailable.setter
@@ -6869,6 +8193,9 @@ class GeneralResourceQuota(AbstractModel):
 
     @property
     def ResourceQuotaTotal(self):
+        """Total number of resources.
+        :rtype: int
+        """
         return self._ResourceQuotaTotal
 
     @ResourceQuotaTotal.setter
@@ -6907,6 +8234,9 @@ class ImportKeyPairRequest(AbstractModel):
 
     @property
     def KeyName(self):
+        """Key pair name, which can contain up to 25 digits, letters, and underscores.
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -6915,6 +8245,9 @@ class ImportKeyPairRequest(AbstractModel):
 
     @property
     def PublicKey(self):
+        """Public key content of the key pair, which is in the OpenSSH RSA format.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -6952,6 +8285,9 @@ class ImportKeyPairResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Key pair ID.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -6960,6 +8296,9 @@ class ImportKeyPairResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6986,6 +8325,9 @@ class InquirePriceCreateBlueprintRequest(AbstractModel):
 
     @property
     def BlueprintCount(self):
+        """Number of custom images. Default value: 1.
+        :rtype: int
+        """
         return self._BlueprintCount
 
     @BlueprintCount.setter
@@ -7022,6 +8364,9 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
 
     @property
     def BlueprintPrice(self):
+        """Custom image price.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.BlueprintPrice`
+        """
         return self._BlueprintPrice
 
     @BlueprintPrice.setter
@@ -7030,6 +8375,9 @@ class InquirePriceCreateBlueprintResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7070,6 +8418,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Cloud disk size in GB.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -7078,6 +8429,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Cloud disk media type. Valid values: "CLOUD_PREMIUM" (premium cloud storage), "CLOUD_SSD" (SSD cloud disk).
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -7086,6 +8440,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskChargePrepaid(self):
+        """Parameter settings for purchasing the monthly subscribed cloud disk.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        """
         return self._DiskChargePrepaid
 
     @DiskChargePrepaid.setter
@@ -7094,6 +8451,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskCount(self):
+        """Number of cloud disks. Default value: 1.
+        :rtype: int
+        """
         return self._DiskCount
 
     @DiskCount.setter
@@ -7102,6 +8462,9 @@ class InquirePriceCreateDisksRequest(AbstractModel):
 
     @property
     def DiskBackupQuota(self):
+        """Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :rtype: int
+        """
         return self._DiskBackupQuota
 
     @DiskBackupQuota.setter
@@ -7144,6 +8507,9 @@ class InquirePriceCreateDisksResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """Cloud disk price.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -7152,6 +8518,9 @@ class InquirePriceCreateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7189,6 +8558,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def BundleId(self):
+        """Instance package ID.
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -7197,6 +8569,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """Parameter setting for prepaid mode. This parameter can specify the purchase period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -7205,6 +8580,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """Number of instances to be created. Default value: 1.
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -7213,6 +8591,9 @@ class InquirePriceCreateInstancesRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """Application image ID, which is required if a paid application image is used and can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -7254,6 +8635,9 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
 
     @property
     def Price(self):
+        """Price query information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -7262,6 +8646,9 @@ class InquirePriceCreateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7293,6 +8680,9 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -7301,6 +8691,9 @@ class InquirePriceRenewDisksRequest(AbstractModel):
 
     @property
     def RenewDiskChargePrepaid(self):
+        """Parameter settings for renewing the monthly subscribed cloud disk.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        """
         return self._RenewDiskChargePrepaid
 
     @RenewDiskChargePrepaid.setter
@@ -7340,6 +8733,9 @@ class InquirePriceRenewDisksResponse(AbstractModel):
 
     @property
     def DiskPrice(self):
+        """Cloud disk price.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DiskPrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -7348,6 +8744,9 @@ class InquirePriceRenewDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7385,6 +8784,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """IDs of the instances to be renewed. Each request can contain up to 50 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -7393,6 +8795,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """Parameter setting for prepaid mode. This parameter can specify the renewal period, whether to enable auto-renewal, and other attributes of the monthly subscribed instances.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -7401,6 +8806,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def RenewDataDisk(self):
+        """Whether to renew the data disk. Default: `false`.
+        :rtype: bool
+        """
         return self._RenewDataDisk
 
     @RenewDataDisk.setter
@@ -7409,6 +8817,9 @@ class InquirePriceRenewInstancesRequest(AbstractModel):
 
     @property
     def AlignInstanceExpiredTime(self):
+        """Whether to align the data disk expiration with the instance expiration time. Default: `false`.
+        :rtype: bool
+        """
         return self._AlignInstanceExpiredTime
 
     @AlignInstanceExpiredTime.setter
@@ -7461,6 +8872,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Price(self):
+        """Price information. It defaults to the price information of the first instance in the list.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -7469,6 +8883,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DataDiskPriceSet(self):
+        """List of data disk price information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DataDiskPrice
+        """
         return self._DataDiskPriceSet
 
     @DataDiskPriceSet.setter
@@ -7477,6 +8895,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstancePriceDetailSet(self):
+        """Price list of the instances to be renewed.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of InstancePriceDetail
+        """
         return self._InstancePriceDetailSet
 
     @InstancePriceDetailSet.setter
@@ -7485,6 +8907,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TotalPrice(self):
+        """Total price
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.TotalPrice`
+        """
         return self._TotalPrice
 
     @TotalPrice.setter
@@ -7493,6 +8918,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7632,6 +9060,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7640,6 +9071,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BundleId(self):
+        """Package ID.
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -7648,6 +9082,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlueprintId(self):
+        """Image ID.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -7656,6 +9093,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CPU(self):
+        """Number of instance CPU cores.
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -7664,6 +9104,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
+        """Instance memory capacity in GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -7672,6 +9115,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Instance name.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -7680,6 +9126,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
+        """Instance billing mode. Valid values: 
+PREPAID: prepaid (i.e., monthly subscription).
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -7688,6 +9138,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SystemDisk(self):
+        """Instance system disk information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -7696,6 +9149,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateAddresses(self):
+        """Private IP of instance primary ENI. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._PrivateAddresses
 
     @PrivateAddresses.setter
@@ -7704,6 +9161,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicAddresses(self):
+        """Public IP of instance primary ENI. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._PublicAddresses
 
     @PublicAddresses.setter
@@ -7712,6 +9173,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternetAccessible(self):
+        """Instance bandwidth information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -7720,6 +9184,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
+        """Auto-Renewal flag. Valid values: 
+NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically  
+NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -7728,6 +9197,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoginSettings(self):
+        """Instance login settings.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -7736,6 +9208,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceState(self):
+        """Instance status. Valid values: 
+<li>PENDING: Creating</li><li>LAUNCH_FAILED: Failed to create</li><li>RUNNING: Running</li><li>STOPPED: Shut down</li><li>STARTING: Starting up</li><li>STOPPING: Shutting down</li><li>REBOOTING: Restarting</li><li>SHUTDOWN: Shutdown and to be terminated</li><li>TERMINATING: Terminating</li><li>DELETING: Deleting</li><li>FREEZING: Frozen</li><li>ENTER_RESCUE_MODE: Entering the rescue mode</li><li>RESCUE_MODE: Rescue mode</li><li>EXIT_RESCUE_MODE: Exiting from the rescue mode</li>
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -7744,6 +9220,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uuid(self):
+        """Globally unique ID of instance.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -7752,6 +9231,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperation(self):
+        """Last instance operation, such as `StopInstances` and `ResetInstance`. Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -7760,6 +9242,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperationState(self):
+        """Last instance operation status. Valid values: 
+SUCCESS: operation succeeded 
+OPERATING: the operation is being executed 
+FAILED: operation failed 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -7768,6 +9257,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LatestOperationRequestId(self):
+        """Unique request ID for the last operation of the instance. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -7776,6 +9269,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolatedTime(self):
+        """Isolation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IsolatedTime
 
     @IsolatedTime.setter
@@ -7784,6 +9282,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -7792,6 +9295,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpiredTime(self):
+        """Expiration time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -7800,6 +9308,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PlatformType(self):
+        """OS type, such as LINUX_UNIX and WINDOWS.
+        :rtype: str
+        """
         return self._PlatformType
 
     @PlatformType.setter
@@ -7808,6 +9319,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Platform(self):
+        """OS type.
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -7816,6 +9330,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OsName(self):
+        """OS name.
+        :rtype: str
+        """
         return self._OsName
 
     @OsName.setter
@@ -7824,6 +9341,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """AZ.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -7832,6 +9352,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """The list of tags associated with the instance
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7840,6 +9363,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceRestrictState(self):
+        """Obtain instance status
+<li>NORMAL: The instance is normal</li><li>NETWORK_RESTRICT: The instance is blocked from the network.</li>
+        :rtype: str
+        """
         return self._InstanceRestrictState
 
     @InstanceRestrictState.setter
@@ -7913,6 +9440,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -7921,6 +9451,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -7959,6 +9492,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7967,6 +9504,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeniedActions(self):
+        """List of operation limits.
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -8019,6 +9559,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalBundlePrice(self):
+        """Original package unit price.
+        :rtype: float
+        """
         return self._OriginalBundlePrice
 
     @OriginalBundlePrice.setter
@@ -8027,6 +9570,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalPrice(self):
+        """Original price.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -8035,6 +9581,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Discount(self):
+        """Discount.
+        :rtype: int
+        """
         return self._Discount
 
     @Discount.setter
@@ -8043,6 +9592,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountPrice(self):
+        """Discounted price.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -8051,6 +9603,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Currency(self):
+        """Currency unit. Valid values: `CNY` and `USD`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -8097,6 +9653,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8105,6 +9665,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstancePrice(self):
+        """Price query information.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -8113,6 +9677,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountDetail(self):
+        """Tiered-pricing details. The information of each tier includes the billable period, discount percentage, total price, discounted price, and discount details (`UserDiscount`, `CommonDiscount` and `FinalDiscount`).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of DiscountDetail
+        """
         return self._DiscountDetail
 
     @DiscountDetail.setter
@@ -8164,6 +9732,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8172,6 +9743,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def IsReturnable(self):
+        """Whether the instance can be returned.
+        :rtype: bool
+        """
         return self._IsReturnable
 
     @IsReturnable.setter
@@ -8180,6 +9754,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def ReturnFailCode(self):
+        """Error code of instance return failure.
+        :rtype: int
+        """
         return self._ReturnFailCode
 
     @ReturnFailCode.setter
@@ -8188,6 +9765,9 @@ class InstanceReturnable(AbstractModel):
 
     @property
     def ReturnFailMessage(self):
+        """Error message of instance return failure.
+        :rtype: str
+        """
         return self._ReturnFailMessage
 
     @ReturnFailMessage.setter
@@ -8227,6 +9807,9 @@ class InstanceTrafficPackage(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8235,6 +9818,9 @@ class InstanceTrafficPackage(AbstractModel):
 
     @property
     def TrafficPackageSet(self):
+        """List of traffic package details.
+        :rtype: list of TrafficPackage
+        """
         return self._TrafficPackageSet
 
     @TrafficPackageSet.setter
@@ -8282,6 +9868,11 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """Network billing mode. Valid values:
+<li>Bill by traffic package: TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>Bill by bandwidth: BANDWIDTH_POSTPAID_BY_HOUR</li>
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -8290,6 +9881,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """Public network outbound bandwidth cap in Mbps.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -8298,6 +9892,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
+        """Whether to assign a public IP.
+        :rtype: bool
+        """
         return self._PublicIpAssigned
 
     @PublicIpAssigned.setter
@@ -8333,6 +9930,9 @@ class IsolateDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """IDs of cloud disks. The value can be obtained from the `InstanceId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 20 disks can be processed at a time.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -8366,6 +9966,9 @@ class IsolateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8397,6 +10000,9 @@ Default value: `TRUE`.
 
     @property
     def InstanceIds(self):
+        """IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 20 instances can be specified at the same time.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -8405,6 +10011,12 @@ Default value: `TRUE`.
 
     @property
     def IsolateDataDisk(self):
+        """Whether to return data disks mounted on the instance together with the instance. Valid values: 
+`TRUE`: Return the mounted data disks at the same time 
+`FALSE`: Do not return the mounted data disks at the same time 
+Default value: `TRUE`.
+        :rtype: bool
+        """
         return self._IsolateDataDisk
 
     @IsolateDataDisk.setter
@@ -8439,6 +10051,9 @@ class IsolateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8482,6 +10097,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyId(self):
+        """Key pair ID, which is the unique identifier of a key pair.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -8490,6 +10108,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyName(self):
+        """Key pair name.
+        :rtype: str
+        """
         return self._KeyName
 
     @KeyName.setter
@@ -8498,6 +10119,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicKey(self):
+        """Public key (in plain text) of key pair.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -8506,6 +10130,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssociatedInstanceIds(self):
+        """List of IDs of instances associated with the key pair.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AssociatedInstanceIds
 
     @AssociatedInstanceIds.setter
@@ -8514,6 +10142,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -8522,6 +10154,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateKey(self):
+        """Private key of key pair.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -8572,6 +10208,10 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
 
     @property
     def AutoGeneratePassword(self):
+        """<li>`YES`: Random password. In this case, `Password` cannot be specified. </li>
+<li>`No`: Custom. `Password` must be specified. </li>
+        :rtype: str
+        """
         return self._AutoGeneratePassword
 
     @AutoGeneratePassword.setter
@@ -8580,6 +10220,14 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
 
     @property
     def Password(self):
+        """Instance login password. 
+For Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username. 
+<li>Lowercase letters: [a–z]</li>
+<li>Uppercase letters: [A–Z]</li>
+<li>Digits: 0-9</li>
+<li>Symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -8588,6 +10236,9 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
 
     @property
     def KeyIds(self):
+        """
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -8623,6 +10274,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -8662,6 +10316,9 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """Image ID, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -8670,6 +10327,9 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
 
     @property
     def BlueprintName(self):
+        """New image name, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._BlueprintName
 
     @BlueprintName.setter
@@ -8678,6 +10338,9 @@ class ModifyBlueprintAttributeRequest(AbstractModel):
 
     @property
     def Description(self):
+        """New image description, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8713,6 +10376,9 @@ class ModifyBlueprintAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8751,6 +10417,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModifyPrice(self):
+        """Price difference that you need to pay for the new instance package after change.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
         return self._ModifyPrice
 
     @ModifyPrice.setter
@@ -8759,6 +10428,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModifyBundleState(self):
+        """Package change status. Valid values:
+<li>SOLD_OUT: packages are sold out</li>
+<li>AVAILABLE: packages can be changed</li>
+<li>UNAVAILABLE: packages cannot be changed currently</li>
+        :rtype: str
+        """
         return self._ModifyBundleState
 
     @ModifyBundleState.setter
@@ -8767,6 +10442,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Bundle(self):
+        """Package information.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Bundle`
+        """
         return self._Bundle
 
     @Bundle.setter
@@ -8775,6 +10453,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NotSupportModifyMessage(self):
+        """The reason of package changing failure. It’s empty if the package change status is `AVAILABLE`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NotSupportModifyMessage
 
     @NotSupportModifyMessage.setter
@@ -8818,6 +10500,9 @@ class ModifyDisksAttributeRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -8826,6 +10511,9 @@ class ModifyDisksAttributeRequest(AbstractModel):
 
     @property
     def DiskName(self):
+        """Cloud disk name.
+        :rtype: str
+        """
         return self._DiskName
 
     @DiskName.setter
@@ -8860,6 +10548,9 @@ class ModifyDisksAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8888,6 +10579,9 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -8896,6 +10590,9 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Whether Auto-Renewal is enabled 
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -8930,6 +10627,9 @@ class ModifyDisksRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8961,6 +10661,9 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8969,6 +10672,9 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     @property
     def FirewallRule(self):
+        """Firewall rule.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
+        """
         return self._FirewallRule
 
     @FirewallRule.setter
@@ -8977,6 +10683,9 @@ class ModifyFirewallRuleDescriptionRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -9014,6 +10723,9 @@ class ModifyFirewallRuleDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9045,6 +10757,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9053,6 +10768,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallRules(self):
+        """Firewall rule list.
+        :rtype: list of FirewallRule
+        """
         return self._FirewallRules
 
     @FirewallRules.setter
@@ -9061,6 +10779,9 @@ class ModifyFirewallRulesRequest(AbstractModel):
 
     @property
     def FirewallVersion(self):
+        """Current firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the rule from expiring. If it is left empty, conflicts will not be considered.
+        :rtype: int
+        """
         return self._FirewallVersion
 
     @FirewallVersion.setter
@@ -9101,6 +10822,9 @@ class ModifyFirewallRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9129,6 +10853,9 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9137,6 +10864,9 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name, which is customizable and can contain up to 60 characters.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9171,6 +10901,9 @@ class ModifyInstancesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9205,6 +10938,9 @@ Default value: `false`.
 
     @property
     def InstanceIds(self):
+        """IDs of target instances. You can get the IDs from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 15 instances can be specified at the same time.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9213,6 +10949,9 @@ Default value: `false`.
 
     @property
     def BundleId(self):
+        """ID of bundles to change. You can get the IDs from the `BundleId` returned by the [DescribeBundles](https://intl.cloud.tencent.com/document/api/1207/47575?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._BundleId
 
     @BundleId.setter
@@ -9221,6 +10960,12 @@ Default value: `false`.
 
     @property
     def AutoVoucher(self):
+        """Whether to use existing vouchers under the current account automatically. Valid values: 
+`true`: Deduct from existing vouchers automatically 
+`false`: Do not deduct from existing vouchers automatically 
+Default value: `false`.
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -9256,6 +11001,9 @@ class ModifyInstancesBundleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9284,6 +11032,9 @@ class ModifyInstancesLoginKeyPairAttributeRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9292,6 +11043,9 @@ class ModifyInstancesLoginKeyPairAttributeRequest(AbstractModel):
 
     @property
     def PermitLogin(self):
+        """Whether to allow login with the default key pair. Valid values: YES: yes; NO: no.
+        :rtype: str
+        """
         return self._PermitLogin
 
     @PermitLogin.setter
@@ -9326,6 +11080,9 @@ class ModifyInstancesLoginKeyPairAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9354,6 +11111,9 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9362,6 +11122,9 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: neither notify upon expiration nor renew automatically <br><br>If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -9396,6 +11159,9 @@ class ModifyInstancesRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9424,6 +11190,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID, which can be queried through `DescribeSnapshots`.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -9432,6 +11201,9 @@ class ModifySnapshotAttributeRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
+        """New snapshot name, which can contain up to 60 characters.
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -9466,6 +11238,9 @@ class ModifySnapshotAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9506,6 +11281,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UserDiscount(self):
+        """User discount.
+        :rtype: int
+        """
         return self._UserDiscount
 
     @UserDiscount.setter
@@ -9514,6 +11292,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CommonDiscount(self):
+        """Public discount.
+        :rtype: int
+        """
         return self._CommonDiscount
 
     @CommonDiscount.setter
@@ -9522,6 +11303,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FinalDiscount(self):
+        """Final discount.
+        :rtype: int
+        """
         return self._FinalDiscount
 
     @FinalDiscount.setter
@@ -9530,6 +11314,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ActivityDiscount(self):
+        """Activity discount. The value `null` indicates no discount.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._ActivityDiscount
 
     @ActivityDiscount.setter
@@ -9538,6 +11326,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountType(self):
+        """Discount type.
+Valid values: `user` (user discount), `common` (discount displayed on the official website), `activity` (activity discount), `null` (no discount).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiscountType
 
     @DiscountType.setter
@@ -9575,6 +11368,9 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
+        """Instance price.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstancePrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -9610,6 +11406,9 @@ class RebootInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9643,6 +11442,9 @@ class RebootInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9677,6 +11479,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Region name, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9685,6 +11490,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """Region description, such as South China (Guangzhou).
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -9693,6 +11501,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
+        """Region availability status. Its value can only be `AVAILABLE`.
+        :rtype: str
+        """
         return self._RegionState
 
     @RegionState.setter
@@ -9701,6 +11512,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def IsChinaMainland(self):
+        """Whether the region is in the Chinese mainland
+        :rtype: bool
+        """
         return self._IsChinaMainland
 
     @IsChinaMainland.setter
@@ -9750,6 +11564,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def Period(self):
+        """Renewal period
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -9758,6 +11575,13 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def RenewFlag(self):
+        """Whether to renew the disk automatically. Values:
+
+`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically; `NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew; `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not trigger the notification and do not renew.
+
+Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -9766,6 +11590,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def TimeUnit(self):
+        """Unit of the period. Values: `m` (month).
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -9774,6 +11601,9 @@ Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the
 
     @property
     def CurInstanceDeadline(self):
+        """Expiration time of the current instance, such as "2018-01-01 00:00:00". Specify this parameter to align the expiration time of the instance and attached cloud disks. `CurInstanceDeadline` and `Period` cannot be both specified.
+        :rtype: str
+        """
         return self._CurInstanceDeadline
 
     @CurInstanceDeadline.setter
@@ -9816,6 +11646,9 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """IDs of cloud disks. The value can be obtained from the `DiskId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 50 disks can be requested at a time.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -9824,6 +11657,9 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def RenewDiskChargePrepaid(self):
+        """Parameter settings for renewing the monthly subscribed cloud disk.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        """
         return self._RenewDiskChargePrepaid
 
     @RenewDiskChargePrepaid.setter
@@ -9832,6 +11668,9 @@ class RenewDisksRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """Whether to use the vouchers automatically. It defaults to No.
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -9869,6 +11708,9 @@ class RenewDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9909,6 +11751,9 @@ Default: `FALSE`.
 
     @property
     def InstanceIds(self):
+        """IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API. Up to 100 instances can be requested at a time.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9917,6 +11762,9 @@ Default: `FALSE`.
 
     @property
     def InstanceChargePrepaid(self):
+        """Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -9925,6 +11773,12 @@ Default: `FALSE`.
 
     @property
     def RenewDataDisk(self):
+        """Whether to renew elastic data disks. Values: 
+`TRUE`: Renew the elastic data disks attached to the instance as well when the related instance is renewed.
+`FALSE`: Do not renew the elastic data disks attached to the instance as well when the related instance is renewed.
+Default: `TRUE`
+        :rtype: bool
+        """
         return self._RenewDataDisk
 
     @RenewDataDisk.setter
@@ -9933,6 +11787,12 @@ Default: `FALSE`.
 
     @property
     def AutoVoucher(self):
+        """Whether to automatically use vouchers. Values:
+`TRUE`: Use vouchers for payment automatically.
+`FALSE`: Do not use vouchers for payment automatically.
+Default: `FALSE`.
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -9971,6 +11831,9 @@ class RenewInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9996,6 +11859,9 @@ class ResetAttachCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """CCN instance ID.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -10029,6 +11895,9 @@ class ResetAttachCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10060,6 +11929,9 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def BlueprintInfo(self):
+        """Image details
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Blueprint`
+        """
         return self._BlueprintInfo
 
     @BlueprintInfo.setter
@@ -10068,6 +11940,9 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def IsResettable(self):
+        """Whether the image can be reset as the target image
+        :rtype: bool
+        """
         return self._IsResettable
 
     @IsResettable.setter
@@ -10076,6 +11951,9 @@ class ResetInstanceBlueprint(AbstractModel):
 
     @property
     def NonResettableMessage(self):
+        """Non-Resettable flag. If the image is resettable, it will be ""
+        :rtype: str
+        """
         return self._NonResettableMessage
 
     @NonResettableMessage.setter
@@ -10116,6 +11994,9 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10124,6 +12005,9 @@ class ResetInstanceRequest(AbstractModel):
 
     @property
     def BlueprintId(self):
+        """Image ID, which can be obtained from the `BlueprintId` returned by the [DescribeBlueprints](https://intl.cloud.tencent.com/document/product/1207/47689?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._BlueprintId
 
     @BlueprintId.setter
@@ -10158,6 +12042,9 @@ class ResetInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10191,6 +12078,9 @@ The password of a `WINDOWS` instance must contain 12–30 characters in at least
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10199,6 +12089,11 @@ The password of a `WINDOWS` instance must contain 12–30 characters in at least
 
     @property
     def Password(self):
+        """Login password of the instance(s). The password requirements vary among different operating systems:
+The password of a `LINUX_UNIX` instance must contain 8–30 characters (above 12 characters preferably) in at least three of the following types and cannot begin with "/": <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\`~!@#$%^&\*-+=\_|{}[]:;'<>,.?/</li>
+The password of a `WINDOWS` instance must contain 12–30 characters in at least three of the following types and cannot begin with "/" or include the username: <br><li>Lowercase letters: [a–z]<br><li>Uppercase letters: [A–Z]<br><li>Digits: 0–9<br><li>Special symbols: ()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/<br><li>If both `LINUX_UNIX` and `WINDOWS` instances exist, the requirements for password complexity of `WINDOWS` instances shall prevail.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -10207,6 +12102,9 @@ The password of a `WINDOWS` instance must contain 12–30 characters in at least
 
     @property
     def UserName(self):
+        """OS username of the instance for which you want to reset the password, which can contain up to 64 characters.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -10242,6 +12140,9 @@ class ResetInstancesPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10273,6 +12174,9 @@ class Scene(AbstractModel):
 
     @property
     def SceneId(self):
+        """Scene ID
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -10281,6 +12185,9 @@ class Scene(AbstractModel):
 
     @property
     def DisplayName(self):
+        """Display name of the scene
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -10289,6 +12196,9 @@ class Scene(AbstractModel):
 
     @property
     def Description(self):
+        """Scene description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10330,6 +12240,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def SceneId(self):
+        """Scene ID
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -10338,6 +12251,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def DisplayName(self):
+        """Display name of the scene
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -10346,6 +12262,9 @@ class SceneInfo(AbstractModel):
 
     @property
     def Description(self):
+        """Scene description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10423,6 +12342,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SnapshotId(self):
+        """Snapshot ID.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -10431,6 +12353,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskUsage(self):
+        """Type of the disk for which the snapshot is created. Valid values: <li>SYSTEM_DISK: system disk</li>
+        :rtype: str
+        """
         return self._DiskUsage
 
     @DiskUsage.setter
@@ -10439,6 +12364,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskId(self):
+        """ID of the disk for which the snapshot is created.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -10447,6 +12375,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskSize(self):
+        """Size of the disk in GB for which the snapshot is created.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -10455,6 +12386,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SnapshotName(self):
+        """Snapshot name, which is a custom snapshot alias.
+        :rtype: str
+        """
         return self._SnapshotName
 
     @SnapshotName.setter
@@ -10463,6 +12397,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SnapshotState(self):
+        """Snapshot status. Valid values:
+<li>NORMAL: normal </li>
+<li>CREATING: creating</li>
+<li>ROLLBACKING: rolling back</li>
+        :rtype: str
+        """
         return self._SnapshotState
 
     @SnapshotState.setter
@@ -10471,6 +12411,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Percent(self):
+        """Snapshot creation or rollback progress in percentage. After success, the value of this field will become 100.
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -10479,6 +12422,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LatestOperation(self):
+        """Last snapshot operation. It is recorded only during snapshot creation and rollback.
+Example values: CreateInstanceSnapshot, RollbackInstanceSnapshot.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestOperation
 
     @LatestOperation.setter
@@ -10487,6 +12435,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LatestOperationState(self):
+        """Last snapshot operation status. It is recorded only during snapshot creation and rollback.
+Valid values:
+<li>SUCCESS: operation succeeded</li>
+<li>OPERATING: the operation is being executed</li>
+<li>FAILED: operation failed</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestOperationState
 
     @LatestOperationState.setter
@@ -10495,6 +12451,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LatestOperationRequestId(self):
+        """Unique request ID for the last snapshot operation. It is recorded only during snapshot creation and rollback.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LatestOperationRequestId
 
     @LatestOperationRequestId.setter
@@ -10503,6 +12463,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Snapshot creation time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -10549,6 +12513,9 @@ class SnapshotDeniedActions(AbstractModel):
 
     @property
     def SnapshotId(self):
+        """Snapshot ID.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -10557,6 +12524,9 @@ class SnapshotDeniedActions(AbstractModel):
 
     @property
     def DeniedActions(self):
+        """List of operation limits.
+        :rtype: list of DeniedAction
+        """
         return self._DeniedActions
 
     @DeniedActions.setter
@@ -10608,6 +12578,9 @@ class Software(AbstractModel):
 
     @property
     def Name(self):
+        """Software name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10616,6 +12589,9 @@ class Software(AbstractModel):
 
     @property
     def Version(self):
+        """Software version.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -10624,6 +12600,9 @@ class Software(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """Software picture URL.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -10632,6 +12611,9 @@ class Software(AbstractModel):
 
     @property
     def InstallDir(self):
+        """Software installation directory.
+        :rtype: str
+        """
         return self._InstallDir
 
     @InstallDir.setter
@@ -10640,6 +12622,9 @@ class Software(AbstractModel):
 
     @property
     def DetailSet(self):
+        """List of software details.
+        :rtype: list of SoftwareDetail
+        """
         return self._DetailSet
 
     @DetailSet.setter
@@ -10688,6 +12673,9 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Key(self):
+        """Unique detail key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -10696,6 +12684,9 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Title(self):
+        """Detail title.
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -10704,6 +12695,9 @@ class SoftwareDetail(AbstractModel):
 
     @property
     def Value(self):
+        """Detail value.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -10739,6 +12733,9 @@ class StartInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10772,6 +12769,9 @@ class StartInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10797,6 +12797,9 @@ class StopInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10830,6 +12833,9 @@ class StopInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10864,6 +12870,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """System disk type.
+Valid values: 
+<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -10872,6 +12883,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """System disk size in GB.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -10880,6 +12894,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskId(self):
+        """System disk ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -10918,6 +12936,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -10926,6 +12947,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -10960,6 +12984,9 @@ class TerminateDisksRequest(AbstractModel):
 
     @property
     def DiskIds(self):
+        """List of cloud disk IDs.
+        :rtype: list of str
+        """
         return self._DiskIds
 
     @DiskIds.setter
@@ -10993,6 +13020,9 @@ class TerminateDisksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11018,6 +13048,9 @@ class TerminateInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list, which can be obtained from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11051,6 +13084,9 @@ class TerminateInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11081,6 +13117,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginalPrice(self):
+        """Total original price
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -11089,6 +13129,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiscountPrice(self):
+        """Total discounted price
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -11155,6 +13199,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficPackageId(self):
+        """Traffic package ID.
+        :rtype: str
+        """
         return self._TrafficPackageId
 
     @TrafficPackageId.setter
@@ -11163,6 +13210,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficUsed(self):
+        """Used traffic in bytes during traffic package validity period.
+        :rtype: int
+        """
         return self._TrafficUsed
 
     @TrafficUsed.setter
@@ -11171,6 +13221,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficPackageTotal(self):
+        """Total traffic in bytes during traffic package validity period.
+        :rtype: int
+        """
         return self._TrafficPackageTotal
 
     @TrafficPackageTotal.setter
@@ -11179,6 +13232,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficPackageRemaining(self):
+        """Remaining traffic in bytes during traffic package validity period.
+        :rtype: int
+        """
         return self._TrafficPackageRemaining
 
     @TrafficPackageRemaining.setter
@@ -11187,6 +13243,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficOverflow(self):
+        """Traffic exceeding package amount in bytes during traffic package validity period.
+        :rtype: int
+        """
         return self._TrafficOverflow
 
     @TrafficOverflow.setter
@@ -11195,6 +13254,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time of traffic package validity period according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11203,6 +13267,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time of traffic package validity period according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11211,6 +13280,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deadline(self):
+        """Traffic package expiration time according to ISO 8601 standard. UTC time is used. 
+Format: YYYY-MM-DDThh:mm:ssZ.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -11219,6 +13293,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Traffic package status:
+<li>NETWORK_NORMAL: normal</li>
+<li>OVERDUE_NETWORK_DISABLED: the network is disconnected due to overdue payments</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -11266,6 +13345,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
+        """AZ
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -11274,6 +13356,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneName(self):
+        """Chinese name of AZ
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -11282,6 +13367,9 @@ class ZoneInfo(AbstractModel):
 
     @property
     def InstanceDisplayLabel(self):
+        """AZ tags on instance purchase page
+        :rtype: str
+        """
         return self._InstanceDisplayLabel
 
     @InstanceDisplayLabel.setter

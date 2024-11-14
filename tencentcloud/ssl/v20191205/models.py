@@ -45,6 +45,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceId(self):
+        """The instance ID.
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -53,6 +56,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceName(self):
+        """The instance name.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -61,6 +67,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -69,6 +78,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -77,6 +90,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """The protocol.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -121,6 +137,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -129,6 +148,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of APIGATEWAY instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ApiGatewayInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -137,6 +160,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of APIGATEWAY instances in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -219,6 +245,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DvAuthMethod(self):
+        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation.
+        :rtype: str
+        """
         return self._DvAuthMethod
 
     @DvAuthMethod.setter
@@ -227,6 +256,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -235,6 +267,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -243,6 +278,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def PackageType(self):
+        """Certificate type. Currently, the only supported value is 2, which indicates TrustAsia TLS RSA CA.
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -251,6 +289,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ContactEmail(self):
+        """Email address
+        :rtype: str
+        """
         return self._ContactEmail
 
     @ContactEmail.setter
@@ -259,6 +300,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ContactPhone(self):
+        """Mobile number
+        :rtype: str
+        """
         return self._ContactPhone
 
     @ContactPhone.setter
@@ -267,6 +311,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ValidityPeriod(self):
+        """Validity period. The default value is 12 months, which is the only supported value currently.
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -275,6 +322,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrEncryptAlgo(self):
+        """Encryption algorithm. RSA and ECC are supported.
+        :rtype: str
+        """
         return self._CsrEncryptAlgo
 
     @CsrEncryptAlgo.setter
@@ -283,6 +333,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrKeyParameter(self):
+        """Key pair parameters. RSA supports only 2048. ECC supports only prime256v1. When the encryption algorithm is set to ECC, this parameter is mandatory.
+        :rtype: str
+        """
         return self._CsrKeyParameter
 
     @CsrKeyParameter.setter
@@ -291,6 +344,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrKeyPassword(self):
+        """CSR encryption password
+        :rtype: str
+        """
         return self._CsrKeyPassword
 
     @CsrKeyPassword.setter
@@ -299,6 +355,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """Alias
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -307,6 +366,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """Original certificate ID, which is used to apply for a new certificate.
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -315,6 +377,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def PackageId(self):
+        """Benefit package ID, which is used to expand the free certificate package
+        :rtype: str
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -323,6 +388,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DeleteDnsAutoRecord(self):
+        """Whether to delete the automatic domain name verification record after issuance, which is no by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.
+        :rtype: bool
+        """
         return self._DeleteDnsAutoRecord
 
     @DeleteDnsAutoRecord.setter
@@ -331,6 +399,9 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DnsNames(self):
+        """
+        :rtype: list of str
+        """
         return self._DnsNames
 
     @DnsNames.setter
@@ -381,6 +452,9 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -389,6 +463,9 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -415,6 +492,9 @@ class BatchDeleteCSRRequest(AbstractModel):
 
     @property
     def CSRIds(self):
+        """The IDs of the CSRs to be deleted, 100 IDs at most.
+        :rtype: list of int
+        """
         return self._CSRIds
 
     @CSRIds.setter
@@ -451,6 +531,9 @@ class BatchDeleteCSRResponse(AbstractModel):
 
     @property
     def Success(self):
+        """The IDs of the CSRs successfully deleted.
+        :rtype: list of int
+        """
         return self._Success
 
     @Success.setter
@@ -459,6 +542,9 @@ class BatchDeleteCSRResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -489,6 +575,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -497,6 +587,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of associated cloud resources.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -534,6 +627,9 @@ class BindResourceResult(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Supported types: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -542,6 +638,9 @@ class BindResourceResult(AbstractModel):
 
     @property
     def BindResourceRegionResult(self):
+        """The region of associated cloud resources.
+        :rtype: list of BindResourceRegionResult
+        """
         return self._BindResourceRegionResult
 
     @BindResourceRegionResult.setter
@@ -634,6 +733,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """The CSR ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -642,6 +745,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """The account.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -650,6 +757,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -658,6 +769,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Organization(self):
+        """The organization name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Organization
 
     @Organization.setter
@@ -666,6 +781,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Department(self):
+        """The department.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Department
 
     @Department.setter
@@ -674,6 +793,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
+        """The email address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -682,6 +805,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
+        """The province.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -690,6 +817,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
+        """The city.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -698,6 +829,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
+        """The country or region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -706,6 +841,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remarks(self):
+        """The remarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Remarks
 
     @Remarks.setter
@@ -714,6 +853,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -722,6 +865,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The creation time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -730,6 +877,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptAlgo(self):
+        """The encryption algorithm.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptAlgo
 
     @EncryptAlgo.setter
@@ -738,6 +889,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyParameter(self):
+        """The algorithm parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._KeyParameter
 
     @KeyParameter.setter
@@ -784,6 +939,9 @@ class CancelAuditCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -820,6 +978,9 @@ class CancelAuditCertificateResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Whether the operation succeeded.
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -828,6 +989,9 @@ class CancelAuditCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -854,6 +1018,9 @@ class CancelCertificateOrderRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -890,6 +1057,9 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """ID of the certificate whose order has been successfully cancelled
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -898,6 +1068,9 @@ class CancelCertificateOrderResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -933,6 +1106,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -941,6 +1117,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """The ID of the deployed certificate.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -949,6 +1128,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
+        """The status of the domain.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -957,6 +1139,9 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def HttpsBillingSwitch(self):
+        """The billing status of the domain.
+        :rtype: str
+        """
         return self._HttpsBillingSwitch
 
     @HttpsBillingSwitch.setter
@@ -997,6 +1182,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of CDN domains in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1005,6 +1193,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of CDN domains.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CdnInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -1047,6 +1239,9 @@ class CertTaskId(AbstractModel):
 
     @property
     def CertId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -1055,6 +1250,9 @@ class CertTaskId(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1100,6 +1298,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -1108,6 +1309,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsNames(self):
+        """The list of domains bound to the certificate.
+        :rtype: list of str
+        """
         return self._DnsNames
 
     @DnsNames.setter
@@ -1116,6 +1320,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertCaId(self):
+        """The root certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertCaId
 
     @CertCaId.setter
@@ -1124,6 +1332,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SSLMode(self):
+        """The authentication type. Valid values: `UNIDIRECTIONAL` (one-way authentication) and `MUTUAL` (two-way authentication).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SSLMode
 
     @SSLMode.setter
@@ -1185,6 +1397,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DomainNumber(self):
+        """Number of domain names which can be associated with the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DomainNumber
 
     @DomainNumber.setter
@@ -1193,6 +1409,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OriginCertificateId(self):
+        """Original certificate ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginCertificateId
 
     @OriginCertificateId.setter
@@ -1201,6 +1421,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ReplacedBy(self):
+        """Original ID of the new certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ReplacedBy
 
     @ReplacedBy.setter
@@ -1209,6 +1433,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ReplacedFor(self):
+        """New ID of the new certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ReplacedFor
 
     @ReplacedFor.setter
@@ -1217,6 +1445,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RenewOrder(self):
+        """Certificate ID of the new order
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RenewOrder
 
     @RenewOrder.setter
@@ -1225,6 +1457,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SMCert(self):
+        """Whether the certificate is a Chinese SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SMCert
 
     @SMCert.setter
@@ -1233,6 +1469,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CompanyType(self):
+        """Company type
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._CompanyType
 
     @CompanyType.setter
@@ -1479,6 +1719,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OwnerUin(self):
+        """User UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1487,6 +1731,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProjectId(self):
+        """Project ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1495,6 +1743,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def From(self):
+        """Certificate source
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -1503,6 +1755,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PackageType(self):
+        """The certificate plan type. Valid values:
+null: Certificates uploaded by users (no plan type)
+`1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -1511,6 +1769,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertificateType(self):
+        """Certificate type. `CA`: client certificate; `SVR`: server certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -1519,6 +1781,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProductZhName(self):
+        """Issuer
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -1527,6 +1793,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Domain(self):
+        """Primary domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1535,6 +1805,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Alias(self):
+        """Alias
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -1543,6 +1817,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
+        """Status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added for domain names of the DNS_AUTO verification type; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate; `14`: Refunded.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1551,6 +1829,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertificateExtra(self):
+        """Extended information of the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
+        """
         return self._CertificateExtra
 
     @CertificateExtra.setter
@@ -1559,6 +1841,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VulnerabilityStatus(self):
+        """Vulnerability scanning status. `INACTIVE`: not activated; `ACTIVE`: activated
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -1567,6 +1853,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StatusMsg(self):
+        """Status information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -1575,6 +1865,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VerifyType(self):
+        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -1583,6 +1877,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertBeginTime(self):
+        """Time when the certificate takes effect
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -1591,6 +1889,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertEndTime(self):
+        """Time when the certificate expires
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -1599,6 +1901,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ValidityPeriod(self):
+        """Validity period of the certificate, in months
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -1607,6 +1913,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InsertTime(self):
+        """Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -1615,6 +1925,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertificateId(self):
+        """Certificate ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -1623,6 +1937,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubjectAltName(self):
+        """Domain names associated with the certificate (including the primary domain name)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -1631,6 +1949,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PackageTypeName(self):
+        """Certificate type name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PackageTypeName
 
     @PackageTypeName.setter
@@ -1639,6 +1961,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StatusName(self):
+        """Status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -1647,6 +1973,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsVip(self):
+        """Whether the customer is a VIP customer
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -1655,6 +1985,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsDv(self):
+        """Whether the certificate is a DV certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -1663,6 +1997,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsWildcard(self):
+        """Whether the certificate is a wildcard certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -1671,6 +2009,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsVulnerability(self):
+        """Whether the vulnerability scanning feature is enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -1679,6 +2021,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RenewAble(self):
+        """Whether it can be renewed 
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._RenewAble
 
     @RenewAble.setter
@@ -1687,6 +2033,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProjectInfo(self):
+        """Project information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
+        """
         return self._ProjectInfo
 
     @ProjectInfo.setter
@@ -1695,6 +2045,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BoundResource(self):
+        """Associated Tencent Cloud services. Currently, this parameter is unavailable.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._BoundResource
 
     @BoundResource.setter
@@ -1703,6 +2057,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Deployable(self):
+        """Whether the certificate can be deployed
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -1711,6 +2069,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Tags(self):
+        """List of tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -1719,6 +2081,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsIgnore(self):
+        """Whether the expiration notification was ignored
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsIgnore
 
     @IsIgnore.setter
@@ -1727,6 +2093,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsSM(self):
+        """Whether the certificate is a Chinese SM certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsSM
 
     @IsSM.setter
@@ -1735,6 +2105,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EncryptAlgorithm(self):
+        """Certificate algorithm
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptAlgorithm
 
     @EncryptAlgorithm.setter
@@ -1743,6 +2117,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CAEncryptAlgorithms(self):
+        """Encryption algorithm of the uploaded CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CAEncryptAlgorithms
 
     @CAEncryptAlgorithms.setter
@@ -1751,6 +2129,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CAEndTimes(self):
+        """Expiration time of the uploaded CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CAEndTimes
 
     @CAEndTimes.setter
@@ -1759,6 +2141,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CACommonNames(self):
+        """Generic name of the uploaded CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CACommonNames
 
     @CACommonNames.setter
@@ -1767,6 +2153,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PreAuditInfo(self):
+        """Prereview information of the certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
+        """
         return self._PreAuditInfo
 
     @PreAuditInfo.setter
@@ -1775,6 +2165,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AutoRenewFlag(self):
+        """Whether auto-renewal is enabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1783,6 +2177,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HostingStatus(self):
+        """The hosting status. Valid values: `0` (hosting), `5` (replacing resources), `10` (hosting completed), and `-1` (not hosted). 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._HostingStatus
 
     @HostingStatus.setter
@@ -1791,6 +2189,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HostingCompleteTime(self):
+        """The hosting completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HostingCompleteTime
 
     @HostingCompleteTime.setter
@@ -1799,6 +2201,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HostingRenewCertId(self):
+        """The hosted new certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HostingRenewCertId
 
     @HostingRenewCertId.setter
@@ -1807,6 +2213,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HasRenewOrder(self):
+        """Existing renewed certificate ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._HasRenewOrder
 
     @HasRenewOrder.setter
@@ -1815,6 +2225,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ReplaceOriCertIsDelete(self):
+        """Whether the original certificate is deleted when a certificate is reissued.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._ReplaceOriCertIsDelete
 
     @ReplaceOriCertIsDelete.setter
@@ -1823,6 +2237,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsExpiring(self):
+        """Whether the certificate is expiring soon. A certificate is considered to be expiring soon when there are 30 days or less left.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._IsExpiring
 
     @IsExpiring.setter
@@ -1831,6 +2249,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DVAuthDeadline(self):
+        """Validation expiration time for the addition of the DV certificate
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._DVAuthDeadline
 
     @DVAuthDeadline.setter
@@ -1839,6 +2261,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ValidationPassedTime(self):
+        """Domain name validation pass time
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ValidationPassedTime
 
     @ValidationPassedTime.setter
@@ -1847,6 +2273,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertSANs(self):
+        """Multiple domain names with which the certificate is associated
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._CertSANs
 
     @CertSANs.setter
@@ -1855,6 +2285,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AwaitingValidationMsg(self):
+        """Domain name validation rejection information
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._AwaitingValidationMsg
 
     @AwaitingValidationMsg.setter
@@ -1863,6 +2297,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AllowDownload(self):
+        """Whether downloading is allowed
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._AllowDownload
 
     @AllowDownload.setter
@@ -1871,6 +2309,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsDNSPODResolve(self):
+        """
+        :rtype: bool
+        """
         return self._IsDNSPODResolve
 
     @IsDNSPODResolve.setter
@@ -1879,6 +2320,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsPackage(self):
+        """
+        :rtype: bool
+        """
         return self._IsPackage
 
     @IsPackage.setter
@@ -1887,6 +2331,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def KeyPasswordCustomFlag(self):
+        """
+        :rtype: bool
+        """
         return self._KeyPasswordCustomFlag
 
     @KeyPasswordCustomFlag.setter
@@ -1895,6 +2342,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SupportDownloadType(self):
+        """
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
+        """
         return self._SupportDownloadType
 
     @SupportDownloadType.setter
@@ -2000,6 +2450,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoadBalancerId(self):
+        """The CLB instance ID.
+        :rtype: str
+        """
         return self._LoadBalancerId
 
     @LoadBalancerId.setter
@@ -2008,6 +2461,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoadBalancerName(self):
+        """The CLB instance name.
+        :rtype: str
+        """
         return self._LoadBalancerName
 
     @LoadBalancerName.setter
@@ -2016,6 +2472,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Listeners(self):
+        """The list of CLB listeners.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ClbListener
+        """
         return self._Listeners
 
     @Listeners.setter
@@ -2063,6 +2523,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2071,6 +2534,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of CLB instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ClbInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -2079,6 +2546,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of CLB instances in this region.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2140,6 +2610,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListenerId(self):
+        """The listener ID.
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -2148,6 +2621,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListenerName(self):
+        """The listener name.
+        :rtype: str
+        """
         return self._ListenerName
 
     @ListenerName.setter
@@ -2156,6 +2632,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SniSwitch(self):
+        """Whether to enable SNI. Valid values: `1` (enable) and `0` (disable).
+        :rtype: int
+        """
         return self._SniSwitch
 
     @SniSwitch.setter
@@ -2164,6 +2643,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """The listener protocol type. Valid values: `HTTPS` and `TCP_SSL`.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -2172,6 +2654,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificate(self):
+        """The information of the certificate bound to the listener.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -2180,6 +2666,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
+        """The list of the listener rules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ClbListenerRule
+        """
         return self._Rules
 
     @Rules.setter
@@ -2188,6 +2678,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoMatchDomains(self):
+        """The list of non-matching domains.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._NoMatchDomains
 
     @NoMatchDomains.setter
@@ -2248,6 +2742,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LocationId(self):
+        """The rule ID.
+        :rtype: str
+        """
         return self._LocationId
 
     @LocationId.setter
@@ -2256,6 +2753,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domains bound.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2264,6 +2764,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMatch(self):
+        """Whether the rule matches the domains to be associated with a certificate.
+        :rtype: bool
+        """
         return self._IsMatch
 
     @IsMatch.setter
@@ -2272,6 +2775,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificate(self):
+        """The certificates associated with the rule.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -2280,6 +2787,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoMatchDomains(self):
+        """The list of non-matching domains.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._NoMatchDomains
 
     @NoMatchDomains.setter
@@ -2322,6 +2833,9 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -2330,6 +2844,9 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """Domain validation method
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -2370,6 +2887,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def OrderId(self):
+        """TrustAsia order ID
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -2378,6 +2898,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2386,6 +2909,9 @@ class CommitCertificateInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2446,6 +2972,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2454,6 +2983,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Organization(self):
+        """The organization name.
+        :rtype: str
+        """
         return self._Organization
 
     @Organization.setter
@@ -2462,6 +2994,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Department(self):
+        """The department.
+        :rtype: str
+        """
         return self._Department
 
     @Department.setter
@@ -2470,6 +3005,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Email(self):
+        """The email address.
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -2478,6 +3016,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Province(self):
+        """The province.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -2486,6 +3027,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def City(self):
+        """The city.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -2494,6 +3038,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Country(self):
+        """The country or region code that complies with ISO 3166, such as CN and US.
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -2502,6 +3049,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def EncryptAlgo(self):
+        """The encryption algorithm. RSA and ECC are supported.	
+        :rtype: str
+        """
         return self._EncryptAlgo
 
     @EncryptAlgo.setter
@@ -2510,6 +3060,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def KeyParameter(self):
+        """The key pair parameter. For RSA, only the 2048-bit and 4096-bit key pairs are supported. For ECC, only prime256v1 is supported.
+        :rtype: str
+        """
         return self._KeyParameter
 
     @KeyParameter.setter
@@ -2518,6 +3071,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Generate(self):
+        """Whether to generate the CSR content. Once the CSR content is generated, the CSR record cannot be modified.
+        :rtype: bool
+        """
         return self._Generate
 
     @Generate.setter
@@ -2526,6 +3082,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def KeyPassword(self):
+        """The password of the private key.
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -2534,6 +3093,9 @@ class CreateCSRRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """The remarks.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2581,6 +3143,9 @@ class CreateCSRResponse(AbstractModel):
 
     @property
     def Id(self):
+        """The CSR ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2589,6 +3154,9 @@ class CreateCSRResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2618,6 +3186,9 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """The list of certificate IDs, 100 IDs at most.
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -2626,6 +3197,9 @@ class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """Whether to use the cached results. Valid values: `1` (default) for yes and `0` for no. If any task completed within last 30 minutes exists under the current certificate ID, and the cache is used, the query result of the last task completed within 30 minutes will be read.
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -2663,6 +3237,9 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
     @property
     def CertTaskIds(self):
+        """The IDs of async tasks for querying cloud resources associated with a certificate.
+        :rtype: list of CertTaskId
+        """
         return self._CertTaskIds
 
     @CertTaskIds.setter
@@ -2671,6 +3248,9 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2708,6 +3288,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Certificate product ID. `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2716,6 +3299,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def DomainNum(self):
+        """Number of domains associated with the certificate
+        :rtype: int
+        """
         return self._DomainNum
 
     @DomainNum.setter
@@ -2724,6 +3310,9 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """Certificate validity period. Currently, you can only purchase 1-year certificates.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -2765,6 +3354,9 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
+        """List of certificate IDs
+        :rtype: list of str
+        """
         return self._CertificateIds
 
     @CertificateIds.setter
@@ -2773,6 +3365,9 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def DealIds(self):
+        """List of order IDs
+        :rtype: list of str
+        """
         return self._DealIds
 
     @DealIds.setter
@@ -2781,6 +3376,9 @@ class CreateCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2821,6 +3419,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2829,6 +3430,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """The instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2837,6 +3441,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """The protocol type.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -2845,6 +3452,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -2853,6 +3464,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VirtualPort(self):
+        """The forwarding port.
+        :rtype: str
+        """
         return self._VirtualPort
 
     @VirtualPort.setter
@@ -2894,6 +3508,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of DDOS instances in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2902,6 +3519,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of DDOS instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DdosInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -2941,6 +3562,9 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -2977,6 +3601,9 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def DeleteResult(self):
+        """Deletion result
+        :rtype: bool
+        """
         return self._DeleteResult
 
     @DeleteResult.setter
@@ -2985,6 +3612,9 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3011,6 +3641,9 @@ class DescribeCSRRequest(AbstractModel):
 
     @property
     def CSRId(self):
+        """The CSR ID.
+        :rtype: int
+        """
         return self._CSRId
 
     @CSRId.setter
@@ -3098,6 +3731,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """The CSR ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3106,6 +3742,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """The account.
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -3114,6 +3753,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3122,6 +3764,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Organization(self):
+        """The organization name.
+        :rtype: str
+        """
         return self._Organization
 
     @Organization.setter
@@ -3130,6 +3775,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Department(self):
+        """The department.
+        :rtype: str
+        """
         return self._Department
 
     @Department.setter
@@ -3138,6 +3786,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Email(self):
+        """The email address.
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -3146,6 +3797,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Province(self):
+        """The province.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -3154,6 +3808,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def City(self):
+        """The city.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -3162,6 +3819,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Country(self):
+        """The country or region.
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -3170,6 +3830,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptAlgo(self):
+        """The key algorithm.
+        :rtype: str
+        """
         return self._EncryptAlgo
 
     @EncryptAlgo.setter
@@ -3178,6 +3841,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyParameter(self):
+        """The algorithm parameter.
+        :rtype: str
+        """
         return self._KeyParameter
 
     @KeyParameter.setter
@@ -3186,6 +3852,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remarks(self):
+        """The remarks.
+        :rtype: str
+        """
         return self._Remarks
 
     @Remarks.setter
@@ -3194,6 +3863,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3202,6 +3874,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyPassword(self):
+        """The password of the private key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -3210,6 +3886,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3218,6 +3897,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CSR(self):
+        """The CSR content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CSR
 
     @CSR.setter
@@ -3226,6 +3909,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateKey(self):
+        """The content of the private key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -3234,6 +3921,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3285,6 +3975,9 @@ class DescribeCSRSetRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of CSRs on each page. The default value is 10, and the maximum value is 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3293,6 +3986,9 @@ class DescribeCSRSetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The pagination offset, starting from 0.	
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3301,6 +3997,9 @@ class DescribeCSRSetRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """The domain for CSR filtering
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3309,6 +4008,9 @@ class DescribeCSRSetRequest(AbstractModel):
 
     @property
     def EncryptAlgo(self):
+        """The encryption algorithm for CSR filtering
+        :rtype: str
+        """
         return self._EncryptAlgo
 
     @EncryptAlgo.setter
@@ -3351,6 +4053,9 @@ class DescribeCSRSetResponse(AbstractModel):
 
     @property
     def Total(self):
+        """The total number of CSRs.	
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3359,6 +4064,9 @@ class DescribeCSRSetResponse(AbstractModel):
 
     @property
     def Set(self):
+        """The list of CSRs.
+        :rtype: list of CSRItem
+        """
         return self._Set
 
     @Set.setter
@@ -3367,6 +4075,9 @@ class DescribeCSRSetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3411,6 +4122,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID, which is required to query the result of associated cloud resources.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3419,6 +4133,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of cloud resources displayed on each page. The default value is 10, and the maximum value is 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -3427,6 +4144,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The current offset.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -3435,6 +4155,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
+        """The types of the resources to be queried. If no value is passed in, all types of resources will be queried.
+        :rtype: list of str
+        """
         return self._ResourceTypes
 
     @ResourceTypes.setter
@@ -3443,6 +4166,9 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """The regions of the resources to be queried. Only CLB, TKE, WAF, APIGATEWAY, and TCB resources support the query by region.
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -3530,6 +4256,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CLB(self):
+        """The details of associated CLB resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ClbInstanceList
+        """
         return self._CLB
 
     @CLB.setter
@@ -3538,6 +4268,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CDN(self):
+        """The details of associated CDN resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CdnInstanceList
+        """
         return self._CDN
 
     @CDN.setter
@@ -3546,6 +4280,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def WAF(self):
+        """The details of associated WAF resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of WafInstanceList
+        """
         return self._WAF
 
     @WAF.setter
@@ -3554,6 +4292,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DDOS(self):
+        """The details of associated Anti-DDS resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DdosInstanceList
+        """
         return self._DDOS
 
     @DDOS.setter
@@ -3562,6 +4304,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LIVE(self):
+        """The details of associated LIVE resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of LiveInstanceList
+        """
         return self._LIVE
 
     @LIVE.setter
@@ -3570,6 +4316,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VOD(self):
+        """The details of associated VOD resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of VODInstanceList
+        """
         return self._VOD
 
     @VOD.setter
@@ -3578,6 +4328,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TKE(self):
+        """The details of associated TKE resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TkeInstanceList
+        """
         return self._TKE
 
     @TKE.setter
@@ -3586,6 +4340,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def APIGATEWAY(self):
+        """The details of associated APIGATEWAY resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ApiGatewayInstanceList
+        """
         return self._APIGATEWAY
 
     @APIGATEWAY.setter
@@ -3594,6 +4352,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TCB(self):
+        """The details of associated TCB resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TCBInstanceList
+        """
         return self._TCB
 
     @TCB.setter
@@ -3602,6 +4364,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TEO(self):
+        """The details of associated TEO resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TeoInstanceList
+        """
         return self._TEO
 
     @TEO.setter
@@ -3610,6 +4376,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
+        """The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3618,6 +4387,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CacheTime(self):
+        """The cache time of the current result.
+        :rtype: str
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -3626,6 +4398,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TSE(self):
+        """Associated TSE resource details
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of TSEInstanceList
+        """
         return self._TSE
 
     @TSE.setter
@@ -3634,6 +4410,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3727,6 +4506,9 @@ class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """The task IDs, which are used to query the results of associated cloud resources, 100 IDs at most.
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -3764,6 +4546,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SyncTaskBindResourceResult(self):
+        """The results of the async tasks for querying associated cloud resources.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SyncTaskBindResourceResult
+        """
         return self._SyncTaskBindResourceResult
 
     @SyncTaskBindResourceResult.setter
@@ -3772,6 +4558,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3803,6 +4592,9 @@ class DescribeCertificateDetailRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -3999,6 +4791,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """User UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -4007,6 +4803,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4015,6 +4815,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def From(self):
+        """Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -4023,6 +4827,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateType(self):
+        """Certificate type. `CA`: client certificate; `SVR`: server certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -4031,6 +4839,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageType(self):
+        """Certificate plan type. null: User-uploaded certificate (no plan type); `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -4039,6 +4850,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductZhName(self):
+        """Issuer
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -4047,6 +4862,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """Domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -4055,6 +4874,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alias(self):
+        """Alias
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -4063,6 +4886,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4071,6 +4898,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusMsg(self):
+        """Status information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -4079,6 +4910,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyType(self):
+        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -4087,6 +4922,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VulnerabilityStatus(self):
+        """Vulnerability scanning status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -4095,6 +4934,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertBeginTime(self):
+        """Time when the certificate takes effect
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -4103,6 +4946,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertEndTime(self):
+        """Time when the certificate expires
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -4111,6 +4958,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValidityPeriod(self):
+        """Validity period of the certificate, in months
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -4119,6 +4970,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InsertTime(self):
+        """Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -4127,6 +4982,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
+        """Order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -4135,6 +4994,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateExtra(self):
+        """Extended information of the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
+        """
         return self._CertificateExtra
 
     @CertificateExtra.setter
@@ -4143,6 +5006,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificatePrivateKey(self):
+        """Private key of the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -4151,6 +5018,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificatePublicKey(self):
+        """Public key of the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -4159,6 +5030,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDetail(self):
+        """DV authentication information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
+        """
         return self._DvAuthDetail
 
     @DvAuthDetail.setter
@@ -4167,6 +5042,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VulnerabilityReport(self):
+        """Vulnerability scanning assessment report
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VulnerabilityReport
 
     @VulnerabilityReport.setter
@@ -4175,6 +5054,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateId(self):
+        """Certificate ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -4183,6 +5066,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TypeName(self):
+        """Certificate type name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -4191,6 +5078,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusName(self):
+        """Status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -4199,6 +5090,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubjectAltName(self):
+        """Multiple domain names included in the certificate (excluding the primary domain name, which uses the `Domain` field)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -4207,6 +5102,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVip(self):
+        """Whether the certificate is a paid one.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -4215,6 +5114,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsWildcard(self):
+        """Whether the certificate is a wildcard certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -4223,6 +5126,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDv(self):
+        """Whether the certificate is a DV certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -4231,6 +5138,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVulnerability(self):
+        """Whether the vulnerability scanning feature is enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -4239,6 +5150,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmittedData(self):
+        """Submitted data
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
+        """
         return self._SubmittedData
 
     @SubmittedData.setter
@@ -4247,6 +5162,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewAble(self):
+        """Whether the certificate can be renewed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._RenewAble
 
     @RenewAble.setter
@@ -4255,6 +5174,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deployable(self):
+        """Whether the certificate can be deployed
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -4263,6 +5186,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """List of associated tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -4271,6 +5198,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RootCert(self):
+        """Root certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
+        """
         return self._RootCert
 
     @RootCert.setter
@@ -4279,6 +5210,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptCert(self):
+        """Chinese SM encryption certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptCert
 
     @EncryptCert.setter
@@ -4287,6 +5222,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptPrivateKey(self):
+        """Private key of Chinese SM encryption
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptPrivateKey
 
     @EncryptPrivateKey.setter
@@ -4295,6 +5234,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertFingerprint(self):
+        """SHA1 fingerprint of the signature certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertFingerprint
 
     @CertFingerprint.setter
@@ -4303,6 +5246,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptCertFingerprint(self):
+        """SHA1 fingerprint of the encryption certificate (for Chinese SM certificates only)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptCertFingerprint
 
     @EncryptCertFingerprint.setter
@@ -4311,6 +5258,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptAlgorithm(self):
+        """Certificate algorithm
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptAlgorithm
 
     @EncryptAlgorithm.setter
@@ -4319,6 +5270,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvRevokeAuthDetail(self):
+        """The authentication value for DV certificate revocation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DvAuths
+        """
         return self._DvRevokeAuthDetail
 
     @DvRevokeAuthDetail.setter
@@ -4327,6 +5282,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4420,6 +5378,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4428,6 +5389,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of requested logs. The default value is 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4436,6 +5400,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time. The default value is 15 days ago.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4444,6 +5411,9 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time. The default value is the current time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4490,6 +5460,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllTotal(self):
+        """Total number of logs that meet query conditions
+        :rtype: int
+        """
         return self._AllTotal
 
     @AllTotal.setter
@@ -4498,6 +5471,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of logs returned for this request
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4506,6 +5482,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OperateLogs(self):
+        """Certificate operation log list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of OperationLog
+        """
         return self._OperateLogs
 
     @OperateLogs.setter
@@ -4514,6 +5494,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4547,6 +5530,9 @@ class DescribeCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -4724,6 +5710,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """User UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -4732,6 +5722,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4740,6 +5734,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def From(self):
+        """Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -4748,6 +5746,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateType(self):
+        """Certificate type. `CA`: client certificate; `SVR`: server certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -4756,6 +5758,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageType(self):
+        """Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -4764,6 +5770,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductZhName(self):
+        """Name of the certificate issuer
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProductZhName
 
     @ProductZhName.setter
@@ -4772,6 +5782,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """Domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -4780,6 +5794,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alias(self):
+        """Alias
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -4788,6 +5806,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4796,6 +5818,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusMsg(self):
+        """Status information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusMsg
 
     @StatusMsg.setter
@@ -4804,6 +5830,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyType(self):
+        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -4812,6 +5842,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VulnerabilityStatus(self):
+        """Vulnerability scanning status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VulnerabilityStatus
 
     @VulnerabilityStatus.setter
@@ -4820,6 +5854,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertBeginTime(self):
+        """Time when the certificate takes effect
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertBeginTime
 
     @CertBeginTime.setter
@@ -4828,6 +5866,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertEndTime(self):
+        """Time when the certificate expires
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertEndTime
 
     @CertEndTime.setter
@@ -4836,6 +5878,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValidityPeriod(self):
+        """Validity period of the certificate, in months
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ValidityPeriod
 
     @ValidityPeriod.setter
@@ -4844,6 +5890,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InsertTime(self):
+        """Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InsertTime
 
     @InsertTime.setter
@@ -4852,6 +5902,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
+        """Order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrderId
 
     @OrderId.setter
@@ -4860,6 +5914,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateExtra(self):
+        """Extended information of the certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
+        """
         return self._CertificateExtra
 
     @CertificateExtra.setter
@@ -4868,6 +5926,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDetail(self):
+        """DV authentication information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
+        """
         return self._DvAuthDetail
 
     @DvAuthDetail.setter
@@ -4876,6 +5938,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VulnerabilityReport(self):
+        """Vulnerability scanning assessment report
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VulnerabilityReport
 
     @VulnerabilityReport.setter
@@ -4884,6 +5950,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateId(self):
+        """Certificate ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -4892,6 +5962,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageTypeName(self):
+        """Certificate type name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PackageTypeName
 
     @PackageTypeName.setter
@@ -4900,6 +5974,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusName(self):
+        """Status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusName
 
     @StatusName.setter
@@ -4908,6 +5986,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubjectAltName(self):
+        """Domain names associated with the certificate (including the primary domain name)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SubjectAltName
 
     @SubjectAltName.setter
@@ -4916,6 +5998,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVip(self):
+        """Whether the customer is a VIP customer
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsVip
 
     @IsVip.setter
@@ -4924,6 +6010,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsWildcard(self):
+        """Whether the certificate is a wildcard certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsWildcard
 
     @IsWildcard.setter
@@ -4932,6 +6022,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDv(self):
+        """Whether the certificate is a DV certificate
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsDv
 
     @IsDv.setter
@@ -4940,6 +6034,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVulnerability(self):
+        """Whether the vulnerability scanning feature is enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsVulnerability
 
     @IsVulnerability.setter
@@ -4948,6 +6046,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewAble(self):
+        """Whether the certificate can be reissued
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._RenewAble
 
     @RenewAble.setter
@@ -4956,6 +6058,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmittedData(self):
+        """Submitted data
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
+        """
         return self._SubmittedData
 
     @SubmittedData.setter
@@ -4964,6 +6070,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deployable(self):
+        """Whether the certificate can be deployed
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -4972,6 +6082,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """List of tags
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -4980,6 +6094,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CAEncryptAlgorithms(self):
+        """All encryption algorithms of a CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CAEncryptAlgorithms
 
     @CAEncryptAlgorithms.setter
@@ -4988,6 +6106,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CACommonNames(self):
+        """All common names of a CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CACommonNames
 
     @CACommonNames.setter
@@ -4996,6 +6118,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CAEndTimes(self):
+        """All expiration time of a CA certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CAEndTimes
 
     @CAEndTimes.setter
@@ -5004,6 +6130,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvRevokeAuthDetail(self):
+        """The authentication value for DV certificate revocation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DvAuths
+        """
         return self._DvRevokeAuthDetail
 
     @DvRevokeAuthDetail.setter
@@ -5012,6 +6142,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5128,6 +6261,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset, starting from 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5136,6 +6272,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. Default value: `20`. Maximum value: `1000`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5144,6 +6283,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """Keyword for search, which can be a certificate ID, alias, or domain name, for example, a8xHcaIs
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -5152,6 +6294,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateType(self):
+        """Certificate type. `CA`: client certificate; `SVR`: server certificate
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -5160,6 +6305,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -5168,6 +6316,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ExpirationSort(self):
+        """Sorting by expiration time. `DESC`: descending; `ASC`: ascending
+        :rtype: str
+        """
         return self._ExpirationSort
 
     @ExpirationSort.setter
@@ -5176,6 +6327,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateStatus(self):
+        """Certificate status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate.
+        :rtype: list of int non-negative
+        """
         return self._CertificateStatus
 
     @CertificateStatus.setter
@@ -5184,6 +6338,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Deployable(self):
+        """Whether the certificate can be deployed. `1`: yes; `0`: no
+        :rtype: int
+        """
         return self._Deployable
 
     @Deployable.setter
@@ -5192,6 +6349,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Upload(self):
+        """Whether to filter uploaded hosted certificates. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._Upload
 
     @Upload.setter
@@ -5200,6 +6360,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Renew(self):
+        """Whether to filter renewable certificates. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._Renew
 
     @Renew.setter
@@ -5208,6 +6371,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def FilterSource(self):
+        """Filter by source. `upload`: Uploaded certificate; `buy`: Tencent Cloud certificate. If this parameter is left empty, all certificates will be queried.
+        :rtype: str
+        """
         return self._FilterSource
 
     @FilterSource.setter
@@ -5216,6 +6382,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def IsSM(self):
+        """Whether to filter Chinese SM certificates. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._IsSM
 
     @IsSM.setter
@@ -5224,6 +6393,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def FilterExpiring(self):
+        """Whether to filter expiring certificates. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._FilterExpiring
 
     @FilterExpiring.setter
@@ -5232,6 +6404,9 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Hostable(self):
+        """Whether the certificate can be hosted. Valid values: `1` for yes and `0` for no.
+        :rtype: int
+        """
         return self._Hostable
 
     @Hostable.setter
@@ -5286,6 +6461,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5294,6 +6473,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificates(self):
+        """List
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Certificates
+        """
         return self._Certificates
 
     @Certificates.setter
@@ -5302,6 +6485,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5355,6 +6541,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """The ID of the certificate to be deployed.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -5363,6 +6552,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The type of resource for certificate deployment.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -5371,6 +6563,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def IsCache(self):
+        """Whether to query the cached results. Valid values: `1` (yes) and `0` (no). By default, the cached results within 30 minutes are queried.
+        :rtype: int
+        """
         return self._IsCache
 
     @IsCache.setter
@@ -5379,6 +6574,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """The list of filter parameters. FilterKey: domainMatch (query the list of instances with matching or non-matching domains). FilterValue: `1` (default; query the list of instances with matching domains) or `0` (query the list of instances with non-matching domains).
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5387,6 +6585,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """The ID of the deployed certificate.
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -5395,6 +6596,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The pagination offset, starting from 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5403,6 +6607,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of instances on each page. Default value: 10.	
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5411,6 +6618,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
+        """Whether the query is asynchronous.
+        :rtype: int
+        """
         return self._AsyncCache
 
     @AsyncCache.setter
@@ -5463,6 +6673,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of EDGEONE instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TeoInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -5471,6 +6685,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total count.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5479,6 +6696,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5517,6 +6737,9 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """One-click update record ID
+        :rtype: str
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -5525,6 +6748,9 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number per page, 10 by default.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -5533,6 +6759,9 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset, starting from 0
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -5588,6 +6817,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TotalCount(self):
+        """Total count
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5596,6 +6829,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RecordDetailList(self):
+        """Certificate deployment record list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of UpdateRecordDetails
+        """
         return self._RecordDetailList
 
     @RecordDetailList.setter
@@ -5604,6 +6841,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SuccessTotalCount(self):
+        """Total successful deployments
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._SuccessTotalCount
 
     @SuccessTotalCount.setter
@@ -5612,6 +6853,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FailedTotalCount(self):
+        """Total failed deployments
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._FailedTotalCount
 
     @FailedTotalCount.setter
@@ -5620,6 +6865,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RunningTotalCount(self):
+        """Total running deployments
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._RunningTotalCount
 
     @RunningTotalCount.setter
@@ -5628,6 +6877,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5672,6 +6924,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset, starting from 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5680,6 +6935,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number per page, 10 by default.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5688,6 +6946,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """New certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -5696,6 +6957,9 @@ class DescribeHostUpdateRecordRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """Old certificate ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -5740,6 +7004,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TotalCount(self):
+        """Total count
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5748,6 +7016,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DeployRecordList(self):
+        """Certificate deployment record list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of UpdateRecordInfo
+        """
         return self._DeployRecordList
 
     @DeployRecordList.setter
@@ -5756,6 +7028,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5788,6 +7063,9 @@ class DownloadCertificateRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -5829,6 +7107,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
+        """ZIP content encoded by using Base64. After the content is decoded by using Base64, it can be saved as a ZIP file.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -5837,6 +7119,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContentType(self):
+        """MIME type. `application/zip`: ZIP file
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ContentType
 
     @ContentType.setter
@@ -5845,6 +7131,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5893,6 +7182,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthKey(self):
+        """DV authentication key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthKey
 
     @DvAuthKey.setter
@@ -5901,6 +7194,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthValue(self):
+        """DV authentication value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthValue
 
     @DvAuthValue.setter
@@ -5909,6 +7206,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDomain(self):
+        """Domain name of the DV authentication value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthDomain
 
     @DvAuthDomain.setter
@@ -5917,6 +7218,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthPath(self):
+        """Path of the DV authentication value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthPath
 
     @DvAuthPath.setter
@@ -5925,6 +7230,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthKeySubDomain(self):
+        """DV authentication sub-domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthKeySubDomain
 
     @DvAuthKeySubDomain.setter
@@ -5933,6 +7242,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuths(self):
+        """DV authentication information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DvAuths
+        """
         return self._DvAuths
 
     @DvAuths.setter
@@ -5997,6 +7310,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthKey(self):
+        """DV authentication key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthKey
 
     @DvAuthKey.setter
@@ -6005,6 +7322,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthValue(self):
+        """DV authentication value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthValue
 
     @DvAuthValue.setter
@@ -6013,6 +7334,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDomain(self):
+        """Domain name of the DV authentication value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthDomain
 
     @DvAuthDomain.setter
@@ -6021,6 +7346,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthPath(self):
+        """Path of the DV authentication value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthPath
 
     @DvAuthPath.setter
@@ -6029,6 +7358,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthSubDomain(self):
+        """DV authentication sub-domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthSubDomain
 
     @DvAuthSubDomain.setter
@@ -6037,6 +7370,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthVerifyType(self):
+        """DV authentication type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DvAuthVerifyType
 
     @DvAuthVerifyType.setter
@@ -6080,6 +7417,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Code(self):
+        """The error code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -6088,6 +7429,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6125,6 +7470,9 @@ class Filter(AbstractModel):
 
     @property
     def FilterKey(self):
+        """The key of the filter parameter.
+        :rtype: str
+        """
         return self._FilterKey
 
     @FilterKey.setter
@@ -6133,6 +7481,9 @@ class Filter(AbstractModel):
 
     @property
     def FilterValue(self):
+        """u200cThe value of the filter parameter.
+        :rtype: str
+        """
         return self._FilterValue
 
     @FilterValue.setter
@@ -6184,6 +7535,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Id(self):
+        """Gateway certificate ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6192,6 +7547,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Name(self):
+        """Gateway certificate information
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6200,6 +7559,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BindDomains(self):
+        """Bound domain name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._BindDomains
 
     @BindDomains.setter
@@ -6208,6 +7571,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertSource(self):
+        """Certificate source
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._CertSource
 
     @CertSource.setter
@@ -6216,6 +7583,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertId(self):
+        """SSL certificate ID that is currently bound
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -6262,6 +7633,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6270,6 +7644,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The ID of the associated certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -6278,6 +7656,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status. Valid values: `-1`: No certificate is associated with the domain.
+`1`: HTTPS is enabled for the domain.
+`0`: HTTPS is disabled for the domain.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6317,6 +7700,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of LIVE instances in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6325,6 +7711,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of LIVE instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of LiveInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -6400,6 +7790,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def CSRId(self):
+        """The CSR ID.	
+        :rtype: int
+        """
         return self._CSRId
 
     @CSRId.setter
@@ -6408,6 +7801,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Generate(self):
+        """Whether to generate the CSR content. Once the CSR content is generated, the CSR record cannot be modified.
+        :rtype: bool
+        """
         return self._Generate
 
     @Generate.setter
@@ -6416,6 +7812,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6424,6 +7823,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Organization(self):
+        """The organization name.
+        :rtype: str
+        """
         return self._Organization
 
     @Organization.setter
@@ -6432,6 +7834,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Department(self):
+        """The department.
+        :rtype: str
+        """
         return self._Department
 
     @Department.setter
@@ -6440,6 +7845,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Email(self):
+        """The email address.
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -6448,6 +7856,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Province(self):
+        """The province.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -6456,6 +7867,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def City(self):
+        """The city.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -6464,6 +7878,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Country(self):
+        """The country or region.
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -6472,6 +7889,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def EncryptAlgo(self):
+        """The encryption algorithm. RSA and ECC are supported.	
+        :rtype: str
+        """
         return self._EncryptAlgo
 
     @EncryptAlgo.setter
@@ -6480,6 +7900,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def KeyParameter(self):
+        """The key pair parameter. For RSA, only the 2048-bit and 4096-bit key pairs are supported. For ECC, only prime256v1 is supported.
+        :rtype: str
+        """
         return self._KeyParameter
 
     @KeyParameter.setter
@@ -6488,6 +7911,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """The remarks.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -6496,6 +7922,9 @@ class ModifyCSRRequest(AbstractModel):
 
     @property
     def KeyPassword(self):
+        """The password of the private key.
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -6544,6 +7973,9 @@ class ModifyCSRResponse(AbstractModel):
 
     @property
     def Id(self):
+        """The CSR ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6552,6 +7984,9 @@ class ModifyCSRResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6581,6 +8016,9 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -6589,6 +8027,9 @@ class ModifyCertificateAliasRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """Alias
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -6626,6 +8067,9 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """ID of the successfully modified certificate
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -6634,6 +8078,9 @@ class ModifyCertificateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6663,6 +8110,9 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     @property
     def CertificateIdList(self):
+        """ID list of certificates whose projects need to be modified. A maximum of 100 certificate IDs are supported.
+        :rtype: list of str
+        """
         return self._CertificateIdList
 
     @CertificateIdList.setter
@@ -6671,6 +8121,9 @@ class ModifyCertificateProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6713,6 +8166,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuccessCertificates(self):
+        """List of certificates whose projects were modified successfully
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SuccessCertificates
 
     @SuccessCertificates.setter
@@ -6721,6 +8178,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailCertificates(self):
+        """List of certificates whose projects failed to be modified
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._FailCertificates
 
     @FailCertificates.setter
@@ -6729,6 +8190,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6756,6 +8220,9 @@ class ModifyCertificateResubmitRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -6792,6 +8259,9 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -6800,6 +8270,9 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6829,6 +8302,9 @@ class OperationLog(AbstractModel):
 
     @property
     def Action(self):
+        """Action performed on logs
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -6837,6 +8313,9 @@ class OperationLog(AbstractModel):
 
     @property
     def CreatedOn(self):
+        """Time when the action is performed
+        :rtype: str
+        """
         return self._CreatedOn
 
     @CreatedOn.setter
@@ -6880,6 +8359,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalPeriod(self):
+        """Total number of years of the certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalPeriod
 
     @TotalPeriod.setter
@@ -6888,6 +8371,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NowPeriod(self):
+        """Current year of the certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._NowPeriod
 
     @NowPeriod.setter
@@ -6896,6 +8383,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ManagerId(self):
+        """Certificate prereview manager ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -6952,6 +8443,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectName(self):
+        """Project name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -6960,6 +8455,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectCreatorUin(self):
+        """UIN of the project creator
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProjectCreatorUin
 
     @ProjectCreatorUin.setter
@@ -6968,6 +8467,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectCreateTime(self):
+        """Project creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectCreateTime
 
     @ProjectCreateTime.setter
@@ -6976,6 +8479,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectResume(self):
+        """Brief project information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectResume
 
     @ProjectResume.setter
@@ -6984,6 +8491,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """User UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -6992,6 +8503,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7052,6 +8567,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7060,6 +8578,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def ValidType(self):
+        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation
+        :rtype: str
+        """
         return self._ValidType
 
     @ValidType.setter
@@ -7068,6 +8589,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CsrType(self):
+        """Type. `original`: original certificate CSR; `upload`: uploaded manually; `online`: generated online. The default value is original.
+        :rtype: str
+        """
         return self._CsrType
 
     @CsrType.setter
@@ -7076,6 +8600,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CsrContent(self):
+        """CSR content
+        :rtype: str
+        """
         return self._CsrContent
 
     @CsrContent.setter
@@ -7084,6 +8611,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CsrkeyPassword(self):
+        """Password of the key
+        :rtype: str
+        """
         return self._CsrkeyPassword
 
     @CsrkeyPassword.setter
@@ -7092,6 +8622,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def Reason(self):
+        """Reissue reason
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -7100,6 +8633,10 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CertCSREncryptAlgo(self):
+        """The CSR encryption algorithm. Valid values: `RSA` (default), `ECC1`, and `SM2`.
+This parameter is available for selection only when the value of `CsrType` is `Online`.
+        :rtype: str
+        """
         return self._CertCSREncryptAlgo
 
     @CertCSREncryptAlgo.setter
@@ -7108,6 +8645,9 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CertCSRKeyParameter(self):
+        """The CSR encryption parameters. When `CsrEncryptAlgo` is set to `RSA`, `2048` (default) and `4096` are available for selection; and when`CsrEncryptAlgo` is set to `ECC`, `prime256v1` (default) and `secp384r1` are available for selection. 
+        :rtype: str
+        """
         return self._CertCSRKeyParameter
 
     @CertCSRKeyParameter.setter
@@ -7151,6 +8691,9 @@ class ReplaceCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7159,6 +8702,9 @@ class ReplaceCertificateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7188,6 +8734,9 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Cloud resource type
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -7196,6 +8745,9 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def Regions(self):
+        """Region list
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -7239,6 +8791,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sign(self):
+        """Chinese SM signature certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -7247,6 +8803,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Encrypt(self):
+        """Chinese SM encryption certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -7255,6 +8815,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Standard(self):
+        """Standard certificate
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Standard
 
     @Standard.setter
@@ -7365,6 +8929,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7373,6 +8940,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CsrType(self):
+        """CSR generation mode. `online`: generated online; `parse`: uploaded manually
+        :rtype: str
+        """
         return self._CsrType
 
     @CsrType.setter
@@ -7381,6 +8951,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CsrContent(self):
+        """Uploaded CSR content
+        :rtype: str
+        """
         return self._CsrContent
 
     @CsrContent.setter
@@ -7389,6 +8962,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateDomain(self):
+        """Domain name bound with the certificate
+        :rtype: str
+        """
         return self._CertificateDomain
 
     @CertificateDomain.setter
@@ -7397,6 +8973,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def DomainList(self):
+        """Uploaded domain name array (can be uploaded for a multi-domain certificate)
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -7405,6 +8984,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def KeyPassword(self):
+        """Password of the private key
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -7413,6 +8995,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
+        """Organization name
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -7421,6 +9006,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationDivision(self):
+        """Division name
+        :rtype: str
+        """
         return self._OrganizationDivision
 
     @OrganizationDivision.setter
@@ -7429,6 +9017,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationAddress(self):
+        """Detailed address of the organization
+        :rtype: str
+        """
         return self._OrganizationAddress
 
     @OrganizationAddress.setter
@@ -7437,6 +9028,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationCountry(self):
+        """Country where the organization is located, for example, CN (China)
+        :rtype: str
+        """
         return self._OrganizationCountry
 
     @OrganizationCountry.setter
@@ -7445,6 +9039,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationCity(self):
+        """City where the organization is located
+        :rtype: str
+        """
         return self._OrganizationCity
 
     @OrganizationCity.setter
@@ -7453,6 +9050,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationRegion(self):
+        """Province where the organization is located
+        :rtype: str
+        """
         return self._OrganizationRegion
 
     @OrganizationRegion.setter
@@ -7461,6 +9061,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PostalCode(self):
+        """Postal code of the organization
+        :rtype: str
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -7469,6 +9072,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PhoneAreaCode(self):
+        """Area code of the fixed-line phone number of the organization
+        :rtype: str
+        """
         return self._PhoneAreaCode
 
     @PhoneAreaCode.setter
@@ -7477,6 +9083,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """Fixed-line phone number of the organization
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -7485,6 +9094,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
+        """Certificate validation method
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -7493,6 +9105,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminFirstName(self):
+        """Last name of the administrator
+        :rtype: str
+        """
         return self._AdminFirstName
 
     @AdminFirstName.setter
@@ -7501,6 +9116,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminLastName(self):
+        """First name of the administrator
+        :rtype: str
+        """
         return self._AdminLastName
 
     @AdminLastName.setter
@@ -7509,6 +9127,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminPhoneNum(self):
+        """Mobile number of the administrator
+        :rtype: str
+        """
         return self._AdminPhoneNum
 
     @AdminPhoneNum.setter
@@ -7517,6 +9138,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminEmail(self):
+        """Email of the administrator
+        :rtype: str
+        """
         return self._AdminEmail
 
     @AdminEmail.setter
@@ -7525,6 +9149,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminPosition(self):
+        """Position of the administrator
+        :rtype: str
+        """
         return self._AdminPosition
 
     @AdminPosition.setter
@@ -7533,6 +9160,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactFirstName(self):
+        """Last name of the contact
+        :rtype: str
+        """
         return self._ContactFirstName
 
     @ContactFirstName.setter
@@ -7541,6 +9171,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactLastName(self):
+        """First name of the contact
+        :rtype: str
+        """
         return self._ContactLastName
 
     @ContactLastName.setter
@@ -7549,6 +9182,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactEmail(self):
+        """Email of the contact
+        :rtype: str
+        """
         return self._ContactEmail
 
     @ContactEmail.setter
@@ -7557,6 +9193,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactNumber(self):
+        """Mobile number of the contact
+        :rtype: str
+        """
         return self._ContactNumber
 
     @ContactNumber.setter
@@ -7565,6 +9204,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactPosition(self):
+        """Position of the contact
+        :rtype: str
+        """
         return self._ContactPosition
 
     @ContactPosition.setter
@@ -7626,6 +9268,9 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -7634,6 +9279,9 @@ class SubmitCertificateInformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7757,6 +9405,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CsrType(self):
+        """CSR type. `online`: CSR generated online; `parse`: CSR pasted
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CsrType
 
     @CsrType.setter
@@ -7765,6 +9417,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CsrContent(self):
+        """CSR content
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CsrContent
 
     @CsrContent.setter
@@ -7773,6 +9429,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateDomain(self):
+        """Domain name information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertificateDomain
 
     @CertificateDomain.setter
@@ -7781,6 +9441,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainList(self):
+        """DNS information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -7789,6 +9453,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyPassword(self):
+        """Password of the private key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._KeyPassword
 
     @KeyPassword.setter
@@ -7797,6 +9465,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationName(self):
+        """Enterprise or unit name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrganizationName
 
     @OrganizationName.setter
@@ -7805,6 +9477,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationDivision(self):
+        """Division
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrganizationDivision
 
     @OrganizationDivision.setter
@@ -7813,6 +9489,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationAddress(self):
+        """Address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrganizationAddress
 
     @OrganizationAddress.setter
@@ -7821,6 +9501,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationCountry(self):
+        """Country
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrganizationCountry
 
     @OrganizationCountry.setter
@@ -7829,6 +9513,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationCity(self):
+        """City
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrganizationCity
 
     @OrganizationCity.setter
@@ -7837,6 +9525,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrganizationRegion(self):
+        """Province
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrganizationRegion
 
     @OrganizationRegion.setter
@@ -7845,6 +9537,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PostalCode(self):
+        """Postal code
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PostalCode
 
     @PostalCode.setter
@@ -7853,6 +9549,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneAreaCode(self):
+        """Area code of the fixed-line phone number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PhoneAreaCode
 
     @PhoneAreaCode.setter
@@ -7861,6 +9561,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PhoneNumber(self):
+        """Fixed-line phone number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -7869,6 +9573,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminFirstName(self):
+        """First name of the administrator
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AdminFirstName
 
     @AdminFirstName.setter
@@ -7877,6 +9585,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminLastName(self):
+        """Last name of the administrator
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AdminLastName
 
     @AdminLastName.setter
@@ -7885,6 +9597,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminPhoneNum(self):
+        """Phone number of the administrator
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AdminPhoneNum
 
     @AdminPhoneNum.setter
@@ -7893,6 +9609,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminEmail(self):
+        """Email of the administrator
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AdminEmail
 
     @AdminEmail.setter
@@ -7901,6 +9621,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdminPosition(self):
+        """Position of the administrator
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AdminPosition
 
     @AdminPosition.setter
@@ -7909,6 +9633,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContactFirstName(self):
+        """First name of the contact
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ContactFirstName
 
     @ContactFirstName.setter
@@ -7917,6 +9645,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContactLastName(self):
+        """Last name of the contact
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ContactLastName
 
     @ContactLastName.setter
@@ -7925,6 +9657,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContactNumber(self):
+        """Phone number of the contact
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ContactNumber
 
     @ContactNumber.setter
@@ -7933,6 +9669,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContactEmail(self):
+        """Email of the contact
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ContactEmail
 
     @ContactEmail.setter
@@ -7941,6 +9681,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContactPosition(self):
+        """Position of the contact
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ContactPosition
 
     @ContactPosition.setter
@@ -7949,6 +9693,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyType(self):
+        """Validation type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VerifyType
 
     @VerifyType.setter
@@ -8024,6 +9772,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def NGINX(self):
+        """
+        :rtype: bool
+        """
         return self._NGINX
 
     @NGINX.setter
@@ -8032,6 +9783,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def APACHE(self):
+        """
+        :rtype: bool
+        """
         return self._APACHE
 
     @APACHE.setter
@@ -8040,6 +9794,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def TOMCAT(self):
+        """
+        :rtype: bool
+        """
         return self._TOMCAT
 
     @TOMCAT.setter
@@ -8048,6 +9805,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def IIS(self):
+        """
+        :rtype: bool
+        """
         return self._IIS
 
     @IIS.setter
@@ -8056,6 +9816,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def JKS(self):
+        """
+        :rtype: bool
+        """
         return self._JKS
 
     @JKS.setter
@@ -8064,6 +9827,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def OTHER(self):
+        """
+        :rtype: bool
+        """
         return self._OTHER
 
     @OTHER.setter
@@ -8072,6 +9838,9 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def ROOT(self):
+        """
+        :rtype: bool
+        """
         return self._ROOT
 
     @ROOT.setter
@@ -8125,6 +9894,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8133,6 +9905,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindResourceResult(self):
+        """The associated cloud resources.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BindResourceResult
+        """
         return self._BindResourceResult
 
     @BindResourceResult.setter
@@ -8141,6 +9917,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8149,6 +9928,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Error(self):
+        """The error occurred when querying the associated cloud resources.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.Error`
+        """
         return self._Error
 
     @Error.setter
@@ -8157,6 +9940,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CacheTime(self):
+        """The cache time of the current result.
+        :rtype: str
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -8225,6 +10011,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -8233,6 +10023,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -8241,6 +10035,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnionStatus(self):
+        """The unified domain status.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._UnionStatus
 
     @UnionStatus.setter
@@ -8249,6 +10048,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPreempted(self):
+        """Whether the domain is preempted. A preempted domain is one that is already associated with another environment. It must be disassociated or re-associated first.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsPreempted
 
     @IsPreempted.setter
@@ -8257,6 +10061,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ICPStatus(self):
+        """Whether the domain is added to the ICP blocklist. Valid values: `0` for no and `1` for yes.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ICPStatus
 
     @ICPStatus.setter
@@ -8265,6 +10074,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldCertificateId(self):
+        """The ID of the associated certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -8308,6 +10121,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TCBAccessInstance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8316,6 +10133,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The instance count.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8368,6 +10189,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
+        """The unique ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -8376,6 +10201,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Source(self):
+        """The source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -8384,6 +10213,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """The name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8392,6 +10225,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8437,6 +10274,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environment(self):
+        """The TCB environment.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBEnvironment`
+        """
         return self._Environment
 
     @Environment.setter
@@ -8445,6 +10286,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessService(self):
+        """The access service.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBAccessService`
+        """
         return self._AccessService
 
     @AccessService.setter
@@ -8453,6 +10298,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostService(self):
+        """Whether static hosting is used.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.TCBHostService`
+        """
         return self._HostService
 
     @HostService.setter
@@ -8507,6 +10356,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -8515,6 +10368,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8523,6 +10380,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DNSStatus(self):
+        """The resolution status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DNSStatus
 
     @DNSStatus.setter
@@ -8531,6 +10392,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OldCertificateId(self):
+        """The ID of the associated certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -8572,6 +10437,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TCBHostInstance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8580,6 +10449,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The instance count.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8623,6 +10496,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8631,6 +10507,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Environments(self):
+        """The list of TCB environments.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TCBEnvironments
+        """
         return self._Environments
 
     @Environments.setter
@@ -8679,6 +10559,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def GatewayId(self):
+        """Gateway ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -8687,6 +10571,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def GatewayName(self):
+        """Gateway name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._GatewayName
 
     @GatewayName.setter
@@ -8695,6 +10583,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertificateList(self):
+        """Gateway certificate list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of GatewayCertificate
+        """
         return self._CertificateList
 
     @CertificateList.setter
@@ -8742,6 +10634,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceList(self):
+        """TSE instance details
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of TSEInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8750,6 +10646,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TotalCount(self):
+        """Total TSE instances in this region	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8758,6 +10657,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Region(self):
+        """Region	
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -8801,6 +10703,9 @@ class Tags(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -8809,6 +10714,9 @@ class Tags(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -8853,6 +10761,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -8861,6 +10772,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -8869,6 +10783,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """The AZ ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -8877,6 +10795,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The status of the domain.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8917,6 +10838,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of EDGEONE instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TeoInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -8925,6 +10850,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of EDGEONE instances.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8970,6 +10898,9 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def IngressName(self):
+        """The Ingress name.
+        :rtype: str
+        """
         return self._IngressName
 
     @IngressName.setter
@@ -8978,6 +10909,9 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def TlsDomains(self):
+        """The list of TLS domains.
+        :rtype: list of str
+        """
         return self._TlsDomains
 
     @TlsDomains.setter
@@ -8986,6 +10920,9 @@ class TkeIngressDetail(AbstractModel):
 
     @property
     def Domains(self):
+        """The list of Ingress domains.
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -9033,6 +10970,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The cluster ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -9041,6 +10981,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterName(self):
+        """The cluster name.
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -9049,6 +10992,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def NamespaceList(self):
+        """The list of cluster namespaces.
+        :rtype: list of TkeNameSpaceDetail
+        """
         return self._NamespaceList
 
     @NamespaceList.setter
@@ -9057,6 +11003,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterType(self):
+        """The cluster type.
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -9065,6 +11014,9 @@ class TkeInstanceDetail(AbstractModel):
 
     @property
     def ClusterVersion(self):
+        """The cluster version.
+        :rtype: str
+        """
         return self._ClusterVersion
 
     @ClusterVersion.setter
@@ -9114,6 +11066,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9122,6 +11077,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of TKE instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TkeInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -9130,6 +11089,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of TKE instances in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -9173,6 +11135,9 @@ class TkeNameSpaceDetail(AbstractModel):
 
     @property
     def Name(self):
+        """The namespace name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9181,6 +11146,9 @@ class TkeNameSpaceDetail(AbstractModel):
 
     @property
     def SecretList(self):
+        """The secret list.
+        :rtype: list of TkeSecretDetail
+        """
         return self._SecretList
 
     @SecretList.setter
@@ -9230,6 +11198,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """The secret name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9238,6 +11209,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -9246,6 +11220,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IngressList(self):
+        """The Ingress list.
+        :rtype: list of TkeIngressDetail
+        """
         return self._IngressList
 
     @IngressList.setter
@@ -9254,6 +11231,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoMatchDomains(self):
+        """The list of domains that do not match the new certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._NoMatchDomains
 
     @NoMatchDomains.setter
@@ -9328,6 +11309,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
+        """One-click update old certificate ID
+        :rtype: str
+        """
         return self._OldCertificateId
 
     @OldCertificateId.setter
@@ -9336,6 +11320,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
+        """Type of the resource that needs to be deployed. The following parameter values are optional: clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, and tcb.
+        :rtype: list of str
+        """
         return self._ResourceTypes
 
     @ResourceTypes.setter
@@ -9344,6 +11331,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """One-click update new certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -9354,6 +11344,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
     def Regions(self):
         warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
 
+        """List of regions that need to be deployed (deprecated)
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -9364,6 +11357,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
+        """List of regions for which cloud resources need to be deployed
+        :rtype: list of ResourceTypeRegions
+        """
         return self._ResourceTypesRegions
 
     @ResourceTypesRegions.setter
@@ -9372,6 +11368,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
+        """Public key of the certificate. If the public key of the certificate is uploaded, CertificateId does not need to be uploaded.
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -9380,6 +11379,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
+        """Private key of the certificate. If the public key of the certificate is uploaded, the private key of the certificate is required.
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -9388,6 +11390,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ExpiringNotificationSwitch(self):
+        """Whether an expiration reminder is ignored for the old certificate. 0: The notification is not ignored. 1: The notification is ignored.
+        :rtype: int
+        """
         return self._ExpiringNotificationSwitch
 
     @ExpiringNotificationSwitch.setter
@@ -9396,6 +11401,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Repeatable(self):
+        """Whether repeated uploading of the same certificate is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        :rtype: bool
+        """
         return self._Repeatable
 
     @Repeatable.setter
@@ -9404,6 +11412,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def AllowDownload(self):
+        """Whether downloading is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        :rtype: bool
+        """
         return self._AllowDownload
 
     @AllowDownload.setter
@@ -9412,6 +11423,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list. If the public key of the certificate is uploaded, this parameter can be configured.
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -9420,6 +11434,9 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID. If the public key of the certificate is uploaded, this parameter can be configured.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -9484,6 +11501,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DeployRecordId(self):
+        """Cloud resource deployment task ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -9492,6 +11513,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DeployStatus(self):
+        """Deployment status. 1 indicates that the deployment succeeded, and 0 indicates that the deployment failed.
+        :rtype: int
+        """
         return self._DeployStatus
 
     @DeployStatus.setter
@@ -9500,6 +11524,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UpdateSyncProgress(self):
+        """
+        :rtype: list of UpdateSyncProgress
+        """
         return self._UpdateSyncProgress
 
     @UpdateSyncProgress.setter
@@ -9508,6 +11535,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9544,6 +11574,9 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """To-be-redeployed record ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -9552,6 +11585,9 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
+        """To-be-redeployed record detail ID
+        :rtype: int
+        """
         return self._DeployRecordDetailId
 
     @DeployRecordDetailId.setter
@@ -9586,6 +11622,9 @@ class UpdateCertificateRecordRetryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9611,6 +11650,9 @@ class UpdateCertificateRecordRollbackRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """To-be-redeployed record ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -9647,6 +11689,9 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
+        """Rollback deployment record ID
+        :rtype: int
+        """
         return self._DeployRecordId
 
     @DeployRecordId.setter
@@ -9655,6 +11700,9 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9759,6 +11807,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Id(self):
+        """Detail record ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9767,6 +11818,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertId(self):
+        """New certificate ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -9775,6 +11829,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OldCertId(self):
+        """Old certificate ID
+        :rtype: str
+        """
         return self._OldCertId
 
     @OldCertId.setter
@@ -9783,6 +11840,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Domains(self):
+        """Deployment domain name list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -9791,6 +11852,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ResourceType(self):
+        """Deployment resource type
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -9799,6 +11863,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Region(self):
+        """Deployment region
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9807,6 +11875,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
+        """Deployment status
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9815,6 +11886,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ErrorMsg(self):
+        """Deployment error message
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -9823,6 +11898,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreateTime(self):
+        """Deployment time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9831,6 +11909,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UpdateTime(self):
+        """Last update time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -9839,6 +11920,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceId(self):
+        """Deployment instance ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9847,6 +11932,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceName(self):
+        """Deployment instance name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9855,6 +11944,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ListenerId(self):
+        """Deployment listener ID (only for CLB)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -9863,6 +11956,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ListenerName(self):
+        """Deployment listener name (only for CLB)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ListenerName
 
     @ListenerName.setter
@@ -9871,6 +11968,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Protocol(self):
+        """Protocol
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -9879,6 +11980,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SniSwitch(self):
+        """Whether SNI is enabled (only for CLB)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._SniSwitch
 
     @SniSwitch.setter
@@ -9887,6 +11992,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Bucket(self):
+        """Bucket name (only for COS)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -9895,6 +12004,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Port(self):
+        """Port
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -9903,6 +12016,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Namespace(self):
+        """Namespace (only for TKE)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -9911,6 +12028,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SecretName(self):
+        """Secret name (only for TKE)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._SecretName
 
     @SecretName.setter
@@ -9919,6 +12040,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EnvId(self):
+        """Environment ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -9927,6 +12052,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TCBType(self):
+        """TCB deployment type
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._TCBType
 
     @TCBType.setter
@@ -9987,6 +12116,9 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Deployment resource type
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -9995,6 +12127,9 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def List(self):
+        """Deployment resource detail list
+        :rtype: list of UpdateRecordDetail
+        """
         return self._List
 
     @List.setter
@@ -10003,6 +12138,9 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total deployment resource count
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10065,6 +12203,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Id(self):
+        """Record ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -10073,6 +12214,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertId(self):
+        """New certificate ID
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -10081,6 +12225,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OldCertId(self):
+        """Old certificate ID
+        :rtype: str
+        """
         return self._OldCertId
 
     @OldCertId.setter
@@ -10089,6 +12236,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ResourceTypes(self):
+        """Deployment resource type list
+        :rtype: list of str
+        """
         return self._ResourceTypes
 
     @ResourceTypes.setter
@@ -10097,6 +12247,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Regions(self):
+        """Deployment region list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -10105,6 +12259,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
+        """Deployment status
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10113,6 +12270,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreateTime(self):
+        """Deployment time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10121,6 +12281,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UpdateTime(self):
+        """Last update time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -10167,6 +12330,9 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def ResourceType(self):
+        """
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -10175,6 +12341,9 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def UpdateSyncProgressRegions(self):
+        """
+        :rtype: list of UpdateSyncProgressRegion
+        """
         return self._UpdateSyncProgressRegions
 
     @UpdateSyncProgressRegions.setter
@@ -10183,6 +12352,9 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def Status(self):
+        """
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10232,6 +12404,9 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Region(self):
+        """
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10240,6 +12415,9 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def TotalCount(self):
+        """
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10248,6 +12426,9 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def OffsetCount(self):
+        """
+        :rtype: int
+        """
         return self._OffsetCount
 
     @OffsetCount.setter
@@ -10256,6 +12437,9 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Status(self):
+        """
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -10313,6 +12497,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
+        """Public key of the certificate
+        :rtype: str
+        """
         return self._CertificatePublicKey
 
     @CertificatePublicKey.setter
@@ -10321,6 +12508,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
+        """Private key content. This parameter is required when the certificate type is SVR, and not required when the certificate type is CA.
+        :rtype: str
+        """
         return self._CertificatePrivateKey
 
     @CertificatePrivateKey.setter
@@ -10329,6 +12519,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateType(self):
+        """Certificate type. Valid values: `CA` (CA certificate) and `SVR` (server certificate). Default value: `SVR`
+        :rtype: str
+        """
         return self._CertificateType
 
     @CertificateType.setter
@@ -10337,6 +12530,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """Alias
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -10345,6 +12541,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10353,6 +12552,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateUse(self):
+        """
+        :rtype: str
+        """
         return self._CertificateUse
 
     @CertificateUse.setter
@@ -10361,6 +12563,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """The list of tags.
+        :rtype: list of Tags
+        """
         return self._Tags
 
     @Tags.setter
@@ -10369,6 +12574,9 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Repeatable(self):
+        """Whether a certificate can be repeatedly uploaded.
+        :rtype: bool
+        """
         return self._Repeatable
 
     @Repeatable.setter
@@ -10421,6 +12629,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -10429,6 +12640,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RepeatCertId(self):
+        """The ID of the repeatedly uploaded certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RepeatCertId
 
     @RepeatCertId.setter
@@ -10437,6 +12652,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10467,6 +12685,9 @@ class UploadConfirmLetterRequest(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -10475,6 +12696,9 @@ class UploadConfirmLetterRequest(AbstractModel):
 
     @property
     def ConfirmLetter(self):
+        """Base64-encoded confirmation letter file, which must be a JPG, JPEG, PNG, or PDF file of 1 KB to 1.4 MB
+        :rtype: str
+        """
         return self._ConfirmLetter
 
     @ConfirmLetter.setter
@@ -10515,6 +12739,9 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def CertificateId(self):
+        """Certificate ID
+        :rtype: str
+        """
         return self._CertificateId
 
     @CertificateId.setter
@@ -10523,6 +12750,9 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """Whether the operation is successful
+        :rtype: bool
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -10531,6 +12761,9 @@ class UploadConfirmLetterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10562,6 +12795,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of VOD instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of VodInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -10570,6 +12807,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of VOD instances in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10612,6 +12852,9 @@ class VodInstanceDetail(AbstractModel):
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10620,6 +12863,9 @@ class VodInstanceDetail(AbstractModel):
 
     @property
     def CertId(self):
+        """The certificate ID.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -10662,6 +12908,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """The domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10670,6 +12919,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """The certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -10678,6 +12931,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Keepalive(self):
+        """Whether to keep the persistent connection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Keepalive
 
     @Keepalive.setter
@@ -10720,6 +12977,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """The region.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -10728,6 +12988,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """The list of WAF instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of WafInstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -10736,6 +13000,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The total number of WAF instances in this region.	
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter

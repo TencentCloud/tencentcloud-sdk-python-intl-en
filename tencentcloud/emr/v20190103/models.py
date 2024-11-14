@@ -35,6 +35,9 @@ class AddUsersForUserManagerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Cluster string ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -43,6 +46,9 @@ class AddUsersForUserManagerRequest(AbstractModel):
 
     @property
     def UserManagerUserList(self):
+        """User information list
+        :rtype: list of UserInfoForUserManager
+        """
         return self._UserManagerUserList
 
     @UserManagerUserList.setter
@@ -90,6 +96,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SuccessUserList(self):
+        """The user list that is successfully added
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._SuccessUserList
 
     @SuccessUserList.setter
@@ -98,6 +108,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FailedUserList(self):
+        """The user list that is not successfully added
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._FailedUserList
 
     @FailedUserList.setter
@@ -106,6 +120,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -162,6 +179,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterResourceSpec(self):
+        """The description of master nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        """
         return self._MasterResourceSpec
 
     @MasterResourceSpec.setter
@@ -170,6 +191,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoreResourceSpec(self):
+        """The description of core nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        """
         return self._CoreResourceSpec
 
     @CoreResourceSpec.setter
@@ -178,6 +203,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskResourceSpec(self):
+        """The description of task nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        """
         return self._TaskResourceSpec
 
     @TaskResourceSpec.setter
@@ -186,6 +215,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CommonResourceSpec(self):
+        """The description of common nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        """
         return self._CommonResourceSpec
 
     @CommonResourceSpec.setter
@@ -194,6 +227,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterCount(self):
+        """The number of master nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MasterCount
 
     @MasterCount.setter
@@ -202,6 +239,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoreCount(self):
+        """The number of core nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CoreCount
 
     @CoreCount.setter
@@ -210,6 +251,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskCount(self):
+        """The number of task nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TaskCount
 
     @TaskCount.setter
@@ -218,6 +263,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CommonCount(self):
+        """The number of common nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CommonCount
 
     @CommonCount.setter
@@ -287,6 +336,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def Queue(self):
+        """Queue name
+        :rtype: str
+        """
         return self._Queue
 
     @Queue.setter
@@ -295,6 +347,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def User(self):
+        """Username
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -303,6 +358,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """Application type
+        :rtype: str
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -311,6 +369,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def SumMemorySeconds(self):
+        """`SumMemorySeconds` meaning
+        :rtype: int
+        """
         return self._SumMemorySeconds
 
     @SumMemorySeconds.setter
@@ -319,6 +380,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def SumVCoreSeconds(self):
+        """
+        :rtype: int
+        """
         return self._SumVCoreSeconds
 
     @SumVCoreSeconds.setter
@@ -327,6 +391,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def SumHDFSBytesWritten(self):
+        """SumHDFSBytesWritten (with unit)
+        :rtype: str
+        """
         return self._SumHDFSBytesWritten
 
     @SumHDFSBytesWritten.setter
@@ -335,6 +402,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def SumHDFSBytesRead(self):
+        """SumHDFSBytesRead (with unit)
+        :rtype: str
+        """
         return self._SumHDFSBytesRead
 
     @SumHDFSBytesRead.setter
@@ -343,6 +413,9 @@ class ApplicationStatics(AbstractModel):
 
     @property
     def CountApps(self):
+        """Application count
+        :rtype: int
+        """
         return self._CountApps
 
     @CountApps.setter
@@ -421,6 +494,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StrategyName(self):
+        """Name of the scale-in or scale-out rule.
+        :rtype: str
+        """
         return self._StrategyName
 
     @StrategyName.setter
@@ -429,6 +505,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScaleAction(self):
+        """"SCALE_OUT" and "SCALE_IN", representing expansion and reduction respectively.
+        :rtype: str
+        """
         return self._ScaleAction
 
     @ScaleAction.setter
@@ -437,6 +516,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionStatus(self):
+        """The values are "SUCCESS", "FAILED", "PART_SUCCESS", "IN_PROCESS", which indicate success, failure, partial success, and in-progress, respectively.
+        :rtype: str
+        """
         return self._ActionStatus
 
     @ActionStatus.setter
@@ -445,6 +527,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionTime(self):
+        """Process initiation time.
+        :rtype: str
+        """
         return self._ActionTime
 
     @ActionTime.setter
@@ -453,6 +538,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScaleInfo(self):
+        """Description related to auto-scaling.
+        :rtype: str
+        """
         return self._ScaleInfo
 
     @ScaleInfo.setter
@@ -461,6 +549,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectScaleNum(self):
+        """Valid only when ScaleAction is SCALE_OUT.
+        :rtype: int
+        """
         return self._ExpectScaleNum
 
     @ExpectScaleNum.setter
@@ -469,6 +560,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Process termination time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -477,6 +571,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StrategyType(self):
+        """Policy type. Valid values: 1 (load-based scaling), 2 (time-based scaling).
+        :rtype: int
+        """
         return self._StrategyType
 
     @StrategyType.setter
@@ -485,6 +582,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpecInfo(self):
+        """Specification information used during scale-out.
+        :rtype: str
+        """
         return self._SpecInfo
 
     @SpecInfo.setter
@@ -493,6 +593,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompensateFlag(self):
+        """Compensatory scale-out. Valid values: 0 (disabled), 1 (enabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CompensateFlag
 
     @CompensateFlag.setter
@@ -501,6 +605,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompensateCount(self):
+        """Number of compensations
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CompensateCount
 
     @CompensateCount.setter
@@ -509,6 +617,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetryCount(self):
+        """
+        :rtype: int
+        """
         return self._RetryCount
 
     @RetryCount.setter
@@ -517,6 +628,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetryInfo(self):
+        """
+        :rtype: str
+        """
         return self._RetryInfo
 
     @RetryInfo.setter
@@ -568,6 +682,9 @@ class COSSettings(AbstractModel):
 
     @property
     def CosSecretId(self):
+        """COS `SecretId`
+        :rtype: str
+        """
         return self._CosSecretId
 
     @CosSecretId.setter
@@ -576,6 +693,9 @@ class COSSettings(AbstractModel):
 
     @property
     def CosSecretKey(self):
+        """COS `SecrectKey`
+        :rtype: str
+        """
         return self._CosSecretKey
 
     @CosSecretKey.setter
@@ -584,6 +704,9 @@ class COSSettings(AbstractModel):
 
     @property
     def LogOnCosPath(self):
+        """COS path to log
+        :rtype: str
+        """
         return self._LogOnCosPath
 
     @LogOnCosPath.setter
@@ -676,6 +799,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Database instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -684,6 +811,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """Database IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -692,6 +823,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
+        """Database port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -700,6 +835,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
+        """Database memory specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MemSize
 
     @MemSize.setter
@@ -708,6 +847,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Volume(self):
+        """Database disk specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -716,6 +859,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Service(self):
+        """Service flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -724,6 +871,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -732,6 +883,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplyTime(self):
+        """Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -740,6 +895,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
+        """Payment type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -748,6 +907,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireFlag(self):
+        """Expiration flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._ExpireFlag
 
     @ExpireFlag.setter
@@ -756,6 +919,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Database status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -764,6 +931,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAutoRenew(self):
+        """Renewal flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsAutoRenew
 
     @IsAutoRenew.setter
@@ -772,6 +943,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SerialNo(self):
+        """Database string
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SerialNo
 
     @SerialNo.setter
@@ -780,6 +955,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """ZoneId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -788,6 +967,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
+        """RegionId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -848,6 +1031,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DependType(self):
+        """Dependency. `0`: Other clusters depend on the current cluster. `1`: The current cluster depends on other clusters.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DependType
 
     @DependType.setter
@@ -856,6 +1043,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Service(self):
+        """Shared component
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -864,6 +1055,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterId(self):
+        """Sharing cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -872,6 +1067,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterStatus(self):
+        """Sharing cluster status
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ClusterStatus
 
     @ClusterStatus.setter
@@ -912,6 +1111,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
+        """Cluster IDNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -920,6 +1122,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
+        """Process ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -1146,6 +1352,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1154,6 +1364,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
+        """Cluster ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1162,6 +1376,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ftitle(self):
+        """Title
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Ftitle
 
     @Ftitle.setter
@@ -1170,6 +1388,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
+        """Cluster name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -1178,6 +1400,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
+        """Region ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -1186,6 +1412,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """Region ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1194,6 +1424,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """User APPID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1202,6 +1436,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
+        """User UIN
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -1210,6 +1448,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1218,6 +1460,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """Cluster `VPCID`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1226,6 +1472,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """Subnet ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1234,6 +1484,37 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Instance status code. Value range:
+<li>2: cluster running</li>
+<li>3: creating cluster.</li>
+<li>4: scaling out cluster.</li>
+<li>5: adding router node in cluster.</li>
+<li>6: installing component in cluster.</li>
+<li>7: cluster executing command.</li>
+<li>8: restarting service.</li>
+<li>9: entering maintenance.</li>
+<li>10: suspending service.</li>
+<li>11: exiting maintenance.</li>
+<li>12: exiting suspension.</li>
+<li>13: delivering configuration.</li>
+<li>14: terminating cluster.</li>
+<li>15: terminating core node.</li>
+<li>16: terminating task node.</li>
+<li>17: terminating router node.</li>
+<li>18: changing webproxy password.</li>
+<li>19: isolating cluster.</li>
+<li>20: resuming cluster.</li>
+<li>21: repossessing cluster.</li>
+<li>22: waiting for configuration adjustment.</li>
+<li>23: cluster isolated.</li>
+<li>24: removing node.</li>
+<li>33: waiting for refund.</li>
+<li>34: refunded.</li>
+<li>301: creation failed.</li>
+<li>302: scale-out failed.</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1242,6 +1523,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -1250,6 +1535,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunTime(self):
+        """Execution duration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RunTime
 
     @RunTime.setter
@@ -1258,6 +1547,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
+        """Cluster product configuration information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigOutter`
+        """
         return self._Config
 
     @Config.setter
@@ -1266,6 +1559,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterIp(self):
+        """Public IP of master node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MasterIp
 
     @MasterIp.setter
@@ -1274,6 +1571,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EmrVersion(self):
+        """EMR version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EmrVersion
 
     @EmrVersion.setter
@@ -1282,6 +1583,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeType(self):
+        """Billing mode
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -1290,6 +1595,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeVersion(self):
+        """Transaction version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TradeVersion
 
     @TradeVersion.setter
@@ -1298,6 +1607,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceOrderId(self):
+        """Resource order ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ResourceOrderId
 
     @ResourceOrderId.setter
@@ -1306,6 +1619,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsTradeCluster(self):
+        """Whether this is a paid cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsTradeCluster
 
     @IsTradeCluster.setter
@@ -1314,6 +1631,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmInfo(self):
+        """Alarm information for cluster error
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AlarmInfo
 
     @AlarmInfo.setter
@@ -1322,6 +1643,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsWoodpeckerCluster(self):
+        """Whether the new architecture is used
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsWoodpeckerCluster
 
     @IsWoodpeckerCluster.setter
@@ -1330,6 +1655,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaDb(self):
+        """Metadatabase information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MetaDb
 
     @MetaDb.setter
@@ -1338,6 +1667,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1346,6 +1679,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HiveMetaDb(self):
+        """Hive metadata
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HiveMetaDb
 
     @HiveMetaDb.setter
@@ -1354,6 +1691,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceClass(self):
+        """Cluster type: EMR, CLICKHOUSE, DRUID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ServiceClass
 
     @ServiceClass.setter
@@ -1362,6 +1703,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AliasInfo(self):
+        """Alias serialization of all nodes in cluster
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AliasInfo
 
     @AliasInfo.setter
@@ -1370,6 +1715,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductId(self):
+        """Cluster version ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1378,6 +1727,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Availability zone
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1386,6 +1739,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneName(self):
+        """Scenario name
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -1394,6 +1751,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneServiceClass(self):
+        """Scenario-based cluster type
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._SceneServiceClass
 
     @SceneServiceClass.setter
@@ -1402,6 +1763,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneEmrVersion(self):
+        """Scenario-based EMR version
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._SceneEmrVersion
 
     @SceneEmrVersion.setter
@@ -1410,6 +1775,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisplayName(self):
+        """Scenario-based cluster type
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._DisplayName
 
     @DisplayName.setter
@@ -1418,6 +1787,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcName(self):
+        """VPC name
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -1426,6 +1799,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetName(self):
+        """Subnet name
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -1434,6 +1811,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterExternalServiceInfo(self):
+        """Cluster dependency
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of ClusterExternalServiceInfo
+        """
         return self._ClusterExternalServiceInfo
 
     @ClusterExternalServiceInfo.setter
@@ -1442,6 +1823,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
+        """The VPC ID string type of the cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -1450,6 +1835,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqSubnetId(self):
+        """The subnet ID string type of the cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -1458,6 +1847,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopologyInfoList(self):
+        """Node information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of TopologyInfo
+        """
         return self._TopologyInfoList
 
     @TopologyInfoList.setter
@@ -1466,6 +1859,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMultiZoneCluster(self):
+        """Multi-AZ cluster
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsMultiZoneCluster
 
     @IsMultiZoneCluster.setter
@@ -1474,6 +1871,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsCvmReplace(self):
+        """Whether the feature of automatic abnormal node replacement is enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsCvmReplace
 
     @IsCvmReplace.setter
@@ -1570,6 +1971,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ComponentName(self):
+        """The process name (required), such as NameNode.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -1578,6 +1983,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpList(self):
+        """The target IP list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -1687,6 +2096,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def ProductVersion(self):
+        """The EMR version, such as `EMR-V2.3.0` that indicates the version 2.3.0 of EMR. You can query the EMR version [here](https://intl.cloud.tencent.com/document/product/589/66338?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._ProductVersion
 
     @ProductVersion.setter
@@ -1695,6 +2107,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def EnableSupportHAFlag(self):
+        """Whether to enable high availability for nodes. Valid values:
+<li>`true`: Enable</li>
+<li>`false`: Disable</li>
+        :rtype: bool
+        """
         return self._EnableSupportHAFlag
 
     @EnableSupportHAFlag.setter
@@ -1703,6 +2120,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def InstanceName(self):
+        """The instance name.
+<li>Length limit: 6–36 characters.</li>
+<li>Can contain only Chinese characters, letters, digits, hyphens (-), and underscores (_).</li>
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1711,6 +2133,10 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def InstanceChargeType(self):
+        """The instance billing mode. Valid values:
+<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -1719,6 +2145,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def LoginSettings(self):
+        """The instance login setting. This parameter allows you to set a login password or key for your purchased node.
+<li>If a key is set, the password will be used for login to the native component WebUI only.</li>
+<li>If no key is set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -1727,6 +2158,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def SceneSoftwareConfig(self):
+        """The configuration of cluster application scenario and supported components.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.SceneSoftwareConfig`
+        """
         return self._SceneSoftwareConfig
 
     @SceneSoftwareConfig.setter
@@ -1735,6 +2169,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def InstanceChargePrepaid(self):
+        """The details of the monthly subscription, including the instance period and auto-renewal. It is required if `InstanceChargeType` is `PREPAID`.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -1743,6 +2180,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def SecurityGroupIds(self):
+        """The ID of the security group to which the instance belongs, in the format of `sg-xxxxxxxx`. You can call the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API and obtain this parameter from the `SecurityGroupId` field in the response.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -1751,6 +2191,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def ScriptBootstrapActionConfig(self):
+        """The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
+        :rtype: list of ScriptBootstrapActionConfig
+        """
         return self._ScriptBootstrapActionConfig
 
     @ScriptBootstrapActionConfig.setter
@@ -1759,6 +2202,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def ClientToken(self):
+        """A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae360632808`.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1767,6 +2213,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def NeedMasterWan(self):
+        """Whether to enable public IP access for master nodes. Valid values:
+<li>`NEED_MASTER_WAN`: Enable public IP for master nodes.</li>
+<li>`NOT_NEED_MASTER_WAN`: Disable.</li>The public IP is enabled for master nodes by default.
+        :rtype: str
+        """
         return self._NeedMasterWan
 
     @NeedMasterWan.setter
@@ -1775,6 +2226,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def EnableRemoteLoginFlag(self):
+        """Whether to enable remote login over the public network. It is invalid if `SecurityGroupId` is passed in. It is disabled by default. Valid values:
+<li>`true`: Enable</li>
+<li>`false`: Disable</li>
+        :rtype: bool
+        """
         return self._EnableRemoteLoginFlag
 
     @EnableRemoteLoginFlag.setter
@@ -1783,6 +2239,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def EnableKerberosFlag(self):
+        """Whether to enable Kerberos authentication. Valid values:
+<li>`true`: Enable</li>
+<li>`false` (default): Disable</li>
+        :rtype: bool
+        """
         return self._EnableKerberosFlag
 
     @EnableKerberosFlag.setter
@@ -1791,6 +2252,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def CustomConf(self):
+        """[Custom software configuration](https://intl.cloud.tencent.com/document/product/589/35655?from_cn_redirect=1?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._CustomConf
 
     @CustomConf.setter
@@ -1799,6 +2263,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def Tags(self):
+        """The tag description list. This parameter is used to bind a tag to a resource instance.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1807,6 +2274,10 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def DisasterRecoverGroupIds(self):
+        """The list of spread placement group IDs. Only one can be specified.
+You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -1815,6 +2286,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def EnableCbsEncryptFlag(self):
+        """Whether to enable the cluster-level CBS encryption. Valid values:
+<li>`true`: Enable</li>
+<li>`false` (default): Disable</li>
+        :rtype: bool
+        """
         return self._EnableCbsEncryptFlag
 
     @EnableCbsEncryptFlag.setter
@@ -1823,6 +2299,11 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def MetaDBInfo(self):
+        """The metadatabase information. If `MetaType` is `EMR_NEW_META`, `MetaDataJdbcUrl`, `MetaDataUser`, `MetaDataPass`, and `UnifyMetaInstanceId` are not required.
+If `MetaType` is `EMR_EXIT_META`, `UnifyMetaInstanceId` is required.
+If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `MetaDataPass` are required.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomMetaDBInfo`
+        """
         return self._MetaDBInfo
 
     @MetaDBInfo.setter
@@ -1831,6 +2312,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def DependService(self):
+        """The shared component information.
+        :rtype: list of DependService
+        """
         return self._DependService
 
     @DependService.setter
@@ -1839,6 +2323,9 @@ If `MetaType` is `USER_CUSTOM_META`, `MetaDataJdbcUrl`, `MetaDataUser`, and `Met
 
     @property
     def ZoneResourceConfiguration(self):
+        """The node resource specs. A spec is specified for each AZ, with the first spec for the primary AZ, the second for the backup AZ, and the third for the arbitrator AZ. If the multi-AZ mode is not enabled, only one spec is required.
+        :rtype: list of ZoneResourceConfiguration
+        """
         return self._ZoneResourceConfiguration
 
     @ZoneResourceConfiguration.setter
@@ -1923,6 +2410,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """The instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1931,6 +2422,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2088,6 +2582,23 @@ Hadoop-Hbase
 
     @property
     def ProductId(self):
+        """Product ID. Different product IDs stand for different EMR product versions. Valid range:
+51: STARROCKS-V1.4.0
+54: STARROCKS-V2.0.0
+27: KAFKA-V1.0.0
+50: KAFKA-V2.0.0
+16: EMR-V2.3.0
+20: EMR-V2.5.0
+30: EMR-V2.6.0
+38: EMR-V2.7.0
+25: EMR-V3.1.0
+33: EMR-V3.2.1
+34: EMR-V3.3.0
+37: EMR-V3.4.0
+44: EMR-V3.5.0
+53: EMR-V3.6.0
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2096,6 +2607,10 @@ Hadoop-Hbase
 
     @property
     def Software(self):
+        """List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+Enter an instance value: `hive` or `flink`.
+        :rtype: list of str
+        """
         return self._Software
 
     @Software.setter
@@ -2104,6 +2619,11 @@ Hadoop-Hbase
 
     @property
     def SupportHA(self):
+        """Whether to enable high node availability. Valid values:
+<li>0: does not enable high availability of node.</li>
+<li>1: enables high availability of node.</li>
+        :rtype: int
+        """
         return self._SupportHA
 
     @SupportHA.setter
@@ -2112,6 +2632,11 @@ Hadoop-Hbase
 
     @property
     def InstanceName(self):
+        """Instance name.
+<li>Length limit: 6-36 characters.</li>
+<li>Only letters, numbers, dashes (-), and underscores (_) are supported.</li>
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2120,6 +2645,10 @@ Hadoop-Hbase
 
     @property
     def PayMode(self):
+        """Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2128,6 +2657,11 @@ Hadoop-Hbase
 
     @property
     def TimeSpan(self):
+        """Purchase duration of instance, which needs to be used together with `TimeUnit`.
+<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
+<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -2136,6 +2670,11 @@ Hadoop-Hbase
 
     @property
     def TimeUnit(self):
+        """Time unit of instance purchase duration. Valid values:
+<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+<li>m: month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -2144,6 +2683,11 @@ Hadoop-Hbase
 
     @property
     def LoginSettings(self):
+        """Instance login settings. This parameter allows you to set the login password or key for your purchased node.
+<li>If the key is set, the password will be only used for login to the native component WebUI.</li>
+<li>If the key is not set, the password will be used for login to all purchased nodes and the native component WebUI.</li>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -2152,6 +2696,9 @@ Hadoop-Hbase
 
     @property
     def VPCSettings(self):
+        """Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
         return self._VPCSettings
 
     @VPCSettings.setter
@@ -2160,6 +2707,9 @@ Hadoop-Hbase
 
     @property
     def ResourceSpec(self):
+        """Node resource specification.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        """
         return self._ResourceSpec
 
     @ResourceSpec.setter
@@ -2168,6 +2718,9 @@ Hadoop-Hbase
 
     @property
     def COSSettings(self):
+        """Parameter required for enabling COS access.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.COSSettings`
+        """
         return self._COSSettings
 
     @COSSettings.setter
@@ -2176,6 +2729,9 @@ Hadoop-Hbase
 
     @property
     def Placement(self):
+        """Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -2184,6 +2740,9 @@ Hadoop-Hbase
 
     @property
     def SgId(self):
+        """Security group to which an instance belongs in the format of `sg-xxxxxxxx`. This parameter can be obtained from the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808) API.
+        :rtype: str
+        """
         return self._SgId
 
     @SgId.setter
@@ -2192,6 +2751,9 @@ Hadoop-Hbase
 
     @property
     def PreExecutedFileSettings(self):
+        """[Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings
+        :rtype: list of PreExecuteFileSettings
+        """
         return self._PreExecutedFileSettings
 
     @PreExecutedFileSettings.setter
@@ -2200,6 +2762,11 @@ Hadoop-Hbase
 
     @property
     def AutoRenew(self):
+        """Whether auto-renewal is enabled. Valid values:
+<li>0: auto-renewal not enabled.</li>
+<li>1: auto-renewal enabled.</li>
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -2208,6 +2775,9 @@ Hadoop-Hbase
 
     @property
     def ClientToken(self):
+        """Client token.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -2216,6 +2786,11 @@ Hadoop-Hbase
 
     @property
     def NeedMasterWan(self):
+        """Whether to enable public IP access for master node. Valid values:
+<li>NEED_MASTER_WAN: enables public IP for master node.</li>
+<li>NOT_NEED_MASTER_WAN: does not enable.</li>Public IP is enabled for master node by default.
+        :rtype: str
+        """
         return self._NeedMasterWan
 
     @NeedMasterWan.setter
@@ -2224,6 +2799,9 @@ Hadoop-Hbase
 
     @property
     def RemoteLoginAtCreate(self):
+        """Whether to enable remote public network login, i.e., port 22. When `SgId` is not empty, this parameter does not take effect.
+        :rtype: int
+        """
         return self._RemoteLoginAtCreate
 
     @RemoteLoginAtCreate.setter
@@ -2232,6 +2810,9 @@ Hadoop-Hbase
 
     @property
     def CheckSecurity(self):
+        """Whether to enable secure cluster. 0: no; other values: yes.
+        :rtype: int
+        """
         return self._CheckSecurity
 
     @CheckSecurity.setter
@@ -2240,6 +2821,9 @@ Hadoop-Hbase
 
     @property
     def ExtendFsField(self):
+        """Accesses to external file system.
+        :rtype: str
+        """
         return self._ExtendFsField
 
     @ExtendFsField.setter
@@ -2248,6 +2832,9 @@ Hadoop-Hbase
 
     @property
     def Tags(self):
+        """Tag description list. This parameter is used to bind a tag to a resource instance.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2256,6 +2843,10 @@ Hadoop-Hbase
 
     @property
     def DisasterRecoverGroupIds(self):
+        """List of spread placement group IDs. Only one can be specified currently.
+This parameter can be obtained in the `SecurityGroupId` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -2264,6 +2855,9 @@ Hadoop-Hbase
 
     @property
     def CbsEncrypt(self):
+        """CBS disk encryption at the cluster level. 0: not encrypted, 1: encrypted
+        :rtype: int
+        """
         return self._CbsEncrypt
 
     @CbsEncrypt.setter
@@ -2272,6 +2866,12 @@ Hadoop-Hbase
 
     @property
     def MetaType(self):
+        """Hive-shared metadatabase type. Valid values:
+<li>EMR_DEFAULT_META: the cluster creates one by default.</li>
+<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
+<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -2280,6 +2880,9 @@ Hadoop-Hbase
 
     @property
     def UnifyMetaInstanceId(self):
+        """EMR-MetaDB instance
+        :rtype: str
+        """
         return self._UnifyMetaInstanceId
 
     @UnifyMetaInstanceId.setter
@@ -2288,6 +2891,9 @@ Hadoop-Hbase
 
     @property
     def MetaDBInfo(self):
+        """Custom MetaDB instance information
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        """
         return self._MetaDBInfo
 
     @MetaDBInfo.setter
@@ -2296,6 +2902,9 @@ Hadoop-Hbase
 
     @property
     def ApplicationRole(self):
+        """Custom application role.
+        :rtype: str
+        """
         return self._ApplicationRole
 
     @ApplicationRole.setter
@@ -2304,6 +2913,13 @@ Hadoop-Hbase
 
     @property
     def SceneName(self):
+        """Scenario-based values:
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -2312,6 +2928,9 @@ Hadoop-Hbase
 
     @property
     def ExternalService(self):
+        """Shared component information
+        :rtype: list of ExternalService
+        """
         return self._ExternalService
 
     @ExternalService.setter
@@ -2320,6 +2939,9 @@ Hadoop-Hbase
 
     @property
     def VersionID(self):
+        """
+        :rtype: int
+        """
         return self._VersionID
 
     @VersionID.setter
@@ -2328,6 +2950,9 @@ Hadoop-Hbase
 
     @property
     def MultiZone(self):
+        """`true` indicates that the multi-AZ deployment mode is enabled. This parameter is available only in cluster creation and cannot be changed after setting.
+        :rtype: bool
+        """
         return self._MultiZone
 
     @MultiZone.setter
@@ -2336,6 +2961,9 @@ Hadoop-Hbase
 
     @property
     def MultiZoneSettings(self):
+        """Node resource specs. The actual number of AZs is set, with the first AZ as the primary AZ, the second as the backup AZ, and the third as the arbitrator AZ. If the multi-AZ mode is not enabled, set the value to `1`.
+        :rtype: list of MultiZoneSetting
+        """
         return self._MultiZoneSettings
 
     @MultiZoneSettings.setter
@@ -2436,6 +3064,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2444,6 +3076,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2485,6 +3120,9 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaDataJdbcUrl(self):
+        """The JDBC URL of the custom metadatabase instance. Example: jdbc:mysql://10.10.10.10:3306/dbname
+        :rtype: str
+        """
         return self._MetaDataJdbcUrl
 
     @MetaDataJdbcUrl.setter
@@ -2493,6 +3131,9 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaDataUser(self):
+        """The custom metadatabase instance username.
+        :rtype: str
+        """
         return self._MetaDataUser
 
     @MetaDataUser.setter
@@ -2501,6 +3142,9 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaDataPass(self):
+        """The custom metadatabase instance password.
+        :rtype: str
+        """
         return self._MetaDataPass
 
     @MetaDataPass.setter
@@ -2509,6 +3153,12 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def MetaType(self):
+        """The Hive-shared metadatabase type. Valid values:
+<li>`EMR_DEFAULT_META`: The cluster creates one by default.</li>
+<li>`EMR_EXIST_META`: The cluster uses the specified EMR metadatabase instance.</li>
+<li>`USER_CUSTOM_META`: The cluster uses a custom metadatabase instance.</li>
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -2517,6 +3167,9 @@ class CustomMetaDBInfo(AbstractModel):
 
     @property
     def UnifyMetaInstanceId(self):
+        """The EMR-MetaDB instance.
+        :rtype: str
+        """
         return self._UnifyMetaInstanceId
 
     @UnifyMetaInstanceId.setter
@@ -2560,6 +3213,9 @@ class CustomMetaInfo(AbstractModel):
 
     @property
     def MetaDataJdbcUrl(self):
+        """JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`
+        :rtype: str
+        """
         return self._MetaDataJdbcUrl
 
     @MetaDataJdbcUrl.setter
@@ -2568,6 +3224,9 @@ class CustomMetaInfo(AbstractModel):
 
     @property
     def MetaDataUser(self):
+        """Custom MetaDB instance username
+        :rtype: str
+        """
         return self._MetaDataUser
 
     @MetaDataUser.setter
@@ -2576,6 +3235,9 @@ class CustomMetaInfo(AbstractModel):
 
     @property
     def MetaDataPass(self):
+        """Custom MetaDB instance password
+        :rtype: str
+        """
         return self._MetaDataPass
 
     @MetaDataPass.setter
@@ -2614,6 +3276,9 @@ class CustomServiceDefine(AbstractModel):
 
     @property
     def Name(self):
+        """Custom parameter key
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2622,6 +3287,9 @@ class CustomServiceDefine(AbstractModel):
 
     @property
     def Value(self):
+        """Custom parameter value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2659,6 +3327,9 @@ class DependService(AbstractModel):
 
     @property
     def ServiceName(self):
+        """The shared component name.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -2667,6 +3338,9 @@ class DependService(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The cluster to which the shared component belongs.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2710,6 +3384,9 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2718,6 +3395,9 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Parameter for record filtration. Valid values: "StartTime", "EndTime" and "StrategyName". StartTime and EndTime support the time format of 2006-01-02 15:04:05 or 2006/01/02 15:04:05.
+        :rtype: list of KeyValue
+        """
         return self._Filters
 
     @Filters.setter
@@ -2726,6 +3406,9 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination parameters.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2734,6 +3417,9 @@ class DescribeAutoScaleRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Pagination parameters. Maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2781,6 +3467,9 @@ class DescribeAutoScaleRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total scale-in and scale-out records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2789,6 +3478,9 @@ class DescribeAutoScaleRecordsResponse(AbstractModel):
 
     @property
     def RecordList(self):
+        """Record list.
+        :rtype: list of AutoScaleRecord
+        """
         return self._RecordList
 
     @RecordList.setter
@@ -2797,6 +3489,9 @@ class DescribeAutoScaleRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2858,6 +3553,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def InstanceId(self):
+        """Cluster instance ID in the format of emr-xxxxxxxx
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2866,6 +3564,17 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def NodeFlag(self):
+        """Node flag. Valid values:
+<li>all: gets the information of nodes in all types except TencentDB information.</li>
+<li>master: gets master node information.</li>
+<li>core: gets core node information.</li>
+<li>task: gets task node information.</li>
+<li>common: gets common node information.</li>
+<li>router: gets router node information.</li>
+<li>db: gets TencentDB information in normal status.</li>
+Note: only the above values are supported for the time being. Entering other values will cause errors.
+        :rtype: str
+        """
         return self._NodeFlag
 
     @NodeFlag.setter
@@ -2874,6 +3583,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def Offset(self):
+        """Page number. Default value: 0, indicating the first page.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2882,6 +3594,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def Limit(self):
+        """Number of returned results per page. Default value: 100. Maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2890,6 +3605,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def HardwareResourceType(self):
+        """Resource type. Valid values: all, host, pod. Default value: all
+        :rtype: str
+        """
         return self._HardwareResourceType
 
     @HardwareResourceType.setter
@@ -2898,6 +3616,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def SearchFields(self):
+        """Searchable field
+        :rtype: list of SearchItem
+        """
         return self._SearchFields
 
     @SearchFields.setter
@@ -2906,6 +3627,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def OrderField(self):
+        """None
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -2914,6 +3638,9 @@ Note: only the above values are supported for the time being. Entering other val
 
     @property
     def Asc(self):
+        """None
+        :rtype: int
+        """
         return self._Asc
 
     @Asc.setter
@@ -2974,6 +3701,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCnt(self):
+        """Total number of queried nodes
+        :rtype: int
+        """
         return self._TotalCnt
 
     @TotalCnt.setter
@@ -2982,6 +3712,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeList(self):
+        """List of node details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of NodeHardwareInfo
+        """
         return self._NodeList
 
     @NodeList.setter
@@ -2990,6 +3724,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKeys(self):
+        """List of tag keys owned by user
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._TagKeys
 
     @TagKeys.setter
@@ -2998,6 +3736,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HardwareResourceTypeList(self):
+        """Resource type list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._HardwareResourceTypeList
 
     @HardwareResourceTypeList.setter
@@ -3006,6 +3748,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3070,6 +3815,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Cluster ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3078,6 +3826,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time in the format of timestamp. Unit: seconds.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3086,6 +3837,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time in the format of timestamp. Unit: seconds.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3094,6 +3848,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def Queues(self):
+        """Queue name used for filtering
+        :rtype: list of str
+        """
         return self._Queues
 
     @Queues.setter
@@ -3102,6 +3859,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def Users(self):
+        """Username used for filtering
+        :rtype: list of str
+        """
         return self._Users
 
     @Users.setter
@@ -3110,6 +3870,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def ApplicationTypes(self):
+        """Application type used for filtering
+        :rtype: list of str
+        """
         return self._ApplicationTypes
 
     @ApplicationTypes.setter
@@ -3118,6 +3881,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def GroupBy(self):
+        """Group field. Valid values: `queue`, `user`, and `applicationType`.
+        :rtype: list of str
+        """
         return self._GroupBy
 
     @GroupBy.setter
@@ -3126,6 +3892,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting field. Valid values: `sumMemorySeconds`, `sumVCoreSeconds`, `sumHDFSBytesWritten`, and `sumHDFSBytesRead`.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -3134,6 +3903,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def IsAsc(self):
+        """Order type. Valid values: `0` (descending) and `1`(ascending).
+        :rtype: int
+        """
         return self._IsAsc
 
     @IsAsc.setter
@@ -3142,6 +3914,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page number
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3150,6 +3925,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Page limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3208,6 +3986,9 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     @property
     def Statics(self):
+        """Application statistics
+        :rtype: list of ApplicationStatics
+        """
         return self._Statics
 
     @Statics.setter
@@ -3216,6 +3997,9 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total count
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3224,6 +4008,9 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     @property
     def Queues(self):
+        """Available queue name
+        :rtype: list of str
+        """
         return self._Queues
 
     @Queues.setter
@@ -3232,6 +4019,9 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     @property
     def Users(self):
+        """Available usernames
+        :rtype: list of str
+        """
         return self._Users
 
     @Users.setter
@@ -3240,6 +4030,9 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     @property
     def ApplicationTypes(self):
+        """Available application type
+        :rtype: list of str
+        """
         return self._ApplicationTypes
 
     @ApplicationTypes.setter
@@ -3248,6 +4041,9 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3295,6 +4091,9 @@ class DescribeHiveQueriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The cluster ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3303,6 +4102,9 @@ class DescribeHiveQueriesRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time in seconds.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3311,6 +4113,9 @@ class DescribeHiveQueriesRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time in seconds. EndTime-StartTime should not exceed one day's duration, which is 86400 seconds.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3319,6 +4124,9 @@ class DescribeHiveQueriesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting offset for pagination. Start value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3327,6 +4135,9 @@ class DescribeHiveQueriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Page size. Valid range: [1,100]
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3370,6 +4181,9 @@ class DescribeHiveQueriesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total items
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3378,6 +4192,9 @@ class DescribeHiveQueriesResponse(AbstractModel):
 
     @property
     def Results(self):
+        """Result list
+        :rtype: list of HiveQuery
+        """
         return self._Results
 
     @Results.setter
@@ -3386,6 +4203,9 @@ class DescribeHiveQueriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3433,6 +4253,9 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def DisplayStrategy(self):
+        """Cluster filtering policy. Valid values: <li>clusterList: Queries the list of clusters excluding terminated ones.</li><li>monitorManage: Queries the list of clusters excluding those terminated, under creation and not successfully created.</li><li>cloudHardwareManage/componentManage: Two reserved values, which have the same implications as those of `monitorManage`.</li>
+        :rtype: str
+        """
         return self._DisplayStrategy
 
     @DisplayStrategy.setter
@@ -3441,6 +4264,9 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page number. Default value: `0`, indicating the first page.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3449,6 +4275,9 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results per page. Default value: `10`; maximum value: `100`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3457,6 +4286,9 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3465,6 +4297,9 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Asc(self):
+        """Sort according to OrderField in ascending or descending order. Valid range:<li>0: Descending order.</li><li>1: Ascending order.</li>Default: 0.
+        :rtype: int
+        """
         return self._Asc
 
     @Asc.setter
@@ -3473,6 +4308,9 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Custom query
+        :rtype: list of Filters
+        """
         return self._Filters
 
     @Filters.setter
@@ -3522,6 +4360,9 @@ class DescribeInstancesListResponse(AbstractModel):
 
     @property
     def TotalCnt(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCnt
 
     @TotalCnt.setter
@@ -3530,6 +4371,9 @@ class DescribeInstancesListResponse(AbstractModel):
 
     @property
     def InstancesList(self):
+        """Cluster instance list.
+        :rtype: list of EmrListInstance
+        """
         return self._InstancesList
 
     @InstancesList.setter
@@ -3538,6 +4382,9 @@ class DescribeInstancesListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3596,6 +4443,12 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def DisplayStrategy(self):
+        """Cluster filtering policy. Valid values:
+<li>clusterList: queries the list of clusters except terminated ones.</li>
+<li>monitorManage: queries the list of clusters except those that have been terminated, are being created, or failed to be created.</li>
+<li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>
+        :rtype: str
+        """
         return self._DisplayStrategy
 
     @DisplayStrategy.setter
@@ -3604,6 +4457,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3612,6 +4468,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page number. Default value: 0, indicating the first page.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3620,6 +4479,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results per page. Default value: 10. Maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3628,6 +4490,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3636,6 +4501,12 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Sorting field. Valid values:
+<li>clusterId: sorts by cluster ID.</li>
+<li>addTime: sorts by instance creation time.</li>
+<li>status: sorts by instance status code.</li>
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -3644,6 +4515,11 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Asc(self):
+        """Sorts according to `OrderField` in ascending or descending order. Valid values:
+<li>0: descending order.</li>
+<li>1: ascending order.</li>Default value: 0.
+        :rtype: int
+        """
         return self._Asc
 
     @Asc.setter
@@ -3694,6 +4570,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCnt(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCnt
 
     @TotalCnt.setter
@@ -3702,6 +4581,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterList(self):
+        """List of EMR instance details.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ClusterInstancesInfo
+        """
         return self._ClusterList
 
     @ClusterList.setter
@@ -3710,6 +4593,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKeys(self):
+        """List of tag keys associated to an instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._TagKeys
 
     @TagKeys.setter
@@ -3718,6 +4605,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3751,6 +4641,9 @@ class DescribeResourceScheduleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """EMR cluster ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3796,6 +4689,9 @@ class DescribeResourceScheduleResponse(AbstractModel):
 
     @property
     def OpenSwitch(self):
+        """Whether to enable the resource scheduling feature
+        :rtype: bool
+        """
         return self._OpenSwitch
 
     @OpenSwitch.setter
@@ -3804,6 +4700,9 @@ class DescribeResourceScheduleResponse(AbstractModel):
 
     @property
     def Scheduler(self):
+        """The resource scheduler in service
+        :rtype: str
+        """
         return self._Scheduler
 
     @Scheduler.setter
@@ -3812,6 +4711,9 @@ class DescribeResourceScheduleResponse(AbstractModel):
 
     @property
     def FSInfo(self):
+        """Fair Scheduler information
+        :rtype: str
+        """
         return self._FSInfo
 
     @FSInfo.setter
@@ -3820,6 +4722,9 @@ class DescribeResourceScheduleResponse(AbstractModel):
 
     @property
     def CSInfo(self):
+        """Capacity Scheduler information
+        :rtype: str
+        """
         return self._CSInfo
 
     @CSInfo.setter
@@ -3828,6 +4733,9 @@ class DescribeResourceScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3869,6 +4777,9 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Cluster instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3877,6 +4788,9 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     @property
     def PageNo(self):
+        """Page number
+        :rtype: int
+        """
         return self._PageNo
 
     @PageNo.setter
@@ -3885,6 +4799,9 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """Page size
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -3893,6 +4810,9 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     @property
     def UserManagerFilter(self):
+        """User list query filter
+        :rtype: :class:`tencentcloud.emr.v20190103.models.UserManagerFilter`
+        """
         return self._UserManagerFilter
 
     @UserManagerFilter.setter
@@ -3901,6 +4821,9 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     @property
     def NeedKeytabInfo(self):
+        """Whether the Keytab file information is required. This field is only valid for clusters with Kerberos enabled and defaults to `false`.
+        :rtype: bool
+        """
         return self._NeedKeytabInfo
 
     @NeedKeytabInfo.setter
@@ -3947,6 +4870,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TotalCnt(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCnt
 
     @TotalCnt.setter
@@ -3955,6 +4881,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UserManagerUserList(self):
+        """User information list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of UserManagerUserBriefInfo
+        """
         return self._UserManagerUserList
 
     @UserManagerUserList.setter
@@ -3963,6 +4893,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4019,6 +4952,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
+        """The number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -4027,6 +4964,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """The system disk type. Valid values:
+<li>`CLOUD_SSD`: Cloud SSD</li>
+<li>`CLOUD_PREMIUM`: Premium cloud disk</li>
+<li>`CLOUD_BASIC`: Cloud HDD</li>
+<li>`LOCAL_BASIC`: Local disk</li>
+<li>`LOCAL_SSD`: Local SSD</li>
+
+The data disk type. Valid values:
+<li>`CLOUD_SSD`: Cloud SSD</li>
+<li>`CLOUD_PREMIUM`: Premium cloud disk</li>
+<li>`CLOUD_BASIC`: Cloud HDD</li>
+<li>`LOCAL_BASIC`: Local disk</li>
+<li>`LOCAL_SSD`: Local SSD</li>
+<li>`CLOUD_HSSD`: Enhanced SSD</li>
+<li>`CLOUD_THROUGHPUT`: Throughput HDD</li>
+<li>CLOUD_TSSD: ulTra SSD</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -4035,6 +4991,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """The disk capacity in GB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -4079,6 +5039,9 @@ class DynamicPodSpec(AbstractModel):
 
     @property
     def RequestCpu(self):
+        """Minimum number of CPUs
+        :rtype: float
+        """
         return self._RequestCpu
 
     @RequestCpu.setter
@@ -4087,6 +5050,9 @@ class DynamicPodSpec(AbstractModel):
 
     @property
     def LimitCpu(self):
+        """Maximum number of CPUs
+        :rtype: float
+        """
         return self._LimitCpu
 
     @LimitCpu.setter
@@ -4095,6 +5061,9 @@ class DynamicPodSpec(AbstractModel):
 
     @property
     def RequestMemory(self):
+        """Minimum memory in MB
+        :rtype: float
+        """
         return self._RequestMemory
 
     @RequestMemory.setter
@@ -4103,6 +5072,9 @@ class DynamicPodSpec(AbstractModel):
 
     @property
     def LimitMemory(self):
+        """Maximum memory in MB
+        :rtype: float
+        """
         return self._LimitMemory
 
     @LimitMemory.setter
@@ -4246,6 +5218,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterId(self):
+        """Cluster ID
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4254,6 +5229,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusDesc(self):
+        """Status description
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -4262,6 +5241,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
+        """Cluster name
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -4270,6 +5252,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """Cluster region
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -4278,6 +5263,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """User APPID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -4286,6 +5274,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -4294,6 +5285,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunTime(self):
+        """Running time
+        :rtype: str
+        """
         return self._RunTime
 
     @RunTime.setter
@@ -4302,6 +5296,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterIp(self):
+        """Cluster IP
+        :rtype: str
+        """
         return self._MasterIp
 
     @MasterIp.setter
@@ -4310,6 +5307,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EmrVersion(self):
+        """Cluster version
+        :rtype: str
+        """
         return self._EmrVersion
 
     @EmrVersion.setter
@@ -4318,6 +5318,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeType(self):
+        """Cluster billing mode
+        :rtype: int
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -4326,6 +5329,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """EMR ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -4334,6 +5340,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductId(self):
+        """Product ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -4342,6 +5352,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4350,6 +5364,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
+        """Region
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -4358,6 +5376,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """Subnet ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4366,6 +5388,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4374,6 +5400,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Region
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -4382,6 +5412,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Status code
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4390,6 +5424,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Instance tag
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4398,6 +5436,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AlarmInfo(self):
+        """Alarm information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._AlarmInfo
 
     @AlarmInfo.setter
@@ -4406,6 +5448,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsWoodpeckerCluster(self):
+        """Whether it is a Woodpecker cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._IsWoodpeckerCluster
 
     @IsWoodpeckerCluster.setter
@@ -4414,6 +5460,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcName(self):
+        """VPC name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -4422,6 +5472,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetName(self):
+        """Subnet name
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -4430,6 +5484,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpcId(self):
+        """VPC ID string
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -4438,6 +5496,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqSubnetId(self):
+        """Subnet ID string
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -4446,6 +5508,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterClass(self):
+        """Cluster type
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ClusterClass
 
     @ClusterClass.setter
@@ -4454,6 +5520,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMultiZoneCluster(self):
+        """Whether it is a multi-AZ cluster
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._IsMultiZoneCluster
 
     @IsMultiZoneCluster.setter
@@ -4462,6 +5532,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsHandsCluster(self):
+        """Whether it is a manually deployed cluster
+Note: This field may return null, indicating that no valid value can be obtained. 
+        :rtype: bool
+        """
         return self._IsHandsCluster
 
     @IsHandsCluster.setter
@@ -4470,6 +5544,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutSideSoftInfo(self):
+        """Client component information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SoftDependInfo
+        """
         return self._OutSideSoftInfo
 
     @OutSideSoftInfo.setter
@@ -4478,6 +5556,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsSupportOutsideCluster(self):
+        """Whether the current cluster supports external clients.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsSupportOutsideCluster
 
     @IsSupportOutsideCluster.setter
@@ -4567,6 +5649,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCost(self):
+        """The published price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -4575,6 +5661,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountCost(self):
+        """The discounted price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiscountCost
 
     @DiscountCost.setter
@@ -4583,6 +5673,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
+        """The unit of the billable item.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -4591,6 +5685,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceSpec(self):
+        """The queried spec.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        """
         return self._PriceSpec
 
     @PriceSpec.setter
@@ -4599,6 +5697,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SupportSpotPaid(self):
+        """Whether spot instances are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._SupportSpotPaid
 
     @SupportSpotPaid.setter
@@ -4711,6 +5813,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SoftInfo(self):
+        """Software information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SoftInfo
 
     @SoftInfo.setter
@@ -4719,6 +5825,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MasterNodeSize(self):
+        """Number of master nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MasterNodeSize
 
     @MasterNodeSize.setter
@@ -4727,6 +5837,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CoreNodeSize(self):
+        """Number of core nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CoreNodeSize
 
     @CoreNodeSize.setter
@@ -4735,6 +5849,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TaskNodeSize(self):
+        """Number of task nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TaskNodeSize
 
     @TaskNodeSize.setter
@@ -4743,6 +5861,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ComNodeSize(self):
+        """Number of common nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ComNodeSize
 
     @ComNodeSize.setter
@@ -4751,6 +5873,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MasterResource(self):
+        """Master node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        """
         return self._MasterResource
 
     @MasterResource.setter
@@ -4759,6 +5885,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CoreResource(self):
+        """Core node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        """
         return self._CoreResource
 
     @CoreResource.setter
@@ -4767,6 +5897,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TaskResource(self):
+        """Task node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        """
         return self._TaskResource
 
     @TaskResource.setter
@@ -4775,6 +5909,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ComResource(self):
+        """Common node resource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.OutterResource`
+        """
         return self._ComResource
 
     @ComResource.setter
@@ -4783,6 +5921,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OnCos(self):
+        """Whether COS is used
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._OnCos
 
     @OnCos.setter
@@ -4791,6 +5933,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChargeType(self):
+        """Billing mode
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -4799,6 +5945,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouterNodeSize(self):
+        """Number of router nodes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RouterNodeSize
 
     @RouterNodeSize.setter
@@ -4807,6 +5957,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SupportHA(self):
+        """Whether HA is supported
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._SupportHA
 
     @SupportHA.setter
@@ -4815,6 +5969,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityOn(self):
+        """Whether secure mode is supported
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._SecurityOn
 
     @SecurityOn.setter
@@ -4823,6 +5981,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroup(self):
+        """Security group name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SecurityGroup
 
     @SecurityGroup.setter
@@ -4831,6 +5993,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CbsEncrypt(self):
+        """Whether to enable CBS encryption
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CbsEncrypt
 
     @CbsEncrypt.setter
@@ -4839,6 +6005,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ApplicationRole(self):
+        """Custom application role
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ApplicationRole
 
     @ApplicationRole.setter
@@ -4847,6 +6017,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroups(self):
+        """Security groups
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
         return self._SecurityGroups
 
     @SecurityGroups.setter
@@ -4855,6 +6029,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicKeyId(self):
+        """SSH key ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PublicKeyId
 
     @PublicKeyId.setter
@@ -4923,6 +6101,9 @@ class ExternalService(AbstractModel):
 
     @property
     def ShareType(self):
+        """Shared component type, which can be EMR or CUSTOM
+        :rtype: str
+        """
         return self._ShareType
 
     @ShareType.setter
@@ -4931,6 +6112,9 @@ class ExternalService(AbstractModel):
 
     @property
     def CustomServiceDefineList(self):
+        """Custom parameters
+        :rtype: list of CustomServiceDefine
+        """
         return self._CustomServiceDefineList
 
     @CustomServiceDefineList.setter
@@ -4939,6 +6123,9 @@ class ExternalService(AbstractModel):
 
     @property
     def Service(self):
+        """Shared component name
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -4947,6 +6134,9 @@ class ExternalService(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Shared component cluster
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4991,6 +6181,9 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
+        """Field name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4999,6 +6192,9 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
+        """Filters by the field value
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -5063,6 +6259,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Statement(self):
+        """Query statementNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Statement
 
     @Statement.setter
@@ -5071,6 +6270,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
+        """Execution Duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -5079,6 +6282,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start Time in Milliseconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5087,6 +6294,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End Time in Milliseconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5095,6 +6306,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
+        """StatusNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -5103,6 +6317,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
+        """UserNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -5111,6 +6328,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobIds(self):
+        """AppId List
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -5119,6 +6340,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExecutionEngine(self):
+        """Execution Engine
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExecutionEngine
 
     @ExecutionEngine.setter
@@ -5127,6 +6352,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Query ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5169,6 +6398,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VolumePath(self):
+        """The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VolumePath
 
     @VolumePath.setter
@@ -5271,6 +6504,10 @@ Hadoop-Hbase
 
     @property
     def TimeUnit(self):
+        """Time unit of instance purchase duration. Valid values:
+<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -5279,6 +6516,11 @@ Hadoop-Hbase
 
     @property
     def TimeSpan(self):
+        """Purchase duration of instance, which needs to be used together with `TimeUnit`.
+<li>When `TimeUnit` is `s`, this parameter can only be filled with 3600, indicating a pay-as-you-go instance.</li>
+<li>When `TimeUnit` is `m`, the number entered in this parameter indicates the purchase duration of the monthly-subscription instance; for example, 1 means one month</li>
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -5287,6 +6529,9 @@ Hadoop-Hbase
 
     @property
     def Currency(self):
+        """Currency.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -5295,6 +6540,10 @@ Hadoop-Hbase
 
     @property
     def PayMode(self):
+        """Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -5303,6 +6552,11 @@ Hadoop-Hbase
 
     @property
     def SupportHA(self):
+        """Whether to enable high availability of node. Valid values:
+<li>0: does not enable high availability of node.</li>
+<li>1: enables high availability of node.</li>
+        :rtype: int
+        """
         return self._SupportHA
 
     @SupportHA.setter
@@ -5311,6 +6565,13 @@ Hadoop-Hbase
 
     @property
     def Software(self):
+        """List of deployed components. Different required components need to be selected for different EMR product IDs (i.e., `ProductId`; for specific meanings, please see the `ProductId` field in the input parameter):
+<li>When `ProductId` is 1, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 2, the required components include hadoop-2.7.3, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 4, the required components include hadoop-2.8.4, knox-1.2.0, and zookeeper-3.4.9</li>
+<li>When `ProductId` is 7, the required components include hadoop-3.1.2, knox-1.2.0, and zookeeper-3.4.9</li>
+        :rtype: list of str
+        """
         return self._Software
 
     @Software.setter
@@ -5319,6 +6580,9 @@ Hadoop-Hbase
 
     @property
     def ResourceSpec(self):
+        """Node specification queried for price.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        """
         return self._ResourceSpec
 
     @ResourceSpec.setter
@@ -5327,6 +6591,9 @@ Hadoop-Hbase
 
     @property
     def Placement(self):
+        """Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -5335,6 +6602,9 @@ Hadoop-Hbase
 
     @property
     def VPCSettings(self):
+        """Configuration information of VPC. This parameter is used to specify the VPC ID, subnet ID, etc.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
         return self._VPCSettings
 
     @VPCSettings.setter
@@ -5343,6 +6613,12 @@ Hadoop-Hbase
 
     @property
     def MetaType(self):
+        """Hive-shared metadatabase type. Valid values:
+<li>EMR_DEFAULT_META: the cluster creates one by default.</li>
+<li>EMR_EXIST_META: the cluster uses the specified EMR-MetaDB instance.</li>
+<li>USER_CUSTOM_META: the cluster uses a custom MetaDB instance.</li>
+        :rtype: str
+        """
         return self._MetaType
 
     @MetaType.setter
@@ -5351,6 +6627,9 @@ Hadoop-Hbase
 
     @property
     def UnifyMetaInstanceId(self):
+        """EMR-MetaDB instance
+        :rtype: str
+        """
         return self._UnifyMetaInstanceId
 
     @UnifyMetaInstanceId.setter
@@ -5359,6 +6638,9 @@ Hadoop-Hbase
 
     @property
     def MetaDBInfo(self):
+        """Custom MetaDB instance information
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomMetaInfo`
+        """
         return self._MetaDBInfo
 
     @MetaDBInfo.setter
@@ -5367,6 +6649,13 @@ Hadoop-Hbase
 
     @property
     def ProductId(self):
+        """Product ID. Different product IDs represent different EMR product versions. Valid values:
+<li>1: EMR v1.3.1.</li>
+<li>2: EMR v2.0.1.</li>
+<li>4: EMR v2.1.0.</li>
+<li>7: EMR v3.0.0.</li>
+        :rtype: int
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -5375,6 +6664,13 @@ Hadoop-Hbase
 
     @property
     def SceneName(self):
+        """Scenario-based values:
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -5383,6 +6679,9 @@ Hadoop-Hbase
 
     @property
     def ExternalService(self):
+        """Shared component information
+        :rtype: list of ExternalService
+        """
         return self._ExternalService
 
     @ExternalService.setter
@@ -5391,6 +6690,9 @@ Hadoop-Hbase
 
     @property
     def VersionID(self):
+        """
+        :rtype: int
+        """
         return self._VersionID
 
     @VersionID.setter
@@ -5399,6 +6701,9 @@ Hadoop-Hbase
 
     @property
     def MultiZoneSettings(self):
+        """AZ specs
+        :rtype: list of MultiZoneSetting
+        """
         return self._MultiZoneSettings
 
     @MultiZoneSettings.setter
@@ -5487,6 +6792,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCost(self):
+        """Original price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -5495,6 +6804,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountCost(self):
+        """Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountCost
 
     @DiscountCost.setter
@@ -5503,6 +6816,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
+        """Time unit of instance purchase duration. Valid values:
+<li>s: seconds.</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -5511,6 +6829,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
+        """Purchase duration of instance.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -5519,6 +6841,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceList(self):
+        """The price list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ZoneDetailPriceResult
+        """
         return self._PriceList
 
     @PriceList.setter
@@ -5527,6 +6853,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5580,6 +6909,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """How long the instance will be renewed for, which needs to be used together with `TimeUnit`.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -5588,6 +6920,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -5596,6 +6931,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -5604,6 +6942,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """Instance billing mode.
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -5612,6 +6953,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """Unit of time for instance renewal.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -5620,6 +6964,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def Currency(self):
+        """Currency.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -5628,6 +6975,9 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
 
     @property
     def ModifyPayMode(self):
+        """Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
+        :rtype: int
+        """
         return self._ModifyPayMode
 
     @ModifyPayMode.setter
@@ -5685,6 +7035,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCost(self):
+        """Original price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -5693,6 +7047,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountCost(self):
+        """Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountCost
 
     @DiscountCost.setter
@@ -5701,6 +7059,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
+        """Unit of time for instance renewal.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -5709,6 +7071,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
+        """How long the instance will be renewed for.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -5717,6 +7083,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5776,6 +7145,10 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """Time unit of scale-out. Valid value:
+<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -5784,6 +7157,10 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """Time span of scale-out, which needs to be used together with `TimeUnit`.
+<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -5792,6 +7169,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """ID of the AZ where an instance resides.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -5800,6 +7180,10 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """Instance billing mode. Valid value:
+<li>0: Pay-as-you-go.</li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -5808,6 +7192,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5816,6 +7203,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def CoreCount(self):
+        """Number of core nodes to be added.
+        :rtype: int
+        """
         return self._CoreCount
 
     @CoreCount.setter
@@ -5824,6 +7214,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def TaskCount(self):
+        """Number of task nodes to be added.
+        :rtype: int
+        """
         return self._TaskCount
 
     @TaskCount.setter
@@ -5832,6 +7225,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def Currency(self):
+        """Currency.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -5840,6 +7236,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def RouterCount(self):
+        """Number of router nodes to be added.
+        :rtype: int
+        """
         return self._RouterCount
 
     @RouterCount.setter
@@ -5848,6 +7247,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def MasterCount(self):
+        """Number of master nodes to be added.
+        :rtype: int
+        """
         return self._MasterCount
 
     @MasterCount.setter
@@ -5911,6 +7313,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCost(self):
+        """Original price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -5919,6 +7325,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountCost(self):
+        """Discounted price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiscountCost
 
     @DiscountCost.setter
@@ -5927,6 +7337,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
+        """Time unit of scale-out. Valid value:
+<li>s: Second.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -5935,6 +7350,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceSpec(self):
+        """Node spec queried for price.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PriceResource`
+        """
         return self._PriceSpec
 
     @PriceSpec.setter
@@ -5943,6 +7362,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MultipleEmrPrice(self):
+        """The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of EmrPrice
+        """
         return self._MultipleEmrPrice
 
     @MultipleEmrPrice.setter
@@ -5951,6 +7374,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6009,6 +7435,10 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
+        """Time unit of scaling. Valid values:
+<li>s: seconds. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -6017,6 +7447,10 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
+        """Duration of scaling, which needs to be used together with `TimeUnit`.
+<li>When `PayMode` is 0, `TimeSpan` can only be 3,600.</li>
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -6025,6 +7459,9 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def UpdateSpec(self):
+        """Target node specification.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.UpdateInstanceSettings`
+        """
         return self._UpdateSpec
 
     @UpdateSpec.setter
@@ -6033,6 +7470,10 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """Instance billing mode. Valid values:
+<li>0: pay-as-you-go.</li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -6041,6 +7482,9 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """Instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -6049,6 +7493,9 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def Currency(self):
+        """Currency.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -6057,6 +7504,9 @@ class InquiryPriceUpdateInstanceRequest(AbstractModel):
 
     @property
     def ResourceIdList(self):
+        """The resource ID list for batch configuration change.
+        :rtype: list of str
+        """
         return self._ResourceIdList
 
     @ResourceIdList.setter
@@ -6121,6 +7571,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalCost(self):
+        """Original price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -6129,6 +7583,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountCost(self):
+        """Discounted price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountCost
 
     @DiscountCost.setter
@@ -6137,6 +7595,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
+        """Time unit of scaling. Valid values:
+<li>s: seconds.</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -6145,6 +7608,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
+        """Duration of scaling.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -6153,6 +7620,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PriceDetail(self):
+        """Pricing details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PriceDetail
+        """
         return self._PriceDetail
 
     @PriceDetail.setter
@@ -6161,6 +7632,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6202,6 +7676,10 @@ Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
 
     @property
     def Period(self):
+        """The period of monthly subscription, which defaults to 1 and is expressed in month.
+Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6210,6 +7688,11 @@ Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
 
     @property
     def RenewFlag(self):
+        """Whether to enable auto-renewal. Valid values:
+<li>`true`: Enable</li>
+<li>`false` (default): Disable</li>
+        :rtype: bool
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -6248,6 +7731,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
+        """Key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6256,6 +7743,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """ValueNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6293,6 +7783,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
+        """The login password of the instance, which contains 8 to 16 uppercase letters, lowercase letters, digits, and special characters (only !@%^*) and cannot start with a special character.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -6301,6 +7794,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def PublicKeyId(self):
+        """The key ID. After an instance is associated with a key, you can access it with the private key in the key pair. You can call [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `PublicKeyId`.
+        :rtype: str
+        """
         return self._PublicKeyId
 
     @PublicKeyId.setter
@@ -6341,6 +7837,9 @@ class ModifyResourceScheduleConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """EMR cluster ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6349,6 +7848,9 @@ class ModifyResourceScheduleConfigRequest(AbstractModel):
 
     @property
     def Key(self):
+        """Business identifier. `fair`: Edit fair configuration items; `fairPlan`: Edit the execution plan; `capacity`: Edit capacity configuration items.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6357,6 +7859,9 @@ class ModifyResourceScheduleConfigRequest(AbstractModel):
 
     @property
     def Value(self):
+        """Modified module information
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6403,6 +7908,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDraft(self):
+        """`true`: Draft, indicating the resource pool is not refreshed.
+        :rtype: bool
+        """
         return self._IsDraft
 
     @IsDraft.setter
@@ -6411,6 +7919,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMsg(self):
+        """Verification error information. If it is not null, the verification fails and thus the configuration fails.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -6419,6 +7931,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """The response data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -6427,6 +7943,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6461,6 +7980,9 @@ class ModifyResourceSchedulerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """EMR cluster ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6469,6 +7991,9 @@ class ModifyResourceSchedulerRequest(AbstractModel):
 
     @property
     def OldValue(self):
+        """The original scheduler: `fair`
+        :rtype: str
+        """
         return self._OldValue
 
     @OldValue.setter
@@ -6477,6 +8002,9 @@ class ModifyResourceSchedulerRequest(AbstractModel):
 
     @property
     def NewValue(self):
+        """The new scheduler: `capacity`
+        :rtype: str
+        """
         return self._NewValue
 
     @NewValue.setter
@@ -6512,6 +8040,9 @@ class ModifyResourceSchedulerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6558,6 +8089,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def ResourceId(self):
+        """Cluster ID or CVM ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -6566,6 +8100,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def Resource(self):
+        """6-segment resource expression
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -6574,6 +8111,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def ResourcePrefix(self):
+        """Resource prefix
+        :rtype: str
+        """
         return self._ResourcePrefix
 
     @ResourcePrefix.setter
@@ -6582,6 +8122,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def ResourceRegion(self):
+        """ap-beijing
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -6590,6 +8133,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def ServiceType(self):
+        """emr
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -6598,6 +8144,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def DeleteTags(self):
+        """List of deleted tags
+        :rtype: list of Tag
+        """
         return self._DeleteTags
 
     @DeleteTags.setter
@@ -6606,6 +8155,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def AddTags(self):
+        """List of added tags
+        :rtype: list of Tag
+        """
         return self._AddTags
 
     @AddTags.setter
@@ -6614,6 +8166,9 @@ class ModifyResourceTags(AbstractModel):
 
     @property
     def ModifyTags(self):
+        """List of modified tags
+        :rtype: list of Tag
+        """
         return self._ModifyTags
 
     @ModifyTags.setter
@@ -6672,6 +8227,9 @@ class ModifyResourcesTagsRequest(AbstractModel):
 
     @property
     def ModifyType(self):
+        """Tag type. Valid values: Cluster and Node
+        :rtype: str
+        """
         return self._ModifyType
 
     @ModifyType.setter
@@ -6680,6 +8238,9 @@ class ModifyResourcesTagsRequest(AbstractModel):
 
     @property
     def ModifyResourceTagsInfoList(self):
+        """Tag information
+        :rtype: list of ModifyResourceTags
+        """
         return self._ModifyResourceTagsInfoList
 
     @ModifyResourceTagsInfoList.setter
@@ -6735,6 +8296,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuccessList(self):
+        """List of resource IDs with successful modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SuccessList
 
     @SuccessList.setter
@@ -6743,6 +8308,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailList(self):
+        """List of resource IDs with failed modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._FailList
 
     @FailList.setter
@@ -6751,6 +8320,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartSuccessList(self):
+        """List of resource IDs with partial successful modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._PartSuccessList
 
     @PartSuccessList.setter
@@ -6759,6 +8332,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterToFlowIdList(self):
+        """Mapping list of cluster IDs and process IDs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ClusterIDToFlowID
+        """
         return self._ClusterToFlowIdList
 
     @ClusterToFlowIdList.setter
@@ -6767,6 +8344,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6807,6 +8387,9 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Cluster instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6815,6 +8398,9 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """Username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6823,6 +8409,9 @@ class ModifyUserManagerPwdRequest(AbstractModel):
 
     @property
     def PassWord(self):
+        """Password
+        :rtype: str
+        """
         return self._PassWord
 
     @PassWord.setter
@@ -6858,6 +8447,9 @@ class ModifyUserManagerPwdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6893,6 +8485,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Disk type
+<li>CLOUD_SSD: Cloud SSD.</li>
+<li>CLOUD_PREMIUM: Premium cloud disk.</li>
+<li>CLOUD_HSSD: Enhanced SSD.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -6901,6 +8500,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Volume(self):
+        """Cloud disk sizeNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -6909,6 +8511,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
+        """Number of cloud disks of this typeNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -6953,6 +8558,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
+        """Number of cloud disks in this type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -6961,6 +8570,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -6969,6 +8582,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Volume(self):
+        """Cloud disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -7014,6 +8631,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneTag(self):
+        """"master", "standby", "third-party"
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ZoneTag
 
     @ZoneTag.setter
@@ -7022,6 +8643,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def VPCSettings(self):
+        """None
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
         return self._VPCSettings
 
     @VPCSettings.setter
@@ -7030,6 +8654,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Placement(self):
+        """None
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -7038,6 +8665,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ResourceSpec(self):
+        """None
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        """
         return self._ResourceSpec
 
     @ResourceSpec.setter
@@ -7101,6 +8731,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def MasterResourceSpec(self):
+        """Describes master node resource
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
+        """
         return self._MasterResourceSpec
 
     @MasterResourceSpec.setter
@@ -7109,6 +8742,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def CoreResourceSpec(self):
+        """Describes core node resource
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
+        """
         return self._CoreResourceSpec
 
     @CoreResourceSpec.setter
@@ -7117,6 +8753,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def TaskResourceSpec(self):
+        """Describes task node resource
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
+        """
         return self._TaskResourceSpec
 
     @TaskResourceSpec.setter
@@ -7125,6 +8764,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def MasterCount(self):
+        """Number of master nodes
+        :rtype: int
+        """
         return self._MasterCount
 
     @MasterCount.setter
@@ -7133,6 +8775,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def CoreCount(self):
+        """Number of core nodes
+        :rtype: int
+        """
         return self._CoreCount
 
     @CoreCount.setter
@@ -7141,6 +8786,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def TaskCount(self):
+        """Number of task nodes
+        :rtype: int
+        """
         return self._TaskCount
 
     @TaskCount.setter
@@ -7149,6 +8797,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def CommonResourceSpec(self):
+        """Describes common node resource
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
+        """
         return self._CommonResourceSpec
 
     @CommonResourceSpec.setter
@@ -7157,6 +8808,9 @@ class NewResourceSpec(AbstractModel):
 
     @property
     def CommonCount(self):
+        """Number of common nodes
+        :rtype: int
+        """
         return self._CommonCount
 
     @CommonCount.setter
@@ -7209,6 +8863,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
+        """The node type. Valid values: `master`, `core`, `task`, `common`, `router`, `mysql`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -7217,6 +8875,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartDetailPrice(self):
+        """Price details by node part
+        :rtype: list of PartDetailPriceItem
+        """
         return self._PartDetailPrice
 
     @PartDetailPrice.setter
@@ -7457,6 +9118,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """User `APPID`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -7465,6 +9130,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SerialNo(self):
+        """Serial number
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SerialNo
 
     @SerialNo.setter
@@ -7473,6 +9142,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderNo(self):
+        """Machine instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OrderNo
 
     @OrderNo.setter
@@ -7481,6 +9154,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanIp(self):
+        """Public IP bound to master node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._WanIp
 
     @WanIp.setter
@@ -7489,6 +9166,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Flag(self):
+        """Node type. 0: common node; 1: master node;
+2: core node; 3: task node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Flag
 
     @Flag.setter
@@ -7497,6 +9179,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Spec(self):
+        """Node specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Spec
 
     @Spec.setter
@@ -7505,6 +9191,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuNum(self):
+        """Number of node cores
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CpuNum
 
     @CpuNum.setter
@@ -7513,6 +9203,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
+        """Node memory size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MemSize
 
     @MemSize.setter
@@ -7521,6 +9215,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemDesc(self):
+        """Node memory description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MemDesc
 
     @MemDesc.setter
@@ -7529,6 +9227,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
+        """Node region
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -7537,6 +9239,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """Node AZ
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -7545,6 +9251,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplyTime(self):
+        """Application time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -7553,6 +9263,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FreeTime(self):
+        """Release time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FreeTime
 
     @FreeTime.setter
@@ -7561,6 +9275,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -7569,6 +9287,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NameTag(self):
+        """Node description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NameTag
 
     @NameTag.setter
@@ -7577,6 +9299,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Services(self):
+        """Services deployed on node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Services
 
     @Services.setter
@@ -7585,6 +9311,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageType(self):
+        """Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -7593,6 +9323,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RootSize(self):
+        """System disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RootSize
 
     @RootSize.setter
@@ -7601,6 +9335,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChargeType(self):
+        """Payment type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -7609,6 +9347,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CdbIp(self):
+        """Database IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CdbIp
 
     @CdbIp.setter
@@ -7617,6 +9359,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CdbPort(self):
+        """Database port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CdbPort
 
     @CdbPort.setter
@@ -7625,6 +9371,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HwDiskSize(self):
+        """Disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._HwDiskSize
 
     @HwDiskSize.setter
@@ -7633,6 +9383,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HwDiskSizeDesc(self):
+        """Disk capacity description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HwDiskSizeDesc
 
     @HwDiskSizeDesc.setter
@@ -7641,6 +9395,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HwMemSize(self):
+        """Memory capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._HwMemSize
 
     @HwMemSize.setter
@@ -7649,6 +9407,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HwMemSizeDesc(self):
+        """Memory capacity description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HwMemSizeDesc
 
     @HwMemSizeDesc.setter
@@ -7657,6 +9419,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -7665,6 +9431,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EmrResourceId(self):
+        """Node resource ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EmrResourceId
 
     @EmrResourceId.setter
@@ -7673,6 +9443,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAutoRenew(self):
+        """Renewal flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsAutoRenew
 
     @IsAutoRenew.setter
@@ -7681,6 +9455,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceClass(self):
+        """Device flag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeviceClass
 
     @DeviceClass.setter
@@ -7689,6 +9467,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mutable(self):
+        """Support for configuration adjustment
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Mutable
 
     @Mutable.setter
@@ -7697,6 +9479,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MCMultiDisk(self):
+        """Multi-cloud disk
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MultiDiskMC
+        """
         return self._MCMultiDisk
 
     @MCMultiDisk.setter
@@ -7705,6 +9491,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CdbNodeInfo(self):
+        """Database information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CdbInfo`
+        """
         return self._CdbNodeInfo
 
     @CdbNodeInfo.setter
@@ -7713,6 +9503,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """Private IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7721,6 +9515,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Destroyable(self):
+        """Whether this node can be terminated. 1: yes, 0: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Destroyable
 
     @Destroyable.setter
@@ -7729,6 +9527,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tags bound to node
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7737,6 +9539,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoFlag(self):
+        """Wether the node is auto-scaling. 0 means common node. 1 means auto-scaling node.
+        :rtype: int
+        """
         return self._AutoFlag
 
     @AutoFlag.setter
@@ -7745,6 +9550,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HardwareResourceType(self):
+        """Resource type. Valid values: host, pod
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HardwareResourceType
 
     @HardwareResourceType.setter
@@ -7753,6 +9562,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDynamicSpec(self):
+        """Whether floating specification is used. `1`: yes; `0`: no
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsDynamicSpec
 
     @IsDynamicSpec.setter
@@ -7761,6 +9574,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DynamicPodSpec(self):
+        """Floating specification in JSON string
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DynamicPodSpec
 
     @DynamicPodSpec.setter
@@ -7769,6 +9586,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SupportModifyPayMode(self):
+        """Whether to support billing mode change. `0`: no; `1`: yes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SupportModifyPayMode
 
     @SupportModifyPayMode.setter
@@ -7777,6 +9598,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RootStorageType(self):
+        """System disk type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RootStorageType
 
     @RootStorageType.setter
@@ -7785,6 +9610,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """AZ information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -7793,6 +9622,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetInfo(self):
+        """Subnet
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
+        """
         return self._SubnetInfo
 
     @SubnetInfo.setter
@@ -7801,6 +9634,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Clients(self):
+        """Client
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Clients
 
     @Clients.setter
@@ -7809,6 +9646,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentTime(self):
+        """The current system time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CurrentTime
 
     @CurrentTime.setter
@@ -7817,6 +9658,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsFederation(self):
+        """Whether it is used in a federation. Valid values: `0` (no), `1` (yes).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsFederation
 
     @IsFederation.setter
@@ -7825,6 +9670,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceName(self):
+        """Device name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -7833,6 +9682,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceClient(self):
+        """Service
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ServiceClient
 
     @ServiceClient.setter
@@ -7841,6 +9694,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisableApiTermination(self):
+        """Enabling instance protection for this instance. Valid values: `true` (enable) and `false` (disable).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._DisableApiTermination
 
     @DisableApiTermination.setter
@@ -7849,6 +9706,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeVersion(self):
+        """The billing version. Valid values: `0` (original billing) and `1` (new billing)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TradeVersion
 
     @TradeVersion.setter
@@ -7857,6 +9718,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServicesStatus(self):
+        """Status of each component. Zookeeper: STARTED; ResourceManager: STARTED. STARTED indicates "already in operation"; STOPPED indicates "ceased".
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ServicesStatus
 
     @ServicesStatus.setter
@@ -7971,6 +9836,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """The spec type, such as `S2.MEDIUM8`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -7979,6 +9848,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SystemDisk(self):
+        """The system disk, which can be up to 1 PCS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DiskSpecInfo
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -7987,6 +9860,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """The list of tags to be bound.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7995,6 +9872,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataDisk(self):
+        """The cloud data disk, which can be up to 15 PCS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DiskSpecInfo
+        """
         return self._DataDisk
 
     @DataDisk.setter
@@ -8003,6 +9884,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LocalDataDisk(self):
+        """The local data disk.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DiskSpecInfo
+        """
         return self._LocalDataDisk
 
     @LocalDataDisk.setter
@@ -8061,6 +9946,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceInfoList(self):
+        """The information of the services to operate on.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ServiceBasicRestartInfo
+        """
         return self._ServiceInfoList
 
     @ServiceInfoList.setter
@@ -8132,6 +10021,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Spec(self):
+        """Specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Spec
 
     @Spec.setter
@@ -8140,6 +10033,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpecName(self):
+        """Specification name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SpecName
 
     @SpecName.setter
@@ -8148,6 +10045,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageType(self):
+        """Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -8156,6 +10057,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Disk type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8164,6 +10069,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RootSize(self):
+        """System disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RootSize
 
     @RootSize.setter
@@ -8172,6 +10081,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
+        """Memory size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MemSize
 
     @MemSize.setter
@@ -8180,6 +10093,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """Number of CPUs
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -8188,6 +10105,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Disk size
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -8196,6 +10117,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Specification
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -8258,6 +10183,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """The type. Valid values: `node` (node); `rootDisk` (system disk); `dataDisk` and `metaDB` (cloud data disk)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -8266,6 +10195,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Price(self):
+        """Rate (original)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Price
 
     @Price.setter
@@ -8274,6 +10207,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealCost(self):
+        """Rate (discounted)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._RealCost
 
     @RealCost.setter
@@ -8282,6 +10219,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RealTotalCost(self):
+        """Total price (discounted)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -8290,6 +10231,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Policy(self):
+        """Discount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Policy
 
     @Policy.setter
@@ -8298,6 +10243,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GoodsNum(self):
+        """Quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -8345,6 +10294,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Disk size in GB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -8353,6 +10306,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8361,6 +10318,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskNum(self):
+        """Number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskNum
 
     @DiskNum.setter
@@ -8399,6 +10360,9 @@ class Placement(AbstractModel):
 
     @property
     def Zone(self):
+        """The ID of the availability zone where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -8407,6 +10371,9 @@ class Placement(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID of the instance. If no ID is passed in, the default project ID is used.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -8555,6 +10522,9 @@ Examples:
 
     @property
     def InstanceId(self):
+        """The TKE or EKS cluster ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8563,6 +10533,43 @@ Examples:
 
     @property
     def Config(self):
+        """Custom permissions
+Examples:
+{
+  "apiVersion": "v1",
+  "clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -8571,6 +10578,83 @@ Examples:
 
     @property
     def Parameter(self):
+        """Custom parameters
+Examples:
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+        :rtype: str
+        """
         return self._Parameter
 
     @Parameter.setter
@@ -8645,6 +10729,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceProviderIdentifier(self):
+        """The identifier of an external resource provider, such as "cls-a1cd23fa".
+        :rtype: str
+        """
         return self._ResourceProviderIdentifier
 
     @ResourceProviderIdentifier.setter
@@ -8653,6 +10740,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceProviderType(self):
+        """The type of the external resource provider, such as "tke". Currently, only "tke" is supported.
+        :rtype: str
+        """
         return self._ResourceProviderType
 
     @ResourceProviderType.setter
@@ -8661,6 +10751,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeFlag(self):
+        """The purpose of the resource, which means the node type and can only be "TASK".
+        :rtype: str
+        """
         return self._NodeFlag
 
     @NodeFlag.setter
@@ -8669,6 +10762,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """The number of CPUs.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -8677,6 +10773,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
+        """The memory size in GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -8685,6 +10784,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuType(self):
+        """The EKS cluster - CPU type. Valid values: `intel` and `amd`.
+        :rtype: str
+        """
         return self._CpuType
 
     @CpuType.setter
@@ -8693,6 +10795,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodVolumes(self):
+        """The data directory mounting information of the pod node.
+        :rtype: list of PodVolume
+        """
         return self._PodVolumes
 
     @PodVolumes.setter
@@ -8701,6 +10806,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableDynamicSpecFlag(self):
+        """Whether the dynamic spec is used. Valid values:
+<li>`true`: Yes</li>
+<li>`false` (default): No</li>
+        :rtype: bool
+        """
         return self._EnableDynamicSpecFlag
 
     @EnableDynamicSpecFlag.setter
@@ -8709,6 +10819,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DynamicPodSpec(self):
+        """The dynamic spec.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        """
         return self._DynamicPodSpec
 
     @DynamicPodSpec.setter
@@ -8717,6 +10831,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """The unique VPC ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8725,6 +10843,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """The unique VPC subnet ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -8733,6 +10855,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodName(self):
+        """The pod name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -8898,6 +11024,9 @@ Example:
 
     @property
     def ClusterId(self):
+        """ID of TKE or EKS cluster
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -8906,6 +11035,43 @@ Example:
 
     @property
     def Config(self):
+        """Custom permissions
+Example:
+{
+  "apiVersion": "v1",
+  "Clusters": [
+    {
+      "cluster": {
+        "certificate-authority-data": "xxxxxx==",
+        "server": "https://xxxxx.com"
+      },
+      "name": "cls-xxxxx"
+    }
+  ],
+  "contexts": [
+    {
+      "context": {
+        "cluster": "cls-xxxxx",
+        "user": "100014xxxxx"
+      },
+      "name": "cls-a44yhcxxxxxxxxxx"
+    }
+  ],
+  "current-context": "cls-a4xxxx-context-default",
+  "kind": "Config",
+  "preferences": {},
+  "users": [
+    {
+      "name": "100014xxxxx",
+      "user": {
+        "client-certificate-data": "xxxxxx",
+        "client-key-data": "xxxxxx"
+      }
+    }
+  ]
+}
+        :rtype: str
+        """
         return self._Config
 
     @Config.setter
@@ -8914,6 +11080,83 @@ Example:
 
     @property
     def Parameter(self):
+        """Custom parameters
+Example:
+{
+    "apiVersion": "apps/v1",
+    "kind": "Deployment",
+    "metadata": {
+      "name": "test-deployment",
+      "labels": {
+        "app": "test"
+      }
+    },
+    "spec": {
+      "replicas": 3,
+      "selector": {
+        "matchLabels": {
+          "app": "test-app"
+        }
+      },
+      "template": {
+        "metadata": {
+          "annotations": {
+            "your-organization.com/department-v1": "test-example-v1",
+            "your-organization.com/department-v2": "test-example-v2"
+          },
+          "labels": {
+            "app": "test-app",
+            "environment": "production"
+          }
+        },
+        "spec": {
+          "nodeSelector": {
+            "your-organization/node-test": "test-node"
+          },
+          "containers": [
+            {
+              "name": "nginx",
+              "image": "nginx:1.14.2",
+              "ports": [
+                {
+                  "containerPort": 80
+                }
+              ]
+            }
+          ],
+          "affinity": {
+            "nodeAffinity": {
+              "requiredDuringSchedulingIgnoredDuringExecution": {
+                "nodeSelectorTerms": [
+                  {
+                    "matchExpressions": [
+                      {
+                        "key": "disk-type",
+                        "operator": "In",
+                        "values": [
+                          "ssd",
+                          "sas"
+                        ]
+                      },
+                      {
+                        "key": "cpu-num",
+                        "operator": "Gt",
+                        "values": [
+                          "6"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+        :rtype: str
+        """
         return self._Parameter
 
     @Parameter.setter
@@ -8989,6 +11232,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceProviderIdentifier(self):
+        """Identifier of external resource provider, such as "cls-a1cd23fa".
+        :rtype: str
+        """
         return self._ResourceProviderIdentifier
 
     @ResourceProviderIdentifier.setter
@@ -8997,6 +11243,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceProviderType(self):
+        """Type of external resource provider, such as "tke". Currently, only "tke" is supported.
+        :rtype: str
+        """
         return self._ResourceProviderType
 
     @ResourceProviderType.setter
@@ -9005,6 +11254,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
+        """Purpose of the resource, which means the node type and can only be "TASK".
+        :rtype: str
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -9013,6 +11265,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """Number of CPUs
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -9021,6 +11276,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
+        """Memory size in GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -9029,6 +11287,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataVolumes(self):
+        """Mount point of resources for the host. A specified mount point corresponds to the host path and is used as the data storage directory in the pod. (This parameter has been disused)
+        :rtype: list of str
+        """
         return self._DataVolumes
 
     @DataVolumes.setter
@@ -9037,6 +11298,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CpuType(self):
+        """EKS cluster - CPU type. Valid values: `intel` and `amd`.
+        :rtype: str
+        """
         return self._CpuType
 
     @CpuType.setter
@@ -9045,6 +11309,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodVolumes(self):
+        """Data directory mounting information of the pod node.
+        :rtype: list of PodVolume
+        """
         return self._PodVolumes
 
     @PodVolumes.setter
@@ -9053,6 +11320,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDynamicSpec(self):
+        """Whether floating specification is used. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._IsDynamicSpec
 
     @IsDynamicSpec.setter
@@ -9061,6 +11331,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DynamicPodSpec(self):
+        """Floating specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicPodSpec`
+        """
         return self._DynamicPodSpec
 
     @DynamicPodSpec.setter
@@ -9069,6 +11343,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """Unique VPC ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9077,6 +11355,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """Unique VPC subnet ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9085,6 +11367,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PodName(self):
+        """pod name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PodName
 
     @PodName.setter
@@ -9140,6 +11426,9 @@ class PodSpecInfo(AbstractModel):
 
     @property
     def PodSpec(self):
+        """The specified information such as pod spec and source for scale-out with pod resources.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PodNewSpec`
+        """
         return self._PodSpec
 
     @PodSpec.setter
@@ -9148,6 +11437,9 @@ class PodSpecInfo(AbstractModel):
 
     @property
     def PodParameter(self):
+        """The custom pod permission and parameter.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PodNewParameter`
+        """
         return self._PodParameter
 
     @PodParameter.setter
@@ -9195,6 +11487,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VolumeType(self):
+        """Storage type. Valid values: `pvc` and `hostpath`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VolumeType
 
     @VolumeType.setter
@@ -9203,6 +11499,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PVCVolume(self):
+        """This field will take effect if `VolumeType` is `pvc`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PersistentVolumeContext`
+        """
         return self._PVCVolume
 
     @PVCVolume.setter
@@ -9211,6 +11511,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostVolume(self):
+        """This field will take effect if `VolumeType` is `hostpath`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.HostVolumeContext`
+        """
         return self._HostVolume
 
     @HostVolume.setter
@@ -9286,6 +11590,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def Path(self):
+        """COS path to script, which has been disused
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -9294,6 +11601,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def Args(self):
+        """Execution script parameter
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -9302,6 +11612,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS bucket name, which has been disused
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -9310,6 +11623,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def Region(self):
+        """COS region name, which has been disused
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9318,6 +11634,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def Domain(self):
+        """COS domain data, which has been disused
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -9326,6 +11645,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def RunOrder(self):
+        """Execution sequence
+        :rtype: int
+        """
         return self._RunOrder
 
     @RunOrder.setter
@@ -9334,6 +11656,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def WhenRun(self):
+        """`resourceAfter` or `clusterAfter`
+        :rtype: str
+        """
         return self._WhenRun
 
     @WhenRun.setter
@@ -9342,6 +11667,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def CosFileName(self):
+        """Script name, which has been disused
+        :rtype: str
+        """
         return self._CosFileName
 
     @CosFileName.setter
@@ -9350,6 +11678,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def CosFileURI(self):
+        """COS address of script
+        :rtype: str
+        """
         return self._CosFileURI
 
     @CosFileURI.setter
@@ -9358,6 +11689,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def CosSecretId(self):
+        """COS `SecretId`
+        :rtype: str
+        """
         return self._CosSecretId
 
     @CosSecretId.setter
@@ -9366,6 +11700,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def CosSecretKey(self):
+        """COS `SecretKey`
+        :rtype: str
+        """
         return self._CosSecretKey
 
     @CosSecretKey.setter
@@ -9374,6 +11711,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def AppId(self):
+        """COS `appid`, which has been disused
+        :rtype: str
+        """
         return self._AppId
 
     @AppId.setter
@@ -9382,6 +11722,9 @@ class PreExecuteFileSettings(AbstractModel):
 
     @property
     def Remark(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -9436,6 +11779,9 @@ class PriceDetail(AbstractModel):
 
     @property
     def ResourceId(self):
+        """The node ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -9444,6 +11790,9 @@ class PriceDetail(AbstractModel):
 
     @property
     def Formula(self):
+        """The price formula
+        :rtype: str
+        """
         return self._Formula
 
     @Formula.setter
@@ -9452,6 +11801,9 @@ class PriceDetail(AbstractModel):
 
     @property
     def OriginalCost(self):
+        """The original price
+        :rtype: float
+        """
         return self._OriginalCost
 
     @OriginalCost.setter
@@ -9460,6 +11812,9 @@ class PriceDetail(AbstractModel):
 
     @property
     def DiscountCost(self):
+        """The discount price
+        :rtype: float
+        """
         return self._DiscountCost
 
     @DiscountCost.setter
@@ -9545,6 +11900,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Spec(self):
+        """Target specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Spec
 
     @Spec.setter
@@ -9553,6 +11912,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageType(self):
+        """Disk type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -9561,6 +11924,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Disk type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -9569,6 +11936,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RootSize(self):
+        """System disk size
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RootSize
 
     @RootSize.setter
@@ -9577,6 +11948,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MemSize(self):
+        """Memory size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MemSize
 
     @MemSize.setter
@@ -9585,6 +11960,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """Number of CPUs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -9593,6 +11972,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Disk size.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -9601,6 +11984,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MultiDisks(self):
+        """List of cloud disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MultiDisk
+        """
         return self._MultiDisks
 
     @MultiDisks.setter
@@ -9609,6 +11996,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskCnt(self):
+        """Number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskCnt
 
     @DiskCnt.setter
@@ -9617,6 +12008,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -9625,6 +12020,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9633,6 +12032,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskNum(self):
+        """Number of disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskNum
 
     @DiskNum.setter
@@ -9641,6 +12044,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LocalDiskNum(self):
+        """Number of local disks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._LocalDiskNum
 
     @LocalDiskNum.setter
@@ -9751,6 +12158,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Spec(self):
+        """Node specification description, such as CVM.SA2
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Spec
 
     @Spec.setter
@@ -9759,6 +12170,16 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StorageType(self):
+        """Storage type
+Valid values:
+<li>4: SSD</li>
+<li>5: Premium Cloud Storage</li>
+<li>6: Enhanced SSD</li>
+<li>11: High-Throughput cloud disk</li>
+<li>12: Tremendous SSD</li>
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -9767,6 +12188,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskType(self):
+        """Disk type
+Valid values:
+<li>`CLOUD_SSD`: SSD</li>
+<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
+<li>`CLOUD_BASIC`: HDD</li>
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -9775,6 +12204,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MemSize(self):
+        """Memory capacity in MB
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MemSize
 
     @MemSize.setter
@@ -9783,6 +12216,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cpu(self):
+        """Number of CPU cores
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -9791,6 +12228,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskSize(self):
+        """Data disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -9799,6 +12240,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RootSize(self):
+        """System disk capacity
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RootSize
 
     @RootSize.setter
@@ -9807,6 +12252,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MultiDisks(self):
+        """List of cloud disks. When the data disk is a cloud disk, `DiskType` and `DiskSize` are used directly; `MultiDisks` will be used for the excessive part
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MultiDisk
+        """
         return self._MultiDisks
 
     @MultiDisks.setter
@@ -9815,6 +12264,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
+        """List of tags to be bound
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9823,6 +12276,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
+        """Specification type, such as S2.MEDIUM8
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -9831,6 +12288,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LocalDiskNum(self):
+        """Number of local disks. This field has been disused.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._LocalDiskNum
 
     @LocalDiskNum.setter
@@ -9839,6 +12300,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskNum(self):
+        """Number of local disks, such as 2
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskNum
 
     @DiskNum.setter
@@ -9955,6 +12420,11 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def InstanceChargeType(self):
+        """The node billing mode. Valid values:
+<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>
+<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -9963,6 +12433,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def InstanceId(self):
+        """The cluster instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9971,6 +12444,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ScaleOutNodeConfig(self):
+        """The type and number of nodes to be added.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutNodeConfig`
+        """
         return self._ScaleOutNodeConfig
 
     @ScaleOutNodeConfig.setter
@@ -9979,6 +12455,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ClientToken(self):
+        """A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -9987,6 +12466,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def InstanceChargePrepaid(self):
+        """The details of the monthly subscription, including the instance period and auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -9995,6 +12477,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ScriptBootstrapActionConfig(self):
+        """The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
+        :rtype: list of ScriptBootstrapActionConfig
+        """
         return self._ScriptBootstrapActionConfig
 
     @ScriptBootstrapActionConfig.setter
@@ -10003,6 +12488,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def SoftDeployInfo(self):
+        """The services to be deployed for new nodes. By default, new nodes will inherit services deployed for the current node type, including default optional services. This parameter only supports the inclusion of optional services. For example, if HDFS, YARN, and Impala have been deployed for existing task nodes, when using the API for task node scale-out without deploying Impala, only HDFS and YARN are included in with this parameter. 
+        :rtype: list of int
+        """
         return self._SoftDeployInfo
 
     @SoftDeployInfo.setter
@@ -10011,6 +12499,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ServiceNodeInfo(self):
+        """The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, HDFS, YARN, and Impala have been deployed for current task nodes, and default services are DataNode, NodeManager, and ImpalaServer; if you want to change deployed processes, you can set this parameter to DataNode,NodeManager,ImpalaServerCoordinator or DataNode,NodeManager,ImpalaServerExecutor. 
+        :rtype: list of int
+        """
         return self._ServiceNodeInfo
 
     @ServiceNodeInfo.setter
@@ -10019,6 +12510,10 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def DisasterRecoverGroupIds(self):
+        """The list of spread placement group IDs. Only one can be specified.
+You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -10027,6 +12522,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def Tags(self):
+        """The list of tags bound to added nodes.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -10035,6 +12533,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def HardwareSourceType(self):
+        """The type of resources to add. Valid values: `host` (general CVM resources) and `pod` (resources provided by a TKE or EKS cluster).
+        :rtype: str
+        """
         return self._HardwareSourceType
 
     @HardwareSourceType.setter
@@ -10043,6 +12544,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def PodSpecInfo(self):
+        """The pod resource information.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PodSpecInfo`
+        """
         return self._PodSpecInfo
 
     @PodSpecInfo.setter
@@ -10051,6 +12555,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ClickHouseClusterName(self):
+        """The server group name selected for ClickHouse cluster scale-out.
+        :rtype: str
+        """
         return self._ClickHouseClusterName
 
     @ClickHouseClusterName.setter
@@ -10059,6 +12566,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ClickHouseClusterType(self):
+        """The server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
+        :rtype: str
+        """
         return self._ClickHouseClusterType
 
     @ClickHouseClusterType.setter
@@ -10067,6 +12577,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def YarnNodeLabel(self):
+        """The YARN node label specified for scale-out.
+        :rtype: str
+        """
         return self._YarnNodeLabel
 
     @YarnNodeLabel.setter
@@ -10075,6 +12588,11 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def EnableStartServiceFlag(self):
+        """Whether to start services after scale-out.
+<li>`true`: Yes</li>
+<li>`false` (default): No</li>
+        :rtype: bool
+        """
         return self._EnableStartServiceFlag
 
     @EnableStartServiceFlag.setter
@@ -10083,6 +12601,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ResourceSpec(self):
+        """The spec settings.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.NodeResourceSpec`
+        """
         return self._ResourceSpec
 
     @ResourceSpec.setter
@@ -10091,6 +12612,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def Zone(self):
+        """The ID of the AZ where the instance resides, such as `ap-guangzhou-1`. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API and obtain this ID from the `Zone` field in the response.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -10099,6 +12623,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def SubnetId(self):
+        """The subnet, which defaults to the subnet used when the cluster is created.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -10107,6 +12634,9 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
 
     @property
     def ScaleOutServiceConfGroupsInfo(self):
+        """
+        :rtype: list of ScaleOutServiceConfGroupsInfo
+        """
         return self._ScaleOutServiceConfGroupsInfo
 
     @ScaleOutServiceConfGroupsInfo.setter
@@ -10193,6 +12723,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """The instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10201,6 +12734,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientToken(self):
+        """The client token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -10209,6 +12746,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
+        """The scale-out workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -10217,6 +12758,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10328,6 +12872,11 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def TimeUnit(self):
+        """Time unit of scale-out. Valid values:
+<li>s: Second. When `PayMode` is 0, `TimeUnit` can only be `s`.</li>
+<li>m: Month. When `PayMode` is 1, `TimeUnit` can only be `m`.</li>
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -10336,6 +12885,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def TimeSpan(self):
+        """Time span of scale-out, which needs to be used together with `TimeUnit`.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -10344,6 +12896,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10352,6 +12907,10 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def PayMode(self):
+        """Instance billing mode. Valid value:
+<li>0: Pay-as-you-go.</li>
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -10360,6 +12919,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def ClientToken(self):
+        """Client token.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -10368,6 +12930,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def PreExecutedFileSettings(self):
+        """Bootstrap script settings.
+        :rtype: list of PreExecuteFileSettings
+        """
         return self._PreExecutedFileSettings
 
     @PreExecutedFileSettings.setter
@@ -10376,6 +12941,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def TaskCount(self):
+        """Number of task nodes to be added.
+        :rtype: int
+        """
         return self._TaskCount
 
     @TaskCount.setter
@@ -10384,6 +12952,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def CoreCount(self):
+        """Number of core nodes to be added.
+        :rtype: int
+        """
         return self._CoreCount
 
     @CoreCount.setter
@@ -10392,6 +12963,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def UnNecessaryNodeList(self):
+        """Processes unnecessary for scale-out.
+        :rtype: list of int non-negative
+        """
         return self._UnNecessaryNodeList
 
     @UnNecessaryNodeList.setter
@@ -10400,6 +12974,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def RouterCount(self):
+        """Number of router nodes to be added.
+        :rtype: int
+        """
         return self._RouterCount
 
     @RouterCount.setter
@@ -10408,6 +12985,11 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def SoftDeployInfo(self):
+        """Deployed service.
+<li>`SoftDeployInfo` and `ServiceNodeInfo` are in the same group and mutually exclusive with `UnNecessaryNodeList`.</li>
+<li>The combination of `SoftDeployInfo` and `ServiceNodeInfo` is recommended.</li>
+        :rtype: list of int non-negative
+        """
         return self._SoftDeployInfo
 
     @SoftDeployInfo.setter
@@ -10416,6 +12998,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def ServiceNodeInfo(self):
+        """Started process.
+        :rtype: list of int non-negative
+        """
         return self._ServiceNodeInfo
 
     @ServiceNodeInfo.setter
@@ -10424,6 +13009,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def DisasterRecoverGroupIds(self):
+        """List of spread placement group IDs. Only one can be specified currently.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -10432,6 +13020,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def Tags(self):
+        """List of tags bound to added nodes.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -10440,6 +13031,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def HardwareResourceType(self):
+        """Resource type selected for scaling. Valid values: `host` (general CVM resource) and `pod` (resource provided by TKE or EKS cluster).
+        :rtype: str
+        """
         return self._HardwareResourceType
 
     @HardwareResourceType.setter
@@ -10448,6 +13042,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def PodSpec(self):
+        """Specified information such as pod specification and source for scale-out with pod resources.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PodSpec`
+        """
         return self._PodSpec
 
     @PodSpec.setter
@@ -10456,6 +13053,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def ClickHouseClusterName(self):
+        """Server group name selected for ClickHouse cluster scale-out.
+        :rtype: str
+        """
         return self._ClickHouseClusterName
 
     @ClickHouseClusterName.setter
@@ -10464,6 +13064,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def ClickHouseClusterType(self):
+        """Server group type selected for ClickHouse cluster scale-out. Valid values: `new` (create a group) and `old` (select an existing group).
+        :rtype: str
+        """
         return self._ClickHouseClusterType
 
     @ClickHouseClusterType.setter
@@ -10472,6 +13075,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def YarnNodeLabel(self):
+        """Yarn node label specified for rule-based scale-out.
+        :rtype: str
+        """
         return self._YarnNodeLabel
 
     @YarnNodeLabel.setter
@@ -10480,6 +13086,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def PodParameter(self):
+        """Custom pod permission and parameter
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PodParameter`
+        """
         return self._PodParameter
 
     @PodParameter.setter
@@ -10488,6 +13097,12 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def MasterCount(self):
+        """Number of master nodes to be added.
+When a ClickHouse cluster is scaled, this parameter does not take effect.
+When a Kafka cluster is scaled, this parameter does not take effect.
+When `HardwareResourceType` is `pod`, this parameter does not take effect.
+        :rtype: int
+        """
         return self._MasterCount
 
     @MasterCount.setter
@@ -10496,6 +13111,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def StartServiceAfterScaleOut(self):
+        """Whether to start the service after scale-out. `true`: Yes; `false`: No.
+        :rtype: str
+        """
         return self._StartServiceAfterScaleOut
 
     @StartServiceAfterScaleOut.setter
@@ -10504,6 +13122,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def ZoneId(self):
+        """AZ, which defaults to the primary AZ of the cluster.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -10512,6 +13133,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def SubnetId(self):
+        """Subnet, which defaults to the subnet used when the cluster is created.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -10520,6 +13144,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def ScaleOutServiceConfAssign(self):
+        """Pre-defined configuration set
+        :rtype: str
+        """
         return self._ScaleOutServiceConfAssign
 
     @ScaleOutServiceConfAssign.setter
@@ -10528,6 +13155,9 @@ When `HardwareResourceType` is `pod`, this parameter does not take effect.
 
     @property
     def AutoRenew(self):
+        """Whether to enable auto-renewal. Valid values: `0` (no), `1` (yes).
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -10619,6 +13249,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10627,6 +13260,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealNames(self):
+        """Order number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -10635,6 +13272,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientToken(self):
+        """Client token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -10643,6 +13284,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
+        """Scale-out workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -10651,6 +13296,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillId(self):
+        """Big order ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BillId
 
     @BillId.setter
@@ -10659,6 +13308,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10696,6 +13348,13 @@ class ScaleOutNodeConfig(AbstractModel):
 
     @property
     def NodeFlag(self):
+        """Valid values of node type:
+  <li>MASTER</li>
+  <li>TASK</li>
+  <li>CORE</li>
+  <li>ROUTER</li>
+        :rtype: str
+        """
         return self._NodeFlag
 
     @NodeFlag.setter
@@ -10704,6 +13363,9 @@ class ScaleOutNodeConfig(AbstractModel):
 
     @property
     def NodeCount(self):
+        """The number of nodes.
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -10741,6 +13403,9 @@ class ScaleOutServiceConfGroupsInfo(AbstractModel):
 
     @property
     def ServiceComponentName(self):
+        """
+        :rtype: str
+        """
         return self._ServiceComponentName
 
     @ServiceComponentName.setter
@@ -10749,6 +13414,9 @@ class ScaleOutServiceConfGroupsInfo(AbstractModel):
 
     @property
     def ConfGroupName(self):
+        """
+        :rtype: str
+        """
         return self._ConfGroupName
 
     @ConfGroupName.setter
@@ -10792,6 +13460,10 @@ Hadoop-Default
 
     @property
     def Software(self):
+        """The list of deployed components. The list of component options varies by `ProductVersion` (EMR version). For more information, see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
+The instance type, `hive` or `flink`.
+        :rtype: list of str
+        """
         return self._Software
 
     @Software.setter
@@ -10800,6 +13472,14 @@ Hadoop-Default
 
     @property
     def SceneName(self):
+        """The scenario name, which defaults to `Hadoop-Default`. For more details, see [here](https://intl.cloud.tencent.com/document/product/589/14624?from_cn_redirect=1). Valid values:
+Hadoop-Kudu
+Hadoop-Zookeeper
+Hadoop-Presto
+Hadoop-Hbase
+Hadoop-Default
+        :rtype: str
+        """
         return self._SceneName
 
     @SceneName.setter
@@ -10846,6 +13526,9 @@ class ScriptBootstrapActionConfig(AbstractModel):
 
     @property
     def CosFileURI(self):
+        """The COS URL of the script, in the format of `https://beijing-111111.cos.ap-beijing.myqcloud.com/data/test.sh`. For the COS bucket list, see [Bucket List](https://console.cloud.tencent.com/cos/bucket).
+        :rtype: str
+        """
         return self._CosFileURI
 
     @CosFileURI.setter
@@ -10854,6 +13537,12 @@ class ScriptBootstrapActionConfig(AbstractModel):
 
     @property
     def ExecutionMoment(self):
+        """The execution time of the bootstrap action script. Valid values:
+<li>`resourceAfter`: After node initialization</li>
+<li>`clusterAfter`: After cluster start</li>
+<li>`clusterBefore`: Before cluster start</li>
+        :rtype: str
+        """
         return self._ExecutionMoment
 
     @ExecutionMoment.setter
@@ -10862,6 +13551,9 @@ class ScriptBootstrapActionConfig(AbstractModel):
 
     @property
     def Args(self):
+        """The execution script parameter. The parameter format must comply with standard shell specifications.
+        :rtype: list of str
+        """
         return self._Args
 
     @Args.setter
@@ -10870,6 +13562,9 @@ class ScriptBootstrapActionConfig(AbstractModel):
 
     @property
     def CosFileName(self):
+        """The script file name.
+        :rtype: str
+        """
         return self._CosFileName
 
     @CosFileName.setter
@@ -10909,6 +13604,9 @@ class SearchItem(AbstractModel):
 
     @property
     def SearchType(self):
+        """Searchable type
+        :rtype: str
+        """
         return self._SearchType
 
     @SearchType.setter
@@ -10917,6 +13615,9 @@ class SearchItem(AbstractModel):
 
     @property
     def SearchValue(self):
+        """Searchable value
+        :rtype: str
+        """
         return self._SearchValue
 
     @SearchValue.setter
@@ -10954,6 +13655,9 @@ class ServiceBasicRestartInfo(AbstractModel):
 
     @property
     def ServiceName(self):
+        """The service name (required), such as HDFS.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -10962,6 +13666,9 @@ class ServiceBasicRestartInfo(AbstractModel):
 
     @property
     def ComponentInfoList(self):
+        """If it is left empty, all processes will be operated on.
+        :rtype: list of ComponentBasicRestartInfo
+        """
         return self._ComponentInfoList
 
     @ComponentInfoList.setter
@@ -11006,6 +13713,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NodeType(self):
+        """Node type: Master/Core/Task/Router/Common
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -11014,6 +13725,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NodeSize(self):
+        """Number of nodes
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._NodeSize
 
     @NodeSize.setter
@@ -11051,6 +13766,9 @@ class SoftDependInfo(AbstractModel):
 
     @property
     def SoftName(self):
+        """The component name.
+        :rtype: str
+        """
         return self._SoftName
 
     @SoftName.setter
@@ -11059,6 +13777,9 @@ class SoftDependInfo(AbstractModel):
 
     @property
     def Required(self):
+        """Whether the component is required.
+        :rtype: bool
+        """
         return self._Required
 
     @Required.setter
@@ -11107,6 +13828,9 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The cluster ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11115,6 +13839,14 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
 
     @property
     def OpType(self):
+        """The operation type. Valid values:
+<li>StartService: Start service</li>
+<li>StopService: Stop service</li>
+<li>StartMonitor: Start maintenance</li>
+<li>StopMonitor: Stop maintenance</li>
+<li>RestartService: Restart service. If this type is selected, "StrategyConfig" is required.</li>
+        :rtype: str
+        """
         return self._OpType
 
     @OpType.setter
@@ -11123,6 +13855,9 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
 
     @property
     def OpScope(self):
+        """The operation scope.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.OpScope`
+        """
         return self._OpScope
 
     @OpScope.setter
@@ -11131,6 +13866,9 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
 
     @property
     def StrategyConfig(self):
+        """The operation policy.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.StrategyConfig`
+        """
         return self._StrategyConfig
 
     @StrategyConfig.setter
@@ -11171,6 +13909,9 @@ class StartStopServiceOrMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11210,6 +13951,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RollingRestartSwitch(self):
+        """`0`: Disable rolling restart
+`1`: Enable rolling restart
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RollingRestartSwitch
 
     @RollingRestartSwitch.setter
@@ -11218,6 +13964,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BatchSize(self):
+        """The quantity of restarts per batch during a rolling restart, with the maximum number of restarts being 99999
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._BatchSize
 
     @BatchSize.setter
@@ -11226,6 +13976,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeWait(self):
+        """The wait time (in seconds) per batch in rolling restart, with a maximum value of 5 minutes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeWait
 
     @TimeWait.setter
@@ -11234,6 +13988,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealOnFail(self):
+        """The failure handling policy. Valid values: `0` (blocks the process) and `1` (skips).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DealOnFail
 
     @DealOnFail.setter
@@ -11275,6 +14033,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SubnetName(self):
+        """Subnet information (name)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -11283,6 +14045,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SubnetId(self):
+        """Subnet information (ID)
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -11320,6 +14086,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -11328,6 +14097,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -11380,6 +14152,9 @@ class TerminateClusterNodesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11388,6 +14163,9 @@ class TerminateClusterNodesRequest(AbstractModel):
 
     @property
     def CvmInstanceIds(self):
+        """The list of resources to be terminated.
+        :rtype: list of str
+        """
         return self._CvmInstanceIds
 
     @CvmInstanceIds.setter
@@ -11396,6 +14174,13 @@ class TerminateClusterNodesRequest(AbstractModel):
 
     @property
     def NodeFlag(self):
+        """Valid values of node type:
+  <li>MASTER</li>
+  <li>TASK</li>
+  <li>CORE</li>
+  <li>ROUTER</li>
+        :rtype: str
+        """
         return self._NodeFlag
 
     @NodeFlag.setter
@@ -11404,6 +14189,11 @@ class TerminateClusterNodesRequest(AbstractModel):
 
     @property
     def GraceDownFlag(self):
+        """The graceful scale-in feature. Valid values:
+  <li>`true`: Enabled.</li>
+  <li>`false`: Disabled.</li>
+        :rtype: bool
+        """
         return self._GraceDownFlag
 
     @GraceDownFlag.setter
@@ -11412,6 +14202,9 @@ class TerminateClusterNodesRequest(AbstractModel):
 
     @property
     def GraceDownTime(self):
+        """The graceful scale-in wait time in seconds. Value range: 60–1800.
+        :rtype: int
+        """
         return self._GraceDownTime
 
     @GraceDownTime.setter
@@ -11452,6 +14245,9 @@ class TerminateClusterNodesResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """The scale-in process ID.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -11460,6 +14256,9 @@ class TerminateClusterNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11489,6 +14288,9 @@ class TerminateInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11497,6 +14299,9 @@ class TerminateInstanceRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """ID of terminated node. This parameter is reserved and does not need to be configured.
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -11531,6 +14336,9 @@ class TerminateInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11559,6 +14367,9 @@ class TerminateTasksRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11567,6 +14378,9 @@ class TerminateTasksRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -11601,6 +14415,9 @@ class TerminateTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11639,6 +14456,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ZoneId(self):
+        """AZ ID
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -11647,6 +14468,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Zone(self):
+        """AZ information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -11655,6 +14480,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SubnetInfoList(self):
+        """Subnet information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of SubnetInfo
+        """
         return self._SubnetInfoList
 
     @SubnetInfoList.setter
@@ -11663,6 +14492,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NodeInfoList(self):
+        """Node information
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of ShortNodeInfo
+        """
         return self._NodeInfoList
 
     @NodeInfoList.setter
@@ -11718,6 +14551,9 @@ class UpdateInstanceSettings(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory capacity in GB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -11726,6 +14562,9 @@ class UpdateInstanceSettings(AbstractModel):
 
     @property
     def CPUCores(self):
+        """Number of CPU cores
+        :rtype: int
+        """
         return self._CPUCores
 
     @CPUCores.setter
@@ -11734,6 +14573,9 @@ class UpdateInstanceSettings(AbstractModel):
 
     @property
     def ResourceId(self):
+        """Machine resource ID (EMR resource identifier)
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -11742,6 +14584,9 @@ class UpdateInstanceSettings(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Target machine specification
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -11787,6 +14632,9 @@ class UserInfoForUserManager(AbstractModel):
 
     @property
     def UserName(self):
+        """Username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -11795,6 +14643,9 @@ class UserInfoForUserManager(AbstractModel):
 
     @property
     def UserGroup(self):
+        """The group to which the user belongs
+        :rtype: str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -11803,6 +14654,9 @@ class UserInfoForUserManager(AbstractModel):
 
     @property
     def PassWord(self):
+        """
+        :rtype: str
+        """
         return self._PassWord
 
     @PassWord.setter
@@ -11811,6 +14665,9 @@ class UserInfoForUserManager(AbstractModel):
 
     @property
     def ReMark(self):
+        """
+        :rtype: str
+        """
         return self._ReMark
 
     @ReMark.setter
@@ -11848,6 +14705,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UserName(self):
+        """Username
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -11898,6 +14759,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UserName(self):
+        """Username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -11906,6 +14770,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UserGroup(self):
+        """The group to which the user belongs
+        :rtype: str
+        """
         return self._UserGroup
 
     @UserGroup.setter
@@ -11914,6 +14781,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UserType(self):
+        """`Manager` represents an admin, and `NormalUser` represents a general user.
+        :rtype: str
+        """
         return self._UserType
 
     @UserType.setter
@@ -11922,6 +14792,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreateTime(self):
+        """Account creation time
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11930,6 +14804,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SupportDownLoadKeyTab(self):
+        """Whether the corresponding Keytab file of the user is available for download. This parameter applies only to a Kerberos-enabled cluster.
+        :rtype: bool
+        """
         return self._SupportDownLoadKeyTab
 
     @SupportDownLoadKeyTab.setter
@@ -11938,6 +14815,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DownLoadKeyTabUrl(self):
+        """Download link of the Keytab file
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._DownLoadKeyTabUrl
 
     @DownLoadKeyTabUrl.setter
@@ -11979,6 +14860,9 @@ class VPCSettings(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -11987,6 +14871,9 @@ class VPCSettings(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -12024,6 +14911,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
+        """The VPC ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -12032,6 +14922,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The subnet ID.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -12070,6 +14963,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """AZ ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -12078,6 +14975,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeDetailPrice(self):
+        """Price details by node
+        :rtype: list of NodeDetailPriceResult
+        """
         return self._NodeDetailPrice
 
     @NodeDetailPrice.setter
@@ -12133,6 +15033,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VirtualPrivateCloud(self):
+        """The VPC configuration information. This parameter is used to specify the VPC ID, subnet ID and other information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VirtualPrivateCloud`
+        """
         return self._VirtualPrivateCloud
 
     @VirtualPrivateCloud.setter
@@ -12141,6 +15045,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Placement(self):
+        """The instance location. This parameter is used to specify the AZ, project, and other attributes of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -12149,6 +15057,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllNodeResourceSpec(self):
+        """The specs of all nodes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AllNodeResourceSpec`
+        """
         return self._AllNodeResourceSpec
 
     @AllNodeResourceSpec.setter
@@ -12157,6 +15069,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneTag(self):
+        """For a single AZ, `ZoneTag` can be left out. For a double-AZ mode, `ZoneTag` is set to `master` and `standby` for the first and second AZs, respectively. If there are three AZs, `ZoneTag` is set to `master`, `standby`, and `third-party` for the first, second, and third AZs, respectively. Valid values:
+  <li>master</li>
+  <li>standby</li>
+  <li>third-party</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ZoneTag
 
     @ZoneTag.setter

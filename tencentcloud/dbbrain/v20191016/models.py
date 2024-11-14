@@ -38,6 +38,9 @@ class AddUserContactRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Contact name, which needs to be unique and can contain 2-60 characters, supporting uppercase and lowercase letters, numbers, and underline “_”. It cannot start with “_”.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -46,6 +49,9 @@ class AddUserContactRequest(AbstractModel):
 
     @property
     def ContactInfo(self):
+        """Email address, which can contain uppercase and lowercase letters, numbers, and underline “_”, and cannot start with “_”.
+        :rtype: str
+        """
         return self._ContactInfo
 
     @ContactInfo.setter
@@ -54,6 +60,9 @@ class AddUserContactRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type, which is fixed to “mysql”.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -92,6 +101,9 @@ class AddUserContactResponse(AbstractModel):
 
     @property
     def Id(self):
+        """The successfully added contact ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -100,6 +112,9 @@ class AddUserContactResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -132,6 +147,9 @@ class ContactItem(AbstractModel):
 
     @property
     def Id(self):
+        """Contact ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -140,6 +158,9 @@ class ContactItem(AbstractModel):
 
     @property
     def Name(self):
+        """Contact name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -148,6 +169,9 @@ class ContactItem(AbstractModel):
 
     @property
     def Mail(self):
+        """The email address of the contact.
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -201,6 +225,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -209,6 +236,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, such as `2020-11-08T14:00:00+08:00`.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -217,6 +247,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, such as `2020-11-09T14:00:00+08:00`.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -225,6 +258,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def SendMailFlag(self):
+        """Whether to send an email. Valid values: 0 - Yes, 1 - No.
+        :rtype: int
+        """
         return self._SendMailFlag
 
     @SendMailFlag.setter
@@ -233,6 +269,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def ContactPerson(self):
+        """An array of contact IDs to receive the email.
+        :rtype: list of int
+        """
         return self._ContactPerson
 
     @ContactPerson.setter
@@ -241,6 +280,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def ContactGroup(self):
+        """An array of contact group IDs to receive the email.
+        :rtype: list of int
+        """
         return self._ContactGroup
 
     @ContactGroup.setter
@@ -249,6 +291,9 @@ class CreateDBDiagReportTaskRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -292,6 +337,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def AsyncRequestId(self):
+        """ID of an async task request, which can be used to query the execution result of an async task.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -300,6 +349,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -332,6 +384,9 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -340,6 +395,9 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """The health report task ID, which can be queried through `DescribeDBDiagReportTasks`.
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -348,6 +406,9 @@ class CreateDBDiagReportUrlRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -389,6 +450,9 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
+        """The URL of the health report.
+        :rtype: str
+        """
         return self._ReportUrl
 
     @ReportUrl.setter
@@ -397,6 +461,9 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """The expiration timestamp of the health report URL (in seconds).
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -405,6 +472,9 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -447,6 +517,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileInfo(self):
+        """Email configurations
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        """
         return self._ProfileInfo
 
     @ProfileInfo.setter
@@ -455,6 +528,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileLevel(self):
+        """Configuration level. Valid values: "User" (user-level), "Instance" (instance-level). For database inspection report, it should be `User`; and for scheduled task reports, it should be `Instance`.
+        :rtype: str
+        """
         return self._ProfileLevel
 
     @ProfileLevel.setter
@@ -463,6 +539,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
+        """Configuration name, which needs to be unique. For database inspection reports, this name can be customize as needed. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -471,6 +550,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def ProfileType(self):
+        """Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -479,6 +561,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -487,6 +572,9 @@ class CreateMailProfileRequest(AbstractModel):
 
     @property
     def BindInstanceIds(self):
+        """Instance ID bound with the configuration, which is set when the configuration level is "Instance". Only one instance can be bound at a time. When the configuration level is “User”, leave this parameter empty.
+        :rtype: list of str
+        """
         return self._BindInstanceIds
 
     @BindInstanceIds.setter
@@ -527,6 +615,9 @@ class CreateMailProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -564,6 +655,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def WeekConfiguration(self):
+        """Value range: 1-7, representing Monday to Sunday respectively.
+        :rtype: list of int
+        """
         return self._WeekConfiguration
 
     @WeekConfiguration.setter
@@ -572,6 +666,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def ProfileInfo(self):
+        """Email configurations
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        """
         return self._ProfileInfo
 
     @ProfileInfo.setter
@@ -580,6 +677,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
+        """Configuration name, which needs to be unique. For scheduled task reports, the name should be in the format of "scheduler_" + {instanceId}, such as "schduler_cdb-test".
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -588,6 +688,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def BindInstanceId(self):
+        """Configure the instance ID that you need to generate the health report.
+        :rtype: str
+        """
         return self._BindInstanceId
 
     @BindInstanceId.setter
@@ -596,6 +699,9 @@ class CreateSchedulerMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -635,6 +741,9 @@ class CreateSchedulerMailProfileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -663,6 +772,9 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type, which is fixed to “mysql”.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -671,6 +783,9 @@ class DescribeAllUserContactRequest(AbstractModel):
 
     @property
     def Names(self):
+        """An array of contact name. Fuzzy search is supported.
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -712,6 +827,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
+        """Total number of contacts.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -720,6 +838,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Contacts(self):
+        """Contact information.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: list of ContactItem
+        """
         return self._Contacts
 
     @Contacts.setter
@@ -728,6 +850,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -763,6 +888,9 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type, which is fixed to “mysql”.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -771,6 +899,9 @@ class DescribeAllUserGroupRequest(AbstractModel):
 
     @property
     def Names(self):
+        """An array of contact group name. Fuzzy search is supported.
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -812,6 +943,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
+        """Total number of contact groups.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -820,6 +954,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Groups(self):
+        """Contact group information.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: list of GroupItem
+        """
         return self._Groups
 
     @Groups.setter
@@ -828,6 +966,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -866,6 +1007,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -874,6 +1018,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def EventId(self):
+        """Event ID, which can be obtained through the `DescribeDBDiagHistory` API.
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -882,6 +1029,9 @@ class DescribeDBDiagEventRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -951,6 +1101,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiagItem(self):
+        """Diagnosis item.
+        :rtype: str
+        """
         return self._DiagItem
 
     @DiagItem.setter
@@ -959,6 +1112,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiagType(self):
+        """Diagnosis type.
+        :rtype: str
+        """
         return self._DiagType
 
     @DiagType.setter
@@ -967,6 +1123,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
+        """Event ID.
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -975,6 +1134,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Explanation(self):
+        """Event details.
+        :rtype: str
+        """
         return self._Explanation
 
     @Explanation.setter
@@ -983,6 +1145,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Outline(self):
+        """Summary.
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -991,6 +1156,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Problem(self):
+        """Problem found.
+        :rtype: str
+        """
         return self._Problem
 
     @Problem.setter
@@ -999,6 +1167,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Severity(self):
+        """Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.
+        :rtype: int
+        """
         return self._Severity
 
     @Severity.setter
@@ -1007,6 +1178,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1015,6 +1189,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Suggestions(self):
+        """Suggestion.
+        :rtype: str
+        """
         return self._Suggestions
 
     @Suggestions.setter
@@ -1023,6 +1200,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metric(self):
+        """Reserved field.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -1031,6 +1212,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1039,6 +1223,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1084,6 +1271,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1092,6 +1282,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, such as "2019-09-10 12:13:14".
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1100,6 +1293,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, such as "2019-09-11 12:13:14". The interval between the end time and the start time can be up to 2 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1108,6 +1304,9 @@ class DescribeDBDiagHistoryRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1147,6 +1346,9 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     @property
     def Events(self):
+        """Event description.
+        :rtype: list of DiagHistoryEventItem
+        """
         return self._Events
 
     @Events.setter
@@ -1155,6 +1357,9 @@ class DescribeDBDiagHistoryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1210,6 +1415,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the first task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1218,6 +1426,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the last task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1226,6 +1437,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID array, which is used to filter the task list of a specified instance.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1234,6 +1448,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Sources(self):
+        """Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).
+        :rtype: list of str
+        """
         return self._Sources
 
     @Sources.setter
@@ -1242,6 +1459,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def HealthLevels(self):
+        """Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).
+        :rtype: str
+        """
         return self._HealthLevels
 
     @HealthLevels.setter
@@ -1250,6 +1470,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def TaskStatuses(self):
+        """The task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).
+        :rtype: str
+        """
         return self._TaskStatuses
 
     @TaskStatuses.setter
@@ -1258,6 +1481,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1266,6 +1492,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1274,6 +1503,9 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1321,6 +1553,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of tasks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1329,6 +1564,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """Task list.
+        :rtype: list of HealthReportTask
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -1337,6 +1575,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1375,6 +1616,9 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1383,6 +1627,9 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def RangeDays(self):
+        """Query period in days. The end date is the current date and the query period is 7 days by default.
+        :rtype: int
+        """
         return self._RangeDays
 
     @RangeDays.setter
@@ -1391,6 +1638,9 @@ class DescribeDBSpaceStatusRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1438,6 +1688,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Growth(self):
+        """Disk usage growth in MB.
+        :rtype: int
+        """
         return self._Growth
 
     @Growth.setter
@@ -1446,6 +1699,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Remain(self):
+        """Available disk space in MB.
+        :rtype: int
+        """
         return self._Remain
 
     @Remain.setter
@@ -1454,6 +1710,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total disk space in MB.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1462,6 +1721,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def AvailableDays(self):
+        """Estimated number of available days.
+        :rtype: int
+        """
         return self._AvailableDays
 
     @AvailableDays.setter
@@ -1470,6 +1732,9 @@ class DescribeDBSpaceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1517,6 +1782,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def IsSupported(self):
+        """Whether it is an instance supported by DBbrain. It is fixed to “true”.
+        :rtype: bool
+        """
         return self._IsSupported
 
     @IsSupported.setter
@@ -1525,6 +1793,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1533,6 +1804,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination parameter indicating the offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1541,6 +1815,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Pagination parameter indicating the number of entries for each page.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1549,6 +1826,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
+        """Query by instance name.
+        :rtype: list of str
+        """
         return self._InstanceNames
 
     @InstanceNames.setter
@@ -1557,6 +1837,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Query by instance ID.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1565,6 +1848,9 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """Query by region.
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -1613,6 +1899,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total Number of Instances
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1621,6 +1910,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def DbScanStatus(self):
+        """Status of all instance inspection. 0: all instance inspection enabled, 1: all instance inspection disabled
+        :rtype: int
+        """
         return self._DbScanStatus
 
     @DbScanStatus.setter
@@ -1629,6 +1921,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """Instance related information
+        :rtype: list of InstanceInfo
+        """
         return self._Items
 
     @Items.setter
@@ -1637,6 +1932,9 @@ class DescribeDiagDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1676,6 +1974,9 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The instance ID that needs to obtain the health score
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1684,6 +1985,9 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Time(self):
+        """Time to obtain the health score
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -1692,6 +1996,9 @@ class DescribeHealthScoreRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1730,6 +2037,9 @@ class DescribeHealthScoreResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Health score and deduction for exceptions
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.HealthScoreInfo`
+        """
         return self._Data
 
     @Data.setter
@@ -1738,6 +2048,9 @@ class DescribeHealthScoreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1778,6 +2091,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def ProfileType(self):
+        """Configuration type. Valid values: "dbScan_mail_configuration" (email configuration of database inspection report), "scheduler_mail_configuration" (email configuration of scheduled task report).
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -1786,6 +2102,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1794,6 +2113,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1802,6 +2124,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of results per page in paginated queries. Maximum value: 50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1810,6 +2135,9 @@ class DescribeMailProfileRequest(AbstractModel):
 
     @property
     def ProfileName(self):
+        """Query by the name of email configuration. The name of the regularly sent email configuration should be in the format of "scheduler_"+{instanceId}.
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -1855,6 +2183,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProfileList(self):
+        """Email configuration details
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of UserProfile
+        """
         return self._ProfileList
 
     @ProfileList.setter
@@ -1863,6 +2195,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """Total number of email templates
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1871,6 +2207,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1912,6 +2251,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1920,6 +2262,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, such as "2019-09-10 12:13:14".
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1928,6 +2273,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1936,6 +2284,9 @@ class DescribeSlowLogTimeSeriesStatsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1981,6 +2332,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def Period(self):
+        """Time range in seconds in histogram.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1989,6 +2343,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def TimeSeries(self):
+        """Number of slow logs in specified time range.
+        :rtype: list of TimeSlice
+        """
         return self._TimeSeries
 
     @TimeSeries.setter
@@ -1997,6 +2354,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def SeriesData(self):
+        """Instance CPU utilization monitoring data in specified time range.
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
+        """
         return self._SeriesData
 
     @SeriesData.setter
@@ -2005,6 +2365,9 @@ class DescribeSlowLogTimeSeriesStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2064,6 +2427,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2072,6 +2438,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, such as "2019-09-10 12:13:14".
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2080,6 +2449,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, such as "2019-09-10 12:13:14". The interval between the end time and the start time can be up to 7 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2088,6 +2460,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """Sorting key. Valid values: QueryTime, ExecTimes, RowsSent, LockTime, RowsExamined.
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -2096,6 +2471,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting order. Valid values: ASC (ascending), DESC (descending).
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -2104,6 +2482,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2112,6 +2493,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2120,6 +2504,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def SchemaList(self):
+        """Database name array.
+        :rtype: list of SchemaItem
+        """
         return self._SchemaList
 
     @SchemaList.setter
@@ -2128,6 +2515,9 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2180,6 +2570,9 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2188,6 +2581,9 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     @property
     def Rows(self):
+        """List of top slow SQL statements
+        :rtype: list of SlowLogTopSqlItem
+        """
         return self._Rows
 
     @Rows.setter
@@ -2196,6 +2592,9 @@ class DescribeSlowLogTopSqlsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2237,6 +2636,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2245,6 +2647,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2253,6 +2658,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2261,6 +2669,9 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2303,6 +2714,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of source addresses.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2311,6 +2725,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def Items(self):
+        """Detailed list of the proportion of slow logs from each source address.
+        :rtype: list of SlowLogHost
+        """
         return self._Items
 
     @Items.setter
@@ -2319,6 +2736,9 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2366,6 +2786,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2374,6 +2797,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned top databases. Maximum value: 100. Default value: 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2382,6 +2808,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -2390,6 +2819,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -2398,6 +2830,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """End date. It can be as early as 29 days before the current date, and defaults to the current date.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -2406,6 +2841,9 @@ class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2447,6 +2885,9 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
 
     @property
     def TopSpaceSchemaTimeSeries(self):
+        """Time series list of the returned space statistics of top databases.
+        :rtype: list of SchemaSpaceTimeSeries
+        """
         return self._TopSpaceSchemaTimeSeries
 
     @TopSpaceSchemaTimeSeries.setter
@@ -2455,6 +2896,9 @@ class DescribeTopSpaceSchemaTimeSeriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2495,6 +2939,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2503,6 +2950,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned top databases. Maximum value: 100. Default value: 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2511,6 +2961,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`; for other database instances, the default value is `TotalLength`.
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -2519,6 +2972,9 @@ class DescribeTopSpaceSchemasRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2561,6 +3017,9 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     @property
     def TopSpaceSchemas(self):
+        """List of the returned space statistics of top databases.
+        :rtype: list of SchemaSpaceData
+        """
         return self._TopSpaceSchemas
 
     @TopSpaceSchemas.setter
@@ -2569,6 +3028,9 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """Timestamp (in seconds) of database space data collect points
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -2577,6 +3039,9 @@ class DescribeTopSpaceSchemasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2624,6 +3089,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2632,6 +3100,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned top tables. Maximum value: 100. Default value: 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2640,6 +3111,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """Field used to sort top tables. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize. Default value: PhysicalFileSize.
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -2648,6 +3122,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Start date. It can be as early as 29 days before the current date, and defaults to 6 days before the end date.
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -2656,6 +3133,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """End date. It can be as early as 29 days before the current date, and defaults to the current date.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -2664,6 +3144,9 @@ class DescribeTopSpaceTableTimeSeriesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2705,6 +3188,9 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     @property
     def TopSpaceTableTimeSeries(self):
+        """Time series list of the returned space statistics of top tables.
+        :rtype: list of TableSpaceTimeSeries
+        """
         return self._TopSpaceTableTimeSeries
 
     @TopSpaceTableTimeSeries.setter
@@ -2713,6 +3199,9 @@ class DescribeTopSpaceTableTimeSeriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2753,6 +3242,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2761,6 +3253,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned top tables. Maximum value: 100. Default value: 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2769,6 +3264,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def SortBy(self):
+        """Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, and `PhysicalFileSize` (only supported by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is PhysicalFileSize; for other database instances, the default value is `TotalLength`.
+        :rtype: str
+        """
         return self._SortBy
 
     @SortBy.setter
@@ -2777,6 +3275,9 @@ class DescribeTopSpaceTablesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)). Default value: `mysql`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -2819,6 +3320,9 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     @property
     def TopSpaceTables(self):
+        """List of the returned space statistics of top tables.
+        :rtype: list of TableSpaceData
+        """
         return self._TopSpaceTables
 
     @TopSpaceTables.setter
@@ -2827,6 +3331,9 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     @property
     def Timestamp(self):
+        """Timestamp (in seconds) of tablespace data collect points
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -2835,6 +3342,9 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2873,6 +3383,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2881,6 +3394,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL statement.
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -2889,6 +3405,9 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
 
     @property
     def Schema(self):
+        """Database name.
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -2945,6 +3464,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Advices(self):
+        """SQL statement optimization suggestions, which can be parsed into JSON arrays.
+        :rtype: str
+        """
         return self._Advices
 
     @Advices.setter
@@ -2953,6 +3475,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Comments(self):
+        """Notes of SQL statement optimization suggestions, which can be parsed into String arrays.
+        :rtype: str
+        """
         return self._Comments
 
     @Comments.setter
@@ -2961,6 +3486,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL statement.
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -2969,6 +3497,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Schema(self):
+        """Database name.
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -2977,6 +3508,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Tables(self):
+        """DDL information of related tables, which can be parsed into JSON arrays.
+        :rtype: str
+        """
         return self._Tables
 
     @Tables.setter
@@ -2985,6 +3519,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def SqlPlan(self):
+        """SQL execution plan, which can be parsed into JSON.
+        :rtype: str
+        """
         return self._SqlPlan
 
     @SqlPlan.setter
@@ -2993,6 +3530,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def Cost(self):
+        """Cost saving details after SQL statement optimization, which can be parsed into JSON.
+        :rtype: str
+        """
         return self._Cost
 
     @Cost.setter
@@ -3001,6 +3541,9 @@ class DescribeUserSqlAdviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3063,6 +3606,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiagType(self):
+        """Diagnosis type.
+        :rtype: str
+        """
         return self._DiagType
 
     @DiagType.setter
@@ -3071,6 +3617,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3079,6 +3628,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3087,6 +3639,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
+        """Event ID.
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -3095,6 +3650,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Severity(self):
+        """Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.
+        :rtype: int
+        """
         return self._Severity
 
     @Severity.setter
@@ -3103,6 +3661,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Outline(self):
+        """Summary.
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -3111,6 +3672,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiagItem(self):
+        """Diagnosis item.
+        :rtype: str
+        """
         return self._DiagItem
 
     @DiagItem.setter
@@ -3119,6 +3683,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3127,6 +3695,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metric(self):
+        """Reserved field
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -3135,6 +3707,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Region
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3201,6 +3777,9 @@ class EventInfo(AbstractModel):
 
     @property
     def EventId(self):
+        """Event ID
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -3209,6 +3788,9 @@ class EventInfo(AbstractModel):
 
     @property
     def DiagType(self):
+        """Diagnosis type
+        :rtype: str
+        """
         return self._DiagType
 
     @DiagType.setter
@@ -3217,6 +3799,9 @@ class EventInfo(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3225,6 +3810,9 @@ class EventInfo(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3233,6 +3821,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Outline(self):
+        """Summary
+        :rtype: str
+        """
         return self._Outline
 
     @Outline.setter
@@ -3241,6 +3832,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Severity(self):
+        """Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.
+        :rtype: int
+        """
         return self._Severity
 
     @Severity.setter
@@ -3249,6 +3843,9 @@ class EventInfo(AbstractModel):
 
     @property
     def ScoreLost(self):
+        """Deduction
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -3257,6 +3854,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Metric(self):
+        """Reserved field
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -3265,6 +3865,9 @@ class EventInfo(AbstractModel):
 
     @property
     def Count(self):
+        """The number of alarms
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -3312,6 +3915,9 @@ class GroupItem(AbstractModel):
 
     @property
     def Id(self):
+        """Group ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -3320,6 +3926,9 @@ class GroupItem(AbstractModel):
 
     @property
     def Name(self):
+        """Group name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3328,6 +3937,9 @@ class GroupItem(AbstractModel):
 
     @property
     def MemberCount(self):
+        """Number of group members.
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -3384,6 +3996,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """Async task request ID.
+        :rtype: int
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -3392,6 +4007,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def Source(self):
+        """Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (timed generation), and `MANUAL` (manual trigger).
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -3400,6 +4018,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def Progress(self):
+        """Task progress in %.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -3408,6 +4029,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Task creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3416,6 +4040,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """Task start time.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3424,6 +4051,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """Task end time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3432,6 +4062,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def InstanceInfo(self):
+        """Basic information about the instance to which the task belongs.
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.InstanceBasicInfo`
+        """
         return self._InstanceInfo
 
     @InstanceInfo.setter
@@ -3440,6 +4073,9 @@ class HealthReportTask(AbstractModel):
 
     @property
     def HealthStatus(self):
+        """Health information in a health report.
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.HealthStatus`
+        """
         return self._HealthStatus
 
     @HealthStatus.setter
@@ -3493,6 +4129,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def IssueTypes(self):
+        """Exception details
+        :rtype: list of IssueTypeInfo
+        """
         return self._IssueTypes
 
     @IssueTypes.setter
@@ -3501,6 +4140,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def EventsTotalCount(self):
+        """Total number of the exceptions
+        :rtype: int
+        """
         return self._EventsTotalCount
 
     @EventsTotalCount.setter
@@ -3509,6 +4151,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def HealthScore(self):
+        """Health score
+        :rtype: int
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -3517,6 +4162,9 @@ class HealthScoreInfo(AbstractModel):
 
     @property
     def HealthLevel(self):
+        """Health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".
+        :rtype: str
+        """
         return self._HealthLevel
 
     @HealthLevel.setter
@@ -3568,6 +4216,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def HealthScore(self):
+        """Health score out of 100 points.
+        :rtype: int
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -3576,6 +4227,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def HealthLevel(self):
+        """Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).
+        :rtype: str
+        """
         return self._HealthLevel
 
     @HealthLevel.setter
@@ -3584,6 +4238,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ScoreLost(self):
+        """Total scores deducted.
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -3592,6 +4249,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ScoreDetails(self):
+        """Deduction details.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of ScoreDetail
+        """
         return self._ScoreDetails
 
     @ScoreDetails.setter
@@ -3648,6 +4309,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3656,6 +4320,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3664,6 +4331,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """Private IP of the instance.
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -3672,6 +4342,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def Vport(self):
+        """Private network port of the instance.
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -3680,6 +4353,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def Product(self):
+        """Instance product.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3688,6 +4364,9 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """Instance engine version.
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -3729,6 +4408,9 @@ class InstanceConfs(AbstractModel):
 
     @property
     def DailyInspection(self):
+        """Whether to enable database inspection. Valid values: Yes/No.
+        :rtype: str
+        """
         return self._DailyInspection
 
     @DailyInspection.setter
@@ -3737,6 +4419,9 @@ class InstanceConfs(AbstractModel):
 
     @property
     def OverviewDisplay(self):
+        """Whether to enable instance overview. Valid values: Yes/No.
+        :rtype: str
+        """
         return self._OverviewDisplay
 
     @OverviewDisplay.setter
@@ -3852,6 +4537,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3860,6 +4548,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3868,6 +4559,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
+        """The region where the instance belongs
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3876,6 +4570,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def HealthScore(self):
+        """Health score
+        :rtype: int
+        """
         return self._HealthScore
 
     @HealthScore.setter
@@ -3884,6 +4581,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Product(self):
+        """Service
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3892,6 +4592,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EventCount(self):
+        """Number of exceptions
+        :rtype: int
+        """
         return self._EventCount
 
     @EventCount.setter
@@ -3900,6 +4603,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance type. Valid values: 1: MASTER, 2: DR, 3: RO, 4: SDR
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3908,6 +4614,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Cpu(self):
+        """Number of cores
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -3916,6 +4625,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory in MB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -3924,6 +4636,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Volume(self):
+        """Disk storage in GB
+        :rtype: int
+        """
         return self._Volume
 
     @Volume.setter
@@ -3932,6 +4647,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
+        """Database version
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -3940,6 +4658,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vip(self):
+        """Private network address
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -3948,6 +4669,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vport(self):
+        """Private network port
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -3956,6 +4680,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Source(self):
+        """Access source
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -3964,6 +4691,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """Group ID
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -3972,6 +4702,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """Group name
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -3980,6 +4713,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
+        """Instance status. Valid values: 0: Delivering, 1: Running, 4: Terminating, 5: Isolated
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3988,6 +4724,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """Subnet unified ID
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -3996,6 +4735,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeployMode(self):
+        """cdb (TencentDB instance) type
+        :rtype: str
+        """
         return self._DeployMode
 
     @DeployMode.setter
@@ -4004,6 +4746,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InitFlag(self):
+        """cdb (TencentDB instance) initialization flag. Valid values: 0: not initialized, 1: initialized
+        :rtype: int
+        """
         return self._InitFlag
 
     @InitFlag.setter
@@ -4012,6 +4757,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """Task status
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -4020,6 +4768,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
+        """Unified VPC ID
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -4028,6 +4779,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceConf(self):
+        """Instance inspection/overview status
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
+        """
         return self._InstanceConf
 
     @InstanceConf.setter
@@ -4036,6 +4790,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeadlineTime(self):
+        """Resource expiration time
+        :rtype: str
+        """
         return self._DeadlineTime
 
     @DeadlineTime.setter
@@ -4044,6 +4801,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def IsSupported(self):
+        """Whether it is an instance supported by DBbrain.
+        :rtype: bool
+        """
         return self._IsSupported
 
     @IsSupported.setter
@@ -4052,6 +4812,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SecAuditStatus(self):
+        """The status of instance security audit log. ON: enabled, OFF: disabled.
+        :rtype: str
+        """
         return self._SecAuditStatus
 
     @SecAuditStatus.setter
@@ -4060,6 +4823,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AuditPolicyStatus(self):
+        """The status of instance audit log. ALL_AUDIT: full audit is enabled, RULE_AUDIT: rule audit is enabled, UNBOUND: audit is disabled.
+        :rtype: str
+        """
         return self._AuditPolicyStatus
 
     @AuditPolicyStatus.setter
@@ -4068,6 +4834,9 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AuditRunningStatus(self):
+        """The running status of instance audit log. normal: running, paused: suspension due to arrears
+        :rtype: str
+        """
         return self._AuditRunningStatus
 
     @AuditRunningStatus.setter
@@ -4136,6 +4905,9 @@ class IssueTypeInfo(AbstractModel):
 
     @property
     def IssueType(self):
+        """Metric categories: AVAILABILITY, MAINTAINABILITY, PERFORMANCE, and RELIABILITY
+        :rtype: str
+        """
         return self._IssueType
 
     @IssueType.setter
@@ -4144,6 +4916,9 @@ class IssueTypeInfo(AbstractModel):
 
     @property
     def Events(self):
+        """Exception
+        :rtype: list of EventInfo
+        """
         return self._Events
 
     @Events.setter
@@ -4152,6 +4927,9 @@ class IssueTypeInfo(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of the exceptions
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4204,6 +4982,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def SendMail(self):
+        """Whether to enable email sending. Valid values: 0 (No), 1 (Yes).
+        :rtype: int
+        """
         return self._SendMail
 
     @SendMail.setter
@@ -4212,6 +4993,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def Region(self):
+        """Region configuration, such as "ap-guangzhou", "ap-shanghai". For the inspection email sending template, configure the region where you need to send the inspection email. For the subscription email sending template, configure the region to which the current subscribed instance belongs.
+        :rtype: list of str
+        """
         return self._Region
 
     @Region.setter
@@ -4220,6 +5004,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def HealthStatus(self):
+        """Sending a report with the specified health level, such as "HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK".
+        :rtype: list of str
+        """
         return self._HealthStatus
 
     @HealthStatus.setter
@@ -4228,6 +5015,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def ContactPerson(self):
+        """Contact ID. Either `ContactGroup` or `ContactID` should be passed in.
+        :rtype: list of int
+        """
         return self._ContactPerson
 
     @ContactPerson.setter
@@ -4236,6 +5026,9 @@ class MailConfiguration(AbstractModel):
 
     @property
     def ContactGroup(self):
+        """Contact group ID. Either `ContactGroup` or `ContactID` should be passed in.
+        :rtype: list of int
+        """
         return self._ContactGroup
 
     @ContactGroup.setter
@@ -4282,6 +5075,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def InstanceConfs(self):
+        """Whether to enable inspection
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.InstanceConfs`
+        """
         return self._InstanceConfs
 
     @InstanceConfs.setter
@@ -4290,6 +5086,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def Regions(self):
+        """Target regions of the request. If the value is `All`, it is applied to all regions.
+        :rtype: str
+        """
         return self._Regions
 
     @Regions.setter
@@ -4298,6 +5097,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TencentDB for CynosDB (compatible with MySQL)).
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -4306,6 +5108,9 @@ class ModifyDiagDBInstanceConfRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """ID of the instance to modify.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4344,6 +5149,9 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4376,6 +5184,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metric(self):
+        """Metric name.
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -4384,6 +5195,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
+        """Metric unit.
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -4392,6 +5206,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Values(self):
+        """Metric value.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of float
+        """
         return self._Values
 
     @Values.setter
@@ -4430,6 +5248,9 @@ class MonitorFloatMetricSeriesData(AbstractModel):
 
     @property
     def Series(self):
+        """Monitoring metric.
+        :rtype: list of MonitorFloatMetric
+        """
         return self._Series
 
     @Series.setter
@@ -4438,6 +5259,9 @@ class MonitorFloatMetricSeriesData(AbstractModel):
 
     @property
     def Timestamp(self):
+        """Timestamp corresponding to monitoring metric.
+        :rtype: list of int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -4484,6 +5308,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metric(self):
+        """Metric name.
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -4492,6 +5319,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Unit(self):
+        """Metric unit.
+        :rtype: str
+        """
         return self._Unit
 
     @Unit.setter
@@ -4500,6 +5330,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Values(self):
+        """Metric value.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._Values
 
     @Values.setter
@@ -4538,6 +5372,9 @@ class MonitorMetricSeriesData(AbstractModel):
 
     @property
     def Series(self):
+        """Monitoring metric.
+        :rtype: list of MonitorMetric
+        """
         return self._Series
 
     @Series.setter
@@ -4546,6 +5383,9 @@ class MonitorMetricSeriesData(AbstractModel):
 
     @property
     def Timestamp(self):
+        """Timestamp corresponding to monitoring metric.
+        :rtype: list of int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -4588,6 +5428,9 @@ class ProfileInfo(AbstractModel):
 
     @property
     def Language(self):
+        """Language of the email, such as `en`.
+        :rtype: str
+        """
         return self._Language
 
     @Language.setter
@@ -4596,6 +5439,9 @@ class ProfileInfo(AbstractModel):
 
     @property
     def MailConfiguration(self):
+        """The content of email template.
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.MailConfiguration`
+        """
         return self._MailConfiguration
 
     @MailConfiguration.setter
@@ -4632,6 +5478,9 @@ class SchemaItem(AbstractModel):
 
     @property
     def Schema(self):
+        """Database name
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -4687,6 +5536,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TableSchema(self):
+        """Database name.
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -4695,6 +5547,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DataLength(self):
+        """Data space in MB.
+        :rtype: float
+        """
         return self._DataLength
 
     @DataLength.setter
@@ -4703,6 +5558,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def IndexLength(self):
+        """Index space in MB.
+        :rtype: float
+        """
         return self._IndexLength
 
     @IndexLength.setter
@@ -4711,6 +5569,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DataFree(self):
+        """Fragmented space in MB.
+        :rtype: float
+        """
         return self._DataFree
 
     @DataFree.setter
@@ -4719,6 +5580,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TotalLength(self):
+        """Total space usage in MB.
+        :rtype: float
+        """
         return self._TotalLength
 
     @TotalLength.setter
@@ -4727,6 +5591,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def FragRatio(self):
+        """Fragmented rate (%).
+        :rtype: float
+        """
         return self._FragRatio
 
     @FragRatio.setter
@@ -4735,6 +5602,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def TableRows(self):
+        """Number of rows.
+        :rtype: int
+        """
         return self._TableRows
 
     @TableRows.setter
@@ -4743,6 +5613,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def PhysicalFileSize(self):
+        """The total size of the independent physical files corresponding to all the database tables (MB).
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._PhysicalFileSize
 
     @PhysicalFileSize.setter
@@ -4786,6 +5660,9 @@ class SchemaSpaceTimeSeries(AbstractModel):
 
     @property
     def TableSchema(self):
+        """Database name
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -4794,6 +5671,9 @@ class SchemaSpaceTimeSeries(AbstractModel):
 
     @property
     def SeriesData(self):
+        """Monitoring metric data in a unit of time interval.
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.MonitorMetricSeriesData`
+        """
         return self._SeriesData
 
     @SeriesData.setter
@@ -4840,6 +5720,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def IssueType(self):
+        """Deduction item types. Valid values: availability, maintainability, performance, and reliability.
+        :rtype: str
+        """
         return self._IssueType
 
     @IssueType.setter
@@ -4848,6 +5731,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ScoreLost(self):
+        """Total scores deducted.
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -4856,6 +5742,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ScoreLostMax(self):
+        """Upper limit of the deducted scores.
+        :rtype: int
+        """
         return self._ScoreLostMax
 
     @ScoreLostMax.setter
@@ -4864,6 +5753,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Items(self):
+        """Deduction item list.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of ScoreItem
+        """
         return self._Items
 
     @Items.setter
@@ -4917,6 +5810,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def DiagItem(self):
+        """Exception diagnosis item name.
+        :rtype: str
+        """
         return self._DiagItem
 
     @DiagItem.setter
@@ -4925,6 +5821,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def IssueType(self):
+        """Diagnosis item types. Valid values: availability, maintainability, performance, and reliability.
+        :rtype: str
+        """
         return self._IssueType
 
     @IssueType.setter
@@ -4933,6 +5832,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def TopSeverity(self):
+        """Health level. Valid values: information, reminder, alarm, serious, fatal.
+        :rtype: str
+        """
         return self._TopSeverity
 
     @TopSeverity.setter
@@ -4941,6 +5843,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def Count(self):
+        """Number of occurrences of this exception diagnosis item.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -4949,6 +5854,9 @@ class ScoreItem(AbstractModel):
 
     @property
     def ScoreLost(self):
+        """Scores deducted.
+        :rtype: int
+        """
         return self._ScoreLost
 
     @ScoreLost.setter
@@ -4992,6 +5900,9 @@ class SlowLogHost(AbstractModel):
 
     @property
     def UserHost(self):
+        """Source addresses.
+        :rtype: str
+        """
         return self._UserHost
 
     @UserHost.setter
@@ -5000,6 +5911,9 @@ class SlowLogHost(AbstractModel):
 
     @property
     def Ratio(self):
+        """The proportion (in %) of slow logs from this source address to the total number of slow logs
+        :rtype: float
+        """
         return self._Ratio
 
     @Ratio.setter
@@ -5008,6 +5922,9 @@ class SlowLogHost(AbstractModel):
 
     @property
     def Count(self):
+        """Number of slow logs from this source address.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -5112,6 +6029,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTime(self):
+        """Total SQL lock wait time
+        :rtype: float
+        """
         return self._LockTime
 
     @LockTime.setter
@@ -5120,6 +6040,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeMax(self):
+        """Maximum lock wait time
+        :rtype: float
+        """
         return self._LockTimeMax
 
     @LockTimeMax.setter
@@ -5128,6 +6051,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeMin(self):
+        """Minimum lock wait time
+        :rtype: float
+        """
         return self._LockTimeMin
 
     @LockTimeMin.setter
@@ -5136,6 +6062,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExamined(self):
+        """Total number of scanned rows
+        :rtype: int
+        """
         return self._RowsExamined
 
     @RowsExamined.setter
@@ -5144,6 +6073,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedMax(self):
+        """Maximum number of scanned rows
+        :rtype: int
+        """
         return self._RowsExaminedMax
 
     @RowsExaminedMax.setter
@@ -5152,6 +6084,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedMin(self):
+        """Minimum number of scanned rows
+        :rtype: int
+        """
         return self._RowsExaminedMin
 
     @RowsExaminedMin.setter
@@ -5160,6 +6095,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTime(self):
+        """Total duration
+        :rtype: float
+        """
         return self._QueryTime
 
     @QueryTime.setter
@@ -5168,6 +6106,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeMax(self):
+        """Maximum execution time
+        :rtype: float
+        """
         return self._QueryTimeMax
 
     @QueryTimeMax.setter
@@ -5176,6 +6117,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeMin(self):
+        """Minimum execution time
+        :rtype: float
+        """
         return self._QueryTimeMin
 
     @QueryTimeMin.setter
@@ -5184,6 +6128,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSent(self):
+        """Total number of returned rows
+        :rtype: int
+        """
         return self._RowsSent
 
     @RowsSent.setter
@@ -5192,6 +6139,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentMax(self):
+        """Maximum number of returned rows
+        :rtype: int
+        """
         return self._RowsSentMax
 
     @RowsSentMax.setter
@@ -5200,6 +6150,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentMin(self):
+        """Minimum number of returned rows
+        :rtype: int
+        """
         return self._RowsSentMin
 
     @RowsSentMin.setter
@@ -5208,6 +6161,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def ExecTimes(self):
+        """Number of executions
+        :rtype: int
+        """
         return self._ExecTimes
 
     @ExecTimes.setter
@@ -5216,6 +6172,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def SqlTemplate(self):
+        """SQL template
+        :rtype: str
+        """
         return self._SqlTemplate
 
     @SqlTemplate.setter
@@ -5224,6 +6183,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def SqlText(self):
+        """SQL with parameter (random)
+        :rtype: str
+        """
         return self._SqlText
 
     @SqlText.setter
@@ -5232,6 +6194,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def Schema(self):
+        """Database name
+        :rtype: str
+        """
         return self._Schema
 
     @Schema.setter
@@ -5240,6 +6205,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeRatio(self):
+        """Ratio of total duration
+        :rtype: float
+        """
         return self._QueryTimeRatio
 
     @QueryTimeRatio.setter
@@ -5248,6 +6216,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeRatio(self):
+        """Ratio of total SQL lock wait time
+        :rtype: float
+        """
         return self._LockTimeRatio
 
     @LockTimeRatio.setter
@@ -5256,6 +6227,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedRatio(self):
+        """Ratio of total number of scanned rows
+        :rtype: float
+        """
         return self._RowsExaminedRatio
 
     @RowsExaminedRatio.setter
@@ -5264,6 +6238,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentRatio(self):
+        """Ratio of total number of returned rows
+        :rtype: float
+        """
         return self._RowsSentRatio
 
     @RowsSentRatio.setter
@@ -5272,6 +6249,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def QueryTimeAvg(self):
+        """Average execution time
+        :rtype: float
+        """
         return self._QueryTimeAvg
 
     @QueryTimeAvg.setter
@@ -5280,6 +6260,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsSentAvg(self):
+        """Average number of rows returned
+        :rtype: float
+        """
         return self._RowsSentAvg
 
     @RowsSentAvg.setter
@@ -5288,6 +6271,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def LockTimeAvg(self):
+        """Average lock wait time
+        :rtype: float
+        """
         return self._LockTimeAvg
 
     @LockTimeAvg.setter
@@ -5296,6 +6282,9 @@ class SlowLogTopSqlItem(AbstractModel):
 
     @property
     def RowsExaminedAvg(self):
+        """Average number of rows scanned
+        :rtype: float
+        """
         return self._RowsExaminedAvg
 
     @RowsExaminedAvg.setter
@@ -5379,6 +6368,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TableName(self):
+        """Table name.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -5387,6 +6379,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TableSchema(self):
+        """Database name.
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -5395,6 +6390,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def Engine(self):
+        """Database table storage engine.
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -5403,6 +6401,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def DataLength(self):
+        """Data space in MB.
+        :rtype: float
+        """
         return self._DataLength
 
     @DataLength.setter
@@ -5411,6 +6412,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def IndexLength(self):
+        """Index space in MB.
+        :rtype: float
+        """
         return self._IndexLength
 
     @IndexLength.setter
@@ -5419,6 +6423,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def DataFree(self):
+        """Fragmented space in MB.
+        :rtype: float
+        """
         return self._DataFree
 
     @DataFree.setter
@@ -5427,6 +6434,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TotalLength(self):
+        """Total space usage in MB.
+        :rtype: float
+        """
         return self._TotalLength
 
     @TotalLength.setter
@@ -5435,6 +6445,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def FragRatio(self):
+        """Fragmented rate (%).
+        :rtype: float
+        """
         return self._FragRatio
 
     @FragRatio.setter
@@ -5443,6 +6456,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def TableRows(self):
+        """Number of rows.
+        :rtype: int
+        """
         return self._TableRows
 
     @TableRows.setter
@@ -5451,6 +6467,9 @@ class TableSpaceData(AbstractModel):
 
     @property
     def PhysicalFileSize(self):
+        """Size in MB of the physical file exclusive to a table.
+        :rtype: float
+        """
         return self._PhysicalFileSize
 
     @PhysicalFileSize.setter
@@ -5502,6 +6521,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def TableName(self):
+        """Table name.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -5510,6 +6532,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def TableSchema(self):
+        """Database name.
+        :rtype: str
+        """
         return self._TableSchema
 
     @TableSchema.setter
@@ -5518,6 +6543,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def Engine(self):
+        """Database table storage engine.
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -5526,6 +6554,9 @@ class TableSpaceTimeSeries(AbstractModel):
 
     @property
     def SeriesData(self):
+        """Monitoring metric data in a unit of time interval.
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.MonitorFloatMetricSeriesData`
+        """
         return self._SeriesData
 
     @SeriesData.setter
@@ -5567,6 +6598,9 @@ class TimeSlice(AbstractModel):
 
     @property
     def Count(self):
+        """Total number
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -5575,6 +6609,9 @@ class TimeSlice(AbstractModel):
 
     @property
     def Timestamp(self):
+        """Statistics start time
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -5625,6 +6662,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProfileId(self):
+        """Configured ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProfileId
 
     @ProfileId.setter
@@ -5633,6 +6674,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProfileType(self):
+        """Configuration type
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProfileType
 
     @ProfileType.setter
@@ -5641,6 +6686,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProfileLevel(self):
+        """Configuration level. Valid values: “User” or “Instance”
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProfileLevel
 
     @ProfileLevel.setter
@@ -5649,6 +6698,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProfileName(self):
+        """Configuration name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProfileName
 
     @ProfileName.setter
@@ -5657,6 +6710,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProfileInfo(self):
+        """Configuration details
+        :rtype: :class:`tencentcloud.dbbrain.v20191016.models.ProfileInfo`
+        """
         return self._ProfileInfo
 
     @ProfileInfo.setter

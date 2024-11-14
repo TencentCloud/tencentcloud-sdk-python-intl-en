@@ -281,6 +281,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFunction(self, request):
+        """This API is used to create and deploy an edge function to EdgeOne edge nodes.
+
+        :param request: Request instance for CreateFunction.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateFunctionRule(self, request):
+        """This API is used to create a trigger rule for an edge function.
+
+        :param request: Request instance for CreateFunctionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateFunctionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFunctionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFunctionRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateL4Proxy(self, request):
         """This API is used to create Layer 4 proxy instances.
 
@@ -669,6 +715,52 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFunction(self, request):
+        """This API is used to delete an edge function. Once deleted, the function cannot be recovered, and associated trigger rules are also deleted.
+
+        :param request: Request instance for DeleteFunction.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFunctionRules(self, request):
+        """This API is used to delete a trigger rule for an edge function.
+
+        :param request: Request instance for DeleteFunctionRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteFunctionRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFunctionRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFunctionRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1221,6 +1313,75 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeEnvironments", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEnvironmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFunctionRules(self, request):
+        """This API is used to query the list of trigger rules for an edge function. It supports filtering by rule ID, function ID, rule description, and so on.
+
+        :param request: Request instance for DescribeFunctionRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFunctionRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFunctionRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFunctionRuntimeEnvironment(self, request):
+        """This API is used to query the runtime environment of an edge function, including environment variables.
+
+        :param request: Request instance for DescribeFunctionRuntimeEnvironment.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionRuntimeEnvironmentRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionRuntimeEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFunctionRuntimeEnvironment", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFunctionRuntimeEnvironmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFunctions(self, request):
+        """This API is used to query the list of edge functions. It supports filtering by function ID, name, description, and so on.
+
+        :param request: Request instance for DescribeFunctions.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFunctions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFunctionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1838,6 +1999,30 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def HandleFunctionRuntimeEnvironment(self, request):
+        """This API is used to operate the runtime environment of an edge function. It supports related settings for environment variables.
+        After the environment variables are set, they can be used in the function code. For details, see [Edge Functions Referencing Environment Variables](https://intl.cloud.tencent.com/document/product/1552/109151?from_cn_redirect=1#0151fd9a-8b0e-407b-ae37-54553a60ded6).
+
+        :param request: Request instance for HandleFunctionRuntimeEnvironment.
+        :type request: :class:`tencentcloud.teo.v20220901.models.HandleFunctionRuntimeEnvironmentRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HandleFunctionRuntimeEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("HandleFunctionRuntimeEnvironment", params, headers=headers)
+            response = json.loads(body)
+            model = models.HandleFunctionRuntimeEnvironmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def IdentifyZone(self, request):
         """This API is used to verify ownership of the site.
 
@@ -2085,6 +2270,75 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyFunction(self, request):
+        """This API is used to modify an edge function. It supports modifying the function content and description. The function will take effect immediately after modification and redeployment.
+
+        :param request: Request instance for ModifyFunction.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyFunctionRule(self, request):
+        """This API is used to modify a trigger rule for an edge function. It supports modifying rule conditions, execution functions, and description.
+
+        :param request: Request instance for ModifyFunctionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunctionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyFunctionRulePriority(self, request):
+        """This API is used to modify the priority of trigger rules for an edge function.
+
+        :param request: Request instance for ModifyFunctionRulePriority.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRulePriorityRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionRulePriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunctionRulePriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionRulePriorityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

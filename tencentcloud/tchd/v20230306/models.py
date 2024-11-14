@@ -39,6 +39,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def EventDate(self):
+        """event occurrence date
+        :rtype: str
+        """
         return self._EventDate
 
     @EventDate.setter
@@ -47,6 +50,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def ProductIds(self):
+        """Query by Product ID(s). Product ID examples: cvm, lb, cdb, cdn, crs.
+        :rtype: list of str
+        """
         return self._ProductIds
 
     @ProductIds.setter
@@ -55,6 +61,10 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def RegionIds(self):
+        """ 1. Query by Region ID(s). Region ID examples: ap-guangzhou、ap-shanghai、ap-singapore.
+2. The region ID for non-region-specific products should be set to non-regional.
+        :rtype: list of str
+        """
         return self._RegionIds
 
     @RegionIds.setter
@@ -93,6 +103,9 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Detailed event information.
+        :rtype: :class:`tencentcloud.tchd.v20230306.models.ProductEventList`
+        """
         return self._Data
 
     @Data.setter
@@ -101,6 +114,9 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -147,6 +163,9 @@ class EventDetail(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID.
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -155,6 +174,9 @@ class EventDetail(AbstractModel):
 
     @property
     def ProductName(self):
+        """Product name.
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -163,6 +185,9 @@ class EventDetail(AbstractModel):
 
     @property
     def RegionId(self):
+        """Region ID.
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -171,6 +196,9 @@ class EventDetail(AbstractModel):
 
     @property
     def RegionName(self):
+        """Region name.
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -179,6 +207,9 @@ class EventDetail(AbstractModel):
 
     @property
     def StartTime(self):
+        """Event start time.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -187,6 +218,9 @@ class EventDetail(AbstractModel):
 
     @property
     def EndTime(self):
+        """Event end time. If the event is still ongoing and has not ended, the end time will be empty.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -195,6 +229,9 @@ class EventDetail(AbstractModel):
 
     @property
     def CurrentStatus(self):
+        """Current status: Normally, Informational, Degradation.
+        :rtype: str
+        """
         return self._CurrentStatus
 
     @CurrentStatus.setter
@@ -235,6 +272,10 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def EventList(self):
+        """Detailed event information.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: list of EventDetail
+        """
         return self._EventList
 
     @EventList.setter

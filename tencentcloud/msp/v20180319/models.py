@@ -32,6 +32,9 @@ class DeregisterMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -65,6 +68,9 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -90,6 +96,9 @@ class DescribeMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID, such as msp-jitoh33n
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -126,6 +135,9 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """Migration details list
+        :rtype: list of TaskStatus
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -134,6 +146,9 @@ class DescribeMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -174,6 +189,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Migration destination region
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -182,6 +200,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -190,6 +211,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Port(self):
+        """Migration destination port
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -198,6 +222,9 @@ class DstInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Migration destination instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -237,6 +264,9 @@ class ListMigrationProjectRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The initial number of records, default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -245,6 +275,9 @@ class ListMigrationProjectRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of records returned, default value: 500
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -285,6 +318,9 @@ class ListMigrationProjectResponse(AbstractModel):
 
     @property
     def Projects(self):
+        """Project list
+        :rtype: list of Project
+        """
         return self._Projects
 
     @Projects.setter
@@ -293,6 +329,9 @@ class ListMigrationProjectResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of projects
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -301,6 +340,9 @@ class ListMigrationProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -339,6 +381,9 @@ class ListMigrationTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The initial number of records, default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -347,6 +392,9 @@ class ListMigrationTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of records, default value: 10
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -355,6 +403,9 @@ class ListMigrationTaskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID, the default value is empty.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -396,6 +447,9 @@ class ListMigrationTaskResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -404,6 +458,9 @@ class ListMigrationTaskResponse(AbstractModel):
 
     @property
     def Tasks(self):
+        """Migration task list
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -412,6 +469,9 @@ class ListMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -447,6 +507,9 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID, such as msp-jitoh33n
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -455,6 +518,9 @@ class ModifyMigrationTaskBelongToProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID, such as 10005
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -489,6 +555,9 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -517,6 +586,9 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -525,6 +597,9 @@ class ModifyMigrationTaskStatusRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID, such as msp-jitoh33n
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -559,6 +634,9 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -587,6 +665,9 @@ class Project(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -595,6 +676,9 @@ class Project(AbstractModel):
 
     @property
     def ProjectName(self):
+        """Project name
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -662,6 +746,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -670,6 +757,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -678,6 +768,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def ServiceSupplier(self):
+        """Service supplier name
+        :rtype: str
+        """
         return self._ServiceSupplier
 
     @ServiceSupplier.setter
@@ -686,6 +779,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Migration task creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -694,6 +790,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Migration task update time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -702,6 +801,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrateClass(self):
+        """Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.
+        :rtype: str
+        """
         return self._MigrateClass
 
     @MigrateClass.setter
@@ -710,6 +812,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """Migration task source information
+        :rtype: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -718,6 +823,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def DstInfo(self):
+        """Migration task destination information
+        :rtype: :class:`tencentcloud.msp.v20180319.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -726,6 +834,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
+        """Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -734,6 +845,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
+        """Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -742,6 +856,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
+        """Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -750,6 +867,9 @@ class RegisterMigrationTaskRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
+        """Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -801,6 +921,9 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -809,6 +932,9 @@ class RegisterMigrationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -844,6 +970,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Migration source region
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -852,6 +981,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -860,6 +992,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def Port(self):
+        """Migration source port
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -868,6 +1003,9 @@ class SrcInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Migration source instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -931,6 +1069,9 @@ class Task(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -939,6 +1080,9 @@ class Task(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -947,6 +1091,9 @@ class Task(AbstractModel):
 
     @property
     def MigrationType(self):
+        """Migration type
+        :rtype: str
+        """
         return self._MigrationType
 
     @MigrationType.setter
@@ -955,6 +1102,9 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
+        """Migration status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -963,6 +1113,9 @@ class Task(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -971,6 +1124,9 @@ class Task(AbstractModel):
 
     @property
     def ProjectName(self):
+        """Project name
+        :rtype: str
+        """
         return self._ProjectName
 
     @ProjectName.setter
@@ -979,6 +1135,9 @@ class Task(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """Migration source information
+        :rtype: :class:`tencentcloud.msp.v20180319.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -987,6 +1146,9 @@ class Task(AbstractModel):
 
     @property
     def MigrationTimeLine(self):
+        """Migration time information
+        :rtype: :class:`tencentcloud.msp.v20180319.models.TimeObj`
+        """
         return self._MigrationTimeLine
 
     @MigrationTimeLine.setter
@@ -995,6 +1157,9 @@ class Task(AbstractModel):
 
     @property
     def Updated(self):
+        """Status update time
+        :rtype: str
+        """
         return self._Updated
 
     @Updated.setter
@@ -1003,6 +1168,9 @@ class Task(AbstractModel):
 
     @property
     def DstInfo(self):
+        """Migration destination information
+        :rtype: :class:`tencentcloud.msp.v20180319.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -1057,6 +1225,9 @@ class TaskStatus(AbstractModel):
 
     @property
     def Status(self):
+        """Migration status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1065,6 +1236,9 @@ class TaskStatus(AbstractModel):
 
     @property
     def Progress(self):
+        """Migration progress
+        :rtype: str
+        """
         return self._Progress
 
     @Progress.setter
@@ -1073,6 +1247,9 @@ class TaskStatus(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Migration date
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1111,6 +1288,9 @@ class TimeObj(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1119,6 +1299,9 @@ class TimeObj(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter

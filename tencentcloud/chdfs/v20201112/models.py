@@ -47,6 +47,9 @@ class AccessGroup(AbstractModel):
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -55,6 +58,9 @@ class AccessGroup(AbstractModel):
 
     @property
     def AccessGroupName(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._AccessGroupName
 
     @AccessGroupName.setter
@@ -63,6 +69,9 @@ class AccessGroup(AbstractModel):
 
     @property
     def Description(self):
+        """Permission group description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -71,6 +80,9 @@ class AccessGroup(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -79,6 +91,9 @@ class AccessGroup(AbstractModel):
 
     @property
     def VpcType(self):
+        """VPC type (1: CVM; 2: BM 1.0)
+        :rtype: int
+        """
         return self._VpcType
 
     @VpcType.setter
@@ -87,6 +102,9 @@ class AccessGroup(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -137,6 +155,9 @@ class AccessRule(AbstractModel):
 
     @property
     def AccessRuleId(self):
+        """Permission rule ID
+        :rtype: int
+        """
         return self._AccessRuleId
 
     @AccessRuleId.setter
@@ -145,6 +166,9 @@ class AccessRule(AbstractModel):
 
     @property
     def Address(self):
+        """Permission rule address (IP range or IP)
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -153,6 +177,9 @@ class AccessRule(AbstractModel):
 
     @property
     def AccessMode(self):
+        """Permission rule access mode (1: read-only; 2: read-write)
+        :rtype: int
+        """
         return self._AccessMode
 
     @AccessMode.setter
@@ -161,6 +188,9 @@ class AccessRule(AbstractModel):
 
     @property
     def Priority(self):
+        """Priority (value range: 1–100. The smaller the value, the higher the priority)
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -169,6 +199,9 @@ class AccessRule(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -209,6 +242,9 @@ class AssociateAccessGroupsRequest(AbstractModel):
 
     @property
     def MountPointId(self):
+        """Mount point ID
+        :rtype: str
+        """
         return self._MountPointId
 
     @MountPointId.setter
@@ -217,6 +253,9 @@ class AssociateAccessGroupsRequest(AbstractModel):
 
     @property
     def AccessGroupIds(self):
+        """List of permission group IDs
+        :rtype: list of str
+        """
         return self._AccessGroupIds
 
     @AccessGroupIds.setter
@@ -251,6 +290,9 @@ class AssociateAccessGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -285,6 +327,9 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupName(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._AccessGroupName
 
     @AccessGroupName.setter
@@ -293,6 +338,9 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def VpcType(self):
+        """VPC type (1: CVM; 2: BM 1.0)
+        :rtype: int
+        """
         return self._VpcType
 
     @VpcType.setter
@@ -301,6 +349,9 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -309,6 +360,9 @@ class CreateAccessGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Permission group description, which is an empty string by default
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -348,6 +402,9 @@ class CreateAccessGroupResponse(AbstractModel):
 
     @property
     def AccessGroup(self):
+        """Permission group
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.AccessGroup`
+        """
         return self._AccessGroup
 
     @AccessGroup.setter
@@ -356,6 +413,9 @@ class CreateAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -387,6 +447,9 @@ class CreateAccessRulesRequest(AbstractModel):
 
     @property
     def AccessRules(self):
+        """Multiple permission rules (up to 10)
+        :rtype: list of AccessRule
+        """
         return self._AccessRules
 
     @AccessRules.setter
@@ -395,6 +458,9 @@ class CreateAccessRulesRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -438,6 +504,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessRules(self):
+        """List of permission rules
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AccessRule
+        """
         return self._AccessRules
 
     @AccessRules.setter
@@ -446,6 +516,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -504,6 +577,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemName(self):
+        """File system name
+        :rtype: str
+        """
         return self._FileSystemName
 
     @FileSystemName.setter
@@ -512,6 +588,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def CapacityQuota(self):
+        """File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB
+        :rtype: int
+        """
         return self._CapacityQuota
 
     @CapacityQuota.setter
@@ -520,6 +599,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def PosixAcl(self):
+        """Whether to verify POSIX ACL
+        :rtype: bool
+        """
         return self._PosixAcl
 
     @PosixAcl.setter
@@ -528,6 +610,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Description(self):
+        """File system description, which is an empty string by default
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -536,6 +621,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def SuperUsers(self):
+        """List of superuser names, which is an empty array by default
+        :rtype: list of str
+        """
         return self._SuperUsers
 
     @SuperUsers.setter
@@ -544,6 +632,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def RootInodeUser(self):
+        """Username of the root directory Inode, which is `hadoop` by default
+        :rtype: str
+        """
         return self._RootInodeUser
 
     @RootInodeUser.setter
@@ -552,6 +643,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def RootInodeGroup(self):
+        """Group name of the root directory Inode, which is `supergroup` by default
+        :rtype: str
+        """
         return self._RootInodeGroup
 
     @RootInodeGroup.setter
@@ -560,6 +654,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def EnableRanger(self):
+        """Whether to enable verification of Ranger service addresses
+        :rtype: bool
+        """
         return self._EnableRanger
 
     @EnableRanger.setter
@@ -568,6 +665,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def RangerServiceAddresses(self):
+        """List of Ranger service addresses (empty array by default)
+        :rtype: list of str
+        """
         return self._RangerServiceAddresses
 
     @RangerServiceAddresses.setter
@@ -576,6 +676,9 @@ class CreateFileSystemRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Multiple resource tags, which can be an empty array
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -626,6 +729,9 @@ class CreateFileSystemResponse(AbstractModel):
 
     @property
     def FileSystem(self):
+        """File system
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
+        """
         return self._FileSystem
 
     @FileSystem.setter
@@ -634,6 +740,9 @@ class CreateFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -665,6 +774,9 @@ class CreateLifeCycleRulesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -673,6 +785,9 @@ class CreateLifeCycleRulesRequest(AbstractModel):
 
     @property
     def LifeCycleRules(self):
+        """Multiple lifecycle rules (up to 10)
+        :rtype: list of LifeCycleRule
+        """
         return self._LifeCycleRules
 
     @LifeCycleRules.setter
@@ -712,6 +827,9 @@ class CreateLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -743,6 +861,9 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def MountPointName(self):
+        """Mount point name
+        :rtype: str
+        """
         return self._MountPointName
 
     @MountPointName.setter
@@ -751,6 +872,9 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -759,6 +883,9 @@ class CreateMountPointRequest(AbstractModel):
 
     @property
     def MountPointStatus(self):
+        """Mount point status (1: enabled; 2: disabled)
+        :rtype: int
+        """
         return self._MountPointStatus
 
     @MountPointStatus.setter
@@ -797,6 +924,9 @@ class CreateMountPointResponse(AbstractModel):
 
     @property
     def MountPoint(self):
+        """Mount point
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.MountPoint`
+        """
         return self._MountPoint
 
     @MountPoint.setter
@@ -805,6 +935,9 @@ class CreateMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -836,6 +969,9 @@ class CreateRestoreTasksRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -844,6 +980,9 @@ class CreateRestoreTasksRequest(AbstractModel):
 
     @property
     def RestoreTasks(self):
+        """Multiple restoration tasks (up to 10)
+        :rtype: list of RestoreTask
+        """
         return self._RestoreTasks
 
     @RestoreTasks.setter
@@ -883,6 +1022,9 @@ class CreateRestoreTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -908,6 +1050,9 @@ class DeleteAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -941,6 +1086,9 @@ class DeleteAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -966,6 +1114,9 @@ class DeleteAccessRulesRequest(AbstractModel):
 
     @property
     def AccessRuleIds(self):
+        """Multiple permission rule IDs (up to 10)
+        :rtype: list of int non-negative
+        """
         return self._AccessRuleIds
 
     @AccessRuleIds.setter
@@ -999,6 +1150,9 @@ class DeleteAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1024,6 +1178,9 @@ class DeleteFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1057,6 +1214,9 @@ class DeleteFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1082,6 +1242,9 @@ class DeleteLifeCycleRulesRequest(AbstractModel):
 
     @property
     def LifeCycleRuleIds(self):
+        """Multiple lifecycle rule IDs (up to 10)
+        :rtype: list of int non-negative
+        """
         return self._LifeCycleRuleIds
 
     @LifeCycleRuleIds.setter
@@ -1115,6 +1278,9 @@ class DeleteLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1140,6 +1306,9 @@ class DeleteMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
+        """Mount point ID
+        :rtype: str
+        """
         return self._MountPointId
 
     @MountPointId.setter
@@ -1173,6 +1342,9 @@ class DeleteMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1198,6 +1370,9 @@ class DescribeAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -1234,6 +1409,9 @@ class DescribeAccessGroupResponse(AbstractModel):
 
     @property
     def AccessGroup(self):
+        """Permission group
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.AccessGroup`
+        """
         return self._AccessGroup
 
     @AccessGroup.setter
@@ -1242,6 +1420,9 @@ class DescribeAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1274,6 +1455,10 @@ Note: either `VpcId` or `OwnerUin` can be specified as the input parameter
 
     @property
     def VpcId(self):
+        """VPC ID
+Note: either `VpcId` or `OwnerUin` can be specified as the input parameter
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1282,6 +1467,9 @@ Note: either `VpcId` or `OwnerUin` can be specified as the input parameter
 
     @property
     def OwnerUin(self):
+        """Resource owner `Uin`
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1319,6 +1507,9 @@ class DescribeAccessGroupsResponse(AbstractModel):
 
     @property
     def AccessGroups(self):
+        """List of permission groups
+        :rtype: list of AccessGroup
+        """
         return self._AccessGroups
 
     @AccessGroups.setter
@@ -1327,6 +1518,9 @@ class DescribeAccessGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1358,6 +1552,9 @@ class DescribeAccessRulesRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -1394,6 +1591,9 @@ class DescribeAccessRulesResponse(AbstractModel):
 
     @property
     def AccessRules(self):
+        """List of permission rules
+        :rtype: list of AccessRule
+        """
         return self._AccessRules
 
     @AccessRules.setter
@@ -1402,6 +1602,9 @@ class DescribeAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1433,6 +1636,9 @@ class DescribeFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1493,6 +1699,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSystem(self):
+        """File system
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.FileSystem`
+        """
         return self._FileSystem
 
     @FileSystem.setter
@@ -1501,6 +1710,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CapacityUsed(self):
+        """Used capacity of the file system, in bytes
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._CapacityUsed
 
     @CapacityUsed.setter
@@ -1509,6 +1722,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ArchiveCapacityUsed(self):
+        """Used ARCHIVE capacity of COS, in bytes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ArchiveCapacityUsed
 
     @ArchiveCapacityUsed.setter
@@ -1517,6 +1734,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StandardCapacityUsed(self):
+        """Used STANDARD capacity of COS, in bytes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StandardCapacityUsed
 
     @StandardCapacityUsed.setter
@@ -1525,6 +1746,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DegradeCapacityUsed(self):
+        """Used STANDARD_IA capacity of COS, in bytes
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._DegradeCapacityUsed
 
     @DegradeCapacityUsed.setter
@@ -1533,6 +1758,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeepArchiveCapacityUsed(self):
+        """COS DEEP ARCHIVE storage usage, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DeepArchiveCapacityUsed
 
     @DeepArchiveCapacityUsed.setter
@@ -1541,6 +1770,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntelligentCapacityUsed(self):
+        """COS INTELLIGENT TIERING storage usage, in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IntelligentCapacityUsed
 
     @IntelligentCapacityUsed.setter
@@ -1549,6 +1782,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1592,6 +1828,9 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def FileSystems(self):
+        """List of file systems
+        :rtype: list of FileSystem
+        """
         return self._FileSystems
 
     @FileSystems.setter
@@ -1600,6 +1839,9 @@ class DescribeFileSystemsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1631,6 +1873,9 @@ class DescribeLifeCycleRulesRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1667,6 +1912,9 @@ class DescribeLifeCycleRulesResponse(AbstractModel):
 
     @property
     def LifeCycleRules(self):
+        """List of lifecycle rules
+        :rtype: list of LifeCycleRule
+        """
         return self._LifeCycleRules
 
     @LifeCycleRules.setter
@@ -1675,6 +1923,9 @@ class DescribeLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1706,6 +1957,9 @@ class DescribeMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
+        """Mount point ID
+        :rtype: str
+        """
         return self._MountPointId
 
     @MountPointId.setter
@@ -1742,6 +1996,9 @@ class DescribeMountPointResponse(AbstractModel):
 
     @property
     def MountPoint(self):
+        """Mount point
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.MountPoint`
+        """
         return self._MountPoint
 
     @MountPoint.setter
@@ -1750,6 +2007,9 @@ class DescribeMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1785,6 +2045,10 @@ Note: only one of `AccessGroupId`, `FileSystemId`, and `OwnerUin` can be specifi
 
     @property
     def FileSystemId(self):
+        """File system ID
+Note: only one of `AccessGroupId`, `FileSystemId`, and `OwnerUin` can be specified as the input parameter
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1793,6 +2057,9 @@ Note: only one of `AccessGroupId`, `FileSystemId`, and `OwnerUin` can be specifi
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -1801,6 +2068,9 @@ Note: only one of `AccessGroupId`, `FileSystemId`, and `OwnerUin` can be specifi
 
     @property
     def OwnerUin(self):
+        """Resource owner `Uin`
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -1839,6 +2109,9 @@ class DescribeMountPointsResponse(AbstractModel):
 
     @property
     def MountPoints(self):
+        """List of mount points
+        :rtype: list of MountPoint
+        """
         return self._MountPoints
 
     @MountPoints.setter
@@ -1847,6 +2120,9 @@ class DescribeMountPointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1878,6 +2154,9 @@ class DescribeResourceTagsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1914,6 +2193,9 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
+        """List of resource tags
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1922,6 +2204,9 @@ class DescribeResourceTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1953,6 +2238,9 @@ class DescribeRestoreTasksRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -1989,6 +2277,9 @@ class DescribeRestoreTasksResponse(AbstractModel):
 
     @property
     def RestoreTasks(self):
+        """List of restoration tasks
+        :rtype: list of RestoreTask
+        """
         return self._RestoreTasks
 
     @RestoreTasks.setter
@@ -1997,6 +2288,9 @@ class DescribeRestoreTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2031,6 +2325,9 @@ class DisassociateAccessGroupsRequest(AbstractModel):
 
     @property
     def MountPointId(self):
+        """Mount point ID
+        :rtype: str
+        """
         return self._MountPointId
 
     @MountPointId.setter
@@ -2039,6 +2336,9 @@ class DisassociateAccessGroupsRequest(AbstractModel):
 
     @property
     def AccessGroupIds(self):
+        """List of permission group IDs
+        :rtype: list of str
+        """
         return self._AccessGroupIds
 
     @AccessGroupIds.setter
@@ -2073,6 +2373,9 @@ class DisassociateAccessGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2136,6 +2439,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AppId(self):
+        """Resource owner `AppId`
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -2144,6 +2450,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def FileSystemName(self):
+        """File system name
+        :rtype: str
+        """
         return self._FileSystemName
 
     @FileSystemName.setter
@@ -2152,6 +2461,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Description(self):
+        """File system description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2160,6 +2472,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Region(self):
+        """Region
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2168,6 +2483,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2176,6 +2494,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2184,6 +2505,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def BlockSize(self):
+        """File system block size (in bytes)
+        :rtype: int
+        """
         return self._BlockSize
 
     @BlockSize.setter
@@ -2192,6 +2516,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CapacityQuota(self):
+        """File system capacity (in bytes)
+        :rtype: int
+        """
         return self._CapacityQuota
 
     @CapacityQuota.setter
@@ -2200,6 +2527,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
+        """File system status (1: creating; 2: created successfully; 3: failed to create)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2208,6 +2538,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def SuperUsers(self):
+        """List of superuser names
+        :rtype: list of str
+        """
         return self._SuperUsers
 
     @SuperUsers.setter
@@ -2216,6 +2549,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def PosixAcl(self):
+        """POSIX permission control
+        :rtype: bool
+        """
         return self._PosixAcl
 
     @PosixAcl.setter
@@ -2224,6 +2560,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def EnableRanger(self):
+        """Whether to enable verification of Ranger service addresses
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: bool
+        """
         return self._EnableRanger
 
     @EnableRanger.setter
@@ -2232,6 +2572,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RangerServiceAddresses(self):
+        """List of Ranger service addresses
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: list of str
+        """
         return self._RangerServiceAddresses
 
     @RangerServiceAddresses.setter
@@ -2298,6 +2642,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def LifeCycleRuleId(self):
+        """Lifecycle rule ID
+        :rtype: int
+        """
         return self._LifeCycleRuleId
 
     @LifeCycleRuleId.setter
@@ -2306,6 +2653,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def LifeCycleRuleName(self):
+        """Lifecycle rule name
+        :rtype: str
+        """
         return self._LifeCycleRuleName
 
     @LifeCycleRuleName.setter
@@ -2314,6 +2664,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Path(self):
+        """Lifecycle rule path (directory or file)
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2322,6 +2675,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Transitions(self):
+        """List of lifecycle rule transitions
+        :rtype: list of Transition
+        """
         return self._Transitions
 
     @Transitions.setter
@@ -2330,6 +2686,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Status(self):
+        """Lifecycle rule status (1: enabled; 2: disabled)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2338,6 +2697,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2346,6 +2708,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def Summary(self):
+        """Detailed storage usage of the current lifecycle rule path
+        :rtype: :class:`tencentcloud.chdfs.v20201112.models.Summary`
+        """
         return self._Summary
 
     @Summary.setter
@@ -2354,6 +2719,9 @@ class LifeCycleRule(AbstractModel):
 
     @property
     def LastSummaryTime(self):
+        """Update time of `Summary`
+        :rtype: str
+        """
         return self._LastSummaryTime
 
     @LastSummaryTime.setter
@@ -2407,6 +2775,9 @@ class ModifyAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupId(self):
+        """Permission group ID
+        :rtype: str
+        """
         return self._AccessGroupId
 
     @AccessGroupId.setter
@@ -2415,6 +2786,9 @@ class ModifyAccessGroupRequest(AbstractModel):
 
     @property
     def AccessGroupName(self):
+        """Permission group name
+        :rtype: str
+        """
         return self._AccessGroupName
 
     @AccessGroupName.setter
@@ -2423,6 +2797,9 @@ class ModifyAccessGroupRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Permission group description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2458,6 +2835,9 @@ class ModifyAccessGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2483,6 +2863,9 @@ class ModifyAccessRulesRequest(AbstractModel):
 
     @property
     def AccessRules(self):
+        """Multiple permission rules (up to 10)
+        :rtype: list of AccessRule
+        """
         return self._AccessRules
 
     @AccessRules.setter
@@ -2521,6 +2904,9 @@ class ModifyAccessRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2568,6 +2954,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2576,6 +2965,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def FileSystemName(self):
+        """File system name
+        :rtype: str
+        """
         return self._FileSystemName
 
     @FileSystemName.setter
@@ -2584,6 +2976,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def Description(self):
+        """File system description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2592,6 +2987,10 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def CapacityQuota(self):
+        """File system capacity (in bytes), which can range from 1 GB to 1 PB and must be an integer multiple of 1 GB
+Note: the file system capacity after change cannot be smaller than the currently used capacity
+        :rtype: int
+        """
         return self._CapacityQuota
 
     @CapacityQuota.setter
@@ -2600,6 +2999,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def SuperUsers(self):
+        """List of superuser names, which can be an empty array
+        :rtype: list of str
+        """
         return self._SuperUsers
 
     @SuperUsers.setter
@@ -2608,6 +3010,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def PosixAcl(self):
+        """Whether to verify POSIX ACL
+        :rtype: bool
+        """
         return self._PosixAcl
 
     @PosixAcl.setter
@@ -2616,6 +3021,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def EnableRanger(self):
+        """Whether to enable verification of Ranger service addresses
+        :rtype: bool
+        """
         return self._EnableRanger
 
     @EnableRanger.setter
@@ -2624,6 +3032,9 @@ Note: the file system capacity after change cannot be smaller than the currently
 
     @property
     def RangerServiceAddresses(self):
+        """List of Ranger service addresses, which can be an empty array
+        :rtype: list of str
+        """
         return self._RangerServiceAddresses
 
     @RangerServiceAddresses.setter
@@ -2664,6 +3075,9 @@ class ModifyFileSystemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2689,6 +3103,9 @@ class ModifyLifeCycleRulesRequest(AbstractModel):
 
     @property
     def LifeCycleRules(self):
+        """Multiple lifecycle rules (up to 10)
+        :rtype: list of LifeCycleRule
+        """
         return self._LifeCycleRules
 
     @LifeCycleRules.setter
@@ -2727,6 +3144,9 @@ class ModifyLifeCycleRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2758,6 +3178,9 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
+        """Mount point ID
+        :rtype: str
+        """
         return self._MountPointId
 
     @MountPointId.setter
@@ -2766,6 +3189,9 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointName(self):
+        """Mount point name
+        :rtype: str
+        """
         return self._MountPointName
 
     @MountPointName.setter
@@ -2774,6 +3200,9 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointStatus(self):
+        """Mount point status
+        :rtype: int
+        """
         return self._MountPointStatus
 
     @MountPointStatus.setter
@@ -2809,6 +3238,9 @@ class ModifyMountPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2837,6 +3269,9 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2845,6 +3280,9 @@ class ModifyResourceTagsRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Multiple resource tags, which can be an empty array
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2884,6 +3322,9 @@ class ModifyResourceTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2924,6 +3365,9 @@ class MountPoint(AbstractModel):
 
     @property
     def MountPointId(self):
+        """Mount point ID
+        :rtype: str
+        """
         return self._MountPointId
 
     @MountPointId.setter
@@ -2932,6 +3376,9 @@ class MountPoint(AbstractModel):
 
     @property
     def MountPointName(self):
+        """Mount point name
+        :rtype: str
+        """
         return self._MountPointName
 
     @MountPointName.setter
@@ -2940,6 +3387,9 @@ class MountPoint(AbstractModel):
 
     @property
     def FileSystemId(self):
+        """File system ID
+        :rtype: str
+        """
         return self._FileSystemId
 
     @FileSystemId.setter
@@ -2948,6 +3398,9 @@ class MountPoint(AbstractModel):
 
     @property
     def Status(self):
+        """Mount point status (1: enabled; 2: disabled)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2956,6 +3409,9 @@ class MountPoint(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2964,6 +3420,9 @@ class MountPoint(AbstractModel):
 
     @property
     def AccessGroupIds(self):
+        """List of IDs of the bound permission groups
+        :rtype: list of str
+        """
         return self._AccessGroupIds
 
     @AccessGroupIds.setter
@@ -3017,6 +3476,9 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreTaskId(self):
+        """Restoration task ID
+        :rtype: int
+        """
         return self._RestoreTaskId
 
     @RestoreTaskId.setter
@@ -3025,6 +3487,9 @@ class RestoreTask(AbstractModel):
 
     @property
     def FilePath(self):
+        """Restoration task file path
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -3033,6 +3498,9 @@ class RestoreTask(AbstractModel):
 
     @property
     def Type(self):
+        """Restoration task type (`1`: standard; `2`: expedited; `3`: bulk, with only the expedited type available currently)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3041,6 +3509,9 @@ class RestoreTask(AbstractModel):
 
     @property
     def Days(self):
+        """Validity period (in days) of the temporary copy generated during restoration
+        :rtype: int
+        """
         return self._Days
 
     @Days.setter
@@ -3049,6 +3520,9 @@ class RestoreTask(AbstractModel):
 
     @property
     def Status(self):
+        """Restoration task status (1: binding file; 2: file binding completed; 3: restoring file; 4: file restoration completed)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3057,6 +3531,9 @@ class RestoreTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3116,6 +3593,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CapacityUsed(self):
+        """Capacity usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CapacityUsed
 
     @CapacityUsed.setter
@@ -3124,6 +3605,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StandardCapacityUsed(self):
+        """COS STANDARD storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StandardCapacityUsed
 
     @StandardCapacityUsed.setter
@@ -3132,6 +3617,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DegradeCapacityUsed(self):
+        """COS STANDARD_IA storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DegradeCapacityUsed
 
     @DegradeCapacityUsed.setter
@@ -3140,6 +3629,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ArchiveCapacityUsed(self):
+        """COS ARCHIVE storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ArchiveCapacityUsed
 
     @ArchiveCapacityUsed.setter
@@ -3148,6 +3641,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeepArchiveCapacityUsed(self):
+        """COS DEEP ARCHIVE storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DeepArchiveCapacityUsed
 
     @DeepArchiveCapacityUsed.setter
@@ -3156,6 +3653,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntelligentCapacityUsed(self):
+        """COS INTELLIGENT TIERING storage usage in bytes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IntelligentCapacityUsed
 
     @IntelligentCapacityUsed.setter
@@ -3197,6 +3698,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3205,6 +3709,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3242,6 +3749,9 @@ class Transition(AbstractModel):
 
     @property
     def Days(self):
+        """Trigger time (in days)
+        :rtype: int
+        """
         return self._Days
 
     @Days.setter
@@ -3250,6 +3760,9 @@ class Transition(AbstractModel):
 
     @property
     def Type(self):
+        """Transition type (`1`: ARCHIVE; `2`: Delete; `3`: STANDARD_IA; `4`: DEEP ARCHIVE; `5`: INTELLIGENT TIERING)
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter

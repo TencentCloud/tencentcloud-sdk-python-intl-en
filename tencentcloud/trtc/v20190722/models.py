@@ -36,6 +36,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AbnormalEventId(self):
+        """The error event ID. For details, see https://www.tencentcloud.com/document/product/647/37906?has_map=1
+        :rtype: int
+        """
         return self._AbnormalEventId
 
     @AbnormalEventId.setter
@@ -44,6 +47,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeerId(self):
+        """The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PeerId
 
     @PeerId.setter
@@ -90,6 +97,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def UserId(self):
+        """The user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -98,6 +108,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def ExperienceId(self):
+        """The abnormal experience ID.
+        :rtype: int
+        """
         return self._ExperienceId
 
     @ExperienceId.setter
@@ -106,6 +119,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def RoomId(self):
+        """The room ID (string).
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -114,6 +130,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def AbnormalEventList(self):
+        """The possible error events.
+        :rtype: list of AbnormalEvent
+        """
         return self._AbnormalEventList
 
     @AbnormalEventList.setter
@@ -122,6 +141,9 @@ class AbnormalExperience(AbstractModel):
 
     @property
     def EventTime(self):
+        """The report time.
+        :rtype: int
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -140,6 +162,132 @@ class AbnormalExperience(AbstractModel):
                 obj._deserialize(item)
                 self._AbnormalEventList.append(obj)
         self._EventTime = params.get("EventTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentConfig(AbstractModel):
+    """Robot parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :type UserId: str
+        :param _UserSig: The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :type UserSig: str
+        :param _TargetUserId: The UserId of the robot pulling the media stream. After filling in, the robot will pull the media stream of the UserId for real-time processing
+        :type TargetUserId: str
+        :param _MaxIdleTime: If there is no streaming in the room for more than MaxIdleTime, the Service will automatically close the task. The default value is 60s.
+        :type MaxIdleTime: int
+        :param _WelcomeMessage: Robot's welcome message
+        :type WelcomeMessage: str
+        :param _InterruptMode: Intelligent interruption mode, the default value is 0, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: Used when InterruptMode is 0, in milliseconds, with a default value of 500ms. This means that the server will interrupt when it detects a human voice that lasts for InterruptSpeechDuration milliseconds.
+        :type InterruptSpeechDuration: int
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._TargetUserId = None
+        self._MaxIdleTime = None
+        self._WelcomeMessage = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+
+    @property
+    def UserId(self):
+        """The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        """The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def TargetUserId(self):
+        """The UserId of the robot pulling the media stream. After filling in, the robot will pull the media stream of the UserId for real-time processing
+        :rtype: str
+        """
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+    @property
+    def MaxIdleTime(self):
+        """If there is no streaming in the room for more than MaxIdleTime, the Service will automatically close the task. The default value is 60s.
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def WelcomeMessage(self):
+        """Robot's welcome message
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def InterruptMode(self):
+        """Intelligent interruption mode, the default value is 0, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt
+        :rtype: int
+        """
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        """Used when InterruptMode is 0, in milliseconds, with a default value of 500ms. This means that the server will interrupt when it detects a human voice that lasts for InterruptSpeechDuration milliseconds.
+        :rtype: int
+        """
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._TargetUserId = params.get("TargetUserId")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -170,6 +318,9 @@ class AgentParams(AbstractModel):
 
     @property
     def UserId(self):
+        """The [user ID](https://intl.cloud.tencent.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -178,6 +329,9 @@ class AgentParams(AbstractModel):
 
     @property
     def UserSig(self):
+        """The signature (similar to a login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104). |
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -186,6 +340,9 @@ class AgentParams(AbstractModel):
 
     @property
     def MaxIdleTime(self):
+        """The timeout period (seconds) for relaying to stop automatically after all the users whose streams are mixed leave the room. The value cannot be smaller than 5 or larger than 86400 (24 hours). Default value: 30.
+        :rtype: int
+        """
         return self._MaxIdleTime
 
     @MaxIdleTime.setter
@@ -230,6 +387,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def SampleRate(self):
+        """The audio sample rate (Hz). Valid values: 48000, 44100, 32000, 24000, 16000, 8000.
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -238,6 +398,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def Channel(self):
+        """The number of sound channels. Valid values: 1 (mono), 2 (dual).
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -246,6 +409,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def BitRate(self):
+        """The audio bitrate (Kbps). Value range: 8-500.
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -254,6 +420,9 @@ class AudioEncode(AbstractModel):
 
     @property
     def Codec(self):
+        """The audio codec. Valid values: 0 (LC-AAC), 1 (HE-AAC), 2 (HE-AACv2). The default value is 0. If this parameter is set to 2, `Channel` must be 2. If it is set to 1 or 2, `SampleRate` can only be 48000, 44100, 32000, 24000, or 16000.
+        :rtype: int
+        """
         return self._Codec
 
     @Codec.setter
@@ -296,6 +465,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def SampleRate(self):
+        """Audio Sample rate, Value range [48000, 44100], unit is Hz.
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -304,6 +476,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def Channel(self):
+        """Audio Channel number, Value range [1,2], 1 means Audio is Mono-channel, 2 means Audio is Dual-channel.
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -312,6 +487,9 @@ class AudioEncodeParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """Audio Bitrate, Value range [8,500], unit is kbps.
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -358,6 +536,12 @@ class AudioParams(AbstractModel):
 
     @property
     def SampleRate(self):
+        """The audio sample rate.
+1: 48000 Hz (default)
+2: 44100 Hz
+3: 16000 Hz
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -366,6 +550,11 @@ class AudioParams(AbstractModel):
 
     @property
     def Channel(self):
+        """The number of sound channels.
+1: Mono-channel
+2: Dual-channel (default)
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -374,6 +563,9 @@ class AudioParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """The audio bitrate (bps). Value range: [32000, 128000]. Default: 64000.
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -425,6 +617,10 @@ class CloudStorage(AbstractModel):
 
     @property
     def Vendor(self):
+        """The cloud storage provider.
+`0`: Tencent Cloud COS; `1`: AWS storage. Other vendors are not supported currently.
+        :rtype: int
+        """
         return self._Vendor
 
     @Vendor.setter
@@ -433,6 +629,9 @@ class CloudStorage(AbstractModel):
 
     @property
     def Region(self):
+        """The region of cloud storage.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -441,6 +640,9 @@ class CloudStorage(AbstractModel):
 
     @property
     def Bucket(self):
+        """The storage bucket.
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -449,6 +651,9 @@ class CloudStorage(AbstractModel):
 
     @property
     def AccessKey(self):
+        """The access_key of the cloud storage account.
+        :rtype: str
+        """
         return self._AccessKey
 
     @AccessKey.setter
@@ -457,6 +662,9 @@ class CloudStorage(AbstractModel):
 
     @property
     def SecretKey(self):
+        """The secret_key of the cloud storage account.
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -465,6 +673,9 @@ class CloudStorage(AbstractModel):
 
     @property
     def FileNamePrefix(self):
+        """The bucket to save data, which is an array of strings that can contain letters (a-z and A-Z), numbers (0-9), underscores (_), and hyphens (-). For example, if the value of this parameter is `["prefix1", "prefix2"]`, the recording file `xxx.m3u8` will be saved as `prefix1/prefix2/TaskId/xxx.m3u8`.
+        :rtype: list of str
+        """
         return self._FileNamePrefix
 
     @FileNamePrefix.setter
@@ -503,6 +714,9 @@ class CloudVod(AbstractModel):
 
     @property
     def TencentVod(self):
+        """The Tencent Cloud VOD parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TencentVod`
+        """
         return self._TencentVod
 
     @TencentVod.setter
@@ -522,6 +736,104 @@ class CloudVod(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ControlAIConversationRequest(AbstractModel):
+    """ControlAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the task
+        :type TaskId: str
+        :param _Command: Control commands, currently supported commands are as follows:
+- ServerPushText, the server sends text to the AI robot, and the AI robot will play the text
+        :type Command: str
+        :param _ServerPushText: The server sends a text broadcast command. This is required when Command is ServerPushText.
+        :type ServerPushText: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        """
+        self._TaskId = None
+        self._Command = None
+        self._ServerPushText = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the task
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Command(self):
+        """Control commands, currently supported commands are as follows:
+- ServerPushText, the server sends text to the AI robot, and the AI robot will play the text
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def ServerPushText(self):
+        """The server sends a text broadcast command. This is required when Command is ServerPushText.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        """
+        return self._ServerPushText
+
+    @ServerPushText.setter
+    def ServerPushText(self, ServerPushText):
+        self._ServerPushText = ServerPushText
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Command = params.get("Command")
+        if params.get("ServerPushText") is not None:
+            self._ServerPushText = ServerPushText()
+            self._ServerPushText._deserialize(params.get("ServerPushText"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlAIConversationResponse(AbstractModel):
+    """ControlAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCloudRecordingRequest(AbstractModel):
@@ -570,6 +882,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -578,6 +893,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """The [room ID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are recorded.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -586,6 +904,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """The [user ID](https://www.tencentcloud.com/document/product/647/37714#userid) of the recording robot in the TRTC room, which cannot be identical to the user IDs of anchors in the room or other recording robots. To distinguish this user ID from others, we recommend you include the room ID in the user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -594,6 +915,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def UserSig(self):
+        """The signature (similar to a login password) required for the recording robot to enter the room. Each user ID corresponds to a signature. For information on how to calculate the signature, see [What is UserSig?](https://intl.cloud.tencent.com/document/product/647/38104).
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -602,6 +926,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RecordParams(self):
+        """The on-cloud recording parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
+        """
         return self._RecordParams
 
     @RecordParams.setter
@@ -610,6 +937,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def StorageParams(self):
+        """The storage information of the recording file. Currently, you can save recording files to Tencent Cloud VOD or COS.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
+        """
         return self._StorageParams
 
     @StorageParams.setter
@@ -618,6 +948,11 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """The type of the TRTC room ID, which must be the same as the ID type of the room whose streams are recorded.
+0: String
+1: 32-bit integer (default)
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -626,6 +961,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def MixTranscodeParams(self):
+        """The stream mixing parameters, which are valid if the mixed-stream recording mode is used.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixTranscodeParams`
+        """
         return self._MixTranscodeParams
 
     @MixTranscodeParams.setter
@@ -634,6 +972,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def MixLayoutParams(self):
+        """The layout parameters, which are valid if the mixed-stream recording mode is used.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        """
         return self._MixLayoutParams
 
     @MixLayoutParams.setter
@@ -642,6 +983,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def ResourceExpiredHour(self):
+        """The amount of time (in hours) during which API requests can be made after recording starts. Calculation starts when a recording task is started (when the recording task ID is returned). Once the period elapses, the query, modification, and stop recording APIs can no longer be called, but the recording task will continue. The default value is `72` (three days), and the maximum and minimum values allowed are `720` (30 days) and `6` respectively. If you do not set this parameter, the query, modification, and stop recording APIs can be called within 72 hours after recording starts.
+        :rtype: int
+        """
         return self._ResourceExpiredHour
 
     @ResourceExpiredHour.setter
@@ -650,6 +994,9 @@ class CreateCloudRecordingRequest(AbstractModel):
 
     @property
     def PrivateMapKey(self):
+        """The permission ticket for a TRTC room. This parameter is required if advanced permission control is enabled in the console, in which case the TRTC backend will verify users’ [PrivateMapKey](https://intl.cloud.tencent.com/document/product/647/32240?from_cn_redirect=1), which include an encrypted room ID and permission bit list. A user providing only `UserSig` and not `PrivateMapKey` will be unable to enter the room.
+        :rtype: str
+        """
         return self._PrivateMapKey
 
     @PrivateMapKey.setter
@@ -704,6 +1051,9 @@ class CreateCloudRecordingResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends. After a recording task starts, if you want to perform other actions on the task, you need to specify the task ID when making API requests.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -712,6 +1062,9 @@ class CreateCloudRecordingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -741,6 +1094,9 @@ class DeleteCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the room whose streams are recorded.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -749,6 +1105,9 @@ class DeleteCloudRecordingRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The unique ID of the recording task, which is returned after recording starts successfully.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -786,6 +1145,9 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -794,6 +1156,9 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -803,6 +1168,314 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIConversationRequest(AbstractModel):
+    """DescribeAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :type SdkAppId: int
+        :param _TaskId: The unique ID of the task.
+        :type TaskId: str
+        :param _SessionId: The SessionId filled in when starting the task. 
+        :type SessionId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SessionId = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """The unique ID of the task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        """The SessionId filled in when starting the task. 
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIConversationResponse(AbstractModel):
+    """DescribeAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: The time when the task starts.
+        :type StartTime: str
+        :param _Status: Task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up
+        :type Status: str
+        :param _TaskId: The unique ID of the task, generated when the task is started
+        :type TaskId: str
+        :param _SessionId: The SessionId filled in when opening the conversation task.
+        :type SessionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        """The time when the task starts.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        """Task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        """The unique ID of the task, generated when the task is started
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        """The SessionId filled in when opening the conversation task.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAITranscriptionRequest(AbstractModel):
+    """DescribeAITranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Query the task status. If not in use, pass in an empty string. There are two query methods: 1. Fill in only TaskId. This method uses TaskId to query tasks. 2. TaskId is an empty string. Fill in SdkAppId and SessionId. This method does not require TaskId to query tasks.
+        :type TaskId: str
+        :param _SdkAppId: TRTC's SdkAppId is used together with SessionId.
+        :type SdkAppId: int
+        :param _SessionId: The SessionId passed in when starting the transcription task is used together with the SdkAppId.
+        :type SessionId: str
+        """
+        self._TaskId = None
+        self._SdkAppId = None
+        self._SessionId = None
+
+    @property
+    def TaskId(self):
+        """Query the task status. If not in use, pass in an empty string. There are two query methods: 1. Fill in only TaskId. This method uses TaskId to query tasks. 2. TaskId is an empty string. Fill in SdkAppId and SessionId. This method does not require TaskId to query tasks.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SdkAppId(self):
+        """TRTC's SdkAppId is used together with SessionId.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """The SessionId passed in when starting the transcription task is used together with the SdkAppId.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAITranscriptionResponse(AbstractModel):
+    """DescribeAITranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: The time when the task starts.
+        :type StartTime: str
+        :param _Status: Transcription task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up
+        :type Status: str
+        :param _TaskId: Uniquely identifies a task.
+        :type TaskId: str
+        :param _SessionId: The SessionId filled in when starting the transcription task. If not filled in, nothing is returned.
+        :type SessionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        """The time when the task starts.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        """Transcription task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        """Uniquely identifies a task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        """The SessionId filled in when starting the transcription task. If not filled in, nothing is returned.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -860,6 +1533,9 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def CommId(self):
+        """The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -868,6 +1544,10 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def StartTime(self):
+        """The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -876,6 +1556,10 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def EndTime(self):
+        """The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: If `DataType` is not null, the end time and start time cannot be more than one hour apart; if `DataType` is null, the end time and start time cannot be more than four hours apart.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -884,6 +1568,9 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def SdkAppId(self):
+        """The application ID, such as `1400xxxxxx`.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -892,6 +1579,9 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def UserIds(self):
+        """The users to query. If you do not specify this, the data of six users will be returned.
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -900,6 +1590,22 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def DataType(self):
+        """The metrics to query. If you do not specify this, only the user list will be returned. If you pass in `all`, all metrics will be returned.
+`appCpu`: The CPU utilization of the application.
+`sysCpu`: The CPU utilization of the system.
+`aBit`: The upstream/downstream audio bitrate (bps).
+`aBlock`: The audio stutter duration (ms).
+`bigvBit`: The upstream/downstream video bitrate (bps).
+`bigvCapFps`: The frame rate for capturing videos.
+`bigvEncFps`: The frame rate for sending videos.
+`bigvDecFps`: The rendering frame rate.
+`bigvBlock`: The video stutter duration (ms).
+`aLoss`: The upstream/downstream audio packet loss.
+`bigvLoss`: The upstream/downstream video packet loss.
+`bigvWidth`: The upstream/downstream resolution (width).
+`bigvHeight`: The upstream/downstream resolution (height).
+        :rtype: list of str
+        """
         return self._DataType
 
     @DataType.setter
@@ -908,6 +1614,10 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def PageNumber(self):
+        """The page number. The default is 0.
+Note: If `PageNumber` or `PageSize` is not specified, six records will be returned.
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -916,6 +1626,12 @@ If `DataType` is null, the length of the array `UserIds` and the value of `PageS
 
     @property
     def PageSize(self):
+        """The number of records per page. The default is `6`.
+Value range: 1-100.
+Note: If `DataType` is not null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `6`.
+If `DataType` is null, the length of the array `UserIds` and the value of `PageSize` cannot exceed `100`.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -967,6 +1683,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """The number of records returned.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -975,6 +1694,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserList(self):
+        """The user information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserInformation
+        """
         return self._UserList
 
     @UserList.setter
@@ -983,6 +1706,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """The call quality data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QualityData
+        """
         return self._Data
 
     @Data.setter
@@ -991,6 +1718,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1032,6 +1762,9 @@ class DescribeCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the room whose streams are recorded.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1040,6 +1773,9 @@ class DescribeCloudRecordingRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The unique ID of the recording task, which is returned after recording starts successfully.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1087,6 +1823,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TaskId(self):
+        """The unique ID of the recording task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1095,6 +1834,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """The status of the on-cloud recording task.
+Idle: The task is idle.
+InProgress: The task is in progress.
+Exited: The task is being ended.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1103,6 +1848,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StorageFileList(self):
+        """The information of the recording files.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of StorageFile
+        """
         return self._StorageFileList
 
     @StorageFileList.setter
@@ -1111,6 +1860,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1151,6 +1903,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def StartTime(self):
+        """The start date in the format of YYYY-MM-DD.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1159,6 +1914,10 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def EndTime(self):
+        """The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1167,6 +1926,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1208,6 +1970,9 @@ class DescribeMixTranscodingUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -1216,6 +1981,9 @@ class DescribeMixTranscodingUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """The usage data in each time unit.
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -1224,6 +1992,9 @@ class DescribeMixTranscodingUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1266,6 +2037,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def StartTime(self):
+        """The start date in the format of YYYY-MM-DD.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1274,6 +2048,10 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def EndTime(self):
+        """The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1282,6 +2060,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def MixType(self):
+        """Whether to query single-stream or mixed-stream recording. Valid values: `single`, `multi`.
+        :rtype: str
+        """
         return self._MixType
 
     @MixType.setter
@@ -1290,6 +2071,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1332,6 +2116,9 @@ class DescribeRecordingUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -1340,6 +2127,9 @@ class DescribeRecordingUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """The usage data in each time unit.
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -1348,6 +2138,9 @@ class DescribeRecordingUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1387,6 +2180,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def StartTime(self):
+        """The start date in the format of YYYY-MM-DD.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1395,6 +2191,10 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def EndTime(self):
+        """The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1403,6 +2203,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1444,6 +2247,9 @@ class DescribeRelayUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -1452,6 +2258,9 @@ class DescribeRelayUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """The usage data in each time unit.
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -1460,6 +2269,9 @@ class DescribeRelayUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1511,6 +2323,9 @@ Value range: 1-100.
 
     @property
     def SdkAppId(self):
+        """The application ID, such as `1400xxxxxx`.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1519,6 +2334,10 @@ Value range: 1-100.
 
     @property
     def StartTime(self):
+        """The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1527,6 +2346,10 @@ Value range: 1-100.
 
     @property
     def EndTime(self):
+        """The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: The end and start time cannot be more than 24 hours apart.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1535,6 +2358,9 @@ Value range: 1-100.
 
     @property
     def RoomId(self):
+        """The room ID, such as `223`.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1543,6 +2369,10 @@ Value range: 1-100.
 
     @property
     def PageNumber(self):
+        """The page number. The default is 0.
+Note: If `PageNumber` or `PageSize` is not specified, 10 records will be returned.
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1551,6 +2381,10 @@ Value range: 1-100.
 
     @property
     def PageSize(self):
+        """The number of records per page. The default is `10`.
+Value range: 1-100.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1595,6 +2429,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def Total(self):
+        """The number of records returned.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1603,6 +2440,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def RoomList(self):
+        """The room information.
+        :rtype: list of RoomState
+        """
         return self._RoomList
 
     @RoomList.setter
@@ -1611,6 +2451,9 @@ class DescribeRoomInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1651,6 +2494,9 @@ Note: Data is collected on a daily basis. To query the data of a day, make sure 
 
     @property
     def SdkAppId(self):
+        """The application ID, such as `1400xxxxxx`.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1659,6 +2505,10 @@ Note: Data is collected on a daily basis. To query the data of a day, make sure 
 
     @property
     def StartTime(self):
+        """The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1667,6 +2517,10 @@ Note: Data is collected on a daily basis. To query the data of a day, make sure 
 
     @property
     def EndTime(self):
+        """The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time should preferably be more than 24 hours apart.
+Note: Data is collected on a daily basis. To query the data of a day, make sure the end time is later than 00:00 on that day. Otherwise, no data will be returned. For example, to query the data on the 20th, the end time must be later than 00:00 on the 20th.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1709,6 +2563,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """The number of records returned.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1717,6 +2574,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScaleList(self):
+        """The returned data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ScaleInfomation
+        """
         return self._ScaleList
 
     @ScaleList.setter
@@ -1725,6 +2586,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1760,6 +2624,9 @@ class DescribeStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The SDKAppId of TRTC should be the same as the SDKAppId corresponding to the task room.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1768,6 +2635,9 @@ class DescribeStreamIngestRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The unique Id of the task, will return after successfully starting the task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1805,6 +2675,9 @@ class DescribeStreamIngestResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Task status information. InProgress: Indicates that the current task is in progress. NotExist: Indicates that the current task does not exist. Example value: InProgress
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1813,6 +2686,9 @@ class DescribeStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1850,6 +2726,9 @@ h: by hour. This returns data for the entire UTC hour of the query time range.
 
     @property
     def SdkAppId(self):
+        """User SDKAppId (e.g., 1400xxxxxx)
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1858,6 +2737,9 @@ h: by hour. This returns data for the entire UTC hour of the query time range.
 
     @property
     def StartTime(self):
+        """Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 30 days)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1866,6 +2748,9 @@ h: by hour. This returns data for the entire UTC hour of the query time range.
 
     @property
     def EndTime(self):
+        """Query end time, format is YYYY-MM-DD.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1874,6 +2759,11 @@ h: by hour. This returns data for the entire UTC hour of the query time range.
 
     @property
     def Period(self):
+        """The granularity of the returned data, which can be set to the following values:
+d: by day. This returns data for the entire UTC day of the query time range. 
+h: by hour. This returns data for the entire UTC hour of the query time range.
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -1913,6 +2803,9 @@ class DescribeTRTCMarketQualityDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC Data Dashboard output parameters
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -1921,6 +2814,9 @@ class DescribeTRTCMarketQualityDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1960,6 +2856,9 @@ class DescribeTRTCMarketScaleDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """User SDKAppId
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1968,6 +2867,9 @@ class DescribeTRTCMarketScaleDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 60 days)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1976,6 +2878,9 @@ class DescribeTRTCMarketScaleDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Query end time, format is YYYY-MM-DD.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1984,6 +2889,11 @@ class DescribeTRTCMarketScaleDataRequest(AbstractModel):
 
     @property
     def Period(self):
+        """The granularity of the returned data, which can be set to the following values:
+ d: by day. This returns data for the entire UTC day of the query time range.
+ h: by hour. This returns data for the entire UTC hour of the query time range.
+        :rtype: str
+        """
         return self._Period
 
     @Period.setter
@@ -2023,6 +2933,9 @@ class DescribeTRTCMarketScaleDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC Data Dashboard output parameters
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -2031,6 +2944,9 @@ class DescribeTRTCMarketScaleDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2068,6 +2984,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """User SDKAppId (e.g., 1400xxxxxx)
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2076,6 +2995,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, unix timestamp, Unit: seconds (Query time range depends on the monitoring dashboard function version, standard edition can query the last 3 hours, premium edition can query the last 12 hours)
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2084,6 +3006,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, unix timestamp, Unit: seconds
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2092,6 +3017,9 @@ class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2131,6 +3059,9 @@ class DescribeTRTCRealTimeQualityDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC Real- Time Monitoring output parameters
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -2139,6 +3070,9 @@ class DescribeTRTCRealTimeQualityDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2176,6 +3110,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """User SDKAppId (e.g., 1400xxxxxx)
+        :rtype: str
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2184,6 +3121,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, unix timestamp, Unit: seconds (Query time range depends on the function version of the monitoring dashboard, premium edition can query up to 1 hours)
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2192,6 +3132,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, unix timestamp, Unit: seconds
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2200,6 +3143,9 @@ class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2240,6 +3186,10 @@ class DescribeTRTCRealTimeScaleDataResponse(AbstractModel):
 
     @property
     def Data(self):
+        """TRTC Real- Time Monitoring
+ output parameter
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        """
         return self._Data
 
     @Data.setter
@@ -2248,6 +3198,9 @@ class DescribeTRTCRealTimeScaleDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2282,6 +3235,9 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     @property
     def SdkAppid(self):
+        """The `SDKAppID` of the room.
+        :rtype: int
+        """
         return self._SdkAppid
 
     @SdkAppid.setter
@@ -2290,6 +3246,9 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start time in the format of `YYYY-MM-DD HH:MM` (accurate to the minute).
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2298,6 +3257,9 @@ class DescribeTrtcRoomUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end time in the format of `YYYY-MM-DD HH:MM`. The start and end time cannot be more than 24 hours apart.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2336,6 +3298,9 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     @property
     def Data(self):
+        """The usage data grouped by room, in CSV format.
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -2344,6 +3309,9 @@ class DescribeTrtcRoomUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2377,6 +3345,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def StartTime(self):
+        """The start date in the format of YYYY-MM-DD.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2385,6 +3356,10 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def EndTime(self):
+        """The end date in the format of YYYY-MM-DD.
+The period queried per request cannot be longer than 31 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2393,6 +3368,9 @@ The period queried per request cannot be longer than 31 days.
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the TRTC application to which the target room belongs. If you do not specify this parameter, the usage statistics of all TRTC applications under the current account will be returned.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2434,6 +3412,9 @@ class DescribeTrtcUsageResponse(AbstractModel):
 
     @property
     def UsageKey(self):
+        """The usage type. Each element of this parameter corresponds to an element of `UsageValue` in the order they are listed.
+        :rtype: list of str
+        """
         return self._UsageKey
 
     @UsageKey.setter
@@ -2442,6 +3423,9 @@ class DescribeTrtcUsageResponse(AbstractModel):
 
     @property
     def UsageList(self):
+        """The usage data in each time unit.
+        :rtype: list of TrtcUsage
+        """
         return self._UsageList
 
     @UsageList.setter
@@ -2450,6 +3434,9 @@ class DescribeTrtcUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2492,6 +3479,9 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def SdkAppId(self):
+        """The application ID, such as `1400xxxxxx`.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2500,6 +3490,10 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def StartTime(self):
+        """The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2508,6 +3502,9 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def EndTime(self):
+        """The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`. The end time and start time cannot be more than one hour apart.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2516,6 +3513,9 @@ Note: Only data in the last 14 days can be queried.
 
     @property
     def RoomId(self):
+        """The room ID. Up to 20 random abnormal user experiences of the specified room will be returned.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2559,6 +3559,10 @@ Value range: 0-20.
 
     @property
     def Total(self):
+        """The number of records returned.
+Value range: 0-20.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2567,6 +3571,9 @@ Value range: 0-20.
 
     @property
     def AbnormalExperienceList(self):
+        """The information of the abnormal user experiences.
+        :rtype: list of AbnormalExperience
+        """
         return self._AbnormalExperienceList
 
     @AbnormalExperienceList.setter
@@ -2575,6 +3582,9 @@ Value range: 0-20.
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2624,6 +3634,9 @@ Note: If you pass in an end time later than the room end time, the room end time
 
     @property
     def CommId(self):
+        """The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -2632,6 +3645,10 @@ Note: If you pass in an end time later than the room end time, the room end time
 
     @property
     def StartTime(self):
+        """The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2640,6 +3657,10 @@ Note: If you pass in an end time later than the room end time, the room end time
 
     @property
     def EndTime(self):
+        """The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: If you pass in an end time later than the room end time, the room end time will be used.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2648,6 +3669,9 @@ Note: If you pass in an end time later than the room end time, the room end time
 
     @property
     def UserId(self):
+        """The user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2656,6 +3680,9 @@ Note: If you pass in an end time later than the room end time, the room end time
 
     @property
     def RoomId(self):
+        """The room ID, such as `223`.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2664,6 +3691,9 @@ Note: If you pass in an end time later than the room end time, the room end time
 
     @property
     def SdkAppId(self):
+        """The application ID, such as `1400xxxxxx`.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2705,6 +3735,9 @@ class DescribeUserEventResponse(AbstractModel):
 
     @property
     def Data(self):
+        """The event list. An empty array will be returned if no data is obtained.
+        :rtype: list of EventList
+        """
         return self._Data
 
     @Data.setter
@@ -2713,6 +3746,9 @@ class DescribeUserEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2767,6 +3803,9 @@ Array length: 1-100.
 
     @property
     def CommId(self):
+        """The unique ID of a call, whose format is `SdkAppId_CreateTime`, such as `1400xxxxxx_218695_1590065777`. `createTime` is the UNIX timestamp (seconds) when the room was created. Its value can be obtained using the [DescribeRoomInfo](https://intl.cloud.tencent.com/document/product/647/44050?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -2775,6 +3814,10 @@ Array length: 1-100.
 
     @property
     def StartTime(self):
+        """The start time, which is a Unix timestamp (seconds) in local time, such as `1590065777`.
+Note: Only data in the last 14 days can be queried.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2783,6 +3826,10 @@ Array length: 1-100.
 
     @property
     def EndTime(self):
+        """The end time, which is a Unix timestamp (seconds) in local time, such as `1590065877`.
+Note: The end and start time cannot be more than four hours apart.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2791,6 +3838,9 @@ Array length: 1-100.
 
     @property
     def SdkAppId(self):
+        """The application ID, such as `1400xxxxxx`.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2799,6 +3849,10 @@ Array length: 1-100.
 
     @property
     def UserIds(self):
+        """The users to query. If you do not specify this, the information of six users will be returned.
+Array length: 1-100.
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -2807,6 +3861,10 @@ Array length: 1-100.
 
     @property
     def PageNumber(self):
+        """The page number. The default is 0.
+Note: If `PageNumber` or `PageSize` is not specified, six records will be returned.
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2815,6 +3873,10 @@ Array length: 1-100.
 
     @property
     def PageSize(self):
+        """The number of records per page. The default is `6`.
+Array length: 1-100.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2861,6 +3923,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """The number of records returned.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2869,6 +3934,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserList(self):
+        """The user information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserInformation
+        """
         return self._UserList
 
     @UserList.setter
@@ -2877,6 +3946,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2912,6 +3984,9 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """`SDKAppId` of TRTC
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2920,6 +3995,9 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -2954,6 +4032,9 @@ class DismissRoomByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2982,6 +4063,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """`SDKAppId` of TRTC.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2990,6 +4074,9 @@ class DismissRoomRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room number.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3024,6 +4111,9 @@ class DismissRoomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3052,6 +4142,9 @@ class EventList(AbstractModel):
 
     @property
     def Content(self):
+        """The event information.
+        :rtype: list of EventMessage
+        """
         return self._Content
 
     @Content.setter
@@ -3060,6 +4153,9 @@ class EventList(AbstractModel):
 
     @property
     def PeerId(self):
+        """The user ID of the sender.
+        :rtype: str
+        """
         return self._PeerId
 
     @PeerId.setter
@@ -3115,6 +4211,13 @@ class EventMessage(AbstractModel):
 
     @property
     def Type(self):
+        """The video stream type. Valid values:
+`0`: A non-video event
+`2`: The big video
+`3`: The small video
+`7`: A relayed video
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3123,6 +4226,9 @@ class EventMessage(AbstractModel):
 
     @property
     def Time(self):
+        """The event reporting time in the format of UNIX timestamp (milliseconds), such as `1589891188801`.
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -3131,6 +4237,9 @@ class EventMessage(AbstractModel):
 
     @property
     def EventId(self):
+        """The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://www.tencentcloud.com/document/product/647/37906?has_map=1
+        :rtype: int
+        """
         return self._EventId
 
     @EventId.setter
@@ -3139,6 +4248,9 @@ class EventMessage(AbstractModel):
 
     @property
     def ParamOne(self):
+        """The first event parameter, such as the video width.
+        :rtype: int
+        """
         return self._ParamOne
 
     @ParamOne.setter
@@ -3147,6 +4259,9 @@ class EventMessage(AbstractModel):
 
     @property
     def ParamTwo(self):
+        """The second event parameter, such as the video height.
+        :rtype: int
+        """
         return self._ParamTwo
 
     @ParamTwo.setter
@@ -3184,6 +4299,9 @@ class MaxVideoUser(AbstractModel):
 
     @property
     def UserMediaStream(self):
+        """The stream information.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
         return self._UserMediaStream
 
     @UserMediaStream.setter
@@ -3227,6 +4345,9 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
 
     @property
     def AudioEncode(self):
+        """The audio encoding parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioEncode`
+        """
         return self._AudioEncode
 
     @AudioEncode.setter
@@ -3235,6 +4356,10 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
 
     @property
     def SubscribeAudioList(self):
+        """The audio mix allowlist. For the `StartPublishCdnStream` API, if you do not pass this parameter or leave it empty, the audios of all anchors will be mixed. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current allowlist; if you pass in an empty string, the audios of all anchors will be mixed.
+In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
+        :rtype: list of McuUserInfoParams
+        """
         return self._SubscribeAudioList
 
     @SubscribeAudioList.setter
@@ -3243,6 +4368,10 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
 
     @property
     def UnSubscribeAudioList(self):
+        """The audio mix blocklist. If you do not pass this parameter or leave it empty, there won’t be a blocklist. For the `UpdatePublishCdnStream` API, if you do not pass this parameter, no changes will be made to the current blocklist; if you pass in an empty string, the blocklist will be reset.
+In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the same time, you need to specify both parameters. If you pass neither `SubscribeAudioList` nor `UnSubscribeAudioList`, no changes will be made. If a user is included in both parameters, the user’s audio will not be mixed.
+        :rtype: list of McuUserInfoParams
+        """
         return self._UnSubscribeAudioList
 
     @UnSubscribeAudioList.setter
@@ -3299,6 +4428,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def LocationX(self):
+        """The horizontal offset (pixels) of the starting point for cropping. This parameter must be greater than 0.
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -3307,6 +4439,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def LocationY(self):
+        """The vertical offset (pixels) of the starting point for cropping. This parameter must be greater than 0.
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -3315,6 +4450,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def Width(self):
+        """The video width (pixels) after cropping. The sum of this parameter and `LocationX` cannot be greater than 10000.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -3323,6 +4461,9 @@ class McuCustomCrop(AbstractModel):
 
     @property
     def Height(self):
+        """The video height (pixels) after cropping. The sum of this parameter and `LocationY` cannot be greater than 10000.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -3368,6 +4509,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def RoomId(self):
+        """The room ID.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3376,6 +4520,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """The ID type of the room to which streams are relayed. `0` indicates integer, and `1` indicates string.
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -3384,6 +4531,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def UserId(self):
+        """The [user ID](https://www.tencentcloud.com/document/product/647/37714) of the relaying robot in the TRTC room, which cannot be the same as a user ID already in use. We recommend you include the room ID in this user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3392,6 +4542,9 @@ class McuFeedBackRoomParams(AbstractModel):
 
     @property
     def UserSig(self):
+        """The signature (similar to login password) required for the relaying robot to enter the room. For information on how to calculate the signature, see [What is UserSig?](https://www.tencentcloud.com/document/product/647/38104).
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -3465,6 +4618,9 @@ Grey: `0x999999`
 
     @property
     def UserMediaStream(self):
+        """The information of the stream that is displayed. If you do not pass this parameter, TRTC will display the videos of anchors in the room according to their room entry sequence.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
         return self._UserMediaStream
 
     @UserMediaStream.setter
@@ -3473,6 +4629,9 @@ Grey: `0x999999`
 
     @property
     def ImageWidth(self):
+        """The video width (pixels). If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._ImageWidth
 
     @ImageWidth.setter
@@ -3481,6 +4640,9 @@ Grey: `0x999999`
 
     @property
     def ImageHeight(self):
+        """The video height (pixels). If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._ImageHeight
 
     @ImageHeight.setter
@@ -3489,6 +4651,9 @@ Grey: `0x999999`
 
     @property
     def LocationX(self):
+        """The horizontal offset (pixels) of the video. The sum of `LocationX` and `ImageWidth` cannot exceed the width of the canvas. If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -3497,6 +4662,9 @@ Grey: `0x999999`
 
     @property
     def LocationY(self):
+        """The vertical offset of the video. The sum of `LocationY` and `ImageHeight` cannot exceed the height of the canvas. If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -3505,6 +4673,9 @@ Grey: `0x999999`
 
     @property
     def ZOrder(self):
+        """The image layer of the video. If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -3513,6 +4684,9 @@ Grey: `0x999999`
 
     @property
     def RenderMode(self):
+        """The rendering mode of the video. 0 (the video is scaled and the excess parts are cropped), 1 (the video is scaled), 2 (the video is scaled and the blank spaces are filled with black bars). If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -3521,6 +4695,16 @@ Grey: `0x999999`
 
     @property
     def BackGroundColor(self):
+        """(Not supported yet) The background color of a video. Below are the values for some commonly used colors:
+Red: `0xcc0033`
+Yellow: `0xcc9900`
+Green: `0xcccc33`
+Blue: `0x99CCFF`
+Black: `0x000000`
+White: `0xFFFFFF`
+Grey: `0x999999`
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -3529,6 +4713,9 @@ Grey: `0x999999`
 
     @property
     def BackgroundImageUrl(self):
+        """The URL of the background image for the video. This parameter allows you to specify an image to display when the user’s camera is turned off or before the user enters the room. If the dimensions of the image specified are different from those of the video window, the image will be stretched to fit the space. This parameter has a higher priority than `BackGroundColor`.
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -3537,6 +4724,9 @@ Grey: `0x999999`
 
     @property
     def CustomCrop(self):
+        """Custom cropping.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
+        """
         return self._CustomCrop
 
     @CustomCrop.setter
@@ -3545,6 +4735,9 @@ Grey: `0x999999`
 
     @property
     def BackgroundRenderMode(self):
+        """The display mode of the sub-background image during output: 0 for cropping, 1 for scaling and displaying the background, 2 for scaling and displaying the black background, 3 for proportional scaling. If not filled in, the default is 3.
+        :rtype: int
+        """
         return self._BackgroundRenderMode
 
     @BackgroundRenderMode.setter
@@ -3604,6 +4797,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutMode(self):
+        """The layout mode. Valid values: 1 (floating), 2 (screen sharing), 3 (grid), 4 (custom). Floating, screen sharing, and grid are dynamic layouts. Custom layouts are static layouts.
+        :rtype: int
+        """
         return self._MixLayoutMode
 
     @MixLayoutMode.setter
@@ -3612,6 +4808,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def PureAudioHoldPlaceMode(self):
+        """Whether to display users who publish only audio. 0: No; 1: Yes. This parameter is valid only if a dynamic layout is used. If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._PureAudioHoldPlaceMode
 
     @PureAudioHoldPlaceMode.setter
@@ -3620,6 +4819,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MixLayoutList(self):
+        """The details of a custom layout.
+        :rtype: list of McuLayout
+        """
         return self._MixLayoutList
 
     @MixLayoutList.setter
@@ -3628,6 +4830,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def MaxVideoUser(self):
+        """The information of the large video in screen sharing or floating layout mode.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MaxVideoUser`
+        """
         return self._MaxVideoUser
 
     @MaxVideoUser.setter
@@ -3636,6 +4841,9 @@ class McuLayoutParams(AbstractModel):
 
     @property
     def RenderMode(self):
+        """The image fill mode. This parameter is valid if the layout mode is screen sharing, floating, or grid. `0`: The image will be cropped. `1`: The image will be scaled. `2`: The image will be scaled and there may be black bars.
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -3690,6 +4898,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def AppData(self):
+        """The application data, which will be embedded in the `app_data` field of the custom SEI. It must be shorter than 4,096 characters.
+        :rtype: str
+        """
         return self._AppData
 
     @AppData.setter
@@ -3698,6 +4909,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def PayloadType(self):
+        """The payload type of the SEI message. The default is 100. Value range: 100-254 (244 is used internally by Tencent Cloud for timestamps).
+        :rtype: int
+        """
         return self._PayloadType
 
     @PayloadType.setter
@@ -3706,6 +4920,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def Interval(self):
+        """The SEI sending interval (milliseconds). The default value is 1000.
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -3714,6 +4931,9 @@ class McuLayoutVolume(AbstractModel):
 
     @property
     def FollowIdr(self):
+        """Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.
+        :rtype: int
+        """
         return self._FollowIdr
 
     @FollowIdr.setter
@@ -3762,6 +4982,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadContent(self):
+        """The payload of the pass-through SEI.
+        :rtype: str
+        """
         return self._PayloadContent
 
     @PayloadContent.setter
@@ -3770,6 +4993,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadType(self):
+        """The payload type of the SEI message. Value range: 5 and 100-254 (244 is used internally by Tencent Cloud for timestamps).
+        :rtype: int
+        """
         return self._PayloadType
 
     @PayloadType.setter
@@ -3778,6 +5004,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def PayloadUuid(self):
+        """This parameter is required only if `PayloadType` is 5. It must be a 32-character hexadecimal string. If `PayloadType` is not 5, this parameter will be ignored.
+        :rtype: str
+        """
         return self._PayloadUuid
 
     @PayloadUuid.setter
@@ -3786,6 +5015,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def Interval(self):
+        """The SEI sending interval (milliseconds). The default value is 1000.
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -3794,6 +5026,9 @@ class McuPassThrough(AbstractModel):
 
     @property
     def FollowIdr(self):
+        """Valid values: `1`: SEI is guaranteed when keyframes are sent; `0` (default): SEI is not guaranteed when keyframes are sent.
+        :rtype: int
+        """
         return self._FollowIdr
 
     @FollowIdr.setter
@@ -3834,6 +5069,9 @@ class McuPublishCdnParam(AbstractModel):
 
     @property
     def PublishCdnUrl(self):
+        """The URLs of the CDNs to relay to.
+        :rtype: str
+        """
         return self._PublishCdnUrl
 
     @PublishCdnUrl.setter
@@ -3842,6 +5080,9 @@ class McuPublishCdnParam(AbstractModel):
 
     @property
     def IsTencentCdn(self):
+        """Whether to relay to Tencent Cloud’s CDN. `0`: Third-party CDN; `1` (default): Tencent Cloud’s CDN. Relaying to a third-party CDN will incur fees. To avoid unexpected charges, we recommend you pass in a specific value. For details, see the API document.
+        :rtype: int
+        """
         return self._IsTencentCdn
 
     @IsTencentCdn.setter
@@ -3879,6 +5120,9 @@ class McuSeiParams(AbstractModel):
 
     @property
     def LayoutVolume(self):
+        """The audio volume layout SEI.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuLayoutVolume`
+        """
         return self._LayoutVolume
 
     @LayoutVolume.setter
@@ -3887,6 +5131,9 @@ class McuSeiParams(AbstractModel):
 
     @property
     def PassThrough(self):
+        """The pass-through SEI.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuPassThrough`
+        """
         return self._PassThrough
 
     @PassThrough.setter
@@ -3925,6 +5172,9 @@ class McuUserInfoParams(AbstractModel):
 
     @property
     def UserInfo(self):
+        """The user information.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -3982,6 +5232,9 @@ Grey: 0x999999
 
     @property
     def VideoEncode(self):
+        """The video encoding parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoEncode`
+        """
         return self._VideoEncode
 
     @VideoEncode.setter
@@ -3990,6 +5243,9 @@ Grey: 0x999999
 
     @property
     def LayoutParams(self):
+        """The layout parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuLayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -3998,6 +5254,16 @@ Grey: 0x999999
 
     @property
     def BackGroundColor(self):
+        """The canvas color. Below are the values for some common colors:
+Red: 0xcc0033
+Yellow: 0xcc9900
+Green: 0xcccc33
+Blue: 0x99CCFF
+Black: 0x000000
+White: 0xFFFFFF
+Grey: 0x999999
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -4006,6 +5272,9 @@ Grey: 0x999999
 
     @property
     def BackgroundImageUrl(self):
+        """The URL of the background image for the canvas. This parameter has a higher priority than `BackGroundColor`.
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -4014,6 +5283,9 @@ Grey: 0x999999
 
     @property
     def WaterMarkList(self):
+        """The watermark information for the mixed stream.
+        :rtype: list of McuWaterMarkParams
+        """
         return self._WaterMarkList
 
     @WaterMarkList.setter
@@ -4022,6 +5294,9 @@ Grey: 0x999999
 
     @property
     def BackgroundRenderMode(self):
+        """Background image display mode during output: 0 for crop, 1 for scale and display with black background, 2 for proportional scaling. The backend default is proportional scaling.
+        :rtype: int
+        """
         return self._BackgroundRenderMode
 
     @BackgroundRenderMode.setter
@@ -4084,6 +5359,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkUrl(self):
+        """The URL of the watermark image, which must be in PNG, JPG, or JPEG format and cannot exceed 5 MB.
+        :rtype: str
+        """
         return self._WaterMarkUrl
 
     @WaterMarkUrl.setter
@@ -4092,6 +5370,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkWidth(self):
+        """The watermark width (pixels).
+        :rtype: int
+        """
         return self._WaterMarkWidth
 
     @WaterMarkWidth.setter
@@ -4100,6 +5381,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkHeight(self):
+        """The watermark height (pixels).
+        :rtype: int
+        """
         return self._WaterMarkHeight
 
     @WaterMarkHeight.setter
@@ -4108,6 +5392,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def LocationX(self):
+        """The horizontal offset (pixels) of the watermark.
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -4116,6 +5403,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def LocationY(self):
+        """The vertical offset (pixels) of the watermark.
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -4124,6 +5414,9 @@ class McuWaterMarkImage(AbstractModel):
 
     @property
     def ZOrder(self):
+        """The image layer of the watermark. If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -4168,6 +5461,9 @@ class McuWaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkType(self):
+        """The watermark type. Valid values: `0` (default): Image; `1`: Text.
+        :rtype: int
+        """
         return self._WaterMarkType
 
     @WaterMarkType.setter
@@ -4176,6 +5472,9 @@ class McuWaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkImage(self):
+        """The watermark image information. This parameter is required if `WaterMarkType` is 0.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkImage`
+        """
         return self._WaterMarkImage
 
     @WaterMarkImage.setter
@@ -4184,6 +5483,9 @@ class McuWaterMarkParams(AbstractModel):
 
     @property
     def WaterMarkText(self):
+        """The text watermark configuration. This parameter is required if `WaterMarkType` is `1`.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuWaterMarkText`
+        """
         return self._WaterMarkText
 
     @WaterMarkText.setter
@@ -4244,6 +5546,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def Text(self):
+        """The text.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -4252,6 +5557,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def WaterMarkWidth(self):
+        """The watermark width (pixels).
+        :rtype: int
+        """
         return self._WaterMarkWidth
 
     @WaterMarkWidth.setter
@@ -4260,6 +5568,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def WaterMarkHeight(self):
+        """The watermark height (pixels).
+        :rtype: int
+        """
         return self._WaterMarkHeight
 
     @WaterMarkHeight.setter
@@ -4268,6 +5579,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def LocationX(self):
+        """The horizontal offset (pixels) of the watermark.
+        :rtype: int
+        """
         return self._LocationX
 
     @LocationX.setter
@@ -4276,6 +5590,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def LocationY(self):
+        """The vertical offset (pixels) of the watermark.
+        :rtype: int
+        """
         return self._LocationY
 
     @LocationY.setter
@@ -4284,6 +5601,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def FontSize(self):
+        """The font size.
+        :rtype: int
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -4292,6 +5612,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def FontColor(self):
+        """The text color. The default color is white. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.	
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -4300,6 +5623,9 @@ class McuWaterMarkText(AbstractModel):
 
     @property
     def BackGroundColor(self):
+        """The text fill color. If you do not specify this parameter, the fill color will be transparent. Values for some commonly used colors: Red: `0xcc0033`; yellow: `0xcc9900`; green: `0xcccc33`; blue: `0x99CCFF`; black: `0x000000`; white: `0xFFFFFF`; gray: `0x999999`.	
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -4375,6 +5701,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Top(self):
+        """The Y axis of the window’s top-left corner. Value range: [0, 1920]. The value cannot be larger than the canvas height.
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -4383,6 +5712,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Left(self):
+        """The X axis of the window’s top-left corner. Value range: [0, 1920]. The value cannot be larger than the canvas width.
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -4391,6 +5723,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Width(self):
+        """The relative width of the window. Value range: [0, 1920]. The sum of the values of this parameter and `Left` cannot exceed the canvas width.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -4399,6 +5734,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Height(self):
+        """The relative height of the window. Value range: [0, 1920]. The sum of the values of this parameter and `Top` cannot exceed the canvas height.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -4407,6 +5745,9 @@ class MixLayout(AbstractModel):
 
     @property
     def UserId(self):
+        """The user ID (string) of the anchor whose video is shown in the window. If you do not set this parameter, anchors’ videos will be shown in their room entry sequence.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4415,6 +5756,9 @@ class MixLayout(AbstractModel):
 
     @property
     def Alpha(self):
+        """The degree of transparency of the canvas. Value range: [0, 255]. 0 means fully opaque, and 255 means fully transparent.
+        :rtype: int
+        """
         return self._Alpha
 
     @Alpha.setter
@@ -4423,6 +5767,15 @@ class MixLayout(AbstractModel):
 
     @property
     def RenderMode(self):
+        """0: Stretch. In this mode, the image is stretched to fill the space available. The whole image is visible after scaling. However, if the original aspect ratio is different from the target, the image may be distorted.
+
+1: Crop (default). In this mode, if the original aspect ratio is different from the target, the image will be cropped according to the target before being stretched to fill the space available. The image will not be distorted.
+
+2: Blank. This mode stretches the image while keeping its original aspect ratio. If the original aspect ratio is different from the target, there may be blank spaces to the top and bottom or to the left and right of the window.
+
+3: Smart stretch. This mode is similar to the crop mode, except that it restricts cropping to 20% of the image’s width or height at most.
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -4431,6 +5784,11 @@ class MixLayout(AbstractModel):
 
     @property
     def MediaId(self):
+        """The type of the stream subscribed to.
+0: Primary stream (default)
+1: Substream
+        :rtype: int
+        """
         return self._MediaId
 
     @MediaId.setter
@@ -4439,6 +5797,9 @@ class MixLayout(AbstractModel):
 
     @property
     def ImageLayer(self):
+        """The image layer. 0 is the default value and means the bottommost layer.
+        :rtype: int
+        """
         return self._ImageLayer
 
     @ImageLayer.setter
@@ -4447,6 +5808,9 @@ class MixLayout(AbstractModel):
 
     @property
     def SubBackgroundImage(self):
+        """The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :rtype: str
+        """
         return self._SubBackgroundImage
 
     @SubBackgroundImage.setter
@@ -4537,6 +5901,21 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def MixLayoutMode(self):
+        """Layout mode:
+1: Floating
+2: Screen sharing
+3: Grid (default)
+4: Custom
+
+Floating: By default, the video of the first anchor (you can also specify an anchor) who enters the room is scaled to fill the screen. When other anchors enter the room, their videos appear smaller and are superimposed over the large video from left to right starting from the bottom of the canvas according to their room entry sequence. If the total number of videos is 17 or less, there will be four windows in each row (4 x 4); if it is greater than 17, there will be five windows in each row (5 x 5). Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+
+Screen sharing: The video of a specified anchor occupies a larger part of the canvas on the left side (if you do not specify an anchor, the left window will display the canvas background). The videos of other anchors are smaller and are positioned on the right side. If the total number of videos is 17 or less, the small videos are positioned from top to bottom in up to two columns on the right side, with eight videos per column at most. If there are more than 17 videos, the additional videos are positioned at the bottom of the canvas from left to right. Up to 25 videos can be displayed. A user who publishes only audio will still be displayed in one window.
+
+Grid: The videos of anchors are scaled and positioned automatically according to the total number of anchors in a room. Each video has the same size. Up to 25 videos can be displayed.
+
+Custom: Specify the layout of videos by using the `MixLayoutList` parameter.
+        :rtype: int
+        """
         return self._MixLayoutMode
 
     @MixLayoutMode.setter
@@ -4545,6 +5924,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def MixLayoutList(self):
+        """The custom layout details. This parameter is valid if `MixLayoutMode` is set to `4`. Up to 25 videos can be displayed.
+        :rtype: list of MixLayout
+        """
         return self._MixLayoutList
 
     @MixLayoutList.setter
@@ -4553,6 +5935,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def BackGroundColor(self):
+        """The background color, which is a hexadecimal value (starting with "#", followed by the color value) converted from an 8-bit RGB value. For example, the RGB value of orange is `R:255 G:165 B:0`, and its hexadecimal value is `#FFA500`. The default color is black.
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -4561,6 +5946,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def MaxResolutionUserId(self):
+        """The user whose video is displayed in the big window. This parameter is valid if `MixLayoutMode` is set to `1` (floating) or `2` (screen sharing). If it is left empty, the first anchor entering the room is displayed in the big window in the floating mode and the canvas background is displayed in the screen sharing mode.
+        :rtype: str
+        """
         return self._MaxResolutionUserId
 
     @MaxResolutionUserId.setter
@@ -4569,6 +5957,12 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def MediaId(self):
+        """The stream type.
+0: Primary stream (default)
+1: Substream (screen sharing stream)
+This parameter specifies the type of the stream displayed in the big window. If it appears in `MixLayoutList`, it indicates the type of the stream of a specified user.
+        :rtype: int
+        """
         return self._MediaId
 
     @MediaId.setter
@@ -4577,6 +5971,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def BackgroundImageUrl(self):
+        """The URL of the background image, which cannot contain Chinese characters. The image must be in JPG or PNG format and cannot be larger than 5 MB.
+        :rtype: str
+        """
         return self._BackgroundImageUrl
 
     @BackgroundImageUrl.setter
@@ -4585,6 +5982,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def PlaceHolderMode(self):
+        """`1` means to use placeholders, and `0` (default) means to not use placeholders. If this parameter is set to `1`, when a user is not publishing video, a placeholder image will be displayed in the window reserved for the user.
+        :rtype: int
+        """
         return self._PlaceHolderMode
 
     @PlaceHolderMode.setter
@@ -4593,6 +5993,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def BackgroundImageRenderMode(self):
+        """The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is defined the same as `RenderMode` in `MixLayoufList`.
+        :rtype: int
+        """
         return self._BackgroundImageRenderMode
 
     @BackgroundImageRenderMode.setter
@@ -4601,6 +6004,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def DefaultSubBackgroundImage(self):
+        """The URL of the background image for a window. The image must be in JPG or PNG format and cannot be larger than 5 MB. If the image’s aspect ratio is different from that of the window, the image will be rendered according to the value of `RenderMode`.
+        :rtype: str
+        """
         return self._DefaultSubBackgroundImage
 
     @DefaultSubBackgroundImage.setter
@@ -4609,6 +6015,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def WaterMarkList(self):
+        """The watermark layout. Up to 25 watermarks are supported.
+        :rtype: list of WaterMark
+        """
         return self._WaterMarkList
 
     @WaterMarkList.setter
@@ -4617,6 +6026,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def RenderMode(self):
+        """The render mode to use when the aspect ratio of a video is different from that of the window. This parameter is invalid if a custom layout is used. It is defined the same as `RenderMode` in `MixLayoufList`.
+        :rtype: int
+        """
         return self._RenderMode
 
     @RenderMode.setter
@@ -4625,6 +6037,9 @@ This parameter specifies the type of the stream displayed in the big window. If 
 
     @property
     def MaxResolutionUserAlign(self):
+        """This parameter is valid only if the screen sharing layout is used. If you set it to `1`, the large video window will appear on the right and the small window on the left. The default value is `0`.
+        :rtype: int
+        """
         return self._MaxResolutionUserAlign
 
     @MaxResolutionUserAlign.setter
@@ -4682,6 +6097,9 @@ class MixTranscodeParams(AbstractModel):
 
     @property
     def VideoParams(self):
+        """The video transcoding parameters for recording. If you set this parameter, you must specify all its fields. If you do not set it, the default will be used.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoParams`
+        """
         return self._VideoParams
 
     @VideoParams.setter
@@ -4690,6 +6108,9 @@ class MixTranscodeParams(AbstractModel):
 
     @property
     def AudioParams(self):
+        """The audio transcoding parameters for recording. If you set this parameter, you must specify all its fields. If you do not set it, the default will be used.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioParams`
+        """
         return self._AudioParams
 
     @AudioParams.setter
@@ -4734,6 +6155,9 @@ class MixUserInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4742,6 +6166,9 @@ class MixUserInfo(AbstractModel):
 
     @property
     def RoomId(self):
+        """If a dynamic layout is used, the value of this parameter should be the ID of the main room. If a custom layout is used, the value of this parameter should be the same as the room ID in `MixLayoutList`.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4750,6 +6177,9 @@ class MixUserInfo(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """The type of the `RoomId` parameter. 0: integer; 1: string.
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -4794,6 +6224,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The `SDKAppID` of the room whose streams are recorded.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4802,6 +6235,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The unique ID of the recording task, which is returned after recording starts successfully.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4810,6 +6246,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def MixLayoutParams(self):
+        """The new stream mixing layout to use.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        """
         return self._MixLayoutParams
 
     @MixLayoutParams.setter
@@ -4818,6 +6257,9 @@ class ModifyCloudRecordingRequest(AbstractModel):
 
     @property
     def SubscribeStreamUserIds(self):
+        """The allowlist/blocklist for stream subscription.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
         return self._SubscribeStreamUserIds
 
     @SubscribeStreamUserIds.setter
@@ -4861,6 +6303,9 @@ class ModifyCloudRecordingResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4869,6 +6314,9 @@ class ModifyCloudRecordingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4905,6 +6353,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
+        """The quality data.
+        :rtype: list of TimeValue
+        """
         return self._Content
 
     @Content.setter
@@ -4913,6 +6364,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserId(self):
+        """The user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4921,6 +6375,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeerId(self):
+        """The remote user ID. An empty string indicates that the data is upstream data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PeerId
 
     @PeerId.setter
@@ -4929,6 +6387,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataType(self):
+        """The data type.
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -4946,6 +6407,103 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UserId = params.get("UserId")
         self._PeerId = params.get("PeerId")
         self._DataType = params.get("DataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeConfig(AbstractModel):
+    """Configuration used by speech recognition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+
+1. Chinese = "zh"
+2. Chinese_TW = "zh-TW"
+3. Chinese_DIALECT = "zh-dialect"
+4. English = "en"
+5. Vietnamese = "vi"
+6. Japanese = "ja"
+7. Korean = "ko"
+8. Indonesian = "id"
+9. Thai = "th"
+10. Portuguese = "pt"
+11. Turkish = "tr"
+12. Arabic = "ar"
+13. Spanish = "es"
+14. Hindi = "hi"
+15. French = "fr"
+16. Malay = "ms"
+17. Filipino = "fil"
+18. German = "de"
+19. Italian = "it"
+20. Russian = "ru"
+
+**Note:** If the language you need is not listed, please contact our technical support team.
+        :type Language: str
+        :param _AlternativeLanguage: Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :type AlternativeLanguage: list of str
+        """
+        self._Language = None
+        self._AlternativeLanguage = None
+
+    @property
+    def Language(self):
+        """The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+
+1. Chinese = "zh"
+2. Chinese_TW = "zh-TW"
+3. Chinese_DIALECT = "zh-dialect"
+4. English = "en"
+5. Vietnamese = "vi"
+6. Japanese = "ja"
+7. Korean = "ko"
+8. Indonesian = "id"
+9. Thai = "th"
+10. Portuguese = "pt"
+11. Turkish = "tr"
+12. Arabic = "ar"
+13. Spanish = "es"
+14. Hindi = "hi"
+15. French = "fr"
+16. Malay = "ms"
+17. Filipino = "fil"
+18. German = "de"
+19. Italian = "it"
+20. Russian = "ru"
+
+**Note:** If the language you need is not listed, please contact our technical support team.
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def AlternativeLanguage(self):
+        """Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :rtype: list of str
+        """
+        return self._AlternativeLanguage
+
+    @AlternativeLanguage.setter
+    def AlternativeLanguage(self, AlternativeLanguage):
+        self._AlternativeLanguage = AlternativeLanguage
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._AlternativeLanguage = params.get("AlternativeLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4997,6 +6555,11 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def RecordMode(self):
+        """The recording mode.
+1: Single-stream recording. Records the audio and video of each subscribed user (`UserId`) in a room and saves the recording files to the cloud.
+2: Mixed-stream recording. Mixes the audios and videos of subscribed users (`UserId`) in a room, records the mixed stream, and saves the recording files to the cloud.
+        :rtype: int
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -5005,6 +6568,9 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def MaxIdleTime(self):
+        """The time period (seconds) to wait to automatically stop recording after there are no anchors (users who publish streams) in a room. Value range: 5-86400 (max 24 hours). Default value: 30.
+        :rtype: int
+        """
         return self._MaxIdleTime
 
     @MaxIdleTime.setter
@@ -5013,6 +6579,12 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def StreamType(self):
+        """The media type of the streams to record.
+0: Audio and video streams (default)
+1: Audio streams only
+2: Video streams only
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -5021,6 +6593,9 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def SubscribeStreamUserIds(self):
+        """The allowlist/blocklist for stream subscription.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
         return self._SubscribeStreamUserIds
 
     @SubscribeStreamUserIds.setter
@@ -5029,6 +6604,9 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def OutputFormat(self):
+        """The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC;  `3` : MP4,  `4` : AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.
+        :rtype: int
+        """
         return self._OutputFormat
 
     @OutputFormat.setter
@@ -5037,6 +6615,9 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def AvMerge(self):
+        """Whether to merge the audio and video of a user in the single-stream recording mode. 0 (default): Do not mix the audio and video; 1: Mix the audio and video into one TS file. You don’t need to specify this parameter for mixed-stream recording, which merges audios and videos by default.
+        :rtype: int
+        """
         return self._AvMerge
 
     @AvMerge.setter
@@ -5045,6 +6626,10 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def MaxMediaFileDuration(self):
+        """The maximum file duration allowed (minutes). If the output format is AAC or MP4, and the maximum file duration is exceeded, the file will be segmented. Value range: 1-1440. Default value: 1440 (24 hours). The maximum file size allowed is 2 GB. If the file size exceeds 2 GB, or the file duration exceeds 24 hours, the file will also be segmented.
+This parameter is invalid if the output format is HLS.
+        :rtype: int
+        """
         return self._MaxMediaFileDuration
 
     @MaxMediaFileDuration.setter
@@ -5053,6 +6638,9 @@ This parameter is invalid if the output format is HLS.
 
     @property
     def MediaId(self):
+        """The type of stream to record. `0` (default): The primary stream and substream; `1`: The primary stream; `2`: The substream.
+        :rtype: int
+        """
         return self._MediaId
 
     @MediaId.setter
@@ -5101,6 +6689,9 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """`SDKAppId` of TRTC
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5109,6 +6700,9 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5117,6 +6711,9 @@ class RemoveUserByStrRoomIdRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """List of up to 10 users to be removed
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -5152,6 +6749,9 @@ class RemoveUserByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5183,6 +6783,9 @@ class RemoveUserRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """`SDKAppId` of TRTC.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5191,6 +6794,9 @@ class RemoveUserRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room number.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5199,6 +6805,9 @@ class RemoveUserRequest(AbstractModel):
 
     @property
     def UserIds(self):
+        """List of up to 10 users to be removed.
+        :rtype: list of str
+        """
         return self._UserIds
 
     @UserIds.setter
@@ -5234,6 +6843,9 @@ class RemoveUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5274,6 +6886,9 @@ class RoomState(AbstractModel):
 
     @property
     def CommId(self):
+        """The call ID, which uniquely identifies a call.
+        :rtype: str
+        """
         return self._CommId
 
     @CommId.setter
@@ -5282,6 +6897,9 @@ class RoomState(AbstractModel):
 
     @property
     def RoomString(self):
+        """The room ID.
+        :rtype: str
+        """
         return self._RoomString
 
     @RoomString.setter
@@ -5290,6 +6908,9 @@ class RoomState(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The room creation time.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5298,6 +6919,9 @@ class RoomState(AbstractModel):
 
     @property
     def DestroyTime(self):
+        """The room termination time.
+        :rtype: int
+        """
         return self._DestroyTime
 
     @DestroyTime.setter
@@ -5306,6 +6930,9 @@ class RoomState(AbstractModel):
 
     @property
     def IsFinished(self):
+        """Whether the room is terminated.
+        :rtype: bool
+        """
         return self._IsFinished
 
     @IsFinished.setter
@@ -5314,6 +6941,9 @@ class RoomState(AbstractModel):
 
     @property
     def UserId(self):
+        """The user ID of the room creator.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5352,6 +6982,9 @@ class RowValues(AbstractModel):
 
     @property
     def RowValue(self):
+        """Data value
+        :rtype: list of int
+        """
         return self._RowValue
 
     @RowValue.setter
@@ -5361,6 +6994,118 @@ class RowValues(AbstractModel):
 
     def _deserialize(self, params):
         self._RowValue = params.get("RowValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class STTConfig(AbstractModel):
+    """Speech-to-text parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+
+1. Chinese = "zh"
+2. Chinese_TW = "zh-TW"
+3. Chinese_DIALECT = "zh-dialect"
+4. English = "en"
+5. Vietnamese = "vi"
+6. Japanese = "ja"
+7. Korean = "ko"
+8. Indonesian = "id"
+9. Thai = "th"
+10. Portuguese = "pt"
+11. Turkish = "tr"
+12. Arabic = "ar"
+13. Spanish = "es"
+14. Hindi = "hi"
+15. French = "fr"
+16. Malay = "ms"
+17. Filipino = "fil"
+18. German = "de"
+19. Italian = "it"
+20. Russian = "ru"
+
+**Note:** If the language you need is not listed, please contact our technical support team.
+        :type Language: str
+        :param _AlternativeLanguage: Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :type AlternativeLanguage: list of str
+        :param _VadSilenceTime: The time for speech recognition vad is in the range of 240-2000, the default value is 1000, and the unit is ms. A smaller value will make speech recognition sentence segmentation faster.
+        :type VadSilenceTime: int
+        """
+        self._Language = None
+        self._AlternativeLanguage = None
+        self._VadSilenceTime = None
+
+    @property
+    def Language(self):
+        """The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+
+1. Chinese = "zh"
+2. Chinese_TW = "zh-TW"
+3. Chinese_DIALECT = "zh-dialect"
+4. English = "en"
+5. Vietnamese = "vi"
+6. Japanese = "ja"
+7. Korean = "ko"
+8. Indonesian = "id"
+9. Thai = "th"
+10. Portuguese = "pt"
+11. Turkish = "tr"
+12. Arabic = "ar"
+13. Spanish = "es"
+14. Hindi = "hi"
+15. French = "fr"
+16. Malay = "ms"
+17. Filipino = "fil"
+18. German = "de"
+19. Italian = "it"
+20. Russian = "ru"
+
+**Note:** If the language you need is not listed, please contact our technical support team.
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def AlternativeLanguage(self):
+        """Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :rtype: list of str
+        """
+        return self._AlternativeLanguage
+
+    @AlternativeLanguage.setter
+    def AlternativeLanguage(self, AlternativeLanguage):
+        self._AlternativeLanguage = AlternativeLanguage
+
+    @property
+    def VadSilenceTime(self):
+        """The time for speech recognition vad is in the range of 240-2000, the default value is 1000, and the unit is ms. A smaller value will make speech recognition sentence segmentation faster.
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._VadSilenceTime = params.get("VadSilenceTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5397,6 +7142,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Time(self):
+        """Start time for each day
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -5405,6 +7153,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserNumber(self):
+        """The number of users. If a user enters a room multiple times, it will be counted as one user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._UserNumber
 
     @UserNumber.setter
@@ -5413,6 +7165,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserCount(self):
+        """The number of room entries. Every time a user enters a room, it will be counted as one room entry.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._UserCount
 
     @UserCount.setter
@@ -5421,6 +7177,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoomNumbers(self):
+        """The total number of rooms of the application on a day.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RoomNumbers
 
     @RoomNumbers.setter
@@ -5460,6 +7220,9 @@ class SeriesInfos(AbstractModel):
 
     @property
     def Columns(self):
+        """Data columns
+        :rtype: list of str
+        """
         return self._Columns
 
     @Columns.setter
@@ -5468,6 +7231,9 @@ class SeriesInfos(AbstractModel):
 
     @property
     def Values(self):
+        """Data values
+        :rtype: list of RowValues
+        """
         return self._Values
 
     @Values.setter
@@ -5483,6 +7249,72 @@ class SeriesInfos(AbstractModel):
                 obj = RowValues()
                 obj._deserialize(item)
                 self._Values.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerPushText(AbstractModel):
+    """The server controls the AI conversation robot to broadcast the specified text
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: Server push broadcast text
+        :type Text: str
+        :param _Interrupt: Allow this text to interrupt the robot
+        :type Interrupt: bool
+        :param _StopAfterPlay: After the text is finished, whether to automatically close the conversation task
+        :type StopAfterPlay: bool
+        """
+        self._Text = None
+        self._Interrupt = None
+        self._StopAfterPlay = None
+
+    @property
+    def Text(self):
+        """Server push broadcast text
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Interrupt(self):
+        """Allow this text to interrupt the robot
+        :rtype: bool
+        """
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+    @property
+    def StopAfterPlay(self):
+        """After the text is finished, whether to automatically close the conversation task
+        :rtype: bool
+        """
+        return self._StopAfterPlay
+
+    @StopAfterPlay.setter
+    def StopAfterPlay(self, StopAfterPlay):
+        self._StopAfterPlay = StopAfterPlay
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Interrupt = params.get("Interrupt")
+        self._StopAfterPlay = params.get("StopAfterPlay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5516,6 +7348,9 @@ class SetUserBlockedByStrRoomIdRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The application ID.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5524,6 +7359,9 @@ class SetUserBlockedByStrRoomIdRequest(AbstractModel):
 
     @property
     def StrRoomId(self):
+        """The room ID (string).
+        :rtype: str
+        """
         return self._StrRoomId
 
     @StrRoomId.setter
@@ -5532,6 +7370,9 @@ class SetUserBlockedByStrRoomIdRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """The user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5540,6 +7381,9 @@ class SetUserBlockedByStrRoomIdRequest(AbstractModel):
 
     @property
     def IsMute(self):
+        """Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        :rtype: int
+        """
         return self._IsMute
 
     @IsMute.setter
@@ -5576,6 +7420,9 @@ class SetUserBlockedByStrRoomIdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5610,6 +7457,9 @@ class SetUserBlockedRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The application ID.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5618,6 +7468,9 @@ class SetUserBlockedRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """The room ID (number).
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5626,6 +7479,9 @@ class SetUserBlockedRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """The user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -5634,6 +7490,9 @@ class SetUserBlockedRequest(AbstractModel):
 
     @property
     def IsMute(self):
+        """Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        :rtype: int
+        """
         return self._IsMute
 
     @IsMute.setter
@@ -5670,6 +7529,9 @@ class SetUserBlockedResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5695,6 +7557,9 @@ class SingleSubscribeParams(AbstractModel):
 
     @property
     def UserMediaStream(self):
+        """The stream information.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UserMediaStream`
+        """
         return self._UserMediaStream
 
     @UserMediaStream.setter
@@ -5714,6 +7579,356 @@ class SingleSubscribeParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartAIConversationRequest(AbstractModel):
+    """StartAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the conversation task.
+        :type SdkAppId: int
+        :param _RoomId: TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the conversation task is started.
+        :type RoomId: str
+        :param _AgentConfig: Robot parameters
+        :type AgentConfig: :class:`tencentcloud.trtc.v20190722.models.AgentConfig`
+        :param _SessionId: The unique ID passed in by the caller can be used by the client to prevent repeated task initiation and to query the task status through this field.
+        :type SessionId: str
+        :param _RoomIdType: The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :type RoomIdType: int
+        :param _STTConfig: Speech recognition configuration.
+        :type STTConfig: :class:`tencentcloud.trtc.v20190722.models.STTConfig`
+        :param _LLMConfig: LLM configuration. It must comply with the openai specification and be a JSON string. The example is as follows: <pre> { <br> &emsp; "LLMType": "Large model type", // String required, such as: "openai" <br> &emsp; "Model": "Your model name", // String required, specify the model to be used<br> "APIKey": "Your LLM API key", // String required <br> &emsp; "APIUrl": "https://api.xxx.com/chat/completions", // String required, URL for LLM API access<br> &emsp; "Streaming": true // Boolean optional, specify whether to use streaming<br> &emsp;} </pre>
+        :type LLMConfig: str
+        :param _TTSConfig: TTS configuration, which is a JSON string. The Tencent Cloud TTS example is as follows: <pre>{ <br> &emsp; "AppId": your application ID, // Integer Required<br> &emsp; "TTSType": "TTS type", // String TTS type, fixed to "tencent"<br> &emsp; "SecretId": "Your key ID", // String Required<br> &emsp; "SecretKey": "Your keyKey", // String Required<br> &emsp; "VoiceType": 101001, // Integer Required, voice ID, including standard voice and premium voice. Premium voice has higher fidelity and different price from standard voice. For details, please refer to <a href="https://cloud.tencent.com/document/product/1073/34112">Overview of Speech Synthesis Billing</a>. For a complete list of timbre IDs, see <a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">List of speech synthesis timbre IDs</a>. <br> &emsp; "Speed": 1.25, // Integer Optional, speaking speed, range: [-2, 6], corresponding to different speaking speeds: -2: 0.6 times -1: 0.8 times 0: 1.0 times (default) 1: 1.2 times 2: 1.5 times 6: 2.5 times If a more detailed speaking speed is required, 2 decimal places can be retained, such as 0.5/1.25/2.81, etc. For the conversion between parameter value and actual speech speed, please refer to <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">Speed Conversion</a><br> &emsp; "Volume": 5, // Integer Optional, volume size, range: [0, 10], corresponding to 11 levels of volume, the default value is 0, representing normal volume. <br> &emsp; "PrimaryLanguage": "zh-CN" // String Optional, primary language<br> &emsp;}</pre>
+        :type TTSConfig: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._AgentConfig = None
+        self._SessionId = None
+        self._RoomIdType = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the conversation task.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the conversation task is started.
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def AgentConfig(self):
+        """Robot parameters
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AgentConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def SessionId(self):
+        """The unique ID passed in by the caller can be used by the client to prevent repeated task initiation and to query the task status through this field.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RoomIdType(self):
+        """The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def STTConfig(self):
+        """Speech recognition configuration.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.STTConfig`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        """LLM configuration. It must comply with the openai specification and be a JSON string. The example is as follows: <pre> { <br> &emsp; "LLMType": "Large model type", // String required, such as: "openai" <br> &emsp; "Model": "Your model name", // String required, specify the model to be used<br> "APIKey": "Your LLM API key", // String required <br> &emsp; "APIUrl": "https://api.xxx.com/chat/completions", // String required, URL for LLM API access<br> &emsp; "Streaming": true // Boolean optional, specify whether to use streaming<br> &emsp;} </pre>
+        :rtype: str
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        """TTS configuration, which is a JSON string. The Tencent Cloud TTS example is as follows: <pre>{ <br> &emsp; "AppId": your application ID, // Integer Required<br> &emsp; "TTSType": "TTS type", // String TTS type, fixed to "tencent"<br> &emsp; "SecretId": "Your key ID", // String Required<br> &emsp; "SecretKey": "Your keyKey", // String Required<br> &emsp; "VoiceType": 101001, // Integer Required, voice ID, including standard voice and premium voice. Premium voice has higher fidelity and different price from standard voice. For details, please refer to <a href="https://cloud.tencent.com/document/product/1073/34112">Overview of Speech Synthesis Billing</a>. For a complete list of timbre IDs, see <a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">List of speech synthesis timbre IDs</a>. <br> &emsp; "Speed": 1.25, // Integer Optional, speaking speed, range: [-2, 6], corresponding to different speaking speeds: -2: 0.6 times -1: 0.8 times 0: 1.0 times (default) 1: 1.2 times 2: 1.5 times 6: 2.5 times If a more detailed speaking speed is required, 2 decimal places can be retained, such as 0.5/1.25/2.81, etc. For the conversion between parameter value and actual speech speed, please refer to <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">Speed Conversion</a><br> &emsp; "Volume": 5, // Integer Optional, volume size, range: [0, 10], corresponding to 11 levels of volume, the default value is 0, representing normal volume. <br> &emsp; "PrimaryLanguage": "zh-CN" // String Optional, primary language<br> &emsp;}</pre>
+        :rtype: str
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = AgentConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._SessionId = params.get("SessionId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("STTConfig") is not None:
+            self._STTConfig = STTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        self._LLMConfig = params.get("LLMConfig")
+        self._TTSConfig = params.get("TTSConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartAIConversationResponse(AbstractModel):
+    """StartAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Used to uniquely identify a conversation task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Used to uniquely identify a conversation task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StartAITranscriptionRequest(AbstractModel):
+    """StartAITranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :type SdkAppId: int
+        :param _RoomId: TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.
+        :type RoomId: str
+        :param _TranscriptionParams: Parameters of the transcription robot.
+        :type TranscriptionParams: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
+        :param _SessionId: The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: 
+- If the TranscriptionMode field is 0, only one task can be opened in a room
+- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId
+        :type SessionId: str
+        :param _RoomIdType: The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :type RoomIdType: int
+        :param _RecognizeConfig: Speech recognition configuration.
+        :type RecognizeConfig: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._TranscriptionParams = None
+        self._SessionId = None
+        self._RoomIdType = None
+        self._RecognizeConfig = None
+
+    @property
+    def SdkAppId(self):
+        """TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def TranscriptionParams(self):
+        """Parameters of the transcription robot.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
+        """
+        return self._TranscriptionParams
+
+    @TranscriptionParams.setter
+    def TranscriptionParams(self, TranscriptionParams):
+        self._TranscriptionParams = TranscriptionParams
+
+    @property
+    def SessionId(self):
+        """The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: 
+- If the TranscriptionMode field is 0, only one task can be opened in a room
+- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RoomIdType(self):
+        """The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def RecognizeConfig(self):
+        """Speech recognition configuration.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        """
+        return self._RecognizeConfig
+
+    @RecognizeConfig.setter
+    def RecognizeConfig(self, RecognizeConfig):
+        self._RecognizeConfig = RecognizeConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        if params.get("TranscriptionParams") is not None:
+            self._TranscriptionParams = TranscriptionParams()
+            self._TranscriptionParams._deserialize(params.get("TranscriptionParams"))
+        self._SessionId = params.get("SessionId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("RecognizeConfig") is not None:
+            self._RecognizeConfig = RecognizeConfig()
+            self._RecognizeConfig._deserialize(params.get("RecognizeConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartAITranscriptionResponse(AbstractModel):
+    """StartAITranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Used to uniquely identify a transcription task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Used to uniquely identify a transcription task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartPublishCdnStreamRequest(AbstractModel):
@@ -5760,6 +7975,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5768,6 +7986,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """The ID of the room whose streams are relayed (the main room).
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5776,6 +7997,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def RoomIdType(self):
+        """The type of the `RoomId` parameter, which must be the same as the ID type of the room whose streams are relayed. 0: integer; 1: string.
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -5784,6 +8008,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def AgentParams(self):
+        """The information of the relaying robot in the room.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
+        """
         return self._AgentParams
 
     @AgentParams.setter
@@ -5792,6 +8019,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
+        """Whether to transcode the streams. `0`: No. `1`: Yes. This parameter determines whether transcoding fees are charged. If it is `0`, streams will only be relayed, and no transcoding fees will be incurred. If it is `1`, streams will be transcoded before being relayed, and transcoding fees will be incurred.
+        :rtype: int
+        """
         return self._WithTranscoding
 
     @WithTranscoding.setter
@@ -5800,6 +8030,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def AudioParams(self):
+        """The audio encoding parameters. Because audio is always transcoded (no fees are incurred), this parameter is required when you start a relay task.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        """
         return self._AudioParams
 
     @AudioParams.setter
@@ -5808,6 +8041,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def VideoParams(self):
+        """The video encoding parameters for relaying. If you do not pass this parameter, only audio will be relayed.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        """
         return self._VideoParams
 
     @VideoParams.setter
@@ -5816,6 +8052,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SingleSubscribeParams(self):
+        """The information of a single stream relayed. When you relay a single stream, set `WithTranscoding` to 0.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        """
         return self._SingleSubscribeParams
 
     @SingleSubscribeParams.setter
@@ -5824,6 +8063,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """The information of the CDNs to relay to. You need to specify at least one between this parameter and `FeedBackRoomParams.N`.
+        :rtype: list of McuPublishCdnParam
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -5832,6 +8074,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SeiParams(self):
+        """The stream mixing SEI parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        """
         return self._SeiParams
 
     @SeiParams.setter
@@ -5840,6 +8085,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def FeedBackRoomParams(self):
+        """The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.
+        :rtype: list of McuFeedBackRoomParams
+        """
         return self._FeedBackRoomParams
 
     @FeedBackRoomParams.setter
@@ -5906,6 +8154,9 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID, which is generated by the Tencent Cloud server. You need to pass in the task ID when making a request to update or stop a relaying task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5914,6 +8165,9 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5980,6 +8234,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def SdkAppId(self):
+        """TRTC's [SdkAppId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#sdkappid), the same as the SdkAppId corresponding to the Record room.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5988,6 +8245,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def RoomId(self):
+        """TRTC's [RoomId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#roomid), the RoomId corresponding to the Record TRTC room.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5996,6 +8256,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def RoomIdType(self):
+        """Type of TRTC RoomId. [*Note] Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)
+        :rtype: int
+        """
         return self._RoomIdType
 
     @RoomIdType.setter
@@ -6004,6 +8267,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def UserId(self):
+        """UserId of the Pull stream Relay Robot, used to enter the room and initiate the Pull stream Relay Task.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6012,6 +8278,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def UserSig(self):
+        """UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://www.tencentcloud.com/zh/document/product/647/39074) Scheme.
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -6020,6 +8289,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def StreamUrl(self):
+        """The Url of the media resource.
+        :rtype: str
+        """
         return self._StreamUrl
 
     @StreamUrl.setter
@@ -6028,6 +8300,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def PrivateMapKey(self):
+        """TRTC room permission Encryption ticket, only needed when advanced permission control is enabled in the Console. After enabling advanced permission control in the TRTC Console, TRTC's backend service system will verify a so-called [PrivateMapKey] 'Permission ticket', which contains an encrypted RoomId and an encrypted 'Permission bit list'. Since PrivateMapKey contains RoomId, providing only UserSig without PrivateMapKey does not allow entry into the specified room.
+        :rtype: str
+        """
         return self._PrivateMapKey
 
     @PrivateMapKey.setter
@@ -6038,6 +8313,9 @@ Source URL. Example value: https://a.b/test.mp4
     def VideoEncodeParams(self):
         warnings.warn("parameter `VideoEncodeParams` is deprecated", DeprecationWarning) 
 
+        """Video Codec Parameters. Optional, if not filled, Keep original stream Parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
+        """
         return self._VideoEncodeParams
 
     @VideoEncodeParams.setter
@@ -6050,6 +8328,9 @@ Source URL. Example value: https://a.b/test.mp4
     def AudioEncodeParams(self):
         warnings.warn("parameter `AudioEncodeParams` is deprecated", DeprecationWarning) 
 
+        """Audio Codec Parameters. Optional, if not filled, Keep original stream Parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
+        """
         return self._AudioEncodeParams
 
     @AudioEncodeParams.setter
@@ -6062,6 +8343,10 @@ Source URL. Example value: https://a.b/test.mp4
     def SourceUrl(self):
         warnings.warn("parameter `SourceUrl` is deprecated", DeprecationWarning) 
 
+        """	
+Source URL. Example value: https://a.b/test.mp4
+        :rtype: list of str
+        """
         return self._SourceUrl
 
     @SourceUrl.setter
@@ -6072,6 +8357,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def SeekSecond(self):
+        """
+        :rtype: int
+        """
         return self._SeekSecond
 
     @SeekSecond.setter
@@ -6080,6 +8368,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def AutoPush(self):
+        """Enable auto relay to cdn, please make sure that this feature has been enabled in the console.
+        :rtype: bool
+        """
         return self._AutoPush
 
     @AutoPush.setter
@@ -6088,6 +8379,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def RepeatNum(self):
+        """Loop playback count, value range: [-1, 1000], default is 1 time. - 0 is an invalid value - -1 is for loop playback, task termination requires actively calling the stop interface or setting MaxDuration.
+        :rtype: int
+        """
         return self._RepeatNum
 
     @RepeatNum.setter
@@ -6096,6 +8390,9 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def MaxDuration(self):
+        """Loop playback maximum duration, only effective when RepeatNum is set to -1, valid value range: [1, 10080], unit: minutes
+        :rtype: int
+        """
         return self._MaxDuration
 
     @MaxDuration.setter
@@ -6149,6 +8446,9 @@ class StartStreamIngestResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The Task ID of the Pull stream Relay. The Task ID is a unique identifier for a Pull stream Relay lifecycle process, and it loses its meaning when the task ends. The Task ID needs to be saved by the business as a parameter for the next operation on this task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6157,6 +8457,9 @@ class StartStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6166,6 +8469,134 @@ class StartStreamIngestResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopAIConversationRequest(AbstractModel):
+    """StopAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task Unique ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """Task Unique ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopAIConversationResponse(AbstractModel):
+    """StopAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopAITranscriptionRequest(AbstractModel):
+    """StopAITranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Uniquely identifies a transcription task.
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """Uniquely identifies a transcription task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopAITranscriptionResponse(AbstractModel):
+    """StopAITranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -6186,6 +8617,9 @@ class StopPublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6194,6 +8628,9 @@ class StopPublishCdnStreamRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6231,6 +8668,9 @@ class StopPublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6239,6 +8679,9 @@ class StopPublishCdnStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6268,6 +8711,9 @@ class StopStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the task's room.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6276,6 +8722,9 @@ class StopStreamIngestRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The unique Task ID, which will be returned after the task is successfully started.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6310,6 +8759,9 @@ class StopStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6349,6 +8801,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UserId(self):
+        """The user whose stream is recorded into the file. In the mixed-stream recording mode, this parameter will be empty.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -6357,6 +8813,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FileName(self):
+        """The filename.
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -6365,6 +8824,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TrackType(self):
+        """The type of the media recorded.
+video
+audio
+audio_video
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TrackType
 
     @TrackType.setter
@@ -6373,6 +8839,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BeginTimeStamp(self):
+        """The start time (Unix timestamp) of the recording file.
+        :rtype: int
+        """
         return self._BeginTimeStamp
 
     @BeginTimeStamp.setter
@@ -6412,6 +8881,9 @@ class StorageParams(AbstractModel):
 
     @property
     def CloudStorage(self):
+        """The account information for third-party storage. Please note that if you save files to COS, a recording-to-COS fee will be incurred. For details, see the document "Billing of On-Cloud Recording". If you save files to VOD, there won't be such a fee.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
         return self._CloudStorage
 
     @CloudStorage.setter
@@ -6420,6 +8892,9 @@ class StorageParams(AbstractModel):
 
     @property
     def CloudVod(self):
+        """The account information for VOD storage.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
+        """
         return self._CloudVod
 
     @CloudVod.setter
@@ -6467,6 +8942,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def SubscribeAudioUserIds(self):
+        """The allowlist for audio subscription. For example, `["1", "2", "3"]` means to only subscribe to the audios of users 1, 2, and 3, and ["1.*$"] means to only subscribe to the audios of users whose ID prefix is `1`. If this parameter is left empty, the audios of all anchors in the room will be received. The array can contain at most 32 elements.
+        :rtype: list of str
+        """
         return self._SubscribeAudioUserIds
 
     @SubscribeAudioUserIds.setter
@@ -6475,6 +8953,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def UnSubscribeAudioUserIds(self):
+        """The blocklist for audio subscription. For example, `["1", "2", "3"]` means to not subscribe to the audios of users 1, 2, and 3, and `["1.*$"]` means to not subscribe to users whose ID prefix is `1`. If this parameter is left empty, the audios of all anchors in the room will be received. The array can contain at most 32 elements.
+        :rtype: list of str
+        """
         return self._UnSubscribeAudioUserIds
 
     @UnSubscribeAudioUserIds.setter
@@ -6483,6 +8964,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def SubscribeVideoUserIds(self):
+        """The allowlist for video subscription. For example, `["1", "2", "3"]` means to only subscribe to the videos of users 1, 2, and 3, and `["1.*$"]` means to only subscribe to the videos of users whose ID prefix is `1`. If this parameter is left empty, the videos of all anchors in the room will be received. The array can contain at most 32 elements.
+        :rtype: list of str
+        """
         return self._SubscribeVideoUserIds
 
     @SubscribeVideoUserIds.setter
@@ -6491,6 +8975,9 @@ class SubscribeStreamUserIds(AbstractModel):
 
     @property
     def UnSubscribeVideoUserIds(self):
+        """The blocklist for video subscription. For example, `["1", "2", "3"]` means to not subscribe to the videos of users 1, 2, and 3, and `["1.*$"]` means to not subscribe to the videos of users whose ID prefix is `1`. If this parameter is left empty, the videos of all anchors in the room will be received. The array can contain at most 32 elements.
+        :rtype: list of str
+        """
         return self._UnSubscribeVideoUserIds
 
     @UnSubscribeVideoUserIds.setter
@@ -6533,6 +9020,9 @@ class TRTCDataResult(AbstractModel):
 
     @property
     def StatementID(self):
+        """StatementID value, fixed at 0 for Monitoring Dashboard.
+        :rtype: int
+        """
         return self._StatementID
 
     @StatementID.setter
@@ -6541,6 +9031,9 @@ class TRTCDataResult(AbstractModel):
 
     @property
     def Series(self):
+        """Query result data, returned in Columns-Values format.
+        :rtype: list of SeriesInfos
+        """
         return self._Series
 
     @Series.setter
@@ -6549,6 +9042,9 @@ class TRTCDataResult(AbstractModel):
 
     @property
     def Total(self):
+        """Total value, fixed at 1 for Monitoring Dashboard.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6614,6 +9110,9 @@ The default value is `0`, which means others.
 
     @property
     def Procedure(self):
+        """The operation to perform on the media uploaded. The value of this parameter is the name of a task flow template. You can create a custom task flow template in Tencent Cloud VOD.
+        :rtype: str
+        """
         return self._Procedure
 
     @Procedure.setter
@@ -6622,6 +9121,9 @@ The default value is `0`, which means others.
 
     @property
     def ExpireTime(self):
+        """The expiration time of the media file, which is a time period (seconds) from the current time. For example, `86400` means to save the media file for one day. To save the file permanently, set this parameter to `0`.
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -6630,6 +9132,9 @@ The default value is `0`, which means others.
 
     @property
     def StorageRegion(self):
+        """The storage region. Set this parameter if you have special requirements on the storage region.
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -6638,6 +9143,10 @@ The default value is `0`, which means others.
 
     @property
     def ClassId(self):
+        """The category ID, which is returned after you create a category by calling an API. You can use categories to manage media files.
+The default value is `0`, which means others.
+        :rtype: int
+        """
         return self._ClassId
 
     @ClassId.setter
@@ -6646,6 +9155,9 @@ The default value is `0`, which means others.
 
     @property
     def SubAppId(self):
+        """The VOD subapplication ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :rtype: int
+        """
         return self._SubAppId
 
     @SubAppId.setter
@@ -6654,6 +9166,9 @@ The default value is `0`, which means others.
 
     @property
     def SessionContext(self):
+        """The task flow context, which is passed through after the task is completed.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -6662,6 +9177,9 @@ The default value is `0`, which means others.
 
     @property
     def SourceContext(self):
+        """The upload context, which is passed through after upload is completed.
+        :rtype: str
+        """
         return self._SourceContext
 
     @SourceContext.setter
@@ -6670,6 +9188,9 @@ The default value is `0`, which means others.
 
     @property
     def MediaType(self):
+        """The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`); `3`: HLS+MP4; `4`: HLS+AAC.
+        :rtype: int
+        """
         return self._MediaType
 
     @MediaType.setter
@@ -6678,6 +9199,9 @@ The default value is `0`, which means others.
 
     @property
     def UserDefineRecordId(self):
+        """The custom prefix of recording files. This parameter is valid only if recording files are uploaded to VOD. It can contain letters, numbers, underscores, and hyphens and cannot exceed 64 bytes. This prefix and the automatically generated filename are connected with `__UserId_u_`.
+        :rtype: str
+        """
         return self._UserDefineRecordId
 
     @UserDefineRecordId.setter
@@ -6722,6 +9246,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Time(self):
+        """The UNIX timestamp (seconds), such as `1590065877`.
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -6730,6 +9257,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Value(self):
+        """The metric value. For example, if the video capturing frame rate (`bigvCapFps`) at the time `1590065877` is `0`, the value of this parameter will be `0`.
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -6740,6 +9270,102 @@ class TimeValue(AbstractModel):
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscriptionParams(AbstractModel):
+    """AI Transcription Params
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :type UserId: str
+        :param _UserSig: The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :type UserSig: str
+        :param _MaxIdleTime: If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.
+        :type MaxIdleTime: int
+        :param _TranscriptionMode: 1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.
+        :type TranscriptionMode: int
+        :param _TargetUserId: Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.
+        :type TargetUserId: str
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._MaxIdleTime = None
+        self._TranscriptionMode = None
+        self._TargetUserId = None
+
+    @property
+    def UserId(self):
+        """The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        """The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def MaxIdleTime(self):
+        """If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def TranscriptionMode(self):
+        """1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.
+        :rtype: int
+        """
+        return self._TranscriptionMode
+
+    @TranscriptionMode.setter
+    def TranscriptionMode(self, TranscriptionMode):
+        self._TranscriptionMode = TranscriptionMode
+
+    @property
+    def TargetUserId(self):
+        """Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.
+        :rtype: str
+        """
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._TranscriptionMode = params.get("TranscriptionMode")
+        self._TargetUserId = params.get("TargetUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6767,6 +9393,9 @@ class TrtcUsage(AbstractModel):
 
     @property
     def TimeKey(self):
+        """The time point in the format of `YYYY-MM-DD HH:mm:ss`. If more than one day is queried, `HH:mm:ss` is `00:00:00`.
+        :rtype: str
+        """
         return self._TimeKey
 
     @TimeKey.setter
@@ -6775,6 +9404,9 @@ class TrtcUsage(AbstractModel):
 
     @property
     def UsageValue(self):
+        """The usage (minutes). Each element of this parameter corresponds to an element of `UsageKey` in the order they are listed.
+        :rtype: list of float
+        """
         return self._UsageValue
 
     @UsageValue.setter
@@ -6793,6 +9425,145 @@ class TrtcUsage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAIConversationRequest(AbstractModel):
+    """UpdateAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task Unique ID
+        :type TaskId: str
+        :param _WelcomeMessage: If you do not fill in the form, no update will be performed. Welcome message from the robot
+        :type WelcomeMessage: str
+        :param _InterruptMode: If not filled in, no update will be performed. Intelligent interruption mode, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: If not filled in, no update will be performed. Used when InterruptMode is 0, the unit is milliseconds, and the default is 500ms. It means that the server will interrupt when it detects a voice that lasts for InterruptSpeechDuration milliseconds.
+        :type InterruptSpeechDuration: int
+        :param _LLMConfig: If not filled in, no update will be performed. For LLM configuration, see the StartAIConversation API for details.
+        :type LLMConfig: str
+        :param _TTSConfig: If not filled in, no update will be performed. For TTS configuration, see the StartAIConversation API for details.
+        :type TTSConfig: str
+        """
+        self._TaskId = None
+        self._WelcomeMessage = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+
+    @property
+    def TaskId(self):
+        """Task Unique ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def WelcomeMessage(self):
+        """If you do not fill in the form, no update will be performed. Welcome message from the robot
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def InterruptMode(self):
+        """If not filled in, no update will be performed. Intelligent interruption mode, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt
+        :rtype: int
+        """
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        """If not filled in, no update will be performed. Used when InterruptMode is 0, the unit is milliseconds, and the default is 500ms. It means that the server will interrupt when it detects a voice that lasts for InterruptSpeechDuration milliseconds.
+        :rtype: int
+        """
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+    @property
+    def LLMConfig(self):
+        """If not filled in, no update will be performed. For LLM configuration, see the StartAIConversation API for details.
+        :rtype: str
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        """If not filled in, no update will be performed. For TTS configuration, see the StartAIConversation API for details.
+        :rtype: str
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._LLMConfig = params.get("LLMConfig")
+        self._TTSConfig = params.get("TTSConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAIConversationResponse(AbstractModel):
+    """UpdateAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdatePublishCdnStreamRequest(AbstractModel):
@@ -6836,6 +9607,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The [SDKAppID](https://intl.cloud.tencent.com/document/product/647/37714) of the TRTC room whose streams are relayed.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6844,6 +9618,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6852,6 +9629,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SequenceNumber(self):
+        """The sequence of a request. This parameter ensures the requests to change the parameters of the same relaying task are in the correct order. It increases each time a new request is made.
+        :rtype: int
+        """
         return self._SequenceNumber
 
     @SequenceNumber.setter
@@ -6860,6 +9640,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
+        """Whether to transcode the streams. 0: No; 1: Yes.
+        :rtype: int
+        """
         return self._WithTranscoding
 
     @WithTranscoding.setter
@@ -6868,6 +9651,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def AudioParams(self):
+        """Pass this parameter to change the users whose audios are mixed. If you do not pass this parameter, no changes will be made.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
+        """
         return self._AudioParams
 
     @AudioParams.setter
@@ -6876,6 +9662,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def VideoParams(self):
+        """Pass this parameter to change video parameters other than the codec, including the video layout, background image, background color, and watermark information. This parameter is valid only if streams are transcoded. If you do not pass it, no changes will be made.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
+        """
         return self._VideoParams
 
     @VideoParams.setter
@@ -6884,6 +9673,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SingleSubscribeParams(self):
+        """Pass this parameter to change the single stream that is relayed. This parameter is valid only if streams are not transcoded. If you do not pass this parameter, no changes will be made.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
+        """
         return self._SingleSubscribeParams
 
     @SingleSubscribeParams.setter
@@ -6892,6 +9684,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
+        """Pass this parameter to change the CDNs to relay to. If you do not pass this parameter, no changes will be made.
+        :rtype: list of McuPublishCdnParam
+        """
         return self._PublishCdnParams
 
     @PublishCdnParams.setter
@@ -6900,6 +9695,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SeiParams(self):
+        """The stream mixing SEI parameters.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
+        """
         return self._SeiParams
 
     @SeiParams.setter
@@ -6908,6 +9706,9 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def FeedBackRoomParams(self):
+        """The information of the room to which streams are relayed.
+        :rtype: list of McuFeedBackRoomParams
+        """
         return self._FeedBackRoomParams
 
     @FeedBackRoomParams.setter
@@ -6971,6 +9772,9 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6979,6 +9783,9 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7011,6 +9818,9 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """The SDKAppId of TRTC should be the same as the SDKAppId corresponding to the task room.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7019,6 +9829,9 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The unique Id of the task, will return after successfully starting the task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7027,6 +9840,9 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def StreamUrl(self):
+        """The new url of the media resource.
+        :rtype: str
+        """
         return self._StreamUrl
 
     @StreamUrl.setter
@@ -7065,6 +9881,9 @@ class UpdateStreamIngestResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Task status information. InProgress: Indicates that the current task is in progress. NotExist: Indicates that the current task does not exist. Example value: InProgress
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7073,6 +9892,9 @@ class UpdateStreamIngestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7120,6 +9942,9 @@ class UserInformation(AbstractModel):
 
     @property
     def RoomStr(self):
+        """The room ID.
+        :rtype: str
+        """
         return self._RoomStr
 
     @RoomStr.setter
@@ -7128,6 +9953,9 @@ class UserInformation(AbstractModel):
 
     @property
     def UserId(self):
+        """The user ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7136,6 +9964,9 @@ class UserInformation(AbstractModel):
 
     @property
     def JoinTs(self):
+        """The time when the user entered the room.
+        :rtype: int
+        """
         return self._JoinTs
 
     @JoinTs.setter
@@ -7144,6 +9975,9 @@ class UserInformation(AbstractModel):
 
     @property
     def LeaveTs(self):
+        """The time when the user left the room. If the user is still in the room, the current time will be returned.
+        :rtype: int
+        """
         return self._LeaveTs
 
     @LeaveTs.setter
@@ -7152,6 +9986,9 @@ class UserInformation(AbstractModel):
 
     @property
     def DeviceType(self):
+        """The device type.
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -7160,6 +9997,9 @@ class UserInformation(AbstractModel):
 
     @property
     def SdkVersion(self):
+        """The SDK version number.
+        :rtype: str
+        """
         return self._SdkVersion
 
     @SdkVersion.setter
@@ -7168,6 +10008,9 @@ class UserInformation(AbstractModel):
 
     @property
     def ClientIp(self):
+        """The client IP address.
+        :rtype: str
+        """
         return self._ClientIp
 
     @ClientIp.setter
@@ -7176,6 +10019,9 @@ class UserInformation(AbstractModel):
 
     @property
     def Finished(self):
+        """Whether a user has left the room.
+        :rtype: bool
+        """
         return self._Finished
 
     @Finished.setter
@@ -7219,6 +10065,9 @@ class UserMediaStream(AbstractModel):
 
     @property
     def UserInfo(self):
+        """The user information.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.MixUserInfo`
+        """
         return self._UserInfo
 
     @UserInfo.setter
@@ -7227,6 +10076,9 @@ class UserMediaStream(AbstractModel):
 
     @property
     def StreamType(self):
+        """The stream type. 0: Camera; 1: Screen sharing. If you do not pass this parameter, 0 will be used.
+        :rtype: int
+        """
         return self._StreamType
 
     @StreamType.setter
@@ -7275,6 +10127,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Width(self):
+        """The width of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1920].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7283,6 +10138,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Height(self):
+        """The height of the output stream (pixels). This parameter is required if audio and video are relayed. Value range: [0, 1080].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7291,6 +10149,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Fps(self):
+        """The frame rate (fps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 60].
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -7299,6 +10160,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def BitRate(self):
+        """The bitrate (Kbps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 10000].
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -7307,6 +10171,9 @@ class VideoEncode(AbstractModel):
 
     @property
     def Gop(self):
+        """The GOP (seconds) of the output stream. This parameter is required if audio and video are relayed. Value range: [1, 5].
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -7356,6 +10223,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Width(self):
+        """Width. Value range [0,1920], unit is pixel value.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7364,6 +10234,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Height(self):
+        """Height. Value range [0,1080], unit is pixel value.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7372,6 +10245,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Fps(self):
+        """Frame Rate. Value range [1,60], indicating that the frame rate can be selected from 1 to 60fps.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -7380,6 +10256,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """Bitrate. Value range [1,10000], unit is kbps.
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -7388,6 +10267,9 @@ class VideoEncodeParams(AbstractModel):
 
     @property
     def Gop(self):
+        """Gop. Value range [1,2], unit is second.
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -7437,6 +10319,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Width(self):
+        """The video width in pixels. The value of this parameter cannot be larger than 1920, and the result of multiplying `Width` and `Height` cannot exceed 1920 x 1080. The default value is `360`.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7445,6 +10330,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Height(self):
+        """The video height in pixels. The value of this parameter cannot be larger than 1920, and the result of multiplying `Width` and `Height` cannot exceed 1920 x 1080. The default value is `640`.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7453,6 +10341,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Fps(self):
+        """The video frame rate. Value range: [1, 60]. Default: 15.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -7461,6 +10352,9 @@ class VideoParams(AbstractModel):
 
     @property
     def BitRate(self):
+        """The video bitrate (bps). Value range: [64000, 8192000]. Default: 550000.
+        :rtype: int
+        """
         return self._BitRate
 
     @BitRate.setter
@@ -7469,6 +10363,9 @@ class VideoParams(AbstractModel):
 
     @property
     def Gop(self):
+        """The keyframe interval (seconds). Default value: 10.
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -7515,6 +10412,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkType(self):
+        """The watermark type. 0 (default): image; 1: text (not supported yet).
+        :rtype: int
+        """
         return self._WaterMarkType
 
     @WaterMarkType.setter
@@ -7523,6 +10423,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkImage(self):
+        """The information of watermark images. This parameter is required if the watermark type is image.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
+        """
         return self._WaterMarkImage
 
     @WaterMarkImage.setter
@@ -7531,6 +10434,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkChar(self):
+        """The information of the text watermark. This parameter is required if `WaterMarkType` is `1`.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkChar`
+        """
         return self._WaterMarkChar
 
     @WaterMarkChar.setter
@@ -7539,6 +10445,9 @@ class WaterMark(AbstractModel):
 
     @property
     def WaterMarkTimestamp(self):
+        """The information of the timestamp watermark. This parameter is required if `WaterMarkType` is `2`.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.WaterMarkTimestamp`
+        """
         return self._WaterMarkTimestamp
 
     @WaterMarkTimestamp.setter
@@ -7602,6 +10511,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Top(self):
+        """The Y coordinate of the text watermark from the top left.
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -7610,6 +10522,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Left(self):
+        """The X coordinate of the text watermark from the top left.
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -7618,6 +10533,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Width(self):
+        """The watermark width (pixels).
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7626,6 +10544,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Height(self):
+        """The watermark height (pixels).
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7634,6 +10555,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def Chars(self):
+        """The text.
+        :rtype: str
+        """
         return self._Chars
 
     @Chars.setter
@@ -7642,6 +10566,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def FontSize(self):
+        """The font size (pixels). The default value is `14`.
+        :rtype: int
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -7650,6 +10577,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def FontColor(self):
+        """The text color. The default color is white.
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -7658,6 +10588,9 @@ class WaterMarkChar(AbstractModel):
 
     @property
     def BackGroundColor(self):
+        """The background color. If this parameter is empty, the background will be transparent (default).
+        :rtype: str
+        """
         return self._BackGroundColor
 
     @BackGroundColor.setter
@@ -7710,6 +10643,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def WaterMarkUrl(self):
+        """The download URLs of the watermark images, which must be in JPG or PNG format and cannot be larger than 5 MB.
+        :rtype: str
+        """
         return self._WaterMarkUrl
 
     @WaterMarkUrl.setter
@@ -7718,6 +10654,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Top(self):
+        """The Y axis of the image's top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas height.
+        :rtype: int
+        """
         return self._Top
 
     @Top.setter
@@ -7726,6 +10665,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Left(self):
+        """The X axis of the image’s top-left corner. Value range: [0, 2560]. The value cannot be larger than the canvas width.
+        :rtype: int
+        """
         return self._Left
 
     @Left.setter
@@ -7734,6 +10676,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Width(self):
+        """The relative width of the image. Value range: [0, 2560]. The sum of the values of this parameter and `Left` cannot exceed the canvas width.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7742,6 +10687,9 @@ class WaterMarkImage(AbstractModel):
 
     @property
     def Height(self):
+        """The relative height of the image. Value range: [0, 2560]. The sum of the values of this parameter and `Top` cannot exceed the canvas height.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7782,6 +10730,9 @@ class WaterMarkTimestamp(AbstractModel):
 
     @property
     def Pos(self):
+        """The position of the timestamp watermark. Valid values: `0` (top left), `1` (top right), `2` (bottom left), `3` (bottom right), `4` (top center), `5` (bottom center), `6` (center).
+        :rtype: int
+        """
         return self._Pos
 
     @Pos.setter
@@ -7790,6 +10741,9 @@ class WaterMarkTimestamp(AbstractModel):
 
     @property
     def TimeZone(self):
+        """The time zone. The default is UTC+8.
+        :rtype: int
+        """
         return self._TimeZone
 
     @TimeZone.setter

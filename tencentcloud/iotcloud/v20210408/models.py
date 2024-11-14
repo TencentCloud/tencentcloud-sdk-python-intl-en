@@ -32,6 +32,9 @@ class Attribute(AbstractModel):
 
     @property
     def Tags(self):
+        """Attribute list
+        :rtype: list of DeviceTag
+        """
         return self._Tags
 
     @Tags.setter
@@ -73,6 +76,9 @@ class BindProductInfo(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -81,6 +87,9 @@ class BindProductInfo(AbstractModel):
 
     @property
     def ProductName(self):
+        """Product name
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -136,6 +145,9 @@ class CertInfo(AbstractModel):
 
     @property
     def CertName(self):
+        """Certificate name
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -144,6 +156,9 @@ class CertInfo(AbstractModel):
 
     @property
     def CertSN(self):
+        """Hex sequence number of a certificate
+        :rtype: str
+        """
         return self._CertSN
 
     @CertSN.setter
@@ -152,6 +167,9 @@ class CertInfo(AbstractModel):
 
     @property
     def IssuerName(self):
+        """Certificate issuer
+        :rtype: str
+        """
         return self._IssuerName
 
     @IssuerName.setter
@@ -160,6 +178,9 @@ class CertInfo(AbstractModel):
 
     @property
     def Subject(self):
+        """Certificate subject
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -168,6 +189,9 @@ class CertInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Certificate creation time (timestamp in milliseconds)
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -176,6 +200,9 @@ class CertInfo(AbstractModel):
 
     @property
     def EffectiveTime(self):
+        """Certificate effective time (timestamp in milliseconds)
+        :rtype: int
+        """
         return self._EffectiveTime
 
     @EffectiveTime.setter
@@ -184,6 +211,9 @@ class CertInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """Certificate expiration time (timestamp in milliseconds)
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -192,6 +222,9 @@ class CertInfo(AbstractModel):
 
     @property
     def CertText(self):
+        """X.509 certificate content
+        :rtype: str
+        """
         return self._CertText
 
     @CertText.setter
@@ -262,6 +295,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID, globally unique ID assigned by Tencent Cloud during product creation
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -270,6 +306,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Device name. It is a string of 1 to 48 characters. Letters, digits, and :_- are allowed.
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -278,6 +317,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def Attribute(self):
+        """Device attribute
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.Attribute`
+        """
         return self._Attribute
 
     @Attribute.setter
@@ -286,6 +328,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DefinedPsk(self):
+        """Whether to use custom PSK, no by default
+        :rtype: str
+        """
         return self._DefinedPsk
 
     @DefinedPsk.setter
@@ -294,6 +339,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP, required for a NB-IoT product. `1`: China Telecom; `2`: China Mobile; `3`: China Unicom
+        :rtype: int
+        """
         return self._Isp
 
     @Isp.setter
@@ -302,6 +350,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def Imei(self):
+        """IMEI, required for a NB-IoT product
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -310,6 +361,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def LoraDevEui(self):
+        """DevEUI of a LoRa device, required when you create a LoRa device
+        :rtype: str
+        """
         return self._LoraDevEui
 
     @LoraDevEui.setter
@@ -318,6 +372,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def LoraMoteType(self):
+        """MoteType of a LoRa device
+        :rtype: int
+        """
         return self._LoraMoteType
 
     @LoraMoteType.setter
@@ -326,6 +383,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def Skey(self):
+        """Skey, required when you create a LoRa device
+        :rtype: str
+        """
         return self._Skey
 
     @Skey.setter
@@ -334,6 +394,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def LoraAppKey(self):
+        """AppKey of a LoRa device
+        :rtype: str
+        """
         return self._LoraAppKey
 
     @LoraAppKey.setter
@@ -342,6 +405,9 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def TlsCrt(self):
+        """Private CA certificate
+        :rtype: str
+        """
         return self._TlsCrt
 
     @TlsCrt.setter
@@ -411,6 +477,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Device name
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -419,6 +488,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DevicePsk(self):
+        """Base64-encoded symmetric encryption key, which is returned if symmetric encryption is used
+        :rtype: str
+        """
         return self._DevicePsk
 
     @DevicePsk.setter
@@ -427,6 +499,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DeviceCert(self):
+        """Device certificate, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used
+        :rtype: str
+        """
         return self._DeviceCert
 
     @DeviceCert.setter
@@ -435,6 +510,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def DevicePrivateKey(self):
+        """Device private key, which authenticates client identity during TLS connection establishment and is returned if asymmetric encryption is used. Tencent Cloud does not store the key. Please store it by yourself properly.
+        :rtype: str
+        """
         return self._DevicePrivateKey
 
     @DevicePrivateKey.setter
@@ -443,6 +521,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def LoraDevEui(self):
+        """DevEUI of a LoRa device, which is returned for a LoRa device
+        :rtype: str
+        """
         return self._LoraDevEui
 
     @LoraDevEui.setter
@@ -451,6 +532,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def LoraMoteType(self):
+        """MoteType of a LoRa device, which is returned for a LoRa device
+        :rtype: int
+        """
         return self._LoraMoteType
 
     @LoraMoteType.setter
@@ -459,6 +543,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def LoraAppKey(self):
+        """AppKey of a LoRa device, which is returned for a LoRa device
+        :rtype: str
+        """
         return self._LoraAppKey
 
     @LoraAppKey.setter
@@ -467,6 +554,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def LoraNwkKey(self):
+        """NwkKey of a LoRa device, which is returned for a LoRa device
+        :rtype: str
+        """
         return self._LoraNwkKey
 
     @LoraNwkKey.setter
@@ -475,6 +565,9 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -514,6 +607,9 @@ class CreatePrivateCARequest(AbstractModel):
 
     @property
     def CertName(self):
+        """CA certificate name
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -522,6 +618,9 @@ class CreatePrivateCARequest(AbstractModel):
 
     @property
     def CertText(self):
+        """CA certificate content
+        :rtype: str
+        """
         return self._CertText
 
     @CertText.setter
@@ -530,6 +629,9 @@ class CreatePrivateCARequest(AbstractModel):
 
     @property
     def VerifyCertText(self):
+        """Content verifying the CA certificate
+        :rtype: str
+        """
         return self._VerifyCertText
 
     @VerifyCertText.setter
@@ -565,6 +667,9 @@ class CreatePrivateCAResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -596,6 +701,9 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def ProductName(self):
+        """Product name, which cannot be same as that of an existing product. Naming rule: [a-zA-Z0-9:_-]{1,32}.
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -604,6 +712,9 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def ProductProperties(self):
+        """Product properties
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        """
         return self._ProductProperties
 
     @ProductProperties.setter
@@ -612,6 +723,9 @@ class CreateProductRequest(AbstractModel):
 
     @property
     def Skey(self):
+        """Skey, which is required to create a CLAA product.
+        :rtype: str
+        """
         return self._Skey
 
     @Skey.setter
@@ -658,6 +772,9 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def ProductName(self):
+        """Product name
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -666,6 +783,9 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID, the globally unique ID assigned by Tencent Cloud.
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -674,6 +794,9 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def ProductProperties(self):
+        """Product properties
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        """
         return self._ProductProperties
 
     @ProductProperties.setter
@@ -682,6 +805,9 @@ class CreateProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -718,6 +844,9 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """ID of the product to which the device belongs
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -726,6 +855,9 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Name of the device to delete
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -734,6 +866,9 @@ class DeleteDeviceRequest(AbstractModel):
 
     @property
     def Skey(self):
+        """Skey, which is required to delete a LoRa device or LoRa gateway device
+        :rtype: str
+        """
         return self._Skey
 
     @Skey.setter
@@ -769,6 +904,9 @@ class DeleteDeviceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -797,6 +935,9 @@ class DeleteDeviceShadowRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -805,6 +946,9 @@ class DeleteDeviceShadowRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Device name
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -839,6 +983,9 @@ class DeleteDeviceShadowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -864,6 +1011,9 @@ class DeletePrivateCARequest(AbstractModel):
 
     @property
     def CertName(self):
+        """Private CA certificate name
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -897,6 +1047,9 @@ class DeletePrivateCAResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -925,6 +1078,9 @@ class DeleteProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """ID of the product to delete
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -933,6 +1089,9 @@ class DeleteProductRequest(AbstractModel):
 
     @property
     def Skey(self):
+        """Skey, which is required to delete a LoRa product
+        :rtype: str
+        """
         return self._Skey
 
     @Skey.setter
@@ -967,6 +1126,9 @@ class DeleteProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -995,6 +1157,9 @@ class DescribeDeviceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1003,6 +1168,9 @@ class DescribeDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Device name
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -1122,6 +1290,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeviceName(self):
+        """Device name
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -1130,6 +1301,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Online(self):
+        """Whether the device is online. `0`: offline; `1`: online
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -1138,6 +1312,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LoginTime(self):
+        """Device login time
+        :rtype: int
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -1146,6 +1323,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Version(self):
+        """Device firmware version
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -1154,6 +1334,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LastUpdateTime(self):
+        """Last updated time of the device
+        :rtype: int
+        """
         return self._LastUpdateTime
 
     @LastUpdateTime.setter
@@ -1162,6 +1345,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeviceCert(self):
+        """Device certificate
+        :rtype: str
+        """
         return self._DeviceCert
 
     @DeviceCert.setter
@@ -1170,6 +1356,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DevicePsk(self):
+        """Device key
+        :rtype: str
+        """
         return self._DevicePsk
 
     @DevicePsk.setter
@@ -1178,6 +1367,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
+        """Device attribute
+        :rtype: list of DeviceTag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1186,6 +1378,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeviceType(self):
+        """Device type
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -1194,6 +1389,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Imei(self):
+        """International Mobile Equipment Identity (IMEI)
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -1202,6 +1400,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: int
+        """
         return self._Isp
 
     @Isp.setter
@@ -1210,6 +1411,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConnIP(self):
+        """IP address
+        :rtype: int
+        """
         return self._ConnIP
 
     @ConnIP.setter
@@ -1218,6 +1422,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NbiotDeviceID(self):
+        """Device ID at the NB-IoT ISP
+        :rtype: str
+        """
         return self._NbiotDeviceID
 
     @NbiotDeviceID.setter
@@ -1226,6 +1433,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LoraDevEui(self):
+        """DevEUI of a LoRa device
+        :rtype: str
+        """
         return self._LoraDevEui
 
     @LoraDevEui.setter
@@ -1234,6 +1444,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LoraMoteType(self):
+        """MoteType of a LoRa device
+        :rtype: int
+        """
         return self._LoraMoteType
 
     @LoraMoteType.setter
@@ -1242,6 +1455,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LogLevel(self):
+        """SDK log level of the device
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -1250,6 +1467,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FirstOnlineTime(self):
+        """The first time when the device went online
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._FirstOnlineTime
 
     @FirstOnlineTime.setter
@@ -1258,6 +1479,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LastOfflineTime(self):
+        """The last time when the device went offline
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._LastOfflineTime
 
     @LastOfflineTime.setter
@@ -1266,6 +1491,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Device creation time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1274,6 +1503,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertState(self):
+        """Whether the device certificate has been obtained. `0`: no; `1`: yes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._CertState
 
     @CertState.setter
@@ -1282,6 +1515,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EnableState(self):
+        """Whether the device is enabled
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._EnableState
 
     @EnableState.setter
@@ -1290,6 +1527,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Labels(self):
+        """Device tags
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: list of DeviceLabel
+        """
         return self._Labels
 
     @Labels.setter
@@ -1298,6 +1539,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClientIP(self):
+        """IP address of the MQTT client
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._ClientIP
 
     @ClientIP.setter
@@ -1306,6 +1551,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FirmwareUpdateTime(self):
+        """Firmware update time of the device
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._FirmwareUpdateTime
 
     @FirmwareUpdateTime.setter
@@ -1314,6 +1563,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateUserId(self):
+        """Account ID of the creator
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateUserId
 
     @CreateUserId.setter
@@ -1322,6 +1575,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1397,6 +1653,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """ID of the product whose devices are queried
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1405,6 +1664,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset, which starts from 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1413,6 +1675,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Page size. Value range: 10-250
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1421,6 +1686,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def FirmwareVersion(self):
+        """Device firmware version. If no value is passed in, devices of all firmware versions are returned. If `None-FirmwareVersion` is passed in, devices without version numbers are returned.
+        :rtype: str
+        """
         return self._FirmwareVersion
 
     @FirmwareVersion.setter
@@ -1429,6 +1697,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Device name to query
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -1437,6 +1708,9 @@ class DescribeDevicesRequest(AbstractModel):
 
     @property
     def EnableState(self):
+        """Whether to query enabled or disabled devices. `0`: disabled devices; `1`: enabled devices. By default, both enabled and disabled devices are queried.
+        :rtype: int
+        """
         return self._EnableState
 
     @EnableState.setter
@@ -1481,6 +1755,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of the devices returned
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1489,6 +1766,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def Devices(self):
+        """List of device details
+        :rtype: list of DeviceInfo
+        """
         return self._Devices
 
     @Devices.setter
@@ -1497,6 +1777,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1535,6 +1818,9 @@ class DescribePrivateCABindedProductsRequest(AbstractModel):
 
     @property
     def CertName(self):
+        """Certificate name
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -1543,6 +1829,9 @@ class DescribePrivateCABindedProductsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset for query
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1551,6 +1840,9 @@ class DescribePrivateCABindedProductsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of records to return, which is 20 by default and cannot exceed 200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1589,6 +1881,9 @@ class DescribePrivateCABindedProductsResponse(AbstractModel):
 
     @property
     def Products(self):
+        """List of the products bound to the private CA certificate
+        :rtype: list of BindProductInfo
+        """
         return self._Products
 
     @Products.setter
@@ -1597,6 +1892,9 @@ class DescribePrivateCABindedProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1628,6 +1926,9 @@ class DescribePrivateCARequest(AbstractModel):
 
     @property
     def CertName(self):
+        """Name of the private CA certificate to query
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -1664,6 +1965,9 @@ class DescribePrivateCAResponse(AbstractModel):
 
     @property
     def CA(self):
+        """Details of the private CA certificate
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.CertInfo`
+        """
         return self._CA
 
     @CA.setter
@@ -1672,6 +1976,9 @@ class DescribePrivateCAResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1709,6 +2016,9 @@ class DescribePrivateCAsResponse(AbstractModel):
 
     @property
     def CAs(self):
+        """List of private CA certificates
+        :rtype: list of CertInfo
+        """
         return self._CAs
 
     @CAs.setter
@@ -1717,6 +2027,9 @@ class DescribePrivateCAsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1748,6 +2061,9 @@ class DescribeProductCARequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1784,6 +2100,9 @@ class DescribeProductCAResponse(AbstractModel):
 
     @property
     def CAs(self):
+        """List of CA certificates bound to the product
+        :rtype: list of CertInfo
+        """
         return self._CAs
 
     @CAs.setter
@@ -1792,6 +2111,9 @@ class DescribeProductCAResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1823,6 +2145,9 @@ class DescribeProductRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1868,6 +2193,9 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -1876,6 +2204,9 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def ProductName(self):
+        """Product name
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -1884,6 +2215,9 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def ProductMetadata(self):
+        """Product metadata
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.ProductMetadata`
+        """
         return self._ProductMetadata
 
     @ProductMetadata.setter
@@ -1892,6 +2226,9 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def ProductProperties(self):
+        """Product properties
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        """
         return self._ProductProperties
 
     @ProductProperties.setter
@@ -1900,6 +2237,9 @@ class DescribeProductResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1936,6 +2276,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset, starting from 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1944,6 +2287,9 @@ class DescribeProductsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries returned per page. Valid range: 10–250.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1984,6 +2330,9 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of products
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1992,6 +2341,9 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def Products(self):
+        """List of product details
+        :rtype: list of ProductInfo
+        """
         return self._Products
 
     @Products.setter
@@ -2000,6 +2352,9 @@ class DescribeProductsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2110,6 +2465,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DeviceName(self):
+        """Device name
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -2118,6 +2476,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Online(self):
+        """Whether the device is online. `0`: offline; `1`: online
+        :rtype: int
+        """
         return self._Online
 
     @Online.setter
@@ -2126,6 +2487,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LoginTime(self):
+        """Device login time
+        :rtype: int
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -2134,6 +2498,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Version(self):
+        """Device version
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -2142,6 +2509,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DeviceCert(self):
+        """Device certificate, which is returned for devices that use certificates for authentication
+        :rtype: str
+        """
         return self._DeviceCert
 
     @DeviceCert.setter
@@ -2150,6 +2520,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DevicePsk(self):
+        """Device key, which is returned for devices that use keys for authentication
+        :rtype: str
+        """
         return self._DevicePsk
 
     @DevicePsk.setter
@@ -2158,6 +2531,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Tags(self):
+        """Device attribute
+        :rtype: list of DeviceTag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2166,6 +2542,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DeviceType(self):
+        """Device type
+        :rtype: int
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -2174,6 +2553,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Imei(self):
+        """International Mobile Equipment Identity (IMEI)
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -2182,6 +2564,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: int
+        """
         return self._Isp
 
     @Isp.setter
@@ -2190,6 +2575,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def NbiotDeviceID(self):
+        """Device ID at the NB-IoT ISP
+        :rtype: str
+        """
         return self._NbiotDeviceID
 
     @NbiotDeviceID.setter
@@ -2198,6 +2586,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ConnIP(self):
+        """IP address
+        :rtype: int
+        """
         return self._ConnIP
 
     @ConnIP.setter
@@ -2206,6 +2597,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LastUpdateTime(self):
+        """Last updated time of the device
+        :rtype: int
+        """
         return self._LastUpdateTime
 
     @LastUpdateTime.setter
@@ -2214,6 +2608,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LoraDevEui(self):
+        """DevEUI of a LoRa device
+        :rtype: str
+        """
         return self._LoraDevEui
 
     @LoraDevEui.setter
@@ -2222,6 +2619,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LoraMoteType(self):
+        """MoteType of a LoRa device
+        :rtype: int
+        """
         return self._LoraMoteType
 
     @LoraMoteType.setter
@@ -2230,6 +2630,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FirstOnlineTime(self):
+        """The first time when the device went online
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._FirstOnlineTime
 
     @FirstOnlineTime.setter
@@ -2238,6 +2642,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LastOfflineTime(self):
+        """The last time when the device went offline
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._LastOfflineTime
 
     @LastOfflineTime.setter
@@ -2246,6 +2654,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CreateTime(self):
+        """Device creation time
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2254,6 +2666,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def LogLevel(self):
+        """Device log level
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -2262,6 +2678,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def CertState(self):
+        """Whether the device certificate has been obtained. `0`: no; `1`: yes
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._CertState
 
     @CertState.setter
@@ -2270,6 +2690,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def EnableState(self):
+        """Whether the device is enabled. `0`: disabled; `1`: enabled
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._EnableState
 
     @EnableState.setter
@@ -2278,6 +2702,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Labels(self):
+        """Device tags
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: list of DeviceLabel
+        """
         return self._Labels
 
     @Labels.setter
@@ -2286,6 +2714,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def ClientIP(self):
+        """IP address of the MQTT client
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._ClientIP
 
     @ClientIP.setter
@@ -2294,6 +2726,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def FirmwareUpdateTime(self):
+        """Time of last OTA update
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: int
+        """
         return self._FirmwareUpdateTime
 
     @FirmwareUpdateTime.setter
@@ -2363,6 +2799,9 @@ class DeviceLabel(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -2371,6 +2810,9 @@ class DeviceLabel(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2415,6 +2857,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Tag(self):
+        """Attribute name
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -2423,6 +2868,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Type(self):
+        """Attribute value type. `1`: integer; `2`: string
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -2431,6 +2879,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Value(self):
+        """Attribute value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2439,6 +2890,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Name(self):
+        """Attribute description
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2484,6 +2939,9 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2492,6 +2950,9 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductName(self):
+        """Product name
+        :rtype: str
+        """
         return self._ProductName
 
     @ProductName.setter
@@ -2500,6 +2961,9 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductMetadata(self):
+        """Product metadata
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.ProductMetadata`
+        """
         return self._ProductMetadata
 
     @ProductMetadata.setter
@@ -2508,6 +2972,9 @@ class ProductInfo(AbstractModel):
 
     @property
     def ProductProperties(self):
+        """Product properties
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.ProductProperties`
+        """
         return self._ProductProperties
 
     @ProductProperties.setter
@@ -2548,6 +3015,9 @@ class ProductMetadata(AbstractModel):
 
     @property
     def CreationDate(self):
+        """Product creation time
+        :rtype: int
+        """
         return self._CreationDate
 
     @CreationDate.setter
@@ -2627,6 +3097,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def ProductDescription(self):
+        """Product description
+        :rtype: str
+        """
         return self._ProductDescription
 
     @ProductDescription.setter
@@ -2635,6 +3108,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def EncryptionType(self):
+        """Authentication type. `1` (default): certificate; `2`: signature
+        :rtype: str
+        """
         return self._EncryptionType
 
     @EncryptionType.setter
@@ -2643,6 +3119,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def Region(self):
+        """Product region. Valid value: `gz` (Guangzhou)
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2651,6 +3130,10 @@ class ProductProperties(AbstractModel):
 
     @property
     def ProductType(self):
+        """Product type. Valid values:
+`0` (default): general; `2`: NB-IoT; `3`: LoRa gateway; `4`: LoRa; `5`: general gateway
+        :rtype: int
+        """
         return self._ProductType
 
     @ProductType.setter
@@ -2659,6 +3142,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def Format(self):
+        """Data format. Valid values: `json` (default), `custom`
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -2667,6 +3153,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform of the product. Default value: `0`
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2675,6 +3164,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def Appeui(self):
+        """AppEUI at the LoRa product operator, required only for LoRa products
+        :rtype: str
+        """
         return self._Appeui
 
     @Appeui.setter
@@ -2683,6 +3175,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def ModelId(self):
+        """ID of the Thing Specification Language (TSL) model bound to the product. `-1` means no models are bound.
+        :rtype: str
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -2691,6 +3186,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def ModelName(self):
+        """Name of the TSL model bound to the product
+        :rtype: str
+        """
         return self._ModelName
 
     @ModelName.setter
@@ -2699,6 +3197,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def ProductKey(self):
+        """Product key, which is specific to suite products
+        :rtype: str
+        """
         return self._ProductKey
 
     @ProductKey.setter
@@ -2707,6 +3208,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def RegisterType(self):
+        """Dynamic registration type. `0`: disable; `1`: preset device names; `2`: generate device names dynamically
+        :rtype: int
+        """
         return self._RegisterType
 
     @RegisterType.setter
@@ -2715,6 +3219,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def ProductSecret(self):
+        """Dynamic registration product key
+        :rtype: str
+        """
         return self._ProductSecret
 
     @ProductSecret.setter
@@ -2723,6 +3230,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def RegisterLimit(self):
+        """The maximum number of devices that can be dynamically created when `RegisterType` is set to `2`
+        :rtype: int
+        """
         return self._RegisterLimit
 
     @RegisterLimit.setter
@@ -2731,6 +3241,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def OriginProductId(self):
+        """Original product ID of a transferred product. This parameter is empty for products that are not transferred.
+        :rtype: str
+        """
         return self._OriginProductId
 
     @OriginProductId.setter
@@ -2739,6 +3252,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def PrivateCAName(self):
+        """Private CA certificate name
+        :rtype: str
+        """
         return self._PrivateCAName
 
     @PrivateCAName.setter
@@ -2747,6 +3263,9 @@ class ProductProperties(AbstractModel):
 
     @property
     def OriginUserId(self):
+        """Original user ID of a transferred product. This parameter is empty for products that are not transferred.
+        :rtype: int
+        """
         return self._OriginUserId
 
     @OriginUserId.setter
@@ -2798,6 +3317,9 @@ class SetProductsForbiddenStatusRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """List of products to enable or disable
+        :rtype: list of str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2806,6 +3328,9 @@ class SetProductsForbiddenStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """`0`: enable; `1`: disable
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2840,6 +3365,9 @@ class SetProductsForbiddenStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2871,6 +3399,9 @@ class UpdateDeviceLogLevelRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2879,6 +3410,9 @@ class UpdateDeviceLogLevelRequest(AbstractModel):
 
     @property
     def DeviceName(self):
+        """Device name
+        :rtype: str
+        """
         return self._DeviceName
 
     @DeviceName.setter
@@ -2887,6 +3421,9 @@ class UpdateDeviceLogLevelRequest(AbstractModel):
 
     @property
     def LogLevel(self):
+        """Log level. `0`: disable; `1`: error; `2`: warning; `3`: information; `4`: debugging
+        :rtype: int
+        """
         return self._LogLevel
 
     @LogLevel.setter
@@ -2922,6 +3459,9 @@ class UpdateDeviceLogLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2953,6 +3493,9 @@ class UpdateDevicesEnableStateRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """ID of the product to which the device belongs
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -2961,6 +3504,9 @@ class UpdateDevicesEnableStateRequest(AbstractModel):
 
     @property
     def DeviceNames(self):
+        """Device names
+        :rtype: list of str
+        """
         return self._DeviceNames
 
     @DeviceNames.setter
@@ -2969,6 +3515,9 @@ class UpdateDevicesEnableStateRequest(AbstractModel):
 
     @property
     def Status(self):
+        """New status of the devices. `0`: disabled; `1`: enabled
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3004,6 +3553,9 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3035,6 +3587,9 @@ class UpdatePrivateCARequest(AbstractModel):
 
     @property
     def CertName(self):
+        """CA certificate name
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -3043,6 +3598,9 @@ class UpdatePrivateCARequest(AbstractModel):
 
     @property
     def CertText(self):
+        """CA certificate content
+        :rtype: str
+        """
         return self._CertText
 
     @CertText.setter
@@ -3051,6 +3609,9 @@ class UpdatePrivateCARequest(AbstractModel):
 
     @property
     def VerifyCertText(self):
+        """Content verifying the CA certificate
+        :rtype: str
+        """
         return self._VerifyCertText
 
     @VerifyCertText.setter
@@ -3086,6 +3647,9 @@ class UpdatePrivateCAResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3117,6 +3681,9 @@ class UpdateProductDynamicRegisterRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Product ID
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -3125,6 +3692,9 @@ class UpdateProductDynamicRegisterRequest(AbstractModel):
 
     @property
     def RegisterType(self):
+        """Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
+        :rtype: int
+        """
         return self._RegisterType
 
     @RegisterType.setter
@@ -3133,6 +3703,9 @@ class UpdateProductDynamicRegisterRequest(AbstractModel):
 
     @property
     def RegisterLimit(self):
+        """Maximum dynamically registered devices
+        :rtype: int
+        """
         return self._RegisterLimit
 
     @RegisterLimit.setter
@@ -3177,6 +3750,9 @@ class UpdateProductDynamicRegisterResponse(AbstractModel):
 
     @property
     def RegisterType(self):
+        """Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.
+        :rtype: int
+        """
         return self._RegisterType
 
     @RegisterType.setter
@@ -3185,6 +3761,9 @@ class UpdateProductDynamicRegisterResponse(AbstractModel):
 
     @property
     def ProductSecret(self):
+        """Product key for dynamic registration
+        :rtype: str
+        """
         return self._ProductSecret
 
     @ProductSecret.setter
@@ -3193,6 +3772,9 @@ class UpdateProductDynamicRegisterResponse(AbstractModel):
 
     @property
     def RegisterLimit(self):
+        """Maximum dynamically registered devices
+        :rtype: int
+        """
         return self._RegisterLimit
 
     @RegisterLimit.setter
@@ -3201,6 +3783,9 @@ class UpdateProductDynamicRegisterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

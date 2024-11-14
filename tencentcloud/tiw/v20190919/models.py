@@ -41,6 +41,9 @@ class ApplicationItem(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -49,6 +52,9 @@ class ApplicationItem(AbstractModel):
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -57,6 +63,9 @@ class ApplicationItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -65,6 +74,9 @@ class ApplicationItem(AbstractModel):
 
     @property
     def TagList(self):
+        """Tag list.
+        :rtype: list of Tag
+        """
         return self._TagList
 
     @TagList.setter
@@ -112,6 +124,9 @@ class ApplyTiwTrialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -143,6 +158,9 @@ class AuthParam(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -151,6 +169,9 @@ class AuthParam(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -159,6 +180,9 @@ class AuthParam(AbstractModel):
 
     @property
     def UserSig(self):
+        """Signature corresponding to the user ID.
+        :rtype: str
+        """
         return self._UserSig
 
     @UserSig.setter
@@ -197,6 +221,9 @@ class Canvas(AbstractModel):
 
     @property
     def LayoutParams(self):
+        """Width and height of the mixed stream canvas
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -205,6 +232,9 @@ class Canvas(AbstractModel):
 
     @property
     def BackgroundColor(self):
+        """Background color, which is black by default. Its format is RGB. for example, "#FF0000" for the red color.
+        :rtype: str
+        """
         return self._BackgroundColor
 
     @BackgroundColor.setter
@@ -245,6 +275,10 @@ If the video splicing feature is enabled, the real-time recording service will s
 
     @property
     def Enabled(self):
+        """Whether to enable the video splicing feature
+If the video splicing feature is enabled, the real-time recording service will splice multiple video clips resulting from the pause into one video.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -253,6 +287,9 @@ If the video splicing feature is enabled, the real-time recording service will s
 
     @property
     def Image(self):
+        """Download address of the padding image used during video splicing. If it is not specified, a pure black image is used by default.
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -299,6 +336,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -307,6 +347,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -315,6 +358,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def SKey(self):
+        """SKey required for creating an IM application.
+        :rtype: str
+        """
         return self._SKey
 
     @SKey.setter
@@ -323,6 +369,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def TinyId(self):
+        """TinyId required for creating an IM application.
+        :rtype: str
+        """
         return self._TinyId
 
     @TinyId.setter
@@ -331,6 +380,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def TagList(self):
+        """List of tags to be bound.
+        :rtype: list of Tag
+        """
         return self._TagList
 
     @TagList.setter
@@ -382,6 +434,9 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def AppId(self):
+        """AppId of the customer.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -390,6 +445,9 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -398,6 +456,9 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -406,6 +467,9 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -455,6 +519,9 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def Whiteboard(self):
+        """Whiteboard parameters.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SnapshotWhiteboard`
+        """
         return self._Whiteboard
 
     @Whiteboard.setter
@@ -463,6 +530,9 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """`SdkAppId` of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -471,6 +541,9 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Whiteboard room ID.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -479,6 +552,9 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def CallbackURL(self):
+        """Callback URL to which the whiteboard snapshot result is to be sent.
+        :rtype: str
+        """
         return self._CallbackURL
 
     @CallbackURL.setter
@@ -487,6 +563,9 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def COS(self):
+        """`COS` bucket in which the generated whiteboard snapshot file is to be stored. If you leave this parameter empty, the generated file will be stored in the public bucket and retained for only three days.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SnapshotCOS`
+        """
         return self._COS
 
     @COS.setter
@@ -495,6 +574,15 @@ class CreateSnapshotTaskRequest(AbstractModel):
 
     @property
     def SnapshotMode(self):
+        """Whiteboard snapshot mode. Default value: `AllMarks`. Valid values:
+
+`AllMarks`: Full mode. In this mode, a snapshot image is generated based on each whiteboard snapshot mark that is added by calling the `addSnapshotMark` API on the client.
+
+`LatestMarksOnly`: Single-page deduplication mode. In this mode, a snapshot image is generated based only on the latest whiteboard snapshot mark that is added by calling the `addSnapshotMark` API on the client if the API is called multiple times for the same whiteboard snapshot.
+
+**Note: The `LatestMarksOnly` mode takes effect only when the `addSnapshotMark` API is called by using Tencent Interactive Whiteboard SDK v2.6.8 or later. Otherwise, even if this parameter is set to `LatestMarksOnly`, the default `AllMarks` mode is used.**
+        :rtype: str
+        """
         return self._SnapshotMode
 
     @SnapshotMode.setter
@@ -540,6 +628,9 @@ class CreateSnapshotTaskResponse(AbstractModel):
 
     @property
     def TaskID(self):
+        """ID of the whiteboard snapshot task. This parameter is returned only if a task is created successfully.
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -548,6 +639,9 @@ class CreateSnapshotTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -623,6 +717,9 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -631,6 +728,9 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def Url(self):
+        """URL of the transcoded document after URL encoding. URL encoding converts characters into a format that can be transmitted over the Internet. For example, URL encoding can convert the document URL http://example.com/Test.pdf into http://example.com/%E6%B5%8B%E8%AF%95.pdf. To improve the success rate of URL parsing, use URL encoding.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -639,6 +739,10 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def IsStaticPPT(self):
+        """Whether the PowerPoint file is static. The default value is False.
+If IsStaticPPT is False, documents with the .ppt or .pptx extension will be dynamically transcoded to HTML5 pages, and documents with other extensions will be statically transcoded to images. If IsStaticPPT is True, documents with any extensions will be statically transcoded to images.
+        :rtype: bool
+        """
         return self._IsStaticPPT
 
     @IsStaticPPT.setter
@@ -647,6 +751,13 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def MinResolution(self):
+        """Note: This parameter is disused. Use the MinScaleResolution parameter to pass in a resolution. For more information, see [CreateTranscode](https://intl.cloud.tencent.com/document/api/1137/40060?from_cn_redirect=1#SDK).
+
+Minimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.
+
+Example: 1280x720. Note that the character between the numbers is the letter x.
+        :rtype: str
+        """
         return self._MinResolution
 
     @MinResolution.setter
@@ -655,6 +766,11 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def ThumbnailResolution(self):
+        """Resolution of the thumbnail generated for the dynamically transcoded PowerPoint file. If no value or null is specified for it or the resolution format is invalid, no thumbnail will be generated. The resolution format is the same as that of MinResolution.
+
+For static transcoding, this parameter does not work.
+        :rtype: str
+        """
         return self._ThumbnailResolution
 
     @ThumbnailResolution.setter
@@ -663,6 +779,12 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def CompressFileType(self):
+        """Compression format of the transcoded file. If no value or null is specified for it or the specified format is invalid, no compression file will be generated. Currently, the following compression formats are supported:
+
+`zip`: generates a .zip compression package.
+`tar.gz: generates a .tar.gz compression package.
+        :rtype: str
+        """
         return self._CompressFileType
 
     @CompressFileType.setter
@@ -671,6 +793,9 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def ExtraData(self):
+        """Internal parameter.
+        :rtype: str
+        """
         return self._ExtraData
 
     @ExtraData.setter
@@ -679,6 +804,13 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def Priority(self):
+        """Document transcoding priority. This parameter takes effect only for PowerPoint dynamic transcoding. Valid values:<br/>
+- low: Low transcoding priority. The task can transcode at most 500 MB of data or a 2000-page document, with a download timeout no longer than 10 minutes. Due to resource limits, these tasks may have to queue for a long period of time. Consider this before you use this feature.
+- null: Normal transcoding priority. The task can transcode at most 200 MB of data or a 500-page document, with a download timeout no longer than 2 minutes.
+<br/>
+Note: For static transcoding such as PDF transcoding, each task can transcode at most 200 MB of data regardless of the transcoding priority.
+        :rtype: str
+        """
         return self._Priority
 
     @Priority.setter
@@ -687,6 +819,12 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def MinScaleResolution(self):
+        """Minimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.
+Higher resolution brings clearer visual effect, but also means larger size of the transcoded image resources and longer loading time of the transcoded file. Set this parameter appropriately based on your actual scenario.
+
+Example: 1280x720. Note that the character between the numbers is the letter x.
+        :rtype: str
+        """
         return self._MinScaleResolution
 
     @MinScaleResolution.setter
@@ -695,6 +833,14 @@ If auto handling is enabled, the following processes are performed:
 
     @property
     def AutoHandleUnsupportedElement(self):
+        """Specifies whether to enable auto handling of unsupported elements. By default, this feature is disabled.
+
+If auto handling is enabled, the following processes are performed:
+1. Inkblots: Remove unsupported inkblots, such as those drawn by using WPS.
+2. Auto page flip: Clear the auto page clip settings in the PowerPoint file and set the page flip mode to mouse click.
+3. Corrupted audio/videos: Remove the references to corrupted audio/videos in the PowerPoint file.
+        :rtype: bool
+        """
         return self._AutoHandleUnsupportedElement
 
     @AutoHandleUnsupportedElement.setter
@@ -740,6 +886,9 @@ class CreateTranscodeResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Unique ID of the document transcoding task, which is used to query the task progress and transcoding result
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -748,6 +897,9 @@ class CreateTranscodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -800,6 +952,9 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def OnlineRecordTaskId(self):
+        """ID of the recording task.
+        :rtype: str
+        """
         return self._OnlineRecordTaskId
 
     @OnlineRecordTaskId.setter
@@ -808,6 +963,9 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -816,6 +974,11 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def Whiteboard(self):
+        """Whiteboard parameters of the recording video generation task, such as the width and height of the whiteboard.
+
+This parameter conflicts with the Whiteboard parameter in the API for starting a recording task. If the two Whiteboard parameters are both specified, the Whiteboard parameter in this API takes priority for recording video generation. If the Whiteboard parameter in this API is not specified, the Whiteboard parameter specified in the API for starting a recording task is used for recording video generation.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
+        """
         return self._Whiteboard
 
     @Whiteboard.setter
@@ -824,6 +987,11 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def Concat(self):
+        """Video splicing parameters.
+
+This parameter conflicts with the Concat parameter in the API for starting a recording task. If the two Concat parameters are both specified, the Concat parameter in this API takes priority for video splicing. If the Concat parameter in this API is not specified, the Concat parameter specified in the API for starting a recording task is used for video splicing.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.Concat`
+        """
         return self._Concat
 
     @Concat.setter
@@ -832,6 +1000,11 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def MixStream(self):
+        """Video stream mixing parameters.
+
+This parameter conflicts with the MixStream parameter in the API for starting a recording task. If the two MixStream parameters are both specified, the MixStream parameter in this API takes priority for video stream mixing. If the MixStream parameter in this API is not specified, the MixStream parameter specified in the API for starting a recording task is used for video stream mixing.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.MixStream`
+        """
         return self._MixStream
 
     @MixStream.setter
@@ -840,6 +1013,11 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def RecordControl(self):
+        """A group of video generation parameters. It specifies the streams to be generated, whether to disable audio recording for a stream, and whether to record only low-resolution videos, etc.
+
+This parameter conflicts with the RecordControl parameter in the API for starting a recording task. If the two RecordControl parameters are both specified, the RecordControl parameter in this API takes priority for video generation control. If the RecordControl parameter in this API is not specified, the RecordControl parameter specified in the API for starting a recording task is used for video generation control.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
+        """
         return self._RecordControl
 
     @RecordControl.setter
@@ -848,6 +1026,9 @@ This parameter conflicts with the RecordControl parameter in the API for startin
 
     @property
     def ExtraData(self):
+        """Internal parameter.
+        :rtype: str
+        """
         return self._ExtraData
 
     @ExtraData.setter
@@ -898,6 +1079,9 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the video generation task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -906,6 +1090,9 @@ class CreateVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -935,6 +1122,9 @@ class CustomLayout(AbstractModel):
 
     @property
     def Canvas(self):
+        """Mixed stream canvas parameter
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.Canvas`
+        """
         return self._Canvas
 
     @Canvas.setter
@@ -943,6 +1133,9 @@ class CustomLayout(AbstractModel):
 
     @property
     def InputStreamList(self):
+        """Stream layout. The layout of each stream cannot exceed the canvas area.
+        :rtype: list of StreamLayout
+        """
         return self._InputStreamList
 
     @InputStreamList.setter
@@ -993,6 +1186,12 @@ yyyy-mm-dd HH:MM:SS
 
     @property
     def Time(self):
+        """Time. The following formats are supported:
+yyyy-mm
+yyyy-mm-dd
+yyyy-mm-dd HH:MM:SS
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -1001,6 +1200,9 @@ yyyy-mm-dd HH:MM:SS
 
     @property
     def Value(self):
+        """Values required for drawing charts.
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -1009,6 +1211,9 @@ yyyy-mm-dd HH:MM:SS
 
     @property
     def Details(self):
+        """Details of the values.
+        :rtype: list of Detail
+        """
         return self._Details
 
     @Details.setter
@@ -1052,6 +1257,9 @@ class DescribeAPIServiceRequest(AbstractModel):
 
     @property
     def Service(self):
+        """Supported services are cos:GetService and cdn:DescribeDomainsConfig.
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -1060,6 +1268,9 @@ class DescribeAPIServiceRequest(AbstractModel):
 
     @property
     def Data(self):
+        """Request parameters in JSON format.
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -1097,6 +1308,9 @@ class DescribeAPIServiceResponse(AbstractModel):
 
     @property
     def ResponseData(self):
+        """Response data in JSON format.
+        :rtype: str
+        """
         return self._ResponseData
 
     @ResponseData.setter
@@ -1105,6 +1319,9 @@ class DescribeAPIServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1143,6 +1360,9 @@ class DescribeApplicationInfosResponse(AbstractModel):
 
     @property
     def ApplicationInfos(self):
+        """Application list.
+        :rtype: list of ApplicationItem
+        """
         return self._ApplicationInfos
 
     @ApplicationInfos.setter
@@ -1151,6 +1371,9 @@ class DescribeApplicationInfosResponse(AbstractModel):
 
     @property
     def AllOption(self):
+        """Specifies whether all applications are included. The value 0 indicates no and 1 indicates yes.
+        :rtype: int
+        """
         return self._AllOption
 
     @AllOption.setter
@@ -1159,6 +1382,9 @@ class DescribeApplicationInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1210,6 +1436,9 @@ false: Returns the raw usage data.
 
     @property
     def BeginTime(self):
+        """Start time of the query period. The start time point is included in the query period.
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -1218,6 +1447,9 @@ false: Returns the raw usage data.
 
     @property
     def EndTime(self):
+        """End time of the query period. The end time point is not included in the query period.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1226,6 +1458,9 @@ false: Returns the raw usage data.
 
     @property
     def SubProduct(self):
+        """Subproduct name.
+        :rtype: str
+        """
         return self._SubProduct
 
     @SubProduct.setter
@@ -1234,6 +1469,12 @@ false: Returns the raw usage data.
 
     @property
     def TimeLevel(self):
+        """Unit of time increment.
+- MONTHLY: month
+- DAILY: day
+- MINUTELY: minute
+        :rtype: str
+        """
         return self._TimeLevel
 
     @TimeLevel.setter
@@ -1242,6 +1483,9 @@ false: Returns the raw usage data.
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1250,6 +1494,10 @@ false: Returns the raw usage data.
 
     @property
     def IsWeighted(self):
+        """true: Returns the weighted sum of raw usage data.
+false: Returns the raw usage data.
+        :rtype: bool
+        """
         return self._IsWeighted
 
     @IsWeighted.setter
@@ -1291,6 +1539,9 @@ class DescribeApplicationUsageResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Usage data required for drawing charts.
+        :rtype: list of DataItem
+        """
         return self._Data
 
     @Data.setter
@@ -1299,6 +1550,9 @@ class DescribeApplicationUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1351,6 +1605,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1359,6 +1616,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID to be used to query logs.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1367,6 +1627,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID to be used to query logs.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1375,6 +1638,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def TimeRange(self):
+        """Query period, which consists of two Unix timestamps in milliseconds. The first indicates the start time and the second the end time.
+        :rtype: list of int
+        """
         return self._TimeRange
 
     @TimeRange.setter
@@ -1383,6 +1649,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def AggregationInterval(self):
+        """Interval for aggregating log number queries. Example values: `5m`, `1h`, `4h`
+        :rtype: str
+        """
         return self._AggregationInterval
 
     @AggregationInterval.setter
@@ -1391,6 +1660,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Extra query conditions.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -1399,6 +1671,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def Ascending(self):
+        """Specifies whether to sort results in ascending order of time.
+        :rtype: bool
+        """
         return self._Ascending
 
     @Ascending.setter
@@ -1407,6 +1682,9 @@ class DescribeBoardSDKLogRequest(AbstractModel):
 
     @property
     def Context(self):
+        """Context key used for recursive extraction. Obtain this parameter in the response to the last request.
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -1459,6 +1737,9 @@ class DescribeBoardSDKLogResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Number of logs queried.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -1467,6 +1748,9 @@ class DescribeBoardSDKLogResponse(AbstractModel):
 
     @property
     def Sources(self):
+        """Log details.
+        :rtype: list of str
+        """
         return self._Sources
 
     @Sources.setter
@@ -1475,6 +1759,9 @@ class DescribeBoardSDKLogResponse(AbstractModel):
 
     @property
     def Buckets(self):
+        """Number of logs queried within each time range after aggregation based on the time range.
+        :rtype: list of str
+        """
         return self._Buckets
 
     @Buckets.setter
@@ -1483,6 +1770,9 @@ class DescribeBoardSDKLogResponse(AbstractModel):
 
     @property
     def Context(self):
+        """Context key used for recursive extraction. This parameter can be used in the next request.
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -1491,6 +1781,9 @@ class DescribeBoardSDKLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1526,6 +1819,9 @@ class DescribeIMApplicationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1551,6 +1847,9 @@ class DescribeOnlineRecordCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the application
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1590,6 +1889,9 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
+        """Callback address of the real-time recording event. If no callback address is set, this field is null.
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -1598,6 +1900,9 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Authentication key of the real-time recording callback
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -1606,6 +1911,9 @@ class DescribeOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1636,6 +1944,9 @@ class DescribeOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1644,6 +1955,9 @@ class DescribeOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the real-time recording task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1730,6 +2044,13 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FinishReason(self):
+        """Recording stop reason
+- AUTO: Recording automatically stops because no upstream audio/video or whiteboard operation occurs in the room for a long time.
+- USER_CALL: The API for stopping recording is called.
+- EXCEPTION: An exception occurred.
+- FORCE_STOP: Recording is forcibly stopped, which is usually because the recording has been paused for more than 90 minutes or has lasted for more than 24 hours.
+        :rtype: str
+        """
         return self._FinishReason
 
     @FinishReason.setter
@@ -1738,6 +2059,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TaskId(self):
+        """ID of the recording task to be queried.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1746,6 +2070,14 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Status(self):
+        """Recording task status
+- PREPARED: preparing
+- RECORDING: recording
+- PAUSED: recording is paused.
+- STOPPED: recording is stopped, and the recorded video is being processed and uploaded.
+- FINISHED: the recorded video has been processed and uploaded, and the recording result is generated.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1754,6 +2086,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RoomId(self):
+        """Room ID
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -1762,6 +2097,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def GroupId(self):
+        """Group ID of the whiteboard
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1770,6 +2108,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RecordUserId(self):
+        """ID of the recording user
+        :rtype: str
+        """
         return self._RecordUserId
 
     @RecordUserId.setter
@@ -1778,6 +2119,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RecordStartTime(self):
+        """Actual recording start time, which is a UNIX timestamp in seconds
+        :rtype: int
+        """
         return self._RecordStartTime
 
     @RecordStartTime.setter
@@ -1786,6 +2130,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RecordStopTime(self):
+        """Actual recording stop time, which is a UNIX timestamp in seconds
+        :rtype: int
+        """
         return self._RecordStopTime
 
     @RecordStopTime.setter
@@ -1794,6 +2141,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TotalTime(self):
+        """Total video playback duration, in milliseconds
+        :rtype: int
+        """
         return self._TotalTime
 
     @TotalTime.setter
@@ -1802,6 +2152,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ExceptionCnt(self):
+        """Number of exceptions during recording
+        :rtype: int
+        """
         return self._ExceptionCnt
 
     @ExceptionCnt.setter
@@ -1810,6 +2163,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def OmittedDurations(self):
+        """Duration to be deleted in the spliced video. This parameter is valid only when the video splicing feature is enabled.
+        :rtype: list of OmittedDuration
+        """
         return self._OmittedDurations
 
     @OmittedDurations.setter
@@ -1818,6 +2174,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def VideoInfos(self):
+        """List of recorded videos
+        :rtype: list of VideoInfo
+        """
         return self._VideoInfos
 
     @VideoInfos.setter
@@ -1826,6 +2185,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ReplayUrl(self):
+        """
+        :rtype: str
+        """
         return self._ReplayUrl
 
     @ReplayUrl.setter
@@ -1834,6 +2196,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Interrupts(self):
+        """Number of video stream interruptions during recording.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: list of Interrupt
+        """
         return self._Interrupts
 
     @Interrupts.setter
@@ -1842,6 +2208,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1899,6 +2268,9 @@ class DescribePostpaidUsageRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """Start time of the query period.
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -1907,6 +2279,9 @@ class DescribePostpaidUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the query period.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1941,6 +2316,9 @@ class DescribePostpaidUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1989,6 +2367,9 @@ class DescribeQualityMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -1997,6 +2378,9 @@ class DescribeQualityMetricsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, which is a Unix timestamp in seconds. The time length cannot exceed seven days.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2005,6 +2389,9 @@ class DescribeQualityMetricsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, which is a Unix timestamp in seconds. The time length cannot exceed seven days.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2013,6 +2400,20 @@ class DescribeQualityMetricsRequest(AbstractModel):
 
     @property
     def Metric(self):
+        """Metrics to be queried. Valid values:
+  - image_load_total_count: The number of image loads.
+  - image_load_fail_count: The number of image load failures.
+  - image_load_success_rate: The success rate of image loading, in percentage.
+  - ppt_load_total_count: The number of PowerPoint file loads.
+  - ppt_load_fail_count: The number of PowerPoint file load failures.
+  - ppt_load_success_rate: The success rate of PowerPoint file loading, in percentage.
+  - verify_sdk_total_count: The number of SDK verifications.
+  - verify_sdk_fail_count: The number of SDK verification failures.
+  - verify_sdk_success_rate: The success rate of SDK verification, in percentage.
+  - verify_sdk_in_one_second_rate: The rate of SDK verification completed within one second, in percentage.
+  - verify_sdk_cost_avg: The average time taken by each SDK verification, in milliseconds.
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -2021,6 +2422,9 @@ class DescribeQualityMetricsRequest(AbstractModel):
 
     @property
     def Interval(self):
+        """Aggregation interval. Valid value: `1h`.
+        :rtype: str
+        """
         return self._Interval
 
     @Interval.setter
@@ -2064,6 +2468,9 @@ class DescribeQualityMetricsResponse(AbstractModel):
 
     @property
     def Metric(self):
+        """Query metrics.
+        :rtype: str
+        """
         return self._Metric
 
     @Metric.setter
@@ -2072,6 +2479,9 @@ class DescribeQualityMetricsResponse(AbstractModel):
 
     @property
     def Content(self):
+        """Time series.
+        :rtype: list of TimeValue
+        """
         return self._Content
 
     @Content.setter
@@ -2080,6 +2490,9 @@ class DescribeQualityMetricsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2124,6 +2537,9 @@ class DescribeRecordSearchResponse(AbstractModel):
 
     @property
     def RecordTaskSet(self):
+        """The set of queried recording tasks.
+        :rtype: list of RecordTaskSearchResult
+        """
         return self._RecordTaskSet
 
     @RecordTaskSet.setter
@@ -2132,6 +2548,9 @@ class DescribeRecordSearchResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of recording tasks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2140,6 +2559,9 @@ class DescribeRecordSearchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2181,6 +2603,9 @@ class DescribeRoomListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2189,6 +2614,9 @@ class DescribeRoomListRequest(AbstractModel):
 
     @property
     def TimeRange(self):
+        """Query period, which consists of two Unix timestamps in milliseconds. The first indicates the start time and the second the end time.
+        :rtype: list of int
+        """
         return self._TimeRange
 
     @TimeRange.setter
@@ -2197,6 +2625,9 @@ class DescribeRoomListRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Extra query conditions.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -2205,6 +2636,9 @@ class DescribeRoomListRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """Maximum number of data entries to be returned. Default value: 1000.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -2244,6 +2678,9 @@ class DescribeRoomListResponse(AbstractModel):
 
     @property
     def RoomList(self):
+        """List of rooms of the whiteboard.
+        :rtype: list of RoomListItem
+        """
         return self._RoomList
 
     @RoomList.setter
@@ -2252,6 +2689,9 @@ class DescribeRoomListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2286,6 +2726,9 @@ class DescribeSnapshotTaskRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """ID of the query task.
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -2294,6 +2737,9 @@ class DescribeSnapshotTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the task.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2350,6 +2796,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TaskID(self):
+        """Task ID.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -2358,6 +2808,12 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Status(self):
+        """Task status.
+Running: The task is running.
+Finished: The task is finished.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2366,6 +2822,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CreateTime(self):
+        """Creation time of the task. Unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2374,6 +2834,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FinishTime(self):
+        """Completion time of the task. Unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -2382,6 +2846,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Result(self):
+        """Task result information.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.SnapshotResult`
+        """
         return self._Result
 
     @Result.setter
@@ -2390,6 +2858,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2437,6 +2908,9 @@ Note: Dynamic transcoding multiplies the number of pages of a document by eight 
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2445,6 +2919,15 @@ Note: Dynamic transcoding multiplies the number of pages of a document by eight 
 
     @property
     def SubProduct(self):
+        """Subproduct usage to be queried. The following parameters are supported:
+- sp_tiw_board: The duration of use of whiteboards, in minutes.
+- sp_tiw_dt: The number of pages dynamically transcoded.
+- sp_tiw_st: The number of pages statically transcoded.
+- sp_tiw_ric: The duration of real-time recording, in minutes.
+
+Note: Dynamic transcoding multiplies the number of pages of a document by eight times. Static transcoding does not change the number of pages of a document.
+        :rtype: str
+        """
         return self._SubProduct
 
     @SubProduct.setter
@@ -2453,6 +2936,9 @@ Note: Dynamic transcoding multiplies the number of pages of a document by eight 
 
     @property
     def StartTime(self):
+        """Start date in the format of YYYY-MM-DD. The start date is included in the query period.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2461,6 +2947,9 @@ Note: Dynamic transcoding multiplies the number of pages of a document by eight 
 
     @property
     def EndTime(self):
+        """End date in the format of YYYY-MM-DD. The end date is included in the query period. The period queried per request cannot be longer than 31 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2500,6 +2989,9 @@ class DescribeTIWDailyUsageResponse(AbstractModel):
 
     @property
     def Usages(self):
+        """Usage summary of a specified product during a specified query period.
+        :rtype: list of UsageDataItem
+        """
         return self._Usages
 
     @Usages.setter
@@ -2508,6 +3000,9 @@ class DescribeTIWDailyUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2559,6 +3054,9 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2567,6 +3065,11 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def SubProduct(self):
+        """Subproduct usage to be queried. The following parameters are supported:
+- sp_tiw_board: The duration of use of whiteboards, in minutes.
+- sp_tiw_ric: The duration of real-time recording, in minutes.
+        :rtype: str
+        """
         return self._SubProduct
 
     @SubProduct.setter
@@ -2575,6 +3078,9 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start date in the format of YYYY-MM-DD. The start date is included in the query period.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2583,6 +3089,9 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End date in the format of YYYY-MM-DD. The end date is included in the query period. The period queried per request cannot be longer than 31 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2591,6 +3100,9 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def RoomIDs(self):
+        """Room IDs to be queried. If you leave this parameter empty, all room IDs are queried.
+        :rtype: list of int non-negative
+        """
         return self._RoomIDs
 
     @RoomIDs.setter
@@ -2599,6 +3111,9 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset for query. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2607,6 +3122,9 @@ class DescribeTIWRoomDailyUsageRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of entries returned per query. Default value: `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2652,6 +3170,9 @@ class DescribeTIWRoomDailyUsageResponse(AbstractModel):
 
     @property
     def Usages(self):
+        """Usage of the specified product per room during the specified query period.
+        :rtype: list of RoomUsageDataItem
+        """
         return self._Usages
 
     @Usages.setter
@@ -2660,6 +3181,9 @@ class DescribeTIWRoomDailyUsageResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Number of usage data entries.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2668,6 +3192,9 @@ class DescribeTIWRoomDailyUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2700,6 +3227,9 @@ class DescribeTranscodeCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the application
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2739,6 +3269,9 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
+        """Document transcoding callback address
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -2747,6 +3280,9 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Authentication key of the document transcoding callback
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -2755,6 +3291,9 @@ class DescribeTranscodeCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2785,6 +3324,9 @@ class DescribeTranscodeRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -2793,6 +3335,9 @@ class DescribeTranscodeRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Unique ID of the document transcoding task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2886,6 +3431,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Pages(self):
+        """Total number of document pages
+        :rtype: int
+        """
         return self._Pages
 
     @Pages.setter
@@ -2894,6 +3442,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Progress(self):
+        """Transcoding progress. Value range: 0 to 100
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -2902,6 +3453,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Resolution(self):
+        """Document resolution
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -2910,6 +3464,12 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ResultUrl(self):
+        """URL of the transcoding result
+Dynamic transcoding: link of the HTML5 page transcoded from a PowerPoint file
+Static transcoding: URL prefix of the image transcoded for each document page. For example, if the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/`, the image URL of the first page is
+`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.
+        :rtype: str
+        """
         return self._ResultUrl
 
     @ResultUrl.setter
@@ -2918,6 +3478,12 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Status(self):
+        """Current task state
+- QUEUED: queuing for transcoding
+- PROCESSING: transcoding is in progress
+- FINISHED: transcoded
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2926,6 +3492,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TaskId(self):
+        """Unique ID of the transcoding task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2934,6 +3503,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Title(self):
+        """Document name
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -2942,6 +3514,12 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ThumbnailUrl(self):
+        """URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/ `, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is
+`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.
+
+If the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.
+        :rtype: str
+        """
         return self._ThumbnailUrl
 
     @ThumbnailUrl.setter
@@ -2950,6 +3528,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ThumbnailResolution(self):
+        """Resolution of the thumbnail generated for dynamic transcoding
+        :rtype: str
+        """
         return self._ThumbnailResolution
 
     @ThumbnailResolution.setter
@@ -2958,6 +3539,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CompressFileUrl(self):
+        """URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.
+        :rtype: str
+        """
         return self._CompressFileUrl
 
     @CompressFileUrl.setter
@@ -2966,6 +3550,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ResourceListUrl(self):
+        """Download URL (for trial) of the resource list.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceListUrl
 
     @ResourceListUrl.setter
@@ -2974,6 +3562,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Ext(self):
+        """Document generation mode (for trial).
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Ext
 
     @Ext.setter
@@ -2982,6 +3574,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CreateTime(self):
+        """Document transcoding task creation time, unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2990,6 +3586,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def AssignTime(self):
+        """Document transcoding task assignment time, unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AssignTime
 
     @AssignTime.setter
@@ -2998,6 +3598,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FinishedTime(self):
+        """Document transcoding task finished time, unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FinishedTime
 
     @FinishedTime.setter
@@ -3006,6 +3610,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3058,6 +3665,9 @@ class DescribeTranscodeSearchResponse(AbstractModel):
 
     @property
     def TranscodeTaskSet(self):
+        """The set of queried transcoding tasks.
+        :rtype: list of TranscodeTaskSearchResult
+        """
         return self._TranscodeTaskSet
 
     @TranscodeTaskSet.setter
@@ -3066,6 +3676,9 @@ class DescribeTranscodeSearchResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of transcoding tasks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3074,6 +3687,9 @@ class DescribeTranscodeSearchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3116,6 +3732,9 @@ false: Returns raw data.
 
     @property
     def BeginTime(self):
+        """Start time of the query period.
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -3124,6 +3743,9 @@ false: Returns raw data.
 
     @property
     def EndTime(self):
+        """End time of the query period.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3132,6 +3754,9 @@ false: Returns raw data.
 
     @property
     def SubProducts(self):
+        """Subproducts whose usage you want to query.
+        :rtype: list of str
+        """
         return self._SubProducts
 
     @SubProducts.setter
@@ -3140,6 +3765,10 @@ false: Returns raw data.
 
     @property
     def IsWeighted(self):
+        """true: Returns weighted data.
+false: Returns raw data.
+        :rtype: bool
+        """
         return self._IsWeighted
 
     @IsWeighted.setter
@@ -3176,6 +3805,9 @@ class DescribeUsageSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3213,6 +3845,9 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3221,6 +3856,9 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID to be used to query users.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3229,6 +3867,9 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def TimeRange(self):
+        """Query period, which consists of two Unix timestamps in milliseconds. The first indicates the start time and the second the end time.
+        :rtype: list of int
+        """
         return self._TimeRange
 
     @TimeRange.setter
@@ -3237,6 +3878,9 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Extra query conditions.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -3245,6 +3889,9 @@ class DescribeUserListRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """Maximum number of data entries to be returned. Default value: `1000`.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -3285,6 +3932,9 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def UserList(self):
+        """User list of the room.
+        :rtype: list of UserListItem
+        """
         return self._UserList
 
     @UserList.setter
@@ -3293,6 +3943,9 @@ class DescribeUserListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3330,6 +3983,9 @@ class DescribeUserResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3379,6 +4035,9 @@ class DescribeUserStatusResponse(AbstractModel):
 
     @property
     def AppId(self):
+        """AppId of the customer.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -3387,6 +4046,12 @@ class DescribeUserStatusResponse(AbstractModel):
 
     @property
     def IsTiwUser(self):
+        """Specifies whether the whiteboard service of the trial or official edition is activated before.
+
+0: The whiteboard service is not activated.
+1: The whiteboard service is activated.
+        :rtype: int
+        """
         return self._IsTiwUser
 
     @IsTiwUser.setter
@@ -3395,6 +4060,9 @@ class DescribeUserStatusResponse(AbstractModel):
 
     @property
     def IsSaaSUser(self):
+        """Specifies whether the interactive class feature of the trial or official edition is activated before.
+        :rtype: int
+        """
         return self._IsSaaSUser
 
     @IsSaaSUser.setter
@@ -3403,6 +4071,9 @@ class DescribeUserStatusResponse(AbstractModel):
 
     @property
     def IsTiwOfflineRecordUser(self):
+        """Specifies whether the user uses the offline recording feature of the whiteboard service.
+        :rtype: int
+        """
         return self._IsTiwOfflineRecordUser
 
     @IsTiwOfflineRecordUser.setter
@@ -3411,6 +4082,9 @@ class DescribeUserStatusResponse(AbstractModel):
 
     @property
     def IsAuthenticated(self):
+        """Specifies whether the user is authenticated.
+        :rtype: int
+        """
         return self._IsAuthenticated
 
     @IsAuthenticated.setter
@@ -3419,6 +4093,9 @@ class DescribeUserStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3449,6 +4126,9 @@ class DescribeVideoGenerationTaskCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3488,6 +4168,9 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
+        """Callback URL for recording video generation.
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -3496,6 +4179,9 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Callback authentication key for recording video generation.
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -3504,6 +4190,9 @@ class DescribeVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3534,6 +4223,9 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3542,6 +4234,9 @@ class DescribeVideoGenerationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the recording video generation task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3603,6 +4298,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """Group ID corresponding to the task.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -3611,6 +4309,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID corresponding to the task.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -3619,6 +4320,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3627,6 +4331,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """Disused.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -3635,6 +4342,12 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Status of the recording video generation task. Valid values:
+- QUEUED: Queuing.
+- PROCESSING: Video generation in progress.
+- FINISHED: Video generation finished. (To determine whether the task succeeded or failed, check the error code and message.)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3643,6 +4356,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def TotalTime(self):
+        """Total video playback duration. Unit: milliseconds.
+        :rtype: int
+        """
         return self._TotalTime
 
     @TotalTime.setter
@@ -3651,6 +4367,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def VideoInfos(self):
+        """Disused. Use the `VideoInfoList` parameter.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.VideoInfo`
+        """
         return self._VideoInfos
 
     @VideoInfos.setter
@@ -3659,6 +4378,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def VideoInfoList(self):
+        """List of videos generated by the recording video generation tasks.
+        :rtype: list of VideoInfo
+        """
         return self._VideoInfoList
 
     @VideoInfoList.setter
@@ -3667,6 +4389,9 @@ class DescribeVideoGenerationTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3715,6 +4440,9 @@ transcode: Document transcoding.
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3723,6 +4451,11 @@ transcode: Document transcoding.
 
     @property
     def TaskTypes(self):
+        """Task types to be queried.
+recording: Real-time recording.
+transcode: Document transcoding.
+        :rtype: list of str
+        """
         return self._TaskTypes
 
     @TaskTypes.setter
@@ -3731,6 +4464,9 @@ transcode: Document transcoding.
 
     @property
     def SdkAppIds(self):
+        """SdkAppIds to be used to query configurations.
+        :rtype: list of int
+        """
         return self._SdkAppIds
 
     @SdkAppIds.setter
@@ -3772,6 +4508,9 @@ class DescribeWhiteboardApplicationConfigResponse(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3780,6 +4519,9 @@ class DescribeWhiteboardApplicationConfigResponse(AbstractModel):
 
     @property
     def Configs(self):
+        """Task-related configurations of the whiteboard application.
+        :rtype: list of WhiteboardApplicationConfig
+        """
         return self._Configs
 
     @Configs.setter
@@ -3788,6 +4530,9 @@ class DescribeWhiteboardApplicationConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3825,6 +4570,9 @@ transcode: Document transcoding.
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3833,6 +4581,11 @@ transcode: Document transcoding.
 
     @property
     def TaskType(self):
+        """Task type to be queried.
+recording: Real-time recording.
+transcode: Document transcoding.
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -3867,6 +4620,9 @@ class DescribeWhiteboardBucketConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3892,6 +4648,9 @@ class DescribeWhiteboardPushCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3931,6 +4690,9 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def Callback(self):
+        """Callback URL of the whiteboard push event. If no callback URL is set, this parameter is null.
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -3939,6 +4701,9 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Callback authentication key for whiteboard push.
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -3947,6 +4712,9 @@ class DescribeWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3977,6 +4745,9 @@ class DescribeWhiteboardPushRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -3985,6 +4756,9 @@ class DescribeWhiteboardPushRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the whiteboard push task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4059,6 +4833,12 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FinishReason(self):
+        """Reason for push stop.
+- AUTO: Pushing automatically stops because no upstream audio/video or whiteboard operation occurs in the room for a long time.
+- USER_CALL: The API for stopping pushing is called.
+- EXCEPTION: An exception occurred.
+        :rtype: str
+        """
         return self._FinishReason
 
     @FinishReason.setter
@@ -4067,6 +4847,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TaskId(self):
+        """ID of the whiteboard push task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4075,6 +4858,12 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Status(self):
+        """Status of the push task.
+- PREPARED: Push in preparation (including entering the room and starting the push service).
+- PUSHING: Pushing in progress.
+- STOPPED: Pushing stopped.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4083,6 +4872,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -4091,6 +4883,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def GroupId(self):
+        """Group ID of the whiteboard.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4099,6 +4894,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def PushUserId(self):
+        """User ID of the push task.
+        :rtype: str
+        """
         return self._PushUserId
 
     @PushUserId.setter
@@ -4107,6 +4905,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def PushStartTime(self):
+        """Actual push start time, which is a Unix timestamp in seconds.
+        :rtype: int
+        """
         return self._PushStartTime
 
     @PushStartTime.setter
@@ -4115,6 +4916,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def PushStopTime(self):
+        """Actual push stop time, which is a Unix timestamp in seconds.
+        :rtype: int
+        """
         return self._PushStopTime
 
     @PushStopTime.setter
@@ -4123,6 +4927,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ExceptionCnt(self):
+        """Number of exceptions during push.
+        :rtype: int
+        """
         return self._ExceptionCnt
 
     @ExceptionCnt.setter
@@ -4131,6 +4938,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def IMSyncTime(self):
+        """IM timestamp corresponding to the first frame of the whiteboard push video. The timestamp is used for time synchronization between IM messages and the whiteboard push video during playback.
+        :rtype: int
+        """
         return self._IMSyncTime
 
     @IMSyncTime.setter
@@ -4139,6 +4949,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Backup(self):
+        """Result information of the backup push task.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Backup
 
     @Backup.setter
@@ -4147,6 +4961,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4195,6 +5012,9 @@ class DescribeWhiteboardPushSearchResponse(AbstractModel):
 
     @property
     def WhiteboardPushTaskSet(self):
+        """The set of queried push tasks.
+        :rtype: list of WhiteboardPushTaskSearchResult
+        """
         return self._WhiteboardPushTaskSet
 
     @WhiteboardPushTaskSet.setter
@@ -4203,6 +5023,9 @@ class DescribeWhiteboardPushSearchResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of push tasks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4211,6 +5034,9 @@ class DescribeWhiteboardPushSearchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4249,6 +5075,9 @@ class Detail(AbstractModel):
 
     @property
     def TagName(self):
+        """Usage metric.
+        :rtype: str
+        """
         return self._TagName
 
     @TagName.setter
@@ -4257,6 +5086,9 @@ class Detail(AbstractModel):
 
     @property
     def Weight(self):
+        """Usage weight.
+        :rtype: float
+        """
         return self._Weight
 
     @Weight.setter
@@ -4265,6 +5097,9 @@ class Detail(AbstractModel):
 
     @property
     def Value(self):
+        """Usage value.
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -4305,6 +5140,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def UserId(self):
+        """User ID.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -4313,6 +5152,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Count(self):
+        """Number of video stream interruptions.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -4360,6 +5203,9 @@ The Z axis determines the overlap sequence of images. The image with the largest
 
     @property
     def Width(self):
+        """Stream image width. Value range: [2,3000]
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -4368,6 +5214,9 @@ The Z axis determines the overlap sequence of images. The image with the largest
 
     @property
     def Height(self):
+        """Stream image height. Value range: [2,3000]
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -4376,6 +5225,9 @@ The Z axis determines the overlap sequence of images. The image with the largest
 
     @property
     def X(self):
+        """Offset of the top point in the upper-left corner of the current image to the X axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].
+        :rtype: int
+        """
         return self._X
 
     @X.setter
@@ -4384,6 +5236,9 @@ The Z axis determines the overlap sequence of images. The image with the largest
 
     @property
     def Y(self):
+        """Offset of the top point in the upper-left corner of the current image to the Y axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].
+        :rtype: int
+        """
         return self._Y
 
     @Y.setter
@@ -4392,6 +5247,10 @@ The Z axis determines the overlap sequence of images. The image with the largest
 
     @property
     def ZOrder(self):
+        """Z-axis position of the image. The default value is 0.
+The Z axis determines the overlap sequence of images. The image with the largest z-axis value is at the top layer.
+        :rtype: int
+        """
         return self._ZOrder
 
     @ZOrder.setter
@@ -4445,6 +5304,9 @@ If this parameter is available, the ModelId and TeacherId fields will be ignored
 
     @property
     def Enabled(self):
+        """Whether stream mixing is enabled
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -4453,6 +5315,9 @@ If this parameter is available, the ModelId and TeacherId fields will be ignored
 
     @property
     def DisableAudio(self):
+        """Whether audio stream mixing is disabled
+        :rtype: bool
+        """
         return self._DisableAudio
 
     @DisableAudio.setter
@@ -4461,6 +5326,10 @@ If this parameter is available, the ModelId and TeacherId fields will be ignored
 
     @property
     def ModelId(self):
+        """ID of the embedded mixed stream layout template. Valid values: 1 and 2. For more information on the differences of both values, see the sample embedded mixed stream layout template.
+If the Custom field is not specified, ModelId is required.
+        :rtype: int
+        """
         return self._ModelId
 
     @ModelId.setter
@@ -4469,6 +5338,11 @@ If this parameter is available, the ModelId and TeacherId fields will be ignored
 
     @property
     def TeacherId(self):
+        """ID of a teacher account
+This field is valid only when ModelId is specified.
+If you specify TeacherID for a user, the user's video stream will be displayed in the first image of the embedded template.
+        :rtype: str
+        """
         return self._TeacherId
 
     @TeacherId.setter
@@ -4477,6 +5351,10 @@ If this parameter is available, the ModelId and TeacherId fields will be ignored
 
     @property
     def Custom(self):
+        """Custom mixed stream layout parameter
+If this parameter is available, the ModelId and TeacherId fields will be ignored.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.CustomLayout`
+        """
         return self._Custom
 
     @Custom.setter
@@ -4519,6 +5397,9 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4527,6 +5408,9 @@ class ModifyApplicationRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -4561,6 +5445,9 @@ class ModifyApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4592,6 +5479,9 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def SubProduct(self):
+        """Subproduct ID. To obtain this ID, call the `DescribeUserResources` API and find the subproduct ID of the monthly feature package with the level 1. Usually the value is `sp_tiw_package`.
+        :rtype: str
+        """
         return self._SubProduct
 
     @SubProduct.setter
@@ -4600,6 +5490,9 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """Resource ID. To obtain this ID, call the `DescribeUserResources` API and find the resource ID of the monthly feature package with the level 1.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4608,6 +5501,9 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """Renewal mode. Valid values: `0` (default mode, which is auto-renewal), `1` (auto-renewal), `2` (manual renewal, which is specified by users). If no renewal is required, set it to `0`.
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -4643,6 +5539,9 @@ class ModifyAutoRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4671,6 +5570,9 @@ class ModifyWhiteboardApplicationConfigRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4679,6 +5581,9 @@ class ModifyWhiteboardApplicationConfigRequest(AbstractModel):
 
     @property
     def Configs(self):
+        """Task-related configurations of the whiteboard application.
+        :rtype: list of WhiteboardApplicationConfig
+        """
         return self._Configs
 
     @Configs.setter
@@ -4718,6 +5623,9 @@ class ModifyWhiteboardApplicationConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4760,6 +5668,9 @@ transcode: Document transcoding.
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4768,6 +5679,11 @@ transcode: Document transcoding.
 
     @property
     def TaskType(self):
+        """Task type to be queried.
+recording: Real-time recording.
+transcode: Document transcoding.
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -4776,6 +5692,9 @@ transcode: Document transcoding.
 
     @property
     def BucketName(self):
+        """Name of the COS bucket.
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -4784,6 +5703,9 @@ transcode: Document transcoding.
 
     @property
     def BucketLocation(self):
+        """Region of the COS bucket.
+        :rtype: str
+        """
         return self._BucketLocation
 
     @BucketLocation.setter
@@ -4792,6 +5714,9 @@ transcode: Document transcoding.
 
     @property
     def BucketPrefix(self):
+        """Resource prefix of the bucket.
+        :rtype: str
+        """
         return self._BucketPrefix
 
     @BucketPrefix.setter
@@ -4800,6 +5725,9 @@ transcode: Document transcoding.
 
     @property
     def ResultDomain(self):
+        """Domain name of the URL of the bucket.
+        :rtype: str
+        """
         return self._ResultDomain
 
     @ResultDomain.setter
@@ -4838,6 +5766,9 @@ class ModifyWhiteboardBucketConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4869,6 +5800,9 @@ class OmittedDuration(AbstractModel):
 
     @property
     def VideoTime(self):
+        """Offset of the paused time in the spliced video, in milliseconds
+        :rtype: int
+        """
         return self._VideoTime
 
     @VideoTime.setter
@@ -4877,6 +5811,9 @@ class OmittedDuration(AbstractModel):
 
     @property
     def PauseTime(self):
+        """Recording pause timestamp, in milliseconds
+        :rtype: int
+        """
         return self._PauseTime
 
     @PauseTime.setter
@@ -4885,6 +5822,9 @@ class OmittedDuration(AbstractModel):
 
     @property
     def ResumeTime(self):
+        """Recording resumption timestamp, in milliseconds
+        :rtype: int
+        """
         return self._ResumeTime
 
     @ResumeTime.setter
@@ -4923,6 +5863,9 @@ class PauseOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -4931,6 +5874,9 @@ class PauseOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the real-time recording task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -4965,6 +5911,9 @@ class PauseOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5017,6 +5966,9 @@ The setting in this parameter is applied to all streams. However, if `StreamCont
 
     @property
     def Enabled(self):
+        """It specifies whether to enable RecordControl. Valid values: true (yes); false (no).
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -5025,6 +5977,14 @@ The setting in this parameter is applied to all streams. However, if `StreamCont
 
     @property
     def DisableRecord(self):
+        """A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:
+
+true: no stream is recorded.
+false: all streams are recorded. Default value: false.
+
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :rtype: bool
+        """
         return self._DisableRecord
 
     @DisableRecord.setter
@@ -5033,6 +5993,14 @@ The setting in this parameter is applied to all streams. However, if `StreamCont
 
     @property
     def DisableAudio(self):
+        """A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:
+
+true: no audio recording of any streams.
+false: audio recording of all streams. Default value: false.
+
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :rtype: bool
+        """
         return self._DisableAudio
 
     @DisableAudio.setter
@@ -5041,6 +6009,14 @@ The setting in this parameter is applied to all streams. However, if `StreamCont
 
     @property
     def PullSmallVideo(self):
+        """A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:
+
+true: only records low-resolution videos for all streams. Please ensure that the up-streaming end pushes the low-resolution videos. Otherwise, the recorded video may be black.
+false: high-resolution video recording of all streams. Default value: false.
+
+The setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.
+        :rtype: bool
+        """
         return self._PullSmallVideo
 
     @PullSmallVideo.setter
@@ -5049,6 +6025,9 @@ The setting in this parameter is applied to all streams. However, if `StreamCont
 
     @property
     def StreamControls(self):
+        """Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. 
+        :rtype: list of StreamControl
+        """
         return self._StreamControls
 
     @StreamControls.setter
@@ -5124,6 +6103,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def FinishReason(self):
+        """`AUTO`: Recording automatically stops. `USER_CALL`: The API for stopping recording is called.
+        :rtype: str
+        """
         return self._FinishReason
 
     @FinishReason.setter
@@ -5132,6 +6114,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def ExceptionCnt(self):
+        """Number of exceptions.
+        :rtype: int
+        """
         return self._ExceptionCnt
 
     @ExceptionCnt.setter
@@ -5140,6 +6125,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5148,6 +6136,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def GroupId(self):
+        """Group ID.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5156,6 +6147,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def RecordStartTime(self):
+        """Actual recording start time.
+        :rtype: int
+        """
         return self._RecordStartTime
 
     @RecordStartTime.setter
@@ -5164,6 +6158,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def RecordStopTime(self):
+        """Recording end time.
+        :rtype: int
+        """
         return self._RecordStopTime
 
     @RecordStopTime.setter
@@ -5172,6 +6169,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def TotalTime(self):
+        """Recording duration.
+        :rtype: int
+        """
         return self._TotalTime
 
     @TotalTime.setter
@@ -5180,6 +6180,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def VideoInfos(self):
+        """List of video information.
+        :rtype: list of VideoInfo
+        """
         return self._VideoInfos
 
     @VideoInfos.setter
@@ -5188,6 +6191,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def OmittedDurations(self):
+        """Omitted video durations.
+        :rtype: list of OmittedDuration
+        """
         return self._OmittedDurations
 
     @OmittedDurations.setter
@@ -5196,6 +6202,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def Details(self):
+        """Details.
+        :rtype: str
+        """
         return self._Details
 
     @Details.setter
@@ -5204,6 +6213,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """Task execution error code.
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -5212,6 +6224,9 @@ class RecordTaskResult(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """Error message.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -5286,6 +6301,9 @@ class RecordTaskSearchResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """Unique task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5294,6 +6312,14 @@ class RecordTaskSearchResult(AbstractModel):
 
     @property
     def Status(self):
+        """Status of the real-time recording task.
+- PAUSED: Recording paused.
+- PREPARED: Recording in preparation.
+- RECORDING: Recording in progress.
+- STOPPED: Recording stopped.
+- FINISHED: Recording finished.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5302,6 +6328,9 @@ class RecordTaskSearchResult(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID of the real-time recording task.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5310,6 +6339,9 @@ class RecordTaskSearchResult(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the task.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5318,6 +6350,9 @@ class RecordTaskSearchResult(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5326,6 +6361,9 @@ class RecordTaskSearchResult(AbstractModel):
 
     @property
     def Result(self):
+        """Real-time recording result.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.RecordTaskResult`
+        """
         return self._Result
 
     @Result.setter
@@ -5369,6 +6407,9 @@ class ResumeOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5377,6 +6418,9 @@ class ResumeOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the resumed real-time recording task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -5411,6 +6455,9 @@ class ResumeOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5445,6 +6492,9 @@ class RoomListItem(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: str
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -5453,6 +6503,9 @@ class RoomListItem(AbstractModel):
 
     @property
     def StartTime(self):
+        """The first time when the room ID appeared during the queried period, which is a Unix timestamp in milliseconds.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5461,6 +6514,9 @@ class RoomListItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """The last time when the room ID appeared during the queried period, which is a Unix timestamp in milliseconds.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5469,6 +6525,9 @@ class RoomListItem(AbstractModel):
 
     @property
     def UserNumber(self):
+        """Number of users in the room.
+        :rtype: int
+        """
         return self._UserNumber
 
     @UserNumber.setter
@@ -5520,6 +6579,9 @@ class RoomUsageDataItem(AbstractModel):
 
     @property
     def Time(self):
+        """Start date in the format of YYYY-MM-DD.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -5528,6 +6590,9 @@ class RoomUsageDataItem(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5536,6 +6601,11 @@ class RoomUsageDataItem(AbstractModel):
 
     @property
     def SubProduct(self):
+        """Subproduct usage information, which is consistent with the corresponding request parameters.
+- sp_tiw_board: The duration of use of whiteboards.
+- sp_tiw_ric: The duration of real-time recording.
+        :rtype: str
+        """
         return self._SubProduct
 
     @SubProduct.setter
@@ -5544,6 +6614,10 @@ class RoomUsageDataItem(AbstractModel):
 
     @property
     def Value(self):
+        """Usage values.
+- The unit of sp_tiw_board and sp_tiw_ric is minutes.
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -5552,6 +6626,9 @@ class RoomUsageDataItem(AbstractModel):
 
     @property
     def RoomID(self):
+        """
+        :rtype: int
+        """
         return self._RoomID
 
     @RoomID.setter
@@ -5592,6 +6669,9 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the application
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5600,6 +6680,9 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -5634,6 +6717,9 @@ class SetOnlineRecordCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5662,6 +6748,9 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5670,6 +6759,9 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
+        """Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -5704,6 +6796,9 @@ class SetOnlineRecordCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5732,6 +6827,9 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the application
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5740,6 +6838,9 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -5774,6 +6875,9 @@ class SetTranscodeCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5803,6 +6907,9 @@ For more information about the callback format, please [see here](https://www.te
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5811,6 +6918,10 @@ For more information about the callback format, please [see here](https://www.te
 
     @property
     def Callback(self):
+        """Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.
+For more information about the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -5845,6 +6956,9 @@ class SetTranscodeCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5873,6 +6987,9 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5881,6 +6998,9 @@ class SetVideoGenerationTaskCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Callback authentication key for recording video generation. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted.
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -5915,6 +7035,9 @@ class SetVideoGenerationTaskCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5943,6 +7066,9 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -5951,6 +7077,9 @@ class SetVideoGenerationTaskCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
+        """Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -5985,6 +7114,9 @@ class SetVideoGenerationTaskCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6013,6 +7145,9 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6021,6 +7156,9 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
 
     @property
     def CallbackKey(self):
+        """Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -6055,6 +7193,9 @@ class SetWhiteboardPushCallbackKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6083,6 +7224,9 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6091,6 +7235,9 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
 
     @property
     def Callback(self):
+        """Callback URL of the whiteboard push task result. If an empty string is passed in, the existing callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`. For the callback format, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -6125,6 +7272,9 @@ class SetWhiteboardPushCallbackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6162,6 +7312,9 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Uin(self):
+        """UIN of the Tencent Cloud account.
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -6170,6 +7323,9 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Region(self):
+        """COS region.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -6178,6 +7334,9 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Bucket(self):
+        """COS bucket name.
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -6186,6 +7345,9 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def TargetDir(self):
+        """Root directory for storing whiteboard snapshots.
+        :rtype: str
+        """
         return self._TargetDir
 
     @TargetDir.setter
@@ -6194,6 +7356,9 @@ class SnapshotCOS(AbstractModel):
 
     @property
     def Domain(self):
+        """CDN acceleration domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6244,6 +7409,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ErrorCode(self):
+        """Task execution error code.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -6252,6 +7421,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ErrorMessage(self):
+        """Task execution error message.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -6260,6 +7433,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Total(self):
+        """Number of generated snapshot images.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6268,6 +7445,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Snapshots(self):
+        """List of URLs of the snapshot images.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Snapshots
 
     @Snapshots.setter
@@ -6310,6 +7491,9 @@ class SnapshotWhiteboard(AbstractModel):
 
     @property
     def Width(self):
+        """Whiteboard width. Valid range: [0,2560]. Default value: 1280.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -6318,6 +7502,9 @@ class SnapshotWhiteboard(AbstractModel):
 
     @property
     def Height(self):
+        """Whiteboard height. Valid range: [0,2560]. Default value: 720.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -6326,6 +7513,9 @@ class SnapshotWhiteboard(AbstractModel):
 
     @property
     def InitParams(self):
+        """Escaped JSON string of the whiteboard initial parameters, which is passed through to the Tencent Interactive Whiteboard SDK.
+        :rtype: str
+        """
         return self._InitParams
 
     @InitParams.setter
@@ -6411,6 +7601,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6419,6 +7612,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def RoomId(self):
+        """ID of the room for recording. Value range: (1, 4294967295)
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -6427,6 +7623,10 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def RecordUserId(self):
+        """User ID used by the recording service for entering a room. The ID cannot exceed 60 bytes in length. Its format is `tic_record_user_${RoomId}_${Random}`, where `${RoomId}` indicates the ID of the room for recording and `${Random}` is a random string.
+The ID must be an unused ID in the SDK. The recording service uses the user ID to enter the room for audio, video, and whiteboard recording. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the recording operation.
+        :rtype: str
+        """
         return self._RecordUserId
 
     @RecordUserId.setter
@@ -6435,6 +7635,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def RecordUserSig(self):
+        """Signature corresponding to RecordUserId
+        :rtype: str
+        """
         return self._RecordUserSig
 
     @RecordUserSig.setter
@@ -6443,6 +7646,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def GroupId(self):
+        """(Disused) IM group ID of the whiteboard. By default, it is the same as the room ID.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -6451,6 +7657,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def Concat(self):
+        """Real-time recording video splicing parameter
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.Concat`
+        """
         return self._Concat
 
     @Concat.setter
@@ -6459,6 +7668,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def Whiteboard(self):
+        """Real-time recording whiteboard parameter, such as the whiteboard width and height
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
+        """
         return self._Whiteboard
 
     @Whiteboard.setter
@@ -6467,6 +7679,12 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def MixStream(self):
+        """Real-time recording stream mixing parameter
+Notes:
+1. The stream mixing feature needs to be enabled separately. If you need the feature, contact TIW customer service.
+2. To use the stream mixing feature, the Extras parameter is required and must contain "MIX_STREAM".
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.MixStream`
+        """
         return self._MixStream
 
     @MixStream.setter
@@ -6475,6 +7693,11 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def Extras(self):
+        """List of advanced features used
+List of possible values:
+MIX_STREAM - Stream mixing feature
+        :rtype: list of str
+        """
         return self._Extras
 
     @Extras.setter
@@ -6483,6 +7706,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def AudioFileNeeded(self):
+        """Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3.
+        :rtype: bool
+        """
         return self._AudioFileNeeded
 
     @AudioFileNeeded.setter
@@ -6491,6 +7717,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def RecordControl(self):
+        """A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.RecordControl`
+        """
         return self._RecordControl
 
     @RecordControl.setter
@@ -6499,6 +7728,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def RecordMode(self):
+        """
+        :rtype: str
+        """
         return self._RecordMode
 
     @RecordMode.setter
@@ -6507,6 +7739,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def ChatGroupId(self):
+        """
+        :rtype: str
+        """
         return self._ChatGroupId
 
     @ChatGroupId.setter
@@ -6515,6 +7750,11 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def AutoStopTimeout(self):
+        """Recording timeout. Unit: seconds. Valid range: [300,86400]. Default value: 300.
+
+If no upstream audio/video exists or no operation is performed on the whiteboard for the specified period of time, the recording service automatically stops the recording task.
+        :rtype: int
+        """
         return self._AutoStopTimeout
 
     @AutoStopTimeout.setter
@@ -6523,6 +7763,9 @@ If no upstream audio/video exists or no operation is performed on the whiteboard
 
     @property
     def ExtraData(self):
+        """Internal parameter. You can ignore this parameter.
+        :rtype: str
+        """
         return self._ExtraData
 
     @ExtraData.setter
@@ -6581,6 +7824,9 @@ class StartOnlineRecordResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the real-time recording task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6589,6 +7835,9 @@ class StartOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6732,6 +7981,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -6740,6 +7992,12 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def RoomId(self):
+        """Room ID of the whiteboard push task. Valid range: (1,4294967295).
+
+1. By default, the whiteboard push task uses the RoomId string as the GroupID of the IM group. For example, if the RoomId string is 1234, the GroupID of the IM group is also 1234. Message synchronization requires joining a group. Make sure that an IM group is created before the push starts. Otherwise, the push fails.
+2. If neither TRTCRoomId nor TRTCRoomIdStr is specified, the value of RoomId is used as the Tencent Real-Time Communication (TRTC) room ID for the whiteboard push task.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -6748,6 +8006,10 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def PushUserId(self):
+        """User ID used by the whiteboard push service for entering the whiteboard room. If `IMAuthParam`and `TRTCAuthParam` are not specified, this user ID is used for operations such as logging in to the IM application, joining an IM group, and entering the room for TRTC whiteboard push.
+The ID cannot exceed 60 bytes in length and must be an unused ID. The whiteboard push service uses the user ID to enter the room for whiteboard audio/video push. If this ID is already used in another scenario, the other scenario and whiteboard push service will conflict, affecting the pushing operation.
+        :rtype: str
+        """
         return self._PushUserId
 
     @PushUserId.setter
@@ -6756,6 +8018,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def PushUserSig(self):
+        """User's IM signature corresponding to the PushUserId.
+        :rtype: str
+        """
         return self._PushUserSig
 
     @PushUserSig.setter
@@ -6764,6 +8029,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def Whiteboard(self):
+        """Whiteboard parameters, such as the width, height, and background color of the whiteboard.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
+        """
         return self._Whiteboard
 
     @Whiteboard.setter
@@ -6772,6 +8040,11 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def AutoStopTimeout(self):
+        """Whiteboard push timeout. Unit: seconds. Valid range: [300,259200]. Default value: 1800.
+
+If no operation is performed on the whiteboard for the specified period of time, the whiteboard push service automatically stops whiteboard push.
+        :rtype: int
+        """
         return self._AutoStopTimeout
 
     @AutoStopTimeout.setter
@@ -6780,6 +8053,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def AutoManageBackup(self):
+        """Specifies whether to synchronize operations on the primary whiteboard push task to the backup task.
+        :rtype: bool
+        """
         return self._AutoManageBackup
 
     @AutoManageBackup.setter
@@ -6788,6 +8064,11 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def Backup(self):
+        """Parameters of the backup whiteboard push task.
+
+After the backup parameters are specified, the whiteboard push service adds a relayed video stream. That is, there are two video streams on the whiteboard in the same room.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.WhiteboardPushBackupParam`
+        """
         return self._Backup
 
     @Backup.setter
@@ -6796,6 +8077,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def PrivateMapKey(self):
+        """Advanced permission control parameter in TRTC. If the advanced permission control feature is enabled in TRTC, this parameter is required.
+        :rtype: str
+        """
         return self._PrivateMapKey
 
     @PrivateMapKey.setter
@@ -6804,6 +8088,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def VideoFPS(self):
+        """Frame rate of the whiteboard push video. Valid range: [0,30]. Default value: 20. Unit: fps.
+        :rtype: int
+        """
         return self._VideoFPS
 
     @VideoFPS.setter
@@ -6812,6 +8099,11 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def VideoBitrate(self):
+        """Whiteboard push bitrate. Valid range: [0,2000]. Default value: 1200. Unit: kbps.
+
+The bitrate specified here is a reference value. During actual push, a dynamic bitrate is used. The actual bitrate does not remain the specified value but rather fluctuates around it.
+        :rtype: int
+        """
         return self._VideoBitrate
 
     @VideoBitrate.setter
@@ -6820,6 +8112,13 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def AutoRecord(self):
+        """Specifies whether to automatically record the whiteboard push when the recording mode in TRTC is set to `SubscribeStreamUserIds`.
+
+Default value: `false`. If you need to enable automatic whiteboard push recording, set this parameter to `true`.
+
+If the recording mode in TRTC is set to `Global Auto Recording`, ignore this parameter.
+        :rtype: bool
+        """
         return self._AutoRecord
 
     @AutoRecord.setter
@@ -6828,6 +8127,20 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def UserDefinedRecordId(self):
+        """ID of the whiteboard push recording. The ID is filled in the `userdefinerecordid` parameter in the callback message after cloud recording is complete in TRTC, helping you identify the recording callback and locate the video file in VOD media resource management.
+
+The value can be up to 64 bytes in length and contain letters (a-z and A-Z), digits (0-9), underscores (_), and hyphens (-).
+
+After this parameter is set, automatic whiteboard push recording is enabled regardless of the value of the `AutoRecord` parameter.
+
+Default RecordId generation rule:
+urlencode(SdkAppID_RoomID_PushUserID)
+
+Example:
+SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
+Therefore: RecordId = 12345678_12345_push_user_1
+        :rtype: str
+        """
         return self._UserDefinedRecordId
 
     @UserDefinedRecordId.setter
@@ -6836,6 +8149,13 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def AutoPublish(self):
+        """Specifies whether to enable automatic relay whiteboard push when the relay push mode in TRTC is set to `SubscribeRelayUserIds`.
+
+Default value: `false`. If you need to enable automatic relay whiteboard push, set this parameter to `true`.
+
+If the recording mode in TRTC is set to `Global Auto Relay`, ignore this parameter.
+        :rtype: bool
+        """
         return self._AutoPublish
 
     @AutoPublish.setter
@@ -6844,6 +8164,20 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def UserDefinedStreamId(self):
+        """Stream ID used by TRTC for relay whiteboard push. With this ID, you can stream the user’s audio/video by using the domain name and standard streaming solution (FLV or HLS) in TRTC.
+
+The value can be up to 64 bytes in length and contain letters (a-z and A-Z), digits (0-9), underscores (_), and hyphens (-).
+
+After this parameter is set, automatic relay whiteboard push is enabled regardless of the value of the `AutoPublish` parameter.
+
+Default StreamID generation rule:
+urlencode(SdkAppID_RoomID_PushUserID_main)
+
+Example:
+SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
+Therefore, StreamID = 12345678_12345_push_user_1_main
+        :rtype: str
+        """
         return self._UserDefinedStreamId
 
     @UserDefinedStreamId.setter
@@ -6852,6 +8186,9 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def ExtraData(self):
+        """Internal parameter. You can ignore this parameter.
+        :rtype: str
+        """
         return self._ExtraData
 
     @ExtraData.setter
@@ -6860,6 +8197,13 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def TRTCRoomId(self):
+        """TRTC room ID of the numeric type. Valid range: (1,4294967295).
+
+If RoomId and TRTCRoomId are both specified, the value of TRTCRoomId takes priority as the room ID for TRTC whiteboard push.
+
+If the TRTCRoomIdStr parameter is specified, this parameter is ignored.
+        :rtype: int
+        """
         return self._TRTCRoomId
 
     @TRTCRoomId.setter
@@ -6868,6 +8212,11 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def TRTCRoomIdStr(self):
+        """TRTC room ID of the string type.
+
+If TRTCRoomIdStr is specified, its value takes priority as the room ID for TRTC whiteboard push.
+        :rtype: str
+        """
         return self._TRTCRoomIdStr
 
     @TRTCRoomIdStr.setter
@@ -6876,6 +8225,12 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def IMAuthParam(self):
+        """IM authentication parameters.
+If the ID of the IM application used by whiteboard messages is different from SdkAppId of the whiteboard application, specify this parameter to provide authentication information of the IM application.
+
+If this parameter is specified, the whiteboard push service preferably uses the SdkAppId value in this parameter as the transmission channel for whiteboard messages. If this parameter is left empty, the SdkAppId value in the common parameters is used.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.AuthParam`
+        """
         return self._IMAuthParam
 
     @IMAuthParam.setter
@@ -6884,6 +8239,12 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def TRTCAuthParam(self):
+        """TRTC authentication parameters, used for room entrance authentication for TRTC push.
+If the ID of the TRTC application to which the target TRTC room belongs is different from SdkAppId of the whiteboard application, specify this parameter to provide authentication information of the TRTC application.
+
+If this parameter is specified, the whiteboard push service preferably uses the SdkAppId value in this parameter as the ID of the target TRTC application. If this parameter is left empty, the SdkAppId value in the common parameters is used.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.AuthParam`
+        """
         return self._TRTCAuthParam
 
     @TRTCAuthParam.setter
@@ -6892,6 +8253,14 @@ TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCa
 
     @property
     def TRTCEnterRoomMode(self):
+        """This parameter is available only to users in the allowlist for trial.
+
+TRTC room entrance mode for whiteboard push. Default value: `TRTCAppSceneVideoCall`.
+
+`TRTCAppSceneVideoCall`: This scenario is most suitable when there are two or more people on a video call. The internal encoders and network protocols are optimized for video smoothness to reduce call latency and lagging.
+`TRTCAppSceneLIVE`: This scenario is most suitable when there is only one person speaking or performing for an online audience, and occasionally multiple people interact with one another through video. The internal encoders and network protocols are optimized for performance and compatibility to deliver better performance and video clarity.
+        :rtype: str
+        """
         return self._TRTCEnterRoomMode
 
     @TRTCEnterRoomMode.setter
@@ -6960,6 +8329,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TaskId(self):
+        """Push task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6968,6 +8340,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Backup(self):
+        """Result parameters of the backup task.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Backup
 
     @Backup.setter
@@ -6976,6 +8352,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7006,6 +8385,9 @@ class StopOnlineRecordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the customer
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7014,6 +8396,9 @@ class StopOnlineRecordRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the recording task to stop
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7048,6 +8433,9 @@ class StopOnlineRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7076,6 +8464,9 @@ class StopWhiteboardPushRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7084,6 +8475,9 @@ class StopWhiteboardPushRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """ID of the whiteboard push task to be stopped.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7122,6 +8516,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Backup(self):
+        """Parameters of the backup task.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Backup
 
     @Backup.setter
@@ -7130,6 +8528,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7186,6 +8587,15 @@ Default value: false
 
     @property
     def StreamId(self):
+        """Video stream ID
+Description of the possible video stream ID values:
+1. `tic_record_user`: the whiteboard video stream
+2. `tic_substream`: the auxiliary video stream
+3. Specific user ID: the video stream of the specified user
+
+The actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.
+        :rtype: str
+        """
         return self._StreamId
 
     @StreamId.setter
@@ -7194,6 +8604,14 @@ Default value: false
 
     @property
     def DisableRecord(self):
+        """Whether to disable recording over the stream.
+
+true: does not record this stream. This stream will not be included in the final recording file.
+false: records this stream. This stream will be included in the final recording file.
+
+Default value: false
+        :rtype: bool
+        """
         return self._DisableRecord
 
     @DisableRecord.setter
@@ -7202,6 +8620,14 @@ Default value: false
 
     @property
     def DisableAudio(self):
+        """Whether to disable the audio recording of the stream.
+
+true: does not record the audio of the stream. In the final recording file, this stream will be soundless.
+false: the stream has both video and audio recording.
+
+Default value: false
+        :rtype: bool
+        """
         return self._DisableAudio
 
     @DisableAudio.setter
@@ -7210,6 +8636,14 @@ Default value: false
 
     @property
     def PullSmallVideo(self):
+        """Whether to only record low-resolution stream videos.
+
+true: records only low-resolution videos. In this case, please make sure that the client pushes low-resolution videos upstream. Otherwise, the recorded video may be black. 
+false: records only high-resolution videos.
+
+Default value: false
+        :rtype: bool
+        """
         return self._PullSmallVideo
 
     @PullSmallVideo.setter
@@ -7263,6 +8697,9 @@ Description of the possible video stream ID values:
 
     @property
     def LayoutParams(self):
+        """Stream layout configuration
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.LayoutParams`
+        """
         return self._LayoutParams
 
     @LayoutParams.setter
@@ -7271,6 +8708,14 @@ Description of the possible video stream ID values:
 
     @property
     def InputStreamId(self):
+        """Video stream ID
+Description of the possible video stream ID values:
+1. tic_record_user: the current picture is used to display the whiteboard video stream.
+2. tic_substream: the current picture is used to display the auxiliary video stream.
+3. Specific user ID: the current picture is used to display the video stream of a specific user.
+4.Left empty: the current picture is vacant for new video stream.
+        :rtype: str
+        """
         return self._InputStreamId
 
     @InputStreamId.setter
@@ -7279,6 +8724,9 @@ Description of the possible video stream ID values:
 
     @property
     def BackgroundColor(self):
+        """Background color in RGB format, such as "#FF0000" for red. The default color is black. 
+        :rtype: str
+        """
         return self._BackgroundColor
 
     @BackgroundColor.setter
@@ -7287,6 +8735,12 @@ Description of the possible video stream ID values:
 
     @property
     def FillMode(self):
+        """Video filling mode.
+
+0: self-adaption mode. Scales the video proportionally to completely display it in the specified area. In this mode, there may be black bars.
+1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.
+        :rtype: int
+        """
         return self._FillMode
 
     @FillMode.setter
@@ -7328,6 +8782,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key.
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -7336,6 +8793,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value.
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -7373,6 +8833,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Time(self):
+        """Unix timestamp in seconds.
+        :rtype: int
+        """
         return self._Time
 
     @Time.setter
@@ -7381,6 +8844,9 @@ class TimeValue(AbstractModel):
 
     @property
     def Value(self):
+        """Current value of the queried metric.
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -7442,6 +8908,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def ResultUrl(self):
+        """Transcoding result URL.
+        :rtype: str
+        """
         return self._ResultUrl
 
     @ResultUrl.setter
@@ -7450,6 +8919,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def Resolution(self):
+        """Target resolution.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -7458,6 +8930,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def Title(self):
+        """Title (usually the document name).
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -7466,6 +8941,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def Pages(self):
+        """Number of transcoded pages.
+        :rtype: int
+        """
         return self._Pages
 
     @Pages.setter
@@ -7474,6 +8952,12 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def ThumbnailUrl(self):
+        """URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/`, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is
+`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.
+
+If the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.
+        :rtype: str
+        """
         return self._ThumbnailUrl
 
     @ThumbnailUrl.setter
@@ -7482,6 +8966,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def ThumbnailResolution(self):
+        """Resolution of the thumbnail generated for dynamic transcoding
+        :rtype: str
+        """
         return self._ThumbnailResolution
 
     @ThumbnailResolution.setter
@@ -7490,6 +8977,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def CompressFileUrl(self):
+        """URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.
+        :rtype: str
+        """
         return self._CompressFileUrl
 
     @CompressFileUrl.setter
@@ -7498,6 +8988,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def ErrorCode(self):
+        """Task execution error code.
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -7506,6 +8999,9 @@ If the document transcoding request carries the ThumbnailResolution parameter an
 
     @property
     def ErrorMsg(self):
+        """Task execution error message.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -7568,6 +9064,9 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the task.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7576,6 +9075,9 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """Unique task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7584,6 +9086,12 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def Status(self):
+        """Current task status.
+- QUEUED: Queuing for transcoding.
+- PROCESSING: Transcoding in progress.
+- FINISHED: Transcoding finished.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7592,6 +9100,9 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def OriginalFilename(self):
+        """Original name of the transcoded document.
+        :rtype: str
+        """
         return self._OriginalFilename
 
     @OriginalFilename.setter
@@ -7600,6 +9111,9 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7608,6 +9122,9 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def Result(self):
+        """Transcoding task result.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.TranscodeTaskResult`
+        """
         return self._Result
 
     @Result.setter
@@ -7616,6 +9133,9 @@ class TranscodeTaskSearchResult(AbstractModel):
 
     @property
     def IsStatic(self):
+        """Specifies whether the transcoding is static.
+        :rtype: bool
+        """
         return self._IsStatic
 
     @IsStatic.setter
@@ -7672,6 +9192,9 @@ class UsageDataItem(AbstractModel):
 
     @property
     def Time(self):
+        """Start date in the format of YYYY-MM-DD.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -7680,6 +9203,9 @@ class UsageDataItem(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -7688,6 +9214,13 @@ class UsageDataItem(AbstractModel):
 
     @property
     def SubProduct(self):
+        """Subproduct usage information, which is consistent with the corresponding request parameters.
+- sp_tiw_board: The duration of use of whiteboards.
+- sp_tiw_dt: The number of pages dynamically transcoded.
+- sp_tiw_st: The number of pages statically transcoded.
+- sp_tiw_ric: The duration of real-time recording.
+        :rtype: str
+        """
         return self._SubProduct
 
     @SubProduct.setter
@@ -7696,6 +9229,11 @@ class UsageDataItem(AbstractModel):
 
     @property
     def Value(self):
+        """Usage values.
+- The unit of sp_tiw_dt and sp_tiw_st is pages.
+- The unit of sp_tiw_board and sp_tiw_ric is minutes.
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -7738,6 +9276,9 @@ class UserListItem(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID in the room.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7746,6 +9287,9 @@ class UserListItem(AbstractModel):
 
     @property
     def StartTime(self):
+        """The first time when the user ID appeared during the queried period, which is a Unix timestamp in milliseconds.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7754,6 +9298,9 @@ class UserListItem(AbstractModel):
 
     @property
     def EndTime(self):
+        """The last time when the user ID appeared during the queried period, which is a Unix timestamp in milliseconds.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7816,6 +9363,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoPlayTime(self):
+        """Video playback start time, in milliseconds
+        :rtype: int
+        """
         return self._VideoPlayTime
 
     @VideoPlayTime.setter
@@ -7824,6 +9374,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoSize(self):
+        """Video size, in bytes
+        :rtype: int
+        """
         return self._VideoSize
 
     @VideoSize.setter
@@ -7832,6 +9385,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoFormat(self):
+        """Video format
+        :rtype: str
+        """
         return self._VideoFormat
 
     @VideoFormat.setter
@@ -7840,6 +9396,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoDuration(self):
+        """Video playback duration, in milliseconds
+        :rtype: int
+        """
         return self._VideoDuration
 
     @VideoDuration.setter
@@ -7848,6 +9407,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoUrl(self):
+        """Video file URL
+        :rtype: str
+        """
         return self._VideoUrl
 
     @VideoUrl.setter
@@ -7856,6 +9418,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoId(self):
+        """Video file ID
+        :rtype: str
+        """
         return self._VideoId
 
     @VideoId.setter
@@ -7864,6 +9429,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def VideoType(self):
+        """Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)
+        :rtype: int
+        """
         return self._VideoType
 
     @VideoType.setter
@@ -7872,6 +9440,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def UserId(self):
+        """ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -7880,6 +9451,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def Width(self):
+        """Width of the video resolution.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7888,6 +9462,9 @@ class VideoInfo(AbstractModel):
 
     @property
     def Height(self):
+        """Height of the video resolution.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7936,6 +9513,9 @@ class Whiteboard(AbstractModel):
 
     @property
     def Width(self):
+        """Whiteboard video width in the real-time recording result. The value must be equal to or greater than 2. Default value: 1280.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -7944,6 +9524,9 @@ class Whiteboard(AbstractModel):
 
     @property
     def Height(self):
+        """Whiteboard video height in the real-time recording result. The value must be equal to or greater than 2. Default value: 960.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -7952,6 +9535,9 @@ class Whiteboard(AbstractModel):
 
     @property
     def InitParam(self):
+        """Whiteboard initialization parameter, which is passed through to the whiteboard SDK
+        :rtype: str
+        """
         return self._InitParam
 
     @InitParam.setter
@@ -8017,6 +9603,12 @@ transcode: Document transcoding.
 
     @property
     def TaskType(self):
+        """Task type.
+
+recording: Real-time recording.
+transcode: Document transcoding.
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -8025,6 +9617,9 @@ transcode: Document transcoding.
 
     @property
     def BucketName(self):
+        """Bucket name.
+        :rtype: str
+        """
         return self._BucketName
 
     @BucketName.setter
@@ -8033,6 +9628,9 @@ transcode: Document transcoding.
 
     @property
     def BucketLocation(self):
+        """Region of the bucket.
+        :rtype: str
+        """
         return self._BucketLocation
 
     @BucketLocation.setter
@@ -8041,6 +9639,9 @@ transcode: Document transcoding.
 
     @property
     def BucketPrefix(self):
+        """Resource prefix of the bucket.
+        :rtype: str
+        """
         return self._BucketPrefix
 
     @BucketPrefix.setter
@@ -8049,6 +9650,9 @@ transcode: Document transcoding.
 
     @property
     def ResultDomain(self):
+        """Destination CDN domain name.
+        :rtype: str
+        """
         return self._ResultDomain
 
     @ResultDomain.setter
@@ -8057,6 +9661,9 @@ transcode: Document transcoding.
 
     @property
     def Callback(self):
+        """Callback URL.
+        :rtype: str
+        """
         return self._Callback
 
     @Callback.setter
@@ -8065,6 +9672,9 @@ transcode: Document transcoding.
 
     @property
     def CallbackKey(self):
+        """Callback authentication key.
+        :rtype: str
+        """
         return self._CallbackKey
 
     @CallbackKey.setter
@@ -8073,6 +9683,9 @@ transcode: Document transcoding.
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8081,6 +9694,9 @@ transcode: Document transcoding.
 
     @property
     def AdminUserId(self):
+        """IM admin user ID.
+        :rtype: str
+        """
         return self._AdminUserId
 
     @AdminUserId.setter
@@ -8089,6 +9705,9 @@ transcode: Document transcoding.
 
     @property
     def AdminUserSig(self):
+        """IM admin user signature.
+        :rtype: str
+        """
         return self._AdminUserSig
 
     @AdminUserSig.setter
@@ -8135,6 +9754,10 @@ The ID must be an unused ID in the SDK. The whiteboard push service uses the use
 
     @property
     def PushUserId(self):
+        """User ID used by the whiteboard push service for entering a room,
+The ID must be an unused ID in the SDK. The whiteboard push service uses the user ID to enter the room for whiteboard push. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the pushing operation.
+        :rtype: str
+        """
         return self._PushUserId
 
     @PushUserId.setter
@@ -8143,6 +9766,9 @@ The ID must be an unused ID in the SDK. The whiteboard push service uses the use
 
     @property
     def PushUserSig(self):
+        """Signature corresponding to the PushUserId ID.
+        :rtype: str
+        """
         return self._PushUserSig
 
     @PushUserSig.setter
@@ -8201,6 +9827,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def FinishReason(self):
+        """`AUTO`: Pushing automatically stops. `USER_CALL`: The API for stopping pushing is called.
+        :rtype: str
+        """
         return self._FinishReason
 
     @FinishReason.setter
@@ -8209,6 +9838,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def ExceptionCnt(self):
+        """Number of exceptions.
+        :rtype: int
+        """
         return self._ExceptionCnt
 
     @ExceptionCnt.setter
@@ -8217,6 +9849,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -8225,6 +9860,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def GroupId(self):
+        """IM group ID.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -8233,6 +9871,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def PushStartTime(self):
+        """Actual push start time.
+        :rtype: int
+        """
         return self._PushStartTime
 
     @PushStartTime.setter
@@ -8241,6 +9882,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def PushStopTime(self):
+        """Push end time.
+        :rtype: int
+        """
         return self._PushStopTime
 
     @PushStopTime.setter
@@ -8249,6 +9893,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def IMSyncTime(self):
+        """IM timestamp corresponding to the first frame of the whiteboard push video. The timestamp is used for time synchronization between IM messages and the whiteboard push video during playback.
+        :rtype: int
+        """
         return self._IMSyncTime
 
     @IMSyncTime.setter
@@ -8257,6 +9904,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """Task execution error code.
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -8265,6 +9915,9 @@ class WhiteboardPushResult(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """Error message.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -8327,6 +9980,9 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def TaskId(self):
+        """Unique task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -8335,6 +9991,12 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def Status(self):
+        """Status of the whiteboard push task.
+- PREPARED: Push in preparation.
+- PUSHING: Pushing in progress.
+- STOPPED: Pushing stopped.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8343,6 +10005,9 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def RoomId(self):
+        """Room ID of the whiteboard push task.
+        :rtype: int
+        """
         return self._RoomId
 
     @RoomId.setter
@@ -8351,6 +10016,9 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the task.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8359,6 +10027,9 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def SdkAppId(self):
+        """SdkAppId of the whiteboard application.
+        :rtype: int
+        """
         return self._SdkAppId
 
     @SdkAppId.setter
@@ -8367,6 +10038,9 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def Result(self):
+        """Whiteboard push result.
+        :rtype: :class:`tencentcloud.tiw.v20190919.models.WhiteboardPushResult`
+        """
         return self._Result
 
     @Result.setter
@@ -8375,6 +10049,9 @@ class WhiteboardPushTaskSearchResult(AbstractModel):
 
     @property
     def PushUserId(self):
+        """User ID of the whiteboard push task.
+        :rtype: str
+        """
         return self._PushUserId
 
     @PushUserId.setter

@@ -110,6 +110,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # The bandwidth package ID is not supported in this account.
 INVALIDPARAMETERVALUE_ACCOUNTNOTSUPPORTBANDWIDTHPACKAGEID = 'InvalidParameterValue.AccountNotSupportBandwidthPackageId'
 
+# The declared original expected instance number does not match the actual original expected instance number.
+INVALIDPARAMETERVALUE_ASSERTDESIREDCAPACITYFAILED = 'InvalidParameterValue.AssertDesiredCapacityFailed'
+
 # The specified base capacity cannot exceed the max capacity.
 INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = 'InvalidParameterValue.BaseCapacityTooLarge'
 
@@ -152,6 +155,9 @@ INVALIDPARAMETERVALUE_GROUPNAMEDUPLICATED = 'InvalidParameterValue.GroupNameDupl
 # Invalid hostname
 INVALIDPARAMETERVALUE_HOSTNAMEILLEGAL = 'InvalidParameterValue.HostNameIllegal'
 
+# HostNames with suffixes are too long and exceed the specified upper limit.
+INVALIDPARAMETERVALUE_HOSTNAMEWITHSUFFIXTOOLONG = 'InvalidParameterValue.HostNameWithSuffixTooLong'
+
 # The specified IPv6 public network bandwidth billing mode is invalid.
 INVALIDPARAMETERVALUE_IPV6INTERNETCHARGETYPE = 'InvalidParameterValue.IPv6InternetChargeType'
 
@@ -160,6 +166,9 @@ INVALIDPARAMETERVALUE_IMAGENOTFOUND = 'InvalidParameterValue.ImageNotFound'
 
 # Invalid instance name
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
+
+# Instance names with suffixes are too long and exceed the specified upper limit.
+INVALIDPARAMETERVALUE_INSTANCENAMEWITHSUFFIXTOOLONG = 'InvalidParameterValue.InstanceNameWithSuffixTooLong'
 
 # The instance type is not supported.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTED = 'InvalidParameterValue.InstanceTypeNotSupported'
@@ -241,6 +250,9 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 
 # Target group listeners are not supported.
 INVALIDPARAMETERVALUE_LISTENERTARGETTYPENOTSUPPORTED = 'InvalidParameterValue.ListenerTargetTypeNotSupported'
+
+# The maximum additional quantity is too large.
+INVALIDPARAMETERVALUE_MAXSURGETOOLARGE = 'InvalidParameterValue.MaxSurgeTooLarge'
 
 # The bandwidth package ID is required.
 INVALIDPARAMETERVALUE_MISSINGBANDWIDTHPACKAGEID = 'InvalidParameterValue.MissingBandwidthPackageId'

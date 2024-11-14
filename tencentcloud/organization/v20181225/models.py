@@ -32,6 +32,9 @@ class AcceptOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Invitation ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -65,6 +68,9 @@ class AcceptOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -93,6 +99,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """Parent organizational unit ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -101,6 +110,9 @@ class AddOrganizationNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Organizational unit name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -138,6 +150,9 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -146,6 +161,9 @@ class AddOrganizationNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -172,6 +190,9 @@ class CancelOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Invitation ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -205,6 +226,9 @@ class CancelOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -230,6 +254,9 @@ class CreateOrganizationRequest(AbstractModel):
 
     @property
     def OrgType(self):
+        """Organization type; currently its value is fixed as `1`
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -275,6 +302,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def OrgId(self):
+        """Organization ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -283,6 +313,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def Nickname(self):
+        """Creator's name
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -291,6 +324,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def Mail(self):
+        """Creator's email address
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -299,6 +335,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def OrgType(self):
+        """Organization type
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -307,6 +346,9 @@ class CreateOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -339,6 +381,9 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """UIN of the member to be deleted
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -347,6 +392,9 @@ class DeleteOrganizationMemberFromNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -381,6 +429,9 @@ class DeleteOrganizationMemberFromNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -406,6 +457,9 @@ class DeleteOrganizationMembersRequest(AbstractModel):
 
     @property
     def Uins(self):
+        """List of UINs of members to be deleted
+        :rtype: list of int non-negative
+        """
         return self._Uins
 
     @Uins.setter
@@ -439,6 +493,9 @@ class DeleteOrganizationMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -464,6 +521,9 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
+        """Organizational unit ID list
+        :rtype: list of int non-negative
+        """
         return self._NodeIds
 
     @NodeIds.setter
@@ -497,6 +557,9 @@ class DeleteOrganizationNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -528,6 +591,9 @@ class DeleteOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -553,6 +619,9 @@ class DenyOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Invitation ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -586,6 +655,9 @@ class DenyOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -611,6 +683,9 @@ class GetOrganizationMemberRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """Organization member UIN
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -665,6 +740,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """Organization member UIN
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -673,6 +751,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def Name(self):
+        """Organization member name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -681,6 +762,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """Notes
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -689,6 +773,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def JoinTime(self):
+        """Joining time 
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -697,6 +784,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -705,6 +795,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def NodeName(self):
+        """Organizational unit name
+        :rtype: str
+        """
         return self._NodeName
 
     @NodeName.setter
@@ -713,6 +806,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """Parent organizational unit ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -721,6 +817,9 @@ class GetOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -777,6 +876,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def OrgId(self):
+        """Organization ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -785,6 +887,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def HostUin(self):
+        """Creator UIN
+        :rtype: int
+        """
         return self._HostUin
 
     @HostUin.setter
@@ -793,6 +898,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def Nickname(self):
+        """Creator's name
+        :rtype: str
+        """
         return self._Nickname
 
     @Nickname.setter
@@ -801,6 +909,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def Mail(self):
+        """Creator's email address
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -809,6 +920,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def OrgType(self):
+        """Organization type
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -817,6 +931,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def IsEmpty(self):
+        """Whether the organization is empty or not 
+        :rtype: int
+        """
         return self._IsEmpty
 
     @IsEmpty.setter
@@ -825,6 +942,9 @@ class GetOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -862,6 +982,9 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     @property
     def Invited(self):
+        """Whether to list the invitations you received or the invitations you sent. `1`: list the invitations you received; `0`: list the invitations you sent.
+        :rtype: int
+        """
         return self._Invited
 
     @Invited.setter
@@ -870,6 +993,9 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -878,6 +1004,9 @@ class ListOrganizationInvitationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -919,6 +1048,9 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     @property
     def Invitations(self):
+        """List of invitations
+        :rtype: list of OrgInvitation
+        """
         return self._Invitations
 
     @Invitations.setter
@@ -927,6 +1059,9 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of results
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -935,6 +1070,9 @@ class ListOrganizationInvitationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -970,6 +1108,9 @@ class ListOrganizationMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -978,6 +1119,9 @@ class ListOrganizationMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1018,6 +1162,9 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     @property
     def Members(self):
+        """Member list
+        :rtype: list of OrgMember
+        """
         return self._Members
 
     @Members.setter
@@ -1026,6 +1173,9 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of results
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1034,6 +1184,9 @@ class ListOrganizationMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1072,6 +1225,9 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1080,6 +1236,9 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1088,6 +1247,9 @@ class ListOrganizationNodeMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1129,6 +1291,9 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of results
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1137,6 +1302,9 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def Members(self):
+        """Member list
+        :rtype: list of OrgMember
+        """
         return self._Members
 
     @Members.setter
@@ -1145,6 +1313,9 @@ class ListOrganizationNodeMembersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1186,6 +1357,9 @@ class ListOrganizationNodesResponse(AbstractModel):
 
     @property
     def Nodes(self):
+        """Organizational unit list
+        :rtype: list of OrgNode
+        """
         return self._Nodes
 
     @Nodes.setter
@@ -1194,6 +1368,9 @@ class ListOrganizationNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1228,6 +1405,9 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1236,6 +1416,9 @@ class MoveOrganizationMembersToNodeRequest(AbstractModel):
 
     @property
     def Uins(self):
+        """Member UIN list
+        :rtype: list of int non-negative
+        """
         return self._Uins
 
     @Uins.setter
@@ -1270,6 +1453,9 @@ class MoveOrganizationMembersToNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1325,6 +1511,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Id(self):
+        """Invitation ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1333,6 +1522,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Uin(self):
+        """UIN of the invitee
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -1341,6 +1533,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def HostUin(self):
+        """Creator UIN
+        :rtype: int
+        """
         return self._HostUin
 
     @HostUin.setter
@@ -1349,6 +1544,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def HostName(self):
+        """Creator's name
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -1357,6 +1555,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def HostMail(self):
+        """Creator's email address
+        :rtype: str
+        """
         return self._HostMail
 
     @HostMail.setter
@@ -1365,6 +1566,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Status(self):
+        """Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1373,6 +1577,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1381,6 +1588,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def Remark(self):
+        """Notes
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1389,6 +1599,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def OrgType(self):
+        """Organization type
+        :rtype: int
+        """
         return self._OrgType
 
     @OrgType.setter
@@ -1397,6 +1610,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def InviteTime(self):
+        """Time of invitation
+        :rtype: str
+        """
         return self._InviteTime
 
     @InviteTime.setter
@@ -1405,6 +1621,9 @@ class OrgInvitation(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """Expiration time
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1457,6 +1676,9 @@ class OrgMember(AbstractModel):
 
     @property
     def Uin(self):
+        """UIN
+        :rtype: int
+        """
         return self._Uin
 
     @Uin.setter
@@ -1465,6 +1687,9 @@ class OrgMember(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1473,6 +1698,9 @@ class OrgMember(AbstractModel):
 
     @property
     def Remark(self):
+        """Notes
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1481,6 +1709,9 @@ class OrgMember(AbstractModel):
 
     @property
     def JoinTime(self):
+        """Joining time
+        :rtype: str
+        """
         return self._JoinTime
 
     @JoinTime.setter
@@ -1526,6 +1757,9 @@ class OrgNode(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1534,6 +1768,9 @@ class OrgNode(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1542,6 +1779,9 @@ class OrgNode(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """Parent organizational unit ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -1550,6 +1790,9 @@ class OrgNode(AbstractModel):
 
     @property
     def MemberCount(self):
+        """Number of members
+        :rtype: int
+        """
         return self._MemberCount
 
     @MemberCount.setter
@@ -1586,6 +1829,9 @@ class QuitOrganizationRequest(AbstractModel):
 
     @property
     def OrgId(self):
+        """Organization ID
+        :rtype: int
+        """
         return self._OrgId
 
     @OrgId.setter
@@ -1619,6 +1865,9 @@ class QuitOrganizationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1650,6 +1899,9 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     @property
     def InviteUin(self):
+        """UIN of the invitee
+        :rtype: int
+        """
         return self._InviteUin
 
     @InviteUin.setter
@@ -1658,6 +1910,9 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1666,6 +1921,9 @@ class SendOrganizationInvitationRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """Notes
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1701,6 +1959,9 @@ class SendOrganizationInvitationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1732,6 +1993,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def MemberUin(self):
+        """Member UIN
+        :rtype: int
+        """
         return self._MemberUin
 
     @MemberUin.setter
@@ -1740,6 +2004,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1748,6 +2015,9 @@ class UpdateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """Notes
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1783,6 +2053,9 @@ class UpdateOrganizationMemberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1814,6 +2087,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def NodeId(self):
+        """Organizational unit ID
+        :rtype: int
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -1822,6 +2098,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1830,6 +2109,9 @@ class UpdateOrganizationNodeRequest(AbstractModel):
 
     @property
     def ParentNodeId(self):
+        """Parent organizational unit ID
+        :rtype: int
+        """
         return self._ParentNodeId
 
     @ParentNodeId.setter
@@ -1865,6 +2147,9 @@ class UpdateOrganizationNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

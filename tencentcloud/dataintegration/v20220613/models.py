@@ -35,6 +35,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Body(self):
+        """Message body
+        :rtype: str
+        """
         return self._Body
 
     @Body.setter
@@ -43,6 +46,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Key(self):
+        """Key of a message
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -80,6 +86,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def DataHubId(self):
+        """ID of the integrated resource
+        :rtype: str
+        """
         return self._DataHubId
 
     @DataHubId.setter
@@ -88,6 +97,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def Message(self):
+        """A batch of messages
+        :rtype: list of BatchContent
+        """
         return self._Message
 
     @Message.setter
@@ -130,6 +142,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
+        """Message ID
+        :rtype: list of str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -138,6 +153,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

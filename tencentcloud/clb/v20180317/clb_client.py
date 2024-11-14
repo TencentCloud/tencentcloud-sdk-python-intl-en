@@ -96,6 +96,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchModifyTargetTag(self, request):
+        """This API is used to modify the tags of real servers bound to CLB listeners in batches. The maximum number of resources that can be modified in a batch is 500. This is a synchronous API. <br/> It is supported for Layer-4 and Layer-7 listeners of CLB instances, but not for classic CLB instances.
+
+        :param request: Request instance for BatchModifyTargetTag.
+        :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetTagRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchModifyTargetTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchModifyTargetTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchModifyTargetWeight(self, request):
         """This API is used to modify forwarding weights of real servers bound to CLB listeners in batches. Up to 500 servers can be unbound in a batch. As this API is async, you should check whether the task is successful by passing the RequestId returned to the API call `DescribeTaskStatus`.<br/> This API is supported by CLB layer-4 and layer-7 listeners, but not Classis CLB counterparts.
 
@@ -143,29 +166,7 @@ class ClbClient(AbstractClient):
 
 
     def CloneLoadBalancer(self, request):
-        """This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.
-
-        Limits:
-        Instance attribute restrictions
-          Only pay-as-you-go instances can be cloned. Monthly-subscribed instances cannot be cloned.
-          CLB instances without any billable items cannot be cloned.
-          Classic CLB instances and CLB instances created for Anti-DDoS service cannot be cloned.
-          Classic network-based instances cannot be cloned.
-          IPv6 instances, IPv6 NAT64 instances, and instances bound with both IPv4 and IPv6 cannot be cloned.
-          The following settings will not be cloned: **Custom configuration**, **Redirection configurations**, and **Allow Traffic by Default** in security groups.
-          Before cloning an instance, make sure all certificates used on the instance are valid. Cloning will fail if there are any expired certificates.
-        Listener restrictions
-          Instances with QUIC listeners or port range listeners cannot be cloned.
-          Private network CLB instances with TCP_SSL listeners cannot be cloned.
-          Instances with layer-7 listeners that have no forwarding rules cannot be cloned.
-          Instances with more than 50 listeners cannot be cloned.
-        Backend service restrictions
-          Instances with target groups and SCF cloud functions as the backend services cannot be cloned.
-
-        Notes:
-        If you are using a BGP bandwidth package, you need to pass the package ID.
-        To create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.
-        This API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).
+        """This API is used to clone a CLB instance. CLB instance cloning indicates copying a specified CLB instance to create one with the same rules and binding relationships. The operation of this cloning API is asynchronous. The cloned data is based on the state when CloneLoadBalancer is called. If the cloned CLB instance changes after CloneLoadBalancer is called, the changed rules will not be cloned.Note: You can query the instance creation status by calling the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned requestId.RestrictionsInstance attribute restrictions:- Instances billed in pay-as-you-go and monthly subscription modes can be cloned. For a new instance cloned from a monthly subscription instance, its network billing mode will switch to billing by hourly bandwidth, but its bandwidth and specifications will remain the same as the settings of the original instance.- CLB instances not associated with any billable items cannot be cloned.- Classic CLB instances and CLB instances with Anti-DDoS Pro cannot be cloned.- Classic network-based instances cannot be cloned.- Anycast instances cannot be cloned.- IPv6 NAT64 instances cannot be cloned.- Blocked or frozen instances cannot be cloned.- Before cloning an instance, make sure that all certificates used on the instance have not expired; otherwise, the cloning will fail.Quota restrictions:- Instances with more than 50 listeners cannot be cloned.- Shared instances with the public network bandwidth cap exceeding 2 Gbps cannot be cloned.API calling restrictions:The bandwidth package ID must be input for BGP bandwidth packages.Corresponding parameters should be input for cloning of an exclusive cluster; otherwise, a shared instance will be created.The feature is in beta test. You can submit a [beta test application](https://intl.cloud.tencent.com/apply/p/1akuvsmyn0g?from_cn_redirect=1).
 
         :param request: Request instance for CloneLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.CloneLoadBalancerRequest`
@@ -1528,8 +1529,9 @@ class ClbClient(AbstractClient):
 
 
     def ModifyLoadBalancerAttributes(self, request):
-        """This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.
-        This is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.
+        """This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.
+
+        Note: For CLB instances of bill-by-CVM users, cross-region attributes can be set only after a bandwidth package is purchased.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.
 
         :param request: Request instance for ModifyLoadBalancerAttributes.
         :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerAttributesRequest`
@@ -1921,9 +1923,7 @@ class ClbClient(AbstractClient):
 
 
     def SetLoadBalancerSecurityGroups(self, request):
-        """This API (SetLoadBalancerSecurityGroups) is used to bind/unbind security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups bound to a CLB instance. This API uses `set` semantics.
-        During a binding operation, the input parameters need to be all security groups to be bound to the CLB instance (including those already bound ones and new ones).
-        During an unbinding operation, the input parameters need to be all the security groups still bound to the CLB instance after the unbinding operation. To unbind all security groups, you can leave this parameter empty or pass in an empty array. Note: Private network CLB do not support binding security groups.
+        """This API is used to configure (bind and unbind) security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups currently bound to a CLB instance. This API follows the set semantics.For binding operations, the input parameters should specify all security groups that should be bound (have been bound and will be bound) to the CLB instance.For unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.
 
         :param request: Request instance for SetLoadBalancerSecurityGroups.
         :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerSecurityGroupsRequest`
@@ -1936,6 +1936,29 @@ class ClbClient(AbstractClient):
             body = self.call("SetLoadBalancerSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.SetLoadBalancerSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetLoadBalancerStartStatus(self, request):
+        """This API is used to enable or disable a CLB instance or listener.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.This feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.
+
+        :param request: Request instance for SetLoadBalancerStartStatus.
+        :type request: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerStartStatusRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.SetLoadBalancerStartStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetLoadBalancerStartStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetLoadBalancerStartStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -913,7 +913,6 @@ class ApigatewayClient(AbstractClient):
     def DescribeApiKeysStatus(self, request):
         """This API is used to query the information of one or more API keys.
 
-
         :param request: Request instance for DescribeApiKeysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusRequest`
         :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusResponse`

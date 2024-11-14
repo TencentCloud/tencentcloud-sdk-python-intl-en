@@ -946,6 +946,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InviteOrganizationMember(self, request):
+        """This API is used to invite a member.
+
+        :param request: Request instance for InviteOrganizationMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.InviteOrganizationMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.InviteOrganizationMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InviteOrganizationMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.InviteOrganizationMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListExternalSAMLIdPCertificates(self, request):
         """This API is used to query the SAML signing certificate list.
 

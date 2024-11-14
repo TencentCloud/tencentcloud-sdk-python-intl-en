@@ -35,6 +35,9 @@ class AlgorithmInfo(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """Algorithm ID
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -43,6 +46,9 @@ class AlgorithmInfo(AbstractModel):
 
     @property
     def Algorithm(self):
+        """Algorithm name
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -77,6 +83,9 @@ class ArchiveKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -110,6 +119,9 @@ class ArchiveKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -141,6 +153,9 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -149,6 +164,9 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
 
     @property
     def Ciphertext(self):
+        """Base64-encoded ciphertext encrypted with `PublicKey`
+        :rtype: str
+        """
         return self._Ciphertext
 
     @Ciphertext.setter
@@ -157,6 +175,9 @@ class AsymmetricRsaDecryptRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """Corresponding algorithm when a public key is used for encryption. Valid values: RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -198,6 +219,9 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -206,6 +230,9 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """Base64-encoded plaintext after decryption
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -214,6 +241,9 @@ class AsymmetricRsaDecryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -244,6 +274,9 @@ class AsymmetricSm2DecryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -252,6 +285,9 @@ class AsymmetricSm2DecryptRequest(AbstractModel):
 
     @property
     def Ciphertext(self):
+        """Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.
+        :rtype: str
+        """
         return self._Ciphertext
 
     @Ciphertext.setter
@@ -292,6 +328,9 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -300,6 +339,9 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """Base64-encoded plaintext after decryption
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -308,6 +350,9 @@ class AsymmetricSm2DecryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -341,6 +386,9 @@ class BindCloudResourceRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -349,6 +397,9 @@ class BindCloudResourceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Unique ID of a Tencent Cloud service
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -357,6 +408,9 @@ class BindCloudResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -392,6 +446,9 @@ class BindCloudResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -417,6 +474,9 @@ class CancelKeyArchiveRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -450,6 +510,9 @@ class CancelKeyArchiveResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -475,6 +538,9 @@ class CancelKeyDeletionRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of the CMK for which to cancel schedule deletion
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -511,6 +577,9 @@ class CancelKeyDeletionResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of the CMK for which the schedule deletion is canceled
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -519,6 +588,9 @@ class CancelKeyDeletionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -560,6 +632,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -568,6 +643,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """CMK description of up to 1,024 bytes in length
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -576,6 +654,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """Defines the purpose of the key. The valid values are as follows: `ENCRYPT_DECRYPT` (default): creates a symmetric encryption/decryption key; `ASYMMETRIC_DECRYPT_RSA_2048`: creates an asymmetric encryption/decryption 2048-bit RSA key; `ASYMMETRIC_DECRYPT_SM2`: creates an asymmetric encryption/decryption SM2 key; `ASYMMETRIC_SIGN_VERIFY_SM2`: creates an asymmetric SM2 key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECC`: creates an asymmetric 2048-bit RSA key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECDSA384`: creates an asymmetric ECDSA384 key for signature verification. You can get a full list of supported key purposes and algorithms using the ListAlgorithms API.
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -584,6 +665,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -592,6 +676,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -600,6 +687,9 @@ class CreateKeyRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -671,6 +761,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -679,6 +772,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Alias(self):
+        """Alias that makes a key more recognizable and understandable
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -687,6 +783,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
+        """Key creation time in UNIX timestamp format
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -695,6 +794,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Description(self):
+        """CMK description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -703,6 +805,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyState(self):
+        """CMK status
+        :rtype: str
+        """
         return self._KeyState
 
     @KeyState.setter
@@ -711,6 +816,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyUsage(self):
+        """CMK usage
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -719,6 +827,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TagCode(self):
+        """Tag operation return code. 0: success; 1: internal error; 2: business processing error
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -727,6 +838,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TagMsg(self):
+        """Tag operation return information
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -735,6 +849,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HsmClusterId(self):
+        """ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -743,6 +861,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -786,6 +907,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -794,6 +918,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """All algorithm types for creating keys. Valid values: AES_256, SM4
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -802,6 +929,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Key description of up to 1024 bytes
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -810,6 +940,9 @@ class CreateWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -866,6 +999,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def EncryptKey(self):
+        """Base64-encoded encryption key
+        :rtype: str
+        """
         return self._EncryptKey
 
     @EncryptKey.setter
@@ -874,6 +1010,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def DecryptKey(self):
+        """Base64-encoded decryption key
+        :rtype: str
+        """
         return self._DecryptKey
 
     @DecryptKey.setter
@@ -882,6 +1021,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -890,6 +1032,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def TagCode(self):
+        """Tag operation return code. 0: success; 1: internal error; 2: business processing error
+        :rtype: int
+        """
         return self._TagCode
 
     @TagCode.setter
@@ -898,6 +1043,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def TagMsg(self):
+        """Tag operation return message
+        :rtype: str
+        """
         return self._TagMsg
 
     @TagMsg.setter
@@ -906,6 +1054,9 @@ class CreateWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -945,6 +1096,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """The ciphertext data to be decrypted.
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -953,6 +1107,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def EncryptionContext(self):
+        """JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.
+        :rtype: str
+        """
         return self._EncryptionContext
 
     @EncryptionContext.setter
@@ -961,6 +1118,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
+        """PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
+        :rtype: str
+        """
         return self._EncryptionPublicKey
 
     @EncryptionPublicKey.setter
@@ -969,6 +1129,9 @@ class DecryptRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
+        """Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned), `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
+        :rtype: str
+        """
         return self._EncryptionAlgorithm
 
     @EncryptionAlgorithm.setter
@@ -1012,6 +1175,9 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1020,6 +1186,10 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def Plaintext(self):
+        """If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.
+If `EncryptionPublicKey` is specified, this field will return the Base64-encoded ciphertext encrypted with the specified public key. To get the plaintext, you need to decode the ciphertext and upload the corresponding private key.
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -1028,6 +1198,9 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1055,6 +1228,9 @@ class DeleteImportedKeyMaterialRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Specifies the EXTERNAL CMK for which to delete the key material.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1088,6 +1264,9 @@ class DeleteImportedKeyMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1113,6 +1292,9 @@ class DeleteWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1146,6 +1328,9 @@ class DeleteWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1171,6 +1356,9 @@ class DescribeKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1208,6 +1396,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyMetadata(self):
+        """Key attribute information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.kms.v20190118.models.KeyMetadata`
+        """
         return self._KeyMetadata
 
     @KeyMetadata.setter
@@ -1216,6 +1408,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1244,6 +1439,9 @@ class DescribeKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of IDs of the CMKs to be queried in batches. Up to 100 `KeyId` values are supported in one query.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -1281,6 +1479,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyMetadatas(self):
+        """List of returned attribute information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of KeyMetadata
+        """
         return self._KeyMetadatas
 
     @KeyMetadatas.setter
@@ -1289,6 +1491,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1320,6 +1525,9 @@ class DescribeWhiteBoxDecryptKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1356,6 +1564,9 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
 
     @property
     def DecryptKey(self):
+        """Base64-encoded white-box decryption key
+        :rtype: str
+        """
         return self._DecryptKey
 
     @DecryptKey.setter
@@ -1364,6 +1575,9 @@ class DescribeWhiteBoxDecryptKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1390,6 +1604,9 @@ class DescribeWhiteBoxDeviceFingerprintsRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """White-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1426,6 +1643,9 @@ class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
 
     @property
     def DeviceFingerprints(self):
+        """Device fingerprint list
+        :rtype: list of DeviceFingerprint
+        """
         return self._DeviceFingerprints
 
     @DeviceFingerprints.setter
@@ -1434,6 +1654,9 @@ class DescribeWhiteBoxDeviceFingerprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1474,6 +1697,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def KeyStatus(self):
+        """Filter: key status. 0: disabled, 1: enabled
+        :rtype: int
+        """
         return self._KeyStatus
 
     @KeyStatus.setter
@@ -1482,6 +1708,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1490,6 +1719,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1498,6 +1730,9 @@ class DescribeWhiteBoxKeyDetailsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """Tag filter condition
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1546,6 +1781,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyInfos(self):
+        """White-box key information list
+        :rtype: list of WhiteboxKeyInfo
+        """
         return self._KeyInfos
 
     @KeyInfos.setter
@@ -1554,6 +1792,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total white-box keys.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1562,6 +1804,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1594,6 +1839,9 @@ class DescribeWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1630,6 +1878,9 @@ class DescribeWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def KeyInfo(self):
+        """White-box key information
+        :rtype: :class:`tencentcloud.kms.v20190118.models.WhiteboxKeyInfo`
+        """
         return self._KeyInfo
 
     @KeyInfo.setter
@@ -1638,6 +1889,9 @@ class DescribeWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1675,6 +1929,9 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
 
     @property
     def ServiceEnabled(self):
+        """Whether the user's white-box key service is available
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -1683,6 +1940,9 @@ class DescribeWhiteBoxServiceStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1713,6 +1973,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Identity(self):
+        """Fingerprint information collected by device fingerprint collector. Its format must be in the following regular expression: ^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
+        :rtype: str
+        """
         return self._Identity
 
     @Identity.setter
@@ -1721,6 +1984,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Description, such as IP and device name. Length limit: 1,024 bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1755,6 +2022,9 @@ class DisableKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1788,6 +2058,9 @@ class DisableKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1813,6 +2086,9 @@ class DisableKeyRotationRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1846,6 +2122,9 @@ class DisableKeyRotationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1871,6 +2150,9 @@ class DisableKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of IDs of the CMKs to be disabled in batches. Up to 100 CMKs are supported at a time
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -1904,6 +2186,9 @@ class DisableKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1929,6 +2214,9 @@ class DisableWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -1962,6 +2250,9 @@ class DisableWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1987,6 +2278,9 @@ class DisableWhiteBoxKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2020,6 +2314,9 @@ class DisableWhiteBoxKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2045,6 +2342,9 @@ class EnableKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2078,6 +2378,9 @@ class EnableKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2106,6 +2409,9 @@ class EnableKeyRotationRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2114,6 +2420,9 @@ class EnableKeyRotationRequest(AbstractModel):
 
     @property
     def RotateDays(self):
+        """The interval between each key rotation in days. Value range: 7 - 365 (default).
+        :rtype: int
+        """
         return self._RotateDays
 
     @RotateDays.setter
@@ -2148,6 +2457,9 @@ class EnableKeyRotationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2173,6 +2485,9 @@ class EnableKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of IDs of the CMKs to be enabled in batches. Up to 100 CMKs are supported at a time
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2206,6 +2521,9 @@ class EnableKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2231,6 +2549,9 @@ class EnableWhiteBoxKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2264,6 +2585,9 @@ class EnableWhiteBoxKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2289,6 +2613,9 @@ class EnableWhiteBoxKeysRequest(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -2322,6 +2649,9 @@ class EnableWhiteBoxKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2353,6 +2683,9 @@ class EncryptByWhiteBoxRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2361,6 +2694,9 @@ class EncryptByWhiteBoxRequest(AbstractModel):
 
     @property
     def PlainText(self):
+        """Base64-encoded text to be encrypted. The size of the original text cannot exceed 4 KB.
+        :rtype: str
+        """
         return self._PlainText
 
     @PlainText.setter
@@ -2369,6 +2705,9 @@ class EncryptByWhiteBoxRequest(AbstractModel):
 
     @property
     def InitializationVector(self):
+        """Base64-encoded initialization vector of 16 bytes, which will be used by the encryption algorithm. If this parameter is not passed in, the backend service will generate a random one. You should save this value as a parameter for decryption.
+        :rtype: str
+        """
         return self._InitializationVector
 
     @InitializationVector.setter
@@ -2410,6 +2749,9 @@ class EncryptByWhiteBoxResponse(AbstractModel):
 
     @property
     def InitializationVector(self):
+        """Base64-encoded initialization vector, which will be used by the encryption algorithm. If this parameter is passed in by the caller, it will be returned as-is; otherwise, the backend service will generate a random one and return it.
+        :rtype: str
+        """
         return self._InitializationVector
 
     @InitializationVector.setter
@@ -2418,6 +2760,9 @@ class EncryptByWhiteBoxResponse(AbstractModel):
 
     @property
     def CipherText(self):
+        """Base64-encoded ciphertext after encryption
+        :rtype: str
+        """
         return self._CipherText
 
     @CipherText.setter
@@ -2426,6 +2771,9 @@ class EncryptByWhiteBoxResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2459,6 +2807,9 @@ class EncryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique ID of the CMK generated by calling the `CreateKey` API
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2467,6 +2818,9 @@ class EncryptRequest(AbstractModel):
 
     @property
     def Plaintext(self):
+        """Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -2475,6 +2829,9 @@ class EncryptRequest(AbstractModel):
 
     @property
     def EncryptionContext(self):
+        """JSON string of key-value pair. If this parameter is specified, the same parameter needs to be provided when the `Decrypt` API is called. It is up to 1,024 characters
+        :rtype: str
+        """
         return self._EncryptionContext
 
     @EncryptionContext.setter
@@ -2516,6 +2873,9 @@ class EncryptResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """Base64-encoded ciphertext, which is the encrypted information of the ciphertext and key. To get the plaintext, you need to pass in this field to the Decrypt API.
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -2524,6 +2884,9 @@ class EncryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique ID of the CMK used for encryption
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2532,6 +2895,9 @@ class EncryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2574,6 +2940,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2582,6 +2951,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def KeySpec(self):
+        """Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.
+        :rtype: str
+        """
         return self._KeySpec
 
     @KeySpec.setter
@@ -2590,6 +2962,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def NumberOfBytes(self):
+        """Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.
+        :rtype: int
+        """
         return self._NumberOfBytes
 
     @NumberOfBytes.setter
@@ -2598,6 +2973,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionContext(self):
+        """JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.
+        :rtype: str
+        """
         return self._EncryptionContext
 
     @EncryptionContext.setter
@@ -2606,6 +2984,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
+        """PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
+        :rtype: str
+        """
         return self._EncryptionPublicKey
 
     @EncryptionPublicKey.setter
@@ -2614,6 +2995,9 @@ class GenerateDataKeyRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
+        """Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned)`, `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.
+        :rtype: str
+        """
         return self._EncryptionAlgorithm
 
     @EncryptionAlgorithm.setter
@@ -2662,6 +3046,9 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2670,6 +3057,10 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def Plaintext(self):
+        """If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.
+If `EncryptionPublicKey` is specified, this field will return the Base64-encoded ciphertext encrypted with the specified public key. To get the plaintext, you need to decode the ciphertext and upload the corresponding private key.
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -2678,6 +3069,9 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def CiphertextBlob(self):
+        """Ciphertext of the data key, which should be kept by yourself. KMS does not host user data keys. You can call the `Decrypt` API to get the plaintext of the data key from `CiphertextBlob`.
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -2686,6 +3080,9 @@ If `EncryptionPublicKey` is specified, this field will return the Base64-encoded
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2714,6 +3111,9 @@ class GenerateRandomRequest(AbstractModel):
 
     @property
     def NumberOfBytes(self):
+        """Length of the random number. Minimum value: 1. Maximum value: 1024
+        :rtype: int
+        """
         return self._NumberOfBytes
 
     @NumberOfBytes.setter
@@ -2750,6 +3150,9 @@ class GenerateRandomResponse(AbstractModel):
 
     @property
     def Plaintext(self):
+        """Base64-encoded plaintext of the randomly generated number. You need to Base64-decode it to get the plaintext.
+        :rtype: str
+        """
         return self._Plaintext
 
     @Plaintext.setter
@@ -2758,6 +3161,9 @@ class GenerateRandomResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2784,6 +3190,9 @@ class GetKeyRotationStatusRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2820,6 +3229,9 @@ class GetKeyRotationStatusResponse(AbstractModel):
 
     @property
     def KeyRotationEnabled(self):
+        """Whether key rotation is enabled
+        :rtype: bool
+        """
         return self._KeyRotationEnabled
 
     @KeyRotationEnabled.setter
@@ -2828,6 +3240,9 @@ class GetKeyRotationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2860,6 +3275,9 @@ class GetParametersForImportRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of a CMK. The CMK for which to get the key parameters must be of the `EXTERNAL` type, i.e., Type = 2 when the CMK is created by the `CreateKey` API.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2868,6 +3286,9 @@ class GetParametersForImportRequest(AbstractModel):
 
     @property
     def WrappingAlgorithm(self):
+        """Specifies the algorithm for key material encryption. Currently, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256` are supported.
+        :rtype: str
+        """
         return self._WrappingAlgorithm
 
     @WrappingAlgorithm.setter
@@ -2876,6 +3297,9 @@ class GetParametersForImportRequest(AbstractModel):
 
     @property
     def WrappingKeySpec(self):
+        """Specifies the type of wrapping key. Currently, only `RSA_2048` is supported.
+        :rtype: str
+        """
         return self._WrappingKeySpec
 
     @WrappingKeySpec.setter
@@ -2923,6 +3347,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of a CMK, which is used to specify the CMK into which to import key material.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2931,6 +3358,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def ImportToken(self):
+        """The token required for importing key material, which is used as a parameter for `ImportKeyMaterial`.
+        :rtype: str
+        """
         return self._ImportToken
 
     @ImportToken.setter
@@ -2939,6 +3369,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """The Base64-encoded RSA public key used to encrypt key material before importing it with `ImportKeyMaterial`.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -2947,6 +3380,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def ParametersValidTo(self):
+        """Validity period of the token and public key. A token and public key can only be imported when they are valid. If they are expired, you will need to call the `GetParametersForImport` API again to get a new token and public key.
+        :rtype: int
+        """
         return self._ParametersValidTo
 
     @ParametersValidTo.setter
@@ -2955,6 +3391,9 @@ class GetParametersForImportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2984,6 +3423,9 @@ class GetPublicKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3026,6 +3468,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3034,6 +3479,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """Base64-encoded public key content.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -3042,6 +3490,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKeyPem(self):
+        """Public key content in PEM format.
+        :rtype: str
+        """
         return self._PublicKeyPem
 
     @PublicKeyPem.setter
@@ -3050,6 +3501,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3088,6 +3542,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Regions(self):
+        """The list of supported regions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Regions
 
     @Regions.setter
@@ -3096,6 +3554,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3161,6 +3622,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServiceEnabled(self):
+        """Whether the KMS service has been activated. true: activated
+        :rtype: bool
+        """
         return self._ServiceEnabled
 
     @ServiceEnabled.setter
@@ -3169,6 +3633,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InvalidType(self):
+        """Service unavailability type. 0: not purchased; 1: normal; 2: suspended due to arrears; 3: resource released
+        :rtype: int
+        """
         return self._InvalidType
 
     @InvalidType.setter
@@ -3177,6 +3644,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserLevel(self):
+        """0: Basic Edition, 1: Ultimate Edition
+        :rtype: int
+        """
         return self._UserLevel
 
     @UserLevel.setter
@@ -3185,6 +3655,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProExpireTime(self):
+        """Expiration time of the KMS Ultimate edition. It’s represented in a Unix Epoch timestamp.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProExpireTime
 
     @ProExpireTime.setter
@@ -3193,6 +3667,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProRenewFlag(self):
+        """Whether to automatically renew Ultimate Edition. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProRenewFlag
 
     @ProRenewFlag.setter
@@ -3201,6 +3679,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProResourceId(self):
+        """Unique ID of the Ultimate Edition purchase record. If the Ultimate Edition is not activated, the returned value will be null.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProResourceId
 
     @ProResourceId.setter
@@ -3209,6 +3691,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusiveVSMEnabled(self):
+        """Whether to activate Managed KMS
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._ExclusiveVSMEnabled
 
     @ExclusiveVSMEnabled.setter
@@ -3217,6 +3703,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusiveHSMEnabled(self):
+        """Whether to activate Exclusive KMS
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._ExclusiveHSMEnabled
 
     @ExclusiveHSMEnabled.setter
@@ -3225,6 +3715,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscriptionInfo(self):
+        """KMS subscription information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubscriptionInfo
 
     @SubscriptionInfo.setter
@@ -3233,6 +3727,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3276,6 +3773,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def EncryptedKeyMaterial(self):
+        """Base64-encoded key material that encrypted with the `PublicKey` returned by `GetParametersForImport`. For the KMS of SM-CRYPTO version, the length of the key material should be 128 bits, while for KMS of FIPS-compliant version, the length should be 256 bits.
+        :rtype: str
+        """
         return self._EncryptedKeyMaterial
 
     @EncryptedKeyMaterial.setter
@@ -3284,6 +3784,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def ImportToken(self):
+        """Import token obtained by calling `GetParametersForImport`.
+        :rtype: str
+        """
         return self._ImportToken
 
     @ImportToken.setter
@@ -3292,6 +3795,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Specifies the CMK into which to import key material, which must be the same as the one specified by `GetParametersForImport`.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3300,6 +3806,9 @@ class ImportKeyMaterialRequest(AbstractModel):
 
     @property
     def ValidTo(self):
+        """Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.
+        :rtype: int
+        """
         return self._ValidTo
 
     @ValidTo.setter
@@ -3336,6 +3845,9 @@ class ImportKeyMaterialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3361,6 +3873,9 @@ class Key(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3442,6 +3957,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -3450,6 +3968,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Alias(self):
+        """Alias that makes a key more recognizable and understandable
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -3458,6 +3979,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
+        """Key creation time
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3466,6 +3990,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Description(self):
+        """CMK description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3474,6 +4001,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyState(self):
+        """CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.
+        :rtype: str
+        """
         return self._KeyState
 
     @KeyState.setter
@@ -3482,6 +4012,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyUsage(self):
+        """CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -3490,6 +4023,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
+        """CMK type. 2: FIPS-compliant; 4: SM-CRYPTO
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -3498,6 +4034,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreatorUin(self):
+        """Creator
+        :rtype: int
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -3506,6 +4045,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def KeyRotationEnabled(self):
+        """Whether key rotation is enabled
+        :rtype: bool
+        """
         return self._KeyRotationEnabled
 
     @KeyRotationEnabled.setter
@@ -3514,6 +4056,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Owner(self):
+        """CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.
+        :rtype: str
+        """
         return self._Owner
 
     @Owner.setter
@@ -3522,6 +4067,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def NextRotateTime(self):
+        """Time of next rotation if key rotation is enabled
+        :rtype: int
+        """
         return self._NextRotateTime
 
     @NextRotateTime.setter
@@ -3530,6 +4078,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DeletionDate(self):
+        """Scheduled deletion time
+        :rtype: int
+        """
         return self._DeletionDate
 
     @DeletionDate.setter
@@ -3538,6 +4089,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Origin(self):
+        """CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Origin
 
     @Origin.setter
@@ -3546,6 +4101,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ValidTo(self):
+        """It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ValidTo
 
     @ValidTo.setter
@@ -3554,6 +4113,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ResourceId(self):
+        """Resource ID in the format of `creatorUin/$creatorUin/$keyId`.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -3562,6 +4124,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def HsmClusterId(self):
+        """ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -3625,6 +4191,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def SymmetricAlgorithms(self):
+        """Symmetric encryption algorithms supported in this region
+        :rtype: list of AlgorithmInfo
+        """
         return self._SymmetricAlgorithms
 
     @SymmetricAlgorithms.setter
@@ -3633,6 +4202,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def AsymmetricAlgorithms(self):
+        """Asymmetric encryption algorithms supported in this region
+        :rtype: list of AlgorithmInfo
+        """
         return self._AsymmetricAlgorithms
 
     @AsymmetricAlgorithms.setter
@@ -3641,6 +4213,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def AsymmetricSignVerifyAlgorithms(self):
+        """Asymmetric signature verification algorithms supported in the current region
+        :rtype: list of AlgorithmInfo
+        """
         return self._AsymmetricSignVerifyAlgorithms
 
     @AsymmetricSignVerifyAlgorithms.setter
@@ -3649,6 +4224,9 @@ class ListAlgorithmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3719,6 +4297,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3727,6 +4308,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3735,6 +4319,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Role(self):
+        """Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.
+        :rtype: int
+        """
         return self._Role
 
     @Role.setter
@@ -3743,6 +4330,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """Sorts by CMK creation time. 0: descending; 1: ascending
+        :rtype: int
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -3751,6 +4341,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def KeyState(self):
+        """Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.
+        :rtype: int
+        """
         return self._KeyState
 
     @KeyState.setter
@@ -3759,6 +4352,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def SearchKeyAlias(self):
+        """Performs a fuzzy query by `KeyId` or `Alias`
+        :rtype: str
+        """
         return self._SearchKeyAlias
 
     @SearchKeyAlias.setter
@@ -3767,6 +4363,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def Origin(self):
+        """Filters by CMK type. "TENCENT_KMS" indicates to filter CMKs whose key materials are created by KMS; "EXTERNAL" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; "ALL" or empty indicates to filter CMKs of both types. This value is case-sensitive.
+        :rtype: str
+        """
         return self._Origin
 
     @Origin.setter
@@ -3775,6 +4374,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def KeyUsage(self):
+        """Filters by the `KeyUsage` field value. Valid values: `ALL` (all CMKs), `ENCRYPT_DECRYPT` (used when this field is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.
+        :rtype: str
+        """
         return self._KeyUsage
 
     @KeyUsage.setter
@@ -3783,6 +4385,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """Tag filter condition
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -3791,6 +4396,9 @@ class ListKeyDetailRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -3845,6 +4453,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of CMKs
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3853,6 +4464,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyMetadatas(self):
+        """List of returned attribute information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of KeyMetadata
+        """
         return self._KeyMetadatas
 
     @KeyMetadatas.setter
@@ -3861,6 +4476,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3902,6 +4520,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the "No. Offset value" element of the array arranged in a certain order. The default value is 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3910,6 +4531,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3918,6 +4542,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def Role(self):
+        """Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service
+        :rtype: int
+        """
         return self._Role
 
     @Role.setter
@@ -3926,6 +4553,9 @@ class ListKeysRequest(AbstractModel):
 
     @property
     def HsmClusterId(self):
+        """ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.
+        :rtype: str
+        """
         return self._HsmClusterId
 
     @HsmClusterId.setter
@@ -3968,6 +4598,9 @@ class ListKeysResponse(AbstractModel):
 
     @property
     def Keys(self):
+        """CMK list array
+        :rtype: list of Key
+        """
         return self._Keys
 
     @Keys.setter
@@ -3976,6 +4609,9 @@ class ListKeysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of CMKs
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3984,6 +4620,9 @@ class ListKeysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4019,6 +4658,9 @@ class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """White-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4027,6 +4669,9 @@ class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
 
     @property
     def DeviceFingerprints(self):
+        """Device fingerprint list. If the list is empty, it means to delete all fingerprint information corresponding to the key. There can be up to 200 entries in the list.
+        :rtype: list of DeviceFingerprint
+        """
         return self._DeviceFingerprints
 
     @DeviceFingerprints.setter
@@ -4066,6 +4711,9 @@ class OverwriteWhiteBoxDeviceFingerprintsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4088,7 +4736,7 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
         :type CiphertextBlob: str
         :param _EncryptionPublicKey: PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
         :type EncryptionPublicKey: str
-        :param _EncryptionAlgorithm: Asymmetric encryption algorithm. It is used in combination with `EncryptionPublicKey` to encrypt the returned data. Values: `SM2` u200d(Return the ciphertext in the format of "C1C3C2"), `SM2_C1C3C2_ASN1` (Return the ciphertext in the format of "C1C3C2 ASN1"), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, `RSAES_OAEP_SHA_256`. It defaults to `SM2` if it's not specified. 
+        :param _EncryptionAlgorithm: Asymmetric encryption algorithm. It is used in combination with `EncryptionPublicKey` to encrypt the returned data. Values: `SM2`(Return the ciphertext in the format of "C1C3C2"), `SM2_C1C3C2_ASN1` (Return the ciphertext in the format of "C1C3C2 ASN1"), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, `RSAES_OAEP_SHA_256`. It defaults to `SM2` if it's not specified. 
         :type EncryptionAlgorithm: str
         """
         self._CiphertextBlob = None
@@ -4097,6 +4745,9 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """The ciphertext data to be decrypted.
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4105,6 +4756,9 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
 
     @property
     def EncryptionPublicKey(self):
+        """PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.
+        :rtype: str
+        """
         return self._EncryptionPublicKey
 
     @EncryptionPublicKey.setter
@@ -4113,6 +4767,9 @@ class PostQuantumCryptoDecryptRequest(AbstractModel):
 
     @property
     def EncryptionAlgorithm(self):
+        """Asymmetric encryption algorithm. It is used in combination with `EncryptionPublicKey` to encrypt the returned data. Values: `SM2`(Return the ciphertext in the format of "C1C3C2"), `SM2_C1C3C2_ASN1` (Return the ciphertext in the format of "C1C3C2 ASN1"), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, `RSAES_OAEP_SHA_256`. It defaults to `SM2` if it's not specified. 
+        :rtype: str
+        """
         return self._EncryptionAlgorithm
 
     @EncryptionAlgorithm.setter
@@ -4155,6 +4812,9 @@ If `EncryptionPublicKey` is passed in, this field contains the Base64-encoded ci
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4163,6 +4823,10 @@ If `EncryptionPublicKey` is passed in, this field contains the Base64-encoded ci
 
     @property
     def PlainText(self):
+        """If `EncryptionPublicKey` is left empty, a Base64-encoded ciphertext will be returned. To get the plaintext, you need to decode the ciphertext first.
+If `EncryptionPublicKey` is passed in, this field contains the Base64-encoded ciphertext after asymmetric encryption by using the public key in `EncryptionPublicKey` To get the plaintext, you need to first decode the Base64 format, and then decrypwith the private key corresponding with the public key. The private key is uploaded by the user. 
+        :rtype: str
+        """
         return self._PlainText
 
     @PlainText.setter
@@ -4171,6 +4835,9 @@ If `EncryptionPublicKey` is passed in, this field contains the Base64-encoded ci
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4201,6 +4868,9 @@ class PostQuantumCryptoEncryptRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique ID of the CMK generated by calling the `CreateKey` API
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4209,6 +4879,9 @@ class PostQuantumCryptoEncryptRequest(AbstractModel):
 
     @property
     def PlainText(self):
+        """Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB.
+        :rtype: str
+        """
         return self._PlainText
 
     @PlainText.setter
@@ -4249,6 +4922,9 @@ class PostQuantumCryptoEncryptResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """Base64-encoded ciphertext after encryption. This field contains the information of ciphertext and keys. It is not the result of encrypting the plaintext. To get the plaintext, you need to pass in this field to the PostQuantumCryptoDecrypt API.
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4257,6 +4933,9 @@ class PostQuantumCryptoEncryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique ID of the CMK used for encryption
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4265,6 +4944,9 @@ class PostQuantumCryptoEncryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4295,6 +4977,9 @@ class PostQuantumCryptoSignRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Original message text before Base64 encoding. It cannot exceed 4096 bytes. 
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4303,6 +4988,9 @@ class PostQuantumCryptoSignRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of a key
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4340,6 +5028,9 @@ class PostQuantumCryptoSignResponse(AbstractModel):
 
     @property
     def Signature(self):
+        """Base64-encoded signature You can use PostQuantumCryptoVerify to verify the signature value.
+        :rtype: str
+        """
         return self._Signature
 
     @Signature.setter
@@ -4348,6 +5039,9 @@ class PostQuantumCryptoSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4380,6 +5074,9 @@ class PostQuantumCryptoVerifyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of a key
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4388,6 +5085,9 @@ class PostQuantumCryptoVerifyRequest(AbstractModel):
 
     @property
     def SignatureValue(self):
+        """Signature value, which is generated by calling the `PostQuantumCryptoSign` API.
+        :rtype: str
+        """
         return self._SignatureValue
 
     @SignatureValue.setter
@@ -4396,6 +5096,9 @@ class PostQuantumCryptoVerifyRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Original message text before Base64 encoding. It cannot exceed 4096 bytes.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4434,6 +5137,9 @@ class PostQuantumCryptoVerifyResponse(AbstractModel):
 
     @property
     def SignatureValid(self):
+        """Verify whether the signature is valid. `true`: The signature is valid. `false`: The signature is invalid.
+        :rtype: bool
+        """
         return self._SignatureValid
 
     @SignatureValid.setter
@@ -4442,6 +5148,9 @@ class PostQuantumCryptoVerifyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4477,6 +5186,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """Ciphertext to be re-encrypted
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4485,6 +5197,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def DestinationKeyId(self):
+        """CMK used for re-encryption. If this parameter is empty, the ciphertext will be re-encrypted by using the original CMK (as long as the key is not rotated, the ciphertext will not be refreshed)
+        :rtype: str
+        """
         return self._DestinationKeyId
 
     @DestinationKeyId.setter
@@ -4493,6 +5208,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def SourceEncryptionContext(self):
+        """JSON string of the key-value pair used during ciphertext encryption by `CiphertextBlob`. If not used during encryption, this parameter will be empty
+        :rtype: str
+        """
         return self._SourceEncryptionContext
 
     @SourceEncryptionContext.setter
@@ -4501,6 +5219,9 @@ class ReEncryptRequest(AbstractModel):
 
     @property
     def DestinationEncryptionContext(self):
+        """JSON string of the key-value pair used during re-encryption. If this field is used, the same string should be entered when the returned new ciphertext is decrypted
+        :rtype: str
+        """
         return self._DestinationEncryptionContext
 
     @DestinationEncryptionContext.setter
@@ -4549,6 +5270,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def CiphertextBlob(self):
+        """Re-encrypted ciphertext
+        :rtype: str
+        """
         return self._CiphertextBlob
 
     @CiphertextBlob.setter
@@ -4557,6 +5281,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK used for re-encryption
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4565,6 +5292,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def SourceKeyId(self):
+        """CMK used by ciphertext before re-encryption
+        :rtype: str
+        """
         return self._SourceKeyId
 
     @SourceKeyId.setter
@@ -4573,6 +5303,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def ReEncrypted(self):
+        """`true` indicates that the ciphertext has been re-encrypted. When re-encryption is initiated by using the same CMK, as long as the CMK is not rotated, no actual re-encryption will be performed, and the original ciphertext will be returned
+        :rtype: bool
+        """
         return self._ReEncrypted
 
     @ReEncrypted.setter
@@ -4581,6 +5314,9 @@ class ReEncryptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4613,6 +5349,9 @@ class ScheduleKeyDeletionRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4621,6 +5360,9 @@ class ScheduleKeyDeletionRequest(AbstractModel):
 
     @property
     def PendingWindowInDays(self):
+        """Schedule deletion time range. Value range: [7,30]
+        :rtype: int
+        """
         return self._PendingWindowInDays
 
     @PendingWindowInDays.setter
@@ -4661,6 +5403,9 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     @property
     def DeletionDate(self):
+        """Schedule deletion execution time
+        :rtype: int
+        """
         return self._DeletionDate
 
     @DeletionDate.setter
@@ -4669,6 +5414,9 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of the CMK scheduled for deletion
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4677,6 +5425,9 @@ class ScheduleKeyDeletionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4713,6 +5464,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -4721,6 +5475,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4729,6 +5486,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of a key
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4737,6 +5497,9 @@ class SignByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def MessageType(self):
+        """Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -4776,6 +5539,9 @@ class SignByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def Signature(self):
+        """Base64-encoded signature
+        :rtype: str
+        """
         return self._Signature
 
     @Signature.setter
@@ -4784,6 +5550,9 @@ class SignByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4813,6 +5582,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4821,6 +5593,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -4858,6 +5633,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4866,6 +5644,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -4906,6 +5687,9 @@ class UnbindCloudResourceRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -4914,6 +5698,9 @@ class UnbindCloudResourceRequest(AbstractModel):
 
     @property
     def ProductId(self):
+        """Unique ID of a Tencent Cloud service
+        :rtype: str
+        """
         return self._ProductId
 
     @ProductId.setter
@@ -4922,6 +5709,9 @@ class UnbindCloudResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -4957,6 +5747,9 @@ class UnbindCloudResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4985,6 +5778,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Alias(self):
+        """New alias containing 1-60 characters or digits
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -4993,6 +5789,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5027,6 +5826,9 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5055,6 +5857,9 @@ class UpdateKeyDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """New description of up to 1,024 bytes in length
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5063,6 +5868,9 @@ class UpdateKeyDescriptionRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """ID of the CMK for which to modify the description
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5097,6 +5905,9 @@ class UpdateKeyDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5134,6 +5945,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Unique ID of a key
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5142,6 +5956,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def SignatureValue(self):
+        """Signature value, which is generated by calling the KMS signature API.
+        :rtype: str
+        """
         return self._SignatureValue
 
     @SignatureValue.setter
@@ -5150,6 +5967,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5158,6 +5978,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def Algorithm(self):
+        """Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -5166,6 +5989,9 @@ class VerifyByAsymmetricKeyRequest(AbstractModel):
 
     @property
     def MessageType(self):
+        """Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.
+        :rtype: str
+        """
         return self._MessageType
 
     @MessageType.setter
@@ -5206,6 +6032,9 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def SignatureValid(self):
+        """Whether the signature is valid. `true`: the signature is valid; `false`: the signature is invalid.
+        :rtype: bool
+        """
         return self._SignatureValid
 
     @SignatureValid.setter
@@ -5214,6 +6043,9 @@ class VerifyByAsymmetricKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5274,6 +6106,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeyId(self):
+        """Globally unique white-box key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -5282,6 +6117,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alias(self):
+        """Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1 to 60 letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
+        :rtype: str
+        """
         return self._Alias
 
     @Alias.setter
@@ -5290,6 +6128,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatorUin(self):
+        """Creator
+        :rtype: int
+        """
         return self._CreatorUin
 
     @CreatorUin.setter
@@ -5298,6 +6139,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Key description information
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5306,6 +6150,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Key creation time in Unix timestamp
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5314,6 +6161,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """White-box key status. Valid values: Enabled, Disabled
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5322,6 +6172,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """Creator
+        :rtype: int
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -5330,6 +6183,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Algorithm(self):
+        """Key algorithm type
+        :rtype: str
+        """
         return self._Algorithm
 
     @Algorithm.setter
@@ -5338,6 +6194,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptKey(self):
+        """Base64-encoded white-box encryption key
+        :rtype: str
+        """
         return self._EncryptKey
 
     @EncryptKey.setter
@@ -5346,6 +6205,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DecryptKey(self):
+        """Base64-encoded white-box decryption key
+        :rtype: str
+        """
         return self._DecryptKey
 
     @DecryptKey.setter
@@ -5354,6 +6216,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
+        """Resource ID in the format of `creatorUin/$creatorUin/$keyId`
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5362,6 +6227,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeviceFingerprintBind(self):
+        """Whether there is a device fingerprint bound to the current key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._DeviceFingerprintBind
 
     @DeviceFingerprintBind.setter

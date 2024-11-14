@@ -35,6 +35,9 @@ class AddSignStatus(AbstractModel):
 
     @property
     def SignId(self):
+        """Signature ID.
+        :rtype: int
+        """
         return self._SignId
 
     @SignId.setter
@@ -43,6 +46,9 @@ class AddSignStatus(AbstractModel):
 
     @property
     def SignApplyId(self):
+        """Signature application ID.
+        :rtype: int
+        """
         return self._SignApplyId
 
     @SignApplyId.setter
@@ -119,6 +125,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def SignName(self):
+        """Signature name.
+        :rtype: str
+        """
         return self._SignName
 
     @SignName.setter
@@ -127,6 +136,16 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def SignType(self):
+        """Signature type. Each of these types is followed by their `DocumentType` (identity document type) option:
+0: company (0, 1, 2, 3).
+1: app (0, 1, 2, 3, 4).
+2: website (0, 1, 2, 3, 5).
+3: WeChat Official Account or WeChat Mini Program (0, 1, 2, 3, 6).
+4: trademark (7).
+5: governmental/public institution or others (2, 3).
+Note: the identity document type must be selected according to the correspondence; otherwise, the review will fail.
+        :rtype: int
+        """
         return self._SignType
 
     @SignType.setter
@@ -135,6 +154,17 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def DocumentType(self):
+        """Identity document type:
+0: 3-in-1 license.
+1: business license.
+2: organization code certificate.
+3: certificate of unified social credit code.
+4: screenshot of application backend management (for personal app).
+5: screenshot of website ICP filing backend (for personal website).
+6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).
+7: trademark registration certificate.
+        :rtype: int
+        """
         return self._DocumentType
 
     @DocumentType.setter
@@ -143,6 +173,11 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def International(self):
+        """Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -151,6 +186,11 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def UsedMethod(self):
+        """Signature use:
+0: for self-use.
+1: for others.
+        :rtype: int
+        """
         return self._UsedMethod
 
     @UsedMethod.setter
@@ -159,6 +199,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def ProofImage(self):
+        """You should Base64-encode the image of the identity document corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
+        :rtype: str
+        """
         return self._ProofImage
 
     @ProofImage.setter
@@ -167,6 +210,11 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def CommissionImage(self):
+        """Authorization letter, which should be submitted if `UsedMethod` is for others.
+You should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
+Note: this field will take effect only when `UsedMethod` is 1 (for others).
+        :rtype: str
+        """
         return self._CommissionImage
 
     @CommissionImage.setter
@@ -175,6 +223,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def Remark(self):
+        """Signature application remarks.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -218,6 +269,9 @@ class AddSmsSignResponse(AbstractModel):
 
     @property
     def AddSignStatus(self):
+        """Signature addition response
+        :rtype: :class:`tencentcloud.sms.v20190711.models.AddSignStatus`
+        """
         return self._AddSignStatus
 
     @AddSignStatus.setter
@@ -226,6 +280,9 @@ class AddSmsSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -268,6 +325,9 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -276,6 +336,9 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
+        """Template content.
+        :rtype: str
+        """
         return self._TemplateContent
 
     @TemplateContent.setter
@@ -284,6 +347,9 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def SmsType(self):
+        """SMS type. 0: ordinary SMS, 1: marketing SMS.
+        :rtype: int
+        """
         return self._SmsType
 
     @SmsType.setter
@@ -292,6 +358,11 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def International(self):
+        """Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -300,6 +371,9 @@ class AddSmsTemplateRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """Template remarks, such as reason for application and use case.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -340,6 +414,9 @@ class AddSmsTemplateResponse(AbstractModel):
 
     @property
     def AddTemplateStatus(self):
+        """SMS template addition response packet body
+        :rtype: :class:`tencentcloud.sms.v20190711.models.AddTemplateStatus`
+        """
         return self._AddTemplateStatus
 
     @AddTemplateStatus.setter
@@ -348,6 +425,9 @@ class AddSmsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -376,6 +456,9 @@ class AddTemplateStatus(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template parameter
+        :rtype: str
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -433,6 +516,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackCount(self):
+        """SMS receipts.
+        :rtype: int
+        """
         return self._CallbackCount
 
     @CallbackCount.setter
@@ -441,6 +527,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def RequestSuccessCount(self):
+        """Successfully submitted SMS messages.
+        :rtype: int
+        """
         return self._RequestSuccessCount
 
     @RequestSuccessCount.setter
@@ -449,6 +538,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackFailCount(self):
+        """Failed SMS receipts.
+        :rtype: int
+        """
         return self._CallbackFailCount
 
     @CallbackFailCount.setter
@@ -457,6 +549,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackSuccessCount(self):
+        """Successful SMS receipts.
+        :rtype: int
+        """
         return self._CallbackSuccessCount
 
     @CallbackSuccessCount.setter
@@ -465,6 +560,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InternalErrorCount(self):
+        """Internal carrier errors.
+        :rtype: int
+        """
         return self._InternalErrorCount
 
     @InternalErrorCount.setter
@@ -473,6 +571,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InvalidNumberCount(self):
+        """Invalid or empty mobile numbers.
+        :rtype: int
+        """
         return self._InvalidNumberCount
 
     @InvalidNumberCount.setter
@@ -481,6 +582,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def ShutdownErrorCount(self):
+        """Errors such as out-of-service or power-off.
+        :rtype: int
+        """
         return self._ShutdownErrorCount
 
     @ShutdownErrorCount.setter
@@ -489,6 +593,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def BlackListCount(self):
+        """Blacklisted mobile numbers.
+        :rtype: int
+        """
         return self._BlackListCount
 
     @BlackListCount.setter
@@ -497,6 +604,9 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def FrequencyLimitCount(self):
+        """Carrier frequency limit hits.
+        :rtype: int
+        """
         return self._FrequencyLimitCount
 
     @FrequencyLimitCount.setter
@@ -553,6 +663,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def StartDateTime(self):
+        """Start time of pull in the format of `yyyymmddhh` accurate to the hour.
+        :rtype: int
+        """
         return self._StartDateTime
 
     @StartDateTime.setter
@@ -561,6 +674,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def EndDataTime(self):
+        """End time of pull in the format of `yyyymmddhh` accurate to the hour.
+Note: `EndDataTime` must be later than `StartDateTime`.
+        :rtype: int
+        """
         return self._EndDataTime
 
     @EndDataTime.setter
@@ -569,6 +686,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -577,6 +697,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Limit(self):
+        """Upper limit.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -585,6 +709,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Offset(self):
+        """Offset.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -625,6 +753,9 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
     @property
     def CallbackStatusStatistics(self):
+        """Receipt statistics response packet body.
+        :rtype: :class:`tencentcloud.sms.v20190711.models.CallbackStatusStatistics`
+        """
         return self._CallbackStatusStatistics
 
     @CallbackStatusStatistics.setter
@@ -633,6 +764,9 @@ class CallbackStatusStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -664,6 +798,9 @@ class DeleteSignStatus(AbstractModel):
 
     @property
     def DeleteStatus(self):
+        """Deletion status information.
+        :rtype: str
+        """
         return self._DeleteStatus
 
     @DeleteStatus.setter
@@ -672,6 +809,9 @@ class DeleteSignStatus(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """Deletion time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -706,6 +846,9 @@ class DeleteSmsSignRequest(AbstractModel):
 
     @property
     def SignId(self):
+        """ID of signature to be deleted.
+        :rtype: int
+        """
         return self._SignId
 
     @SignId.setter
@@ -742,6 +885,9 @@ class DeleteSmsSignResponse(AbstractModel):
 
     @property
     def DeleteSignStatus(self):
+        """Signature deletion response.
+        :rtype: :class:`tencentcloud.sms.v20190711.models.DeleteSignStatus`
+        """
         return self._DeleteSignStatus
 
     @DeleteSignStatus.setter
@@ -750,6 +896,9 @@ class DeleteSmsSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -778,6 +927,9 @@ class DeleteSmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """ID of template to be deleted.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -814,6 +966,9 @@ class DeleteSmsTemplateResponse(AbstractModel):
 
     @property
     def DeleteTemplateStatus(self):
+        """Template deletion response.
+        :rtype: :class:`tencentcloud.sms.v20190711.models.DeleteTemplateStatus`
+        """
         return self._DeleteTemplateStatus
 
     @DeleteTemplateStatus.setter
@@ -822,6 +977,9 @@ class DeleteSmsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -853,6 +1011,9 @@ class DeleteTemplateStatus(AbstractModel):
 
     @property
     def DeleteStatus(self):
+        """Deletion status information.
+        :rtype: str
+        """
         return self._DeleteStatus
 
     @DeleteStatus.setter
@@ -861,6 +1022,9 @@ class DeleteTemplateStatus(AbstractModel):
 
     @property
     def DeleteTime(self):
+        """Deletion time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._DeleteTime
 
     @DeleteTime.setter
@@ -914,6 +1078,9 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def SignId(self):
+        """Signature ID
+        :rtype: int
+        """
         return self._SignId
 
     @SignId.setter
@@ -922,6 +1089,11 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def International(self):
+        """Whether it is Global SMS. Valid values:
+0: Mainland China SMS.
+1: Global SMS
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -930,6 +1102,11 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def StatusCode(self):
+        """Signature application status. Valid values:
+0: approved.
+-1: rejected or failed.
+        :rtype: int
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -938,6 +1115,9 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def ReviewReply(self):
+        """Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
+        :rtype: str
+        """
         return self._ReviewReply
 
     @ReviewReply.setter
@@ -946,6 +1126,9 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def SignName(self):
+        """Signature name.
+        :rtype: str
+        """
         return self._SignName
 
     @SignName.setter
@@ -954,6 +1137,9 @@ class DescribeSignListStatus(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Application submission time in the format of UNIX timestamp in seconds.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -997,6 +1183,9 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     @property
     def SignIdSet(self):
+        """Signature ID array.
+        :rtype: list of int non-negative
+        """
         return self._SignIdSet
 
     @SignIdSet.setter
@@ -1005,6 +1194,11 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     @property
     def International(self):
+        """Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -1042,6 +1236,9 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     @property
     def DescribeSignListStatusSet(self):
+        """Response for getting signature information
+        :rtype: list of DescribeSignListStatus
+        """
         return self._DescribeSignListStatusSet
 
     @DescribeSignListStatusSet.setter
@@ -1050,6 +1247,9 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1086,6 +1286,9 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     @property
     def TemplateIdSet(self):
+        """Template ID array.
+        :rtype: list of int non-negative
+        """
         return self._TemplateIdSet
 
     @TemplateIdSet.setter
@@ -1094,6 +1297,11 @@ class DescribeSmsTemplateListRequest(AbstractModel):
 
     @property
     def International(self):
+        """Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -1131,6 +1339,9 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     @property
     def DescribeTemplateStatusSet(self):
+        """Response for getting SMS signature information
+        :rtype: list of DescribeTemplateListStatus
+        """
         return self._DescribeTemplateStatusSet
 
     @DescribeTemplateStatusSet.setter
@@ -1139,6 +1350,9 @@ class DescribeSmsTemplateListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1189,6 +1403,9 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template ID
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1197,6 +1414,11 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def International(self):
+        """Whether it is Global SMS. Valid values:
+0: Mainland China SMS.
+1: Global SMS
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -1205,6 +1427,11 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def StatusCode(self):
+        """Signature application status. Valid values:
+0: approved.
+-1: rejected or failed.
+        :rtype: int
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -1213,6 +1440,9 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def ReviewReply(self):
+        """Review reply, i.e., response given by the reviewer, which is usually the reason for rejection.
+        :rtype: str
+        """
         return self._ReviewReply
 
     @ReviewReply.setter
@@ -1221,6 +1451,9 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1229,6 +1462,9 @@ class DescribeTemplateListStatus(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Application submission time in the format of UNIX timestamp in seconds.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1270,6 +1506,9 @@ class ModifySignStatus(AbstractModel):
 
     @property
     def SignId(self):
+        """Signature ID
+        :rtype: int
+        """
         return self._SignId
 
     @SignId.setter
@@ -1278,6 +1517,9 @@ class ModifySignStatus(AbstractModel):
 
     @property
     def SignApplyId(self):
+        """Signature modification application ID
+        :rtype: str
+        """
         return self._SignApplyId
 
     @SignApplyId.setter
@@ -1357,6 +1599,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def SignId(self):
+        """ID of signature to be modified.
+        :rtype: int
+        """
         return self._SignId
 
     @SignId.setter
@@ -1365,6 +1610,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def SignName(self):
+        """Signature name.
+        :rtype: str
+        """
         return self._SignName
 
     @SignName.setter
@@ -1373,6 +1621,16 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def SignType(self):
+        """Signature type. Each of these types is followed by their `DocumentType` (identity document type) option:
+0: company (0, 1, 2, 3).
+1: app (0, 1, 2, 3, 4).
+2: website (0, 1, 2, 3, 5).
+3: WeChat Official Account or WeChat Mini Program (0, 1, 2, 3, 6).
+4: trademark (7).
+5: governmental/public institution or others (2, 3).
+Note: the identity document type must be selected according to the correspondence; otherwise, the review will fail.
+        :rtype: int
+        """
         return self._SignType
 
     @SignType.setter
@@ -1381,6 +1639,17 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def DocumentType(self):
+        """Identity document type:
+0: 3-in-1 license.
+1: business license.
+2: organization code certificate.
+3: certificate of unified social credit code.
+4: screenshot of application backend management (for personal app).
+5: screenshot of website ICP filing backend (for personal website).
+6: screenshot of WeChat Mini Program settings page (for personal WeChat Mini Program).
+7: trademark registration certificate.
+        :rtype: int
+        """
         return self._DocumentType
 
     @DocumentType.setter
@@ -1389,6 +1658,11 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def International(self):
+        """Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -1397,6 +1671,11 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def UsedMethod(self):
+        """Signature use:
+0: for self-use.
+1: for others.
+        :rtype: int
+        """
         return self._UsedMethod
 
     @UsedMethod.setter
@@ -1405,6 +1684,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def ProofImage(self):
+        """You should Base64-encode the image of the identity document corresponding to the signature first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
+        :rtype: str
+        """
         return self._ProofImage
 
     @ProofImage.setter
@@ -1413,6 +1695,11 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def CommissionImage(self):
+        """Authorization letter, which should be submitted if `UsedMethod` is for others.
+You should Base64-encode the image first, remove the prefix `data:image/jpeg;base64,` from the resulted string, and then use it as the value of this parameter.
+Note: this field will take effect only when `UsedMethod` is 1 (for others).
+        :rtype: str
+        """
         return self._CommissionImage
 
     @CommissionImage.setter
@@ -1421,6 +1708,9 @@ Note: this field will take effect only when `UsedMethod` is 1 (for others).
 
     @property
     def Remark(self):
+        """Signature application remarks.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1465,6 +1755,9 @@ class ModifySmsSignResponse(AbstractModel):
 
     @property
     def ModifySignStatus(self):
+        """Signature modification response
+        :rtype: :class:`tencentcloud.sms.v20190711.models.ModifySignStatus`
+        """
         return self._ModifySignStatus
 
     @ModifySignStatus.setter
@@ -1473,6 +1766,9 @@ class ModifySmsSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1518,6 +1814,9 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
+        """ID of template to be modified.
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1526,6 +1825,9 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """New template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1534,6 +1836,9 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
+        """New template content.
+        :rtype: str
+        """
         return self._TemplateContent
 
     @TemplateContent.setter
@@ -1542,6 +1847,9 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def SmsType(self):
+        """SMS type. 0: ordinary SMS, 1: marketing SMS.
+        :rtype: int
+        """
         return self._SmsType
 
     @SmsType.setter
@@ -1550,6 +1858,11 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def International(self):
+        """Whether it is Global SMS:
+0: Mainland China SMS.
+1: Global SMS.
+        :rtype: int
+        """
         return self._International
 
     @International.setter
@@ -1558,6 +1871,9 @@ class ModifySmsTemplateRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """Template remarks, such as reason for application and use case.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -1599,6 +1915,9 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     @property
     def ModifyTemplateStatus(self):
+        """Template parameter modification response
+        :rtype: :class:`tencentcloud.sms.v20190711.models.ModifyTemplateStatus`
+        """
         return self._ModifyTemplateStatus
 
     @ModifyTemplateStatus.setter
@@ -1607,6 +1926,9 @@ class ModifySmsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1635,6 +1957,9 @@ class ModifyTemplateStatus(AbstractModel):
 
     @property
     def TemplateId(self):
+        """Template parameter
+        :rtype: int
+        """
         return self._TemplateId
 
     @TemplateId.setter
@@ -1686,6 +2011,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ExtendCode(self):
+        """SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._ExtendCode
 
     @ExtendCode.setter
@@ -1694,6 +2022,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def NationCode(self):
+        """Country (or region) code.
+        :rtype: str
+        """
         return self._NationCode
 
     @NationCode.setter
@@ -1702,6 +2033,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -1710,6 +2044,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def Sign(self):
+        """SMS signature.
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -1718,6 +2055,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ReplyContent(self):
+        """User reply.
+        :rtype: str
+        """
         return self._ReplyContent
 
     @ReplyContent.setter
@@ -1726,6 +2066,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ReplyTime(self):
+        """Reply time (e.g., 2019-10-08 17:18:37).
+        :rtype: str
+        """
         return self._ReplyTime
 
     @ReplyTime.setter
@@ -1734,6 +2077,9 @@ class PullSmsReplyStatus(AbstractModel):
 
     @property
     def ReplyUnixTime(self):
+        """Reply time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._ReplyUnixTime
 
     @ReplyUnixTime.setter
@@ -1789,6 +2135,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SendDateTime(self):
+        """Pull start time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._SendDateTime
 
     @SendDateTime.setter
@@ -1797,6 +2146,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Offset(self):
+        """Offset.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1805,6 +2158,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Limit(self):
+        """Maximum number of pulled entries. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1813,6 +2169,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def PhoneNumber(self):
+        """Target mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -1821,6 +2180,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -1829,6 +2191,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def EndDateTime(self):
+        """Pull end time in UNIX timestamp accurate to seconds.
+        :rtype: int
+        """
         return self._EndDateTime
 
     @EndDateTime.setter
@@ -1870,6 +2235,9 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def PullSmsReplyStatusSet(self):
+        """Reply status response set.
+        :rtype: list of PullSmsReplyStatus
+        """
         return self._PullSmsReplyStatusSet
 
     @PullSmsReplyStatusSet.setter
@@ -1878,6 +2246,9 @@ class PullSmsReplyStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1912,6 +2283,9 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of pulled entries. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1920,6 +2294,9 @@ class PullSmsReplyStatusRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -1957,6 +2334,9 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
     @property
     def PullSmsReplyStatusSet(self):
+        """Reply status response set.
+        :rtype: list of PullSmsReplyStatus
+        """
         return self._PullSmsReplyStatusSet
 
     @PullSmsReplyStatusSet.setter
@@ -1965,6 +2345,9 @@ class PullSmsReplyStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2017,6 +2400,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def UserReceiveTime(self):
+        """Actual time of SMS receipt by user.
+        :rtype: str
+        """
         return self._UserReceiveTime
 
     @UserReceiveTime.setter
@@ -2025,6 +2411,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def UserReceiveUnixTime(self):
+        """Actual time of SMS receipt by user in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._UserReceiveUnixTime
 
     @UserReceiveUnixTime.setter
@@ -2033,6 +2422,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def NationCode(self):
+        """Country (or region) code.
+        :rtype: str
+        """
         return self._NationCode
 
     @NationCode.setter
@@ -2041,6 +2433,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def PurePhoneNumber(self):
+        """Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :rtype: str
+        """
         return self._PurePhoneNumber
 
     @PurePhoneNumber.setter
@@ -2049,6 +2444,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """Mobile number in a common format such as 13711112222.
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2057,6 +2455,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def SerialNo(self):
+        """ID of the current delivery.
+        :rtype: str
+        """
         return self._SerialNo
 
     @SerialNo.setter
@@ -2065,6 +2466,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def ReportStatus(self):
+        """Whether the SMS message is actually received. Valid values: SUCCESS (success), FAIL (failure).
+        :rtype: str
+        """
         return self._ReportStatus
 
     @ReportStatus.setter
@@ -2073,6 +2477,9 @@ class PullSmsSendStatus(AbstractModel):
 
     @property
     def Description(self):
+        """Description of SMS receipt by user.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2129,6 +2536,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SendDateTime(self):
+        """Pull start time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._SendDateTime
 
     @SendDateTime.setter
@@ -2137,6 +2547,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Offset(self):
+        """Offset.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2145,6 +2559,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Limit(self):
+        """Maximum number of pulled entries. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2153,6 +2570,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def PhoneNumber(self):
+        """Target mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2161,6 +2581,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -2169,6 +2592,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def EndDateTime(self):
+        """Pull end time in UNIX timestamp accurate to seconds.
+        :rtype: int
+        """
         return self._EndDateTime
 
     @EndDateTime.setter
@@ -2210,6 +2636,9 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def PullSmsSendStatusSet(self):
+        """Delivery status response set.
+        :rtype: list of PullSmsSendStatus
+        """
         return self._PullSmsSendStatusSet
 
     @PullSmsSendStatusSet.setter
@@ -2218,6 +2647,9 @@ class PullSmsSendStatusByPhoneNumberResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2252,6 +2684,9 @@ class PullSmsSendStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of pulled entries. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2260,6 +2695,9 @@ class PullSmsSendStatusRequest(AbstractModel):
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -2297,6 +2735,9 @@ class PullSmsSendStatusResponse(AbstractModel):
 
     @property
     def PullSmsSendStatusSet(self):
+        """Delivery status response set.
+        :rtype: list of PullSmsSendStatus
+        """
         return self._PullSmsSendStatusSet
 
     @PullSmsSendStatusSet.setter
@@ -2305,6 +2746,9 @@ class PullSmsSendStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2358,6 +2802,10 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def PhoneNumberSet(self):
+        """Target mobile number in the e.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Mainland China mobile numbers or all global mobile numbers).
+Example: +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :rtype: list of str
+        """
         return self._PhoneNumberSet
 
     @PhoneNumberSet.setter
@@ -2366,6 +2814,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def TemplateID(self):
+        """Template ID. You must enter the ID of an approved template, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist).
+        :rtype: str
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -2374,6 +2825,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -2382,6 +2836,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def Sign(self):
+        """The content of SMS signature should be encoded in UTF-8. You must enter an approved signature, which can be viewed in the [SMS Console](https://console.cloud.tencent.com/sms/smslist). Note: this parameter is required for Mainland China SMS.
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -2390,6 +2847,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def TemplateParamSet(self):
+        """Template parameter. If there is no template parameter, leave this parameter blank.
+        :rtype: list of str
+        """
         return self._TemplateParamSet
 
     @TemplateParamSet.setter
@@ -2398,6 +2858,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def ExtendCode(self):
+        """SMS code number extension, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._ExtendCode
 
     @ExtendCode.setter
@@ -2406,6 +2869,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def SessionContext(self):
+        """User session content, which can carry context information such as user-side ID and will be returned as-is by the server.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -2414,6 +2880,9 @@ Example: +8613711112222, which has a + sign followed by 86 (country/region code)
 
     @property
     def SenderId(self):
+        """`senderid` for Global SMS, which is not activated by default. If you need to activate it, please contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1) for assistance. This parameter should be empty for Mainland China SMS.
+        :rtype: str
+        """
         return self._SenderId
 
     @SenderId.setter
@@ -2457,6 +2926,9 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def SendStatusSet(self):
+        """SMS delivery status.
+        :rtype: list of SendStatus
+        """
         return self._SendStatusSet
 
     @SendStatusSet.setter
@@ -2465,6 +2937,9 @@ class SendSmsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2514,6 +2989,9 @@ class SendStatus(AbstractModel):
 
     @property
     def SerialNo(self):
+        """Delivery serial number.
+        :rtype: str
+        """
         return self._SerialNo
 
     @SerialNo.setter
@@ -2522,6 +3000,9 @@ class SendStatus(AbstractModel):
 
     @property
     def PhoneNumber(self):
+        """Mobile number in the e.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).
+        :rtype: str
+        """
         return self._PhoneNumber
 
     @PhoneNumber.setter
@@ -2530,6 +3011,9 @@ class SendStatus(AbstractModel):
 
     @property
     def Fee(self):
+        """Number of billable SMS messages. For billing rules, please see [Billing Policy](https://intl.cloud.tencent.com/document/product/382/36135?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Fee
 
     @Fee.setter
@@ -2538,6 +3022,9 @@ class SendStatus(AbstractModel):
 
     @property
     def SessionContext(self):
+        """User session content.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -2546,6 +3033,9 @@ class SendStatus(AbstractModel):
 
     @property
     def Code(self):
+        """SMS request error code. For specific meanings, please see Error Codes.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -2554,6 +3044,9 @@ class SendStatus(AbstractModel):
 
     @property
     def Message(self):
+        """SMS request error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2562,6 +3055,9 @@ class SendStatus(AbstractModel):
 
     @property
     def IsoCode(self):
+        """Country code or region code, such as CN and US. If the country code or region code is not obtained, the returned value will be 'DEF' by default. For more information on the supported list, see price overview for non-Mainland China regions.
+        :rtype: str
+        """
         return self._IsoCode
 
     @IsoCode.setter
@@ -2607,6 +3103,9 @@ class SendStatusStatistics(AbstractModel):
 
     @property
     def FeeCount(self):
+        """Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.
+        :rtype: int
+        """
         return self._FeeCount
 
     @FeeCount.setter
@@ -2615,6 +3114,9 @@ class SendStatusStatistics(AbstractModel):
 
     @property
     def RequestCount(self):
+        """Submitted SMS messages.
+        :rtype: int
+        """
         return self._RequestCount
 
     @RequestCount.setter
@@ -2623,6 +3125,9 @@ class SendStatusStatistics(AbstractModel):
 
     @property
     def RequestSuccessCount(self):
+        """Successfully submitted SMS messages.
+        :rtype: int
+        """
         return self._RequestSuccessCount
 
     @RequestSuccessCount.setter
@@ -2673,6 +3178,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def StartDateTime(self):
+        """Start time of pull in the format of `yyyymmddhh` accurate to the hour.
+        :rtype: int
+        """
         return self._StartDateTime
 
     @StartDateTime.setter
@@ -2681,6 +3189,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def EndDataTime(self):
+        """End time of pull in the format of `yyyymmddhh` accurate to the hour
+Note: `EndDataTime` must be later than `StartDateTime`.
+        :rtype: int
+        """
         return self._EndDataTime
 
     @EndDataTime.setter
@@ -2689,6 +3201,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -2697,6 +3212,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Limit(self):
+        """Upper limit.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2705,6 +3224,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Offset(self):
+        """Offset.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2745,6 +3268,9 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     @property
     def SendStatusStatistics(self):
+        """Delivery statistics response packet.
+        :rtype: :class:`tencentcloud.sms.v20190711.models.SendStatusStatistics`
+        """
         return self._SendStatusStatistics
 
     @SendStatusStatistics.setter
@@ -2753,6 +3279,9 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2808,6 +3337,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageCreateTime(self):
+        """Package creation time in standard time format, such as 2019-10-08 17:18:37.
+        :rtype: str
+        """
         return self._PackageCreateTime
 
     @PackageCreateTime.setter
@@ -2816,6 +3348,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageCreateUnixTime(self):
+        """Package creation time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._PackageCreateUnixTime
 
     @PackageCreateUnixTime.setter
@@ -2824,6 +3359,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageEffectiveTime(self):
+        """Package effective time in standard time format, such as 2019-10-08 17:18:37.
+        :rtype: str
+        """
         return self._PackageEffectiveTime
 
     @PackageEffectiveTime.setter
@@ -2832,6 +3370,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageEffectiveUnixTime(self):
+        """Package effective time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._PackageEffectiveUnixTime
 
     @PackageEffectiveUnixTime.setter
@@ -2840,6 +3381,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageExpiredTime(self):
+        """Package expiration time in standard time format, such as 2019-10-08 17:18:37.
+        :rtype: str
+        """
         return self._PackageExpiredTime
 
     @PackageExpiredTime.setter
@@ -2848,6 +3392,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageExpiredUnixTime(self):
+        """Package expiration time in seconds in the format of UNIX timestamp.
+        :rtype: int
+        """
         return self._PackageExpiredUnixTime
 
     @PackageExpiredUnixTime.setter
@@ -2856,6 +3403,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def AmountOfPackage(self):
+        """Number of SMS messages in package.
+        :rtype: int
+        """
         return self._AmountOfPackage
 
     @AmountOfPackage.setter
@@ -2864,6 +3414,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def TypeOfPackage(self):
+        """0: gifted package. 1: purchased package.
+        :rtype: int
+        """
         return self._TypeOfPackage
 
     @TypeOfPackage.setter
@@ -2872,6 +3425,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageId(self):
+        """Package ID.
+        :rtype: int
+        """
         return self._PackageId
 
     @PackageId.setter
@@ -2880,6 +3436,9 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def CurrentUsage(self):
+        """Current usage.
+        :rtype: int
+        """
         return self._CurrentUsage
 
     @CurrentUsage.setter
@@ -2929,6 +3488,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def SmsSdkAppid(self):
+        """SMS `SdkAppid` actually generated after an application is added in the [SMS Console](https://console.cloud.tencent.com/sms/smslist), such as 1400006666.
+        :rtype: str
+        """
         return self._SmsSdkAppid
 
     @SmsSdkAppid.setter
@@ -2937,6 +3499,9 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Limit(self):
+        """Upper limit (number of packages to be pulled).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2945,6 +3510,10 @@ Note: this parameter is currently fixed at 0.
 
     @property
     def Offset(self):
+        """Offset.
+Note: this parameter is currently fixed at 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2983,6 +3552,9 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     @property
     def SmsPackagesStatisticsSet(self):
+        """Delivery statistics response packet body.
+        :rtype: list of SmsPackagesStatistics
+        """
         return self._SmsPackagesStatisticsSet
 
     @SmsPackagesStatisticsSet.setter
@@ -2991,6 +3563,9 @@ class SmsPackagesStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

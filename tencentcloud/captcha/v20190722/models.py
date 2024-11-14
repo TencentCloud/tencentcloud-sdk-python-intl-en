@@ -25,7 +25,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaType: It must be `9` here. You can configure the CAPTCHA types in the console.
+        :param _CaptchaType: It must be `9` here.
         :type CaptchaType: int
         :param _Ticket: The user verification ticket returned by the frontend callback function
         :type Ticket: str
@@ -62,6 +62,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
+        """It must be `9` here.
+        :rtype: int
+        """
         return self._CaptchaType
 
     @CaptchaType.setter
@@ -70,6 +73,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
+        """The user verification ticket returned by the frontend callback function
+        :rtype: str
+        """
         return self._Ticket
 
     @Ticket.setter
@@ -78,6 +84,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
+        """The user public IP obtained from the customer backend server
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -86,6 +95,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Randstr(self):
+        """A random string returned by the frontend callback function
+        :rtype: str
+        """
         return self._Randstr
 
     @Randstr.setter
@@ -94,6 +106,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
+        """CAPTCHA's app ID. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the CaptchaAppId in the "Key" column of the CAPTCHA list.
+        :rtype: int
+        """
         return self._CaptchaAppId
 
     @CaptchaAppId.setter
@@ -102,6 +117,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
+        """CAPTCHA's app key. Log in to the [Captcha console](https://console.cloud.tencent.com/captcha/graphical) and you can view the AppSecretKey in the "Key" column of the CAPTCHA list. AppSecretKey is the key for CAPTCHA ticket verification performed by the server. Please keep it confidential and do not disclose it to any third parties.
+        :rtype: str
+        """
         return self._AppSecretKey
 
     @AppSecretKey.setter
@@ -110,6 +128,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
+        """Reserved field.
+        :rtype: int
+        """
         return self._BusinessId
 
     @BusinessId.setter
@@ -118,6 +139,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """Reserved field.
+        :rtype: int
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -126,6 +150,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
+        """MAC address or unique identifier of a device
+        :rtype: str
+        """
         return self._MacAddress
 
     @MacAddress.setter
@@ -134,6 +161,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Imei(self):
+        """Mobile equipment identity number
+        :rtype: str
+        """
         return self._Imei
 
     @Imei.setter
@@ -142,6 +172,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def NeedGetCaptchaTime(self):
+        """Indicates whether to return the time when the frontend obtains the CAPTCHA. Valid values: 1 (return the time) and others.
+        :rtype: int
+        """
         return self._NeedGetCaptchaTime
 
     @NeedGetCaptchaTime.setter
@@ -182,9 +215,9 @@ class DescribeCaptchaResultResponse(AbstractModel):
 `7 captcha no match`: The passed in `Randstr` is invalid. Make sure it is the same as the `Randstr` returned from the frontend.
 `8 ticket expired`: The `Ticket` has expired. A ticket is valid for five minutes. Please generate a new `Ticket` and `Randstr`.
 `9 ticket reused`: The specified `Ticket` has been used. Please generate a new `Ticket` and `Randstr`.
-`15 decrypt fail`: The specified `Ticket` is invalid. Make sure it’s the same as the Ticket returned from the frontend. 
-`16 appid-ticket mismatch`: The specified `CaptchaAppId` is invalid. Make sure it’s the same as the `CaptchaAppId` returned from the frontend. You can obtain it from the CAPTCHA console in **Verification management** > **Basic configuration**.
-`21 diff`. Ticket verification error. Possible reasons: 1) If the ticket contains the `terror` prefix, it’s usually the case that a disaster recovery ticket is generated due to the network connection problems of the user. You can choose to ignore it or verify again. 2) If the ticket does not include the `terror` prefix, Captcha detects security risk on this request . You can choose to block it or not.
+`15 decrypt fail`: The specified `Ticket` is invalid. Make sure it's the same as the Ticket returned from the frontend. 
+`16 appid-ticket mismatch`: The specified `CaptchaAppId` is invalid. Make sure it's the same as the `CaptchaAppId` returned from the frontend. You can obtain it from the CAPTCHA console in **Verification management** > **Basic configuration**.
+`21 diff`. Ticket verification error. Possible reasons: 1) If the ticket contains the `terror` prefix, it's usually the case that a disaster recovery ticket is generated due to the network connection problems of the user. You can choose to ignore it or verify again. 2) If the ticket does not include the `terror` prefix, Captcha detects security risk on this request . You can choose to block it or not.
 `100 appid-secretkey-ticket mismatch`: Parameter error. 1) Make sure `CaptchaAppId` and `AppSecretKey` are correct. `CaptchaAppId` and `AppSecretKey` in the CAPTACHA console under **Verification management** > **Basic configuration**. 2) Make sure the passed-in `Ticket` is generated by using the passed-in `CaptchaAppId`.
         :type CaptchaCode: int
         :param _CaptchaMsg: Status description and verification error message
@@ -203,7 +236,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type EvilBitmap: int
         :param _SubmitCaptchaTime: The time when the CAPTCHA is submitted.
         :type SubmitCaptchaTime: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _DeviceRiskCategory: Device Risk Category
+        :type DeviceRiskCategory: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -212,10 +247,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._GetCaptchaTime = None
         self._EvilBitmap = None
         self._SubmitCaptchaTime = None
+        self._DeviceRiskCategory = None
         self._RequestId = None
 
     @property
     def CaptchaCode(self):
+        """`1 OK`: Verification passed
+`7 captcha no match`: The passed in `Randstr` is invalid. Make sure it is the same as the `Randstr` returned from the frontend.
+`8 ticket expired`: The `Ticket` has expired. A ticket is valid for five minutes. Please generate a new `Ticket` and `Randstr`.
+`9 ticket reused`: The specified `Ticket` has been used. Please generate a new `Ticket` and `Randstr`.
+`15 decrypt fail`: The specified `Ticket` is invalid. Make sure it's the same as the Ticket returned from the frontend. 
+`16 appid-ticket mismatch`: The specified `CaptchaAppId` is invalid. Make sure it's the same as the `CaptchaAppId` returned from the frontend. You can obtain it from the CAPTCHA console in **Verification management** > **Basic configuration**.
+`21 diff`. Ticket verification error. Possible reasons: 1) If the ticket contains the `terror` prefix, it's usually the case that a disaster recovery ticket is generated due to the network connection problems of the user. You can choose to ignore it or verify again. 2) If the ticket does not include the `terror` prefix, Captcha detects security risk on this request . You can choose to block it or not.
+`100 appid-secretkey-ticket mismatch`: Parameter error. 1) Make sure `CaptchaAppId` and `AppSecretKey` are correct. `CaptchaAppId` and `AppSecretKey` in the CAPTACHA console under **Verification management** > **Basic configuration**. 2) Make sure the passed-in `Ticket` is generated by using the passed-in `CaptchaAppId`.
+        :rtype: int
+        """
         return self._CaptchaCode
 
     @CaptchaCode.setter
@@ -224,6 +270,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CaptchaMsg(self):
+        """Status description and verification error message
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._CaptchaMsg
 
     @CaptchaMsg.setter
@@ -232,6 +282,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EvilLevel(self):
+        """This parameter returns the result of imperceptible verification. This parameter is not available for Tencent Cloud International yet.
+`0`: The request is trusted.
+`100`: The request is malicious.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._EvilLevel
 
     @EvilLevel.setter
@@ -240,6 +296,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GetCaptchaTime(self):
+        """The timestamp when the frontend obtains the CAPTCHA.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._GetCaptchaTime
 
     @GetCaptchaTime.setter
@@ -248,6 +308,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EvilBitmap(self):
+        """Blocking type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EvilBitmap
 
     @EvilBitmap.setter
@@ -256,6 +320,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmitCaptchaTime(self):
+        """The time when the CAPTCHA is submitted.
+        :rtype: int
+        """
         return self._SubmitCaptchaTime
 
     @SubmitCaptchaTime.setter
@@ -263,7 +330,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SubmitCaptchaTime = SubmitCaptchaTime
 
     @property
+    def DeviceRiskCategory(self):
+        """Device Risk Category
+        :rtype: str
+        """
+        return self._DeviceRiskCategory
+
+    @DeviceRiskCategory.setter
+    def DeviceRiskCategory(self, DeviceRiskCategory):
+        self._DeviceRiskCategory = DeviceRiskCategory
+
+    @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -278,4 +359,5 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._GetCaptchaTime = params.get("GetCaptchaTime")
         self._EvilBitmap = params.get("EvilBitmap")
         self._SubmitCaptchaTime = params.get("SubmitCaptchaTime")
+        self._DeviceRiskCategory = params.get("DeviceRiskCategory")
         self._RequestId = params.get("RequestId")

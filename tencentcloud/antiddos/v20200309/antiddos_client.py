@@ -1040,6 +1040,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIpBlockList(self, request):
+        """
+
+        :param request: Request instance for DescribeIpBlockList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeIpBlockListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeIpBlockListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpBlockList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpBlockListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeL7RulesBySSLCertId(self, request):
         """This API is used to query layer-7 rules matched with certificate IDs.
 

@@ -51,6 +51,9 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -59,6 +62,9 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def Version(self):
+        """Agent version.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -67,6 +73,9 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def LastHeartbeatTime(self):
+        """Last heartbeat time
+        :rtype: str
+        """
         return self._LastHeartbeatTime
 
     @LastHeartbeatTime.setter
@@ -75,6 +84,11 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def AgentStatus(self):
+        """Agent status. Valid values:
+<li> `Online`
+<li> `Offline`
+        :rtype: str
+        """
         return self._AgentStatus
 
     @AgentStatus.setter
@@ -83,6 +97,11 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def Environment(self):
+        """Agent runtime environment. Valid values:
+<li> `Linux`: Linux instance
+<li> `Windows`: Windows instance
+        :rtype: str
+        """
         return self._Environment
 
     @Environment.setter
@@ -91,6 +110,9 @@ class AutomationAgentInfo(AbstractModel):
 
     @property
     def SupportFeatures(self):
+        """Features supported by the TAT agent.
+        :rtype: list of str
+        """
         return self._SupportFeatures
 
     @SupportFeatures.setter
@@ -134,6 +156,9 @@ class CancelInvocationRequest(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Execution activity ID
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -142,6 +167,11 @@ class CancelInvocationRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:
+<li> `CVM`
+<li> `LIGHTHOUSE`
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -176,6 +206,9 @@ class CancelInvocationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -249,6 +282,9 @@ class Command(AbstractModel):
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -257,6 +293,9 @@ class Command(AbstractModel):
 
     @property
     def CommandName(self):
+        """Command name.
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -265,6 +304,9 @@ class Command(AbstractModel):
 
     @property
     def Description(self):
+        """Command description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -273,6 +315,9 @@ class Command(AbstractModel):
 
     @property
     def Content(self):
+        """Base64-encoded command.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -281,6 +326,9 @@ class Command(AbstractModel):
 
     @property
     def CommandType(self):
+        """Command type.
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -289,6 +337,9 @@ class Command(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """Command execution path.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -297,6 +348,9 @@ class Command(AbstractModel):
 
     @property
     def Timeout(self):
+        """Command timeout period.
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -305,6 +359,9 @@ class Command(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Command creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -313,6 +370,9 @@ class Command(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """Command update time.
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -321,6 +381,9 @@ class Command(AbstractModel):
 
     @property
     def EnableParameter(self):
+        """Whether to enable the custom parameter feature.
+        :rtype: bool
+        """
         return self._EnableParameter
 
     @EnableParameter.setter
@@ -329,6 +392,9 @@ class Command(AbstractModel):
 
     @property
     def DefaultParameters(self):
+        """Default custom parameter value.
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -337,6 +403,9 @@ class Command(AbstractModel):
 
     @property
     def FormattedDescription(self):
+        """Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.
+        :rtype: str
+        """
         return self._FormattedDescription
 
     @FormattedDescription.setter
@@ -345,6 +414,9 @@ class Command(AbstractModel):
 
     @property
     def CreatedBy(self):
+        """Command creator. `TAT` indicates a public command and `USER` indicates a personal command.
+        :rtype: str
+        """
         return self._CreatedBy
 
     @CreatedBy.setter
@@ -353,6 +425,9 @@ class Command(AbstractModel):
 
     @property
     def Tags(self):
+        """The list of tags bound to the command.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -361,6 +436,9 @@ class Command(AbstractModel):
 
     @property
     def Username(self):
+        """The user who executes the command on the instance.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -369,6 +447,9 @@ class Command(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
+        """The COS bucket URL for uploading logs.
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -377,6 +458,9 @@ class Command(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
+        """The COS bucket directory where the logs are saved.
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -449,6 +533,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def Content(self):
+        """Base64-encoded command.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -457,6 +544,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def CommandType(self):
+        """Command type.
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -465,6 +555,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def Timeout(self):
+        """Timeout period.
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -473,6 +566,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """Execution path.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -481,6 +577,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def Username(self):
+        """The user who executes the command.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -489,6 +588,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
+        """URL of the COS bucket to store the output
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -497,6 +599,9 @@ class CommandDocument(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
+        """Prefix of the output file name 
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -579,6 +684,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandName(self):
+        """Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -587,6 +695,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Content(self):
+        """Base64-encoded command. The maximum length is 64 KB.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -595,6 +706,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Description(self):
+        """Command description. The maximum length is 120 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -603,6 +717,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandType(self):
+        """Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -611,6 +728,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def WorkingDirectory(self):
+        """Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -619,6 +739,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Timeout(self):
+        """Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -627,6 +750,11 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def EnableParameter(self):
+        """Whether to enable the custom parameter feature.
+This cannot be modified once created.
+Default value: `false`.
+        :rtype: bool
+        """
         return self._EnableParameter
 
     @EnableParameter.setter
@@ -635,6 +763,13 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def DefaultParameters(self):
+        """The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+If no parameter value is provided in the `InvokeCommand` API, the default value is used.
+Up to 20 custom parameters are supported.
+The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -643,6 +778,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Tags(self):
+        """Tags bound to the command. At most 10 tags are allowed.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -651,6 +789,10 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Username(self):
+        """The username used to execute the command on the CVM or Lighthouse instance.
+The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the root user is used to execute commands on Linux and the System user is used on Windows.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -659,6 +801,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSBucketUrl(self):
+        """The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -667,6 +812,12 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSKeyPrefix(self):
+        """The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
+2. Use a slash (/) to create a subdirectory.
+3. Consecutive dots (.) and slashes (/) are not allowed. It can not start with a slash (/). 
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -719,6 +870,9 @@ class CreateCommandResponse(AbstractModel):
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -727,6 +881,9 @@ class CreateCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -771,6 +928,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Invoker name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -779,6 +939,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -787,6 +950,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def CommandId(self):
+        """Remote command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -795,6 +961,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """ID of the instance bound to the trigger. Up to 100 IDs are allowed.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -803,6 +972,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
+        """The user who executes the command.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -811,6 +983,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
+        """Custom parameters of the command.
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -819,6 +994,9 @@ class CreateInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
+        """Settings required for a recurring invoker.
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
         return self._ScheduleSettings
 
     @ScheduleSettings.setter
@@ -863,6 +1041,9 @@ class CreateInvokerResponse(AbstractModel):
 
     @property
     def InvokerId(self):
+        """Invoker ID.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -871,6 +1052,9 @@ class CreateInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -897,6 +1081,9 @@ class DeleteCommandRequest(AbstractModel):
 
     @property
     def CommandId(self):
+        """ID of the command to be deleted.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -930,6 +1117,9 @@ class DeleteCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -955,6 +1145,9 @@ class DeleteInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """ID of the invoker to be deleted.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -988,6 +1181,9 @@ class DeleteInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1022,6 +1218,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of instance IDs for the query.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1030,6 +1229,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1038,6 +1240,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1046,6 +1251,9 @@ class DescribeAutomationAgentStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1093,6 +1301,9 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     @property
     def AutomationAgentSet(self):
+        """Agent information list.
+        :rtype: list of AutomationAgentInfo
+        """
         return self._AutomationAgentSet
 
     @AutomationAgentSet.setter
@@ -1101,6 +1312,9 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of matching agents.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1109,6 +1323,9 @@ class DescribeAutomationAgentStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1159,6 +1376,9 @@ Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Fil
 
     @property
     def CommandIds(self):
+        """List of command IDs. Up to 100 IDs are allowed for each request. `CommandIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._CommandIds
 
     @CommandIds.setter
@@ -1167,6 +1387,18 @@ Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Fil
 
     @property
     def Filters(self):
+        """Filter conditions.
+<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
+<li> `command-name` - String - Required: No - (Filter condition) Filter by the command name.
+<li> `command-type` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `SHELL` or `POWERSHELL`.
+<li> `created-by` - String - Required: No - (Filter condition) Filter by the creator. Valid values: `TAT` (public commands) or `USER` (custom commands).
+<li> `tag-key` - String - Required: No - (Filter condition) Filter by the tag key.</li>
+<li> `tag-value` - String - Required: No - (Filter condition) Filter by the tag value.</li>
+<li> `tag:tag-key` - String - Required: No - (Filter) Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key. For detailed usage, see sample 4.</li>
+
+Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Filter.Values`. `CommandIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1175,6 +1407,9 @@ Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Fil
 
     @property
     def Limit(self):
+        """Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1183,6 +1418,9 @@ Up to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Fil
 
     @property
     def Offset(self):
+        """Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1230,6 +1468,9 @@ class DescribeCommandsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of matching commands.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1238,6 +1479,9 @@ class DescribeCommandsResponse(AbstractModel):
 
     @property
     def CommandSet(self):
+        """List of command details.
+        :rtype: list of Command
+        """
         return self._CommandSet
 
     @CommandSet.setter
@@ -1246,6 +1490,9 @@ class DescribeCommandsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1290,6 +1537,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def InvocationTaskIds(self):
+        """List of execution task IDs. Up to 100 IDs are allowed for each request. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._InvocationTaskIds
 
     @InvocationTaskIds.setter
@@ -1298,6 +1548,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1306,6 +1559,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1314,6 +1570,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1322,6 +1581,9 @@ class DescribeInvocationTasksRequest(AbstractModel):
 
     @property
     def HideOutput(self):
+        """Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>
+        :rtype: bool
+        """
         return self._HideOutput
 
     @HideOutput.setter
@@ -1370,6 +1632,9 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of matching execution tasks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1378,6 +1643,9 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     @property
     def InvocationTaskSet(self):
+        """List of execution tasks.
+        :rtype: list of InvocationTask
+        """
         return self._InvocationTaskSet
 
     @InvocationTaskSet.setter
@@ -1386,6 +1654,9 @@ class DescribeInvocationTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1431,6 +1702,9 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def InvocationIds(self):
+        """List of execution activity IDs. Up to 100 IDs are allowed for each request. `InvocationIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._InvocationIds
 
     @InvocationIds.setter
@@ -1439,6 +1713,13 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> 
+<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. 
+<li> `command-created-by` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `TAT` (public commands) or `USER` (custom commands).
+<li> `instance-kind` - String - Required: No - (Filter condition) Filter by the instance type. Valid values: `CVM` or `LIGHTHOUSE`. 
+<br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1447,6 +1728,9 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1455,6 +1739,9 @@ class DescribeInvocationsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1502,6 +1789,9 @@ class DescribeInvocationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of matching execution activities.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1510,6 +1800,9 @@ class DescribeInvocationsResponse(AbstractModel):
 
     @property
     def InvocationSet(self):
+        """List of execution activities.
+        :rtype: list of Invocation
+        """
         return self._InvocationSet
 
     @InvocationSet.setter
@@ -1518,6 +1811,9 @@ class DescribeInvocationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1556,6 +1852,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
+        """List of invoker IDs. Up to 100 IDs are allowed.
+        :rtype: list of str
+        """
         return self._InvokerIds
 
     @InvokerIds.setter
@@ -1564,6 +1863,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1572,6 +1874,9 @@ class DescribeInvokerRecordsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1613,6 +1918,9 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matching records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1621,6 +1929,9 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     @property
     def InvokerRecordSet(self):
+        """Execution history of an invoker.
+        :rtype: list of InvokerRecord
+        """
         return self._InvokerRecordSet
 
     @InvokerRecordSet.setter
@@ -1629,6 +1940,9 @@ class DescribeInvokerRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1674,6 +1988,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def InvokerIds(self):
+        """List of invoker IDs.
+        :rtype: list of str
+        """
         return self._InvokerIds
 
     @InvokerIds.setter
@@ -1682,6 +1999,13 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions:
+
+<li> `invoker-id` - String - Required: No - (Filter condition) Filter by the invoker ID.
+<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.
+<li> `type` - String - Required: No - (Filter condition) Filter by the invoker type.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1690,6 +2014,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1698,6 +2025,9 @@ class DescribeInvokersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1745,6 +2075,9 @@ class DescribeInvokersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matching invokers.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1753,6 +2086,9 @@ class DescribeInvokersResponse(AbstractModel):
 
     @property
     def InvokerSet(self):
+        """Invoker information.
+        :rtype: list of Invoker
+        """
         return self._InvokerSet
 
     @InvokerSet.setter
@@ -1761,6 +2097,9 @@ class DescribeInvokersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1805,6 +2144,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of regions
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1813,6 +2155,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RegionSet(self):
+        """Region information list
+        :rtype: list of RegionInfo
+        """
         return self._RegionSet
 
     @RegionSet.setter
@@ -1821,6 +2166,9 @@ class DescribeRegionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1853,6 +2201,9 @@ class DisableInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """ID of the invoker to be disabled.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -1886,6 +2237,9 @@ class DisableInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1911,6 +2265,9 @@ class EnableInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """ID of the invoker to be enabled.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -1944,6 +2301,9 @@ class EnableInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1983,6 +2343,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Field to be filtered.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1991,6 +2354,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter values of the field.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2088,6 +2454,9 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Execution activity ID.
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -2096,6 +2465,9 @@ class Invocation(AbstractModel):
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -2104,6 +2476,15 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationStatus(self):
+        """Execution task status. Valid values:
+<li> PENDING: Pending 
+<li> RUNNING: Running
+<li> SUCCESS: Success
+<li> FAILED: Failed
+<li> TIMEOUT: Command timed out
+<li> PARTIAL_FAILED: Partial failure
+        :rtype: str
+        """
         return self._InvocationStatus
 
     @InvocationStatus.setter
@@ -2112,6 +2493,9 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationTaskBasicInfoSet(self):
+        """Execution task information list.
+        :rtype: list of InvocationTaskBasicInfo
+        """
         return self._InvocationTaskBasicInfoSet
 
     @InvocationTaskBasicInfoSet.setter
@@ -2120,6 +2504,9 @@ class Invocation(AbstractModel):
 
     @property
     def Description(self):
+        """Execution activity description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2128,6 +2515,9 @@ class Invocation(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the execution activity.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2136,6 +2526,9 @@ class Invocation(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the execution activity.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2144,6 +2537,9 @@ class Invocation(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Time when the execution activity is created.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2152,6 +2548,9 @@ class Invocation(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """Time when the execution activity is updated.
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -2160,6 +2559,9 @@ class Invocation(AbstractModel):
 
     @property
     def Parameters(self):
+        """Values of custom parameters.
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -2168,6 +2570,9 @@ class Invocation(AbstractModel):
 
     @property
     def DefaultParameters(self):
+        """Default custom parameter value.
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -2176,6 +2581,9 @@ class Invocation(AbstractModel):
 
     @property
     def InstanceKind(self):
+        """Type of the instance executing the command. Valid values: `CVM`, `LIGHTHOUSE`.
+        :rtype: str
+        """
         return self._InstanceKind
 
     @InstanceKind.setter
@@ -2184,6 +2592,9 @@ class Invocation(AbstractModel):
 
     @property
     def Username(self):
+        """The user who executes the command on the instance.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -2192,6 +2603,9 @@ class Invocation(AbstractModel):
 
     @property
     def InvocationSource(self):
+        """Invocation source.
+        :rtype: str
+        """
         return self._InvocationSource
 
     @InvocationSource.setter
@@ -2200,6 +2614,9 @@ class Invocation(AbstractModel):
 
     @property
     def CommandContent(self):
+        """Base64-encoded command
+        :rtype: str
+        """
         return self._CommandContent
 
     @CommandContent.setter
@@ -2208,6 +2625,9 @@ class Invocation(AbstractModel):
 
     @property
     def CommandType(self):
+        """Command type
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -2216,6 +2636,9 @@ class Invocation(AbstractModel):
 
     @property
     def Timeout(self):
+        """Command timeout period, in seconds.
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -2224,6 +2647,9 @@ class Invocation(AbstractModel):
 
     @property
     def WorkingDirectory(self):
+        """Working directory for executing the command.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -2232,6 +2658,9 @@ class Invocation(AbstractModel):
 
     @property
     def OutputCOSBucketUrl(self):
+        """The COS bucket URL for uploading logs.
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -2240,6 +2669,9 @@ class Invocation(AbstractModel):
 
     @property
     def OutputCOSKeyPrefix(self):
+        """The COS bucket directory where the logs are saved.
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -2346,6 +2778,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Execution activity ID.
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -2354,6 +2789,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InvocationTaskId(self):
+        """Execution task ID.
+        :rtype: str
+        """
         return self._InvocationTaskId
 
     @InvocationTaskId.setter
@@ -2362,6 +2800,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -2370,6 +2811,22 @@ class InvocationTask(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """Execution task status. Valid values:
+<li> PENDING: Pending 
+<li> DELIVERING: Delivering
+<li> DELIVER_DELAYED: Delivery delayed 
+<li> DELIVER_FAILED: Delivery failed
+<li> START_FAILED: Failed to start the command
+<li> RUNNING: Running
+<li> SUCCESS: Success
+<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.
+<li> TIMEOUT: Command timed out
+<li> TASK_TIMEOUT: Task timed out
+<li> CANCELLING: Canceling
+<li> CANCELLED: Canceled (canceled before execution)
+<li> TERMINATED: Terminated (canceled during execution)
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -2378,6 +2835,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2386,6 +2846,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def TaskResult(self):
+        """Execution result.
+        :rtype: :class:`tencentcloud.tat.v20201028.models.TaskResult`
+        """
         return self._TaskResult
 
     @TaskResult.setter
@@ -2394,6 +2857,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the execution task.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2402,6 +2868,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the execution task.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2410,6 +2879,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2418,6 +2890,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def UpdatedTime(self):
+        """Update time.
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -2426,6 +2901,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def CommandDocument(self):
+        """Command details of the execution task.
+        :rtype: :class:`tencentcloud.tat.v20201028.models.CommandDocument`
+        """
         return self._CommandDocument
 
     @CommandDocument.setter
@@ -2434,6 +2912,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def ErrorInfo(self):
+        """Error message displayed when the execution task fails.
+        :rtype: str
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2442,6 +2923,9 @@ class InvocationTask(AbstractModel):
 
     @property
     def InvocationSource(self):
+        """Invocation source.
+        :rtype: str
+        """
         return self._InvocationSource
 
     @InvocationSource.setter
@@ -2510,6 +2994,9 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def InvocationTaskId(self):
+        """Execution task ID.
+        :rtype: str
+        """
         return self._InvocationTaskId
 
     @InvocationTaskId.setter
@@ -2518,6 +3005,22 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
+        """Execution task status. Valid values:
+<li> PENDING: Pending 
+<li> DELIVERING: Delivering
+<li> DELIVER_DELAYED: Delivery delayed 
+<li> DELIVER_FAILED: Delivery failed
+<li> START_FAILED: Failed to start the command
+<li> RUNNING: Running
+<li> SUCCESS: Success
+<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.
+<li> TIMEOUT: Command timed out
+<li> TASK_TIMEOUT: Task timed out
+<li> CANCELLING: Canceling
+<li> CANCELLED: Canceled (canceled before execution)
+<li> TERMINATED: Terminated (canceled during execution)
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -2526,6 +3029,9 @@ class InvocationTaskBasicInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2590,6 +3096,9 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def CommandId(self):
+        """ID of the command to be triggered.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -2598,6 +3107,9 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def InstanceIds(self):
+        """IDs of instances about to execute commands. At most 100 IDs are allowed.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2606,6 +3118,13 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def Parameters(self):
+        """Custom parameters of the command. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+If no parameter value is provided, the DefaultParameters of the command is used.
+Up to 20 custom parameters are supported.
+The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -2614,6 +3133,10 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def Username(self):
+        """The username used to execute the command on the CVM or Lighthouse instance.
+The principle of the least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. If this is not specified, the Username of the command is used by default.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -2622,6 +3145,9 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def WorkingDirectory(self):
+        """Execution path of the command. The WorkingDirectory of the command is used by default.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -2630,6 +3156,9 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def Timeout(self):
+        """Command timeout period. Value range: [1, 86400]. The Timeout of the command is used by default.
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -2638,6 +3167,9 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def OutputCOSBucketUrl(self):
+        """The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -2646,6 +3178,12 @@ The principle of the least privilege is the best practice for permission managem
 
     @property
     def OutputCOSKeyPrefix(self):
+        """The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
+2. Use a slash (/) to create a subdirectory.
+3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -2689,6 +3227,9 @@ class InvokeCommandResponse(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Execution activity ID.
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -2697,6 +3238,9 @@ class InvokeCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2754,6 +3298,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InvokerId(self):
+        """Invoker ID.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -2762,6 +3309,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
+        """Invoker name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2770,6 +3320,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
+        """Invoker type.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2778,6 +3331,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -2786,6 +3342,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Username(self):
+        """Username.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -2794,6 +3353,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Parameters(self):
+        """Custom parameters.
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -2802,6 +3364,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceIds(self):
+        """Instance ID list.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2810,6 +3375,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enable(self):
+        """Whether to enable the invoker.
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -2818,6 +3386,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ScheduleSettings(self):
+        """Execution schedule of the invoker. This field is returned for recurring invokers.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
         return self._ScheduleSettings
 
     @ScheduleSettings.setter
@@ -2826,6 +3398,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2834,6 +3409,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdatedTime(self):
+        """Modification time.
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -2891,6 +3469,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvokerId(self):
+        """Invoker ID.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -2899,6 +3480,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvokeTime(self):
+        """Execution time.
+        :rtype: str
+        """
         return self._InvokeTime
 
     @InvokeTime.setter
@@ -2907,6 +3491,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def Reason(self):
+        """Execution reason.
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -2915,6 +3502,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Command execution ID.
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -2923,6 +3513,9 @@ class InvokerRecord(AbstractModel):
 
     @property
     def Result(self):
+        """Trigger result.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2999,6 +3592,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3007,6 +3603,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandName(self):
+        """Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -3015,6 +3614,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Description(self):
+        """Command description. The maximum length is 120 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3023,6 +3625,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Content(self):
+        """Base64-encoded command. The maximum length is 64 KB.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3031,6 +3636,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandType(self):
+        """Command type. `SHELL` and `POWERSHELL` are supported.
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -3039,6 +3647,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def WorkingDirectory(self):
+        """Command execution path.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -3047,6 +3658,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Timeout(self):
+        """Command timeout period. Value range: [1, 86400].
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -3055,6 +3669,14 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def DefaultParameters(self):
+        """The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+All parameters are overwritten. All default values are required for modification.
+Modification is only allowed when `EnableParameter` is `true`.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+Up to 20 custom parameters are supported.
+The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -3063,6 +3685,10 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Username(self):
+        """The username used to execute the command on the CVM or Lighthouse instance.
+The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -3071,6 +3697,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSBucketUrl(self):
+        """The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -3079,6 +3708,12 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSKeyPrefix(self):
+        """The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
+2. Use a slash (/) to create a subdirectory.
+3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -3122,6 +3757,9 @@ class ModifyCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3168,6 +3806,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def InvokerId(self):
+        """ID of the invoker to be modified.
+        :rtype: str
+        """
         return self._InvokerId
 
     @InvokerId.setter
@@ -3176,6 +3817,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name of the invoker to be modified.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3184,6 +3828,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Invoker type. It can only be `SCHEDULE` (recurring invokers).
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3192,6 +3839,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def CommandId(self):
+        """ID of the command to be modified.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3200,6 +3850,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Username(self):
+        """The username to be modified.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -3208,6 +3861,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def Parameters(self):
+        """Custom parameters to be modified.
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -3216,6 +3872,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of instance IDs to be modified. Up to 100 IDs are allowed.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3224,6 +3883,9 @@ class ModifyInvokerRequest(AbstractModel):
 
     @property
     def ScheduleSettings(self):
+        """Scheduled invoker settings to be modified.
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ScheduleSettings`
+        """
         return self._ScheduleSettings
 
     @ScheduleSettings.setter
@@ -3266,6 +3928,9 @@ class ModifyInvokerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3303,6 +3968,13 @@ CommandId or Content must be specified.
 
     @property
     def Parameters(self):
+        """Custom parameters for the preview. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+`key` is the name of the custom parameter and "value" is its specified value. Both "key" and "value" are strings.
+At most 20 custom parameters are supported.
+The name of the custom parameter cannot exceed 64 characters and can only contain [a-z], [A-Z], [0-9], [-_].
+This parameter can be left empty if DefaultParameters is set for the previewed CommandId.
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -3311,6 +3983,10 @@ CommandId or Content must be specified.
 
     @property
     def CommandId(self):
+        """The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.
+`CommandId` or `Content` must be specified.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3319,6 +3995,10 @@ CommandId or Content must be specified.
 
     @property
     def Content(self):
+        """Base64-encoded command to be previewed. The maximum length is 64 KB.
+CommandId or Content must be specified.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3357,6 +4037,9 @@ class PreviewReplacedCommandContentResponse(AbstractModel):
 
     @property
     def ReplacedContent(self):
+        """Base64-encoded command with custom parameters.
+        :rtype: str
+        """
         return self._ReplacedContent
 
     @ReplacedContent.setter
@@ -3365,6 +4048,9 @@ class PreviewReplacedCommandContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3397,6 +4083,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Region name, such as `ap-guangzhou`
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3405,6 +4094,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """Region description, such as `Guangzhou`
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -3413,6 +4105,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionState(self):
+        """Region status. `AVAILABLE` indicates the region is available.
+        :rtype: str
+        """
         return self._RegionState
 
     @RegionState.setter
@@ -3509,6 +4204,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Content(self):
+        """Base64-encoded command. The maximum length is 64 KB.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -3517,6 +4215,11 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def InstanceIds(self):
+        """IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:
+<li> `CVM`
+<li> `LIGHTHOUSE`
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3525,6 +4228,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandName(self):
+        """Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].
+        :rtype: str
+        """
         return self._CommandName
 
     @CommandName.setter
@@ -3533,6 +4239,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Description(self):
+        """Command description. The maximum length is 120 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3541,6 +4250,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def CommandType(self):
+        """Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.
+        :rtype: str
+        """
         return self._CommandType
 
     @CommandType.setter
@@ -3549,6 +4261,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def WorkingDirectory(self):
+        """Command execution path. The default value is /root for `SHELL` commands and C:\Program Files\qcloud\tat_agent\workdir for `POWERSHELL` commands.
+        :rtype: str
+        """
         return self._WorkingDirectory
 
     @WorkingDirectory.setter
@@ -3557,6 +4272,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Timeout(self):
+        """Command timeout period. Default value: 60 seconds. Value range: [1, 86400].
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -3565,6 +4283,12 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def SaveCommand(self):
+        """Whether to save the command. Valid values:
+<li> `True`: Save
+<li> `False`: Do not save
+The default value is `False`.
+        :rtype: bool
+        """
         return self._SaveCommand
 
     @SaveCommand.setter
@@ -3573,6 +4297,11 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def EnableParameter(self):
+        """Whether to enable the custom parameter feature.
+This cannot be modified once created.
+Default value: `false`.
+        :rtype: bool
+        """
         return self._EnableParameter
 
     @EnableParameter.setter
@@ -3581,6 +4310,13 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def DefaultParameters(self):
+        """The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+If Parameters is not provided, the default values specified here are used.
+Up to 20 custom parameters are supported.
+The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :rtype: str
+        """
         return self._DefaultParameters
 
     @DefaultParameters.setter
@@ -3589,6 +4325,13 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Parameters(self):
+        """Custom parameters of `Command`. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+If no parameter value is provided, the `DefaultParameters` is used.
+Up to 20 custom parameters are supported.
+The name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -3597,6 +4340,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Tags(self):
+        """The tags of the command. It is available when `SaveCommand` is `True`. A maximum of 10 tags are allowed.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3605,6 +4351,10 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def Username(self):
+        """The username used to execute the command on the CVM or Lighthouse instance.
+The principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the user `root` is used to execute commands on Linux and the user `System` is used on Windows.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -3613,6 +4363,9 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSBucketUrl(self):
+        """The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.
+        :rtype: str
+        """
         return self._OutputCOSBucketUrl
 
     @OutputCOSBucketUrl.setter
@@ -3621,6 +4374,12 @@ The principle of least privilege is the best practice for permission management.
 
     @property
     def OutputCOSKeyPrefix(self):
+        """The COS bucket directory where the logs are saved. Check below for the rules of the directory name. 
+1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.
+2. Use a slash (/) to create a subdirectory.
+3. ".." can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.
+        :rtype: str
+        """
         return self._OutputCOSKeyPrefix
 
     @OutputCOSKeyPrefix.setter
@@ -3679,6 +4438,9 @@ class RunCommandResponse(AbstractModel):
 
     @property
     def CommandId(self):
+        """Command ID.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -3687,6 +4449,9 @@ class RunCommandResponse(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Execution activity ID.
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -3695,6 +4460,9 @@ class RunCommandResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3730,6 +4498,11 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def Policy(self):
+        """Execution policy:
+<br><li>`ONCE`: Execute once
+<br><li>`RECURRENCE`: Execute repeatedly
+        :rtype: str
+        """
         return self._Policy
 
     @Policy.setter
@@ -3738,6 +4511,9 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def Recurrence(self):
+        """Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -3746,6 +4522,9 @@ class ScheduleSettings(AbstractModel):
 
     @property
     def InvokeTime(self):
+        """The next execution time of the invoker. This field is required if `Policy` is `ONCE`.
+        :rtype: str
+        """
         return self._InvokeTime
 
     @InvokeTime.setter
@@ -3784,6 +4563,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3792,6 +4574,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3844,6 +4629,9 @@ class TaskResult(AbstractModel):
 
     @property
     def ExitCode(self):
+        """ExitCode of the execution.
+        :rtype: int
+        """
         return self._ExitCode
 
     @ExitCode.setter
@@ -3852,6 +4640,9 @@ class TaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """Base64-encoded command output. The maximum length is 24 KB.
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -3860,6 +4651,9 @@ class TaskResult(AbstractModel):
 
     @property
     def ExecStartTime(self):
+        """Time when the execution is started.
+        :rtype: str
+        """
         return self._ExecStartTime
 
     @ExecStartTime.setter
@@ -3868,6 +4662,9 @@ class TaskResult(AbstractModel):
 
     @property
     def ExecEndTime(self):
+        """Time when the execution is ended.
+        :rtype: str
+        """
         return self._ExecEndTime
 
     @ExecEndTime.setter
@@ -3876,6 +4673,9 @@ class TaskResult(AbstractModel):
 
     @property
     def Dropped(self):
+        """Dropped bytes of the command output.
+        :rtype: int
+        """
         return self._Dropped
 
     @Dropped.setter
@@ -3884,6 +4684,9 @@ class TaskResult(AbstractModel):
 
     @property
     def OutputUrl(self):
+        """COS URL of the logs.
+        :rtype: str
+        """
         return self._OutputUrl
 
     @OutputUrl.setter
@@ -3892,6 +4695,9 @@ class TaskResult(AbstractModel):
 
     @property
     def OutputUploadCOSErrorInfo(self):
+        """Error message for uploading logs to COS.
+        :rtype: str
+        """
         return self._OutputUploadCOSErrorInfo
 
     @OutputUploadCOSErrorInfo.setter

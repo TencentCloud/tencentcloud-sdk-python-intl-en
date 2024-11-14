@@ -61,6 +61,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ActivityId(self):
+        """Activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -69,6 +72,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ComputeNodeId(self):
+        """Compute node ID
+        :rtype: str
+        """
         return self._ComputeNodeId
 
     @ComputeNodeId.setter
@@ -77,6 +83,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ComputeNodeActivityType(self):
+        """Activity type. Values: `CREATE_COMPUTE_NODE`, `TERMINATE_COMPUTE_NODE`
+        :rtype: str
+        """
         return self._ComputeNodeActivityType
 
     @ComputeNodeActivityType.setter
@@ -85,6 +94,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -93,6 +105,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Cause(self):
+        """Cause of the activity
+        :rtype: str
+        """
         return self._Cause
 
     @Cause.setter
@@ -101,6 +116,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ActivityState(self):
+        """Activity state
+        :rtype: str
+        """
         return self._ActivityState
 
     @ActivityState.setter
@@ -109,6 +127,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StateReason(self):
+        """Reason of going to this state
+        :rtype: str
+        """
         return self._StateReason
 
     @StateReason.setter
@@ -117,6 +138,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StartTime(self):
+        """Activity start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -125,6 +149,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTime(self):
+        """Activity end time
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -133,6 +161,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
+        """CVM instance ID
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -181,6 +213,9 @@ class AgentRunningMode(AbstractModel):
 
     @property
     def Scene(self):
+        """Scenario type. Windows is supported
+        :rtype: str
+        """
         return self._Scene
 
     @Scene.setter
@@ -189,6 +224,9 @@ class AgentRunningMode(AbstractModel):
 
     @property
     def User(self):
+        """The user that runs the Agent
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -197,6 +235,9 @@ class AgentRunningMode(AbstractModel):
 
     @property
     def Session(self):
+        """The session that runs the Agent
+        :rtype: str
+        """
         return self._Session
 
     @Session.setter
@@ -241,6 +282,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def EnvType(self):
+        """Compute environment management type
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -249,6 +293,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def EnvData(self):
+        """Compute environment's parameters
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -257,6 +304,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def MountDataDisks(self):
+        """Data disk mounting option
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -265,6 +315,9 @@ class AnonymousComputeEnv(AbstractModel):
 
     @property
     def AgentRunningMode(self):
+        """Agent running mode; applicable for Windows
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
+        """
         return self._AgentRunningMode
 
     @AgentRunningMode.setter
@@ -319,6 +372,9 @@ class Application(AbstractModel):
 
     @property
     def Command(self):
+        """Task execution command
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -327,6 +383,9 @@ class Application(AbstractModel):
 
     @property
     def DeliveryForm(self):
+        """Delivery form of the application. Values: `PACKAGE` (package stored in a remote location), `LOCAL` (local computer).
+        :rtype: str
+        """
         return self._DeliveryForm
 
     @DeliveryForm.setter
@@ -335,6 +394,9 @@ class Application(AbstractModel):
 
     @property
     def PackagePath(self):
+        """Remote storage path of the application package
+        :rtype: str
+        """
         return self._PackagePath
 
     @PackagePath.setter
@@ -343,6 +405,9 @@ class Application(AbstractModel):
 
     @property
     def Docker(self):
+        """Relevant configuration of the Docker used by the application. In case that the Docker configuration is used, "LOCAL" DeliveryForm means that the application software inside the Docker image is used directly and run in Docker mode; "PACKAGE" DeliveryForm means that the remote application package is run in Docker mode after being injected into the Docker image. To avoid compatibility issues with different versions of Docker, the Docker installation package and relevant dependencies are taken care of by BatchCompute. For custom images where Docker has already been installed, uninstall Docker first and then use the Docker feature.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Docker`
+        """
         return self._Docker
 
     @Docker.setter
@@ -384,6 +449,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -392,6 +460,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """List of instances that added to the compute environment
+        :rtype: list of Instance
+        """
         return self._Instances
 
     @Instances.setter
@@ -431,6 +502,9 @@ class AttachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -462,6 +536,9 @@ class Authentication(AbstractModel):
 
     @property
     def Scene(self):
+        """Authentication scenario such as COS
+        :rtype: str
+        """
         return self._Scene
 
     @Scene.setter
@@ -470,6 +547,9 @@ class Authentication(AbstractModel):
 
     @property
     def SecretId(self):
+        """SecretId
+        :rtype: str
+        """
         return self._SecretId
 
     @SecretId.setter
@@ -478,6 +558,9 @@ class Authentication(AbstractModel):
 
     @property
     def SecretKey(self):
+        """SecretKey
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -550,6 +633,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -558,6 +644,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvName(self):
+        """Compute environment name
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -566,6 +656,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvDescription(self):
+        """Compute environment description
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -574,6 +668,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvType(self):
+        """Compute environment type. Only "MANAGED" type is supported
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -582,6 +679,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvData(self):
+        """Compute environment parameter
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -590,6 +690,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MountDataDisks(self):
+        """Data disk mounting option
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -598,6 +702,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InputMappings(self):
+        """Input mapping
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -606,6 +714,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Authentications(self):
+        """Authorization information
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -614,6 +726,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Notifications(self):
+        """Notification information
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -622,6 +738,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DesiredComputeNodeCount(self):
+        """Number of desired compute nodes
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -630,6 +749,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """Tag list of the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -700,6 +823,9 @@ class ComputeEnvData(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """List of CVM instance types
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -764,6 +890,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -772,6 +901,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvName(self):
+        """Compute environment name
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -780,6 +912,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Placement(self):
+        """Location information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -788,6 +923,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -796,6 +934,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ComputeNodeMetrics(self):
+        """Compute node statistical metrics
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
+        """
         return self._ComputeNodeMetrics
 
     @ComputeNodeMetrics.setter
@@ -804,6 +945,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvType(self):
+        """Compute environment type
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -812,6 +956,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DesiredComputeNodeCount(self):
+        """Number of desired compute nodes
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -820,6 +967,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ResourceType(self):
+        """Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -828,6 +978,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NextAction(self):
+        """Next action
+        :rtype: str
+        """
         return self._NextAction
 
     @NextAction.setter
@@ -836,6 +989,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AttachedComputeNodeCount(self):
+        """Number of compute nodes added to the compute environment
+        :rtype: int
+        """
         return self._AttachedComputeNodeCount
 
     @AttachedComputeNodeCount.setter
@@ -844,6 +1000,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -930,6 +1090,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def ComputeNodeId(self):
+        """Compute node ID
+        :rtype: str
+        """
         return self._ComputeNodeId
 
     @ComputeNodeId.setter
@@ -938,6 +1101,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def ComputeNodeInstanceId(self):
+        """Compute node instance ID. In a CVM scenario, this parameter is the CVM InstanceId
+        :rtype: str
+        """
         return self._ComputeNodeInstanceId
 
     @ComputeNodeInstanceId.setter
@@ -946,6 +1112,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def ComputeNodeState(self):
+        """Compute node state
+        :rtype: str
+        """
         return self._ComputeNodeState
 
     @ComputeNodeState.setter
@@ -954,6 +1123,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def Cpu(self):
+        """Number of CPU cores
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -962,6 +1134,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def Mem(self):
+        """Memory size in GiB
+        :rtype: int
+        """
         return self._Mem
 
     @Mem.setter
@@ -970,6 +1145,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def ResourceCreatedTime(self):
+        """Resource creation time
+        :rtype: str
+        """
         return self._ResourceCreatedTime
 
     @ResourceCreatedTime.setter
@@ -978,6 +1156,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def TaskInstanceNumAvailable(self):
+        """Available capacity of the compute node when running TaskInstance. 0 means that the compute node is busy.
+        :rtype: int
+        """
         return self._TaskInstanceNumAvailable
 
     @TaskInstanceNumAvailable.setter
@@ -986,6 +1167,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def AgentVersion(self):
+        """BatchCompute Agent version
+        :rtype: str
+        """
         return self._AgentVersion
 
     @AgentVersion.setter
@@ -994,6 +1178,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """Private IP of the instance
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -1002,6 +1189,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """Public IP of the instance
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -1010,6 +1200,9 @@ class ComputeNode(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -1018,6 +1211,10 @@ class ComputeNode(AbstractModel):
 
     @property
     def ResourceOrigin(self):
+        """Source of compute environment resources. <br>`BATCH_CREATED`: Instances created by BatchCompute.<br>
+`USER_ATTACHED`: Instances added to the compute environment by the user.
+        :rtype: str
+        """
         return self._ResourceOrigin
 
     @ResourceOrigin.setter
@@ -1080,6 +1277,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def SubmittedCount(self):
+        """Number of compute nodes that have been submitted
+        :rtype: int
+        """
         return self._SubmittedCount
 
     @SubmittedCount.setter
@@ -1088,6 +1288,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def CreatingCount(self):
+        """Number of compute nodes that are being created
+        :rtype: int
+        """
         return self._CreatingCount
 
     @CreatingCount.setter
@@ -1096,6 +1299,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def CreationFailedCount(self):
+        """Number of compute nodes that failed to be created
+        :rtype: int
+        """
         return self._CreationFailedCount
 
     @CreationFailedCount.setter
@@ -1104,6 +1310,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def CreatedCount(self):
+        """Number of compute nodes that have been created
+        :rtype: int
+        """
         return self._CreatedCount
 
     @CreatedCount.setter
@@ -1112,6 +1321,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def RunningCount(self):
+        """Number of running compute nodes
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -1120,6 +1332,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def DeletingCount(self):
+        """Number of compute nodes that are being terminated
+        :rtype: int
+        """
         return self._DeletingCount
 
     @DeletingCount.setter
@@ -1128,6 +1343,9 @@ class ComputeNodeMetrics(AbstractModel):
 
     @property
     def AbnormalCount(self):
+        """Number of exceptional compute nodes
+        :rtype: int
+        """
         return self._AbnormalCount
 
     @AbnormalCount.setter
@@ -1173,6 +1391,9 @@ class CreateComputeEnvRequest(AbstractModel):
 
     @property
     def ComputeEnv(self):
+        """Compute environment information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.NamedComputeEnv`
+        """
         return self._ComputeEnv
 
     @ComputeEnv.setter
@@ -1181,6 +1402,9 @@ class CreateComputeEnvRequest(AbstractModel):
 
     @property
     def Placement(self):
+        """Location information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -1189,6 +1413,9 @@ class CreateComputeEnvRequest(AbstractModel):
 
     @property
     def ClientToken(self):
+        """The string used to guarantee the idempotency of the request, which is generated by the user and must be unique for different requests. The maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1231,6 +1458,9 @@ class CreateComputeEnvResponse(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1239,6 +1469,9 @@ class CreateComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1274,6 +1507,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateName(self):
+        """Task template name
+        :rtype: str
+        """
         return self._TaskTemplateName
 
     @TaskTemplateName.setter
@@ -1282,6 +1518,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateInfo(self):
+        """Task template content with the same parameter requirements as the task
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Task`
+        """
         return self._TaskTemplateInfo
 
     @TaskTemplateInfo.setter
@@ -1290,6 +1529,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
+        """Task template description
+        :rtype: str
+        """
         return self._TaskTemplateDescription
 
     @TaskTemplateDescription.setter
@@ -1298,6 +1540,9 @@ class CreateTaskTemplateRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Specifies the tags you want to bind to a task template. Each task template supports up to 10 tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1344,6 +1589,9 @@ class CreateTaskTemplateResponse(AbstractModel):
 
     @property
     def TaskTemplateId(self):
+        """Task template ID
+        :rtype: str
+        """
         return self._TaskTemplateId
 
     @TaskTemplateId.setter
@@ -1352,6 +1600,9 @@ class CreateTaskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1419,6 +1670,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskSize(self):
+        """Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -1427,6 +1681,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskType(self):
+        """Data disk type. For more information about limits on different data disk types, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values: <br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>LOCAL_NVME: local NVME disk, specified in the `InstanceType`<br><li>LOCAL_PRO: local HDD disk, specified in the `InstanceType`<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: Tremendous SSD<br><li>CLOUD_BSSD: Balanced SSD<br><br>Default value: LOCAL_BASIC.<br><br>This parameter is invalid for the `ResizeInstanceDisk` API.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -1435,6 +1692,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskId(self):
+        """Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
+It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -1443,6 +1704,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeleteWithInstance(self):
+        """Whether to terminate the data disk when its CVM is terminated. Valid values:
+<li>TRUE: terminate the data disk when its CVM is terminated. This value only supports pay-as-you-go cloud disks billed on an hourly basis.
+<li>FALSE: retain the data disk when its CVM is terminated.<br>
+Default value: TRUE<br>
+Currently this parameter is only used in the `RunInstances` API.
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -1451,6 +1720,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SnapshotId(self):
+        """Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -1459,6 +1732,14 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Encrypt(self):
+        """Specifies whether the data disk is encrypted. Valid values: 
+<li>TRUE: encrypted
+<li>FALSE: not encrypted<br>
+Default value: FALSE<br>
+This parameter is only used with `RunInstances`.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -1467,6 +1748,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KmsKeyId(self):
+        """ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+
+Currently, this parameter is only used in the `RunInstances` API.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._KmsKeyId
 
     @KmsKeyId.setter
@@ -1475,6 +1762,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ThroughputPerformance(self):
+        """Cloud disk performance, in MB/s
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -1483,6 +1774,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CdcId(self):
+        """ID of the dedicated cluster to which the instance belongs.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -1524,6 +1819,9 @@ class DeleteComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1557,6 +1855,9 @@ class DeleteComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1582,6 +1883,9 @@ class DeleteJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1615,6 +1919,9 @@ class DeleteJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1640,6 +1947,9 @@ class DeleteTaskTemplatesRequest(AbstractModel):
 
     @property
     def TaskTemplateIds(self):
+        """This API is used to delete task template information.
+        :rtype: list of str
+        """
         return self._TaskTemplateIds
 
     @TaskTemplateIds.setter
@@ -1673,6 +1983,9 @@ class DeleteTaskTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1701,6 +2014,9 @@ class Dependence(AbstractModel):
 
     @property
     def StartTask(self):
+        """Dependency start task name 
+        :rtype: str
+        """
         return self._StartTask
 
     @StartTask.setter
@@ -1709,6 +2025,9 @@ class Dependence(AbstractModel):
 
     @property
     def EndTask(self):
+        """Dependency end task name 
+        :rtype: str
+        """
         return self._EndTask
 
     @EndTask.setter
@@ -1745,6 +2064,11 @@ class DescribeAvailableCvmInstanceTypesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
+<li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1786,6 +2110,9 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
 
     @property
     def InstanceTypeConfigSet(self):
+        """Array of model configurations
+        :rtype: list of InstanceTypeConfig
+        """
         return self._InstanceTypeConfigSet
 
     @InstanceTypeConfigSet.setter
@@ -1794,6 +2121,9 @@ class DescribeAvailableCvmInstanceTypesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1835,6 +2165,9 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -1843,6 +2176,9 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1851,6 +2187,9 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1859,6 +2198,10 @@ class DescribeComputeEnvActivitiesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter
+<li> `compute-node-id` - String - Optional - Filter by the compute node ID.</li>
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Filter`
+        """
         return self._Filters
 
     @Filters.setter
@@ -1903,6 +2246,9 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     @property
     def ActivitySet(self):
+        """List of activities in the compute environment
+        :rtype: list of Activity
+        """
         return self._ActivitySet
 
     @ActivitySet.setter
@@ -1911,6 +2257,9 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of activities
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1919,6 +2268,9 @@ class DescribeComputeEnvActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1951,6 +2303,9 @@ class DescribeComputeEnvCreateInfoRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2019,6 +2374,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2027,6 +2385,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvName(self):
+        """Compute environment name
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -2035,6 +2396,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvDescription(self):
+        """Compute environment description
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -2043,6 +2408,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvType(self):
+        """Compute environment type. Only `MANAGED` is supported
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -2051,6 +2419,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvData(self):
+        """Compute environment parameter
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -2059,6 +2430,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MountDataDisks(self):
+        """Data disk mounting option
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -2067,6 +2441,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def InputMappings(self):
+        """Input mapping
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -2075,6 +2452,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Authentications(self):
+        """Authorization information
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -2083,6 +2463,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Notifications(self):
+        """Notification information
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -2091,6 +2474,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DesiredComputeNodeCount(self):
+        """Number of desired compute nodes
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -2099,6 +2485,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2107,6 +2497,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2183,6 +2576,9 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def EnvIds(self):
+        """List of compute environment IDs, which cannot be specified together with the `Filters` parameter.
+        :rtype: list of str
+        """
         return self._EnvIds
 
     @EnvIds.setter
@@ -2191,6 +2587,13 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def Filters(self):
+        """Filter conditions
+<li> `zone` - String - Optional - Filter by the availability zone.</li>
+<li> `env-id` - String - Optional - Filter by the compute environment ID.</li>
+<li> `env-name` - String - Optional - Filter by the compute environment name.</li>
+It cannot be specified together with `EnvIds`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2199,6 +2602,9 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2207,6 +2613,9 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def Limit(self):
+        """Maximum number of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2254,6 +2663,9 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of compute environments
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2262,6 +2674,9 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     @property
     def ComputeEnvCreateInfoSet(self):
+        """List of compute environment creation information
+        :rtype: list of ComputeEnvCreateInfo
+        """
         return self._ComputeEnvCreateInfoSet
 
     @ComputeEnvCreateInfoSet.setter
@@ -2270,6 +2685,9 @@ class DescribeComputeEnvCreateInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2302,6 +2720,9 @@ class DescribeComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2372,6 +2793,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -2380,6 +2804,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvName(self):
+        """Compute environment name
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -2388,6 +2815,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Placement(self):
+        """Location information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -2396,6 +2826,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Compute environment creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2404,6 +2837,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ComputeNodeSet(self):
+        """List of compute nodes
+        :rtype: list of ComputeNode
+        """
         return self._ComputeNodeSet
 
     @ComputeNodeSet.setter
@@ -2412,6 +2848,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ComputeNodeMetrics(self):
+        """Compute node statistical metrics
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ComputeNodeMetrics`
+        """
         return self._ComputeNodeMetrics
 
     @ComputeNodeMetrics.setter
@@ -2420,6 +2859,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DesiredComputeNodeCount(self):
+        """Number of desired compute nodes
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -2428,6 +2870,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EnvType(self):
+        """Compute environment type
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -2436,6 +2881,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ResourceType(self):
+        """Compute environment resource type. Values: `CVM`, `CPM` (Bare Metal)
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -2444,6 +2892,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NextAction(self):
+        """Next action
+        :rtype: str
+        """
         return self._NextAction
 
     @NextAction.setter
@@ -2452,6 +2903,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AttachedComputeNodeCount(self):
+        """Number of compute nodes added to the compute environment
+        :rtype: int
+        """
         return self._AttachedComputeNodeCount
 
     @AttachedComputeNodeCount.setter
@@ -2460,6 +2914,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """Tag list bound to the compute environment.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2468,6 +2926,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2536,6 +2997,9 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def EnvIds(self):
+        """List of compute environment IDs, which cannot be specified together with the `Filters` parameter.
+        :rtype: list of str
+        """
         return self._EnvIds
 
     @EnvIds.setter
@@ -2544,6 +3008,17 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def Filters(self):
+        """Filters
+<li> `zone` - String - Optional - Availability zone.</li>
+<li> `env-id` - String - Optional - Compute environment ID.</li>
+<li> `env-name` - String - Optional - Compute environment name.</li>
+<li> `resource-type` - String - Optional - Compute resource type (`CVM` or `CPM`).</li>
+<li> `tag-key` - String - Optional - Tag key.</li>
+</li>`tag-value` - String - Optional - Tag value.</li>
+<li> `tag:tag-key` - String - Optional - Tag key-value pair. Replace `tag-key` with the actual tag key.</li>
+It cannot be specified together with `EnvIds`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2552,6 +3027,9 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2560,6 +3038,9 @@ It cannot be specified together with `EnvIds`.
 
     @property
     def Limit(self):
+        """Maximum number of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2607,6 +3088,9 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     @property
     def ComputeEnvSet(self):
+        """List of compute environments
+        :rtype: list of ComputeEnvView
+        """
         return self._ComputeEnvSet
 
     @ComputeEnvSet.setter
@@ -2615,6 +3099,9 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of compute environments
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2623,6 +3110,9 @@ class DescribeComputeEnvsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2659,6 +3149,13 @@ class DescribeCvmZoneInstanceConfigInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li> zone - String - Required: No - (Filter) Filter by availability zone.</li>
+<li> instance-family - String - Required: No - (Filter) Filter by model family such as S1, I1, and M1.</li>
+<li> instance-type - String - Required: No - (Filter) Filter by model.</li>
+<li> instance-charge-type - String - Required: No - (Filter) Filter by instance billing method. ( POSTPAID_BY_HOUR: pay-as-you-go | SPOTPAID: bidding.)  </li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2700,6 +3197,9 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
 
     @property
     def InstanceTypeQuotaSet(self):
+        """List of model configurations in the availability zone.
+        :rtype: list of InstanceTypeQuotaItem
+        """
         return self._InstanceTypeQuotaSet
 
     @InstanceTypeQuotaSet.setter
@@ -2708,6 +3208,9 @@ class DescribeCvmZoneInstanceConfigInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2748,6 +3251,9 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
 
     @property
     def InstanceCategorySet(self):
+        """List of CVM instance categories
+        :rtype: list of InstanceCategoryItem
+        """
         return self._InstanceCategorySet
 
     @InstanceCategorySet.setter
@@ -2756,6 +3262,9 @@ class DescribeInstanceCategoriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2787,6 +3296,9 @@ class DescribeJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2864,6 +3376,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2872,6 +3387,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobName(self):
+        """Job name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -2880,6 +3398,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Zone(self):
+        """Availability zone information
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -2888,6 +3409,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Priority(self):
+        """Job priority
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -2896,6 +3420,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobState(self):
+        """Job state
+        :rtype: str
+        """
         return self._JobState
 
     @JobState.setter
@@ -2904,6 +3431,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Creation Date
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2912,6 +3442,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2920,6 +3453,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskSet(self):
+        """Task view information
+        :rtype: list of TaskView
+        """
         return self._TaskSet
 
     @TaskSet.setter
@@ -2928,6 +3464,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DependenceSet(self):
+        """Information of the dependency among tasks
+        :rtype: list of Dependence
+        """
         return self._DependenceSet
 
     @DependenceSet.setter
@@ -2936,6 +3475,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskMetrics(self):
+        """Task statistical metrics
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
+        """
         return self._TaskMetrics
 
     @TaskMetrics.setter
@@ -2944,6 +3486,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskInstanceMetrics(self):
+        """Task instance statistical metrics
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
+        """
         return self._TaskInstanceMetrics
 
     @TaskInstanceMetrics.setter
@@ -2952,6 +3497,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StateReason(self):
+        """Job failure reason
+        :rtype: str
+        """
         return self._StateReason
 
     @StateReason.setter
@@ -2960,6 +3508,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """List of tags bound with the job.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2968,6 +3520,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def NextAction(self):
+        """Next action
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._NextAction
 
     @NextAction.setter
@@ -2976,6 +3532,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3034,6 +3593,9 @@ class DescribeJobSubmitInfoRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3089,6 +3651,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3097,6 +3662,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobName(self):
+        """Job name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -3105,6 +3673,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobDescription(self):
+        """Job description
+        :rtype: str
+        """
         return self._JobDescription
 
     @JobDescription.setter
@@ -3113,6 +3684,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Priority(self):
+        """Job priority. Tasks (Task) and task instances (TaskInstance) inherit the job priority
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -3121,6 +3695,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tasks(self):
+        """Information of tasks in the job
+        :rtype: list of Task
+        """
         return self._Tasks
 
     @Tasks.setter
@@ -3129,6 +3706,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Dependences(self):
+        """Dependency information
+        :rtype: list of Dependence
+        """
         return self._Dependences
 
     @Dependences.setter
@@ -3137,6 +3717,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """List of tags bound with the job.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3145,6 +3729,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3209,6 +3796,9 @@ It cannot be specified together with `JobIds`.
 
     @property
     def JobIds(self):
+        """List of job IDs. It cannot be specified together with `Filters`.
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -3217,6 +3807,17 @@ It cannot be specified together with `JobIds`.
 
     @property
     def Filters(self):
+        """Filter
+<li> `job-id` - String - Optional - Filter by the job ID.</li>
+<li> `job-name` - String - Optional - Filter by the job name.</li>
+<li> `job-state` - String - Optional - Filter by the job state.</li>
+<li> `zone` - String - Optional - Filter by the availability zone.</li>
+<li> `tag-key` - String - Optional - Tag key.</li>
+<li> `tag-value` - String - Optional - Tag value.</li>
+<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
+It cannot be specified together with `JobIds`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3225,6 +3826,9 @@ It cannot be specified together with `JobIds`.
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3233,6 +3837,9 @@ It cannot be specified together with `JobIds`.
 
     @property
     def Limit(self):
+        """Maximum number of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3280,6 +3887,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
+        """List of jobs
+        :rtype: list of JobView
+        """
         return self._JobSet
 
     @JobSet.setter
@@ -3288,6 +3898,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matched jobs
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3296,6 +3909,9 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3340,6 +3956,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3348,6 +3967,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3356,6 +3978,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def TaskInstanceIndexes(self):
+        """Set of task instances
+        :rtype: list of int non-negative
+        """
         return self._TaskInstanceIndexes
 
     @TaskInstanceIndexes.setter
@@ -3364,6 +3989,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The start point of query
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3372,6 +4000,9 @@ class DescribeTaskLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of task instances returned
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3415,6 +4046,9 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of task instances
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3423,6 +4057,9 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     @property
     def TaskInstanceLogSet(self):
+        """Set of task instance log details
+        :rtype: list of TaskInstanceLog
+        """
         return self._TaskInstanceLogSet
 
     @TaskInstanceLogSet.setter
@@ -3431,6 +4068,9 @@ class DescribeTaskLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3476,6 +4116,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3484,6 +4127,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3492,6 +4138,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3500,6 +4149,9 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 100. Maximum value: 1,000.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3508,6 +4160,10 @@ class DescribeTaskRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter as detailed below:
+<li> `task-instance-type` - String - Optional - Filter by the task instance state. (`SUBMITTED`, `PENDING`, `RUNNABLE`, `STARTING`, `RUNNING`, `SUCCEED`, `FAILED`, `FAILED_INTERRUPTED`).</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3574,6 +4230,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3582,6 +4241,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -3590,6 +4252,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskState(self):
+        """Task status
+        :rtype: str
+        """
         return self._TaskState
 
     @TaskState.setter
@@ -3598,6 +4263,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3606,6 +4274,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3614,6 +4285,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInstanceTotalCount(self):
+        """Total number of task instances
+        :rtype: int
+        """
         return self._TaskInstanceTotalCount
 
     @TaskInstanceTotalCount.setter
@@ -3622,6 +4296,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInstanceSet(self):
+        """Task instance information
+        :rtype: list of TaskInstanceView
+        """
         return self._TaskInstanceSet
 
     @TaskInstanceSet.setter
@@ -3630,6 +4307,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def TaskInstanceMetrics(self):
+        """Task instance statistical metrics
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskInstanceMetrics`
+        """
         return self._TaskInstanceMetrics
 
     @TaskInstanceMetrics.setter
@@ -3638,6 +4318,9 @@ class DescribeTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3692,6 +4375,9 @@ It cannot be specified together with `TaskTemplateIds`.
 
     @property
     def TaskTemplateIds(self):
+        """List of task template IDs. It cannot be specified together with `Filters`.
+        :rtype: list of str
+        """
         return self._TaskTemplateIds
 
     @TaskTemplateIds.setter
@@ -3700,6 +4386,14 @@ It cannot be specified together with `TaskTemplateIds`.
 
     @property
     def Filters(self):
+        """Filter
+<li> `task-template-name` - String - Optional - Task template name.</li>
+<li> `tag-key` - String - Optional - Tag key.</li>
+<li> `tag-value` - String - Optional - Tag value.</li>
+<li> `tag:tag-key` - String - Optional - Tag key-value pair. The tag-key should be replaced by a specified tag key.</li>
+It cannot be specified together with `TaskTemplateIds`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3708,6 +4402,9 @@ It cannot be specified together with `TaskTemplateIds`.
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3716,6 +4413,9 @@ It cannot be specified together with `TaskTemplateIds`.
 
     @property
     def Limit(self):
+        """Maximum number of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3763,6 +4463,9 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     @property
     def TaskTemplateSet(self):
+        """List of task templates
+        :rtype: list of TaskTemplateView
+        """
         return self._TaskTemplateSet
 
     @TaskTemplateSet.setter
@@ -3771,6 +4474,9 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of task templates
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3779,6 +4485,9 @@ class DescribeTaskTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3814,6 +4523,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -3822,6 +4534,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of instance IDs
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3856,6 +4571,9 @@ class DetachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3900,6 +4618,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def User(self):
+        """Docker Hub username or Tencent Registry username
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -3908,6 +4629,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Password(self):
+        """Docker Hub password or Tencent Registry password
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3916,6 +4640,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Image(self):
+        """For Docker Hub, enter "[user/repo]:[tag]"; for Tencent Registry, enter "ccr.ccs.tencentyun.com/[namespace/repo]:[tag]"
+        :rtype: str
+        """
         return self._Image
 
     @Image.setter
@@ -3924,6 +4651,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Server(self):
+        """For Docker Hub, this can be left blank, but please ensure public network access is present. For Tencent Registry, the server address is "ccr.ccs.tencentyun.com"
+        :rtype: str
+        """
         return self._Server
 
     @Server.setter
@@ -3932,6 +4662,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def MaxRetryCount(self):
+        """Maximum retry attempts to load docket images. Range: 0 - 10. Default: `0`
+        :rtype: int
+        """
         return self._MaxRetryCount
 
     @MaxRetryCount.setter
@@ -3940,6 +4673,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DelayOnRetry(self):
+        """Docker image loading timeout period (in seconds). Range: 1 - 360
+        :rtype: int
+        """
         return self._DelayOnRetry
 
     @DelayOnRetry.setter
@@ -3948,6 +4684,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DockerRunOption(self):
+        """Docker command execution parameter
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._DockerRunOption
 
     @DockerRunOption.setter
@@ -3993,6 +4733,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def SecurityService(self):
+        """Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RunSecurityServiceEnabled`
+        """
         return self._SecurityService
 
     @SecurityService.setter
@@ -4001,6 +4744,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def MonitorService(self):
+        """Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RunMonitorServiceEnabled`
+        """
         return self._MonitorService
 
     @MonitorService.setter
@@ -4009,6 +4755,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationService(self):
+        """Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RunAutomationServiceEnabled`
+        """
         return self._AutomationService
 
     @AutomationService.setter
@@ -4095,6 +4844,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceType(self):
+        """CVM instance type. It cannot be specified together with `InstanceTypes` or `InstanceTypeOptions`.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4103,6 +4855,9 @@ class EnvData(AbstractModel):
 
     @property
     def ImageId(self):
+        """CVM image ID
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -4111,6 +4866,9 @@ class EnvData(AbstractModel):
 
     @property
     def SystemDisk(self):
+        """System disk configuration of the instance
+        :rtype: :class:`tencentcloud.batch.v20170312.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -4119,6 +4877,9 @@ class EnvData(AbstractModel):
 
     @property
     def DataDisks(self):
+        """Data disk configuration of the instance
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -4127,6 +4888,9 @@ class EnvData(AbstractModel):
 
     @property
     def VirtualPrivateCloud(self):
+        """Information of the VPC configuration. It cannot be specified together with `Zones` and `VirtualPrivateClouds`.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.VirtualPrivateCloud`
+        """
         return self._VirtualPrivateCloud
 
     @VirtualPrivateCloud.setter
@@ -4135,6 +4899,9 @@ class EnvData(AbstractModel):
 
     @property
     def InternetAccessible(self):
+        """Public network bandwidth configuration
+        :rtype: :class:`tencentcloud.batch.v20170312.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -4143,6 +4910,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceName(self):
+        """CVM instance display name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -4151,6 +4921,9 @@ class EnvData(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """Instance login settings
+        :rtype: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -4159,6 +4932,9 @@ class EnvData(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """Security groups associated with the instance
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -4167,6 +4943,9 @@ class EnvData(AbstractModel):
 
     @property
     def EnhancedService(self):
+        """Whether to activate CWPP agent and Cloud Monitor. CWPP agent and Cloud Monitor are activated by default.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -4175,6 +4954,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """CVM instance billing method <br><li>`POSTPAID_BY_HOUR` (default): Hourly-billed pay-as-you-go <br><li>`SPOTPAID`: Spot instance <br>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -4183,6 +4965,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
+        """Market-related options for instances, such as parameters related to spot instances.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -4191,6 +4976,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceTypes(self):
+        """Types of CVM instances to create (up to 10). The system creates compute nodes of types specified in this list from top to down till the creation is successful. It cannot be specified together with `InstanceType` or `InstanceTypeOptions`. 
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -4199,6 +4987,9 @@ class EnvData(AbstractModel):
 
     @property
     def InstanceTypeOptions(self):
+        """CVM instance model configuration. It cannot be specified together with `InstanceType` or `InstanceTypes`.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.InstanceTypeOptions`
+        """
         return self._InstanceTypeOptions
 
     @InstanceTypeOptions.setter
@@ -4207,6 +4998,9 @@ class EnvData(AbstractModel):
 
     @property
     def Zones(self):
+        """List of availability zones. You can create CVM cross AZs in the same region. It cannot be specified together with `VirtualPrivateCloud` or `VirtualPrivateClouds`.
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -4215,6 +5009,9 @@ class EnvData(AbstractModel):
 
     @property
     def VirtualPrivateClouds(self):
+        """List of VPCs (creation of CVM instances across VPCs is supported). It cannot be specified together with `VirtualPrivateCloud` or `Zones`.
+        :rtype: list of VirtualPrivateCloud
+        """
         return self._VirtualPrivateClouds
 
     @VirtualPrivateClouds.setter
@@ -4290,6 +5087,9 @@ class EnvVar(AbstractModel):
 
     @property
     def Name(self):
+        """Environment variable name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4298,6 +5098,9 @@ class EnvVar(AbstractModel):
 
     @property
     def Value(self):
+        """Environment variable value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -4335,6 +5138,9 @@ class EventConfig(AbstractModel):
 
     @property
     def EventName(self):
+        """Event type. Value range: <br/><li>`JOB_RUNNING`: The job is running, applicable to `SubmitJob`. </li><li>`JOB_SUCCEED`: The job succeeded, applicable to `SubmitJob`. </li><li>`JOB_FAILED`: The job failed, applicable to `SubmitJob`. </li><li>`JOB_FAILED_INTERRUPTED`: The job failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_RUNNING`: The task is running, applicable to `SubmitJob`. </li><li>`TASK_SUCCEED`: The task succeeded, applicable to `SubmitJob`. </li><li>`TASK_FAILED`: The task failed, applicable to `SubmitJob`. </li><li>`TASK_FAILED_INTERRUPTED`: The task failed and the instance is retained, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_RUNNING`: The task instance is running, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_SUCCEED`: The task instance succeeded, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED`: The task instance failed, applicable to `SubmitJob`. </li><li>`TASK_INSTANCE_FAILED_INTERRUPTED`: The task instance failed and the instance is retained, applicable to `SubmitJob`. </li><li>`COMPUTE_ENV_CREATED`: the compute environment has been created, applicable to "CreateComputeEnv". </li><li>`COMPUTE_ENV_DELETED`: The compute environment has been deleted, applicable to `CreateComputeEnv`. </li><li>`COMPUTE_NODE_CREATED`: The compute node has been created, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_CREATION_FAILED`: The compute node creation failed, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_RUNNING`: The compute node is running, applicable to `CreateComputeEnv` and `SubmitJob`. </li><li>`COMPUTE_NODE_ABNORMAL`: The compute node is exceptional, applicable to "CreateComputeEnv" and "SubmitJob". </li><li>`COMPUTE_NODE_DELETING`: The compute node has been deleted, applicable to `CreateComputeEnv` and `SubmitJob`. </li>
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -4343,6 +5149,9 @@ class EventConfig(AbstractModel):
 
     @property
     def EventVars(self):
+        """Custom key-value pair
+        :rtype: list of EventVar
+        """
         return self._EventVars
 
     @EventVars.setter
@@ -4385,6 +5194,9 @@ class EventVar(AbstractModel):
 
     @property
     def Name(self):
+        """Custom key
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4393,6 +5205,9 @@ class EventVar(AbstractModel):
 
     @property
     def Value(self):
+        """Custom value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -4436,6 +5251,10 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def ReleaseAddress(self):
+        """Release address
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: bool
+        """
         return self._ReleaseAddress
 
     @ReleaseAddress.setter
@@ -4444,6 +5263,10 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def UnsupportNetworks(self):
+        """Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: list of str
+        """
         return self._UnsupportNetworks
 
     @UnsupportNetworks.setter
@@ -4452,6 +5275,10 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def StorageBlockAttr(self):
+        """Attributes of local HDD storage
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.StorageBlock`
+        """
         return self._StorageBlockAttr
 
     @StorageBlockAttr.setter
@@ -4502,6 +5329,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Filters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4510,6 +5340,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter values.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -4550,6 +5383,9 @@ class InputMapping(AbstractModel):
 
     @property
     def SourcePath(self):
+        """Source path
+        :rtype: str
+        """
         return self._SourcePath
 
     @SourcePath.setter
@@ -4558,6 +5394,9 @@ class InputMapping(AbstractModel):
 
     @property
     def DestinationPath(self):
+        """Destination path
+        :rtype: str
+        """
         return self._DestinationPath
 
     @DestinationPath.setter
@@ -4566,6 +5405,9 @@ class InputMapping(AbstractModel):
 
     @property
     def MountOptionParameter(self):
+        """Mounting configuration item parameter
+        :rtype: str
+        """
         return self._MountOptionParameter
 
     @MountOptionParameter.setter
@@ -4607,6 +5449,9 @@ class Instance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4615,6 +5460,9 @@ class Instance(AbstractModel):
 
     @property
     def ImageId(self):
+        """Image ID
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -4623,6 +5471,9 @@ class Instance(AbstractModel):
 
     @property
     def LoginSettings(self):
+        """Instance login settings.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -4663,6 +5514,9 @@ class InstanceCategoryItem(AbstractModel):
 
     @property
     def InstanceCategory(self):
+        """Instance type name
+        :rtype: str
+        """
         return self._InstanceCategory
 
     @InstanceCategory.setter
@@ -4671,6 +5525,9 @@ class InstanceCategoryItem(AbstractModel):
 
     @property
     def InstanceFamilySet(self):
+        """List of instance families
+        :rtype: list of str
+        """
         return self._InstanceFamilySet
 
     @InstanceFamilySet.setter
@@ -4710,6 +5567,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SpotOptions(self):
+        """Spot-related options
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.SpotMarketOptions`
+        """
         return self._SpotOptions
 
     @SpotOptions.setter
@@ -4718,6 +5579,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MarketType(self):
+        """Market type. Valid value: `spot`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MarketType
 
     @MarketType.setter
@@ -4766,6 +5631,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Mem(self):
+        """Memory size in GB.
+        :rtype: int
+        """
         return self._Mem
 
     @Mem.setter
@@ -4774,6 +5642,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Cpu(self):
+        """Number of CPU cores.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -4782,6 +5653,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance model.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4790,6 +5664,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Zone(self):
+        """Availability zone.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -4798,6 +5675,9 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def InstanceFamily(self):
+        """Instance model family.
+        :rtype: str
+        """
         return self._InstanceFamily
 
     @InstanceFamily.setter
@@ -4841,6 +5721,9 @@ class InstanceTypeOptions(AbstractModel):
 
     @property
     def CPU(self):
+        """Number of CPU cores
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -4849,6 +5732,9 @@ class InstanceTypeOptions(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory size in GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -4857,6 +5743,9 @@ class InstanceTypeOptions(AbstractModel):
 
     @property
     def InstanceCategories(self):
+        """Instance model category. Values: `ALL` (default), `GENERAL`, `GENERAL_2`, `GENERAL_3`, `COMPUTE`, `COMPUTE_2`, and `COMPUTE_3`. 
+        :rtype: list of str
+        """
         return self._InstanceCategories
 
     @InstanceCategories.setter
@@ -4957,6 +5846,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Zone(self):
+        """Availability zone.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -4965,6 +5857,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstanceType(self):
+        """Instance model.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4973,6 +5868,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstanceChargeType(self):
+        """Instance billing plan. Valid values: <br><li>POSTPAID_BY_HOUR: pay after use. You are billed for your traffic by the hour.<br><li>`CDHPAID`: [`CDH`](https://intl.cloud.tencent.com/document/product/416?from_cn_redirect=1) billing plan. Applicable to `CDH` only, not the instances on the host.
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -4981,6 +5879,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def NetworkCard(self):
+        """ENI type. For example, 25 represents an ENI of 25 GB.
+        :rtype: int
+        """
         return self._NetworkCard
 
     @NetworkCard.setter
@@ -4989,6 +5890,10 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Externals(self):
+        """Additional data.
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Externals`
+        """
         return self._Externals
 
     @Externals.setter
@@ -4997,6 +5902,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Cpu(self):
+        """Number of CPU cores of an instance model.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -5005,6 +5913,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Memory(self):
+        """Instance memory capacity; unit: `GB`.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -5013,6 +5924,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstanceFamily(self):
+        """Instance model family.
+        :rtype: str
+        """
         return self._InstanceFamily
 
     @InstanceFamily.setter
@@ -5021,6 +5935,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def TypeName(self):
+        """Model name.
+        :rtype: str
+        """
         return self._TypeName
 
     @TypeName.setter
@@ -5029,6 +5946,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def LocalDiskTypeList(self):
+        """List of local disk specifications. If the parameter returns null, it means that local disks cannot be created.
+        :rtype: list of LocalDiskType
+        """
         return self._LocalDiskTypeList
 
     @LocalDiskTypeList.setter
@@ -5037,6 +5957,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Status(self):
+        """Whether an instance model is available. Valid values: <br><li>SELL: available <br><li>SOLD_OUT: sold out
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5045,6 +5968,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Price(self):
+        """Price of an instance model.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
+        """
         return self._Price
 
     @Price.setter
@@ -5053,6 +5979,10 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def SoldOutReason(self):
+        """Details of out-of-stock items
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._SoldOutReason
 
     @SoldOutReason.setter
@@ -5061,6 +5991,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstanceBandwidth(self):
+        """Private network bandwidth, in Gbps.
+        :rtype: float
+        """
         return self._InstanceBandwidth
 
     @InstanceBandwidth.setter
@@ -5069,6 +6002,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def InstancePps(self):
+        """The max packet sending and receiving capability (in 10k PPS).
+        :rtype: int
+        """
         return self._InstancePps
 
     @InstancePps.setter
@@ -5077,6 +6013,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def StorageBlockAmount(self):
+        """Number of local storage blocks.
+        :rtype: int
+        """
         return self._StorageBlockAmount
 
     @StorageBlockAmount.setter
@@ -5085,6 +6024,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def CpuType(self):
+        """CPU type.
+        :rtype: str
+        """
         return self._CpuType
 
     @CpuType.setter
@@ -5093,6 +6035,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Gpu(self):
+        """Number of GPUs of the instance.
+        :rtype: int
+        """
         return self._Gpu
 
     @Gpu.setter
@@ -5101,6 +6046,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Fpga(self):
+        """Number of FPGAs of the instance.
+        :rtype: int
+        """
         return self._Fpga
 
     @Fpga.setter
@@ -5109,6 +6057,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Remark(self):
+        """Descriptive information of the instance.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -5117,6 +6068,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def GpuCount(self):
+        """
+        :rtype: float
+        """
         return self._GpuCount
 
     @GpuCount.setter
@@ -5125,6 +6079,9 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Frequency(self):
+        """CPU clock rate of the instance
+        :rtype: str
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -5197,6 +6154,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -5205,6 +6165,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -5213,6 +6176,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def PublicIpAssigned(self):
+        """Whether to assign a public IP. Valid values: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you can choose whether to assign a public IP; by default a public IP will be assigned. If the public network bandwidth is 0 Mbps, you will not be able to assign a public IP.
+        :rtype: bool
+        """
         return self._PublicIpAssigned
 
     @PublicIpAssigned.setter
@@ -5221,6 +6187,9 @@ class InternetAccessible(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -5339,6 +6308,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPrice(self):
+        """The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -5347,6 +6320,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ChargeUnit(self):
+        """Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -5355,6 +6332,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPrice(self):
+        """The original price of a pay-in-advance instance, in USD.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -5363,6 +6344,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPrice(self):
+        """Discount price of a prepaid instance, in USD.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -5371,6 +6356,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Discount(self):
+        """Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -5379,6 +6368,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPriceDiscount(self):
+        """The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -5387,6 +6380,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPriceSecondStep(self):
+        """Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._UnitPriceSecondStep
 
     @UnitPriceSecondStep.setter
@@ -5395,6 +6392,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPriceDiscountSecondStep(self):
+        """Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscountSecondStep
 
     @UnitPriceDiscountSecondStep.setter
@@ -5403,6 +6404,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPriceThirdStep(self):
+        """Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._UnitPriceThirdStep
 
     @UnitPriceThirdStep.setter
@@ -5411,6 +6416,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPriceDiscountThirdStep(self):
+        """Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
+Note: this field may return null, indicating that no valid value is obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscountThirdStep
 
     @UnitPriceDiscountThirdStep.setter
@@ -5419,6 +6428,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPriceThreeYear(self):
+        """Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._OriginalPriceThreeYear
 
     @OriginalPriceThreeYear.setter
@@ -5427,6 +6441,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPriceThreeYear(self):
+        """Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._DiscountPriceThreeYear
 
     @DiscountPriceThreeYear.setter
@@ -5435,6 +6454,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountThreeYear(self):
+        """Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._DiscountThreeYear
 
     @DiscountThreeYear.setter
@@ -5443,6 +6467,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPriceFiveYear(self):
+        """Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._OriginalPriceFiveYear
 
     @OriginalPriceFiveYear.setter
@@ -5451,6 +6480,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPriceFiveYear(self):
+        """Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._DiscountPriceFiveYear
 
     @DiscountPriceFiveYear.setter
@@ -5459,6 +6493,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountFiveYear(self):
+        """Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._DiscountFiveYear
 
     @DiscountFiveYear.setter
@@ -5467,6 +6506,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPriceOneYear(self):
+        """Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._OriginalPriceOneYear
 
     @OriginalPriceOneYear.setter
@@ -5475,6 +6519,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPriceOneYear(self):
+        """Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._DiscountPriceOneYear
 
     @DiscountPriceOneYear.setter
@@ -5483,6 +6532,11 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountOneYear(self):
+        """Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
+Note: this field may return `null`, indicating that no valid value was found.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: float
+        """
         return self._DiscountOneYear
 
     @DiscountOneYear.setter
@@ -5561,6 +6615,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -5569,6 +6626,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobName(self):
+        """Job name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -5577,6 +6637,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def JobState(self):
+        """Job state
+        :rtype: str
+        """
         return self._JobState
 
     @JobState.setter
@@ -5585,6 +6648,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Priority(self):
+        """Job priority
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -5593,6 +6659,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Placement(self):
+        """Location information
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Placement`
+        """
         return self._Placement
 
     @Placement.setter
@@ -5601,6 +6671,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5609,6 +6682,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTime(self):
+        """End time
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5617,6 +6694,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskMetrics(self):
+        """Task statistical metrics
+        :rtype: :class:`tencentcloud.batch.v20170312.models.TaskMetrics`
+        """
         return self._TaskMetrics
 
     @TaskMetrics.setter
@@ -5625,6 +6705,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """List of tags bound with the job.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5687,6 +6771,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Type(self):
+        """Type of a local disk.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5695,6 +6782,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def PartitionType(self):
+        """Attributes of a local disk.
+        :rtype: str
+        """
         return self._PartitionType
 
     @PartitionType.setter
@@ -5703,6 +6793,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def MinSize(self):
+        """Minimum size of a local disk.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -5711,6 +6804,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def MaxSize(self):
+        """Maximum size of a local disk.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -5719,6 +6815,9 @@ class LocalDiskType(AbstractModel):
 
     @property
     def Required(self):
+        """Whether a local disk is required during purchase. Valid values:<br><li>REQUIRED: required<br><li>OPTIONAL: optional
+        :rtype: str
+        """
         return self._Required
 
     @Required.setter
@@ -5762,6 +6861,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
+        """Login password of the instance. <br><li>Linux instances: 8-16 characters, containing at least two of the following categories: [a-z, A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows instances: 12-16 characters, containing at least three of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password will be generated and sent to you via the Message Center.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5770,6 +6872,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -5778,6 +6883,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeepImageLogin(self):
+        """Whether to keep the original settings of an image. Values: `TRUE` (default), `FALSE`. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. 
+        :rtype: str
+        """
         return self._KeepImageLogin
 
     @KeepImageLogin.setter
@@ -5825,6 +6933,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -5833,6 +6944,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def DesiredComputeNodeCount(self):
+        """Number of desired compute nodes
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -5841,6 +6955,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvName(self):
+        """Compute environment name
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -5849,6 +6966,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvDescription(self):
+        """Compute environment description
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -5857,6 +6977,9 @@ class ModifyComputeEnvRequest(AbstractModel):
 
     @property
     def EnvData(self):
+        """Compute environment attributes
+        :rtype: :class:`tencentcloud.batch.v20170312.models.ComputeEnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -5896,6 +7019,9 @@ class ModifyComputeEnvResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5930,6 +7056,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateId(self):
+        """Task template ID
+        :rtype: str
+        """
         return self._TaskTemplateId
 
     @TaskTemplateId.setter
@@ -5938,6 +7067,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateName(self):
+        """Task template name
+        :rtype: str
+        """
         return self._TaskTemplateName
 
     @TaskTemplateName.setter
@@ -5946,6 +7078,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateDescription(self):
+        """Task template description
+        :rtype: str
+        """
         return self._TaskTemplateDescription
 
     @TaskTemplateDescription.setter
@@ -5954,6 +7089,9 @@ class ModifyTaskTemplateRequest(AbstractModel):
 
     @property
     def TaskTemplateInfo(self):
+        """Task template information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Task`
+        """
         return self._TaskTemplateInfo
 
     @TaskTemplateInfo.setter
@@ -5992,6 +7130,9 @@ class ModifyTaskTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6020,6 +7161,9 @@ class MountDataDisk(AbstractModel):
 
     @property
     def LocalPath(self):
+        """Mounting point. A valid path (for Linux) for a drive (for Windows, such as "H:\\")
+        :rtype: str
+        """
         return self._LocalPath
 
     @LocalPath.setter
@@ -6028,6 +7172,9 @@ class MountDataDisk(AbstractModel):
 
     @property
     def FileSystemType(self):
+        """File system type. Linux: `EXT3` (default) and `EXT4`. Windows: `NTFS`
+        :rtype: str
+        """
         return self._FileSystemType
 
     @FileSystemType.setter
@@ -6104,6 +7251,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def EnvName(self):
+        """Compute environment name
+        :rtype: str
+        """
         return self._EnvName
 
     @EnvName.setter
@@ -6112,6 +7262,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def DesiredComputeNodeCount(self):
+        """Number of desired compute nodes
+        :rtype: int
+        """
         return self._DesiredComputeNodeCount
 
     @DesiredComputeNodeCount.setter
@@ -6120,6 +7273,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def EnvDescription(self):
+        """Compute environment description
+        :rtype: str
+        """
         return self._EnvDescription
 
     @EnvDescription.setter
@@ -6128,6 +7284,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def EnvType(self):
+        """Compute environment management type
+        :rtype: str
+        """
         return self._EnvType
 
     @EnvType.setter
@@ -6136,6 +7295,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def EnvData(self):
+        """Compute environment's specific parameters
+        :rtype: :class:`tencentcloud.batch.v20170312.models.EnvData`
+        """
         return self._EnvData
 
     @EnvData.setter
@@ -6144,6 +7306,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def MountDataDisks(self):
+        """Data disk mounting option
+        :rtype: list of MountDataDisk
+        """
         return self._MountDataDisks
 
     @MountDataDisks.setter
@@ -6152,6 +7317,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def Authentications(self):
+        """Authorization information
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -6160,6 +7328,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def InputMappings(self):
+        """Input mapping information
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -6168,6 +7339,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def AgentRunningMode(self):
+        """Agent running mode; applicable for Windows
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
+        """
         return self._AgentRunningMode
 
     @AgentRunningMode.setter
@@ -6176,6 +7350,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def Notifications(self):
+        """Notification information
+        :rtype: list of Notification
+        """
         return self._Notifications
 
     @Notifications.setter
@@ -6184,6 +7361,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def ActionIfComputeNodeInactive(self):
+        """Policy for inactive nodes. Default: `RECREATE`, which means that instance resources will be re-created periodically for compute nodes where instance creation fails or is abnormally returned.
+        :rtype: str
+        """
         return self._ActionIfComputeNodeInactive
 
     @ActionIfComputeNodeInactive.setter
@@ -6192,6 +7372,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def ResourceMaxRetryCount(self):
+        """When the instances are failed to be created or returned because of exceptions, the related compute node will retry to create instances periodically. This parameter specifies the maximum retry attempts. The max value is 100 and the default value is `7`.
+        :rtype: int
+        """
         return self._ResourceMaxRetryCount
 
     @ResourceMaxRetryCount.setter
@@ -6200,6 +7383,9 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def Tags(self):
+        """List of tags to bind with a compute environment. Each compute environment can have up to 10 tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6208,6 +7394,12 @@ Values: `CMQ`, `TDMQ_CMQ`
 
     @property
     def NotificationTarget(self):
+        """Target of the notification
+Values: `CMQ`, `TDMQ_CMQ`
+`CMQ`: Tencent Cloud CMQ (default)
+`TDMQ_CMQ`: Tencent Cloud TDMQ_CMQ.<br/>Note: CMQ has been discontinued. Please use `TDMQ_CMQ`. See [CMQ Queue Migration to TDMQ for CMQ](https://intl.cloud.tencent.com/document/product/406/60860?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -6286,6 +7478,9 @@ class Notification(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ topic name which should be valid and associated with a subscription
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -6294,6 +7489,9 @@ class Notification(AbstractModel):
 
     @property
     def EventConfigs(self):
+        """Event configuration
+        :rtype: list of EventConfig
+        """
         return self._EventConfigs
 
     @EventConfigs.setter
@@ -6340,6 +7538,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def SourcePath(self):
+        """Source path
+        :rtype: str
+        """
         return self._SourcePath
 
     @SourcePath.setter
@@ -6348,6 +7549,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def DestinationPath(self):
+        """Destination path
+        :rtype: str
+        """
         return self._DestinationPath
 
     @DestinationPath.setter
@@ -6356,6 +7560,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputMappingOption(self):
+        """Output mapping options
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.OutputMappingOption`
+        """
         return self._OutputMappingOption
 
     @OutputMappingOption.setter
@@ -6399,6 +7607,9 @@ class OutputMappingConfig(AbstractModel):
 
     @property
     def Scene(self):
+        """Storage type. Only `COS` is supported.
+        :rtype: str
+        """
         return self._Scene
 
     @Scene.setter
@@ -6407,6 +7618,9 @@ class OutputMappingConfig(AbstractModel):
 
     @property
     def WorkerNum(self):
+        """Number of concurrent workers
+        :rtype: int
+        """
         return self._WorkerNum
 
     @WorkerNum.setter
@@ -6415,6 +7629,9 @@ class OutputMappingConfig(AbstractModel):
 
     @property
     def WorkerPartSize(self):
+        """Size of a worker part, in MB.
+        :rtype: int
+        """
         return self._WorkerPartSize
 
     @WorkerPartSize.setter
@@ -6453,6 +7670,12 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Workspace(self):
+        """The mapped output workspace on the container side for the instance.
+`BATCH_WORKSPACE` (Default): The workspace is the workspace defined for the usage of Batch Compute. Batch Compute ensures the isolation between jobs.
+`GLOBAL_WORKSPACE`: The workspace is the instance OS space..
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._Workspace
 
     @Workspace.setter
@@ -6498,6 +7721,9 @@ class Placement(AbstractModel):
 
     @property
     def Zone(self):
+        """ID of the availability zone where the instance resides. You can call the [DescribeZones](https://intl.cloud.tencent.com/document/product/213/35071) API and obtain the ID in the returned `Zone` field.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -6506,6 +7732,9 @@ class Placement(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` returned by [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1). If this is left empty, the default project is used.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6514,6 +7743,9 @@ class Placement(AbstractModel):
 
     @property
     def HostIds(self):
+        """ID list of CDHs from which the instance can be created. If you have purchased CDHs and specify this parameter, the instances you purchase will be randomly deployed on the CDHs.
+        :rtype: list of str
+        """
         return self._HostIds
 
     @HostIds.setter
@@ -6522,6 +7754,9 @@ class Placement(AbstractModel):
 
     @property
     def HostIps(self):
+        """IPs of the hosts to create CVMs
+        :rtype: list of str
+        """
         return self._HostIps
 
     @HostIps.setter
@@ -6530,6 +7765,9 @@ class Placement(AbstractModel):
 
     @property
     def HostId(self):
+        """The ID of the CDH to which the instance belongs, only used as an output parameter.
+        :rtype: str
+        """
         return self._HostId
 
     @HostId.setter
@@ -6576,6 +7814,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StdoutRedirectPath(self):
+        """Standard output redirection path
+        :rtype: str
+        """
         return self._StdoutRedirectPath
 
     @StdoutRedirectPath.setter
@@ -6584,6 +7825,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StderrRedirectPath(self):
+        """Standard error redirection path
+        :rtype: str
+        """
         return self._StderrRedirectPath
 
     @StderrRedirectPath.setter
@@ -6592,6 +7836,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StdoutRedirectFileName(self):
+        """Standard output redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :rtype: str
+        """
         return self._StdoutRedirectFileName
 
     @StdoutRedirectFileName.setter
@@ -6600,6 +7847,9 @@ class RedirectInfo(AbstractModel):
 
     @property
     def StderrRedirectFileName(self):
+        """Standard error redirection file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :rtype: str
+        """
         return self._StderrRedirectFileName
 
     @StderrRedirectFileName.setter
@@ -6645,6 +7895,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StdoutLocalPath(self):
+        """Standard output redirection local path
+        :rtype: str
+        """
         return self._StdoutLocalPath
 
     @StdoutLocalPath.setter
@@ -6653,6 +7906,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StderrLocalPath(self):
+        """Standard error redirection local path
+        :rtype: str
+        """
         return self._StderrLocalPath
 
     @StderrLocalPath.setter
@@ -6661,6 +7917,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StdoutLocalFileName(self):
+        """Standard output redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :rtype: str
+        """
         return self._StdoutLocalFileName
 
     @StdoutLocalFileName.setter
@@ -6669,6 +7928,9 @@ class RedirectLocalInfo(AbstractModel):
 
     @property
     def StderrLocalFileName(self):
+        """Standard error redirection local file name, which supports three placeholders: `${BATCH_JOB_ID}`, `${BATCH_TASK_NAME}`, and `${BATCH_TASK_INSTANCE_INDEX}`
+        :rtype: str
+        """
         return self._StderrLocalFileName
 
     @StderrLocalFileName.setter
@@ -6705,6 +7967,9 @@ class RetryJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
+        """List of job IDs.
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -6738,6 +8003,9 @@ class RetryJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6763,6 +8031,9 @@ class RunAutomationServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -6796,6 +8067,9 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -6829,6 +8103,9 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     @property
     def Enabled(self):
+        """Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -6865,6 +8142,9 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def MaxPrice(self):
+        """Bidding price
+        :rtype: str
+        """
         return self._MaxPrice
 
     @MaxPrice.setter
@@ -6873,6 +8153,9 @@ class SpotMarketOptions(AbstractModel):
 
     @property
     def SpotInstanceType(self):
+        """Bidding request type. Currently only "one-time" is supported.
+        :rtype: str
+        """
         return self._SpotInstanceType
 
     @SpotInstanceType.setter
@@ -6916,6 +8199,10 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def Type(self):
+        """Local HDD storage type. Value: LOCAL_PRO.
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6924,6 +8211,10 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def MinSize(self):
+        """Minimum capacity of local HDD storage
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -6932,6 +8223,10 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def MaxSize(self):
+        """Maximum capacity of local HDD storage
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -6977,6 +8272,9 @@ It is only used as a response parameter for APIs such as `DescribeInstances`, an
 
     @property
     def DiskType(self):
+        """System disk type. For more information about the limits of system disk types, please see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: Premium cloud storage<br><li>CLOUD_BSSD: Balanced SSD<br><br>The disk currently in stock will be used by default.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -6985,6 +8283,10 @@ It is only used as a response parameter for APIs such as `DescribeInstances`, an
 
     @property
     def DiskId(self):
+        """System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.
+It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
+        :rtype: str
+        """
         return self._DiskId
 
     @DiskId.setter
@@ -6993,6 +8295,9 @@ It is only used as a response parameter for APIs such as `DescribeInstances`, an
 
     @property
     def DiskSize(self):
+        """System disk size; unit: GB; default value: 50 GB.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -7001,6 +8306,9 @@ It is only used as a response parameter for APIs such as `DescribeInstances`, an
 
     @property
     def CdcId(self):
+        """ID of the dedicated cluster to which the instance belongs.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -7042,6 +8350,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Key(self):
+        """Tag key
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -7050,6 +8362,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Value(self):
+        """Tag value
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -7135,6 +8451,9 @@ class Task(AbstractModel):
 
     @property
     def Application(self):
+        """Application information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Application`
+        """
         return self._Application
 
     @Application.setter
@@ -7143,6 +8462,9 @@ class Task(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name, which should be unique within a job
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -7151,6 +8473,9 @@ class Task(AbstractModel):
 
     @property
     def TaskInstanceNum(self):
+        """Number of running task instances
+        :rtype: int
+        """
         return self._TaskInstanceNum
 
     @TaskInstanceNum.setter
@@ -7159,6 +8484,9 @@ class Task(AbstractModel):
 
     @property
     def ComputeEnv(self):
+        """Compute environment information. One (and only one) parameter must be specified for ComputeEnv and EnvId.
+        :rtype: :class:`tencentcloud.batch.v20170312.models.AnonymousComputeEnv`
+        """
         return self._ComputeEnv
 
     @ComputeEnv.setter
@@ -7167,6 +8495,9 @@ class Task(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID. One (and only one) parameter must be specified for ComputeEnv and EnvId.
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -7175,6 +8506,9 @@ class Task(AbstractModel):
 
     @property
     def RedirectInfo(self):
+        """Redirection information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
+        """
         return self._RedirectInfo
 
     @RedirectInfo.setter
@@ -7183,6 +8517,9 @@ class Task(AbstractModel):
 
     @property
     def RedirectLocalInfo(self):
+        """Local redirection information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RedirectLocalInfo`
+        """
         return self._RedirectLocalInfo
 
     @RedirectLocalInfo.setter
@@ -7191,6 +8528,9 @@ class Task(AbstractModel):
 
     @property
     def InputMappings(self):
+        """Input mapping
+        :rtype: list of InputMapping
+        """
         return self._InputMappings
 
     @InputMappings.setter
@@ -7199,6 +8539,9 @@ class Task(AbstractModel):
 
     @property
     def OutputMappings(self):
+        """Output mapping
+        :rtype: list of OutputMapping
+        """
         return self._OutputMappings
 
     @OutputMappings.setter
@@ -7207,6 +8550,9 @@ class Task(AbstractModel):
 
     @property
     def OutputMappingConfigs(self):
+        """Output mapping configuration
+        :rtype: list of OutputMappingConfig
+        """
         return self._OutputMappingConfigs
 
     @OutputMappingConfigs.setter
@@ -7215,6 +8561,9 @@ class Task(AbstractModel):
 
     @property
     def EnvVars(self):
+        """Custom environment variable
+        :rtype: list of EnvVar
+        """
         return self._EnvVars
 
     @EnvVars.setter
@@ -7223,6 +8572,9 @@ class Task(AbstractModel):
 
     @property
     def Authentications(self):
+        """Authorization information
+        :rtype: list of Authentication
+        """
         return self._Authentications
 
     @Authentications.setter
@@ -7231,6 +8583,9 @@ class Task(AbstractModel):
 
     @property
     def FailedAction(self):
+        """The processing method after the TaskInstance fails; Value range: `TERMINATE` (default), `INTERRUPT`, `FAST_INTERRUPT`.
+        :rtype: str
+        """
         return self._FailedAction
 
     @FailedAction.setter
@@ -7239,6 +8594,9 @@ class Task(AbstractModel):
 
     @property
     def MaxRetryCount(self):
+        """The maximum number of retries after the task fails. Range: 0 - 5. Default value: 0
+        :rtype: int
+        """
         return self._MaxRetryCount
 
     @MaxRetryCount.setter
@@ -7247,6 +8605,9 @@ class Task(AbstractModel):
 
     @property
     def Timeout(self):
+        """Timeout period of the task in seconds. Defaults value: 86400
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -7255,6 +8616,9 @@ class Task(AbstractModel):
 
     @property
     def MaxConcurrentNum(self):
+        """The maximum number of concurrent tasks. Range: 0 - 200000. There is no limit by default.
+        :rtype: int
+        """
         return self._MaxConcurrentNum
 
     @MaxConcurrentNum.setter
@@ -7263,6 +8627,9 @@ class Task(AbstractModel):
 
     @property
     def RestartComputeNode(self):
+        """Restarts the compute node after the task is completed. This is suitable for specifying the compute environment for task execution.
+        :rtype: bool
+        """
         return self._RestartComputeNode
 
     @RestartComputeNode.setter
@@ -7271,6 +8638,9 @@ class Task(AbstractModel):
 
     @property
     def ResourceMaxRetryCount(self):
+        """Maximum number of retry attempts after failing to create computing resources such as the CVM in the task launch process. Default: `0`; Maximum: `100`.
+        :rtype: int
+        """
         return self._ResourceMaxRetryCount
 
     @ResourceMaxRetryCount.setter
@@ -7378,6 +8748,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskInstanceIndex(self):
+        """Task instance
+        :rtype: int
+        """
         return self._TaskInstanceIndex
 
     @TaskInstanceIndex.setter
@@ -7386,6 +8759,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StdoutLog(self):
+        """Standard output log (Base64-encoded, up to 2048 bytes after decompression)
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._StdoutLog
 
     @StdoutLog.setter
@@ -7394,6 +8771,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StderrLog(self):
+        """Standard error log (Base64-encoded, up to 2048 bytes after decompression)
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._StderrLog
 
     @StderrLog.setter
@@ -7402,6 +8783,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StdoutRedirectPath(self):
+        """Standard output redirection path
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._StdoutRedirectPath
 
     @StdoutRedirectPath.setter
@@ -7410,6 +8795,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StderrRedirectPath(self):
+        """Standard error redirection path
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._StderrRedirectPath
 
     @StderrRedirectPath.setter
@@ -7418,6 +8807,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StdoutRedirectFileName(self):
+        """Standard output redirection file name
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._StdoutRedirectFileName
 
     @StdoutRedirectFileName.setter
@@ -7426,6 +8819,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StderrRedirectFileName(self):
+        """Standard error redirection file name
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._StderrRedirectFileName
 
     @StderrRedirectFileName.setter
@@ -7486,6 +8883,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def SubmittedCount(self):
+        """Number of submitted tasks
+        :rtype: int
+        """
         return self._SubmittedCount
 
     @SubmittedCount.setter
@@ -7494,6 +8894,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def PendingCount(self):
+        """Number of pending tasks
+        :rtype: int
+        """
         return self._PendingCount
 
     @PendingCount.setter
@@ -7502,6 +8905,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def RunnableCount(self):
+        """Number of Runnable tasks
+        :rtype: int
+        """
         return self._RunnableCount
 
     @RunnableCount.setter
@@ -7510,6 +8916,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def StartingCount(self):
+        """Number of starting tasks
+        :rtype: int
+        """
         return self._StartingCount
 
     @StartingCount.setter
@@ -7518,6 +8927,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def RunningCount(self):
+        """Number of running tasks
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -7526,6 +8938,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def SucceedCount(self):
+        """Number of successful tasks
+        :rtype: int
+        """
         return self._SucceedCount
 
     @SucceedCount.setter
@@ -7534,6 +8949,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def FailedInterruptedCount(self):
+        """Number of failed and interrupted tasks
+        :rtype: int
+        """
         return self._FailedInterruptedCount
 
     @FailedInterruptedCount.setter
@@ -7542,6 +8960,9 @@ class TaskInstanceMetrics(AbstractModel):
 
     @property
     def FailedCount(self):
+        """Number of failed tasks
+        :rtype: int
+        """
         return self._FailedCount
 
     @FailedCount.setter
@@ -7617,6 +9038,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskInstanceIndex(self):
+        """Task instance index
+        :rtype: int
+        """
         return self._TaskInstanceIndex
 
     @TaskInstanceIndex.setter
@@ -7625,6 +9049,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskInstanceState(self):
+        """Task instance state
+        :rtype: str
+        """
         return self._TaskInstanceState
 
     @TaskInstanceState.setter
@@ -7633,6 +9060,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ExitCode(self):
+        """Exit code after application execution is completed
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._ExitCode
 
     @ExitCode.setter
@@ -7641,6 +9072,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StateReason(self):
+        """Task instance state reason. If the task instance fails, the reason for the failure will be logged.
+        :rtype: str
+        """
         return self._StateReason
 
     @StateReason.setter
@@ -7649,6 +9083,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ComputeNodeInstanceId(self):
+        """The `InstanceId` of the compute node (e.g., CVM instance) where the task instance is running. This field is empty if the task instance is not running or has already been completed and will change when the task instance is retried.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ComputeNodeInstanceId
 
     @ComputeNodeInstanceId.setter
@@ -7657,6 +9095,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7665,6 +9106,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def LaunchTime(self):
+        """Start time
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._LaunchTime
 
     @LaunchTime.setter
@@ -7673,6 +9118,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RunningTime(self):
+        """Running start time
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._RunningTime
 
     @RunningTime.setter
@@ -7681,6 +9130,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTime(self):
+        """Task end time
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7689,6 +9142,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def RedirectInfo(self):
+        """Redirection information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.RedirectInfo`
+        """
         return self._RedirectInfo
 
     @RedirectInfo.setter
@@ -7697,6 +9153,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StateDetailedReason(self):
+        """Task instance state reason details. If the task instance fails, the reason for the failure will be logged
+        :rtype: str
+        """
         return self._StateDetailedReason
 
     @StateDetailedReason.setter
@@ -7763,6 +9222,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def SubmittedCount(self):
+        """Number of submitted tasks
+        :rtype: int
+        """
         return self._SubmittedCount
 
     @SubmittedCount.setter
@@ -7771,6 +9233,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def PendingCount(self):
+        """Number of pending tasks
+        :rtype: int
+        """
         return self._PendingCount
 
     @PendingCount.setter
@@ -7779,6 +9244,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def RunnableCount(self):
+        """Number of Runnable tasks
+        :rtype: int
+        """
         return self._RunnableCount
 
     @RunnableCount.setter
@@ -7787,6 +9255,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def StartingCount(self):
+        """Number of starting tasks
+        :rtype: int
+        """
         return self._StartingCount
 
     @StartingCount.setter
@@ -7795,6 +9266,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def RunningCount(self):
+        """Number of running tasks
+        :rtype: int
+        """
         return self._RunningCount
 
     @RunningCount.setter
@@ -7803,6 +9277,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def SucceedCount(self):
+        """Number of successful tasks
+        :rtype: int
+        """
         return self._SucceedCount
 
     @SucceedCount.setter
@@ -7811,6 +9288,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def FailedInterruptedCount(self):
+        """Number of failed and interrupted tasks
+        :rtype: int
+        """
         return self._FailedInterruptedCount
 
     @FailedInterruptedCount.setter
@@ -7819,6 +9299,9 @@ class TaskMetrics(AbstractModel):
 
     @property
     def FailedCount(self):
+        """Failed count
+        :rtype: int
+        """
         return self._FailedCount
 
     @FailedCount.setter
@@ -7875,6 +9358,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskTemplateId(self):
+        """Task template ID
+        :rtype: str
+        """
         return self._TaskTemplateId
 
     @TaskTemplateId.setter
@@ -7883,6 +9369,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskTemplateName(self):
+        """Task template name
+        :rtype: str
+        """
         return self._TaskTemplateName
 
     @TaskTemplateName.setter
@@ -7891,6 +9380,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskTemplateDescription(self):
+        """Task template description
+        :rtype: str
+        """
         return self._TaskTemplateDescription
 
     @TaskTemplateDescription.setter
@@ -7899,6 +9391,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskTemplateInfo(self):
+        """Task template information
+        :rtype: :class:`tencentcloud.batch.v20170312.models.Task`
+        """
         return self._TaskTemplateInfo
 
     @TaskTemplateInfo.setter
@@ -7907,6 +9402,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7915,6 +9413,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Tags(self):
+        """Tag list bound to the task template.
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7970,6 +9472,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -7978,6 +9483,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def TaskState(self):
+        """Task status
+        :rtype: str
+        """
         return self._TaskState
 
     @TaskState.setter
@@ -7986,6 +9494,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def CreateTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7994,6 +9505,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTime(self):
+        """End time
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8033,6 +9548,9 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -8041,6 +9559,9 @@ class TerminateComputeNodeRequest(AbstractModel):
 
     @property
     def ComputeNodeId(self):
+        """Compute node ID
+        :rtype: str
+        """
         return self._ComputeNodeId
 
     @ComputeNodeId.setter
@@ -8075,6 +9596,9 @@ class TerminateComputeNodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8103,6 +9627,9 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Compute environment ID
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -8111,6 +9638,9 @@ class TerminateComputeNodesRequest(AbstractModel):
 
     @property
     def ComputeNodeIds(self):
+        """List of compute node IDs
+        :rtype: list of str
+        """
         return self._ComputeNodeIds
 
     @ComputeNodeIds.setter
@@ -8145,6 +9675,9 @@ class TerminateComputeNodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8170,6 +9703,9 @@ class TerminateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8203,6 +9739,9 @@ class TerminateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8234,6 +9773,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Job ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8242,6 +9784,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -8250,6 +9795,9 @@ class TerminateTaskInstanceRequest(AbstractModel):
 
     @property
     def TaskInstanceIndex(self):
+        """Task instance index
+        :rtype: int
+        """
         return self._TaskInstanceIndex
 
     @TaskInstanceIndex.setter
@@ -8285,6 +9833,9 @@ class TerminateTaskInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8322,6 +9873,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8330,6 +9884,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def SubnetId(self):
+        """VPC subnet ID in the format `subnet-xxx`. To obtain valid subnet IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/subnet?rid=1) or call [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) and look for the `unSubnetId` fields in the response. If you specify `DEFAULT` for both `SubnetId` and `VpcId` when creating an instance, the default VPC will be used.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -8338,6 +9895,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def AsVpcGateway(self):
+        """Whether to use a CVM instance as a public gateway. The public gateway is only available when the instance has a public IP and resides in a VPC. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.
+        :rtype: bool
+        """
         return self._AsVpcGateway
 
     @AsVpcGateway.setter
@@ -8346,6 +9906,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -8354,6 +9917,9 @@ class VirtualPrivateCloud(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
+        """Number of IPv6 addresses randomly generated for the ENI.
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter

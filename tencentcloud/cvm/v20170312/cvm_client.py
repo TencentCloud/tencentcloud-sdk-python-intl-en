@@ -147,6 +147,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConvertOperatingSystems(self, request):
+        """This API is used to switch the operating system of an instance with CentOS 7 or CentOS 8 as the source operating system.
+
+        :param request: Request instance for ConvertOperatingSystems.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ConvertOperatingSystemsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ConvertOperatingSystemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConvertOperatingSystems", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConvertOperatingSystemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDisasterRecoverGroup(self, request):
         """This API is used to create a [spread placement group](https://intl.cloud.tencent.com/document/product/213/15486?from_cn_redirect=1). After you create one, you can specify it for an instance when you [create the instance](https://intl.cloud.tencent.com/document/api/213/15730?from_cn_redirect=1),
 
@@ -475,6 +498,29 @@ class CvmClient(AbstractClient):
             body = self.call("DescribeHosts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeHostsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageFromFamily(self, request):
+        """This API is used to view information about available images within an image family.
+
+        :param request: Request instance for DescribeImageFromFamily.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeImageFromFamilyRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeImageFromFamilyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageFromFamily", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageFromFamilyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -939,6 +985,52 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnterRescueMode(self, request):
+        """This API is used to enter the rescue mode.
+
+        :param request: Request instance for EnterRescueMode.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.EnterRescueModeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.EnterRescueModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnterRescueMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnterRescueModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExitRescueMode(self, request):
+        """This API is used to exit the rescue mode.
+
+        :param request: Request instance for ExitRescueMode.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ExitRescueModeRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ExitRescueModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExitRescueMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExitRescueModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportImages(self, request):
         """This API is used to export custom images to the specified COS bucket.
 
@@ -963,7 +1055,7 @@ class CvmClient(AbstractClient):
 
 
     def ImportImage(self, request):
-        """The API is used to import an image. The image imported can be used to create instances. Currently, this API can import images in formats like RAW, VHD, QCOW2, and VMDK.
+        """This API is used to import an image. The image imported can be used to create instances. Currently, this API supports RAW, VHD, QCOW2, and VMDK image formats.
 
         :param request: Request instance for ImportImage.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ImportImageRequest`
@@ -1036,11 +1128,11 @@ class CvmClient(AbstractClient):
 
 
     def InquiryPriceResetInstance(self, request):
-        """This API is used to query the price for reinstalling an instance.
+        """This API is used to inquire about the price for reinstalling an instance.
 
-        * If you have specified the `ImageId` parameter, the price query is performed with the specified image. Otherwise, the image used by the current instance is used.
-        * You can only query the price for reinstallation caused by switching between Linux and Windows OS. And the [system disk type](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#SystemDisk) of the instance must be `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
-        * Currently, this API only supports instances in Mainland China regions.
+        * If you have specified the parameter `ImageId`, inquire about the price for reinstallation by using the specified image. Otherwise, inquire about the price for reinstallation based on the image currently used by the instance.
+        * Currently, only instances with a [system disk type](https://intl.cloud.tencent.com/document/api/213/15753?from_cn_redirect=1#SystemDisk) of `CLOUD_BSSD`, `CLOUD_PREMIUM`, or `CLOUD_SSD` are supported for inquiring about the price for reinstallation caused by switching between `Linux` and `Windows` operating systems through this API.
+        * Currently, instances in regions outside the Chinese mainland are not supported for inquiring about the price for reinstallation caused by switching between `Linux` and `Windows` operating systems through this API.
 
         :param request: Request instance for InquiryPriceResetInstance.
         :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceResetInstanceRequest`
@@ -1260,10 +1352,10 @@ class CvmClient(AbstractClient):
     def ModifyImageSharePermission(self, request):
         """This API is used to modify image sharing information.
 
-        * The accounts with which an image is shared can use the shared image to create instances.
-        * Each custom image can be shared with up to 50 accounts.
-        * You can use a shared image to create instances, but you cannot change its name and description.
-        * If an image is shared with another account, the shared image will be in the same region as the original image.
+        * The account with shared image access can use the image to create instances.
+        * Each custom image can be shared with a maximum of 500 accounts.
+        * Shared images cannot have their names or description changed. They can only be used to create instances.
+        * Sharing is only supported within the same region as the recipient's account.
 
         :param request: Request instance for ModifyImageSharePermission.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyImageSharePermissionRequest`
@@ -1369,11 +1461,13 @@ class CvmClient(AbstractClient):
 
 
     def ModifyKeyPairAttribute(self, request):
-        """This API is used to modify the attributes of key pairs.
+        """This API is used to modify attributes of a key pair.
 
-        * This API modifies the name and description of the key pair identified by the key pair ID.
-        * The name of the key pair must be unique.
-        * Key pair ID is the unique identifier of a key pair and cannot be modified.
+        * Modify the name and description information of the key pair specified by the key pair ID.
+        * The key pair name should not be the same as the name of an existing key pair.
+        * The key pair ID is the unique identifier of a key pair and cannot be modified.
+
+        * Either the key pair name or description information should be specified, and both can also be specified simultaneously.
 
         :param request: Request instance for ModifyKeyPairAttribute.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyKeyPairAttributeRequest`
@@ -1516,14 +1610,15 @@ class CvmClient(AbstractClient):
 
 
     def ResetInstance(self, request):
-        """This API is used to reinstall the operating system of the specified instance.
+        """This API (ResetInstance) is used to reinstall the operating system on a specified instance.
 
-        * If you specify an `ImageId`, the specified image is used. Otherwise, the image used by the current instance is used.
-        * The system disk will be formatted and reset. Therefore, make sure that no important files are stored on the system disk.
-        * If the operating system switches between `Linux` and `Windows`, the system disk `ID` of the instance will change, and the snapshots that are associated with the system disk can no longer be used to roll back and restore data.
-        * If no password is specified, you will get a random password via internal message.
-        * You can only use this API to switch the operating system between `Linux` and `Windows` for instances whose [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#SystemDisk) is `CLOUD_BASIC`, `CLOUD_PREMIUM`, or `CLOUD_SSD`.
-        * Currently, this API only supports instances in Mainland China regions.
+
+
+        * If you have specified the parameter `ImageId`, use the specified image for reinstallation. Otherwise, perform reinstallation based on the image currently used by the instance.
+        * The system disk will be formatted and reset. Ensure that there are no important files in the system disk.
+        * If you do not specify a password, a random password will be sent via Message Center.
+        * Currently, only instances with a [system disk type](https://intl.cloud.tencent.com/document/api/213/9452?from_cn_redirect=1#SystemDisk) of `CLOUD_BASIC`, `CLOUD_PREMIUM`, `CLOUD_SSD`, or `CLOUD_BSSD` are supported for implementing operating system switching through this API.
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
 
         :param request: Request instance for ResetInstance.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ResetInstanceRequest`
@@ -1735,11 +1830,11 @@ class CvmClient(AbstractClient):
 
 
     def SyncImages(self, request):
-        """This API is used to sync a custom image to other regions.
+        """This API is used to synchronize custom images to other regions.
 
-        * Each API call syncs a single image.
-        * This API supports syncing an image to multiple regions.
-        * Each account can have up to 10 custom images in each region.
+        * This API only supports synchronizing one image per call.
+        * This API supports multiple synchronization regions.
+        * A single account can have a maximum of 500 custom images in each region.
 
         :param request: Request instance for SyncImages.
         :type request: :class:`tencentcloud.cvm.v20170312.models.SyncImagesRequest`
