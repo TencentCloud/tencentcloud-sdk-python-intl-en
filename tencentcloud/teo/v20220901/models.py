@@ -4153,7 +4153,7 @@ class CertificateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertId: ID of the server certificate.
+        :param _CertId: Certificate ID, which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
         :type CertId: str
         :param _Alias: Alias of the certificate.
         :type Alias: str
@@ -4186,7 +4186,7 @@ u200c<li>`failed`: Application rejected</li>
 
     @property
     def CertId(self):
-        """ID of the server certificate.
+        """Certificate ID, which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
         :rtype: str
         """
         return self._CertId
@@ -4387,6 +4387,83 @@ class CheckCnameStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckRegionHealthStatus(AbstractModel):
+    """Health status of origin servers in each health check region.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Health check region, which is a two-letter code according to ISO-3166-1.
+        :type Region: str
+        :param _Healthy: Health status of origin servers in a single health check region. Valid values:
+<li>Healthy: healthy.</li>
+<li>Unhealthy: unhealthy.</li>
+<li>Undetected: no data detected.</li>Note: If all origin servers in a single health check region are healthy, the status is healthy; otherwise, it is unhealthy.
+        :type Healthy: str
+        :param _OriginHealthStatus: Origin server health status.
+        :type OriginHealthStatus: list of OriginHealthStatus
+        """
+        self._Region = None
+        self._Healthy = None
+        self._OriginHealthStatus = None
+
+    @property
+    def Region(self):
+        """Health check region, which is a two-letter code according to ISO-3166-1.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Healthy(self):
+        """Health status of origin servers in a single health check region. Valid values:
+<li>Healthy: healthy.</li>
+<li>Unhealthy: unhealthy.</li>
+<li>Undetected: no data detected.</li>Note: If all origin servers in a single health check region are healthy, the status is healthy; otherwise, it is unhealthy.
+        :rtype: str
+        """
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def OriginHealthStatus(self):
+        """Origin server health status.
+        :rtype: list of OriginHealthStatus
+        """
+        return self._OriginHealthStatus
+
+    @OriginHealthStatus.setter
+    def OriginHealthStatus(self, OriginHealthStatus):
+        self._OriginHealthStatus = OriginHealthStatus
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Healthy = params.get("Healthy")
+        if params.get("OriginHealthStatus") is not None:
+            self._OriginHealthStatus = []
+            for item in params.get("OriginHealthStatus"):
+                obj = OriginHealthStatus()
+                obj._deserialize(item)
+                self._OriginHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientIpCountry(AbstractModel):
     """Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.
 
@@ -4455,9 +4532,8 @@ class ClientIpHeader(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param _HeaderName: Name of the request header that contains the client IP for origin-pull. 
-The default value `X-Forwarded-IP` is used when it is not specified. 
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _HeaderName: Name of the request header containing the client IP address for origin-pull. When Switch is on, this parameter is required. X-Forwarded-For is not allowed for this parameter.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type HeaderName: str
         """
         self._Switch = None
@@ -4478,9 +4554,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HeaderName(self):
-        """Name of the request header that contains the client IP for origin-pull. 
-The default value `X-Forwarded-IP` is used when it is not specified. 
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        """Name of the request header containing the client IP address for origin-pull. When Switch is on, this parameter is required. X-Forwarded-For is not allowed for this parameter.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._HeaderName
@@ -6557,6 +6632,192 @@ class CreateL4ProxyRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLoadBalancerRequest(AbstractModel):
+    """CreateLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Name: LoadBalancer name, which can contain 1 to 200 characters, including a-z, A-Z, 0-9, underscores (_), and hyphens (-).
+        :type Name: str
+        :param _Type: LoadBalancer type. Valid values:
+<li>HTTP: HTTP-specific LoadBalancer. It supports adding HTTP-specific and general origin server groups. It can only be referenced by site acceleration services (such as domain name service and rule engine).</li>
+<li>GENERAL: general LoadBalancer. It only supports adding general origin server groups. It can be referenced by site acceleration services (such as domain name service and rule engine) and Layer-4 proxy.</li>
+        :type Type: str
+        :param _OriginGroups: List of origin server groups and their corresponding disaster recovery scheduling priorities. For details, refer to Sample Scenario in [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1).
+        :type OriginGroups: list of OriginGroupInLoadBalancer
+        :param _HealthChecker: Health check policy. For details, refer to [Health Check Policies](https://intl.cloud.tencent.com/document/product/1552/104228?from_cn_redirect=1). If left empty, health check is disabled by default.
+        :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        :param _SteeringPolicy: Traffic scheduling policy among origin server groups. Valid values:
+<li>Priority: Perform failover according to priority.</li>The default value is Priority.
+        :type SteeringPolicy: str
+        :param _FailoverPolicy: Request retry policy when access to an origin server fails. For details, refer to [Introduction to Request Retry Strategy](https://intl.cloud.tencent.com/document/product/1552/104227?from_cn_redirect=1). Valid values:
+<li>OtherOriginGroup: After a single request fails, retry with another origin server within the next lower priority origin server group.</li>
+<li>OtherRecordInOriginGroup: After a single request fails, retry with another origin server within the same origin server group.</li> The default value is OtherRecordInOriginGroup.
+        :type FailoverPolicy: str
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Type = None
+        self._OriginGroups = None
+        self._HealthChecker = None
+        self._SteeringPolicy = None
+        self._FailoverPolicy = None
+
+    @property
+    def ZoneId(self):
+        """Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        """LoadBalancer name, which can contain 1 to 200 characters, including a-z, A-Z, 0-9, underscores (_), and hyphens (-).
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """LoadBalancer type. Valid values:
+<li>HTTP: HTTP-specific LoadBalancer. It supports adding HTTP-specific and general origin server groups. It can only be referenced by site acceleration services (such as domain name service and rule engine).</li>
+<li>GENERAL: general LoadBalancer. It only supports adding general origin server groups. It can be referenced by site acceleration services (such as domain name service and rule engine) and Layer-4 proxy.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OriginGroups(self):
+        """List of origin server groups and their corresponding disaster recovery scheduling priorities. For details, refer to Sample Scenario in [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1).
+        :rtype: list of OriginGroupInLoadBalancer
+        """
+        return self._OriginGroups
+
+    @OriginGroups.setter
+    def OriginGroups(self, OriginGroups):
+        self._OriginGroups = OriginGroups
+
+    @property
+    def HealthChecker(self):
+        """Health check policy. For details, refer to [Health Check Policies](https://intl.cloud.tencent.com/document/product/1552/104228?from_cn_redirect=1). If left empty, health check is disabled by default.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        """
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def SteeringPolicy(self):
+        """Traffic scheduling policy among origin server groups. Valid values:
+<li>Priority: Perform failover according to priority.</li>The default value is Priority.
+        :rtype: str
+        """
+        return self._SteeringPolicy
+
+    @SteeringPolicy.setter
+    def SteeringPolicy(self, SteeringPolicy):
+        self._SteeringPolicy = SteeringPolicy
+
+    @property
+    def FailoverPolicy(self):
+        """Request retry policy when access to an origin server fails. For details, refer to [Introduction to Request Retry Strategy](https://intl.cloud.tencent.com/document/product/1552/104227?from_cn_redirect=1). Valid values:
+<li>OtherOriginGroup: After a single request fails, retry with another origin server within the next lower priority origin server group.</li>
+<li>OtherRecordInOriginGroup: After a single request fails, retry with another origin server within the same origin server group.</li> The default value is OtherRecordInOriginGroup.
+        :rtype: str
+        """
+        return self._FailoverPolicy
+
+    @FailoverPolicy.setter
+    def FailoverPolicy(self, FailoverPolicy):
+        self._FailoverPolicy = FailoverPolicy
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("OriginGroups") is not None:
+            self._OriginGroups = []
+            for item in params.get("OriginGroups"):
+                obj = OriginGroupInLoadBalancer()
+                obj._deserialize(item)
+                self._OriginGroups.append(obj)
+        if params.get("HealthChecker") is not None:
+            self._HealthChecker = HealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._SteeringPolicy = params.get("SteeringPolicy")
+        self._FailoverPolicy = params.get("FailoverPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLoadBalancerResponse(AbstractModel):
+    """CreateLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: CLB instance ID.
+        :type InstanceId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """CLB instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOriginGroupRequest(AbstractModel):
     """CreateOriginGroup request structure.
 
@@ -7330,18 +7591,18 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _TaskName: Name of a real-time log shipping task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
+        :param _TaskName: Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
         :type TaskName: str
-        :param _TaskType: Type of a real-time log shipping task. Valid values:
+        :param _TaskType: Type of a real-time log delivery task. Valid values:
 <li>cls: push to Tencent Cloud CLS;</li>
 <li>custom_endpoint: push to a custom HTTP(S) address;</li>
 <li>s3: push to an AWS S3-compatible bucket address.</li>
         :type TaskType: str
-        :param _EntityList: List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples:
+        :param _EntityList: List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log delivery task. Valid value examples:
 <li>L7 domain name: domain.example.com;</li>
 <li>L4 proxy instance: sid-2s69eb5wcms7.</li>
         :type EntityList: list of str
-        :param _LogType: Data shipping type. Valid values:
+        :param _LogType: Dataset type. Valid values:
 <li>domain: site acceleration logs;</li>
 <li>application: L4 proxy logs;</li>
 <li>web-rateLiming: rate limit and CC attack defense logs;</li>
@@ -7349,17 +7610,17 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 <li>web-rule: custom rule logs;</li>
 <li>web-bot: Bot management logs.</li>
         :type LogType: str
-        :param _Area: Data shipping area. Valid values:
+        :param _Area: Data area. Valid values:
 <li>mainland: within the Chinese mainland;</li>
 <li>overseas: global (excluding the Chinese mainland).</li>
         :type Area: str
-        :param _Fields: List of predefined fields for shipping.
+        :param _Fields: List of predefined fields for delivery.
         :type Fields: list of str
-        :param _CustomFields: List of custom fields for shipping. It supports extracting specified field values from HTTP request headers, response headers, and cookies. The name of each custom field must be unique and the maximum number of fields is 200.
+        :param _CustomFields: The list of custom fields for log delivery, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. Custom field names must be unique. The number of custom fields cannot exceed a maximum of 200. A single real-time log delivery task can configure up to 5 custom fields of the request body type. Currently, only site acceleration logs (LogType=domain) support custom fields.
         :type CustomFields: list of CustomField
-        :param _DeliveryConditions: Filter criteria of log shipping. If this parameter is not input, all logs will be shipped.
+        :param _DeliveryConditions: Filter criteria of log delivery. If this parameter is not specified, all logs will be shipped.
         :type DeliveryConditions: list of DeliveryCondition
-        :param _Sample: Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not input, the sampling ratio is 100%.
+        :param _Sample: Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not specified, the sampling ratio is 100%.
         :type Sample: int
         :param _LogFormat: Output format for log delivery. If this field is not specified, the default format is used, which works as follows:
 <li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>
@@ -7400,7 +7661,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """Name of a real-time log shipping task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
+        """Name of a real-time log delivery task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
         :rtype: str
         """
         return self._TaskName
@@ -7411,7 +7672,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        """Type of a real-time log shipping task. Valid values:
+        """Type of a real-time log delivery task. Valid values:
 <li>cls: push to Tencent Cloud CLS;</li>
 <li>custom_endpoint: push to a custom HTTP(S) address;</li>
 <li>s3: push to an AWS S3-compatible bucket address.</li>
@@ -7425,7 +7686,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        """List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples:
+        """List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log delivery task. Valid value examples:
 <li>L7 domain name: domain.example.com;</li>
 <li>L4 proxy instance: sid-2s69eb5wcms7.</li>
         :rtype: list of str
@@ -7438,7 +7699,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogType(self):
-        """Data shipping type. Valid values:
+        """Dataset type. Valid values:
 <li>domain: site acceleration logs;</li>
 <li>application: L4 proxy logs;</li>
 <li>web-rateLiming: rate limit and CC attack defense logs;</li>
@@ -7455,7 +7716,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Data shipping area. Valid values:
+        """Data area. Valid values:
 <li>mainland: within the Chinese mainland;</li>
 <li>overseas: global (excluding the Chinese mainland).</li>
         :rtype: str
@@ -7468,7 +7729,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Fields(self):
-        """List of predefined fields for shipping.
+        """List of predefined fields for delivery.
         :rtype: list of str
         """
         return self._Fields
@@ -7479,7 +7740,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomFields(self):
-        """List of custom fields for shipping. It supports extracting specified field values from HTTP request headers, response headers, and cookies. The name of each custom field must be unique and the maximum number of fields is 200.
+        """The list of custom fields for log delivery, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. Custom field names must be unique. The number of custom fields cannot exceed a maximum of 200. A single real-time log delivery task can configure up to 5 custom fields of the request body type. Currently, only site acceleration logs (LogType=domain) support custom fields.
         :rtype: list of CustomField
         """
         return self._CustomFields
@@ -7490,7 +7751,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def DeliveryConditions(self):
-        """Filter criteria of log shipping. If this parameter is not input, all logs will be shipped.
+        """Filter criteria of log delivery. If this parameter is not specified, all logs will be shipped.
         :rtype: list of DeliveryCondition
         """
         return self._DeliveryConditions
@@ -7501,7 +7762,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Sample(self):
-        """Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not input, the sampling ratio is 100%.
+        """Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not specified, the sampling ratio is 100%.
         :rtype: int
         """
         return self._Sample
@@ -8502,20 +8763,23 @@ class CustomErrorPage(AbstractModel):
 
 
 class CustomField(AbstractModel):
-    """The custom log field in a real-time log delivery task
+    """The custom log field in a real-time log delivery task.
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: Extracts data from specified positions in HTTP requests and responses. Valid values:
-<li>ReqHeader: Extract a specified field value from an HTTP request header;</li>
-<li>RspHeader: Extract a specified field value from an HTTP response header;</li>
-<li>cookie: Extract a specified field value from a cookie.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: Type of the custom log filed, which indicates extracting data from a specified position in HTTP requests and responses. Valid values:
+<li>ReqHeader: Extract the value of a specified field from an HTTP request header;</li>
+<li>RspHeader: Extract the value of a specified field from an HTTP response header;</li>
+<li>Cookie: Extract the value of a specified field from a cookie;</li>
+<li>ReqBody: Extract specified content from an HTTP request body using a Google RE2 regular expression.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Name: str
-        :param _Value: Indicates the name of the parameter from which a value needs to be extracted, such as Accept-Language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Value: Enter the definition of the field value based on the field type (Name). This parameter is case-sensitive.
+<li>When the field type is ReqHeader, RspHeader, or Cookie, enter the name of the parameter for which you need to extract the value, such as Accept-Language. You can enter 1-100 characters. The name should start with a letter, contain letters, digits, and hyphens (-) in the middle, and end with a letter or digit.</li>
+<li>When the field type is ReqBody, enter the Google RE2 regular expression. The maximum length of the regular expression is 4 KB.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Value: str
         :param _Enabled: Indicates whether to deliver this field. If not filled in, this field will not be delivered.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -8527,11 +8791,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Extracts data from specified positions in HTTP requests and responses. Valid values:
-<li>ReqHeader: Extract a specified field value from an HTTP request header;</li>
-<li>RspHeader: Extract a specified field value from an HTTP response header;</li>
-<li>cookie: Extract a specified field value from a cookie.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Type of the custom log filed, which indicates extracting data from a specified position in HTTP requests and responses. Valid values:
+<li>ReqHeader: Extract the value of a specified field from an HTTP request header;</li>
+<li>RspHeader: Extract the value of a specified field from an HTTP response header;</li>
+<li>Cookie: Extract the value of a specified field from a cookie;</li>
+<li>ReqBody: Extract specified content from an HTTP request body using a Google RE2 regular expression.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._Name
@@ -8542,8 +8807,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
-        """Indicates the name of the parameter from which a value needs to be extracted, such as Accept-Language.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Enter the definition of the field value based on the field type (Name). This parameter is case-sensitive.
+<li>When the field type is ReqHeader, RspHeader, or Cookie, enter the name of the parameter for which you need to extract the value, such as Accept-Language. You can enter 1-100 characters. The name should start with a letter, contain letters, digits, and hyphens (-) in the middle, and end with a letter or digit.</li>
+<li>When the field type is ReqBody, enter the Google RE2 regular expression. The maximum length of the regular expression is 4 KB.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._Value
@@ -8569,6 +8836,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Name = params.get("Name")
         self._Value = params.get("Value")
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomizedHeader(AbstractModel):
+    """Custom header that can be configured for HTTP/HTTPS health check policies under a LoadBalancer.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Custom header key.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type Key: str
+        :param _Value: Custom header value.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """Custom header key.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """Custom header value.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9903,6 +10225,85 @@ class DeleteL4ProxyRulesRequest(AbstractModel):
 
 class DeleteL4ProxyRulesResponse(AbstractModel):
     """DeleteL4ProxyRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLoadBalancerRequest(AbstractModel):
+    """DeleteLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _InstanceId: CLB instance ID.
+        :type InstanceId: str
+        """
+        self._ZoneId = None
+        self._InstanceId = None
+
+    @property
+    def ZoneId(self):
+        """Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def InstanceId(self):
+        """CLB instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoadBalancerResponse(AbstractModel):
+    """DeleteLoadBalancer response structure.
 
     """
 
@@ -14192,6 +14593,275 @@ class DescribeL4ProxyRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLoadBalancerListRequest(AbstractModel):
+    """DescribeLoadBalancerList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Offset: Offset of paginated query. Default value: 0.		
+        :type Offset: int
+        :param _Limit: Paginated query limit. Default value: 20, maximum value: 100.	
+        :type Limit: int
+        :param _Filters: Filter criteria. The maximum value of Filters.Values is 20. If this parameter is left empty, all LoadBalancer information under the current zone ID will be returned. The detailed filter criteria are as follows:
+<li>InstanceName: Filter by LoadBalancer name.</li>
+<li>InstanceId: Filter by LoadBalancer ID.</li>
+
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        """Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        """Offset of paginated query. Default value: 0.		
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Paginated query limit. Default value: 20, maximum value: 100.	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """Filter criteria. The maximum value of Filters.Values is 20. If this parameter is left empty, all LoadBalancer information under the current zone ID will be returned. The detailed filter criteria are as follows:
+<li>InstanceName: Filter by LoadBalancer name.</li>
+<li>InstanceId: Filter by LoadBalancer ID.</li>
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoadBalancerListResponse(AbstractModel):
+    """DescribeLoadBalancerList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of LoadBalancers.
+        :type TotalCount: int
+        :param _LoadBalancerList: LoadBalancer list.
+        :type LoadBalancerList: list of LoadBalancer
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._LoadBalancerList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of LoadBalancers.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def LoadBalancerList(self):
+        """LoadBalancer list.
+        :rtype: list of LoadBalancer
+        """
+        return self._LoadBalancerList
+
+    @LoadBalancerList.setter
+    def LoadBalancerList(self, LoadBalancerList):
+        self._LoadBalancerList = LoadBalancerList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("LoadBalancerList") is not None:
+            self._LoadBalancerList = []
+            for item in params.get("LoadBalancerList"):
+                obj = LoadBalancer()
+                obj._deserialize(item)
+                self._LoadBalancerList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOriginGroupHealthStatusRequest(AbstractModel):
+    """DescribeOriginGroupHealthStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _LBInstanceId: CLB instance ID.
+        :type LBInstanceId: str
+        :param _OriginGroupIds: Origin server group ID. If left empty, the health status of all origin server groups under a LoadBalancer is obtained by default.
+        :type OriginGroupIds: list of str
+        """
+        self._ZoneId = None
+        self._LBInstanceId = None
+        self._OriginGroupIds = None
+
+    @property
+    def ZoneId(self):
+        """Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def LBInstanceId(self):
+        """CLB instance ID.
+        :rtype: str
+        """
+        return self._LBInstanceId
+
+    @LBInstanceId.setter
+    def LBInstanceId(self, LBInstanceId):
+        self._LBInstanceId = LBInstanceId
+
+    @property
+    def OriginGroupIds(self):
+        """Origin server group ID. If left empty, the health status of all origin server groups under a LoadBalancer is obtained by default.
+        :rtype: list of str
+        """
+        return self._OriginGroupIds
+
+    @OriginGroupIds.setter
+    def OriginGroupIds(self, OriginGroupIds):
+        self._OriginGroupIds = OriginGroupIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._LBInstanceId = params.get("LBInstanceId")
+        self._OriginGroupIds = params.get("OriginGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOriginGroupHealthStatusResponse(AbstractModel):
+    """DescribeOriginGroupHealthStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupHealthStatusList: Health status of origin servers in an origin server group.
+        :type OriginGroupHealthStatusList: list of OriginGroupHealthStatusDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OriginGroupHealthStatusList = None
+        self._RequestId = None
+
+    @property
+    def OriginGroupHealthStatusList(self):
+        """Health status of origin servers in an origin server group.
+        :rtype: list of OriginGroupHealthStatusDetail
+        """
+        return self._OriginGroupHealthStatusList
+
+    @OriginGroupHealthStatusList.setter
+    def OriginGroupHealthStatusList(self, OriginGroupHealthStatusList):
+        self._OriginGroupHealthStatusList = OriginGroupHealthStatusList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OriginGroupHealthStatusList") is not None:
+            self._OriginGroupHealthStatusList = []
+            for item in params.get("OriginGroupHealthStatusList"):
+                obj = OriginGroupHealthStatusDetail()
+                obj._deserialize(item)
+                self._OriginGroupHealthStatusList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOriginGroupRequest(AbstractModel):
     """DescribeOriginGroup request structure.
 
@@ -16046,46 +16716,46 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _MetricNames: Indicator list. Values: 
-<li>l7Flow_outFlux: Edgeone response traffic;</li>
-<li>l7Flow_inFlux: Edgeone request traffic;</li>
-<li>l7Flow_outBandwidth: Edgeone response bandwidth;</li>
-<li>l7Flow_inBandwidth: Edgeone request bandwidth;</li>
-<li>l7Flow_request: Number of access requests;</li>
-<li>l7Flow_flux: Uplink + downlink traffic of access requests;< li>
-<li>l7Flow_bandwidth: Uplink + downlink bandwidth of access requests. </li>
+        :param _MetricNames: Metric list. Valid values:
+<li>l7Flow_outFlux: L7 EdgeOne response traffic;</li>
+<li>l7Flow_inFlux: L7 client request traffic;</li>
+<li>l7Flow_flux: L7 total access traffic (including the EdgeOne response traffic and client request traffic);</li>
+<li>l7Flow_outBandwidth: L7 EdgeOne response bandwidth;</li>
+<li>l7Flow_inBandwidth: L7 client request bandwidth;</li>
+<li>l7Flow_bandwidth: L7 total access bandwidth (including the EdgeOne response bandwidth and client request bandwidth);</li>
+<li>l7Flow_request: L7 access request count.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: ZoneId set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required.
         :type ZoneIds: list of str
-        :param _Interval: The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+        :param _Interval: Query period granularity. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
-        :param _Filters: Filters
-<li>country<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
-<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>
-<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>
-<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`:<br>Filter by the specified <strong>URL path<strong> (such as `/content` or `content/test.jpg`).<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The<a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>Note that if this parameter is specified, the max data query period is the last 30 days. <br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">data query scope stated in the specifications of service package</a> related with the `ZoneIds` becomes invalid.</li>
-<li>`protocol`:<br> Filter  by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>
-<li>`socket`:<br>Filter by the specified <strong>HTTP protocol</strong> type <br>Values: <br>`HTTP`: HTTP protocol;<br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.</li>
-<li>statusCode<br> Filter by [strong> Status Code/strong>]. lt;br> If you only fill in statusCode parameter, you can query data of nearly 30 days at most; <br> If statusCode+Zonelds parameter is filled in at the same time, the supported query data range is the smaller of a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90"> Maximum query range of data analysis/a> and 30 days supported by package. lt;br> The corresponding Value options are as follows: <br> 1XX: Status code of type 1xx; <br> 100:100 status code; <br> 101:101 status code; <br> 102:102 status code; <br> 2XX: Status code of type 2xx; <br> 200:200 status code; <br> 201:201 status code; <br> 202:202 status code; <br> 203:203 status code; <br> 204:204 status code; <br> 205:205 status code; <br> 206:206 status code; <br> 207:207 status code; <br> 3XX: Status code of type 3xx; <br> 300:300 status code; <br> 301:301 status code; <br> 302:302 status code; <br> 303:303 status code; <br> 304:304 status code; <br> 305:305 status code; <br> 307:307 status code; <br> 4XX: Status code of type 4xx; <br> 400:400 status code; <br> 401:401 status code; <br> 402:402 status code; <br> 403:403 status code; <br> 404:404 status code; <br> 405:405 status code; <br> 406:406 status code; <br> 407:407 status code; <br> 408:408 status code; <br> 409:409 status code; <br> 410:410 status code; <br> 411:411 status code; <br> 412:412 status code; <br> 412:413 Status Code; <br> 414:414 status code; <br> 415:415 status code; <br> 416:416 status code; <br> 417:417 status code; <br> 422:422 status code; <br> 423:423 status code; <br> 424:424 status code; <br> 426:426 status code; <br> 451:451 status code; <br> 5XX: Status code of type 5xx; <br> 500:500 status code; <br> 501:501 status code; <br> 502:502 status code; <br> 503:503 status code; <br> 504:504 status code; <br> 505:505 status code; <br> 506:506 status code; <br> 507:507 status code; <br> 510:510 status code; <br> 514:514 status code; <br> 544:544 Status Code.& lt</li>
-<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>
-<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>
-<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>
-<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.
-<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>
-<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>
+        :param _Filters: Filter criteria. The detailed key values are as follows:
+<li>country: Filter by country/region. The country/region follows the <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> standard. Example value: CN.</li>
+<li>province: Filter by province. This parameter is supported only when the service area is the Chinese mainland. For province codes, refer to the <a href="https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">Mapping Table of Provinces Within the Chinese Mainland</a>. Example value: 22.</li>
+<li>isp: Filter by ISP. This parameter is supported only when the service area is the Chinese mainland. Valid values are as follows:<br> 2: China Telecom;<br> 26: China Unicom;<br> 1046: China Mobile;<br> 3947: China Tietong;<br> 38: CERNET;<br> 43: Great Wall Broadband;<br> 0: other ISPs.</li>
+<li>domain: Filter by subdomain name. Example value: www.example.com.</li>
+<li>url: Filter by URL path. Example value: /content or /content/test.jpg. If the url parameter is input, up to 30 days of data can be queried.</li>
+<li>referer: Filter by Referer request header. Example value: http://www.example.com/. If the referer parameter is input, up to 30 days of data can be queried.</li>
+<li>resourceType: Filter by resource type, which is generally the file suffix. Example value: .jpg. If the resourceType parameter is input, up to 30 days of data can be queried;</li>
+<li>protocol: Filter by HTTP protocol version. Valid values are as follows:<br> HTTP/1.0;<br> HTTP/1.1;<br> HTTP/2.0;<br> HTTP/3;<br> WebSocket.</li><li>socket: Filter by HTTP protocol type. Valid values are as follows:<br> HTTP: HTTP protocol;<br> HTTPS: HTTPS protocol;<br> QUIC: QUIC protocol.</li>
+<li>statusCode: Filter by edge status code. If the statusCode parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> 1XX: 1xx status code;<br> 2XX: 2xx status code;<br> 3XX: 3xx status code;<br> 4XX: 4xx status code;<br> 5XX: 5xx status code;<br> An integer within the range [0,600).</li>
+<li>browserType: Filter by browser type. If the browserType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Firefox: Firefox browser;<br> Chrome: Chrome browser;<br> Safari: Safari browser;<br> Other: other browser types;<br> Empty: The browser type is empty;<br> Bot: search engine crawler;<br> MicrosoftEdge: Microsoft Edge browser;<br> IE: IE browser;<br> Opera: Opera browser;<br> QQBrowser: QQ browser;<br> LBBrowser: LB browser;<br> MaxthonBrowser: Maxthon browser;<br> SouGouBrowser: Sogou browser;<br> BIDUBrowser: Baidu browser;<br> TaoBrowser: Tao browser;<br> UBrowser: UC browser.</li>
+<li>deviceType: Filter by device type. If the deviceType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TV: TV device;<br> Tablet: tablet device;<br> Mobile: mobile device;<br> Desktop: desktop device;<br> Other: other device types;<br> Empty: The device type is empty.</li>
+<li>operatingSystemType: Filter by operating system type. If the operatingSystemType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Linux: Linux operating system;<br> MacOS: MacOS operating system;<br> Android: Android operating system;<br> IOS: iOS operating system;<br> Windows: Windows operating system;<br> NetBSD: NetBSD;<br> ChromiumOS: ChromiumOS;<br> Bot: search engine crawler;<br> Other: other types of operating systems;<br> Empty: The operating system is empty.</li>
+<li>tlsVersion: Filter by TLS version. If the tlsVersion parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TLS1.0;<br> TLS1.1;<br> TLS1.2;<br> TLS1.3.</li>
+<li>ipVersion: Filter by IP version. Valid values are as follows:<br> 4: IPv4;<br> 6: IPv6.</li>
+<li>cacheType: Filter by cache status. Valid values are as follows:<br> hit: The request hits the EdgeOne node cache and the resources are provided by the node cache. A partial cache hit for resources is also recorded as hit.<br> miss: The request does not hit the EdgeOne node cache and the resources are provided by the origin server.<br> dynamic: The requested resources cannot be cached or are not configured with node cache and are provided by the origin server.<br> other: unrecognizable cache status. Requests responded to by edge functions are recorded as other.</li>
+<li>clientIp: Filter by client IP.</li>
         :type Filters: list of QueryCondition
-        :param _Area: Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :param _Area: Data region. Valid values:
+<li>overseas: global (excluding the Chinese mainland) data;</li>
+<li>mainland: Chinese mainland data;</li>
+<li>global: global data.</li>
+If this parameter is not filled in, the default value is global.
         :type Area: str
         """
         self._StartTime = None
@@ -16120,14 +16790,14 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Indicator list. Values: 
-<li>l7Flow_outFlux: Edgeone response traffic;</li>
-<li>l7Flow_inFlux: Edgeone request traffic;</li>
-<li>l7Flow_outBandwidth: Edgeone response bandwidth;</li>
-<li>l7Flow_inBandwidth: Edgeone request bandwidth;</li>
-<li>l7Flow_request: Number of access requests;</li>
-<li>l7Flow_flux: Uplink + downlink traffic of access requests;< li>
-<li>l7Flow_bandwidth: Uplink + downlink bandwidth of access requests. </li>
+        """Metric list. Valid values:
+<li>l7Flow_outFlux: L7 EdgeOne response traffic;</li>
+<li>l7Flow_inFlux: L7 client request traffic;</li>
+<li>l7Flow_flux: L7 total access traffic (including the EdgeOne response traffic and client request traffic);</li>
+<li>l7Flow_outBandwidth: L7 EdgeOne response bandwidth;</li>
+<li>l7Flow_inBandwidth: L7 client request bandwidth;</li>
+<li>l7Flow_bandwidth: L7 total access bandwidth (including the EdgeOne response bandwidth and client request bandwidth);</li>
+<li>l7Flow_request: L7 access request count.</li>
         :rtype: list of str
         """
         return self._MetricNames
@@ -16138,7 +16808,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """ZoneId set. This parameter is required.
+        """Zone ID set. This parameter is required.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -16149,11 +16819,11 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+        """Query period granularity. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :rtype: str
         """
         return self._Interval
@@ -16164,24 +16834,23 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters
-<li>country<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
-<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>
-<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>
-<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`:<br>Filter by the specified <strong>URL path<strong> (such as `/content` or `content/test.jpg`).<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The<a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>Note that if this parameter is specified, the max data query period is the last 30 days. <br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">data query scope stated in the specifications of service package</a> related with the `ZoneIds` becomes invalid.</li>
-<li>`protocol`:<br> Filter  by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>
-<li>`socket`:<br>Filter by the specified <strong>HTTP protocol</strong> type <br>Values: <br>`HTTP`: HTTP protocol;<br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.</li>
-<li>statusCode<br> Filter by [strong> Status Code/strong>]. lt;br> If you only fill in statusCode parameter, you can query data of nearly 30 days at most; <br> If statusCode+Zonelds parameter is filled in at the same time, the supported query data range is the smaller of a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90"> Maximum query range of data analysis/a> and 30 days supported by package. lt;br> The corresponding Value options are as follows: <br> 1XX: Status code of type 1xx; <br> 100:100 status code; <br> 101:101 status code; <br> 102:102 status code; <br> 2XX: Status code of type 2xx; <br> 200:200 status code; <br> 201:201 status code; <br> 202:202 status code; <br> 203:203 status code; <br> 204:204 status code; <br> 205:205 status code; <br> 206:206 status code; <br> 207:207 status code; <br> 3XX: Status code of type 3xx; <br> 300:300 status code; <br> 301:301 status code; <br> 302:302 status code; <br> 303:303 status code; <br> 304:304 status code; <br> 305:305 status code; <br> 307:307 status code; <br> 4XX: Status code of type 4xx; <br> 400:400 status code; <br> 401:401 status code; <br> 402:402 status code; <br> 403:403 status code; <br> 404:404 status code; <br> 405:405 status code; <br> 406:406 status code; <br> 407:407 status code; <br> 408:408 status code; <br> 409:409 status code; <br> 410:410 status code; <br> 411:411 status code; <br> 412:412 status code; <br> 412:413 Status Code; <br> 414:414 status code; <br> 415:415 status code; <br> 416:416 status code; <br> 417:417 status code; <br> 422:422 status code; <br> 423:423 status code; <br> 424:424 status code; <br> 426:426 status code; <br> 451:451 status code; <br> 5XX: Status code of type 5xx; <br> 500:500 status code; <br> 501:501 status code; <br> 502:502 status code; <br> 503:503 status code; <br> 504:504 status code; <br> 505:505 status code; <br> 506:506 status code; <br> 507:507 status code; <br> 510:510 status code; <br> 514:514 status code; <br> 544:544 Status Code.& lt</li>
-<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>
-<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>
-<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>
-<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.
-<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>
-<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>
+        """Filter criteria. The detailed key values are as follows:
+<li>country: Filter by country/region. The country/region follows the <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> standard. Example value: CN.</li>
+<li>province: Filter by province. This parameter is supported only when the service area is the Chinese mainland. For province codes, refer to the <a href="https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">Mapping Table of Provinces Within the Chinese Mainland</a>. Example value: 22.</li>
+<li>isp: Filter by ISP. This parameter is supported only when the service area is the Chinese mainland. Valid values are as follows:<br> 2: China Telecom;<br> 26: China Unicom;<br> 1046: China Mobile;<br> 3947: China Tietong;<br> 38: CERNET;<br> 43: Great Wall Broadband;<br> 0: other ISPs.</li>
+<li>domain: Filter by subdomain name. Example value: www.example.com.</li>
+<li>url: Filter by URL path. Example value: /content or /content/test.jpg. If the url parameter is input, up to 30 days of data can be queried.</li>
+<li>referer: Filter by Referer request header. Example value: http://www.example.com/. If the referer parameter is input, up to 30 days of data can be queried.</li>
+<li>resourceType: Filter by resource type, which is generally the file suffix. Example value: .jpg. If the resourceType parameter is input, up to 30 days of data can be queried;</li>
+<li>protocol: Filter by HTTP protocol version. Valid values are as follows:<br> HTTP/1.0;<br> HTTP/1.1;<br> HTTP/2.0;<br> HTTP/3;<br> WebSocket.</li><li>socket: Filter by HTTP protocol type. Valid values are as follows:<br> HTTP: HTTP protocol;<br> HTTPS: HTTPS protocol;<br> QUIC: QUIC protocol.</li>
+<li>statusCode: Filter by edge status code. If the statusCode parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> 1XX: 1xx status code;<br> 2XX: 2xx status code;<br> 3XX: 3xx status code;<br> 4XX: 4xx status code;<br> 5XX: 5xx status code;<br> An integer within the range [0,600).</li>
+<li>browserType: Filter by browser type. If the browserType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Firefox: Firefox browser;<br> Chrome: Chrome browser;<br> Safari: Safari browser;<br> Other: other browser types;<br> Empty: The browser type is empty;<br> Bot: search engine crawler;<br> MicrosoftEdge: Microsoft Edge browser;<br> IE: IE browser;<br> Opera: Opera browser;<br> QQBrowser: QQ browser;<br> LBBrowser: LB browser;<br> MaxthonBrowser: Maxthon browser;<br> SouGouBrowser: Sogou browser;<br> BIDUBrowser: Baidu browser;<br> TaoBrowser: Tao browser;<br> UBrowser: UC browser.</li>
+<li>deviceType: Filter by device type. If the deviceType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TV: TV device;<br> Tablet: tablet device;<br> Mobile: mobile device;<br> Desktop: desktop device;<br> Other: other device types;<br> Empty: The device type is empty.</li>
+<li>operatingSystemType: Filter by operating system type. If the operatingSystemType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Linux: Linux operating system;<br> MacOS: MacOS operating system;<br> Android: Android operating system;<br> IOS: iOS operating system;<br> Windows: Windows operating system;<br> NetBSD: NetBSD;<br> ChromiumOS: ChromiumOS;<br> Bot: search engine crawler;<br> Other: other types of operating systems;<br> Empty: The operating system is empty.</li>
+<li>tlsVersion: Filter by TLS version. If the tlsVersion parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TLS1.0;<br> TLS1.1;<br> TLS1.2;<br> TLS1.3.</li>
+<li>ipVersion: Filter by IP version. Valid values are as follows:<br> 4: IPv4;<br> 6: IPv6.</li>
+<li>cacheType: Filter by cache status. Valid values are as follows:<br> hit: The request hits the EdgeOne node cache and the resources are provided by the node cache. A partial cache hit for resources is also recorded as hit.<br> miss: The request does not hit the EdgeOne node cache and the resources are provided by the origin server.<br> dynamic: The requested resources cannot be cached or are not configured with node cache and are provided by the origin server.<br> other: unrecognizable cache status. Requests responded to by edge functions are recorded as other.</li>
+<li>clientIp: Filter by client IP.</li>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -16192,10 +16861,11 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        """Data region. Valid values:
+<li>overseas: global (excluding the Chinese mainland) data;</li>
+<li>mainland: Chinese mainland data;</li>
+<li>global: global data.</li>
+If this parameter is not filled in, the default value is global.
         :rtype: str
         """
         return self._Area
@@ -16305,20 +16975,20 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
         :param _EndTime: The end time.
         :type EndTime: str
         :param _MetricNames: The query metric. Values:
-<li>`l7Cache_outFlux`: Response traffic.</li>
-<li>`l7Cache_request`: Response requests.</li>
-<li>`l7Cache_outBandwidth`: Response bandwidth.</li>
+<li>l7Cache_outFlux: Response traffic.</li>
+<li>l7Cache_request: Response requests.</li>
+<li>l7Cache_outBandwidth: Response bandwidth.</li>
         :type MetricNames: list of str
         :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Filters: Filter conditions. See below for details: 
-<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
-<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
-<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
-<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>
-<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
-<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
+<li>`domain`<br> Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br> Type: String<br> Required: No</li>
+<li>`url`<br> Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br> Type: String<br> Required: No</li>
+<li>`resourceType`<br> Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>Type: String<br> Required: No</li>
+<li>cacheType<br>Filter by the <strong>cache hit result</strong>.<br>Type: String<br> Required: No<br> Values: <br> `hit`: Cache hit; <br> `dynamic`: Resource non-cacheable; <br> `miss`: Cache miss</li>
+<li>`statusCode`<br> Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br> Type: String<br> Required: No<br> Values: <br> `1XX`: All 1xx status codes;<br> `100`: 100 status code;<br> `101`: 101 status code;<br> `102`: 102 status code;<br> `2XX`: All 2xx status codes;<br> `200`: 200 status code;<br> `201`: 201 status code;<br> `202`: 202 status code;<br> `203`: 203 status code;<br> `204`: 204 status code;<br> `205`: 205 status code;<br> `206`: 206 status code;<br> `207`: 207 status code;<br> `3XX`: All 3xx status codes;<br> `300`: 300 status code;<br> `301`: 301 status code;<br> `302`: 302 status code;<br> `303`: 303 status code;<br> `304`: 304 status code;<br> `305`: 305 status code;<br> `307`: 307 status code;<br> `4XX`: All 4xx status codes;<br> `400`: 400 status code;<br> `401`: 401 status code;<br> `402`: 402 status code;<br> `403`: 403 status code;<br> `404`: 404 status code;<br> `405`: 405 status code;<br> `406`: 406 status code;<br> `407`: 407 status code;<br> `408`: 408 status code;<br> `409`: 409 status code;<br> `410`: 410 status code;<br> `411`: 411 status code;<br> `412`: 412 status code;<br> `412`: 413 status code;<br> `414`: 414 status code;<br> `415`: 415 status code;<br> `416`: 416 status code;<br> `417`: 417 status code;<br>`422`: 422 status code;<br> `423`: 423 status code;<br> `424`: 424 status code;<br> `426`: 426 status code;<br> `451`: 451 status code;<br> `5XX`: All 5xx status codes;<br> `500`: 500 status code;<br> `501`: 501 status code;<br> `502`: 502 status code;<br> `503`: 503 status code;<br> `504`: 504 status code;<br> `505`: 505 status code;<br> `506`: 506 status code;<br> `507`: 507 status code;<br> `510`: 510 status code;<br> `514`: 514 status code;<br> `544`: 544 status code.</li>
+<li>`tagKey`:<br> Filter by the <strong>tag key</strong><br> Type: String<br> Required: No</li>
+<li>`tagValue`<br> Filter by the <strong>tag value</strong><br> Type: String<br> Required: No</li>
         :type Filters: list of QueryCondition
         :param _Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -16365,9 +17035,9 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
     @property
     def MetricNames(self):
         """The query metric. Values:
-<li>`l7Cache_outFlux`: Response traffic.</li>
-<li>`l7Cache_request`: Response requests.</li>
-<li>`l7Cache_outBandwidth`: Response bandwidth.</li>
+<li>l7Cache_outFlux: Response traffic.</li>
+<li>l7Cache_request: Response requests.</li>
+<li>l7Cache_outBandwidth: Response bandwidth.</li>
         :rtype: list of str
         """
         return self._MetricNames
@@ -16390,13 +17060,13 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
     @property
     def Filters(self):
         """Filter conditions. See below for details: 
-<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
-<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
-<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
-<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>
-<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
-<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
+<li>`domain`<br> Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br> Type: String<br> Required: No</li>
+<li>`url`<br> Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br> Type: String<br> Required: No</li>
+<li>`resourceType`<br> Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>Type: String<br> Required: No</li>
+<li>cacheType<br>Filter by the <strong>cache hit result</strong>.<br>Type: String<br> Required: No<br> Values: <br> `hit`: Cache hit; <br> `dynamic`: Resource non-cacheable; <br> `miss`: Cache miss</li>
+<li>`statusCode`<br> Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br> Type: String<br> Required: No<br> Values: <br> `1XX`: All 1xx status codes;<br> `100`: 100 status code;<br> `101`: 101 status code;<br> `102`: 102 status code;<br> `2XX`: All 2xx status codes;<br> `200`: 200 status code;<br> `201`: 201 status code;<br> `202`: 202 status code;<br> `203`: 203 status code;<br> `204`: 204 status code;<br> `205`: 205 status code;<br> `206`: 206 status code;<br> `207`: 207 status code;<br> `3XX`: All 3xx status codes;<br> `300`: 300 status code;<br> `301`: 301 status code;<br> `302`: 302 status code;<br> `303`: 303 status code;<br> `304`: 304 status code;<br> `305`: 305 status code;<br> `307`: 307 status code;<br> `4XX`: All 4xx status codes;<br> `400`: 400 status code;<br> `401`: 401 status code;<br> `402`: 402 status code;<br> `403`: 403 status code;<br> `404`: 404 status code;<br> `405`: 405 status code;<br> `406`: 406 status code;<br> `407`: 407 status code;<br> `408`: 408 status code;<br> `409`: 409 status code;<br> `410`: 410 status code;<br> `411`: 411 status code;<br> `412`: 412 status code;<br> `412`: 413 status code;<br> `414`: 414 status code;<br> `415`: 415 status code;<br> `416`: 416 status code;<br> `417`: 417 status code;<br>`422`: 422 status code;<br> `423`: 423 status code;<br> `424`: 424 status code;<br> `426`: 426 status code;<br> `451`: 451 status code;<br> `5XX`: All 5xx status codes;<br> `500`: 500 status code;<br> `501`: 501 status code;<br> `502`: 502 status code;<br> `503`: 503 status code;<br> `504`: 504 status code;<br> `505`: 505 status code;<br> `506`: 506 status code;<br> `507`: 507 status code;<br> `510`: 510 status code;<br> `514`: 514 status code;<br> `544`: 544 status code.</li>
+<li>`tagKey`:<br> Filter by the <strong>tag key</strong><br> Type: String<br> Required: No</li>
+<li>`tagValue`<br> Filter by the <strong>tag value</strong><br> Type: String<br> Required: No</li>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -16534,62 +17204,64 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _MetricName: Metrics to query. Valid values: 
-<li>`l7Flow_outFlux_country`: Query traffic by country/region;</li>
-<li>`l7Flow_outFlux_statusCode`: Query traffic by status code;</li>
-<li>`l7Flow_outFlux_domain`: Query traffic by domain;</li>
-<li>`l7Flow_outFlux_url`: Query traffic by URL;</li>
-<li>`l7Flow_outFlux_resourceType`: Query traffic by resource type;</li>
-<li>`l7Flow_outFlux_sip`: Query traffic by source IP;</li>
-<li>`l7Flow_outFlux_referers`: Query traffic by refer information;</li>
-<li>`l7Flow_outFlux_ua_device`: Query traffic by device;</li>
-<li>`l7Flow_outFlux_ua_browser`: Query traffic by browser;</li>
-<li>`l7Flow_outFlux_us_os`: Query traffic by OS;</li>
-<li>`l7Flow_request_country`: Query requests by country/region;</li>
-<li>`l7Flow_request_statusCode`: Query requests by status code;</li>
-<li>`l7Flow_request_domain`: Query requests by domain;</li>
-<li>`l7Flow_request_url`: Query requests by URL;</li>
-<li>`l7Flow_request_resourceType`: Query requests by resource type;</li>
-<li>`l7Flow_request_sip`: Query requests by source IP;</li>
-<li>`l7Flow_request_referer`: Query requests by refer information;</li>
-<li>`l7Flow_request_ua_device`: Query requests by device;</li>
-<li>`l7Flow_request_ua_browser`: Query requests by browser;</li>
-<li>`l7Flow_request_us_os`: Query requests by OS.</li>
+        :param _MetricName: The metrics queried. Valid values:
+<li> l7Flow_outFlux_country: statistics of the L7 EdgeOne response traffic by country/region;</li>
+<li> l7Flow_outFlux_province: statistics of the L7 EdgeOne response traffic by province within the Chinese mainland;</li>
+<li> l7Flow_outFlux_statusCode: statistics of the L7 EdgeOne response traffic by status code;</li>
+<li> l7Flow_outFlux_domain: statistics of the L7 EdgeOne response traffic by domain name;</li>
+<li> l7Flow_outFlux_url: statistics of the L7 EdgeOne response traffic by URL path;</li>
+<li> l7Flow_outFlux_resourceType: statistics of the L7 EdgeOne response traffic by resource type;</li>
+<li> l7Flow_outFlux_sip: statistics of the L7 EdgeOne response traffic by client IP;</li>
+<li> l7Flow_outFlux_referers: statistics of the L7 EdgeOne response traffic by Referer;</li>
+<li> l7Flow_outFlux_ua_device: statistics of the L7 EdgeOne response traffic by device type;</li>
+<li> l7Flow_outFlux_ua_browser: statistics of the L7 EdgeOne response traffic by browser type;</li>
+<li> l7Flow_outFlux_us_os: statistics of the L7 EdgeOne response traffic by operating system type;</li>
+<li> l7Flow_request_country: statistics of the L7 access request count by country/region;</li>
+<li> l7Flow_request_province: statistics of the L7 access request count by province within the Chinese mainland;</li>
+<li> l7Flow_request_statusCode: statistics of the L7 access request count by status code;</li>
+<li> l7Flow_request_domain: statistics of the L7 access request count by domain name;</li>
+<li> l7Flow_request_url: statistics of the L7 access request count by URL path;</li>
+<li> l7Flow_request_resourceType: statistics of the L7 access request count by resource type;</li>
+<li> l7Flow_request_sip: statistics of the L7 access request count by client IP;</li>
+<li> l7Flow_request_referer: statistics of the L7 access request count by Referer;</li>
+<li> l7Flow_request_ua_device: statistics of the L7 access request count by device type;</li>
+<li> l7Flow_request_ua_browser: statistics of the L7 access request count by browser type;</li>
+<li> l7Flow_request_us_os: statistics of the L7 access request count by operating system type.</li>
 
         :type MetricName: str
         :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
-        :param _Limit: Queries the top N data entries. Maximum value: 1000. Top 10 data entries will be queried if this field is not specified.
+        :param _Limit: Indicates the top N data to be queried. The maximum value is 1000. If this parameter is not input, the default value is 10, indicating querying the top 10 data.
         :type Limit: int
-        :param _Filters: Filters
-<li>`country`<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
-<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>
-<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>
-<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`:<br>Filter by the <strong>specified URL Path (such as `/content` or `content/test.jpg`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`protocol`:<br> Filter by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>
-<li>`socket`:<br>Filter by the specified <strong>HTTP protocol type</strong> <br>Values:<br>`HTTP`: HTTP protocol; <br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.
-<li>`statusCode`:<br> Filter by the <strong> Status Code</strong><br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>1XX: Status code of type 1xx <br>100: 100 status code <br>101: 101 status code <br>102: 102 status code <br>2XX: Status code of type 2xx <br>200: 200 status code <br>201: 201 status code <br>202: 202 status code <br>203: 203 status code <br>204: 204 status code <br>205: 205 status code <br>206: 206 status code <br>207: 207 status code <br>3XX: Status code of type 3xx <br>300: 300 status code <br>301: 301 status code <br>302: 302 status code <br>303: 303 status code <br>304: 304 status code <br>305: 305 status code <br>307: 307 status code <br>4XX: Status code of type 4xx <br>400: 400 status code <br>401: 401 status code <br>402: 402 status code <br>403: 403 status code <br>404: 404 status code <br>405: 405 status code <br>406: 406 status code <br>407: 407 status code <br>408: 408 status code <br>409: 409 status code <br>410: 410 status code <br>411: 411 status code <br>412: 412 status code <br>412: 413 Status Code <br>414: 414 status code <br>415: 415 status code <br>416: 416 status code <br>417: 417 status code <br>422: 422 status code <br>423: 423 status code <br>424: 424 status code <br>426: 426 status code <br>451: 451 status code <br>5XX: Status code of type 5xx <br>500: 500 status code <br>501: 501 status code <br>502:502 status code <br>503: 503 status code <br>504: 504 status code <br>505: 505 status code <br>506: 506 status code <br>507: 507 status code <br>510: 510 status code <br>514: 514 status code <br>544: 544 Status Code. </li>
-<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>
-<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>
-<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>
-<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.
-<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>
-<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>
+        :param _Filters: Filter criteria. The detailed Key values are as follows:
+<li>country: Filter by country/region. The country/region follows the <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> standard. Example value: CN.</li>
+<li>province: Filter by province. This parameter is supported only when the service area is the Chinese mainland. For province codes, refer to the <a href="https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">Mapping Table of Provinces Within the Chinese Mainland</a>. Example value: 22.</li>
+<li>isp: Filter by ISP. This parameter is supported only when the service area is the Chinese mainland. Valid values are as follows:<br> 2: China Telecom;<br> 26: China Unicom;<br> 1046: China Mobile;<br> 3947: China Tietong;<br> 38: CERNET;<br> 43: Great Wall Broadband;<br> 0: other ISPs.</li>
+<li>domain: Filter by subdomain name. Example value: www.example.com.</li>
+<li>url: Filter by URL path. Example value: /content or /content/test.jpg. If the url parameter is input, up to 30 days of data can be queried.</li>
+<li>referer: Filter by Referer request header. Example value: http://www.example.com/. If the referer parameter is input, up to 30 days of data can be queried.</li>
+<li>resourceType: Filter by resource type, which is generally the file suffix. Example value: .jpg. If the resourceType parameter is input, up to 30 days of data can be queried;</li>
+<li>protocol: Filter by HTTP protocol version. Valid values are as follows:<br> HTTP/1.0;<br> HTTP/1.1;<br> HTTP/2.0;<br> HTTP/3;<br> WebSocket.</li>
+<li>socket: Filter by HTTP protocol type. Valid values are as follows:<br> HTTP: HTTP protocol;<br> HTTPS: HTTPS protocol;<br> QUIC: QUIC protocol.</li>
+<li>statusCode: Filter by edge status code. If the statusCode parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> 1XX: 1xx status code;<br> 2XX: 2xx status code;<br> 3XX: 3xx status code;<br> 4XX: 4xx status code;<br> 5XX: 5xx status code;<br> An integer within the range [0,600).</li>
+<li>browserType: Filter by browser type. If the browserType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Firefox: Firefox browser;<br> Chrome: Chrome browser;<br> Safari: Safari browser;<br> Other: other browser types;<br> Empty: The browser type is empty;<br> Bot: search engine crawler;<br> MicrosoftEdge: Microsoft Edge browser;<br> IE: IE browser;<br> Opera: Opera browser;<br> QQBrowser: QQ browser;<br> LBBrowser: LB browser;<br> MaxthonBrowser: Maxthon browser;<br> SouGouBrowser: Sogou browser;<br> BIDUBrowser: Baidu browser;<br> TaoBrowser: Tao browser;<br> UBrowser: UC browser.</li>
+<li>deviceType: Filter by device type. If the deviceType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TV: TV device;<br> Tablet: tablet device;<br> Mobile: mobile device;<br> Desktop: desktop device;<br> Other: other device types;<br> Empty: The device type is empty.</li>
+<li>operatingSystemType: Filter by operating system type. If the operatingSystemType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Linux: Linux operating system;<br> MacOS: MacOS operating system;<br> Android: Android operating system;<br> IOS: iOS operating system;<br> Windows: Windows operating system;<br> NetBSD: NetBSD;<br> ChromiumOS: ChromiumOS;<br> Bot: search engine crawler;<br> Other: other types of operating systems;<br> Empty: The operating system is empty.</li>
+<li>tlsVersion: Filter by TLS version. If the tlsVersion parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TLS1.0;<br> TLS1.1;<br> TLS1.2;<br> TLS1.3.</li>
+<li>ipVersion: Filter by IP version. Valid values are as follows:<br> 4: IPv4;<br> 6: IPv6.</li>
+<li>cacheType: Filter by cache status. Valid values are as follows:<br> hit: The request hits the EdgeOne node cache and the resources are provided by the node cache. A partial cache hit for resources is also recorded as hit.<br> miss: The request does not hit the EdgeOne node cache and the resources are provided by the origin server.<br> dynamic: The requested resources cannot be cached or are not configured with node cache and are provided by the origin server.<br> other: unrecognizable cache status. Requests responded to by edge functions are recorded as other.</li>
+<li>clientIp: Filter by client IP.</li>
         :type Filters: list of QueryCondition
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
+        :param _Interval: Query period granularity. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
-        :param _Area: Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :param _Area: Data region. Values:
+<li>overseas: Regions outside the Chinese mainland</li>
+<li>mainland: Chinese mainland</li>
+<li>global: Global</li>If this field is not specified, the default value `global` is used.
         :type Area: str
         """
         self._StartTime = None
@@ -16625,27 +17297,29 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        """Metrics to query. Valid values: 
-<li>`l7Flow_outFlux_country`: Query traffic by country/region;</li>
-<li>`l7Flow_outFlux_statusCode`: Query traffic by status code;</li>
-<li>`l7Flow_outFlux_domain`: Query traffic by domain;</li>
-<li>`l7Flow_outFlux_url`: Query traffic by URL;</li>
-<li>`l7Flow_outFlux_resourceType`: Query traffic by resource type;</li>
-<li>`l7Flow_outFlux_sip`: Query traffic by source IP;</li>
-<li>`l7Flow_outFlux_referers`: Query traffic by refer information;</li>
-<li>`l7Flow_outFlux_ua_device`: Query traffic by device;</li>
-<li>`l7Flow_outFlux_ua_browser`: Query traffic by browser;</li>
-<li>`l7Flow_outFlux_us_os`: Query traffic by OS;</li>
-<li>`l7Flow_request_country`: Query requests by country/region;</li>
-<li>`l7Flow_request_statusCode`: Query requests by status code;</li>
-<li>`l7Flow_request_domain`: Query requests by domain;</li>
-<li>`l7Flow_request_url`: Query requests by URL;</li>
-<li>`l7Flow_request_resourceType`: Query requests by resource type;</li>
-<li>`l7Flow_request_sip`: Query requests by source IP;</li>
-<li>`l7Flow_request_referer`: Query requests by refer information;</li>
-<li>`l7Flow_request_ua_device`: Query requests by device;</li>
-<li>`l7Flow_request_ua_browser`: Query requests by browser;</li>
-<li>`l7Flow_request_us_os`: Query requests by OS.</li>
+        """The metrics queried. Valid values:
+<li> l7Flow_outFlux_country: statistics of the L7 EdgeOne response traffic by country/region;</li>
+<li> l7Flow_outFlux_province: statistics of the L7 EdgeOne response traffic by province within the Chinese mainland;</li>
+<li> l7Flow_outFlux_statusCode: statistics of the L7 EdgeOne response traffic by status code;</li>
+<li> l7Flow_outFlux_domain: statistics of the L7 EdgeOne response traffic by domain name;</li>
+<li> l7Flow_outFlux_url: statistics of the L7 EdgeOne response traffic by URL path;</li>
+<li> l7Flow_outFlux_resourceType: statistics of the L7 EdgeOne response traffic by resource type;</li>
+<li> l7Flow_outFlux_sip: statistics of the L7 EdgeOne response traffic by client IP;</li>
+<li> l7Flow_outFlux_referers: statistics of the L7 EdgeOne response traffic by Referer;</li>
+<li> l7Flow_outFlux_ua_device: statistics of the L7 EdgeOne response traffic by device type;</li>
+<li> l7Flow_outFlux_ua_browser: statistics of the L7 EdgeOne response traffic by browser type;</li>
+<li> l7Flow_outFlux_us_os: statistics of the L7 EdgeOne response traffic by operating system type;</li>
+<li> l7Flow_request_country: statistics of the L7 access request count by country/region;</li>
+<li> l7Flow_request_province: statistics of the L7 access request count by province within the Chinese mainland;</li>
+<li> l7Flow_request_statusCode: statistics of the L7 access request count by status code;</li>
+<li> l7Flow_request_domain: statistics of the L7 access request count by domain name;</li>
+<li> l7Flow_request_url: statistics of the L7 access request count by URL path;</li>
+<li> l7Flow_request_resourceType: statistics of the L7 access request count by resource type;</li>
+<li> l7Flow_request_sip: statistics of the L7 access request count by client IP;</li>
+<li> l7Flow_request_referer: statistics of the L7 access request count by Referer;</li>
+<li> l7Flow_request_ua_device: statistics of the L7 access request count by device type;</li>
+<li> l7Flow_request_ua_browser: statistics of the L7 access request count by browser type;</li>
+<li> l7Flow_request_us_os: statistics of the L7 access request count by operating system type.</li>
 
         :rtype: str
         """
@@ -16668,7 +17342,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Queries the top N data entries. Maximum value: 1000. Top 10 data entries will be queried if this field is not specified.
+        """Indicates the top N data to be queried. The maximum value is 1000. If this parameter is not input, the default value is 10, indicating querying the top 10 data.
         :rtype: int
         """
         return self._Limit
@@ -16679,24 +17353,24 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filters
-<li>`country`<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
-<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>
-<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>
-<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`:<br>Filter by the <strong>specified URL Path (such as `/content` or `content/test.jpg`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
-<li>`protocol`:<br> Filter by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>
-<li>`socket`:<br>Filter by the specified <strong>HTTP protocol type</strong> <br>Values:<br>`HTTP`: HTTP protocol; <br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.
-<li>`statusCode`:<br> Filter by the <strong> Status Code</strong><br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>1XX: Status code of type 1xx <br>100: 100 status code <br>101: 101 status code <br>102: 102 status code <br>2XX: Status code of type 2xx <br>200: 200 status code <br>201: 201 status code <br>202: 202 status code <br>203: 203 status code <br>204: 204 status code <br>205: 205 status code <br>206: 206 status code <br>207: 207 status code <br>3XX: Status code of type 3xx <br>300: 300 status code <br>301: 301 status code <br>302: 302 status code <br>303: 303 status code <br>304: 304 status code <br>305: 305 status code <br>307: 307 status code <br>4XX: Status code of type 4xx <br>400: 400 status code <br>401: 401 status code <br>402: 402 status code <br>403: 403 status code <br>404: 404 status code <br>405: 405 status code <br>406: 406 status code <br>407: 407 status code <br>408: 408 status code <br>409: 409 status code <br>410: 410 status code <br>411: 411 status code <br>412: 412 status code <br>412: 413 Status Code <br>414: 414 status code <br>415: 415 status code <br>416: 416 status code <br>417: 417 status code <br>422: 422 status code <br>423: 423 status code <br>424: 424 status code <br>426: 426 status code <br>451: 451 status code <br>5XX: Status code of type 5xx <br>500: 500 status code <br>501: 501 status code <br>502:502 status code <br>503: 503 status code <br>504: 504 status code <br>505: 505 status code <br>506: 506 status code <br>507: 507 status code <br>510: 510 status code <br>514: 514 status code <br>544: 544 Status Code. </li>
-<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>
-<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>
-<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>
-<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.
-<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>
-<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>
+        """Filter criteria. The detailed Key values are as follows:
+<li>country: Filter by country/region. The country/region follows the <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> standard. Example value: CN.</li>
+<li>province: Filter by province. This parameter is supported only when the service area is the Chinese mainland. For province codes, refer to the <a href="https://intl.cloud.tencent.com/document/product/228/6316?from_cn_redirect=1#.E5.8C.BA.E5.9F.9F-.2F-.E8.BF.90.E8.90.A5.E5.95.86.E6.98.A0.E5.B0.84.E8.A1.A8">Mapping Table of Provinces Within the Chinese Mainland</a>. Example value: 22.</li>
+<li>isp: Filter by ISP. This parameter is supported only when the service area is the Chinese mainland. Valid values are as follows:<br> 2: China Telecom;<br> 26: China Unicom;<br> 1046: China Mobile;<br> 3947: China Tietong;<br> 38: CERNET;<br> 43: Great Wall Broadband;<br> 0: other ISPs.</li>
+<li>domain: Filter by subdomain name. Example value: www.example.com.</li>
+<li>url: Filter by URL path. Example value: /content or /content/test.jpg. If the url parameter is input, up to 30 days of data can be queried.</li>
+<li>referer: Filter by Referer request header. Example value: http://www.example.com/. If the referer parameter is input, up to 30 days of data can be queried.</li>
+<li>resourceType: Filter by resource type, which is generally the file suffix. Example value: .jpg. If the resourceType parameter is input, up to 30 days of data can be queried;</li>
+<li>protocol: Filter by HTTP protocol version. Valid values are as follows:<br> HTTP/1.0;<br> HTTP/1.1;<br> HTTP/2.0;<br> HTTP/3;<br> WebSocket.</li>
+<li>socket: Filter by HTTP protocol type. Valid values are as follows:<br> HTTP: HTTP protocol;<br> HTTPS: HTTPS protocol;<br> QUIC: QUIC protocol.</li>
+<li>statusCode: Filter by edge status code. If the statusCode parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> 1XX: 1xx status code;<br> 2XX: 2xx status code;<br> 3XX: 3xx status code;<br> 4XX: 4xx status code;<br> 5XX: 5xx status code;<br> An integer within the range [0,600).</li>
+<li>browserType: Filter by browser type. If the browserType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Firefox: Firefox browser;<br> Chrome: Chrome browser;<br> Safari: Safari browser;<br> Other: other browser types;<br> Empty: The browser type is empty;<br> Bot: search engine crawler;<br> MicrosoftEdge: Microsoft Edge browser;<br> IE: IE browser;<br> Opera: Opera browser;<br> QQBrowser: QQ browser;<br> LBBrowser: LB browser;<br> MaxthonBrowser: Maxthon browser;<br> SouGouBrowser: Sogou browser;<br> BIDUBrowser: Baidu browser;<br> TaoBrowser: Tao browser;<br> UBrowser: UC browser.</li>
+<li>deviceType: Filter by device type. If the deviceType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TV: TV device;<br> Tablet: tablet device;<br> Mobile: mobile device;<br> Desktop: desktop device;<br> Other: other device types;<br> Empty: The device type is empty.</li>
+<li>operatingSystemType: Filter by operating system type. If the operatingSystemType parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> Linux: Linux operating system;<br> MacOS: MacOS operating system;<br> Android: Android operating system;<br> IOS: iOS operating system;<br> Windows: Windows operating system;<br> NetBSD: NetBSD;<br> ChromiumOS: ChromiumOS;<br> Bot: search engine crawler;<br> Other: other types of operating systems;<br> Empty: The operating system is empty.</li>
+<li>tlsVersion: Filter by TLS version. If the tlsVersion parameter is input, up to 30 days of data can be queried. Valid values are as follows:<br> TLS1.0;<br> TLS1.1;<br> TLS1.2;<br> TLS1.3.</li>
+<li>ipVersion: Filter by IP version. Valid values are as follows:<br> 4: IPv4;<br> 6: IPv6.</li>
+<li>cacheType: Filter by cache status. Valid values are as follows:<br> hit: The request hits the EdgeOne node cache and the resources are provided by the node cache. A partial cache hit for resources is also recorded as hit.<br> miss: The request does not hit the EdgeOne node cache and the resources are provided by the origin server.<br> dynamic: The requested resources cannot be cached or are not configured with node cache and are provided by the origin server.<br> other: unrecognizable cache status. Requests responded to by edge functions are recorded as other.</li>
+<li>clientIp: Filter by client IP.</li>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -16707,11 +17381,11 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
+        """Query period granularity. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :rtype: str
         """
         return self._Interval
@@ -16722,10 +17396,10 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        """Data region. Values:
+<li>overseas: Regions outside the Chinese mainland</li>
+<li>mainland: Chinese mainland</li>
+<li>global: Global</li>If this field is not specified, the default value `global` is used.
         :rtype: str
         """
         return self._Area
@@ -16768,8 +17442,8 @@ class DescribeTopL7AnalysisDataResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of query results.
         :type TotalCount: int
-        :param _Data: The list of top-ranked L7 traffic data.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: The top N data list obtained from the statistics of L7 access data by a specified dimension MetricName.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Data: list of TopDataRecord
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -16791,8 +17465,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
-        """The list of top-ranked L7 traffic data.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """The top N data list obtained from the statistics of L7 access data by a specified dimension MetricName.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: list of TopDataRecord
         """
         return self._Data
@@ -16836,23 +17510,23 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :param _EndTime: The end time.
         :type EndTime: str
         :param _MetricName: The query metric. Values:
-<li>`l7Cache_outFlux_domain`: Host/Domain name;</li>
-<li>`l7Cache_outFlux_url`: URL address;</li>
-<li>`l7Cache_outFlux_resourceType`: Resource type;</li>
-<li>`l7Cache_outFlux_statusCode`: Status code.</li>
+<li>l7Cache_outFlux_domain: Host/Domain name;</li>
+<li>l7Cache_outFlux_url: URL address;</li>
+<li>l7Cache_outFlux_resourceType: Resource type;</li>
+<li>l7Cache_outFlux_statusCode: Status code.</li>
         :type MetricName: str
         :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Limit: The number of data entries to be queried. The maximum value is 1000. If it is not specified, the value 10 is used by default, indicating that the top 10 data entries.
         :type Limit: int
         :param _Filters: Filter conditions. See below for details: 
-<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
-<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
-<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
-<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>
-<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
-<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
+<li>`domain`<br> Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br> Type: String<br> Required: No</li>
+<li>`url`<br> Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br> Type: String<br> Required: No</li>
+<li>`resourceType`<br> Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>Type: String<br> Required: No</li>
+<li>cacheType<br>Filter by the <strong>cache hit result</strong>.<br>Type: String<br> Required: No<br> Values: <br> `hit`: Cache hit; <br> `dynamic`: Resource non-cacheable; <br> `miss`: Cache miss</li>
+<li>`statusCode`<br> Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br> Type: String<br> Required: No<br> Values: <br> `1XX`: All 1xx status codes;<br> `100`: 100 status code;<br> `101`: 101 status code;<br> `102`: 102 status code;<br> `2XX`: All 2xx status codes;<br> `200`: 200 status code;<br> `201`: 201 status code;<br> `202`: 202 status code;<br> `203`: 203 status code;<br> `204`: 204 status code;<br> `205`: 205 status code;<br> `206`: 206 status code;<br> `207`: 207 status code;<br> `3XX`: All 3xx status codes;<br> `300`: 300 status code;<br> `301`: 301 status code;<br> `302`: 302 status code;<br> `303`: 303 status code;<br> `304`: 304 status code;<br> `305`: 305 status code;<br> `307`: 307 status code;<br> `4XX`: All 4xx status codes;<br> `400`: 400 status code;<br> `401`: 401 status code;<br> `402`: 402 status code;<br> `403`: 403 status code;<br> `404`: 404 status code;<br> `405`: 405 status code;<br> `406`: 406 status code;<br> `407`: 407 status code;<br> `408`: 408 status code;<br> `409`: 409 status code;<br> `410`: 410 status code;<br> `411`: 411 status code;<br> `412`: 412 status code;<br> `412`: 413 status code;<br> `414`: 414 status code;<br> `415`: 415 status code;<br> `416`: 416 status code;<br> `417`: 417 status code;<br>`422`: 422 status code;<br> `423`: 423 status code;<br> `424`: 424 status code;<br> `426`: 426 status code;<br> `451`: 451 status code;<br> `5XX`: All 5xx status codes;<br> `500`: 500 status code;<br> `501`: 501 status code;<br> `502`: 502 status code;<br> `503`: 503 status code;<br> `504`: 504 status code;<br> `505`: 505 status code;<br> `506`: 506 status code;<br> `507`: 507 status code;<br> `510`: 510 status code;<br> `514`: 514 status code;<br> `544`: 544 status code.</li>
+<li>`tagKey`:<br> Filter by the <strong>tag key</strong><br> Type: String<br> Required: No</li>
+<li>`tagValue`<br> Filter by the <strong>tag value</strong><br> Type: String<br> Required: No</li>
         :type Filters: list of QueryCondition
         :param _Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -16900,10 +17574,10 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
     @property
     def MetricName(self):
         """The query metric. Values:
-<li>`l7Cache_outFlux_domain`: Host/Domain name;</li>
-<li>`l7Cache_outFlux_url`: URL address;</li>
-<li>`l7Cache_outFlux_resourceType`: Resource type;</li>
-<li>`l7Cache_outFlux_statusCode`: Status code.</li>
+<li>l7Cache_outFlux_domain: Host/Domain name;</li>
+<li>l7Cache_outFlux_url: URL address;</li>
+<li>l7Cache_outFlux_resourceType: Resource type;</li>
+<li>l7Cache_outFlux_statusCode: Status code.</li>
         :rtype: str
         """
         return self._MetricName
@@ -16937,13 +17611,13 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
     @property
     def Filters(self):
         """Filter conditions. See below for details: 
-<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
-<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>
-<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>
-<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>
-<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>
-<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>
+<li>`domain`<br> Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br> Type: String<br> Required: No</li>
+<li>`url`<br> Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br> Type: String<br> Required: No</li>
+<li>`resourceType`<br> Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>Type: String<br> Required: No</li>
+<li>cacheType<br>Filter by the <strong>cache hit result</strong>.<br>Type: String<br> Required: No<br> Values: <br> `hit`: Cache hit; <br> `dynamic`: Resource non-cacheable; <br> `miss`: Cache miss</li>
+<li>`statusCode`<br> Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br> Type: String<br> Required: No<br> Values: <br> `1XX`: All 1xx status codes;<br> `100`: 100 status code;<br> `101`: 101 status code;<br> `102`: 102 status code;<br> `2XX`: All 2xx status codes;<br> `200`: 200 status code;<br> `201`: 201 status code;<br> `202`: 202 status code;<br> `203`: 203 status code;<br> `204`: 204 status code;<br> `205`: 205 status code;<br> `206`: 206 status code;<br> `207`: 207 status code;<br> `3XX`: All 3xx status codes;<br> `300`: 300 status code;<br> `301`: 301 status code;<br> `302`: 302 status code;<br> `303`: 303 status code;<br> `304`: 304 status code;<br> `305`: 305 status code;<br> `307`: 307 status code;<br> `4XX`: All 4xx status codes;<br> `400`: 400 status code;<br> `401`: 401 status code;<br> `402`: 402 status code;<br> `403`: 403 status code;<br> `404`: 404 status code;<br> `405`: 405 status code;<br> `406`: 406 status code;<br> `407`: 407 status code;<br> `408`: 408 status code;<br> `409`: 409 status code;<br> `410`: 410 status code;<br> `411`: 411 status code;<br> `412`: 412 status code;<br> `412`: 413 status code;<br> `414`: 414 status code;<br> `415`: 415 status code;<br> `416`: 416 status code;<br> `417`: 417 status code;<br>`422`: 422 status code;<br> `423`: 423 status code;<br> `424`: 424 status code;<br> `426`: 426 status code;<br> `451`: 451 status code;<br> `5XX`: All 5xx status codes;<br> `500`: 500 status code;<br> `501`: 501 status code;<br> `502`: 502 status code;<br> `503`: 503 status code;<br> `504`: 504 status code;<br> `505`: 505 status code;<br> `506`: 506 status code;<br> `507`: 507 status code;<br> `510`: 510 status code;<br> `514`: 514 status code;<br> `544`: 544 status code.</li>
+<li>`tagKey`:<br> Filter by the <strong>tag key</strong><br> Type: String<br> Required: No</li>
+<li>`tagValue`<br> Filter by the <strong>tag value</strong><br> Type: String<br> Required: No</li>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -19496,7 +20170,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class FollowOrigin(AbstractModel):
-    """The origin cache configuration
+    """Following origin server configuration for caching.
 
     """
 
@@ -19506,20 +20180,24 @@ class FollowOrigin(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param _DefaultCacheTime: Sets the default cache time when the origin server does not return the Cache-Control header.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type DefaultCacheTime: int
-        :param _DefaultCache: Specifies whether to enable cache when the origin server does not return the Cache-Control header.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _DefaultCache: Whether to cache when an origin server does not return the Cache-Control header. This field is required when Switch is on; otherwise, it is ineffective. Valid values:
+<li>on: Cache.</li>
+<li>off: Do not cache.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type DefaultCache: str
-        :param _DefaultCacheStrategy: Specifies whether to use the default caching policy when Cache-Control is not returned from the origin
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _DefaultCacheStrategy: Whether to use the default caching policy when an origin server does not return the Cache-Control header. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheTime is not 0, this field should be off. Valid values:
+<li>on: Use the default caching policy.</li>
+<li>off: Do not use the default caching policy.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type DefaultCacheStrategy: str
+        :param _DefaultCacheTime: The default cache time in seconds when an origin server does not return the Cache-Control header. The value ranges from 0 to 315360000. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheStrategy is on, this field should be 0.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type DefaultCacheTime: int
         """
         self._Switch = None
-        self._DefaultCacheTime = None
         self._DefaultCache = None
         self._DefaultCacheStrategy = None
+        self._DefaultCacheTime = None
 
     @property
     def Switch(self):
@@ -19535,21 +20213,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._Switch = Switch
 
     @property
-    def DefaultCacheTime(self):
-        """Sets the default cache time when the origin server does not return the Cache-Control header.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :rtype: int
-        """
-        return self._DefaultCacheTime
-
-    @DefaultCacheTime.setter
-    def DefaultCacheTime(self, DefaultCacheTime):
-        self._DefaultCacheTime = DefaultCacheTime
-
-    @property
     def DefaultCache(self):
-        """Specifies whether to enable cache when the origin server does not return the Cache-Control header.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        """Whether to cache when an origin server does not return the Cache-Control header. This field is required when Switch is on; otherwise, it is ineffective. Valid values:
+<li>on: Cache.</li>
+<li>off: Do not cache.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._DefaultCache
@@ -19560,8 +20228,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DefaultCacheStrategy(self):
-        """Specifies whether to use the default caching policy when Cache-Control is not returned from the origin
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        """Whether to use the default caching policy when an origin server does not return the Cache-Control header. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheTime is not 0, this field should be off. Valid values:
+<li>on: Use the default caching policy.</li>
+<li>off: Do not use the default caching policy.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._DefaultCacheStrategy
@@ -19570,12 +20240,24 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def DefaultCacheStrategy(self, DefaultCacheStrategy):
         self._DefaultCacheStrategy = DefaultCacheStrategy
 
+    @property
+    def DefaultCacheTime(self):
+        """The default cache time in seconds when an origin server does not return the Cache-Control header. The value ranges from 0 to 315360000. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheStrategy is on, this field should be 0.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: int
+        """
+        return self._DefaultCacheTime
+
+    @DefaultCacheTime.setter
+    def DefaultCacheTime(self, DefaultCacheTime):
+        self._DefaultCacheTime = DefaultCacheTime
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
-        self._DefaultCacheTime = params.get("DefaultCacheTime")
         self._DefaultCache = params.get("DefaultCache")
         self._DefaultCacheStrategy = params.get("DefaultCacheStrategy")
+        self._DefaultCacheTime = params.get("DefaultCacheTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19587,7 +20269,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class ForceRedirect(AbstractModel):
-    """Force HTTPS redirect configuration
+    """Forced HTTPS redirect configuration for access protocols.
 
     """
 
@@ -20248,6 +20930,247 @@ class Header(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HealthChecker(AbstractModel):
+    """LoadBalancer health check policy.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Health check policy. Valid values:
+<li>HTTP.</li>
+<li>HTTPS.</li>
+<li>TCP.</li>
+<li>UDP.</li>
+<li>ICMP Ping.</li>
+<li>NoCheck.</li>
+Note: NoCheck means the health check policy is not enabled.
+        :type Type: str
+        :param _Port: Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.
+        :type Port: int
+        :param _Interval: Check frequency, in seconds. It indicates how often a health check task is initiated. Valid values: 30, 60, 180, 300, 600.
+        :type Interval: int
+        :param _Timeout: Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as "unhealthy". The default value is 5s, and the value should be less than Interval.
+        :type Timeout: int
+        :param _HealthThreshold: Healthy state threshold, in the number of times. It indicates that if the consecutive health check results are "healthy" for a certain number of times, an origin server is considered "healthy". The default value is 3 times, with the minimum value of 1 time.
+        :type HealthThreshold: int
+        :param _CriticalThreshold: Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are "unhealthy" for a certain number of times, an origin server is considered "unhealthy". The default value is 2 times.
+        :type CriticalThreshold: int
+        :param _Path: Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.
+
+        :type Path: str
+        :param _Method: Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:
+<li>GET.</li>
+<li>HEAD.</li>
+        :type Method: str
+        :param _ExpectedCodes: The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :type ExpectedCodes: list of str
+        :param _Headers: The custom HTTP request header carried by a probe request, with a maximum value of 10. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :type Headers: list of CustomizedHeader
+        :param _FollowRedirect: Whether to follow 301/302 redirect. When enabled, 301/302 is considered a "healthy" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :type FollowRedirect: str
+        :param _SendContext: The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        :type SendContext: str
+        :param _RecvContext: The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        :type RecvContext: str
+        """
+        self._Type = None
+        self._Port = None
+        self._Interval = None
+        self._Timeout = None
+        self._HealthThreshold = None
+        self._CriticalThreshold = None
+        self._Path = None
+        self._Method = None
+        self._ExpectedCodes = None
+        self._Headers = None
+        self._FollowRedirect = None
+        self._SendContext = None
+        self._RecvContext = None
+
+    @property
+    def Type(self):
+        """Health check policy. Valid values:
+<li>HTTP.</li>
+<li>HTTPS.</li>
+<li>TCP.</li>
+<li>UDP.</li>
+<li>ICMP Ping.</li>
+<li>NoCheck.</li>
+Note: NoCheck means the health check policy is not enabled.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Port(self):
+        """Check port, which is required when Type = HTTP, Type = HTTPS, Type = TCP, or Type = UDP.
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Interval(self):
+        """Check frequency, in seconds. It indicates how often a health check task is initiated. Valid values: 30, 60, 180, 300, 600.
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Timeout(self):
+        """Timeout for each health check, in seconds. If the health check time exceeds this value, the check result is determined as "unhealthy". The default value is 5s, and the value should be less than Interval.
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def HealthThreshold(self):
+        """Healthy state threshold, in the number of times. It indicates that if the consecutive health check results are "healthy" for a certain number of times, an origin server is considered "healthy". The default value is 3 times, with the minimum value of 1 time.
+        :rtype: int
+        """
+        return self._HealthThreshold
+
+    @HealthThreshold.setter
+    def HealthThreshold(self, HealthThreshold):
+        self._HealthThreshold = HealthThreshold
+
+    @property
+    def CriticalThreshold(self):
+        """Unhealthy state threshold, in the number of times. It indicates that if the consecutive health check results are "unhealthy" for a certain number of times, an origin server is considered "unhealthy". The default value is 2 times.
+        :rtype: int
+        """
+        return self._CriticalThreshold
+
+    @CriticalThreshold.setter
+    def CriticalThreshold(self, CriticalThreshold):
+        self._CriticalThreshold = CriticalThreshold
+
+    @property
+    def Path(self):
+        """Probe path. This parameter is valid only when Type = HTTP or Type = HTTPS. It needs to include the complete host/path and should not contain a protocol, for example, www.example.com/test.
+
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Method(self):
+        """Request method. This parameter is valid only when Type = HTTP or Type = HTTPS. Valid values:
+<li>GET.</li>
+<li>HEAD.</li>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def ExpectedCodes(self):
+        """The status codes used to determine that the probe result is healthy when the probe node initiates a health check to an origin server. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :rtype: list of str
+        """
+        return self._ExpectedCodes
+
+    @ExpectedCodes.setter
+    def ExpectedCodes(self, ExpectedCodes):
+        self._ExpectedCodes = ExpectedCodes
+
+    @property
+    def Headers(self):
+        """The custom HTTP request header carried by a probe request, with a maximum value of 10. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :rtype: list of CustomizedHeader
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def FollowRedirect(self):
+        """Whether to follow 301/302 redirect. When enabled, 301/302 is considered a "healthy" status code, redirecting 3 times by default. This parameter is valid only when Type = HTTP or Type = HTTPS.
+        :rtype: str
+        """
+        return self._FollowRedirect
+
+    @FollowRedirect.setter
+    def FollowRedirect(self, FollowRedirect):
+        self._FollowRedirect = FollowRedirect
+
+    @property
+    def SendContext(self):
+        """The content sent by a health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        :rtype: str
+        """
+        return self._SendContext
+
+    @SendContext.setter
+    def SendContext(self, SendContext):
+        self._SendContext = SendContext
+
+    @property
+    def RecvContext(self):
+        """The expected return result from an origin server during health check. Only ASCII visible characters are allowed, with up to 500 characters. This parameter is valid only when Type = UDP.
+        :rtype: str
+        """
+        return self._RecvContext
+
+    @RecvContext.setter
+    def RecvContext(self, RecvContext):
+        self._RecvContext = RecvContext
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Port = params.get("Port")
+        self._Interval = params.get("Interval")
+        self._Timeout = params.get("Timeout")
+        self._HealthThreshold = params.get("HealthThreshold")
+        self._CriticalThreshold = params.get("CriticalThreshold")
+        self._Path = params.get("Path")
+        self._Method = params.get("Method")
+        self._ExpectedCodes = params.get("ExpectedCodes")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = CustomizedHeader()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._FollowRedirect = params.get("FollowRedirect")
+        self._SendContext = params.get("SendContext")
+        self._RecvContext = params.get("RecvContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21501,6 +22424,46 @@ class Ipv6(AbstractModel):
         
 
 
+class JITVideoProcess(AbstractModel):
+    """Just-in-time media processing configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Just-in-time media processing configuration switch. Valid values:
+<li>on: Enable.</li>
+<li>off: Disable.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Just-in-time media processing configuration switch. Valid values:
+<li>on: Enable.</li>
+<li>off: Disable.</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4OfflineLog(AbstractModel):
     """The L7 log details
 
@@ -22373,6 +23336,200 @@ class L7OfflineLog(AbstractModel):
         self._LogStartTime = params.get("LogStartTime")
         self._LogEndTime = params.get("LogEndTime")
         self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoadBalancer(AbstractModel):
+    """LoadBalancer information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: LoadBalancer ID.
+        :type InstanceId: str
+        :param _Name: LoadBalancer name, which can contain 1 to 200 characters, including a-z, A-Z, 0-9, underscores (_), and hyphens (-).	
+        :type Name: str
+        :param _Type: LoadBalancer type. Valid values:
+<li>HTTP: HTTP-specific LoadBalancer. It supports adding HTTP-specific and general origin server groups. It can only be referenced by site acceleration services (such as domain name service and rule engine).</li>
+<li>GENERAL: general LoadBalancer. It only supports adding general origin server groups. It can be referenced by site acceleration services (such as domain name service and rule engine) and Layer-4 proxy.</li>
+        :type Type: str
+        :param _HealthChecker: Health check policy. For details, refer to [Health Check Policies](https://intl.cloud.tencent.com/document/product/1552/104228?from_cn_redirect=1).
+        :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        :param _SteeringPolicy: Traffic scheduling policy among origin server groups. Valid values:
+<li>Priority: Perform failover according to priority.</li>
+        :type SteeringPolicy: str
+        :param _FailoverPolicy: Request retry policy when access to an origin server fails. For details, refer to [Introduction to Request Retry Strategy](https://intl.cloud.tencent.com/document/product/1552/104227?from_cn_redirect=1). Valid values:
+<li>OtherOriginGroup: After a single request fails, retry with another origin server within the next lower priority origin server group.</li>
+<li>OtherRecordInOriginGroup: After a single request fails, retry with another origin server within the same origin server group.</li>
+        :type FailoverPolicy: str
+        :param _OriginGroupHealthStatus: Origin server group health status.
+        :type OriginGroupHealthStatus: list of OriginGroupHealthStatus
+        :param _Status: LoadBalancer status. Valid values:
+<li>Pending: deploying.</li>
+<li>Deleting: deleting.</li>
+<li>Running: effective.</li>
+        :type Status: str
+        :param _L4UsedList: List of Layer-4 proxy instances bound to a LoadBalancer.
+        :type L4UsedList: list of str
+        :param _L7UsedList: List of Layer-7 domain names bound to a LoadBalancer.
+        :type L7UsedList: list of str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Type = None
+        self._HealthChecker = None
+        self._SteeringPolicy = None
+        self._FailoverPolicy = None
+        self._OriginGroupHealthStatus = None
+        self._Status = None
+        self._L4UsedList = None
+        self._L7UsedList = None
+
+    @property
+    def InstanceId(self):
+        """LoadBalancer ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        """LoadBalancer name, which can contain 1 to 200 characters, including a-z, A-Z, 0-9, underscores (_), and hyphens (-).	
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """LoadBalancer type. Valid values:
+<li>HTTP: HTTP-specific LoadBalancer. It supports adding HTTP-specific and general origin server groups. It can only be referenced by site acceleration services (such as domain name service and rule engine).</li>
+<li>GENERAL: general LoadBalancer. It only supports adding general origin server groups. It can be referenced by site acceleration services (such as domain name service and rule engine) and Layer-4 proxy.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def HealthChecker(self):
+        """Health check policy. For details, refer to [Health Check Policies](https://intl.cloud.tencent.com/document/product/1552/104228?from_cn_redirect=1).
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        """
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def SteeringPolicy(self):
+        """Traffic scheduling policy among origin server groups. Valid values:
+<li>Priority: Perform failover according to priority.</li>
+        :rtype: str
+        """
+        return self._SteeringPolicy
+
+    @SteeringPolicy.setter
+    def SteeringPolicy(self, SteeringPolicy):
+        self._SteeringPolicy = SteeringPolicy
+
+    @property
+    def FailoverPolicy(self):
+        """Request retry policy when access to an origin server fails. For details, refer to [Introduction to Request Retry Strategy](https://intl.cloud.tencent.com/document/product/1552/104227?from_cn_redirect=1). Valid values:
+<li>OtherOriginGroup: After a single request fails, retry with another origin server within the next lower priority origin server group.</li>
+<li>OtherRecordInOriginGroup: After a single request fails, retry with another origin server within the same origin server group.</li>
+        :rtype: str
+        """
+        return self._FailoverPolicy
+
+    @FailoverPolicy.setter
+    def FailoverPolicy(self, FailoverPolicy):
+        self._FailoverPolicy = FailoverPolicy
+
+    @property
+    def OriginGroupHealthStatus(self):
+        """Origin server group health status.
+        :rtype: list of OriginGroupHealthStatus
+        """
+        return self._OriginGroupHealthStatus
+
+    @OriginGroupHealthStatus.setter
+    def OriginGroupHealthStatus(self, OriginGroupHealthStatus):
+        self._OriginGroupHealthStatus = OriginGroupHealthStatus
+
+    @property
+    def Status(self):
+        """LoadBalancer status. Valid values:
+<li>Pending: deploying.</li>
+<li>Deleting: deleting.</li>
+<li>Running: effective.</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def L4UsedList(self):
+        """List of Layer-4 proxy instances bound to a LoadBalancer.
+        :rtype: list of str
+        """
+        return self._L4UsedList
+
+    @L4UsedList.setter
+    def L4UsedList(self, L4UsedList):
+        self._L4UsedList = L4UsedList
+
+    @property
+    def L7UsedList(self):
+        """List of Layer-7 domain names bound to a LoadBalancer.
+        :rtype: list of str
+        """
+        return self._L7UsedList
+
+    @L7UsedList.setter
+    def L7UsedList(self, L7UsedList):
+        self._L7UsedList = L7UsedList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("HealthChecker") is not None:
+            self._HealthChecker = HealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._SteeringPolicy = params.get("SteeringPolicy")
+        self._FailoverPolicy = params.get("FailoverPolicy")
+        if params.get("OriginGroupHealthStatus") is not None:
+            self._OriginGroupHealthStatus = []
+            for item in params.get("OriginGroupHealthStatus"):
+                obj = OriginGroupHealthStatus()
+                obj._deserialize(item)
+                self._OriginGroupHealthStatus.append(obj)
+        self._Status = params.get("Status")
+        self._L4UsedList = params.get("L4UsedList")
+        self._L7UsedList = params.get("L7UsedList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24211,19 +25368,22 @@ class ModifyHostsCertificateRequest(AbstractModel):
 <li>`eofreecert`: Use a free certificate provided by EdgeOne</li>
 <li>`sslcert`: Configure an SSL certificate.</li>
         :type Mode: str
-        :param _ServerCertInfo: ID of the SSL certificate. It takes effect when `mode=sslcert`. To check the certificate ID, go to the [SSL Certificate](https://console.cloud.tencent.com/certoview) console.
+        :param _ServerCertInfo: SSL certificate configuration. This parameter is effective only when the mode is sslcert. You only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
         :type ServerCertInfo: list of ServerCertInfo
         :param _ApplyType: Whether the certificate is managed by EdgeOne. Values:
 <li>`none`: Not managed by EdgeOne</li>
 <li>`apply`: Managed by EdgeOne</li>
 Default value: `none`.
         :type ApplyType: str
+        :param _ClientCertInfo: In the Edge mTLS scenario, this field represents the client's CA certificate, which is deployed at the EO entry side for authenticating the client access to EO nodes. The original configuration applies if this field is not specified.
+        :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
         """
         self._ZoneId = None
         self._Hosts = None
         self._Mode = None
         self._ServerCertInfo = None
         self._ApplyType = None
+        self._ClientCertInfo = None
 
     @property
     def ZoneId(self):
@@ -24263,7 +25423,7 @@ Default value: `none`.
 
     @property
     def ServerCertInfo(self):
-        """ID of the SSL certificate. It takes effect when `mode=sslcert`. To check the certificate ID, go to the [SSL Certificate](https://console.cloud.tencent.com/certoview) console.
+        """SSL certificate configuration. This parameter is effective only when the mode is sslcert. You only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
         :rtype: list of ServerCertInfo
         """
         return self._ServerCertInfo
@@ -24290,6 +25450,17 @@ Default value: `none`.
 
         self._ApplyType = ApplyType
 
+    @property
+    def ClientCertInfo(self):
+        """In the Edge mTLS scenario, this field represents the client's CA certificate, which is deployed at the EO entry side for authenticating the client access to EO nodes. The original configuration applies if this field is not specified.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        """
+        return self._ClientCertInfo
+
+    @ClientCertInfo.setter
+    def ClientCertInfo(self, ClientCertInfo):
+        self._ClientCertInfo = ClientCertInfo
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -24302,6 +25473,9 @@ Default value: `none`.
                 obj._deserialize(item)
                 self._ServerCertInfo.append(obj)
         self._ApplyType = params.get("ApplyType")
+        if params.get("ClientCertInfo") is not None:
+            self._ClientCertInfo = MutualTLS()
+            self._ClientCertInfo._deserialize(params.get("ClientCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24765,6 +25939,173 @@ class ModifyL4ProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancerRequest(AbstractModel):
+    """ModifyLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _InstanceId: CLB instance ID.
+        :type InstanceId: str
+        :param _Name: LoadBalancer name, which can contain 1 to 200 characters, including a-z, A-Z, 0-9, underscores (_), and hyphens (-). The original configuration applies if this field is not specified.
+        :type Name: str
+        :param _OriginGroups: List of origin server groups and their corresponding disaster recovery scheduling priorities. For details, refer to Sample Scenario in [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1). The original configuration applies if this field is not specified.
+        :type OriginGroups: list of OriginGroupInLoadBalancer
+        :param _HealthChecker: Health check policy. For details, refer to [Health Check Policies](https://intl.cloud.tencent.com/document/product/1552/104228?from_cn_redirect=1). The original configuration applies if this field is not specified.
+        :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        :param _SteeringPolicy: Traffic scheduling policy among origin server groups. Valid values:
+<li>Priority: Perform failover according to priority.</li> The original configuration applies if this field is not specified.
+        :type SteeringPolicy: str
+        :param _FailoverPolicy: Request retry policy when access to an origin server fails. For details, refer to [Introduction to Request Retry Strategy](https://intl.cloud.tencent.com/document/product/1552/104227?from_cn_redirect=1). Valid values:
+<li>OtherOriginGroup: After a single request fails, retry with another origin server within the next lower priority origin server group.</li>
+<li>OtherRecordInOriginGroup: After a single request fails, retry with another origin server within the same origin server group.</li> The original configuration applies if not specified.
+        :type FailoverPolicy: str
+        """
+        self._ZoneId = None
+        self._InstanceId = None
+        self._Name = None
+        self._OriginGroups = None
+        self._HealthChecker = None
+        self._SteeringPolicy = None
+        self._FailoverPolicy = None
+
+    @property
+    def ZoneId(self):
+        """Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def InstanceId(self):
+        """CLB instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        """LoadBalancer name, which can contain 1 to 200 characters, including a-z, A-Z, 0-9, underscores (_), and hyphens (-). The original configuration applies if this field is not specified.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OriginGroups(self):
+        """List of origin server groups and their corresponding disaster recovery scheduling priorities. For details, refer to Sample Scenario in [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1). The original configuration applies if this field is not specified.
+        :rtype: list of OriginGroupInLoadBalancer
+        """
+        return self._OriginGroups
+
+    @OriginGroups.setter
+    def OriginGroups(self, OriginGroups):
+        self._OriginGroups = OriginGroups
+
+    @property
+    def HealthChecker(self):
+        """Health check policy. For details, refer to [Health Check Policies](https://intl.cloud.tencent.com/document/product/1552/104228?from_cn_redirect=1). The original configuration applies if this field is not specified.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
+        """
+        return self._HealthChecker
+
+    @HealthChecker.setter
+    def HealthChecker(self, HealthChecker):
+        self._HealthChecker = HealthChecker
+
+    @property
+    def SteeringPolicy(self):
+        """Traffic scheduling policy among origin server groups. Valid values:
+<li>Priority: Perform failover according to priority.</li> The original configuration applies if this field is not specified.
+        :rtype: str
+        """
+        return self._SteeringPolicy
+
+    @SteeringPolicy.setter
+    def SteeringPolicy(self, SteeringPolicy):
+        self._SteeringPolicy = SteeringPolicy
+
+    @property
+    def FailoverPolicy(self):
+        """Request retry policy when access to an origin server fails. For details, refer to [Introduction to Request Retry Strategy](https://intl.cloud.tencent.com/document/product/1552/104227?from_cn_redirect=1). Valid values:
+<li>OtherOriginGroup: After a single request fails, retry with another origin server within the next lower priority origin server group.</li>
+<li>OtherRecordInOriginGroup: After a single request fails, retry with another origin server within the same origin server group.</li> The original configuration applies if not specified.
+        :rtype: str
+        """
+        return self._FailoverPolicy
+
+    @FailoverPolicy.setter
+    def FailoverPolicy(self, FailoverPolicy):
+        self._FailoverPolicy = FailoverPolicy
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        if params.get("OriginGroups") is not None:
+            self._OriginGroups = []
+            for item in params.get("OriginGroups"):
+                obj = OriginGroupInLoadBalancer()
+                obj._deserialize(item)
+                self._OriginGroups.append(obj)
+        if params.get("HealthChecker") is not None:
+            self._HealthChecker = HealthChecker()
+            self._HealthChecker._deserialize(params.get("HealthChecker"))
+        self._SteeringPolicy = params.get("SteeringPolicy")
+        self._FailoverPolicy = params.get("FailoverPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerResponse(AbstractModel):
+    """ModifyLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyOriginGroupRequest(AbstractModel):
     """ModifyOriginGroup request structure.
 
@@ -25008,8 +26349,8 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         :param _TaskName: The name of the real-time log delivery task, which is a combination of numbers, English letters, - and _, containing up to 200 characters. If this field is not filled in, the original configuration will be retained.
         :type TaskName: str
         :param _DeliveryStatus: The status of the real-time log delivery task. Valid values:
-<li>`enabled`: Enabled;</li>
-<li>`disabled`: Disabled.</li>If this field is not filled in, the original configuration will be retained.
+<li>enabled: Enabled;</li>
+<li>disabled: Disabled.</li>If this field is not filled in, the original configuration will be retained.
         :type DeliveryStatus: str
         :param _EntityList: The list of entities (Layer 7 domains or Layer 4 proxy instances) corresponding to the real-time log delivery task. Valid value examples:
 <li>Layer 7 domain: domain.example.com;</li>
@@ -25017,13 +26358,13 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type EntityList: list of str
         :param _Fields: The list of predefined fields for delivery. If this field is not filled in, the original configuration will be retained.
         :type Fields: list of str
-        :param _CustomFields: The list of custom fields for delivery, supporting extracting specified field values from HTTP request headers, response headers, and cookies. Each custom field name must be unique and the maximum number of fields is 200. If this field is not filled in, the original configuration will be retained.
+        :param _CustomFields: The list of custom fields for shipping, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. If this parameter is not filled in, the original configuration will be retained. The name of each custom field should be unique and the maximum number of fields is 200. Up to 5 custom fields of the request body type can be added for a single real-time log push task. Currently, adding custom fields is supported only for site acceleration logs (LogType=domain).
         :type CustomFields: list of CustomField
         :param _DeliveryConditions: Log delivery filter conditions. If this field is not filled in, all logs will be delivered.
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: The sampling ratio in permille. Value range: 1 to 1000. For example, 605 represents a sampling ratio of 60.5%. If this field is not filled in, the original configuration will be retained.
         :type Sample: int
-        :param _LogFormat: Output format for log delivery. If this field is not specified, the original configuration will be retained.Specifically, when TaskType is set to cls, the value of LogFormat.FormatType can only be json, and other parameters in LogFormat will be ignored. It is recommended not to input LogFormat.
+        :param _LogFormat: Output format for log delivery. If this field is not specified, the original configuration will be retained. Specifically, when TaskType is cls, the value of LogFormat.FormatType can only be json, and other parameters in LogFormat will be ignored. It is recommended not to input LogFormat.
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CustomEndpoint: The configuration information of the custom HTTP service. If this field is not filled in, the original configuration will be retained.
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
@@ -25079,8 +26420,8 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
     @property
     def DeliveryStatus(self):
         """The status of the real-time log delivery task. Valid values:
-<li>`enabled`: Enabled;</li>
-<li>`disabled`: Disabled.</li>If this field is not filled in, the original configuration will be retained.
+<li>enabled: Enabled;</li>
+<li>disabled: Disabled.</li>If this field is not filled in, the original configuration will be retained.
         :rtype: str
         """
         return self._DeliveryStatus
@@ -25115,7 +26456,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomFields(self):
-        """The list of custom fields for delivery, supporting extracting specified field values from HTTP request headers, response headers, and cookies. Each custom field name must be unique and the maximum number of fields is 200. If this field is not filled in, the original configuration will be retained.
+        """The list of custom fields for shipping, which supports extracting specified content from HTTP request headers, response headers, cookies, and request bodies. If this parameter is not filled in, the original configuration will be retained. The name of each custom field should be unique and the maximum number of fields is 200. Up to 5 custom fields of the request body type can be added for a single real-time log push task. Currently, adding custom fields is supported only for site acceleration logs (LogType=domain).
         :rtype: list of CustomField
         """
         return self._CustomFields
@@ -25148,7 +26489,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        """Output format for log delivery. If this field is not specified, the original configuration will be retained.Specifically, when TaskType is set to cls, the value of LogFormat.FormatType can only be json, and other parameters in LogFormat will be ignored. It is recommended not to input LogFormat.
+        """Output format for log delivery. If this field is not specified, the original configuration will be retained. Specifically, when TaskType is cls, the value of LogFormat.FormatType can only be json, and other parameters in LogFormat will be ignored. It is recommended not to input LogFormat.
         :rtype: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         """
         return self._LogFormat
@@ -25856,6 +27197,8 @@ It is disabled if this parameter is not specified.
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
         :param _StandardDebug: Standard debugging configuration.
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
+        :param _JITVideoProcess: Just-in-time media processing configuration. The original configuration applies if this field is not specified.
+        :type JITVideoProcess: :class:`tencentcloud.teo.v20220901.models.JITVideoProcess`
         """
         self._ZoneId = None
         self._CacheConfig = None
@@ -25878,6 +27221,7 @@ It is disabled if this parameter is not specified.
         self._Grpc = None
         self._ImageOptimize = None
         self._StandardDebug = None
+        self._JITVideoProcess = None
 
     @property
     def ZoneId(self):
@@ -26129,6 +27473,17 @@ It is disabled if this parameter is not specified.
     def StandardDebug(self, StandardDebug):
         self._StandardDebug = StandardDebug
 
+    @property
+    def JITVideoProcess(self):
+        """Just-in-time media processing configuration. The original configuration applies if this field is not specified.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.JITVideoProcess`
+        """
+        return self._JITVideoProcess
+
+    @JITVideoProcess.setter
+    def JITVideoProcess(self, JITVideoProcess):
+        self._JITVideoProcess = JITVideoProcess
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -26192,6 +27547,9 @@ It is disabled if this parameter is not specified.
         if params.get("StandardDebug") is not None:
             self._StandardDebug = StandardDebug()
             self._StandardDebug._deserialize(params.get("StandardDebug"))
+        if params.get("JITVideoProcess") is not None:
+            self._JITVideoProcess = JITVideoProcess()
+            self._JITVideoProcess._deserialize(params.get("JITVideoProcess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26311,6 +27669,64 @@ class ModifyZoneStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MutualTLS(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 
+        :type Switch: str
+        :param _CertInfos: Mutual authentication certificate list.
+Note: When using MutualTLS as an input parameter in ModifyHostsCertificate, you only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
+        :type CertInfos: list of CertificateInfo
+        """
+        self._Switch = None
+        self._CertInfos = None
+
+    @property
+    def Switch(self):
+        """
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def CertInfos(self):
+        """Mutual authentication certificate list.
+Note: When using MutualTLS as an input parameter in ModifyHostsCertificate, you only need to provide the CertId of the corresponding certificate. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
+        :rtype: list of CertificateInfo
+        """
+        return self._CertInfos
+
+    @CertInfos.setter
+    def CertInfos(self, CertInfos):
+        self._CertInfos = CertInfos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("CertInfos") is not None:
+            self._CertInfos = []
+            for item in params.get("CertInfos"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._CertInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NoCache(AbstractModel):
@@ -26961,6 +28377,244 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class OriginGroupHealthStatus(AbstractModel):
+    """Origin server group health status.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupID: Origin server group ID.
+        :type OriginGroupID: str
+        :param _OriginGroupName: Origin server group name.
+        :type OriginGroupName: str
+        :param _OriginType: Origin server group type. Valid values:
+<li>HTTP: HTTP-specific.</li>
+<li>GENERAL: general.</li>
+        :type OriginType: str
+        :param _Priority: Priority.
+        :type Priority: str
+        :param _OriginHealthStatus: Health status of each origin server in an origin server group.
+        :type OriginHealthStatus: list of OriginHealthStatus
+        """
+        self._OriginGroupID = None
+        self._OriginGroupName = None
+        self._OriginType = None
+        self._Priority = None
+        self._OriginHealthStatus = None
+
+    @property
+    def OriginGroupID(self):
+        """Origin server group ID.
+        :rtype: str
+        """
+        return self._OriginGroupID
+
+    @OriginGroupID.setter
+    def OriginGroupID(self, OriginGroupID):
+        self._OriginGroupID = OriginGroupID
+
+    @property
+    def OriginGroupName(self):
+        """Origin server group name.
+        :rtype: str
+        """
+        return self._OriginGroupName
+
+    @OriginGroupName.setter
+    def OriginGroupName(self, OriginGroupName):
+        self._OriginGroupName = OriginGroupName
+
+    @property
+    def OriginType(self):
+        """Origin server group type. Valid values:
+<li>HTTP: HTTP-specific.</li>
+<li>GENERAL: general.</li>
+        :rtype: str
+        """
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def Priority(self):
+        """Priority.
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def OriginHealthStatus(self):
+        """Health status of each origin server in an origin server group.
+        :rtype: list of OriginHealthStatus
+        """
+        return self._OriginHealthStatus
+
+    @OriginHealthStatus.setter
+    def OriginHealthStatus(self, OriginHealthStatus):
+        self._OriginHealthStatus = OriginHealthStatus
+
+
+    def _deserialize(self, params):
+        self._OriginGroupID = params.get("OriginGroupID")
+        self._OriginGroupName = params.get("OriginGroupName")
+        self._OriginType = params.get("OriginType")
+        self._Priority = params.get("Priority")
+        if params.get("OriginHealthStatus") is not None:
+            self._OriginHealthStatus = []
+            for item in params.get("OriginHealthStatus"):
+                obj = OriginHealthStatus()
+                obj._deserialize(item)
+                self._OriginHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupHealthStatusDetail(AbstractModel):
+    """Details of origin server group health status.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupId: Origin server group ID.
+        :type OriginGroupId: str
+        :param _OriginHealthStatus: The health status of each origin server in an origin server group, which is comprehensively decided based on the results of all detection regions. If more than half of the regions determine that the origin server is unhealthy, the corresponding status is unhealthy; otherwise, it is healthy.
+        :type OriginHealthStatus: list of OriginHealthStatus
+        :param _CheckRegionHealthStatus: Health status of origin servers in each health check region.
+        :type CheckRegionHealthStatus: list of CheckRegionHealthStatus
+        """
+        self._OriginGroupId = None
+        self._OriginHealthStatus = None
+        self._CheckRegionHealthStatus = None
+
+    @property
+    def OriginGroupId(self):
+        """Origin server group ID.
+        :rtype: str
+        """
+        return self._OriginGroupId
+
+    @OriginGroupId.setter
+    def OriginGroupId(self, OriginGroupId):
+        self._OriginGroupId = OriginGroupId
+
+    @property
+    def OriginHealthStatus(self):
+        """The health status of each origin server in an origin server group, which is comprehensively decided based on the results of all detection regions. If more than half of the regions determine that the origin server is unhealthy, the corresponding status is unhealthy; otherwise, it is healthy.
+        :rtype: list of OriginHealthStatus
+        """
+        return self._OriginHealthStatus
+
+    @OriginHealthStatus.setter
+    def OriginHealthStatus(self, OriginHealthStatus):
+        self._OriginHealthStatus = OriginHealthStatus
+
+    @property
+    def CheckRegionHealthStatus(self):
+        """Health status of origin servers in each health check region.
+        :rtype: list of CheckRegionHealthStatus
+        """
+        return self._CheckRegionHealthStatus
+
+    @CheckRegionHealthStatus.setter
+    def CheckRegionHealthStatus(self, CheckRegionHealthStatus):
+        self._CheckRegionHealthStatus = CheckRegionHealthStatus
+
+
+    def _deserialize(self, params):
+        self._OriginGroupId = params.get("OriginGroupId")
+        if params.get("OriginHealthStatus") is not None:
+            self._OriginHealthStatus = []
+            for item in params.get("OriginHealthStatus"):
+                obj = OriginHealthStatus()
+                obj._deserialize(item)
+                self._OriginHealthStatus.append(obj)
+        if params.get("CheckRegionHealthStatus") is not None:
+            self._CheckRegionHealthStatus = []
+            for item in params.get("CheckRegionHealthStatus"):
+                obj = CheckRegionHealthStatus()
+                obj._deserialize(item)
+                self._CheckRegionHealthStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupInLoadBalancer(AbstractModel):
+    """The origin server groups that need to be bound in a LoadBalancer and their priorities.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Priority: Priority, in the format of "priority_" + "number". The highest priority is "priority_1". Reference values:
+<li>priority_1: first priority.</li>
+<li>priority_2: second priority.</li>
+<li>priority_3: third priority.</li> You can increase numbers for other priorities, up to "priority_10".
+        :type Priority: str
+        :param _OriginGroupId: Origin server group ID.
+        :type OriginGroupId: str
+        """
+        self._Priority = None
+        self._OriginGroupId = None
+
+    @property
+    def Priority(self):
+        """Priority, in the format of "priority_" + "number". The highest priority is "priority_1". Reference values:
+<li>priority_1: first priority.</li>
+<li>priority_2: second priority.</li>
+<li>priority_3: third priority.</li> You can increase numbers for other priorities, up to "priority_10".
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def OriginGroupId(self):
+        """Origin server group ID.
+        :rtype: str
+        """
+        return self._OriginGroupId
+
+    @OriginGroupId.setter
+    def OriginGroupId(self, OriginGroupId):
+        self._OriginGroupId = OriginGroupId
+
+
+    def _deserialize(self, params):
+        self._Priority = params.get("Priority")
+        self._OriginGroupId = params.get("OriginGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginGroupReference(AbstractModel):
     """Services referencing this origin group
 
@@ -27025,6 +28679,65 @@ class OriginGroupReference(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginHealthStatus(AbstractModel):
+    """Health status of origin servers in an origin server group.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Origin: Origin server.
+        :type Origin: str
+        :param _Healthy: Origin server health status. Valid values:
+<li>Healthy: healthy.</li>
+<li>Unhealthy: unhealthy.</li>
+<li>Undetected: no data detected.</li>
+
+        :type Healthy: str
+        """
+        self._Origin = None
+        self._Healthy = None
+
+    @property
+    def Origin(self):
+        """Origin server.
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def Healthy(self):
+        """Origin server health status. Valid values:
+<li>Healthy: healthy.</li>
+<li>Unhealthy: unhealthy.</li>
+<li>Undetected: no data detected.</li>
+
+        :rtype: str
+        """
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+
+    def _deserialize(self, params):
+        self._Origin = params.get("Origin")
+        self._Healthy = params.get("Healthy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31472,8 +33185,9 @@ class ServerCertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertId: ID of the server certificate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CertId: Server certificate ID, which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
+
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type CertId: str
         :param _Alias: Alias of the certificate.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -31507,8 +33221,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CertId(self):
-        """ID of the server certificate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Server certificate ID, which originates from the SSL side. You can check the CertId from the [SSL Certificate List](https://console.cloud.tencent.com/ssl).
+
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: str
         """
         return self._CertId
@@ -34191,6 +35906,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _StandardDebug: Standard debugging configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
+        :param _JITVideoProcess: Just-in-time media processing configuration.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type JITVideoProcess: :class:`tencentcloud.teo.v20220901.models.JITVideoProcess`
         """
         self._ZoneName = None
         self._Area = None
@@ -34215,6 +35933,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ImageOptimize = None
         self._AccelerateMainland = None
         self._StandardDebug = None
+        self._JITVideoProcess = None
 
     @property
     def ZoneName(self):
@@ -34492,6 +36211,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def StandardDebug(self, StandardDebug):
         self._StandardDebug = StandardDebug
 
+    @property
+    def JITVideoProcess(self):
+        """Just-in-time media processing configuration.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.JITVideoProcess`
+        """
+        return self._JITVideoProcess
+
+    @JITVideoProcess.setter
+    def JITVideoProcess(self, JITVideoProcess):
+        self._JITVideoProcess = JITVideoProcess
+
 
     def _deserialize(self, params):
         self._ZoneName = params.get("ZoneName")
@@ -34559,6 +36290,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("StandardDebug") is not None:
             self._StandardDebug = StandardDebug()
             self._StandardDebug._deserialize(params.get("StandardDebug"))
+        if params.get("JITVideoProcess") is not None:
+            self._JITVideoProcess = JITVideoProcess()
+            self._JITVideoProcess._deserialize(params.get("JITVideoProcess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

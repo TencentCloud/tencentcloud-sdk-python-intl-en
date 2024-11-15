@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM signature/authentication error.
+AUTHFAILURE = 'AuthFailure'
+
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
@@ -22,6 +25,9 @@ FAILEDOPERATION_ACCOUNTCOMMON = 'FailedOperation.AccountCommon'
 
 # The account is not verified.
 FAILEDOPERATION_ACCOUNTUSERNOTAUTHENTICATED = 'FailedOperation.AccountUserNotAuthenticated'
+
+# Failed to add VPC-CNI Subnet.
+FAILEDOPERATION_ADDVPCCNISUBNETSFAILED = 'FailedOperation.AddVpcCniSubnetsFailed'
 
 # An error occurs while creating scaling group resources.
 FAILEDOPERATION_ASCOMMON = 'FailedOperation.AsCommon'
@@ -53,8 +59,29 @@ FAILEDOPERATION_COMPONENTCLIENTUNPACK = 'FailedOperation.ComponentClientUnpack'
 # Failed to request (HTTP request) other Tencent Cloud services.
 FAILEDOPERATION_COMPONENTCLINETHTTP = 'FailedOperation.ComponentClinetHttp'
 
+# Failed to create CLS Client.
+FAILEDOPERATION_CREATECLSCLIENT = 'FailedOperation.CreateClsClient'
+
+# Failed to create CLS collection configuration.
+FAILEDOPERATION_CREATECLSCONFIG = 'FailedOperation.CreateClsConfig'
+
+# Failed to create CLS index.
+FAILEDOPERATION_CREATECLSINDEX = 'FailedOperation.CreateClsIndex'
+
+# Failed to create the CLS log set.
+FAILEDOPERATION_CREATECLSLOGSET = 'FailedOperation.CreateClsLogSet'
+
+# Failed to create CLS machine group.
+FAILEDOPERATION_CREATECLSMACHINEGROUP = 'FailedOperation.CreateClsMachineGroup'
+
+# Failed to create CLS topic.
+FAILEDOPERATION_CREATECLSTOPIC = 'FailedOperation.CreateClsTopic'
+
 # Failed to create the node due to a CVM error
 FAILEDOPERATION_CVMCOMMON = 'FailedOperation.CvmCommon'
+
+# CVM Termination Protection is enabled, and it cannot be removed.
+FAILEDOPERATION_CVMDELETIONPROTECTION = 'FailedOperation.CvmDeletionProtection'
 
 # Some of the specified CVMs are not found.
 FAILEDOPERATION_CVMNUMBERNOTMATCH = 'FailedOperation.CvmNumberNotMatch'
@@ -74,6 +101,30 @@ FAILEDOPERATION_DFWGETUSGQUOTA = 'FailedOperation.DfwGetUSGQuota'
 # Failed to enable the VPC-CNI mode.
 FAILEDOPERATION_ENABLEVPCCNIFAILED = 'FailedOperation.EnableVPCCNIFailed'
 
+# Failed to obtain CLS collection configuration.
+FAILEDOPERATION_GETCLSCONFIG = 'FailedOperation.GetClsConfig'
+
+# Failed to obtain the machine group bound to the CLS collection configuration.
+FAILEDOPERATION_GETCLSCONFIGMACHINEGROUPS = 'FailedOperation.GetClsConfigMachineGroups'
+
+# Failed to obtain CLS index configuration.
+FAILEDOPERATION_GETCLSINDEX = 'FailedOperation.GetClsIndex'
+
+# Failed to query the topic set.
+FAILEDOPERATION_GETCLSLOGSET = 'FailedOperation.GetClsLogSet'
+
+# Failed to obtain the CLS machine group.
+FAILEDOPERATION_GETCLSMACHINEGROUP = 'FailedOperation.GetClsMachineGroup'
+
+# Failed to obtain the collection configuration bound to the CLS machine group.
+FAILEDOPERATION_GETCLSMACHINEGROUPCONFIGS = 'FailedOperation.GetClsMachineGroupConfigs'
+
+# Failed to obtain CLS log topic.
+FAILEDOPERATION_GETCLSTOPIC = 'FailedOperation.GetClsTopic'
+
+# Failed to create the Kubernetes client.
+FAILEDOPERATION_K8SCLIENTBUILDERROR = 'FailedOperation.K8sClientBuildError'
+
 # Failed to connect to the customer Kubernetes cluster.
 FAILEDOPERATION_KUBECLIENTCONNECTION = 'FailedOperation.KubeClientConnection'
 
@@ -86,6 +137,9 @@ FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = 'FailedOperation.KubernetesClientBu
 # An error occurs while creating the cluster client.
 FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = 'FailedOperation.KubernetesCreateOperationError'
 
+# Kubernetes Delete operation error.
+FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = 'FailedOperation.KubernetesDeleteOperationError'
+
 # 
 FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = 'FailedOperation.KubernetesGetOperationError'
 
@@ -95,8 +149,20 @@ FAILEDOPERATION_KUBERNETESINTERNAL = 'FailedOperation.KubernetesInternal'
 # Failed to obtain the kubernetes resource list.
 FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = 'FailedOperation.KubernetesListOperationError'
 
+# Kubernetes is not found.
+FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = 'FailedOperation.KubernetesResourceNotFound'
+
 # An unknown error occurs while calling the underlying CLB.
 FAILEDOPERATION_LBCOMMON = 'FailedOperation.LbCommon'
+
+# Failed to modify CLS collection configuration.
+FAILEDOPERATION_MODIFYCLSCONFIG = 'FailedOperation.ModifyClsConfig'
+
+# Failed to modify CLS index.
+FAILEDOPERATION_MODIFYCLSINDEX = 'FailedOperation.ModifyClsIndex'
+
+# Failed to modify CLS log topic.
+FAILEDOPERATION_MODIFYCLSTOPIC = 'FailedOperation.ModifyClsTopic'
 
 # Network extension error.
 FAILEDOPERATION_NETWORKSCALEERROR = 'FailedOperation.NetworkScaleError'
@@ -128,11 +194,17 @@ FAILEDOPERATION_RBACFORBIDDEN = 'FailedOperation.RBACForbidden'
 # Record not found.
 FAILEDOPERATION_RECORDNOTFOUND = 'FailedOperation.RecordNotFound'
 
+# Tag error
+FAILEDOPERATION_TAGCOMMON = 'FailedOperation.TagCommon'
+
 # A same task is in progress.
 FAILEDOPERATION_TASKALREADYRUNNING = 'FailedOperation.TaskAlreadyRunning'
 
 # This operation is not supported when the task is in the current status.
 FAILEDOPERATION_TASKLIFESTATEERROR = 'FailedOperation.TaskLifeStateError'
+
+# No task found.
+FAILEDOPERATION_TASKNOTFOUND = 'FailedOperation.TaskNotFound'
 
 # Query failed.
 FAILEDOPERATION_TRADECOMMON = 'FailedOperation.TradeCommon'
@@ -320,7 +392,7 @@ INTERNALERROR_TASKLIFESTATEERROR = 'InternalError.TaskLifeStateError'
 # No task found
 INTERNALERROR_TASKNOTFOUND = 'InternalError.TaskNotFound'
 
-# Query failed
+# Billing error.
 INTERNALERROR_TRADECOMMON = 'InternalError.TradeCommon'
 
 # Insufficient account balance.
@@ -406,6 +478,9 @@ INVALIDPARAMETER_SUBNETINVALIDERROR = 'InvalidParameter.SubnetInvalidError'
 
 # The subnet does not exist.
 INVALIDPARAMETER_SUBNETNOTEXIST = 'InvalidParameter.SubnetNotExist'
+
+# In customer creation parameters, k8s version, runtime version, or tke-eni-agent version do not support the chosen operating system's CgroupV2.
+INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = 'InvalidParameter.VersionNotSupportCgroupV2'
 
 # Quota limit is exceeded.
 LIMITEXCEEDED = 'LimitExceeded'

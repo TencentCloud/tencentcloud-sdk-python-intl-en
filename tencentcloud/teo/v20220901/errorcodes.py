@@ -20,10 +20,10 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# Failed to publish: The certificate has expired. 
+# The edge HTTPS certificate has expired. Issuing expired certificates is currently not supported.
 FAILEDOPERATION_CERTIFICATEHASEXPIRED = 'FailedOperation.CertificateHasExpired'
 
-# The certificate does not exist.
+# The edge HTTPS certificate does not exist.
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 
 # Syntax error in the condition expression of the configuration file.
@@ -62,6 +62,9 @@ FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopic
 # Authentication failed while creating a custom push task. Check whether the push address is correct.
 FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
 
+# 
+FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.EdgeClientCertificateHasExpired'
+
 # Another task is being deployed. Please try again later.
 FAILEDOPERATION_FUNCTIONDEPLOYING = 'FailedOperation.FunctionDeploying'
 
@@ -88,6 +91,9 @@ FAILEDOPERATION_RULEOPERATIONCONFLICT = 'FailedOperation.RuleOperationConflict'
 
 # Unknown configuration group type.
 FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
+
+# 
+FAILEDOPERATION_UPSTREAMCLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.UpstreamClientCertificateHasExpired'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -137,6 +143,9 @@ INVALIDPARAMETER_ACCESSREDIRECTREGEXERROR = 'InvalidParameter.AccessRedirectRege
 # Too many attempts. Please try again later.
 INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 
+# Alias domain names do not support configuring a keyless certificate.
+INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTKEYLESS = 'InvalidParameter.AliasDomainNotSupportKeyless'
+
 # Chinese SM certificates are not supported for alias domain names.
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = 'InvalidParameter.AliasDomainNotSupportSMCert'
 
@@ -152,17 +161,20 @@ INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.
 # The query string has too many values.
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = 'InvalidParameter.CacheKeyQueryStringTooManyValue'
 
-# Mismatch between the HTTPS certificate and the domain name.
+# Invalid edge HTTPS certificate configuration. The certificate does not match the domain name.
 INVALIDPARAMETER_CERTNOTMATCHDOMAIN = 'InvalidParameter.CertNotMatchDomain'
 
 # Internal error.
 INVALIDPARAMETER_CERTSYSTEMERROR = 'InvalidParameter.CertSystemError'
 
-# The HTTPS certificate is about to expire.
+# The edge HTTPS certificate is about to expire.
 INVALIDPARAMETER_CERTTOEXPIRE = 'InvalidParameter.CertToExpire'
 
-# Certificate error.
+# Invalid edge HTTPS certificate configuration. The key length does not meet the minimum requirement RSA>=2048, DSA>=2048, DH>=2048, and EC>=225.
 INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = 'InvalidParameter.CertTooShortKeySize'
+
+# The domain name to be changed is not bound to a certificate or keyless server. Please bind it first and then proceed.
+INVALIDPARAMETER_CERTIFICATECONFLICTWITHKEYLESSSERVER = 'InvalidParameter.CertificateConflictWithKeylessServer'
 
 # IPv6 access conflicts with client IP geographical location.
 INVALIDPARAMETER_CLIENTIPCOUNTRYCONFLICTSWITHIPV6 = 'InvalidParameter.ClientIpCountryConflictsWithIpv6'
@@ -187,6 +199,9 @@ INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficSc
 
 # Duplicate rules.
 INVALIDPARAMETER_DUPLICATERULE = 'InvalidParameter.DuplicateRule'
+
+# 
+INVALIDPARAMETER_EDGECLIENTCERTCHECKERROR = 'InvalidParameter.EdgeClientCertCheckError'
 
 # The current conditions do not support the requested operation.
 INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = 'InvalidParameter.ErrActionUnsupportTarget'
@@ -356,7 +371,7 @@ INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOn
 # Invalid node cache validity.
 INVALIDPARAMETER_INVALIDCACHETIME = 'InvalidParameter.InvalidCacheTime'
 
-# Incorrect certificate information.
+# Invalid edge HTTPS certificate information.
 INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 
 # Invalid client IP location configuration. HeaderName consists of 1-100 alphanumeric characters and cannot start or end with hyphens (-).
@@ -395,7 +410,7 @@ INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedire
 # Invalid parameter "https".
 INVALIDPARAMETER_INVALIDHTTPS = 'InvalidParameter.InvalidHttps'
 
-# Invalid HTTPS certificate.
+# Invalid edge HTTPS certificate configuration. The certificate content is invalid.
 INVALIDPARAMETER_INVALIDHTTPSCERTINFO = 'InvalidParameter.InvalidHttpsCertInfo'
 
 # The cipher suite does not match the TLS version.
@@ -557,6 +572,24 @@ INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
 # The Cloud Load Balancer instance ID is required in the operation of modifying the origin server.
 INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = 'InvalidParameter.LoadBalanceInstanceIdIsRequired'
 
+# The Layer-4 proxy service referencing a LoadBalancer is being deployed. Please edit later.
+INVALIDPARAMETER_LOADBALANCERBINDL4NOTINSTABLESTATUS = 'InvalidParameter.LoadBalancerBindL4NotInStableStatus'
+
+# The Layer-7 domain name service referencing a LoadBalancer is being deployed. Please edit later.
+INVALIDPARAMETER_LOADBALANCERBINDL7NOTINSTABLESTATUS = 'InvalidParameter.LoadBalancerBindL7NotInStableStatus'
+
+# The LoadBalancer names under the same site should be unique.
+INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = 'InvalidParameter.LoadBalancerNameRepeated'
+
+# The LoadBalancer is used in a Layer-4 proxy.
+INVALIDPARAMETER_LOADBALANCERUSEDINL4PROXY = 'InvalidParameter.LoadBalancerUsedInL4Proxy'
+
+# The LoadBalancer is used in a Layer-7 domain name.
+INVALIDPARAMETER_LOADBALANCERUSEDINL7DOMAIN = 'InvalidParameter.LoadBalancerUsedInL7Domain'
+
+# The LoadBalancer is used in a rule engine.
+INVALIDPARAMETER_LOADBALANCERUSEDINRULEENGINE = 'InvalidParameter.LoadBalancerUsedInRuleEngine'
+
 # Modification parameters are missing.
 INVALIDPARAMETER_MODIFYPARAMETERSMISSING = 'InvalidParameter.ModifyParametersMissing'
 
@@ -568,6 +601,9 @@ INVALIDPARAMETER_NOTSUPPORTTHISPRESET = 'InvalidParameter.NotSupportThisPreset'
 
 # The domain name is configured to forward requests to the origin directly. iSmart Acceleration must be enabled.
 INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = 'InvalidParameter.OCDirectOriginRequiresSmartRouting'
+
+# The type of the origin server group does not match the LoadBalancer type.
+INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = 'InvalidParameter.OriginGroupTypeCanNotMatchLBType'
 
 # The origin address cannot be a private IP address.
 INVALIDPARAMETER_ORIGINISINNERIP = 'InvalidParameter.OriginIsInnerIp'
@@ -656,6 +692,9 @@ INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 # Configuration parameter error.
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
+# Some bound origin server groups do not exist.
+INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = 'InvalidParameter.SomeOriginGroupNotExist'
+
 # Shield Space is not bound with an origin. 
 INVALIDPARAMETER_SPACENOTBINDORIGIN = 'InvalidParameter.SpaceNotBindOrigin'
 
@@ -683,6 +722,9 @@ INVALIDPARAMETER_TOOMANYFILTERS = 'InvalidParameter.TooManyFilters'
 # Invalid file upload link.
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
+# 
+INVALIDPARAMETER_UPSTREAMCLIENTCERTCHECKERROR = 'InvalidParameter.UpstreamClientCertCheckError'
+
 # The site is already bound.
 INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
 
@@ -705,10 +747,25 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 INVALIDPARAMETERVALUE_ACCESSBLACKLIST = 'InvalidParameterValue.AccessBlacklist'
 
 # 
+INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTEDGEMTLS = 'InvalidParameterValue.AliasDomainNotSupportEdgeMTLS'
+
+# 
+INVALIDPARAMETERVALUE_ALIASDOMAINNOTSUPPORTUPSTREAMMTLS = 'InvalidParameterValue.AliasDomainNotSupportUpstreamMTLS'
+
+# 
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = 'InvalidParameterValue.CertificateVerifyClientMustCa'
 
 # 
 INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyClientNeedCert'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTRSAORECC = 'InvalidParameterValue.CertificateVerifyUpstreamClientMustRSAorECC'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTMUSTSVR = 'InvalidParameterValue.CertificateVerifyUpstreamClientMustSVR'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYUPSTREAMCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyUpstreamClientNeedCert'
 
 # 
 INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.ClientCertInfoQuotaLimit'
@@ -718,6 +775,9 @@ INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
 
 # DNS records conflict with DNSSEC.
 INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = 'InvalidParameterValue.ConflictWithDNSSEC'
+
+# 
+INVALIDPARAMETERVALUE_CONFLICTWITHDOMAIN = 'InvalidParameterValue.ConflictWithDomain'
 
 # This DNS record conflicts with NS records.
 INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = 'InvalidParameterValue.ConflictWithNSRecord'
@@ -758,6 +818,9 @@ INVALIDPARAMETERVALUE_INVALIDDOMAINNAME = 'InvalidParameterValue.InvalidDomainNa
 # Invalid domain name. Please check the status.
 INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = 'InvalidParameterValue.InvalidDomainStatus'
 
+# Invalid keyless server ID.
+INVALIDPARAMETERVALUE_INVALIDKEYLESSSERVERID = 'InvalidParameterValue.InvalidKeylessServerId'
+
 # Incorrect DNS proxy
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
@@ -785,10 +848,10 @@ INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlre
 # Does not match the specified regular expression.
 INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
-# 
+# Edge mTLS is enabled. When the client uses an RSA or ECC algorithm certificate, the same algorithm certificate should also be configured in the edge HTTPS certificate.
 INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINRSAORECC = 'InvalidParameterValue.ServerCertInfoNeedContainRSAorECC'
 
-# 
+# Edge mTLS is enabled. When the client uses a national encryption CA certificate, the national encryption certificate should also be configured in the edge HTTPS certificate.
 INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = 'InvalidParameterValue.ServerCertInfoNeedContainSM2'
 
 # Enter a valid shared CNAME prefix of up to 50 characters.
@@ -799,6 +862,9 @@ INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevel
 
 # Configuration item error.
 INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'
+
+# 
+INVALIDPARAMETERVALUE_UPSTREAMCLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.UpstreamClientCertInfoQuotaLimit'
 
 # The zone name format is incorrect. Please input a correctly formed domain name.
 INVALIDPARAMETERVALUE_ZONENAMEINVALID = 'InvalidParameterValue.ZoneNameInvalid'
@@ -826,6 +892,9 @@ LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 
 # The number of functions has reached the limit.
 LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = 'LimitExceeded.FunctionLimitExceeded'
+
+# The number of LoadBalancers exceeds the limit.
+LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = 'LimitExceeded.LoadBalancingCountLimitExceeded'
 
 # Not supported by the plan.
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
@@ -868,6 +937,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.Accel
 
 # An L7 DNS service referencing the origin group is being deployed. Please edit later.
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
+
+# Currently, only the keyless certificate mode allows the private key of the certificate to be empty.
+OPERATIONDENIED_CERTIFICATEPRIVATEKEYISEMPTY = 'OperationDenied.CertificatePrivateKeyIsEmpty'
 
 # The current compliance status is banning.
 OPERATIONDENIED_COMPLIANCEFORBIDDEN = 'OperationDenied.ComplianceForbidden'
@@ -914,6 +986,15 @@ OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 # The EdgeOne service of the site is disabled. Please enable it and try again.
 OPERATIONDENIED_ERRZONEISALREADYPAUSED = 'OperationDenied.ErrZoneIsAlreadyPaused'
 
+# 
+OPERATIONDENIED_HOSTSCLIENTCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsClientCertificateInconsistency'
+
+# The keyless server of the domain name to be changed is inconsistent. Please confirm that the keyless server is consistent before retrying.
+OPERATIONDENIED_HOSTSKEYLESSSERVERINCONSISTENCY = 'OperationDenied.HostsKeylessServerInconsistency'
+
+# 
+OPERATIONDENIED_HOSTSUPSTREAMCERTIFICATEINCONSISTENCY = 'OperationDenied.HostsUpstreamCertificateInconsistency'
+
 # The security service must be enabled when you enable the DDoS Protection.
 OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdvancedDefenseSecurityType'
 
@@ -925,6 +1006,12 @@ OPERATIONDENIED_IPV6ADVANCEDCONFLICT = 'OperationDenied.Ipv6AdvancedConflict'
 
 # The IPv6 feature and static IP cannot be enabled at the same time.
 OPERATIONDENIED_IPV6STATICIPCONFLICT = 'OperationDenied.Ipv6StaticIpConflict'
+
+# The domain name to be changed has a different certificate or keyless server. Please confirm that the edge HTTPS certificate or keyless server is consistent before retrying.
+OPERATIONDENIED_KEYLESSCERTSWITCHTOFREECERTCONFLICT = 'OperationDenied.KeylessCertSwitchToFreeCertConflict'
+
+# The keyless certificate mode requires the private key of the certificate to be empty.
+OPERATIONDENIED_KEYLESSMODECERTIFICATEPRIVATEKEYNEEDEMPTY = 'OperationDenied.KeylessModeCertificatePrivateKeyNeedEmpty'
 
 # The layer-4 instance resource sales are skyrocketing and now the resources are sold out. Replenishing is in progress. Currently, new layer-4 proxies cannot be added. Please wait.
 OPERATIONDENIED_L4LACKOFRESOURCES = 'OperationDenied.L4LackOfResources'
@@ -973,6 +1060,12 @@ OPERATIONDENIED_NODOMAINACCESSZONEONLYALLOWMODIFIEDTOCNAME = 'OperationDenied.No
 
 # You can only switch a site connected without a domain name to connecting via the CNAME. Other operations are not allowed.
 OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = 'OperationDenied.NoDomainAccessZoneOnlySupportModifyType'
+
+# Currently, the keyless certificate feature is available only to users in the allowlist.
+OPERATIONDENIED_NOTINKEYLESSWHITELIST = 'OperationDenied.NotInKeylessWhiteList'
+
+# 
+OPERATIONDENIED_NOTINUPSTREAMMTLSWHITELIST = 'OperationDenied.NotInUpstreamMTLSWhiteList'
 
 # The current user is not included in the whitelist for version management.
 OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = 'OperationDenied.NotInVersionControlWhiteList'
@@ -1030,6 +1123,12 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsuppo
 
 # The static IP cannot be enabled for this instance's region.
 OPERATIONDENIED_STATICIPAREACONFLICT = 'OperationDenied.StaticIpAreaConflict'
+
+# 
+OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = 'OperationDenied.UnSupportToCloseUpstreamMTLS'
+
+# 
+OPERATIONDENIED_USEUPSTREAMMTLSNEEDOPENHTTPS = 'OperationDenied.UseUpstreamMTLSNeedOpenHttps'
 
 # There is a test version in use. Please release the test version to the live environment, or roll back the test version and try again.
 OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGraying'

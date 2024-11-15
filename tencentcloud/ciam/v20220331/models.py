@@ -1180,13 +1180,13 @@ class Filter(AbstractModel):
 
 
 class ImportUser(AbstractModel):
-    """Imported user information
-    1. One of the eight attributes of `UserName`, `PhoneNumber`, `Email`, `WechatOpenId`, `WechatUnionId`, `AlipayUserId`, `QqOpenId`, and `QqUnionId` must be included during import and comply with the regular expression rules for initializing custom attributes. The regular expressions for `UserName`, `PhoneNumber`, and `Email` can be queried in the custom attributes in the console.
-    2. For password import, the imported password supports plaintext import, MD5 ciphertext import, SHA1 ciphertext import, and BCRYPT ciphertext import. This needs to be specified in the `PasswordEncryptTypeEnum` field.
-    3. `IdentityVerified` and `IdentityVerificationMethod` can be imported.
-    If `IdentityVerified` is `true`, `IdentityVerificationMethod` is required.
-    If `IdentityVerificationMethod` is `nameAndIdCard`, `Name` and `ResidentIdentityCard` are required.
-    If `IdentityVerificationMethod` is `nameIdCardAndPhone`, `Name`, `PhoneNumber`, and `ResidentIdentityCard` are required.
+    """Import user information.
+    1. At least one of the following nine attributes should be included during the import: UserName, PhoneNumber, Email, WeChatOpenId, WeChatUnionId, AlipayUserId, QQOpenId, QQUnionId, and WeComUserId. Each of these attributes should adhere to the regular expression rules for initial custom attributes. The regular expressions for UserName, PhoneNumber, and Email can be queried in Custom Attributes on the console.
+    2. For the import of passwords, plaintext import, MD5 ciphertext import, SHA1 ciphertext import, and BCRYPT ciphertext import are supported. The import method should be specified in the PasswordEncryptTypeEnum field.
+    3. IdentityVerified and IdentityVerificationMethod can be imported.
+    When IdentityVerified is true, IdentityVerificationMethod should be entered.
+    When IdentityVerificationMethod is nameAndIdCard, Name and ResidentIdentityCard should be entered.
+    When IdentityVerificationMethod is nameIdCardAndPhone, Name, PhoneNumber, and ResidentIdentityCard should be entered.
 
     """
 
@@ -1216,6 +1216,8 @@ class ImportUser(AbstractModel):
         :type WechatUnionId: str
         :param _AlipayUserId: `alipayUserId` on Alipay
         :type AlipayUserId: str
+        :param _WeComUserId: WeCom user ID.
+        :type WeComUserId: str
         :param _Description: Description
         :type Description: str
         :param _Birthdate: Date of birth
@@ -1267,6 +1269,7 @@ class ImportUser(AbstractModel):
         self._WechatOpenId = None
         self._WechatUnionId = None
         self._AlipayUserId = None
+        self._WeComUserId = None
         self._Description = None
         self._Birthdate = None
         self._Name = None
@@ -1418,6 +1421,17 @@ class ImportUser(AbstractModel):
     @AlipayUserId.setter
     def AlipayUserId(self, AlipayUserId):
         self._AlipayUserId = AlipayUserId
+
+    @property
+    def WeComUserId(self):
+        """WeCom user ID.
+        :rtype: str
+        """
+        return self._WeComUserId
+
+    @WeComUserId.setter
+    def WeComUserId(self, WeComUserId):
+        self._WeComUserId = WeComUserId
 
     @property
     def Description(self):
@@ -1642,6 +1656,7 @@ class ImportUser(AbstractModel):
         self._WechatOpenId = params.get("WechatOpenId")
         self._WechatUnionId = params.get("WechatUnionId")
         self._AlipayUserId = params.get("AlipayUserId")
+        self._WeComUserId = params.get("WeComUserId")
         self._Description = params.get("Description")
         self._Birthdate = params.get("Birthdate")
         self._Name = params.get("Name")
@@ -3924,6 +3939,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AlipayUserId: `AlipayUserId` on Alipay
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AlipayUserId: str
+        :param _WeComUserId: WeCom user ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WeComUserId: str
         :param _Description: Description
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
@@ -4008,6 +4026,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._WechatOpenId = None
         self._WechatUnionId = None
         self._AlipayUserId = None
+        self._WeComUserId = None
         self._Description = None
         self._Name = None
         self._Locale = None
@@ -4265,6 +4284,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @AlipayUserId.setter
     def AlipayUserId(self, AlipayUserId):
         self._AlipayUserId = AlipayUserId
+
+    @property
+    def WeComUserId(self):
+        """WeCom user ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WeComUserId
+
+    @WeComUserId.setter
+    def WeComUserId(self, WeComUserId):
+        self._WeComUserId = WeComUserId
 
     @property
     def Description(self):
@@ -4545,6 +4576,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._WechatOpenId = params.get("WechatOpenId")
         self._WechatUnionId = params.get("WechatUnionId")
         self._AlipayUserId = params.get("AlipayUserId")
+        self._WeComUserId = params.get("WeComUserId")
         self._Description = params.get("Description")
         self._Name = params.get("Name")
         self._Locale = params.get("Locale")

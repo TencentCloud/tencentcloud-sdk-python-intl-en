@@ -187,6 +187,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSLogConfig(self, request):
+        """This API is used to create log collection configuration.
+
+        :param request: Request instance for CreateCLSLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateCLSLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateCLSLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSLogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSLogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCluster(self, request):
         """This API is used to create a cluster.
 
@@ -326,7 +349,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterVirtualNode(self, request):
-        """This API is used to create a virtual node.
+        """This API is used to create the Pay-as-you-go Super Node.
 
         :param request: Request instance for CreateClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterVirtualNodeRequest`
@@ -349,7 +372,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterVirtualNodePool(self, request):
-        """This API is used to create a virtual node pool.
+        """This API is used to create the Super Node Pool.
 
         :param request: Request instance for CreateClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterVirtualNodePoolRequest`
@@ -431,6 +454,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateEdgeLogConfig", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEdgeLogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateEksLogConfig(self, request):
+        """This API is used to create Log Collection Configuration for Elastic Cluster.
+
+        :param request: Request instance for CreateEksLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEksLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEksLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEksLogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEksLogConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -717,7 +763,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterVirtualNode(self, request):
-        """This API is used to delete a virtual node.
+        """This API is used to delete the super node.
 
         :param request: Request instance for DeleteClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterVirtualNodeRequest`
@@ -740,7 +786,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteClusterVirtualNodePool(self, request):
-        """This API is used to delete a virtual node pool.
+        """This API is used to delete the Super Node Pool.
 
         :param request: Request instance for DeleteClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteClusterVirtualNodePoolRequest`
@@ -822,6 +868,29 @@ class TkeClient(AbstractClient):
             body = self.call("DeleteEdgeClusterInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEdgeClusterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLogConfigs(self, request):
+        """This API is used to delete collection rules within the cluster.
+
+        :param request: Request instance for DeleteLogConfigs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLogConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -992,6 +1061,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBatchModifyTagsStatus(self, request):
+        """This API is used to query batch modification Tag status.
+
+        :param request: Request instance for DescribeBatchModifyTagsStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeBatchModifyTagsStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeBatchModifyTagsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchModifyTagsStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchModifyTagsStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterAsGroupOption(self, request):
         """Cluster auto scaling configuration
 
@@ -1144,6 +1236,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeClusterEndpoints", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterEndpointsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterExtraArgs(self, request):
+        """This API is used to query custom parameters of a cluster.
+
+        :param request: Request instance for DescribeClusterExtraArgs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterExtraArgsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterExtraArgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterExtraArgs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterExtraArgsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1384,7 +1499,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNode(self, request):
-        """This API is used to query the list of virtual nodes.
+        """This API is used to view the Super Node list.
 
         :param request: Request instance for DescribeClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodeRequest`
@@ -1407,7 +1522,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeClusterVirtualNodePools(self, request):
-        """This API is used to query the list of virtual node pools.
+        """This API is used to view the Super Node Pool list.
 
         :param request: Request instance for DescribeClusterVirtualNodePools.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterVirtualNodePoolsRequest`
@@ -1682,6 +1797,52 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExternalNodeSupportConfig(self, request):
+        """This API is used to view third-party node pool configuration information.
+
+        :param request: Request instance for DescribeExternalNodeSupportConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalNodeSupportConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalNodeSupportConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIPAMD(self, request):
+        """This API is used to obtain eniipamd component information.
+
+        :param request: Request instance for DescribeIPAMD.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeIPAMDRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeIPAMDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPAMD", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPAMDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeImages(self, request):
         """This API is used to get image information.
 
@@ -1696,6 +1857,75 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogConfigs(self, request):
+        """This API is used to query the log collection rules.
+
+        :param request: Request instance for DescribeLogConfigs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogSwitches(self, request):
+        """This API is used to query Cluster Log (Auditing, Event, Common Log) Switch List.
+
+        :param request: Request instance for DescribeLogSwitches.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogSwitchesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeLogSwitchesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogSwitches", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogSwitchesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePodChargeInfo(self, request):
+        """This API is used to query the billing information of running Pods. You can query a specific Pod by Namespace and Name or batch query by Pod Uid.
+
+        :param request: Request instance for DescribePodChargeInfo.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodChargeInfoRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePodChargeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePodChargeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePodChargeInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1751,6 +1981,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReservedInstanceUtilizationRate(self, request):
+        """This API is used to query the usage rate of various types of Reserved Coupons.
+
+        :param request: Request instance for DescribeReservedInstanceUtilizationRate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstanceUtilizationRateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstanceUtilizationRateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReservedInstanceUtilizationRate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReservedInstanceUtilizationRateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceUsage(self, request):
         """This API is used to query the cluster resource usage.
 
@@ -1788,6 +2041,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeRouteTableConflicts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRouteTableConflictsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSupportedRuntime(self, request):
+        """This API is used to retrieve optional runtime versions based on K8S version.
+
+        :param request: Request instance for DescribeSupportedRuntime.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeSupportedRuntimeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeSupportedRuntimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSupportedRuntime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSupportedRuntimeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2005,7 +2281,7 @@ class TkeClient(AbstractClient):
 
 
     def DrainClusterVirtualNode(self, request):
-        """This API is used to drain a virtual node.
+        """This API is used to evict the Super Node.
 
         :param request: Request instance for DrainClusterVirtualNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DrainClusterVirtualNodeRequest`
@@ -2051,7 +2327,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableEncryptionProtection(self, request):
-        """This API is used to enable encryption protection.
+        """This API is used to enable Encrypted Data Protection, which requires enabling KMS capability and completing KMS authorization.
 
         :param request: Request instance for EnableEncryptionProtection.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionRequest`
@@ -2143,7 +2419,7 @@ class TkeClient(AbstractClient):
 
 
     def GetUpgradeInstanceProgress(self, request):
-        """This API is used to obtain the current progress of the node upgrade.
+        """This API is used to obtain the current progress of node upgrade. If the cluster is not in node upgrade status, the API will report an error: Task not found.
 
         :param request: Request instance for GetUpgradeInstanceProgress.
         :type request: :class:`tencentcloud.tke.v20180525.models.GetUpgradeInstanceProgressRequest`
@@ -2326,6 +2602,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterImage(self, request):
+        """This API is used to modify the cluster image.
+
+        :param request: Request instance for ModifyClusterImage.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterNodePool(self, request):
         """This API is used to edit a node pool.
 
@@ -2349,8 +2648,54 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterRuntimeConfig(self, request):
+        """This API is used to modify the latitude runtime configuration of clusters and node pools.
+
+        :param request: Request instance for ModifyClusterRuntimeConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterRuntimeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterRuntimeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterRuntimeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterTags(self, request):
+        """This API is used to modify cluster tags.
+
+        :param request: Request instance for ModifyClusterTags.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterTagsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterVirtualNodePool(self, request):
-        """This API is used to modify a virtual node pool.
+        """This API is used to modify the Super Node Pool.
 
         :param request: Request instance for ModifyClusterVirtualNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterVirtualNodePoolRequest`

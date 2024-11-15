@@ -373,6 +373,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLoadBalancer(self, request):
+        """This API is used to create a LoadBalancer. For details, see [Quickly Create Load Balancers](https://intl.cloud.tencent.com/document/product/1552/104223?from_cn_redirect=1). The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+
+        :param request: Request instance for CreateLoadBalancer.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOriginGroup(self, request):
         """This API is used to create an origin group for easy management. The created origin server group can be used for **adding acceleration domain names** and **layer-4 proxy configuration**.
 
@@ -807,6 +830,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteL4ProxyRules", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLoadBalancer(self, request):
+        """This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+
+        :param request: Request instance for DeleteLoadBalancer.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLoadBalancerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1506,6 +1552,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLoadBalancerList(self, request):
+        """This API is used to query the LoadBalancer list. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+
+        :param request: Request instance for DescribeLoadBalancerList.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLoadBalancerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLoadBalancerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOriginGroup(self, request):
         """This API is used to obtain a list of origin groups.
 
@@ -1520,6 +1589,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOriginGroupHealthStatus(self, request):
+        """This API is used to query the health status of origin server groups under a LoadBalancer. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+
+        :param request: Request instance for DescribeOriginGroupHealthStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeOriginGroupHealthStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginGroupHealthStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginGroupHealthStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1786,7 +1878,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        """This API is used to query the L7 data recorded over time.
+        """This API is used to query the time series data of the L7 domain name. Note that there is a delay of about 10 minutes for this API. It is recommended to pull data from 10 minutes before the current time.
 
         :param request: Request instance for DescribeTimingL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7AnalysisDataRequest`
@@ -1809,7 +1901,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7CacheData(self, request):
-        """This API is used to query the time-series L7 cached data.
+        """This API is used to query the time series traffic data of the L7 cache analysis. It will be deprecated. Use the <a href="https://intl.cloud.tencent.com/document/product/1552/80648?from_cn_redirect=1">DescribeTimingL7AnalysisData</a> API instead.
 
         :param request: Request instance for DescribeTimingL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7CacheDataRequest`
@@ -1832,7 +1924,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7AnalysisData(self, request):
-        """This API is used to query the top-ranked L7 traffic data.
+        """This API is used to query the top N data of the L7 domain name by a specified dimension. Note that there is a delay of about 10 minutes for this API. It is recommended to pull data from 10 minutes before the current time.
 
         :param request: Request instance for DescribeTopL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7AnalysisDataRequest`
@@ -1855,7 +1947,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7CacheData(self, request):
-        """This API is used to query the cached L7 top-ranked data.
+        """This API is used to query the top N data of the L7 cache analysis. It will be deprecated. Use the <a href="https://intl.cloud.tencent.com/document/product/1552/80646?from_cn_redirect=1"> DescribeTopL7AnalysisData</a> API instead.
 
         :param request: Request instance for DescribeTopL7CacheData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7CacheDataRequest`
@@ -2465,6 +2557,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLoadBalancer(self, request):
+        """This API is used to modify LoadBalancer configuration. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+
+        :param request: Request instance for ModifyLoadBalancer.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyOriginGroup(self, request):
         """This API is used to modify the configuration of an origin group. The original configuration will be overwritten.
 
@@ -2512,7 +2627,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRealtimeLogDeliveryTask(self, request):
-        """This API is used to modify the real-time log delivery task configuration. This API has the following restrictions:<li>Does not support modifying the destination type of the real-time log delivery task (TaskType);</li><li>Does not support modifying the data delivery type (LogType)</li><li>Does not support modifying the data delivery area (Area)</li><li>Does not support modifying the detailed destination configuration, such as log set and log topic, when the destination of the original real-time log delivery task is Tencent Cloud CLS.</li>
+        """This API is used to modify the real-time log delivery task configuration. This API has the following restrictions:<li>Does not support modifying the destination type of the real-time log delivery task (TaskType);</li><li>Does not support modifying the data delivery type (LogType);</li><li>Does not support modifying the data delivery area (Area);</li><li>Does not support modifying the detailed destination configuration, such as log set and log topic, when the destination of the original real-time log delivery task is Tencent Cloud CLS.</li>
 
         :param request: Request instance for ModifyRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskRequest`
