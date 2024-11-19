@@ -294,6 +294,11 @@ def test_import_gse():
     from tencentcloud.gse.v20191112 import models
 
 
+def test_import_gwlb():
+    from tencentcloud.gwlb.v20240906 import gwlb_client
+    from tencentcloud.gwlb.v20240906 import models
+
+
 def test_import_iai():
     from tencentcloud.iai.v20200303 import iai_client
     from tencentcloud.iai.v20200303 import models

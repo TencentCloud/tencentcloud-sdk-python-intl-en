@@ -1232,26 +1232,32 @@ class CreateAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountType: Account type of a new customer. Valid values: `personal`, `company`.
+        :param _AccountType: Account type of a new customer.
+Valid values: `personal`, `company`.
         :type AccountType: str
         :param _Mail: Registered email address, which should be valid and correct.
 For example, account@qq.com.
         :type Mail: str
-        :param _Password: Account password
+        :param _Password: Account password.
 Length limit: 8-20 characters
 A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.
         :type Password: str
         :param _ConfirmPassword: The confirmed password, which must be the same as that entered in the `Password` field.
         :type ConfirmPassword: str
-        :param _PhoneNum: Customer's mobile number. The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. Starting from October 25, 2024, the system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.
+        :param _PhoneNum: Customer's mobile number. 
+The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. 
+The system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.
         :type PhoneNum: str
         :param _CountryCode: Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
+Parameter value is not allowed to be 7,380,86.
         :type CountryCode: str
         :param _Area: Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
         :type Area: str
         :param _Extended: Extension field, which is left empty by default.
         :type Extended: str
-        :param _VerifyCode: Verification code. Starting from October 25, 2024, a new parameter will be used to verify the validity of the mobile number you provide. When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.
+        :param _VerifyCode: Verification code. 
+It will be used to verify the validity of the mobile number you provide. 
+When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.
         :type VerifyCode: str
         """
         self._AccountType = None
@@ -1266,7 +1272,8 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
 
     @property
     def AccountType(self):
-        """Account type of a new customer. Valid values: `personal`, `company`.
+        """Account type of a new customer.
+Valid values: `personal`, `company`.
         :rtype: str
         """
         return self._AccountType
@@ -1289,7 +1296,7 @@ For example, account@qq.com.
 
     @property
     def Password(self):
-        """Account password
+        """Account password.
 Length limit: 8-20 characters
 A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.
         :rtype: str
@@ -1313,7 +1320,9 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
 
     @property
     def PhoneNum(self):
-        """Customer's mobile number. The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. Starting from October 25, 2024, the system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.
+        """Customer's mobile number. 
+The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. 
+The system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.
         :rtype: str
         """
         return self._PhoneNum
@@ -1325,6 +1334,7 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
     @property
     def CountryCode(self):
         """Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
+Parameter value is not allowed to be 7,380,86.
         :rtype: str
         """
         return self._CountryCode
@@ -1357,7 +1367,9 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
 
     @property
     def VerifyCode(self):
-        """Verification code. Starting from October 25, 2024, a new parameter will be used to verify the validity of the mobile number you provide. When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.
+        """Verification code. 
+It will be used to verify the validity of the mobile number you provide. 
+When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.
         :rtype: str
         """
         return self._VerifyCode
@@ -5414,6 +5426,7 @@ class SendVerifyCodeRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _CountryCode: Country code.
+Parameter value is not allowed to be 7,380,86.
         :type CountryCode: str
         :param _PhoneNum: Mobile number.
         :type PhoneNum: str
@@ -5424,6 +5437,7 @@ class SendVerifyCodeRequest(AbstractModel):
     @property
     def CountryCode(self):
         """Country code.
+Parameter value is not allowed to be 7,380,86.
         :rtype: str
         """
         return self._CountryCode

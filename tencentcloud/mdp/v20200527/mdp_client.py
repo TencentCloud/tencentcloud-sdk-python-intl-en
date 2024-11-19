@@ -118,6 +118,98 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamPackageLinearAssemblyChannel(self, request):
+        """Create a linear assembly channel.
+
+        :param request: Request instance for CreateStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageLinearAssemblyProgram(self, request):
+        """Create a linear assembly program.
+
+        :param request: Request instance for CreateStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageSource(self, request):
+        """Create channel linear assembly Source.
+
+        :param request: Request instance for CreateStreamPackageSource.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageSourceLocation(self, request):
+        """Create Linear Assembly SourceLocation.
+
+        :param request: Request instance for CreateStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteStreamPackageChannelEndpoints(self, request):
         """This API is used to delete endpoints from a StreamPackage channel in batches.
 
@@ -201,6 +293,144 @@ class MdpClient(AbstractClient):
             body = self.call("DeleteStreamPackageHarvestJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteStreamPackageHarvestJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyChannel(self, request):
+        """Delete channel linear assemblyChannel.
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyChannels(self, request):
+        """Delete channels in batches and linearly assemble channels.
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyChannels.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyChannelsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyProgram(self, request):
+        """Delete Channel Linear Assembly Program.
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyPrograms(self, request):
+        """Batch deletion of channels linear assembly program.
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyPrograms.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyProgramsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageLinearAssemblyProgramsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyPrograms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyProgramsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageSource(self, request):
+        """Delete channel linear assembly Source.
+
+        :param request: Request instance for DeleteStreamPackageSource.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageSourceLocation(self, request):
+        """Batch delete media packaging SourceLocation.
+
+        :param request: Request instance for DeleteStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageSourceLocationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -302,6 +532,282 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamPackageLinearAssemblyChannel(self, request):
+        """Query channel linear assembly Channel information.
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyChannelAlerts(self, request):
+        """Query linear assembly channel alarm information.
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyChannelAlerts.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelAlertsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelAlertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyChannelAlerts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyChannelAlertsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyChannels(self, request):
+        """Query channel linear assembly Channel information list.
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyChannels.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyProgram(self, request):
+        """Query channel linear assembly program information.
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyProgramSchedules(self, request):
+        """Query channel linear assembly Programl assembly scheduling information list.
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyProgramSchedules.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramSchedulesRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramSchedulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyProgramSchedules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyProgramSchedulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyPrograms(self, request):
+        """Query channel linear assembly Programl information list.
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyPrograms.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageLinearAssemblyProgramsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyPrograms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyProgramsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSource(self, request):
+        """Query channel linear assembly Source information.
+
+        :param request: Request instance for DescribeStreamPackageSource.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceAlerts(self, request):
+        """Query channel linear assembly Source alarm information.
+
+        :param request: Request instance for DescribeStreamPackageSourceAlerts.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceAlertsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceAlertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceAlerts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceAlertsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceLocation(self, request):
+        """Query channel linear assembly sourceLocation information.
+
+        :param request: Request instance for DescribeStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceLocationAlerts(self, request):
+        """Query channel linear assembly Location alarm information.
+
+        :param request: Request instance for DescribeStreamPackageSourceLocationAlerts.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationAlertsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationAlertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceLocationAlerts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceLocationAlertsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceLocations(self, request):
+        """Query channel linear assembly SourceLocation information list.
+
+        :param request: Request instance for DescribeStreamPackageSourceLocations.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourceLocationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceLocations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceLocationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSources(self, request):
+        """Query channel linear assembly Source information list.
+
+        :param request: Request instance for DescribeStreamPackageSources.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourcesRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyStreamPackageChannel(self, request):
         """This API is used to modify a StreamPackage channel.
 
@@ -362,6 +868,144 @@ class MdpClient(AbstractClient):
             body = self.call("ModifyStreamPackageChannelInputAuthInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyStreamPackageChannelInputAuthInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageLinearAssemblyChannel(self, request):
+        """Modify channel linear assembly Channel configuration.
+
+        :param request: Request instance for ModifyStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageLinearAssemblyProgram(self, request):
+        """Modify channel linear assembly Program configuration.
+
+        :param request: Request instance for ModifyStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageSource(self, request):
+        """Modify channel linear assembly Source configuration.
+
+        :param request: Request instance for ModifyStreamPackageSource.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageSourceLocation(self, request):
+        """Modify channel linear assembly SourceLocation configuration
+
+        :param request: Request instance for ModifyStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartStreamPackageLinearAssemblyChannel(self, request):
+        """Start Linear Assembly Channel.
+
+        :param request: Request instance for StartStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.StartStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.StartStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopStreamPackageLinearAssemblyChannel(self, request):
+        """Stop linear assembly channel.
+
+        :param request: Request instance for StopStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.StopStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.StopStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopStreamPackageLinearAssemblyChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

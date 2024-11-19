@@ -18,6 +18,156 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdBreakInfo(AbstractModel):
+    """AdBreakInfo.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceLocationId: SourceLocationId.
+        :type SourceLocationId: str
+        :param _VodSourceName: VodSourceName.
+        :type VodSourceName: str
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _MessageType: MessageType, divided into SpliceInsert and TimeSignal.
+        :type MessageType: str
+        :param _TimeSignalConf: TimeSignalConf.
+        :type TimeSignalConf: :class:`tencentcloud.mdp.v20200527.models.TimeSignalInfo`
+        :param _SpliceInsertConf: SpliceInsertConf.
+        :type SpliceInsertConf: :class:`tencentcloud.mdp.v20200527.models.SpliceInsertInfo`
+        :param _Metadatas: Metadatas.
+        :type Metadatas: list of Metadata
+        :param _SourceLocationName: SourceLocationName.
+        :type SourceLocationName: str
+        """
+        self._SourceLocationId = None
+        self._VodSourceName = None
+        self._Offset = None
+        self._MessageType = None
+        self._TimeSignalConf = None
+        self._SpliceInsertConf = None
+        self._Metadatas = None
+        self._SourceLocationName = None
+
+    @property
+    def SourceLocationId(self):
+        """SourceLocationId.
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def VodSourceName(self):
+        """VodSourceName.
+        :rtype: str
+        """
+        return self._VodSourceName
+
+    @VodSourceName.setter
+    def VodSourceName(self, VodSourceName):
+        self._VodSourceName = VodSourceName
+
+    @property
+    def Offset(self):
+        """Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def MessageType(self):
+        """MessageType, divided into SpliceInsert and TimeSignal.
+        :rtype: str
+        """
+        return self._MessageType
+
+    @MessageType.setter
+    def MessageType(self, MessageType):
+        self._MessageType = MessageType
+
+    @property
+    def TimeSignalConf(self):
+        """TimeSignalConf.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.TimeSignalInfo`
+        """
+        return self._TimeSignalConf
+
+    @TimeSignalConf.setter
+    def TimeSignalConf(self, TimeSignalConf):
+        self._TimeSignalConf = TimeSignalConf
+
+    @property
+    def SpliceInsertConf(self):
+        """SpliceInsertConf.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SpliceInsertInfo`
+        """
+        return self._SpliceInsertConf
+
+    @SpliceInsertConf.setter
+    def SpliceInsertConf(self, SpliceInsertConf):
+        self._SpliceInsertConf = SpliceInsertConf
+
+    @property
+    def Metadatas(self):
+        """Metadatas.
+        :rtype: list of Metadata
+        """
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def SourceLocationName(self):
+        """SourceLocationName.
+        :rtype: str
+        """
+        return self._SourceLocationName
+
+    @SourceLocationName.setter
+    def SourceLocationName(self, SourceLocationName):
+        self._SourceLocationName = SourceLocationName
+
+
+    def _deserialize(self, params):
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._VodSourceName = params.get("VodSourceName")
+        self._Offset = params.get("Offset")
+        self._MessageType = params.get("MessageType")
+        if params.get("TimeSignalConf") is not None:
+            self._TimeSignalConf = TimeSignalInfo()
+            self._TimeSignalConf._deserialize(params.get("TimeSignalConf"))
+        if params.get("SpliceInsertConf") is not None:
+            self._SpliceInsertConf = SpliceInsertInfo()
+            self._SpliceInsertConf._deserialize(params.get("SpliceInsertConf"))
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._SourceLocationName = params.get("SourceLocationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AliasValueConf(AbstractModel):
     """Alias-value configuration information.
 
@@ -263,6 +413,67 @@ Note: this field may return `null`, indicating that no valid value was found.
         
 
 
+class ChannelAlertResp(AbstractModel):
+    """Linear assembly channel alarm return information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramAlertCounts: Program alarm aggregation information.
+        :type ProgramAlertCounts: list of ProgramAlertCounts
+        :param _ProgramAlertInfos: Program alarm details.
+        :type ProgramAlertInfos: list of ProgramAlertInfos
+        """
+        self._ProgramAlertCounts = None
+        self._ProgramAlertInfos = None
+
+    @property
+    def ProgramAlertCounts(self):
+        """Program alarm aggregation information.
+        :rtype: list of ProgramAlertCounts
+        """
+        return self._ProgramAlertCounts
+
+    @ProgramAlertCounts.setter
+    def ProgramAlertCounts(self, ProgramAlertCounts):
+        self._ProgramAlertCounts = ProgramAlertCounts
+
+    @property
+    def ProgramAlertInfos(self):
+        """Program alarm details.
+        :rtype: list of ProgramAlertInfos
+        """
+        return self._ProgramAlertInfos
+
+    @ProgramAlertInfos.setter
+    def ProgramAlertInfos(self, ProgramAlertInfos):
+        self._ProgramAlertInfos = ProgramAlertInfos
+
+
+    def _deserialize(self, params):
+        if params.get("ProgramAlertCounts") is not None:
+            self._ProgramAlertCounts = []
+            for item in params.get("ProgramAlertCounts"):
+                obj = ProgramAlertCounts()
+                obj._deserialize(item)
+                self._ProgramAlertCounts.append(obj)
+        if params.get("ProgramAlertInfos") is not None:
+            self._ProgramAlertInfos = []
+            for item in params.get("ProgramAlertInfos"):
+                obj = ProgramAlertInfos()
+                obj._deserialize(item)
+                self._ProgramAlertInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelInfo(AbstractModel):
     """Channel information.
 
@@ -355,6 +566,57 @@ Note: this field may return `null`, indicating that no valid value was found.
         if params.get("CacheInfo") is not None:
             self._CacheInfo = CacheInfo()
             self._CacheInfo._deserialize(params.get("CacheInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClipRangeInfo(AbstractModel):
+    """Spacer configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The vod type is valid, the content is valid starting time, Entire and SpecifyTimeRange are optional.
+        :type Type: str
+        :param _Offset: Offset, valid when Type is SpecifyTimeRange.
+        :type Offset: int
+        """
+        self._Type = None
+        self._Offset = None
+
+    @property
+    def Type(self):
+        """The vod type is valid, the content is valid starting time, Entire and SpecifyTimeRange are optional.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        """Offset, valid when Type is SpecifyTimeRange.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -601,11 +863,11 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Channel name
+        :param _Name: Channel name.
         :type Name: str
-        :param _Protocol: Channel protocol. Valid values: HLS, DASH
+        :param _Protocol: Channel protocol. Valid values: HLS, DASH, CMAF.
         :type Protocol: str
-        :param _CacheInfo: Cache configuration
+        :param _CacheInfo: Cache configuration.
         :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         self._Name = None
@@ -614,7 +876,7 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Channel name
+        """Channel name.
         :rtype: str
         """
         return self._Name
@@ -625,7 +887,7 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """Channel protocol. Valid values: HLS, DASH
+        """Channel protocol. Valid values: HLS, DASH, CMAF.
         :rtype: str
         """
         return self._Protocol
@@ -636,7 +898,7 @@ class CreateStreamPackageChannelRequest(AbstractModel):
 
     @property
     def CacheInfo(self):
-        """Cache configuration
+        """Cache configuration.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         return self._CacheInfo
@@ -889,6 +1151,642 @@ class CreateStreamPackageHarvestJobResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Info") is not None:
             self._Info = HarvestJobResp()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    """CreateStreamPackageLinearAssemblyChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Channel name.
+        :type Name: str
+        :param _Tier: Define the characteristics of the channel. Standard supports live broadcast and on-demand sources. Basic only supports on-demand source arrangement. Optional values: Standard and Basic.
+        :type Tier: str
+        :param _PlaybackMode: The source switching modes in the channel are divided into Linear and Loop. Basic only supports Linear, and Standatd supports both.
+Optional values: Linear, Standatd.
+        :type PlaybackMode: str
+        :param _TimeShiftEnable: Time shift enable switch, only valid when Tier is Standard.
+        :type TimeShiftEnable: bool
+        :param _TimeShiftConf: Time shift configuration, effective when the time shift switch is turned on.
+        :type TimeShiftConf: :class:`tencentcloud.mdp.v20200527.models.TimeShiftInfo`
+        :param _SlateConf: Spacer configuration is only valid when PlaybackMode is Linear.
+        :type SlateConf: :class:`tencentcloud.mdp.v20200527.models.SlateInfo`
+        :param _Outputs: Output configuration.
+        :type Outputs: list of OutputReq
+        """
+        self._Name = None
+        self._Tier = None
+        self._PlaybackMode = None
+        self._TimeShiftEnable = None
+        self._TimeShiftConf = None
+        self._SlateConf = None
+        self._Outputs = None
+
+    @property
+    def Name(self):
+        """Channel name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tier(self):
+        """Define the characteristics of the channel. Standard supports live broadcast and on-demand sources. Basic only supports on-demand source arrangement. Optional values: Standard and Basic.
+        :rtype: str
+        """
+        return self._Tier
+
+    @Tier.setter
+    def Tier(self, Tier):
+        self._Tier = Tier
+
+    @property
+    def PlaybackMode(self):
+        """The source switching modes in the channel are divided into Linear and Loop. Basic only supports Linear, and Standatd supports both.
+Optional values: Linear, Standatd.
+        :rtype: str
+        """
+        return self._PlaybackMode
+
+    @PlaybackMode.setter
+    def PlaybackMode(self, PlaybackMode):
+        self._PlaybackMode = PlaybackMode
+
+    @property
+    def TimeShiftEnable(self):
+        """Time shift enable switch, only valid when Tier is Standard.
+        :rtype: bool
+        """
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def TimeShiftConf(self):
+        """Time shift configuration, effective when the time shift switch is turned on.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.TimeShiftInfo`
+        """
+        return self._TimeShiftConf
+
+    @TimeShiftConf.setter
+    def TimeShiftConf(self, TimeShiftConf):
+        self._TimeShiftConf = TimeShiftConf
+
+    @property
+    def SlateConf(self):
+        """Spacer configuration is only valid when PlaybackMode is Linear.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SlateInfo`
+        """
+        return self._SlateConf
+
+    @SlateConf.setter
+    def SlateConf(self, SlateConf):
+        self._SlateConf = SlateConf
+
+    @property
+    def Outputs(self):
+        """Output configuration.
+        :rtype: list of OutputReq
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Tier = params.get("Tier")
+        self._PlaybackMode = params.get("PlaybackMode")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        if params.get("TimeShiftConf") is not None:
+            self._TimeShiftConf = TimeShiftInfo()
+            self._TimeShiftConf._deserialize(params.get("TimeShiftConf"))
+        if params.get("SlateConf") is not None:
+            self._SlateConf = SlateInfo()
+            self._SlateConf._deserialize(params.get("SlateConf"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputReq()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    """CreateStreamPackageLinearAssemblyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: channel information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyChannelInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """channel information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyChannelInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    """CreateStreamPackageLinearAssemblyProgram request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Program name.
+        :type Name: str
+        :param _AttachedChannel: The bound channel.
+        :type AttachedChannel: str
+        :param _SourceType: The type of arrangement target source is divided into live broadcast and on-demand VOD.
+Optional values: Live, VOD.
+        :type SourceType: str
+        :param _SourceLocationId: The associated source location.
+        :type SourceLocationId: str
+        :param _SourceName: The associated live broadcast or on-demand broadcast, source name, and location are globally unique.
+        :type SourceName: str
+        :param _PlaybackConf: PlaybackConf.
+        :type PlaybackConf: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfoReq`
+        :param _AdBreaks: AdBreaks is only valid when the source type is Vod.
+        :type AdBreaks: list of AdBreakInfo
+        """
+        self._Name = None
+        self._AttachedChannel = None
+        self._SourceType = None
+        self._SourceLocationId = None
+        self._SourceName = None
+        self._PlaybackConf = None
+        self._AdBreaks = None
+
+    @property
+    def Name(self):
+        """Program name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AttachedChannel(self):
+        """The bound channel.
+        :rtype: str
+        """
+        return self._AttachedChannel
+
+    @AttachedChannel.setter
+    def AttachedChannel(self, AttachedChannel):
+        self._AttachedChannel = AttachedChannel
+
+    @property
+    def SourceType(self):
+        """The type of arrangement target source is divided into live broadcast and on-demand VOD.
+Optional values: Live, VOD.
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceLocationId(self):
+        """The associated source location.
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def SourceName(self):
+        """The associated live broadcast or on-demand broadcast, source name, and location are globally unique.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def PlaybackConf(self):
+        """PlaybackConf.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfoReq`
+        """
+        return self._PlaybackConf
+
+    @PlaybackConf.setter
+    def PlaybackConf(self, PlaybackConf):
+        self._PlaybackConf = PlaybackConf
+
+    @property
+    def AdBreaks(self):
+        """AdBreaks is only valid when the source type is Vod.
+        :rtype: list of AdBreakInfo
+        """
+        return self._AdBreaks
+
+    @AdBreaks.setter
+    def AdBreaks(self, AdBreaks):
+        self._AdBreaks = AdBreaks
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AttachedChannel = params.get("AttachedChannel")
+        self._SourceType = params.get("SourceType")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._SourceName = params.get("SourceName")
+        if params.get("PlaybackConf") is not None:
+            self._PlaybackConf = PlaybackInfoReq()
+            self._PlaybackConf._deserialize(params.get("PlaybackConf"))
+        if params.get("AdBreaks") is not None:
+            self._AdBreaks = []
+            for item in params.get("AdBreaks"):
+                obj = AdBreakInfo()
+                obj._deserialize(item)
+                self._AdBreaks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    """CreateStreamPackageLinearAssemblyProgram response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: channel information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyProgramInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """channel information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyProgramInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyProgramInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageSourceLocationRequest(AbstractModel):
+    """CreateStreamPackageSourceLocation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: SourceLocation name.
+        :type Name: str
+        :param _BaseUrl: BaseUrl.
+        :type BaseUrl: str
+        :param _SegmentDeliverEnable: Whether to enable patching.
+        :type SegmentDeliverEnable: bool
+        :param _SegmentDeliverConf: Patch configuration.
+        :type SegmentDeliverConf: :class:`tencentcloud.mdp.v20200527.models.SegmentDeliverInfo`
+        :param _SegmentDeliverUsePackageEnable: Whether to enable package distribution sharding, it is enabled by default.
+        :type SegmentDeliverUsePackageEnable: bool
+        """
+        self._Name = None
+        self._BaseUrl = None
+        self._SegmentDeliverEnable = None
+        self._SegmentDeliverConf = None
+        self._SegmentDeliverUsePackageEnable = None
+
+    @property
+    def Name(self):
+        """SourceLocation name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BaseUrl(self):
+        """BaseUrl.
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def SegmentDeliverEnable(self):
+        """Whether to enable patching.
+        :rtype: bool
+        """
+        return self._SegmentDeliverEnable
+
+    @SegmentDeliverEnable.setter
+    def SegmentDeliverEnable(self, SegmentDeliverEnable):
+        self._SegmentDeliverEnable = SegmentDeliverEnable
+
+    @property
+    def SegmentDeliverConf(self):
+        """Patch configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SegmentDeliverInfo`
+        """
+        return self._SegmentDeliverConf
+
+    @SegmentDeliverConf.setter
+    def SegmentDeliverConf(self, SegmentDeliverConf):
+        self._SegmentDeliverConf = SegmentDeliverConf
+
+    @property
+    def SegmentDeliverUsePackageEnable(self):
+        """Whether to enable package distribution sharding, it is enabled by default.
+        :rtype: bool
+        """
+        return self._SegmentDeliverUsePackageEnable
+
+    @SegmentDeliverUsePackageEnable.setter
+    def SegmentDeliverUsePackageEnable(self, SegmentDeliverUsePackageEnable):
+        self._SegmentDeliverUsePackageEnable = SegmentDeliverUsePackageEnable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._BaseUrl = params.get("BaseUrl")
+        self._SegmentDeliverEnable = params.get("SegmentDeliverEnable")
+        if params.get("SegmentDeliverConf") is not None:
+            self._SegmentDeliverConf = SegmentDeliverInfo()
+            self._SegmentDeliverConf._deserialize(params.get("SegmentDeliverConf"))
+        self._SegmentDeliverUsePackageEnable = params.get("SegmentDeliverUsePackageEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageSourceLocationResponse(AbstractModel):
+    """CreateStreamPackageSourceLocation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: SourceLocation information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.SourceLocationInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """SourceLocation information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SourceLocationInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceLocationInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageSourceRequest(AbstractModel):
+    """CreateStreamPackageSource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttachedLocation: The location id to which this source belongs is required and uniquely bound to one location.
+        :type AttachedLocation: str
+        :param _Name: Source name, globally unique under location.
+        :type Name: str
+        :param _Type: Distinguish between live broadcast and on-demand VOD source types. Optional values: Live, VOD.
+        :type Type: str
+        :param _PackageConfs: source specific configuration.
+        :type PackageConfs: list of SourcePackageConf
+        """
+        self._AttachedLocation = None
+        self._Name = None
+        self._Type = None
+        self._PackageConfs = None
+
+    @property
+    def AttachedLocation(self):
+        """The location id to which this source belongs is required and uniquely bound to one location.
+        :rtype: str
+        """
+        return self._AttachedLocation
+
+    @AttachedLocation.setter
+    def AttachedLocation(self, AttachedLocation):
+        self._AttachedLocation = AttachedLocation
+
+    @property
+    def Name(self):
+        """Source name, globally unique under location.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """Distinguish between live broadcast and on-demand VOD source types. Optional values: Live, VOD.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PackageConfs(self):
+        """source specific configuration.
+        :rtype: list of SourcePackageConf
+        """
+        return self._PackageConfs
+
+    @PackageConfs.setter
+    def PackageConfs(self, PackageConfs):
+        self._PackageConfs = PackageConfs
+
+
+    def _deserialize(self, params):
+        self._AttachedLocation = params.get("AttachedLocation")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("PackageConfs") is not None:
+            self._PackageConfs = []
+            for item in params.get("PackageConfs"):
+                obj = SourcePackageConf()
+                obj._deserialize(item)
+                self._PackageConfs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageSourceResponse(AbstractModel):
+    """CreateStreamPackageSource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Source information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.SourceInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """Source information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SourceInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceInfo()
             self._Info._deserialize(params.get("Info"))
         self._RequestId = params.get("RequestId")
 
@@ -1178,6 +2076,390 @@ class DeleteStreamPackageHarvestJobsRequest(AbstractModel):
 
 class DeleteStreamPackageHarvestJobsResponse(AbstractModel):
     """DeleteStreamPackageHarvestJobs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: channel id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """channel id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyChannelsRequest(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyChannels request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: List of channel ids.
+        :type Ids: list of str
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        """List of channel ids.
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyChannelsResponse(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyChannels response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyProgram request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Program id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """Program id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyProgram response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyProgramsRequest(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyPrograms request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: Program id list.
+        :type Ids: list of str
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        """Program id list.
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyProgramsResponse(AbstractModel):
+    """DeleteStreamPackageLinearAssemblyPrograms response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageSourceLocationRequest(AbstractModel):
+    """DeleteStreamPackageSourceLocation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """SourceLocation Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageSourceLocationResponse(AbstractModel):
+    """DeleteStreamPackageSourceLocation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageSourceRequest(AbstractModel):
+    """DeleteStreamPackageSource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """SourceLocation Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageSourceResponse(AbstractModel):
+    """DeleteStreamPackageSource response structure.
 
     """
 
@@ -1683,6 +2965,1511 @@ class DescribeStreamPackageHarvestJobsResponse(AbstractModel):
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
         self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyChannelAlertsRequest(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyChannelAlerts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: Channel ID.
+        :type ChannelId: str
+        :param _StartTime: Query start time, Unix timestamp, supports queries in the last seven days.
+        :type StartTime: int
+        :param _EndTime: Query end time, Unix timestamp, supports queries in the last seven days.
+        :type EndTime: int
+        """
+        self._ChannelId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def ChannelId(self):
+        """Channel ID.
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StartTime(self):
+        """Query start time, Unix timestamp, supports queries in the last seven days.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Query end time, Unix timestamp, supports queries in the last seven days.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyChannelAlertsResponse(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyChannelAlerts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Channel alarm information.
+        :type Infos: :class:`tencentcloud.mdp.v20200527.models.ChannelAlertResp`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Channel alarm information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ChannelAlertResp`
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = ChannelAlertResp()
+            self._Infos._deserialize(params.get("Infos"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: channel id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """channel id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Channel information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyChannelInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """Channel information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyChannelInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyChannelsRequest(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyChannels request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: Paging query page number, the value range is [1, 1000].
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page, the value range is [1, 1000].
+        :type PageSize: int
+        """
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        """Paging query page number, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Paging query the size of each page, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyChannelsResponse(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyChannels response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Channel list.
+        :type Infos: list of LinearAssemblyChannelInfo
+        :param _PageNum: Number of pages.
+        :type PageNum: int
+        :param _PageSize: Size per page.
+        :type PageSize: int
+        :param _TotalNum: The total amount.
+        :type TotalNum: int
+        :param _TotalPage: total pages.
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Channel list.
+        :rtype: list of LinearAssemblyChannelInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Size per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """The total amount.
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """total pages.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LinearAssemblyChannelInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyProgram request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: program id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """program id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyProgram response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Program information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyProgramInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """Program information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.LinearAssemblyProgramInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyProgramInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyProgramSchedulesRequest(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyProgramSchedules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: Query all Programs under a Channel.
+        :type ChannelId: str
+        :param _TimeWindow: Window duration information, in seconds.
+        :type TimeWindow: int
+        :param _PageNum: Paging query page number, the value range is [1, 1000].
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page, the value range is [1, 1000].
+        :type PageSize: int
+        """
+        self._ChannelId = None
+        self._TimeWindow = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def ChannelId(self):
+        """Query all Programs under a Channel.
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def TimeWindow(self):
+        """Window duration information, in seconds.
+        :rtype: int
+        """
+        return self._TimeWindow
+
+    @TimeWindow.setter
+    def TimeWindow(self, TimeWindow):
+        self._TimeWindow = TimeWindow
+
+    @property
+    def PageNum(self):
+        """Paging query page number, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Paging query the size of each page, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._TimeWindow = params.get("TimeWindow")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyProgramSchedulesResponse(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyProgramSchedules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Program's scheduling list.
+        :type Infos: list of LinearAssemblyProgramInfo
+        :param _PageNum: Number of pages.
+        :type PageNum: int
+        :param _PageSize: Size per page.
+        :type PageSize: int
+        :param _TotalNum: The total amount.
+        :type TotalNum: int
+        :param _TotalPage: Total pages.
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Program's scheduling list.
+        :rtype: list of LinearAssemblyProgramInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Size per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """The total amount.
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """Total pages.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LinearAssemblyProgramInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyProgramsRequest(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyPrograms request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: Paging query page number, the value range is [1, 1000].
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page, the value range is [1, 1000].
+        :type PageSize: int
+        :param _ChannelId: Query all Programs under a Channel.
+        :type ChannelId: str
+        """
+        self._PageNum = None
+        self._PageSize = None
+        self._ChannelId = None
+
+    @property
+    def PageNum(self):
+        """Paging query page number, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Paging query the size of each page, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ChannelId(self):
+        """Query all Programs under a Channel.
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyProgramsResponse(AbstractModel):
+    """DescribeStreamPackageLinearAssemblyPrograms response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Program list.
+        :type Infos: list of LinearAssemblyProgramInfo
+        :param _PageNum: Number of pages.
+        :type PageNum: int
+        :param _PageSize: Size per page.
+        :type PageSize: int
+        :param _TotalNum: The total amount.
+        :type TotalNum: int
+        :param _TotalPage: total pages.
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Program list.
+        :rtype: list of LinearAssemblyProgramInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Size per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """The total amount.
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """total pages.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LinearAssemblyProgramInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceAlertsRequest(AbstractModel):
+    """DescribeStreamPackageSourceAlerts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceId: Source ID.
+        :type SourceId: str
+        :param _StartTime: Query start time, Unix timestamp, supports queries in the last seven days.
+        :type StartTime: int
+        :param _EndTime: Query end time, Unix timestamp, supports queries in the last seven days.
+        :type EndTime: int
+        """
+        self._SourceId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SourceId(self):
+        """Source ID.
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def StartTime(self):
+        """Query start time, Unix timestamp, supports queries in the last seven days.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Query end time, Unix timestamp, supports queries in the last seven days.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SourceId = params.get("SourceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceAlertsResponse(AbstractModel):
+    """DescribeStreamPackageSourceAlerts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Source alarm information.
+        :type Infos: list of SourceAlert
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Source alarm information.
+        :rtype: list of SourceAlert
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SourceAlert()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceLocationAlertsRequest(AbstractModel):
+    """DescribeStreamPackageSourceLocationAlerts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocationId: Location ID.
+        :type LocationId: str
+        """
+        self._LocationId = None
+
+    @property
+    def LocationId(self):
+        """Location ID.
+        :rtype: str
+        """
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+
+    def _deserialize(self, params):
+        self._LocationId = params.get("LocationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceLocationAlertsResponse(AbstractModel):
+    """DescribeStreamPackageSourceLocationAlerts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Location alarm information.
+        :type Infos: list of LocationAlert
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Location alarm information.
+        :rtype: list of LocationAlert
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LocationAlert()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceLocationRequest(AbstractModel):
+    """DescribeStreamPackageSourceLocation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """SourceLocation Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceLocationResponse(AbstractModel):
+    """DescribeStreamPackageSourceLocation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: SourceLocation information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.SourceLocationInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """SourceLocation information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SourceLocationInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceLocationInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceLocationsRequest(AbstractModel):
+    """DescribeStreamPackageSourceLocations request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: Paging query page number, the value range is [1, 1000].
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page, the value range is [1, 1000].
+        :type PageSize: int
+        """
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        """Paging query page number, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Paging query the size of each page, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceLocationsResponse(AbstractModel):
+    """DescribeStreamPackageSourceLocations response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: SourceLocation list.
+        :type Infos: list of SourceLocationInfo
+        :param _PageNum: Number of pages.
+        :type PageNum: int
+        :param _PageSize: Size per page.
+        :type PageSize: int
+        :param _TotalNum: The total amount.
+        :type TotalNum: int
+        :param _TotalPage: total pages.
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """SourceLocation list.
+        :rtype: list of SourceLocationInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Size per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """The total amount.
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """total pages.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SourceLocationInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceRequest(AbstractModel):
+    """DescribeStreamPackageSource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """SourceLocation Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceResponse(AbstractModel):
+    """DescribeStreamPackageSource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Source information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.SourceInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """Source information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SourceInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourcesRequest(AbstractModel):
+    """DescribeStreamPackageSources request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: Paging query page number, the value range is [1, 1000].
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page, the value range is [1, 1000].
+        :type PageSize: int
+        :param _LocationId: Location Id, query all sources under the location.
+        :type LocationId: str
+        :param _Type: The type of source is divided into live broadcast and on-demand VOD.
+Optional values: Live, VOD.
+        :type Type: str
+        """
+        self._PageNum = None
+        self._PageSize = None
+        self._LocationId = None
+        self._Type = None
+
+    @property
+    def PageNum(self):
+        """Paging query page number, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Paging query the size of each page, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def LocationId(self):
+        """Location Id, query all sources under the location.
+        :rtype: str
+        """
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+    @property
+    def Type(self):
+        """The type of source is divided into live broadcast and on-demand VOD.
+Optional values: Live, VOD.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._LocationId = params.get("LocationId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourcesResponse(AbstractModel):
+    """DescribeStreamPackageSources response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Source list.
+        :type Infos: list of SourceInfo
+        :param _PageNum: Number of pages.
+        :type PageNum: int
+        :param _PageSize: Size per page.
+        :type PageSize: int
+        :param _TotalNum: The total amount.
+        :type TotalNum: int
+        :param _TotalPage: total pages.
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """Source list.
+        :rtype: list of SourceInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Size per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """The total amount.
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """total pages.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SourceInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
         self._RequestId = params.get("RequestId")
 
 
@@ -2276,6 +5063,642 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class LinearAssemblyChannelInfo(AbstractModel):
+    """Linearly assembled channel information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Linear assembly channel name.
+        :type Name: str
+        :param _Tier: Define the characteristics of the channel. Standard supports live broadcast and on-demand sources, while Basic only supports on-demand source arrangement.
+        :type Tier: str
+        :param _PlaybackMode: The source switching mode in the channel is divided into Linear and Loop. Live broadcast only supports Linear.
+        :type PlaybackMode: str
+        :param _TimeShiftConf: Time shift configuration, vod is valid.
+        :type TimeShiftConf: :class:`tencentcloud.mdp.v20200527.models.TimeShiftInfo`
+        :param _SlateConf: Spacer configuration.
+        :type SlateConf: :class:`tencentcloud.mdp.v20200527.models.SlateInfo`
+        :param _Outputs: output information.
+        :type Outputs: list of OutputInfo
+        :param _AttachedPrograms: List of programs bound to this channel.
+        :type AttachedPrograms: list of str
+        :param _ProgramSchedules: program information.
+        :type ProgramSchedules: list of ProgramScheduleInfo
+        :param _Id: ID.
+        :type Id: str
+        :param _Region: Region.
+        :type Region: str
+        :param _State: State.
+        :type State: str
+        :param _TimeShiftEnable: Time shift on switch.
+        :type TimeShiftEnable: bool
+        :param _CreateTime: Channel creation time, unix seconds timestamp.
+        :type CreateTime: int
+        """
+        self._Name = None
+        self._Tier = None
+        self._PlaybackMode = None
+        self._TimeShiftConf = None
+        self._SlateConf = None
+        self._Outputs = None
+        self._AttachedPrograms = None
+        self._ProgramSchedules = None
+        self._Id = None
+        self._Region = None
+        self._State = None
+        self._TimeShiftEnable = None
+        self._CreateTime = None
+
+    @property
+    def Name(self):
+        """Linear assembly channel name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tier(self):
+        """Define the characteristics of the channel. Standard supports live broadcast and on-demand sources, while Basic only supports on-demand source arrangement.
+        :rtype: str
+        """
+        return self._Tier
+
+    @Tier.setter
+    def Tier(self, Tier):
+        self._Tier = Tier
+
+    @property
+    def PlaybackMode(self):
+        """The source switching mode in the channel is divided into Linear and Loop. Live broadcast only supports Linear.
+        :rtype: str
+        """
+        return self._PlaybackMode
+
+    @PlaybackMode.setter
+    def PlaybackMode(self, PlaybackMode):
+        self._PlaybackMode = PlaybackMode
+
+    @property
+    def TimeShiftConf(self):
+        """Time shift configuration, vod is valid.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.TimeShiftInfo`
+        """
+        return self._TimeShiftConf
+
+    @TimeShiftConf.setter
+    def TimeShiftConf(self, TimeShiftConf):
+        self._TimeShiftConf = TimeShiftConf
+
+    @property
+    def SlateConf(self):
+        """Spacer configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SlateInfo`
+        """
+        return self._SlateConf
+
+    @SlateConf.setter
+    def SlateConf(self, SlateConf):
+        self._SlateConf = SlateConf
+
+    @property
+    def Outputs(self):
+        """output information.
+        :rtype: list of OutputInfo
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+    @property
+    def AttachedPrograms(self):
+        """List of programs bound to this channel.
+        :rtype: list of str
+        """
+        return self._AttachedPrograms
+
+    @AttachedPrograms.setter
+    def AttachedPrograms(self, AttachedPrograms):
+        self._AttachedPrograms = AttachedPrograms
+
+    @property
+    def ProgramSchedules(self):
+        """program information.
+        :rtype: list of ProgramScheduleInfo
+        """
+        return self._ProgramSchedules
+
+    @ProgramSchedules.setter
+    def ProgramSchedules(self, ProgramSchedules):
+        self._ProgramSchedules = ProgramSchedules
+
+    @property
+    def Id(self):
+        """ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Region(self):
+        """Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def State(self):
+        """State.
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def TimeShiftEnable(self):
+        """Time shift on switch.
+        :rtype: bool
+        """
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def CreateTime(self):
+        """Channel creation time, unix seconds timestamp.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Tier = params.get("Tier")
+        self._PlaybackMode = params.get("PlaybackMode")
+        if params.get("TimeShiftConf") is not None:
+            self._TimeShiftConf = TimeShiftInfo()
+            self._TimeShiftConf._deserialize(params.get("TimeShiftConf"))
+        if params.get("SlateConf") is not None:
+            self._SlateConf = SlateInfo()
+            self._SlateConf._deserialize(params.get("SlateConf"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputInfo()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        self._AttachedPrograms = params.get("AttachedPrograms")
+        if params.get("ProgramSchedules") is not None:
+            self._ProgramSchedules = []
+            for item in params.get("ProgramSchedules"):
+                obj = ProgramScheduleInfo()
+                obj._deserialize(item)
+                self._ProgramSchedules.append(obj)
+        self._Id = params.get("Id")
+        self._Region = params.get("Region")
+        self._State = params.get("State")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LinearAssemblyProgramInfo(AbstractModel):
+    """Channel linear assembly program information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Channel linear assembly program information.
+        :type Name: str
+        :param _SourceType: The type of the arrangement target source, divided into live broadcast and on-demand.
+        :type SourceType: str
+        :param _SourceLocationId: The associated source location id.
+        :type SourceLocationId: str
+        :param _SourceId: SourceId, uniquely identifies a source.
+        :type SourceId: str
+        :param _SourceName: The associated live broadcast or on-demand broadcast, source name, and location are globally unique.
+        :type SourceName: str
+        :param _AttachedChannel: The bound channel.
+        :type AttachedChannel: str
+        :param _PlaybackConf: Play configuration.
+        :type PlaybackConf: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfo`
+        :param _AdBreaks: AdBreaks.
+        :type AdBreaks: list of AdBreakInfo
+        :param _Id: ID.
+        :type Id: str
+        :param _Region: Region.
+        :type Region: str
+        :param _SourceLocationName: SourceLocation name.
+        :type SourceLocationName: str
+        """
+        self._Name = None
+        self._SourceType = None
+        self._SourceLocationId = None
+        self._SourceId = None
+        self._SourceName = None
+        self._AttachedChannel = None
+        self._PlaybackConf = None
+        self._AdBreaks = None
+        self._Id = None
+        self._Region = None
+        self._SourceLocationName = None
+
+    @property
+    def Name(self):
+        """Channel linear assembly program information.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceType(self):
+        """The type of the arrangement target source, divided into live broadcast and on-demand.
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceLocationId(self):
+        """The associated source location id.
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def SourceId(self):
+        """SourceId, uniquely identifies a source.
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceName(self):
+        """The associated live broadcast or on-demand broadcast, source name, and location are globally unique.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def AttachedChannel(self):
+        """The bound channel.
+        :rtype: str
+        """
+        return self._AttachedChannel
+
+    @AttachedChannel.setter
+    def AttachedChannel(self, AttachedChannel):
+        self._AttachedChannel = AttachedChannel
+
+    @property
+    def PlaybackConf(self):
+        """Play configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfo`
+        """
+        return self._PlaybackConf
+
+    @PlaybackConf.setter
+    def PlaybackConf(self, PlaybackConf):
+        self._PlaybackConf = PlaybackConf
+
+    @property
+    def AdBreaks(self):
+        """AdBreaks.
+        :rtype: list of AdBreakInfo
+        """
+        return self._AdBreaks
+
+    @AdBreaks.setter
+    def AdBreaks(self, AdBreaks):
+        self._AdBreaks = AdBreaks
+
+    @property
+    def Id(self):
+        """ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Region(self):
+        """Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SourceLocationName(self):
+        """SourceLocation name.
+        :rtype: str
+        """
+        return self._SourceLocationName
+
+    @SourceLocationName.setter
+    def SourceLocationName(self, SourceLocationName):
+        self._SourceLocationName = SourceLocationName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SourceType = params.get("SourceType")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._SourceId = params.get("SourceId")
+        self._SourceName = params.get("SourceName")
+        self._AttachedChannel = params.get("AttachedChannel")
+        if params.get("PlaybackConf") is not None:
+            self._PlaybackConf = PlaybackInfo()
+            self._PlaybackConf._deserialize(params.get("PlaybackConf"))
+        if params.get("AdBreaks") is not None:
+            self._AdBreaks = []
+            for item in params.get("AdBreaks"):
+                obj = AdBreakInfo()
+                obj._deserialize(item)
+                self._AdBreaks.append(obj)
+        self._Id = params.get("Id")
+        self._Region = params.get("Region")
+        self._SourceLocationName = params.get("SourceLocationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LocationAlert(AbstractModel):
+    """Channel Linear Assembly Location Alarm Information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocationId: Location ID.
+        :type LocationId: str
+        :param _Code: Alarm event code.
+        :type Code: int
+        :param _Category: Alarm classification.
+        :type Category: str
+        :param _Message: Alarm message.
+        :type Message: str
+        :param _LastModifiedTime: Update time.
+        :type LastModifiedTime: int
+        :param _LocationName: Location name.
+        :type LocationName: str
+        """
+        self._LocationId = None
+        self._Code = None
+        self._Category = None
+        self._Message = None
+        self._LastModifiedTime = None
+        self._LocationName = None
+
+    @property
+    def LocationId(self):
+        """Location ID.
+        :rtype: str
+        """
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+    @property
+    def Code(self):
+        """Alarm event code.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Category(self):
+        """Alarm classification.
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Message(self):
+        """Alarm message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LastModifiedTime(self):
+        """Update time.
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+    @property
+    def LocationName(self):
+        """Location name.
+        :rtype: str
+        """
+        return self._LocationName
+
+    @LocationName.setter
+    def LocationName(self, LocationName):
+        self._LocationName = LocationName
+
+
+    def _deserialize(self, params):
+        self._LocationId = params.get("LocationId")
+        self._Code = params.get("Code")
+        self._Category = params.get("Category")
+        self._Message = params.get("Message")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        self._LocationName = params.get("LocationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManifestInfo(AbstractModel):
+    """Linear assembly channel configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Windows: Time window, in seconds.
+        :type Windows: int
+        :param _AdMarkupType: Enter the format of the output advertising tag. Optional values are: Date Range and Enhanced SCTE-35.
+        :type AdMarkupType: str
+        """
+        self._Windows = None
+        self._AdMarkupType = None
+
+    @property
+    def Windows(self):
+        """Time window, in seconds.
+        :rtype: int
+        """
+        return self._Windows
+
+    @Windows.setter
+    def Windows(self, Windows):
+        self._Windows = Windows
+
+    @property
+    def AdMarkupType(self):
+        """Enter the format of the output advertising tag. Optional values are: Date Range and Enhanced SCTE-35.
+        :rtype: str
+        """
+        return self._AdMarkupType
+
+    @AdMarkupType.setter
+    def AdMarkupType(self, AdMarkupType):
+        self._AdMarkupType = AdMarkupType
+
+
+    def _deserialize(self, params):
+        self._Windows = params.get("Windows")
+        self._AdMarkupType = params.get("AdMarkupType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Metadata(AbstractModel):
+    """Metadata.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key.
+        :type Key: str
+        :param _Value: Value.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """Key.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """Value.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyStreamPackageChannelEndpointRequest(AbstractModel):
     """ModifyStreamPackageChannelEndpoint request structure.
 
@@ -2620,13 +6043,13 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Channel ID
+        :param _Id: Channel ID.
         :type Id: str
-        :param _Name: New channel name
+        :param _Name: New channel name.
         :type Name: str
-        :param _Protocol: New channel protocol. Valid values: HLS, DASH
+        :param _Protocol: New channel protocol. Valid values: HLS, DASH, CMAF.
         :type Protocol: str
-        :param _CacheInfo: Cache configuration
+        :param _CacheInfo: Cache configuration.
         :type CacheInfo: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         self._Id = None
@@ -2636,7 +6059,7 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     @property
     def Id(self):
-        """Channel ID
+        """Channel ID.
         :rtype: str
         """
         return self._Id
@@ -2647,7 +6070,7 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     @property
     def Name(self):
-        """New channel name
+        """New channel name.
         :rtype: str
         """
         return self._Name
@@ -2658,7 +6081,7 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        """New channel protocol. Valid values: HLS, DASH
+        """New channel protocol. Valid values: HLS, DASH, CMAF.
         :rtype: str
         """
         return self._Protocol
@@ -2669,7 +6092,7 @@ class ModifyStreamPackageChannelRequest(AbstractModel):
 
     @property
     def CacheInfo(self):
-        """Cache configuration
+        """Cache configuration.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.CacheInfo`
         """
         return self._CacheInfo
@@ -2722,6 +6145,1079 @@ class ModifyStreamPackageChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    """ModifyStreamPackageLinearAssemblyChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Channel ID.
+        :type Id: str
+        :param _Name: Modified name.
+        :type Name: str
+        :param _Tier: Define the characteristics of the channel. Standard supports live broadcast and on-demand sources, while Basic only supports on-demand source arrangement.
+        :type Tier: str
+        :param _PlaybackMode: The source switching mode in the channel is divided into Linear and Loop. Live broadcast only supports Linear.
+Optional values: Linear, Loop.
+        :type PlaybackMode: str
+        :param _TimeShiftEnable: Time shift on switch.
+        :type TimeShiftEnable: bool
+        :param _TimeShiftConf: Time shift configuration.
+        :type TimeShiftConf: :class:`tencentcloud.mdp.v20200527.models.TimeShiftInfo`
+        :param _SlateConf: padding configuration.
+        :type SlateConf: :class:`tencentcloud.mdp.v20200527.models.SlateInfo`
+        :param _Outputs: Output configuration.
+        :type Outputs: list of OutputInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._Tier = None
+        self._PlaybackMode = None
+        self._TimeShiftEnable = None
+        self._TimeShiftConf = None
+        self._SlateConf = None
+        self._Outputs = None
+
+    @property
+    def Id(self):
+        """Channel ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Modified name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tier(self):
+        """Define the characteristics of the channel. Standard supports live broadcast and on-demand sources, while Basic only supports on-demand source arrangement.
+        :rtype: str
+        """
+        return self._Tier
+
+    @Tier.setter
+    def Tier(self, Tier):
+        self._Tier = Tier
+
+    @property
+    def PlaybackMode(self):
+        """The source switching mode in the channel is divided into Linear and Loop. Live broadcast only supports Linear.
+Optional values: Linear, Loop.
+        :rtype: str
+        """
+        return self._PlaybackMode
+
+    @PlaybackMode.setter
+    def PlaybackMode(self, PlaybackMode):
+        self._PlaybackMode = PlaybackMode
+
+    @property
+    def TimeShiftEnable(self):
+        """Time shift on switch.
+        :rtype: bool
+        """
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def TimeShiftConf(self):
+        """Time shift configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.TimeShiftInfo`
+        """
+        return self._TimeShiftConf
+
+    @TimeShiftConf.setter
+    def TimeShiftConf(self, TimeShiftConf):
+        self._TimeShiftConf = TimeShiftConf
+
+    @property
+    def SlateConf(self):
+        """padding configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SlateInfo`
+        """
+        return self._SlateConf
+
+    @SlateConf.setter
+    def SlateConf(self, SlateConf):
+        self._SlateConf = SlateConf
+
+    @property
+    def Outputs(self):
+        """Output configuration.
+        :rtype: list of OutputInfo
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Tier = params.get("Tier")
+        self._PlaybackMode = params.get("PlaybackMode")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        if params.get("TimeShiftConf") is not None:
+            self._TimeShiftConf = TimeShiftInfo()
+            self._TimeShiftConf._deserialize(params.get("TimeShiftConf"))
+        if params.get("SlateConf") is not None:
+            self._SlateConf = SlateInfo()
+            self._SlateConf._deserialize(params.get("SlateConf"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputInfo()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    """ModifyStreamPackageLinearAssemblyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    """ModifyStreamPackageLinearAssemblyProgram request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Program ID.
+        :type Id: str
+        :param _Name: Modified name.
+        :type Name: str
+        :param _SourceType: The type of the arrangement target source, divided into live broadcast and on-demand.
+        :type SourceType: str
+        :param _SourceLocationId: The associated source location.
+        :type SourceLocationId: str
+        :param _SourceName: The associated live broadcast or on-demand broadcast, source name, and location are globally unique.
+        :type SourceName: str
+        :param _PlaybackConf: PlaybackConf.
+        :type PlaybackConf: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfoReq`
+        :param _AdBreaks: AdBreaks.
+        :type AdBreaks: list of AdBreakInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._SourceType = None
+        self._SourceLocationId = None
+        self._SourceName = None
+        self._PlaybackConf = None
+        self._AdBreaks = None
+
+    @property
+    def Id(self):
+        """Program ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Modified name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceType(self):
+        """The type of the arrangement target source, divided into live broadcast and on-demand.
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceLocationId(self):
+        """The associated source location.
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def SourceName(self):
+        """The associated live broadcast or on-demand broadcast, source name, and location are globally unique.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def PlaybackConf(self):
+        """PlaybackConf.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.PlaybackInfoReq`
+        """
+        return self._PlaybackConf
+
+    @PlaybackConf.setter
+    def PlaybackConf(self, PlaybackConf):
+        self._PlaybackConf = PlaybackConf
+
+    @property
+    def AdBreaks(self):
+        """AdBreaks.
+        :rtype: list of AdBreakInfo
+        """
+        return self._AdBreaks
+
+    @AdBreaks.setter
+    def AdBreaks(self, AdBreaks):
+        self._AdBreaks = AdBreaks
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._SourceType = params.get("SourceType")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._SourceName = params.get("SourceName")
+        if params.get("PlaybackConf") is not None:
+            self._PlaybackConf = PlaybackInfoReq()
+            self._PlaybackConf._deserialize(params.get("PlaybackConf"))
+        if params.get("AdBreaks") is not None:
+            self._AdBreaks = []
+            for item in params.get("AdBreaks"):
+                obj = AdBreakInfo()
+                obj._deserialize(item)
+                self._AdBreaks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    """ModifyStreamPackageLinearAssemblyProgram response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageSourceLocationRequest(AbstractModel):
+    """ModifyStreamPackageSourceLocation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id.
+        :type Id: str
+        :param _Name: Modified name.
+        :type Name: str
+        :param _BaseUrl: BaseUrl.
+        :type BaseUrl: str
+        :param _SegmentDeliverEnable: Whether to enable patching.
+        :type SegmentDeliverEnable: bool
+        :param _SegmentDeliverConf: Patch configuration.
+        :type SegmentDeliverConf: :class:`tencentcloud.mdp.v20200527.models.SegmentDeliverInfo`
+        :param _SegmentDeliverUsePackageEnable: Whether to enable package distribution sharding, it is enabled by default.
+        :type SegmentDeliverUsePackageEnable: bool
+        """
+        self._Id = None
+        self._Name = None
+        self._BaseUrl = None
+        self._SegmentDeliverEnable = None
+        self._SegmentDeliverConf = None
+        self._SegmentDeliverUsePackageEnable = None
+
+    @property
+    def Id(self):
+        """SourceLocation Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Modified name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BaseUrl(self):
+        """BaseUrl.
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def SegmentDeliverEnable(self):
+        """Whether to enable patching.
+        :rtype: bool
+        """
+        return self._SegmentDeliverEnable
+
+    @SegmentDeliverEnable.setter
+    def SegmentDeliverEnable(self, SegmentDeliverEnable):
+        self._SegmentDeliverEnable = SegmentDeliverEnable
+
+    @property
+    def SegmentDeliverConf(self):
+        """Patch configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SegmentDeliverInfo`
+        """
+        return self._SegmentDeliverConf
+
+    @SegmentDeliverConf.setter
+    def SegmentDeliverConf(self, SegmentDeliverConf):
+        self._SegmentDeliverConf = SegmentDeliverConf
+
+    @property
+    def SegmentDeliverUsePackageEnable(self):
+        """Whether to enable package distribution sharding, it is enabled by default.
+        :rtype: bool
+        """
+        return self._SegmentDeliverUsePackageEnable
+
+    @SegmentDeliverUsePackageEnable.setter
+    def SegmentDeliverUsePackageEnable(self, SegmentDeliverUsePackageEnable):
+        self._SegmentDeliverUsePackageEnable = SegmentDeliverUsePackageEnable
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._BaseUrl = params.get("BaseUrl")
+        self._SegmentDeliverEnable = params.get("SegmentDeliverEnable")
+        if params.get("SegmentDeliverConf") is not None:
+            self._SegmentDeliverConf = SegmentDeliverInfo()
+            self._SegmentDeliverConf._deserialize(params.get("SegmentDeliverConf"))
+        self._SegmentDeliverUsePackageEnable = params.get("SegmentDeliverUsePackageEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageSourceLocationResponse(AbstractModel):
+    """ModifyStreamPackageSourceLocation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageSourceRequest(AbstractModel):
+    """ModifyStreamPackageSource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Source Id.
+        :type Id: str
+        :param _Name: Modified name.
+        :type Name: str
+        :param _Type: Distinguish between live broadcast and on-demand VOD source types.
+Optional values: Live, VOD (on demand)
+        :type Type: str
+        :param _PackageConfs: source configuration.
+        :type PackageConfs: list of SourcePackageConf
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._PackageConfs = None
+
+    @property
+    def Id(self):
+        """Source Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Modified name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """Distinguish between live broadcast and on-demand VOD source types.
+Optional values: Live, VOD (on demand)
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PackageConfs(self):
+        """source configuration.
+        :rtype: list of SourcePackageConf
+        """
+        return self._PackageConfs
+
+    @PackageConfs.setter
+    def PackageConfs(self, PackageConfs):
+        self._PackageConfs = PackageConfs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("PackageConfs") is not None:
+            self._PackageConfs = []
+            for item in params.get("PackageConfs"):
+                obj = SourcePackageConf()
+                obj._deserialize(item)
+                self._PackageConfs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageSourceResponse(AbstractModel):
+    """ModifyStreamPackageSource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class NameServer(AbstractModel):
+    """Custom server information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: name.
+        :type Name: str
+        :param _Url: address.
+        :type Url: str
+        """
+        self._Name = None
+        self._Url = None
+
+    @property
+    def Name(self):
+        """name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        """address.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputInfo(AbstractModel):
+    """Channel linear assembly output information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: HLS DASH.
+        :type Type: str
+        :param _GroupName: The output group name can be associated with the source group name.
+        :type GroupName: str
+        :param _ManifestName: The file name output by the channel program after scheduling.
+        :type ManifestName: str
+        :param _ManifestConf: Advertisement configuration.
+        :type ManifestConf: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
+        :param _PlaybackURL: Playback address.
+        :type PlaybackURL: str
+        """
+        self._Type = None
+        self._GroupName = None
+        self._ManifestName = None
+        self._ManifestConf = None
+        self._PlaybackURL = None
+
+    @property
+    def Type(self):
+        """HLS DASH.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GroupName(self):
+        """The output group name can be associated with the source group name.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ManifestName(self):
+        """The file name output by the channel program after scheduling.
+        :rtype: str
+        """
+        return self._ManifestName
+
+    @ManifestName.setter
+    def ManifestName(self, ManifestName):
+        self._ManifestName = ManifestName
+
+    @property
+    def ManifestConf(self):
+        """Advertisement configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
+        """
+        return self._ManifestConf
+
+    @ManifestConf.setter
+    def ManifestConf(self, ManifestConf):
+        self._ManifestConf = ManifestConf
+
+    @property
+    def PlaybackURL(self):
+        """Playback address.
+        :rtype: str
+        """
+        return self._PlaybackURL
+
+    @PlaybackURL.setter
+    def PlaybackURL(self, PlaybackURL):
+        self._PlaybackURL = PlaybackURL
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._GroupName = params.get("GroupName")
+        self._ManifestName = params.get("ManifestName")
+        if params.get("ManifestConf") is not None:
+            self._ManifestConf = ManifestInfo()
+            self._ManifestConf._deserialize(params.get("ManifestConf"))
+        self._PlaybackURL = params.get("PlaybackURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputReq(AbstractModel):
+    """Channel linear assembly output information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Output type, distinguish HLS DASH.
+        :type Type: str
+        :param _GroupName: The output group name can be associated with the source group name.
+        :type GroupName: str
+        :param _ManifestName: The file name output by the channel program after scheduling.
+        :type ManifestName: str
+        :param _ManifestConf: Advertisement configuration.
+        :type ManifestConf: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
+        """
+        self._Type = None
+        self._GroupName = None
+        self._ManifestName = None
+        self._ManifestConf = None
+
+    @property
+    def Type(self):
+        """Output type, distinguish HLS DASH.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GroupName(self):
+        """The output group name can be associated with the source group name.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ManifestName(self):
+        """The file name output by the channel program after scheduling.
+        :rtype: str
+        """
+        return self._ManifestName
+
+    @ManifestName.setter
+    def ManifestName(self, ManifestName):
+        self._ManifestName = ManifestName
+
+    @property
+    def ManifestConf(self):
+        """Advertisement configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
+        """
+        return self._ManifestConf
+
+    @ManifestConf.setter
+    def ManifestConf(self, ManifestConf):
+        self._ManifestConf = ManifestConf
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._GroupName = params.get("GroupName")
+        self._ManifestName = params.get("ManifestName")
+        if params.get("ManifestConf") is not None:
+            self._ManifestConf = ManifestInfo()
+            self._ManifestConf._deserialize(params.get("ManifestConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaybackInfo(AbstractModel):
+    """program playback configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: Program duration, in milliseconds, valid for live broadcast.
+        :type Duration: int
+        :param _TransitionType: Program startup method, live broadcast only supports Absolute, on-demand also supports Relative.
+        :type TransitionType: str
+        :param _StartTime: Unix timestamp, the start execution time of the program in the Absolute scenario.
+        :type StartTime: int
+        :param _RelativePosition: It is related to the insertion order of the selected program, divided into After and Before.
+        :type RelativePosition: str
+        :param _RelativeProgramId: The selected insertion reference program id.
+        :type RelativeProgramId: str
+        :param _ClipRangeConf: Spacer configuration.
+        :type ClipRangeConf: :class:`tencentcloud.mdp.v20200527.models.ClipRangeInfo`
+        :param _RelativeProgramName: RelativeProgramName.
+        :type RelativeProgramName: str
+        """
+        self._Duration = None
+        self._TransitionType = None
+        self._StartTime = None
+        self._RelativePosition = None
+        self._RelativeProgramId = None
+        self._ClipRangeConf = None
+        self._RelativeProgramName = None
+
+    @property
+    def Duration(self):
+        """Program duration, in milliseconds, valid for live broadcast.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def TransitionType(self):
+        """Program startup method, live broadcast only supports Absolute, on-demand also supports Relative.
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def StartTime(self):
+        """Unix timestamp, the start execution time of the program in the Absolute scenario.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def RelativePosition(self):
+        """It is related to the insertion order of the selected program, divided into After and Before.
+        :rtype: str
+        """
+        return self._RelativePosition
+
+    @RelativePosition.setter
+    def RelativePosition(self, RelativePosition):
+        self._RelativePosition = RelativePosition
+
+    @property
+    def RelativeProgramId(self):
+        """The selected insertion reference program id.
+        :rtype: str
+        """
+        return self._RelativeProgramId
+
+    @RelativeProgramId.setter
+    def RelativeProgramId(self, RelativeProgramId):
+        self._RelativeProgramId = RelativeProgramId
+
+    @property
+    def ClipRangeConf(self):
+        """Spacer configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ClipRangeInfo`
+        """
+        return self._ClipRangeConf
+
+    @ClipRangeConf.setter
+    def ClipRangeConf(self, ClipRangeConf):
+        self._ClipRangeConf = ClipRangeConf
+
+    @property
+    def RelativeProgramName(self):
+        """RelativeProgramName.
+        :rtype: str
+        """
+        return self._RelativeProgramName
+
+    @RelativeProgramName.setter
+    def RelativeProgramName(self, RelativeProgramName):
+        self._RelativeProgramName = RelativeProgramName
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._TransitionType = params.get("TransitionType")
+        self._StartTime = params.get("StartTime")
+        self._RelativePosition = params.get("RelativePosition")
+        self._RelativeProgramId = params.get("RelativeProgramId")
+        if params.get("ClipRangeConf") is not None:
+            self._ClipRangeConf = ClipRangeInfo()
+            self._ClipRangeConf._deserialize(params.get("ClipRangeConf"))
+        self._RelativeProgramName = params.get("RelativeProgramName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaybackInfoReq(AbstractModel):
+    """program playback configuration request.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransitionType: Program startup method, live broadcast only supports Absolute, on-demand also supports Relative.
+Optional values: Absolute, Relative.
+        :type TransitionType: str
+        :param _StartTime: Unix timestamp, the start execution time of the program in absolute scenarios.
+        :type StartTime: int
+        :param _Duration: Program duration, in milliseconds, valid for live broadcast.
+        :type Duration: int
+        :param _RelativePosition: It is related to the insertion order of the selected program, divided into After and Before.
+        :type RelativePosition: str
+        :param _RelativeProgramId: The selected insertion reference program id.
+        :type RelativeProgramId: str
+        :param _ClipRangeConf: Spacer configuration.
+        :type ClipRangeConf: :class:`tencentcloud.mdp.v20200527.models.ClipRangeInfo`
+        """
+        self._TransitionType = None
+        self._StartTime = None
+        self._Duration = None
+        self._RelativePosition = None
+        self._RelativeProgramId = None
+        self._ClipRangeConf = None
+
+    @property
+    def TransitionType(self):
+        """Program startup method, live broadcast only supports Absolute, on-demand also supports Relative.
+Optional values: Absolute, Relative.
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def StartTime(self):
+        """Unix timestamp, the start execution time of the program in absolute scenarios.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        """Program duration, in milliseconds, valid for live broadcast.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RelativePosition(self):
+        """It is related to the insertion order of the selected program, divided into After and Before.
+        :rtype: str
+        """
+        return self._RelativePosition
+
+    @RelativePosition.setter
+    def RelativePosition(self, RelativePosition):
+        self._RelativePosition = RelativePosition
+
+    @property
+    def RelativeProgramId(self):
+        """The selected insertion reference program id.
+        :rtype: str
+        """
+        return self._RelativeProgramId
+
+    @RelativeProgramId.setter
+    def RelativeProgramId(self, RelativeProgramId):
+        self._RelativeProgramId = RelativeProgramId
+
+    @property
+    def ClipRangeConf(self):
+        """Spacer configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ClipRangeInfo`
+        """
+        return self._ClipRangeConf
+
+    @ClipRangeConf.setter
+    def ClipRangeConf(self, ClipRangeConf):
+        self._ClipRangeConf = ClipRangeConf
+
+
+    def _deserialize(self, params):
+        self._TransitionType = params.get("TransitionType")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        self._RelativePosition = params.get("RelativePosition")
+        self._RelativeProgramId = params.get("RelativeProgramId")
+        if params.get("ClipRangeConf") is not None:
+            self._ClipRangeConf = ClipRangeInfo()
+            self._ClipRangeConf._deserialize(params.get("ClipRangeConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PointInfo(AbstractModel):
@@ -2777,6 +7273,371 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = EndpointInfo()
                 obj._deserialize(item)
                 self._Endpoints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramAlertCounts(AbstractModel):
+    """Channel Linear Assembly Program Aggregation Alarm Information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramId: Program ID.
+        :type ProgramId: str
+        :param _ProgramName: Program name.
+        :type ProgramName: str
+        :param _Category: Alarm classification.
+        :type Category: str
+        :param _Count: The number of occurrences
+        :type Count: int
+        :param _LastModifiedTime: Update time.
+        :type LastModifiedTime: int
+        """
+        self._ProgramId = None
+        self._ProgramName = None
+        self._Category = None
+        self._Count = None
+        self._LastModifiedTime = None
+
+    @property
+    def ProgramId(self):
+        """Program ID.
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def ProgramName(self):
+        """Program name.
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def Category(self):
+        """Alarm classification.
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Count(self):
+        """The number of occurrences
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def LastModifiedTime(self):
+        """Update time.
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+
+    def _deserialize(self, params):
+        self._ProgramId = params.get("ProgramId")
+        self._ProgramName = params.get("ProgramName")
+        self._Category = params.get("Category")
+        self._Count = params.get("Count")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramAlertInfos(AbstractModel):
+    """Channel linear assembly program alarm information details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: Channel ID.
+        :type ChannelId: str
+        :param _ChannelName: Channel name.
+
+        :type ChannelName: str
+        :param _ProgramId: ProgramID.
+        :type ProgramId: str
+        :param _ProgramName: ProgramName.
+        :type ProgramName: str
+        :param _Code: Alarm event code.
+        :type Code: int
+        :param _Category: Alarm classification.
+        :type Category: str
+        :param _Message: Alarm message.
+        :type Message: str
+        :param _LastModifiedTime: Update time.
+        :type LastModifiedTime: int
+        """
+        self._ChannelId = None
+        self._ChannelName = None
+        self._ProgramId = None
+        self._ProgramName = None
+        self._Code = None
+        self._Category = None
+        self._Message = None
+        self._LastModifiedTime = None
+
+    @property
+    def ChannelId(self):
+        """Channel ID.
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        """Channel name.
+
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def ProgramId(self):
+        """ProgramID.
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def ProgramName(self):
+        """ProgramName.
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def Code(self):
+        """Alarm event code.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Category(self):
+        """Alarm classification.
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Message(self):
+        """Alarm message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LastModifiedTime(self):
+        """Update time.
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._ProgramId = params.get("ProgramId")
+        self._ProgramName = params.get("ProgramName")
+        self._Code = params.get("Code")
+        self._Category = params.get("Category")
+        self._Message = params.get("Message")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramScheduleInfo(AbstractModel):
+    """The scheduling information of the Program under this channel.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramName: program name.
+        :type ProgramName: str
+        :param _ProgramId: program id.
+        :type ProgramId: str
+        :param _SourceType: source type.
+        :type SourceType: str
+        :param _SourceId: source id.
+        :type SourceId: str
+        :param _SourceLocationId: The id of the source location.
+        :type SourceLocationId: str
+        :param _StartTime: Start timestamp.
+        :type StartTime: int
+        :param _Duration: Duration.
+        :type Duration: str
+        """
+        self._ProgramName = None
+        self._ProgramId = None
+        self._SourceType = None
+        self._SourceId = None
+        self._SourceLocationId = None
+        self._StartTime = None
+        self._Duration = None
+
+    @property
+    def ProgramName(self):
+        """program name.
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def ProgramId(self):
+        """program id.
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def SourceType(self):
+        """source type.
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        """source id.
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceLocationId(self):
+        """The id of the source location.
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def StartTime(self):
+        """Start timestamp.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        """Duration.
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._ProgramName = params.get("ProgramName")
+        self._ProgramId = params.get("ProgramId")
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2966,6 +7827,995 @@ class SSAIConf(AbstractModel):
         self._SCTE35AdType = params.get("SCTE35AdType")
         self._AdTriggers = params.get("AdTriggers")
         self._DeliveryRestrictions = params.get("DeliveryRestrictions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentDeliverInfo(AbstractModel):
+    """SourceLocation shim configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DefaultSegmentUrl: Default content source address.
+        :type DefaultSegmentUrl: str
+        :param _NameServers: Custom server address.
+        :type NameServers: list of NameServer
+        """
+        self._DefaultSegmentUrl = None
+        self._NameServers = None
+
+    @property
+    def DefaultSegmentUrl(self):
+        """Default content source address.
+        :rtype: str
+        """
+        return self._DefaultSegmentUrl
+
+    @DefaultSegmentUrl.setter
+    def DefaultSegmentUrl(self, DefaultSegmentUrl):
+        self._DefaultSegmentUrl = DefaultSegmentUrl
+
+    @property
+    def NameServers(self):
+        """Custom server address.
+        :rtype: list of NameServer
+        """
+        return self._NameServers
+
+    @NameServers.setter
+    def NameServers(self, NameServers):
+        self._NameServers = NameServers
+
+
+    def _deserialize(self, params):
+        self._DefaultSegmentUrl = params.get("DefaultSegmentUrl")
+        if params.get("NameServers") is not None:
+            self._NameServers = []
+            for item in params.get("NameServers"):
+                obj = NameServer()
+                obj._deserialize(item)
+                self._NameServers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlateInfo(AbstractModel):
+    """Channel linear assembly channel spacer configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceLocationId: The ID of the source location.
+        :type SourceLocationId: str
+        :param _VodSourceName: The corresponding vod shim content source name.
+        :type VodSourceName: str
+        """
+        self._SourceLocationId = None
+        self._VodSourceName = None
+
+    @property
+    def SourceLocationId(self):
+        """The ID of the source location.
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def VodSourceName(self):
+        """The corresponding vod shim content source name.
+        :rtype: str
+        """
+        return self._VodSourceName
+
+    @VodSourceName.setter
+    def VodSourceName(self, VodSourceName):
+        self._VodSourceName = VodSourceName
+
+
+    def _deserialize(self, params):
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._VodSourceName = params.get("VodSourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceAlert(AbstractModel):
+    """Channel Linear Assembly Location Alarm Information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceId: Source ID.
+        :type SourceId: str
+        :param _SourceName: Source name.
+        :type SourceName: str
+        :param _Code: Alarm event code.
+        :type Code: int
+        :param _Category: Alarm classification.
+        :type Category: str
+        :param _Message: Alarm message.
+        :type Message: str
+        :param _LastModifiedTime: Update time.
+        :type LastModifiedTime: int
+        """
+        self._SourceId = None
+        self._SourceName = None
+        self._Code = None
+        self._Category = None
+        self._Message = None
+        self._LastModifiedTime = None
+
+    @property
+    def SourceId(self):
+        """Source ID.
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceName(self):
+        """Source name.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def Code(self):
+        """Alarm event code.
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Category(self):
+        """Alarm classification.
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Message(self):
+        """Alarm message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LastModifiedTime(self):
+        """Update time.
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+
+    def _deserialize(self, params):
+        self._SourceId = params.get("SourceId")
+        self._SourceName = params.get("SourceName")
+        self._Code = params.get("Code")
+        self._Category = params.get("Category")
+        self._Message = params.get("Message")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceInfo(AbstractModel):
+    """SourceInfo.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: name.
+        :type Name: str
+        :param _Type: The source type distinguishes between live broadcast and on-demand Vod.
+        :type Type: str
+        :param _PackageConf: Source configuration.
+        :type PackageConf: list of SourcePackageConf
+        :param _Id: ID.
+        :type Id: str
+        :param _CreateTime: Create timestamp.
+        :type CreateTime: int
+        :param _UpdateTime: Update timestamp.
+        :type UpdateTime: int
+        :param _Region: Region.
+        :type Region: str
+        """
+        self._Name = None
+        self._Type = None
+        self._PackageConf = None
+        self._Id = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Region = None
+
+    @property
+    def Name(self):
+        """name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """The source type distinguishes between live broadcast and on-demand Vod.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PackageConf(self):
+        """Source configuration.
+        :rtype: list of SourcePackageConf
+        """
+        return self._PackageConf
+
+    @PackageConf.setter
+    def PackageConf(self, PackageConf):
+        self._PackageConf = PackageConf
+
+    @property
+    def Id(self):
+        """ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CreateTime(self):
+        """Create timestamp.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Update timestamp.
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Region(self):
+        """Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("PackageConf") is not None:
+            self._PackageConf = []
+            for item in params.get("PackageConf"):
+                obj = SourcePackageConf()
+                obj._deserialize(item)
+                self._PackageConf.append(obj)
+        self._Id = params.get("Id")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceLocationInfo(AbstractModel):
+    """SourceLocation configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: ID, unique identification.
+        :type Id: str
+        :param _Name: SourceLocation name.
+        :type Name: str
+        :param _Region: area.
+        :type Region: str
+        :param _BaseUrl: BaseUrl information.
+        :type BaseUrl: str
+        :param _SegmentDeliverEnable: Whether to enable patching.
+        :type SegmentDeliverEnable: bool
+        :param _SegmentDeliverConf: Patch configuration.
+        :type SegmentDeliverConf: :class:`tencentcloud.mdp.v20200527.models.SegmentDeliverInfo`
+        :param _AttachedLiveSources: List of bound live broadcast source ids.
+        :type AttachedLiveSources: list of str
+        :param _AttachedVodSources: List of bound on-demand source ids.
+        :type AttachedVodSources: list of str
+        :param _CreateTime: Source location creation time, Unix timestamp.
+        :type CreateTime: int
+        :param _UpdateTime: Source location last modified time, Unix timestamp.
+        :type UpdateTime: int
+        :param _SegmentDeliverUsePackageEnable: Whether to enable package distribution sharding, it is enabled by default.
+        :type SegmentDeliverUsePackageEnable: bool
+        """
+        self._Id = None
+        self._Name = None
+        self._Region = None
+        self._BaseUrl = None
+        self._SegmentDeliverEnable = None
+        self._SegmentDeliverConf = None
+        self._AttachedLiveSources = None
+        self._AttachedVodSources = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SegmentDeliverUsePackageEnable = None
+
+    @property
+    def Id(self):
+        """ID, unique identification.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """SourceLocation name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        """area.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BaseUrl(self):
+        """BaseUrl information.
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def SegmentDeliverEnable(self):
+        """Whether to enable patching.
+        :rtype: bool
+        """
+        return self._SegmentDeliverEnable
+
+    @SegmentDeliverEnable.setter
+    def SegmentDeliverEnable(self, SegmentDeliverEnable):
+        self._SegmentDeliverEnable = SegmentDeliverEnable
+
+    @property
+    def SegmentDeliverConf(self):
+        """Patch configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.SegmentDeliverInfo`
+        """
+        return self._SegmentDeliverConf
+
+    @SegmentDeliverConf.setter
+    def SegmentDeliverConf(self, SegmentDeliverConf):
+        self._SegmentDeliverConf = SegmentDeliverConf
+
+    @property
+    def AttachedLiveSources(self):
+        """List of bound live broadcast source ids.
+        :rtype: list of str
+        """
+        return self._AttachedLiveSources
+
+    @AttachedLiveSources.setter
+    def AttachedLiveSources(self, AttachedLiveSources):
+        self._AttachedLiveSources = AttachedLiveSources
+
+    @property
+    def AttachedVodSources(self):
+        """List of bound on-demand source ids.
+        :rtype: list of str
+        """
+        return self._AttachedVodSources
+
+    @AttachedVodSources.setter
+    def AttachedVodSources(self, AttachedVodSources):
+        self._AttachedVodSources = AttachedVodSources
+
+    @property
+    def CreateTime(self):
+        """Source location creation time, Unix timestamp.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Source location last modified time, Unix timestamp.
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SegmentDeliverUsePackageEnable(self):
+        """Whether to enable package distribution sharding, it is enabled by default.
+        :rtype: bool
+        """
+        return self._SegmentDeliverUsePackageEnable
+
+    @SegmentDeliverUsePackageEnable.setter
+    def SegmentDeliverUsePackageEnable(self, SegmentDeliverUsePackageEnable):
+        self._SegmentDeliverUsePackageEnable = SegmentDeliverUsePackageEnable
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        self._BaseUrl = params.get("BaseUrl")
+        self._SegmentDeliverEnable = params.get("SegmentDeliverEnable")
+        if params.get("SegmentDeliverConf") is not None:
+            self._SegmentDeliverConf = SegmentDeliverInfo()
+            self._SegmentDeliverConf._deserialize(params.get("SegmentDeliverConf"))
+        self._AttachedLiveSources = params.get("AttachedLiveSources")
+        self._AttachedVodSources = params.get("AttachedVodSources")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SegmentDeliverUsePackageEnable = params.get("SegmentDeliverUsePackageEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourcePackageConf(AbstractModel):
+    """Source file information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: Group name. When the channel is in Linear mode and vod source is selected, the group name corresponds to the output group name of the channel output.
+        :type GroupName: str
+        :param _Type: Type, distinguish between HLS and DASH, optional values: HLS, DASH.
+        :type Type: str
+        :param _Path: access path.
+        :type Path: str
+        """
+        self._GroupName = None
+        self._Type = None
+        self._Path = None
+
+    @property
+    def GroupName(self):
+        """Group name. When the channel is in Linear mode and vod source is selected, the group name corresponds to the output group name of the channel output.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Type(self):
+        """Type, distinguish between HLS and DASH, optional values: HLS, DASH.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Path(self):
+        """access path.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Type = params.get("Type")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpliceInsertInfo(AbstractModel):
+    """SpliceInsertInfo.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: EventID.
+        :type EventID: str
+        :param _AvailNum: AvailNum.
+        :type AvailNum: str
+        :param _AvailExpected: AvailExpected.
+        :type AvailExpected: str
+        :param _ProgramID: ProgramID.
+        :type ProgramID: str
+        """
+        self._EventID = None
+        self._AvailNum = None
+        self._AvailExpected = None
+        self._ProgramID = None
+
+    @property
+    def EventID(self):
+        """EventID.
+        :rtype: str
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def AvailNum(self):
+        """AvailNum.
+        :rtype: str
+        """
+        return self._AvailNum
+
+    @AvailNum.setter
+    def AvailNum(self, AvailNum):
+        self._AvailNum = AvailNum
+
+    @property
+    def AvailExpected(self):
+        """AvailExpected.
+        :rtype: str
+        """
+        return self._AvailExpected
+
+    @AvailExpected.setter
+    def AvailExpected(self, AvailExpected):
+        self._AvailExpected = AvailExpected
+
+    @property
+    def ProgramID(self):
+        """ProgramID.
+        :rtype: str
+        """
+        return self._ProgramID
+
+    @ProgramID.setter
+    def ProgramID(self, ProgramID):
+        self._ProgramID = ProgramID
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._AvailNum = params.get("AvailNum")
+        self._AvailExpected = params.get("AvailExpected")
+        self._ProgramID = params.get("ProgramID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    """StartStreamPackageLinearAssemblyChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Channel ID.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """Channel ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    """StartStreamPackageLinearAssemblyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    """StopStreamPackageLinearAssemblyChannel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Channel ID.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """Channel ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    """StopStreamPackageLinearAssemblyChannel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class TimeShiftInfo(AbstractModel):
+    """Linearly assembled channel time-shift configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeWindows: Lookback window, in seconds.
+        :type TimeWindows: int
+        """
+        self._TimeWindows = None
+
+    @property
+    def TimeWindows(self):
+        """Lookback window, in seconds.
+        :rtype: int
+        """
+        return self._TimeWindows
+
+    @TimeWindows.setter
+    def TimeWindows(self, TimeWindows):
+        self._TimeWindows = TimeWindows
+
+
+    def _deserialize(self, params):
+        self._TimeWindows = params.get("TimeWindows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeSignalInfo(AbstractModel):
+    """TimeSignalInfo.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: EventID.
+        :type EventID: str
+        :param _UPIDType: UPIDType.
+        :type UPIDType: str
+        :param _UPID: UPID.
+        :type UPID: str
+        :param _TypeID: TypeID.
+        :type TypeID: str
+        :param _Num: Num.
+        :type Num: str
+        :param _Expected: Expected.
+        :type Expected: str
+        :param _SubsegmentNum: SubsegmentNum.
+        :type SubsegmentNum: str
+        :param _SubsegmentsExpected: SubsegmentsExpected.
+        :type SubsegmentsExpected: str
+        """
+        self._EventID = None
+        self._UPIDType = None
+        self._UPID = None
+        self._TypeID = None
+        self._Num = None
+        self._Expected = None
+        self._SubsegmentNum = None
+        self._SubsegmentsExpected = None
+
+    @property
+    def EventID(self):
+        """EventID.
+        :rtype: str
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def UPIDType(self):
+        """UPIDType.
+        :rtype: str
+        """
+        return self._UPIDType
+
+    @UPIDType.setter
+    def UPIDType(self, UPIDType):
+        self._UPIDType = UPIDType
+
+    @property
+    def UPID(self):
+        """UPID.
+        :rtype: str
+        """
+        return self._UPID
+
+    @UPID.setter
+    def UPID(self, UPID):
+        self._UPID = UPID
+
+    @property
+    def TypeID(self):
+        """TypeID.
+        :rtype: str
+        """
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Num(self):
+        """Num.
+        :rtype: str
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Expected(self):
+        """Expected.
+        :rtype: str
+        """
+        return self._Expected
+
+    @Expected.setter
+    def Expected(self, Expected):
+        self._Expected = Expected
+
+    @property
+    def SubsegmentNum(self):
+        """SubsegmentNum.
+        :rtype: str
+        """
+        return self._SubsegmentNum
+
+    @SubsegmentNum.setter
+    def SubsegmentNum(self, SubsegmentNum):
+        self._SubsegmentNum = SubsegmentNum
+
+    @property
+    def SubsegmentsExpected(self):
+        """SubsegmentsExpected.
+        :rtype: str
+        """
+        return self._SubsegmentsExpected
+
+    @SubsegmentsExpected.setter
+    def SubsegmentsExpected(self, SubsegmentsExpected):
+        self._SubsegmentsExpected = SubsegmentsExpected
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._UPIDType = params.get("UPIDType")
+        self._UPID = params.get("UPID")
+        self._TypeID = params.get("TypeID")
+        self._Num = params.get("Num")
+        self._Expected = params.get("Expected")
+        self._SubsegmentNum = params.get("SubsegmentNum")
+        self._SubsegmentsExpected = params.get("SubsegmentsExpected")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
