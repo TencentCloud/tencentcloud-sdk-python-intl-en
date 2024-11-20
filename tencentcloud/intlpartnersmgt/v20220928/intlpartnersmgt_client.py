@@ -332,6 +332,29 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ForceQN(self, request):
+        """This API is used to set and cancel forced service suspension.Reseller need to be allowlisted to use the API.
+
+        :param request: Request instance for ForceQN.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ForceQNRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ForceQNResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForceQN", params, headers=headers)
+            response = json.loads(body)
+            model = models.ForceQNResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetCountryCodes(self, request):
         """This API is used to obtain country/region codes.
 
