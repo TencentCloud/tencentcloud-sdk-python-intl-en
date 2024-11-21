@@ -8216,6 +8216,8 @@ Source URL. Example value: https://a.b/test.mp4
         :type RepeatNum: int
         :param _MaxDuration: Loop playback maximum duration, only effective when RepeatNum is set to -1, valid value range: [1, 10080], unit: minutes
         :type MaxDuration: int
+        :param _Volume: Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.
+        :type Volume: int
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -8231,6 +8233,7 @@ Source URL. Example value: https://a.b/test.mp4
         self._AutoPush = None
         self._RepeatNum = None
         self._MaxDuration = None
+        self._Volume = None
 
     @property
     def SdkAppId(self):
@@ -8399,6 +8402,17 @@ Source URL. Example value: https://a.b/test.mp4
     def MaxDuration(self, MaxDuration):
         self._MaxDuration = MaxDuration
 
+    @property
+    def Volume(self):
+        """Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -8419,6 +8433,7 @@ Source URL. Example value: https://a.b/test.mp4
         self._AutoPush = params.get("AutoPush")
         self._RepeatNum = params.get("RepeatNum")
         self._MaxDuration = params.get("MaxDuration")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9811,10 +9826,13 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type TaskId: str
         :param _StreamUrl: The new url of the media resource.
         :type StreamUrl: str
+        :param _Volume: Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.
+        :type Volume: int
         """
         self._SdkAppId = None
         self._TaskId = None
         self._StreamUrl = None
+        self._Volume = None
 
     @property
     def SdkAppId(self):
@@ -9849,11 +9867,23 @@ class UpdateStreamIngestRequest(AbstractModel):
     def StreamUrl(self, StreamUrl):
         self._StreamUrl = StreamUrl
 
+    @property
+    def Volume(self):
+        """Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._TaskId = params.get("TaskId")
         self._StreamUrl = params.get("StreamUrl")
+        self._Volume = params.get("Volume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

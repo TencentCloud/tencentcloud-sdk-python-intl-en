@@ -467,7 +467,7 @@ class MariadbClient(AbstractClient):
 
 
     def DescribeDBTmpInstances(self, request):
-        """This API is used to obtain a temp u200drollback instance.
+        """This API is used to obtain a temp rollback instance.
 
         :param request: Request instance for DescribeDBTmpInstances.
         :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBTmpInstancesRequest`

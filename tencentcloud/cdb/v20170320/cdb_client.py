@@ -1958,33 +1958,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def InitDBInstances(self, request):
-        """该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。
-
-        This API was disused. You can refer to the CreateDBInstance API, and initialize the instance when creating it.
-
-        This API is used to initialize a TencentDB instance, including initial password, default character set, and instance port number. But it is disused and not recommended. You can now set the instance information by using the parameter `Password`, `ParamList`, and `Port` respectively in the `CreateDBInstance` and `CreateDBInstanceHour` APIs.
-
-        :param request: Request instance for InitDBInstances.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.InitDBInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InitDBInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.InitDBInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def IsolateDBInstance(self, request):
         """This API is used to isolate a TencentDB instance, which will no longer be accessible via IP and port. The isolated instance can be started up in the recycle bin. If it is isolated due to arrears, please top up your account as soon as possible.
 
