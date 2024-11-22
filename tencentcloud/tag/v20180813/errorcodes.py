@@ -26,6 +26,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 
 FAILEDOPERATION_POLICYENFORCEDINVALID = 'FailedOperation.PolicyEnforcedInvalid'
 
+# Exceeding the project count limit.
+FAILEDOPERATION_PROJECTNUMEXCEED = 'FailedOperation.ProjectNumExceed'
+
 # The `appId` of resources in one single request must be the same.
 FAILEDOPERATION_RESOURCEAPPIDNOTSAME = 'FailedOperation.ResourceAppIdNotSame'
 
@@ -43,6 +46,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 
 # The `PaginationToken` parameter is invalid.
 INVALIDPARAMETER_PAGINATIONTOKENINVALID = 'InvalidParameter.PaginationTokenInvalid'
+
+# The project name already exists.
+INVALIDPARAMETER_PROJECTNAMEEXISTED = 'InvalidParameter.ProjectNameExisted'
 
 # System reserved tag keys `qcloud`, `tencent` and `project` cannot be created.
 INVALIDPARAMETER_RESERVEDTAGKEY = 'InvalidParameter.ReservedTagKey'
@@ -142,6 +148,9 @@ RESOURCEINUSE_TAGKEYATTACHED = 'ResourceInUse.TagKeyAttached'
 
 # The tag key associated with the resource doesn’t exist.
 RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = 'ResourceNotFound.AttachedTagKeyNotFound'
+
+# Record does not exist.
+RESOURCENOTFOUND_RECORDNOTFOUND = 'ResourceNotFound.RecordNotFound'
 
 # Tag does not exist.
 RESOURCENOTFOUND_TAGNONEXIST = 'ResourceNotFound.TagNonExist'
