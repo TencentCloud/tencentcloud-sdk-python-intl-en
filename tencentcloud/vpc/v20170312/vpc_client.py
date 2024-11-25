@@ -1035,6 +1035,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateReserveIpAddresses(self, request):
+        """This API is used to create a reserved private IP address.
+
+        :param request: Request instance for CreateReserveIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateReserveIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateReserveIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReserveIpAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReserveIpAddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRouteTable(self, request):
         """This API is used to create a route table.
         * After the VPC instance has been created, the system creates a default route table with which all newly created subnets will be associated. By default, you can use this route table to manage your routing policies. If you have multiple routing policies, you can call the API for creating route tables to create more route tables to manage these routing policies.
@@ -1148,20 +1171,20 @@ class VpcClient(AbstractClient):
 
 
     def CreateSecurityGroupWithPolicies(self, request):
-        """This API is used to create u200da security group, and add security group policies.
+        """This API is used to create a security group, and add security group policies.
         * For the the upper limit of security groups per project in each region under each account, <a href="https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1">see here</a>
-        * u200dFor u200dnewly u200dcreated security groups, u200dthe inbound and outbound policies are set to `Deny All` by default. You need to call <a href="https://intl.cloud.tencent.com/document/product/215/15807?from_cn_redirect=1">CreateSecurityGroupPolicies</a>
+        * For newly created security groups, the inbound and outbound policies are set to `Deny All` by default. You need to call <a href="https://intl.cloud.tencent.com/document/product/215/15807?from_cn_redirect=1">CreateSecurityGroupPolicies</a>
         to change it.
 
         Description:
         * `Version`: The version number of a security group policy. It automatically increments by 1 every time you update the security policy, so to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.
         * `Protocol`: Values can be `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, and `ALL`.
-        * `CidrBlock`: Enter a CIDR block in the correct format. In the classic network, even if the CIDR block specified in u200d`CidrBlock` contains the Tencent Cloud private IPs not used for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups.
+        * `CidrBlock`: Enter a CIDR block in the correct format. In the classic network, even if the CIDR block specified in `CidrBlock` contains the Tencent Cloud private IPs not used for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups.
         * `Ipv6CidrBlock`: Enter an IPv6 CIDR block in the correct format. In the classic network, even if the CIDR block specified in `Ipv6CidrBlock` contains the Tencent Cloud private IPv6 addresses not used for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups.
         * `SecurityGroupId`: ID of the security group. It can be the ID of a security group to be modified, or the ID of another security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don't need to change it manually.
         * `Port`: Enter a single port number (such as `80`), or a port range (such as `8000-8010`). `Port` is only applicable when `Protocol` is `TCP` or `UDP`. If `Protocol` is not `TCP` or `UDP`, `Protocol` and `Port` cannot be both specified.
         * `Action`: Values can be `ACCEPT` or `DROP`.
-        * `CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are exclusive u200dto one another. “Protocol + Port” and `ServiceTemplate` are mutually exclusive.
+        * `CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are exclusive to one another. "Protocol + Port" and `ServiceTemplate` are mutually exclusive.
         * Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent.
 
         :param request: Request instance for CreateSecurityGroupWithPolicies.
@@ -1893,6 +1916,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteNetworkInterface", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNetworkInterfaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteReserveIpAddresses(self, request):
+        """This API is used to delete a reserved private IP address.
+
+        :param request: Request instance for DeleteReserveIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteReserveIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteReserveIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReserveIpAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteReserveIpAddressesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3149,6 +3195,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeNetworkInterfaces", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNetworkInterfacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReserveIpAddresses(self, request):
+        """This API is used to query reserved private IP addresses.
+
+        :param request: Request instance for DescribeReserveIpAddresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeReserveIpAddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeReserveIpAddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReserveIpAddresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReserveIpAddressesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5150,6 +5219,29 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyPrivateIpAddressesAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPrivateIpAddressesAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReserveIpAddress(self, request):
+        """This API is used to modify a reserved private IP address.
+
+        :param request: Request instance for ModifyReserveIpAddress.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyReserveIpAddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyReserveIpAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReserveIpAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReserveIpAddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
