@@ -161,6 +161,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GitInfo(self):
+        warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
+
         """Git information
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -169,6 +171,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @GitInfo.setter
     def GitInfo(self, GitInfo):
+        warnings.warn("parameter `GitInfo` is deprecated", DeprecationWarning) 
+
         self._GitInfo = GitInfo
 
 

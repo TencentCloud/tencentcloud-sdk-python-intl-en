@@ -326,7 +326,7 @@ class PrivatednsClient(AbstractClient):
 
 
     def DescribePrivateZoneList(self, request):
-        """This API is used to get the list of private domains.
+        """This API is used to obtain the private domain list.
 
         :param request: Request instance for DescribePrivateZoneList.
         :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListRequest`

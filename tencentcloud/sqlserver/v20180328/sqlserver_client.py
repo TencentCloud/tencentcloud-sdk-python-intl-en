@@ -141,8 +141,31 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBasicDBInstances(self, request):
+        """This API is used to create basic edition instances (cloud disk).
+
+        :param request: Request instance for CreateBasicDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBasicDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBasicDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBasicDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBasicDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBusinessDBInstances(self, request):
-        """This API is used to create a business intelligence service instance.
+        """This API is used to create business intelligence service instances (cloud disk).
 
         :param request: Request instance for CreateBusinessDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesRequest`
@@ -188,7 +211,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateCloudDBInstances(self, request):
-        """This API is used to create a high-availability instance of cloud disk edition.
+        """This API is used to create high-availability instances (cloud disk).
 
         :param request: Request instance for CreateCloudDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesRequest`
@@ -211,7 +234,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateCloudReadOnlyDBInstances(self, request):
-        """This API is used to add a read-only replica instance of cloud disk edition.
+        """This API is used to create read-only instances (cloud disk).
 
         :param request: Request instance for CreateCloudReadOnlyDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesRequest`
@@ -257,7 +280,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateDBInstances(self, request):
-        """This API is used to create an instance.
+        """This API is used to create high-availability instances (local disk)
 
         :param request: Request instance for CreateDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateDBInstancesRequest`
@@ -316,6 +339,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("CreateMigration", params, headers=headers)
             response = json.loads(body)
             model = models.CreateMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateReadOnlyDBInstances(self, request):
+        """This API is used to create read-only instances (local disk).
+
+        :param request: Request instance for CreateReadOnlyDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateReadOnlyDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateReadOnlyDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReadOnlyDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReadOnlyDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -992,6 +1038,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRestoreTimeRange(self, request):
+        """This API is used to query the time range available for rollback by time point.
+
+        :param request: Request instance for DescribeRestoreTimeRange.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTimeRangeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTimeRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRestoreTimeRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRestoreTimeRangeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRollbackTime(self, request):
         """This API is used to query the time range available for instance rollback.
 
@@ -1375,6 +1444,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyDBRemark", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBRemarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDReadable(self, request):
+        """This API is used to enable or disable the read-only feature of the replica server.
+
+        :param request: Request instance for ModifyDReadable.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDReadableRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDReadableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDReadable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDReadableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

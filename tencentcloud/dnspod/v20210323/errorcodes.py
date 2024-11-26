@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # The domain is already in your list. There is no need to add it again.
 FAILEDOPERATION_DOMAINEXISTS = 'FailedOperation.DomainExists'
 
+# 
+FAILEDOPERATION_DOMAININENTERPRISEMAILACCOUNT = 'FailedOperation.DomainInEnterpriseMailAccount'
+
 # This domain is a key protected resource in DNSPod. To prevent the service from being affected by maloperations, you cannot delete it. If you are sure you need to delete it, please contact your sales rep for technical support.
 FAILEDOPERATION_DOMAINISKEYDOMAIN = 'FailedOperation.DomainIsKeyDomain'
 
@@ -110,6 +113,9 @@ INVALIDPARAMETER_DOMAINALIASIDINVALID = 'InvalidParameter.DomainAliasIdInvalid'
 # The domain number is incorrect.
 INVALIDPARAMETER_DOMAINIDINVALID = 'InvalidParameter.DomainIdInvalid'
 
+# 
+INVALIDPARAMETER_DOMAININBLACKLIST = 'InvalidParameter.DomainInBlackList'
+
 # You cannot perform operations on a domain currently active or invalid.
 INVALIDPARAMETER_DOMAININEFFECTORINVALIDATED = 'InvalidParameter.DomainInEffectOrInvalidated'
 
@@ -118,6 +124,9 @@ INVALIDPARAMETER_DOMAININVALID = 'InvalidParameter.DomainInvalid'
 
 # This domain is an alias of another domain.
 INVALIDPARAMETER_DOMAINISALIASER = 'InvalidParameter.DomainIsAliaser'
+
+# 
+INVALIDPARAMETER_DOMAINISMYALIAS = 'InvalidParameter.DomainIsMyAlias'
 
 # The domain is not locked.
 INVALIDPARAMETER_DOMAINISNOTLOCKED = 'InvalidParameter.DomainIsNotlocked'

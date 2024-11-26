@@ -194,6 +194,9 @@ INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = 'InvalidParameterValue.Security
 # The database limit is exceeded.
 LIMITEXCEEDED_TOOMANYDB = 'LimitExceeded.TooManyDB'
 
+# Error of missing parameters.
+MISSINGPARAMETER = 'MissingParameter'
+
 # An incremental backup import task to be started already exists.
 RESOURCEINUSE_INCREMENTALMIGRATIONEXIST = 'ResourceInUse.IncrementalMigrationExist'
 

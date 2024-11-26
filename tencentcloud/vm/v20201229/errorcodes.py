@@ -17,40 +17,40 @@
 # A CAM signature/authentication error occurred.
 AUTHFAILURE = 'AuthFailure'
 
-# `DryRun` Operation. It means that the request would have succeeded, but the `DryRun` parameter was used.
+# DryRun operation, which means the DryRun parameter is passed in yet the request will still be successful.
 DRYRUNOPERATION = 'DryRunOperation'
 
-# The operation failed.
+# Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
-# An internal error occurred.
+# Internal error.
 INTERNALERROR = 'InternalError'
 
-# The parameter is incorrect.
+# Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
-# The parameter value is incorrect.
+# Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# The quota limit is exceeded.
+# The quota limit has been reached.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# The parameter is missing.
+# Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
-# The operation was denied.
+# Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
-# The resource is in use.
+# The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
 
-# The resource is insufficient.
+# Insufficient resource.
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
-# The resource does not exist.
+# The resource doesn’t exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
 # The resource is unavailable.
@@ -59,14 +59,14 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # The resources have been sold out.
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
-# The operation is unauthorized.
+# Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # 
 UNAUTHORIZEDOPERATION_UNAUTHORIZED = 'UnauthorizedOperation.Unauthorized'
 
-# The parameter is unknown.
+# Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 
-# The operation is not supported.
+# Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
