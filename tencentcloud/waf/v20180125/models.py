@@ -943,9 +943,7 @@ cdn-waf: web protection capability on CDN
         :type SniType: int
         :param _SniHost: When SniType=3, this parameter is required, indicating a custom SNI;
         :type SniHost: str
-        :param _XFFReset: Whether to enable XFF reset
-0: disable
-1: enable
+        :param _XFFReset: Whether to enable XFF reset. 0: disable; 1: enable.
         :type XFFReset: int
         :param _Note: Domain name remarks
         :type Note: str
@@ -953,8 +951,22 @@ cdn-waf: web protection capability on CDN
         :type UpstreamHost: str
         :param _ProxyBuffer: Whether to enable caching. 0: disable; 1: enable.
         :type ProxyBuffer: int
-        :param _ProbeStatus: 0: disable probe test; 1: enable probe test. The test is enabled by default.
+        :param _ProbeStatus: Whether to enable the test. 0: disable; 1: enable. The test is enabled by default.
         :type ProbeStatus: int
+        :param _GmType: Whether to enable SM. 0: do not enable SM; 1: add support for SM based on the existing TLS option; 2: enable SM and support only SM client access.
+        :type GmType: int
+        :param _GmCertType: SM certificate type. 0: no SM certificate is available; 1: the certificate is a self-owned SM certificate; 2: the certificate is a managed SM certificate.
+        :type GmCertType: int
+        :param _GmCert: When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+        :type GmCert: str
+        :param _GmPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+        :type GmPrivateKey: str
+        :param _GmEncCert: When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+        :type GmSSLId: str
         """
         self._Domain = None
         self._CertType = None
@@ -994,6 +1006,13 @@ cdn-waf: web protection capability on CDN
         self._UpstreamHost = None
         self._ProxyBuffer = None
         self._ProbeStatus = None
+        self._GmType = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
 
     @property
     def Domain(self):
@@ -1400,9 +1419,7 @@ cdn-waf: web protection capability on CDN
 
     @property
     def XFFReset(self):
-        """Whether to enable XFF reset
-0: disable
-1: enable
+        """Whether to enable XFF reset. 0: disable; 1: enable.
         :rtype: int
         """
         return self._XFFReset
@@ -1446,7 +1463,7 @@ cdn-waf: web protection capability on CDN
 
     @property
     def ProbeStatus(self):
-        """0: disable probe test; 1: enable probe test. The test is enabled by default.
+        """Whether to enable the test. 0: disable; 1: enable. The test is enabled by default.
         :rtype: int
         """
         return self._ProbeStatus
@@ -1454,6 +1471,83 @@ cdn-waf: web protection capability on CDN
     @ProbeStatus.setter
     def ProbeStatus(self, ProbeStatus):
         self._ProbeStatus = ProbeStatus
+
+    @property
+    def GmType(self):
+        """Whether to enable SM. 0: do not enable SM; 1: add support for SM based on the existing TLS option; 2: enable SM and support only SM client access.
+        :rtype: int
+        """
+        return self._GmType
+
+    @GmType.setter
+    def GmType(self, GmType):
+        self._GmType = GmType
+
+    @property
+    def GmCertType(self):
+        """SM certificate type. 0: no SM certificate is available; 1: the certificate is a self-owned SM certificate; 2: the certificate is a managed SM certificate.
+        :rtype: int
+        """
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        """When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+        :rtype: str
+        """
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
 
 
     def _deserialize(self, params):
@@ -1500,6 +1594,13 @@ cdn-waf: web protection capability on CDN
         self._UpstreamHost = params.get("UpstreamHost")
         self._ProxyBuffer = params.get("ProxyBuffer")
         self._ProbeStatus = params.get("ProbeStatus")
+        self._GmType = params.get("GmType")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1735,6 +1836,87 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
         self._IsAPISecurityTrial = params.get("IsAPISecurityTrial")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttackLogInfo(AbstractModel):
+    """Attack Log Details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: Details of Attack Logs
+        :type Content: str
+        :param _FileName: CLS Returned Content
+        :type FileName: str
+        :param _Source: CLS Returned Content
+        :type Source: str
+        :param _TimeStamp: CLS Returned Content
+        :type TimeStamp: str
+        """
+        self._Content = None
+        self._FileName = None
+        self._Source = None
+        self._TimeStamp = None
+
+    @property
+    def Content(self):
+        """Details of Attack Logs
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FileName(self):
+        """CLS Returned Content
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Source(self):
+        """CLS Returned Content
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def TimeStamp(self):
+        """CLS Returned Content
+        :rtype: str
+        """
+        return self._TimeStamp
+
+    @TimeStamp.setter
+    def TimeStamp(self, TimeStamp):
+        self._TimeStamp = TimeStamp
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._FileName = params.get("FileName")
+        self._Source = params.get("Source")
+        self._TimeStamp = params.get("TimeStamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3114,117 +3296,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
-class CacheUrlItem(AbstractModel):
-    """Tamper-proof URL Elements
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: Id
-        :type Id: str
-        :param _Name: Name
-        :type Name: str
-        :param _Domain: Domain name
-        :type Domain: str
-        :param _Uri: uri
-        :type Uri: str
-        :param _Protocol: Protocol
-        :type Protocol: str
-        :param _Status: Status
-        :type Status: str
-        """
-        self._Id = None
-        self._Name = None
-        self._Domain = None
-        self._Uri = None
-        self._Protocol = None
-        self._Status = None
-
-    @property
-    def Id(self):
-        """Id
-        :rtype: str
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def Name(self):
-        """Name
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Domain(self):
-        """Domain name
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def Uri(self):
-        """uri
-        :rtype: str
-        """
-        return self._Uri
-
-    @Uri.setter
-    def Uri(self, Uri):
-        self._Uri = Uri
-
-    @property
-    def Protocol(self):
-        """Protocol
-        :rtype: str
-        """
-        return self._Protocol
-
-    @Protocol.setter
-    def Protocol(self, Protocol):
-        self._Protocol = Protocol
-
-    @property
-    def Status(self):
-        """Status
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._Name = params.get("Name")
-        self._Domain = params.get("Domain")
-        self._Uri = params.get("Uri")
-        self._Protocol = params.get("Protocol")
-        self._Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class CacheUrlItems(AbstractModel):
     """Tamper-proof URL Elements
 
@@ -3418,6 +3489,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Note: Domain name remarks
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Note: str
+        :param _Labels: Domain name tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Labels: list of str
         """
         self._Domain = None
         self._DomainId = None
@@ -3433,6 +3507,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CdcClusters = None
         self._CloudType = None
         self._Note = None
+        self._Labels = None
 
     @property
     def Domain(self):
@@ -3597,6 +3672,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Note(self, Note):
         self._Note = Note
 
+    @property
+    def Labels(self):
+        """Domain name tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -3618,6 +3705,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CdcClusters = params.get("CdcClusters")
         self._CloudType = params.get("CloudType")
         self._Note = params.get("Note")
+        self._Labels = params.get("Labels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3687,6 +3775,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ApiStatus: int
         :param _ObjectFlowMode: Object access mode. 0: image mode; 1: cleaning mode; 2: examination mode. By default, the cleaning mode is used.Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectFlowMode: int
+        :param _NumericalVpcId: VPC ID in numerical format
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NumericalVpcId: int
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -3710,6 +3802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BotStatus = None
         self._ApiStatus = None
         self._ObjectFlowMode = None
+        self._NumericalVpcId = None
 
     @property
     def ObjectId(self):
@@ -3961,6 +4054,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ObjectFlowMode(self, ObjectFlowMode):
         self._ObjectFlowMode = ObjectFlowMode
 
+    @property
+    def NumericalVpcId(self):
+        """VPC ID in numerical format
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._NumericalVpcId
+
+    @NumericalVpcId.setter
+    def NumericalVpcId(self, NumericalVpcId):
+        self._NumericalVpcId = NumericalVpcId
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -3985,6 +4091,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BotStatus = params.get("BotStatus")
         self._ApiStatus = params.get("ApiStatus")
         self._ObjectFlowMode = params.get("ObjectFlowMode")
+        self._NumericalVpcId = params.get("NumericalVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4832,6 +4939,8 @@ Global domain name, that is, global.
 
     @property
     def ValidTS(self):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
         """valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.
         :rtype: int
         """
@@ -4839,6 +4948,8 @@ Global domain name, that is, global.
 
     @ValidTS.setter
     def ValidTS(self, ValidTS):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
         self._ValidTS = ValidTS
 
     @property
@@ -5745,13 +5856,13 @@ class DeleteIpAccessControlV2Request(AbstractModel):
         r"""
         :param _Domain: Domain name
         :type Domain: str
-        :param _RuleIds: Rule ID list, which supports deletion in batches.
+        :param _RuleIds: Rule ID list. Batch deletion is supported. This parameter does not need to be specified when DeleteAll is true.
         :type RuleIds: list of int non-negative
-        :param _DeleteAll: Whether to delete all IP blocklists/allowlists under the corresponding domain. True indicates deleting all; false indicates only deleting a specified IP list.
+        :param _DeleteAll: Whether to delete all IP blocklists/allowlists under the corresponding domain name. true: delete all lists; false: delete only the specified lists. Batch protection is not supported.
         :type DeleteAll: bool
         :param _SourceType: batch: indicates batch protection IP allowlists/blocklists.
         :type SourceType: str
-        :param _ActionType: IP allowlist/blocklist type. 40: IP allowlist; 42: IP blocklist.
+        :param _ActionType: IP blocklist/allowlist type. 40: IP allowlist; 42: IP blocklist. This parameter should be passed in when DeleteAll is true.
         :type ActionType: int
         """
         self._Domain = None
@@ -5773,7 +5884,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     @property
     def RuleIds(self):
-        """Rule ID list, which supports deletion in batches.
+        """Rule ID list. Batch deletion is supported. This parameter does not need to be specified when DeleteAll is true.
         :rtype: list of int non-negative
         """
         return self._RuleIds
@@ -5784,7 +5895,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     @property
     def DeleteAll(self):
-        """Whether to delete all IP blocklists/allowlists under the corresponding domain. True indicates deleting all; false indicates only deleting a specified IP list.
+        """Whether to delete all IP blocklists/allowlists under the corresponding domain name. true: delete all lists; false: delete only the specified lists. Batch protection is not supported.
         :rtype: bool
         """
         return self._DeleteAll
@@ -5806,7 +5917,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     @property
     def ActionType(self):
-        """IP allowlist/blocklist type. 40: IP allowlist; 42: IP blocklist.
+        """IP blocklist/allowlist type. 40: IP allowlist; 42: IP blocklist. This parameter should be passed in when DeleteAll is true.
         :rtype: int
         """
         return self._ActionType
@@ -6263,369 +6374,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class DescribeAntiFakeUrlRequest(AbstractModel):
-    """DescribeAntiFakeUrl request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: Domain name
-        :type Domain: str
-        :param _PageInfo: Page turning parameters
-        :type PageInfo: :class:`tencentcloud.waf.v20180125.models.PageInfo`
-        """
-        self._Domain = None
-        self._PageInfo = None
-
-    @property
-    def Domain(self):
-        """Domain name
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def PageInfo(self):
-        """Page turning parameters
-        :rtype: :class:`tencentcloud.waf.v20180125.models.PageInfo`
-        """
-        return self._PageInfo
-
-    @PageInfo.setter
-    def PageInfo(self, PageInfo):
-        self._PageInfo = PageInfo
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        if params.get("PageInfo") is not None:
-            self._PageInfo = PageInfo()
-            self._PageInfo._deserialize(params.get("PageInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAntiFakeUrlResponse(AbstractModel):
-    """DescribeAntiFakeUrl response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Total: Total number
-        :type Total: str
-        :param _List: Information
-        :type List: list of CacheUrlItem
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Total = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def Total(self):
-        """Total number
-        :rtype: str
-        """
-        return self._Total
-
-    @Total.setter
-    def Total(self, Total):
-        self._Total = Total
-
-    @property
-    def List(self):
-        """Information
-        :rtype: list of CacheUrlItem
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Total = params.get("Total")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = CacheUrlItem()
-                obj._deserialize(item)
-                self._List.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAntiInfoLeakRulesRequest(AbstractModel):
-    """DescribeAntiInfoLeakRules request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: Domain name
-        :type Domain: str
-        :param _ActionType: Action type
-        :type ActionType: int
-        :param _PageInfo: Page turning
-        :type PageInfo: :class:`tencentcloud.waf.v20180125.models.PageInfo`
-        """
-        self._Domain = None
-        self._ActionType = None
-        self._PageInfo = None
-
-    @property
-    def Domain(self):
-        """Domain name
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def ActionType(self):
-        """Action type
-        :rtype: int
-        """
-        return self._ActionType
-
-    @ActionType.setter
-    def ActionType(self, ActionType):
-        self._ActionType = ActionType
-
-    @property
-    def PageInfo(self):
-        """Page turning
-        :rtype: :class:`tencentcloud.waf.v20180125.models.PageInfo`
-        """
-        return self._PageInfo
-
-    @PageInfo.setter
-    def PageInfo(self, PageInfo):
-        self._PageInfo = PageInfo
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        self._ActionType = params.get("ActionType")
-        if params.get("PageInfo") is not None:
-            self._PageInfo = PageInfo()
-            self._PageInfo._deserialize(params.get("PageInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAntiInfoLeakRulesResponse(AbstractModel):
-    """DescribeAntiInfoLeakRules response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: Number of records
-        :type TotalCount: str
-        :param _RuleList: List of rules
-        :type RuleList: list of DescribeAntiInfoLeakRulesRuleItem
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._RuleList = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        """Number of records
-        :rtype: str
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RuleList(self):
-        """List of rules
-        :rtype: list of DescribeAntiInfoLeakRulesRuleItem
-        """
-        return self._RuleList
-
-    @RuleList.setter
-    def RuleList(self, RuleList):
-        self._RuleList = RuleList
-
-    @property
-    def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("RuleList") is not None:
-            self._RuleList = []
-            for item in params.get("RuleList"):
-                obj = DescribeAntiInfoLeakRulesRuleItem()
-                obj._deserialize(item)
-                self._RuleList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAntiInfoLeakRulesRuleItem(AbstractModel):
-    """Rule list element returned by DescribeAntiInfoLeakRules
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleId: Rule ID
-        :type RuleId: str
-        :param _Name: Rule name
-        :type Name: str
-        :param _Status: Rule status
-        :type Status: str
-        :param _ActionType: Rule Action Type
-        :type ActionType: str
-        :param _CreateTime: Rule creation time
-        :type CreateTime: str
-        :param _Strategies: Detailed Rules
-        :type Strategies: list of DescribeAntiInfoLeakRulesStrategyItem
-        """
-        self._RuleId = None
-        self._Name = None
-        self._Status = None
-        self._ActionType = None
-        self._CreateTime = None
-        self._Strategies = None
-
-    @property
-    def RuleId(self):
-        """Rule ID
-        :rtype: str
-        """
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def Name(self):
-        """Rule name
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Status(self):
-        """Rule status
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def ActionType(self):
-        """Rule Action Type
-        :rtype: str
-        """
-        return self._ActionType
-
-    @ActionType.setter
-    def ActionType(self, ActionType):
-        self._ActionType = ActionType
-
-    @property
-    def CreateTime(self):
-        """Rule creation time
-        :rtype: str
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def Strategies(self):
-        """Detailed Rules
-        :rtype: list of DescribeAntiInfoLeakRulesStrategyItem
-        """
-        return self._Strategies
-
-    @Strategies.setter
-    def Strategies(self, Strategies):
-        self._Strategies = Strategies
-
-
-    def _deserialize(self, params):
-        self._RuleId = params.get("RuleId")
-        self._Name = params.get("Name")
-        self._Status = params.get("Status")
-        self._ActionType = params.get("ActionType")
-        self._CreateTime = params.get("CreateTime")
-        if params.get("Strategies") is not None:
-            self._Strategies = []
-            for item in params.get("Strategies"):
-                obj = DescribeAntiInfoLeakRulesStrategyItem()
-                obj._deserialize(item)
-                self._Strategies.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DescribeAntiInfoLeakRulesStrategyItem(AbstractModel):
     """Specific rule elements within the rule elements returned by DescribeAntiInfoLeakRules
 
@@ -7012,6 +6760,328 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeAttackOverviewRequest(AbstractModel):
+    """DescribeAttackOverview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromTime: Query start time
+        :type FromTime: str
+        :param _ToTime: Query end time
+        :type ToTime: str
+        :param _Appid: Customer app ID
+        :type Appid: int
+        :param _Domain: Queried domain
+        :type Domain: str
+        :param _Edition: Only two values are valid: sparta-waf, clb-waf. No filtering if not input.
+        :type Edition: str
+        :param _InstanceID: WAF instance ID. No filter will be carried out if it is not input.
+        :type InstanceID: str
+        """
+        self._FromTime = None
+        self._ToTime = None
+        self._Appid = None
+        self._Domain = None
+        self._Edition = None
+        self._InstanceID = None
+
+    @property
+    def FromTime(self):
+        """Query start time
+        :rtype: str
+        """
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        """Query end time
+        :rtype: str
+        """
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+    @property
+    def Appid(self):
+        """Customer app ID
+        :rtype: int
+        """
+        return self._Appid
+
+    @Appid.setter
+    def Appid(self, Appid):
+        self._Appid = Appid
+
+    @property
+    def Domain(self):
+        """Queried domain
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Edition(self):
+        """Only two values are valid: sparta-waf, clb-waf. No filtering if not input.
+        :rtype: str
+        """
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        """WAF instance ID. No filter will be carried out if it is not input.
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        self._Appid = params.get("Appid")
+        self._Domain = params.get("Domain")
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAttackOverviewResponse(AbstractModel):
+    """DescribeAttackOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessCount: Total number of access requests
+        :type AccessCount: int
+        :param _AttackCount: Total web attacks
+        :type AttackCount: int
+        :param _ACLCount: Total number of access controls
+        :type ACLCount: int
+        :param _CCCount: Total CC attacks
+        :type CCCount: int
+        :param _BotCount: Total bot attack count
+        :type BotCount: int
+        :param _ApiAssetsCount: Total API assets
+        :type ApiAssetsCount: int
+        :param _ApiRiskEventCount: Number of API risk events
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApiRiskEventCount: int
+        :param _IPBlackCount: Total number of blocklisted IP addresses.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IPBlackCount: int
+        :param _TamperCount: Total number of tamper-proof items
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TamperCount: int
+        :param _LeakCount: Total number of information leaks
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LeakCount: int
+        :param _ApiRiskEventCircleCount: Weekly proportion of API risk events.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApiRiskEventCircleCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AccessCount = None
+        self._AttackCount = None
+        self._ACLCount = None
+        self._CCCount = None
+        self._BotCount = None
+        self._ApiAssetsCount = None
+        self._ApiRiskEventCount = None
+        self._IPBlackCount = None
+        self._TamperCount = None
+        self._LeakCount = None
+        self._ApiRiskEventCircleCount = None
+        self._RequestId = None
+
+    @property
+    def AccessCount(self):
+        """Total number of access requests
+        :rtype: int
+        """
+        return self._AccessCount
+
+    @AccessCount.setter
+    def AccessCount(self, AccessCount):
+        self._AccessCount = AccessCount
+
+    @property
+    def AttackCount(self):
+        """Total web attacks
+        :rtype: int
+        """
+        return self._AttackCount
+
+    @AttackCount.setter
+    def AttackCount(self, AttackCount):
+        self._AttackCount = AttackCount
+
+    @property
+    def ACLCount(self):
+        """Total number of access controls
+        :rtype: int
+        """
+        return self._ACLCount
+
+    @ACLCount.setter
+    def ACLCount(self, ACLCount):
+        self._ACLCount = ACLCount
+
+    @property
+    def CCCount(self):
+        """Total CC attacks
+        :rtype: int
+        """
+        return self._CCCount
+
+    @CCCount.setter
+    def CCCount(self, CCCount):
+        self._CCCount = CCCount
+
+    @property
+    def BotCount(self):
+        """Total bot attack count
+        :rtype: int
+        """
+        return self._BotCount
+
+    @BotCount.setter
+    def BotCount(self, BotCount):
+        self._BotCount = BotCount
+
+    @property
+    def ApiAssetsCount(self):
+        """Total API assets
+        :rtype: int
+        """
+        return self._ApiAssetsCount
+
+    @ApiAssetsCount.setter
+    def ApiAssetsCount(self, ApiAssetsCount):
+        self._ApiAssetsCount = ApiAssetsCount
+
+    @property
+    def ApiRiskEventCount(self):
+        """Number of API risk events
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ApiRiskEventCount
+
+    @ApiRiskEventCount.setter
+    def ApiRiskEventCount(self, ApiRiskEventCount):
+        self._ApiRiskEventCount = ApiRiskEventCount
+
+    @property
+    def IPBlackCount(self):
+        """Total number of blocklisted IP addresses.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IPBlackCount
+
+    @IPBlackCount.setter
+    def IPBlackCount(self, IPBlackCount):
+        self._IPBlackCount = IPBlackCount
+
+    @property
+    def TamperCount(self):
+        """Total number of tamper-proof items
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TamperCount
+
+    @TamperCount.setter
+    def TamperCount(self, TamperCount):
+        self._TamperCount = TamperCount
+
+    @property
+    def LeakCount(self):
+        """Total number of information leaks
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LeakCount
+
+    @LeakCount.setter
+    def LeakCount(self, LeakCount):
+        self._LeakCount = LeakCount
+
+    @property
+    def ApiRiskEventCircleCount(self):
+        """Weekly proportion of API risk events.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ApiRiskEventCircleCount
+
+    @ApiRiskEventCircleCount.setter
+    def ApiRiskEventCircleCount(self, ApiRiskEventCircleCount):
+        self._ApiRiskEventCircleCount = ApiRiskEventCircleCount
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AccessCount = params.get("AccessCount")
+        self._AttackCount = params.get("AttackCount")
+        self._ACLCount = params.get("ACLCount")
+        self._CCCount = params.get("CCCount")
+        self._BotCount = params.get("BotCount")
+        self._ApiAssetsCount = params.get("ApiAssetsCount")
+        self._ApiRiskEventCount = params.get("ApiRiskEventCount")
+        self._IPBlackCount = params.get("IPBlackCount")
+        self._TamperCount = params.get("TamperCount")
+        self._LeakCount = params.get("LeakCount")
+        self._ApiRiskEventCircleCount = params.get("ApiRiskEventCircleCount")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAttackTypeRequest(AbstractModel):
@@ -7638,7 +7708,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         r"""
         :param _Domain: Domain name
         :type Domain: str
-        :param _CertType: Certificate type. 0: no certificate, with only the HTTP listening port configured; 1: self-owned certificate; 2: managed certificate.
+        :param _CertType: Certificate type. 0: Do not check international standard certificates; 1: The certificate is a self-owned certificate; 2: The certificate is a managed certificate.
         :type CertType: int
         :param _Certificate: When CertType is 1, this parameter is required, indicating the self-owned certificate chain
         :type Certificate: str
@@ -7646,12 +7716,30 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         :type CertID: str
         :param _PrivateKey: When CertType=1, this parameter is required, indicating the private key of the self-owned certificate.
         :type PrivateKey: str
+        :param _GmCertType: SM certificate type. 0: Do not check SM certificates; 1: The certificate is a self-owned SM certificate; 2: The certificate is a managed SM certificate.
+        :type GmCertType: int
+        :param _GmCert: When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+        :type GmCert: str
+        :param _GmPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+        :type GmPrivateKey: str
+        :param _GmEncCert: When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+        :type GmSSLId: str
         """
         self._Domain = None
         self._CertType = None
         self._Certificate = None
         self._CertID = None
         self._PrivateKey = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
 
     @property
     def Domain(self):
@@ -7666,7 +7754,7 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
 
     @property
     def CertType(self):
-        """Certificate type. 0: no certificate, with only the HTTP listening port configured; 1: self-owned certificate; 2: managed certificate.
+        """Certificate type. 0: Do not check international standard certificates; 1: The certificate is a self-owned certificate; 2: The certificate is a managed certificate.
         :rtype: int
         """
         return self._CertType
@@ -7708,6 +7796,72 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
     def PrivateKey(self, PrivateKey):
         self._PrivateKey = PrivateKey
 
+    @property
+    def GmCertType(self):
+        """SM certificate type. 0: Do not check SM certificates; 1: The certificate is a self-owned SM certificate; 2: The certificate is a managed SM certificate.
+        :rtype: int
+        """
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        """When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+        :rtype: str
+        """
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -7715,6 +7869,12 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         self._Certificate = params.get("Certificate")
         self._CertID = params.get("CertID")
         self._PrivateKey = params.get("PrivateKey")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9063,7 +9223,7 @@ class DescribeDomainsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number of returned domains
         :type Limit: int
-        :param _Filters: Filter array
+        :param _Filters: Filter array. The filter fields are as follows. Edition: instance version, which can be set to sparta-waf or clb-waf; Domain: domain name; DomainId: domain name ID; InstanceName: instance name; InstanceId: instance ID; FlowMode: traffic access mode, which supports only CLB WAF; FlowCheckMode: traffic inspection mode, which supports only CLB WAF; ClsStatus: log switch; Status: WAF switch; BotStatus: BOT switch; ApiStatus: API security switch; Engine: engine mode; UpstreamIP: origin server IP address, which supports only SaaS WAF; UpstreamDomain: origin server domain name, which supports only SaaS WAF; DomainState: domain name status, which supports only SaaS WAF; SgState: security group status, which supports only SaaS WAF; Label: group tag, which supports the filtering of only one tag at a time.
         :type Filters: list of FiltersItemNew
         """
         self._Offset = None
@@ -9094,7 +9254,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter array
+        """Filter array. The filter fields are as follows. Edition: instance version, which can be set to sparta-waf or clb-waf; Domain: domain name; DomainId: domain name ID; InstanceName: instance name; InstanceId: instance ID; FlowMode: traffic access mode, which supports only CLB WAF; FlowCheckMode: traffic inspection mode, which supports only CLB WAF; ClsStatus: log switch; Status: WAF switch; BotStatus: BOT switch; ApiStatus: API security switch; Engine: engine mode; UpstreamIP: origin server IP address, which supports only SaaS WAF; UpstreamDomain: origin server domain name, which supports only SaaS WAF; DomainState: domain name status, which supports only SaaS WAF; SgState: security group status, which supports only SaaS WAF; Label: group tag, which supports the filtering of only one tag at a time.
         :rtype: list of FiltersItemNew
         """
         return self._Filters
@@ -12019,14 +12179,14 @@ class DescribeUserClbWafRegionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlbType: 
+        :param _AlbType: Traffic source. The default value is clb if not specified. clb: Cloud Load Balancer; tsegw: cloud-native API gateway; scf: Serverless Cloud Function; apisix: other gateways on Tencent Cloud.
         :type AlbType: str
         """
         self._AlbType = None
 
     @property
     def AlbType(self):
-        """
+        """Traffic source. The default value is clb if not specified. clb: Cloud Load Balancer; tsegw: cloud-native API gateway; scf: Serverless Cloud Function; apisix: other gateways on Tencent Cloud.
         :rtype: str
         """
         return self._AlbType
@@ -12595,6 +12755,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AccessStatus: CLB WAF access status
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AccessStatus: int
+        :param _Labels: Domain name tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Labels: list of str
         """
         self._Domain = None
         self._DomainId = None
@@ -12631,6 +12794,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UpstreamDomainList = None
         self._SgID = None
         self._AccessStatus = None
+        self._Labels = None
 
     @property
     def Domain(self):
@@ -13105,6 +13269,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AccessStatus(self, AccessStatus):
         self._AccessStatus = AccessStatus
 
+    @property
+    def Labels(self):
+        """Domain name tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -13152,6 +13328,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UpstreamDomainList = params.get("UpstreamDomainList")
         self._SgID = params.get("SgID")
         self._AccessStatus = params.get("AccessStatus")
+        self._Labels = params.get("Labels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13564,6 +13741,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ProxyBuffer: Whether to enable caching. 0: disable; 1: enable.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ProxyBuffer: int
+        :param _GmType: Whether to enable SM. 0: do not enable SM; 1: add support for SM based on the existing TLS option; 2: enable SM and support only SM client access.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmType: int
+        :param _GmCertType: SM certificate type. 0: no SM certificate is available; 1: the certificate is a self-owned SM certificate; 2: the certificate is a managed SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmCertType: int
+        :param _GmCert: When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmCert: str
+        :param _GmPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmPrivateKey: str
+        :param _GmEncCert: When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GmSSLId: str
+        :param _Labels: Domain name tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Labels: list of str
         """
         self._Domain = None
         self._DomainId = None
@@ -13607,6 +13808,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UpstreamHost = None
         self._Level = None
         self._ProxyBuffer = None
+        self._GmType = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
+        self._Labels = None
 
     @property
     def Domain(self):
@@ -14136,6 +14345,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ProxyBuffer(self, ProxyBuffer):
         self._ProxyBuffer = ProxyBuffer
 
+    @property
+    def GmType(self):
+        """Whether to enable SM. 0: do not enable SM; 1: add support for SM based on the existing TLS option; 2: enable SM and support only SM client access.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._GmType
+
+    @GmType.setter
+    def GmType(self, GmType):
+        self._GmType = GmType
+
+    @property
+    def GmCertType(self):
+        """SM certificate type. 0: no SM certificate is available; 1: the certificate is a self-owned SM certificate; 2: the certificate is a managed SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        """When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
+
+    @property
+    def Labels(self):
+        """Domain name tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -14185,6 +14490,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UpstreamHost = params.get("UpstreamHost")
         self._Level = params.get("Level")
         self._ProxyBuffer = params.get("ProxyBuffer")
+        self._GmType = params.get("GmType")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
+        self._Labels = params.get("Labels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14812,6 +15125,165 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class GetAttackHistogramRequest(AbstractModel):
+    """GetAttackHistogram request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Queried domain: use all for all domains
+        :type Domain: str
+        :param _StartTime: Query start time
+        :type StartTime: str
+        :param _EndTime: Query end time
+        :type EndTime: str
+        :param _QueryString: Lucene syntax.
+        :type QueryString: str
+        """
+        self._Domain = None
+        self._StartTime = None
+        self._EndTime = None
+        self._QueryString = None
+
+    @property
+    def Domain(self):
+        """Queried domain: use all for all domains
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StartTime(self):
+        """Query start time
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Query end time
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QueryString(self):
+        """Lucene syntax.
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QueryString = params.get("QueryString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAttackHistogramResponse(AbstractModel):
+    """GetAttackHistogram response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Statistics details
+        :type Data: list of LogHistogramInfo
+        :param _Period: Time period size
+        :type Period: int
+        :param _TotalCount: Number of entries counted
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Period = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """Statistics details
+        :rtype: list of LogHistogramInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Period(self):
+        """Time period size
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def TotalCount(self):
+        """Number of entries counted
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LogHistogramInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Period = params.get("Period")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class GetAttackTotalCountRequest(AbstractModel):
     """GetAttackTotalCount request structure.
 
@@ -15243,6 +15715,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceId: str
+        :param _MicroVersion: CLB WAF or SaaS WAF mode.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MicroVersion: str
         """
         self._TimeSpan = None
         self._TimeUnit = None
@@ -15256,6 +15731,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CurDeadline = None
         self._InstanceId = None
         self._ResourceId = None
+        self._MicroVersion = None
 
     @property
     def TimeSpan(self):
@@ -15452,6 +15928,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def MicroVersion(self):
+        """CLB WAF or SaaS WAF mode.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MicroVersion
+
+    @MicroVersion.setter
+    def MicroVersion(self, MicroVersion):
+        self._MicroVersion = MicroVersion
+
 
     def _deserialize(self, params):
         self._TimeSpan = params.get("TimeSpan")
@@ -15466,6 +15954,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CurDeadline = params.get("CurDeadline")
         self._InstanceId = params.get("InstanceId")
         self._ResourceId = params.get("ResourceId")
+        self._MicroVersion = params.get("MicroVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18125,6 +18614,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class LogHistogramInfo(AbstractModel):
+    """Attack Log Statistical Details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: Number of logs.
+        :type Count: int
+        :param _TimeStamp: Timestamp.
+        :type TimeStamp: int
+        """
+        self._Count = None
+        self._TimeStamp = None
+
+    @property
+    def Count(self):
+        """Number of logs.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def TimeStamp(self):
+        """Timestamp.
+        :rtype: int
+        """
+        return self._TimeStamp
+
+    @TimeStamp.setter
+    def TimeStamp(self, TimeStamp):
+        self._TimeStamp = TimeStamp
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._TimeStamp = params.get("TimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MajorEventsPkg(AbstractModel):
     """Key protection resource information
 
@@ -20397,6 +20937,100 @@ class ModifyDomainIpv6StatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDomainPostActionRequest(AbstractModel):
+    """ModifyDomainPostAction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: www.tx.com
+        :type Domain: str
+        :param _PostCLSAction: 0- Disable shipping, 1- Enable shipping
+        :type PostCLSAction: int
+        :param _PostCKafkaAction: 0- Disable shipping, 1- Enable shipping
+        :type PostCKafkaAction: int
+        """
+        self._Domain = None
+        self._PostCLSAction = None
+        self._PostCKafkaAction = None
+
+    @property
+    def Domain(self):
+        """www.tx.com
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def PostCLSAction(self):
+        """0- Disable shipping, 1- Enable shipping
+        :rtype: int
+        """
+        return self._PostCLSAction
+
+    @PostCLSAction.setter
+    def PostCLSAction(self, PostCLSAction):
+        self._PostCLSAction = PostCLSAction
+
+    @property
+    def PostCKafkaAction(self):
+        """0- Disable shipping, 1- Enable shipping
+        :rtype: int
+        """
+        return self._PostCKafkaAction
+
+    @PostCKafkaAction.setter
+    def PostCKafkaAction(self, PostCKafkaAction):
+        self._PostCKafkaAction = PostCKafkaAction
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._PostCLSAction = params.get("PostCLSAction")
+        self._PostCKafkaAction = params.get("PostCKafkaAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainPostActionResponse(AbstractModel):
+    """ModifyDomainPostAction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDomainsCLSStatusRequest(AbstractModel):
     """ModifyDomainsCLSStatus request structure.
 
@@ -21317,10 +21951,10 @@ Global domain name, that is, global.
         :type IpList: list of str
         :param _ActionType: 42: blocklist; 40: allowlist.
         :type ActionType: int
-        :param _ValidTS: valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.
-        :type ValidTS: int
         :param _RuleId: Rule ID
         :type RuleId: int
+        :param _ValidTS: valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.
+        :type ValidTS: int
         :param _InstanceId: Instance ID
         :type InstanceId: str
         :param _Edition: WAF instance type: sparta-waf for SaaS WAF, clb-waf for CLB WAF.
@@ -21337,8 +21971,8 @@ Global domain name, that is, global.
         self._Domain = None
         self._IpList = None
         self._ActionType = None
-        self._ValidTS = None
         self._RuleId = None
+        self._ValidTS = None
         self._InstanceId = None
         self._Edition = None
         self._SourceType = None
@@ -21381,17 +22015,6 @@ Global domain name, that is, global.
         self._ActionType = ActionType
 
     @property
-    def ValidTS(self):
-        """valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.
-        :rtype: int
-        """
-        return self._ValidTS
-
-    @ValidTS.setter
-    def ValidTS(self, ValidTS):
-        self._ValidTS = ValidTS
-
-    @property
     def RuleId(self):
         """Rule ID
         :rtype: int
@@ -21401,6 +22024,21 @@ Global domain name, that is, global.
     @RuleId.setter
     def RuleId(self, RuleId):
         self._RuleId = RuleId
+
+    @property
+    def ValidTS(self):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
+        """valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.
+        :rtype: int
+        """
+        return self._ValidTS
+
+    @ValidTS.setter
+    def ValidTS(self, ValidTS):
+        warnings.warn("parameter `ValidTS` is deprecated", DeprecationWarning) 
+
+        self._ValidTS = ValidTS
 
     @property
     def InstanceId(self):
@@ -21473,8 +22111,8 @@ Global domain name, that is, global.
         self._Domain = params.get("Domain")
         self._IpList = params.get("IpList")
         self._ActionType = params.get("ActionType")
-        self._ValidTS = params.get("ValidTS")
         self._RuleId = params.get("RuleId")
+        self._ValidTS = params.get("ValidTS")
         self._InstanceId = params.get("InstanceId")
         self._Edition = params.get("Edition")
         self._SourceType = params.get("SourceType")
@@ -22121,8 +22759,22 @@ https: Use the HTTPS protocol for origin-pull.
         :type UpstreamHost: str
         :param _ProxyBuffer: Whether to enable caching. 0: disable; 1: enable.
         :type ProxyBuffer: int
-        :param _ProbeStatus: 0: Disable probe test; 1: Enable probe test. The probe test is enabled by default.
+        :param _ProbeStatus: Whether to enable the test. 0: disable; 1: enable. The test is enabled by default.
         :type ProbeStatus: int
+        :param _GmType: SM option. 0: do not enable SM; 1: add support for SM based on the existing TLS option; 2: enable SM and support only SM client access.
+        :type GmType: int
+        :param _GmCertType: SM certificate type. 0: no SM certificate is available; 1: the certificate is a self-owned SM certificate; 2: the certificate is a managed SM certificate.
+        :type GmCertType: int
+        :param _GmCert: When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+        :type GmCert: str
+        :param _GmPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+        :type GmPrivateKey: str
+        :param _GmEncCert: When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+        :type GmEncCert: str
+        :param _GmEncPrivateKey: When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+        :type GmEncPrivateKey: str
+        :param _GmSSLId: When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+        :type GmSSLId: str
         """
         self._Domain = None
         self._DomainId = None
@@ -22161,6 +22813,13 @@ https: Use the HTTPS protocol for origin-pull.
         self._UpstreamHost = None
         self._ProxyBuffer = None
         self._ProbeStatus = None
+        self._GmType = None
+        self._GmCertType = None
+        self._GmCert = None
+        self._GmPrivateKey = None
+        self._GmEncCert = None
+        self._GmEncPrivateKey = None
+        self._GmSSLId = None
 
     @property
     def Domain(self):
@@ -22566,7 +23225,7 @@ https: Use the HTTPS protocol for origin-pull.
 
     @property
     def ProbeStatus(self):
-        """0: Disable probe test; 1: Enable probe test. The probe test is enabled by default.
+        """Whether to enable the test. 0: disable; 1: enable. The test is enabled by default.
         :rtype: int
         """
         return self._ProbeStatus
@@ -22574,6 +23233,83 @@ https: Use the HTTPS protocol for origin-pull.
     @ProbeStatus.setter
     def ProbeStatus(self, ProbeStatus):
         self._ProbeStatus = ProbeStatus
+
+    @property
+    def GmType(self):
+        """SM option. 0: do not enable SM; 1: add support for SM based on the existing TLS option; 2: enable SM and support only SM client access.
+        :rtype: int
+        """
+        return self._GmType
+
+    @GmType.setter
+    def GmType(self, GmType):
+        self._GmType = GmType
+
+    @property
+    def GmCertType(self):
+        """SM certificate type. 0: no SM certificate is available; 1: the certificate is a self-owned SM certificate; 2: the certificate is a managed SM certificate.
+        :rtype: int
+        """
+        return self._GmCertType
+
+    @GmCertType.setter
+    def GmCertType(self, GmCertType):
+        self._GmCertType = GmCertType
+
+    @property
+    def GmCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the certificate chain of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmCert
+
+    @GmCert.setter
+    def GmCert(self, GmCert):
+        self._GmCert = GmCert
+
+    @property
+    def GmPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmPrivateKey
+
+    @GmPrivateKey.setter
+    def GmPrivateKey(self, GmPrivateKey):
+        self._GmPrivateKey = GmPrivateKey
+
+    @property
+    def GmEncCert(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the encryption certificate of the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmEncCert
+
+    @GmEncCert.setter
+    def GmEncCert(self, GmEncCert):
+        self._GmEncCert = GmEncCert
+
+    @property
+    def GmEncPrivateKey(self):
+        """When GmCertType is 1, this parameter needs to be set, indicating the private key of the encryption certificate for the self-owned SM certificate.
+        :rtype: str
+        """
+        return self._GmEncPrivateKey
+
+    @GmEncPrivateKey.setter
+    def GmEncPrivateKey(self, GmEncPrivateKey):
+        self._GmEncPrivateKey = GmEncPrivateKey
+
+    @property
+    def GmSSLId(self):
+        """When GmCertType is 2, this parameter needs to be set, indicating the ID of the certificate managed by the Tencent Cloud SSL platform.
+        :rtype: str
+        """
+        return self._GmSSLId
+
+    @GmSSLId.setter
+    def GmSSLId(self, GmSSLId):
+        self._GmSSLId = GmSSLId
 
 
     def _deserialize(self, params):
@@ -22619,6 +23355,13 @@ https: Use the HTTPS protocol for origin-pull.
         self._UpstreamHost = params.get("UpstreamHost")
         self._ProxyBuffer = params.get("ProxyBuffer")
         self._ProbeStatus = params.get("ProbeStatus")
+        self._GmType = params.get("GmType")
+        self._GmCertType = params.get("GmCertType")
+        self._GmCert = params.get("GmCert")
+        self._GmPrivateKey = params.get("GmPrivateKey")
+        self._GmEncCert = params.get("GmEncCert")
+        self._GmEncPrivateKey = params.get("GmEncPrivateKey")
+        self._GmSSLId = params.get("GmSSLId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22931,57 +23674,6 @@ class ModifyWebshellStatusResponse(AbstractModel):
             self._Success = ResponseCode()
             self._Success._deserialize(params.get("Success"))
         self._RequestId = params.get("RequestId")
-
-
-class PageInfo(AbstractModel):
-    """Common paging parameters
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _PageNumber: Page number
-        :type PageNumber: str
-        :param _PageSize: Page Entry Quantity
-        :type PageSize: str
-        """
-        self._PageNumber = None
-        self._PageSize = None
-
-    @property
-    def PageNumber(self):
-        """Page number
-        :rtype: str
-        """
-        return self._PageNumber
-
-    @PageNumber.setter
-    def PageNumber(self, PageNumber):
-        self._PageNumber = PageNumber
-
-    @property
-    def PageSize(self):
-        """Page Entry Quantity
-        :rtype: str
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-
-    def _deserialize(self, params):
-        self._PageNumber = params.get("PageNumber")
-        self._PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class PeakPointsItem(AbstractModel):
@@ -24078,6 +24770,255 @@ class ResponseCode(AbstractModel):
         
 
 
+class SearchAttackLogRequest(AbstractModel):
+    """SearchAttackLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Queried domain: use all for all domains
+        :type Domain: str
+        :param _StartTime: Query start time
+        :type StartTime: str
+        :param _EndTime: Query end time
+        :type EndTime: str
+        :param _Context: API upgrade. Input an empty string for this field. Use the Page field for page turning.
+        :type Context: str
+        :param _QueryString: Lucene syntax.
+        :type QueryString: str
+        :param _Count: Number of queries: 10 by default, up to 100
+        :type Count: int
+        :param _Sort: desc by default. Value can be set to desc or asc.
+        :type Sort: str
+        :param _Page: Page number, starting from 0
+        :type Page: int
+        """
+        self._Domain = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Context = None
+        self._QueryString = None
+        self._Count = None
+        self._Sort = None
+        self._Page = None
+
+    @property
+    def Domain(self):
+        """Queried domain: use all for all domains
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def StartTime(self):
+        """Query start time
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Query end time
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Context(self):
+        """API upgrade. Input an empty string for this field. Use the Page field for page turning.
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def QueryString(self):
+        """Lucene syntax.
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def Count(self):
+        """Number of queries: 10 by default, up to 100
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Sort(self):
+        """desc by default. Value can be set to desc or asc.
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Page(self):
+        """Page number, starting from 0
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Context = params.get("Context")
+        self._QueryString = params.get("QueryString")
+        self._Count = params.get("Count")
+        self._Sort = params.get("Sort")
+        self._Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchAttackLogResponse(AbstractModel):
+    """SearchAttackLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: Number of attack logs returned
+        :type Count: int
+        :param _Context: API upgrade: this field is invalid, defaults to returning an empty string
+        :type Context: str
+        :param _Data: Attack log array entry content
+        :type Data: list of AttackLogInfo
+        :param _ListOver: CLS API returned content
+        :type ListOver: bool
+        :param _SqlFlag: CLS API returned content, indicating whether to enable the new version index
+        :type SqlFlag: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Count = None
+        self._Context = None
+        self._Data = None
+        self._ListOver = None
+        self._SqlFlag = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        """Number of attack logs returned
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Context(self):
+        """API upgrade: this field is invalid, defaults to returning an empty string
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Data(self):
+        """Attack log array entry content
+        :rtype: list of AttackLogInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def ListOver(self):
+        """CLS API returned content
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def SqlFlag(self):
+        """CLS API returned content, indicating whether to enable the new version index
+        :rtype: bool
+        """
+        return self._SqlFlag
+
+    @SqlFlag.setter
+    def SqlFlag(self, SqlFlag):
+        self._SqlFlag = SqlFlag
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Context = params.get("Context")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AttackLogInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._ListOver = params.get("ListOver")
+        self._SqlFlag = params.get("SqlFlag")
+        self._RequestId = params.get("RequestId")
+
+
 class SearchItem(AbstractModel):
     """Complex Conditions on Access List Query
 
@@ -24532,11 +25473,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Arg: str
+        :param _CaseNotSensitive: 0: case-sensitive.
+1: case-insensitive.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CaseNotSensitive: int
         """
         self._Field = None
         self._CompareFunc = None
         self._Content = None
         self._Arg = None
+        self._CaseNotSensitive = None
 
     @property
     def Field(self):
@@ -24618,12 +25564,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Arg(self, Arg):
         self._Arg = Arg
 
+    @property
+    def CaseNotSensitive(self):
+        """0: case-sensitive.
+1: case-insensitive.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._CaseNotSensitive
+
+    @CaseNotSensitive.setter
+    def CaseNotSensitive(self, CaseNotSensitive):
+        self._CaseNotSensitive = CaseNotSensitive
+
 
     def _deserialize(self, params):
         self._Field = params.get("Field")
         self._CompareFunc = params.get("CompareFunc")
         self._Content = params.get("Content")
         self._Arg = params.get("Arg")
+        self._CaseNotSensitive = params.get("CaseNotSensitive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

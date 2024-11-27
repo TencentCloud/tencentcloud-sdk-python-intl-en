@@ -252,11 +252,11 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
         :type ZoneId: str
         :param _RoleConfigurationId: Permission configuration ID.
         :type RoleConfigurationId: str
-        :param _RolePolicyType: Permission policy type. Valid values: System: system policy, namely the CAM system policy reused; Custom: custom policy, namely the custom policy prepared according to the CAM permission policy syntax and structure. Only the system policy is supported at the early stage, and the custom policy will be supported later.
+        :param _RolePolicyType: Permission policy type. Valid values: System: system policy, namely the CAM system policy reused; Custom: custom policy, namely the custom policy prepared according to the CAM permission policy syntax and structure.  
         :type RolePolicyType: str
-        :param _RolePolicyNames: Permission policy name, which includes up to 20 policies, each containing up to 32 characters.
+        :param _RolePolicyNames: Permission policy name, supporting up to 20 policies, with each policy having a maximum of 32 characters. If you need to add a system policy, it is recommended to use the RolePolicies parameter. For custom policies, the array length is up to 1.
         :type RolePolicyNames: list of str
-        :param _RolePolicies: Policy details.
+        :param _RolePolicies: Details of an added system policy.
         :type RolePolicies: list of PolicyDetail
         :param _CustomPolicyDocument: Custom policy content, which contains up to 4096 characters. When RolePolicyType is Inline, this parameter must be configured. For details, see the permission policy syntax and structure.
         :type CustomPolicyDocument: str
@@ -292,7 +292,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyType(self):
-        """Permission policy type. Valid values: System: system policy, namely the CAM system policy reused; Custom: custom policy, namely the custom policy prepared according to the CAM permission policy syntax and structure. Only the system policy is supported at the early stage, and the custom policy will be supported later.
+        """Permission policy type. Valid values: System: system policy, namely the CAM system policy reused; Custom: custom policy, namely the custom policy prepared according to the CAM permission policy syntax and structure.  
         :rtype: str
         """
         return self._RolePolicyType
@@ -303,7 +303,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicyNames(self):
-        """Permission policy name, which includes up to 20 policies, each containing up to 32 characters.
+        """Permission policy name, supporting up to 20 policies, with each policy having a maximum of 32 characters. If you need to add a system policy, it is recommended to use the RolePolicies parameter. For custom policies, the array length is up to 1.
         :rtype: list of str
         """
         return self._RolePolicyNames
@@ -314,7 +314,7 @@ class AddPermissionPolicyToRoleConfigurationRequest(AbstractModel):
 
     @property
     def RolePolicies(self):
-        """Policy details.
+        """Details of an added system policy.
         :rtype: list of PolicyDetail
         """
         return self._RolePolicies
@@ -801,10 +801,13 @@ class CreateGroupRequest(AbstractModel):
         :type GroupName: str
         :param _Description: User group description, which contains up to 1024 characters.
         :type Description: str
+        :param _GroupType: User group type. Manual: manually created, Synchronized: imported from external sources.
+        :type GroupType: str
         """
         self._ZoneId = None
         self._GroupName = None
         self._Description = None
+        self._GroupType = None
 
     @property
     def ZoneId(self):
@@ -839,11 +842,23 @@ class CreateGroupRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def GroupType(self):
+        """User group type. Manual: manually created, Synchronized: imported from external sources.
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._GroupName = params.get("GroupName")
         self._Description = params.get("Description")
+        self._GroupType = params.get("GroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -997,6 +1012,201 @@ class CreateOrgServiceAssignRequest(AbstractModel):
 
 class CreateOrgServiceAssignResponse(AbstractModel):
     """CreateOrgServiceAssign response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOrganizationIdentityRequest(AbstractModel):
+    """CreateOrganizationIdentity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentityAliasName: Identity name.
+        :type IdentityAliasName: str
+        :param _IdentityPolicy: Identity policy.
+        :type IdentityPolicy: list of IdentityPolicy
+        :param _Description: Identity description.
+        :type Description: str
+        """
+        self._IdentityAliasName = None
+        self._IdentityPolicy = None
+        self._Description = None
+
+    @property
+    def IdentityAliasName(self):
+        """Identity name.
+        :rtype: str
+        """
+        return self._IdentityAliasName
+
+    @IdentityAliasName.setter
+    def IdentityAliasName(self, IdentityAliasName):
+        self._IdentityAliasName = IdentityAliasName
+
+    @property
+    def IdentityPolicy(self):
+        """Identity policy.
+        :rtype: list of IdentityPolicy
+        """
+        return self._IdentityPolicy
+
+    @IdentityPolicy.setter
+    def IdentityPolicy(self, IdentityPolicy):
+        self._IdentityPolicy = IdentityPolicy
+
+    @property
+    def Description(self):
+        """Identity description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._IdentityAliasName = params.get("IdentityAliasName")
+        if params.get("IdentityPolicy") is not None:
+            self._IdentityPolicy = []
+            for item in params.get("IdentityPolicy"):
+                obj = IdentityPolicy()
+                obj._deserialize(item)
+                self._IdentityPolicy.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationIdentityResponse(AbstractModel):
+    """CreateOrganizationIdentity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentityId: Identity ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IdentityId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._IdentityId = None
+        self._RequestId = None
+
+    @property
+    def IdentityId(self):
+        """Identity ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IdentityId = params.get("IdentityId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOrganizationMemberAuthIdentityRequest(AbstractModel):
+    """CreateOrganizationMemberAuthIdentity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUins: Member UIN list, including up to 10 items.
+        :type MemberUins: list of int non-negative
+        :param _IdentityIds: Identity ID list, including up to 5 items, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :type IdentityIds: list of int non-negative
+        """
+        self._MemberUins = None
+        self._IdentityIds = None
+
+    @property
+    def MemberUins(self):
+        """Member UIN list, including up to 10 items.
+        :rtype: list of int non-negative
+        """
+        return self._MemberUins
+
+    @MemberUins.setter
+    def MemberUins(self, MemberUins):
+        self._MemberUins = MemberUins
+
+    @property
+    def IdentityIds(self):
+        """Identity ID list, including up to 5 items, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :rtype: list of int non-negative
+        """
+        return self._IdentityIds
+
+    @IdentityIds.setter
+    def IdentityIds(self, IdentityIds):
+        self._IdentityIds = IdentityIds
+
+
+    def _deserialize(self, params):
+        self._MemberUins = params.get("MemberUins")
+        self._IdentityIds = params.get("IdentityIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationMemberAuthIdentityResponse(AbstractModel):
+    """CreateOrganizationMemberAuthIdentity response structure.
 
     """
 
@@ -1385,6 +1595,198 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrganizationMembersPolicyRequest(AbstractModel):
+    """CreateOrganizationMembersPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUins: Member UIN list, including up to 10 items.
+        :type MemberUins: list of int
+        :param _PolicyName: Policy name, which contains 1 to 128 characters, including English letters, digits, and symbols `+=,.@_-`.
+        :type PolicyName: str
+        :param _IdentityId: Member access identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :type IdentityId: int
+        :param _Description: Policy description, which contains up to 128 characters.
+        :type Description: str
+        """
+        self._MemberUins = None
+        self._PolicyName = None
+        self._IdentityId = None
+        self._Description = None
+
+    @property
+    def MemberUins(self):
+        """Member UIN list, including up to 10 items.
+        :rtype: list of int
+        """
+        return self._MemberUins
+
+    @MemberUins.setter
+    def MemberUins(self, MemberUins):
+        self._MemberUins = MemberUins
+
+    @property
+    def PolicyName(self):
+        """Policy name, which contains 1 to 128 characters, including English letters, digits, and symbols `+=,.@_-`.
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def IdentityId(self):
+        """Member access identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def Description(self):
+        """Policy description, which contains up to 128 characters.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._MemberUins = params.get("MemberUins")
+        self._PolicyName = params.get("PolicyName")
+        self._IdentityId = params.get("IdentityId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationMembersPolicyResponse(AbstractModel):
+    """CreateOrganizationMembersPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: Policy ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PolicyId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PolicyId = None
+        self._RequestId = None
+
+    @property
+    def PolicyId(self):
+        """Policy ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOrganizationRequest(AbstractModel):
+    """CreateOrganization request structure.
+
+    """
+
+
+class CreateOrganizationResponse(AbstractModel):
+    """CreateOrganization response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: Organization ID.
+        :type OrgId: int
+        :param _NickName: Creator's nickname.
+        :type NickName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OrgId = None
+        self._NickName = None
+        self._RequestId = None
+
+    @property
+    def OrgId(self):
+        """Organization ID.
+        :rtype: int
+        """
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def NickName(self):
+        """Creator's nickname.
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        self._NickName = params.get("NickName")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRoleAssignmentRequest(AbstractModel):
     """CreateRoleAssignment request structure.
 
@@ -1498,13 +1900,13 @@ class CreateRoleConfigurationRequest(AbstractModel):
         r"""
         :param _ZoneId: Space ID.
         :type ZoneId: str
-        :param _RoleConfigurationName: Access configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).
+        :param _RoleConfigurationName: Permission configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).
         :type RoleConfigurationName: str
-        :param _Description: Access configuration description, which contains up to 1024 characters.
+        :param _Description: Permission configuration description, which contains up to 1,024 characters.
         :type Description: str
-        :param _SessionDuration: Session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours). Default value: 3600 (1 hour).
+        :param _SessionDuration: Session duration, in seconds. It is the maximum time a CIC user can maintain a session while using permission configurations to access a target account in TCO. Value range: 900 to 43200 (15 minutes to 12 hours). Default: 3600 (1 hour).
         :type SessionDuration: int
-        :param _RelayState: Initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page. The default is null, which indicates navigating to the home page of the Tencent Cloud console.
+        :param _RelayState: Initial access page. It is the initial page address when a CIC user uses permission configurations to access a target account in TCO. This page must be a Tencent Cloud console page. The default value is empty, representing a redirection to the home page of the Tencent Cloud console.
         :type RelayState: str
         """
         self._ZoneId = None
@@ -1526,7 +1928,7 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
-        """Access configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).
+        """Permission configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).
         :rtype: str
         """
         return self._RoleConfigurationName
@@ -1537,7 +1939,7 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Access configuration description, which contains up to 1024 characters.
+        """Permission configuration description, which contains up to 1,024 characters.
         :rtype: str
         """
         return self._Description
@@ -1548,7 +1950,7 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def SessionDuration(self):
-        """Session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours). Default value: 3600 (1 hour).
+        """Session duration, in seconds. It is the maximum time a CIC user can maintain a session while using permission configurations to access a target account in TCO. Value range: 900 to 43200 (15 minutes to 12 hours). Default: 3600 (1 hour).
         :rtype: int
         """
         return self._SessionDuration
@@ -1559,7 +1961,7 @@ class CreateRoleConfigurationRequest(AbstractModel):
 
     @property
     def RelayState(self):
-        """Initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page. The default is null, which indicates navigating to the home page of the Tencent Cloud console.
+        """Initial access page. It is the initial page address when a CIC user uses permission configurations to access a target account in TCO. This page must be a Tencent Cloud console page. The default value is empty, representing a redirection to the home page of the Tencent Cloud console.
         :rtype: str
         """
         return self._RelayState
@@ -1630,6 +2032,175 @@ class CreateRoleConfigurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSCIMCredentialRequest(AbstractModel):
+    """CreateSCIMCredential request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSCIMCredentialResponse(AbstractModel):
+    """CreateSCIMCredential response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        :param _CredentialId: SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :type CredentialId: str
+        :param _CredentialType: SCIM key type.
+        :type CredentialType: str
+        :param _CreateTime: Creation time of a SCIM key.
+        :type CreateTime: str
+        :param _ExpireTime: Expiration time of a SCIM key.
+        :type ExpireTime: str
+        :param _CredentialStatus: SCIM key status. Enabled: enabled. Disabled: disabled.
+        :type CredentialStatus: str
+        :param _CredentialSecret: SCIM key.
+        :type CredentialSecret: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+        self._CredentialType = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._CredentialStatus = None
+        self._CredentialSecret = None
+        self._RequestId = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        """SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def CredentialType(self):
+        """SCIM key type.
+        :rtype: str
+        """
+        return self._CredentialType
+
+    @CredentialType.setter
+    def CredentialType(self, CredentialType):
+        self._CredentialType = CredentialType
+
+    @property
+    def CreateTime(self):
+        """Creation time of a SCIM key.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        """Expiration time of a SCIM key.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CredentialStatus(self):
+        """SCIM key status. Enabled: enabled. Disabled: disabled.
+        :rtype: str
+        """
+        return self._CredentialStatus
+
+    @CredentialStatus.setter
+    def CredentialStatus(self, CredentialStatus):
+        self._CredentialStatus = CredentialStatus
+
+    @property
+    def CredentialSecret(self):
+        """SCIM key.
+        :rtype: str
+        """
+        return self._CredentialSecret
+
+    @CredentialSecret.setter
+    def CredentialSecret(self, CredentialSecret):
+        self._CredentialSecret = CredentialSecret
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        self._CredentialType = params.get("CredentialType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CredentialStatus = params.get("CredentialStatus")
+        self._CredentialSecret = params.get("CredentialSecret")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserRequest(AbstractModel):
     """CreateUser request structure.
 
@@ -1653,6 +2224,8 @@ class CreateUserRequest(AbstractModel):
         :type Email: str
         :param _UserStatus: User status. Valid values: Enabled (default), Disabled.
         :type UserStatus: str
+        :param _UserType: User type. Manual: manually created, Synchronized: imported from external sources.
+        :type UserType: str
         """
         self._ZoneId = None
         self._UserName = None
@@ -1662,6 +2235,7 @@ class CreateUserRequest(AbstractModel):
         self._Description = None
         self._Email = None
         self._UserStatus = None
+        self._UserType = None
 
     @property
     def ZoneId(self):
@@ -1751,6 +2325,17 @@ class CreateUserRequest(AbstractModel):
     def UserStatus(self, UserStatus):
         self._UserStatus = UserStatus
 
+    @property
+    def UserType(self):
+        """User type. Manual: manually created, Synchronized: imported from external sources.
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -1761,6 +2346,7 @@ class CreateUserRequest(AbstractModel):
         self._Description = params.get("Description")
         self._Email = params.get("Email")
         self._UserStatus = params.get("UserStatus")
+        self._UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2078,6 +2664,213 @@ class DeleteOrgServiceAssignResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteOrganizationIdentityRequest(AbstractModel):
+    """DeleteOrganizationIdentity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentityId: Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :type IdentityId: int
+        """
+        self._IdentityId = None
+
+    @property
+    def IdentityId(self):
+        """Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+
+    def _deserialize(self, params):
+        self._IdentityId = params.get("IdentityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationIdentityResponse(AbstractModel):
+    """DeleteOrganizationIdentity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOrganizationMemberAuthIdentityRequest(AbstractModel):
+    """DeleteOrganizationMemberAuthIdentity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: Member UIN.
+        :type MemberUin: int
+        :param _IdentityId: Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :type IdentityId: int
+        """
+        self._MemberUin = None
+        self._IdentityId = None
+
+    @property
+    def MemberUin(self):
+        """Member UIN.
+        :rtype: int
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def IdentityId(self):
+        """Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._IdentityId = params.get("IdentityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationMemberAuthIdentityResponse(AbstractModel):
+    """DeleteOrganizationMemberAuthIdentity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOrganizationMembersPolicyRequest(AbstractModel):
+    """DeleteOrganizationMembersPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: Access policy ID, which can be obtained through [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).
+        :type PolicyId: int
+        """
+        self._PolicyId = None
+
+    @property
+    def PolicyId(self):
+        """Access policy ID, which can be obtained through [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationMembersPolicyResponse(AbstractModel):
+    """DeleteOrganizationMembersPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOrganizationMembersRequest(AbstractModel):
     """DeleteOrganizationMembers request structure.
 
@@ -2206,6 +2999,40 @@ class DeleteOrganizationNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteOrganizationRequest(AbstractModel):
+    """DeleteOrganization request structure.
+
+    """
+
+
+class DeleteOrganizationResponse(AbstractModel):
+    """DeleteOrganization response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRoleAssignmentRequest(AbstractModel):
     """DeleteRoleAssignment request structure.
 
@@ -2221,11 +3048,11 @@ class DeleteRoleAssignmentRequest(AbstractModel):
         :type TargetType: str
         :param _TargetUin: UIN of the target account of the Tencent Cloud Organization.
         :type TargetUin: int
-        :param _PrincipalType: Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        :param _PrincipalType: Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :type PrincipalType: str
-        :param _PrincipalId: Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).  	
+        :param _PrincipalId: User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-********). When PrincipalType is User, it is a user ID (u-********).
         :type PrincipalId: str
-        :param _DeprovisionStrategy: Whether to undeploy an access configuration synchronously when you remove the last authorization for using this access configuration on the target account of the Tencent Cloud Organization. Valid values: DeprovisionForLastRoleAssignmentOnAccount: Undeploy the access configuration; None (default): Do not undeploy access configuration.
+        :param _DeprovisionStrategy: Whether to remove the permission configuration deployment when removing the last authorization with a certain permission configuration from a target account in TCO. Valid values: DeprovisionForLastRoleAssignmentOnAccount: Remove the permission configuration deployment. None (default): Do not remove the permission configuration deployment.
         :type DeprovisionStrategy: str
         """
         self._ZoneId = None
@@ -2282,7 +3109,7 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
-        """Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        """Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :rtype: str
         """
         return self._PrincipalType
@@ -2293,7 +3120,7 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
-        """Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).  	
+        """User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-********). When PrincipalType is User, it is a user ID (u-********).
         :rtype: str
         """
         return self._PrincipalId
@@ -2304,7 +3131,7 @@ class DeleteRoleAssignmentRequest(AbstractModel):
 
     @property
     def DeprovisionStrategy(self):
-        """Whether to undeploy an access configuration synchronously when you remove the last authorization for using this access configuration on the target account of the Tencent Cloud Organization. Valid values: DeprovisionForLastRoleAssignmentOnAccount: Undeploy the access configuration; None (default): Do not undeploy access configuration.
+        """Whether to remove the permission configuration deployment when removing the last authorization with a certain permission configuration from a target account in TCO. Valid values: DeprovisionForLastRoleAssignmentOnAccount: Remove the permission configuration deployment. None (default): Do not remove the permission configuration deployment.
         :rtype: str
         """
         return self._DeprovisionStrategy
@@ -2430,6 +3257,85 @@ class DeleteRoleConfigurationRequest(AbstractModel):
 
 class DeleteRoleConfigurationResponse(AbstractModel):
     """DeleteRoleConfiguration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSCIMCredentialRequest(AbstractModel):
+    """DeleteSCIMCredential request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        :param _CredentialId: SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :type CredentialId: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        """SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSCIMCredentialResponse(AbstractModel):
+    """DeleteSCIMCredential response structure.
 
     """
 
@@ -4382,6 +5288,85 @@ class GetRoleConfigurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetSCIMSynchronizationStatusRequest(AbstractModel):
+    """GetSCIMSynchronizationStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSCIMSynchronizationStatusResponse(AbstractModel):
+    """GetSCIMSynchronizationStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SCIMSynchronizationStatus: SCIM synchronization status. Enabled: enabled. Disabled: disabled.
+        :type SCIMSynchronizationStatus: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SCIMSynchronizationStatus = None
+        self._RequestId = None
+
+    @property
+    def SCIMSynchronizationStatus(self):
+        """SCIM synchronization status. Enabled: enabled. Disabled: disabled.
+        :rtype: str
+        """
+        return self._SCIMSynchronizationStatus
+
+    @SCIMSynchronizationStatus.setter
+    def SCIMSynchronizationStatus(self, SCIMSynchronizationStatus):
+        self._SCIMSynchronizationStatus = SCIMSynchronizationStatus
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SCIMSynchronizationStatus = params.get("SCIMSynchronizationStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class GetTaskStatusRequest(AbstractModel):
     """GetTaskStatus request structure.
 
@@ -5851,6 +6836,8 @@ class ListGroupsRequest(AbstractModel):
         :type SortField: str
         :param _SortType: Sorting type. Desc: descending order; Asc: ascending order. It should be set along with SortField.
         :type SortType: str
+        :param _Offset: Pagination offset. Do not use it together with NextToken, prioritizing using NextToken.
+        :type Offset: int
         """
         self._ZoneId = None
         self._NextToken = None
@@ -5860,6 +6847,7 @@ class ListGroupsRequest(AbstractModel):
         self._FilterUsers = None
         self._SortField = None
         self._SortType = None
+        self._Offset = None
 
     @property
     def ZoneId(self):
@@ -5949,6 +6937,17 @@ class ListGroupsRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def Offset(self):
+        """Pagination offset. Do not use it together with NextToken, prioritizing using NextToken.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -5959,6 +6958,7 @@ class ListGroupsRequest(AbstractModel):
         self._FilterUsers = params.get("FilterUsers")
         self._SortField = params.get("SortField")
         self._SortType = params.get("SortType")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6858,9 +7858,9 @@ class ListRoleAssignmentsRequest(AbstractModel):
         :type TargetType: str
         :param _TargetUin: UIN of the synchronized target account of the Tencent Cloud Organization.
         :type TargetUin: int
-        :param _PrincipalType: Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        :param _PrincipalType: Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :type PrincipalType: str
-        :param _PrincipalId: Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).
+        :param _PrincipalId: User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-****). When PrincipalType is User, it is a user ID (u-****).
         :type PrincipalId: str
         :param _Filter: Query condition, which currently only supports search by permission configuration name.
         :type Filter: str
@@ -6943,7 +7943,7 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
-        """Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        """Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :rtype: str
         """
         return self._PrincipalType
@@ -6954,7 +7954,7 @@ class ListRoleAssignmentsRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
-        """Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).
+        """User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-****). When PrincipalType is User, it is a user ID (u-****).
         :rtype: str
         """
         return self._PrincipalId
@@ -7365,7 +8365,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
         :type NextToken: str
         :param _MaxResults: Maximum number of data entries per page. Value range: 1-100. Default value: 10.
         :type MaxResults: int
-        :param _Filter: Filter criterion, case-insensitive. Currently, only RoleConfigurationName is supported, and only eq (Equals) and sw (Starts With) are supported. For example, Filter = "RoleConfigurationName, sw test" indicates querying all access configurations with names starting with test; Filter = "RoleConfigurationName, eq TestRoleConfiguration" indicates querying the access configuration with the name TestRoleConfiguration.
+        :param _Filter: Filter criteria, which are case insensitive. Currently, only RoleConfigurationName is supported and only eq (Equals) and sw (Start With) are supported. Example: Filter = "RoleConfigurationName, only sw test" means querying all permission configurations starting with test. Filter = "RoleConfigurationName, only eq TestRoleConfiguration" means querying the permission configuration named TestRoleConfiguration.
         :type Filter: str
         :param _FilterTargets: Check whether the member account has been configured with permissions. If configured, return IsSelected: true; otherwise, return false.
         :type FilterTargets: list of int
@@ -7414,7 +8414,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        """Filter criterion, case-insensitive. Currently, only RoleConfigurationName is supported, and only eq (Equals) and sw (Starts With) are supported. For example, Filter = "RoleConfigurationName, sw test" indicates querying all access configurations with names starting with test; Filter = "RoleConfigurationName, eq TestRoleConfiguration" indicates querying the access configuration with the name TestRoleConfiguration.
+        """Filter criteria, which are case insensitive. Currently, only RoleConfigurationName is supported and only eq (Equals) and sw (Start With) are supported. Example: Filter = "RoleConfigurationName, only sw test" means querying all permission configurations starting with test. Filter = "RoleConfigurationName, only eq TestRoleConfiguration" means querying the permission configuration named TestRoleConfiguration.
         :rtype: str
         """
         return self._Filter
@@ -7571,6 +8571,120 @@ class ListRoleConfigurationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListSCIMCredentialsRequest(AbstractModel):
+    """ListSCIMCredentials request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        :param _CredentialId: SCIM key ID.
+        :type CredentialId: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        """SCIM key ID.
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSCIMCredentialsResponse(AbstractModel):
+    """ListSCIMCredentials response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCounts: Number of SCIM keys.
+        :type TotalCounts: int
+        :param _SCIMCredentials: SCIM key information.
+        :type SCIMCredentials: list of SCIMCredential
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCounts = None
+        self._SCIMCredentials = None
+        self._RequestId = None
+
+    @property
+    def TotalCounts(self):
+        """Number of SCIM keys.
+        :rtype: int
+        """
+        return self._TotalCounts
+
+    @TotalCounts.setter
+    def TotalCounts(self, TotalCounts):
+        self._TotalCounts = TotalCounts
+
+    @property
+    def SCIMCredentials(self):
+        """SCIM key information.
+        :rtype: list of SCIMCredential
+        """
+        return self._SCIMCredentials
+
+    @SCIMCredentials.setter
+    def SCIMCredentials(self, SCIMCredentials):
+        self._SCIMCredentials = SCIMCredentials
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCounts = params.get("TotalCounts")
+        if params.get("SCIMCredentials") is not None:
+            self._SCIMCredentials = []
+            for item in params.get("SCIMCredentials"):
+                obj = SCIMCredential()
+                obj._deserialize(item)
+                self._SCIMCredentials.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListTasksRequest(AbstractModel):
     """ListTasks request structure.
 
@@ -7580,13 +8694,13 @@ class ListTasksRequest(AbstractModel):
         r"""
         :param _ZoneId: Space ID.
         :type ZoneId: str
-        :param _PrincipalId: Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).
+        :param _PrincipalId: User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-****). When PrincipalType is User, it is a user ID (u-****).
         :type PrincipalId: str
         :param _NextToken: Token for querying the next page of returned results. During use of the API for the first time, NextToken is not needed. When you call the API for the first time, if the total number of returned data entries exceeds the MaxResults limit, the data is truncated and only MaxResults data entries are returned. Meanwhile, the return parameter IsTruncated is true and a NextToken is returned. You can use the NextToken returned last time to continue calling the API with other request parameters unchanged, to query the truncated data. You can use this method for multiple queries until IsTruncated is false, indicating that all data has been queried.
         :type NextToken: str
         :param _MaxResults: Maximum number of data entries per page. Value range: 1-100. Default value: 10.
         :type MaxResults: int
-        :param _PrincipalType: Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        :param _PrincipalType: Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :type PrincipalType: str
         :param _TargetUin: UIN of the synchronized target account of the Tencent Cloud Organization.
         :type TargetUin: int
@@ -7623,7 +8737,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
-        """Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).
+        """User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-****). When PrincipalType is User, it is a user ID (u-****).
         :rtype: str
         """
         return self._PrincipalId
@@ -7656,7 +8770,7 @@ class ListTasksRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
-        """Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        """Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :rtype: str
         """
         return self._PrincipalType
@@ -7859,13 +8973,13 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
         r"""
         :param _ZoneId: Space ID.
         :type ZoneId: str
-        :param _PrincipalId: Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).
+        :param _PrincipalId: User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-********). When PrincipalType is User, it is a user ID (u-********).
         :type PrincipalId: str
         :param _NextToken: Token for querying the next page of returned results. During use of the API for the first time, NextToken is not needed. When you call the API for the first time, if the total number of returned data entries exceeds the MaxResults limit, the data is truncated and only MaxResults data entries are returned. Meanwhile, the return parameter IsTruncated is true and a NextToken is returned. You can use the NextToken returned last time to continue calling the API with other request parameters unchanged, to query the truncated data. You can use this method for multiple queries until IsTruncated is false, indicating that all data has been queried.
         :type NextToken: str
         :param _MaxResults: Maximum number of data entries per page. Value range: 1-100. Default value: 10.
         :type MaxResults: int
-        :param _PrincipalType: Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        :param _PrincipalType: Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :type PrincipalType: str
         :param _TargetUin: UIN of the target account of the Tencent Cloud Organization.
         :type TargetUin: int
@@ -7896,7 +9010,7 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
-        """Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).
+        """User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-********). When PrincipalType is User, it is a user ID (u-********).
         :rtype: str
         """
         return self._PrincipalId
@@ -7929,7 +9043,7 @@ class ListUserSyncProvisioningsRequest(AbstractModel):
 
     @property
     def PrincipalType(self):
-        """Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.
+        """Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.
         :rtype: str
         """
         return self._PrincipalType
@@ -8124,6 +9238,8 @@ class ListUsersRequest(AbstractModel):
         :type SortField: str
         :param _SortType: Sorting type. Desc: descending order; Asc: ascending order. It should be set along with SortField.
         :type SortType: str
+        :param _Offset: Pagination offset. Do not use it together with NextToken, prioritizing using NextToken.
+        :type Offset: int
         """
         self._ZoneId = None
         self._UserStatus = None
@@ -8134,6 +9250,7 @@ class ListUsersRequest(AbstractModel):
         self._FilterGroups = None
         self._SortField = None
         self._SortType = None
+        self._Offset = None
 
     @property
     def ZoneId(self):
@@ -8234,6 +9351,17 @@ class ListUsersRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def Offset(self):
+        """Pagination offset. Do not use it together with NextToken, prioritizing using NextToken.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -8245,6 +9373,7 @@ class ListUsersRequest(AbstractModel):
         self._FilterGroups = params.get("FilterGroups")
         self._SortField = params.get("SortField")
         self._SortType = params.get("SortType")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10481,6 +11610,70 @@ class ProvisionRoleConfigurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QuitOrganizationRequest(AbstractModel):
+    """QuitOrganization request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: Organization ID.
+        :type OrgId: int
+        """
+        self._OrgId = None
+
+    @property
+    def OrgId(self):
+        """Organization ID.
+        :rtype: int
+        """
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuitOrganizationResponse(AbstractModel):
+    """QuitOrganization response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RemoveExternalSAMLIdPCertificateRequest(AbstractModel):
     """RemoveExternalSAMLIdPCertificate request structure.
 
@@ -11947,6 +13140,117 @@ class SAMLServiceProvider(AbstractModel):
         
 
 
+class SCIMCredential(AbstractModel):
+    """SCIM key.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        :param _Status: SCIM key status. Enabled: enabled. Disabled: disabled.
+        :type Status: str
+        :param _CredentialId: SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :type CredentialId: str
+        :param _CredentialType: SCIM key type.
+        :type CredentialType: str
+        :param _CreateTime: Creation time of a SCIM key.
+        :type CreateTime: str
+        :param _ExpireTime: Expiration time of a SCIM key.
+        :type ExpireTime: str
+        """
+        self._ZoneId = None
+        self._Status = None
+        self._CredentialId = None
+        self._CredentialType = None
+        self._CreateTime = None
+        self._ExpireTime = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Status(self):
+        """SCIM key status. Enabled: enabled. Disabled: disabled.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CredentialId(self):
+        """SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def CredentialType(self):
+        """SCIM key type.
+        :rtype: str
+        """
+        return self._CredentialType
+
+    @CredentialType.setter
+    def CredentialType(self, CredentialType):
+        self._CredentialType = CredentialType
+
+    @property
+    def CreateTime(self):
+        """Creation time of a SCIM key.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        """Expiration time of a SCIM key.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Status = params.get("Status")
+        self._CredentialId = params.get("CredentialId")
+        self._CredentialType = params.get("CredentialType")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetExternalSAMLIdentityProviderRequest(AbstractModel):
     """SetExternalSAMLIdentityProvider request structure.
 
@@ -12407,6 +13711,115 @@ This parameter is displayed only when the Status is Failed.
         
 
 
+class UpdateCustomPolicyForRoleConfigurationRequest(AbstractModel):
+    """UpdateCustomPolicyForRoleConfiguration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID.
+        :type ZoneId: str
+        :param _RoleConfigurationId: Permission configuration ID.
+        :type RoleConfigurationId: str
+        :param _CustomPolicyName: Permission policy name, which contains up to 32 characters.
+        :type CustomPolicyName: str
+        :param _NewCustomPolicyDocument: Custom policy content, which contains up to 4096 characters. When RolePolicyType is Inline, this parameter must be configured. For details, see the permission policy syntax and structure.
+        :type NewCustomPolicyDocument: str
+        """
+        self._ZoneId = None
+        self._RoleConfigurationId = None
+        self._CustomPolicyName = None
+        self._NewCustomPolicyDocument = None
+
+    @property
+    def ZoneId(self):
+        """Space ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RoleConfigurationId(self):
+        """Permission configuration ID.
+        :rtype: str
+        """
+        return self._RoleConfigurationId
+
+    @RoleConfigurationId.setter
+    def RoleConfigurationId(self, RoleConfigurationId):
+        self._RoleConfigurationId = RoleConfigurationId
+
+    @property
+    def CustomPolicyName(self):
+        """Permission policy name, which contains up to 32 characters.
+        :rtype: str
+        """
+        return self._CustomPolicyName
+
+    @CustomPolicyName.setter
+    def CustomPolicyName(self, CustomPolicyName):
+        self._CustomPolicyName = CustomPolicyName
+
+    @property
+    def NewCustomPolicyDocument(self):
+        """Custom policy content, which contains up to 4096 characters. When RolePolicyType is Inline, this parameter must be configured. For details, see the permission policy syntax and structure.
+        :rtype: str
+        """
+        return self._NewCustomPolicyDocument
+
+    @NewCustomPolicyDocument.setter
+    def NewCustomPolicyDocument(self, NewCustomPolicyDocument):
+        self._NewCustomPolicyDocument = NewCustomPolicyDocument
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RoleConfigurationId = params.get("RoleConfigurationId")
+        self._CustomPolicyName = params.get("CustomPolicyName")
+        self._NewCustomPolicyDocument = params.get("NewCustomPolicyDocument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomPolicyForRoleConfigurationResponse(AbstractModel):
+    """UpdateCustomPolicyForRoleConfiguration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateGroupRequest(AbstractModel):
     """UpdateGroup request structure.
 
@@ -12533,6 +13946,261 @@ class UpdateGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateOrganizationIdentityRequest(AbstractModel):
+    """UpdateOrganizationIdentity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentityId: Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :type IdentityId: int
+        :param _Description: Identity description.
+        :type Description: str
+        :param _IdentityPolicy: Identity policy.
+        :type IdentityPolicy: list of IdentityPolicy
+        """
+        self._IdentityId = None
+        self._Description = None
+        self._IdentityPolicy = None
+
+    @property
+    def IdentityId(self):
+        """Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+    @property
+    def Description(self):
+        """Identity description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IdentityPolicy(self):
+        """Identity policy.
+        :rtype: list of IdentityPolicy
+        """
+        return self._IdentityPolicy
+
+    @IdentityPolicy.setter
+    def IdentityPolicy(self, IdentityPolicy):
+        self._IdentityPolicy = IdentityPolicy
+
+
+    def _deserialize(self, params):
+        self._IdentityId = params.get("IdentityId")
+        self._Description = params.get("Description")
+        if params.get("IdentityPolicy") is not None:
+            self._IdentityPolicy = []
+            for item in params.get("IdentityPolicy"):
+                obj = IdentityPolicy()
+                obj._deserialize(item)
+                self._IdentityPolicy.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOrganizationIdentityResponse(AbstractModel):
+    """UpdateOrganizationIdentity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateOrganizationMemberRequest(AbstractModel):
+    """UpdateOrganizationMember request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: Member UIN.
+        :type MemberUin: int
+        :param _Name: Member name, which contains up to 25 characters, including English letters, digits, and symbols `+@&._[]-:,`.
+        :type Name: str
+        :param _Remark: Remarks, which contain up to 40 characters.
+        :type Remark: str
+        :param _PolicyType: Relationship policy type. When PolicyType is not empty, PermissionIds cannot be empty. Value: Financial.
+        :type PolicyType: str
+        :param _PermissionIds: List of member financial permission IDs. When PermissionIds is not empty, PolicyType cannot be empty.
+Valid values: 1: View bills. 2: View balance. 3: Allocate funds. 4: Consolidate bills. 5: Issue invoices. 6: Inherit discounts. 7: Pay on behalf. 8: Analyze costs. 1 and 2 are required by default.
+        :type PermissionIds: list of int non-negative
+        :param _IsAllowQuit: Whether to allow members to exit an organization. Valid values: Allow: permitted, Denied: not permitted.
+        :type IsAllowQuit: str
+        :param _PayUin: Payer UIN, which is required when pay-on-behalf mode is used in member financial permission. The value is the principal administrator UIN of the corresponding member.
+        :type PayUin: str
+        """
+        self._MemberUin = None
+        self._Name = None
+        self._Remark = None
+        self._PolicyType = None
+        self._PermissionIds = None
+        self._IsAllowQuit = None
+        self._PayUin = None
+
+    @property
+    def MemberUin(self):
+        """Member UIN.
+        :rtype: int
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def Name(self):
+        """Member name, which contains up to 25 characters, including English letters, digits, and symbols `+@&._[]-:,`.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        """Remarks, which contain up to 40 characters.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PolicyType(self):
+        """Relationship policy type. When PolicyType is not empty, PermissionIds cannot be empty. Value: Financial.
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PermissionIds(self):
+        """List of member financial permission IDs. When PermissionIds is not empty, PolicyType cannot be empty.
+Valid values: 1: View bills. 2: View balance. 3: Allocate funds. 4: Consolidate bills. 5: Issue invoices. 6: Inherit discounts. 7: Pay on behalf. 8: Analyze costs. 1 and 2 are required by default.
+        :rtype: list of int non-negative
+        """
+        return self._PermissionIds
+
+    @PermissionIds.setter
+    def PermissionIds(self, PermissionIds):
+        self._PermissionIds = PermissionIds
+
+    @property
+    def IsAllowQuit(self):
+        """Whether to allow members to exit an organization. Valid values: Allow: permitted, Denied: not permitted.
+        :rtype: str
+        """
+        return self._IsAllowQuit
+
+    @IsAllowQuit.setter
+    def IsAllowQuit(self, IsAllowQuit):
+        self._IsAllowQuit = IsAllowQuit
+
+    @property
+    def PayUin(self):
+        """Payer UIN, which is required when pay-on-behalf mode is used in member financial permission. The value is the principal administrator UIN of the corresponding member.
+        :rtype: str
+        """
+        return self._PayUin
+
+    @PayUin.setter
+    def PayUin(self, PayUin):
+        self._PayUin = PayUin
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._PolicyType = params.get("PolicyType")
+        self._PermissionIds = params.get("PermissionIds")
+        self._IsAllowQuit = params.get("IsAllowQuit")
+        self._PayUin = params.get("PayUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOrganizationMemberResponse(AbstractModel):
+    """UpdateOrganizationMember response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateOrganizationNodeRequest(AbstractModel):
     """UpdateOrganizationNode request structure.
 
@@ -12638,11 +14306,11 @@ class UpdateRoleConfigurationRequest(AbstractModel):
         :type ZoneId: str
         :param _RoleConfigurationId: Permission configuration ID.
         :type RoleConfigurationId: str
-        :param _NewDescription: Description of new access configuration, which contains up to 1024 characters.
+        :param _NewDescription: New permission configuration description, which contains up to 1,024 characters.
         :type NewDescription: str
-        :param _NewSessionDuration: New session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours).
+        :param _NewSessionDuration: New session duration, in seconds. It is the maximum time a CIC user can maintain a session while using permission configurations to access a target account in TCO. Value range: 900 to 43200 (15 minutes to 12 hours).
         :type NewSessionDuration: int
-        :param _NewRelayState: New initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page.
+        :param _NewRelayState: New initial access page. It is the initial page address when a CIC user uses permission configurations to access a target account in TCO. This page must be a Tencent Cloud console page.
         :type NewRelayState: str
         """
         self._ZoneId = None
@@ -12675,7 +14343,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewDescription(self):
-        """Description of new access configuration, which contains up to 1024 characters.
+        """New permission configuration description, which contains up to 1,024 characters.
         :rtype: str
         """
         return self._NewDescription
@@ -12686,7 +14354,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewSessionDuration(self):
-        """New session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours).
+        """New session duration, in seconds. It is the maximum time a CIC user can maintain a session while using permission configurations to access a target account in TCO. Value range: 900 to 43200 (15 minutes to 12 hours).
         :rtype: int
         """
         return self._NewSessionDuration
@@ -12697,7 +14365,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewRelayState(self):
-        """New initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page.
+        """New initial access page. It is the initial page address when a CIC user uses permission configurations to access a target account in TCO. This page must be a Tencent Cloud console page.
         :rtype: str
         """
         return self._NewRelayState
@@ -12765,6 +14433,179 @@ class UpdateRoleConfigurationResponse(AbstractModel):
         if params.get("RoleConfigurationInfo") is not None:
             self._RoleConfigurationInfo = RoleConfiguration()
             self._RoleConfigurationInfo._deserialize(params.get("RoleConfigurationInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateSCIMCredentialStatusRequest(AbstractModel):
+    """UpdateSCIMCredentialStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        :param _CredentialId: SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :type CredentialId: str
+        :param _NewStatus: SCIM key status. Enabled: enabled. Disabled: disabled.
+        :type NewStatus: str
+        """
+        self._ZoneId = None
+        self._CredentialId = None
+        self._NewStatus = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CredentialId(self):
+        """SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def NewStatus(self):
+        """SCIM key status. Enabled: enabled. Disabled: disabled.
+        :rtype: str
+        """
+        return self._NewStatus
+
+    @NewStatus.setter
+    def NewStatus(self, NewStatus):
+        self._NewStatus = NewStatus
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._CredentialId = params.get("CredentialId")
+        self._NewStatus = params.get("NewStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSCIMCredentialStatusResponse(AbstractModel):
+    """UpdateSCIMCredentialStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateSCIMSynchronizationStatusRequest(AbstractModel):
+    """UpdateSCIMSynchronizationStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :type ZoneId: str
+        :param _SCIMSynchronizationStatus: SCIM synchronization status. Enabled: enabled. Disabled: disabled.
+        :type SCIMSynchronizationStatus: str
+        """
+        self._ZoneId = None
+        self._SCIMSynchronizationStatus = None
+
+    @property
+    def ZoneId(self):
+        """Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SCIMSynchronizationStatus(self):
+        """SCIM synchronization status. Enabled: enabled. Disabled: disabled.
+        :rtype: str
+        """
+        return self._SCIMSynchronizationStatus
+
+    @SCIMSynchronizationStatus.setter
+    def SCIMSynchronizationStatus(self, SCIMSynchronizationStatus):
+        self._SCIMSynchronizationStatus = SCIMSynchronizationStatus
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SCIMSynchronizationStatus = params.get("SCIMSynchronizationStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSCIMSynchronizationStatusResponse(AbstractModel):
+    """UpdateSCIMSynchronizationStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

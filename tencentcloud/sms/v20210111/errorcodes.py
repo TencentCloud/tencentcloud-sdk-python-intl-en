@@ -266,6 +266,9 @@ UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = 'UnauthorizedOperation.Servic
 # Failed to verify `SmsSdkAppId`. Please check whether [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) is under the account associated with the [TencentCloud API key](https://console.cloud.tencent.com/cam/capi).
 UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppIdVerifyFail'
 
+# 
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
 # The request is not supported.
 UNSUPPORTEDOPERATION_ = 'UnsupportedOperation.'
 
@@ -278,5 +281,5 @@ UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = 'UnsupportedOp
 # A Global SMS template cannot be used to sent messages to Chinese mainland numbers. Please use a Chinese Mainland SMS template instead.
 UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = 'UnsupportedOperation.GlobalTemplateToChineseMainlandPhone'
 
-# 
+# Not supported in this area.
 UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = 'UnsupportedOperation.UnsupportedRegion'

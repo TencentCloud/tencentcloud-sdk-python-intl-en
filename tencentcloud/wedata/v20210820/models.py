@@ -5648,11 +5648,11 @@ class CheckTaskNameExistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project ID/Workspace ID
+        :param _ProjectId: Project ID/Workspace ID.
         :type ProjectId: str
-        :param _TypeId: Task Type (consistent with scheduling parameters)
+        :param _TypeId: Task Type (consistent with scheduling parameters).
         :type TypeId: int
-        :param _TaskName: Task Name
+        :param _TaskName: Task Name.
         :type TaskName: str
         """
         self._ProjectId = None
@@ -5661,7 +5661,7 @@ class CheckTaskNameExistRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID/Workspace ID
+        """Project ID/Workspace ID.
         :rtype: str
         """
         return self._ProjectId
@@ -5672,7 +5672,7 @@ class CheckTaskNameExistRequest(AbstractModel):
 
     @property
     def TypeId(self):
-        """Task Type (consistent with scheduling parameters)
+        """Task Type (consistent with scheduling parameters).
         :rtype: int
         """
         return self._TypeId
@@ -5683,7 +5683,7 @@ class CheckTaskNameExistRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        """Task Name
+        """Task Name.
         :rtype: str
         """
         return self._TaskName

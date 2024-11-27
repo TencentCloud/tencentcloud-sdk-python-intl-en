@@ -440,60 +440,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAntiFakeUrl(self, request):
-        """废弃接口
-
-        This API has been deprecated.
-
-        Obtain a tamper-proof URL
-
-        :param request: Request instance for DescribeAntiFakeUrl.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAntiFakeUrl", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAntiFakeUrlResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeAntiInfoLeakRules(self, request):
-        """老接口已经不再使用。
-
-        The old API is no longer in use.
-
-        Obtain the information leakage prevention rule list
-
-        :param request: Request instance for DescribeAntiInfoLeakRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAntiInfoLeakRulesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAntiInfoLeakRules", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAntiInfoLeakRulesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeAntiInfoLeakageRules(self, request):
         """Obtain the information leakage prevention rule list
 
@@ -508,6 +454,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeAntiInfoLeakageRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAntiInfoLeakageRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAttackOverview(self, request):
+        """This API is used to describe the attack overview.
+
+        :param request: Request instance for DescribeAttackOverview.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackOverviewRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAttackOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAttackOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAttackOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1368,6 +1337,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAttackHistogram(self, request):
+        """This API is used to generate a bar chart for the generation time of attack logs.
+
+        :param request: Request instance for GetAttackHistogram.
+        :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackHistogramRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GetAttackHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAttackHistogram", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAttackHistogramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAttackTotalCount(self, request):
         """Display total attack count by querying based on conditions
 
@@ -1681,6 +1673,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyDomainIpv6Status", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDomainIpv6StatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDomainPostAction(self, request):
+        """This API is used to modify the domain shipping status.
+
+        :param request: Request instance for ModifyDomainPostAction.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainPostActionRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyDomainPostActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDomainPostAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDomainPostActionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2119,6 +2134,29 @@ class WafClient(AbstractClient):
             body = self.call("RefreshAccessCheckResult", params, headers=headers)
             response = json.loads(body)
             model = models.RefreshAccessCheckResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchAttackLog(self, request):
+        """The new version of the CLS API has parameter changes, with query changed to query_string to support Lucene syntax for API search queries.
+
+        :param request: Request instance for SearchAttackLog.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SearchAttackLogRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SearchAttackLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchAttackLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchAttackLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

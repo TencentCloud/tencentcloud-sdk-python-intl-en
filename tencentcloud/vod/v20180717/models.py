@@ -22905,18 +22905,22 @@ class CreateVodDomainRequest(AbstractModel):
         r"""
         :param _Domain: Domain name to add to VOD. Note: a wildcard domain name is not supported.
         :type Domain: str
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :type SubAppId: int
         :param _AccelerateArea: Region to enable acceleration. Valid values:
 <li>`Chinese Mainland`</li>
 <li>`Outside Chinese Mainland`</li>
 <li>`Global`</li>
 If `AccelerateArea` is not specified, VOD will enable acceleration in or outside Chinese mainland based on the regional information a user has configured with Tencent Cloud.
         :type AccelerateArea: str
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
-        :type SubAppId: int
+        :param _Type: Domain type. Valid values:
+<li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>default value: VOD. 
+        :type Type: str
         """
         self._Domain = None
-        self._AccelerateArea = None
         self._SubAppId = None
+        self._AccelerateArea = None
+        self._Type = None
 
     @property
     def Domain(self):
@@ -22928,6 +22932,17 @@ If `AccelerateArea` is not specified, VOD will enable acceleration in or outside
     @Domain.setter
     def Domain(self, Domain):
         self._Domain = Domain
+
+    @property
+    def SubAppId(self):
+        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def AccelerateArea(self):
@@ -22945,21 +22960,23 @@ If `AccelerateArea` is not specified, VOD will enable acceleration in or outside
         self._AccelerateArea = AccelerateArea
 
     @property
-    def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
-        :rtype: int
+    def Type(self):
+        """Domain type. Valid values:
+<li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>default value: VOD. 
+        :rtype: str
         """
-        return self._SubAppId
+        return self._Type
 
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
-        self._AccelerateArea = params.get("AccelerateArea")
         self._SubAppId = params.get("SubAppId")
+        self._AccelerateArea = params.get("AccelerateArea")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33410,6 +33427,11 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         :param _QUICConfig: The QUIC configuration for the domain.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
+        :param _IPFilterPolicy: 
+        :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
+        :param _Type: Domain type. Valid values:
+<li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>
+        :type Type: str
         """
         self._Domain = None
         self._AccelerateAreaInfos = None
@@ -33419,6 +33441,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RefererAuthPolicy = None
         self._CreateTime = None
         self._QUICConfig = None
+        self._IPFilterPolicy = None
+        self._Type = None
 
     @property
     def Domain(self):
@@ -33517,6 +33541,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def QUICConfig(self, QUICConfig):
         self._QUICConfig = QUICConfig
 
+    @property
+    def IPFilterPolicy(self):
+        """
+        :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
+        """
+        return self._IPFilterPolicy
+
+    @IPFilterPolicy.setter
+    def IPFilterPolicy(self, IPFilterPolicy):
+        self._IPFilterPolicy = IPFilterPolicy
+
+    @property
+    def Type(self):
+        """Domain type. Valid values:
+<li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -33540,6 +33587,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("QUICConfig") is not None:
             self._QUICConfig = DomainQUICConfig()
             self._QUICConfig._deserialize(params.get("QUICConfig"))
+        if params.get("IPFilterPolicy") is not None:
+            self._IPFilterPolicy = IPFilterPolicy()
+            self._IPFilterPolicy._deserialize(params.get("IPFilterPolicy"))
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39026,6 +39077,72 @@ class HwPrivateAccess(AbstractModel):
         self._AccessKey = params.get("AccessKey")
         self._SecretKey = params.get("SecretKey")
         self._Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPFilterPolicy(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 
+        :type Status: str
+        :param _FilterType: 
+        :type FilterType: str
+        :param _IPList: 
+        :type IPList: list of str
+        """
+        self._Status = None
+        self._FilterType = None
+        self._IPList = None
+
+    @property
+    def Status(self):
+        """
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FilterType(self):
+        """
+        :rtype: str
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def IPList(self):
+        """
+        :rtype: list of str
+        """
+        return self._IPList
+
+    @IPList.setter
+    def IPList(self, IPList):
+        self._IPList = IPList
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._FilterType = params.get("FilterType")
+        self._IPList = params.get("IPList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

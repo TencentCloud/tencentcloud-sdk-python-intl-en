@@ -3458,7 +3458,7 @@ class ModifyApplicationProjectRequest(AbstractModel):
         :type Resolution: str
         :param _FPS: Frame rate.
         :type FPS: int
-        :param _PreloadDuration: Waiting time for application pre-launch.
+        :param _PreloadDuration: Waiting time for pre-launch.
         :type PreloadDuration: str
         :param _ReconnectTimeout: Waiting time for reconnection.
         :type ReconnectTimeout: str
@@ -3585,7 +3585,7 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def PreloadDuration(self):
-        """Waiting time for application pre-launch.
+        """Waiting time for pre-launch.
         :rtype: str
         """
         return self._PreloadDuration

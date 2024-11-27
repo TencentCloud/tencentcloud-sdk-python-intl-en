@@ -1674,6 +1674,62 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class AnonymousInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operations: 
+        :type Operations: list of str
+        :param _Conditions: 
+        :type Conditions: list of ConditionInfo
+        """
+        self._Operations = None
+        self._Conditions = None
+
+    @property
+    def Operations(self):
+        """
+        :rtype: list of str
+        """
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+    @property
+    def Conditions(self):
+        """
+        :rtype: list of ConditionInfo
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._Operations = params.get("Operations")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = ConditionInfo()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyConfigToMachineGroupRequest(AbstractModel):
     """ApplyConfigToMachineGroup request structure.
 
@@ -2330,6 +2386,72 @@ class CompressInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConditionInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attributes: 
+        :type Attributes: str
+        :param _Rule: 
+        :type Rule: int
+        :param _ConditionValue: 
+        :type ConditionValue: str
+        """
+        self._Attributes = None
+        self._Rule = None
+        self._ConditionValue = None
+
+    @property
+    def Attributes(self):
+        """
+        :rtype: str
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def Rule(self):
+        """
+        :rtype: int
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def ConditionValue(self):
+        """
+        :rtype: str
+        """
+        return self._ConditionValue
+
+    @ConditionValue.setter
+    def ConditionValue(self, ConditionValue):
+        self._ConditionValue = ConditionValue
+
+
+    def _deserialize(self, params):
+        self._Attributes = params.get("Attributes")
+        self._Rule = params.get("Rule")
+        self._ConditionValue = params.get("ConditionValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21313,6 +21435,44 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class TopicExtendInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AnonymousAccess: 
+        :type AnonymousAccess: :class:`tencentcloud.cls.v20201016.models.AnonymousInfo`
+        """
+        self._AnonymousAccess = None
+
+    @property
+    def AnonymousAccess(self):
+        """
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousInfo`
+        """
+        return self._AnonymousAccess
+
+    @AnonymousAccess.setter
+    def AnonymousAccess(self, AnonymousAccess):
+        self._AnonymousAccess = AnonymousAccess
+
+
+    def _deserialize(self, params):
+        if params.get("AnonymousAccess") is not None:
+            self._AnonymousAccess = AnonymousInfo()
+            self._AnonymousAccess._deserialize(params.get("AnonymousAccess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TopicInfo(AbstractModel):
     """Basic Topic Information
 
@@ -21365,6 +21525,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type BizType: int
         :param _IsWebTracking: Free authentication switch. false: disabled; true: enabled.After enabling, anonymous access to the log topic will be supported for specified operations. For details, please refer to Log Topic (https://intl.cloud.tencent.com/document/product/614/41035?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
         :type IsWebTracking: bool
+        :param _Extends: 
+        :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         self._LogsetId = None
         self._TopicId = None
@@ -21384,6 +21546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HotPeriod = None
         self._BizType = None
         self._IsWebTracking = None
+        self._Extends = None
 
     @property
     def LogsetId(self):
@@ -21592,6 +21755,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def IsWebTracking(self, IsWebTracking):
         self._IsWebTracking = IsWebTracking
 
+    @property
+    def Extends(self):
+        """
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        """
+        return self._Extends
+
+    @Extends.setter
+    def Extends(self, Extends):
+        self._Extends = Extends
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -21617,6 +21791,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HotPeriod = params.get("HotPeriod")
         self._BizType = params.get("BizType")
         self._IsWebTracking = params.get("IsWebTracking")
+        if params.get("Extends") is not None:
+            self._Extends = TopicExtendInfo()
+            self._Extends._deserialize(params.get("Extends"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

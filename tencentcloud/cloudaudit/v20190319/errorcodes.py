@@ -158,5 +158,8 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # The tracking set does not exist.
 RESOURCENOTFOUND_AUDITNOTEXIST = 'ResourceNotFound.AuditNotExist'
 
+# 
+RESOURCENOTFOUND_COSNOTEXIST = 'ResourceNotFound.CosNotExist'
+
 # The role doesn’t exist.
 RESOURCENOTFOUND_ROLENOTEXIST = 'ResourceNotFound.RoleNotExist'
