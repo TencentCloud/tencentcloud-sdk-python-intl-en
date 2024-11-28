@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 
+FAILEDOPERATION = 'FailedOperation'
+
 # Members cannot be deleted from the root unit.
 FAILEDOPERATION_DISABLEDELETEMEMBERFROMROOTNODE = 'FailedOperation.DisableDeleteMemberFromRootNode'
 
@@ -26,8 +29,11 @@ FAILEDOPERATION_INORGANIZATIONALREADY = 'FailedOperation.InOrganizationAlready'
 # The name is already in use.
 FAILEDOPERATION_MEMBERNAMEUSED = 'FailedOperation.MemberNameUsed'
 
-# There are members in this organizational unit.
+# There are members in this department
 FAILEDOPERATION_NODENOTEMPTY = 'FailedOperation.NodeNotEmpty'
+
+# You can only invite accounts within the same site.
+FAILEDOPERATION_NOTSAMEREGION = 'FailedOperation.NotSameRegion'
 
 # The organization already exists.
 FAILEDOPERATION_ORGANIZATIONEXISTALREADY = 'FailedOperation.OrganizationExistAlready'
@@ -35,10 +41,16 @@ FAILEDOPERATION_ORGANIZATIONEXISTALREADY = 'FailedOperation.OrganizationExistAlr
 # There are members in this organization.
 FAILEDOPERATION_ORGANIZATIONNOTEMPTY = 'FailedOperation.OrganizationNotEmpty'
 
+# Failed to leave the shared unit.
+FAILEDOPERATION_QUITSHAREUINTERROR = 'FailedOperation.QuitShareUintError'
+
 # The invitation has already been sent before.
 FAILEDOPERATION_RESENTINVITATION = 'FailedOperation.ReSentInvitation'
 
-# A UIN does not belong to this organization.
+# Shared unit is not empty.
+FAILEDOPERATION_SHAREUNITNOTEMPTY = 'FailedOperation.ShareUnitNotEmpty'
+
+# The UIN does not belong to the organization.
 FAILEDOPERATION_SOMEUINSNOTINORGANIZATION = 'FailedOperation.SomeUinsNotInOrganization'
 
 # The user has already joined the organization.
@@ -50,10 +62,10 @@ FAILEDOPERATION_USERNOTREGISTER = 'FailedOperation.UserNotRegister'
 # The number of organization members has reached the maximum.
 LIMITEXCEEDED_MEMBERS = 'LimitExceeded.Members'
 
-# Too many organizational unit levels.
+# The department has too many levels.
 LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = 'LimitExceeded.NodeDepthExceedLimit'
 
-# The number of organizational units has reached the upper limit.
+# The number of departments exceeds the upper limit.
 LIMITEXCEEDED_NODEEXCEEDLIMIT = 'LimitExceeded.NodeExceedLimit'
 
 # The organizational unit name is already in use.

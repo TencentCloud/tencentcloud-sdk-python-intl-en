@@ -382,12 +382,18 @@ class AccelerationDomainCertificate(AbstractModel):
         r"""
         :param _Mode: Certificate configuration mode. Values: <li>`disable`: Do not configure the certificate;</li><li>`eofreecert`: Use a free certificate provided by EdgeOne; </li><li>`sslcert`: Configure an SSL certificate.</li>
         :type Mode: str
-        :param _List: List of certificates
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _List: List of server certificates. The relevant certificates are deployed on the entrance side of the EO.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type List: list of CertificateInfo
+        :param _ClientCertInfo: In the edge mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for EO node authentication of the client certificate.
+        :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        :param _UpstreamCertInfo: The certificate carried during EO node origin-pull is used when the origin server enables the mutual authentication handshake to validate the client certificate, ensuring that the request originates from a trusted EO node.
+        :type UpstreamCertInfo: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
         """
         self._Mode = None
         self._List = None
+        self._ClientCertInfo = None
+        self._UpstreamCertInfo = None
 
     @property
     def Mode(self):
@@ -402,8 +408,8 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def List(self):
-        """List of certificates
-Note: This field may return·null, indicating that no valid values can be obtained.
+        """List of server certificates. The relevant certificates are deployed on the entrance side of the EO.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: list of CertificateInfo
         """
         return self._List
@@ -411,6 +417,28 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @List.setter
     def List(self, List):
         self._List = List
+
+    @property
+    def ClientCertInfo(self):
+        """In the edge mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for EO node authentication of the client certificate.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        """
+        return self._ClientCertInfo
+
+    @ClientCertInfo.setter
+    def ClientCertInfo(self, ClientCertInfo):
+        self._ClientCertInfo = ClientCertInfo
+
+    @property
+    def UpstreamCertInfo(self):
+        """The certificate carried during EO node origin-pull is used when the origin server enables the mutual authentication handshake to validate the client certificate, ensuring that the request originates from a trusted EO node.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamCertInfo`
+        """
+        return self._UpstreamCertInfo
+
+    @UpstreamCertInfo.setter
+    def UpstreamCertInfo(self, UpstreamCertInfo):
+        self._UpstreamCertInfo = UpstreamCertInfo
 
 
     def _deserialize(self, params):
@@ -421,6 +449,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
                 obj = CertificateInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
+        if params.get("ClientCertInfo") is not None:
+            self._ClientCertInfo = MutualTLS()
+            self._ClientCertInfo._deserialize(params.get("ClientCertInfo"))
+        if params.get("UpstreamCertInfo") is not None:
+            self._UpstreamCertInfo = UpstreamCertInfo()
+            self._UpstreamCertInfo._deserialize(params.get("UpstreamCertInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14444,7 +14478,7 @@ class DescribeL4ProxyRulesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Paginated query limit. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filter criteria. The upper limit for Filters.Values is 20. All rule information under the current Layer 4 instance will be returned if left empty. The detailed filter criteria are as follows: <li>rule-tag: Filters rules under the Layer 4 proxy instance according to rule tag.</li>
+        :param _Filters: Filter criteria. The upper limit of Filters.Values is 20. If it is not filled in, all rule information under the current layer-4 instance will be returned. The detailed filter criteria are as follows: <li>rule-id: filter as per the rules under the layer-4 proxy instance by Rule ID. Rule ID is in the form: rule-31vv7qig0vjy;</li> <li>rule-tag: filter as per the rules under the layer-4 proxy instance by Rule Tag.</li>
         :type Filters: list of Filter
         """
         self._ZoneId = None
@@ -14499,7 +14533,7 @@ class DescribeL4ProxyRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter criteria. The upper limit for Filters.Values is 20. All rule information under the current Layer 4 instance will be returned if left empty. The detailed filter criteria are as follows: <li>rule-tag: Filters rules under the Layer 4 proxy instance according to rule tag.</li>
+        """Filter criteria. The upper limit of Filters.Values is 20. If it is not filled in, all rule information under the current layer-4 instance will be returned. The detailed filter criteria are as follows: <li>rule-id: filter as per the rules under the layer-4 proxy instance by Rule ID. Rule ID is in the form: rule-31vv7qig0vjy;</li> <li>rule-tag: filter as per the rules under the layer-4 proxy instance by Rule Tag.</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -25375,7 +25409,7 @@ class ModifyHostsCertificateRequest(AbstractModel):
 <li>`apply`: Managed by EdgeOne</li>
 Default value: `none`.
         :type ApplyType: str
-        :param _ClientCertInfo: In the Edge mTLS scenario, this field represents the client's CA certificate, which is deployed at the EO entry side for authenticating the client access to EO nodes. The original configuration applies if this field is not specified.
+        :param _ClientCertInfo: In the mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for the client to authenticate the EO node. By default, it is disabled. If it is left blank, it indicates retaining the original configuration.
         :type ClientCertInfo: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
         """
         self._ZoneId = None
@@ -25452,7 +25486,7 @@ Default value: `none`.
 
     @property
     def ClientCertInfo(self):
-        """In the Edge mTLS scenario, this field represents the client's CA certificate, which is deployed at the EO entry side for authenticating the client access to EO nodes. The original configuration applies if this field is not specified.
+        """In the mutual authentication scenario, this field represents the client's CA certificate, which is deployed inside the EO node and used for the client to authenticate the EO node. By default, it is disabled. If it is left blank, it indicates retaining the original configuration.
         :rtype: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
         """
         return self._ClientCertInfo
@@ -29244,13 +29278,13 @@ class OwnershipVerification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DnsVerification: u200cInformation required for authentication using DNS resolution. It's applicable to sites connected via CNAME. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
- 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _DnsVerification: CNAME, when there is no domain name access, the information required for DNS resolution verification is used. For details, refer to [Site/Domain Ownership Verification
+](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type DnsVerification: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
-        :param _FileVerification: u200cInformation required for verifying via a file. It's applicable to sites connected via CNAMEs. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
- 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _FileVerification: CNAME, when there is no domain name access, the information required for file verification is used. For details, refer to [Site/Domain Ownership Verification
+](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type FileVerification: :class:`tencentcloud.teo.v20220901.models.FileVerification`
         :param _NsVerification: u200cInformation required for switching DNS servers. It's applicable to sites connected via NSs. For details, see [Modifying DNS Server](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).
 Note: This field may return·null, indicating that no valid values can be obtained.
@@ -29262,9 +29296,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def DnsVerification(self):
-        """u200cInformation required for authentication using DNS resolution. It's applicable to sites connected via CNAME. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
- 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        """CNAME, when there is no domain name access, the information required for DNS resolution verification is used. For details, refer to [Site/Domain Ownership Verification
+](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
         """
         return self._DnsVerification
@@ -29275,9 +29309,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FileVerification(self):
-        """u200cInformation required for verifying via a file. It's applicable to sites connected via CNAMEs. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
- 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        """CNAME, when there is no domain name access, the information required for file verification is used. For details, refer to [Site/Domain Ownership Verification
+](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :rtype: :class:`tencentcloud.teo.v20220901.models.FileVerification`
         """
         return self._FileVerification
@@ -34883,6 +34917,44 @@ class UpgradePlanResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
+
+
+class UpstreamCertInfo(AbstractModel):
+    """The certificate carried during EO node origin-pull is used when the origin server enables the mutual authentication handshake to validate the client certificate, ensuring that the request originates from a trusted EO node.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpstreamMutualTLS: In the origin-pull mutual authentication scenario, this field represents the certificate (including the public and private keys) carried during EO node origin-pull, which is deployed in the EO node for the origin server to authenticate the EO node. When used as an input parameter, it is left blank to indicate retaining the original configuration.
+        :type UpstreamMutualTLS: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        """
+        self._UpstreamMutualTLS = None
+
+    @property
+    def UpstreamMutualTLS(self):
+        """In the origin-pull mutual authentication scenario, this field represents the certificate (including the public and private keys) carried during EO node origin-pull, which is deployed in the EO node for the origin server to authenticate the EO node. When used as an input parameter, it is left blank to indicate retaining the original configuration.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MutualTLS`
+        """
+        return self._UpstreamMutualTLS
+
+    @UpstreamMutualTLS.setter
+    def UpstreamMutualTLS(self, UpstreamMutualTLS):
+        self._UpstreamMutualTLS = UpstreamMutualTLS
+
+
+    def _deserialize(self, params):
+        if params.get("UpstreamMutualTLS") is not None:
+            self._UpstreamMutualTLS = MutualTLS()
+            self._UpstreamMutualTLS._deserialize(params.get("UpstreamMutualTLS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpstreamHttp2(AbstractModel):

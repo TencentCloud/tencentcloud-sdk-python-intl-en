@@ -674,6 +674,9 @@ UNSUPPORTEDOPERATION_ALIASBIND = 'UnsupportedOperation.AliasBind'
 # Cdn is not supported.
 UNSUPPORTEDOPERATION_CDN = 'UnsupportedOperation.Cdn'
 
+# 
+UNSUPPORTEDOPERATION_COPYFUNCTION = 'UnsupportedOperation.CopyFunction'
+
 # Cos operation is not supported.
 UNSUPPORTEDOPERATION_COS = 'UnsupportedOperation.Cos'
 

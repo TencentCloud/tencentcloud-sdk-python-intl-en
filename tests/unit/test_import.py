@@ -569,6 +569,11 @@ def test_import_tts():
     from tencentcloud.tts.v20190823 import models
 
 
+def test_import_vclm():
+    from tencentcloud.vclm.v20240523 import vclm_client
+    from tencentcloud.vclm.v20240523 import models
+
+
 def test_import_vm():
     from tencentcloud.vm.v20201229 import vm_client
     from tencentcloud.vm.v20201229 import models
