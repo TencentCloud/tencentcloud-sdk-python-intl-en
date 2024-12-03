@@ -154,6 +154,11 @@ def test_import_cmq():
     from tencentcloud.cmq.v20190304 import models
 
 
+def test_import_config():
+    from tencentcloud.config.v20220802 import config_client
+    from tencentcloud.config.v20220802 import models
+
+
 def test_import_controlcenter():
     from tencentcloud.controlcenter.v20230110 import controlcenter_client
     from tencentcloud.controlcenter.v20230110 import models

@@ -118,6 +118,31 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAICall(self, request):
+        """Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.
+
+        Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://intl.cloud.tencent.com/document/product/679/112100?from_cn_redirect=1).
+
+        :param request: Request instance for CreateAICall.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAICallRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAICallResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAICall", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAICallResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAdminURL(self, request):
         """This API is used to create a management access link.
 

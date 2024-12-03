@@ -2119,11 +2119,13 @@ class BillDetailComponent(AbstractModel):
         :type RealCost: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _CashPayAmount: Cash credit: The amount paid from the user’s cash account
+        :param _CashPayAmount: Cash credit: The amount paid from the user's cash account
+
         :type CashPayAmount: str
-        :param _IncentivePayAmount: Free credit: The amount paid with the user’s free credit
+        :param _IncentivePayAmount: Free credit: The amount paid with the user's free credit
+
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :type TransferPayAmount: str
         :param _ItemCode: Component type code. Note: This field may return null, indicating that no valid values can be obtained.
         :type ItemCode: str
@@ -2148,6 +2150,12 @@ class BillDetailComponent(AbstractModel):
         :param _ComponentConfig: Configuration description: The specification configuration of an instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ComponentConfig: list of BillDetailComponentConfig
+        :param _TaxRate: The tax rate.
+        :type TaxRate: str
+        :param _TaxAmount: The tax amount.
+        :type TaxAmount: str
+        :param _Currency: The currency used for the settlement of a component.
+        :type Currency: str
         """
         self._ComponentCodeName = None
         self._ItemCodeName = None
@@ -2179,6 +2187,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCostWithSP = None
         self._BlendedDiscount = None
         self._ComponentConfig = None
+        self._TaxRate = None
+        self._TaxAmount = None
+        self._Currency = None
 
     @property
     def ComponentCodeName(self):
@@ -2362,7 +2373,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        """Cash credit: The amount paid from the user's cash account
+
         :rtype: str
         """
         return self._CashPayAmount
@@ -2373,7 +2385,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        """Free credit: The amount paid with the user's free credit
+
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -2384,7 +2397,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        """Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -2519,6 +2532,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ComponentConfig(self, ComponentConfig):
         self._ComponentConfig = ComponentConfig
 
+    @property
+    def TaxRate(self):
+        """The tax rate.
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def TaxAmount(self):
+        """The tax amount.
+        :rtype: str
+        """
+        return self._TaxAmount
+
+    @TaxAmount.setter
+    def TaxAmount(self, TaxAmount):
+        self._TaxAmount = TaxAmount
+
+    @property
+    def Currency(self):
+        """The currency used for the settlement of a component.
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
 
     def _deserialize(self, params):
         self._ComponentCodeName = params.get("ComponentCodeName")
@@ -2556,6 +2602,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = BillDetailComponentConfig()
                 obj._deserialize(item)
                 self._ComponentConfig.append(obj)
+        self._TaxRate = params.get("TaxRate")
+        self._TaxAmount = params.get("TaxAmount")
+        self._Currency = params.get("Currency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3234,7 +3283,7 @@ class BillResourceSummary(AbstractModel):
         r"""
         :param _BusinessCodeName: Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :type BusinessCodeName: str
-        :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.
+        :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.
         :type ProductCodeName: str
         :param _PayModeName: Billing mode, which can be monthly subscription or pay-as-you-go.
         :type PayModeName: str
@@ -3270,15 +3319,17 @@ class BillResourceSummary(AbstractModel):
         :type Discount: str
         :param _ReduceType: Offer type
         :type ReduceType: str
-        :param _RealTotalCost: Total amount after discount
+        :param _RealTotalCost: Total amount after discount (Including Tax):  = Total Amount After Discount (Excluding Tax) + TaxAmount
         :type RealTotalCost: str
         :param _VoucherPayAmount: Voucher payment: The voucher deduction amount
         :type VoucherPayAmount: str
-        :param _CashPayAmount: Cash credit: The amount paid from the user’s cash account
+        :param _CashPayAmount: Cash credit: The amount paid from the user's cash account
+
         :type CashPayAmount: str
-        :param _IncentivePayAmount: Free credit: The amount paid with the user’s free credit
+        :param _IncentivePayAmount: Free credit: The amount paid with the user's free credit
+
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferPayAmount: Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :type TransferPayAmount: str
         :param _ExtendField3: Extended field 3: Extended attribute information of a product, which is displayed on the resource bill only.
         :type ExtendField3: str
@@ -3364,7 +3415,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.
+        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.
         :rtype: str
         """
         return self._ProductCodeName
@@ -3562,7 +3613,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        """Total amount after discount
+        """Total amount after discount (Including Tax):  = Total Amount After Discount (Excluding Tax) + TaxAmount
         :rtype: str
         """
         return self._RealTotalCost
@@ -3584,7 +3635,8 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        """Cash credit: The amount paid from the user’s cash account
+        """Cash credit: The amount paid from the user's cash account
+
         :rtype: str
         """
         return self._CashPayAmount
@@ -3595,7 +3647,8 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        """Free credit: The amount paid with the user’s free credit
+        """Free credit: The amount paid with the user's free credit
+
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -3606,7 +3659,7 @@ class BillResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        """Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.
+        """Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TransferPayAmount
@@ -7636,27 +7689,21 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
         :type PayMode: str
         :param _ResourceId: Queries information on a specified resource
         :type ResourceId: str
-        :param _ActionType: Action type to query. Valid values:
-Purchase
-Renewal
-Modify
-Refund
-Deduction
-Hourly settlement
+        :param _ActionType: Hourly settlement
 Daily settlement
 Monthly settlement
-Offline project deduction
-Offline deduction
-adjust-CR
-adjust-DR
-One-off RI Fee
 Spot
-Hourly RI fee
 New monthly subscription
 Monthly subscription renewal
 Monthly subscription specification adjustment
-Monthly subscription specification adjustment
 Monthly subscription refund
+Adjustment - deduction
+Adjustment - refund
+Hourly RI fee
+One-off RI Fee
+Hourly Savings Plan fee
+Offline project deduction
+Offline product deduction
         :type ActionType: str
         :param _ProjectId: Project ID: ID of the project to which the resource belongs
         :type ProjectId: int
@@ -7813,27 +7860,21 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def ActionType(self):
-        """Action type to query. Valid values:
-Purchase
-Renewal
-Modify
-Refund
-Deduction
-Hourly settlement
+        """Hourly settlement
 Daily settlement
 Monthly settlement
-Offline project deduction
-Offline deduction
-adjust-CR
-adjust-DR
-One-off RI Fee
 Spot
-Hourly RI fee
 New monthly subscription
 Monthly subscription renewal
 Monthly subscription specification adjustment
-Monthly subscription specification adjustment
 Monthly subscription refund
+Adjustment - deduction
+Adjustment - refund
+Hourly RI fee
+One-off RI Fee
+Hourly Savings Plan fee
+Offline project deduction
+Offline product deduction
         :rtype: str
         """
         return self._ActionType
@@ -8458,35 +8499,30 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type Limit: int
         :param _Month: Bill month in the format of "yyyy-mm". This value must be no earlier than March 2019, when Bill 2.0 was launched.
         :type Month: str
-        :param _PeriodType: The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        :param _PeriodType: The period type. byUsedTime
         :type PeriodType: str
         :param _NeedRecordNum: Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.
 1 = yes, 0 = no
         :type NeedRecordNum: int
-        :param _ActionType: Action type to query. Valid values:
-Purchase
-Renewal
-Modify
-Refund
-Deduction
-Hourly settlement
+        :param _ActionType: Hourly settlement
 Daily settlement
 Monthly settlement
-Offline project deduction
-Offline deduction
-adjust-CR
-adjust-DR
-One-off RI Fee
 Spot
-Hourly RI fee
 New monthly subscription
 Monthly subscription renewal
 Monthly subscription specification adjustment
 Monthly subscription refund
+Adjustment - deduction
+Adjustment - refund
+Hourly RI fee
+One-off RI Fee
+Hourly Savings Plan fee
+Offline project deduction
+Offline product deduction
         :type ActionType: str
         :param _ResourceId: ID of the instance to be queried
         :type ResourceId: str
-        :param _PayMode: Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)
+        :param _PayMode: Billing mode: prePay/postPay
         :type PayMode: str
         :param _BusinessCode: Product code
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
@@ -8547,13 +8583,17 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def PeriodType(self):
-        """The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
+        """The period type. byUsedTime
         :rtype: str
         """
         return self._PeriodType
 
     @PeriodType.setter
     def PeriodType(self, PeriodType):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         self._PeriodType = PeriodType
 
     @property
@@ -8570,26 +8610,21 @@ This parameter can be used for querying bills after January 2021.
 
     @property
     def ActionType(self):
-        """Action type to query. Valid values:
-Purchase
-Renewal
-Modify
-Refund
-Deduction
-Hourly settlement
+        """Hourly settlement
 Daily settlement
 Monthly settlement
-Offline project deduction
-Offline deduction
-adjust-CR
-adjust-DR
-One-off RI Fee
 Spot
-Hourly RI fee
 New monthly subscription
 Monthly subscription renewal
 Monthly subscription specification adjustment
 Monthly subscription refund
+Adjustment - deduction
+Adjustment - refund
+Hourly RI fee
+One-off RI Fee
+Hourly Savings Plan fee
+Offline project deduction
+Offline product deduction
         :rtype: str
         """
         return self._ActionType
@@ -8611,7 +8646,7 @@ Monthly subscription refund
 
     @property
     def PayMode(self):
-        """Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)
+        """Billing mode: prePay/postPay
         :rtype: str
         """
         return self._PayMode

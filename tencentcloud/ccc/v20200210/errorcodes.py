@@ -23,19 +23,19 @@ FAILEDOPERATION_CALLEEISBLACKUSER = 'FailedOperation.CalleeIsBlackUser'
 # Limited outbound called number.
 FAILEDOPERATION_CALLEEISLIMITED = 'FailedOperation.CalleeIsLimited'
 
-# Outbound over-frequency caller number.
+# Caller ID exceeds the outbound call limit.
 FAILEDOPERATION_CALLEROVERFREQUENCY = 'FailedOperation.CallerOverFrequency'
 
-# Trigger Default Inbound Rule, Call Blind Spot
+# The number is in a restricted calling zone.
 FAILEDOPERATION_CALLOUTRULEBLINDAREA = 'FailedOperation.CalloutRuleBlindArea'
 
-# Trigger Default Outbound Rule, Call Volume for Called Party within a Period
+# Exceeded call limit for the callee within a set time.
 FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEINTERVALTIME = 'FailedOperation.CalloutRuleMaxCallCountCalleeIntervalTime'
 
-# Trigger Default Outbound Rule, Daily Maximum Calls for Called Party
+# Exceeded daily call limit for the callee.
 FAILEDOPERATION_CALLOUTRULEMAXCALLCOUNTCALLEEPERDAYAPPID = 'FailedOperation.CalloutRuleMaxCallCountCalleePerDayAppID'
 
-# Trigger Default Outbound Rule, Not in Outbound Time
+# Calls are not allowed at this time.
 FAILEDOPERATION_CALLOUTRULENOTWORKTIME = 'FailedOperation.CalloutRuleNotWorkTime'
 
 # The current number status cannot be modified.
@@ -107,13 +107,13 @@ INVALIDPARAMETER_SIPTRUNKINUSED = 'InvalidParameter.SipTrunkInUsed'
 # SIP channel information not found
 INVALIDPARAMETER_SIPTRUNKNOTFOUND = 'InvalidParameter.SipTrunkNotFound'
 
-# parameter value is invalid.
+# Invalid Parameter
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # Account does not exist.
 INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = 'InvalidParameterValue.AccountNotExist'
 
-# The instance does not exist.
+# The SDKAppID does not exist.
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'
 
 # The number has been bound to another account.
@@ -128,7 +128,7 @@ INVALIDPARAMETERVALUE_SKILLGROUPEXIST = 'InvalidParameterValue.SkillGroupExist'
 # Exceeded quota limit.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# Package quota exhausted
+# Your call package is used up.
 LIMITEXCEEDED_BASEPACKAGEEXPIRED = 'LimitExceeded.BasePackageExpired'
 
 # Exceeded quantity limit.

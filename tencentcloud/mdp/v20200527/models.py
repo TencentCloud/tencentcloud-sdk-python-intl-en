@@ -1791,6 +1791,87 @@ class CreateStreamPackageSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DashManifestInfo(AbstractModel):
+    """The manifest info used when Type is DASH.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Windows: The total duration of each manifest in seconds. [30, 3600], type: integer, default value 60.
+        :type Windows: int
+        :param _MinBufferTime: The minimum cache time (in seconds) that the player keeps in the buffer. [2, 60], type: integer, default value 30.
+        :type MinBufferTime: int
+        :param _MinUpdatePeriod: The minimum time (in seconds) that the player should wait before requesting an update to the manifest. [2, 60], type: integer, default value 2.
+        :type MinUpdatePeriod: int
+        :param _SuggestedPresentationDelay: The time from the latest live broadcast time point when the player starts broadcasting is a rollback amount (in seconds). [2, 60], type: integer, default value 10.
+        :type SuggestedPresentationDelay: int
+        """
+        self._Windows = None
+        self._MinBufferTime = None
+        self._MinUpdatePeriod = None
+        self._SuggestedPresentationDelay = None
+
+    @property
+    def Windows(self):
+        """The total duration of each manifest in seconds. [30, 3600], type: integer, default value 60.
+        :rtype: int
+        """
+        return self._Windows
+
+    @Windows.setter
+    def Windows(self, Windows):
+        self._Windows = Windows
+
+    @property
+    def MinBufferTime(self):
+        """The minimum cache time (in seconds) that the player keeps in the buffer. [2, 60], type: integer, default value 30.
+        :rtype: int
+        """
+        return self._MinBufferTime
+
+    @MinBufferTime.setter
+    def MinBufferTime(self, MinBufferTime):
+        self._MinBufferTime = MinBufferTime
+
+    @property
+    def MinUpdatePeriod(self):
+        """The minimum time (in seconds) that the player should wait before requesting an update to the manifest. [2, 60], type: integer, default value 2.
+        :rtype: int
+        """
+        return self._MinUpdatePeriod
+
+    @MinUpdatePeriod.setter
+    def MinUpdatePeriod(self, MinUpdatePeriod):
+        self._MinUpdatePeriod = MinUpdatePeriod
+
+    @property
+    def SuggestedPresentationDelay(self):
+        """The time from the latest live broadcast time point when the player starts broadcasting is a rollback amount (in seconds). [2, 60], type: integer, default value 10.
+        :rtype: int
+        """
+        return self._SuggestedPresentationDelay
+
+    @SuggestedPresentationDelay.setter
+    def SuggestedPresentationDelay(self, SuggestedPresentationDelay):
+        self._SuggestedPresentationDelay = SuggestedPresentationDelay
+
+
+    def _deserialize(self, params):
+        self._Windows = params.get("Windows")
+        self._MinBufferTime = params.get("MinBufferTime")
+        self._MinUpdatePeriod = params.get("MinUpdatePeriod")
+        self._SuggestedPresentationDelay = params.get("SuggestedPresentationDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteStreamPackageChannelEndpointsRequest(AbstractModel):
     """DeleteStreamPackageChannelEndpoints request structure.
 
@@ -6809,16 +6890,19 @@ class OutputInfo(AbstractModel):
         :type GroupName: str
         :param _ManifestName: The file name output by the channel program after scheduling.
         :type ManifestName: str
-        :param _ManifestConf: Advertisement configuration.
+        :param _ManifestConf: The manifest info, used when Type is HLS.
         :type ManifestConf: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
         :param _PlaybackURL: Playback address.
         :type PlaybackURL: str
+        :param _DashManifestConf: The manifest info, used when Type is DASH.
+        :type DashManifestConf: :class:`tencentcloud.mdp.v20200527.models.DashManifestInfo`
         """
         self._Type = None
         self._GroupName = None
         self._ManifestName = None
         self._ManifestConf = None
         self._PlaybackURL = None
+        self._DashManifestConf = None
 
     @property
     def Type(self):
@@ -6855,7 +6939,7 @@ class OutputInfo(AbstractModel):
 
     @property
     def ManifestConf(self):
-        """Advertisement configuration.
+        """The manifest info, used when Type is HLS.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
         """
         return self._ManifestConf
@@ -6875,6 +6959,17 @@ class OutputInfo(AbstractModel):
     def PlaybackURL(self, PlaybackURL):
         self._PlaybackURL = PlaybackURL
 
+    @property
+    def DashManifestConf(self):
+        """The manifest info, used when Type is DASH.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DashManifestInfo`
+        """
+        return self._DashManifestConf
+
+    @DashManifestConf.setter
+    def DashManifestConf(self, DashManifestConf):
+        self._DashManifestConf = DashManifestConf
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -6884,6 +6979,9 @@ class OutputInfo(AbstractModel):
             self._ManifestConf = ManifestInfo()
             self._ManifestConf._deserialize(params.get("ManifestConf"))
         self._PlaybackURL = params.get("PlaybackURL")
+        if params.get("DashManifestConf") is not None:
+            self._DashManifestConf = DashManifestInfo()
+            self._DashManifestConf._deserialize(params.get("DashManifestConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6907,13 +7005,16 @@ class OutputReq(AbstractModel):
         :type GroupName: str
         :param _ManifestName: The file name output by the channel program after scheduling.
         :type ManifestName: str
-        :param _ManifestConf: Advertisement configuration.
+        :param _ManifestConf: The manifest info, used when Type is HLS.
         :type ManifestConf: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
+        :param _DashManifestConf: The manifest info, used when Type is DASH.
+        :type DashManifestConf: :class:`tencentcloud.mdp.v20200527.models.DashManifestInfo`
         """
         self._Type = None
         self._GroupName = None
         self._ManifestName = None
         self._ManifestConf = None
+        self._DashManifestConf = None
 
     @property
     def Type(self):
@@ -6950,7 +7051,7 @@ class OutputReq(AbstractModel):
 
     @property
     def ManifestConf(self):
-        """Advertisement configuration.
+        """The manifest info, used when Type is HLS.
         :rtype: :class:`tencentcloud.mdp.v20200527.models.ManifestInfo`
         """
         return self._ManifestConf
@@ -6958,6 +7059,17 @@ class OutputReq(AbstractModel):
     @ManifestConf.setter
     def ManifestConf(self, ManifestConf):
         self._ManifestConf = ManifestConf
+
+    @property
+    def DashManifestConf(self):
+        """The manifest info, used when Type is DASH.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DashManifestInfo`
+        """
+        return self._DashManifestConf
+
+    @DashManifestConf.setter
+    def DashManifestConf(self, DashManifestConf):
+        self._DashManifestConf = DashManifestConf
 
 
     def _deserialize(self, params):
@@ -6967,6 +7079,9 @@ class OutputReq(AbstractModel):
         if params.get("ManifestConf") is not None:
             self._ManifestConf = ManifestInfo()
             self._ManifestConf._deserialize(params.get("ManifestConf"))
+        if params.get("DashManifestConf") is not None:
+            self._DashManifestConf = DashManifestInfo()
+            self._DashManifestConf._deserialize(params.get("DashManifestConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
