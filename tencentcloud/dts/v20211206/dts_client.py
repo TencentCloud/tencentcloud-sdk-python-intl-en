@@ -51,6 +51,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConfigureSubscribeJob(self, request):
+        """This API is used to configure data subscription instances.
+
+        :param request: Request instance for ConfigureSubscribeJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ConfigureSubscribeJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ConfigureSubscribeJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfigureSubscribeJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConfigureSubscribeJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ConfigureSyncJob(self, request):
         """This API is used to configure a sync task.
 
@@ -166,6 +189,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConsumerGroup(self, request):
+        """This API is used to creat a consumer group for the subscription instance.
+
+        :param request: Request instance for CreateConsumerGroup.
+        :type request: :class:`tencentcloud.dts.v20211206.models.CreateConsumerGroupRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CreateConsumerGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConsumerGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConsumerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMigrateCheckJob(self, request):
         """This API is used to verify a migration task.
         Before migration, you should call this API to create a check task. Migration will start only if the check succeeds. You can view the check result through the `DescribeMigrationCheckJob` API.
@@ -237,6 +283,52 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSubscribe(self, request):
+        """This API is used to create a data subscription task.
+
+        :param request: Request instance for CreateSubscribe.
+        :type request: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSubscribeCheckJob(self, request):
+        """This API is used to create a subscription check task. The task must have successfully called the ConfigureSubscribeJob interface to configure all necessary information before starting the check.
+
+        :param request: Request instance for CreateSubscribeCheckJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeCheckJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CreateSubscribeCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubscribeCheckJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubscribeCheckJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSyncJob(self, request):
         """This API is used to create a sync task.
 
@@ -274,6 +366,29 @@ class DtsClient(AbstractClient):
             body = self.call("DeleteCompareTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCompareTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConsumerGroup(self, request):
+        """This API is used to delete a consumer group of a subscription task.
+
+        :param request: Request instance for DeleteConsumerGroup.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DeleteConsumerGroupRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DeleteConsumerGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConsumerGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConsumerGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -343,6 +458,29 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeCompareTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCompareTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumerGroups(self, request):
+        """This API is used to get consumer group details for the subscription instance configuration.
+
+        :param request: Request instance for DescribeConsumerGroups.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeConsumerGroupsRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeConsumerGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -469,6 +607,121 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOffsetByTime(self, request):
+        """This API is used to query the latest offset before the specified time in KafkaTopic.The offset output by the interface is the closest offset to this time.If the input time is much later than the current time, the output is equivalent to the latest offset;If the input time is much earlier than the current time, the output is equivalent to the oldest offset;If the input is empty, the default time is 0, which is the oldest offset to be queried.
+
+        :param request: Request instance for DescribeOffsetByTime.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeOffsetByTimeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeOffsetByTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOffsetByTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOffsetByTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubscribeCheckJob(self, request):
+        """This API is used to query the results of a subscription check task.
+
+        :param request: Request instance for DescribeSubscribeCheckJob.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeCheckJobRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeCheckJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubscribeCheckJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubscribeCheckJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubscribeDetail(self, request):
+        """This API is used to get the configuration information of the data subscription instance.
+
+        :param request: Request instance for DescribeSubscribeDetail.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeDetailRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubscribeDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubscribeDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubscribeJobs(self, request):
+        """This API is used to get the information list of data subscription instances. Pagination is enabled by default with 20 results returned each time.
+
+        :param request: Request instance for DescribeSubscribeJobs.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeJobsRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubscribeJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubscribeJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubscribeReturnable(self, request):
+        """This API is used to query whether a subscription task can be terminated and returned.
+
+        :param request: Request instance for DescribeSubscribeReturnable.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeReturnableRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSubscribeReturnableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubscribeReturnable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubscribeReturnableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSyncJobs(self, request):
         """This API is used to query the information of a sync task.
 
@@ -483,6 +736,29 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeSyncJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSyncJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyIsolatedSubscribe(self, request):
+        """This API is used to deactivate an isolated data subscription instance.
+
+        :param request: Request instance for DestroyIsolatedSubscribe.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DestroyIsolatedSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DestroyIsolatedSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyIsolatedSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyIsolatedSubscribeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -561,6 +837,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def IsolateSubscribe(self, request):
+        """This API is used to isolate the subscription task. After calling, the subscription task will not be available. Pay-as-you-go tasks will stop billing, and monthly subscription tasks will refund automatically.
+
+        :param request: Request instance for IsolateSubscribe.
+        :type request: :class:`tencentcloud.dts.v20211206.models.IsolateSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.IsolateSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IsolateSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.IsolateSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def IsolateSyncJob(self, request):
         """This API is used to isolate a sync task. After the task is isolated, you can call the `DescribeSyncJobs` API to query its status, call `RecoverSyncJob` to recover it, or directly delete it. For a free task, calling this API will directly delete it permanently.
 
@@ -630,6 +929,52 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConsumerGroupDescription(self, request):
+        """This API is used to modify the description of the specified subscription consumption group.
+
+        :param request: Request instance for ModifyConsumerGroupDescription.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupDescriptionRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConsumerGroupDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConsumerGroupDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyConsumerGroupPassword(self, request):
+        """This API is used to modify the password of the specified subscription consumer group.
+
+        :param request: Request instance for ModifyConsumerGroupPassword.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupPasswordRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifyConsumerGroupPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConsumerGroupPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConsumerGroupPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMigrateJobSpec(self, request):
         """This API is used to adjust the specification of a pay-as-you-go task. After calling this API, you can call the `DescribeMigrationJobs` API to query the latest task status.
 
@@ -676,6 +1021,52 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMigrateRateLimit(self, request):
+        """This API is used to restrict the rate limit of the task, when a user finds that migration task has a large impact on the load of user's database.
+
+        :param request: Request instance for ModifyMigrateRateLimit.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRateLimitRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRateLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMigrateRateLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMigrateRateLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMigrateRuntimeAttribute(self, request):
+        """This API is used to modify task runtime attributes. This interface is different from the configuration class interface and does not perform state machine evaluation.
+
+        :param request: Request instance for ModifyMigrateRuntimeAttribute.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRuntimeAttributeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRuntimeAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMigrateRuntimeAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMigrateRuntimeAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMigrationJob(self, request):
         """This API is used to configure a migration task. After it is configured successfully, you can call the `CreateMigrationCheckJob` API to create a check task, and only after it passes the check can it be started.
 
@@ -699,6 +1090,75 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySubscribeAutoRenewFlag(self, request):
+        """This API is used to modify the auto-renewal flag of your subscription instance. Only the monthly subscription modification task makes sense. After modifying, the pay-as-you-go task has no impact.
+
+        :param request: Request instance for ModifySubscribeAutoRenewFlag.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeAutoRenewFlagRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeAutoRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySubscribeAutoRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySubscribeAutoRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySubscribeName(self, request):
+        """This API is used to modify the name of the data subscription instance.
+
+        :param request: Request instance for ModifySubscribeName.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeNameRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySubscribeName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySubscribeNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySubscribeObjects(self, request):
+        """This API is used to modify the data subscription object and Kafka partition rule. For MongoDB subscription, you can also modify the output aggregation rule.
+
+        :param request: Request instance for ModifySubscribeObjects.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeObjectsRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySubscribeObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySubscribeObjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySubscribeObjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySyncJobConfig(self, request):
         """This API is used to modify the configuration of a data sync task after the task is started.\n Configuration modification steps:  Modify sync task configuration -> Create a modification check task -> Query the check task result -> Start the configuration modification check task
 
@@ -713,6 +1173,29 @@ class DtsClient(AbstractClient):
             body = self.call("ModifySyncJobConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySyncJobConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySyncRateLimit(self, request):
+        """This API is used to restrict the rate limit of the task, when a user finds that the sync task has a large impact on the load of user's database.
+
+        :param request: Request instance for ModifySyncRateLimit.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncRateLimitRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySyncRateLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySyncRateLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySyncRateLimitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -814,6 +1297,52 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetConsumerGroupOffset(self, request):
+        """This API is used to reset the offset of the subscription consumer group. Call the DescribeConsumerGroups API to query the status of the consumer group, only when the status is Dead or Empty can this operation be executed. Otherwise, the reset will not be effective and the API will not return any error.
+
+        :param request: Request instance for ResetConsumerGroupOffset.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ResetConsumerGroupOffsetRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ResetConsumerGroupOffsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetConsumerGroupOffset", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetConsumerGroupOffsetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetSubscribe(self, request):
+        """This API is used to reset the subscription instance. After resetting, the subscription task can be reconfigured.You can call DescribeSubscribeDetail to query the subscription information to determine whether the subscription is successful. When SubsStatus changes to notStarted, it means the reset is successful.
+
+        :param request: Request instance for ResetSubscribe.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ResetSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ResetSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResizeSyncJob(self, request):
         """This API is used to adjust the specification of a pay-as-you-go sync task. After this API is called, the backend needs to take about 3-5 minutes to implement the adjustment. You can call the `DescribeSyncJobs` API to query the latest task status.
 
@@ -851,6 +1380,29 @@ class DtsClient(AbstractClient):
             body = self.call("ResumeMigrateJob", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeMigrateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeSubscribe(self, request):
+        """This API is used to resume faulty subscription tasks. When the status of the subscription task is set to error, you can resume task via this API.
+
+        :param request: Request instance for ResumeSubscribe.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ResumeSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ResumeSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeSubscribeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -989,6 +1541,29 @@ class DtsClient(AbstractClient):
             body = self.call("StartModifySyncJob", params, headers=headers)
             response = json.loads(body)
             model = models.StartModifySyncJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartSubscribe(self, request):
+        """This API is used to start a Kafka version of the data subscription instance. This interface can be called only when the status of the subscription task is checkPass.
+
+        :param request: Request instance for StartSubscribe.
+        :type request: :class:`tencentcloud.dts.v20211206.models.StartSubscribeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.StartSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartSubscribeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

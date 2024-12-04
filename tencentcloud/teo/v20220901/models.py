@@ -31899,7 +31899,7 @@ class RuleCondition(AbstractModel):
 <li>`exist`: Exists</li>
 <li>`notexist`: Does not exist</li>
         :type Operator: str
-        :param _Target: Match type. Valid values: <li> filename: File name; </li> <li> extension: File extension; </li> <li> host: Host name; </li> <li> full_url: The complete URL path under the current site, which must include the HTTP protocol, host, and path; </li> <li> url: Request for the URL path under the current site; </li><li> client_country: Client country/region;</li> <li> query_string: The query string of the URL requested under the current site; </li> <li> request_header: HTTP request header; </li><li> client_ip: Client IP address. </li>
+        :param _Target: Match type. Valid values: <li> filename: File name; </li> <li> extension: File extension; </li> <li> host: Host name; </li> <li> full_url: The complete URL path under the current site, which must include the HTTP protocol, host, and path; </li> <li> url: Request for the URL path under the current site; </li><li> client_country: Client country/region;</li> <li> query_string: The query string of the URL requested under the current site; </li> <li> request_header: HTTP request header; </li><li> client_ip: Client IP address; </li><li> request_protocol: Request Protocol; </li><li> request_method: HTTP Request Methods. </li>
         :type Target: str
         :param _Values: The parameter values for match types. It is allowed to pass an empty array only when the match type is query_string or request_header and the operator value is Exist or Does Not Exist. The corresponding match types include:
 <li> File extension: Extensions like jpg, txt, etc.;</li>
@@ -31911,7 +31911,9 @@ class RuleCondition(AbstractModel):
 <li> Client country/region: Country/region codes compliant with the ISO3166 standard;</li>
 <li> Query string: The parameter values in the query string of the URL requested under the current site, for example, cn and 1 in lang=cn&version=1; </li>
 <li> HTTP request header: The value of the HTTP request header field, for example, zh-CN,zh;q=0.9 in Accept-Language:zh-CN,zh;q=0.9; </li>
-<li> Client IP: The client IP address carried by the current request, supporting IPv4, IPv6, and an IP range. </li>
+<li> Client IP: The client IP address carried by the current request, supporting IPv4, IPv6, and an IP range; </li>
+<li> Request Protocol: The protocol of the current request, with possible values: HTTP, HTTPS; </li>
+<li> HTTP Request Methods: The method of the current request, with possible values: GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT, OPTIONS, PATCH, COPY, LOCK, MKCOL, MOVE, PROPFIND, PROPPATCH, UNLOCK. </li>
         :type Values: list of str
         :param _IgnoreCase: Whether the parameter value is case insensitive. Default value: false.
         :type IgnoreCase: bool
@@ -31947,7 +31949,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Target(self):
-        """Match type. Valid values: <li> filename: File name; </li> <li> extension: File extension; </li> <li> host: Host name; </li> <li> full_url: The complete URL path under the current site, which must include the HTTP protocol, host, and path; </li> <li> url: Request for the URL path under the current site; </li><li> client_country: Client country/region;</li> <li> query_string: The query string of the URL requested under the current site; </li> <li> request_header: HTTP request header; </li><li> client_ip: Client IP address. </li>
+        """Match type. Valid values: <li> filename: File name; </li> <li> extension: File extension; </li> <li> host: Host name; </li> <li> full_url: The complete URL path under the current site, which must include the HTTP protocol, host, and path; </li> <li> url: Request for the URL path under the current site; </li><li> client_country: Client country/region;</li> <li> query_string: The query string of the URL requested under the current site; </li> <li> request_header: HTTP request header; </li><li> client_ip: Client IP address; </li><li> request_protocol: Request Protocol; </li><li> request_method: HTTP Request Methods. </li>
         :rtype: str
         """
         return self._Target
@@ -31968,7 +31970,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li> Client country/region: Country/region codes compliant with the ISO3166 standard;</li>
 <li> Query string: The parameter values in the query string of the URL requested under the current site, for example, cn and 1 in lang=cn&version=1; </li>
 <li> HTTP request header: The value of the HTTP request header field, for example, zh-CN,zh;q=0.9 in Accept-Language:zh-CN,zh;q=0.9; </li>
-<li> Client IP: The client IP address carried by the current request, supporting IPv4, IPv6, and an IP range. </li>
+<li> Client IP: The client IP address carried by the current request, supporting IPv4, IPv6, and an IP range; </li>
+<li> Request Protocol: The protocol of the current request, with possible values: HTTP, HTTPS; </li>
+<li> HTTP Request Methods: The method of the current request, with possible values: GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT, OPTIONS, PATCH, COPY, LOCK, MKCOL, MOVE, PROPFIND, PROPPATCH, UNLOCK. </li>
         :rtype: list of str
         """
         return self._Values

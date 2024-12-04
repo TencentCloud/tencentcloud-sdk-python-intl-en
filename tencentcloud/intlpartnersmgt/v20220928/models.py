@@ -5550,6 +5550,7 @@ class SendVerifyCodeRequest(AbstractModel):
 Parameter value is not allowed to be 7,380,86.
         :type CountryCode: str
         :param _PhoneNum: Mobile number.
+The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.No need to add CountryCode before mobile number.
         :type PhoneNum: str
         """
         self._CountryCode = None
@@ -5570,6 +5571,7 @@ Parameter value is not allowed to be 7,380,86.
     @property
     def PhoneNum(self):
         """Mobile number.
+The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.No need to add CountryCode before mobile number.
         :rtype: str
         """
         return self._PhoneNum

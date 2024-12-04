@@ -553,6 +553,42 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CompareColumnItem(AbstractModel):
+    """Column options
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnName: Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type ColumnName: str
+        """
+        self._ColumnName = None
+
+    @property
+    def ColumnName(self):
+        """Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+
+    def _deserialize(self, params):
+        self._ColumnName = params.get("ColumnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompareDetailInfo(AbstractModel):
     """Data consistency check details
 
@@ -625,8 +661,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ObjectItems: Object list
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ObjectItems: list of CompareObjectItem
-        :param _AdvancedObjects: Advanced object type (`account`: Account; `index`: Index; `shardkey`: Shard key, which may be adjusted later; `schema`: Database/table structure)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AdvancedObjects: Advanced object types, such as account, index, shardkey, schema.Note: This field may return null, indicating that no valid values can be obtained.
         :type AdvancedObjects: list of str
         """
         self._ObjectMode = None
@@ -659,8 +694,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
-        """Advanced object type (`account`: Account; `index`: Index; `shardkey`: Shard key, which may be adjusted later; `schema`: Database/table structure)
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Advanced object types, such as account, index, shardkey, schema.Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -711,11 +745,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Tables: Table configuration for data consistency check, which is required if `TableMode` is `partial`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tables: list of CompareTableItem
-        :param _ViewMode: View selection mode. Valid values: `all`, `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ViewMode: View selection mode: all refers to all view objects under the current object, partial refers to partial view objects (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
         :type ViewMode: str
-        :param _Views: View configuration for data consistency check, which is required if `ViewMode` is `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Views: View configuration used for consistency check. When ViewMode is partial, it needs to be filled in (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
         :type Views: list of CompareViewItem
         """
         self._DbName = None
@@ -788,8 +820,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
-        """View selection mode. Valid values: `all`, `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """View selection mode: all refers to all view objects under the current object, partial refers to partial view objects (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ViewMode
@@ -800,8 +831,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
-        """View configuration for data consistency check, which is required if `ViewMode` is `partial`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """View configuration used for consistency check. When ViewMode is partial, it needs to be filled in (consistency check does not check views, and the current parameters are disabled).Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of CompareViewItem
         """
         return self._Views
@@ -846,8 +876,7 @@ class CompareOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Method: Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Method: Comparative Method: dataCheck (Complete Data Comparison), sampleDataCheck (Sampling Data Comparison), rowsCount (Row Count Comparison)Note: This field may return null, indicating that no valid value can be obtained.
         :type Method: str
         :param _SampleRate: Sampling rate. Value range: 0-100%.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -862,8 +891,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
-        """Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Comparative Method: dataCheck (Complete Data Comparison), sampleDataCheck (Sampling Data Comparison), rowsCount (Row Count Comparison)Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Method
@@ -921,8 +949,14 @@ class CompareTableItem(AbstractModel):
         :param _TableName: Table name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TableName: str
+        :param _ColumnMode: In column mode, all refers to all data, while partial refers to part of the data (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColumnMode: str
+        :param _Columns: This field is required when ColumnMode is set to partial (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
+        :type Columns: list of CompareColumnItem
         """
         self._TableName = None
+        self._ColumnMode = None
+        self._Columns = None
 
     @property
     def TableName(self):
@@ -936,9 +970,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def ColumnMode(self):
+        """In column mode, all refers to all data, while partial refers to part of the data (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ColumnMode
+
+    @ColumnMode.setter
+    def ColumnMode(self, ColumnMode):
+        self._ColumnMode = ColumnMode
+
+    @property
+    def Columns(self):
+        """This field is required when ColumnMode is set to partial (this parameter is only valid for data sync tasks).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CompareColumnItem
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
 
     def _deserialize(self, params):
         self._TableName = params.get("TableName")
+        self._ColumnMode = params.get("ColumnMode")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = CompareColumnItem()
+                obj._deserialize(item)
+                self._Columns.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1388,6 +1451,212 @@ class CompleteMigrateJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ConfigureSubscribeJobRequest(AbstractModel):
+    """ConfigureSubscribeJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _SubscribeMode: Data subscription type. Valid values for non-mongo DatabaseType: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo DatabaseType: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).
+        :type SubscribeMode: str
+        :param _AccessType: Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.
+        :type AccessType: str
+        :param _Endpoints: Database node information
+        :type Endpoints: list of EndpointItem
+        :param _KafkaConfig: Kafka configuration
+        :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
+        :param _SubscribeObjects: Subscription database table information. When SubscribeMode is not all or ddl, SubscribeObjects is a required parameter.
+        :type SubscribeObjects: list of SubscribeObject
+        :param _Protocol: Subscription data format, such as: protobuf, json, avro. Note: The specific optional values depend on the current link support capabilities. For details on the data format, please refer to the consumption demo documentation on the official website.
+        :type Protocol: str
+        :param _PipelineInfo: mongo optional parameter: output aggregation settings.
+        :type PipelineInfo: list of PipelineInfo
+        :param _ExtraAttr: Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. If true is filled in, it will be processed. If it is left blank or filled with other values, it will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported. If not filled in, the default is changeStream.Other businesses currently have no optional parameters.
+        :type ExtraAttr: list of KeyValuePairOption
+        """
+        self._SubscribeId = None
+        self._SubscribeMode = None
+        self._AccessType = None
+        self._Endpoints = None
+        self._KafkaConfig = None
+        self._SubscribeObjects = None
+        self._Protocol = None
+        self._PipelineInfo = None
+        self._ExtraAttr = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeMode(self):
+        """Data subscription type. Valid values for non-mongo DatabaseType: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo DatabaseType: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).
+        :rtype: str
+        """
+        return self._SubscribeMode
+
+    @SubscribeMode.setter
+    def SubscribeMode(self, SubscribeMode):
+        self._SubscribeMode = SubscribeMode
+
+    @property
+    def AccessType(self):
+        """Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def Endpoints(self):
+        """Database node information
+        :rtype: list of EndpointItem
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+    @property
+    def KafkaConfig(self):
+        """Kafka configuration
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
+        """
+        return self._KafkaConfig
+
+    @KafkaConfig.setter
+    def KafkaConfig(self, KafkaConfig):
+        self._KafkaConfig = KafkaConfig
+
+    @property
+    def SubscribeObjects(self):
+        """Subscription database table information. When SubscribeMode is not all or ddl, SubscribeObjects is a required parameter.
+        :rtype: list of SubscribeObject
+        """
+        return self._SubscribeObjects
+
+    @SubscribeObjects.setter
+    def SubscribeObjects(self, SubscribeObjects):
+        self._SubscribeObjects = SubscribeObjects
+
+    @property
+    def Protocol(self):
+        """Subscription data format, such as: protobuf, json, avro. Note: The specific optional values depend on the current link support capabilities. For details on the data format, please refer to the consumption demo documentation on the official website.
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def PipelineInfo(self):
+        """mongo optional parameter: output aggregation settings.
+        :rtype: list of PipelineInfo
+        """
+        return self._PipelineInfo
+
+    @PipelineInfo.setter
+    def PipelineInfo(self, PipelineInfo):
+        self._PipelineInfo = PipelineInfo
+
+    @property
+    def ExtraAttr(self):
+        """Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. If true is filled in, it will be processed. If it is left blank or filled with other values, it will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported. If not filled in, the default is changeStream.Other businesses currently have no optional parameters.
+        :rtype: list of KeyValuePairOption
+        """
+        return self._ExtraAttr
+
+    @ExtraAttr.setter
+    def ExtraAttr(self, ExtraAttr):
+        self._ExtraAttr = ExtraAttr
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeMode = params.get("SubscribeMode")
+        self._AccessType = params.get("AccessType")
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = EndpointItem()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
+        if params.get("KafkaConfig") is not None:
+            self._KafkaConfig = SubscribeKafkaConfig()
+            self._KafkaConfig._deserialize(params.get("KafkaConfig"))
+        if params.get("SubscribeObjects") is not None:
+            self._SubscribeObjects = []
+            for item in params.get("SubscribeObjects"):
+                obj = SubscribeObject()
+                obj._deserialize(item)
+                self._SubscribeObjects.append(obj)
+        self._Protocol = params.get("Protocol")
+        if params.get("PipelineInfo") is not None:
+            self._PipelineInfo = []
+            for item in params.get("PipelineInfo"):
+                obj = PipelineInfo()
+                obj._deserialize(item)
+                self._PipelineInfo.append(obj)
+        if params.get("ExtraAttr") is not None:
+            self._ExtraAttr = []
+            for item in params.get("ExtraAttr"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._ExtraAttr.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigureSubscribeJobResponse(AbstractModel):
+    """ConfigureSubscribeJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ConfigureSyncJobRequest(AbstractModel):
     """ConfigureSyncJob request structure.
 
@@ -1668,14 +1937,14 @@ class ConfigureSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1842,14 +2111,14 @@ class ContinueMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1906,14 +2175,14 @@ class ContinueSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -1970,14 +2239,14 @@ class CreateCheckSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2101,7 +2370,7 @@ class CreateCompareTaskResponse(AbstractModel):
         :param _CompareTaskId: Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareTaskId: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._CompareTaskId = None
@@ -2121,7 +2390,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2133,6 +2402,130 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self._CompareTaskId = params.get("CompareTaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConsumerGroupRequest(AbstractModel):
+    """CreateConsumerGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        :param _ConsumerGroupName: Consumer group name, which consists of numbers, letters (upper and lower case), or begins with _ - . Ends with numbers, letters (upper and lower case). The full name of the actually generated consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        :type ConsumerGroupName: str
+        :param _AccountName: Account name, which consists of numbers, letters (upper and lower case), or begins with _-.. Ends with numbers, letters (upper and lower case). The full name of the actually generated account is in the form: account-#{SubscribeId}-#{AccountName}.
+        :type AccountName: str
+        :param _Password: Consumer group password, which should be longer than 3 characters.
+        :type Password: str
+        :param _Description: Consumer group description
+        :type Description: str
+        """
+        self._SubscribeId = None
+        self._ConsumerGroupName = None
+        self._AccountName = None
+        self._Password = None
+        self._Description = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def ConsumerGroupName(self):
+        """Consumer group name, which consists of numbers, letters (upper and lower case), or begins with _ - . Ends with numbers, letters (upper and lower case). The full name of the actually generated consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        :rtype: str
+        """
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def AccountName(self):
+        """Account name, which consists of numbers, letters (upper and lower case), or begins with _-.. Ends with numbers, letters (upper and lower case). The full name of the actually generated account is in the form: account-#{SubscribeId}-#{AccountName}.
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Password(self):
+        """Consumer group password, which should be longer than 3 characters.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Description(self):
+        """Consumer group description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._AccountName = params.get("AccountName")
+        self._Password = params.get("Password")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerGroupResponse(AbstractModel):
+    """CreateConsumerGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -2179,14 +2572,14 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2356,7 +2749,7 @@ class CreateMigrationServiceResponse(AbstractModel):
         :param _JobIds: The list of migration task IDs randomly generated in the format of `dts-c1f6rs21` after a successful order placement
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JobIds: list of str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._JobIds = None
@@ -2376,7 +2769,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2434,14 +2827,14 @@ class CreateModifyCheckSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -2452,6 +2845,246 @@ class CreateModifyCheckSyncJobResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSubscribeCheckJobRequest(AbstractModel):
+    """CreateSubscribeCheckJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSubscribeCheckJobResponse(AbstractModel):
+    """CreateSubscribeCheckJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSubscribeRequest(AbstractModel):
+    """CreateSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, and tdsqlpercona are supported.
+        :type Product: str
+        :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :type PayType: int
+        :param _Duration: Purchase duration. This field needs to be filled in when the payType is monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
+        :type Duration: int
+        :param _AutoRenew: Whether to renew automatically. This field needs to be filled in when the payType is monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
+        :type AutoRenew: int
+        :param _Count: Quantity. Default value: 1. Maximum value: 10.
+        :type Count: int
+        :param _Tags: Instance resource tags
+        :type Tags: list of TagItem
+        :param _Name: Custom task name
+        :type Name: str
+        """
+        self._Product = None
+        self._PayType = None
+        self._Duration = None
+        self._AutoRenew = None
+        self._Count = None
+        self._Tags = None
+        self._Name = None
+
+    @property
+    def Product(self):
+        """Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, and tdsqlpercona are supported.
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def PayType(self):
+        """Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :rtype: int
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Duration(self):
+        """Purchase duration. This field needs to be filled in when the payType is monthly subscription. The unit is month. Value range: 1-120. Default value: 1.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def AutoRenew(self):
+        """Whether to renew automatically. This field needs to be filled in when the payType is monthly subscription. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled). Automatic renewal is not performed by default. This flag is invalid for pay-as-you-go.
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Count(self):
+        """Quantity. Default value: 1. Maximum value: 10.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Tags(self):
+        """Instance resource tags
+        :rtype: list of TagItem
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Name(self):
+        """Custom task name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._PayType = params.get("PayType")
+        self._Duration = params.get("Duration")
+        self._AutoRenew = params.get("AutoRenew")
+        self._Count = params.get("Count")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSubscribeResponse(AbstractModel):
+    """CreateSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeIds: Array of data subscription instance IDs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SubscribeIds = None
+        self._RequestId = None
+
+    @property
+    def SubscribeIds(self):
+        """Array of data subscription instance IDs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._SubscribeIds
+
+    @SubscribeIds.setter
+    def SubscribeIds(self, SubscribeIds):
+        self._SubscribeIds = SubscribeIds
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SubscribeIds = params.get("SubscribeIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -2670,7 +3303,7 @@ class CreateSyncJobResponse(AbstractModel):
         r"""
         :param _JobIds: Sync task IDs
         :type JobIds: list of str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._JobIds = None
@@ -2689,7 +3322,7 @@ class CreateSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4125,14 +4758,108 @@ class DeleteCompareTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsumerGroupRequest(AbstractModel):
+    """DeleteConsumerGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: ID of the data subscription instance
+        :type SubscribeId: str
+        :param _ConsumerGroupName: Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
+        :type ConsumerGroupName: str
+        :param _AccountName: Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
+        :type AccountName: str
+        """
+        self._SubscribeId = None
+        self._ConsumerGroupName = None
+        self._AccountName = None
+
+    @property
+    def SubscribeId(self):
+        """ID of the data subscription instance
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def ConsumerGroupName(self):
+        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
+        :rtype: str
+        """
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def AccountName(self):
+        """Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._AccountName = params.get("AccountName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerGroupResponse(AbstractModel):
+    """DeleteConsumerGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4204,7 +4931,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _StepInfos: Step information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StepInfos: list of StepInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Status = None
@@ -4276,7 +5003,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4484,7 +5211,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Detail: Data consistency check details
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Detail: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Abstract = None
@@ -4517,7 +5244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4646,7 +5373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Items: List of data consistency check tasks
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of CompareTaskItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4679,7 +5406,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4695,6 +5422,135 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._Items = []
             for item in params.get("Items"):
                 obj = CompareTaskItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerGroupsRequest(AbstractModel):
+    """DescribeConsumerGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        :param _Offset: Starting offset for returned results. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of results to be returned at a time. Default value: 10.
+        :type Limit: int
+        """
+        self._SubscribeId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def Offset(self):
+        """Starting offset for returned results. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of results to be returned at a time. Default value: 10.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerGroupsResponse(AbstractModel):
+    """DescribeConsumerGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of consumer groups under the specific instance
+        :type TotalCount: int
+        :param _Items: Consumer group list
+        :type Items: list of GroupInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of consumer groups under the specific instance
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        """Consumer group list
+        :rtype: list of GroupInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = GroupInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")
@@ -4884,7 +5740,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Instances: Instance list
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Instances: list of MigrateDBItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4917,7 +5773,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -4992,7 +5848,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type StepInfo: list of CheckStep
         :param _CheckFlag: Check result. Valid values: `checkPass`, `checkNotPass`.
         :type CheckFlag: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Status = None
@@ -5050,7 +5906,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -5921,7 +6777,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
         :type Progress: int
         :param _StepInfos: Step details Note: This field may return null, indicating that no valid values can be obtained.
         :type StepInfos: list of StepInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Status = None
@@ -5988,7 +6844,7 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6009,6 +6865,1142 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
                 obj = StepInfo()
                 obj._deserialize(item)
                 self._StepInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOffsetByTimeRequest(AbstractModel):
+    """DescribeOffsetByTime request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _Time: Timestamp, the format is: Y-m-d h:m:s. If the input time is much later than the current time, this is equivalent to the latest offset; if the input time is much earlier than the current time, this is equivalent to the oldest offset; if the input is empty, the default time is 0, which is the oldest offset to be queried.
+        :type Time: str
+        """
+        self._SubscribeId = None
+        self._Time = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def Time(self):
+        """Timestamp, the format is: Y-m-d h:m:s. If the input time is much later than the current time, this is equivalent to the latest offset; if the input time is much earlier than the current time, this is equivalent to the oldest offset; if the input is empty, the default time is 0, which is the oldest offset to be queried.
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOffsetByTimeResponse(AbstractModel):
+    """DescribeOffsetByTime response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: Time and Offset response.
+        :type Items: list of OffsetTimeMap
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """Time and Offset response.
+        :rtype: list of OffsetTimeMap
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OffsetTimeMap()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubscribeCheckJobRequest(AbstractModel):
+    """DescribeSubscribeCheckJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubscribeCheckJobResponse(AbstractModel):
+    """DescribeSubscribeCheckJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        :param _Message: Failure or error prompts, success signals 'success'.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Status: Job running status. Valid values: running, failed, success.
+        :type Status: str
+        :param _Progress: Current overall progress. Value range: 0-100.
+        :type Progress: int
+        :param _StepAll: Total check steps
+        :type StepAll: int
+        :param _StepNow: Current step in execution
+        :type StepNow: int
+        :param _Steps: Running status of each stepNote: This field may return null, indicating that no valid values can be obtained.
+        :type Steps: list of SubscribeCheckStepInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SubscribeId = None
+        self._Message = None
+        self._Status = None
+        self._Progress = None
+        self._StepAll = None
+        self._StepNow = None
+        self._Steps = None
+        self._RequestId = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def Message(self):
+        """Failure or error prompts, success signals 'success'.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Status(self):
+        """Job running status. Valid values: running, failed, success.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        """Current overall progress. Value range: 0-100.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def StepAll(self):
+        """Total check steps
+        :rtype: int
+        """
+        return self._StepAll
+
+    @StepAll.setter
+    def StepAll(self, StepAll):
+        self._StepAll = StepAll
+
+    @property
+    def StepNow(self):
+        """Current step in execution
+        :rtype: int
+        """
+        return self._StepNow
+
+    @StepNow.setter
+    def StepNow(self, StepNow):
+        self._StepNow = StepNow
+
+    @property
+    def Steps(self):
+        """Running status of each stepNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubscribeCheckStepInfo
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._Message = params.get("Message")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._StepAll = params.get("StepAll")
+        self._StepNow = params.get("StepNow")
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = SubscribeCheckStepInfo()
+                obj._deserialize(item)
+                self._Steps.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubscribeDetailRequest(AbstractModel):
+    """DescribeSubscribeDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubscribeDetailResponse(AbstractModel):
+    """DescribeSubscribeDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: The ID of the data subscription, such as subs-b6x64o31tm
+        :type SubscribeId: str
+        :param _SubscribeName: Data subscription instance name
+        :type SubscribeName: str
+        :param _Product: Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        :type Product: str
+        :param _InstanceId: The subscribed cloud database instance ID. This value only makes sense if cloud database is subscribed. Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _InstanceStatus: The subscribed cloud database instance status. This value only makes sense if cloud database is subscribed. Valid values: running, isolated, offline.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceStatus: str
+        :param _Status: Subscription task billing status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
+        :type Status: str
+        :param _SubsStatus: Subscription task status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        :type SubsStatus: str
+        :param _ModifyTime: Modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModifyTime: str
+        :param _CreateTime: Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _IsolateTime: Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsolateTime: str
+        :param _ExpireTime: Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param _OfflineTime: Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :type OfflineTime: str
+        :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :type PayType: int
+        :param _AutoRenewFlag: Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
+        :type AutoRenewFlag: int
+        :param _Region: The region where the task is located
+        :type Region: str
+        :param _Topic: Kafka topic
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Topic: str
+        :param _Broker: Broker address of Kafka serviceNote: This field may return null, indicating that no valid values can be obtained.
+        :type Broker: str
+        :param _SubscribeMode: Data subscription type. Valid values for non-mongo Product: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo Product: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeMode: str
+        :param _Protocol: Subscription data format. If it is empty, the default format is used: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg is protobuf, mongo is json. When DatabaseType is mysql and cynosdbmysql, there are three optional protocols: protobuf\avro\json. For details on data format, please refer to the consumption demo documentation on the official website.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param _SubscribeObjects: Information of subscribed tableNote: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeObjects: list of SubscribeObject
+        :param _KafkaConfig: Kafka configuration information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
+        :param _AccessType: Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessType: str
+        :param _Endpoints: Access type information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Endpoints: list of EndpointItem
+        :param _PipelineInfo: Mongo output aggregation settings
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PipelineInfo: list of PipelineInfo
+        :param _Tags: TagNote: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of TagItem
+        :param _Errors: Subscription task error information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Errors: list of SubsErr
+        :param _ExtraAttr: Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. Fill in true to process, others will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtraAttr: list of KeyValuePairOption
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SubscribeId = None
+        self._SubscribeName = None
+        self._Product = None
+        self._InstanceId = None
+        self._InstanceStatus = None
+        self._Status = None
+        self._SubsStatus = None
+        self._ModifyTime = None
+        self._CreateTime = None
+        self._IsolateTime = None
+        self._ExpireTime = None
+        self._OfflineTime = None
+        self._PayType = None
+        self._AutoRenewFlag = None
+        self._Region = None
+        self._Topic = None
+        self._Broker = None
+        self._SubscribeMode = None
+        self._Protocol = None
+        self._SubscribeObjects = None
+        self._KafkaConfig = None
+        self._AccessType = None
+        self._Endpoints = None
+        self._PipelineInfo = None
+        self._Tags = None
+        self._Errors = None
+        self._ExtraAttr = None
+        self._RequestId = None
+
+    @property
+    def SubscribeId(self):
+        """The ID of the data subscription, such as subs-b6x64o31tm
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        """Data subscription instance name
+        :rtype: str
+        """
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+    @property
+    def Product(self):
+        """Subscription database type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        """The subscribed cloud database instance ID. This value only makes sense if cloud database is subscribed. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        """The subscribed cloud database instance status. This value only makes sense if cloud database is subscribed. Valid values: running, isolated, offline.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def Status(self):
+        """Subscription task billing status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubsStatus(self):
+        """Subscription task status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        :rtype: str
+        """
+        return self._SubsStatus
+
+    @SubsStatus.setter
+    def SubsStatus(self, SubsStatus):
+        self._SubsStatus = SubsStatus
+
+    @property
+    def ModifyTime(self):
+        """Modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        """Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsolateTime(self):
+        """Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def ExpireTime(self):
+        """Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OfflineTime(self):
+        """Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def PayType(self):
+        """Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :rtype: int
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Region(self):
+        """The region where the task is located
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Topic(self):
+        """Kafka topic
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Broker(self):
+        """Broker address of Kafka serviceNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Broker
+
+    @Broker.setter
+    def Broker(self, Broker):
+        self._Broker = Broker
+
+    @property
+    def SubscribeMode(self):
+        """Data subscription type. Valid values for non-mongo Product: all (full instance update); dml (data update); ddl (structure update); dmlAndDdl (data + structure update). Valid values for mongo Product: all (full instance update); database (subscribe to a table); collection (subscribe to a collection).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubscribeMode
+
+    @SubscribeMode.setter
+    def SubscribeMode(self, SubscribeMode):
+        self._SubscribeMode = SubscribeMode
+
+    @property
+    def Protocol(self):
+        """Subscription data format. If it is empty, the default format is used: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg is protobuf, mongo is json. When DatabaseType is mysql and cynosdbmysql, there are three optional protocols: protobuf\avro\json. For details on data format, please refer to the consumption demo documentation on the official website.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SubscribeObjects(self):
+        """Information of subscribed tableNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubscribeObject
+        """
+        return self._SubscribeObjects
+
+    @SubscribeObjects.setter
+    def SubscribeObjects(self, SubscribeObjects):
+        self._SubscribeObjects = SubscribeObjects
+
+    @property
+    def KafkaConfig(self):
+        """Kafka configuration information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
+        """
+        return self._KafkaConfig
+
+    @KafkaConfig.setter
+    def KafkaConfig(self, KafkaConfig):
+        self._KafkaConfig = KafkaConfig
+
+    @property
+    def AccessType(self):
+        """Source database access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC). Note: The specific optional values depend on the current link support capabilities.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def Endpoints(self):
+        """Access type information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of EndpointItem
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+    @property
+    def PipelineInfo(self):
+        """Mongo output aggregation settings
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PipelineInfo
+        """
+        return self._PipelineInfo
+
+    @PipelineInfo.setter
+    def PipelineInfo(self, PipelineInfo):
+        self._PipelineInfo = PipelineInfo
+
+    @property
+    def Tags(self):
+        """TagNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Errors(self):
+        """Subscription task error information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubsErr
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def ExtraAttr(self):
+        """Additional information added for the business. The parameter name is called key, and the parameter value is called value.Optional parameters for mysql: ProcessXA. Fill in true to process, others will not be processed.Optional parameters for mongo: SubscribeType. Currently only changeStream is supported.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of KeyValuePairOption
+        """
+        return self._ExtraAttr
+
+    @ExtraAttr.setter
+    def ExtraAttr(self, ExtraAttr):
+        self._ExtraAttr = ExtraAttr
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._Status = params.get("Status")
+        self._SubsStatus = params.get("SubsStatus")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OfflineTime = params.get("OfflineTime")
+        self._PayType = params.get("PayType")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Region = params.get("Region")
+        self._Topic = params.get("Topic")
+        self._Broker = params.get("Broker")
+        self._SubscribeMode = params.get("SubscribeMode")
+        self._Protocol = params.get("Protocol")
+        if params.get("SubscribeObjects") is not None:
+            self._SubscribeObjects = []
+            for item in params.get("SubscribeObjects"):
+                obj = SubscribeObject()
+                obj._deserialize(item)
+                self._SubscribeObjects.append(obj)
+        if params.get("KafkaConfig") is not None:
+            self._KafkaConfig = SubscribeKafkaConfig()
+            self._KafkaConfig._deserialize(params.get("KafkaConfig"))
+        self._AccessType = params.get("AccessType")
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = EndpointItem()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
+        if params.get("PipelineInfo") is not None:
+            self._PipelineInfo = []
+            for item in params.get("PipelineInfo"):
+                obj = PipelineInfo()
+                obj._deserialize(item)
+                self._PipelineInfo.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = SubsErr()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        if params.get("ExtraAttr") is not None:
+            self._ExtraAttr = []
+            for item in params.get("ExtraAttr"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._ExtraAttr.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubscribeJobsRequest(AbstractModel):
+    """DescribeSubscribeJobs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription ID (exact match)
+        :type SubscribeId: str
+        :param _SubscribeName: Subscription name (prefix fuzzy match)
+        :type SubscribeName: str
+        :param _InstanceId: Subscribed cloud database instance ID (exact match)
+        :type InstanceId: str
+        :param _PayType: Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :type PayType: int
+        :param _Product: Subscribed database product. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        :type Product: str
+        :param _Status: Data subscription lifecycle status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
+        :type Status: list of str
+        :param _SubsStatus: Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        :type SubsStatus: list of str
+        :param _Offset: Starting offset for returned results. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of results to be returned at a time. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param _OrderDirection: Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time.
+        :type OrderDirection: str
+        :param _TagFilters: Tag filter condition, the relationship between multiple TagFilters is and.
+        :type TagFilters: list of TagFilter
+        """
+        self._SubscribeId = None
+        self._SubscribeName = None
+        self._InstanceId = None
+        self._PayType = None
+        self._Product = None
+        self._Status = None
+        self._SubsStatus = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderDirection = None
+        self._TagFilters = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription ID (exact match)
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        """Subscription name (prefix fuzzy match)
+        :rtype: str
+        """
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+    @property
+    def InstanceId(self):
+        """Subscribed cloud database instance ID (exact match)
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PayType(self):
+        """Payment method. Valid values: 0 (monthly subscription); 1 (pay-as-you-go).
+        :rtype: int
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Product(self):
+        """Subscribed database product. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Status(self):
+        """Data subscription lifecycle status. Valid values: normal, isolating, isolated, offline, post2PrePayIng.
+        :rtype: list of str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubsStatus(self):
+        """Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        :rtype: list of str
+        """
+        return self._SubsStatus
+
+    @SubsStatus.setter
+    def SubsStatus(self, SubsStatus):
+        self._SubsStatus = SubsStatus
+
+    @property
+    def Offset(self):
+        """Starting offset for returned results. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of results to be returned at a time. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderDirection(self):
+        """Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time.
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def TagFilters(self):
+        """Tag filter condition, the relationship between multiple TagFilters is and.
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        self._InstanceId = params.get("InstanceId")
+        self._PayType = params.get("PayType")
+        self._Product = params.get("Product")
+        self._Status = params.get("Status")
+        self._SubsStatus = params.get("SubsStatus")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderDirection = params.get("OrderDirection")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubscribeJobsResponse(AbstractModel):
+    """DescribeSubscribeJobs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of eligible instances.
+        :type TotalCount: int
+        :param _Items: Information list of data subscription instances
+        :type Items: list of SubscribeInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        """Information list of data subscription instances
+        :rtype: list of SubscribeInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SubscribeInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubscribeReturnableRequest(AbstractModel):
+    """DescribeSubscribeReturnable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubscribeReturnableResponse(AbstractModel):
+    """DescribeSubscribeReturnable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsReturnable: Whether the instance is returnable
+        :type IsReturnable: bool
+        :param _ReturnFailMessage: Reason for the non-returnability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReturnFailMessage: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._IsReturnable = None
+        self._ReturnFailMessage = None
+        self._RequestId = None
+
+    @property
+    def IsReturnable(self):
+        """Whether the instance is returnable
+        :rtype: bool
+        """
+        return self._IsReturnable
+
+    @IsReturnable.setter
+    def IsReturnable(self, IsReturnable):
+        self._IsReturnable = IsReturnable
+
+    @property
+    def ReturnFailMessage(self):
+        """Reason for the non-returnability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ReturnFailMessage
+
+    @ReturnFailMessage.setter
+    def ReturnFailMessage(self, ReturnFailMessage):
+        self._ReturnFailMessage = ReturnFailMessage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsReturnable = params.get("IsReturnable")
+        self._ReturnFailMessage = params.get("ReturnFailMessage")
         self._RequestId = params.get("RequestId")
 
 
@@ -6270,6 +8262,70 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DestroyIsolatedSubscribeRequest(AbstractModel):
+    """DestroyIsolatedSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyIsolatedSubscribeResponse(AbstractModel):
+    """DestroyIsolatedSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DestroyMigrateJobRequest(AbstractModel):
     """DestroyMigrateJob request structure.
 
@@ -6313,14 +8369,14 @@ class DestroyMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6377,14 +8433,14 @@ class DestroySyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -6796,6 +8852,87 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UpperBoundary = params.get("UpperBoundary")
         self._CostTime = params.get("CostTime")
         self._FinishedAt = params.get("FinishedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DistributeRule(AbstractModel):
+    """Kafka partition rules for subscription tasks. Data that matches the regex of the database name and table name will be delivered to the Kafka partition according to the RuleType . If multiple rules are configured, the first hit rule will take effect according to the configured order.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: Rule type. Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key); cols (partitioned by column name). Valid values for mongo: collection (partitioned by collection name); collectionAndObjectId (partitioned by collection + primary key). Note: This field may return null, indicating that no valid values can be obtained.
+        :type RuleType: str
+        :param _DbPattern: Database name matching rule, please fill in the regular expression.Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbPattern: str
+        :param _TablePattern: Table name matching rule. If DatabaseType is mongodb, it matches the collection name.Note: This field may return null, indicating that no valid values can be obtained.
+        :type TablePattern: str
+        :param _Columns: Column name. This field is required if RuleType is cols. The subscription task will use the value of this column to calculate the partition. Mongo does not partition by column, so there is no need to pass this field.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Columns: list of str
+        """
+        self._RuleType = None
+        self._DbPattern = None
+        self._TablePattern = None
+        self._Columns = None
+
+    @property
+    def RuleType(self):
+        """Rule type. Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key); cols (partitioned by column name). Valid values for mongo: collection (partitioned by collection name); collectionAndObjectId (partitioned by collection + primary key). Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def DbPattern(self):
+        """Database name matching rule, please fill in the regular expression.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DbPattern
+
+    @DbPattern.setter
+    def DbPattern(self, DbPattern):
+        self._DbPattern = DbPattern
+
+    @property
+    def TablePattern(self):
+        """Table name matching rule. If DatabaseType is mongodb, it matches the collection name.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TablePattern
+
+    @TablePattern.setter
+    def TablePattern(self, TablePattern):
+        self._TablePattern = TablePattern
+
+    @property
+    def Columns(self):
+        """Column name. This field is required if RuleType is cols. The subscription task will use the value of this column to calculate the partition. Mongo does not partition by column, so there is no need to pass this field.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._DbPattern = params.get("DbPattern")
+        self._TablePattern = params.get("TablePattern")
+        self._Columns = params.get("Columns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7413,6 +9550,302 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class EndpointItem(AbstractModel):
+    """Instance node information of data subscription
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseRegion: Region of the source database. If AccessType is ccn, please fill in the region where vpc is located because the region of the source database is unknown. For other access methods, please fill in the region where the subscription task is located, as ensuring the subscription task and the source database are in the same region is the optimal network solution.Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseRegion: str
+        :param _User: UsernameNote: This field may return null, indicating that no valid values can be obtained.
+        :type User: str
+        :param _Password: Password. It is required when used as an input parameter and empty when used as an output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        :param _InstanceId: Target instance ID. This field is required when AccessType is cdb. When configuring the InstanceId, the instance information is queried and checked. The mysql query interface has been authenticated. Please ensure that the sub-user has the cdb:DescribeDBInstances interface permission.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _CvmInstanceId: Cloud Virtual Machine ID. This field is required when AccessType is cvm.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CvmInstanceId: str
+        :param _UniqDcgId: Direct Connect gateway ID. This field is required when AccessType is dcg.Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqDcgId: str
+        :param _CcnId: Cloud Connect Network ID. This field is required when AccessType is ccn.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CcnId: str
+        :param _UniqVpnGwId: VPN gateway ID. This field is required when AccessType is vpncloud.Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqVpnGwId: str
+        :param _VpcId: VpcID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param _SubnetId: Subnet ID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubnetId: str
+        :param _HostName: Database address, supports domain name and IP. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet.Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostName: str
+        :param _Port: Database port. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet\cvm.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param _EncryptConn: Whether to use encrypted transmission. Valid values: UnEncrypted; Encrypted. Only mysql supports it. If it is not filled in, it will not be encrypted by default. Other products do not need to fill in this.Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptConn: str
+        :param _DatabaseNetEnv: Database network environment. This field is required when AccessType is ccn. Valid values: UserIDC; TencentVPC; Aws; AliYun; Others.Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseNetEnv: str
+        :param _CcnOwnerUin: The UIN of the main account to which the Cloud Connect Network gateway belongs. It is required for cross-account CCN.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CcnOwnerUin: str
+        :param _ExtraAttr: Additional information added for the business. Parameter name is called key, parameter value is called value. Mandatory parameters for tdpg: PgDatabase (subscribed database name).Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtraAttr: list of KeyValuePairOption
+        :param _ChildInstanceId: 
+        :type ChildInstanceId: str
+        :param _ChildInstanceType: 
+        :type ChildInstanceType: str
+        """
+        self._DatabaseRegion = None
+        self._User = None
+        self._Password = None
+        self._InstanceId = None
+        self._CvmInstanceId = None
+        self._UniqDcgId = None
+        self._CcnId = None
+        self._UniqVpnGwId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._HostName = None
+        self._Port = None
+        self._EncryptConn = None
+        self._DatabaseNetEnv = None
+        self._CcnOwnerUin = None
+        self._ExtraAttr = None
+        self._ChildInstanceId = None
+        self._ChildInstanceType = None
+
+    @property
+    def DatabaseRegion(self):
+        """Region of the source database. If AccessType is ccn, please fill in the region where vpc is located because the region of the source database is unknown. For other access methods, please fill in the region where the subscription task is located, as ensuring the subscription task and the source database are in the same region is the optimal network solution.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DatabaseRegion
+
+    @DatabaseRegion.setter
+    def DatabaseRegion(self, DatabaseRegion):
+        self._DatabaseRegion = DatabaseRegion
+
+    @property
+    def User(self):
+        """UsernameNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        """Password. It is required when used as an input parameter and empty when used as an output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def InstanceId(self):
+        """Target instance ID. This field is required when AccessType is cdb. When configuring the InstanceId, the instance information is queried and checked. The mysql query interface has been authenticated. Please ensure that the sub-user has the cdb:DescribeDBInstances interface permission.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CvmInstanceId(self):
+        """Cloud Virtual Machine ID. This field is required when AccessType is cvm.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
+    @property
+    def UniqDcgId(self):
+        """Direct Connect gateway ID. This field is required when AccessType is dcg.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UniqDcgId
+
+    @UniqDcgId.setter
+    def UniqDcgId(self, UniqDcgId):
+        self._UniqDcgId = UniqDcgId
+
+    @property
+    def CcnId(self):
+        """Cloud Connect Network ID. This field is required when AccessType is ccn.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CcnId
+
+    @CcnId.setter
+    def CcnId(self, CcnId):
+        self._CcnId = CcnId
+
+    @property
+    def UniqVpnGwId(self):
+        """VPN gateway ID. This field is required when AccessType is vpncloud.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UniqVpnGwId
+
+    @UniqVpnGwId.setter
+    def UniqVpnGwId(self, UniqVpnGwId):
+        self._UniqVpnGwId = UniqVpnGwId
+
+    @property
+    def VpcId(self):
+        """VpcID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """Subnet ID. This field is required when AccessType is dcg\ccn\vpncloud\vpc.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def HostName(self):
+        """Database address, supports domain name and IP. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def Port(self):
+        """Database port. This field is required when AccessType is dcg\ccn\vpncloud\vpc\extranet\intranet\cvm.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def EncryptConn(self):
+        """Whether to use encrypted transmission. Valid values: UnEncrypted; Encrypted. Only mysql supports it. If it is not filled in, it will not be encrypted by default. Other products do not need to fill in this.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EncryptConn
+
+    @EncryptConn.setter
+    def EncryptConn(self, EncryptConn):
+        self._EncryptConn = EncryptConn
+
+    @property
+    def DatabaseNetEnv(self):
+        """Database network environment. This field is required when AccessType is ccn. Valid values: UserIDC; TencentVPC; Aws; AliYun; Others.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DatabaseNetEnv
+
+    @DatabaseNetEnv.setter
+    def DatabaseNetEnv(self, DatabaseNetEnv):
+        self._DatabaseNetEnv = DatabaseNetEnv
+
+    @property
+    def CcnOwnerUin(self):
+        """The UIN of the main account to which the Cloud Connect Network gateway belongs. It is required for cross-account CCN.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CcnOwnerUin
+
+    @CcnOwnerUin.setter
+    def CcnOwnerUin(self, CcnOwnerUin):
+        self._CcnOwnerUin = CcnOwnerUin
+
+    @property
+    def ExtraAttr(self):
+        """Additional information added for the business. Parameter name is called key, parameter value is called value. Mandatory parameters for tdpg: PgDatabase (subscribed database name).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of KeyValuePairOption
+        """
+        return self._ExtraAttr
+
+    @ExtraAttr.setter
+    def ExtraAttr(self, ExtraAttr):
+        self._ExtraAttr = ExtraAttr
+
+    @property
+    def ChildInstanceId(self):
+        """
+        :rtype: str
+        """
+        return self._ChildInstanceId
+
+    @ChildInstanceId.setter
+    def ChildInstanceId(self, ChildInstanceId):
+        self._ChildInstanceId = ChildInstanceId
+
+    @property
+    def ChildInstanceType(self):
+        """
+        :rtype: str
+        """
+        return self._ChildInstanceType
+
+    @ChildInstanceType.setter
+    def ChildInstanceType(self, ChildInstanceType):
+        self._ChildInstanceType = ChildInstanceType
+
+
+    def _deserialize(self, params):
+        self._DatabaseRegion = params.get("DatabaseRegion")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._InstanceId = params.get("InstanceId")
+        self._CvmInstanceId = params.get("CvmInstanceId")
+        self._UniqDcgId = params.get("UniqDcgId")
+        self._CcnId = params.get("CcnId")
+        self._UniqVpnGwId = params.get("UniqVpnGwId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._HostName = params.get("HostName")
+        self._Port = params.get("Port")
+        self._EncryptConn = params.get("EncryptConn")
+        self._DatabaseNetEnv = params.get("DatabaseNetEnv")
+        self._CcnOwnerUin = params.get("CcnOwnerUin")
+        if params.get("ExtraAttr") is not None:
+            self._ExtraAttr = []
+            for item in params.get("ExtraAttr"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._ExtraAttr.append(obj)
+        self._ChildInstanceId = params.get("ChildInstanceId")
+        self._ChildInstanceType = params.get("ChildInstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ErrInfo(AbstractModel):
     """Error information and the corresponding solution
 
@@ -7572,6 +10005,202 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class GroupInfo(AbstractModel):
+    """Kafka consumer group details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Account: Consumer group account
+        :type Account: str
+        :param _ConsumerGroupName: Consumer group name
+        :type ConsumerGroupName: str
+        :param _Description: Consumer group descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _ConsumerGroupOffset: Consumer group offset. This field is for compatibility with the previous single partition scenario, where the value is the offset of the last partition. For the offset of each partition, please refer to the StateOfPartition field.
+        :type ConsumerGroupOffset: int
+        :param _ConsumerGroupLag: The amount of data that has not been consumed by the consumer group. This field is for compatibility with the previous single partition scenario, where the value is the amount of unconsumed data in the last partition. For the amount of unconsumed data in each partition, refer to the StateOfPartition field.
+        :type ConsumerGroupLag: int
+        :param _Latency: Consumption delay (in seconds)
+        :type Latency: int
+        :param _StateOfPartition: Consumption status of each partition
+        :type StateOfPartition: list of MonitorInfo
+        :param _CreatedAt: Consumer group creation time, the format is: YYYY-MM-DD hh:mm:ss.
+        :type CreatedAt: str
+        :param _UpdatedAt: Consumer group update time, the format is: YYYY-MM-DD hh:mm:ss.
+        :type UpdatedAt: str
+        :param _ConsumerGroupState: Consumer group states, including Dead, Empty, Stable, etc. Only Dead and Empty states can perform reset operations.
+        :type ConsumerGroupState: str
+        :param _PartitionAssignment: The partition is being consumed by each consumer.Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionAssignment: list of PartitionAssignment
+        """
+        self._Account = None
+        self._ConsumerGroupName = None
+        self._Description = None
+        self._ConsumerGroupOffset = None
+        self._ConsumerGroupLag = None
+        self._Latency = None
+        self._StateOfPartition = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._ConsumerGroupState = None
+        self._PartitionAssignment = None
+
+    @property
+    def Account(self):
+        """Consumer group account
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def ConsumerGroupName(self):
+        """Consumer group name
+        :rtype: str
+        """
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def Description(self):
+        """Consumer group descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConsumerGroupOffset(self):
+        """Consumer group offset. This field is for compatibility with the previous single partition scenario, where the value is the offset of the last partition. For the offset of each partition, please refer to the StateOfPartition field.
+        :rtype: int
+        """
+        return self._ConsumerGroupOffset
+
+    @ConsumerGroupOffset.setter
+    def ConsumerGroupOffset(self, ConsumerGroupOffset):
+        self._ConsumerGroupOffset = ConsumerGroupOffset
+
+    @property
+    def ConsumerGroupLag(self):
+        """The amount of data that has not been consumed by the consumer group. This field is for compatibility with the previous single partition scenario, where the value is the amount of unconsumed data in the last partition. For the amount of unconsumed data in each partition, refer to the StateOfPartition field.
+        :rtype: int
+        """
+        return self._ConsumerGroupLag
+
+    @ConsumerGroupLag.setter
+    def ConsumerGroupLag(self, ConsumerGroupLag):
+        self._ConsumerGroupLag = ConsumerGroupLag
+
+    @property
+    def Latency(self):
+        """Consumption delay (in seconds)
+        :rtype: int
+        """
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+    @property
+    def StateOfPartition(self):
+        """Consumption status of each partition
+        :rtype: list of MonitorInfo
+        """
+        return self._StateOfPartition
+
+    @StateOfPartition.setter
+    def StateOfPartition(self, StateOfPartition):
+        self._StateOfPartition = StateOfPartition
+
+    @property
+    def CreatedAt(self):
+        """Consumer group creation time, the format is: YYYY-MM-DD hh:mm:ss.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        """Consumer group update time, the format is: YYYY-MM-DD hh:mm:ss.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def ConsumerGroupState(self):
+        """Consumer group states, including Dead, Empty, Stable, etc. Only Dead and Empty states can perform reset operations.
+        :rtype: str
+        """
+        return self._ConsumerGroupState
+
+    @ConsumerGroupState.setter
+    def ConsumerGroupState(self, ConsumerGroupState):
+        self._ConsumerGroupState = ConsumerGroupState
+
+    @property
+    def PartitionAssignment(self):
+        """The partition is being consumed by each consumer.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PartitionAssignment
+        """
+        return self._PartitionAssignment
+
+    @PartitionAssignment.setter
+    def PartitionAssignment(self, PartitionAssignment):
+        self._PartitionAssignment = PartitionAssignment
+
+
+    def _deserialize(self, params):
+        self._Account = params.get("Account")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._Description = params.get("Description")
+        self._ConsumerGroupOffset = params.get("ConsumerGroupOffset")
+        self._ConsumerGroupLag = params.get("ConsumerGroupLag")
+        self._Latency = params.get("Latency")
+        if params.get("StateOfPartition") is not None:
+            self._StateOfPartition = []
+            for item in params.get("StateOfPartition"):
+                obj = MonitorInfo()
+                obj._deserialize(item)
+                self._StateOfPartition.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._ConsumerGroupState = params.get("ConsumerGroupState")
+        if params.get("PartitionAssignment") is not None:
+            self._PartitionAssignment = []
+            for item in params.get("PartitionAssignment"):
+                obj = PartitionAssignment()
+                obj._deserialize(item)
+                self._PartitionAssignment.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IsolateMigrateJobRequest(AbstractModel):
     """IsolateMigrateJob request structure.
 
@@ -7615,14 +10244,78 @@ class IsolateMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class IsolateSubscribeRequest(AbstractModel):
+    """IsolateSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateSubscribeResponse(AbstractModel):
+    """IsolateSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7679,14 +10372,14 @@ class IsolateSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8643,6 +11336,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ModifiedSubscribeObject(AbstractModel):
+    """The object of the data subscription is used in the ModifySubscribeObjects interface. Similar to the SubscribeObject structure, only the type and parameter names differ.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectsType: Subscription object type. Valid values: 0 (database); 1 (table, for mongo tasks, this corresponds to a collection).Note: mongo only supports full instance, single database or single collection subscription, so this field should not conflict with SubscribeObjectType. For example, when SubscribeObjectType=4, it means mongo single database subscription, then 0 should be passed in this field.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectsType: int
+        :param _DatabaseName: Subscription database nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseName: str
+        :param _TableNames: Name of the table (or collection) in the subscription database. If ObjectsType is 1, this field is required and not empty; 
+        :type TableNames: list of str
+        """
+        self._ObjectsType = None
+        self._DatabaseName = None
+        self._TableNames = None
+
+    @property
+    def ObjectsType(self):
+        """Subscription object type. Valid values: 0 (database); 1 (table, for mongo tasks, this corresponds to a collection).Note: mongo only supports full instance, single database or single collection subscription, so this field should not conflict with SubscribeObjectType. For example, when SubscribeObjectType=4, it means mongo single database subscription, then 0 should be passed in this field.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ObjectsType
+
+    @ObjectsType.setter
+    def ObjectsType(self, ObjectsType):
+        self._ObjectsType = ObjectsType
+
+    @property
+    def DatabaseName(self):
+        """Subscription database nameNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableNames(self):
+        """Name of the table (or collection) in the subscription database. If ObjectsType is 1, this field is required and not empty; 
+        :rtype: list of str
+        """
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
+
+    def _deserialize(self, params):
+        self._ObjectsType = params.get("ObjectsType")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableNames = params.get("TableNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyCompareTaskNameRequest(AbstractModel):
     """ModifyCompareTaskName request structure.
 
@@ -8716,14 +11475,14 @@ class ModifyCompareTaskNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8859,14 +11618,247 @@ class ModifyCompareTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConsumerGroupDescriptionRequest(AbstractModel):
+    """ModifyConsumerGroupDescription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _ConsumerGroupName: Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
+        :type ConsumerGroupName: str
+        :param _AccountName: Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
+        :type AccountName: str
+        :param _Description: Updated description of the consumer group
+        :type Description: str
+        """
+        self._SubscribeId = None
+        self._ConsumerGroupName = None
+        self._AccountName = None
+        self._Description = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def ConsumerGroupName(self):
+        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.Please make sure the consumer group name is correct.
+        :rtype: str
+        """
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def AccountName(self):
+        """Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.Please make sure the account name is correct.
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def Description(self):
+        """Updated description of the consumer group
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._AccountName = params.get("AccountName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsumerGroupDescriptionResponse(AbstractModel):
+    """ModifyConsumerGroupDescription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConsumerGroupPasswordRequest(AbstractModel):
+    """ModifyConsumerGroupPassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _AccountName: Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.
+        :type AccountName: str
+        :param _ConsumerGroupName: Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        :type ConsumerGroupName: str
+        :param _OldPassword: Old Password.
+        :type OldPassword: str
+        :param _NewPassword: New password. The character length is no less than 3 and no more than 32.
+        :type NewPassword: str
+        """
+        self._SubscribeId = None
+        self._AccountName = None
+        self._ConsumerGroupName = None
+        self._OldPassword = None
+        self._NewPassword = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def AccountName(self):
+        """Account name. The full name of the actual account is in the form: account-#{SubscribeId}-#{AccountName}.
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def ConsumerGroupName(self):
+        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        :rtype: str
+        """
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def OldPassword(self):
+        """Old Password.
+        :rtype: str
+        """
+        return self._OldPassword
+
+    @OldPassword.setter
+    def OldPassword(self, OldPassword):
+        self._OldPassword = OldPassword
+
+    @property
+    def NewPassword(self):
+        """New password. The character length is no less than 3 and no more than 32.
+        :rtype: str
+        """
+        return self._NewPassword
+
+    @NewPassword.setter
+    def NewPassword(self, NewPassword):
+        self._NewPassword = NewPassword
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._AccountName = params.get("AccountName")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._OldPassword = params.get("OldPassword")
+        self._NewPassword = params.get("NewPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsumerGroupPasswordResponse(AbstractModel):
+    """ModifyConsumerGroupPassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -8938,14 +11930,14 @@ class ModifyMigrateJobSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9017,14 +12009,237 @@ class ModifyMigrateNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMigrateRateLimitRequest(AbstractModel):
+    """ModifyMigrateRateLimit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Migration task ID
+        :type JobId: str
+        :param _DumpThread: Number of full export threads for migration task. Value range: 1-16.
+        :type DumpThread: int
+        :param _DumpRps: The full export Rps for migration task. The value needs to be greater than 0.
+        :type DumpRps: int
+        :param _LoadThread: Number of full import threads for migration task. Value range: 1-16.
+        :type LoadThread: int
+        :param _SinkerThread: Number of incremental import threads for migration task. Value range: 1-128.
+        :type SinkerThread: int
+        :param _LoadRps: Limits for full import Rps.
+        :type LoadRps: int
+        """
+        self._JobId = None
+        self._DumpThread = None
+        self._DumpRps = None
+        self._LoadThread = None
+        self._SinkerThread = None
+        self._LoadRps = None
+
+    @property
+    def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DumpThread(self):
+        """Number of full export threads for migration task. Value range: 1-16.
+        :rtype: int
+        """
+        return self._DumpThread
+
+    @DumpThread.setter
+    def DumpThread(self, DumpThread):
+        self._DumpThread = DumpThread
+
+    @property
+    def DumpRps(self):
+        """The full export Rps for migration task. The value needs to be greater than 0.
+        :rtype: int
+        """
+        return self._DumpRps
+
+    @DumpRps.setter
+    def DumpRps(self, DumpRps):
+        self._DumpRps = DumpRps
+
+    @property
+    def LoadThread(self):
+        """Number of full import threads for migration task. Value range: 1-16.
+        :rtype: int
+        """
+        return self._LoadThread
+
+    @LoadThread.setter
+    def LoadThread(self, LoadThread):
+        self._LoadThread = LoadThread
+
+    @property
+    def SinkerThread(self):
+        """Number of incremental import threads for migration task. Value range: 1-128.
+        :rtype: int
+        """
+        return self._SinkerThread
+
+    @SinkerThread.setter
+    def SinkerThread(self, SinkerThread):
+        self._SinkerThread = SinkerThread
+
+    @property
+    def LoadRps(self):
+        """Limits for full import Rps.
+        :rtype: int
+        """
+        return self._LoadRps
+
+    @LoadRps.setter
+    def LoadRps(self, LoadRps):
+        self._LoadRps = LoadRps
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._DumpThread = params.get("DumpThread")
+        self._DumpRps = params.get("DumpRps")
+        self._LoadThread = params.get("LoadThread")
+        self._SinkerThread = params.get("SinkerThread")
+        self._LoadRps = params.get("LoadRps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMigrateRateLimitResponse(AbstractModel):
+    """ModifyMigrateRateLimit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
+    """ModifyMigrateRuntimeAttribute request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Migration task id, for example: dts-2rgv0f09
+        :type JobId: str
+        :param _OtherOptions: Attributes that need to be modified. This structure is designed as a generic structure to separate customized attributes for multiple businesses. <br>For instance, for Redis:<br>{<br>	 "Key": "DstWriteMode",	// Target database write mode<br> 	"Value": "normal"	          // clearData (clear target instance data), overwrite (perform task in overwrite manner), normal (follow normal procedure, no additional actions, this is the default value) <br>},<br>{<br/>	 "Key": "IsDstReadOnly",	// Whether to set target database as read-only during migration<br/> 	"Value": "true"	          // true (set as read-only), false (do not set as read-only) <br/>}
+        :type OtherOptions: list of KeyValuePairOption
+        """
+        self._JobId = None
+        self._OtherOptions = None
+
+    @property
+    def JobId(self):
+        """Migration task id, for example: dts-2rgv0f09
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def OtherOptions(self):
+        """Attributes that need to be modified. This structure is designed as a generic structure to separate customized attributes for multiple businesses. <br>For instance, for Redis:<br>{<br>	 "Key": "DstWriteMode",	// Target database write mode<br> 	"Value": "normal"	          // clearData (clear target instance data), overwrite (perform task in overwrite manner), normal (follow normal procedure, no additional actions, this is the default value) <br>},<br>{<br/>	 "Key": "IsDstReadOnly",	// Whether to set target database as read-only during migration<br/> 	"Value": "true"	          // true (set as read-only), false (do not set as read-only) <br/>}
+        :rtype: list of KeyValuePairOption
+        """
+        return self._OtherOptions
+
+    @OtherOptions.setter
+    def OtherOptions(self, OtherOptions):
+        self._OtherOptions = OtherOptions
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        if params.get("OtherOptions") is not None:
+            self._OtherOptions = []
+            for item in params.get("OtherOptions"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._OtherOptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMigrateRuntimeAttributeResponse(AbstractModel):
+    """ModifyMigrateRuntimeAttribute response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9233,6 +12448,318 @@ class ModifyMigrationJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySubscribeAutoRenewFlagRequest(AbstractModel):
+    """ModifySubscribeAutoRenewFlag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        :param _AutoRenewFlag: Auto-renewal flag. Valid values: 1 (auto-renewal enabled); 0 (auto-renewal disabled).
+        :type AutoRenewFlag: int
+        """
+        self._SubscribeId = None
+        self._AutoRenewFlag = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto-renewal flag. Valid values: 1 (auto-renewal enabled); 0 (auto-renewal disabled).
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySubscribeAutoRenewFlagResponse(AbstractModel):
+    """ModifySubscribeAutoRenewFlag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySubscribeNameRequest(AbstractModel):
+    """ModifySubscribeName request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _SubscribeName: Modified data subscription instance name. Value range: 1-60.
+        :type SubscribeName: str
+        """
+        self._SubscribeId = None
+        self._SubscribeName = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        """Modified data subscription instance name. Value range: 1-60.
+        :rtype: str
+        """
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySubscribeNameResponse(AbstractModel):
+    """ModifySubscribeName response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySubscribeObjectsRequest(AbstractModel):
+    """ModifySubscribeObjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _SubscribeObjectType: Data subscription type. Valid values for non-mongo task: 0 (full instance update); 1 (data update); 2 (structure update); 3 (data + structure update). Valid values for mongo task: 0 (full instance update); 4 (subscribe to a table); 5 (subscribe to a collection).
+        :type SubscribeObjectType: int
+        :param _Objects: Modified subscription database table information. It will replace the original subscription object, this field is required unless SubscribeObjectType = 0 or 2.
+        :type Objects: list of ModifiedSubscribeObject
+        :param _DistributeRules: Kafka partitioning policy. If left blank, it will remain unchanged by default. If filled, it will replace the original policy.
+        :type DistributeRules: list of DistributeRule
+        :param _DefaultRuleType: Default partitioning policy. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Default strategies supported by non-mongo products: table - partitioned by table name, pk - partitioned by table name + primary key. Mongo's default strategy only supports: collection-partitioned by collection name.This field is used in conjunction with DistributeRules. If DistributeRules is configured, this field is also required. If this field is configured, it is considered as configuring a DistributeRules, and the original partitioning policy will also be overwritten.
+        :type DefaultRuleType: str
+        :param _PipelineInfo: Mongo output aggregation settings, optional for Mongo tasks. If left blank, no modification will be made by default.
+        :type PipelineInfo: list of PipelineInfo
+        """
+        self._SubscribeId = None
+        self._SubscribeObjectType = None
+        self._Objects = None
+        self._DistributeRules = None
+        self._DefaultRuleType = None
+        self._PipelineInfo = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeObjectType(self):
+        """Data subscription type. Valid values for non-mongo task: 0 (full instance update); 1 (data update); 2 (structure update); 3 (data + structure update). Valid values for mongo task: 0 (full instance update); 4 (subscribe to a table); 5 (subscribe to a collection).
+        :rtype: int
+        """
+        return self._SubscribeObjectType
+
+    @SubscribeObjectType.setter
+    def SubscribeObjectType(self, SubscribeObjectType):
+        self._SubscribeObjectType = SubscribeObjectType
+
+    @property
+    def Objects(self):
+        """Modified subscription database table information. It will replace the original subscription object, this field is required unless SubscribeObjectType = 0 or 2.
+        :rtype: list of ModifiedSubscribeObject
+        """
+        return self._Objects
+
+    @Objects.setter
+    def Objects(self, Objects):
+        self._Objects = Objects
+
+    @property
+    def DistributeRules(self):
+        """Kafka partitioning policy. If left blank, it will remain unchanged by default. If filled, it will replace the original policy.
+        :rtype: list of DistributeRule
+        """
+        return self._DistributeRules
+
+    @DistributeRules.setter
+    def DistributeRules(self, DistributeRules):
+        self._DistributeRules = DistributeRules
+
+    @property
+    def DefaultRuleType(self):
+        """Default partitioning policy. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Default strategies supported by non-mongo products: table - partitioned by table name, pk - partitioned by table name + primary key. Mongo's default strategy only supports: collection-partitioned by collection name.This field is used in conjunction with DistributeRules. If DistributeRules is configured, this field is also required. If this field is configured, it is considered as configuring a DistributeRules, and the original partitioning policy will also be overwritten.
+        :rtype: str
+        """
+        return self._DefaultRuleType
+
+    @DefaultRuleType.setter
+    def DefaultRuleType(self, DefaultRuleType):
+        self._DefaultRuleType = DefaultRuleType
+
+    @property
+    def PipelineInfo(self):
+        """Mongo output aggregation settings, optional for Mongo tasks. If left blank, no modification will be made by default.
+        :rtype: list of PipelineInfo
+        """
+        return self._PipelineInfo
+
+    @PipelineInfo.setter
+    def PipelineInfo(self, PipelineInfo):
+        self._PipelineInfo = PipelineInfo
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeObjectType = params.get("SubscribeObjectType")
+        if params.get("Objects") is not None:
+            self._Objects = []
+            for item in params.get("Objects"):
+                obj = ModifiedSubscribeObject()
+                obj._deserialize(item)
+                self._Objects.append(obj)
+        if params.get("DistributeRules") is not None:
+            self._DistributeRules = []
+            for item in params.get("DistributeRules"):
+                obj = DistributeRule()
+                obj._deserialize(item)
+                self._DistributeRules.append(obj)
+        self._DefaultRuleType = params.get("DefaultRuleType")
+        if params.get("PipelineInfo") is not None:
+            self._PipelineInfo = []
+            for item in params.get("PipelineInfo"):
+                obj = PipelineInfo()
+                obj._deserialize(item)
+                self._PipelineInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySubscribeObjectsResponse(AbstractModel):
+    """ModifySubscribeObjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySyncJobConfigRequest(AbstractModel):
     """ModifySyncJobConfig request structure.
 
@@ -9310,14 +12837,14 @@ class ModifySyncJobConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9329,6 +12856,226 @@ class ModifySyncJobConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifySyncRateLimitRequest(AbstractModel):
+    """ModifySyncRateLimit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Migration task ID
+        :type JobId: str
+        :param _DumpThread: Number of full export threads for sync task. Value range: 1-16.
+        :type DumpThread: int
+        :param _DumpRps: The full export Rps for sync task. The value needs to be greater than 0.
+        :type DumpRps: int
+        :param _LoadThread: Number of full import threads for sync task. Value range: 1-16.
+        :type LoadThread: int
+        :param _SinkerThread: Number of incremental import threads for sync task. Value range: 1-128.
+        :type SinkerThread: int
+        :param _LoadRps: The full import Rps for sync task.
+        :type LoadRps: int
+        """
+        self._JobId = None
+        self._DumpThread = None
+        self._DumpRps = None
+        self._LoadThread = None
+        self._SinkerThread = None
+        self._LoadRps = None
+
+    @property
+    def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DumpThread(self):
+        """Number of full export threads for sync task. Value range: 1-16.
+        :rtype: int
+        """
+        return self._DumpThread
+
+    @DumpThread.setter
+    def DumpThread(self, DumpThread):
+        self._DumpThread = DumpThread
+
+    @property
+    def DumpRps(self):
+        """The full export Rps for sync task. The value needs to be greater than 0.
+        :rtype: int
+        """
+        return self._DumpRps
+
+    @DumpRps.setter
+    def DumpRps(self, DumpRps):
+        self._DumpRps = DumpRps
+
+    @property
+    def LoadThread(self):
+        """Number of full import threads for sync task. Value range: 1-16.
+        :rtype: int
+        """
+        return self._LoadThread
+
+    @LoadThread.setter
+    def LoadThread(self, LoadThread):
+        self._LoadThread = LoadThread
+
+    @property
+    def SinkerThread(self):
+        """Number of incremental import threads for sync task. Value range: 1-128.
+        :rtype: int
+        """
+        return self._SinkerThread
+
+    @SinkerThread.setter
+    def SinkerThread(self, SinkerThread):
+        self._SinkerThread = SinkerThread
+
+    @property
+    def LoadRps(self):
+        """The full import Rps for sync task.
+        :rtype: int
+        """
+        return self._LoadRps
+
+    @LoadRps.setter
+    def LoadRps(self, LoadRps):
+        self._LoadRps = LoadRps
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._DumpThread = params.get("DumpThread")
+        self._DumpRps = params.get("DumpRps")
+        self._LoadThread = params.get("LoadThread")
+        self._SinkerThread = params.get("SinkerThread")
+        self._LoadRps = params.get("LoadRps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncRateLimitResponse(AbstractModel):
+    """ModifySyncRateLimit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class MonitorInfo(AbstractModel):
+    """Partition details of Kafka consumer group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionNo: The number of the current partition, starting from 0.
+        :type PartitionNo: int
+        :param _ConsumerGroupOffset: The offset of the current partition.
+        :type ConsumerGroupOffset: int
+        :param _ConsumerGroupLag: The amount of unconsumed data in the current partition.
+        :type ConsumerGroupLag: int
+        :param _Latency: The consumption delay of the current partition (in seconds).
+        :type Latency: int
+        """
+        self._PartitionNo = None
+        self._ConsumerGroupOffset = None
+        self._ConsumerGroupLag = None
+        self._Latency = None
+
+    @property
+    def PartitionNo(self):
+        """The number of the current partition, starting from 0.
+        :rtype: int
+        """
+        return self._PartitionNo
+
+    @PartitionNo.setter
+    def PartitionNo(self, PartitionNo):
+        self._PartitionNo = PartitionNo
+
+    @property
+    def ConsumerGroupOffset(self):
+        """The offset of the current partition.
+        :rtype: int
+        """
+        return self._ConsumerGroupOffset
+
+    @ConsumerGroupOffset.setter
+    def ConsumerGroupOffset(self, ConsumerGroupOffset):
+        self._ConsumerGroupOffset = ConsumerGroupOffset
+
+    @property
+    def ConsumerGroupLag(self):
+        """The amount of unconsumed data in the current partition.
+        :rtype: int
+        """
+        return self._ConsumerGroupLag
+
+    @ConsumerGroupLag.setter
+    def ConsumerGroupLag(self, ConsumerGroupLag):
+        self._ConsumerGroupLag = ConsumerGroupLag
+
+    @property
+    def Latency(self):
+        """The consumption delay of the current partition (in seconds).
+        :rtype: int
+        """
+        return self._Latency
+
+    @Latency.setter
+    def Latency(self, Latency):
+        self._Latency = Latency
+
+
+    def _deserialize(self, params):
+        self._PartitionNo = params.get("PartitionNo")
+        self._ConsumerGroupOffset = params.get("ConsumerGroupOffset")
+        self._ConsumerGroupLag = params.get("ConsumerGroupLag")
+        self._Latency = params.get("Latency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Objects(AbstractModel):
@@ -9413,6 +13160,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("OnlineDDL") is not None:
             self._OnlineDDL = OnlineDDL()
             self._OnlineDDL._deserialize(params.get("OnlineDDL"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OffsetTimeMap(AbstractModel):
+    """Checkpoint information in Kafka partition for data subscription.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionNo: Kafka partition numberNote: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionNo: int
+        :param _Offset: Kafka offsetNote: This field may return null, indicating that no valid values can be obtained.
+        :type Offset: int
+        """
+        self._PartitionNo = None
+        self._Offset = None
+
+    @property
+    def PartitionNo(self):
+        """Kafka partition numberNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PartitionNo
+
+    @PartitionNo.setter
+    def PartitionNo(self, PartitionNo):
+        self._PartitionNo = PartitionNo
+
+    @property
+    def Offset(self):
+        """Kafka offsetNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._PartitionNo = params.get("PartitionNo")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9693,6 +13491,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PartitionAssignment(AbstractModel):
+    """The partition allocation of Kafka consumer groups in data subscriptions. This data is queried in real time. If you need the latest data, you need to call the interface again.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: The clientId of the consumer
+        :type ClientId: str
+        :param _PartitionNo: The partition is being consumed by this consumer.Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionNo: list of int non-negative
+        """
+        self._ClientId = None
+        self._PartitionNo = None
+
+    @property
+    def ClientId(self):
+        """The clientId of the consumer
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def PartitionNo(self):
+        """The partition is being consumed by this consumer.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int non-negative
+        """
+        return self._PartitionNo
+
+    @PartitionNo.setter
+    def PartitionNo(self, PartitionNo):
+        self._PartitionNo = PartitionNo
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._PartitionNo = params.get("PartitionNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PauseMigrateJobRequest(AbstractModel):
     """PauseMigrateJob request structure.
 
@@ -9736,14 +13585,14 @@ class PauseMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9800,14 +13649,14 @@ class PauseSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9819,6 +13668,57 @@ class PauseSyncJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class PipelineInfo(AbstractModel):
+    """Mongo output aggregation settings. Default value: Change Event.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AggOp: Aggregation operators: $addFields, $match, $project, $replaceRoot, $redact, $replaceWith, $set, $unset. $replaceWith, $set, $unset are available options for subscription instances that are version 4.2 or higher.Note: This field may return null, indicating that no valid values can be obtained.
+        :type AggOp: str
+        :param _AggCmd: Aggregation expression must be in json format.Note: This field may return null, indicating that no valid values can be obtained.
+        :type AggCmd: str
+        """
+        self._AggOp = None
+        self._AggCmd = None
+
+    @property
+    def AggOp(self):
+        """Aggregation operators: $addFields, $match, $project, $replaceRoot, $redact, $replaceWith, $set, $unset. $replaceWith, $set, $unset are available options for subscription instances that are version 4.2 or higher.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AggOp
+
+    @AggOp.setter
+    def AggOp(self, AggOp):
+        self._AggOp = AggOp
+
+    @property
+    def AggCmd(self):
+        """Aggregation expression must be in json format.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AggCmd
+
+    @AggCmd.setter
+    def AggCmd(self, AggCmd):
+        self._AggCmd = AggCmd
+
+
+    def _deserialize(self, params):
+        self._AggOp = params.get("AggOp")
+        self._AggCmd = params.get("AggCmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProcessProgress(AbstractModel):
@@ -10252,14 +14152,14 @@ class RecoverMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10316,14 +14216,217 @@ class RecoverSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetConsumerGroupOffsetRequest(AbstractModel):
+    """ResetConsumerGroupOffset request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Subscription instance ID
+        :type SubscribeId: str
+        :param _TopicName: Subscribed Kafka topic
+        :type TopicName: str
+        :param _ConsumerGroupName: Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        :type ConsumerGroupName: str
+        :param _PartitionNos: The partition number of offset needs to be modified.
+        :type PartitionNos: list of int
+        :param _ResetMode: Reset mode. Valid values: earliest (start consumption from the earliest position); latest (start consumption from the latest position); datetime (start consumption from the most recent checkpoint before the specified time).
+        :type ResetMode: str
+        :param _ResetDatetime: When ResetMode is datetime, this field needs to be filled in, the format is: Y-m-d h:m:s. If not filled in, the default time is 0, and the effect is the same as earliest.
+        :type ResetDatetime: str
+        """
+        self._SubscribeId = None
+        self._TopicName = None
+        self._ConsumerGroupName = None
+        self._PartitionNos = None
+        self._ResetMode = None
+        self._ResetDatetime = None
+
+    @property
+    def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def TopicName(self):
+        """Subscribed Kafka topic
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def ConsumerGroupName(self):
+        """Consumer group name. The full name of the actual consumer group is in the form: consumer-grp-#{SubscribeId}-#{ConsumerGroupName}.
+        :rtype: str
+        """
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def PartitionNos(self):
+        """The partition number of offset needs to be modified.
+        :rtype: list of int
+        """
+        return self._PartitionNos
+
+    @PartitionNos.setter
+    def PartitionNos(self, PartitionNos):
+        self._PartitionNos = PartitionNos
+
+    @property
+    def ResetMode(self):
+        """Reset mode. Valid values: earliest (start consumption from the earliest position); latest (start consumption from the latest position); datetime (start consumption from the most recent checkpoint before the specified time).
+        :rtype: str
+        """
+        return self._ResetMode
+
+    @ResetMode.setter
+    def ResetMode(self, ResetMode):
+        self._ResetMode = ResetMode
+
+    @property
+    def ResetDatetime(self):
+        """When ResetMode is datetime, this field needs to be filled in, the format is: Y-m-d h:m:s. If not filled in, the default time is 0, and the effect is the same as earliest.
+        :rtype: str
+        """
+        return self._ResetDatetime
+
+    @ResetDatetime.setter
+    def ResetDatetime(self, ResetDatetime):
+        self._ResetDatetime = ResetDatetime
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._TopicName = params.get("TopicName")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._PartitionNos = params.get("PartitionNos")
+        self._ResetMode = params.get("ResetMode")
+        self._ResetDatetime = params.get("ResetDatetime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetConsumerGroupOffsetResponse(AbstractModel):
+    """ResetConsumerGroupOffset response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetSubscribeRequest(AbstractModel):
+    """ResetSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetSubscribeResponse(AbstractModel):
+    """ResetSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10395,14 +14498,14 @@ class ResizeSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10474,14 +14577,78 @@ class ResumeMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeSubscribeRequest(AbstractModel):
+    """ResumeSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeSubscribeResponse(AbstractModel):
+    """ResumeSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10538,14 +14705,14 @@ class ResumeSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10690,7 +14857,7 @@ class SkipCheckItemResponse(AbstractModel):
         :param _Message: Message prompted for skipping the check item
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Message = None
@@ -10710,7 +14877,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10783,14 +14950,14 @@ class SkipSyncCheckItemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -10994,14 +15161,14 @@ class StartCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11058,14 +15225,14 @@ class StartMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11122,14 +15289,78 @@ class StartModifySyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StartSubscribeRequest(AbstractModel):
+    """StartSubscribe request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        """
+        self._SubscribeId = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartSubscribeResponse(AbstractModel):
+    """StartSubscribe response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11186,14 +15417,14 @@ class StartSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11720,14 +15951,14 @@ class StopCompareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11784,14 +16015,14 @@ class StopMigrateJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11848,14 +16079,14 @@ class StopSyncJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -11867,6 +16098,733 @@ class StopSyncJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SubsErr(AbstractModel):
+    """Subscription error message
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error message
+        :type Message: str
+        """
+        self._Message = None
+
+    @property
+    def Message(self):
+        """Error message
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeCheckStepInfo(AbstractModel):
+    """Information about each step of the subscription check task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StepName: Step name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepName: str
+        :param _StepId: Step Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepId: str
+        :param _StepNo: Step number, starting from 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepNo: int
+        :param _Status: Current step status. Valid values: notStarted, running, finished, failed.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _Percent: Current step progressNote: This field may return null, indicating that no valid values can be obtained.
+        :type Percent: int
+        :param _Errors: Error messageNote: This field may return null, indicating that no valid values can be obtained.
+        :type Errors: list of SubscribeCheckStepTip
+        :param _Warnings: Warning messageNote: This field may return null, indicating that no valid values can be obtained.
+        :type Warnings: list of SubscribeCheckStepTip
+        """
+        self._StepName = None
+        self._StepId = None
+        self._StepNo = None
+        self._Status = None
+        self._Percent = None
+        self._Errors = None
+        self._Warnings = None
+
+    @property
+    def StepName(self):
+        """Step name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def StepId(self):
+        """Step Id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StepId
+
+    @StepId.setter
+    def StepId(self, StepId):
+        self._StepId = StepId
+
+    @property
+    def StepNo(self):
+        """Step number, starting from 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._StepNo
+
+    @StepNo.setter
+    def StepNo(self, StepNo):
+        self._StepNo = StepNo
+
+    @property
+    def Status(self):
+        """Current step status. Valid values: notStarted, running, finished, failed.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Percent(self):
+        """Current step progressNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def Errors(self):
+        """Error messageNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubscribeCheckStepTip
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Warnings(self):
+        """Warning messageNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubscribeCheckStepTip
+        """
+        return self._Warnings
+
+    @Warnings.setter
+    def Warnings(self, Warnings):
+        self._Warnings = Warnings
+
+
+    def _deserialize(self, params):
+        self._StepName = params.get("StepName")
+        self._StepId = params.get("StepId")
+        self._StepNo = params.get("StepNo")
+        self._Status = params.get("Status")
+        self._Percent = params.get("Percent")
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = SubscribeCheckStepTip()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        if params.get("Warnings") is not None:
+            self._Warnings = []
+            for item in params.get("Warnings"):
+                obj = SubscribeCheckStepTip()
+                obj._deserialize(item)
+                self._Warnings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeCheckStepTip(AbstractModel):
+    """Prompts for subscription check tasks
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error or warning detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _HelpDoc: Help documentation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HelpDoc: str
+        """
+        self._Message = None
+        self._HelpDoc = None
+
+    @property
+    def Message(self):
+        """Error or warning detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def HelpDoc(self):
+        """Help documentation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HelpDoc
+
+    @HelpDoc.setter
+    def HelpDoc(self, HelpDoc):
+        self._HelpDoc = HelpDoc
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._HelpDoc = params.get("HelpDoc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeInfo(AbstractModel):
+    """Subscription instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeId: Data subscription instance ID
+        :type SubscribeId: str
+        :param _SubscribeName: Data subscription instance name
+        :type SubscribeName: str
+        :param _Topic: Kafka topic for data sent by the subscription instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Topic: str
+        :param _Product: Subscription instance type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        :type Product: str
+        :param _InstanceId: The subscribed database instance ID (if the subscription is a cloud database). If the instance is not on Tencent Cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _InstanceStatus: Cloud database status: running, isolated, offline. If it is not on the cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceStatus: str
+        :param _Status: Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to monthly subscription).
+        :type Status: str
+        :param _SubsStatus: Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        :type SubsStatus: str
+        :param _ModifyTime: Last modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModifyTime: str
+        :param _CreateTime: Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _IsolateTime: Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsolateTime: str
+        :param _ExpireTime: Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: str
+        :param _OfflineTime: Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :type OfflineTime: str
+        :param _PayType: Billing mode. 1: pay-as-you-go
+        :type PayType: int
+        :param _AutoRenewFlag: Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
+        :type AutoRenewFlag: int
+        :param _Region: Data subscription instance region
+        :type Region: str
+        :param _AccessType: Access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC).Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessType: str
+        :param _Endpoints: Database node information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Endpoints: list of EndpointItem
+        :param _SubscribeVersion: Data subscription version, only Kafka version is currently supported.Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeVersion: str
+        :param _Tags: TagNote: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of TagItem
+        :param _Errors: Task error messageNote: This field may return null, indicating that no valid values can be obtained.
+        :type Errors: list of SubsErr
+        """
+        self._SubscribeId = None
+        self._SubscribeName = None
+        self._Topic = None
+        self._Product = None
+        self._InstanceId = None
+        self._InstanceStatus = None
+        self._Status = None
+        self._SubsStatus = None
+        self._ModifyTime = None
+        self._CreateTime = None
+        self._IsolateTime = None
+        self._ExpireTime = None
+        self._OfflineTime = None
+        self._PayType = None
+        self._AutoRenewFlag = None
+        self._Region = None
+        self._AccessType = None
+        self._Endpoints = None
+        self._SubscribeVersion = None
+        self._Tags = None
+        self._Errors = None
+
+    @property
+    def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
+        return self._SubscribeId
+
+    @SubscribeId.setter
+    def SubscribeId(self, SubscribeId):
+        self._SubscribeId = SubscribeId
+
+    @property
+    def SubscribeName(self):
+        """Data subscription instance name
+        :rtype: str
+        """
+        return self._SubscribeName
+
+    @SubscribeName.setter
+    def SubscribeName(self, SubscribeName):
+        self._SubscribeName = SubscribeName
+
+    @property
+    def Topic(self):
+        """Kafka topic for data sent by the subscription instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Product(self):
+        """Subscription instance type. Currently, cynosdbmysql, mariadb, mongodb, mysql, percona, tdpg, tdsqlpercona are supported.
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        """The subscribed database instance ID (if the subscription is a cloud database). If the instance is not on Tencent Cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        """Cloud database status: running, isolated, offline. If it is not on the cloud, this value is empty.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def Status(self):
+        """Data subscription lifecycle status. Valid values: normal (normal), isolating (isolating), isolated (isolated), offlining (offlining), post2PrePayIng (changing from pay-as-you-go to monthly subscription).
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubsStatus(self):
+        """Data subscription status. Valid values: notStarted, checking, checkNotPass, checkPass, starting, running, error.
+        :rtype: str
+        """
+        return self._SubsStatus
+
+    @SubsStatus.setter
+    def SubsStatus(self, SubsStatus):
+        self._SubsStatus = SubsStatus
+
+    @property
+    def ModifyTime(self):
+        """Last modification time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CreateTime(self):
+        """Creation time, the format is: Y-m-d h:m:s.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsolateTime(self):
+        """Isolation time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def ExpireTime(self):
+        """Expiration time for monthly subscription tasks, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OfflineTime(self):
+        """Offline time, the format is: Y-m-d h:m:s. Default time: 0000-00-00 00:00:00.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def PayType(self):
+        """Billing mode. 1: pay-as-you-go
+        :rtype: int
+        """
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto-renewal flag. It is meaningful only when PayType=0. Valid values: 0 (auto-renewal disabled); 1 (auto-renewal enabled).
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Region(self):
+        """Data subscription instance region
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AccessType(self):
+        """Access type. Valid values: extranet (public network); vpncloud (VPN access); dcg (Direct Connect); ccn (CCN); cdb (database); cvm (self-build on CVM); intranet (intranet); vpc (VPC).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def Endpoints(self):
+        """Database node information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of EndpointItem
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+    @property
+    def SubscribeVersion(self):
+        """Data subscription version, only Kafka version is currently supported.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubscribeVersion
+
+    @SubscribeVersion.setter
+    def SubscribeVersion(self, SubscribeVersion):
+        self._SubscribeVersion = SubscribeVersion
+
+    @property
+    def Tags(self):
+        """TagNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Errors(self):
+        """Task error messageNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SubsErr
+        """
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+
+    def _deserialize(self, params):
+        self._SubscribeId = params.get("SubscribeId")
+        self._SubscribeName = params.get("SubscribeName")
+        self._Topic = params.get("Topic")
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._Status = params.get("Status")
+        self._SubsStatus = params.get("SubsStatus")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CreateTime = params.get("CreateTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OfflineTime = params.get("OfflineTime")
+        self._PayType = params.get("PayType")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Region = params.get("Region")
+        self._AccessType = params.get("AccessType")
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = EndpointItem()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
+        self._SubscribeVersion = params.get("SubscribeVersion")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagItem()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = SubsErr()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeKafkaConfig(AbstractModel):
+    """Number of subscribed Kafka partitions and partition rules. mariadb, percona, tdsqlmysql, tdpg do not support custom partitions, so DistributeRules and DefaultRuleType can be left blank, but NumberOfPartitions is required.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NumberOfPartitions: Number of Kafka partitions. Valid values: 1, 4, 8.Note: This field may return null, indicating that no valid values can be obtained.
+        :type NumberOfPartitions: int
+        :param _DistributeRules: Partition rules. This field is required when NumberOfPartitions > 1.Note: This field may return null, indicating that no valid values can be obtained.
+        :type DistributeRules: list of DistributeRule
+        :param _DefaultRuleType: Default partitioning policy. If NumberOfPartitions > 1, this field is required. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key). Valid values for mongo: collection (partitioned by collection name). This field is used in conjunction with DistributeRules. If this field is configured, it is considered as configuring a DistributeRules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DefaultRuleType: str
+        """
+        self._NumberOfPartitions = None
+        self._DistributeRules = None
+        self._DefaultRuleType = None
+
+    @property
+    def NumberOfPartitions(self):
+        """Number of Kafka partitions. Valid values: 1, 4, 8.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._NumberOfPartitions
+
+    @NumberOfPartitions.setter
+    def NumberOfPartitions(self, NumberOfPartitions):
+        self._NumberOfPartitions = NumberOfPartitions
+
+    @property
+    def DistributeRules(self):
+        """Partition rules. This field is required when NumberOfPartitions > 1.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DistributeRule
+        """
+        return self._DistributeRules
+
+    @DistributeRules.setter
+    def DistributeRules(self, DistributeRules):
+        self._DistributeRules = DistributeRules
+
+    @property
+    def DefaultRuleType(self):
+        """Default partitioning policy. If NumberOfPartitions > 1, this field is required. Data that does not meet the regex in DistributeRules will be partitioned according to the default partitioning policy.Valid values for non-mongo products: table (partitioned by table name); pk (partitioned by table name + primary key). Valid values for mongo: collection (partitioned by collection name). This field is used in conjunction with DistributeRules. If this field is configured, it is considered as configuring a DistributeRules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DefaultRuleType
+
+    @DefaultRuleType.setter
+    def DefaultRuleType(self, DefaultRuleType):
+        self._DefaultRuleType = DefaultRuleType
+
+
+    def _deserialize(self, params):
+        self._NumberOfPartitions = params.get("NumberOfPartitions")
+        if params.get("DistributeRules") is not None:
+            self._DistributeRules = []
+            for item in params.get("DistributeRules"):
+                obj = DistributeRule()
+                obj._deserialize(item)
+                self._DistributeRules.append(obj)
+        self._DefaultRuleType = params.get("DefaultRuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeObject(AbstractModel):
+    """Subscription database and table information, used to configure and query the subscription task interfaces.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectType: Subscription data type. Valid values: database; table (if DatabaseType is mongodb, it means a collection).Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectType: str
+        :param _Database: Subscribed database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Database: str
+        :param _Tables: Name of the table in the subscribed database. If DatabaseType is mongodb, fill in the collection name. MongoDB only supports subscribing to a single database or a single collection.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tables: list of str
+        """
+        self._ObjectType = None
+        self._Database = None
+        self._Tables = None
+
+    @property
+    def ObjectType(self):
+        """Subscription data type. Valid values: database; table (if DatabaseType is mongodb, it means a collection).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def Database(self):
+        """Subscribed database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Tables(self):
+        """Name of the table in the subscribed database. If DatabaseType is mongodb, fill in the collection name. MongoDB only supports subscribing to a single database or a single collection.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+
+    def _deserialize(self, params):
+        self._ObjectType = params.get("ObjectType")
+        self._Database = params.get("Database")
+        self._Tables = params.get("Tables")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncDBEndpointInfos(AbstractModel):

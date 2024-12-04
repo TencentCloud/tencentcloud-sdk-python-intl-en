@@ -25,17 +25,31 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Instance ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceId: str
-        :param _AccountName: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccountName: Account name.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type AccountName: str
-        :param _Remark: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Remark: Account description.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Remark: str
-        :param _Privilege: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Privilege: Read/write permission policy.
+- r: read-only.
+- w: write-only.
+- rw: read/write.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Privilege: str
-        :param _ReadonlyPolicy: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReadonlyPolicy: Read-only routing policy.
+- master: primary node.
+- replication: secondary node.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ReadonlyPolicy: list of str
-        :param _Status: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Sub-account status.
+- 1: changing.
+- 2: valid.
+- 4: deleted.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: int
         :param _CreateTime: Creation time.Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
@@ -50,7 +64,8 @@ class Account(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._InstanceId
@@ -61,7 +76,8 @@ class Account(AbstractModel):
 
     @property
     def AccountName(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Account name.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._AccountName
@@ -72,7 +88,8 @@ class Account(AbstractModel):
 
     @property
     def Remark(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Account description.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Remark
@@ -83,7 +100,11 @@ class Account(AbstractModel):
 
     @property
     def Privilege(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Read/write permission policy.
+- r: read-only.
+- w: write-only.
+- rw: read/write.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Privilege
@@ -94,7 +115,10 @@ class Account(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Read-only routing policy.
+- master: primary node.
+- replication: secondary node.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -105,7 +129,11 @@ class Account(AbstractModel):
 
     @property
     def Status(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Sub-account status.
+- 1: changing.
+- 2: valid.
+- 4: deleted.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Status
@@ -151,9 +179,9 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: Replication group ID.
+        :param _GroupId: Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :type GroupId: str
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _InstanceRole: Assigns roles to instances added to the replication group. <ul><li>rw: read-write;</li> <li>r: read-only.</li></ul>
         :type InstanceRole: str
@@ -164,7 +192,7 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Replication group ID.
+        """Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :rtype: str
         """
         return self._GroupId
@@ -175,7 +203,7 @@ class AddReplicationInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -260,14 +288,14 @@ class AllocateWanAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -354,9 +382,9 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: List of instance IDs
+        :param _InstanceIds: Instance ID list. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy the instance ID in the instance list.
         :type InstanceIds: list of str
-        :param _TemplateId: ID of the parameter template to be applied
+        :param _TemplateId: ID of the applied parameter template, which can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://intl.cloud.tencent.com/document/product/239/58748?from_cn_redirect=1).
         :type TemplateId: str
         """
         self._InstanceIds = None
@@ -364,7 +392,7 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of instance IDs
+        """Instance ID list. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy the instance ID in the instance list.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -375,7 +403,7 @@ class ApplyParamsTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """ID of the parameter template to be applied
+        """ID of the applied parameter template, which can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://intl.cloud.tencent.com/document/product/239/58748?from_cn_redirect=1).
         :rtype: str
         """
         return self._TemplateId
@@ -450,9 +478,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param _SecurityGroupId: ID of the security group to be associated in the format of sg-efil73jd.
+        :param _SecurityGroupId: ID of the security group to be bound. Obtain it on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.
         :type SecurityGroupId: str
-        :param _InstanceIds: ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.
+        :param _InstanceIds: ID of the bound instance. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list. You can specify multiple instance IDs.
         :type InstanceIds: list of str
         """
         self._Product = None
@@ -472,7 +500,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """ID of the security group to be associated in the format of sg-efil73jd.
+        """ID of the security group to be bound. Obtain it on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.
         :rtype: str
         """
         return self._SecurityGroupId
@@ -483,7 +511,7 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.
+        """ID of the bound instance. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list. You can specify multiple instance IDs.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -533,6 +561,63 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AvailableRegion(AbstractModel):
+    """Available region information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Region
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Region: str
+        :param _AvailableZones: AZ information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AvailableZones: list of str
+        """
+        self._Region = None
+        self._AvailableZones = None
+
+    @property
+    def Region(self):
+        """Region
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AvailableZones(self):
+        """AZ information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of str
+        """
+        return self._AvailableZones
+
+    @AvailableZones.setter
+    def AvailableZones(self, AvailableZones):
+        self._AvailableZones = AvailableZones
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._AvailableZones = params.get("AvailableZones")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BackupDownloadInfo(AbstractModel):
@@ -844,6 +929,247 @@ class BigKeyTypeInfo(AbstractModel):
         
 
 
+class CDCResource(AbstractModel):
+    """Details of the dedicated Redis cluster.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: App ID of a user.
+        :type AppId: int
+        :param _RegionId: Region ID.
+        :type RegionId: int
+        :param _ZoneId: AZ ID.
+        :type ZoneId: int
+        :param _RedisClusterId: ID of the dedicated Redis cluster.
+        :type RedisClusterId: str
+        :param _PayMode: Billing mode. 1: monthly subscription; 0: pay-as-you-go.
+        :type PayMode: int
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _AutoRenewFlag: Automatic renewal flag. 0: default status (manual renewal); 1: automatic renewal; 2: no automatic renewal.
+        :type AutoRenewFlag: int
+        :param _ClusterName: Dedicated cluster name.
+        :type ClusterName: str
+        :param _StartTime: Instance creation time
+        :type StartTime: str
+        :param _EndTime: Instance expiration time.
+        :type EndTime: str
+        :param _Status: Cluster status. 1: in process; 2: running; 3: isolated.
+        :type Status: int
+        :param _BaseBundles: Basic control resource package.
+        :type BaseBundles: list of ResourceBundle
+        :param _ResourceBundles: Resource package list.
+        :type ResourceBundles: list of ResourceBundle
+        :param _DedicatedClusterId: Local dedicated cluster ID.
+        :type DedicatedClusterId: str
+        """
+        self._AppId = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._RedisClusterId = None
+        self._PayMode = None
+        self._ProjectId = None
+        self._AutoRenewFlag = None
+        self._ClusterName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._BaseBundles = None
+        self._ResourceBundles = None
+        self._DedicatedClusterId = None
+
+    @property
+    def AppId(self):
+        """App ID of a user.
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RegionId(self):
+        """Region ID.
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        """AZ ID.
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RedisClusterId(self):
+        """ID of the dedicated Redis cluster.
+        :rtype: str
+        """
+        return self._RedisClusterId
+
+    @RedisClusterId.setter
+    def RedisClusterId(self, RedisClusterId):
+        self._RedisClusterId = RedisClusterId
+
+    @property
+    def PayMode(self):
+        """Billing mode. 1: monthly subscription; 0: pay-as-you-go.
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AutoRenewFlag(self):
+        """Automatic renewal flag. 0: default status (manual renewal); 1: automatic renewal; 2: no automatic renewal.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ClusterName(self):
+        """Dedicated cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def StartTime(self):
+        """Instance creation time
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Instance expiration time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        """Cluster status. 1: in process; 2: running; 3: isolated.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BaseBundles(self):
+        """Basic control resource package.
+        :rtype: list of ResourceBundle
+        """
+        return self._BaseBundles
+
+    @BaseBundles.setter
+    def BaseBundles(self, BaseBundles):
+        self._BaseBundles = BaseBundles
+
+    @property
+    def ResourceBundles(self):
+        """Resource package list.
+        :rtype: list of ResourceBundle
+        """
+        return self._ResourceBundles
+
+    @ResourceBundles.setter
+    def ResourceBundles(self, ResourceBundles):
+        self._ResourceBundles = ResourceBundles
+
+    @property
+    def DedicatedClusterId(self):
+        """Local dedicated cluster ID.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._RedisClusterId = params.get("RedisClusterId")
+        self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ClusterName = params.get("ClusterName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        if params.get("BaseBundles") is not None:
+            self._BaseBundles = []
+            for item in params.get("BaseBundles"):
+                obj = ResourceBundle()
+                obj._deserialize(item)
+                self._BaseBundles.append(obj)
+        if params.get("ResourceBundles") is not None:
+            self._ResourceBundles = []
+            for item in params.get("ResourceBundles"):
+                obj = ResourceBundle()
+                obj._deserialize(item)
+                self._ResourceBundles.append(obj)
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChangeInstanceRoleRequest(AbstractModel):
     """ChangeInstanceRole request structure.
 
@@ -851,11 +1177,13 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: Replication group ID
+        :param _GroupId: Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :type GroupId: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _InstanceRole: Instance role. Valid values: `rw` (read-write), `r`( read-only).
+        :param _InstanceRole: Instance role.
+- rw: read/write.
+- r: read-only.
         :type InstanceRole: str
         """
         self._GroupId = None
@@ -864,7 +1192,7 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Replication group ID
+        """Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :rtype: str
         """
         return self._GroupId
@@ -875,7 +1203,7 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -886,7 +1214,9 @@ class ChangeInstanceRoleRequest(AbstractModel):
 
     @property
     def InstanceRole(self):
-        """Instance role. Valid values: `rw` (read-write), `r`( read-only).
+        """Instance role.
+- rw: read/write.
+- r: read-only.
         :rtype: str
         """
         return self._InstanceRole
@@ -1175,14 +1505,14 @@ class CleanUpInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -1254,9 +1584,11 @@ class ClearInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _Password: Redis instance password (this parameter is required for password-enabled instances but not for password-free instances)
+        :param _Password: Instance access password.
+- Password-free access: No configuration is required.
+- Password authentication: The password is required. It cannot start with a forward slash (/) and should contain 8 to 64 characters, including at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
         :type Password: str
         """
         self._InstanceId = None
@@ -1264,7 +1596,7 @@ class ClearInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -1275,7 +1607,9 @@ class ClearInstanceRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Redis instance password (this parameter is required for password-enabled instances but not for password-free instances)
+        """Instance access password.
+- Password-free access: No configuration is required.
+- Password authentication: The password is required. It cannot start with a forward slash (/) and should contain 8 to 64 characters, including at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
         :rtype: str
         """
         return self._Password
@@ -1390,6 +1724,10 @@ class CloneInstancesRequest(AbstractModel):
         :type TemplateId: str
         :param _AlarmPolicyList: The alarm policy ID of the instance to be cloned. Log in to the [Tencent Cloud Observable Platform console](https://console.cloud.tencent.com/monitor/alarm2/policy), and get the policy ID in <b>Alarm Management</b> > <b>Policy Management</b>.
         :type AlarmPolicyList: list of str
+        :param _CloneTime: Time to restore data for cloning.
+Only instances with second-level backup enabled are supported.
+
+        :type CloneTime: str
         """
         self._InstanceId = None
         self._GoodsNum = None
@@ -1410,6 +1748,7 @@ class CloneInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._TemplateId = None
         self._AlarmPolicyList = None
+        self._CloneTime = None
 
     @property
     def InstanceId(self):
@@ -1624,6 +1963,19 @@ class CloneInstancesRequest(AbstractModel):
     def AlarmPolicyList(self, AlarmPolicyList):
         self._AlarmPolicyList = AlarmPolicyList
 
+    @property
+    def CloneTime(self):
+        """Time to restore data for cloning.
+Only instances with second-level backup enabled are supported.
+
+        :rtype: str
+        """
+        return self._CloneTime
+
+    @CloneTime.setter
+    def CloneTime(self, CloneTime):
+        self._CloneTime = CloneTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1655,6 +2007,7 @@ class CloneInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._TemplateId = params.get("TemplateId")
         self._AlarmPolicyList = params.get("AlarmPolicyList")
+        self._CloneTime = params.get("CloneTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1730,14 +2083,14 @@ class CloseSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -1809,9 +2162,9 @@ class CommandTake(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cmd: Command
+        :param _Cmd: Command name.
         :type Cmd: str
-        :param _Took: Duration
+        :param _Took: Time consumed. Unit: ms.
         :type Took: int
         """
         self._Cmd = None
@@ -1819,7 +2172,7 @@ class CommandTake(AbstractModel):
 
     @property
     def Cmd(self):
-        """Command
+        """Command name.
         :rtype: str
         """
         return self._Cmd
@@ -1830,7 +2183,7 @@ class CommandTake(AbstractModel):
 
     @property
     def Took(self):
-        """Duration
+        """Time consumed. Unit: ms.
         :rtype: int
         """
         return self._Took
@@ -1860,15 +2213,16 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _AccountName: Custom the name of the database to access.
-- Contains only letters, digits, underscores, and hyphens.
+        :param _AccountName: Custom account name for accessing the database.
+- It contains only letters, digits, underscores (_), and hyphens (-).
 - The length cannot exceed 32 characters.
         :type AccountName: str
-        :param _AccountPassword: Set a password for the customized account. The password complexity requirements are as follows:
-- Value range: [8, 32].
-- Contains at least two types of characters from the following categories: lowercase letters, uppercase letters, digits, and characters ()`~!@#$%^&*-+=_|{}[]:;<>,.? /.- Cannot start with "/".
+        :param _AccountPassword: Password of the custom account. The password complexity requirements are as follows:
+- It can contain 8 to 64 characters.
+- It should contain at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
+- It cannot start with a forward slash (/).
 
         :type AccountPassword: str
         :param _ReadonlyPolicy: The read requests for the designated account are routed to either the master node or replica nodes. If the Read-Only Replica is not enabled, the selection of replica nodes is not supported.
@@ -1890,7 +2244,7 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -1901,8 +2255,8 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Custom the name of the database to access.
-- Contains only letters, digits, underscores, and hyphens.
+        """Custom account name for accessing the database.
+- It contains only letters, digits, underscores (_), and hyphens (-).
 - The length cannot exceed 32 characters.
         :rtype: str
         """
@@ -1914,9 +2268,10 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
-        """Set a password for the customized account. The password complexity requirements are as follows:
-- Value range: [8, 32].
-- Contains at least two types of characters from the following categories: lowercase letters, uppercase letters, digits, and characters ()`~!@#$%^&*-+=_|{}[]:;<>,.? /.- Cannot start with "/".
+        """Password of the custom account. The password complexity requirements are as follows:
+- It can contain 8 to 64 characters.
+- It should contain at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
+- It cannot start with a forward slash (/).
 
         :rtype: str
         """
@@ -2030,8 +2385,8 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeId: Instance type
-<ul><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li><li>`15`: Redis 6.2 Memory Edition (Standard Architecture). </li><li>`16`: Redis 6.2 Memory Edition (Cluster Architecture).</li></ul>
+        :param _TypeId: Instance type.
+<ul><li>2: Redis 2.8 Memory Edition (standard architecture);</li> <li>3: CKV 3.2 Memory Edition (standard architecture);</li> <li>4: CKV 3.2 Memory Edition (cluster architecture);</li> <li>6: Redis 4.0 Memory Edition (standard architecture);</li> <li>7: Redis 4.0 Memory Edition (cluster architecture);</li> <li>8: Redis 5.0 Memory Edition (standard architecture);</li> <li>9: Redis 5.0 Memory Edition (cluster architecture);</li> <li>15: Redis 6.2 Memory Edition (standard architecture);</li> <li>16: Redis 6.2 Memory Edition (cluster architecture);</li> <li>17: Redis 7.0 Memory Edition (standard architecture);</li> <li>18: Redis 7.0 Memory Edition (cluster architecture). </li>Note: The CKV version is currently used by existing users and is temporarily retained.</ul>
         :type TypeId: int
         :param _MemSize: Memory capacity in MB, which must be an integer multiple of 1024. For specific specifications, query the sales specifications in all regions through the [DescribeProductInfo](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1) API.
 - When **TypeId** is a standard architecture, **MemSize** is the total memory capacity of the instance;
@@ -2047,10 +2402,10 @@ class CreateInstancesRequest(AbstractModel):
         :type BillingMode: int
         :param _ZoneId: ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
-        :param _Password: Instance access password
-- When the input parameter `NoAuth` is `true`, it means that the instance access is set to be password-free, and the `Password` field does not need to be configured; otherwise, `Password` is a required parameter.
-- When the instance type `TypeId` is Redis 2.8 Memory Edition (Standard Architecture), Redis 4.0, 5.0, 6.0 (regardless of architecture), the password must contains 8-30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/), and it cannot start with a slash (/).
-- When the instance type **TypeId** is CKV 3.2 Memory Edition (regardless of architecture), the password contains 8-30 letters and digits and excludes other characters.
+        :param _Password: Password for accessing instances.
+- When the input parameter **NoAuth** is set to **true**, password-free access is set for instances and Password does not need to be configured. Otherwise, Password is required.
+- When the instance type parameter **TypeId** is set to Redis 2.8 Memory Edition (standard architecture) or Redis 4.0, 5.0, or 6.0 Memory Edition (standard architecture or cluster architecture), the password cannot start with a forward slash (/) and should contain 8 to 64 characters, including at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
+- When the instance type parameter **TypeId** is set to CKV 3.2 Memory Edition (standard architecture or cluster architecture), the password should contain 8 to 30 characters, including only letters and digits.
         :type Password: str
         :param _VpcId: VPC ID. If this parameter is not passed in, the classic network will be selected by default. You can query the specific VPC ID in the [VPC console](https://console.cloud.tencent.com/vpc).
         :type VpcId: str
@@ -2063,7 +2418,9 @@ class CreateInstancesRequest(AbstractModel):
 - `1`: Auto-renewal.
 - `2`: Not auto-renewal (set by user).
         :type AutoRenew: int
-        :param _SecurityGroupIdList: Array of security group IDs. Get the security group ID of the instance through the [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1) API.
+        :param _SecurityGroupIdList: Array of security group IDs.
+- A security group is a virtual firewall that controls network access to cloud database instances. It is recommended to bind the corresponding security group when you create an instance.
+- Obtain the security group ID of the instance through the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).
         :type SecurityGroupIdList: list of str
         :param _VPort: User-defined network port. Default value: `6379`. Range: [1024,65535].
         :type VPort: int
@@ -2140,8 +2497,8 @@ Node information of an instance. Currently, information about the node type (mas
 
     @property
     def TypeId(self):
-        """Instance type
-<ul><li>`2`: Redis 2.8 Memory Edition (Standard Architecture). </li><li>`3`: CKV 3.2 Memory Edition (Standard Architecture). </li><li>`4`: CKV 3.2 Memory Edition (Cluster Architecture). </li><li>`6`: Redis 4.0 Memory Edition (Standard Architecture). </li><li>`7`: Redis 4.0 Memory Edition (Cluster Architecture). </li><li>`8`: Redis 5.0 Memory Edition (Standard Architecture). </li><li>`9`: Redis 5.0 Memory Edition (Cluster Architecture). </li><li>`15`: Redis 6.2 Memory Edition (Standard Architecture). </li><li>`16`: Redis 6.2 Memory Edition (Cluster Architecture).</li></ul>
+        """Instance type.
+<ul><li>2: Redis 2.8 Memory Edition (standard architecture);</li> <li>3: CKV 3.2 Memory Edition (standard architecture);</li> <li>4: CKV 3.2 Memory Edition (cluster architecture);</li> <li>6: Redis 4.0 Memory Edition (standard architecture);</li> <li>7: Redis 4.0 Memory Edition (cluster architecture);</li> <li>8: Redis 5.0 Memory Edition (standard architecture);</li> <li>9: Redis 5.0 Memory Edition (cluster architecture);</li> <li>15: Redis 6.2 Memory Edition (standard architecture);</li> <li>16: Redis 6.2 Memory Edition (cluster architecture);</li> <li>17: Redis 7.0 Memory Edition (standard architecture);</li> <li>18: Redis 7.0 Memory Edition (cluster architecture). </li>Note: The CKV version is currently used by existing users and is temporarily retained.</ul>
         :rtype: int
         """
         return self._TypeId
@@ -2211,10 +2568,10 @@ Node information of an instance. Currently, information about the node type (mas
 
     @property
     def Password(self):
-        """Instance access password
-- When the input parameter `NoAuth` is `true`, it means that the instance access is set to be password-free, and the `Password` field does not need to be configured; otherwise, `Password` is a required parameter.
-- When the instance type `TypeId` is Redis 2.8 Memory Edition (Standard Architecture), Redis 4.0, 5.0, 6.0 (regardless of architecture), the password must contains 8-30 characters in at least two of the following types: lowercase letters, uppercase letters, digits, and symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/), and it cannot start with a slash (/).
-- When the instance type **TypeId** is CKV 3.2 Memory Edition (regardless of architecture), the password contains 8-30 letters and digits and excludes other characters.
+        """Password for accessing instances.
+- When the input parameter **NoAuth** is set to **true**, password-free access is set for instances and Password does not need to be configured. Otherwise, Password is required.
+- When the instance type parameter **TypeId** is set to Redis 2.8 Memory Edition (standard architecture) or Redis 4.0, 5.0, or 6.0 Memory Edition (standard architecture or cluster architecture), the password cannot start with a forward slash (/) and should contain 8 to 64 characters, including at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+=_|{}[]:;<>,.?/).
+- When the instance type parameter **TypeId** is set to CKV 3.2 Memory Edition (standard architecture or cluster architecture), the password should contain 8 to 30 characters, including only letters and digits.
         :rtype: str
         """
         return self._Password
@@ -2272,7 +2629,9 @@ Node information of an instance. Currently, information about the node type (mas
 
     @property
     def SecurityGroupIdList(self):
-        """Array of security group IDs. Get the security group ID of the instance through the [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1) API.
+        """Array of security group IDs.
+- A security group is a virtual firewall that controls network access to cloud database instances. It is recommended to bind the corresponding security group when you create an instance.
+- Obtain the security group ID of the instance through the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._SecurityGroupIdList
@@ -2569,7 +2928,16 @@ class CreateParamTemplateRequest(AbstractModel):
         :type Name: str
         :param _Description: Parameter template description.
         :type Description: str
-        :param _ProductType: Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.
+        :param _ProductType: Product type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :type ProductType: int
         :param _TemplateId: ID of the source parameter template.
         :type TemplateId: str
@@ -2606,7 +2974,16 @@ class CreateParamTemplateRequest(AbstractModel):
 
     @property
     def ProductType(self):
-        """Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.
+        """Product type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :rtype: int
         """
         return self._ProductType
@@ -2709,9 +3086,9 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Specifies the ID of the primary instance in the replication group.
+        :param _InstanceId: ID of the primary instance in the replication group. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _GroupName: Replication group name. It supports only Chinese characters, letters, digits, underscores (_), and hyphens (-), with a length of 2-64 characters.
+        :param _GroupName: Replication group name. The name should contain 2 to 64 characters, including only letters, digits, underscores (_), and hyphens (-).
         :type GroupName: str
         :param _Remark: Remark information.
         :type Remark: str
@@ -2722,7 +3099,7 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Specifies the ID of the primary instance in the replication group.
+        """ID of the primary instance in the replication group. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -2733,7 +3110,7 @@ class CreateReplicationGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        """Replication group name. It supports only Chinese characters, letters, digits, underscores (_), and hyphens (-), with a length of 2-64 characters.
+        """Replication group name. The name should contain 2 to 64 characters, including only letters, digits, underscores (_), and hyphens (-).
         :rtype: str
         """
         return self._GroupName
@@ -2884,9 +3261,9 @@ class DeleteInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _AccountName: Sub-account name
+        :param _AccountName: Sub-account name. Log in to the [Redis console](https://console.tencentcloud.com/redis) and switch to the **Account Management** page to obtain it. For details, see [Managing Account](https://www.tencentcloud.com/document/product/239/34590).
         :type AccountName: str
         """
         self._InstanceId = None
@@ -2894,7 +3271,7 @@ class DeleteInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -2905,7 +3282,7 @@ class DeleteInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Sub-account name
+        """Sub-account name. Log in to the [Redis console](https://console.tencentcloud.com/redis) and switch to the **Account Management** page to obtain it. For details, see [Managing Account](https://www.tencentcloud.com/document/product/239/34590).
         :rtype: str
         """
         return self._AccountName
@@ -3042,11 +3419,13 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: Replication group ID.
+        :param _GroupId: Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :type GroupId: str
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _SyncType: Data synchronization type. Valid values: true (Strong synchronization is required.) and false (Strong synchronization is not required. This value applies only to primary instance deletion.)
+        :param _SyncType: Data synchronization type.
+- true: Strong synchronization is required.
+- false: Strong synchronization is not required, and only the primary instance can be deleted.
         :type SyncType: bool
         """
         self._GroupId = None
@@ -3055,7 +3434,7 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Replication group ID.
+        """Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
         :rtype: str
         """
         return self._GroupId
@@ -3066,7 +3445,7 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -3077,7 +3456,9 @@ class DeleteReplicationInstanceRequest(AbstractModel):
 
     @property
     def SyncType(self):
-        """Data synchronization type. Valid values: true (Strong synchronization is required.) and false (Strong synchronization is not required. This value applies only to primary instance deletion.)
+        """Data synchronization type.
+- true: Strong synchronization is required.
+- false: Strong synchronization is not required, and only the primary instance can be deleted.
         :rtype: bool
         """
         return self._SyncType
@@ -3283,6 +3664,289 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupDetailRequest(AbstractModel):
+    """DescribeBackupDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
+        :type InstanceId: str
+        :param _BackupId: Backup ID, which can be obtained through the response parameter **RedisBackupSet** of the API [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1).
+        :type BackupId: str
+        """
+        self._InstanceId = None
+        self._BackupId = None
+
+    @property
+    def InstanceId(self):
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupId(self):
+        """Backup ID, which can be obtained through the response parameter **RedisBackupSet** of the API [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupId = params.get("BackupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDetailResponse(AbstractModel):
+    """DescribeBackupDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: Backup ID.
+        :type BackupId: str
+        :param _StartTime: Backup start time.
+        :type StartTime: str
+        :param _EndTime: Backup end time.
+        :type EndTime: str
+        :param _BackupType: Backup mode.
+
+- 1: manual backup.
+- 0: automatic backup.
+        :type BackupType: str
+        :param _Status: Backup status.
+
+- 1: The backup is locked by other processes.
+- 2: The backup is normal and not locked by any processes.
+- -1: The backup has expired.
+- 3: The backup is being exported.
+- 4: The backup is successfully exported.
+        :type Status: int
+        :param _Remark: Backup remarks.
+        :type Remark: str
+        :param _Locked: Whether the backup is locked.
+
+- 0: not locked.
+- 1: locked.
+        :type Locked: int
+        :param _BackupSize: Backup file size. Unit: byte.
+        :type BackupSize: int
+        :param _InstanceType: Instance type.
+        :type InstanceType: int
+        :param _MemSize: Memory size of a single shard. Unit: MB.
+        :type MemSize: int
+        :param _ShardNum: Number of shards.
+        :type ShardNum: int
+        :param _ReplicasNum: Number of replicas.
+        :type ReplicasNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackupId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._BackupType = None
+        self._Status = None
+        self._Remark = None
+        self._Locked = None
+        self._BackupSize = None
+        self._InstanceType = None
+        self._MemSize = None
+        self._ShardNum = None
+        self._ReplicasNum = None
+        self._RequestId = None
+
+    @property
+    def BackupId(self):
+        """Backup ID.
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def StartTime(self):
+        """Backup start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Backup end time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BackupType(self):
+        """Backup mode.
+
+- 1: manual backup.
+- 0: automatic backup.
+        :rtype: str
+        """
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def Status(self):
+        """Backup status.
+
+- 1: The backup is locked by other processes.
+- 2: The backup is normal and not locked by any processes.
+- -1: The backup has expired.
+- 3: The backup is being exported.
+- 4: The backup is successfully exported.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Remark(self):
+        """Backup remarks.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Locked(self):
+        """Whether the backup is locked.
+
+- 0: not locked.
+- 1: locked.
+        :rtype: int
+        """
+        return self._Locked
+
+    @Locked.setter
+    def Locked(self, Locked):
+        self._Locked = Locked
+
+    @property
+    def BackupSize(self):
+        """Backup file size. Unit: byte.
+        :rtype: int
+        """
+        return self._BackupSize
+
+    @BackupSize.setter
+    def BackupSize(self, BackupSize):
+        self._BackupSize = BackupSize
+
+    @property
+    def InstanceType(self):
+        """Instance type.
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MemSize(self):
+        """Memory size of a single shard. Unit: MB.
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def ShardNum(self):
+        """Number of shards.
+        :rtype: int
+        """
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def ReplicasNum(self):
+        """Number of replicas.
+        :rtype: int
+        """
+        return self._ReplicasNum
+
+    @ReplicasNum.setter
+    def ReplicasNum(self, ReplicasNum):
+        self._ReplicasNum = ReplicasNum
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._BackupType = params.get("BackupType")
+        self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
+        self._Locked = params.get("Locked")
+        self._BackupSize = params.get("BackupSize")
+        self._InstanceType = params.get("InstanceType")
+        self._MemSize = params.get("MemSize")
+        self._ShardNum = params.get("ShardNum")
+        self._ReplicasNum = params.get("ReplicasNum")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadRestrictionRequest(AbstractModel):
     """DescribeBackupDownloadRestriction request structure.
 
@@ -3422,22 +4086,21 @@ class DescribeBackupUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _BackupId: Backup ID, which can be obtained through the `RedisBackupSet` parameter returned by the [DescribeInstanceBackups](https://intl.cloud.tencent.com/document/product/239/20011?from_cn_redirect=1) API.
         :type BackupId: str
-        :param _LimitType: Type of the network restriction for downloading backup files. If this parameter is not configured, the user-defined configuration will be used.
-
-- `NoLimit`: Backup files can be downloaded over both public and private networks.
-- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.
-- `Customize`: Backup files can be downloaded only in the customized VPC.
+        :param _LimitType: Limit type of the network from which you can download backup files. If this parameter is not configured, the user-defined configuration will be used.
+- NoLimit: There is no limit. Backup files can be downloaded from both Tencent Cloud private and public networks.
+- LimitOnlyIntranet: Backup files can be downloaded 
+ only from the private IP address automatically assigned by Tencent Cloud.
+- Customize: Backup files can be downloaded from the user-defined VPC.
         :type LimitType: str
         :param _VpcComparisonSymbol: Only `In` can be passed in for this parameter, indicating that backup files can be downloaded in the custom `LimitVpc`.
         :type VpcComparisonSymbol: str
-        :param _IpComparisonSymbol: Whether backups can be downloaded at the custom `LimitIp` address.
-
-- `In` (default value): Download is allowed for the custom IP.
-- `NotIn`: Download is not allowed for the custom IP.
+        :param _IpComparisonSymbol: Whether backup files can be downloaded from the custom IP address specified by LimitIp.
+- In: yes. This is the default value.
+- NotIn: no.
         :type IpComparisonSymbol: str
         :param _LimitVpc: VPC ID of the custom backup file download address, which is required if `LimitType` is `Customize`.
         :type LimitVpc: list of BackupLimitVpcItem
@@ -3454,7 +4117,7 @@ class DescribeBackupUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -3476,11 +4139,11 @@ class DescribeBackupUrlRequest(AbstractModel):
 
     @property
     def LimitType(self):
-        """Type of the network restriction for downloading backup files. If this parameter is not configured, the user-defined configuration will be used.
-
-- `NoLimit`: Backup files can be downloaded over both public and private networks.
-- `LimitOnlyIntranet`: Backup files can be downloaded only at private network addresses auto-assigned by Tencent Cloud.
-- `Customize`: Backup files can be downloaded only in the customized VPC.
+        """Limit type of the network from which you can download backup files. If this parameter is not configured, the user-defined configuration will be used.
+- NoLimit: There is no limit. Backup files can be downloaded from both Tencent Cloud private and public networks.
+- LimitOnlyIntranet: Backup files can be downloaded 
+ only from the private IP address automatically assigned by Tencent Cloud.
+- Customize: Backup files can be downloaded from the user-defined VPC.
         :rtype: str
         """
         return self._LimitType
@@ -3502,10 +4165,9 @@ class DescribeBackupUrlRequest(AbstractModel):
 
     @property
     def IpComparisonSymbol(self):
-        """Whether backups can be downloaded at the custom `LimitIp` address.
-
-- `In` (default value): Download is allowed for the custom IP.
-- `NotIn`: Download is not allowed for the custom IP.
+        """Whether backup files can be downloaded from the custom IP address specified by LimitIp.
+- In: yes. This is the default value.
+- NotIn: no.
         :rtype: str
         """
         return self._IpComparisonSymbol
@@ -3664,14 +4326,14 @@ class DescribeBandwidthRangeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -3794,7 +4456,7 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
         :type SubnetIds: list of int
         :param _PayMode: List of billing modes. 0: monthly subscription; 1: pay-as-you-go
         :type PayMode: int
-        :param _InstanceIds: List of instance IDs
+        :param _InstanceIds: Instance ID filter information list, with a maximum array length of 100.
         :type InstanceIds: list of str
         :param _InstanceNames: List of instance names
         :type InstanceNames: list of str
@@ -3864,7 +4526,7 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of instance IDs
+        """Instance ID filter information list, with a maximum array length of 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -4191,6 +4853,60 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGlobalReplicationAreaRequest(AbstractModel):
+    """DescribeGlobalReplicationArea request structure.
+
+    """
+
+
+class DescribeGlobalReplicationAreaResponse(AbstractModel):
+    """DescribeGlobalReplicationArea response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableRegions: Available region information.
+        :type AvailableRegions: list of AvailableRegion
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AvailableRegions = None
+        self._RequestId = None
+
+    @property
+    def AvailableRegions(self):
+        """Available region information.
+        :rtype: list of AvailableRegion
+        """
+        return self._AvailableRegions
+
+    @AvailableRegions.setter
+    def AvailableRegions(self, AvailableRegions):
+        self._AvailableRegions = AvailableRegions
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AvailableRegions") is not None:
+            self._AvailableRegions = []
+            for item in params.get("AvailableRegions"):
+                obj = AvailableRegion()
+                obj._deserialize(item)
+                self._AvailableRegions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceAccountRequest(AbstractModel):
     """DescribeInstanceAccount request structure.
 
@@ -4337,9 +5053,9 @@ class DescribeInstanceBackupsRequest(AbstractModel):
         :type Offset: int
         :param _InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstance` API.
         :type InstanceId: str
-        :param _BeginTime: Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
+        :param _BeginTime: Start time for a query, for example, in the format of 2017-02-08 16:46:34, with a maximum query span of 30 days. You can query the list of instances backed up within the [beginTime, endTime] period.
         :type BeginTime: str
-        :param _EndTime: End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
+        :param _EndTime: End time for a query, for example, in the format of 2017-02-08 19:09:26, with a maximum query span of 30 days. You can query the list of instances backed up within the [BeginTime, EndTime] period.
         :type EndTime: str
         :param _Status: Backup task status:
 `1`: The backup is in the process.
@@ -4395,7 +5111,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 16:46:34. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
+        """Start time for a query, for example, in the format of 2017-02-08 16:46:34, with a maximum query span of 30 days. You can query the list of instances backed up within the [beginTime, endTime] period.
         :rtype: str
         """
         return self._BeginTime
@@ -4406,7 +5122,7 @@ class DescribeInstanceBackupsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time in the format of yyyy-MM-dd HH:mm:ss, such as 2017-02-08 19:09:26. This parameter is used to query the list of instance backups started during the [beginTime, endTime] range.
+        """End time for a query, for example, in the format of 2017-02-08 19:09:26, with a maximum query span of 30 days. You can query the list of instances backed up within the [BeginTime, EndTime] period.
         :rtype: str
         """
         return self._EndTime
@@ -4532,14 +5248,14 @@ class DescribeInstanceDTSInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -4736,29 +5452,29 @@ class DescribeInstanceDTSInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionId: Region ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RegionId: Region ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RegionId: int
-        :param _InstanceId: Instance ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Instance ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceId: str
-        :param _SetId: Repository ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SetId: Warehouse ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SetId: int
-        :param _ZoneId: AZ ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ZoneId: AZ ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ZoneId: int
-        :param _Type: Instance type
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Instance type.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: int
-        :param _InstanceName: Instance name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceName: Instance name.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceName: str
-        :param _Vip: Instance access address
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Vip: Instance access address.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Vip: str
-        :param _Status: Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Status.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: int
         """
         self._RegionId = None
@@ -4772,8 +5488,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Region ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._RegionId
@@ -4784,8 +5500,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
-        """Instance ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._InstanceId
@@ -4796,8 +5512,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SetId(self):
-        """Repository ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Warehouse ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._SetId
@@ -4808,8 +5524,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
-        """AZ ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        """AZ ID.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._ZoneId
@@ -4820,8 +5536,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Instance type
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance type.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Type
@@ -4832,8 +5548,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
-        """Instance name
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance name.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._InstanceName
@@ -4844,8 +5560,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
-        """Instance access address
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance access address.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Vip
@@ -4856,8 +5572,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Status.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Status
@@ -4893,14 +5609,14 @@ class DescribeInstanceDealDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: Array of order transaction IDs, i.e., the `DealId` output parameter of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
+        :param _DealIds: Order transaction ID array, which is the output parameter DealId of [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1), with the maximum array length of 10.
         :type DealIds: list of str
         """
         self._DealIds = None
 
     @property
     def DealIds(self):
-        """Array of order transaction IDs, i.e., the `DealId` output parameter of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
+        """Order transaction ID array, which is the output parameter DealId of [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1), with the maximum array length of 10.
         :rtype: list of str
         """
         return self._DealIds
@@ -4977,13 +5693,13 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExecutionStartDate: Configures the start date for querying the event execution schedule.
+        :param _ExecutionStartDate: Start date for querying the event execution plan, with a maximum query span of 30 days.
         :type ExecutionStartDate: str
-        :param _ExecutionEndDate: Configures the end date for querying the event execution schedule.
+        :param _ExecutionEndDate: End date for querying the event execution plan, with a maximum query span of 30 days.
         :type ExecutionEndDate: str
         :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _PageSize: Outputs the number of events displayed per page. Default value: 10.
+        :param _PageSize: Number of events displayed per page. Default value: 10. Maximum value: 100.
         :type PageSize: int
         :param _PageNo: Configures the page number for querying events. You can query events on a certain page by specifying PageNo and PageSize. Default value: 1.
         :type PageNo: int
@@ -5005,7 +5721,7 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     @property
     def ExecutionStartDate(self):
-        """Configures the start date for querying the event execution schedule.
+        """Start date for querying the event execution plan, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._ExecutionStartDate
@@ -5016,7 +5732,7 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     @property
     def ExecutionEndDate(self):
-        """Configures the end date for querying the event execution schedule.
+        """End date for querying the event execution plan, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._ExecutionEndDate
@@ -5038,7 +5754,7 @@ class DescribeInstanceEventsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Outputs the number of events displayed per page. Default value: 10.
+        """Number of events displayed per page. Default value: 10. Maximum value: 100.
         :rtype: int
         """
         return self._PageSize
@@ -5171,6 +5887,87 @@ class DescribeInstanceEventsResponse(AbstractModel):
                 obj = RedisInstanceEvent()
                 obj._deserialize(item)
                 self._RedisInstanceEvents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceLogDeliveryRequest(AbstractModel):
+    """DescribeInstanceLogDelivery request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceLogDeliveryResponse(AbstractModel):
+    """DescribeInstanceLogDelivery response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SlowLog: Slow query log shipping information of the instance.
+        :type SlowLog: :class:`tencentcloud.redis.v20180412.models.LogDeliveryInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SlowLog = None
+        self._RequestId = None
+
+    @property
+    def SlowLog(self):
+        """Slow query log shipping information of the instance.
+        :rtype: :class:`tencentcloud.redis.v20180412.models.LogDeliveryInfo`
+        """
+        return self._SlowLog
+
+    @SlowLog.setter
+    def SlowLog(self, SlowLog):
+        self._SlowLog = SlowLog
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SlowLog") is not None:
+            self._SlowLog = LogDeliveryInfo()
+            self._SlowLog._deserialize(params.get("SlowLog"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5493,9 +6290,13 @@ class DescribeInstanceMonitorHotKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _SpanType: Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours
+        :param _SpanType: Query time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :type SpanType: int
         """
         self._InstanceId = None
@@ -5503,7 +6304,7 @@ class DescribeInstanceMonitorHotKeyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -5514,7 +6315,11 @@ class DescribeInstanceMonitorHotKeyRequest(AbstractModel):
 
     @property
     def SpanType(self):
-        """Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours
+        """Query time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :rtype: int
         """
         return self._SpanType
@@ -5544,7 +6349,7 @@ class DescribeInstanceMonitorHotKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Hot key details
+        :param _Data: Hot key details.
         :type Data: list of HotKeyInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5554,7 +6359,7 @@ class DescribeInstanceMonitorHotKeyResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Hot key details
+        """Hot key details.
         :rtype: list of HotKeyInfo
         """
         return self._Data
@@ -5592,14 +6397,14 @@ class DescribeInstanceMonitorSIPRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -5676,11 +6481,15 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _Date: Time, such as "20190219"
+        :param _Date: Query date.
         :type Date: str
-        :param _SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        :param _SpanType: Time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :type SpanType: int
         """
         self._InstanceId = None
@@ -5689,7 +6498,7 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -5700,7 +6509,7 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     @property
     def Date(self):
-        """Time, such as "20190219"
+        """Query date.
         :rtype: str
         """
         return self._Date
@@ -5711,7 +6520,11 @@ class DescribeInstanceMonitorTookDistRequest(AbstractModel):
 
     @property
     def SpanType(self):
-        """Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        """Time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :rtype: int
         """
         return self._SpanType
@@ -5742,7 +6555,7 @@ class DescribeInstanceMonitorTookDistResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: Latency distribution information
+        :param _Data: Latency distribution information.
         :type Data: list of DelayDistribution
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5752,7 +6565,7 @@ class DescribeInstanceMonitorTookDistResponse(AbstractModel):
 
     @property
     def Data(self):
-        """Latency distribution information
+        """Latency distribution information.
         :rtype: list of DelayDistribution
         """
         return self._Data
@@ -5790,9 +6603,13 @@ class DescribeInstanceMonitorTopNCmdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        :param _SpanType: Time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :type SpanType: int
         """
         self._InstanceId = None
@@ -5800,7 +6617,7 @@ class DescribeInstanceMonitorTopNCmdRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -5811,7 +6628,11 @@ class DescribeInstanceMonitorTopNCmdRequest(AbstractModel):
 
     @property
     def SpanType(self):
-        """Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        """Time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :rtype: int
         """
         return self._SpanType
@@ -5889,9 +6710,13 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _SpanType: Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        :param _SpanType: Query time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :type SpanType: int
         """
         self._InstanceId = None
@@ -5899,7 +6724,7 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -5910,7 +6735,11 @@ class DescribeInstanceMonitorTopNCmdTookRequest(AbstractModel):
 
     @property
     def SpanType(self):
-        """Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours
+        """Query time range.
+- 1: real-time.
+- 2: last 30 minutes.
+- 3: last 6 hours.
+- 4: last 24 hours.
         :rtype: int
         """
         return self._SpanType
@@ -6481,14 +7310,14 @@ class DescribeInstanceSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: List of instance IDs,  such as "crs-f2ho5rsz\n".
+        :param _InstanceIds: Instance ID list, with the array length ranging from 0 to 100, for example, ["crs-f2ho5rsz\n"].
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        """List of instance IDs,  such as "crs-f2ho5rsz\n".
+        """Instance ID list, with the array length ranging from 0 to 100, for example, ["crs-f2ho5rsz\n"].
         :rtype: list of str
         """
         return self._InstanceIds
@@ -6669,6 +7498,40 @@ class DescribeInstanceShardsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceShards.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceSpecBandwidthRequest(AbstractModel):
+    """DescribeInstanceSpecBandwidth request structure.
+
+    """
+
+
+class DescribeInstanceSpecBandwidthResponse(AbstractModel):
+    """DescribeInstanceSpecBandwidth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -6929,7 +7792,19 @@ class DescribeInstancesRequest(AbstractModel):
         :type AutoRenew: list of int
         :param _BillingMode: Billing mode. Only pay-as-you-go billing is supported.
         :type BillingMode: str
-        :param _Type: Instance type. Valid values:  - `2`: Redis 2.8 Memory Edition (Standard Architecture). - `3`: CKV 3.2 Memory Edition (Standard Architecture). - `4`: CKV 3.2 Memory Edition (Cluster Architecture). - `5`: Redis 2.8 Memory Edition (Standalone). - `6`: Redis 4.0 Memory Edition (Standard Architecture). - `7`: Redis 4.0 Memory Edition (Cluster Architecture). - `8`: Redis 5.0 Memory Edition (Standard Architecture). - `9`: Redis 5.0 Memory Edition (Cluster Architecture). - `15`: Redis 6.2 Memory Edition (Standard Architecture). - `16`: Redis 6.2 Memory Edition (Cluster Architecture).
+        :param _Type: Instance type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 5: Redis 2.8 Memory Edition (stand-alone).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :type Type: int
         :param _SearchKeys: This parameter is of array type and supports the configuration of instance names, instance IDs, and IP addresses. Among these, the instance name is fuzzy matching while the instance ID and IP address are precise matching.
 - Each element in the array is used for a union-based matching query.- When both **InstanceId** and **SearchKeys** are configured simultaneously, their intersection will be used for the matching query.
@@ -7195,7 +8070,19 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Instance type. Valid values:  - `2`: Redis 2.8 Memory Edition (Standard Architecture). - `3`: CKV 3.2 Memory Edition (Standard Architecture). - `4`: CKV 3.2 Memory Edition (Cluster Architecture). - `5`: Redis 2.8 Memory Edition (Standalone). - `6`: Redis 4.0 Memory Edition (Standard Architecture). - `7`: Redis 4.0 Memory Edition (Cluster Architecture). - `8`: Redis 5.0 Memory Edition (Standard Architecture). - `9`: Redis 5.0 Memory Edition (Cluster Architecture). - `15`: Redis 6.2 Memory Edition (Standard Architecture). - `16`: Redis 6.2 Memory Edition (Cluster Architecture).
+        """Instance type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 5: Redis 2.8 Memory Edition (stand-alone).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :rtype: int
         """
         return self._Type
@@ -7410,14 +8297,14 @@ class DescribeMaintenanceWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -7446,9 +8333,12 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time of the maintenance window, such as 17:00.
+        :param _StartTime: Start time of the maintenance window. Value range: any time point between 00:00 and 23:00, for example, 03:24.
         :type StartTime: str
-        :param _EndTime: End time of the maintenance window, such as 19:00.
+        :param _EndTime: End time of the maintenance window.
+- Value range: any time point between 00:00 and 23:00, for example, 04:24.
+- The minimum maintenance duration is 30 minutes and the maximum is 3 hours.
+- The end time should be later than the start time.
         :type EndTime: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7459,7 +8349,7 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the maintenance window, such as 17:00.
+        """Start time of the maintenance window. Value range: any time point between 00:00 and 23:00, for example, 03:24.
         :rtype: str
         """
         return self._StartTime
@@ -7470,7 +8360,10 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the maintenance window, such as 19:00.
+        """End time of the maintenance window.
+- Value range: any time point between 00:00 and 23:00, for example, 04:24.
+- The minimum maintenance duration is 30 minutes and the maximum is 3 hours.
+- The end time should be later than the start time.
         :rtype: str
         """
         return self._EndTime
@@ -7546,17 +8439,19 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type TemplateId: str
         :param _Name: Parameter template name.
         :type Name: str
-        :param _ProductType: Product type
-- `2`: Redis 2.8 Memory Edition (Standard Architecture).
-- `3`: CKV 3.2 Memory Edition (Standard Architecture).
-- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
-- `5`: Redis 2.8 Memory Edition (Standalone).
-- `6`: Redis 4.0 Memory Edition (Standard Architecture).
-- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
-- `8`: Redis 5.0 Memory Edition (Standard Architecture).
-- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
-- `15`: Redis 6.2 Memory Edition (Standard Architecture).
-- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
+        :param _ProductType: Product type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 5: Redis 2.8 Memory Edition (stand-alone).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :type ProductType: int
         :param _Description: Parameter template description
         :type Description: str
@@ -7608,17 +8503,19 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
 
     @property
     def ProductType(self):
-        """Product type
-- `2`: Redis 2.8 Memory Edition (Standard Architecture).
-- `3`: CKV 3.2 Memory Edition (Standard Architecture).
-- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
-- `5`: Redis 2.8 Memory Edition (Standalone).
-- `6`: Redis 4.0 Memory Edition (Standard Architecture).
-- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
-- `8`: Redis 5.0 Memory Edition (Standard Architecture).
-- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
-- `15`: Redis 6.2 Memory Edition (Standard Architecture).
-- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
+        """Product type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 5: Redis 2.8 Memory Edition (stand-alone).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :rtype: int
         """
         return self._ProductType
@@ -7683,11 +8580,22 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductTypes: Array of instance types. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).
+        :param _ProductTypes: Product type array.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :type ProductTypes: list of int
-        :param _TemplateNames: Array of template names.
+        :param _TemplateNames: Template name array, with the maximum array length of 50.
         :type TemplateNames: list of str
-        :param _TemplateIds: Array of template IDs.
+        :param _TemplateIds: Template ID array, with the maximum array length of 50.
         :type TemplateIds: list of str
         """
         self._ProductTypes = None
@@ -7696,7 +8604,18 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def ProductTypes(self):
-        """Array of instance types. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).
+        """Product type array.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :rtype: list of int
         """
         return self._ProductTypes
@@ -7707,7 +8626,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateNames(self):
-        """Array of template names.
+        """Template name array, with the maximum array length of 50.
         :rtype: list of str
         """
         return self._TemplateNames
@@ -7718,7 +8637,7 @@ class DescribeParamTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        """Array of template IDs.
+        """Template ID array, with the maximum array length of 50.
         :rtype: list of str
         """
         return self._TemplateIds
@@ -7866,9 +8785,12 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 0: default project; -1: all projects; >0: specified project
+        :param _ProjectId: Project ID for query.
+- 0: default project.
+- -1: all projects.
+- Greater than 0: specific project. Log in to the [project management](https://console.tencentcloud.com/project) page of the Redis console and copy the project ID in **Project Name**.
         :type ProjectId: int
-        :param _SecurityGroupId: Security group ID
+        :param _SecurityGroupId: Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter **InstanceSecurityGroupsDetail** of the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).
         :type SecurityGroupId: str
         """
         self._ProjectId = None
@@ -7876,7 +8798,10 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """0: default project; -1: all projects; >0: specified project
+        """Project ID for query.
+- 0: default project.
+- -1: all projects.
+- Greater than 0: specific project. Log in to the [project management](https://console.tencentcloud.com/project) page of the Redis console and copy the project ID in **Project Name**.
         :rtype: int
         """
         return self._ProjectId
@@ -7887,7 +8812,7 @@ class DescribeProjectSecurityGroupRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """Security group ID
+        """Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter **InstanceSecurityGroupsDetail** of the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).
         :rtype: str
         """
         return self._SecurityGroupId
@@ -7967,7 +8892,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID. Log in to the [Project Management](https://console.tencentcloud.com/project) page of the Redis console and copy the project ID in **Project Name**.
         :type ProjectId: int
         :param _Offset: Offset, which is an integral multiple of `Limit`.
         :type Offset: int
@@ -7995,7 +8920,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        """Project ID. Log in to the [Project Management](https://console.tencentcloud.com/project) page of the Redis console and copy the project ID in **Project Name**.
         :rtype: int
         """
         return self._ProjectId
@@ -8127,15 +9052,15 @@ class DescribeProxySlowLogRequest(AbstractModel):
         :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
 
         :type InstanceId: str
-        :param _BeginTime: Start time of slow query
+        :param _BeginTime: Start time of a slow query, with a maximum query span of 30 days.
         :type BeginTime: str
-        :param _EndTime: End time of slow query
+        :param _EndTime: End time of a slow query, with a maximum query span of 30 days.
         :type EndTime: str
         :param _MinQueryTime: Slow query threshold  in milliseconds
         :type MinQueryTime: int
-        :param _Limit: Number of results per page.  Default value: `20`. Value range: [20,1000].
+        :param _Limit: Number of tasks output on each page. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param _Offset: Offset, which is an integral multiple of `Limit`.
+        :param _Offset: Pagination offset, which is an integer multiple of Limit. Calculation formula: Offset = Limit x (Page number - 1).
         :type Offset: int
         """
         self._InstanceId = None
@@ -8159,7 +9084,7 @@ class DescribeProxySlowLogRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time of slow query
+        """Start time of a slow query, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._BeginTime
@@ -8170,7 +9095,7 @@ class DescribeProxySlowLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of slow query
+        """End time of a slow query, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._EndTime
@@ -8192,7 +9117,7 @@ class DescribeProxySlowLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of results per page.  Default value: `20`. Value range: [20,1000].
+        """Number of tasks output on each page. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -8203,7 +9128,7 @@ class DescribeProxySlowLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which is an integral multiple of `Limit`.
+        """Pagination offset, which is an integer multiple of Limit. Calculation formula: Offset = Limit x (Page number - 1).
         :rtype: int
         """
         return self._Offset
@@ -8290,6 +9215,480 @@ class DescribeProxySlowLogResponse(AbstractModel):
                 obj = InstanceProxySlowlogDetail()
                 obj._deserialize(item)
                 self._InstanceProxySlowLogDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisClusterOverviewRequest(AbstractModel):
+    """DescribeRedisClusterOverview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: CDC ID. Log in to the [CDC console](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1)
+and obtain the cluster ID in the instance list.
+        :type DedicatedClusterId: str
+        """
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        """CDC ID. Log in to the [CDC console](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1)
+and obtain the cluster ID in the instance list.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisClusterOverviewResponse(AbstractModel):
+    """DescribeRedisClusterOverview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalBundle: Total number of resource packages.
+        :type TotalBundle: int
+        :param _TotalMemory: Total memory size occupied by resource packages. Unit: GB.
+        :type TotalMemory: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalBundle = None
+        self._TotalMemory = None
+        self._RequestId = None
+
+    @property
+    def TotalBundle(self):
+        """Total number of resource packages.
+        :rtype: int
+        """
+        return self._TotalBundle
+
+    @TotalBundle.setter
+    def TotalBundle(self, TotalBundle):
+        self._TotalBundle = TotalBundle
+
+    @property
+    def TotalMemory(self):
+        """Total memory size occupied by resource packages. Unit: GB.
+        :rtype: int
+        """
+        return self._TotalMemory
+
+    @TotalMemory.setter
+    def TotalMemory(self, TotalMemory):
+        self._TotalMemory = TotalMemory
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalBundle = params.get("TotalBundle")
+        self._TotalMemory = params.get("TotalMemory")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisClustersRequest(AbstractModel):
+    """DescribeRedisClusters request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RedisClusterIds: Dedicated Redis cluster ID. Log in to the [CDC console](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1),
+switch to the **Cloud Service Management** page, select **TencentDB for Redis** from the drop-down list, and obtain the dedicated cluster ID.
+        :type RedisClusterIds: list of str
+        :param _Status: Cluster status.
+- 1: in process.
+- 2: running.
+- 3: isolated.
+        :type Status: list of int
+        :param _ProjectIds: Project ID array. Log in to the [project management](https://console.tencentcloud.com/project) page and copy the project ID in **Project Name**.
+        :type ProjectIds: list of int
+        :param _AutoRenewFlag: Renewal mode.
+- 0: default status (manual renewal).
+- 1: automatic renewal.
+- 2: no automatic renewal.
+        :type AutoRenewFlag: list of int
+        :param _ClusterName: Dedicated Redis cluster name.
+        :type ClusterName: str
+        :param _SearchKey: Search keyword. Valid values: cluster ID and cluster name.
+        :type SearchKey: str
+        :param _Limit: Limit on the number of records returned in pagination mode. If this parameter is not specified, the value 20 will be used by default.
+        :type Limit: int
+        :param _Offset: Offset, which is an integer multiple of Limit.
+        :type Offset: int
+        :param _DedicatedClusterId: CDC ID. Log in to the [CDC console](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1)
+and obtain the cluster ID in the instance list.
+        :type DedicatedClusterId: str
+        """
+        self._RedisClusterIds = None
+        self._Status = None
+        self._ProjectIds = None
+        self._AutoRenewFlag = None
+        self._ClusterName = None
+        self._SearchKey = None
+        self._Limit = None
+        self._Offset = None
+        self._DedicatedClusterId = None
+
+    @property
+    def RedisClusterIds(self):
+        """Dedicated Redis cluster ID. Log in to the [CDC console](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1),
+switch to the **Cloud Service Management** page, select **TencentDB for Redis** from the drop-down list, and obtain the dedicated cluster ID.
+        :rtype: list of str
+        """
+        return self._RedisClusterIds
+
+    @RedisClusterIds.setter
+    def RedisClusterIds(self, RedisClusterIds):
+        self._RedisClusterIds = RedisClusterIds
+
+    @property
+    def Status(self):
+        """Cluster status.
+- 1: in process.
+- 2: running.
+- 3: isolated.
+        :rtype: list of int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProjectIds(self):
+        """Project ID array. Log in to the [project management](https://console.tencentcloud.com/project) page and copy the project ID in **Project Name**.
+        :rtype: list of int
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AutoRenewFlag(self):
+        """Renewal mode.
+- 0: default status (manual renewal).
+- 1: automatic renewal.
+- 2: no automatic renewal.
+        :rtype: list of int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ClusterName(self):
+        """Dedicated Redis cluster name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def SearchKey(self):
+        """Search keyword. Valid values: cluster ID and cluster name.
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Limit(self):
+        """Limit on the number of records returned in pagination mode. If this parameter is not specified, the value 20 will be used by default.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """Offset, which is an integer multiple of Limit.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def DedicatedClusterId(self):
+        """CDC ID. Log in to the [CDC console](https://console.cloud.tencent.com/cdc/dedicatedcluster/index?rid=1)
+and obtain the cluster ID in the instance list.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._RedisClusterIds = params.get("RedisClusterIds")
+        self._Status = params.get("Status")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ClusterName = params.get("ClusterName")
+        self._SearchKey = params.get("SearchKey")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisClustersResponse(AbstractModel):
+    """DescribeRedisClusters response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of clusters.
+        :type Total: int
+        :param _Resources: CDC cluster resource list.
+        :type Resources: list of CDCResource
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Resources = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Total number of clusters.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Resources(self):
+        """CDC cluster resource list.
+        :rtype: list of CDCResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CDCResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplicationGroupInstanceRequest(AbstractModel):
+    """DescribeReplicationGroupInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationGroupInstanceResponse(AbstractModel):
+    """DescribeReplicationGroupInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: AppID。
+        :type AppId: int
+        :param _RegionId: Numerical code of a region.
+        :type RegionId: int
+        :param _GroupId: String ID of a replication group.
+        :type GroupId: str
+        :param _GroupName: Replication group name.
+        :type GroupName: str
+        :param _InstanceRole: Instance replication group role.
+- r: secondary instance.
+- rw: primary instance.
+        :type InstanceRole: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._RegionId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._InstanceRole = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        """AppID。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RegionId(self):
+        """Numerical code of a region.
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def GroupId(self):
+        """String ID of a replication group.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        """Replication group name.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def InstanceRole(self):
+        """Instance replication group role.
+- r: secondary instance.
+- rw: primary instance.
+        :rtype: str
+        """
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RegionId = params.get("RegionId")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._InstanceRole = params.get("InstanceRole")
         self._RequestId = params.get("RequestId")
 
 
@@ -8598,13 +9997,13 @@ class DescribeSlowLogRequest(AbstractModel):
         :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
 
         :type InstanceId: str
-        :param _BeginTime: Start time for prequerying a slow log
+        :param _BeginTime: Start time for pre-querying slow query logs, with a maximum query span of 30 days.
         :type BeginTime: str
-        :param _EndTime: End time for prequerying a slow log
+        :param _EndTime: End time for pre-querying slow query logs, with a maximum query span of 30 days.
         :type EndTime: str
         :param _MinQueryTime: The average execution time threshold of slow query  in microseconds
         :type MinQueryTime: int
-        :param _Limit: Number of slow queries displayed per page. Default value: `20`. Value range:  [20,1000].
+        :param _Limit: Number of slow query logs displayed per page. Default value: 20. Maximum value: 100.
         :type Limit: int
         :param _Offset: Slow query offset, which is an integral multiple of `Limit`. Calculation formula:  `offset` = `limit` * (page number - 1).
         :type Offset: int
@@ -8634,7 +10033,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time for prequerying a slow log
+        """Start time for pre-querying slow query logs, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._BeginTime
@@ -8645,7 +10044,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time for prequerying a slow log
+        """End time for pre-querying slow query logs, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._EndTime
@@ -8667,7 +10066,7 @@ class DescribeSlowLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of slow queries displayed per page. Default value: `20`. Value range:  [20,1000].
+        """Number of slow query logs displayed per page. Default value: 20. Maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -8727,7 +10126,7 @@ class DescribeSlowLogResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of slow queries
         :type TotalCount: int
-        :param _InstanceSlowlogDetail: Due to the naming irregularity of this parameter. It is recommended to use the parameter InstanceSlowLogDetail instead. Details of slow queries.
+        :param _InstanceSlowlogDetail: Slow query log details. This parameter has been deprecated and will be replaced by InstanceSlowLogDetail because it is not properly named.
         :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
         :param _InstanceSlowLogDetail: Details of slow queries.
         :type InstanceSlowLogDetail: list of InstanceSlowlogDetail
@@ -8752,7 +10151,7 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def InstanceSlowlogDetail(self):
-        """Due to the naming irregularity of this parameter. It is recommended to use the parameter InstanceSlowLogDetail instead. Details of slow queries.
+        """Slow query log details. This parameter has been deprecated and will be replaced by InstanceSlowLogDetail because it is not properly named.
         :rtype: list of InstanceSlowlogDetail
         """
         return self._InstanceSlowlogDetail
@@ -8808,14 +10207,14 @@ class DescribeTaskInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID
+        :param _TaskId: Task ID, which can be obtained through the sub-parameter **TaskId** of the response parameter **Tasks** of the API [DescribeTaskList](https://intl.cloud.tencent.com/document/product/239/39374?from_cn_redirect=1).
         :type TaskId: int
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        """Task ID
+        """Task ID, which can be obtained through the sub-parameter **TaskId** of the response parameter **Tasks** of the API [DescribeTaskList](https://intl.cloud.tencent.com/document/product/239/39374?from_cn_redirect=1).
         :rtype: int
         """
         return self._TaskId
@@ -8967,11 +10366,69 @@ class DescribeTaskListRequest(AbstractModel):
         :type Offset: int
         :param _ProjectIds: Project ID Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), go to the account information menu in the top-right corner, and select **Project Management** to query the project ID.
         :type ProjectIds: list of int
-        :param _TaskTypes: Task type. Valid values:  - `FLOW_CREATE`: Create an instance. - `FLOW_MODIFYCONNECTIONCONFIG`: Adjust the number of bandwidth connections. - `FLOW_MODIFYINSTANCEPASSWORDFREE`: Modify the process of password-free access. - `FLOW_CLEARNETWORK`: Returning VPC - `FLOW_SETPWD`: Set the access password. - `FLOW_EXPORSHR`: Expand or reduce the capacity. - `FLOW_UpgradeArch`: Upgrade the instance architecture. - `FLOW_MODIFYINSTANCEPARAMS`: Modify the instance parameters. - `FLOW_MODIFYINSTACEREADONLY`: Modify read-only process. - `FLOW_CLOSE`: Disable the instance. - `FLOW_DELETE`: Delete the instance. - `FLOW_OPEN_WAN`: Enable the public network. - `FLOW_FLOW_CLEAN`: Clear the instance. - `FLOW_MODIFYINSTANCEACCOUNT`: Modify the instance account. - `FLOW_ENABLEINSTANCE_REPLICATE`: Enable the replica read-only feature. - `FLOW_DISABLEINSTANCE_REPLICATE`: Disable the replica read-only feature. - `FLOW_SWITCHINSTANCEVIP`: Swap the VIPs of instances. - FLOW_CHANGE_REPLICA_TO_MSTER: Promote the replica node to the mater node. - `FLOW_BACKUPINSTANCE`: Back up an instance.
+        :param _TaskTypes: Task type.
+
+
+
+- FLOW_CREATE: "001" - Create an instance.
+- FLOW_RESIZE: "002" - Change the configuration.
+- FLOW_CLOSE: "003" - Close an instance.
+- FLOW_CLEAN: "004" - Clear an instance.
+- FLOW_STARTUP: "005" - Enable an instance.
+- FLOW_DELETE: "006" - Delete an instance.
+- FLOW_SETPWD: "007" - Reset the password.
+- FLOW_EXPORTBACKUP: "009" - Export the backup file.
+- FLOW_RESTOREBACKUP: "010" - Restore the backup.
+- FLOW_BACKUPINSTANCE: "012" - Back up an instance.
+- FLOW_MIGRATEINSTANCE: "013" - Migrate an instance.
+- FLOW_DELBACKUP: "014" - Delete the backup.
+- FLOW_EXCHANGEINSTANCE: "016" - Switch an instance.
+- FLOW_AUTOBACKUP: "017" - Automatically backup an instance.
+- FLOW_MIGRATECHECK: "022" - Verify migration parameters.
+- FLOW_MIGRATETASK: "023" - Migrate data in progress.
+- FLOW_CLEANDB: "025" - Clear a database.
+- FLOW_CLONEBACKUP: "026" - Clone the backup.
+- FLOW_CHANGEVIP: "027" - Change the VIP.
+- FLOW_EXPORSHR: "028" - Perform scaling.
+- FLOW_ADDNODES: "029" - Add or remove a node.
+- FLOW_CHANGENET: "031" - Change the network type.
+- FLOW_MODIFYINSTACEREADONLY: "033" - Modify the read-only policy.
+- FLOW_MODIFYINSTANCEPARAMS: "034" - Modify instance parameters.
+- FLOW_MODIFYINSTANCEPASSWORDFREE: "035" - Set password-free access.
+- FLOW_SWITCHINSTANCEVIP: "036" - Switch the instance VIP.
+- FLOW_MODIFYINSTANCEACCOUNT: "037" - Modify the instance account.
+- FLOW_MODIFYINSTANCEBANDWIDTH: "038" - Modify the instance bandwidth.
+- FLOW_ENABLEINSTANCE_REPLICATE: "039" - Enable read-only replica.
+- FLOW_DISABLEINSTANCE_REPLICATE: "040" - Disable read-only replica.
+- FLOW_UpgradeArch: "041" - Upgrade the instance architecture from primary-secondary to cluster.
+- FLOW_DowngradeArch: "042" - Downgrade the instance architecture from cluster to primary-secondary.
+- FLOW_UpgradeVersion: "043" - Upgrade the version.
+- FLOW_MODIFYCONNECTIONCONFIG: "044" - Modify the number of bandwidth connections.
+- FLOW_CLEARNETWORK: "045" - Change the network.
+- FLOW_REMOVE_BACKUP_FILE: "046" - Delete the backup.
+- FLOW_UPGRADE_SUPPORT_MULTI_AZ: "047" - Upgrade an instance to support multiple AZs.
+- FLOW_SHUTDOWN_MASTER: "048" - Simulate a fault.
+- FLOW_CHANGE_REPLICA_TO_MASTER: "049" - Manually promote the replica node to the primary node.
+- FLOW_CODE_ADD_REPLICATION_INSTANCE: "050" - Add a replication group.
+- FLOW_OPEN_WAN: "052" - Enable the public network.
+- FLOW_CLOSE_WAN: "053" - Disable the public network. - FLOW_UPDATE_WAN: "054" - Update the public network.
+- FLOW_CODE_DELETE_REPLICATION_INSTANCE: "055" - Unbind the replication group.
+- FLOW_CODE_CHANGE_MASTER_INSTANCE: "056" - Switch to the primary instance in the replication group.
+- FLOW_CODE_CHANGE_INSTANCE_ROLE: "057" - Change the roles of instances in the replication group.
+- FLOW_MIGRATE_NODE: "058" - Migrate a node.
+- FLOW_SWITCH_NODE: "059" - Switch a node.
+- FLOW_UPGRADE_SMALL_VERSION: "060" - Upgrade the Redis version.
+- FLOW_UPGRADE_PROXY_VERSION: "061" - Upgrade the Proxy version.
+- FLOW_MODIFY_INSTANCE_NETWORK: "062" - Modify the instance network.
+- FLOW_MIGRATE_PROXY_NODE: "063" - Migrate the Proxy node.
+- FLOW_MIGRATION_INSTANCE_ZONE: "066" - Migrate the instance AZ in progress.
+- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: "067" - Upgrade the instance version in progress.
+- FLOW_MODIFY_PROXY_NUM: "069" - Add or remove a Proxy node.
+- FLOW_MODIFYBACKUPMOD: "070" - Change the instance backup mode.
         :type TaskTypes: list of str
-        :param _BeginTime: Start time for executing a task,  in the format of  “2020-10-12 00:00:00”.
+        :param _BeginTime: Start time of the task, for example, in the format of 2021-12-30 00:00:00. Data in the last 30 days can be queried.
         :type BeginTime: str
-        :param _EndTime: End time for executing a task,  in the format of  “2021-12-30 20:59:35”.
+        :param _EndTime: End time of the task, for example, in the format of 2021-12-30 20:59:35. Data in the last 30 days can be queried.
         :type EndTime: str
         :param _TaskStatus: This parameter is only for internal use and can be ignored.
         :type TaskStatus: list of int
@@ -9052,7 +10509,65 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def TaskTypes(self):
-        """Task type. Valid values:  - `FLOW_CREATE`: Create an instance. - `FLOW_MODIFYCONNECTIONCONFIG`: Adjust the number of bandwidth connections. - `FLOW_MODIFYINSTANCEPASSWORDFREE`: Modify the process of password-free access. - `FLOW_CLEARNETWORK`: Returning VPC - `FLOW_SETPWD`: Set the access password. - `FLOW_EXPORSHR`: Expand or reduce the capacity. - `FLOW_UpgradeArch`: Upgrade the instance architecture. - `FLOW_MODIFYINSTANCEPARAMS`: Modify the instance parameters. - `FLOW_MODIFYINSTACEREADONLY`: Modify read-only process. - `FLOW_CLOSE`: Disable the instance. - `FLOW_DELETE`: Delete the instance. - `FLOW_OPEN_WAN`: Enable the public network. - `FLOW_FLOW_CLEAN`: Clear the instance. - `FLOW_MODIFYINSTANCEACCOUNT`: Modify the instance account. - `FLOW_ENABLEINSTANCE_REPLICATE`: Enable the replica read-only feature. - `FLOW_DISABLEINSTANCE_REPLICATE`: Disable the replica read-only feature. - `FLOW_SWITCHINSTANCEVIP`: Swap the VIPs of instances. - FLOW_CHANGE_REPLICA_TO_MSTER: Promote the replica node to the mater node. - `FLOW_BACKUPINSTANCE`: Back up an instance.
+        """Task type.
+
+
+
+- FLOW_CREATE: "001" - Create an instance.
+- FLOW_RESIZE: "002" - Change the configuration.
+- FLOW_CLOSE: "003" - Close an instance.
+- FLOW_CLEAN: "004" - Clear an instance.
+- FLOW_STARTUP: "005" - Enable an instance.
+- FLOW_DELETE: "006" - Delete an instance.
+- FLOW_SETPWD: "007" - Reset the password.
+- FLOW_EXPORTBACKUP: "009" - Export the backup file.
+- FLOW_RESTOREBACKUP: "010" - Restore the backup.
+- FLOW_BACKUPINSTANCE: "012" - Back up an instance.
+- FLOW_MIGRATEINSTANCE: "013" - Migrate an instance.
+- FLOW_DELBACKUP: "014" - Delete the backup.
+- FLOW_EXCHANGEINSTANCE: "016" - Switch an instance.
+- FLOW_AUTOBACKUP: "017" - Automatically backup an instance.
+- FLOW_MIGRATECHECK: "022" - Verify migration parameters.
+- FLOW_MIGRATETASK: "023" - Migrate data in progress.
+- FLOW_CLEANDB: "025" - Clear a database.
+- FLOW_CLONEBACKUP: "026" - Clone the backup.
+- FLOW_CHANGEVIP: "027" - Change the VIP.
+- FLOW_EXPORSHR: "028" - Perform scaling.
+- FLOW_ADDNODES: "029" - Add or remove a node.
+- FLOW_CHANGENET: "031" - Change the network type.
+- FLOW_MODIFYINSTACEREADONLY: "033" - Modify the read-only policy.
+- FLOW_MODIFYINSTANCEPARAMS: "034" - Modify instance parameters.
+- FLOW_MODIFYINSTANCEPASSWORDFREE: "035" - Set password-free access.
+- FLOW_SWITCHINSTANCEVIP: "036" - Switch the instance VIP.
+- FLOW_MODIFYINSTANCEACCOUNT: "037" - Modify the instance account.
+- FLOW_MODIFYINSTANCEBANDWIDTH: "038" - Modify the instance bandwidth.
+- FLOW_ENABLEINSTANCE_REPLICATE: "039" - Enable read-only replica.
+- FLOW_DISABLEINSTANCE_REPLICATE: "040" - Disable read-only replica.
+- FLOW_UpgradeArch: "041" - Upgrade the instance architecture from primary-secondary to cluster.
+- FLOW_DowngradeArch: "042" - Downgrade the instance architecture from cluster to primary-secondary.
+- FLOW_UpgradeVersion: "043" - Upgrade the version.
+- FLOW_MODIFYCONNECTIONCONFIG: "044" - Modify the number of bandwidth connections.
+- FLOW_CLEARNETWORK: "045" - Change the network.
+- FLOW_REMOVE_BACKUP_FILE: "046" - Delete the backup.
+- FLOW_UPGRADE_SUPPORT_MULTI_AZ: "047" - Upgrade an instance to support multiple AZs.
+- FLOW_SHUTDOWN_MASTER: "048" - Simulate a fault.
+- FLOW_CHANGE_REPLICA_TO_MASTER: "049" - Manually promote the replica node to the primary node.
+- FLOW_CODE_ADD_REPLICATION_INSTANCE: "050" - Add a replication group.
+- FLOW_OPEN_WAN: "052" - Enable the public network.
+- FLOW_CLOSE_WAN: "053" - Disable the public network. - FLOW_UPDATE_WAN: "054" - Update the public network.
+- FLOW_CODE_DELETE_REPLICATION_INSTANCE: "055" - Unbind the replication group.
+- FLOW_CODE_CHANGE_MASTER_INSTANCE: "056" - Switch to the primary instance in the replication group.
+- FLOW_CODE_CHANGE_INSTANCE_ROLE: "057" - Change the roles of instances in the replication group.
+- FLOW_MIGRATE_NODE: "058" - Migrate a node.
+- FLOW_SWITCH_NODE: "059" - Switch a node.
+- FLOW_UPGRADE_SMALL_VERSION: "060" - Upgrade the Redis version.
+- FLOW_UPGRADE_PROXY_VERSION: "061" - Upgrade the Proxy version.
+- FLOW_MODIFY_INSTANCE_NETWORK: "062" - Modify the instance network.
+- FLOW_MIGRATE_PROXY_NODE: "063" - Migrate the Proxy node.
+- FLOW_MIGRATION_INSTANCE_ZONE: "066" - Migrate the instance AZ in progress.
+- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: "067" - Upgrade the instance version in progress.
+- FLOW_MODIFY_PROXY_NUM: "069" - Add or remove a Proxy node.
+- FLOW_MODIFYBACKUPMOD: "070" - Change the instance backup mode.
         :rtype: list of str
         """
         return self._TaskTypes
@@ -9063,7 +10578,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time for executing a task,  in the format of  “2020-10-12 00:00:00”.
+        """Start time of the task, for example, in the format of 2021-12-30 00:00:00. Data in the last 30 days can be queried.
         :rtype: str
         """
         return self._BeginTime
@@ -9074,7 +10589,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time for executing a task,  in the format of  “2021-12-30 20:59:35”.
+        """End time of the task, for example, in the format of 2021-12-30 20:59:35. Data in the last 30 days can be queried.
         :rtype: str
         """
         return self._EndTime
@@ -9221,17 +10736,17 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of crs-ngvou0i1
+        :param _InstanceId: Instance ID. Log in to the [Tendis console](https://console.cloud.tencent.com/tendis) and copy it in the instance list.
         :type InstanceId: str
-        :param _BeginTime: Start time in the format of 2019-09-08 12:12:41
+        :param _BeginTime: Start time for a query, for example, 2019-09-08 12:12:41, with a maximum query span of 30 days.
         :type BeginTime: str
-        :param _EndTime: End time in the format of 2019-09-09 12:12:41
+        :param _EndTime: End time for a query, for example, 2019-09-09 12:12:41, with a maximum query span of 30 days.
         :type EndTime: str
         :param _MinQueryTime: Slow query threshold in ms
         :type MinQueryTime: int
-        :param _Limit: Maximum number of results returned per page. Default value: 20.
+        :param _Limit: Page size. Default value 20. Maximum value 100.
         :type Limit: int
-        :param _Offset: Offset, which is an integral multiple of `Limit`.
+        :param _Offset: Pagination offset, which is an integer multiple of Limit. Calculation formula: Offset = Limit x (Page number - 1).
         :type Offset: int
         """
         self._InstanceId = None
@@ -9243,7 +10758,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of crs-ngvou0i1
+        """Instance ID. Log in to the [Tendis console](https://console.cloud.tencent.com/tendis) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -9254,7 +10769,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        """Start time in the format of 2019-09-08 12:12:41
+        """Start time for a query, for example, 2019-09-08 12:12:41, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._BeginTime
@@ -9265,7 +10780,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time in the format of 2019-09-09 12:12:41
+        """End time for a query, for example, 2019-09-09 12:12:41, with a maximum query span of 30 days.
         :rtype: str
         """
         return self._EndTime
@@ -9287,7 +10802,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Maximum number of results returned per page. Default value: 20.
+        """Page size. Default value 20. Maximum value 100.
         :rtype: int
         """
         return self._Limit
@@ -9298,7 +10813,7 @@ class DescribeTendisSlowLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Offset, which is an integral multiple of `Limit`.
+        """Pagination offset, which is an integer multiple of Limit. Calculation formula: Offset = Limit x (Page number - 1).
         :rtype: int
         """
         return self._Offset
@@ -9395,14 +10910,14 @@ class DestroyPostpaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -9474,14 +10989,14 @@ class DestroyPrepaidInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -9553,14 +11068,14 @@ class DisableReplicaReadonlyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -9636,9 +11151,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param _SecurityGroupId: Security group ID
+        :param _SecurityGroupId: Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter InstanceSecurityGroupsDetail of the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).
         :type SecurityGroupId: str
-        :param _InstanceIds: List of instance IDs, which is an array of one or more instance IDs.
+        :param _InstanceIds: Instance ID list, which is an array of one or more instance IDs. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceIds: list of str
         """
         self._Product = None
@@ -9658,7 +11173,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        """Security group ID
+        """Security group ID, which can be obtained through the sub-parameter **SecurityGroupId** of the response parameter InstanceSecurityGroupsDetail of the API [DescribeInstanceSecurityGroup](https://intl.cloud.tencent.com/document/product/239/34447?from_cn_redirect=1).
         :rtype: str
         """
         return self._SecurityGroupId
@@ -9669,7 +11184,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of instance IDs, which is an array of one or more instance IDs.
+        """Instance ID list, which is an array of one or more instance IDs. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -9728,9 +11243,12 @@ class EnableReplicaReadonlyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _ReadonlyPolicy: Account routing policy. If `master` or `replication` is entered, it means to route to the master or replica node; if this parameter is left empty, it means to write into the master node and read from the replica node by default.
+        :param _ReadonlyPolicy: Read-only routing policy.
+- master: read-only routing to the primary node.
+- replication: read-only routing to the secondary node.
+- Default policy: writing to the primary node and reading from the secondary node.
         :type ReadonlyPolicy: list of str
         """
         self._InstanceId = None
@@ -9738,7 +11256,7 @@ class EnableReplicaReadonlyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -9749,7 +11267,10 @@ class EnableReplicaReadonlyRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        """Account routing policy. If `master` or `replication` is entered, it means to route to the master or replica node; if this parameter is left empty, it means to write into the master node and read from the replica node by default.
+        """Read-only routing policy.
+- master: read-only routing to the primary node.
+- replication: read-only routing to the secondary node.
+- Default policy: writing to the primary node and reading from the secondary node.
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -9843,24 +11364,23 @@ class Groups(AbstractModel):
         r"""
         :param _AppId: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
         :type AppId: int
-        :param _RegionId: Region ID. Valid values:
-- `1`: Guangzhou 
-- `4`: Shanghai 
-- `5`: Hong Kong (China) 
-- `6`: Toronto 
-- `7`: Shanghai Finance 
-- `8`: Beijing 
-- `9`: Singapore
-- `11`: Shenzhen Finance
-- `15`: Silicon Valley (West US)
-- `16`: Chengdu 
-- `17`: Germany 
-- `18`: South Korea 
-- `19`: Chongqing 
-- `21`: India 
-- `22`: Virginia (East US)
-- `23`: Thailand 
-- `25`: Japan
+        :param _RegionId: Region ID.
+- 1: Guangzhou.
+- 4: Shanghai.
+- 5: Hong Kong (China).
+- 7: Shanghai Finance.
+- 8: Beijing.
+- 9: Singapore.
+- 11: Shenzhen Finance.
+- 15: Western United States (Silicon Valley).
+- 16: Chengdu.
+- 17: Germany.
+- 18: South Korea.
+- 19: Chongqing.
+- 21: India.
+- 22: Eastern United States (Virginia).
+- 23: Thailand.
+- 25: Japan.
         :type RegionId: int
         :param _GroupId: Replication group ID in the format of "crs-rpl-deind****"
         :type GroupId: str
@@ -9905,24 +11425,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID. Valid values:
-- `1`: Guangzhou 
-- `4`: Shanghai 
-- `5`: Hong Kong (China) 
-- `6`: Toronto 
-- `7`: Shanghai Finance 
-- `8`: Beijing 
-- `9`: Singapore
-- `11`: Shenzhen Finance
-- `15`: Silicon Valley (West US)
-- `16`: Chengdu 
-- `17`: Germany 
-- `18`: South Korea 
-- `19`: Chongqing 
-- `21`: India 
-- `22`: Virginia (East US)
-- `23`: Thailand 
-- `25`: Japan
+        """Region ID.
+- 1: Guangzhou.
+- 4: Shanghai.
+- 5: Hong Kong (China).
+- 7: Shanghai Finance.
+- 8: Beijing.
+- 9: Singapore.
+- 11: Shenzhen Finance.
+- 15: Western United States (Silicon Valley).
+- 16: Chengdu.
+- 17: Germany.
+- 18: South Korea.
+- 19: Chongqing.
+- 21: India.
+- 22: Eastern United States (Virginia).
+- 23: Thailand.
+- 25: Japan.
         :rtype: int
         """
         return self._RegionId
@@ -10244,7 +11763,16 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeId: Instance type. Valid values: `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).
+        :param _TypeId: Instance type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :type TypeId: int
         :param _MemSize: Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).
 If `TypeId` indicates the standard architecture, `MemSize` indicates the total memory capacity of an instance; if `TypeId` indicates the cluster architecture, `MemSize` indicates the memory capacity per shard.
@@ -10253,19 +11781,26 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
         :type GoodsNum: int
         :param _Period: Length of purchase in months, which is required when creating a monthly-subscribed instance. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.
         :type Period: int
-        :param _BillingMode: Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).
+        :param _BillingMode: Billing mode.
+- 0: pay-as-you-go.
+- 1: monthly subscription.
         :type BillingMode: int
         :param _ZoneId: ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneId: int
-        :param _RedisShardNum: Instance shard quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, Redis 2.8 standalone edition, and Redis 4.0 standard architecture.
+        :param _RedisShardNum: Number of instance shards. For the standard architecture of 2.8, the number of shards does not need to be configured. For the standard architecture of other versions, the number of shards should be set to 1. For the cluster architecture, the number of shards to be purchased needs to be specified.
         :type RedisShardNum: int
-        :param _RedisReplicasNum: Instance replica quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.
+        :param _RedisReplicasNum: Number of instance replicas. For the standard architecture of 2.8, the number of replicas does not need to be configured.
         :type RedisReplicasNum: int
-        :param _ReplicasReadonly: Whether to support read-only replicas. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.
+        :param _ReplicasReadonly: Whether replica read-only is supported. For the standard architecture of Redis 2.8 and CKV, this parameter does not need to be configured.
+- true: Replica read-only is not required.
+- false: Replica read-only is required.
         :type ReplicasReadonly: bool
         :param _ZoneName: Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).
         :type ZoneName: str
-        :param _ProductVersion: Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)
+        :param _ProductVersion: Deployment mode.
+- local: local disk. This is the default value.
+- cloud: cloud disk.
+- cdc: CDC.
         :type ProductVersion: str
         """
         self._TypeId = None
@@ -10282,7 +11817,16 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def TypeId(self):
-        """Instance type. Valid values: `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).
+        """Instance type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :rtype: int
         """
         return self._TypeId
@@ -10327,7 +11871,9 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def BillingMode(self):
-        """Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).
+        """Billing mode.
+- 0: pay-as-you-go.
+- 1: monthly subscription.
         :rtype: int
         """
         return self._BillingMode
@@ -10349,7 +11895,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def RedisShardNum(self):
-        """Instance shard quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, Redis 2.8 standalone edition, and Redis 4.0 standard architecture.
+        """Number of instance shards. For the standard architecture of 2.8, the number of shards does not need to be configured. For the standard architecture of other versions, the number of shards should be set to 1. For the cluster architecture, the number of shards to be purchased needs to be specified.
         :rtype: int
         """
         return self._RedisShardNum
@@ -10360,7 +11906,7 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def RedisReplicasNum(self):
-        """Instance replica quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.
+        """Number of instance replicas. For the standard architecture of 2.8, the number of replicas does not need to be configured.
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -10371,7 +11917,9 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def ReplicasReadonly(self):
-        """Whether to support read-only replicas. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.
+        """Whether replica read-only is supported. For the standard architecture of Redis 2.8 and CKV, this parameter does not need to be configured.
+- true: Replica read-only is not required.
+- false: Replica read-only is required.
         :rtype: bool
         """
         return self._ReplicasReadonly
@@ -10393,7 +11941,10 @@ If `TypeId` indicates the standard architecture, `MemSize` indicates the total m
 
     @property
     def ProductVersion(self):
-        """Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)
+        """Deployment mode.
+- local: local disk. This is the default value.
+- cloud: cloud disk.
+- cdc: CDC.
         :rtype: str
         """
         return self._ProductVersion
@@ -10477,13 +12028,13 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _MemSize: Shard size in MB.
+        :param _MemSize: Shard size. Unit: MB.
         :type MemSize: int
-        :param _RedisShardNum: Number of shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :param _RedisShardNum: Number of shards. This parameter is not required for Redis 2.8 Primary-Secondary Edition, CKV Primary-Secondary Edition, and Redis 2.8 Single-node Edition.
         :type RedisShardNum: int
-        :param _RedisReplicasNum: Number of replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        :param _RedisReplicasNum: Number of replicas. This parameter is not required for Redis 2.8 Primary-Secondary Edition, CKV Primary-Secondary Edition, and Redis 2.8 Single-node Edition.
         :type RedisReplicasNum: int
         """
         self._InstanceId = None
@@ -10493,7 +12044,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -10504,7 +12055,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def MemSize(self):
-        """Shard size in MB.
+        """Shard size. Unit: MB.
         :rtype: int
         """
         return self._MemSize
@@ -10515,7 +12066,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def RedisShardNum(self):
-        """Number of shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        """Number of shards. This parameter is not required for Redis 2.8 Primary-Secondary Edition, CKV Primary-Secondary Edition, and Redis 2.8 Single-node Edition.
         :rtype: int
         """
         return self._RedisShardNum
@@ -10526,7 +12077,7 @@ class InquiryPriceUpgradeInstanceRequest(AbstractModel):
 
     @property
     def RedisReplicasNum(self):
-        """Number of replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.
+        """Number of replicas. This parameter is not required for Redis 2.8 Primary-Secondary Edition, CKV Primary-Secondary Edition, and Redis 2.8 Single-node Edition.
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -10603,7 +12154,7 @@ class InstanceClusterNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Node name
+        :param _Name: Node group name.
         :type Name: str
         :param _RunId: ID of the runtime node of an instance
         :type RunId: str
@@ -10646,7 +12197,7 @@ class InstanceClusterNode(AbstractModel):
 
     @property
     def Name(self):
-        """Node name
+        """Node group name.
         :rtype: str
         """
         return self._Name
@@ -11328,7 +12879,7 @@ class InstanceMultiParam(AbstractModel):
         :type CurrentValue: str
         :param _Tips: Description
         :type Tips: str
-        :param _EnumValue: Description
+        :param _EnumValue: Parameter enumeration value.
         :type EnumValue: list of str
         :param _Status: Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)
         :type Status: int
@@ -11410,7 +12961,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def EnumValue(self):
-        """Description
+        """Parameter enumeration value.
         :rtype: list of str
         """
         return self._EnumValue
@@ -11818,129 +13369,167 @@ class InstanceSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: Instance name
+        :param _InstanceName: Instance name.
         :type InstanceName: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _Appid: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
+        :param _Appid: App ID of a user, which is an application ID that uniquely corresponds to the account ID. Some Tencent Cloud products use this app ID.
 
         :type Appid: int
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param _RegionId: Region IDs. <ul><li>1: Guangzhou. </li><li>4: Shanghai. </li><li>5: Hong Kong, China. </li><li>6: Toronto. </li><li>8: Beijing. </li><li>9: Singapore. </li><li>15: West US (Silicon Valley). </li><li>16: Chengdu. </li><li>17: Frankfurt. </li><li>18: Seoul. </li><li>19: Chongqing. </li><li>21: Mumbai. </li><li>22: East US (Virginia). </li><li>23: Bangkok. </li><li>25: Tokyo. </li></ul>
+        :param _RegionId: Region ID. <ul><li>1: Guangzhou;</li> <li>4: Shanghai;</li> <li>5: Hong Kong (China);</li> <li>7: Shanghai Finance;</li> <li>8: Beijing;</li> <li>9: Singapore;</li> <li>11: Shenzhen Finance;</li> <li>15: Western United States (Silicon Valley);</li> <li>16: Chengdu;</li> <li>17: Frankfurt;</li> <li>18: Seoul;</li> <li>19: Chongqing;</li> <li>21: Mumbai;</li> <li>22: Eastern United States (Virginia);</li> <li>23: Bangkok;</li> <li>25: Tokyo.</li></ul>
         :type RegionId: int
-        :param _ZoneId: Region ID
+        :param _ZoneId: Zone ID.
         :type ZoneId: int
-        :param _VpcId: VPC ID, such as `75101`.
+        :param _VpcId: VPC ID, for example, 75101.
         :type VpcId: int
-        :param _SubnetId: Subnet ID, such as `46315`.
+        :param _SubnetId: ID of the subnet under VPC, for example, 46315.
         :type SubnetId: int
-        :param _Status: Current instance status. <ul><li>`0`: To be initialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>
+        :param _Status: Current instance status. <ul><li>0: to be initialized;</li> <li>1: in process;</li> <li>2: running;</li> <li>-2: isolated;</li> <li>-3: to be deleted.</li></ul>
         :type Status: int
-        :param _WanIp: Instance VIP
+        :param _WanIp: Instance VIP.
         :type WanIp: str
-        :param _Port: Port number of an instance
+        :param _Port: Instance port number.
         :type Port: int
-        :param _Createtime: Instance creation time in the format of "2020-01-15 10:20:00"
+        :param _Createtime: Instance creation time, for example, in the format of 2020-01-15 10:20:00.
         :type Createtime: str
-        :param _Size: Instance memory capacity in MB (1 MB = 1024 KB)
+        :param _Size: Instance memory capacity. Unit: MB (1 MB = 1024 KB).
         :type Size: float
-        :param _SizeUsed: This field has been disused. You can use the TCOP [GetMonitorData](https://www.tencentcloud.com/zh/document/product/248/33881) API to query the capacity used by the instance.
+        :param _SizeUsed: This parameter has been deprecated. Obtain the memory capacity used by the instance through the TCOP API [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1).
         :type SizeUsed: float
-        :param _Type: Instance type
-- `2`: Redis 2.8 Memory Edition (Standard Architecture).
-- `3`: CKV 3.2 Memory Edition (Standard Architecture).
-- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
-- `5`: Redis 2.8 Memory Edition (Standalone).
-- `6`: Redis 4.0 Memory Edition (Standard Architecture).
-- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
-- `8`: Redis 5.0 Memory Edition (Standard Architecture).
-- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
-- `15`: Redis 6.2 Memory Edition (Standard Architecture).
-- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
+        :param _Type: Instance type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 5: Redis 2.8 Memory Edition (stand-alone).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :type Type: int
-        :param _AutoRenewFlag: Whether to set the auto-renewal flag for an instance. <ul><li>`1`: Auto-renewal set. </li><li>`0`: Auto-renewal not set.</li></ul>
+        :param _AutoRenewFlag: Whether the automatic renewal flag is set for an instance. <ul><li>1: set;</li> <li>0: not set.</li></ul>
         :type AutoRenewFlag: int
-        :param _DeadlineTime: The time when a monthly subscribed instance expires
+        :param _DeadlineTime: Expiration time of a monthly subscription instance.
         :type DeadlineTime: str
-        :param _Engine: Engine: Redis community edition, Tencent Cloud CKV
+        :param _Engine: Engine. Valid values: Redis Community Edition and Tencent Cloud CKV.
         :type Engine: str
-        :param _ProductType: Product type. <ul><li>`standalone`: Standard edition. </li><li>`cluster`: Cluster edition. </li></ul>
+        :param _ProductType: Product type. <ul><li>standalone: Standard Edition;</li> <li>cluster: Cluster Edition.</li></ul>
         :type ProductType: str
-        :param _UniqVpcId: VPC ID, such as vpc-fk33jsf43kgv.
+        :param _UniqVpcId: VPC ID, for example, vpc-fk33jsf43kgv.
         :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID, such as subnet-fd3j6l35mm0.
+        :param _UniqSubnetId: ID of the subnet under VPC, for example, subnet-fd3j6l35mm0.
         :type UniqSubnetId: str
         :param _BillingMode: Billing mode. Only pay-as-you-go billing is supported.
         :type BillingMode: int
-        :param _InstanceTitle: Description of an instance status, such as "Running".
+        :param _InstanceTitle: Description of the instance running status, for example, running.
         :type InstanceTitle: str
-        :param _OfflineTime: The default termination time for isolated instances in the format of "2020-02-15 10:20:00". By default, a pay-as-you-go instance will be terminated after two hours of isolation, and a monthly subscribed instance will be terminated after seven days by default.
+        :param _OfflineTime: Default termination time of isolated instances, for example, in the format of 2020-02-15 10:20:00. By default, a pay-as-you-go instance will be terminated after 2 hours of isolation, and a monthly subscription instance will be terminated after 7 days.
         :type OfflineTime: str
-        :param _SubStatus: Sub-status returned for an instance in process
+        :param _SubStatus: Sub-status returned for an instance in process.
         :type SubStatus: int
-        :param _Tags: Anti-affinity tag
+        :param _Tags: Anti-affinity tag.
         :type Tags: list of str
-        :param _InstanceNode: Instance node information
+        :param _InstanceNode: Instance node information.
         :type InstanceNode: list of InstanceNode
-        :param _RedisShardSize: Shard size
+        :param _RedisShardSize: Shard size.
         :type RedisShardSize: int
-        :param _RedisShardNum: Number of shards
+        :param _RedisShardNum: Number of shards.
         :type RedisShardNum: int
-        :param _RedisReplicasNum: Number of replicas
+        :param _RedisReplicasNum: Number of replicas.
         :type RedisReplicasNum: int
-        :param _PriceId: Billing ID
+        :param _PriceId: Billing ID.
         :type PriceId: int
-        :param _CloseTime: The time when an instance start to be isolated
+        :param _CloseTime: Time when an instance starts to be isolated.
         :type CloseTime: str
-        :param _SlaveReadWeight: Read weight of a replica node
+        :param _SlaveReadWeight: Read weight of a secondary node.
         :type SlaveReadWeight: int
-        :param _InstanceTags: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceTags: Tag information associated with an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceTags: list of InstanceTagInfo
-        :param _ProjectName: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectName: Project name
+
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ProjectName: str
-        :param _NoAuth: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NoAuth: Whether an instance is a password-free instance. <ul><li>true: yes;</li> <li>false: no.</li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NoAuth: bool
-        :param _ClientLimit: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ClientLimit: Number of client connections.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClientLimit: int
-        :param _DtsStatus: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DtsStatus: DTS status (internal parameter, which can be ignored).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DtsStatus: int
-        :param _NetLimit: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NetLimit: Upper limit of the shard bandwidth. Unit: MB.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NetLimit: int
-        :param _PasswordFree: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PasswordFree: Password-free instance flag (internal parameter, which can be ignored).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PasswordFree: int
-        :param _Vip6: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Vip6: Internal parameter, which can be ignored. This parameter is not properly named. It is recommended to use the IPv6 parameter to replace it.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Vip6: str
-        :param _IPv6: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IPv6: Internal parameter, which can be ignored.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type IPv6: str
-        :param _ReadOnly: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReadOnly: Instance read-only flag (internal parameter, which can be ignored).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ReadOnly: int
-        :param _RemainBandwidthDuration: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RemainBandwidthDuration: Internal parameter, which can be ignored.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RemainBandwidthDuration: str
-        :param _DiskSize: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiskSize: For Redis instances, ignore this parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DiskSize: int
-        :param _MonitorVersion: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MonitorVersion: Monitoring version. <ul><li>1m: 1-minute granularity monitoring. This monitoring granularity has been deprecated. For details, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li> <li>5s: 5-second granularity monitoring.</li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
         :type MonitorVersion: str
-        :param _ClientLimitMin: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ClientLimitMin: Minimum value that can be set for the maximum number of client connections.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClientLimitMin: int
-        :param _ClientLimitMax: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ClientLimitMax: Maximum value that can be set for the maximum number of client connections.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClientLimitMax: int
-        :param _NodeSet: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NodeSet: Detailed node information of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NodeSet: list of RedisNodeInfo
-        :param _Region: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Region: Region information of an instance, for example, ap-guangzhou.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Region: str
-        :param _WanAddress: Note: This field may return null, indicating that no valid value can be obtained.
+        :param _WanAddress: Public network address.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type WanAddress: str
-        :param _PolarisServer: Note: This field may return null, indicating that no valid value can be obtained.
+        :param _PolarisServer: Polaris service address, which is for internal use.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PolarisServer: str
-        :param _CurrentProxyVersion: Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RedisClusterId: CDC Redis cluster ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RedisClusterId: str
+        :param _DedicatedClusterId: CDC cluster ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DedicatedClusterId: str
+        :param _ProductVersion: Product edition. <ul><li>local: local disk;</li> <li>cloud: cloud disk;</li> <li>cdc: CDC cluster.</li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ProductVersion: str
+        :param _CurrentProxyVersion: Current Proxy version of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CurrentProxyVersion: str
-        :param _CurrentRedisVersion: Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CurrentRedisVersion: Current Cache minor version of an instance. If the instance joins a global replication group, the kernel version of the global replication group will be displayed.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CurrentRedisVersion: str
-        :param _UpgradeProxyVersion: Note: This field may return null, indicating that no valid value can be obtained.
+        :param _UpgradeProxyVersion: Upgradable Proxy version of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type UpgradeProxyVersion: str
-        :param _UpgradeRedisVersion: Note: This field may return null, indicating that no valid value can be obtained.
+        :param _UpgradeRedisVersion: Upgradable Cache minor version of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type UpgradeRedisVersion: str
+        :param _BackupMode: Backup mode. SecondLevelBackup: second-level backup; NormalLevelBackup: normal backup.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BackupMode: str
         """
         self._InstanceName = None
         self._InstanceId = None
@@ -11994,14 +13583,18 @@ class InstanceSet(AbstractModel):
         self._Region = None
         self._WanAddress = None
         self._PolarisServer = None
+        self._RedisClusterId = None
+        self._DedicatedClusterId = None
+        self._ProductVersion = None
         self._CurrentProxyVersion = None
         self._CurrentRedisVersion = None
         self._UpgradeProxyVersion = None
         self._UpgradeRedisVersion = None
+        self._BackupMode = None
 
     @property
     def InstanceName(self):
-        """Instance name
+        """Instance name.
         :rtype: str
         """
         return self._InstanceName
@@ -12012,7 +13605,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -12023,7 +13616,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Appid(self):
-        """User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
+        """App ID of a user, which is an application ID that uniquely corresponds to the account ID. Some Tencent Cloud products use this app ID.
 
         :rtype: int
         """
@@ -12035,7 +13628,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        """Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -12046,7 +13639,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RegionId(self):
-        """Region IDs. <ul><li>1: Guangzhou. </li><li>4: Shanghai. </li><li>5: Hong Kong, China. </li><li>6: Toronto. </li><li>8: Beijing. </li><li>9: Singapore. </li><li>15: West US (Silicon Valley). </li><li>16: Chengdu. </li><li>17: Frankfurt. </li><li>18: Seoul. </li><li>19: Chongqing. </li><li>21: Mumbai. </li><li>22: East US (Virginia). </li><li>23: Bangkok. </li><li>25: Tokyo. </li></ul>
+        """Region ID. <ul><li>1: Guangzhou;</li> <li>4: Shanghai;</li> <li>5: Hong Kong (China);</li> <li>7: Shanghai Finance;</li> <li>8: Beijing;</li> <li>9: Singapore;</li> <li>11: Shenzhen Finance;</li> <li>15: Western United States (Silicon Valley);</li> <li>16: Chengdu;</li> <li>17: Frankfurt;</li> <li>18: Seoul;</li> <li>19: Chongqing;</li> <li>21: Mumbai;</li> <li>22: Eastern United States (Virginia);</li> <li>23: Bangkok;</li> <li>25: Tokyo.</li></ul>
         :rtype: int
         """
         return self._RegionId
@@ -12057,7 +13650,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Region ID
+        """Zone ID.
         :rtype: int
         """
         return self._ZoneId
@@ -12068,7 +13661,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID, such as `75101`.
+        """VPC ID, for example, 75101.
         :rtype: int
         """
         return self._VpcId
@@ -12079,7 +13672,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID, such as `46315`.
+        """ID of the subnet under VPC, for example, 46315.
         :rtype: int
         """
         return self._SubnetId
@@ -12090,7 +13683,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Status(self):
-        """Current instance status. <ul><li>`0`: To be initialized. </li><li>`1`: In the process. </li><li>`2`: Running. </li><li>`-2`: Isolated. </li><li>`-3`: To be deleted. </li></ul>
+        """Current instance status. <ul><li>0: to be initialized;</li> <li>1: in process;</li> <li>2: running;</li> <li>-2: isolated;</li> <li>-3: to be deleted.</li></ul>
         :rtype: int
         """
         return self._Status
@@ -12101,7 +13694,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def WanIp(self):
-        """Instance VIP
+        """Instance VIP.
         :rtype: str
         """
         return self._WanIp
@@ -12112,7 +13705,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Port(self):
-        """Port number of an instance
+        """Instance port number.
         :rtype: int
         """
         return self._Port
@@ -12123,7 +13716,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Createtime(self):
-        """Instance creation time in the format of "2020-01-15 10:20:00"
+        """Instance creation time, for example, in the format of 2020-01-15 10:20:00.
         :rtype: str
         """
         return self._Createtime
@@ -12134,7 +13727,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Size(self):
-        """Instance memory capacity in MB (1 MB = 1024 KB)
+        """Instance memory capacity. Unit: MB (1 MB = 1024 KB).
         :rtype: float
         """
         return self._Size
@@ -12145,7 +13738,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SizeUsed(self):
-        """This field has been disused. You can use the TCOP [GetMonitorData](https://www.tencentcloud.com/zh/document/product/248/33881) API to query the capacity used by the instance.
+        """This parameter has been deprecated. Obtain the memory capacity used by the instance through the TCOP API [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1).
         :rtype: float
         """
         return self._SizeUsed
@@ -12156,17 +13749,19 @@ class InstanceSet(AbstractModel):
 
     @property
     def Type(self):
-        """Instance type
-- `2`: Redis 2.8 Memory Edition (Standard Architecture).
-- `3`: CKV 3.2 Memory Edition (Standard Architecture).
-- `4`: CKV 3.2 Memory Edition (Cluster Architecture).
-- `5`: Redis 2.8 Memory Edition (Standalone).
-- `6`: Redis 4.0 Memory Edition (Standard Architecture).
-- `7`: Redis 4.0 Memory Edition (Cluster Architecture).
-- `8`: Redis 5.0 Memory Edition (Standard Architecture).
-- `9`: Redis 5.0 Memory Edition (Cluster Architecture).
-- `15`: Redis 6.2 Memory Edition (Standard Architecture).
-- `16`: Redis 6.2 Memory Edition (Cluster Architecture).
+        """Instance type.
+- 2: Redis 2.8 Memory Edition (standard architecture).
+- 3: CKV 3.2 Memory Edition (standard architecture).
+- 4: CKV 3.2 Memory Edition (cluster architecture).
+- 5: Redis 2.8 Memory Edition (stand-alone).
+- 6: Redis 4.0 Memory Edition (standard architecture).
+- 7: Redis 4.0 Memory Edition (cluster architecture).
+- 8: Redis 5.0 Memory Edition (standard architecture).
+- 9: Redis 5.0 Memory Edition (cluster architecture).
+- 15: Redis 6.2 Memory Edition (standard architecture).
+- 16: Redis 6.2 Memory Edition (cluster architecture).
+- 17: Redis 7.0 Memory Edition (standard architecture).
+- 18: Redis 7.0 Memory Edition (cluster architecture).
         :rtype: int
         """
         return self._Type
@@ -12177,7 +13772,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """Whether to set the auto-renewal flag for an instance. <ul><li>`1`: Auto-renewal set. </li><li>`0`: Auto-renewal not set.</li></ul>
+        """Whether the automatic renewal flag is set for an instance. <ul><li>1: set;</li> <li>0: not set.</li></ul>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -12188,7 +13783,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        """The time when a monthly subscribed instance expires
+        """Expiration time of a monthly subscription instance.
         :rtype: str
         """
         return self._DeadlineTime
@@ -12199,7 +13794,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Engine(self):
-        """Engine: Redis community edition, Tencent Cloud CKV
+        """Engine. Valid values: Redis Community Edition and Tencent Cloud CKV.
         :rtype: str
         """
         return self._Engine
@@ -12210,7 +13805,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProductType(self):
-        """Product type. <ul><li>`standalone`: Standard edition. </li><li>`cluster`: Cluster edition. </li></ul>
+        """Product type. <ul><li>standalone: Standard Edition;</li> <li>cluster: Cluster Edition.</li></ul>
         :rtype: str
         """
         return self._ProductType
@@ -12221,7 +13816,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        """VPC ID, such as vpc-fk33jsf43kgv.
+        """VPC ID, for example, vpc-fk33jsf43kgv.
         :rtype: str
         """
         return self._UniqVpcId
@@ -12232,7 +13827,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        """VPC subnet ID, such as subnet-fd3j6l35mm0.
+        """ID of the subnet under VPC, for example, subnet-fd3j6l35mm0.
         :rtype: str
         """
         return self._UniqSubnetId
@@ -12254,7 +13849,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceTitle(self):
-        """Description of an instance status, such as "Running".
+        """Description of the instance running status, for example, running.
         :rtype: str
         """
         return self._InstanceTitle
@@ -12265,7 +13860,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def OfflineTime(self):
-        """The default termination time for isolated instances in the format of "2020-02-15 10:20:00". By default, a pay-as-you-go instance will be terminated after two hours of isolation, and a monthly subscribed instance will be terminated after seven days by default.
+        """Default termination time of isolated instances, for example, in the format of 2020-02-15 10:20:00. By default, a pay-as-you-go instance will be terminated after 2 hours of isolation, and a monthly subscription instance will be terminated after 7 days.
         :rtype: str
         """
         return self._OfflineTime
@@ -12276,7 +13871,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SubStatus(self):
-        """Sub-status returned for an instance in process
+        """Sub-status returned for an instance in process.
         :rtype: int
         """
         return self._SubStatus
@@ -12287,7 +13882,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def Tags(self):
-        """Anti-affinity tag
+        """Anti-affinity tag.
         :rtype: list of str
         """
         return self._Tags
@@ -12298,7 +13893,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceNode(self):
-        """Instance node information
+        """Instance node information.
         :rtype: list of InstanceNode
         """
         return self._InstanceNode
@@ -12309,7 +13904,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisShardSize(self):
-        """Shard size
+        """Shard size.
         :rtype: int
         """
         return self._RedisShardSize
@@ -12320,7 +13915,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisShardNum(self):
-        """Number of shards
+        """Number of shards.
         :rtype: int
         """
         return self._RedisShardNum
@@ -12331,7 +13926,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def RedisReplicasNum(self):
-        """Number of replicas
+        """Number of replicas.
         :rtype: int
         """
         return self._RedisReplicasNum
@@ -12342,7 +13937,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def PriceId(self):
-        """Billing ID
+        """Billing ID.
         :rtype: int
         """
         return self._PriceId
@@ -12353,7 +13948,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def CloseTime(self):
-        """The time when an instance start to be isolated
+        """Time when an instance starts to be isolated.
         :rtype: str
         """
         return self._CloseTime
@@ -12364,7 +13959,7 @@ class InstanceSet(AbstractModel):
 
     @property
     def SlaveReadWeight(self):
-        """Read weight of a replica node
+        """Read weight of a secondary node.
         :rtype: int
         """
         return self._SlaveReadWeight
@@ -12375,7 +13970,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def InstanceTags(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Tag information associated with an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of InstanceTagInfo
         """
         return self._InstanceTags
@@ -12386,7 +13982,9 @@ class InstanceSet(AbstractModel):
 
     @property
     def ProjectName(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Project name
+
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._ProjectName
@@ -12397,7 +13995,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def NoAuth(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Whether an instance is a password-free instance. <ul><li>true: yes;</li> <li>false: no.</li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: bool
         """
         return self._NoAuth
@@ -12408,7 +14007,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def ClientLimit(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Number of client connections.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._ClientLimit
@@ -12419,7 +14019,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def DtsStatus(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """DTS status (internal parameter, which can be ignored).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._DtsStatus
@@ -12430,7 +14031,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def NetLimit(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Upper limit of the shard bandwidth. Unit: MB.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._NetLimit
@@ -12441,7 +14043,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def PasswordFree(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Password-free instance flag (internal parameter, which can be ignored).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._PasswordFree
@@ -12452,7 +14055,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def Vip6(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Internal parameter, which can be ignored. This parameter is not properly named. It is recommended to use the IPv6 parameter to replace it.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Vip6
@@ -12463,7 +14067,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def IPv6(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Internal parameter, which can be ignored.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._IPv6
@@ -12474,7 +14079,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def ReadOnly(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance read-only flag (internal parameter, which can be ignored).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._ReadOnly
@@ -12485,7 +14091,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def RemainBandwidthDuration(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Internal parameter, which can be ignored.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._RemainBandwidthDuration
@@ -12496,7 +14103,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def DiskSize(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """For Redis instances, ignore this parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._DiskSize
@@ -12507,7 +14115,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def MonitorVersion(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Monitoring version. <ul><li>1m: 1-minute granularity monitoring. This monitoring granularity has been deprecated. For details, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li> <li>5s: 5-second granularity monitoring.</li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._MonitorVersion
@@ -12518,7 +14127,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def ClientLimitMin(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Minimum value that can be set for the maximum number of client connections.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._ClientLimitMin
@@ -12529,7 +14139,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def ClientLimitMax(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Maximum value that can be set for the maximum number of client connections.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._ClientLimitMax
@@ -12540,7 +14151,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def NodeSet(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Detailed node information of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of RedisNodeInfo
         """
         return self._NodeSet
@@ -12551,7 +14163,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def Region(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Region information of an instance, for example, ap-guangzhou.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Region
@@ -12562,7 +14175,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def WanAddress(self):
-        """Note: This field may return null, indicating that no valid value can be obtained.
+        """Public network address.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._WanAddress
@@ -12573,7 +14187,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def PolarisServer(self):
-        """Note: This field may return null, indicating that no valid value can be obtained.
+        """Polaris service address, which is for internal use.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._PolarisServer
@@ -12583,8 +14198,45 @@ class InstanceSet(AbstractModel):
         self._PolarisServer = PolarisServer
 
     @property
+    def RedisClusterId(self):
+        """CDC Redis cluster ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._RedisClusterId
+
+    @RedisClusterId.setter
+    def RedisClusterId(self, RedisClusterId):
+        self._RedisClusterId = RedisClusterId
+
+    @property
+    def DedicatedClusterId(self):
+        """CDC cluster ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def ProductVersion(self):
+        """Product edition. <ul><li>local: local disk;</li> <li>cloud: cloud disk;</li> <li>cdc: CDC cluster.</li></ul>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
+    @property
     def CurrentProxyVersion(self):
-        """Note: This field may return null, indicating that no valid value can be obtained.
+        """Current Proxy version of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -12595,7 +14247,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def CurrentRedisVersion(self):
-        """Note: This field may return null, indicating that no valid value can be obtained.
+        """Current Cache minor version of an instance. If the instance joins a global replication group, the kernel version of the global replication group will be displayed.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._CurrentRedisVersion
@@ -12606,7 +14259,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def UpgradeProxyVersion(self):
-        """Note: This field may return null, indicating that no valid value can be obtained.
+        """Upgradable Proxy version of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._UpgradeProxyVersion
@@ -12617,7 +14271,8 @@ class InstanceSet(AbstractModel):
 
     @property
     def UpgradeRedisVersion(self):
-        """Note: This field may return null, indicating that no valid value can be obtained.
+        """Upgradable Cache minor version of an instance.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._UpgradeRedisVersion
@@ -12625,6 +14280,18 @@ class InstanceSet(AbstractModel):
     @UpgradeRedisVersion.setter
     def UpgradeRedisVersion(self, UpgradeRedisVersion):
         self._UpgradeRedisVersion = UpgradeRedisVersion
+
+    @property
+    def BackupMode(self):
+        """Backup mode. SecondLevelBackup: second-level backup; NormalLevelBackup: normal backup.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._BackupMode
+
+    @BackupMode.setter
+    def BackupMode(self, BackupMode):
+        self._BackupMode = BackupMode
 
 
     def _deserialize(self, params):
@@ -12695,10 +14362,14 @@ class InstanceSet(AbstractModel):
         self._Region = params.get("Region")
         self._WanAddress = params.get("WanAddress")
         self._PolarisServer = params.get("PolarisServer")
+        self._RedisClusterId = params.get("RedisClusterId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._ProductVersion = params.get("ProductVersion")
         self._CurrentProxyVersion = params.get("CurrentProxyVersion")
         self._CurrentRedisVersion = params.get("CurrentRedisVersion")
         self._UpgradeProxyVersion = params.get("UpgradeProxyVersion")
         self._UpgradeRedisVersion = params.get("UpgradeRedisVersion")
+        self._BackupMode = params.get("BackupMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13025,7 +14696,7 @@ class Instances(AbstractModel):
         :type InstanceId: str
         :param _InstanceName: Instance name
         :type InstanceName: str
-        :param _RegionId: Region ID. <ul><li>`1`: Guangzhou. </li><li>`4`: Shanghai. </li><li>`5`: Hong Kong (China). </li> <li>`6`: Toronto. </li> <li>`7`: Shanghai Finance. </li> <li>`8`: Beijing. </li> <li>`9`: Singapore. </li> <li>`11`: Shenzhen Finance. </li> <li>`15`: West US (Silicon Valley). </li> </ul>
+        :param _RegionId: Region ID. <ul><li>1: Guangzhou;</li> <li>4: Shanghai;</li> <li>5: Hong Kong (China);</li> <li>7: Shanghai Finance;</li> <li>8: Beijing;</li> <li>9: Singapore;</li> <li>11: Shenzhen Finance;</li> <li>15: Western United States (Silicon Valley).</li></ul>
         :type RegionId: int
         :param _ZoneId: Region ID
         :type ZoneId: int
@@ -13132,7 +14803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionId(self):
-        """Region ID. <ul><li>`1`: Guangzhou. </li><li>`4`: Shanghai. </li><li>`5`: Hong Kong (China). </li> <li>`6`: Toronto. </li> <li>`7`: Shanghai Finance. </li> <li>`8`: Beijing. </li> <li>`9`: Singapore. </li> <li>`11`: Shenzhen Finance. </li> <li>`15`: West US (Silicon Valley). </li> </ul>
+        """Region ID. <ul><li>1: Guangzhou;</li> <li>4: Shanghai;</li> <li>5: Hong Kong (China);</li> <li>7: Shanghai Finance;</li> <li>8: Beijing;</li> <li>9: Singapore;</li> <li>11: Shenzhen Finance;</li> <li>15: Western United States (Silicon Valley).</li></ul>
         :rtype: int
         """
         return self._RegionId
@@ -13385,7 +15056,8 @@ class KillMasterGroupRequest(AbstractModel):
         :type InstanceId: str
         :param _Password: A parameter used to configure the access password for a specified instance. If password-free authentication is enabled, this parameter will not be required. Required password strength. - It must contains 8-30 characters. We recommend that you use a password of more than 12 characters. - It must contain at least two of the following types: lowercase letters, uppercase letters, digits, and symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/), and it cannot start with a slash (/).
         :type Password: str
-        :param _ShardIds: Shard ID of a sharded cluster
+        :param _ShardIds: Sharded cluster ID, which can be obtained through **ClusterId** of the response parameter 
+ **Redis** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).
         :type ShardIds: list of int
         """
         self._InstanceId = None
@@ -13416,7 +15088,8 @@ class KillMasterGroupRequest(AbstractModel):
 
     @property
     def ShardIds(self):
-        """Shard ID of a sharded cluster
+        """Sharded cluster ID, which can be obtained through **ClusterId** of the response parameter 
+ **Redis** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).
         :rtype: list of int
         """
         return self._ShardIds
@@ -13481,6 +15154,97 @@ class KillMasterGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class LogDeliveryInfo(AbstractModel):
+    """Log shipping information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: Whether log shipping is enabled. true: enabled; false: disabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Enabled: bool
+        :param _LogsetId: Logset ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type LogsetId: str
+        :param _TopicId: Log topic ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TopicId: str
+        :param _LogRegion: Logset region
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type LogRegion: str
+        """
+        self._Enabled = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._LogRegion = None
+
+    @property
+    def Enabled(self):
+        """Whether log shipping is enabled. true: enabled; false: disabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def LogsetId(self):
+        """Logset ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        """Log topic ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogRegion(self):
+        """Logset region
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._LogRegion
+
+    @LogRegion.setter
+    def LogRegion(self, LogRegion):
+        self._LogRegion = LogRegion
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._LogRegion = params.get("LogRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ManualBackupInstanceRequest(AbstractModel):
@@ -14030,11 +15794,13 @@ class ModifyConnectionConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, which can contain 12 to 36 characters.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _Bandwidth: Additional bandwidth in MB, which should be greater than 0.
         :type Bandwidth: int
-        :param _ClientLimit: Total number of connections of a single shard.When read-only replicas are not enabled, the lower limit is 10,000, and the upper limit is 40,000.When read-only replicas are enabled, the lower limit is 10,000, and the upper limit is 10,000 × (the number of read-only replicas + 3).
+        :param _ClientLimit: Total number of connections per shard.
+- When read-only replicas are not enabled, the lower limit is 10,000 and the upper limit is 40,000.
+- When read-only replicas are enabled, the lower limit is 10,000, and the upper limit is calculated as follows: 10,000 x (Number of read-only replicas + 3).
         :type ClientLimit: int
         """
         self._InstanceId = None
@@ -14043,7 +15809,7 @@ class ModifyConnectionConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID, which can contain 12 to 36 characters.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -14065,7 +15831,9 @@ class ModifyConnectionConfigRequest(AbstractModel):
 
     @property
     def ClientLimit(self):
-        """Total number of connections of a single shard.When read-only replicas are not enabled, the lower limit is 10,000, and the upper limit is 40,000.When read-only replicas are enabled, the lower limit is 10,000, and the upper limit is 10,000 × (the number of read-only replicas + 3).
+        """Total number of connections per shard.
+- When read-only replicas are not enabled, the lower limit is 10,000 and the upper limit is 40,000.
+- When read-only replicas are enabled, the lower limit is 10,000, and the upper limit is calculated as follows: 10,000 x (Number of read-only replicas + 3).
         :rtype: int
         """
         return self._ClientLimit
@@ -14141,9 +15909,11 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param _SecurityGroupIds: List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        :param _SecurityGroupIds: Security group ID list. Replace it with a new one, which is an array of one or more security group IDs.
+- To configure a security group for an instance for the first time, bind the security group through the API [AssociateSecurityGroups](https://intl.cloud.tencent.com/document/product/239/41260?from_cn_redirect=1) first.
+- To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.
         :type SecurityGroupIds: list of str
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._Product = None
@@ -14163,7 +15933,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        """List of IDs of security groups to be modified, which is an array of one or more security group IDs.
+        """Security group ID list. Replace it with a new one, which is an array of one or more security group IDs.
+- To configure a security group for an instance for the first time, bind the security group through the API [AssociateSecurityGroups](https://intl.cloud.tencent.com/document/product/239/41260?from_cn_redirect=1) first.
+- To replace the security group, obtain the security group ID on the [security group](https://console.tencentcloud.com/vpc/security-group) page of the console.
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -14174,7 +15946,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -14233,19 +16005,26 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _AccountName: Sub-account name. If the root account is to be modified, enter `root`.
+        :param _AccountName: Sub-account name. If you want to change it to the root account, fill in root.
         :type AccountName: str
-        :param _AccountPassword: Sub-account password
+        :param _AccountPassword: Sub-account password.
         :type AccountPassword: str
         :param _Remark: Sub-account description information
         :type Remark: str
-        :param _ReadonlyPolicy: Routing policy. Valid values: master (master node); replication (replica node)
+        :param _ReadonlyPolicy: Account read/write routing policy.
+- master: primary node.
+- replication: secondary node.
         :type ReadonlyPolicy: list of str
-        :param _Privilege: Sub-account read/write policy. Valid values: r (read-only); w (write-only); rw (read/write).
+        :param _Privilege: Sub-account read/write policy.
+- r: read-only.
+- w: write-only.
+- rw: read/write.
         :type Privilege: str
-        :param _NoAuth: true: make the root account password-free. This is applicable to root accounts only. Sub-accounts cannot be made password-free.
+        :param _NoAuth: Whether to switch the root account to a password-free account. This applies only to the root account. Sub-accounts do not support password-free access.
+- true: Switch the root account to a password-free account.
+- false: Do not switch it.
         :type NoAuth: bool
         """
         self._InstanceId = None
@@ -14258,7 +16037,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -14269,7 +16048,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        """Sub-account name. If the root account is to be modified, enter `root`.
+        """Sub-account name. If you want to change it to the root account, fill in root.
         :rtype: str
         """
         return self._AccountName
@@ -14280,7 +16059,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def AccountPassword(self):
-        """Sub-account password
+        """Sub-account password.
         :rtype: str
         """
         return self._AccountPassword
@@ -14302,7 +16081,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def ReadonlyPolicy(self):
-        """Routing policy. Valid values: master (master node); replication (replica node)
+        """Account read/write routing policy.
+- master: primary node.
+- replication: secondary node.
         :rtype: list of str
         """
         return self._ReadonlyPolicy
@@ -14313,7 +16094,10 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def Privilege(self):
-        """Sub-account read/write policy. Valid values: r (read-only); w (write-only); rw (read/write).
+        """Sub-account read/write policy.
+- r: read-only.
+- w: write-only.
+- rw: read/write.
         :rtype: str
         """
         return self._Privilege
@@ -14324,7 +16108,9 @@ class ModifyInstanceAccountRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        """true: make the root account password-free. This is applicable to root accounts only. Sub-accounts cannot be made password-free.
+        """Whether to switch the root account to a password-free account. This applies only to the root account. Sub-accounts do not support password-free access.
+- true: Switch the root account to a password-free account.
+- false: Do not switch it.
         :rtype: bool
         """
         return self._NoAuth
@@ -14673,6 +16459,209 @@ class ModifyInstanceEventResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceLogDeliveryRequest(AbstractModel):
+    """ModifyInstanceLogDelivery request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
+        :type InstanceId: str
+        :param _LogType: Log type. Currently, only slowlog is supported, indicating the slow query log.
+        :type LogType: str
+        :param _Enabled: Whether log shopping is enabled.
+- true: enabled.
+- false: disabled.
+        :type Enabled: bool
+        :param _LogsetId: ID of the shipped logset, which can be obtained through the sub-parameter **LogsetId** of the response parameter **SlowLog** of the API [DescribeInstanceLogDelivery](https://intl.cloud.tencent.com/document/product/239/110878?from_cn_redirect=1).
+        :type LogsetId: str
+        :param _TopicId: ID of the shipped log topic, which can be obtained through the sub-parameter **TopicId** of the response parameter **SlowLog** of the API [DescribeInstanceLogDelivery](https://intl.cloud.tencent.com/document/product/239/110878?from_cn_redirect=1).
+        :type TopicId: str
+        :param _LogsetName: Logset name. If **LogsetId** is not specified, this parameter needs to be configured and the system will automatically create a logset with the specified name.
+        :type LogsetName: str
+        :param _TopicName: Log topic name. This parameter is required when TopicId is empty, and the system will automatically create a log topic.
+        :type TopicName: str
+        :param _LogRegion: Region where the logset is located. If it is not provided, the region where the instance is located will be used by default.
+        :type LogRegion: str
+        :param _Period: Log storage duration. Default value: 30 days. Value range: 1 to 3600 days.
+        :type Period: int
+        :param _CreateIndex: Whether to create an index when creating a log topic.
+        :type CreateIndex: bool
+        """
+        self._InstanceId = None
+        self._LogType = None
+        self._Enabled = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._LogsetName = None
+        self._TopicName = None
+        self._LogRegion = None
+        self._Period = None
+        self._CreateIndex = None
+
+    @property
+    def InstanceId(self):
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        """Log type. Currently, only slowlog is supported, indicating the slow query log.
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Enabled(self):
+        """Whether log shopping is enabled.
+- true: enabled.
+- false: disabled.
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def LogsetId(self):
+        """ID of the shipped logset, which can be obtained through the sub-parameter **LogsetId** of the response parameter **SlowLog** of the API [DescribeInstanceLogDelivery](https://intl.cloud.tencent.com/document/product/239/110878?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        """ID of the shipped log topic, which can be obtained through the sub-parameter **TopicId** of the response parameter **SlowLog** of the API [DescribeInstanceLogDelivery](https://intl.cloud.tencent.com/document/product/239/110878?from_cn_redirect=1).
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetName(self):
+        """Logset name. If **LogsetId** is not specified, this parameter needs to be configured and the system will automatically create a logset with the specified name.
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def TopicName(self):
+        """Log topic name. This parameter is required when TopicId is empty, and the system will automatically create a log topic.
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogRegion(self):
+        """Region where the logset is located. If it is not provided, the region where the instance is located will be used by default.
+        :rtype: str
+        """
+        return self._LogRegion
+
+    @LogRegion.setter
+    def LogRegion(self, LogRegion):
+        self._LogRegion = LogRegion
+
+    @property
+    def Period(self):
+        """Log storage duration. Default value: 30 days. Value range: 1 to 3600 days.
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CreateIndex(self):
+        """Whether to create an index when creating a log topic.
+        :rtype: bool
+        """
+        return self._CreateIndex
+
+    @CreateIndex.setter
+    def CreateIndex(self, CreateIndex):
+        self._CreateIndex = CreateIndex
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._Enabled = params.get("Enabled")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._LogsetName = params.get("LogsetName")
+        self._TopicName = params.get("TopicName")
+        self._LogRegion = params.get("LogRegion")
+        self._Period = params.get("Period")
+        self._CreateIndex = params.get("CreateIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceLogDeliveryResponse(AbstractModel):
+    """ModifyInstanceLogDelivery response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceParamsRequest(AbstractModel):
     """ModifyInstanceParams request structure.
 
@@ -14680,7 +16669,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _InstanceParams: List of instance parameters modified
         :type InstanceParams: list of InstanceParam
@@ -14690,7 +16679,7 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -14736,7 +16725,7 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Changed: Whether the parameter is modified successfully. <br><li>`True`: Yes<br><li>`False`: No<br>
+        :param _Changed: Whether the parameter configuration is successfully modified.<br> <li>true: successful;</li> <li>false: failed.</li>
         :type Changed: bool
         :param _TaskId: ID of the task
         :type TaskId: int
@@ -14749,7 +16738,7 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     @property
     def Changed(self):
-        """Whether the parameter is modified successfully. <br><li>`True`: Yes<br><li>`False`: No<br>
+        """Whether the parameter configuration is successfully modified.<br> <li>true: successful;</li> <li>false: failed.</li>
         :rtype: bool
         """
         return self._Changed
@@ -14787,6 +16776,121 @@ class ModifyInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstancePasswordRequest(AbstractModel):
+    """ModifyInstancePassword request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+        :type InstanceId: str
+        :param _OldPassword: Old password of the instance.
+        :type OldPassword: str
+        :param _Password: New password of the instance. The password complexity requirements are as follows:
+- It can contain 8 to 30 characters. It is recommended to use a password of more than 12 characters.
+- It cannot start with a forward slash (/).
+- It should contain at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()~!@#$%^&*-+=_|{}[]:;<>,.?/).
+        :type Password: str
+        """
+        self._InstanceId = None
+        self._OldPassword = None
+        self._Password = None
+
+    @property
+    def InstanceId(self):
+        """Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OldPassword(self):
+        """Old password of the instance.
+        :rtype: str
+        """
+        return self._OldPassword
+
+    @OldPassword.setter
+    def OldPassword(self, OldPassword):
+        self._OldPassword = OldPassword
+
+    @property
+    def Password(self):
+        """New password of the instance. The password complexity requirements are as follows:
+- It can contain 8 to 30 characters. It is recommended to use a password of more than 12 characters.
+- It cannot start with a forward slash (/).
+- It should contain at least two of the following types: lowercase letters, uppercase letters, digits, and special characters (such as ()~!@#$%^&*-+=_|{}[]:;<>,.?/).
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OldPassword = params.get("OldPassword")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePasswordResponse(AbstractModel):
+    """ModifyInstancePassword response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Task ID.
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceReadOnlyRequest(AbstractModel):
     """ModifyInstanceReadOnly request structure.
 
@@ -14794,9 +16898,11 @@ class ModifyInstanceReadOnlyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _InputMode: Instance input mode. Valid values: `0` (read/write), `1` (read-only)
+        :param _InputMode: Instance input mode.
+- 0: read/write.
+- 1: read-only.
         :type InputMode: str
         """
         self._InstanceId = None
@@ -14804,7 +16910,7 @@ class ModifyInstanceReadOnlyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -14815,7 +16921,9 @@ class ModifyInstanceReadOnlyRequest(AbstractModel):
 
     @property
     def InputMode(self):
-        """Instance input mode. Valid values: `0` (read/write), `1` (read-only)
+        """Instance input mode.
+- 0: read/write.
+- 1: read-only.
         :rtype: str
         """
         return self._InputMode
@@ -14888,21 +16996,28 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operation: Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance.
+        :param _Operation: Instance modification operation. Valid values:
+- rename: Rename the instance.
+- modifyProject: Modify the project to which the instance belongs.
+- modifyAutoRenew: Modify the instance renewal flag.
         :type Operation: str
-        :param _InstanceIds: Instance ID
+        :param _InstanceIds: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list. The maximum number of instances per request is 10.
         :type InstanceIds: list of str
-        :param _InstanceNames: New name of the instance
+        :param _InstanceNames: New name of the instance.
         :type InstanceNames: list of str
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID. Log in to the [Project Management](https://console.tencentcloud.com/project) page of the Redis console and copy the project ID in **Project Name**.
         :type ProjectId: int
-        :param _AutoRenews: Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        :param _AutoRenews: Auto-renewal flag.
+
+- 0: default status (manual renewal).
+- 1: automatic renewal.
+- 2: no automatic renewal.
         :type AutoRenews: list of int
-        :param _InstanceId: Disused
+        :param _InstanceId: This parameter is currently being deprecated and can still be used by existing users. It is recommended that new users use InstanceIds.
         :type InstanceId: str
         :param _InstanceName: Disused
         :type InstanceName: str
-        :param _AutoRenew: Disused
+        :param _AutoRenew: This parameter has been deprecated.
         :type AutoRenew: int
         """
         self._Operation = None
@@ -14916,7 +17031,10 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def Operation(self):
-        """Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance.
+        """Instance modification operation. Valid values:
+- rename: Rename the instance.
+- modifyProject: Modify the project to which the instance belongs.
+- modifyAutoRenew: Modify the instance renewal flag.
         :rtype: str
         """
         return self._Operation
@@ -14927,7 +17045,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list. The maximum number of instances per request is 10.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -14938,7 +17056,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        """New name of the instance
+        """New name of the instance.
         :rtype: list of str
         """
         return self._InstanceNames
@@ -14949,7 +17067,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        """Project ID. Log in to the [Project Management](https://console.tencentcloud.com/project) page of the Redis console and copy the project ID in **Project Name**.
         :rtype: int
         """
         return self._ProjectId
@@ -14960,7 +17078,11 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def AutoRenews(self):
-        """Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled
+        """Auto-renewal flag.
+
+- 0: default status (manual renewal).
+- 1: automatic renewal.
+- 2: no automatic renewal.
         :rtype: list of int
         """
         return self._AutoRenews
@@ -14971,7 +17093,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Disused
+        """This parameter is currently being deprecated and can still be used by existing users. It is recommended that new users use InstanceIds.
         :rtype: str
         """
         return self._InstanceId
@@ -14993,7 +17115,7 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
-        """Disused
+        """This parameter has been deprecated.
         :rtype: int
         """
         return self._AutoRenew
@@ -15057,11 +17179,11 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _StartTime: Maintenance start time, such as 17:00
+        :param _StartTime: Start time of the maintenance window, for example, 17:00.
         :type StartTime: str
-        :param _EndTime: Maintenance end time, such as 19:00
+        :param _EndTime: End time of the maintenance window, for example, 19:00.
         :type EndTime: str
         """
         self._InstanceId = None
@@ -15070,7 +17192,7 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -15081,7 +17203,7 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Maintenance start time, such as 17:00
+        """Start time of the maintenance window, for example, 17:00.
         :rtype: str
         """
         return self._StartTime
@@ -15092,7 +17214,7 @@ class ModifyMaintenanceWindowRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Maintenance end time, such as 19:00
+        """End time of the maintenance window, for example, 19:00.
         :rtype: str
         """
         return self._EndTime
@@ -15166,7 +17288,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _Operation: Network change type. Valid values:
 - `changeVip`: VPC change, including the private IPv4 address and port.
@@ -15176,15 +17298,19 @@ class ModifyNetworkConfigRequest(AbstractModel):
         :type Operation: str
         :param _Vip: Private IPv4 address of the instance, which is required if `Operation` is `changeVip`.
         :type Vip: str
-        :param _VpcId: VPC ID after the change, which is required if `Operation` is `changeVpc` or `changeBaseToVpc`.
-        :type VpcId: str
-        :param _SubnetId: Subnet ID after the change, which is required if `Operation` is `changeVpc` or `changeBaseToVpc`.
-        :type SubnetId: str
-        :param _Recycle: Retention period of the original private IPv4 address
-- Unit: Days.
-- Valid values: `0`, `1`, `2`, `3`, `7`, `15`.
+        :param _VpcId: VPC ID after the modification.
+- Configure this parameter when **Operation** is set to **changeVpc** or **changeBaseToVpc**.
+- Log in to the [Redis console](https://console.tencentcloud.com/redis/instance), switch to the **Instance Details** page, and click the VPC name next to the associated network in the **Network Information** area to obtain the VPC ID.
 
-**Note**: You can set the retention period of the original address only in the latest SDK. In earlier SDKs, the original address is released immediately. To view the SDK version, go to [SDK Center](https://intl.cloud.tencent.com/document/sdk?from_cn_redirect=1).
+        :type VpcId: str
+        :param _SubnetId: ID of the subnet to which the VPC belongs after the modification.
+- Configure this parameter when **Operation** is set to **changeVpc** or **changeBaseToVpc**.
+- Log in to the [Redis console](https://console.tencentcloud.com/redis/instance), switch to the **Instance Details** page, and click the subnet name next to the associated network in the **Network Information** area to obtain the subnet ID.
+        :type SubnetId: str
+        :param _Recycle: Retention duration of the original private IPv4 address.
+- Unit: day.
+- Valid values: 0, 1, 2, 3, 7, and 15.
+
         :type Recycle: int
         :param _VPort: Network port after the change, which is required if `Operation` is `changeVPort` or `changeVip`. Value range: [1024,65535].
         :type VPort: int
@@ -15199,7 +17325,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -15236,7 +17362,10 @@ class ModifyNetworkConfigRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID after the change, which is required if `Operation` is `changeVpc` or `changeBaseToVpc`.
+        """VPC ID after the modification.
+- Configure this parameter when **Operation** is set to **changeVpc** or **changeBaseToVpc**.
+- Log in to the [Redis console](https://console.tencentcloud.com/redis/instance), switch to the **Instance Details** page, and click the VPC name next to the associated network in the **Network Information** area to obtain the VPC ID.
+
         :rtype: str
         """
         return self._VpcId
@@ -15247,7 +17376,9 @@ class ModifyNetworkConfigRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """Subnet ID after the change, which is required if `Operation` is `changeVpc` or `changeBaseToVpc`.
+        """ID of the subnet to which the VPC belongs after the modification.
+- Configure this parameter when **Operation** is set to **changeVpc** or **changeBaseToVpc**.
+- Log in to the [Redis console](https://console.tencentcloud.com/redis/instance), switch to the **Instance Details** page, and click the subnet name next to the associated network in the **Network Information** area to obtain the subnet ID.
         :rtype: str
         """
         return self._SubnetId
@@ -15258,11 +17389,10 @@ class ModifyNetworkConfigRequest(AbstractModel):
 
     @property
     def Recycle(self):
-        """Retention period of the original private IPv4 address
-- Unit: Days.
-- Valid values: `0`, `1`, `2`, `3`, `7`, `15`.
+        """Retention duration of the original private IPv4 address.
+- Unit: day.
+- Valid values: 0, 1, 2, 3, 7, and 15.
 
-**Note**: You can set the retention period of the original address only in the latest SDK. In earlier SDKs, the original address is released immediately. To view the SDK version, go to [SDK Center](https://intl.cloud.tencent.com/document/sdk?from_cn_redirect=1).
         :rtype: int
         """
         return self._Recycle
@@ -15316,7 +17446,7 @@ class ModifyNetworkConfigResponse(AbstractModel):
         :type VpcId: str
         :param _Vip: New private IPv4 address of the instance
         :type Vip: str
-        :param _TaskId: Task ID, which can be used to query the task execution status through the `DescribeTaskInfo` API.
+        :param _TaskId: Task ID. Obtain **taskId** and query the task execution status through the API [DescribeTaskInfo](https://intl.cloud.tencent.com/document/product/239/30601?from_cn_redirect=1).
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -15374,7 +17504,7 @@ class ModifyNetworkConfigResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID, which can be used to query the task execution status through the `DescribeTaskInfo` API.
+        """Task ID. Obtain **taskId** and query the task execution status through the API [DescribeTaskInfo](https://intl.cloud.tencent.com/document/product/239/30601?from_cn_redirect=1).
         :rtype: int
         """
         return self._TaskId
@@ -15411,7 +17541,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: ID of the source parameter template.
+        :param _TemplateId: Source parameter template ID, which can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://intl.cloud.tencent.com/document/product/239/58748?from_cn_redirect=1).
         :type TemplateId: str
         :param _Name: New name after the parameter template is modified.
         :type Name: str
@@ -15427,7 +17557,7 @@ class ModifyParamTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        """ID of the source parameter template.
+        """Source parameter template ID, which can be obtained through the response parameter **TemplateId** of the API [DescribeParamTemplateInfo](https://intl.cloud.tencent.com/document/product/239/58748?from_cn_redirect=1).
         :rtype: str
         """
         return self._TemplateId
@@ -15518,6 +17648,100 @@ class ModifyParamTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyReplicationGroupRequest(AbstractModel):
+    """ModifyReplicationGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
+        :type GroupId: str
+        :param _GroupName: Replication group name after the modification.
+        :type GroupName: str
+        :param _Remark: Description of remarks.
+        :type Remark: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._Remark = None
+
+    @property
+    def GroupId(self):
+        """Replication group ID. Log in to the [global replication](https://console.tencentcloud.com/redis/replication) page of the Redis console and obtain it.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        """Replication group name after the modification.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Remark(self):
+        """Description of remarks.
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReplicationGroupResponse(AbstractModel):
+    """ModifyReplicationGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class OpenSSLRequest(AbstractModel):
     """OpenSSL request structure.
 
@@ -15525,14 +17749,14 @@ class OpenSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -16034,7 +18258,7 @@ class ProductConf(AbstractModel):
 - `true`: Sold out.
 - `false`: Not sold out.
         :type Saleout: bool
-        :param _Engine: Product engines, including Tencent Cloud CKV and Redis Community Edition.
+        :param _Engine: Product engine. Valid values: Redis and CKV.
         :type Engine: str
         :param _Version: Compatible versions, including Redis 2.8, 3.2, 4.0, 5.0, and 6.2.
         :type Version: str
@@ -16144,7 +18368,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Engine(self):
-        """Product engines, including Tencent Cloud CKV and Redis Community Edition.
+        """Product engine. Valid values: Redis and CKV.
         :rtype: str
         """
         return self._Engine
@@ -17424,14 +19648,14 @@ class ReleaseWanAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID.
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID.
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -17518,11 +19742,14 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: Replication group ID
+        :param _GroupId: Replication group ID, for example, crs-rpl-m3zt****. Log in to the [Redis console](https://console.tencentcloud.com/redis/replication) and obtain it in the global replication group list.
+
         :type GroupId: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _SyncType: Data sync type. Valid values: `true` (strong sync is required), `false` (strong sync is not required, only the master instance can be deleted).
+        :param _SyncType: Data synchronization type.
+- true: Strong synchronization is required.
+- false: Strong synchronization is not required, and only the primary instance can be deleted.
         :type SyncType: bool
         """
         self._GroupId = None
@@ -17531,7 +19758,8 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        """Replication group ID
+        """Replication group ID, for example, crs-rpl-m3zt****. Log in to the [Redis console](https://console.tencentcloud.com/redis/replication) and obtain it in the global replication group list.
+
         :rtype: str
         """
         return self._GroupId
@@ -17542,7 +19770,7 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -17553,7 +19781,9 @@ class RemoveReplicationInstanceRequest(AbstractModel):
 
     @property
     def SyncType(self):
-        """Data sync type. Valid values: `true` (strong sync is required), `false` (strong sync is not required, only the master instance can be deleted).
+        """Data synchronization type.
+- true: Strong synchronization is required.
+- false: Strong synchronization is not required, and only the primary instance can be deleted.
         :rtype: bool
         """
         return self._SyncType
@@ -17584,7 +19814,7 @@ class RemoveReplicationInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Async task ID
+        :param _TaskId: Asynchronous task ID.
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -17594,7 +19824,7 @@ class RemoveReplicationInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Async task ID
+        """Asynchronous task ID.
         :rtype: int
         """
         return self._TaskId
@@ -17629,7 +19859,7 @@ class RenewInstanceRequest(AbstractModel):
         r"""
         :param _Period: Validity period in months
         :type Period: int
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _ModifyPayMode: The parameter used to determine whether to modify the billing mode. <ul><li>If you want to change the billing mode from pay-as-you-go to monthly subscription, specify this parameter as <b>prepaid</b>. </li><li>If the current instance is monthly subscribed, this parameter is not required. </li></ul>
         :type ModifyPayMode: str
@@ -17651,7 +19881,7 @@ class RenewInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -17742,7 +19972,7 @@ class ReplicaGroup(AbstractModel):
         :type GroupName: str
         :param _ZoneId: Node AZ ID, such as ap-guangzhou-1
         :type ZoneId: str
-        :param _Role: Node group type. Valid values: master (master node group); replica (replica node group)
+        :param _Role: Node group type. master: primary node; replica: replica node.
         :type Role: str
         :param _RedisNodes: List of nodes in the node group
         :type RedisNodes: list of RedisNode
@@ -17788,7 +20018,7 @@ class ReplicaGroup(AbstractModel):
 
     @property
     def Role(self):
-        """Node group type. Valid values: master (master node group); replica (replica node group)
+        """Node group type. master: primary node; replica: replica node.
         :rtype: str
         """
         return self._Role
@@ -17837,11 +20067,13 @@ class ResetPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Redis instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _Password: Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)
+        :param _Password: Reset password. This parameter can be left blank when a password-free instance is used. It is required in other cases.
         :type Password: str
-        :param _NoAuth: Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false.
+        :param _NoAuth: Whether to switch to a password-free instance.
+- false: Switch to a non-password-free instance.
+- true: Switch to a password-free instance. Default value: false.
         :type NoAuth: bool
         """
         self._InstanceId = None
@@ -17850,7 +20082,7 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Redis instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -17861,7 +20093,7 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)
+        """Reset password. This parameter can be left blank when a password-free instance is used. It is required in other cases.
         :rtype: str
         """
         return self._Password
@@ -17872,7 +20104,9 @@ class ResetPasswordRequest(AbstractModel):
 
     @property
     def NoAuth(self):
-        """Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false.
+        """Whether to switch to a password-free instance.
+- false: Switch to a non-password-free instance.
+- true: Switch to a password-free instance. Default value: false.
         :rtype: bool
         """
         return self._NoAuth
@@ -17937,6 +20171,72 @@ class ResetPasswordResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class ResourceBundle(AbstractModel):
+    """Dedicated Redis cluster resource package.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceBundleName: Resource package name.
+        :type ResourceBundleName: str
+        :param _AvailableMemory: Saleable memory. Unit: GB.
+        :type AvailableMemory: int
+        :param _Count: Number of resource packages.
+        :type Count: int
+        """
+        self._ResourceBundleName = None
+        self._AvailableMemory = None
+        self._Count = None
+
+    @property
+    def ResourceBundleName(self):
+        """Resource package name.
+        :rtype: str
+        """
+        return self._ResourceBundleName
+
+    @ResourceBundleName.setter
+    def ResourceBundleName(self, ResourceBundleName):
+        self._ResourceBundleName = ResourceBundleName
+
+    @property
+    def AvailableMemory(self):
+        """Saleable memory. Unit: GB.
+        :rtype: int
+        """
+        return self._AvailableMemory
+
+    @AvailableMemory.setter
+    def AvailableMemory(self, AvailableMemory):
+        self._AvailableMemory = AvailableMemory
+
+    @property
+    def Count(self):
+        """Number of resource packages.
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._ResourceBundleName = params.get("ResourceBundleName")
+        self._AvailableMemory = params.get("AvailableMemory")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResourceTag(AbstractModel):
@@ -18378,7 +20678,9 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: Identify whether the IP and port for accessing the database are allowed
+        :param _Action: Whether the inbound and outbound IP addresses and ports of the database are allowed.
+- ACCEPT: allowed.
+- DROP: disallowed.
         :type Action: str
         :param _Ip: IP address for accessing the database
         :type Ip: str
@@ -18394,7 +20696,9 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
 
     @property
     def Action(self):
-        """Identify whether the IP and port for accessing the database are allowed
+        """Whether the inbound and outbound IP addresses and ports of the database are allowed.
+- ACCEPT: allowed.
+- DROP: disallowed.
         :rtype: str
         """
         return self._Action
@@ -18459,9 +20763,9 @@ class SourceCommand(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cmd: Command
+        :param _Cmd: Command name.
         :type Cmd: str
-        :param _Count: Number of executions
+        :param _Count: Number of executions.
         :type Count: int
         """
         self._Cmd = None
@@ -18469,7 +20773,7 @@ class SourceCommand(AbstractModel):
 
     @property
     def Cmd(self):
-        """Command
+        """Command name.
         :rtype: str
         """
         return self._Cmd
@@ -18480,7 +20784,7 @@ class SourceCommand(AbstractModel):
 
     @property
     def Count(self):
-        """Number of executions
+        """Number of executions.
         :rtype: int
         """
         return self._Count
@@ -18576,14 +20880,14 @@ class StartupInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -18612,7 +20916,7 @@ class StartupInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID
+        :param _TaskId: This parameter has been deprecated. Determine whether the instance has been deisolated based on the status obtained through the instance query API.
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -18622,7 +20926,7 @@ class StartupInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID
+        """This parameter has been deprecated. Determine whether the instance has been deisolated based on the status obtained through the instance query API.
         :rtype: int
         """
         return self._TaskId
@@ -18723,13 +21027,15 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SrcInstanceId: Source instance ID
+        :param _SrcInstanceId: Source instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type SrcInstanceId: str
-        :param _DstInstanceId: Target instance ID
+        :param _DstInstanceId: Target instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type DstInstanceId: str
-        :param _TimeDelay: The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. We recommend you set an acceptable value based on the actual business conditions.
+        :param _TimeDelay: DTS disconnection time between the source instance and target instance. Unit: second. If the DTS disconnection time exceeds TimeDelay, the VIP will not be switched. It is recommended to set an acceptable value based on business needs.
         :type TimeDelay: int
-        :param _ForceSwitch: Whether to force the switch when DTS is disconnected. 1: yes; 0: no.
+        :param _ForceSwitch: Whether to force a switch in the case of a DTS disconnection.
+- 1: Force the switch.
+- 0: Do not force the switch.
         :type ForceSwitch: int
         :param _SwitchTime: now: switch now; syncComplete: switch after sync is completed
         :type SwitchTime: str
@@ -18742,7 +21048,7 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def SrcInstanceId(self):
-        """Source instance ID
+        """Source instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._SrcInstanceId
@@ -18753,7 +21059,7 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def DstInstanceId(self):
-        """Target instance ID
+        """Target instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._DstInstanceId
@@ -18764,7 +21070,7 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def TimeDelay(self):
-        """The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. We recommend you set an acceptable value based on the actual business conditions.
+        """DTS disconnection time between the source instance and target instance. Unit: second. If the DTS disconnection time exceeds TimeDelay, the VIP will not be switched. It is recommended to set an acceptable value based on business needs.
         :rtype: int
         """
         return self._TimeDelay
@@ -18775,7 +21081,9 @@ class SwitchInstanceVipRequest(AbstractModel):
 
     @property
     def ForceSwitch(self):
-        """Whether to force the switch when DTS is disconnected. 1: yes; 0: no.
+        """Whether to force a switch in the case of a DTS disconnection.
+- 1: Force the switch.
+- 0: Do not force the switch.
         :rtype: int
         """
         return self._ForceSwitch
@@ -18862,9 +21170,9 @@ class SwitchProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _ProxyID: Instance ProxyID
+        :param _ProxyID: Proxy ID of an instance, which can be obtained through NodeId of the response parameter **Proxy** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).
         :type ProxyID: str
         """
         self._InstanceId = None
@@ -18872,7 +21180,7 @@ class SwitchProxyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -18883,7 +21191,7 @@ class SwitchProxyRequest(AbstractModel):
 
     @property
     def ProxyID(self):
-        """Instance ProxyID
+        """Proxy ID of an instance, which can be obtained through NodeId of the response parameter **Proxy** of the API [DescribeInstanceNodeInfo](https://intl.cloud.tencent.com/document/product/239/48603?from_cn_redirect=1).
         :rtype: str
         """
         return self._ProxyID
@@ -18947,8 +21255,64 @@ Note:  This field may return null, indicating that no valid values can be obtain
         :param _StartTime: Task start time 
 Note:  This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param _TaskType: Task type. Valid values:  - `FLOW_CREATE`: Create an instance. - `FLOW_MODIFYCONNECTIONCONFIG`: Adjust the number of bandwidth connections. - `FLOW_MODIFYINSTANCEPASSWORDFREE`: Modify the process of password-free access. - `FLOW_CLEARNETWORK`: Returning VPC - `FLOW_SETPWD`: Set the access password. - `FLOW_EXPORSHR`: Expand or reduce the capacity. - `FLOW_UpgradeArch`: Upgrade the instance architecture. - `FLOW_MODIFYINSTANCEPARAMS`: Modify the instance parameters. - `FLOW_MODIFYINSTACEREADONLY`: Modify read-only process. - `FLOW_CLOSE`: Disable the instance. - `FLOW_DELETE`: Delete the instance. - `FLOW_OPEN_WAN`: Enable the public network. - `FLOW_FLOW_CLEAN`: Clear the instance. - `FLOW_MODIFYINSTANCEACCOUNT`: Modify the instance account. - `FLOW_ENABLEINSTANCE_REPLICATE`: Enable the replica read-only feature. - `FLOW_DISABLEINSTANCE_REPLICATE`: Disable the replica read-only feature. - `FLOW_SWITCHINSTANCEVIP`: Swap the VIPs of instances. - FLOW_CHANGE_REPLICA_TO_MSTER: Promote the replica node to the mater node. Backup instance 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _TaskType: Task type.
+
+- FLOW_CREATE: "001" - Create an instance.
+- FLOW_RESIZE: "002" - Change the configuration.
+- FLOW_CLOSE: "003" - Close an instance.
+- FLOW_CLEAN: "004" - Clear an instance.
+- FLOW_STARTUP: "005" - Enable an instance.
+- FLOW_DELETE: "006" - Delete an instance.
+- FLOW_SETPWD: "007" - Reset the password.
+- FLOW_EXPORTBACKUP: "009" - Export the backup file.
+- FLOW_RESTOREBACKUP: "010" - Restore the backup.
+- FLOW_BACKUPINSTANCE: "012" - Back up an instance.
+- FLOW_MIGRATEINSTANCE: "013" - Migrate an instance.
+- FLOW_DELBACKUP: "014" - Delete the backup.
+- FLOW_EXCHANGEINSTANCE: "016" - Switch an instance.
+- FLOW_AUTOBACKUP: "017" - Automatically backup an instance.
+- FLOW_MIGRATECHECK: "022" - Verify migration parameters.
+- FLOW_MIGRATETASK: "023" - Migrating data is in progress.
+- FLOW_CLEANDB: "025" - Clear a database.
+- FLOW_CLONEBACKUP: "026" - Clone the backup.
+- FLOW_CHANGEVIP: "027" - Change the VIP.
+- FLOW_EXPORSHR: "028" - Perform scaling.
+- FLOW_ADDNODES: "029" - Add or remove a node.
+- FLOW_CHANGENET: "031" - Change the network type.
+- FLOW_MODIFYINSTACEREADONLY: "033" - Modify the read-only policy.
+- FLOW_MODIFYINSTANCEPARAMS: "034" - Modify instance parameters.
+- FLOW_MODIFYINSTANCEPASSWORDFREE: "035" - Set password-free access.
+- FLOW_SWITCHINSTANCEVIP: "036" - Switch the instance VIP.
+- FLOW_MODIFYINSTANCEACCOUNT: "037" - Modify the instance account.
+- FLOW_MODIFYINSTANCEBANDWIDTH: "038" - Modify the instance bandwidth.
+- FLOW_ENABLEINSTANCE_REPLICATE: "039" - Enable read-only replica.
+- FLOW_DISABLEINSTANCE_REPLICATE: "040" - Disable read-only replica.
+- FLOW_UpgradeArch: "041" - Upgrade the instance architecture from primary-secondary to cluster.
+- FLOW_DowngradeArch: "042" - Downgrade the instance architecture from cluster to primary-secondary.
+- FLOW_UpgradeVersion: "043" - Upgrade the version.
+- FLOW_MODIFYCONNECTIONCONFIG: "044" - Modify the number of bandwidth connections.
+- FLOW_CLEARNETWORK: "045" - Change the network.
+- FLOW_REMOVE_BACKUP_FILE: "046" - Delete the backup.
+- FLOW_UPGRADE_SUPPORT_MULTI_AZ: "047" - Upgrade an instance to support multiple AZs.
+- FLOW_SHUTDOWN_MASTER: "048" - Simulate a fault.
+- FLOW_CHANGE_REPLICA_TO_MASTER: "049" - Manually promote the replica node to the primary node.
+- FLOW_CODE_ADD_REPLICATION_INSTANCE: "050" - Add a replication group.
+- FLOW_OPEN_WAN: "052" - Enable the public network.
+- FLOW_CLOSE_WAN: "053" - Disable the public network. - FLOW_UPDATE_WAN: "054" - Update the public network.
+- FLOW_CODE_DELETE_REPLICATION_INSTANCE: "055" - Unbind the replication group.
+- FLOW_CODE_CHANGE_MASTER_INSTANCE: "056" - Switch to the primary instance in the replication group.
+- FLOW_CODE_CHANGE_INSTANCE_ROLE: "057" - Change the roles of instances in the replication group.
+- FLOW_MIGRATE_NODE: "058" - Migrate a node.
+- FLOW_SWITCH_NODE: "059" - Switch a node.
+- FLOW_UPGRADE_SMALL_VERSION: "060" - Upgrade the Redis version.
+- FLOW_UPGRADE_PROXY_VERSION: "061" - Upgrade the Proxy version.
+- FLOW_MODIFY_INSTANCE_NETWORK: "062" - Modify the instance network.
+- FLOW_MIGRATE_PROXY_NODE: "063" - Migrate the Proxy node.
+- FLOW_MIGRATION_INSTANCE_ZONE: "066" - Migrate the instance AZ in progress.
+- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: "067" - Upgrading the instance version is in progress.
+- FLOW_MODIFY_PROXY_NUM: "069" - Add or remove a Proxy node.
+- FLOW_MODIFYBACKUPMOD: "070" - Change the instance backup mode.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type TaskType: str
         :param _InstanceName: Instance name 
 Note:  This field may return null, indicating that no valid values can be obtained.
@@ -19005,8 +21369,64 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def TaskType(self):
-        """Task type. Valid values:  - `FLOW_CREATE`: Create an instance. - `FLOW_MODIFYCONNECTIONCONFIG`: Adjust the number of bandwidth connections. - `FLOW_MODIFYINSTANCEPASSWORDFREE`: Modify the process of password-free access. - `FLOW_CLEARNETWORK`: Returning VPC - `FLOW_SETPWD`: Set the access password. - `FLOW_EXPORSHR`: Expand or reduce the capacity. - `FLOW_UpgradeArch`: Upgrade the instance architecture. - `FLOW_MODIFYINSTANCEPARAMS`: Modify the instance parameters. - `FLOW_MODIFYINSTACEREADONLY`: Modify read-only process. - `FLOW_CLOSE`: Disable the instance. - `FLOW_DELETE`: Delete the instance. - `FLOW_OPEN_WAN`: Enable the public network. - `FLOW_FLOW_CLEAN`: Clear the instance. - `FLOW_MODIFYINSTANCEACCOUNT`: Modify the instance account. - `FLOW_ENABLEINSTANCE_REPLICATE`: Enable the replica read-only feature. - `FLOW_DISABLEINSTANCE_REPLICATE`: Disable the replica read-only feature. - `FLOW_SWITCHINSTANCEVIP`: Swap the VIPs of instances. - FLOW_CHANGE_REPLICA_TO_MSTER: Promote the replica node to the mater node. Backup instance 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        """Task type.
+
+- FLOW_CREATE: "001" - Create an instance.
+- FLOW_RESIZE: "002" - Change the configuration.
+- FLOW_CLOSE: "003" - Close an instance.
+- FLOW_CLEAN: "004" - Clear an instance.
+- FLOW_STARTUP: "005" - Enable an instance.
+- FLOW_DELETE: "006" - Delete an instance.
+- FLOW_SETPWD: "007" - Reset the password.
+- FLOW_EXPORTBACKUP: "009" - Export the backup file.
+- FLOW_RESTOREBACKUP: "010" - Restore the backup.
+- FLOW_BACKUPINSTANCE: "012" - Back up an instance.
+- FLOW_MIGRATEINSTANCE: "013" - Migrate an instance.
+- FLOW_DELBACKUP: "014" - Delete the backup.
+- FLOW_EXCHANGEINSTANCE: "016" - Switch an instance.
+- FLOW_AUTOBACKUP: "017" - Automatically backup an instance.
+- FLOW_MIGRATECHECK: "022" - Verify migration parameters.
+- FLOW_MIGRATETASK: "023" - Migrating data is in progress.
+- FLOW_CLEANDB: "025" - Clear a database.
+- FLOW_CLONEBACKUP: "026" - Clone the backup.
+- FLOW_CHANGEVIP: "027" - Change the VIP.
+- FLOW_EXPORSHR: "028" - Perform scaling.
+- FLOW_ADDNODES: "029" - Add or remove a node.
+- FLOW_CHANGENET: "031" - Change the network type.
+- FLOW_MODIFYINSTACEREADONLY: "033" - Modify the read-only policy.
+- FLOW_MODIFYINSTANCEPARAMS: "034" - Modify instance parameters.
+- FLOW_MODIFYINSTANCEPASSWORDFREE: "035" - Set password-free access.
+- FLOW_SWITCHINSTANCEVIP: "036" - Switch the instance VIP.
+- FLOW_MODIFYINSTANCEACCOUNT: "037" - Modify the instance account.
+- FLOW_MODIFYINSTANCEBANDWIDTH: "038" - Modify the instance bandwidth.
+- FLOW_ENABLEINSTANCE_REPLICATE: "039" - Enable read-only replica.
+- FLOW_DISABLEINSTANCE_REPLICATE: "040" - Disable read-only replica.
+- FLOW_UpgradeArch: "041" - Upgrade the instance architecture from primary-secondary to cluster.
+- FLOW_DowngradeArch: "042" - Downgrade the instance architecture from cluster to primary-secondary.
+- FLOW_UpgradeVersion: "043" - Upgrade the version.
+- FLOW_MODIFYCONNECTIONCONFIG: "044" - Modify the number of bandwidth connections.
+- FLOW_CLEARNETWORK: "045" - Change the network.
+- FLOW_REMOVE_BACKUP_FILE: "046" - Delete the backup.
+- FLOW_UPGRADE_SUPPORT_MULTI_AZ: "047" - Upgrade an instance to support multiple AZs.
+- FLOW_SHUTDOWN_MASTER: "048" - Simulate a fault.
+- FLOW_CHANGE_REPLICA_TO_MASTER: "049" - Manually promote the replica node to the primary node.
+- FLOW_CODE_ADD_REPLICATION_INSTANCE: "050" - Add a replication group.
+- FLOW_OPEN_WAN: "052" - Enable the public network.
+- FLOW_CLOSE_WAN: "053" - Disable the public network. - FLOW_UPDATE_WAN: "054" - Update the public network.
+- FLOW_CODE_DELETE_REPLICATION_INSTANCE: "055" - Unbind the replication group.
+- FLOW_CODE_CHANGE_MASTER_INSTANCE: "056" - Switch to the primary instance in the replication group.
+- FLOW_CODE_CHANGE_INSTANCE_ROLE: "057" - Change the roles of instances in the replication group.
+- FLOW_MIGRATE_NODE: "058" - Migrate a node.
+- FLOW_SWITCH_NODE: "059" - Switch a node.
+- FLOW_UPGRADE_SMALL_VERSION: "060" - Upgrade the Redis version.
+- FLOW_UPGRADE_PROXY_VERSION: "061" - Upgrade the Proxy version.
+- FLOW_MODIFY_INSTANCE_NETWORK: "062" - Modify the instance network.
+- FLOW_MIGRATE_PROXY_NODE: "063" - Migrate the Proxy node.
+- FLOW_MIGRATION_INSTANCE_ZONE: "066" - Migrate the instance AZ in progress.
+- FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY: "067" - Upgrading the instance version is in progress.
+- FLOW_MODIFY_PROXY_NUM: "069" - Add or remove a Proxy node.
+- FLOW_MODIFYBACKUPMOD: "070" - Change the instance backup mode.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._TaskType
@@ -19119,9 +21539,12 @@ class TendisNodes(AbstractModel):
         :type NodeId: str
         :param _NodeRole: Node role
         :type NodeRole: str
+        :param _ZoneId: AZ ID.	
+        :type ZoneId: int
         """
         self._NodeId = None
         self._NodeRole = None
+        self._ZoneId = None
 
     @property
     def NodeId(self):
@@ -19145,10 +21568,22 @@ class TendisNodes(AbstractModel):
     def NodeRole(self, NodeRole):
         self._NodeRole = NodeRole
 
+    @property
+    def ZoneId(self):
+        """AZ ID.	
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
         self._NodeRole = params.get("NodeRole")
+        self._ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19471,7 +21906,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :type RedisShardNum: int
         :param _RedisReplicasNum: New replica quantity. <ul><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.</li></ul>
         :type RedisReplicasNum: int
-        :param _NodeSet: Additional information for adding replicas for multi-AZ instances, including replica AZ and type (`NodeType` is `1`). This parameter is not required for single-AZ instances.
+        :param _NodeSet: Node information set when you add a replica for multi-AZ instances, including the ID and AZ information of the replica. This parameter is not required for non-multi-AZ instances.
         :type NodeSet: list of RedisNodeInfo
         """
         self._InstanceId = None
@@ -19526,7 +21961,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def NodeSet(self):
-        """Additional information for adding replicas for multi-AZ instances, including replica AZ and type (`NodeType` is `1`). This parameter is not required for single-AZ instances.
+        """Node information set when you add a replica for multi-AZ instances, including the ID and AZ information of the replica. This parameter is not required for non-multi-AZ instances.
         :rtype: list of RedisNodeInfo
         """
         return self._NodeSet
@@ -19730,13 +22165,15 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _CurrentProxyVersion: The current proxy version
+        :param _CurrentProxyVersion: Current Proxy version.
         :type CurrentProxyVersion: str
-        :param _UpgradeProxyVersion: Upgradeable redis version
+        :param _UpgradeProxyVersion: Upgradable Redis version.
         :type UpgradeProxyVersion: str
-        :param _InstanceTypeUpgradeNow: `1` (upgrade immediately), `0` (upgrade during maintenance time)
+        :param _InstanceTypeUpgradeNow: Specifies whether to upgrade immediately.
+- 1: Upgrade immediately.
+- 0: Upgrade during the maintenance window.
         :type InstanceTypeUpgradeNow: int
         """
         self._InstanceId = None
@@ -19746,7 +22183,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -19757,7 +22194,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def CurrentProxyVersion(self):
-        """The current proxy version
+        """Current Proxy version.
         :rtype: str
         """
         return self._CurrentProxyVersion
@@ -19768,7 +22205,7 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def UpgradeProxyVersion(self):
-        """Upgradeable redis version
+        """Upgradable Redis version.
         :rtype: str
         """
         return self._UpgradeProxyVersion
@@ -19779,7 +22216,9 @@ class UpgradeProxyVersionRequest(AbstractModel):
 
     @property
     def InstanceTypeUpgradeNow(self):
-        """`1` (upgrade immediately), `0` (upgrade during maintenance time)
+        """Specifies whether to upgrade immediately.
+- 1: Upgrade immediately.
+- 0: Upgrade during the maintenance window.
         :rtype: int
         """
         return self._InstanceTypeUpgradeNow
@@ -19854,13 +22293,15 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
-        :param _CurrentRedisVersion: The current redis version
+        :param _CurrentRedisVersion: Current Redis minor version. For minor version information, see [Upgrading Instance Version](https://www.tencentcloud.com/document/product/239/37710).
         :type CurrentRedisVersion: str
-        :param _UpgradeRedisVersion: Upgradeable redis version
+        :param _UpgradeRedisVersion: Upgraded Redis minor version. For minor version information, see [Upgrading Instance Version](https://www.tencentcloud.com/document/product/239/37710).
         :type UpgradeRedisVersion: str
-        :param _InstanceTypeUpgradeNow: `1` (upgrade immediately), `0` (upgrade during maintenance time)
+        :param _InstanceTypeUpgradeNow: Whether to upgrade immediately.
+- 1: Upgrade immediately.
+- 0: Upgrade during the maintenance window.
         :type InstanceTypeUpgradeNow: int
         """
         self._InstanceId = None
@@ -19870,7 +22311,7 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -19881,7 +22322,7 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def CurrentRedisVersion(self):
-        """The current redis version
+        """Current Redis minor version. For minor version information, see [Upgrading Instance Version](https://www.tencentcloud.com/document/product/239/37710).
         :rtype: str
         """
         return self._CurrentRedisVersion
@@ -19892,7 +22333,7 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def UpgradeRedisVersion(self):
-        """Upgradeable redis version
+        """Upgraded Redis minor version. For minor version information, see [Upgrading Instance Version](https://www.tencentcloud.com/document/product/239/37710).
         :rtype: str
         """
         return self._UpgradeRedisVersion
@@ -19903,7 +22344,9 @@ class UpgradeSmallVersionRequest(AbstractModel):
 
     @property
     def InstanceTypeUpgradeNow(self):
-        """`1` (upgrade immediately), `0` (upgrade during maintenance time)
+        """Whether to upgrade immediately.
+- 1: Upgrade immediately.
+- 0: Upgrade during the maintenance window.
         :rtype: int
         """
         return self._InstanceTypeUpgradeNow
@@ -19978,7 +22421,7 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :type InstanceId: str
         :param _UpgradeProxyAndRedisServer: Whether to support “Reading Local Nodes Only” feature after upgrading to multi-AZ deployment.
 ul><li>`true`: The “Read Local Nodes Only” feature is supported. During the upgrade, you need to upgrade the proxy version and Redis kernel minor version simultaneously, which will involve data migration and may take hours to complete. </li><li>`false`: The “Read Local Nodes Only” feature is not supported. Upgrading to multi-AZ deployment will involve metadata migration only without affecting the service, which generally take less than three minutes to complete.</li></ul>
@@ -19989,7 +22432,7 @@ ul><li>`true`: The “Read Local Nodes Only” feature is supported. During the 
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID. Log in to the [Redis console](https://console.tencentcloud.com/redis/instance) and copy it in the instance list.
         :rtype: str
         """
         return self._InstanceId
@@ -20076,13 +22519,16 @@ class ZoneCapacityConf(AbstractModel):
         r"""
         :param _ZoneId: AZ ID, such as ap-guangzhou-3
         :type ZoneId: str
-        :param _ZoneName: AZ name
+        :param _ZoneName: Availability zone name.
         :type ZoneName: str
-        :param _IsSaleout: Whether a product is sold out in an AZ
+        :param _IsSaleout: Whether the AZ is sold out.
         :type IsSaleout: bool
-        :param _IsDefault: Whether it is a default AZ
+        :param _IsDefault: Whether the default AZ is used.
         :type IsDefault: bool
-        :param _NetWorkType: Network type. basenet: basic network; vpcnet: VPC
+        :param _NetWorkType: Network type.
+
+- basenet: basic network.
+- vpcnet: VPC.
         :type NetWorkType: list of str
         :param _ProductSet: Information of an AZ, such as product specifications in it
         :type ProductSet: list of ProductConf
@@ -20110,7 +22556,7 @@ class ZoneCapacityConf(AbstractModel):
 
     @property
     def ZoneName(self):
-        """AZ name
+        """Availability zone name.
         :rtype: str
         """
         return self._ZoneName
@@ -20121,7 +22567,7 @@ class ZoneCapacityConf(AbstractModel):
 
     @property
     def IsSaleout(self):
-        """Whether a product is sold out in an AZ
+        """Whether the AZ is sold out.
         :rtype: bool
         """
         return self._IsSaleout
@@ -20132,7 +22578,7 @@ class ZoneCapacityConf(AbstractModel):
 
     @property
     def IsDefault(self):
-        """Whether it is a default AZ
+        """Whether the default AZ is used.
         :rtype: bool
         """
         return self._IsDefault
@@ -20143,7 +22589,10 @@ class ZoneCapacityConf(AbstractModel):
 
     @property
     def NetWorkType(self):
-        """Network type. basenet: basic network; vpcnet: VPC
+        """Network type.
+
+- basenet: basic network.
+- vpcnet: VPC.
         :rtype: list of str
         """
         return self._NetWorkType
