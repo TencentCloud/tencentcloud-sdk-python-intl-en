@@ -325,31 +325,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCloudProtectServiceOrderRecord(self, request):
-        """云护航计费产品已下线
-
-        This API is used to confirm the receipt after using the cloud escort service.
-
-        :param request: Request instance for CreateCloudProtectServiceOrderRecord.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.CreateCloudProtectServiceOrderRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCloudProtectServiceOrderRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCloudProtectServiceOrderRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateEmergencyVulScan(self, request):
         """This API is used to create emergency vulnerability scan tasks.
 
@@ -2677,7 +2652,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackLogs(self, request):
-        """This API is used to display the list of network attack logs in pagination.
+        """DescribeAttackEvents 代替
+
+        This API is used to display the list of network attack logs in pagination.
 
         :param request: Request instance for DescribeAttackLogs.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogsRequest`
@@ -2700,7 +2677,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSource(self, request):
-        """This API is used to backtrack attacks.
+        """已废弃
+
+        This API is used to backtrack attacks.
 
         :param request: Request instance for DescribeAttackSource.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceRequest`
@@ -2723,7 +2702,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackSourceEvents(self, request):
-        """This API is used to query attack backtracking events.
+        """已废弃
+
+        This API is used to query attack backtracking events.
 
         :param request: Request instance for DescribeAttackSourceEvents.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackSourceEventsRequest`
@@ -3573,33 +3554,10 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCloudProtectServiceOrderList(self, request):
-        """云护航计费产品已下线
-
-        This API is used to query the list of cloud escort service orders.
-
-        :param request: Request instance for DescribeCloudProtectServiceOrderList.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeCloudProtectServiceOrderListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCloudProtectServiceOrderList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCloudProtectServiceOrderListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeComponentStatistics(self, request):
-        """This API is used to obtain the data of the component statistics list.
+        """接口已无效
+
+        This API is used to obtain the data of the component statistics list.
 
         :param request: Request instance for DescribeComponentStatistics.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeComponentStatisticsRequest`
@@ -4174,7 +4132,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeIndexList(self, request):
-        """This API is used to obtain the index list.
+        """接口已废弃
+
+        This API is used to obtain the index list.
 
         :param request: Request instance for DescribeIndexList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeIndexListRequest`
@@ -6543,7 +6503,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeSecurityProtectionStat(self, request):
-        """This API is used to obtain the summary of security protection statuses.
+        """接口已无效
+
+        This API is used to obtain the summary of security protection statuses.
 
         :param request: Request instance for DescribeSecurityProtectionStat.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityProtectionStatRequest`

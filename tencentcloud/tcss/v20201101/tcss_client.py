@@ -1479,7 +1479,9 @@ class TcssClient(AbstractClient):
 
 
     def DeleteCompliancePolicyItemFromWhitelist(self, request):
-        """This API is used to remove the specified check item from the allowlist.
+        """产品重构优化，这几个接口已经没有调用了
+
+        This API is used to remove the specified check item from the allowlist.
 
         :param request: Request instance for DeleteCompliancePolicyItemFromWhitelist.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteCompliancePolicyItemFromWhitelistRequest`
@@ -1824,7 +1826,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessEventsExport(self, request):
-        """This API is used to query and export the list of abnormal process events at runtime.
+        """接口已废弃
+
+        This API is used to query and export the list of abnormal process events at runtime.
 
         :param request: Request instance for DescribeAbnormalProcessEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessEventsExportRequest`
@@ -1916,7 +1920,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAbnormalProcessRulesExport(self, request):
-        """This API is used to query and export the list of abnormal process policies at runtime.
+        """接口已废弃
+
+        This API is used to query and export the list of abnormal process policies at runtime.
 
         :param request: Request instance for DescribeAbnormalProcessRulesExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAbnormalProcessRulesExportRequest`
@@ -2054,7 +2060,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAccessControlRulesExport(self, request):
-        """This API is used to export the list of access control policies at runtime.
+        """接口已废弃
+
+        This API is used to export the list of access control policies at runtime.
 
         :param request: Request instance for DescribeAccessControlRulesExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAccessControlRulesExportRequest`
@@ -2468,7 +2476,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeAssetImageListExport(self, request):
-        """This API is used to export the list of images.
+        """接口已废弃
+
+        This API is used to export the list of images.
 
         :param request: Request instance for DescribeAssetImageListExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetImageListExportRequest`
@@ -3687,7 +3697,9 @@ class TcssClient(AbstractClient):
 
 
     def DescribeEscapeEventsExport(self, request):
-        """This API is used to export the list of container escape events.
+        """接口已废弃
+
+        This API is used to export the list of container escape events.
 
         :param request: Request instance for DescribeEscapeEventsExport.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeEscapeEventsExportRequest`

@@ -27,7 +27,7 @@ class KmsClient(AbstractClient):
 
 
     def ArchiveKey(self, request):
-        """This API is used to archive keys. The archived keys can only be used for decryption but not encryption.
+        """This API is used to archive keys.The archived keys can only be used for decryption but not encryption.
 
         :param request: Request instance for ArchiveKey.
         :type request: :class:`tencentcloud.kms.v20190118.models.ArchiveKeyRequest`
