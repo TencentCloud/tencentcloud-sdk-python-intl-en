@@ -5939,10 +5939,24 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: Member id
+        :type MemberId: list of str
         :param _Filter: Filter conditions
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        """Member id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -5957,6 +5971,7 @@ class DescribeClusterPodAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))

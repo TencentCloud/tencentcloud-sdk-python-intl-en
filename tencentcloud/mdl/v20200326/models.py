@@ -100,6 +100,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type GopSize: int
         :param _GopSizeUnits: Keyframe units, only support MILLISECONDS (milliseconds).
         :type GopSizeUnits: str
+        :param _ColorSpaceSettings: Color space setting.
+        :type ColorSpaceSettings: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
         """
         self._Name = None
         self._NeedVideo = None
@@ -135,6 +137,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self._VideoEnhanceSettings = None
         self._GopSize = None
         self._GopSizeUnits = None
+        self._ColorSpaceSettings = None
 
     @property
     def Name(self):
@@ -517,6 +520,17 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
     def GopSizeUnits(self, GopSizeUnits):
         self._GopSizeUnits = GopSizeUnits
 
+    @property
+    def ColorSpaceSettings(self):
+        """Color space setting.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
+        """
+        return self._ColorSpaceSettings
+
+    @ColorSpaceSettings.setter
+    def ColorSpaceSettings(self, ColorSpaceSettings):
+        self._ColorSpaceSettings = ColorSpaceSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -571,6 +585,9 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
                 self._VideoEnhanceSettings.append(obj)
         self._GopSize = params.get("GopSize")
         self._GopSizeUnits = params.get("GopSizeUnits")
+        if params.get("ColorSpaceSettings") is not None:
+            self._ColorSpaceSettings = ColorSpaceSetting()
+            self._ColorSpaceSettings._deserialize(params.get("ColorSpaceSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1759,6 +1776,42 @@ This time is available only after the alarm ends.
         self._ClearTime = params.get("ClearTime")
         self._Type = params.get("Type")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColorSpaceSetting(AbstractModel):
+    """Color space setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColorSpace: Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.
+        :type ColorSpace: str
+        """
+        self._ColorSpace = None
+
+    @property
+    def ColorSpace(self):
+        """Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.
+        :rtype: str
+        """
+        return self._ColorSpace
+
+    @ColorSpace.setter
+    def ColorSpace(self, ColorSpace):
+        self._ColorSpace = ColorSpace
+
+
+    def _deserialize(self, params):
+        self._ColorSpace = params.get("ColorSpace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12141,6 +12194,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type VideoEnhanceEnabled: int
         :param _VideoEnhanceSettings: 
         :type VideoEnhanceSettings: list of VideoEnhanceSetting
+        :param _ColorSpaceSettings: Color space setting.
+        :type ColorSpaceSettings: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
         """
         self._Name = None
         self._Vcodec = None
@@ -12162,6 +12217,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._VideoCodecDetails = None
         self._VideoEnhanceEnabled = None
         self._VideoEnhanceSettings = None
+        self._ColorSpaceSettings = None
 
     @property
     def Name(self):
@@ -12384,6 +12440,17 @@ Note: This field may return `null`, indicating that no valid value was found.
     def VideoEnhanceSettings(self, VideoEnhanceSettings):
         self._VideoEnhanceSettings = VideoEnhanceSettings
 
+    @property
+    def ColorSpaceSettings(self):
+        """Color space setting.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.ColorSpaceSetting`
+        """
+        return self._ColorSpaceSettings
+
+    @ColorSpaceSettings.setter
+    def ColorSpaceSettings(self, ColorSpaceSettings):
+        self._ColorSpaceSettings = ColorSpaceSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12415,6 +12482,9 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = VideoEnhanceSetting()
                 obj._deserialize(item)
                 self._VideoEnhanceSettings.append(obj)
+        if params.get("ColorSpaceSettings") is not None:
+            self._ColorSpaceSettings = ColorSpaceSetting()
+            self._ColorSpaceSettings._deserialize(params.get("ColorSpaceSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

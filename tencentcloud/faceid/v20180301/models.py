@@ -1863,8 +1863,8 @@ The size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv 
 Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
 Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
         :type VideoBase64: str
-        :param _LivenessType: The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
-`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+        :param _LivenessType: The liveness detection type. Valid values: `ACTION`, and `SILENT`.
+`ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
 Example value: "SILENT"
         :type LivenessType: str
         :param _ValidateData: When the "LivenessType" parameter is "ACTION", it must be specified.
@@ -1915,8 +1915,8 @@ Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
 
     @property
     def LivenessType(self):
-        """The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
-`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+        """The liveness detection type. Valid values: `ACTION`, and `SILENT`.
+`ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
 Example value: "SILENT"
         :rtype: str
         """
