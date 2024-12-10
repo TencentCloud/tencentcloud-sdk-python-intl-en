@@ -3713,17 +3713,23 @@ class MLIDCardOCRRequest(AbstractModel):
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
         :type ImageBase64: str
+        :param _BackImageBase64: Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :type BackImageBase64: str
         :param _ImageUrl: The URL of an image. (This field is not available outside the Chinese mainland.)
 Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
 Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
 For a non-Tencent Cloud URL, the download speed and stability may be low.
         :type ImageUrl: str
+        :param _BackImageUrl: The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        :type BackImageUrl: str
         :param _RetImage: Whether to return an image. Default value: `false`.
         :type RetImage: bool
         """
         self._ImageBase64 = None
+        self._BackImageBase64 = None
         self._ImageUrl = None
+        self._BackImageUrl = None
         self._RetImage = None
 
     @property
@@ -3738,6 +3744,17 @@ Supported image size: The downloaded image after Base64 encoding can be up to 7 
     @ImageBase64.setter
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
+
+    @property
+    def BackImageBase64(self):
+        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
 
     @property
     def ImageUrl(self):
@@ -3755,6 +3772,17 @@ For a non-Tencent Cloud URL, the download speed and stability may be low.
         self._ImageUrl = ImageUrl
 
     @property
+    def BackImageUrl(self):
+        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
     def RetImage(self):
         """Whether to return an image. Default value: `false`.
         :rtype: bool
@@ -3768,7 +3796,9 @@ For a non-Tencent Cloud URL, the download speed and stability may be low.
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
+        self._BackImageBase64 = params.get("BackImageBase64")
         self._ImageUrl = params.get("ImageUrl")
+        self._BackImageUrl = params.get("BackImageUrl")
         self._RetImage = params.get("RetImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3822,6 +3852,8 @@ MyKid   Kid card
         :type Type: str
         :param _Birthday: Date of birth. This field is available only for work permits (i-Kad) and ID cards (MyKad).
         :type Birthday: str
+        :param _MyKadNumber: Number on the back of Malaysia ID card 
+        :type MyKadNumber: str
         :param _WarnCardInfos: Card Warning Information
 
 -9101 Alarm for covered certificate,
@@ -3844,6 +3876,7 @@ MyKid   Kid card
         self._AdvancedInfo = None
         self._Type = None
         self._Birthday = None
+        self._MyKadNumber = None
         self._WarnCardInfos = None
         self._RequestId = None
 
@@ -3968,6 +4001,17 @@ MyKid   Kid card
         self._Birthday = Birthday
 
     @property
+    def MyKadNumber(self):
+        """Number on the back of Malaysia ID card 
+        :rtype: str
+        """
+        return self._MyKadNumber
+
+    @MyKadNumber.setter
+    def MyKadNumber(self, MyKadNumber):
+        self._MyKadNumber = MyKadNumber
+
+    @property
     def WarnCardInfos(self):
         """Card Warning Information
 
@@ -4008,6 +4052,7 @@ MyKid   Kid card
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._Type = params.get("Type")
         self._Birthday = params.get("Birthday")
+        self._MyKadNumber = params.get("MyKadNumber")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._RequestId = params.get("RequestId")
 

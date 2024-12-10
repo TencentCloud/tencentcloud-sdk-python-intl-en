@@ -244,29 +244,6 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRegionConf(self, request):
-        """This API is used to query the purchasable subscription instance regions.
-
-        :param request: Request instance for DescribeRegionConf.
-        :type request: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfRequest`
-        :rtype: :class:`tencentcloud.dts.v20180330.models.DescribeRegionConfResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeRegionConf", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeRegionConfResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSubscribeConf(self, request):
         """This API is used to query the subscription instance configuration.
 
