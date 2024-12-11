@@ -56,59 +56,23 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
-# Parameter configuration error: improper AAC frame timestamp interval.
-INVALIDPARAMETERVALUE_AACDURATIONDEVIATION = 'InvalidParameterValue.AACDurationDeviation'
-
-# Parameter configuration error: improper audio-video interleaving.
-INVALIDPARAMETERVALUE_AVTIMESTAMPINTERLEAVE = 'InvalidParameterValue.AVTimestampInterleave'
-
 # Parameter error: Audio stream bitrate.
 INVALIDPARAMETERVALUE_AUDIOBITRATE = 'InvalidParameterValue.AudioBitrate'
-
-# Parameter configuration error: audio stream bitrate out of range.
-INVALIDPARAMETERVALUE_AUDIOBITRATEOUTOFRANGE = 'InvalidParameterValue.AudioBitrateOutofRange'
 
 # Incorrect parameter value: AudioChannel.
 INVALIDPARAMETERVALUE_AUDIOCHANNEL = 'InvalidParameterValue.AudioChannel'
 
-# Parameter configuration error: audio track change.
-INVALIDPARAMETERVALUE_AUDIOCHANNELSCHANGED = 'InvalidParameterValue.AudioChannelsChanged'
-
 # Parameter error: audio stream codec.
 INVALIDPARAMETERVALUE_AUDIOCODEC = 'InvalidParameterValue.AudioCodec'
-
-# Parameter configuration error: audio decoding error.
-INVALIDPARAMETERVALUE_AUDIODECODEFAILED = 'InvalidParameterValue.AudioDecodeFailed'
-
-# Parameter configuration error: audio frame dropping.
-INVALIDPARAMETERVALUE_AUDIODROPPINGFRAMES = 'InvalidParameterValue.AudioDroppingFrames'
-
-# Parameter configuration error: duplicate frames in audio streams.
-INVALIDPARAMETERVALUE_AUDIODUPLICATEDFRAME = 'InvalidParameterValue.AudioDuplicatedFrame'
-
-# Parameter configuration error: opposite phase in dual-channel audio.
-INVALIDPARAMETERVALUE_AUDIOOUTOFPHASE = 'InvalidParameterValue.AudioOutOfPhase'
 
 # Parameter error: audio stream sample rate.
 INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = 'InvalidParameterValue.AudioSampleRate'
 
-# Parameter configuration error: audio sample rate change.
-INVALIDPARAMETERVALUE_AUDIOSAMPLERATECHANGED = 'InvalidParameterValue.AudioSampleRateChanged'
-
-# Parameter configuration error: no audio stream.
-INVALIDPARAMETERVALUE_AUDIOSTREAMLACK = 'InvalidParameterValue.AudioStreamLack'
-
 # Invalid audio/video bitrate.
 INVALIDPARAMETERVALUE_BITRATE = 'InvalidParameterValue.Bitrate'
 
-# Parameter configuration error: black and white edges detection.
-INVALIDPARAMETERVALUE_BLACKWHITEEDGE = 'InvalidParameterValue.BlackWhiteEdge'
-
 # Incorrect parameter value: the value of the `BlockConfidence` parameter is invalid.
 INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = 'InvalidParameterValue.BlockConfidence'
-
-# Parameter configuration error: blur detection.
-INVALIDPARAMETERVALUE_BLUR = 'InvalidParameterValue.Blur'
 
 # Incorrect parameter value: the control field parameter for intelligent categorization is incorrect.
 INVALIDPARAMETERVALUE_CLASSIFCATIONCONFIGURE = 'InvalidParameterValue.ClassifcationConfigure'
@@ -134,12 +98,6 @@ INVALIDPARAMETERVALUE_COORDINATEORIGIN = 'InvalidParameterValue.CoordinateOrigin
 # Incorrect parameter value: the control field parameter for intelligent cover generation is incorrect.
 INVALIDPARAMETERVALUE_COVERCONFIGURE = 'InvalidParameterValue.CoverConfigure'
 
-# Parameter configuration error: screen glitch detection.
-INVALIDPARAMETERVALUE_CRASHSCREEN = 'InvalidParameterValue.CrashScreen'
-
-# Parameter configuration error: video aspect ratio exception.
-INVALIDPARAMETERVALUE_DARORSARINVALID = 'InvalidParameterValue.DarOrSarInvalid'
-
 # Incorrect parameter value: the default face library filter tag is invalid.
 INVALIDPARAMETERVALUE_DEFAULTLIBRARYLABELSET = 'InvalidParameterValue.DefaultLibraryLabelSet'
 
@@ -161,10 +119,7 @@ INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = 'InvalidParameterValue.Disable
 # Invalid switch value used to prohibit transcoding from low resolution to high resolution.
 INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEORESOLUTION = 'InvalidParameterValue.DisableHigherVideoResolution'
 
-# Parameter configuration error: DTS jitter too high.
-INVALIDPARAMETERVALUE_DTSJITTER = 'InvalidParameterValue.DtsJitter'
-
-# Enabled detection items in template configuration are empty.
+# The enabled detection items of the template are empty.
 INVALIDPARAMETERVALUE_EMPTYDETECTITEM = 'InvalidParameterValue.EmptyDetectItem'
 
 # Incorrect parameter value: duplicated face.
@@ -191,9 +146,6 @@ INVALIDPARAMETERVALUE_FORMATWEBPWIDTHANDHEIGHTBOTHZERO = 'InvalidParameterValue.
 # Parameter error: video frame rate.
 INVALIDPARAMETERVALUE_FPS = 'InvalidParameterValue.Fps'
 
-# Parameter configuration error: significant jitter in the stream frame rate calculated via PTS.
-INVALIDPARAMETERVALUE_FPSJITTER = 'InvalidParameterValue.FpsJitter'
-
 # Incorrect parameter value: the control field parameter for intelligent frame-specific tagging is incorrect.
 INVALIDPARAMETERVALUE_FRAMETAGCONFIGURE = 'InvalidParameterValue.FrameTagConfigure'
 
@@ -206,41 +158,8 @@ INVALIDPARAMETERVALUE_FUNCTIONNAME = 'InvalidParameterValue.FunctionName'
 # Invalid GOP value.
 INVALIDPARAMETERVALUE_GOP = 'InvalidParameterValue.Gop'
 
-# Parameter configuration error: invalid M3U8 file.
-INVALIDPARAMETERVALUE_HLSBADM3U8FORMAT = 'InvalidParameterValue.HLSBadM3u8Format'
-
-# Parameter configuration error: invalid main M3U8 file.
-INVALIDPARAMETERVALUE_HLSINVALIDMASTERM3U8 = 'InvalidParameterValue.HLSInvalidMasterM3u8'
-
-# Parameter configuration error: invalid media M3U8 file.
-INVALIDPARAMETERVALUE_HLSINVALIDMEDIAM3U8 = 'InvalidParameterValue.HLSInvalidMediaM3u8'
-
-# Parameter configuration error: parameters recommended by standards missing in main M3U8.
-INVALIDPARAMETERVALUE_HLSMASTERM3U8RECOMMENDED = 'InvalidParameterValue.HLSMasterM3u8Recommended'
-
-# Parameter configuration error: EXT-X-DISCONTINUITY in media M3U8.
-INVALIDPARAMETERVALUE_HLSMEDIAM3U8DISCONTINUITYEXIST = 'InvalidParameterValue.HLSMediaM3u8DiscontinuityExist'
-
-# Parameter configuration error: parameters recommended by standards missing in media M3U8.
-INVALIDPARAMETERVALUE_HLSMEDIAM3U8RECOMMENDED = 'InvalidParameterValue.HLSMediaM3u8Recommended'
-
-# Parameter configuration error: DTS jumps between segments without EXT-X-DISCONTINUITY.
-INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSDTSJITTERDEVIATION = 'InvalidParameterValue.HLSMediaSegmentsDTSJitterDeviation'
-
-# Parameter configuration error: PTS jumps between segments without EXT-X-DISCONTINUITY.
-INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSPTSJITTERDEVIATION = 'InvalidParameterValue.HLSMediaSegmentsPTSJitterDeviation'
-
-# Parameter configuration error: changed number of streams in segments.
-INVALIDPARAMETERVALUE_HLSMEDIASEGMENTSSTREAMNUMCHANGE = 'InvalidParameterValue.HLSMediaSegmentsStreamNumChange'
-
 # Parameter error: height.
 INVALIDPARAMETERVALUE_HEIGHT = 'InvalidParameterValue.Height'
-
-# Parameter configuration error: brightness anomaly of overexposure.
-INVALIDPARAMETERVALUE_HIGHLIGHTING = 'InvalidParameterValue.HighLighting'
-
-# Parameter configuration error: high voice detection.
-INVALIDPARAMETERVALUE_HIGHVOICE = 'InvalidParameterValue.HighVoice'
 
 # Invalid ImageContent
 INVALIDPARAMETERVALUE_IMAGECONTENT = 'InvalidParameterValue.ImageContent'
@@ -257,38 +176,14 @@ INVALIDPARAMETERVALUE_INVALIDOPERATIONTYPE = 'InvalidParameterValue.InvalidOpera
 # Incorrect parameter value: invalid `LabelSet` value.
 INVALIDPARAMETERVALUE_LABELSET = 'InvalidParameterValue.LabelSet'
 
-# Parameter configuration error: missing audio stream recovery.
-INVALIDPARAMETERVALUE_LACKAUDIORECOVER = 'InvalidParameterValue.LackAudioRecover'
-
-# Parameter configuration error: missing video stream recovery.
-INVALIDPARAMETERVALUE_LACKVIDEORECOVER = 'InvalidParameterValue.LackVideoRecover'
-
 # Parameter error: Limit.
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
-
-# Parameter configuration error: no-reference scoring.
-INVALIDPARAMETERVALUE_LOWEVALUATION = 'InvalidParameterValue.LowEvaluation'
-
-# Parameter configuration error: brightness anomaly of low light.
-INVALIDPARAMETERVALUE_LOWLIGHTING = 'InvalidParameterValue.LowLighting'
-
-# Parameter configuration error: low voice detection.
-INVALIDPARAMETERVALUE_LOWVOICE = 'InvalidParameterValue.LowVoice'
 
 # Incorrect parameter value: the default template cannot be modified.
 INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = 'InvalidParameterValue.ModifyDefaultTemplate'
 
-# Parameter configuration error: mosaic detection.
-INVALIDPARAMETERVALUE_MOSAIC = 'InvalidParameterValue.Mosaic'
-
-# Parameter configuration error: codec FourCC in MP4 not meeting Apple HLS requirements.
-INVALIDPARAMETERVALUE_MP4INVALIDCODECFOURCC = 'InvalidParameterValue.Mp4InvalidCodecFourcc'
-
 # Incorrect parameter value: `Name` exceeds the length limit.
 INVALIDPARAMETERVALUE_NAME = 'InvalidParameterValue.Name'
-
-# Parameter configuration error: no voice detection.
-INVALIDPARAMETERVALUE_NOVOICE = 'InvalidParameterValue.NoVoice'
 
 # Tasks not in processing status are not supported.
 INVALIDPARAMETERVALUE_NOTPROCESSINGTASK = 'InvalidParameterValue.NotProcessingTask'
@@ -296,26 +191,11 @@ INVALIDPARAMETERVALUE_NOTPROCESSINGTASK = 'InvalidParameterValue.NotProcessingTa
 # Incorrect parameter value: object library parameter is invalid.
 INVALIDPARAMETERVALUE_OBJECTLIBRARY = 'InvalidParameterValue.ObjectLibrary'
 
-# Parameter configuration error: stream parameter set information change.
-INVALIDPARAMETERVALUE_PARAMETERSETSCHANGED = 'InvalidParameterValue.ParameterSetsChanged'
-
 # Incorrect parameter value: incorrect face image format.
 INVALIDPARAMETERVALUE_PICFORMATERROR = 'InvalidParameterValue.PicFormatError'
 
-# Parameter configuration error: PTS jitter too high.
-INVALIDPARAMETERVALUE_PTSJITTER = 'InvalidParameterValue.PtsJitter'
-
-# Parameter configuration error: PTS less than DTS for media streams.
-INVALIDPARAMETERVALUE_PTSLESSTHANDTS = 'InvalidParameterValue.PtsLessThanDts'
-
 # Incorrect parameter value: Quality.
 INVALIDPARAMETERVALUE_QUALITY = 'InvalidParameterValue.Quality'
-
-# Parameter configuration error: significant jitter in the network receive frame rate.
-INVALIDPARAMETERVALUE_RECEIVEFPSJITTER = 'InvalidParameterValue.ReceiveFpsJitter'
-
-# Parameter configuration error: network receive video frame rate too low.
-INVALIDPARAMETERVALUE_RECEIVEFPSTOOSMALL = 'InvalidParameterValue.ReceiveFpsTooSmall'
 
 # Incorrect parameter value: RemoveAudio.
 INVALIDPARAMETERVALUE_REMOVEAUDIO = 'InvalidParameterValue.RemoveAudio'
@@ -365,18 +245,6 @@ INVALIDPARAMETERVALUE_SOURCELANGUAGE = 'InvalidParameterValue.SourceLanguage'
 # Source file error.
 INVALIDPARAMETERVALUE_SRCFILE = 'InvalidParameterValue.SrcFile'
 
-# Parameter configuration error: stream end.
-INVALIDPARAMETERVALUE_STREAMEND = 'InvalidParameterValue.StreamEnd'
-
-# Parameter configuration error: NALU start code error.
-INVALIDPARAMETERVALUE_STREAMNALUERROR = 'InvalidParameterValue.StreamNALUError'
-
-# Parameter configuration error: stream open failure.
-INVALIDPARAMETERVALUE_STREAMOPENFAILED = 'InvalidParameterValue.StreamOpenFailed'
-
-# Parameter configuration error: stream parsing failure.
-INVALIDPARAMETERVALUE_STREAMPARSEFAILED = 'InvalidParameterValue.StreamParseFailed'
-
 # Incorrect parameter value: The value of the `SubtitleFormat` parameter is invalid.
 INVALIDPARAMETERVALUE_SUBTITLEFORMAT = 'InvalidParameterValue.SubtitleFormat'
 
@@ -407,22 +275,10 @@ INVALIDPARAMETERVALUE_TEXTALPHA = 'InvalidParameterValue.TextAlpha'
 # Parameter error: text template.
 INVALIDPARAMETERVALUE_TEXTTEMPLATE = 'InvalidParameterValue.TextTemplate'
 
-# Parameter configuration error: TMCD track in MP4.
-INVALIDPARAMETERVALUE_TIMECODETRACKEXIST = 'InvalidParameterValue.TimecodeTrackExist'
-
-# Parameter configuration error: DTS timestamp rollback.
-INVALIDPARAMETERVALUE_TIMESTAMPFALLBACK = 'InvalidParameterValue.TimestampFallback'
-
-# Parameter configuration error: multiple programs in MPEG2-TS streams.
-INVALIDPARAMETERVALUE_TSMULTIPROGRAMS = 'InvalidParameterValue.TsMultiPrograms'
-
-# Parameter configuration error: no AUD NALU in the H26x stream of MPEG-TS.
-INVALIDPARAMETERVALUE_TSSTREAMNOAUD = 'InvalidParameterValue.TsStreamNoAud'
-
 # Parameter error: incorrect `Type` value.
 INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 
-# Unknown diagnostic category.
+# Unknown detection category.
 INVALIDPARAMETERVALUE_UNKNOWNCATEGORY = 'InvalidParameterValue.UnknownCategory'
 
 # Incorrect parameter value: the custom face library filter tag is invalid.
@@ -431,35 +287,8 @@ INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = 'InvalidParameterValue.UserDef
 # Parameter error: video stream bitrate.
 INVALIDPARAMETERVALUE_VIDEOBITRATE = 'InvalidParameterValue.VideoBitrate'
 
-# Parameter configuration error: video stream bitrate out of range.
-INVALIDPARAMETERVALUE_VIDEOBITRATEOUTOFRANGE = 'InvalidParameterValue.VideoBitrateOutofRange'
-
 # Parameter error: video stream codec.
 INVALIDPARAMETERVALUE_VIDEOCODEC = 'InvalidParameterValue.VideoCodec'
-
-# Parameter configuration error: video decoding error.
-INVALIDPARAMETERVALUE_VIDEODECODEFAILED = 'InvalidParameterValue.VideoDecodeFailed'
-
-# Parameter configuration error: video frame dropping.
-INVALIDPARAMETERVALUE_VIDEODROPPINGFRAMES = 'InvalidParameterValue.VideoDroppingFrames'
-
-# Parameter configuration error: duplicate frames in video streams.
-INVALIDPARAMETERVALUE_VIDEODUPLICATEDFRAME = 'InvalidParameterValue.VideoDuplicatedFrame'
-
-# Parameter configuration error: first frame not an IDR frame.
-INVALIDPARAMETERVALUE_VIDEOFIRSTFRAMENOTIDR = 'InvalidParameterValue.VideoFirstFrameNotIdr'
-
-# Parameter configuration error: video freezing.
-INVALIDPARAMETERVALUE_VIDEOFREEZEDFRAME = 'InvalidParameterValue.VideoFreezedFrame'
-
-# Parameter configuration error: video resolution change.
-INVALIDPARAMETERVALUE_VIDEORESOLUTIONCHANGED = 'InvalidParameterValue.VideoResolutionChanged'
-
-# Parameter configuration error: video rotation.
-INVALIDPARAMETERVALUE_VIDEOROTATION = 'InvalidParameterValue.VideoRotation'
-
-# Parameter configuration error: no video stream.
-INVALIDPARAMETERVALUE_VIDEOSTREAMLACK = 'InvalidParameterValue.VideoStreamLack'
 
 # Parameter error: Wwdth.
 INVALIDPARAMETERVALUE_WIDTH = 'InvalidParameterValue.Width'

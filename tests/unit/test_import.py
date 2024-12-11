@@ -44,6 +44,11 @@ def test_import_autoscaling():
     from tencentcloud.autoscaling.v20180419 import models
 
 
+def test_import_asr():
+    from tencentcloud.asr.v20190614 import asr_client
+    from tencentcloud.asr.v20190614 import models
+
+
 def test_import_batch():
     from tencentcloud.batch.v20170312 import batch_client
     from tencentcloud.batch.v20170312 import models

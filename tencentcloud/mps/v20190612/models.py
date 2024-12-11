@@ -3638,8 +3638,12 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
         r"""
         :param _SegmentSet: Intelligent splitting sub-segment list.
         :type SegmentSet: list of SegmentRecognitionItem
+        :param _Abstract: Video abstract, used for offline scenarios.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Abstract: str
         """
         self._SegmentSet = None
+        self._Abstract = None
 
     @property
     def SegmentSet(self):
@@ -3652,6 +3656,18 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
     def SegmentSet(self, SegmentSet):
         self._SegmentSet = SegmentSet
 
+    @property
+    def Abstract(self):
+        """Video abstract, used for offline scenarios.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Abstract
+
+    @Abstract.setter
+    def Abstract(self, Abstract):
+        self._Abstract = Abstract
+
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -3660,6 +3676,7 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
                 obj = SegmentRecognitionItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        self._Abstract = params.get("Abstract")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4866,11 +4883,14 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param _Text: Recognized text.
         :type Text: str
+        :param _Wordlist: Word timestamp information.
+        :type Wordlist: list of WordResult
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._Text = None
+        self._Wordlist = None
 
     @property
     def Confidence(self):
@@ -4916,12 +4936,29 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
     def Text(self, Text):
         self._Text = Text
 
+    @property
+    def Wordlist(self):
+        """Word timestamp information.
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._Text = params.get("Text")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5787,8 +5824,11 @@ class AiRecognitionTaskInput(AbstractModel):
         r"""
         :param _Definition: Intelligent video recognition template ID.
         :type Definition: int
+        :param _UserExtPara: User extension field, which does not need to be filled in for general scenarios.
+        :type UserExtPara: str
         """
         self._Definition = None
+        self._UserExtPara = None
 
     @property
     def Definition(self):
@@ -5801,9 +5841,21 @@ class AiRecognitionTaskInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def UserExtPara(self):
+        """User extension field, which does not need to be filled in for general scenarios.
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._UserExtPara = params.get("UserExtPara")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7033,12 +7085,15 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
         :type Text: str
         :param _Trans: The translation.
         :type Trans: str
+        :param _Wordlist: Word timestamp information.
+        :type Wordlist: list of WordResult
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._Text = None
         self._Trans = None
+        self._Wordlist = None
 
     @property
     def Confidence(self):
@@ -7095,6 +7150,17 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
     def Trans(self, Trans):
         self._Trans = Trans
 
+    @property
+    def Wordlist(self):
+        """Word timestamp information.
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -7102,6 +7168,12 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._Text = params.get("Text")
         self._Trans = params.get("Trans")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20623,6 +20695,22 @@ This parameter is left empty by default, which indicates to return all types of 
         :type TranscodeType: str
         :param _Name: Filter condition for transcoding template identifiers, with a length limit of 64 characters.	
         :type Name: str
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario. 
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+no_config: Not configured.
+        :type SceneType: str
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+no_config: Not configured.
+        :type CompressType: str
         """
         self._Definitions = None
         self._Type = None
@@ -20632,6 +20720,8 @@ This parameter is left empty by default, which indicates to return all types of 
         self._Limit = None
         self._TranscodeType = None
         self._Name = None
+        self._SceneType = None
+        self._CompressType = None
 
     @property
     def Definitions(self):
@@ -20731,6 +20821,40 @@ This parameter is left empty by default, which indicates to return all types of 
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def SceneType(self):
+        """Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario. 
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+no_config: Not configured.
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CompressType(self):
+        """Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+no_config: Not configured.
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -20741,6 +20865,8 @@ This parameter is left empty by default, which indicates to return all types of 
         self._Limit = params.get("Limit")
         self._TranscodeType = params.get("TranscodeType")
         self._Name = params.get("Name")
+        self._SceneType = params.get("SceneType")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21819,8 +21945,11 @@ class EditMediaOutputConfig(AbstractModel):
         :param _Container: The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Container: str
-        :param _Type: The clip mode. Valid values: `normal` (default), `fast`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Type: Editing mode. Optional values:
+normal (default): Precise editing
+fast: Fast editing, with faster processing speed but lower precision to some extent
+Note: fast only supports individual files, and the default output transcoding format of normal is h264.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
         """
         self._Container = None
@@ -21840,8 +21969,11 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
-        """The clip mode. Valid values: `normal` (default), `fast`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+        """Editing mode. Optional values:
+normal (default): Precise editing
+fast: Fast editing, with faster processing speed but lower precision to some extent
+Note: fast only supports individual files, and the default output transcoding format of normal is h264.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Type
@@ -23235,6 +23367,152 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ImageEncodeConfig(AbstractModel):
+    """Image encoding format parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: Image format. Valid values: JPG, BMP, GIF, PNG, and WebP. The default is the original image format.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Format: str
+        :param _Quality: Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Quality: int
+        """
+        self._Format = None
+        self._Quality = None
+
+    @property
+    def Format(self):
+        """Image format. Valid values: JPG, BMP, GIF, PNG, and WebP. The default is the original image format.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Quality(self):
+        """Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Quality
+
+    @Quality.setter
+    def Quality(self, Quality):
+        self._Quality = Quality
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._Quality = params.get("Quality")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEnhanceConfig(AbstractModel):
+    """Image enhancement parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuperResolution: Super-resolution configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _ColorEnhance: 
+        :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        :param _SharpEnhance: 
+        :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        :param _FaceEnhance: 
+        :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        """
+        self._SuperResolution = None
+        self._ColorEnhance = None
+        self._SharpEnhance = None
+        self._FaceEnhance = None
+
+    @property
+    def SuperResolution(self):
+        """Super-resolution configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        """
+        return self._SuperResolution
+
+    @SuperResolution.setter
+    def SuperResolution(self, SuperResolution):
+        self._SuperResolution = SuperResolution
+
+    @property
+    def ColorEnhance(self):
+        """
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        """
+        return self._ColorEnhance
+
+    @ColorEnhance.setter
+    def ColorEnhance(self, ColorEnhance):
+        self._ColorEnhance = ColorEnhance
+
+    @property
+    def SharpEnhance(self):
+        """
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        """
+        return self._SharpEnhance
+
+    @SharpEnhance.setter
+    def SharpEnhance(self, SharpEnhance):
+        self._SharpEnhance = SharpEnhance
+
+    @property
+    def FaceEnhance(self):
+        """
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        """
+        return self._FaceEnhance
+
+    @FaceEnhance.setter
+    def FaceEnhance(self, FaceEnhance):
+        self._FaceEnhance = FaceEnhance
+
+
+    def _deserialize(self, params):
+        if params.get("SuperResolution") is not None:
+            self._SuperResolution = SuperResolutionConfig()
+            self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("ColorEnhance") is not None:
+            self._ColorEnhance = ColorEnhanceConfig()
+            self._ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("SharpEnhance") is not None:
+            self._SharpEnhance = SharpEnhanceConfig()
+            self._SharpEnhance._deserialize(params.get("SharpEnhance"))
+        if params.get("FaceEnhance") is not None:
+            self._FaceEnhance = FaceEnhanceConfig()
+            self._FaceEnhance._deserialize(params.get("FaceEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageQualityEnhanceConfig(AbstractModel):
     """Overall enhancement configuration.
 
@@ -23670,6 +23948,65 @@ Default value: black.
         self._FillType = params.get("FillType")
         self._Comment = params.get("Comment")
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTaskInput(AbstractModel):
+    """Image task input parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncodeConfig: Image encoding configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EncodeConfig: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
+        :param _EnhanceConfig: Image enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
+        """
+        self._EncodeConfig = None
+        self._EnhanceConfig = None
+
+    @property
+    def EncodeConfig(self):
+        """Image encoding configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEncodeConfig`
+        """
+        return self._EncodeConfig
+
+    @EncodeConfig.setter
+    def EncodeConfig(self, EncodeConfig):
+        self._EncodeConfig = EncodeConfig
+
+    @property
+    def EnhanceConfig(self):
+        """Image enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
+
+    def _deserialize(self, params):
+        if params.get("EncodeConfig") is not None:
+            self._EncodeConfig = ImageEncodeConfig()
+            self._EncodeConfig._deserialize(params.get("EncodeConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = ImageEnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26738,10 +27075,15 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyType: The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+        :param _NotifyType: Notification type:
 
-<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+"CMQ": Callback messages are written to the CMQ queue; 
+"URL": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).
+
+<font color="red">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>
         :type NotifyType: str
+        :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
+        :type NotifyUrl: str
         :param _CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
         :type CmqModel: str
         :param _CmqRegion: CMQ region, such as `sh` and `bj`.
@@ -26750,25 +27092,26 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param _TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
         :type TopicName: str
-        :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
-        :type NotifyUrl: str
         :param _NotifyKey: Key used to generate a callback signature.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NotifyKey: str
         """
         self._NotifyType = None
+        self._NotifyUrl = None
         self._CmqModel = None
         self._CmqRegion = None
         self._QueueName = None
         self._TopicName = None
-        self._NotifyUrl = None
         self._NotifyKey = None
 
     @property
     def NotifyType(self):
-        """The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+        """Notification type:
 
-<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+"CMQ": Callback messages are written to the CMQ queue; 
+"URL": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).
+
+<font color="red">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>
         :rtype: str
         """
         return self._NotifyType
@@ -26776,6 +27119,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @NotifyType.setter
     def NotifyType(self, NotifyType):
         self._NotifyType = NotifyType
+
+    @property
+    def NotifyUrl(self):
+        """HTTP callback URL, required if `NotifyType` is set to `URL`
+        :rtype: str
+        """
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
 
     @property
     def CmqModel(self):
@@ -26822,17 +27176,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TopicName = TopicName
 
     @property
-    def NotifyUrl(self):
-        """HTTP callback URL, required if `NotifyType` is set to `URL`
-        :rtype: str
-        """
-        return self._NotifyUrl
-
-    @NotifyUrl.setter
-    def NotifyUrl(self, NotifyUrl):
-        self._NotifyUrl = NotifyUrl
-
-    @property
     def NotifyKey(self):
         """Key used to generate a callback signature.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -26847,11 +27190,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self._NotifyType = params.get("NotifyType")
+        self._NotifyUrl = params.get("NotifyUrl")
         self._CmqModel = params.get("CmqModel")
         self._CmqRegion = params.get("CmqRegion")
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
-        self._NotifyUrl = params.get("NotifyUrl")
         self._NotifyKey = params.get("NotifyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -35602,6 +35945,136 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class ProcessImageRequest(AbstractModel):
+    """ProcessImage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: File input information for image processing.
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _OutputStorage: Target storage for image processing output files. If left blank, it inherits the storage location in InputInfo.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputDir: Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.
+        :type OutputDir: str
+        :param _ImageTask: Image processing parameter.
+        :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        self._InputInfo = None
+        self._OutputStorage = None
+        self._OutputDir = None
+        self._ImageTask = None
+
+    @property
+    def InputInfo(self):
+        """File input information for image processing.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def OutputStorage(self):
+        """Target storage for image processing output files. If left blank, it inherits the storage location in InputInfo.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputDir(self):
+        """Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.
+        :rtype: str
+        """
+        return self._OutputDir
+
+    @OutputDir.setter
+    def OutputDir(self, OutputDir):
+        self._OutputDir = OutputDir
+
+    @property
+    def ImageTask(self):
+        """Image processing parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ImageTask
+
+    @ImageTask.setter
+    def ImageTask(self, ImageTask):
+        self._ImageTask = ImageTask
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputDir = params.get("OutputDir")
+        if params.get("ImageTask") is not None:
+            self._ImageTask = ImageTaskInput()
+            self._ImageTask._deserialize(params.get("ImageTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageResponse(AbstractModel):
+    """ProcessImage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ProcessLiveStreamRequest(AbstractModel):
     """ProcessLiveStream request structure.
 
@@ -36763,69 +37236,68 @@ class QualityControlItemConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Quality inspection item name. Valid values:
-<li>LowEvaluation: no-reference scoring.</li>
-<li>Mosaic: mosaic detection.</li>
-<li>CrashScreen: screen glitch detection.</li>
-<li>VideoFreezedFrame: video freezing.</li>
-<li>Blur: blur detection.</li>
-<li>BlackWhiteEdge: black and white edges detection.</li>
-<li>SolidColorScreen: solid color screen detection.</li>
-<li>LowLighting: low light.</li>
-<li>HighLighting: overexposure.</li>
-<li>NoVoice: no voice detection.</li>
-<li>LowVoice: low voice detection.</li>
-<li>HighVoice: high voice detection.</li>
-<li>Jitter: jitter detection.</li>
-<li>Noise: noise detection.</li>
+        :param _Type: Quality control item name. The quality control item values are as follows:
+<li>LowEvaluation: No reference score.</li>
+<li>Mosaic: Mosaic detection.</li>
+<li>CrashScreen: Screen crash detection.</li>
+<li>Blur: Blur detection.</li>
+<li>BlackWhiteEdge: Black and white edge detection.</li>
+<li>SolidColorScreen: Solid color screen detection.</li>
+<li>LowLighting: Low lighting.</li>
+<li>HighLighting: Overexposure.</li>
+<li>NoVoice: Silence detection.</li>
+<li>LowVoice: Low voice detection.</li>
+<li>HighVoice: High voice detection.</li>
+<li>Jitter: Jitter detection.</li>
+<li>Noise: Noise detection.</li>
 <li>QRCode: QR code detection.</li>
-<li>BarCode: barcode detection.</li>
-<li>AppletCode: mini program code detection.</li>
-<li>VideoResolutionChanged: video resolution change.</li>
-<li>AudioSampleRateChanged: audio sample rate change.</li>
-<li>AudioChannelsChanged: audio channel quantity change.</li>
-<li>ParameterSetsChanged: stream parameter set information change.</li>
-<li>DarOrSarInvalid: video aspect ratio exception.</li>
-<li>TimestampFallback: DTS timestamp rollback.</li>
-<li>DtsJitter: DTS jitter too high.</li>
-<li>PtsJitter: PTS jitter too high.</li>
-<li>AACDurationDeviation: improper AAC frame timestamp interval.</li>
-<li>AudioDroppingFrames: audio frame dropping.</li>
-<li>VideoDroppingFrames: video frame dropping.</li>
-<li>AVTimestampInterleave: improper audio-video interleaving.</li>
-<li>PtsLessThanDts: PTS less than DTS for media streams.</li>
-<li>ReceiveFpsJitter: significant jitter in the network receive frame rate.</li>
-<li>ReceiveFpsTooSmall: network receive video frame rate too low.</li>
-<li>FpsJitter: significant jitter in the stream frame rate calculated via PTS.</li>
-<li>StreamOpenFailed: stream open failure.</li>
-<li>StreamEnd: stream end.</li>
-<li>StreamParseFailed: stream parsing failure.</li>
-<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>
+<li>BarCode: Barcode detection.</li>
+<li>AppletCode: Applet code detection.</li>
+<li>VideoResolutionChanged: The video resolution changed.</li>
+<li>AudioSampleRateChanged: The audio sampling rate changed.</li>
+<li>AudioChannelsChanged: The audio channel count changed.</li>
+<li>ParameterSetsChanged: The stream parameter set information changed.</li>
+<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>
+<li>TimestampFallback: DTS timestamp fallback.</li>
+<li>DtsJitter: Excessive DTS jitter.</li>
+<li>PtsJitter: Excessive PTS jitter.</li>
+<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>
+<li>AudioDroppingFrames: Audio frame loss.</li>
+<li>VideoDroppingFrames: Video frame loss.</li>
+<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>
+<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>
+<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>
+<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>
+<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>
+<li>StreamOpenFailed: Stream opening failed.</li>
+<li>StreamEnd: The stream ended.</li>
+<li>StreamParseFailed: Stream parsing failed.</li>
+<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>
 <li>StreamNALUError: NALU start code error.</li>
-<li>TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.</li>
-<li>AudioStreamLack: no audio stream.</li>
-<li>VideoStreamLack: no video stream.</li>
-<li>LackAudioRecover: missing audio stream recovery.</li>
-<li>LackVideoRecover: missing video stream recovery.</li>
-<li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>
-<li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>
-<li>VideoDecodeFailed: video decoding error.</li>
-<li>AudioDecodeFailed: audio decoding error.</li>
-<li>AudioOutOfPhase: opposite phase in dual-channel audio.</li>
-<li>VideoDuplicatedFrame: duplicate frames in video streams.</li>
-<li>AudioDuplicatedFrame: duplicate frames in audio streams.</li>
-<li>VideoRotation: video rotation.</li>
-<li>TsMultiPrograms: multiple programs in MPEG2-TS streams.</li>
-<li>Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.</li>
-<li>HLSBadM3u8Format: invalid M3U8 file.</li>
-<li>HLSInvalidMasterM3u8: invalid main M3U8 file.</li>
-<li>HLSInvalidMediaM3u8: invalid media M3U8 file.</li>
-<li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.</li>
-<li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.</li>
-<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.</li>
-<li>HLSMediaSegmentsStreamNumChange: changed number of streams in segments.</li>
-<li>HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.</li>
-<li>HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.</li>
+<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>
+<li>AudioStreamLack: No audio stream.</li>
+<li>VideoStreamLack: No video stream.</li>
+<li>LackAudioRecover: Lack of audio stream recovery.</li>
+<li>LackVideoRecover: Lack of video stream recovery.</li>
+<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>
+<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>
+<li>VideoDecodeFailed: Video decoding error.</li>
+<li>AudioDecodeFailed: Audio decoding error.</li>
+<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>
+<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>
+<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>
+<li>VideoRotation: Video image rotation.</li>
+<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>
+<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>
+<li>HLSBadM3u8Format: Invalid m3u8 file.</li>
+<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>
+<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>
+<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>
+<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>
+<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>
+<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>
+<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>
+<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>
 <li>TimecodeTrackExist: TMCD track in MP4.</li>
         :type Type: str
         :param _Switch: Capability configuration switch. Valid values:
@@ -36859,69 +37331,68 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Quality inspection item name. Valid values:
-<li>LowEvaluation: no-reference scoring.</li>
-<li>Mosaic: mosaic detection.</li>
-<li>CrashScreen: screen glitch detection.</li>
-<li>VideoFreezedFrame: video freezing.</li>
-<li>Blur: blur detection.</li>
-<li>BlackWhiteEdge: black and white edges detection.</li>
-<li>SolidColorScreen: solid color screen detection.</li>
-<li>LowLighting: low light.</li>
-<li>HighLighting: overexposure.</li>
-<li>NoVoice: no voice detection.</li>
-<li>LowVoice: low voice detection.</li>
-<li>HighVoice: high voice detection.</li>
-<li>Jitter: jitter detection.</li>
-<li>Noise: noise detection.</li>
+        """Quality control item name. The quality control item values are as follows:
+<li>LowEvaluation: No reference score.</li>
+<li>Mosaic: Mosaic detection.</li>
+<li>CrashScreen: Screen crash detection.</li>
+<li>Blur: Blur detection.</li>
+<li>BlackWhiteEdge: Black and white edge detection.</li>
+<li>SolidColorScreen: Solid color screen detection.</li>
+<li>LowLighting: Low lighting.</li>
+<li>HighLighting: Overexposure.</li>
+<li>NoVoice: Silence detection.</li>
+<li>LowVoice: Low voice detection.</li>
+<li>HighVoice: High voice detection.</li>
+<li>Jitter: Jitter detection.</li>
+<li>Noise: Noise detection.</li>
 <li>QRCode: QR code detection.</li>
-<li>BarCode: barcode detection.</li>
-<li>AppletCode: mini program code detection.</li>
-<li>VideoResolutionChanged: video resolution change.</li>
-<li>AudioSampleRateChanged: audio sample rate change.</li>
-<li>AudioChannelsChanged: audio channel quantity change.</li>
-<li>ParameterSetsChanged: stream parameter set information change.</li>
-<li>DarOrSarInvalid: video aspect ratio exception.</li>
-<li>TimestampFallback: DTS timestamp rollback.</li>
-<li>DtsJitter: DTS jitter too high.</li>
-<li>PtsJitter: PTS jitter too high.</li>
-<li>AACDurationDeviation: improper AAC frame timestamp interval.</li>
-<li>AudioDroppingFrames: audio frame dropping.</li>
-<li>VideoDroppingFrames: video frame dropping.</li>
-<li>AVTimestampInterleave: improper audio-video interleaving.</li>
-<li>PtsLessThanDts: PTS less than DTS for media streams.</li>
-<li>ReceiveFpsJitter: significant jitter in the network receive frame rate.</li>
-<li>ReceiveFpsTooSmall: network receive video frame rate too low.</li>
-<li>FpsJitter: significant jitter in the stream frame rate calculated via PTS.</li>
-<li>StreamOpenFailed: stream open failure.</li>
-<li>StreamEnd: stream end.</li>
-<li>StreamParseFailed: stream parsing failure.</li>
-<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>
+<li>BarCode: Barcode detection.</li>
+<li>AppletCode: Applet code detection.</li>
+<li>VideoResolutionChanged: The video resolution changed.</li>
+<li>AudioSampleRateChanged: The audio sampling rate changed.</li>
+<li>AudioChannelsChanged: The audio channel count changed.</li>
+<li>ParameterSetsChanged: The stream parameter set information changed.</li>
+<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>
+<li>TimestampFallback: DTS timestamp fallback.</li>
+<li>DtsJitter: Excessive DTS jitter.</li>
+<li>PtsJitter: Excessive PTS jitter.</li>
+<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>
+<li>AudioDroppingFrames: Audio frame loss.</li>
+<li>VideoDroppingFrames: Video frame loss.</li>
+<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>
+<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>
+<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>
+<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>
+<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>
+<li>StreamOpenFailed: Stream opening failed.</li>
+<li>StreamEnd: The stream ended.</li>
+<li>StreamParseFailed: Stream parsing failed.</li>
+<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>
 <li>StreamNALUError: NALU start code error.</li>
-<li>TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.</li>
-<li>AudioStreamLack: no audio stream.</li>
-<li>VideoStreamLack: no video stream.</li>
-<li>LackAudioRecover: missing audio stream recovery.</li>
-<li>LackVideoRecover: missing video stream recovery.</li>
-<li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>
-<li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>
-<li>VideoDecodeFailed: video decoding error.</li>
-<li>AudioDecodeFailed: audio decoding error.</li>
-<li>AudioOutOfPhase: opposite phase in dual-channel audio.</li>
-<li>VideoDuplicatedFrame: duplicate frames in video streams.</li>
-<li>AudioDuplicatedFrame: duplicate frames in audio streams.</li>
-<li>VideoRotation: video rotation.</li>
-<li>TsMultiPrograms: multiple programs in MPEG2-TS streams.</li>
-<li>Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.</li>
-<li>HLSBadM3u8Format: invalid M3U8 file.</li>
-<li>HLSInvalidMasterM3u8: invalid main M3U8 file.</li>
-<li>HLSInvalidMediaM3u8: invalid media M3U8 file.</li>
-<li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.</li>
-<li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.</li>
-<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.</li>
-<li>HLSMediaSegmentsStreamNumChange: changed number of streams in segments.</li>
-<li>HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.</li>
-<li>HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.</li>
+<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>
+<li>AudioStreamLack: No audio stream.</li>
+<li>VideoStreamLack: No video stream.</li>
+<li>LackAudioRecover: Lack of audio stream recovery.</li>
+<li>LackVideoRecover: Lack of video stream recovery.</li>
+<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>
+<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>
+<li>VideoDecodeFailed: Video decoding error.</li>
+<li>AudioDecodeFailed: Audio decoding error.</li>
+<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>
+<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>
+<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>
+<li>VideoRotation: Video image rotation.</li>
+<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>
+<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>
+<li>HLSBadM3u8Format: Invalid m3u8 file.</li>
+<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>
+<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>
+<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>
+<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>
+<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>
+<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>
+<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>
+<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>
 <li>TimecodeTrackExist: TMCD track in MP4.</li>
         :rtype: str
         """
@@ -39330,19 +39801,34 @@ class SegmentRecognitionItem(AbstractModel):
         :type EndTimeOffset: float
         :param _SegmentUrl: 
         :type SegmentUrl: str
+        :param _CovImgUrl: Segment cover.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CovImgUrl: str
         :param _Title: Segment title.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Title: str
         :param _Summary: Segment summary.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Summary: str
+        :param _Keywords: Segmentation keywords.
+        :type Keywords: list of str
+        :param _BeginTime: The start time of a live streaming segment, in the ISO date format.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BeginTime: str
+        :param _EndTime: The end time of a live streaming segment, in the ISO date format.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EndTime: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._SegmentUrl = None
+        self._CovImgUrl = None
         self._Title = None
         self._Summary = None
+        self._Keywords = None
+        self._BeginTime = None
+        self._EndTime = None
 
     @property
     def Confidence(self):
@@ -39389,6 +39875,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SegmentUrl = SegmentUrl
 
     @property
+    def CovImgUrl(self):
+        """Segment cover.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CovImgUrl
+
+    @CovImgUrl.setter
+    def CovImgUrl(self, CovImgUrl):
+        self._CovImgUrl = CovImgUrl
+
+    @property
     def Title(self):
         """Segment title.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -39412,14 +39910,53 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def Keywords(self):
+        """Segmentation keywords.
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def BeginTime(self):
+        """The start time of a live streaming segment, in the ISO date format.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        """The end time of a live streaming segment, in the ISO date format.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._SegmentUrl = params.get("SegmentUrl")
+        self._CovImgUrl = params.get("CovImgUrl")
         self._Title = params.get("Title")
         self._Summary = params.get("Summary")
+        self._Keywords = params.get("Keywords")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41958,6 +42495,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _EnhanceConfig: Audio/Video enhancement configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        :param _AliasName: Transcoding template alias.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AliasName: str
         """
         self._Definition = None
         self._Container = None
@@ -41973,6 +42513,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CreateTime = None
         self._UpdateTime = None
         self._EnhanceConfig = None
+        self._AliasName = None
 
     @property
     def Definition(self):
@@ -42142,6 +42683,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def AliasName(self):
+        """Transcoding template alias.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -42166,6 +42719,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        self._AliasName = params.get("AliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43426,6 +43980,33 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _SegmentSpecificInfo: Special segment configuration
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+ 
+Default value: 0	
+	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ScenarioBased: int
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario.
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+Default value: normal
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SceneType: str
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress 
+Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CompressType: str
         """
         self._Codec = None
         self._Fps = None
@@ -43451,6 +44032,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RawPts = None
         self._Compress = None
         self._SegmentSpecificInfo = None
+        self._ScenarioBased = None
+        self._SceneType = None
+        self._CompressType = None
 
     @property
     def Codec(self):
@@ -43817,6 +44401,60 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SegmentSpecificInfo(self, SegmentSpecificInfo):
         self._SegmentSpecificInfo = SegmentSpecificInfo
 
+    @property
+    def ScenarioBased(self):
+        """Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+ 
+Default value: 0	
+	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._ScenarioBased
+
+    @ScenarioBased.setter
+    def ScenarioBased(self, ScenarioBased):
+        self._ScenarioBased = ScenarioBased
+
+    @property
+    def SceneType(self):
+        """Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario.
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
+Default value: normal
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CompressType(self):
+        """Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress 
+Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -43845,6 +44483,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SegmentSpecificInfo") is not None:
             self._SegmentSpecificInfo = SegmentSpecificInfo()
             self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
+        self._ScenarioBased = params.get("ScenarioBased")
+        self._SceneType = params.get("SceneType")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44017,6 +44658,33 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _SegmentSpecificInfo: Special segment configuration	
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+ 
+Default value: 0	
+	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ScenarioBased: int
+        :param _SceneType: Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
+Default value: normal
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SceneType: str
+        :param _CompressType: Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress 
+Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CompressType: str
         """
         self._Codec = None
         self._Fps = None
@@ -44043,6 +44711,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RawPts = None
         self._Compress = None
         self._SegmentSpecificInfo = None
+        self._ScenarioBased = None
+        self._SceneType = None
+        self._CompressType = None
 
     @property
     def Codec(self):
@@ -44424,6 +45095,60 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SegmentSpecificInfo(self, SegmentSpecificInfo):
         self._SegmentSpecificInfo = SegmentSpecificInfo
 
+    @property
+    def ScenarioBased(self):
+        """Whether to enable scenario-based settings for the template 
+0: disable 
+1: enable 
+ 
+Default value: 0	
+	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._ScenarioBased
+
+    @ScenarioBased.setter
+    def ScenarioBased(self, ScenarioBased):
+        self._ScenarioBased = ScenarioBased
+
+    @property
+    def SceneType(self):
+        """Video scenario. Optional values: 
+normal: General transcoding scenario: General transcoding and compression scenario
+pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
+ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
+e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
+educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
+Default value: normal
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def CompressType(self):
+        """Transcoding policy. Optional values: 
+ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
+standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress 
+Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -44453,6 +45178,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SegmentSpecificInfo") is not None:
             self._SegmentSpecificInfo = SegmentSpecificInfo()
             self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
+        self._ScenarioBased = params.get("ScenarioBased")
+        self._SceneType = params.get("SceneType")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44892,6 +45620,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._CoordinateOrigin = params.get("CoordinateOrigin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WordResult(AbstractModel):
+    """Word information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Word: Word text.
+        :type Word: str
+        :param _Start: Word start timestamp, in seconds.
+        :type Start: float
+        :param _End: Word end timestamp, in seconds.
+        :type End: float
+        """
+        self._Word = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def Word(self):
+        """Word text.
+        :rtype: str
+        """
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Start(self):
+        """Word start timestamp, in seconds.
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        """Word end timestamp, in seconds.
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Word = params.get("Word")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
