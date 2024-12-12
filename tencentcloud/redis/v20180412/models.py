@@ -17310,7 +17310,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         :param _Recycle: Retention duration of the original private IPv4 address.
 - Unit: day.
 - Valid values: 0, 1, 2, 3, 7, and 15.
-
+**Note**: If the retention duration is not set or set to 0, the original network address will be released immediately.
         :type Recycle: int
         :param _VPort: Network port after the change, which is required if `Operation` is `changeVPort` or `changeVip`. Value range: [1024,65535].
         :type VPort: int
@@ -17392,7 +17392,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         """Retention duration of the original private IPv4 address.
 - Unit: day.
 - Valid values: 0, 1, 2, 3, 7, and 15.
-
+**Note**: If the retention duration is not set or set to 0, the original network address will be released immediately.
         :rtype: int
         """
         return self._Recycle
