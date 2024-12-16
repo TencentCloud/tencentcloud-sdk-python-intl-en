@@ -562,6 +562,29 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryPolicyProductListByCode(self, request):
+        """This API is used to query the product list information within the specified policy range. To call this API, contact your account manager to add it to the allowlist.
+
+        :param request: Request instance for QueryPolicyProductListByCode.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPolicyProductListByCodeRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPolicyProductListByCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryPolicyProductListByCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryPolicyProductListByCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryVoucherAmountByUin(self, request):
         """This API is used to query the voucher quota based on the customer UIN.
 

@@ -1969,6 +1969,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeZoneConfigImportResult(self, request):
+        """This API is used to query the results of site configuration import via API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+
+        :param request: Request instance for DescribeZoneConfigImportResult.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneConfigImportResultRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeZoneConfigImportResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZoneConfigImportResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeZoneConfigImportResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZoneSetting(self, request):
         """This API is used to query the site configuration.
 
@@ -2091,6 +2114,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportZoneConfig(self, request):
+        """This API is used to export site configuration . The exported configuration is used for import via the API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+
+        :param request: Request instance for ExportZoneConfig.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ExportZoneConfigRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ExportZoneConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportZoneConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportZoneConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def HandleFunctionRuntimeEnvironment(self, request):
         """This API is used to operate the runtime environment of an edge function. It supports related settings for environment variables.
         After the environment variables are set, they can be used in the function code. For details, see [Edge Functions Referencing Environment Variables](https://intl.cloud.tencent.com/document/product/1552/109151?from_cn_redirect=1#0151fd9a-8b0e-407b-ae37-54553a60ded6).
@@ -2129,6 +2175,29 @@ class TeoClient(AbstractClient):
             body = self.call("IdentifyZone", params, headers=headers)
             response = json.loads(body)
             model = models.IdentifyZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportZoneConfig(self, request):
+        """This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID (TaskId). Users need to use the site configuration import result query API (DescribeZoneConfigImportResult) to obtain the results of this import task. This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
+
+        :param request: Request instance for ImportZoneConfig.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ImportZoneConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportZoneConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportZoneConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

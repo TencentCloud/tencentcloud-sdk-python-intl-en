@@ -3889,6 +3889,192 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PolicyProductList(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyCode: Policy code.
+        :type PolicyCode: str
+        :param _ProductCode: Product code, if the return is *, any item under this level is included in the policy product scope.
+        :type ProductCode: str
+        :param _ProductName: Product name, if the return is *, any item under this level is included in the policy product scope.
+        :type ProductName: str
+        :param _SubProductCode: SubProduct code, if the return is *, any item under this level is included in the policy product scope.
+        :type SubProductCode: str
+        :param _SubProductName: SubProduct name, if the return is *, any item under this level is included in the policy product scope.
+        :type SubProductName: str
+        :param _ComponentTypeCode: Component type code, if the return is *, any item under this level is included in the policy product scope.
+        :type ComponentTypeCode: str
+        :param _ComponentTypeName: Component type name, if the return is *, any item under this level is included in the policy product scope.
+        :type ComponentTypeName: str
+        :param _ComponentCode: Component code, if the return is *, any item under this level is included in the policy product scope.
+        :type ComponentCode: str
+        :param _ComponentName: Component name, if the return is *, any item under this level is included in the policy product scope.
+        :type ComponentName: str
+        :param _StartDate: Policy effective date.
+        :type StartDate: str
+        :param _EndDate: Policy expiration date.
+        :type EndDate: str
+        """
+        self._PolicyCode = None
+        self._ProductCode = None
+        self._ProductName = None
+        self._SubProductCode = None
+        self._SubProductName = None
+        self._ComponentTypeCode = None
+        self._ComponentTypeName = None
+        self._ComponentCode = None
+        self._ComponentName = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def PolicyCode(self):
+        """Policy code.
+        :rtype: str
+        """
+        return self._PolicyCode
+
+    @PolicyCode.setter
+    def PolicyCode(self, PolicyCode):
+        self._PolicyCode = PolicyCode
+
+    @property
+    def ProductCode(self):
+        """Product code, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductName(self):
+        """Product name, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def SubProductCode(self):
+        """SubProduct code, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def SubProductName(self):
+        """SubProduct name, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._SubProductName
+
+    @SubProductName.setter
+    def SubProductName(self, SubProductName):
+        self._SubProductName = SubProductName
+
+    @property
+    def ComponentTypeCode(self):
+        """Component type code, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._ComponentTypeCode
+
+    @ComponentTypeCode.setter
+    def ComponentTypeCode(self, ComponentTypeCode):
+        self._ComponentTypeCode = ComponentTypeCode
+
+    @property
+    def ComponentTypeName(self):
+        """Component type name, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._ComponentTypeName
+
+    @ComponentTypeName.setter
+    def ComponentTypeName(self, ComponentTypeName):
+        self._ComponentTypeName = ComponentTypeName
+
+    @property
+    def ComponentCode(self):
+        """Component code, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentName(self):
+        """Component name, if the return is *, any item under this level is included in the policy product scope.
+        :rtype: str
+        """
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def StartDate(self):
+        """Policy effective date.
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        """Policy expiration date.
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+
+    def _deserialize(self, params):
+        self._PolicyCode = params.get("PolicyCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductName = params.get("ProductName")
+        self._SubProductCode = params.get("SubProductCode")
+        self._SubProductName = params.get("SubProductName")
+        self._ComponentTypeCode = params.get("ComponentTypeCode")
+        self._ComponentTypeName = params.get("ComponentTypeName")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentName = params.get("ComponentName")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryAccountVerificationStatusRequest(AbstractModel):
     """QueryAccountVerificationStatus request structure.
 
@@ -4920,6 +5106,150 @@ class QueryPartnerCreditResponse(AbstractModel):
         self._RemainingCredit = params.get("RemainingCredit")
         self._CustomerTotalCredit = params.get("CustomerTotalCredit")
         self._CustomerRemainingCredit = params.get("CustomerRemainingCredit")
+        self._RequestId = params.get("RequestId")
+
+
+class QueryPolicyProductListByCodeRequest(AbstractModel):
+    """QueryPolicyProductListByCode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyCode: Policy code
+        :type PolicyCode: str
+        :param _ProductCode: Product code
+        :type ProductCode: str
+        :param _ProductName: Product name
+        :type ProductName: str
+        :param _SubProductCode: Subproduct code
+        :type SubProductCode: str
+        :param _SubProductName: Subproduct name
+        :type SubProductName: str
+        """
+        self._PolicyCode = None
+        self._ProductCode = None
+        self._ProductName = None
+        self._SubProductCode = None
+        self._SubProductName = None
+
+    @property
+    def PolicyCode(self):
+        """Policy code
+        :rtype: str
+        """
+        return self._PolicyCode
+
+    @PolicyCode.setter
+    def PolicyCode(self, PolicyCode):
+        self._PolicyCode = PolicyCode
+
+    @property
+    def ProductCode(self):
+        """Product code
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductName(self):
+        """Product name
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def SubProductCode(self):
+        """Subproduct code
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def SubProductName(self):
+        """Subproduct name
+        :rtype: str
+        """
+        return self._SubProductName
+
+    @SubProductName.setter
+    def SubProductName(self, SubProductName):
+        self._SubProductName = SubProductName
+
+
+    def _deserialize(self, params):
+        self._PolicyCode = params.get("PolicyCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductName = params.get("ProductName")
+        self._SubProductCode = params.get("SubProductCode")
+        self._SubProductName = params.get("SubProductName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryPolicyProductListByCodeResponse(AbstractModel):
+    """QueryPolicyProductListByCode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductList: Policy product list
+        :type ProductList: list of PolicyProductList
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ProductList = None
+        self._RequestId = None
+
+    @property
+    def ProductList(self):
+        """Policy product list
+        :rtype: list of PolicyProductList
+        """
+        return self._ProductList
+
+    @ProductList.setter
+    def ProductList(self, ProductList):
+        self._ProductList = ProductList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProductList") is not None:
+            self._ProductList = []
+            for item in params.get("ProductList"):
+                obj = PolicyProductList()
+                obj._deserialize(item)
+                self._ProductList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
