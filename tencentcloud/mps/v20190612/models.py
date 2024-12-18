@@ -1640,14 +1640,18 @@ class AddOnSubtitle(AbstractModel):
 <li>`subtitle-stream`: Add a subtitle track.</li>
 <li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>
 <li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _Subtitle: The subtitle file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _SubtitleName: Subtitle name.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SubtitleName: str
         """
         self._Type = None
         self._Subtitle = None
+        self._SubtitleName = None
 
     @property
     def Type(self):
@@ -1655,7 +1659,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 <li>`subtitle-stream`: Add a subtitle track.</li>
 <li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>
 <li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -1667,7 +1671,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Subtitle(self):
         """The subtitle file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._Subtitle
@@ -1676,12 +1680,25 @@ Note: This field may return·null, indicating that no valid values can be obtain
     def Subtitle(self, Subtitle):
         self._Subtitle = Subtitle
 
+    @property
+    def SubtitleName(self):
+        """Subtitle name.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         if params.get("Subtitle") is not None:
             self._Subtitle = MediaInputInfo()
             self._Subtitle._deserialize(params.get("Subtitle"))
+        self._SubtitleName = params.get("SubtitleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23430,13 +23447,16 @@ class ImageEnhanceConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _SuperResolution: Super-resolution configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
-        :param _ColorEnhance: 
+        :param _ColorEnhance: Color enhancement configuration.
+
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
-        :param _SharpEnhance: 
+        :param _SharpEnhance: Detail enhancement configuration.
+
         :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
-        :param _FaceEnhance: 
+        :param _FaceEnhance: Face enhancement configuration.
+
         :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         """
         self._SuperResolution = None
@@ -23447,7 +23467,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SuperResolution(self):
         """Super-resolution configuration.
-Note: This field may return null, indicating that no valid value can be obtained.
+
         :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
         """
         return self._SuperResolution
@@ -23458,7 +23478,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ColorEnhance(self):
-        """
+        """Color enhancement configuration.
+
         :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
         """
         return self._ColorEnhance
@@ -23469,7 +23490,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SharpEnhance(self):
-        """
+        """Detail enhancement configuration.
+
         :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
         """
         return self._SharpEnhance
@@ -23480,7 +23502,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FaceEnhance(self):
-        """
+        """Face enhancement configuration.
+
         :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
         """
         return self._FaceEnhance
@@ -34299,32 +34322,40 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _NotificationType: Live stream processing result type, including:
-<li>AiReviewResult: content moderation result;</li>
-<li>AiRecognitionResult: content recognition result;</li>
-<li>LiveRecordResult: live recording result;</li>
+<li>AiReviewResult: content auditing result.</li>
+<li>AiRecognitionResult: content recognition result.</li>
+<li>LiveRecordResult: live recording result.</li>
+<li>AiQualityControlResult: media quality inspection result.</li>
 <li>ProcessEof: live stream processing result.</li>
         :type NotificationType: str
         :param _TaskId: Video processing task ID.
         :type TaskId: str
         :param _ProcessEofInfo: Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: when this field return null, means no valid values can be obtained.
         :type ProcessEofInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
         :param _AiReviewResultInfo: Content audit result, which is valid when `NotificationType` is `AiReviewResult`.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: when this field return null, means no valid values can be obtained.
         :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
         :param _AiRecognitionResultInfo: Content recognition result, which is valid if `NotificationType` is `AiRecognitionResult`.
         :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
-        :param _AiAnalysisResultInfo: 
+        :param _AiAnalysisResultInfo: Content analysis result, which is valid if `NotificationType` is `AiAnalysisResult`.
         :type AiAnalysisResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
-        :param _AiQualityControlResultInfo: 
+        :param _AiQualityControlResultInfo: Media quality inspection result, which is valid if `NotificationType` is `AiQualityControlResult`.
         :type AiQualityControlResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
         :param _LiveRecordResultInfo: Live recording result is valid when NotificationType is LiveRecordResult.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: when this field return null, means no valid values can be obtained.
         :type LiveRecordResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
         :param _SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param _Timestamp: - Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Timestamp: int
+        :param _Sign: Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Sign: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -34338,14 +34369,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LiveRecordResultInfo = None
         self._SessionId = None
         self._SessionContext = None
+        self._Timestamp = None
+        self._Sign = None
         self._RequestId = None
 
     @property
     def NotificationType(self):
         """Live stream processing result type, including:
-<li>AiReviewResult: content moderation result;</li>
-<li>AiRecognitionResult: content recognition result;</li>
-<li>LiveRecordResult: live recording result;</li>
+<li>AiReviewResult: content auditing result.</li>
+<li>AiRecognitionResult: content recognition result.</li>
+<li>LiveRecordResult: live recording result.</li>
+<li>AiQualityControlResult: media quality inspection result.</li>
 <li>ProcessEof: live stream processing result.</li>
         :rtype: str
         """
@@ -34369,7 +34403,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ProcessEofInfo(self):
         """Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: when this field return null, means no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
         """
         return self._ProcessEofInfo
@@ -34381,7 +34415,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AiReviewResultInfo(self):
         """Content audit result, which is valid when `NotificationType` is `AiReviewResult`.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: when this field return null, means no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
         """
         return self._AiReviewResultInfo
@@ -34403,7 +34437,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiAnalysisResultInfo(self):
-        """
+        """Content analysis result, which is valid if `NotificationType` is `AiAnalysisResult`.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
         """
         return self._AiAnalysisResultInfo
@@ -34414,7 +34448,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiQualityControlResultInfo(self):
-        """
+        """Media quality inspection result, which is valid if `NotificationType` is `AiQualityControlResult`.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
         """
         return self._AiQualityControlResultInfo
@@ -34426,7 +34460,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LiveRecordResultInfo(self):
         """Live recording result is valid when NotificationType is LiveRecordResult.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: when this field return null, means no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
         """
         return self._LiveRecordResultInfo
@@ -34456,6 +34490,31 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @SessionContext.setter
     def SessionContext(self, SessionContext):
         self._SessionContext = SessionContext
+
+    @property
+    def Timestamp(self):
+        """- Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Sign(self):
+        """Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
 
     @property
     def RequestId(self):
@@ -34492,6 +34551,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._LiveRecordResultInfo._deserialize(params.get("LiveRecordResultInfo"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
+        self._Timestamp = params.get("Timestamp")
+        self._Sign = params.get("Sign")
         self._RequestId = params.get("RequestId")
 
 

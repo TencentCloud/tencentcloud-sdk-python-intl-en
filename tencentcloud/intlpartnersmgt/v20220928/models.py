@@ -1236,7 +1236,7 @@ class CreateAccountRequest(AbstractModel):
 Valid values: `personal`, `company`.
         :type AccountType: str
         :param _Mail: Registered email address, which should be valid and correct.
-For example, account@qq.com.
+such as "account@qq.com"
         :type Mail: str
         :param _Password: Account password.
 Length limit: 8-20 characters
@@ -1244,20 +1244,19 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
         :type Password: str
         :param _ConfirmPassword: The confirmed password, which must be the same as that entered in the `Password` field.
         :type ConfirmPassword: str
-        :param _PhoneNum: Customer's mobile number. 
-The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. 
+        :param _PhoneNum: Customer's mobile number.
+The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.
 The system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.
         :type PhoneNum: str
-        :param _CountryCode: Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
+        :param _CountryCode: Customer's country/region code, which can be obtained via the  [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416), such as "852".
 Parameter value is not allowed to be 7,380,86.
         :type CountryCode: str
-        :param _Area: Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
+        :param _Area: Customer's ISO2 standard country/region code, which can be obtained via the [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416). It should correspond to the `CountryCode` field, such as `HK`.
         :type Area: str
         :param _Extended: Extension field, which is left empty by default.
         :type Extended: str
-        :param _VerifyCode: Verification code. 
-It will be used to verify the validity of the mobile number you provide. 
-When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.
+        :param _VerifyCode: VerifyCode. This field is required. 
+Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.
         :type VerifyCode: str
         """
         self._AccountType = None
@@ -1285,7 +1284,7 @@ Valid values: `personal`, `company`.
     @property
     def Mail(self):
         """Registered email address, which should be valid and correct.
-For example, account@qq.com.
+such as "account@qq.com"
         :rtype: str
         """
         return self._Mail
@@ -1320,8 +1319,8 @@ A password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not
 
     @property
     def PhoneNum(self):
-        """Customer's mobile number. 
-The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. 
+        """Customer's mobile number.
+The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.
 The system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.
         :rtype: str
         """
@@ -1333,7 +1332,7 @@ The system will perform binding limit verification of the mobile number you prov
 
     @property
     def CountryCode(self):
-        """Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as "852".
+        """Customer's country/region code, which can be obtained via the  [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416), such as "852".
 Parameter value is not allowed to be 7,380,86.
         :rtype: str
         """
@@ -1345,7 +1344,7 @@ Parameter value is not allowed to be 7,380,86.
 
     @property
     def Area(self):
-        """Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
+        """Customer's ISO2 standard country/region code, which can be obtained via the [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416). It should correspond to the `CountryCode` field, such as `HK`.
         :rtype: str
         """
         return self._Area
@@ -1367,9 +1366,8 @@ Parameter value is not allowed to be 7,380,86.
 
     @property
     def VerifyCode(self):
-        """Verification code. 
-It will be used to verify the validity of the mobile number you provide. 
-When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.
+        """VerifyCode. This field is required. 
+Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.
         :rtype: str
         """
         return self._VerifyCode

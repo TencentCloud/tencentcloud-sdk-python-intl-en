@@ -77,7 +77,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def CreateAccount(self, request):
-        """This API is used to create Tencent Cloud customer accounts for first-level resellers/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
+        """This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
         1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.
         2.  Customers need to add personal information when logging in for the first time.
         3.  This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.
@@ -333,7 +333,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def ForceQN(self, request):
-        """This API is used to set and cancel forced service suspension.Reseller need to be allowlisted to use the API.
+        """This API is used to set and cancel forced service suspension.
+        Note:Reseller need to be allowlisted to use the API, please contact your business representative to apply for allowlist.
 
         :param request: Request instance for ForceQN.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ForceQNRequest`
