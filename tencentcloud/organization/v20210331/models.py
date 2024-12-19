@@ -1370,7 +1370,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type Name: str
         :param _PolicyType: Relationship policy. Valid value: `Financial`.
         :type PolicyType: str
-        :param _PermissionIds: List of member financial permission IDs. `7` indicates paying, which is the default value.
+        :param _PermissionIds: Member Finanace Authorization. Valid values: 1: View Bills. 2: View Balance.  4: Consolidate Bills. 5: Invoice. 6: Inherit Offer. 7: Pay On Behalf. 8: Cost Explorer. 9: Budget Management.  1, 2 and 7 are required.
         :type PermissionIds: list of int non-negative
         :param _NodeId: Node ID of the member's department, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).
         :type NodeId: int
@@ -1425,7 +1425,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
-        """List of member financial permission IDs. `7` indicates paying, which is the default value.
+        """Member Finanace Authorization. Valid values: 1: View Bills. 2: View Balance.  4: Consolidate Bills. 5: Invoice. 6: Inherit Offer. 7: Pay On Behalf. 8: Cost Explorer. 9: Budget Management.  1, 2 and 7 are required.
         :rtype: list of int non-negative
         """
         return self._PermissionIds
@@ -6197,7 +6197,7 @@ class InviteOrganizationMemberRequest(AbstractModel):
         :type Name: str
         :param _PolicyType: Relationship policy. Valid value: `Financial`.
         :type PolicyType: str
-        :param _PermissionIds: List of member financial permission IDs. Valid values: 1: View bills. 2: View balance. 3: Transfer funds. 4: Consolidate bills. 5: Issue invoice. 6: Inherit discounts. 7: Pay on behalf. 1 and 2 are required by default.
+        :param _PermissionIds: Member Finanace Authorization. Valid values: 1: View Bills. 2: View Balance.  4: Consolidate Bills. 5: Invoice. 6: Inherit Offer. 7: Pay On Behalf. 8: Cost Explorer. 9: Budget Management.  1 and 2 are required.
         :type PermissionIds: list of int non-negative
         :param _NodeId: Node ID of the member's department, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).
         :type NodeId: int
@@ -6261,7 +6261,7 @@ class InviteOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
-        """List of member financial permission IDs. Valid values: 1: View bills. 2: View balance. 3: Transfer funds. 4: Consolidate bills. 5: Issue invoice. 6: Inherit discounts. 7: Pay on behalf. 1 and 2 are required by default.
+        """Member Finanace Authorization. Valid values: 1: View Bills. 2: View Balance.  4: Consolidate Bills. 5: Invoice. 6: Inherit Offer. 7: Pay On Behalf. 8: Cost Explorer. 9: Budget Management.  1 and 2 are required.
         :rtype: list of int non-negative
         """
         return self._PermissionIds

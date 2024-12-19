@@ -29,6 +29,9 @@ FAILEDOPERATION_MAILISREGISTERED = 'FailedOperation.MailIsRegistered'
 # The number of registered accounts for the current mobile number has reached the maximum limit. Please change the phone number and try again.
 FAILEDOPERATION_PHONEBINDUPPER = 'FailedOperation.PhoneBindUpper'
 
+# The interval between sending invitation links is less than three minutes. Please try again later.
+FAILEDOPERATION_SENDMAILLIMIT180 = 'FailedOperation.SendMailLimit180'
+
 # Verification codes are sent too frequently. Please try again later.
 FAILEDOPERATION_SENDVERIFYCODELIMIT = 'FailedOperation.SendVerifyCodeLimit'
 

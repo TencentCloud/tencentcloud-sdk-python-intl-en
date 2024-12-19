@@ -102,6 +102,34 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndSendClientInvitationMail(self, request):
+        """This API is used to apply for the allowlist. If needed, please contact your business representative.Directions:
+        1.This API is used to create an invitation link, which you can send to a specified email address.
+        2.Customer need to click the invitation link in the email, fill in and submit the required information.
+        3.You can review the customer's application in customer management  after submission.
+
+        Note:This API is used to manually send the invitation link to the customer if the specified email does not receive it.
+
+        :param request: Request instance for CreateAndSendClientInvitationMail.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAndSendClientInvitationMailRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAndSendClientInvitationMailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndSendClientInvitationMail", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndSendClientInvitationMailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillDetail(self, request):
         """This API is used to query bill details by customers.
 
