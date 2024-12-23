@@ -358,6 +358,30 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetectFaceSimilarity(self, request):
+        """Compare the faces in the two pictures for similarity and return the face similarity score. If you need to determine "whether this person is someone", that is, to verify whether the person in a picture is someone with a known identity, such as a common face login scenario, it is recommended to use [VerifyFace] (https://www.tencentcloud.com/document/product/1059/36972) or [VerifyPerson] (https://www.tencentcloud.com/document/product/1059/36971) inferface.
+        Please use the V3 version for the signature method in the public parameters, that is, configure the SignatureMethod parameter to TC3-HMAC-SHA256
+
+        :param request: Request instance for DetectFaceSimilarity.
+        :type request: :class:`tencentcloud.iai.v20200303.models.DetectFaceSimilarityRequest`
+        :rtype: :class:`tencentcloud.iai.v20200303.models.DetectFaceSimilarityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectFaceSimilarity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectFaceSimilarityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetectLiveFace(self, request):
         """This API is used to detect the liveness of a face in a static image uploaded by a user. Compared with dynamic liveness detection, static liveness detection does not require moving lips, shaking head, or blinking for recognition.
 

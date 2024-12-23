@@ -1645,7 +1645,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Subtitle: The subtitle file.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _SubtitleName: Subtitle name.	
+        :param _SubtitleName: Subtitle name.
+Note: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitleName: str
         """
@@ -1682,7 +1683,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubtitleName(self):
-        """Subtitle name.	
+        """Subtitle name.
+Note: supports Chinese characters, letters, digits, spaces, underscores (_), hyphens (-), periods (.), and parentheses. Max 64 characters.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -14819,15 +14821,18 @@ Default value: 0.
         :type DisableHigherVideoResolution: int
         :param _Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param _PureAudio: Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+        :param _PureAudio: Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.
+When the value is 1.
 1. StreamInfos.N.RemoveVideo=1
 2. StreamInfos.N.RemoveAudio=0
 3. StreamInfos.N.Video.Codec=copy
-
-When the value is 0:
-
+When the value is 0.
 1. StreamInfos.N.Video.Codec cannot be copy.
 2. StreamInfos.N.Video.Fps cannot be null.
+
+Note:
+
+This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
         :param _SegmentType: HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
 Note: The HLS segment format for adaptive bitrate streaming is based on this field.
@@ -14919,15 +14924,18 @@ Default value: 0.
 
     @property
     def PureAudio(self):
-        """Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+        """Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.
+When the value is 1.
 1. StreamInfos.N.RemoveVideo=1
 2. StreamInfos.N.RemoveAudio=0
 3. StreamInfos.N.Video.Codec=copy
-
-When the value is 0:
-
+When the value is 0.
 1. StreamInfos.N.Video.Codec cannot be copy.
 2. StreamInfos.N.Video.Fps cannot be null.
+
+Note:
+
+This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :rtype: int
         """
         return self._PureAudio
@@ -31347,19 +31355,26 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 <li>1: yes.</li>
         :type DisableHigherVideoResolution: int
         :param _StreamInfos: Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
-Note: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+
+Note:
+
+1. The frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+2. When modifying substream information, all field values must be fully modified and added; otherwise, fields not filled in will use default values.
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param _Comment: Template description. Length limit: 256 characters.
         :type Comment: str
-        :param _PureAudio: Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+        :param _PureAudio: Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.
+When the value is 1.
 1. StreamInfos.N.RemoveVideo=1
 2. StreamInfos.N.RemoveAudio=0
 3. StreamInfos.N.Video.Codec=copy
-
-When the value is 0:
-
+When the value is 0.
 1. StreamInfos.N.Video.Codec cannot be copy.
 2. StreamInfos.N.Video.Fps cannot be null.
+
+Note:
+
+This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :type PureAudio: int
         :param _SegmentType: HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
 Note: The HLS segment format for adaptive bitrate streaming is based on this field.
@@ -31439,7 +31454,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
     @property
     def StreamInfos(self):
         """Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
-Note: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+
+Note:
+
+1. The frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+2. When modifying substream information, all field values must be fully modified and added; otherwise, fields not filled in will use default values.
         :rtype: list of AdaptiveStreamTemplate
         """
         return self._StreamInfos
@@ -31461,15 +31480,18 @@ Note: the frame rate of each stream must be consistent; otherwise, the frame rat
 
     @property
     def PureAudio(self):
-        """Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+        """Indicates whether it is audio-only. 0 means video template, 1 means audio-only template.
+When the value is 1.
 1. StreamInfos.N.RemoveVideo=1
 2. StreamInfos.N.RemoveAudio=0
 3. StreamInfos.N.Video.Codec=copy
-
-When the value is 0:
-
+When the value is 0.
 1. StreamInfos.N.Video.Codec cannot be copy.
 2. StreamInfos.N.Video.Fps cannot be null.
+
+Note:
+
+This value only distinguishes template types. The task uses the values of RemoveAudio and RemoveVideo.
         :rtype: int
         """
         return self._PureAudio
@@ -43945,38 +43967,35 @@ second: indicates second
 Default value: frame
 Note: This field may return null, indicating that no valid value can be obtained.
         :type GopUnit: str
-        :param _FillType: Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
-<li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
-<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
-<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
-<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+        :param _FillType: Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is "padding". Optional filling method:
+<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
 
 <li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
 Default value: black.
-Note: Only stretch and black are supported for adaptive bitrate streaming.
         :type FillType: str
-        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51].
-If this parameter is specified, the bitrate control mode for the CRF will be used for transcoding (the video bitrate will no longer take effect).
-It is recommended not to specify this parameter if there are no special requirements.
-
-Note:
-If Mode is set to ABR, the Vcrf value does not need to be configured.
-If Mode is set to CBR, the Vcrf value does not need to be configured.
+        :param _Vcrf: Specifies the constant bitrate control factor for the video. Value range: [0, 51]. Leaving this parameter blank sets it to "Automatic". It is recommended not to specify this parameter unless necessary.
+If the Mode parameter is set to VBR and the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
+If the Mode parameter is set to CRF, the Bitrate setting will be invalid, and encoding will be based on the Vcrf value.
+If the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Vcrf: int
-        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second
-Default value: 10
+        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second.
+This parameter will be set to automatic if not specified. The segment duration will be automatically selected based on the GOP and other characteristics of the video.
 Note: It can be used only in the container format of hls.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type HlsTime: int
         :param _SegmentType: HLS segment type. Valid values:
-<li>0: HLS+TS segment.</li>
-<li>2: HLS+TS byte range.</li>
-<li>7: HLS+MP4 segment.</li>
-<li>5: HLS+MP4 byte range.</li>
+<li>0: HLS+TS segment</li>
+<li>2: HLS+TS byte range</li>
+<li>7: HLS+MP4 segment</li>
+<li>5: HLS+MP4 byte range</li>
 Default value: 0
 
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field is used for normal/TSC transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentType: int
         :param _FpsDenominator: Denominator of the frame rate.
 Note: The value must be greater than 0.
@@ -44038,34 +44057,37 @@ Note: This field may return null, indicating that no valid value can be obtained
 Leaving this value blank means it is not enabled by default.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Compress: int
-        :param _SegmentSpecificInfo: Special segment configuration
+        :param _SegmentSpecificInfo: Segment duration at startup.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
-        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
-0: disable 
+        :param _ScenarioBased: Whether the template enables scenario-based settings. 
+0: disable. 
 1: enable 
  
 Default value: 0	
 	
+Note: The values of SceneType and CompressType fields only take effect when this field value is 1.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ScenarioBased: int
-        :param _SceneType: Video scenario. Optional values: 
+        :param _SceneType: Video scenario. Valid values: 
 normal: General transcoding scenario: General transcoding and compression scenario.
 pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
 materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
 ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
 e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
 educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
-Default value: normal
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SceneType: str
-        :param _CompressType: Transcoding policy. Optional values: 
+        :param _CompressType: Transcoding policy. Valid values: 
 ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-Default value: standard_compress 
-Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress. 
+Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CompressType: str
         """
@@ -44224,15 +44246,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FillType(self):
-        """Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
-<li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
-<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
-<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
-<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+        """Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is "padding". Optional filling method:
+<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
 
 <li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
 Default value: black.
-Note: Only stretch and black are supported for adaptive bitrate streaming.
         :rtype: str
         """
         return self._FillType
@@ -44243,13 +44264,10 @@ Note: Only stretch and black are supported for adaptive bitrate streaming.
 
     @property
     def Vcrf(self):
-        """Control factor for constant video bitrate. Value range: [0, 51].
-If this parameter is specified, the bitrate control mode for the CRF will be used for transcoding (the video bitrate will no longer take effect).
-It is recommended not to specify this parameter if there are no special requirements.
-
-Note:
-If Mode is set to ABR, the Vcrf value does not need to be configured.
-If Mode is set to CBR, the Vcrf value does not need to be configured.
+        """Specifies the constant bitrate control factor for the video. Value range: [0, 51]. Leaving this parameter blank sets it to "Automatic". It is recommended not to specify this parameter unless necessary.
+If the Mode parameter is set to VBR and the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
+If the Mode parameter is set to CRF, the Bitrate setting will be invalid, and encoding will be based on the Vcrf value.
+If the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -44261,8 +44279,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HlsTime(self):
-        """Average segment duration. Value range: (0-10], unit: second
-Default value: 10
+        """Average segment duration. Value range: (0-10], unit: second.
+This parameter will be set to automatic if not specified. The segment duration will be automatically selected based on the GOP and other characteristics of the video.
 Note: It can be used only in the container format of hls.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
@@ -44276,13 +44294,14 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SegmentType(self):
         """HLS segment type. Valid values:
-<li>0: HLS+TS segment.</li>
-<li>2: HLS+TS byte range.</li>
-<li>7: HLS+MP4 segment.</li>
-<li>5: HLS+MP4 byte range.</li>
+<li>0: HLS+TS segment</li>
+<li>2: HLS+TS byte range</li>
+<li>7: HLS+MP4 segment</li>
+<li>5: HLS+MP4 byte range</li>
 Default value: 0
 
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field is used for normal/TSC transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._SegmentType
@@ -44452,7 +44471,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSpecificInfo(self):
-        """Special segment configuration
+        """Segment duration at startup.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
@@ -44464,12 +44483,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ScenarioBased(self):
-        """Whether to enable scenario-based settings for the template 
-0: disable 
+        """Whether the template enables scenario-based settings. 
+0: disable. 
 1: enable 
  
 Default value: 0	
 	
+Note: The values of SceneType and CompressType fields only take effect when this field value is 1.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -44481,14 +44501,15 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SceneType(self):
-        """Video scenario. Optional values: 
+        """Video scenario. Valid values: 
 normal: General transcoding scenario: General transcoding and compression scenario.
 pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
 materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
 ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
 e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
 educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. 
-Default value: normal
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -44500,13 +44521,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CompressType(self):
-        """Transcoding policy. Optional values: 
+        """Transcoding policy. Valid values: 
 ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-Default value: standard_compress 
-Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
+high_compress: Bitrate priority: Prioritizes reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
+low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
+Default value: standard_compress. 
+Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -44575,11 +44597,12 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>dnxhd: DNxHD encoding</li>
 <li>mv-hevc: MV-HEVC encoding</li>
 
-Note: AV1 encoding containers currently only support mp4, webm, and mkv.
-Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
-Note: VP8 and VP9 encoding containers currently only support webm and mkv.
-Note: MPEG2 and DNxHD encoding containers currently only support mxf.
-Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+Note: 
+AV1 encoding containers currently only support mp4, webm, and mkv.
+H.266 encoding containers currently only support mp4, hls, ts, and move. 
+VP8 and VP9 encoding containers currently only support webm and mkv.
+MPEG2 and DNxHD encoding containers currently only support mxf.
+MV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Codec: str
@@ -44613,26 +44636,23 @@ second: indicates second
 Default value: frame
 Note: This field may return null, indicating that no valid value can be obtained.
         :type GopUnit: str
-        :param _FillType: Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
+        :param _FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:
  <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
-<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
+<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
 <li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
-<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
 
 <li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
 Default value: black.
 
-Note: Only stretch and black are supported for adaptive bitrate streaming.
-
 Note: This field may return null, indicating that no valid value can be obtained.
         :type FillType: str
-        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51] and 100.
-It is recommended not to specify this parameter if there are no special requirements.
+        :param _Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. If not specified, it means "auto". It is recommended not to specify this parameter unless necessary.
+When the Mode parameter is set to VBR, if the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
+When the Mode parameter is set to CRF, the Bitrate setting will be invalid, and the encoding will be based on the Vcrf value.
+When the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
+Note: When you need to set it to auto, fill in 100.
 
-Note:
-When you need to set it to auto, fill in 100.
-If Mode is set to ABR, the Vcrf value does not need to be configured.
-If Mode is set to CBR, the Vcrf value does not need to be configured.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Vcrf: int
         :param _ContentAdaptStream: Whether to enable adaptive encoding. Valid values:
@@ -44646,13 +44666,14 @@ Note: It is used only in the format of HLS.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type HlsTime: int
         :param _SegmentType: HLS segment type. Valid values:
-<li>0: HLS+TS segment.</li>
-<li>2: HLS+TS byte range.</li>
-<li>7: HLS+MP4 segment.</li>
-<li>5: HLS+MP4 byte range.</li>
+<li>0: HLS+TS segment</li>
+<li>2: HLS+TS byte range</li>
+<li>7: HLS+MP4 segment</li>
+<li>5: HLS+MP4 byte range</li>
 Default value: 0
 
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field is used for normal/Top Speed Codec transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentType: int
         :param _FpsDenominator: Denominator of the frame rate.
 Note: The value must be greater than 0.
@@ -44716,34 +44737,36 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: -1 indicates auto.	
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Compress: int
-        :param _SegmentSpecificInfo: Special segment configuration	
+        :param _SegmentSpecificInfo: Segment duration at startup.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
-        :param _ScenarioBased: Whether to enable scenario-based settings for the template 
-0: disable 
+        :param _ScenarioBased: Indicates whether to enable scenario-based settings for the template. 
+0: Disable. 
 1: enable 
  
 Default value: 0	
 	
+Note: This value takes effect only when the value of this field is 1.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ScenarioBased: int
-        :param _SceneType: Video scenario. Optional values: 
-normal: General transcoding scenario: General transcoding and compression scenario
-pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+        :param _SceneType: Video scenario. Valid values: 
+normal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD film and television: Emphasis is placed on the viewing experience of films and TV shows during compression, with ROI encoding based on the characteristics of films and TV shows, while maintaining high-quality video and audio content. 
 materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
 ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
 e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
 educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
-Default value: normal
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SceneType: str
-        :param _CompressType: Transcoding policy. Optional values: 
+        :param _CompressType: Transcoding policy. Valid values: 
 ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-Default value: standard_compress 
-Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. This policy only charges audio and video TSC transcoding fees. 
+high_compress: Bitrate priority: Prioritizes reducing file size, which may result in some image quality loss. This policy only charges audio and video TSC transcoding fees. 
+low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. This policy only charges audio and video TSC transcoding fees. 
+Default value: standard_compress. 
+Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type CompressType: str
         """
@@ -44789,11 +44812,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 <li>dnxhd: DNxHD encoding</li>
 <li>mv-hevc: MV-HEVC encoding</li>
 
-Note: AV1 encoding containers currently only support mp4, webm, and mkv.
-Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
-Note: VP8 and VP9 encoding containers currently only support webm and mkv.
-Note: MPEG2 and DNxHD encoding containers currently only support mxf.
-Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+Note: 
+AV1 encoding containers currently only support mp4, webm, and mkv.
+H.266 encoding containers currently only support mp4, hls, ts, and move. 
+VP8 and VP9 encoding containers currently only support webm and mkv.
+MPEG2 and DNxHD encoding containers currently only support mxf.
+MV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
@@ -44899,16 +44923,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FillType(self):
-        """Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. Valid values:
  <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
-<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
+<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
 <li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
-<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+<li>gauss: applies Gaussian blur to the uncovered area, without changing the image's aspect ratio.</li>
 
 <li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
 Default value: black.
-
-Note: Only stretch and black are supported for adaptive bitrate streaming.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
@@ -44921,13 +44943,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vcrf(self):
-        """Control factor for constant video bitrate. Value range: [0, 51] and 100.
-It is recommended not to specify this parameter if there are no special requirements.
+        """The control factor of video constant bitrate. Value range: [0, 51]. If not specified, it means "auto". It is recommended not to specify this parameter unless necessary.
+When the Mode parameter is set to VBR, if the Vcrf value is also configured, MPS will process the video in VBR mode, considering both Vcrf and Bitrate parameters to balance video quality, bitrate, transcoding efficiency, and file size.
+When the Mode parameter is set to CRF, the Bitrate setting will be invalid, and the encoding will be based on the Vcrf value.
+When the Mode parameter is set to ABR or CBR, the Vcrf value does not need to be configured.
+Note: When you need to set it to auto, fill in 100.
 
-Note:
-When you need to set it to auto, fill in 100.
-If Mode is set to ABR, the Vcrf value does not need to be configured.
-If Mode is set to CBR, the Vcrf value does not need to be configured.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -44968,13 +44989,14 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SegmentType(self):
         """HLS segment type. Valid values:
-<li>0: HLS+TS segment.</li>
-<li>2: HLS+TS byte range.</li>
-<li>7: HLS+MP4 segment.</li>
-<li>5: HLS+MP4 byte range.</li>
+<li>0: HLS+TS segment</li>
+<li>2: HLS+TS byte range</li>
+<li>7: HLS+MP4 segment</li>
+<li>5: HLS+MP4 byte range</li>
 Default value: 0
 
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field is used for normal/Top Speed Codec transcoding settings and does not apply to adaptive bitrate streaming. To configure the segment type for adaptive bitrate streaming, use the outer field.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._SegmentType
@@ -45146,7 +45168,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSpecificInfo(self):
-        """Special segment configuration	
+        """Segment duration at startup.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
@@ -45158,12 +45180,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ScenarioBased(self):
-        """Whether to enable scenario-based settings for the template 
-0: disable 
+        """Indicates whether to enable scenario-based settings for the template. 
+0: Disable. 
 1: enable 
  
 Default value: 0	
 	
+Note: This value takes effect only when the value of this field is 1.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -45175,14 +45198,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SceneType(self):
-        """Video scenario. Optional values: 
-normal: General transcoding scenario: General transcoding and compression scenario
-pgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. 
+        """Video scenario. Valid values: 
+normal: General transcoding scenario: General transcoding and compression scenario. pgc: PGC HD film and television: Emphasis is placed on the viewing experience of films and TV shows during compression, with ROI encoding based on the characteristics of films and TV shows, while maintaining high-quality video and audio content. 
 materials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. 
 ugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. 
 e-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. 
 educational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.
-Default value: normal
+Default value: normal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -45194,13 +45217,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CompressType(self):
-        """Transcoding policy. Optional values: 
+        """Transcoding policy. Valid values: 
 ultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. 
-standard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. 
-high_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. 
-low_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. 
-Default value: standard_compress 
-Note: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+standard_compress: Comprehensively optimal: Balances compression ratio and image quality, compressing files as much as possible without a noticeable reduction in subjective image quality. This policy only charges audio and video TSC transcoding fees. 
+high_compress: Bitrate priority: Prioritizes reducing file size, which may result in some image quality loss. This policy only charges audio and video TSC transcoding fees. 
+low_compress: Image quality priority: Prioritizes ensuring image quality, and the size of compressed files may be relatively large. This policy only charges audio and video TSC transcoding fees. 
+Default value: standard_compress. 
+Note: If you need to watch videos on TV, it is recommended not to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.
+Note: To use this value, the value of ScenarioBased must be 1; otherwise, this value will not take effect.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """

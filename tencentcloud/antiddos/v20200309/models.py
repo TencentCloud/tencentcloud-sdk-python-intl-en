@@ -116,7 +116,7 @@ class AssociateDDoSEipAddressRequest(AbstractModel):
         r"""
         :param _InstanceId: Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.
         :type InstanceId: str
-        :param _Eip: EIP of the Anti-DDoS instance ID
+        :param _Eip: EIP of the Anti-DDoS instance ID.
         :type Eip: str
         :param _CvmInstanceID: Instance ID to bind. For example, `ins-11112222`. It can be queried in the console or obtained from `InstanceId` returned by `DescribeInstances`.
         :type CvmInstanceID: str
@@ -141,7 +141,7 @@ class AssociateDDoSEipAddressRequest(AbstractModel):
 
     @property
     def Eip(self):
-        """EIP of the Anti-DDoS instance ID
+        """EIP of the Anti-DDoS instance ID.
         :rtype: str
         """
         return self._Eip

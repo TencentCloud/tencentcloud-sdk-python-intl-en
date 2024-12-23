@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # This operation cannot be performed across algorithm model versions.
 FAILEDOPERATION_ACROSSVERSIONSERROR = 'FailedOperation.AcrossVersionsError'
 
+# 
+FAILEDOPERATION_COMPAREFAIL = 'FailedOperation.CompareFail'
+
 # The operations conflict. Do not operate on the same person simultaneously.
 FAILEDOPERATION_CONFLICTOPERATION = 'FailedOperation.ConflictOperation'
 
@@ -64,6 +67,18 @@ FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = 'FailedOperation.ImageResolutionTooSma
 
 # The size of the Base64-encoded image cannot exceed 5 MB.
 FAILEDOPERATION_IMAGESIZEEXCEED = 'FailedOperation.ImageSizeExceed'
+
+# 
+FAILEDOPERATION_LIFEPHOTODETECTFACES = 'FailedOperation.LifePhotoDetectFaces'
+
+# 
+FAILEDOPERATION_LIFEPHOTODETECTFAKE = 'FailedOperation.LifePhotoDetectFake'
+
+# 
+FAILEDOPERATION_LIFEPHOTODETECTNOFACES = 'FailedOperation.LifePhotoDetectNoFaces'
+
+# 
+FAILEDOPERATION_LIFEPHOTOSIZEERROR = 'FailedOperation.LifePhotoSizeError'
 
 # The request frequency exceeds the limit.
 FAILEDOPERATION_REQUESTLIMITEXCEEDED = 'FailedOperation.RequestLimitExceeded'
