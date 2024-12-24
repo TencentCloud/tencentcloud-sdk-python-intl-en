@@ -16218,12 +16218,22 @@ Default value: false.
 
 Default value: false.
         :type ImageSetRequired: bool
+        :param _Encrypt: Whether to synchronize as an encrypted custom image.
+Default value is `false`.
+Synchronization to an encrypted custom image is only supported within the same region.
+        :type Encrypt: bool
+        :param _KmsKeyId: KMS key ID used when synchronizing to an encrypted custom image. 
+This parameter is valid only synchronizing to an encrypted image.
+If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
+        :type KmsKeyId: str
         """
         self._ImageIds = None
         self._DestinationRegions = None
         self._DryRun = None
         self._ImageName = None
         self._ImageSetRequired = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def ImageIds(self):
@@ -16284,6 +16294,32 @@ Default value: false.
     def ImageSetRequired(self, ImageSetRequired):
         self._ImageSetRequired = ImageSetRequired
 
+    @property
+    def Encrypt(self):
+        """Whether to synchronize as an encrypted custom image.
+Default value is `false`.
+Synchronization to an encrypted custom image is only supported within the same region.
+        :rtype: bool
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        """KMS key ID used when synchronizing to an encrypted custom image. 
+This parameter is valid only synchronizing to an encrypted image.
+If KmsKeyId is not specified, the default CBS cloud product KMS key is used.
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._ImageIds = params.get("ImageIds")
@@ -16291,6 +16327,8 @@ Default value: false.
         self._DryRun = params.get("DryRun")
         self._ImageName = params.get("ImageName")
         self._ImageSetRequired = params.get("ImageSetRequired")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
