@@ -164,6 +164,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLiveRecordTemplate(self, request):
+        """This API is used to create a live recording template.
+
+        :param request: Request instance for CreateLiveRecordTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateLiveRecordTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateLiveRecordTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLiveRecordTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLiveRecordTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         """This API is used to create image samples for video processing operations such as content recognition and inappropriate information detection with the help of technologies such as facial feature positioning.
 
@@ -533,6 +556,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLiveRecordTemplate(self, request):
+        """This API is used to delete a live recording template.
+
+        :param request: Request instance for DeleteLiveRecordTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteLiveRecordTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteLiveRecordTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLiveRecordTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLiveRecordTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeletePersonSample(self, request):
         """This API is used to delete image samples by image ID.
 
@@ -869,6 +915,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageSpriteTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLiveRecordTemplates(self, request):
+        """This API is used to get a live recording template.
+
+        :param request: Request instance for DescribeLiveRecordTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeLiveRecordTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeLiveRecordTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveRecordTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveRecordTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1460,6 +1529,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifyImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyImageSpriteTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLiveRecordTemplate(self, request):
+        """This API is used to modify a live recording template.
+
+        :param request: Request instance for ModifyLiveRecordTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyLiveRecordTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyLiveRecordTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLiveRecordTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLiveRecordTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
