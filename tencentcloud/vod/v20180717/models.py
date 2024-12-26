@@ -19343,6 +19343,51 @@ class CreateDomainVerifyRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Domain: Need to access the VOD acceleration domain name.
+        :type Domain: str
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2024, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :type SubAppId: int
+        """
+        self._Domain = None
+        self._SubAppId = None
+
+    @property
+    def Domain(self):
+        """Need to access the VOD acceleration domain name.
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SubAppId(self):
+        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2024, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateDomainVerifyRecordResponse(AbstractModel):
     """CreateDomainVerifyRecord response structure.
@@ -74238,6 +74283,8 @@ class VerifyDomainRecordRequest(AbstractModel):
         r"""
         :param _Domain: Need to access the VOD acceleration domain name.
         :type Domain: str
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2024, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :type SubAppId: int
         :param _VerifyType: VerifyType:
 <li>dns: DNS Parse verification; </li>
 <li>fIle: Document verification.</li>
@@ -74246,6 +74293,7 @@ Default value: dns.
         :type VerifyType: str
         """
         self._Domain = None
+        self._SubAppId = None
         self._VerifyType = None
 
     @property
@@ -74258,6 +74306,17 @@ Default value: dns.
     @Domain.setter
     def Domain(self, Domain):
         self._Domain = Domain
+
+    @property
+    def SubAppId(self):
+        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2024, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def VerifyType(self):
@@ -74277,6 +74336,7 @@ Default value: dns.
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._SubAppId = params.get("SubAppId")
         self._VerifyType = params.get("VerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
