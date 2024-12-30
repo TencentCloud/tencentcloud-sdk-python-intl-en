@@ -9828,11 +9828,14 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type StreamUrl: str
         :param _Volume: Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.
         :type Volume: int
+        :param _IsPause: Whether to pause, the default value of false indicates no pause. During the pause, the task is still in progress and is billed. If you want to terminate the task, please call the stop interface.
+        :type IsPause: bool
         """
         self._SdkAppId = None
         self._TaskId = None
         self._StreamUrl = None
         self._Volume = None
+        self._IsPause = None
 
     @property
     def SdkAppId(self):
@@ -9878,12 +9881,24 @@ class UpdateStreamIngestRequest(AbstractModel):
     def Volume(self, Volume):
         self._Volume = Volume
 
+    @property
+    def IsPause(self):
+        """Whether to pause, the default value of false indicates no pause. During the pause, the task is still in progress and is billed. If you want to terminate the task, please call the stop interface.
+        :rtype: bool
+        """
+        return self._IsPause
+
+    @IsPause.setter
+    def IsPause(self, IsPause):
+        self._IsPause = IsPause
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._TaskId = params.get("TaskId")
         self._StreamUrl = params.get("StreamUrl")
         self._Volume = params.get("Volume")
+        self._IsPause = params.get("IsPause")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

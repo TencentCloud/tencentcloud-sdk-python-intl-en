@@ -281,6 +281,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDnsRecord(self, request):
+        """This API is used to create a DNS record.
+
+        :param request: Request instance for CreateDnsRecord.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateDnsRecordRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateDnsRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDnsRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDnsRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFunction(self, request):
         """This API is used to create and deploy an edge function to EdgeOne edge nodes.
 
@@ -738,6 +761,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDnsRecords(self, request):
+        """This API is used to delete DNS records in batches.
+
+        :param request: Request instance for DeleteDnsRecords.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteDnsRecordsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteDnsRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDnsRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDnsRecordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1336,6 +1382,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeDeployHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeployHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDnsRecords(self, request):
+        """This API is used to query DNS records. Paging, sorting and filtering are supported.
+
+        :param request: Request instance for DescribeDnsRecords.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDnsRecordsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDnsRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDnsRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDnsRecordsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2431,6 +2500,52 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDnsRecords(self, request):
+        """You can use this interface to batch modify DNS records.
+
+        :param request: Request instance for ModifyDnsRecords.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDnsRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDnsRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDnsRecordsStatus(self, request):
+        """You can use this interface to batch modify the status of DNS records, enabling and disabling records in bulk.
+
+        :param request: Request instance for ModifyDnsRecordsStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDnsRecordsStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDnsRecordsStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

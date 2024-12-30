@@ -6098,6 +6098,228 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDnsRecordRequest(AbstractModel):
+    """CreateDnsRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: The site ID of the DNS record.
+        :type ZoneId: str
+        :param _Name: The DNS record name.If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        :type Name: str
+        :param _Type: DNS record types include:
+
+- A:Points the domain to an external IPv4 address, such as 8.8.8.8.
+- AAAA: Points the domain to an external IPv6 address.
+- MX: Used for mail servers. When multiple MX records exist, the one with the lowest priority value is preferred.
+- CNAME: Points the domain to another domain, which then resolves to the final IP address.
+- TXT: Provides identification and description for the domain, commonly used for domain verification and SPF records (anti-spam).
+- NS: If you need to delegate a subdomain to another DNS service provider, you need to add an NS record. NS records cannot be added to the root domain.
+- CAA: Specifies which Certificate Authorities (CAs) are allowed to issue certificates for the site.
+- SRV: Indicates that a specific server is using a particular service, commonly used in Microsoft's directory management systems.
+
+Different record types, such as SRV and CAA, have specific requirements for the host record name and record value format. For detailed descriptions and format examples of each record type, please refer to: [Introduction to DNS Record Types](https://www.tencentcloud.com/zh/document/product/1145/54764#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
+        :type Type: str
+        :param _Content: DNS record content should be filled in according to the corresponding Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        :type Content: str
+        :param _Location: DNS record resolution location, if not specified, default to "Default," which means the default resolution location and is effective for all regions.
+- Resolution location configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
+- Resolution location configuration is only available for Standard and Enterprise packages.
+
+For the values, please refer to: [Resolution Lines and Corresponding Codes Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+        :type Location: str
+        :param _TTL: TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300
+        :type TTL: int
+        :param _Weight: DNS record weight can be specified within the range of -1 to 100. Setting the weight to 0 means the record will not be resolved. If not specified, the default value is -1, indicating that no weight is set.
+
+Weight configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
+
+Note: For the same subdomain, different DNS records on the same resolution line should either all have weights set or none should have weights set.
+        :type Weight: int
+        :param _Priority: The MX record priority parameter is only effective when the Type (DNS record type) is MX. The smaller the value, the higher the priority. Users can specify a value in the range of 0 to 50. If not specified, the default value is 0.
+        :type Priority: int
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Type = None
+        self._Content = None
+        self._Location = None
+        self._TTL = None
+        self._Weight = None
+        self._Priority = None
+
+    @property
+    def ZoneId(self):
+        """The site ID of the DNS record.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        """The DNS record name.If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """DNS record types include:
+
+- A:Points the domain to an external IPv4 address, such as 8.8.8.8.
+- AAAA: Points the domain to an external IPv6 address.
+- MX: Used for mail servers. When multiple MX records exist, the one with the lowest priority value is preferred.
+- CNAME: Points the domain to another domain, which then resolves to the final IP address.
+- TXT: Provides identification and description for the domain, commonly used for domain verification and SPF records (anti-spam).
+- NS: If you need to delegate a subdomain to another DNS service provider, you need to add an NS record. NS records cannot be added to the root domain.
+- CAA: Specifies which Certificate Authorities (CAs) are allowed to issue certificates for the site.
+- SRV: Indicates that a specific server is using a particular service, commonly used in Microsoft's directory management systems.
+
+Different record types, such as SRV and CAA, have specific requirements for the host record name and record value format. For detailed descriptions and format examples of each record type, please refer to: [Introduction to DNS Record Types](https://www.tencentcloud.com/zh/document/product/1145/54764#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Content(self):
+        """DNS record content should be filled in according to the corresponding Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Location(self):
+        """DNS record resolution location, if not specified, default to "Default," which means the default resolution location and is effective for all regions.
+- Resolution location configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
+- Resolution location configuration is only available for Standard and Enterprise packages.
+
+For the values, please refer to: [Resolution Lines and Corresponding Codes Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def TTL(self):
+        """TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def Weight(self):
+        """DNS record weight can be specified within the range of -1 to 100. Setting the weight to 0 means the record will not be resolved. If not specified, the default value is -1, indicating that no weight is set.
+
+Weight configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
+
+Note: For the same subdomain, different DNS records on the same resolution line should either all have weights set or none should have weights set.
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Priority(self):
+        """The MX record priority parameter is only effective when the Type (DNS record type) is MX. The smaller the value, the higher the priority. Users can specify a value in the range of 0 to 50. If not specified, the default value is 0.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Content = params.get("Content")
+        self._Location = params.get("Location")
+        self._TTL = params.get("TTL")
+        self._Weight = params.get("Weight")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDnsRecordResponse(AbstractModel):
+    """CreateDnsRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: The ID of the DNS record.
+        :type RecordId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordId = None
+        self._RequestId = None
+
+    @property
+    def RecordId(self):
+        """The ID of the DNS record.
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFunctionRequest(AbstractModel):
     """CreateFunction request structure.
 
@@ -9954,6 +10176,85 @@ class DeleteCustomErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDnsRecordsRequest(AbstractModel):
+    """DeleteDnsRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: The site ID of the DNS record to be deleted.
+        :type ZoneId: str
+        :param _RecordIds: List of DNS record IDs to be deleted, with a maximum limit of 1000.
+        :type RecordIds: list of str
+        """
+        self._ZoneId = None
+        self._RecordIds = None
+
+    @property
+    def ZoneId(self):
+        """The site ID of the DNS record to be deleted.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordIds(self):
+        """List of DNS record IDs to be deleted, with a maximum limit of 1000.
+        :rtype: list of str
+        """
+        return self._RecordIds
+
+    @RecordIds.setter
+    def RecordIds(self, RecordIds):
+        self._RecordIds = RecordIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordIds = params.get("RecordIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDnsRecordsResponse(AbstractModel):
+    """DeleteDnsRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteFunctionRequest(AbstractModel):
     """DeleteFunction request structure.
 
@@ -13464,6 +13765,222 @@ class DescribeDeployHistoryResponse(AbstractModel):
                 obj = DeployRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDnsRecordsRequest(AbstractModel):
+    """DescribeDnsRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: The site ID of the DNS record.
+        :type ZoneId: str
+        :param _Offset: The page offset. Default value: 0
+        :type Offset: int
+        :param _Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param _Filters: The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>id: Filter by DNS record ID, supports fuzzy query;</li><li>name: Filter by DNS record name, supports fuzzy query;</li><li>content: Filter by DNS record content, supports fuzzy query;</li><li>type: Filter by DNS record type, does not support fuzzy query. Options:<br> A: Point the domain name to an external IPv4 address, such as 8.8.8.8;<br> AAAA: Point the domain name to an external IPv6 address;<br> CNAME: Point the domain name to another domain name, which then resolves to the final IP address;<br> TXT: Identify and describe the domain name, often used for domain verification and SPF records (anti-spam);<br> NS: If you need to delegate subdomain resolution to another DNS service provider, you need to add an NS record. Root domains cannot add NS records;<br> CAA: Specify the CA that can issue certificates for this site;<br> SRV: Identify a server using a specific service, commonly used in Microsoft's directory management;<br> MX: Specify the recipient's mail server.</li><li>ttl: Filter by the time-to-live (TTL) of the record, does not support fuzzy query.</li>
+        :type Filters: list of AdvancedFilter
+        :param _SortBy: Sort criteria, with possible values:
+<li>content: DNS record content;</li>
+<li>created-on: DNS record creation time;</li>
+<li>name: DNS record name;</li>
+<li>ttl: Time-to-live (TTL);</li>
+<li>type: DNS record type.</li>
+The default sorting is based on a combination of type and name attributes.
+        :type SortBy: str
+        :param _SortOrder: List sorting order, with possible values:
+<li>asc: Ascending order;</li>
+<li>desc: Descending order.</li>
+The default value is asc.
+        :type SortOrder: str
+        :param _Match: The match mode. Values:
+<li>`all`: Return all records that match the specified filter.</li>
+<li>`any`: Return any record that matches the specified filter.</li>Default value: all.
+        :type Match: str
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Match = None
+
+    @property
+    def ZoneId(self):
+        """The site ID of the DNS record.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        """The page offset. Default value: 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """The paginated query limit. Default value: 20. Maximum value: 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>id: Filter by DNS record ID, supports fuzzy query;</li><li>name: Filter by DNS record name, supports fuzzy query;</li><li>content: Filter by DNS record content, supports fuzzy query;</li><li>type: Filter by DNS record type, does not support fuzzy query. Options:<br> A: Point the domain name to an external IPv4 address, such as 8.8.8.8;<br> AAAA: Point the domain name to an external IPv6 address;<br> CNAME: Point the domain name to another domain name, which then resolves to the final IP address;<br> TXT: Identify and describe the domain name, often used for domain verification and SPF records (anti-spam);<br> NS: If you need to delegate subdomain resolution to another DNS service provider, you need to add an NS record. Root domains cannot add NS records;<br> CAA: Specify the CA that can issue certificates for this site;<br> SRV: Identify a server using a specific service, commonly used in Microsoft's directory management;<br> MX: Specify the recipient's mail server.</li><li>ttl: Filter by the time-to-live (TTL) of the record, does not support fuzzy query.</li>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        """Sort criteria, with possible values:
+<li>content: DNS record content;</li>
+<li>created-on: DNS record creation time;</li>
+<li>name: DNS record name;</li>
+<li>ttl: Time-to-live (TTL);</li>
+<li>type: DNS record type.</li>
+The default sorting is based on a combination of type and name attributes.
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        """List sorting order, with possible values:
+<li>asc: Ascending order;</li>
+<li>desc: Descending order.</li>
+The default value is asc.
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Match(self):
+        """The match mode. Values:
+<li>`all`: Return all records that match the specified filter.</li>
+<li>`any`: Return any record that matches the specified filter.</li>Default value: all.
+        :rtype: str
+        """
+        return self._Match
+
+    @Match.setter
+    def Match(self, Match):
+        self._Match = Match
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Match = params.get("Match")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDnsRecordsResponse(AbstractModel):
+    """DescribeDnsRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of DNS records.
+        :type TotalCount: int
+        :param _DnsRecords: List of DNS records
+        :type DnsRecords: list of DnsRecord
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DnsRecords = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of DNS records.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DnsRecords(self):
+        """List of DNS records
+        :rtype: list of DnsRecord
+        """
+        return self._DnsRecords
+
+    @DnsRecords.setter
+    def DnsRecords(self, DnsRecords):
+        self._DnsRecords = DnsRecords
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DnsRecords") is not None:
+            self._DnsRecords = []
+            for item in params.get("DnsRecords"):
+                obj = DnsRecord()
+                obj._deserialize(item)
+                self._DnsRecords.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18771,6 +19288,213 @@ class DiffIPWhitelist(AbstractModel):
         if params.get("NoChangeIPWhitelist") is not None:
             self._NoChangeIPWhitelist = IPWhitelist()
             self._NoChangeIPWhitelist._deserialize(params.get("NoChangeIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DnsRecord(AbstractModel):
+    """DNS record
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID. 
+Note: ZoneId is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :type ZoneId: str
+        :param _RecordId: DNS record ID.
+        :type RecordId: str
+        :param _Name: DNS record name.
+        :type Name: str
+        :param _Type: DNS record type, with possible values: <li>A: Points the domain name to an external IPv4 address, such as 8.8.8.8;</li> <li>AAAA: Points the domain name to an external IPv6 address;</li> <li>MX: Used for mail servers. When there are multiple MX records, the lower the priority value, the higher the priority;</li> <li>CNAME: Points the domain name to another domain name, which then resolves to the final IP address;</li> <li>TXT: Identifies and describes the domain name, commonly used for domain verification and SPF records (anti-spam);</li> <li>NS: If you need to delegate the subdomain to another DNS service provider for resolution, you need to add an NS record. NS records cannot be added to the root domain;</li> <li>CAA: Specifies the CA that can issue certificates for this site;</li> <li>SRV: Identifies a server that uses a specific service, commonly used in Microsoft's directory management.</li>
+        :type Type: str
+        :param _Location: DNS record resolution line. If not specified, the default is Default, which means the default resolution line and is effective for all regions. The resolution line configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME. For values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+        :type Location: str
+        :param _Content: DNS record content. Fill in the corresponding content according to the Type value.
+        :type Content: str
+        :param _TTL: Cache time, with a range of 60~86400. The smaller the value, the faster the record modification takes effect in various regions. Unit: seconds.
+        :type TTL: int
+        :param _Weight: DNS record weight, with a range of -1~100. A value of -1 means no weight is assigned, and a value of 0 means no resolution. Weight configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME.
+        :type Weight: int
+        :param _Priority: MX record priority, with a range of 0~50. The smaller the value, the higher the priority.
+        :type Priority: int
+        :param _Status: DNS record resolution status, with possible values: <li>enable: Effective;</li> <li>disable: Disabled.</li> Note: Status is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :type Status: str
+        :param _CreatedOn: The creation time.
+Note: CreatedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :type CreatedOn: str
+        :param _ModifiedOn: The modification time.
+Note: ModifiedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :type ModifiedOn: str
+        """
+        self._ZoneId = None
+        self._RecordId = None
+        self._Name = None
+        self._Type = None
+        self._Location = None
+        self._Content = None
+        self._TTL = None
+        self._Weight = None
+        self._Priority = None
+        self._Status = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+
+    @property
+    def ZoneId(self):
+        """Site ID. 
+Note: ZoneId is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordId(self):
+        """DNS record ID.
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Name(self):
+        """DNS record name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """DNS record type, with possible values: <li>A: Points the domain name to an external IPv4 address, such as 8.8.8.8;</li> <li>AAAA: Points the domain name to an external IPv6 address;</li> <li>MX: Used for mail servers. When there are multiple MX records, the lower the priority value, the higher the priority;</li> <li>CNAME: Points the domain name to another domain name, which then resolves to the final IP address;</li> <li>TXT: Identifies and describes the domain name, commonly used for domain verification and SPF records (anti-spam);</li> <li>NS: If you need to delegate the subdomain to another DNS service provider for resolution, you need to add an NS record. NS records cannot be added to the root domain;</li> <li>CAA: Specifies the CA that can issue certificates for this site;</li> <li>SRV: Identifies a server that uses a specific service, commonly used in Microsoft's directory management.</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Location(self):
+        """DNS record resolution line. If not specified, the default is Default, which means the default resolution line and is effective for all regions. The resolution line configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME. For values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Content(self):
+        """DNS record content. Fill in the corresponding content according to the Type value.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def TTL(self):
+        """Cache time, with a range of 60~86400. The smaller the value, the faster the record modification takes effect in various regions. Unit: seconds.
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+    @property
+    def Weight(self):
+        """DNS record weight, with a range of -1~100. A value of -1 means no weight is assigned, and a value of 0 means no resolution. Weight configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME.
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Priority(self):
+        """MX record priority, with a range of 0~50. The smaller the value, the higher the priority.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        """DNS record resolution status, with possible values: <li>enable: Effective;</li> <li>disable: Disabled.</li> Note: Status is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedOn(self):
+        """The creation time.
+Note: CreatedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        """The modification time.
+Note: ModifiedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordId = params.get("RecordId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Location = params.get("Location")
+        self._Content = params.get("Content")
+        self._TTL = params.get("TTL")
+        self._Weight = params.get("Weight")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25387,6 +26111,184 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
 class ModifyCustomErrorPageResponse(AbstractModel):
     """ModifyCustomErrorPage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDnsRecordsRequest(AbstractModel):
+    """ModifyDnsRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID.
+        :type ZoneId: str
+        :param _DnsRecords: List of DNS record modification data, with a maximum of 100 modifications at a time.
+        :type DnsRecords: list of DnsRecord
+        """
+        self._ZoneId = None
+        self._DnsRecords = None
+
+    @property
+    def ZoneId(self):
+        """Site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def DnsRecords(self):
+        """List of DNS record modification data, with a maximum of 100 modifications at a time.
+        :rtype: list of DnsRecord
+        """
+        return self._DnsRecords
+
+    @DnsRecords.setter
+    def DnsRecords(self, DnsRecords):
+        self._DnsRecords = DnsRecords
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("DnsRecords") is not None:
+            self._DnsRecords = []
+            for item in params.get("DnsRecords"):
+                obj = DnsRecord()
+                obj._deserialize(item)
+                self._DnsRecords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDnsRecordsResponse(AbstractModel):
+    """ModifyDnsRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDnsRecordsStatusRequest(AbstractModel):
+    """ModifyDnsRecordsStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID.
+        :type ZoneId: str
+        :param _RecordsToEnable: List of DNS record IDs to be enabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        :type RecordsToEnable: list of str
+        :param _RecordsToDisable: List of DNS record IDs to be disabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        :type RecordsToDisable: list of str
+        """
+        self._ZoneId = None
+        self._RecordsToEnable = None
+        self._RecordsToDisable = None
+
+    @property
+    def ZoneId(self):
+        """Site ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordsToEnable(self):
+        """List of DNS record IDs to be enabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        :rtype: list of str
+        """
+        return self._RecordsToEnable
+
+    @RecordsToEnable.setter
+    def RecordsToEnable(self, RecordsToEnable):
+        self._RecordsToEnable = RecordsToEnable
+
+    @property
+    def RecordsToDisable(self):
+        """List of DNS record IDs to be disabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        :rtype: list of str
+        """
+        return self._RecordsToDisable
+
+    @RecordsToDisable.setter
+    def RecordsToDisable(self, RecordsToDisable):
+        self._RecordsToDisable = RecordsToDisable
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordsToEnable = params.get("RecordsToEnable")
+        self._RecordsToDisable = params.get("RecordsToDisable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDnsRecordsStatusResponse(AbstractModel):
+    """ModifyDnsRecordsStatus response structure.
 
     """
 

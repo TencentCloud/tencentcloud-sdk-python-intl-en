@@ -28477,6 +28477,368 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class InquiryPriceAllocateAddressesRequest(AbstractModel):
+    """InquiryPriceAllocateAddresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetChargeType: EIP billing method.
+
+<ul style="margin:0"><li>Users with standard account type. Valid values: <ul>
+<li>BANDWIDTH_POSTPAID_BY_HOUR: billed by hourly bandwidth on a pay-as-you-go basis.</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH: monthly bandwidth subscription.</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR: billed by hourly traffic on a pay-as-you-go basis.</li></ul>Default value: TRAFFIC_POSTPAID_BY_HOUR.</li>
+</ul>
+        :type InternetChargeType: str
+        :param _InternetMaxBandwidthOut: The EIP outbound bandwidth cap, in Mbps.
+<ul style="margin:0"><li>For users with standard account type, the range of optional values depends on the EIP billing method:<ul>
+<li>`BANDWIDTH_POSTPAID_BY_HOUR`: 1 Mbps to 100 Mbps.</li>
+<li>`BANDWIDTH_PREPAID_BY_MONTH`: 1 Mbps to 200 Mbps</li>
+<li>`TRAFFIC_POSTPAID_BY_HOUR`: 1 Mbps to 100 Mbps.</li></ul>Default value: 1 Mbps.</li></ul>
+<li>For users with traditional account type, the EIP outbound bandwidth cap is subject to the public network egress bandwidth limit of the bound instance. No need to pass this parameter.</li></ul>
+        :type InternetMaxBandwidthOut: int
+        :param _AddressChargePrepaid: A required billing parameter for an EIP billed by "BANDWIDTH_PREPAID_BY_MONTH". When the EIP is billed by "BANDWIDTH_PREPAID_BY_MONTH" this parameter is required. For other scenarios, it can be ignored.
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        :param _AddressType: EIP type. Default value: EIP.
+
+
+
+<ul style="margin:0"><li>High quality EIP, valid values: <ul><li>HighQualityEIP: high quality EIP</li></ul>Note: High quality EIP is supported only in some regions.</li></ul><ul style="margin:0">
+        <li>High-defense IP, valid values: <ul>
+                <li>AntiDDoSEIP: high-defense IP</li>
+            </ul>
+        </li>
+    </ul>
+        :type AddressType: str
+        """
+        self._InternetChargeType = None
+        self._InternetMaxBandwidthOut = None
+        self._AddressChargePrepaid = None
+        self._AddressType = None
+
+    @property
+    def InternetChargeType(self):
+        """EIP billing method.
+
+<ul style="margin:0"><li>Users with standard account type. Valid values: <ul>
+<li>BANDWIDTH_POSTPAID_BY_HOUR: billed by hourly bandwidth on a pay-as-you-go basis.</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH: monthly bandwidth subscription.</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR: billed by hourly traffic on a pay-as-you-go basis.</li></ul>Default value: TRAFFIC_POSTPAID_BY_HOUR.</li>
+</ul>
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """The EIP outbound bandwidth cap, in Mbps.
+<ul style="margin:0"><li>For users with standard account type, the range of optional values depends on the EIP billing method:<ul>
+<li>`BANDWIDTH_POSTPAID_BY_HOUR`: 1 Mbps to 100 Mbps.</li>
+<li>`BANDWIDTH_PREPAID_BY_MONTH`: 1 Mbps to 200 Mbps</li>
+<li>`TRAFFIC_POSTPAID_BY_HOUR`: 1 Mbps to 100 Mbps.</li></ul>Default value: 1 Mbps.</li></ul>
+<li>For users with traditional account type, the EIP outbound bandwidth cap is subject to the public network egress bandwidth limit of the bound instance. No need to pass this parameter.</li></ul>
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def AddressChargePrepaid(self):
+        """A required billing parameter for an EIP billed by "BANDWIDTH_PREPAID_BY_MONTH". When the EIP is billed by "BANDWIDTH_PREPAID_BY_MONTH" this parameter is required. For other scenarios, it can be ignored.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        return self._AddressChargePrepaid
+
+    @AddressChargePrepaid.setter
+    def AddressChargePrepaid(self, AddressChargePrepaid):
+        self._AddressChargePrepaid = AddressChargePrepaid
+
+    @property
+    def AddressType(self):
+        """EIP type. Default value: EIP.
+
+
+
+<ul style="margin:0"><li>High quality EIP, valid values: <ul><li>HighQualityEIP: high quality EIP</li></ul>Note: High quality EIP is supported only in some regions.</li></ul><ul style="margin:0">
+        <li>High-defense IP, valid values: <ul>
+                <li>AntiDDoSEIP: high-defense IP</li>
+            </ul>
+        </li>
+    </ul>
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+
+    def _deserialize(self, params):
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("AddressChargePrepaid") is not None:
+            self._AddressChargePrepaid = AddressChargePrepaid()
+            self._AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+        self._AddressType = params.get("AddressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceAllocateAddressesResponse(AbstractModel):
+    """InquiryPriceAllocateAddresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: EIP price
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """EIP price
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = InternetPrice()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceModifyAddressesBandwidthRequest(AbstractModel):
+    """InquiryPriceModifyAddressesBandwidth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressIds: Unique ID of EIP
+        :type AddressIds: list of str
+        :param _InternetMaxBandwidthOut: New Bandwidth Value
+        :type InternetMaxBandwidthOut: int
+        """
+        self._AddressIds = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def AddressIds(self):
+        """Unique ID of EIP
+        :rtype: list of str
+        """
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """New Bandwidth Value
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+
+    def _deserialize(self, params):
+        self._AddressIds = params.get("AddressIds")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceModifyAddressesBandwidthResponse(AbstractModel):
+    """InquiryPriceModifyAddressesBandwidth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: Inquiry results for adjusting EIP bandwidth.
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """Inquiry results for adjusting EIP bandwidth.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = InternetPrice()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewAddressesRequest(AbstractModel):
+    """InquiryPriceRenewAddresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressIds: Indicates the renewal resource instance ID.
+        :type AddressIds: list of str
+        :param _AddressChargePrepaid: A required billing parameter for an EIP billed by "BANDWIDTH_PREPAID_BY_MONTH". When the EIP is billed by "BANDWIDTH_PREPAID_BY_MONTH", this parameter is required. For other scenarios, it can be ignored.
+        :type AddressChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        self._AddressIds = None
+        self._AddressChargePrepaid = None
+
+    @property
+    def AddressIds(self):
+        """Indicates the renewal resource instance ID.
+        :rtype: list of str
+        """
+        return self._AddressIds
+
+    @AddressIds.setter
+    def AddressIds(self, AddressIds):
+        self._AddressIds = AddressIds
+
+    @property
+    def AddressChargePrepaid(self):
+        """A required billing parameter for an EIP billed by "BANDWIDTH_PREPAID_BY_MONTH". When the EIP is billed by "BANDWIDTH_PREPAID_BY_MONTH", this parameter is required. For other scenarios, it can be ignored.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
+        return self._AddressChargePrepaid
+
+    @AddressChargePrepaid.setter
+    def AddressChargePrepaid(self, AddressChargePrepaid):
+        self._AddressChargePrepaid = AddressChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._AddressIds = params.get("AddressIds")
+        if params.get("AddressChargePrepaid") is not None:
+            self._AddressChargePrepaid = AddressChargePrepaid()
+            self._AddressChargePrepaid._deserialize(params.get("AddressChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRenewAddressesResponse(AbstractModel):
+    """InquiryPriceRenewAddresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: Elastic Public IP renewal price.
+        :type Price: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """Elastic Public IP renewal price.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = InternetPrice()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InquiryPriceRenewVpnGatewayRequest(AbstractModel):
     """InquiryPriceRenewVpnGateway request structure.
 
@@ -28763,6 +29125,129 @@ class InstanceStatistic(AbstractModel):
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
         self._InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternetPrice(AbstractModel):
+    """Public Network Inquiry Output Parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressPrice: Detailed parameters of Public IP inquiry.
+        :type AddressPrice: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        """
+        self._AddressPrice = None
+
+    @property
+    def AddressPrice(self):
+        """Detailed parameters of Public IP inquiry.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InternetPriceDetail`
+        """
+        return self._AddressPrice
+
+    @AddressPrice.setter
+    def AddressPrice(self, AddressPrice):
+        self._AddressPrice = AddressPrice
+
+
+    def _deserialize(self, params):
+        if params.get("AddressPrice") is not None:
+            self._AddressPrice = InternetPriceDetail()
+            self._AddressPrice._deserialize(params.get("AddressPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternetPriceDetail(AbstractModel):
+    """Public IP Inquiry Output Parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitPrice: Postpaid unit price. Unit: USD. Returned only for postpaid price inquiry.
+        :type UnitPrice: float
+        :param _DiscountPrice: Discounted price. Unit: USD
+Note: This field may return null, indicating that no valid value was found.
+        :type DiscountPrice: float
+        :param _ChargeUnit: Billing unit. Valid values: <ul> <li>HOUR: Indicates that the billing unit is calculated hourly. The scenarios currently involving this billing unit include TRAFFIC_POSTPAID_BY_HOUR and BANDWIDTH_POSTPAID_BY_HOUR.</li></ul>
+Note: This field may return null, indicating that no valid value was found.
+        :type ChargeUnit: str
+        :param _OriginalPrice: Original price. Unit: CNY. Returned only for prepaid price inquiry.
+        :type OriginalPrice: float
+        """
+        self._UnitPrice = None
+        self._DiscountPrice = None
+        self._ChargeUnit = None
+        self._OriginalPrice = None
+
+    @property
+    def UnitPrice(self):
+        """Postpaid unit price. Unit: USD. Returned only for postpaid price inquiry.
+        :rtype: float
+        """
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def DiscountPrice(self):
+        """Discounted price. Unit: USD
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: float
+        """
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def ChargeUnit(self):
+        """Billing unit. Valid values: <ul> <li>HOUR: Indicates that the billing unit is calculated hourly. The scenarios currently involving this billing unit include TRAFFIC_POSTPAID_BY_HOUR and BANDWIDTH_POSTPAID_BY_HOUR.</li></ul>
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def OriginalPrice(self):
+        """Original price. Unit: CNY. Returned only for prepaid price inquiry.
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+
+    def _deserialize(self, params):
+        self._UnitPrice = params.get("UnitPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._OriginalPrice = params.get("OriginalPrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
