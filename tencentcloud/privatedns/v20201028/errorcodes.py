@@ -50,6 +50,9 @@ FAILEDOPERATION_DELETELASTBINDVPCRECORDFAILED = 'FailedOperation.DeleteLastBindV
 # 
 FAILEDOPERATION_DELETERECORDFAILED = 'FailedOperation.DeleteRecordFailed'
 
+# Failed to delete the endpoint.
+FAILEDOPERATION_DELETEVPCENDPOINTFAILED = 'FailedOperation.DeleteVpcEndPointFailed'
+
 # Failed to create an endpoint service.
 FAILEDOPERATION_ENDPOINTSERVICECREATEFAILED = 'FailedOperation.EndPointServiceCreateFailed'
 
@@ -83,11 +86,17 @@ INVALIDPARAMETER = 'InvalidParameter'
 # A bound account already exists.
 INVALIDPARAMETER_ACCOUNTEXIST = 'InvalidParameter.AccountExist'
 
+# The endpoint has been bound to a forwarding rule.
+INVALIDPARAMETER_ENDPOINTBINDFORWARDRULE = 'InvalidParameter.EndPointBindForwardRule'
+
 # The endpoint does not exist.
 INVALIDPARAMETER_ENDPOINTNOTEXISTS = 'InvalidParameter.EndPointNotExists'
 
 # The endpoint service does not exist.
 INVALIDPARAMETER_ENDPOINTSERVICENOTEXIST = 'InvalidParameter.EndPointServiceNotExist'
+
+# The forwarding rule does not exist.
+INVALIDPARAMETER_FORWARDRULENOTEXIST = 'InvalidParameter.ForwardRuleNotExist'
 
 # The private domain has already been bound with the forwarding rule.
 INVALIDPARAMETER_FORWARDRULEZONEREPEATBIND = 'InvalidParameter.ForwardRuleZoneRepeatBind'

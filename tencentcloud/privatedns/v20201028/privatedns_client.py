@@ -72,6 +72,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExtendEndpoint(self, request):
+        """This API is used to create an endpoint.
+
+        :param request: Request instance for CreateExtendEndpoint.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.CreateExtendEndpointRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.CreateExtendEndpointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExtendEndpoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExtendEndpointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateForwardRule(self, request):
         """This API is used to create a custom forwarding rule.
 
@@ -155,6 +178,52 @@ class PrivatednsClient(AbstractClient):
             body = self.call("CreatePrivateZoneRecord", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePrivateZoneRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteEndPoint(self, request):
+        """Deletes an endpoint
+
+        :param request: Request instance for DeleteEndPoint.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteEndPointRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeleteEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEndPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEndPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteForwardRule(self, request):
+        """This API is used to delete a forwarding rule and stop forwarding.
+
+        :param request: Request instance for DeleteForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeleteForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeleteForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteForwardRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -270,6 +339,75 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DescribeEndPointList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEndPointListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEndPointRegion(self, request):
+        """This API is used to query the regions where the endpoint is enabled.
+
+        :param request: Request instance for DescribeEndPointRegion.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointRegionRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeEndPointRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEndPointRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEndPointRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExtendEndpointList(self, request):
+        """This API is used to obtain the endpoint list.
+
+        :param request: Request instance for DescribeExtendEndpointList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeExtendEndpointListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeExtendEndpointListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExtendEndpointList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExtendEndpointListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeForwardRule(self, request):
+        """This API is used to query forwarding rules.
+
+        :param request: Request instance for DescribeForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeForwardRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -431,6 +569,29 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DescribeRequestData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRequestDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyForwardRule(self, request):
+        """This API is used to modify a forwarding rule.
+
+        :param request: Request instance for ModifyForwardRule.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.ModifyForwardRuleRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.ModifyForwardRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyForwardRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyForwardRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
