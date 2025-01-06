@@ -1257,6 +1257,8 @@ Currently, the supported languages are as follows. The English name of the langu
         :type NotifyDuration: int
         :param _NotifyMessage: The AI prompt when NotifyDuration has passed without the user speaking, default is "Sorry, I didn't hear you clearly. Can you repeat that?"
         :type NotifyMessage: str
+        :param _NotifyMaxCount: 
+        :type NotifyMaxCount: int
         :param _CustomTTSConfig: <p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
 <ul>
 <li>Tencent TTS<br>
@@ -1357,6 +1359,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._EndFunctionDesc = None
         self._NotifyDuration = None
         self._NotifyMessage = None
+        self._NotifyMaxCount = None
         self._CustomTTSConfig = None
 
     @property
@@ -1687,6 +1690,17 @@ Currently, the supported languages are as follows. The English name of the langu
         self._NotifyMessage = NotifyMessage
 
     @property
+    def NotifyMaxCount(self):
+        """
+        :rtype: int
+        """
+        return self._NotifyMaxCount
+
+    @NotifyMaxCount.setter
+    def NotifyMaxCount(self, NotifyMaxCount):
+        self._NotifyMaxCount = NotifyMaxCount
+
+    @property
     def CustomTTSConfig(self):
         """<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
 <ul>
@@ -1796,6 +1810,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._EndFunctionDesc = params.get("EndFunctionDesc")
         self._NotifyDuration = params.get("NotifyDuration")
         self._NotifyMessage = params.get("NotifyMessage")
+        self._NotifyMaxCount = params.get("NotifyMaxCount")
         self._CustomTTSConfig = params.get("CustomTTSConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
