@@ -864,6 +864,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SmartStructuralPro(self, request):
+        """This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.
+
+        A maximum of 10 requests can be initiated per second for this API.
+
+        :param request: Request instance for SmartStructuralPro.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SmartStructuralPro", params, headers=headers)
+            response = json.loads(body)
+            model = models.SmartStructuralProResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TableOCR(self, request):
         """This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.
 

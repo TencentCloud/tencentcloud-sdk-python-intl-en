@@ -12726,6 +12726,245 @@ class SmartStructuralOCRV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SmartStructuralProRequest(AbstractModel):
+    """SmartStructuralPro request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :type ImageUrl: str
+        :param _ImageBase64: The Base64-encoded value of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        :type ImageBase64: str
+        :param _PdfPageNumber: The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF `. Default value: `1`.
+        :type PdfPageNumber: int
+        :param _ItemNames: The names of the fields you want to return for the structured information recognition.
+For example, if you want to return only the recognition result of the "Name" and "Gender" fields, set this parameter as follows:
+ItemNames=["Name","Gender"]
+        :type ItemNames: list of str
+        :param _ReturnFullText: Whether to enable recognition of all fields.
+        :type ReturnFullText: bool
+        :param _ConfigId: Configuration ID support: General 
+-- General scenarios; InvoiceEng 
+-- Ocean bill of lading, international invoice template; 
+-- Ocean shipment order template; WayBillEng 
+-- CustomsDeclaration
+-- WeightNote
+-- MedicalMeter
+        :type ConfigId: str
+        :param _EnableCoord: Enable recognition of coordinate values in full-text fields
+        :type EnableCoord: bool
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._PdfPageNumber = None
+        self._ItemNames = None
+        self._ReturnFullText = None
+        self._ConfigId = None
+        self._EnableCoord = None
+
+    @property
+    def ImageUrl(self):
+        """The URL of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+The download speed and stability of non-Tencent Cloud URLs may be low.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """The Base64-encoded value of the image.
+Supported image formats: PNG, JPG, and JPEG. GIF is currently not supported.
+Supported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def PdfPageNumber(self):
+        """The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF `. Default value: `1`.
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def ItemNames(self):
+        """The names of the fields you want to return for the structured information recognition.
+For example, if you want to return only the recognition result of the "Name" and "Gender" fields, set this parameter as follows:
+ItemNames=["Name","Gender"]
+        :rtype: list of str
+        """
+        return self._ItemNames
+
+    @ItemNames.setter
+    def ItemNames(self, ItemNames):
+        self._ItemNames = ItemNames
+
+    @property
+    def ReturnFullText(self):
+        """Whether to enable recognition of all fields.
+        :rtype: bool
+        """
+        return self._ReturnFullText
+
+    @ReturnFullText.setter
+    def ReturnFullText(self, ReturnFullText):
+        self._ReturnFullText = ReturnFullText
+
+    @property
+    def ConfigId(self):
+        """Configuration ID support: General 
+-- General scenarios; InvoiceEng 
+-- Ocean bill of lading, international invoice template; 
+-- Ocean shipment order template; WayBillEng 
+-- CustomsDeclaration
+-- WeightNote
+-- MedicalMeter
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def EnableCoord(self):
+        """Enable recognition of coordinate values in full-text fields
+        :rtype: bool
+        """
+        return self._EnableCoord
+
+    @EnableCoord.setter
+    def EnableCoord(self, EnableCoord):
+        self._EnableCoord = EnableCoord
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._ItemNames = params.get("ItemNames")
+        self._ReturnFullText = params.get("ReturnFullText")
+        self._ConfigId = params.get("ConfigId")
+        self._EnableCoord = params.get("EnableCoord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartStructuralProResponse(AbstractModel):
+    """SmartStructuralPro response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
+        :type Angle: float
+        :param _StructuralList: The structural information (key-value).
+        :type StructuralList: list of GroupInfo
+        :param _WordList: The recognized text information.
+        :type WordList: list of WordItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._StructuralList = None
+        self._WordList = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        """The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def StructuralList(self):
+        """The structural information (key-value).
+        :rtype: list of GroupInfo
+        """
+        return self._StructuralList
+
+    @StructuralList.setter
+    def StructuralList(self, StructuralList):
+        self._StructuralList = StructuralList
+
+    @property
+    def WordList(self):
+        """The recognized text information.
+        :rtype: list of WordItem
+        """
+        return self._WordList
+
+    @WordList.setter
+    def WordList(self, WordList):
+        self._WordList = WordList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("StructuralList") is not None:
+            self._StructuralList = []
+            for item in params.get("StructuralList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._StructuralList.append(obj)
+        if params.get("WordList") is not None:
+            self._WordList = []
+            for item in params.get("WordList"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self._WordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class TableCellInfo(AbstractModel):
     """Cell data
 
