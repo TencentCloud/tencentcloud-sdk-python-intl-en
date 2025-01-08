@@ -257,6 +257,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOnlineDDLJob(self, request):
+        """This API is used to create an online DDL job.
+
+        :param request: Request instance for CreateOnlineDDLJob.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateOnlineDDLJobRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CreateOnlineDDLJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOnlineDDLJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOnlineDDLJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccount(self, request):
         """This API is used to delete a TencentDB account, which is uniquely identified by username and host.
 

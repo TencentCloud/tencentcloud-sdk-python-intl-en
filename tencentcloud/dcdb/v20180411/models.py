@@ -2698,6 +2698,235 @@ class CreateHourDCDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOnlineDDLJobRequest(AbstractModel):
+    """CreateOnlineDDLJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _Alter: Specifies the DDL statement to be executed. Common online DDL refer to this API documentation example section.
+        :type Alter: str
+        :param _DbName: Specifies the database to be modified.	
+        :type DbName: str
+        :param _Table: Specifies the table to be modified.
+        :type Table: str
+        :param _User: Specifies the account to execute DDL. Ensure the account has ALTER, CREATE, INSERT, UPDATE, DROP, DELETE, INDEX, CREATE TEMPORARY TABLES, LOCK TABLES, TRIGGER, REPLICATION CLIENT, REPLICATION SLAVE permissions. If not specified, the system account will be used by default.
+        :type User: str
+        :param _Password: Specifies the password for the account.
+        :type Password: str
+        :param _CriticalLoad: Indicates that DDL will terminate if the number of running threads exceeds this value. Default is 58 if not specified.
+        :type CriticalLoad: int
+        :param _CheckAutoInc: Specifies whether to check auto-increment fields. If set to 1, modification of auto-increment fields is not allowed; if set to 0 or left empty, no check is performed.
+        :type CheckAutoInc: int
+        :param _MaxDelay: Allowed primary-secondary delay time (in seconds). If set to 0 or left empty, do not check delay.
+        :type MaxDelay: int
+        :param _UsePt: Indicates whether to use pt-osc tool for DDL.
+        :type UsePt: int
+        :param _StartTime: Start Execution Time
+        :type StartTime: str
+        """
+        self._InstanceId = None
+        self._Alter = None
+        self._DbName = None
+        self._Table = None
+        self._User = None
+        self._Password = None
+        self._CriticalLoad = None
+        self._CheckAutoInc = None
+        self._MaxDelay = None
+        self._UsePt = None
+        self._StartTime = None
+
+    @property
+    def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Alter(self):
+        """Specifies the DDL statement to be executed. Common online DDL refer to this API documentation example section.
+        :rtype: str
+        """
+        return self._Alter
+
+    @Alter.setter
+    def Alter(self, Alter):
+        self._Alter = Alter
+
+    @property
+    def DbName(self):
+        """Specifies the database to be modified.	
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def Table(self):
+        """Specifies the table to be modified.
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def User(self):
+        """Specifies the account to execute DDL. Ensure the account has ALTER, CREATE, INSERT, UPDATE, DROP, DELETE, INDEX, CREATE TEMPORARY TABLES, LOCK TABLES, TRIGGER, REPLICATION CLIENT, REPLICATION SLAVE permissions. If not specified, the system account will be used by default.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        """Specifies the password for the account.
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def CriticalLoad(self):
+        """Indicates that DDL will terminate if the number of running threads exceeds this value. Default is 58 if not specified.
+        :rtype: int
+        """
+        return self._CriticalLoad
+
+    @CriticalLoad.setter
+    def CriticalLoad(self, CriticalLoad):
+        self._CriticalLoad = CriticalLoad
+
+    @property
+    def CheckAutoInc(self):
+        """Specifies whether to check auto-increment fields. If set to 1, modification of auto-increment fields is not allowed; if set to 0 or left empty, no check is performed.
+        :rtype: int
+        """
+        return self._CheckAutoInc
+
+    @CheckAutoInc.setter
+    def CheckAutoInc(self, CheckAutoInc):
+        self._CheckAutoInc = CheckAutoInc
+
+    @property
+    def MaxDelay(self):
+        """Allowed primary-secondary delay time (in seconds). If set to 0 or left empty, do not check delay.
+        :rtype: int
+        """
+        return self._MaxDelay
+
+    @MaxDelay.setter
+    def MaxDelay(self, MaxDelay):
+        self._MaxDelay = MaxDelay
+
+    @property
+    def UsePt(self):
+        """Indicates whether to use pt-osc tool for DDL.
+        :rtype: int
+        """
+        return self._UsePt
+
+    @UsePt.setter
+    def UsePt(self, UsePt):
+        self._UsePt = UsePt
+
+    @property
+    def StartTime(self):
+        """Start Execution Time
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Alter = params.get("Alter")
+        self._DbName = params.get("DbName")
+        self._Table = params.get("Table")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._CriticalLoad = params.get("CriticalLoad")
+        self._CheckAutoInc = params.get("CheckAutoInc")
+        self._MaxDelay = params.get("MaxDelay")
+        self._UsePt = params.get("UsePt")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOnlineDDLJobResponse(AbstractModel):
+    """CreateOnlineDDLJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Online DDL task ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        """Online DDL task ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class DBAccount(AbstractModel):
     """TencentDB account information
 

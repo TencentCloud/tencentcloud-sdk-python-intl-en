@@ -34,10 +34,24 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _Externals: Extended data
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Externals: :class:`tencentcloud.cvm.v20170312.models.Externals`
+        :param _ActionTimerId: Timer ID.
+        :type ActionTimerId: str
+        :param _Status: Timer status. Valid values:
+
+UNDO: Not triggered.
+DOING: Triggering.
+DONE: Triggered already.
+
+        :type Status: str
+        :param _InstanceId: Instance ID corresponding to a timer.
+        :type InstanceId: str
         """
         self._TimerAction = None
         self._ActionTime = None
         self._Externals = None
+        self._ActionTimerId = None
+        self._Status = None
+        self._InstanceId = None
 
     @property
     def TimerAction(self):
@@ -75,6 +89,44 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def Externals(self, Externals):
         self._Externals = Externals
 
+    @property
+    def ActionTimerId(self):
+        """Timer ID.
+        :rtype: str
+        """
+        return self._ActionTimerId
+
+    @ActionTimerId.setter
+    def ActionTimerId(self, ActionTimerId):
+        self._ActionTimerId = ActionTimerId
+
+    @property
+    def Status(self):
+        """Timer status. Valid values:
+
+UNDO: Not triggered.
+DOING: Triggering.
+DONE: Triggered already.
+
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        """Instance ID corresponding to a timer.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._TimerAction = params.get("TimerAction")
@@ -82,6 +134,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         if params.get("Externals") is not None:
             self._Externals = Externals()
             self._Externals._deserialize(params.get("Externals"))
+        self._ActionTimerId = params.get("ActionTimerId")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2468,15 +2523,16 @@ class DataDisk(AbstractModel):
         r"""
         :param _DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
         :type DiskSize: int
-        :param _DiskType: Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD Disk <br /><li>LOCAL_NVME: Local NVME Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD Disk, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: HDD Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Cloud Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: ulTra SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>
+        :param _DiskType: Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD <br /><li>LOCAL_NVME: Local NVMe Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: Basic Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: Tremendous SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>
         :type DiskType: str
-        :param _DiskId: Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
+        :param _DiskId: Data disk ID. Note that it's not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
 It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
         :type DiskId: str
-        :param _DeleteWithInstance: Whether the data disk is destroyed with the Cloud Virtual Machine (CVM). Value range:
-<li>true: Destroy the data disk when the CVM is destroyed. Only the pay-as-you-go cloud disk billed by hour is supported.</li>
+        :param _DeleteWithInstance: Whether the data disk is terminated with the Cloud Virtual Machine (CVM). Valid values:
+
+<li>true: Terminate the data disk when the CVM is terminated. Only the pay-as-you-go cloud disk billed by hour is supported.</li>
 <li>
-  false: Retain the data disk when the CVM is destroyed.<br />
+  false: Retain the data disk when the CVM is terminated.<br />
   Default value: true.<br />
   This parameter is currently only used for the `RunInstances` API.
 </li>
@@ -2494,7 +2550,7 @@ Note: This field may return null, indicating that no valid value is found.
 </li>
 Note: This field may return null, indicating that no valid value is found.
         :type Encrypt: bool
-        :param _KmsKeyId: ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+        :param _KmsKeyId: ID of the custom CMK in the format of UUID or "kms-abcd1234". This parameter is used to encrypt cloud disks.
 
 Currently, this parameter is only used in the `RunInstances` API.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2540,7 +2596,7 @@ This parameter is in invite-only testing and is not yet open for use.
 
     @property
     def DiskType(self):
-        """Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD Disk <br /><li>LOCAL_NVME: Local NVME Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD Disk, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: HDD Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Cloud Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: ulTra SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>
+        """Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD <br /><li>LOCAL_NVME: Local NVMe Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: Basic Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: Tremendous SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>
         :rtype: str
         """
         return self._DiskType
@@ -2551,7 +2607,7 @@ This parameter is in invite-only testing and is not yet open for use.
 
     @property
     def DiskId(self):
-        """Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
+        """Data disk ID. Note that it's not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.
 It is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.
         :rtype: str
         """
@@ -2563,10 +2619,11 @@ It is only used as a response parameter for APIs such as `DescribeInstances`, an
 
     @property
     def DeleteWithInstance(self):
-        """Whether the data disk is destroyed with the Cloud Virtual Machine (CVM). Value range:
-<li>true: Destroy the data disk when the CVM is destroyed. Only the pay-as-you-go cloud disk billed by hour is supported.</li>
+        """Whether the data disk is terminated with the Cloud Virtual Machine (CVM). Valid values:
+
+<li>true: Terminate the data disk when the CVM is terminated. Only the pay-as-you-go cloud disk billed by hour is supported.</li>
 <li>
-  false: Retain the data disk when the CVM is destroyed.<br />
+  false: Retain the data disk when the CVM is terminated.<br />
   Default value: true.<br />
   This parameter is currently only used for the `RunInstances` API.
 </li>
@@ -2611,7 +2668,7 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def KmsKeyId(self):
-        """ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.
+        """ID of the custom CMK in the format of UUID or "kms-abcd1234". This parameter is used to encrypt cloud disks.
 
 Currently, this parameter is only used in the `RunInstances` API.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -16394,15 +16451,15 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: System disk type. For the restrictions on the system disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range:<br>
+        :param _DiskType: System disk type. For the restrictions on the system disk type, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value values:<br>
 <li>LOCAL_BASIC: Local Disk</li>
-<li>LOCAL_SSD: Local SSD Disk</li>
-<li>CLOUD_BASIC: HDD Cloud Disk</li>
+<li>LOCAL_SSD: Local SSD</li>
+<li>CLOUD_BASIC: Basic Cloud Disk</li>
 <li>CLOUD_SSD: Cloud SSD</li>
-<li>CLOUD_PREMIUM: Premium Cloud Disk</li>
+<li>CLOUD_PREMIUM: Premium Disk</li>
 <li>CLOUD_BSSD: Balanced SSD</li>
 <li>CLOUD_HSSD: Enhanced SSD</li>
-<li>CLOUD_TSSD: ulTra SSD</li><br>
+<li>CLOUD_TSSD: Tremendous SSD</li><br>
 Default value: Current disk types with inventory available.
         :type DiskType: str
         :param _DiskId: System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.
@@ -16426,15 +16483,15 @@ Note: This field may return null, indicating that no valid value is found.
 
     @property
     def DiskType(self):
-        """System disk type. For the restrictions on the system disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range:<br>
+        """System disk type. For the restrictions on the system disk type, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value values:<br>
 <li>LOCAL_BASIC: Local Disk</li>
-<li>LOCAL_SSD: Local SSD Disk</li>
-<li>CLOUD_BASIC: HDD Cloud Disk</li>
+<li>LOCAL_SSD: Local SSD</li>
+<li>CLOUD_BASIC: Basic Cloud Disk</li>
 <li>CLOUD_SSD: Cloud SSD</li>
-<li>CLOUD_PREMIUM: Premium Cloud Disk</li>
+<li>CLOUD_PREMIUM: Premium Disk</li>
 <li>CLOUD_BSSD: Balanced SSD</li>
 <li>CLOUD_HSSD: Enhanced SSD</li>
-<li>CLOUD_TSSD: ulTra SSD</li><br>
+<li>CLOUD_TSSD: Tremendous SSD</li><br>
 Default value: Current disk types with inventory available.
         :rtype: str
         """
