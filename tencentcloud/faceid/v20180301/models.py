@@ -204,6 +204,9 @@ MYS: Malaysia
 SGP: Singapore
 JPN: Japan
 TWN:Taiwan
+BGD:Bangladesh 
+NGA:Nigeria
+PAK:Pakistan
 AUTO: Automatic Identification
         :type Nationality: str
         :param _CardType: Please select the type of ID document. The supported options are:
@@ -243,6 +246,9 @@ MYS: Malaysia
 SGP: Singapore
 JPN: Japan
 TWN:Taiwan
+BGD:Bangladesh 
+NGA:Nigeria
+PAK:Pakistan
 AUTO: Automatic Identification
         :rtype: str
         """
@@ -1123,6 +1129,129 @@ SuspectedWatermark: Suspected watermark
         
 
 
+class BangladeshIDCard(AbstractModel):
+    """Bangladesh ID card
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastName: Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastName: str
+        :param _FirstName: First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstName: str
+        :param _LicenseNumber: License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _IssuedCountry: Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        """
+        self._LastName = None
+        self._FirstName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._IssuedCountry = None
+
+    @property
+    def LastName(self):
+        """Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def FirstName(self):
+        """First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LicenseNumber(self):
+        """License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        """Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        """Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def IssuedCountry(self):
+        """Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+
+    def _deserialize(self, params):
+        self._LastName = params.get("LastName")
+        self._FirstName = params.get("FirstName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._IssuedCountry = params.get("IssuedCountry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CardInfo(AbstractModel):
     """License OCR result
 
@@ -1178,6 +1307,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _JapanIDCard: Japan ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
+        :param _BangladeshIDCard: Bangladesh ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BangladeshIDCard: :class:`tencentcloud.faceid.v20180301.models.BangladeshIDCard`
+        :param _NigeriaIDCard: Nigeria ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NigeriaIDCard: :class:`tencentcloud.faceid.v20180301.models.NigeriaIDCard`
+        :param _NigeriaDrivingLicense: Nigeria driving license
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NigeriaDrivingLicense: :class:`tencentcloud.faceid.v20180301.models.NigeriaDrivingLicense`
+        :param _PakistanIDCard: Pakistan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PakistanIDCard: :class:`tencentcloud.faceid.v20180301.models.PakistanIDCard`
+        :param _PakistanDrivingLicense: Pakistan driving license
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PakistanDrivingLicense: :class:`tencentcloud.faceid.v20180301.models.PakistanDrivingLicense`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -1195,6 +1339,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MacaoIDCard = None
         self._TaiWanIDCard = None
         self._JapanIDCard = None
+        self._BangladeshIDCard = None
+        self._NigeriaIDCard = None
+        self._NigeriaDrivingLicense = None
+        self._PakistanIDCard = None
+        self._PakistanDrivingLicense = None
 
     @property
     def HKIDCard(self):
@@ -1388,6 +1537,66 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def JapanIDCard(self, JapanIDCard):
         self._JapanIDCard = JapanIDCard
 
+    @property
+    def BangladeshIDCard(self):
+        """Bangladesh ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.BangladeshIDCard`
+        """
+        return self._BangladeshIDCard
+
+    @BangladeshIDCard.setter
+    def BangladeshIDCard(self, BangladeshIDCard):
+        self._BangladeshIDCard = BangladeshIDCard
+
+    @property
+    def NigeriaIDCard(self):
+        """Nigeria ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NigeriaIDCard`
+        """
+        return self._NigeriaIDCard
+
+    @NigeriaIDCard.setter
+    def NigeriaIDCard(self, NigeriaIDCard):
+        self._NigeriaIDCard = NigeriaIDCard
+
+    @property
+    def NigeriaDrivingLicense(self):
+        """Nigeria driving license
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.NigeriaDrivingLicense`
+        """
+        return self._NigeriaDrivingLicense
+
+    @NigeriaDrivingLicense.setter
+    def NigeriaDrivingLicense(self, NigeriaDrivingLicense):
+        self._NigeriaDrivingLicense = NigeriaDrivingLicense
+
+    @property
+    def PakistanIDCard(self):
+        """Pakistan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PakistanIDCard`
+        """
+        return self._PakistanIDCard
+
+    @PakistanIDCard.setter
+    def PakistanIDCard(self, PakistanIDCard):
+        self._PakistanIDCard = PakistanIDCard
+
+    @property
+    def PakistanDrivingLicense(self):
+        """Pakistan driving license
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.PakistanDrivingLicense`
+        """
+        return self._PakistanDrivingLicense
+
+    @PakistanDrivingLicense.setter
+    def PakistanDrivingLicense(self, PakistanDrivingLicense):
+        self._PakistanDrivingLicense = PakistanDrivingLicense
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -1438,6 +1647,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("JapanIDCard") is not None:
             self._JapanIDCard = JapanIDCard()
             self._JapanIDCard._deserialize(params.get("JapanIDCard"))
+        if params.get("BangladeshIDCard") is not None:
+            self._BangladeshIDCard = BangladeshIDCard()
+            self._BangladeshIDCard._deserialize(params.get("BangladeshIDCard"))
+        if params.get("NigeriaIDCard") is not None:
+            self._NigeriaIDCard = NigeriaIDCard()
+            self._NigeriaIDCard._deserialize(params.get("NigeriaIDCard"))
+        if params.get("NigeriaDrivingLicense") is not None:
+            self._NigeriaDrivingLicense = NigeriaDrivingLicense()
+            self._NigeriaDrivingLicense._deserialize(params.get("NigeriaDrivingLicense"))
+        if params.get("PakistanIDCard") is not None:
+            self._PakistanIDCard = PakistanIDCard()
+            self._PakistanIDCard._deserialize(params.get("PakistanIDCard"))
+        if params.get("PakistanDrivingLicense") is not None:
+            self._PakistanDrivingLicense = PakistanDrivingLicense()
+            self._PakistanDrivingLicense._deserialize(params.get("PakistanDrivingLicense"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6669,6 +6893,322 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class NigeriaDrivingLicense(AbstractModel):
+    """Nigeria driving license
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastName: Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+
+        :type LastName: str
+        :param _FirstName: First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstName: str
+        :param _LicenseNumber: License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _IssuedCountry: Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        :param _ExpirationDate: Expiration date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpirationDate: str
+        :param _IssuedDate: Issued date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedDate: str
+        :param _Sex: Gender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sex: str
+        """
+        self._LastName = None
+        self._FirstName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._IssuedCountry = None
+        self._ExpirationDate = None
+        self._IssuedDate = None
+        self._Sex = None
+
+    @property
+    def LastName(self):
+        """Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+
+        :rtype: str
+        """
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def FirstName(self):
+        """First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LicenseNumber(self):
+        """License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        """Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        """Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def IssuedCountry(self):
+        """Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+    @property
+    def ExpirationDate(self):
+        """Expiration date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def IssuedDate(self):
+        """Issued date.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedDate
+
+    @IssuedDate.setter
+    def IssuedDate(self, IssuedDate):
+        self._IssuedDate = IssuedDate
+
+    @property
+    def Sex(self):
+        """Gender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+
+    def _deserialize(self, params):
+        self._LastName = params.get("LastName")
+        self._FirstName = params.get("FirstName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._IssuedCountry = params.get("IssuedCountry")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._IssuedDate = params.get("IssuedDate")
+        self._Sex = params.get("Sex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NigeriaIDCard(AbstractModel):
+    """Nigeria ID card
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastName: Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastName: str
+        :param _FirstName: First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstName: str
+        :param _LicenseNumber: License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _IssuedCountry: Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        :param _Sex: Gender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sex: str
+        """
+        self._LastName = None
+        self._FirstName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._IssuedCountry = None
+        self._Sex = None
+
+    @property
+    def LastName(self):
+        """Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def FirstName(self):
+        """First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LicenseNumber(self):
+        """License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        """Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        """Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def IssuedCountry(self):
+        """Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+    @property
+    def Sex(self):
+        """Gender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+
+    def _deserialize(self, params):
+        self._LastName = params.get("LastName")
+        self._FirstName = params.get("FirstName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._IssuedCountry = params.get("IssuedCountry")
+        self._Sex = params.get("Sex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NormalCardInfo(AbstractModel):
     """License OCR result
 
@@ -8077,6 +8617,252 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardCutImageBase64 = params.get("CardCutImageBase64")
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
         self._WarnCardInfos = params.get("WarnCardInfos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PakistanDrivingLicense(AbstractModel):
+    """Pakistan driving license
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastName: Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastName: str
+        :param _FirstName: First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstName: str
+        :param _LicenseNumber: License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _IssuedCountry: Gender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        """
+        self._LastName = None
+        self._FirstName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._IssuedCountry = None
+
+    @property
+    def LastName(self):
+        """Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def FirstName(self):
+        """First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LicenseNumber(self):
+        """License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        """Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        """Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def IssuedCountry(self):
+        """Gender.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+
+    def _deserialize(self, params):
+        self._LastName = params.get("LastName")
+        self._FirstName = params.get("FirstName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._IssuedCountry = params.get("IssuedCountry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PakistanIDCard(AbstractModel):
+    """Pakistan ID card
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastName: Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastName: str
+        :param _FirstName: First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstName: str
+        :param _LicenseNumber: License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _IssuedCountry: Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        """
+        self._LastName = None
+        self._FirstName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._IssuedCountry = None
+
+    @property
+    def LastName(self):
+        """Last name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastName
+
+    @LastName.setter
+    def LastName(self, LastName):
+        self._LastName = LastName
+
+    @property
+    def FirstName(self):
+        """First name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FirstName
+
+    @FirstName.setter
+    def FirstName(self, FirstName):
+        self._FirstName = FirstName
+
+    @property
+    def LicenseNumber(self):
+        """License number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        """Age.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        """Birthday.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def IssuedCountry(self):
+        """Issued country.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+
+    def _deserialize(self, params):
+        self._LastName = params.get("LastName")
+        self._FirstName = params.get("FirstName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._IssuedCountry = params.get("IssuedCountry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
