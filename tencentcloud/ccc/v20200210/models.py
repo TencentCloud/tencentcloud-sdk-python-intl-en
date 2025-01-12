@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AITransferItem(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransferFunctionName: 
+        :type TransferFunctionName: str
+        :param _TransferFunctionDesc: 
+        :type TransferFunctionDesc: str
+        :param _TransferSkillGroupId: 
+        :type TransferSkillGroupId: int
+        """
+        self._TransferFunctionName = None
+        self._TransferFunctionDesc = None
+        self._TransferSkillGroupId = None
+
+    @property
+    def TransferFunctionName(self):
+        """
+        :rtype: str
+        """
+        return self._TransferFunctionName
+
+    @TransferFunctionName.setter
+    def TransferFunctionName(self, TransferFunctionName):
+        self._TransferFunctionName = TransferFunctionName
+
+    @property
+    def TransferFunctionDesc(self):
+        """
+        :rtype: str
+        """
+        return self._TransferFunctionDesc
+
+    @TransferFunctionDesc.setter
+    def TransferFunctionDesc(self, TransferFunctionDesc):
+        self._TransferFunctionDesc = TransferFunctionDesc
+
+    @property
+    def TransferSkillGroupId(self):
+        """
+        :rtype: int
+        """
+        return self._TransferSkillGroupId
+
+    @TransferSkillGroupId.setter
+    def TransferSkillGroupId(self, TransferSkillGroupId):
+        self._TransferSkillGroupId = TransferSkillGroupId
+
+
+    def _deserialize(self, params):
+        self._TransferFunctionName = params.get("TransferFunctionName")
+        self._TransferFunctionDesc = params.get("TransferFunctionDesc")
+        self._TransferSkillGroupId = params.get("TransferSkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
     """AbortAgentCruiseDialingCampaign request structure.
 
@@ -1253,6 +1319,10 @@ Currently, the supported languages are as follows. The English name of the langu
         :type EndFunctionEnable: bool
         :param _EndFunctionDesc: Effective when EndFunctionEnable is true; the description of call_end function calling, default is "End the call when user has to leave (like says bye) or you are instructed to do so."
         :type EndFunctionDesc: str
+        :param _TransferFunctionEnable: 
+        :type TransferFunctionEnable: bool
+        :param _TransferItems: 
+        :type TransferItems: list of AITransferItem
         :param _NotifyDuration: The duration after which the user hasn't spoken to trigger a notification, minimum 10 seconds, default 10 seconds
         :type NotifyDuration: int
         :param _NotifyMessage: The AI prompt when NotifyDuration has passed without the user speaking, default is "Sorry, I didn't hear you clearly. Can you repeat that?"
@@ -1339,6 +1409,8 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
 </div></div>
         :type CustomTTSConfig: str
+        :param _PromptVariables: 
+        :type PromptVariables: list of Variable
         """
         self._SdkAppId = None
         self._Callee = None
@@ -1357,10 +1429,13 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._InterruptSpeechDuration = None
         self._EndFunctionEnable = None
         self._EndFunctionDesc = None
+        self._TransferFunctionEnable = None
+        self._TransferItems = None
         self._NotifyDuration = None
         self._NotifyMessage = None
         self._NotifyMaxCount = None
         self._CustomTTSConfig = None
+        self._PromptVariables = None
 
     @property
     def SdkAppId(self):
@@ -1668,6 +1743,28 @@ Currently, the supported languages are as follows. The English name of the langu
         self._EndFunctionDesc = EndFunctionDesc
 
     @property
+    def TransferFunctionEnable(self):
+        """
+        :rtype: bool
+        """
+        return self._TransferFunctionEnable
+
+    @TransferFunctionEnable.setter
+    def TransferFunctionEnable(self, TransferFunctionEnable):
+        self._TransferFunctionEnable = TransferFunctionEnable
+
+    @property
+    def TransferItems(self):
+        """
+        :rtype: list of AITransferItem
+        """
+        return self._TransferItems
+
+    @TransferItems.setter
+    def TransferItems(self, TransferItems):
+        self._TransferItems = TransferItems
+
+    @property
     def NotifyDuration(self):
         """The duration after which the user hasn't spoken to trigger a notification, minimum 10 seconds, default 10 seconds
         :rtype: int
@@ -1789,6 +1886,17 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
     def CustomTTSConfig(self, CustomTTSConfig):
         self._CustomTTSConfig = CustomTTSConfig
 
+    @property
+    def PromptVariables(self):
+        """
+        :rtype: list of Variable
+        """
+        return self._PromptVariables
+
+    @PromptVariables.setter
+    def PromptVariables(self, PromptVariables):
+        self._PromptVariables = PromptVariables
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -1808,10 +1916,23 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
         self._EndFunctionEnable = params.get("EndFunctionEnable")
         self._EndFunctionDesc = params.get("EndFunctionDesc")
+        self._TransferFunctionEnable = params.get("TransferFunctionEnable")
+        if params.get("TransferItems") is not None:
+            self._TransferItems = []
+            for item in params.get("TransferItems"):
+                obj = AITransferItem()
+                obj._deserialize(item)
+                self._TransferItems.append(obj)
         self._NotifyDuration = params.get("NotifyDuration")
         self._NotifyMessage = params.get("NotifyMessage")
         self._NotifyMaxCount = params.get("NotifyMaxCount")
         self._CustomTTSConfig = params.get("CustomTTSConfig")
+        if params.get("PromptVariables") is not None:
+            self._PromptVariables = []
+            for item in params.get("PromptVariables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._PromptVariables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
