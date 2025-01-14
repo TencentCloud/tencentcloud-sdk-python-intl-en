@@ -2077,31 +2077,25 @@ class CompareFaceLivenessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: Base64 value of photos used for face comparison. 
-The size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. 
-Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
-Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        :param _ImageBase64: Base64 string of the image for face comparison.
+- The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
+- Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for the encoding specification.
         :type ImageBase64: str
-        :param _VideoBase64: Base64 value of videos used for face comparison. 
-The size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv are supported. 
-Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
-Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        :param _VideoBase64: Base64 string of the video for liveness detection.
+- The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
+-Use standard Base64 encoding (with = padding), following RFC4648.
         :type VideoBase64: str
-        :param _LivenessType: The liveness detection type. Valid values: `ACTION`, and `SILENT`.
-`ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
-Example value: "SILENT"
+        :param _LivenessType: Liveness detection type.
+-Values:
+ACTION is action mode.
+SILENT is silent mode.
+-Choose one of the two modes to pass in.
         :type LivenessType: str
-        :param _ValidateData: When the "LivenessType" parameter is "ACTION", it must be specified.
-It is used to control the action sequence. Action types: 
-1 (open mouth)
-2 (blink)
-3 (nod)
-4 (shake head). 
-Select one or two from the four actions.
-Example of passing single action parameter: "1".
-Example of passing multiple action parameters: "4,2".
-When the "LivenessType" parameter value is "SILENT", it shall be unspecified.
-Example value: ""
+        :param _ValidateData: Control the action sequence. Action types include: 1 (open mouth), 2 (blink), 3 (nod), 4 (shake head). Supports one or two actions.
+-Required when the LivenessType parameter is set to ACTION.
+-Single action example: "1".
+-Multiple actions parameter passing example: "4,2".
+-When the LivenessType parameter is set to SILENT, leave it blank.
         :type ValidateData: str
         """
         self._ImageBase64 = None
@@ -2111,10 +2105,9 @@ Example value: ""
 
     @property
     def ImageBase64(self):
-        """Base64 value of photos used for face comparison. 
-The size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. 
-Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
-Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        """Base64 string of the image for face comparison.
+- The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.
+- Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for the encoding specification.
         :rtype: str
         """
         return self._ImageBase64
@@ -2125,10 +2118,9 @@ Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
 
     @property
     def VideoBase64(self):
-        """Base64 value of videos used for face comparison. 
-The size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv are supported. 
-Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
-Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        """Base64 string of the video for liveness detection.
+- The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.
+-Use standard Base64 encoding (with = padding), following RFC4648.
         :rtype: str
         """
         return self._VideoBase64
@@ -2139,9 +2131,11 @@ Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
 
     @property
     def LivenessType(self):
-        """The liveness detection type. Valid values: `ACTION`, and `SILENT`.
-`ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
-Example value: "SILENT"
+        """Liveness detection type.
+-Values:
+ACTION is action mode.
+SILENT is silent mode.
+-Choose one of the two modes to pass in.
         :rtype: str
         """
         return self._LivenessType
@@ -2152,17 +2146,11 @@ Example value: "SILENT"
 
     @property
     def ValidateData(self):
-        """When the "LivenessType" parameter is "ACTION", it must be specified.
-It is used to control the action sequence. Action types: 
-1 (open mouth)
-2 (blink)
-3 (nod)
-4 (shake head). 
-Select one or two from the four actions.
-Example of passing single action parameter: "1".
-Example of passing multiple action parameters: "4,2".
-When the "LivenessType" parameter value is "SILENT", it shall be unspecified.
-Example value: ""
+        """Control the action sequence. Action types include: 1 (open mouth), 2 (blink), 3 (nod), 4 (shake head). Supports one or two actions.
+-Required when the LivenessType parameter is set to ACTION.
+-Single action example: "1".
+-Multiple actions parameter passing example: "4,2".
+-When the LivenessType parameter is set to SILENT, leave it blank.
         :rtype: str
         """
         return self._ValidateData
@@ -2194,17 +2182,19 @@ class CompareFaceLivenessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Service error code. When the return value is "Success", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is "FailedOperation.CompareLowSimilarity", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). 
-Example Value: "Success".
+        :param _Result: Business Error Codes.
+-When the return value is "Success", it indicates that liveness detection and face comparison passed. Determined to be the same person.
+-When the return value is "FailedOperation.CompareLowSimilarity", it indicates that liveness detection passed, but face comparison similarity is below 70. Determined not to be the same person.
+-For other error cases, please refer to [Liveness Face Comparison (API only) Error Codes](https://www.tencentcloud.com/zh/document/product/1061/55390?lang=zh&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)
         :type Result: str
-        :param _Description: Description of business results. 
-Example value: "Success"
+        :param _Description: The service result description
         :type Description: str
-        :param _Sim: This value is valid when the "Result" parameter is "Success" or "FailedOperation.CompareLowSimilarity." 
-This value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 10,000. 
-Example value: 80.00
+        :param _Sim: This value indicates the similarity of face comparison. Value range: 0.00-100.00.
+- The false acceptance rate for a threshold of 70 is 0.1%, and for a threshold of 80, it is 0.01%.
+- This value is valid when the Result parameter is "Success" or "FailedOperation.CompareLowSimilarity".
         :type Sim: float
-        :param _BestFrameBase64: The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. 
+        :param _BestFrameBase64: The best screenshot photo from the video after verification, encoded in BASE64, in jpg format.
+The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. 
 Note: This field may return "null", indicating that no valid value can be obtained. 
 Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
         :type BestFrameBase64: str
@@ -2219,8 +2209,10 @@ Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
 
     @property
     def Result(self):
-        """Service error code. When the return value is "Success", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is "FailedOperation.CompareLowSimilarity", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). 
-Example Value: "Success".
+        """Business Error Codes.
+-When the return value is "Success", it indicates that liveness detection and face comparison passed. Determined to be the same person.
+-When the return value is "FailedOperation.CompareLowSimilarity", it indicates that liveness detection passed, but face comparison similarity is below 70. Determined not to be the same person.
+-For other error cases, please refer to [Liveness Face Comparison (API only) Error Codes](https://www.tencentcloud.com/zh/document/product/1061/55390?lang=zh&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)
         :rtype: str
         """
         return self._Result
@@ -2231,8 +2223,7 @@ Example Value: "Success".
 
     @property
     def Description(self):
-        """Description of business results. 
-Example value: "Success"
+        """The service result description
         :rtype: str
         """
         return self._Description
@@ -2243,9 +2234,9 @@ Example value: "Success"
 
     @property
     def Sim(self):
-        """This value is valid when the "Result" parameter is "Success" or "FailedOperation.CompareLowSimilarity." 
-This value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 10,000. 
-Example value: 80.00
+        """This value indicates the similarity of face comparison. Value range: 0.00-100.00.
+- The false acceptance rate for a threshold of 70 is 0.1%, and for a threshold of 80, it is 0.01%.
+- This value is valid when the Result parameter is "Success" or "FailedOperation.CompareLowSimilarity".
         :rtype: float
         """
         return self._Sim
@@ -2256,7 +2247,8 @@ Example value: 80.00
 
     @property
     def BestFrameBase64(self):
-        """The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. 
+        """The best screenshot photo from the video after verification, encoded in BASE64, in jpg format.
+The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. 
 Note: This field may return "null", indicating that no valid value can be obtained. 
 Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
         :rtype: str
@@ -3738,7 +3730,7 @@ class GenerateReflectSequenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReflectSequenceUrl: The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.
+        :param _ReflectSequenceUrl: The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the eKYC process.
         :type ReflectSequenceUrl: str
         :param _ReflectSequenceMd5: The MD5 hash value of the light sequence, which is used to check whether the light sequence is altered.
         :type ReflectSequenceMd5: str
@@ -3751,7 +3743,7 @@ class GenerateReflectSequenceResponse(AbstractModel):
 
     @property
     def ReflectSequenceUrl(self):
-        """The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.
+        """The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the eKYC process.
         :rtype: str
         """
         return self._ReflectSequenceUrl
@@ -3993,14 +3985,14 @@ class GetFaceIdResultIntlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkToken: The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.	
+        :param _SdkToken: The ID of the SDK-based selfie verification process, which is generated when the `GetFaceIdTokenIntl` API is called.	
         :type SdkToken: str
         """
         self._SdkToken = None
 
     @property
     def SdkToken(self):
-        """The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.	
+        """The ID of the SDK-based selfie verification process, which is generated when the `GetFaceIdTokenIntl` API is called.	
         :rtype: str
         """
         return self._SdkToken
@@ -4032,7 +4024,7 @@ class GetFaceIdResultIntlResponse(AbstractModel):
         :param _Result: The return code of the verification result.
 0: Succeeded.
 1001: System error.
-1004: Liveness detection and face comparison failed.
+1004: Selfie verification comparison failed.
 2004: The image passed in is too large or too small.
 2012: Several faces were detected.
 2013: No face was detected, or the face detected was incomplete.
@@ -4047,7 +4039,7 @@ class GetFaceIdResultIntlResponse(AbstractModel):
         :type BestFrame: str
         :param _Video: The video file (Base64) for verification.
         :type Video: str
-        :param _Similarity: The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.
+        :param _Similarity: The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Similarity: float
         :param _Extra: The pass-through parameter.
@@ -4069,7 +4061,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """The return code of the verification result.
 0: Succeeded.
 1001: System error.
-1004: Liveness detection and face comparison failed.
+1004: Selfie verification comparison failed.
 2004: The image passed in is too large or too small.
 2012: Several faces were detected.
 2013: No face was detected, or the face detected was incomplete.
@@ -4120,7 +4112,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Similarity(self):
-        """The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.
+        """The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :rtype: float
         """
@@ -4173,7 +4165,7 @@ class GetFaceIdTokenIntlRequest(AbstractModel):
         r"""
         :param _CheckMode: The detection mode. Valid values:
 `liveness`: Liveness detection only.
-`compare`: Liveness detection and face comparison.
+`compare`: Selfie verification.
 Default value: `liveness`.
         :type CheckMode: str
         :param _SecureLevel: The verification security level. Valid values:
@@ -4209,7 +4201,7 @@ The default value is blink. The different action types passed in this parameter 
     def CheckMode(self):
         """The detection mode. Valid values:
 `liveness`: Liveness detection only.
-`compare`: Liveness detection and face comparison.
+`compare`: Selfie verification.
 Default value: `liveness`.
         :rtype: str
         """
@@ -4673,7 +4665,7 @@ class GetWebVerificationResultIntlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
-For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>
+For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Selfie Verification (Mobile HTML5) Error Codes</a>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorCode: int
         :param _ErrorMsg: The description of the final verification result.
@@ -4708,7 +4700,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ErrorCode(self):
         """The final result of this verification. `0` indicates that the person is the same as that in the photo.
-For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>
+For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Selfie Verification (Mobile HTML5) Error Codes</a>
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """

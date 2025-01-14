@@ -56,6 +56,9 @@ FAILEDOPERATION_COMPARELOWSIMILARITY = 'FailedOperation.CompareLowSimilarity'
 # Error calling the comparison engine API.
 FAILEDOPERATION_COMPARESYSTEMERROR = 'FailedOperation.CompareSystemError'
 
+# The video compression failed. Please try again or reduce the size of the input video.
+FAILEDOPERATION_COMPRESSVIDEOERROR = 'FailedOperation.CompressVideoError'
+
 # The face in the picture is blocked, please upload a picture without any blockage
 FAILEDOPERATION_COVEREDFACE = 'FailedOperation.CoveredFace'
 
