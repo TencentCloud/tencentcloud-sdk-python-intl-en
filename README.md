@@ -1,5 +1,5 @@
 # Overview
-Welcome to Tencent Cloud Software Development Kit (SDK) 3.0, a companion tool for the TencentCloud API 3.0 platform. Currently supported products include CVM, VPC, and CBS. All Tencent Cloud services and products will be connected to it in the future. The new SDK version is unified and features the same SDK usage, API call methods, error codes, and returned packet formats for different languages.
+Welcome to Tencent Cloud Software Development Kit (SDK), a companion tool for the TencentCloud API 3.0 platform.
 Tencent Cloud SDK for Python helps Python developers debug and use TencentCloud APIs with ease. This document describes Tencent Cloud SDK for Python and how to quickly use it with code examples provided.
 
 # Dependent Environment
