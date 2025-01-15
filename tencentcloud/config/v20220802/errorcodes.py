@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# Internal error.
+INTERNALERROR = 'InternalError'
+
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 

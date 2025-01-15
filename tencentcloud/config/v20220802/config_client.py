@@ -72,6 +72,29 @@ class ConfigClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAggregateDiscoveredResources(self, request):
+        """Account Group access the list of resources.
+
+        :param request: Request instance for ListAggregateDiscoveredResources.
+        :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateDiscoveredResourcesRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.ListAggregateDiscoveredResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAggregateDiscoveredResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAggregateDiscoveredResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListConfigRules(self, request):
         """This API is used to get the rule list.
 

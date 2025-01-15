@@ -18,6 +18,238 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AggregateResourceInfo(AbstractModel):
+    """Resource list information response parameters structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: Resource type
+        :type ResourceType: str
+        :param _ResourceName: Resource name
+        :type ResourceName: str
+        :param _ResourceId: Resource ID
+        :type ResourceId: str
+        :param _ResourceRegion: Region
+
+Note: This field may return null, indicating that no valid value is found.
+        :type ResourceRegion: str
+        :param _ResourceStatus: Resource Status
+
+Note: This field may return null, indicating that no valid value is found.
+        :type ResourceStatus: str
+        :param _ResourceDelete: Whether to delete. 1: Deleted; 0: Not deleted.
+Note: This field may return null, indicating that no valid value is found.
+        :type ResourceDelete: int
+        :param _ResourceCreateTime: Resource creation time
+
+Note: This field may return null, indicating that no valid value is found.
+        :type ResourceCreateTime: str
+        :param _Tags: Tag information
+
+Note: This field may return null, indicating that no valid value is found.
+        :type Tags: list of Tag
+        :param _ResourceZone: Availability zone
+
+Note: This field may return null, indicating that no valid value is found.
+        :type ResourceZone: str
+        :param _ComplianceResult: Compliance status
+Note: This field may return null, indicating that no valid value is found.
+        :type ComplianceResult: str
+        :param _ResourceOwnerId: Resource owner uid
+        :type ResourceOwnerId: int
+        :param _ResourceOwnerName: User nickname
+Note: This field may return null, indicating that no valid value is found.
+        :type ResourceOwnerName: str
+        """
+        self._ResourceType = None
+        self._ResourceName = None
+        self._ResourceId = None
+        self._ResourceRegion = None
+        self._ResourceStatus = None
+        self._ResourceDelete = None
+        self._ResourceCreateTime = None
+        self._Tags = None
+        self._ResourceZone = None
+        self._ComplianceResult = None
+        self._ResourceOwnerId = None
+        self._ResourceOwnerName = None
+
+    @property
+    def ResourceType(self):
+        """Resource type
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        """Resource name
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceId(self):
+        """Resource ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceRegion(self):
+        """Region
+
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def ResourceStatus(self):
+        """Resource Status
+
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+    @property
+    def ResourceDelete(self):
+        """Whether to delete. 1: Deleted; 0: Not deleted.
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: int
+        """
+        return self._ResourceDelete
+
+    @ResourceDelete.setter
+    def ResourceDelete(self, ResourceDelete):
+        self._ResourceDelete = ResourceDelete
+
+    @property
+    def ResourceCreateTime(self):
+        """Resource creation time
+
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._ResourceCreateTime
+
+    @ResourceCreateTime.setter
+    def ResourceCreateTime(self, ResourceCreateTime):
+        self._ResourceCreateTime = ResourceCreateTime
+
+    @property
+    def Tags(self):
+        """Tag information
+
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ResourceZone(self):
+        """Availability zone
+
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._ResourceZone
+
+    @ResourceZone.setter
+    def ResourceZone(self, ResourceZone):
+        self._ResourceZone = ResourceZone
+
+    @property
+    def ComplianceResult(self):
+        """Compliance status
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._ComplianceResult
+
+    @ComplianceResult.setter
+    def ComplianceResult(self, ComplianceResult):
+        self._ComplianceResult = ComplianceResult
+
+    @property
+    def ResourceOwnerId(self):
+        """Resource owner uid
+        :rtype: int
+        """
+        return self._ResourceOwnerId
+
+    @ResourceOwnerId.setter
+    def ResourceOwnerId(self, ResourceOwnerId):
+        self._ResourceOwnerId = ResourceOwnerId
+
+    @property
+    def ResourceOwnerName(self):
+        """User nickname
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._ResourceOwnerName
+
+    @ResourceOwnerName.setter
+    def ResourceOwnerName(self, ResourceOwnerName):
+        self._ResourceOwnerName = ResourceOwnerName
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._ResourceStatus = params.get("ResourceStatus")
+        self._ResourceDelete = params.get("ResourceDelete")
+        self._ResourceCreateTime = params.get("ResourceCreateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ResourceZone = params.get("ResourceZone")
+        self._ComplianceResult = params.get("ComplianceResult")
+        self._ResourceOwnerId = params.get("ResourceOwnerId")
+        self._ResourceOwnerName = params.get("ResourceOwnerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Annotation(AbstractModel):
     """Compliance details
 
@@ -1485,6 +1717,192 @@ class ListAggregateConfigRulesResponse(AbstractModel):
                 obj = ConfigRule()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListAggregateDiscoveredResourcesRequest(AbstractModel):
+    """ListAggregateDiscoveredResources request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxResults: Items per Page
+        :type MaxResults: int
+        :param _AccountGroupId: Account group ID
+        :type AccountGroupId: str
+        :param _Filters: resourceName: Resource name; resourceId: Resource ID; resourceType: Resource type
+        :type Filters: list of Filter
+        :param _Tags: <Tag>
+        :type Tags: list of Tag
+        :param _NextToken: Next page token.
+        :type NextToken: str
+        :param _OrderType: Sorting method asc, desc
+        :type OrderType: str
+        """
+        self._MaxResults = None
+        self._AccountGroupId = None
+        self._Filters = None
+        self._Tags = None
+        self._NextToken = None
+        self._OrderType = None
+
+    @property
+    def MaxResults(self):
+        """Items per Page
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def AccountGroupId(self):
+        """Account group ID
+        :rtype: str
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def Filters(self):
+        """resourceName: Resource name; resourceId: Resource ID; resourceType: Resource type
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Tags(self):
+        """<Tag>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def NextToken(self):
+        """Next page token.
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def OrderType(self):
+        """Sorting method asc, desc
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._MaxResults = params.get("MaxResults")
+        self._AccountGroupId = params.get("AccountGroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAggregateDiscoveredResourcesResponse(AbstractModel):
+    """ListAggregateDiscoveredResources response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: Details.
+        :type Items: list of AggregateResourceInfo
+        :param _NextToken: next page
+Note: This field may return null, indicating that no valid value is found.
+        :type NextToken: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Items = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        """Details.
+        :rtype: list of AggregateResourceInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextToken(self):
+        """next page
+Note: This field may return null, indicating that no valid value is found.
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AggregateResourceInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 
