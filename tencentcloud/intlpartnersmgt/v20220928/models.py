@@ -3967,33 +3967,33 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PolicyProductList(AbstractModel):
-    """
+    """Policy product list entity response parameters structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _PolicyCode: Policy code.
+        :param _PolicyCode: Dealer policy code.
         :type PolicyCode: str
-        :param _ProductCode: Product code, if the return is *, any item under this level is included in the policy product scope.
+        :param _ProductCode: Product level 1 code. If the return value is *, any item at this level is included in the policy product range.
         :type ProductCode: str
-        :param _ProductName: Product name, if the return is *, any item under this level is included in the policy product scope.
+        :param _ProductName: Product level 1 name. If the return value is *, any item at this level is included in the policy product range.
         :type ProductName: str
-        :param _SubProductCode: SubProduct code, if the return is *, any item under this level is included in the policy product scope.
+        :param _SubProductCode: Product level 2 code. If the return value is *, any item at this level is included in the policy product range.
         :type SubProductCode: str
-        :param _SubProductName: SubProduct name, if the return is *, any item under this level is included in the policy product scope.
+        :param _SubProductName: Product level 2 name. If the return value is *, any item at this level is included in the policy product range.
         :type SubProductName: str
-        :param _ComponentTypeCode: Component type code, if the return is *, any item under this level is included in the policy product scope.
+        :param _ComponentTypeCode: Product level 3 code. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentTypeCode: str
-        :param _ComponentTypeName: Component type name, if the return is *, any item under this level is included in the policy product scope.
+        :param _ComponentTypeName: Product level 3 name. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentTypeName: str
-        :param _ComponentCode: Component code, if the return is *, any item under this level is included in the policy product scope.
+        :param _ComponentCode: Product level 4 code. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentCode: str
-        :param _ComponentName: Component name, if the return is *, any item under this level is included in the policy product scope.
+        :param _ComponentName: Product fourth-level name. If the return value is *, any item under this level is included in the policy product scope.
         :type ComponentName: str
-        :param _StartDate: Policy effective date.
+        :param _StartDate: Policy effective time.
         :type StartDate: str
-        :param _EndDate: Policy expiration date.
+        :param _EndDate: Policy expiration time.
         :type EndDate: str
         """
         self._PolicyCode = None
@@ -4010,7 +4010,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def PolicyCode(self):
-        """Policy code.
+        """Dealer policy code.
         :rtype: str
         """
         return self._PolicyCode
@@ -4021,7 +4021,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Product code, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 1 code. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ProductCode
@@ -4032,7 +4032,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ProductName(self):
-        """Product name, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 1 name. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ProductName
@@ -4043,7 +4043,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """SubProduct code, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 2 code. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._SubProductCode
@@ -4054,7 +4054,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def SubProductName(self):
-        """SubProduct name, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 2 name. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._SubProductName
@@ -4065,7 +4065,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentTypeCode(self):
-        """Component type code, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 3 code. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentTypeCode
@@ -4076,7 +4076,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentTypeName(self):
-        """Component type name, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 3 name. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentTypeName
@@ -4087,7 +4087,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """Component code, if the return is *, any item under this level is included in the policy product scope.
+        """Product level 4 code. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentCode
@@ -4098,7 +4098,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentName(self):
-        """Component name, if the return is *, any item under this level is included in the policy product scope.
+        """Product fourth-level name. If the return value is *, any item under this level is included in the policy product scope.
         :rtype: str
         """
         return self._ComponentName
@@ -4109,7 +4109,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def StartDate(self):
-        """Policy effective date.
+        """Policy effective time.
         :rtype: str
         """
         return self._StartDate
@@ -4120,7 +4120,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def EndDate(self):
-        """Policy expiration date.
+        """Policy expiration time.
         :rtype: str
         """
         return self._EndDate
@@ -5193,26 +5193,32 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyCode: Policy code
+        :param _PolicyCode: Dealer policy code.
         :type PolicyCode: str
-        :param _ProductCode: Product code
+        :param _ProductCode: Product level 1 code.
         :type ProductCode: str
-        :param _ProductName: Product name
+        :param _ProductName: Product level 1 name.
         :type ProductName: str
-        :param _SubProductCode: Subproduct code
+        :param _SubProductCode: Product level 2 code.
         :type SubProductCode: str
-        :param _SubProductName: Subproduct name
+        :param _SubProductName: Product level 2 name.
         :type SubProductName: str
+        :param _Page: Page parameter: current page number. The minimum value is 1.
+        :type Page: int
+        :param _PageSize: Page parameter: Indicates the number of entries per page. Value range: [1, 200], default is 200.
+        :type PageSize: int
         """
         self._PolicyCode = None
         self._ProductCode = None
         self._ProductName = None
         self._SubProductCode = None
         self._SubProductName = None
+        self._Page = None
+        self._PageSize = None
 
     @property
     def PolicyCode(self):
-        """Policy code
+        """Dealer policy code.
         :rtype: str
         """
         return self._PolicyCode
@@ -5223,7 +5229,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Product code
+        """Product level 1 code.
         :rtype: str
         """
         return self._ProductCode
@@ -5234,7 +5240,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        """Product name
+        """Product level 1 name.
         :rtype: str
         """
         return self._ProductName
@@ -5245,7 +5251,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """Subproduct code
+        """Product level 2 code.
         :rtype: str
         """
         return self._SubProductCode
@@ -5256,7 +5262,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def SubProductName(self):
-        """Subproduct name
+        """Product level 2 name.
         :rtype: str
         """
         return self._SubProductName
@@ -5265,6 +5271,28 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
     def SubProductName(self, SubProductName):
         self._SubProductName = SubProductName
 
+    @property
+    def Page(self):
+        """Page parameter: current page number. The minimum value is 1.
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        """Page parameter: Indicates the number of entries per page. Value range: [1, 200], default is 200.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
 
     def _deserialize(self, params):
         self._PolicyCode = params.get("PolicyCode")
@@ -5272,6 +5300,8 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
         self._ProductName = params.get("ProductName")
         self._SubProductCode = params.get("SubProductCode")
         self._SubProductName = params.get("SubProductName")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5289,17 +5319,20 @@ class QueryPolicyProductListByCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductList: Policy product list
+        :param _ProductList: Dealer policy product list.
         :type ProductList: list of PolicyProductList
+        :param _Total: Total number of data entries
+        :type Total: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ProductList = None
+        self._Total = None
         self._RequestId = None
 
     @property
     def ProductList(self):
-        """Policy product list
+        """Dealer policy product list.
         :rtype: list of PolicyProductList
         """
         return self._ProductList
@@ -5307,6 +5340,17 @@ class QueryPolicyProductListByCodeResponse(AbstractModel):
     @ProductList.setter
     def ProductList(self, ProductList):
         self._ProductList = ProductList
+
+    @property
+    def Total(self):
+        """Total number of data entries
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
 
     @property
     def RequestId(self):
@@ -5327,6 +5371,7 @@ class QueryPolicyProductListByCodeResponse(AbstractModel):
                 obj = PolicyProductList()
                 obj._deserialize(item)
                 self._ProductList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

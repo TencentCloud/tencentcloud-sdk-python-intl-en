@@ -536,6 +536,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDealsByCond(self, request):
+        """Querying orders
+
+        :param request: Request instance for DescribeDealsByCond.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDealsByCondResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDealsByCond", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDealsByCondResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDosageCosDetailByDate(self, request):
         """This API is used to query COS usage details.
 

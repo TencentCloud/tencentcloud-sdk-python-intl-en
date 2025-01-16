@@ -6849,6 +6849,464 @@ class CreateAllocationTagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Deal(AbstractModel):
+    """Order data object
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: Order ID.
+        :type OrderId: str
+        :param _Status: The status of the order. 1: unpaid; 2: paid; 3: shipping; 4: shipped; 5: shipment failed; 6: refunded; 7: closed case; 8: order expired; 9: order invalidated; 10: product invalidated; 11: third-party payment refused; 12: payment in process
+        :type Status: int
+        :param _Payer: Payer
+        :type Payer: str
+        :param _CreateTime: Creation time
+        :type CreateTime: str
+        :param _Creator: Creator
+        :type Creator: str
+        :param _RealTotalCost: Actual payment amount (pent)
+        :type RealTotalCost: int
+        :param _VoucherDecline: Voucher offset amount (pent)
+        :type VoucherDecline: int
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _GoodsCategoryId: Product category ID
+        :type GoodsCategoryId: int
+        :param _ProductInfo: Product details
+        :type ProductInfo: list of ProductInfo
+        :param _TimeSpan: Duration
+        :type TimeSpan: float
+        :param _TimeUnit: Time unit
+        :type TimeUnit: str
+        :param _Currency: Currency unit
+        :type Currency: str
+        :param _Policy: Discount rate
+        :type Policy: float
+        :param _Price: Unit price (cents)
+        :type Price: float
+        :param _TotalCost: Original price (cents)
+        :type TotalCost: float
+        :param _ProductCode: Product code
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductCode: str
+        :param _SubProductCode: Subproduct code
+        :type SubProductCode: str
+        :param _BigDealId: Large order number.
+        :type BigDealId: str
+        :param _Formula: Refund formula
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Formula: str
+        :param _RefReturnDeals: Refund involves order information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RefReturnDeals: str
+        :param _PayMode: Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)
+        :type PayMode: str
+        :param _Action: Transaction type
+
+`modifyNetworkMode`: Adjusting bandwidth mode
+`modifyNetworkSize`: Adjusting bandwidth size
+`refund`: Refund
+`downgrade`: Downgrade
+upgrade (upgrade)
+renew
+purchase
+preMoveOut annual and monthly subscription resources
+preMoveIn annual and monthly subscription resources
+preToPost prepaid to postpaid
+postMoveOut move out pay-as-you-go resources
+postMoveIn move in pay-as-you-go resources
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Action: str
+        :param _ProductName: Product code Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductName: str
+        :param _SubProductName: Subproduct code Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubProductName: str
+        :param _ResourceId: The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceId: list of str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._Payer = None
+        self._CreateTime = None
+        self._Creator = None
+        self._RealTotalCost = None
+        self._VoucherDecline = None
+        self._ProjectId = None
+        self._GoodsCategoryId = None
+        self._ProductInfo = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._Currency = None
+        self._Policy = None
+        self._Price = None
+        self._TotalCost = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._BigDealId = None
+        self._Formula = None
+        self._RefReturnDeals = None
+        self._PayMode = None
+        self._Action = None
+        self._ProductName = None
+        self._SubProductName = None
+        self._ResourceId = None
+
+    @property
+    def OrderId(self):
+        """Order ID.
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        """The status of the order. 1: unpaid; 2: paid; 3: shipping; 4: shipped; 5: shipment failed; 6: refunded; 7: closed case; 8: order expired; 9: order invalidated; 10: product invalidated; 11: third-party payment refused; 12: payment in process
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Payer(self):
+        """Payer
+        :rtype: str
+        """
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        """Creator
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def RealTotalCost(self):
+        """Actual payment amount (pent)
+        :rtype: int
+        """
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def VoucherDecline(self):
+        """Voucher offset amount (pent)
+        :rtype: int
+        """
+        return self._VoucherDecline
+
+    @VoucherDecline.setter
+    def VoucherDecline(self, VoucherDecline):
+        self._VoucherDecline = VoucherDecline
+
+    @property
+    def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def GoodsCategoryId(self):
+        """Product category ID
+        :rtype: int
+        """
+        return self._GoodsCategoryId
+
+    @GoodsCategoryId.setter
+    def GoodsCategoryId(self, GoodsCategoryId):
+        self._GoodsCategoryId = GoodsCategoryId
+
+    @property
+    def ProductInfo(self):
+        """Product details
+        :rtype: list of ProductInfo
+        """
+        return self._ProductInfo
+
+    @ProductInfo.setter
+    def ProductInfo(self, ProductInfo):
+        self._ProductInfo = ProductInfo
+
+    @property
+    def TimeSpan(self):
+        """Duration
+        :rtype: float
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        """Time unit
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def Currency(self):
+        """Currency unit
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def Policy(self):
+        """Discount rate
+        :rtype: float
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Price(self):
+        """Unit price (cents)
+        :rtype: float
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def TotalCost(self):
+        """Original price (cents)
+        :rtype: float
+        """
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def ProductCode(self):
+        """Product code
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        """Subproduct code
+        :rtype: str
+        """
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def BigDealId(self):
+        """Large order number.
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def Formula(self):
+        """Refund formula
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def RefReturnDeals(self):
+        """Refund involves order information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RefReturnDeals
+
+    @RefReturnDeals.setter
+    def RefReturnDeals(self, RefReturnDeals):
+        self._RefReturnDeals = RefReturnDeals
+
+    @property
+    def PayMode(self):
+        """Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Action(self):
+        """Transaction type
+
+`modifyNetworkMode`: Adjusting bandwidth mode
+`modifyNetworkSize`: Adjusting bandwidth size
+`refund`: Refund
+`downgrade`: Downgrade
+upgrade (upgrade)
+renew
+purchase
+preMoveOut annual and monthly subscription resources
+preMoveIn annual and monthly subscription resources
+preToPost prepaid to postpaid
+postMoveOut move out pay-as-you-go resources
+postMoveIn move in pay-as-you-go resources
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ProductName(self):
+        """Product code Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def SubProductName(self):
+        """Subproduct code Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubProductName
+
+    @SubProductName.setter
+    def SubProductName(self, SubProductName):
+        self._SubProductName = SubProductName
+
+    @property
+    def ResourceId(self):
+        """The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._Payer = params.get("Payer")
+        self._CreateTime = params.get("CreateTime")
+        self._Creator = params.get("Creator")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._VoucherDecline = params.get("VoucherDecline")
+        self._ProjectId = params.get("ProjectId")
+        self._GoodsCategoryId = params.get("GoodsCategoryId")
+        if params.get("ProductInfo") is not None:
+            self._ProductInfo = []
+            for item in params.get("ProductInfo"):
+                obj = ProductInfo()
+                obj._deserialize(item)
+                self._ProductInfo.append(obj)
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._Currency = params.get("Currency")
+        self._Policy = params.get("Policy")
+        self._Price = params.get("Price")
+        self._TotalCost = params.get("TotalCost")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._BigDealId = params.get("BigDealId")
+        self._Formula = params.get("Formula")
+        self._RefReturnDeals = params.get("RefReturnDeals")
+        self._PayMode = params.get("PayMode")
+        self._Action = params.get("Action")
+        self._ProductName = params.get("ProductName")
+        self._SubProductName = params.get("SubProductName")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAllocationTagRequest(AbstractModel):
     """DeleteAllocationTag request structure.
 
@@ -11200,6 +11658,248 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDealsByCondRequest(AbstractModel):
+    """DescribeDealsByCond request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time 
+Example :2016-01-01 00:00:00
+        :type StartTime: str
+        :param _EndTime: End time 
+Example:2016-02-01 00:00:00. 
+It is recommended that the span does not exceed 3 months.
+        :type EndTime: str
+        :param _Limit: The number of records per page. The default is 20, and the maximum is 1,000.
+        :type Limit: int
+        :param _Offset: The page number the records start from, starting from 0. The default is 0.
+        :type Offset: int
+        :param _Status: Order status, default is 4 (successful order)
+Status of the order
+1: unpaid
+2: paid 
+3: shipment in progress
+4: shipped
+5`: Shipment Failed
+6`: Refunded
+7`: Ticket closed
+8`: Order expired
+9`: Order invalid
+10: product invalidated
+11: third-party payment refused
+12: payment in process
+        :type Status: int
+        :param _OrderId: Sub-order number
+Example: 202202021234567
+        :type OrderId: str
+        :param _BigDealId: Large order number.
+Example: 202202021234566
+        :type BigDealId: str
+        :param _ResourceId: Resource ID
+Example:ins-a2bb34
+        :type ResourceId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._Status = None
+        self._OrderId = None
+        self._BigDealId = None
+        self._ResourceId = None
+
+    @property
+    def StartTime(self):
+        """Start time 
+Example :2016-01-01 00:00:00
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End time 
+Example:2016-02-01 00:00:00. 
+It is recommended that the span does not exceed 3 months.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        """The number of records per page. The default is 20, and the maximum is 1,000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """The page number the records start from, starting from 0. The default is 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Status(self):
+        """Order status, default is 4 (successful order)
+Status of the order
+1: unpaid
+2: paid 
+3: shipment in progress
+4: shipped
+5`: Shipment Failed
+6`: Refunded
+7`: Ticket closed
+8`: Order expired
+9`: Order invalid
+10: product invalidated
+11: third-party payment refused
+12: payment in process
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OrderId(self):
+        """Sub-order number
+Example: 202202021234567
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BigDealId(self):
+        """Large order number.
+Example: 202202021234566
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def ResourceId(self):
+        """Resource ID
+Example:ins-a2bb34
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Status = params.get("Status")
+        self._OrderId = params.get("OrderId")
+        self._BigDealId = params.get("BigDealId")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDealsByCondResponse(AbstractModel):
+    """DescribeDealsByCond response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Deals: Order list
+        :type Deals: list of Deal
+        :param _TotalCount: Total number of orders
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Deals = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Deals(self):
+        """Order list
+        :rtype: list of Deal
+        """
+        return self._Deals
+
+    @Deals.setter
+    def Deals(self, Deals):
+        self._Deals = Deals
+
+    @property
+    def TotalCount(self):
+        """Total number of orders
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Deals") is not None:
+            self._Deals = []
+            for item in params.get("Deals"):
+                obj = Deal()
+                obj._deserialize(item)
+                self._Deals.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDosageCosDetailByDateRequest(AbstractModel):
     """DescribeDosageCosDetailByDate request structure.
 
@@ -12693,6 +13393,57 @@ class PayModeSummaryOverviewItem(AbstractModel):
                 obj = ActionSummaryOverviewItem()
                 obj._deserialize(item)
                 self._Detail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductInfo(AbstractModel):
+    """Product details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Product detail name identifier
+        :type Name: str
+        :param _Value: Product details
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        """Product detail name identifier
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """Product details
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
