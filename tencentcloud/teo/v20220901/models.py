@@ -33140,7 +33140,7 @@ class RuleCondition(AbstractModel):
     def __init__(self):
         r"""
         :param _Operator: Operator. Valid values:
-<li>`equals`: Equals</li>
+<li>`equal`: Equal</li>
 <li>`notEquals`: Does not equal</li>
 <li>`exist`: Exists</li>
 <li>`notexist`: Does not exist</li>
@@ -33181,7 +33181,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Operator(self):
         """Operator. Valid values:
-<li>`equals`: Equals</li>
+<li>`equal`: Equal</li>
 <li>`notEquals`: Does not equal</li>
 <li>`exist`: Exists</li>
 <li>`notexist`: Does not exist</li>

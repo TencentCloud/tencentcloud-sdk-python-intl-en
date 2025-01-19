@@ -11115,15 +11115,21 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
         :param _ImageBase64: The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
         :type ImageBase64: str
+        :param _BackImageBase64: Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :type BackImageBase64: str
         :param _ImageUrl: The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
         :type ImageUrl: str
+        :param _BackImageUrl: The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        :type BackImageUrl: str
         :param _CropPortrait: Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
 When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
         :type CropPortrait: bool
         """
         self._ImageBase64 = None
+        self._BackImageBase64 = None
         self._ImageUrl = None
+        self._BackImageUrl = None
         self._CropPortrait = None
 
     @property
@@ -11139,6 +11145,17 @@ Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are pr
         self._ImageBase64 = ImageBase64
 
     @property
+    def BackImageBase64(self):
+        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
     def ImageUrl(self):
         """The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
 We recommend that you store the image in Tencent Cloud for higher download speed and stability.
@@ -11149,6 +11166,17 @@ We recommend that you store the image in Tencent Cloud for higher download speed
     @ImageUrl.setter
     def ImageUrl(self, ImageUrl):
         self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageUrl(self):
+        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
 
     @property
     def CropPortrait(self):
@@ -11165,7 +11193,9 @@ When this parameter is set to `true`, the Base64-encoded value of the profile ph
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
+        self._BackImageBase64 = params.get("BackImageBase64")
         self._ImageUrl = params.get("ImageUrl")
+        self._BackImageUrl = params.get("BackImageUrl")
         self._CropPortrait = params.get("CropPortrait")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11210,6 +11240,8 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type SerialNumber: str
         :param _Address: Address
         :type Address: str
+        :param _LaserID: LaserID in the back of the card.
+        :type LaserID: str
         :param _PortraitImage: Identity photo
         :type PortraitImage: str
         :param _WarnCardInfos: Card Warning Information
@@ -11240,6 +11272,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Religion = None
         self._SerialNumber = None
         self._Address = None
+        self._LaserID = None
         self._PortraitImage = None
         self._WarnCardInfos = None
         self._AdvancedInfo = None
@@ -11389,6 +11422,17 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Address = Address
 
     @property
+    def LaserID(self):
+        """LaserID in the back of the card.
+        :rtype: str
+        """
+        return self._LaserID
+
+    @LaserID.setter
+    def LaserID(self, LaserID):
+        self._LaserID = LaserID
+
+    @property
     def PortraitImage(self):
         """Identity photo
         :rtype: str
@@ -11455,6 +11499,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._Religion = params.get("Religion")
         self._SerialNumber = params.get("SerialNumber")
         self._Address = params.get("Address")
+        self._LaserID = params.get("LaserID")
         self._PortraitImage = params.get("PortraitImage")
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._AdvancedInfo = params.get("AdvancedInfo")
