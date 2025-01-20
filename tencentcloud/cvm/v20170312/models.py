@@ -2761,14 +2761,14 @@ class DeleteDisasterRecoverGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisasterRecoverGroupIds: ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 100 spread placement groups in each request.
+        :param _DisasterRecoverGroupIds: ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 10 spread placement groups in each request.
         :type DisasterRecoverGroupIds: list of str
         """
         self._DisasterRecoverGroupIds = None
 
     @property
     def DisasterRecoverGroupIds(self):
-        """ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 100 spread placement groups in each request.
+        """ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 10 spread placement groups in each request.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -3490,7 +3490,7 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisasterRecoverGroupIds: ID list of spread placement groups. You can operate up to 100 spread placement groups in each request.
+        :param _DisasterRecoverGroupIds: ID list of spread placement groups. You can operate up to 10 spread placement groups in each request.
         :type DisasterRecoverGroupIds: list of str
         :param _Name: Name of a spread placement group. Fuzzy match is supported.
         :type Name: str
@@ -3506,7 +3506,7 @@ class DescribeDisasterRecoverGroupsRequest(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
-        """ID list of spread placement groups. You can operate up to 100 spread placement groups in each request.
+        """ID list of spread placement groups. You can operate up to 10 spread placement groups in each request.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds

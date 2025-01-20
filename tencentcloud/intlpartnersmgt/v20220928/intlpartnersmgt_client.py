@@ -291,6 +291,31 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomerBillDownloadUrl(self, request):
+        """This API is used to get the URL for downloading the customer bill file by reseller. The download conditions are as follows:
+        1. Detailed bills (billDetail and billDetailPack) can be downloaded starting from June 2022; resource bills (billResource and billResourcePack) can be downloaded starting from November 2023.
+        2. Bill packages (billDetailPack and billResourcePack) can only be downloaded after billing.
+
+        :param request: Request instance for DescribeCustomerBillDownloadUrl.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerBillDownloadUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerBillDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCustomerBillSummary(self, request):
         """This API is used to query the total amount of customer bills.
 
