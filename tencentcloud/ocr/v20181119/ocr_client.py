@@ -814,6 +814,32 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeThaiPinkCard(self, request):
+        """This API is used to recognize the fields on a Thai identity card, including name in Thai, name in English, address, date of birth, identification number, date of issue, and date of expiry.
+        Currently, this API is not generally available. For more information, please [contact your sales rep](https://intl.cloud.tencent.com/about/connect?from_cn_redirect=1).
+
+        A maximum of 5 requests can be initiated per second for this API.
+
+        :param request: Request instance for RecognizeThaiPinkCard.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeThaiPinkCardRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeThaiPinkCardResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeThaiPinkCard", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeThaiPinkCardResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SealOCR(self, request):
         """This API is used to recognize various types of seals, including invoice seals and finance seals. It is suitable for scenarios such as official document and invoice/ticket OCR.
 

@@ -10630,6 +10630,8 @@ Single action example: "blink"
 Multiple action example: "blink,mouth"
 The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
         :type ActionList: str
+        :param _LivenessRetryLimit: Control liveness retry number.The value range is 1-99.
+        :type LivenessRetryLimit: int
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -10643,6 +10645,7 @@ The default value is blink. The different action types passed in this parameter 
         self._Language = None
         self._AutoDowngrade = None
         self._ActionList = None
+        self._LivenessRetryLimit = None
 
     @property
     def AutoSkipStartPage(self):
@@ -10813,6 +10816,17 @@ The default value is blink. The different action types passed in this parameter 
     def ActionList(self, ActionList):
         self._ActionList = ActionList
 
+    @property
+    def LivenessRetryLimit(self):
+        """Control liveness retry number.The value range is 1-99.
+        :rtype: int
+        """
+        return self._LivenessRetryLimit
+
+    @LivenessRetryLimit.setter
+    def LivenessRetryLimit(self, LivenessRetryLimit):
+        self._LivenessRetryLimit = LivenessRetryLimit
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -10827,6 +10841,7 @@ The default value is blink. The different action types passed in this parameter 
         self._Language = params.get("Language")
         self._AutoDowngrade = params.get("AutoDowngrade")
         self._ActionList = params.get("ActionList")
+        self._LivenessRetryLimit = params.get("LivenessRetryLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

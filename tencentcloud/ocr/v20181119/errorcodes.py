@@ -103,3 +103,6 @@ RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = 'ResourceUnavailable.ResourcePackage
 
 # Exceptional billing status.
 RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = 'ResourcesSoldOut.ChargeStatusException'
+
+# 
+UNKNOWNPARAMETER = 'UnknownParameter'

@@ -11506,6 +11506,348 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecognizeThaiPinkCardRequest(AbstractModel):
+    """RecognizeThaiPinkCard request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
+        :type ImageBase64: str
+        :param _ImageUrl: The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+        :type ImageUrl: str
+        :param _CropPortrait: Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
+When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
+        :type CropPortrait: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._CropPortrait = None
+
+    @property
+    def ImageBase64(self):
+        """The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+Either `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        """The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.
+We recommend that you store the image in Tencent Cloud for higher download speed and stability.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def CropPortrait(self):
+        """Whether to crop the profile photo. The default value is `false`, meaning not to return the Base64-encoded value of the profile photo on the Thai identity card.
+When this parameter is set to `true`, the Base64-encoded value of the profile photo on the Thai identity card after rotation correction is returned.
+        :rtype: bool
+        """
+        return self._CropPortrait
+
+    @CropPortrait.setter
+    def CropPortrait(self, CropPortrait):
+        self._CropPortrait = CropPortrait
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._CropPortrait = params.get("CropPortrait")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeThaiPinkCardResponse(AbstractModel):
+    """RecognizeThaiPinkCard response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Country: Country
+        :type Country: str
+        :param _IDNumber: ID number
+        :type IDNumber: str
+        :param _ThaiName: Name in Thai
+        :type ThaiName: str
+        :param _EnName: Name in English
+        :type EnName: str
+        :param _ThaiDOB: Date of birth in Thai
+        :type ThaiDOB: str
+        :param _EnDOB: Date of birth in English
+        :type EnDOB: str
+        :param _PhotoNumber: Photo number
+        :type PhotoNumber: str
+        :param _ThaiAddress: Address in Thai
+        :type ThaiAddress: str
+        :param _ThaiDateOfIssue: Date of issue in Thai
+        :type ThaiDateOfIssue: str
+        :param _DateOfIssue: Date of issue in English
+        :type DateOfIssue: str
+        :param _ThaiDateOfExpiry: Expiration date in Thai
+        :type ThaiDateOfExpiry: str
+        :param _DateOfExpiry: Expiration date in English
+        :type DateOfExpiry: str
+        :param _IssuingAgency: Issuing agency
+        :type IssuingAgency: str
+        :param _RefNumber: Ref number
+        :type RefNumber: str
+        :param _AdvancedInfo: Field confidence:
+ { "ID": { "Confidence": 0.9999 }, "ThaiName": { "Confidence": 0.9996 } }
+        :type AdvancedInfo: str
+        :param _PortraitImage: Identity photo
+        :type PortraitImage: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Country = None
+        self._IDNumber = None
+        self._ThaiName = None
+        self._EnName = None
+        self._ThaiDOB = None
+        self._EnDOB = None
+        self._PhotoNumber = None
+        self._ThaiAddress = None
+        self._ThaiDateOfIssue = None
+        self._DateOfIssue = None
+        self._ThaiDateOfExpiry = None
+        self._DateOfExpiry = None
+        self._IssuingAgency = None
+        self._RefNumber = None
+        self._AdvancedInfo = None
+        self._PortraitImage = None
+        self._RequestId = None
+
+    @property
+    def Country(self):
+        """Country
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def IDNumber(self):
+        """ID number
+        :rtype: str
+        """
+        return self._IDNumber
+
+    @IDNumber.setter
+    def IDNumber(self, IDNumber):
+        self._IDNumber = IDNumber
+
+    @property
+    def ThaiName(self):
+        """Name in Thai
+        :rtype: str
+        """
+        return self._ThaiName
+
+    @ThaiName.setter
+    def ThaiName(self, ThaiName):
+        self._ThaiName = ThaiName
+
+    @property
+    def EnName(self):
+        """Name in English
+        :rtype: str
+        """
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def ThaiDOB(self):
+        """Date of birth in Thai
+        :rtype: str
+        """
+        return self._ThaiDOB
+
+    @ThaiDOB.setter
+    def ThaiDOB(self, ThaiDOB):
+        self._ThaiDOB = ThaiDOB
+
+    @property
+    def EnDOB(self):
+        """Date of birth in English
+        :rtype: str
+        """
+        return self._EnDOB
+
+    @EnDOB.setter
+    def EnDOB(self, EnDOB):
+        self._EnDOB = EnDOB
+
+    @property
+    def PhotoNumber(self):
+        """Photo number
+        :rtype: str
+        """
+        return self._PhotoNumber
+
+    @PhotoNumber.setter
+    def PhotoNumber(self, PhotoNumber):
+        self._PhotoNumber = PhotoNumber
+
+    @property
+    def ThaiAddress(self):
+        """Address in Thai
+        :rtype: str
+        """
+        return self._ThaiAddress
+
+    @ThaiAddress.setter
+    def ThaiAddress(self, ThaiAddress):
+        self._ThaiAddress = ThaiAddress
+
+    @property
+    def ThaiDateOfIssue(self):
+        """Date of issue in Thai
+        :rtype: str
+        """
+        return self._ThaiDateOfIssue
+
+    @ThaiDateOfIssue.setter
+    def ThaiDateOfIssue(self, ThaiDateOfIssue):
+        self._ThaiDateOfIssue = ThaiDateOfIssue
+
+    @property
+    def DateOfIssue(self):
+        """Date of issue in English
+        :rtype: str
+        """
+        return self._DateOfIssue
+
+    @DateOfIssue.setter
+    def DateOfIssue(self, DateOfIssue):
+        self._DateOfIssue = DateOfIssue
+
+    @property
+    def ThaiDateOfExpiry(self):
+        """Expiration date in Thai
+        :rtype: str
+        """
+        return self._ThaiDateOfExpiry
+
+    @ThaiDateOfExpiry.setter
+    def ThaiDateOfExpiry(self, ThaiDateOfExpiry):
+        self._ThaiDateOfExpiry = ThaiDateOfExpiry
+
+    @property
+    def DateOfExpiry(self):
+        """Expiration date in English
+        :rtype: str
+        """
+        return self._DateOfExpiry
+
+    @DateOfExpiry.setter
+    def DateOfExpiry(self, DateOfExpiry):
+        self._DateOfExpiry = DateOfExpiry
+
+    @property
+    def IssuingAgency(self):
+        """Issuing agency
+        :rtype: str
+        """
+        return self._IssuingAgency
+
+    @IssuingAgency.setter
+    def IssuingAgency(self, IssuingAgency):
+        self._IssuingAgency = IssuingAgency
+
+    @property
+    def RefNumber(self):
+        """Ref number
+        :rtype: str
+        """
+        return self._RefNumber
+
+    @RefNumber.setter
+    def RefNumber(self, RefNumber):
+        self._RefNumber = RefNumber
+
+    @property
+    def AdvancedInfo(self):
+        """Field confidence:
+ { "ID": { "Confidence": 0.9999 }, "ThaiName": { "Confidence": 0.9996 } }
+        :rtype: str
+        """
+        return self._AdvancedInfo
+
+    @AdvancedInfo.setter
+    def AdvancedInfo(self, AdvancedInfo):
+        self._AdvancedInfo = AdvancedInfo
+
+    @property
+    def PortraitImage(self):
+        """Identity photo
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Country = params.get("Country")
+        self._IDNumber = params.get("IDNumber")
+        self._ThaiName = params.get("ThaiName")
+        self._EnName = params.get("EnName")
+        self._ThaiDOB = params.get("ThaiDOB")
+        self._EnDOB = params.get("EnDOB")
+        self._PhotoNumber = params.get("PhotoNumber")
+        self._ThaiAddress = params.get("ThaiAddress")
+        self._ThaiDateOfIssue = params.get("ThaiDateOfIssue")
+        self._DateOfIssue = params.get("DateOfIssue")
+        self._ThaiDateOfExpiry = params.get("ThaiDateOfExpiry")
+        self._DateOfExpiry = params.get("DateOfExpiry")
+        self._IssuingAgency = params.get("IssuingAgency")
+        self._RefNumber = params.get("RefNumber")
+        self._AdvancedInfo = params.get("AdvancedInfo")
+        self._PortraitImage = params.get("PortraitImage")
+        self._RequestId = params.get("RequestId")
+
+
 class Rect(AbstractModel):
     """Coordinates
 
