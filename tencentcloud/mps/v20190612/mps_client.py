@@ -1085,6 +1085,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamLinkSecurityGroup(self, request):
+        """This API is used to query a security group.
+
+        :param request: Request instance for DescribeStreamLinkSecurityGroup.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamLinkSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamLinkSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskDetail(self, request):
         """This API is used to query the details of execution status and result of a task submitted in the last 3 days by task ID.
 

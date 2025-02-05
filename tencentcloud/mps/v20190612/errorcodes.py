@@ -53,6 +53,12 @@ INTERNALERROR_UPLOADWATERMARKERROR = 'InternalError.UploadWatermarkError'
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
 
+# InvalidParameter.Id
+INVALIDPARAMETER_ID = 'InvalidParameter.Id'
+
+# InvalidParameter.NotFound
+INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
+
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 

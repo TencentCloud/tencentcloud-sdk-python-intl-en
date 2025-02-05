@@ -1590,7 +1590,7 @@ Setting it to `true` will clear data disks, which means that CVM newly created o
 Setting it to `true` will clear the hostname settings, which means that CVM newly created on this launch configuration will have no hostname.
         :type ClearHostNameSettings: bool
         :param _ClearInstanceNameSettings: Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the “as-{{AutoScalingGroupName}} format.
+Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the as-{{AutoScalingGroupName}} format.
         :type ClearInstanceNameSettings: bool
         :param _ClearDisasterRecoverGroupIds: Whether to clear placement group information. This parameter is optional. Default value: `false`.
 `True` means clearing placement group information. After that, no placement groups are specified for CVMs created based on the information.
@@ -1598,6 +1598,8 @@ Setting it to `true` will clear the instance name settings, which means that CVM
         :param _ClearInstanceTags: Whether to clear the instance tag list. This parameter is optional, and its default value is false.
 If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.
         :type ClearInstanceTags: bool
+        :param _ClearMetadata: Whether to clear metadata, optional, defaults to false. Setting it to true will clear metadata, the CVMs created based on this will not be associated with custom metadata.
+        :type ClearMetadata: bool
         """
         self._LaunchConfigurationId = None
         self._ClearDataDisks = None
@@ -1605,6 +1607,7 @@ If true is filled in, it indicates that the instance tag list should be cleared.
         self._ClearInstanceNameSettings = None
         self._ClearDisasterRecoverGroupIds = None
         self._ClearInstanceTags = None
+        self._ClearMetadata = None
 
     @property
     def LaunchConfigurationId(self):
@@ -1644,7 +1647,7 @@ Setting it to `true` will clear the hostname settings, which means that CVM newl
     @property
     def ClearInstanceNameSettings(self):
         """Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.
-Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the “as-{{AutoScalingGroupName}} format.
+Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the as-{{AutoScalingGroupName}} format.
         :rtype: bool
         """
         return self._ClearInstanceNameSettings
@@ -1677,6 +1680,17 @@ If true is filled in, it indicates that the instance tag list should be cleared.
     def ClearInstanceTags(self, ClearInstanceTags):
         self._ClearInstanceTags = ClearInstanceTags
 
+    @property
+    def ClearMetadata(self):
+        """Whether to clear metadata, optional, defaults to false. Setting it to true will clear metadata, the CVMs created based on this will not be associated with custom metadata.
+        :rtype: bool
+        """
+        return self._ClearMetadata
+
+    @ClearMetadata.setter
+    def ClearMetadata(self, ClearMetadata):
+        self._ClearMetadata = ClearMetadata
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -1685,6 +1699,7 @@ If true is filled in, it indicates that the instance tag list should be cleared.
         self._ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         self._ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
         self._ClearInstanceTags = params.get("ClearInstanceTags")
+        self._ClearMetadata = params.get("ClearMetadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2506,7 +2521,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type LaunchConfigurationName: str
         :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
         :type ImageId: str
-        :param _ProjectId: Project ID of the launch configuration. The default project is used if it’s left blank.
+        :param _ProjectId: Project ID of the launch configuration. The default project is used if it is left blank.
 Note that this project ID is not the same as the project ID of the scaling group. 
         :type ProjectId: int
         :param _InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
@@ -2570,6 +2585,8 @@ Note: This field is default to empty
         :type ImageFamily: str
         :param _DedicatedClusterId: CDC ID.
         :type DedicatedClusterId: str
+        :param _Metadata: Custom metadata.
+        :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         self._LaunchConfigurationName = None
         self._ImageId = None
@@ -2598,6 +2615,7 @@ Note: This field is default to empty
         self._DisasterRecoverGroupIds = None
         self._ImageFamily = None
         self._DedicatedClusterId = None
+        self._Metadata = None
 
     @property
     def LaunchConfigurationName(self):
@@ -2623,7 +2641,7 @@ Note: This field is default to empty
 
     @property
     def ProjectId(self):
-        """Project ID of the launch configuration. The default project is used if it’s left blank.
+        """Project ID of the launch configuration. The default project is used if it is left blank.
 Note that this project ID is not the same as the project ID of the scaling group. 
         :rtype: int
         """
@@ -2910,6 +2928,17 @@ Note: This field is default to empty
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def Metadata(self):
+        """Custom metadata.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationName = params.get("LaunchConfigurationName")
@@ -2972,6 +3001,9 @@ Note: This field is default to empty
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._ImageFamily = params.get("ImageFamily")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3421,7 +3453,7 @@ class CreateScalingPolicyRequest(AbstractModel):
         :type ScalingPolicyName: str
         :param _ScalingPolicyType: Scaling policy type. Valid values: <br><li>`SIMPLE` (default): A simple policy</li><li>`TARGET_TRACKING`: A target tracking policy</li>.
         :type ScalingPolicyType: str
-        :param _AdjustmentType: The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        :param _AdjustmentType: The method to adjust the desired capacity after the alarm is triggered. It is only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
         :type AdjustmentType: str
         :param _AdjustmentValue: Adjustment value for the expected number of instances after an alarm is triggered, which is applicable only to simple policies.
 <li>When AdjustmentType is set to CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances after the alarm is triggered, while a negative value indicates a decrease in the number of instances after the alarm is triggered.</li>
@@ -3430,14 +3462,14 @@ class CreateScalingPolicyRequest(AbstractModel):
         :type AdjustmentValue: int
         :param _Cooldown: Cooldown period (in seconds). This parameter is only applicable to a simple policy. Default value: 300.
         :type Cooldown: int
-        :param _MetricAlarm: Alarm monitoring metric. It’s only available when `ScalingPolicyType` is `Simple`.
+        :param _MetricAlarm: Alarm monitoring metric. It is only available when `ScalingPolicyType` is `Simple`.
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
-        :param _PredefinedMetricType: Predefined monitoring item, which is applicable only to target tracking policies. Valid values:
-<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization.</li>
-<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth.</li>
-<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth.</li>
-<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth.</li>
-<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth.</li>
+        :param _PredefinedMetricType: Predefined monitoring item, applicable only to target tracking policies. Valid values:
+<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization</li>
+<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth</li>
+<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>
+<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth</li>
+<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>
         :type PredefinedMetricType: str
         :param _TargetValue: Target value, which is applicable only to target tracking policies.
 <li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>
@@ -3446,7 +3478,7 @@ class CreateScalingPolicyRequest(AbstractModel):
 <li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>
 <li>ASG_AVG_WAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>
         :type TargetValue: int
-        :param _EstimatedInstanceWarmup: Instance warm-up period (in seconds). It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.
+        :param _EstimatedInstanceWarmup: Instance warm-up period (in seconds). It is only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.
         :type EstimatedInstanceWarmup: int
         :param _DisableScaleIn: Whether to disable scale-in, which is applicable only to target tracking policies. Default value: false. Valid values:
 <li>true: Target tracking policies trigger only scale-out.</li>
@@ -3504,7 +3536,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentType(self):
-        """The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        """The method to adjust the desired capacity after the alarm is triggered. It is only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
         :rtype: str
         """
         return self._AdjustmentType
@@ -3540,7 +3572,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def MetricAlarm(self):
-        """Alarm monitoring metric. It’s only available when `ScalingPolicyType` is `Simple`.
+        """Alarm monitoring metric. It is only available when `ScalingPolicyType` is `Simple`.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
         """
         return self._MetricAlarm
@@ -3551,12 +3583,12 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def PredefinedMetricType(self):
-        """Predefined monitoring item, which is applicable only to target tracking policies. Valid values:
-<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization.</li>
-<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth.</li>
-<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth.</li>
-<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth.</li>
-<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth.</li>
+        """Predefined monitoring item, applicable only to target tracking policies. Valid values:
+<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization</li>
+<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth</li>
+<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>
+<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth</li>
+<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>
         :rtype: str
         """
         return self._PredefinedMetricType
@@ -3583,7 +3615,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def EstimatedInstanceWarmup(self):
-        """Instance warm-up period (in seconds). It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.
+        """Instance warm-up period (in seconds). It is only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.
         :rtype: int
         """
         return self._EstimatedInstanceWarmup
@@ -9109,9 +9141,9 @@ class LoginSettings(AbstractModel):
     def __init__(self):
         r"""
         :param _Password: Instance login password. The password complexity requirements vary according to the operating system type. The details are as follows:
-<li>The login password for Linux instances should contain 8 to 16 characters, including at least two types of the following characters: letters, digits, and special characters (such as ()`~!@#$%^&*-+=|{}[]:;',.?/).</li>
-<li>The login password for Windows instances should contain 12 to 16 characters, including at least three types of the following characters: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+={}[]:;',.?/).</li>
-If this parameter is not specified, the system will generate a random password and notify the user via the message center.
+- For a Linux system, the password should contain 8 to 30 characters consisting of at least two of the four character types: lowercase letters, uppercase letters, digits, and special characters.
+- For a Windows system, the password should contain 12 to 30 characters consisting of at least three of the four character types: lowercase letters, uppercase letters, digits, and special characters.
+- If this parameter is not specified, the system will generate a random password and notify the user via the message centerSupported special characters: ( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /
         :type Password: str
         :param _KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
         :type KeyIds: list of str
@@ -9127,9 +9159,9 @@ If this parameter is not specified, the system will generate a random password a
     @property
     def Password(self):
         """Instance login password. The password complexity requirements vary according to the operating system type. The details are as follows:
-<li>The login password for Linux instances should contain 8 to 16 characters, including at least two types of the following characters: letters, digits, and special characters (such as ()`~!@#$%^&*-+=|{}[]:;',.?/).</li>
-<li>The login password for Windows instances should contain 12 to 16 characters, including at least three types of the following characters: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+={}[]:;',.?/).</li>
-If this parameter is not specified, the system will generate a random password and notify the user via the message center.
+- For a Linux system, the password should contain 8 to 30 characters consisting of at least two of the four character types: lowercase letters, uppercase letters, digits, and special characters.
+- For a Windows system, the password should contain 12 to 30 characters consisting of at least three of the four character types: lowercase letters, uppercase letters, digits, and special characters.
+- If this parameter is not specified, the system will generate a random password and notify the user via the message centerSupported special characters: ( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /
         :rtype: str
         """
         return self._Password
@@ -9167,6 +9199,98 @@ If this parameter is not specified, the system will generate a random password a
         self._Password = params.get("Password")
         self._KeyIds = params.get("KeyIds")
         self._KeepImageLogin = params.get("KeepImageLogin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Metadata(AbstractModel):
+    """Custom Metadata
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: Custom metadata key-value pair list.
+        :type Items: list of MetadataItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        """Custom metadata key-value pair list.
+        :rtype: list of MetadataItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MetadataItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetadataItem(AbstractModel):
+    """A set of key-value pair information for custom Metadata
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Custom metadata key.
+        :type Key: str
+        :param _Value: Custom metadata value.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """Custom metadata key.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """Custom metadata value.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9942,6 +10066,8 @@ This parameter will overwrite the original instance tag list. To add new tags, y
         :type ImageFamily: str
         :param _DedicatedClusterId: Cloud Dedicated Cluster (CDC) ID.
         :type DedicatedClusterId: str
+        :param _Metadata: Custom metadata.
+        :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -9968,6 +10094,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
         self._InstanceTags = None
         self._ImageFamily = None
         self._DedicatedClusterId = None
+        self._Metadata = None
 
     @property
     def LaunchConfigurationId(self):
@@ -10269,6 +10396,17 @@ This parameter will overwrite the original instance tag list. To add new tags, y
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def Metadata(self):
+        """Custom metadata.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -10324,6 +10462,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
                 self._InstanceTags.append(obj)
         self._ImageFamily = params.get("ImageFamily")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12354,15 +12495,15 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class RunMonitorServiceEnabled(AbstractModel):
-    """This describes the information related to the Cloud Monitor service.
+    """Information related to Tencent Cloud Observability Platform (TCOP, formerly Cloud Monitor).
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether to enable the [Tencent Cloud Observability Platform](https://www.tencentcloud.com/document/product/248?lang=en&pg=) service. Valid values:
-<li>TRUE: enable.</li>
-<li>FALSE: disable.</li>
+        :param _Enabled: Whether [TCOP (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) is enabled. Valid values:
+<li>TRUE: enabled</li>
+<li>FALSE: disabled</li>
 Default value: TRUE.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Enabled: bool
@@ -12371,9 +12512,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enabled(self):
-        """Whether to enable the [Tencent Cloud Observability Platform](https://www.tencentcloud.com/document/product/248?lang=en&pg=) service. Valid values:
-<li>TRUE: enable.</li>
-<li>FALSE: disable.</li>
+        """Whether [TCOP (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) is enabled. Valid values:
+<li>TRUE: enabled</li>
+<li>FALSE: disabled</li>
 Default value: TRUE.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
@@ -13093,11 +13234,14 @@ RESET: Performing a system reinstallation on unhealthy instances to keep informa
 Default value: RECREATE.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReplaceMode: str
+        :param _AutoUpdateInstanceTags: Automatic instance tag update. The default value is false. If this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (This feature takes effect for tag creation and editing but not tag deletion.) The update does not take effect immediately due to certain latency.
+        :type AutoUpdateInstanceTags: bool
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
         self._ReplaceLoadBalancerUnhealthy = None
         self._ReplaceMode = None
+        self._AutoUpdateInstanceTags = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -13150,12 +13294,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ReplaceMode(self, ReplaceMode):
         self._ReplaceMode = ReplaceMode
 
+    @property
+    def AutoUpdateInstanceTags(self):
+        """Automatic instance tag update. The default value is false. If this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (This feature takes effect for tag creation and editing but not tag deletion.) The update does not take effect immediately due to certain latency.
+        :rtype: bool
+        """
+        return self._AutoUpdateInstanceTags
+
+    @AutoUpdateInstanceTags.setter
+    def AutoUpdateInstanceTags(self, AutoUpdateInstanceTags):
+        self._AutoUpdateInstanceTags = AutoUpdateInstanceTags
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self._ScalingMode = params.get("ScalingMode")
         self._ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
         self._ReplaceMode = params.get("ReplaceMode")
+        self._AutoUpdateInstanceTags = params.get("AutoUpdateInstanceTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
