@@ -76,6 +76,31 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApproveClientApply(self, request):
+        """Description: This API is used by resellers to review applications to become sub-customers. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.
+
+        Callable roles: Reseller, Distributer, Second-level reseller
+
+        :param request: Request instance for ApproveClientApply.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ApproveClientApplyRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ApproveClientApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApproveClientApply", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApproveClientApplyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccount(self, request):
         """This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
         1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.
@@ -607,6 +632,31 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("QueryPartnerCredit", params, headers=headers)
             response = json.loads(body)
             model = models.QueryPartnerCreditResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryPendingClientsV2(self, request):
+        """Description: This API is used by resellers to query the list of sub-customers pending review. Note: This API is used to apply for the allowlist. If needed, please contact your business representative.
+
+        Callable roles: Reseller, Distributer, Second-level reseller
+
+        :param request: Request instance for QueryPendingClientsV2.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPendingClientsV2Request`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPendingClientsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryPendingClientsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryPendingClientsV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

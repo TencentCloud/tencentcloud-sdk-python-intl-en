@@ -20,6 +20,24 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# The account is a group account and cannot be bound as a sub-customer.
+FAILEDOPERATION_BINDORGANIZATIONACCOUNT = 'FailedOperation.BindOrganizationAccount'
+
+# The sub-customer balance is less than zero.
+FAILEDOPERATION_CLIENTBALANCEISLESSOREQUALZERO = 'FailedOperation.ClientBalanceIsLessOrEqualZero'
+
+# The sub-customer has purchased an sp package.
+FAILEDOPERATION_CLIENTBUYSP = 'FailedOperation.ClientBuySP'
+
+# The sub-customer has created a shared unit.
+FAILEDOPERATION_CLIENTCREATESHAREUNIT = 'FailedOperation.ClientCreateShareUnit'
+
+# The sub-customer has joined a shared unit.
+FAILEDOPERATION_CLIENTJOINSHAREUNIT = 'FailedOperation.ClientJoinShareUnit'
+
+# The user has not applied to become a sub-customer.
+FAILEDOPERATION_CLIENTNOTAPPLY = 'FailedOperation.ClientNotApply'
+
 # 
 FAILEDOPERATION_EXCEEDMAXBINDCOUNT = 'FailedOperation.ExceedMaxBindCount'
 
@@ -38,11 +56,17 @@ FAILEDOPERATION_SENDVERIFYCODELIMIT = 'FailedOperation.SendVerifyCodeLimit'
 # The interval for sending SMS verification codes should be greater than 60 seconds. Please try again later.
 FAILEDOPERATION_SENDVERIFYCODELIMIT60 = 'FailedOperation.SendVerifyCodeLimit60'
 
+# Tencent cloud ka account cannot become a sub-customer.
+FAILEDOPERATION_UINALREADYKA = 'FailedOperation.UinAlreadyKA'
+
 # Invalid UIN
 FAILEDOPERATION_UININVALID = 'FailedOperation.UinInvalid'
 
 # UIN is not a reseller.
 FAILEDOPERATION_UINNOTAGENT = 'FailedOperation.UinNotAgent'
+
+# UIN is a non-reseller (master reseller, reseller, sub-reseller) account.
+FAILEDOPERATION_UINNOTRESELLER = 'FailedOperation.UinNotReseller'
 
 # Incorrect verification code.
 FAILEDOPERATION_VERIFICATIONCODEILLEGAL = 'FailedOperation.VerificationCodeIllegal'
@@ -118,6 +142,12 @@ INVALIDPARAMETERVALUE_PASSWORDEMPTY = 'InvalidParameterValue.PasswordEmpty'
 
 # InvalidParameterValue.PhoneNumEmpty
 INVALIDPARAMETERVALUE_PHONENUMEMPTY = 'InvalidParameterValue.PhoneNumEmpty'
+
+# The user has become a sub-customer of another reseller.
+INVALIDPARAMETERVALUE_UINALREADYCLIENT = 'InvalidParameterValue.UinAlreadyClient'
+
+# The user is a sub-account.
+INVALIDPARAMETERVALUE_UINISSUBACCOUNT = 'InvalidParameterValue.UinIsSubAccount'
 
 # Invalid UinList. Array length value: 1-50.
 INVALIDPARAMETERVALUE_UINLIST = 'InvalidParameterValue.UinList'
