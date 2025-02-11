@@ -572,6 +572,31 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryCustomerBillingQuota(self, request):
+        """Description: This API is used for a sub-customer to real-time query its own total credit and remaining credit in USD.
+
+        Callable roles: Sub-customer
+
+        :param request: Request instance for QueryCustomerBillingQuota.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomerBillingQuotaRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomerBillingQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryCustomerBillingQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryCustomerBillingQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryCustomersCredit(self, request):
         """This API is used for a partner to the credits and basic information of cutomers.
 

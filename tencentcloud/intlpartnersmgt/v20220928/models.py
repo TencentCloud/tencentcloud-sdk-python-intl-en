@@ -4828,6 +4828,225 @@ class QueryCreditQuotaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryCustomerBillingQuotaData(AbstractModel):
+    """Sub-customer credit balance data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCredit: Total credit limit (unit: cny), accurate down to two decimal places.
+        :type TotalCredit: float
+        :param _RemainingCredit: Remaining credit limit (unit: cny), accurate down to two decimal places.
+        :type RemainingCredit: float
+        :param _RemainingVoucher: Remaining total voucher amount (unit: cny), accurate down to two decimal places.
+        :type RemainingVoucher: float
+        :param _Force: Forced status
+.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Force: int
+        :param _PrepayFrozen: Prepaid frozen amount.
+        :type PrepayFrozen: float
+        :param _PostpayFrozen: Postpaid frozen amount.
+        :type PostpayFrozen: float
+        """
+        self._TotalCredit = None
+        self._RemainingCredit = None
+        self._RemainingVoucher = None
+        self._Force = None
+        self._PrepayFrozen = None
+        self._PostpayFrozen = None
+
+    @property
+    def TotalCredit(self):
+        """Total credit limit (unit: cny), accurate down to two decimal places.
+        :rtype: float
+        """
+        return self._TotalCredit
+
+    @TotalCredit.setter
+    def TotalCredit(self, TotalCredit):
+        self._TotalCredit = TotalCredit
+
+    @property
+    def RemainingCredit(self):
+        """Remaining credit limit (unit: cny), accurate down to two decimal places.
+        :rtype: float
+        """
+        return self._RemainingCredit
+
+    @RemainingCredit.setter
+    def RemainingCredit(self, RemainingCredit):
+        self._RemainingCredit = RemainingCredit
+
+    @property
+    def RemainingVoucher(self):
+        """Remaining total voucher amount (unit: cny), accurate down to two decimal places.
+        :rtype: float
+        """
+        return self._RemainingVoucher
+
+    @RemainingVoucher.setter
+    def RemainingVoucher(self, RemainingVoucher):
+        self._RemainingVoucher = RemainingVoucher
+
+    @property
+    def Force(self):
+        """Forced status
+.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+    @property
+    def PrepayFrozen(self):
+        """Prepaid frozen amount.
+        :rtype: float
+        """
+        return self._PrepayFrozen
+
+    @PrepayFrozen.setter
+    def PrepayFrozen(self, PrepayFrozen):
+        self._PrepayFrozen = PrepayFrozen
+
+    @property
+    def PostpayFrozen(self):
+        """Postpaid frozen amount.
+        :rtype: float
+        """
+        return self._PostpayFrozen
+
+    @PostpayFrozen.setter
+    def PostpayFrozen(self, PostpayFrozen):
+        self._PostpayFrozen = PostpayFrozen
+
+
+    def _deserialize(self, params):
+        self._TotalCredit = params.get("TotalCredit")
+        self._RemainingCredit = params.get("RemainingCredit")
+        self._RemainingVoucher = params.get("RemainingVoucher")
+        self._Force = params.get("Force")
+        self._PrepayFrozen = params.get("PrepayFrozen")
+        self._PostpayFrozen = params.get("PostpayFrozen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCustomerBillingQuotaRequest(AbstractModel):
+    """QueryCustomerBillingQuota request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: Event id, used to tag the request event, usually a random number.
+        :type EventId: int
+        :param _ComponentName: Source of the request.
+        :type ComponentName: str
+        """
+        self._EventId = None
+        self._ComponentName = None
+
+    @property
+    def EventId(self):
+        warnings.warn("parameter `EventId` is deprecated", DeprecationWarning) 
+
+        """Event id, used to tag the request event, usually a random number.
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        warnings.warn("parameter `EventId` is deprecated", DeprecationWarning) 
+
+        self._EventId = EventId
+
+    @property
+    def ComponentName(self):
+        warnings.warn("parameter `ComponentName` is deprecated", DeprecationWarning) 
+
+        """Source of the request.
+        :rtype: str
+        """
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        warnings.warn("parameter `ComponentName` is deprecated", DeprecationWarning) 
+
+        self._ComponentName = ComponentName
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._ComponentName = params.get("ComponentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCustomerBillingQuotaResponse(AbstractModel):
+    """QueryCustomerBillingQuota response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Limit data.
+        :type Data: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomerBillingQuotaData`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """Limit data.
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomerBillingQuotaData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = QueryCustomerBillingQuotaData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class QueryCustomersCreditData(AbstractModel):
     """Complex type of output parameters for querying customer's credit
 
