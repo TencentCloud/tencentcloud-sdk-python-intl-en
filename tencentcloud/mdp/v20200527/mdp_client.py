@@ -164,6 +164,29 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamPackageSSAIChannel(self, request):
+        """CreateStreamPackageSSAIChannel
+
+        :param request: Request instance for CreateStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageSSAIChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateStreamPackageSource(self, request):
         """Create channel linear assembly Source.
 
@@ -385,6 +408,29 @@ class MdpClient(AbstractClient):
             body = self.call("DeleteStreamPackageLinearAssemblyPrograms", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteStreamPackageLinearAssemblyProgramsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageSSAIChannel(self, request):
+        """DeleteStreamPackageSSAIChannel
+
+        :param request: Request instance for DeleteStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageSSAIChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -670,6 +716,52 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamPackageSSAIChannel(self, request):
+        """DescribeStreamPackageSSAIChannel
+
+        :param request: Request instance for DescribeStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSSAIChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSSAIChannels(self, request):
+        """DescribeStreamPackageSSAIChannels
+
+        :param request: Request instance for DescribeStreamPackageSSAIChannels.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIChannelsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSSAIChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSSAIChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStreamPackageSource(self, request):
         """Query channel linear assembly Source information.
 
@@ -914,6 +1006,29 @@ class MdpClient(AbstractClient):
             body = self.call("ModifyStreamPackageLinearAssemblyProgram", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageSSAIChannel(self, request):
+        """ModifyStreamPackageSSAIChannel
+
+        :param request: Request instance for ModifyStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.ModifyStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageSSAIChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
