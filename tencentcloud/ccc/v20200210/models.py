@@ -18,18 +18,294 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class AITransferItem(AbstractModel):
-    """
+class AICallExtractConfigElement(AbstractModel):
+    """AI call extraction configuration item.
 
     """
 
     def __init__(self):
         r"""
-        :param _TransferFunctionName: 
+        :param _InfoType: Configuration item type, including.
+Text.
+Selector option.
+Boolean value.
+Number.
+        :type InfoType: str
+        :param _InfoName: Configuration item name, duplicat.
+        :type InfoName: str
+        :param _InfoContent: Specific content of the configuration item.
+        :type InfoContent: str
+        :param _Examples: Example of extracted content from the configuration item.
+        :type Examples: list of str
+        :param _Choices: When infotype is selector, this field needs to be configured.
+        :type Choices: list of str
+        """
+        self._InfoType = None
+        self._InfoName = None
+        self._InfoContent = None
+        self._Examples = None
+        self._Choices = None
+
+    @property
+    def InfoType(self):
+        """Configuration item type, including.
+Text.
+Selector option.
+Boolean value.
+Number.
+        :rtype: str
+        """
+        return self._InfoType
+
+    @InfoType.setter
+    def InfoType(self, InfoType):
+        self._InfoType = InfoType
+
+    @property
+    def InfoName(self):
+        """Configuration item name, duplicat.
+        :rtype: str
+        """
+        return self._InfoName
+
+    @InfoName.setter
+    def InfoName(self, InfoName):
+        self._InfoName = InfoName
+
+    @property
+    def InfoContent(self):
+        """Specific content of the configuration item.
+        :rtype: str
+        """
+        return self._InfoContent
+
+    @InfoContent.setter
+    def InfoContent(self, InfoContent):
+        self._InfoContent = InfoContent
+
+    @property
+    def Examples(self):
+        """Example of extracted content from the configuration item.
+        :rtype: list of str
+        """
+        return self._Examples
+
+    @Examples.setter
+    def Examples(self, Examples):
+        self._Examples = Examples
+
+    @property
+    def Choices(self):
+        """When infotype is selector, this field needs to be configured.
+        :rtype: list of str
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+
+    def _deserialize(self, params):
+        self._InfoType = params.get("InfoType")
+        self._InfoName = params.get("InfoName")
+        self._InfoContent = params.get("InfoContent")
+        self._Examples = params.get("Examples")
+        self._Choices = params.get("Choices")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AICallExtractResultElement(AbstractModel):
+    """AI call extraction result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoType: Type of extracted information.
+Text.
+Selector options.
+Boolean value.
+Number.
+        :type InfoType: str
+        :param _InfoName: Name of the extracted information.
+        :type InfoName: str
+        :param _InfoContent: Specific description of the extracted information.
+        :type InfoContent: str
+        :param _Result: Specific result of the extracted information.
+        :type Result: :class:`tencentcloud.ccc.v20200210.models.AICallExtractResultInfo`
+        """
+        self._InfoType = None
+        self._InfoName = None
+        self._InfoContent = None
+        self._Result = None
+
+    @property
+    def InfoType(self):
+        """Type of extracted information.
+Text.
+Selector options.
+Boolean value.
+Number.
+        :rtype: str
+        """
+        return self._InfoType
+
+    @InfoType.setter
+    def InfoType(self, InfoType):
+        self._InfoType = InfoType
+
+    @property
+    def InfoName(self):
+        """Name of the extracted information.
+        :rtype: str
+        """
+        return self._InfoName
+
+    @InfoName.setter
+    def InfoName(self, InfoName):
+        self._InfoName = InfoName
+
+    @property
+    def InfoContent(self):
+        """Specific description of the extracted information.
+        :rtype: str
+        """
+        return self._InfoContent
+
+    @InfoContent.setter
+    def InfoContent(self, InfoContent):
+        self._InfoContent = InfoContent
+
+    @property
+    def Result(self):
+        """Specific result of the extracted information.
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AICallExtractResultInfo`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._InfoType = params.get("InfoType")
+        self._InfoName = params.get("InfoName")
+        self._InfoContent = params.get("InfoContent")
+        if params.get("Result") is not None:
+            self._Result = AICallExtractResultInfo()
+            self._Result._deserialize(params.get("Result"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AICallExtractResultInfo(AbstractModel):
+    """Specific information of AI call result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: The extracted type is text.
+        :type Text: str
+        :param _Chosen: The extracted type is option.
+        :type Chosen: list of str
+        :param _Boolean: The extracted type is a boolean value.
+        :type Boolean: bool
+        :param _Number: The extracted type is a number.
+        :type Number: float
+        """
+        self._Text = None
+        self._Chosen = None
+        self._Boolean = None
+        self._Number = None
+
+    @property
+    def Text(self):
+        """The extracted type is text.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Chosen(self):
+        """The extracted type is option.
+        :rtype: list of str
+        """
+        return self._Chosen
+
+    @Chosen.setter
+    def Chosen(self, Chosen):
+        self._Chosen = Chosen
+
+    @property
+    def Boolean(self):
+        """The extracted type is a boolean value.
+        :rtype: bool
+        """
+        return self._Boolean
+
+    @Boolean.setter
+    def Boolean(self, Boolean):
+        self._Boolean = Boolean
+
+    @property
+    def Number(self):
+        """The extracted type is a number.
+        :rtype: float
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Chosen = params.get("Chosen")
+        self._Boolean = params.get("Boolean")
+        self._Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AITransferItem(AbstractModel):
+    """AI to human configuration item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransferFunctionName: Name of the function calling for transfer to human.
         :type TransferFunctionName: str
-        :param _TransferFunctionDesc: 
+        :param _TransferFunctionDesc: Takes effect when transferfunctionenable is true; the description of transfer_to_human function calling defaults to "transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so.".
         :type TransferFunctionDesc: str
-        :param _TransferSkillGroupId: 
+        :param _TransferSkillGroupId: Skill group id for transferring to human agent.
         :type TransferSkillGroupId: int
         """
         self._TransferFunctionName = None
@@ -38,7 +314,7 @@ class AITransferItem(AbstractModel):
 
     @property
     def TransferFunctionName(self):
-        """
+        """Name of the function calling for transfer to human.
         :rtype: str
         """
         return self._TransferFunctionName
@@ -49,7 +325,7 @@ class AITransferItem(AbstractModel):
 
     @property
     def TransferFunctionDesc(self):
-        """
+        """Takes effect when transferfunctionenable is true; the description of transfer_to_human function calling defaults to "transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so.".
         :rtype: str
         """
         return self._TransferFunctionDesc
@@ -60,7 +336,7 @@ class AITransferItem(AbstractModel):
 
     @property
     def TransferSkillGroupId(self):
-        """
+        """Skill group id for transferring to human agent.
         :rtype: int
         """
         return self._TransferSkillGroupId
@@ -91,9 +367,9 @@ class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: <Task id>.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -101,7 +377,7 @@ class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -112,7 +388,7 @@ class AbortAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -170,9 +446,9 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: Task id.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -180,7 +456,7 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -191,7 +467,7 @@ class AbortPredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -242,6 +518,106 @@ class AbortPredictiveDialingCampaignResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AsrData(AbstractModel):
+    """Speech-to-text information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: User side.
+        :type User: str
+        :param _Message: Message content.
+        :type Message: str
+        :param _Timestamp: Timestamp.
+        :type Timestamp: int
+        :param _Start: Sentence start time, unix millisecond timestamp.
+        :type Start: int
+        :param _End: Sentence end time, unix millisecond timestamp.
+        :type End: int
+        """
+        self._User = None
+        self._Message = None
+        self._Timestamp = None
+        self._Start = None
+        self._End = None
+
+    @property
+    def User(self):
+        """User side.
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Message(self):
+        """Message content.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Timestamp(self):
+        warnings.warn("parameter `Timestamp` is deprecated", DeprecationWarning) 
+
+        """Timestamp.
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        warnings.warn("parameter `Timestamp` is deprecated", DeprecationWarning) 
+
+        self._Timestamp = Timestamp
+
+    @property
+    def Start(self):
+        """Sentence start time, unix millisecond timestamp.
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        """Sentence end time, unix millisecond timestamp.
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._User = params.get("User")
+        self._Message = params.get("Message")
+        self._Timestamp = params.get("Timestamp")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioFileInfo(AbstractModel):
     """Audio file review information
 
@@ -249,17 +625,13 @@ class AudioFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: File ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FileId: File id.
         :type FileId: int
-        :param _CustomFileName: File alias
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CustomFileName: File alias.
         :type CustomFileName: str
-        :param _AudioFileName: Filename
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AudioFileName: Filename.
         :type AudioFileName: str
-        :param _Status: Review status, 0-Not reviewed, 1-Approved, 2-Rejected
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Review status: 0 - unreviewed, 1 - approved, 2 - rejected.
         :type Status: int
         """
         self._FileId = None
@@ -269,8 +641,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileId(self):
-        """File ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        """File id.
         :rtype: int
         """
         return self._FileId
@@ -281,8 +652,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomFileName(self):
-        """File alias
-Note: This field may return null, indicating that no valid values can be obtained.
+        """File alias.
         :rtype: str
         """
         return self._CustomFileName
@@ -293,8 +663,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioFileName(self):
-        """Filename
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Filename.
         :rtype: str
         """
         return self._AudioFileName
@@ -305,8 +674,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Review status, 0-Not reviewed, 1-Approved, 2-Rejected
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Review status: 0 - unreviewed, 1 - approved, 2 - rejected.
         :rtype: int
         """
         return self._Status
@@ -340,9 +708,9 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
         r"""
         :param _Callee: Called number.
         :type Callee: str
-        :param _State: Call status 0 - Initial, 1 - Answered, 2 - Unanswered, 3 - Calling, 4 - Pending Retry.
+        :param _State: Call status 0 - initial, 1 - answered, 2 - unanswered, 3 - calling, 4 - pending retry.
         :type State: int
-        :param _Sessions: List of session IDs.
+        :param _Sessions: List of session ids.
         :type Sessions: list of str
         """
         self._Callee = None
@@ -362,7 +730,7 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def State(self):
-        """Call status 0 - Initial, 1 - Answered, 2 - Unanswered, 3 - Calling, 4 - Pending Retry.
+        """Call status 0 - initial, 1 - answered, 2 - unanswered, 3 - calling, 4 - pending retry.
         :rtype: int
         """
         return self._State
@@ -373,7 +741,7 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
 
     @property
     def Sessions(self):
-        """List of session IDs.
+        """List of session ids.
         :rtype: list of str
         """
         return self._Sessions
@@ -404,27 +772,28 @@ class AutoCalloutTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Task Name
+        :param _Name: Task name.
         :type Name: str
-        :param _CalleeCount: Number of calls.
+        :param _CalleeCount: Number of called parties.
         :type CalleeCount: int
         :param _Callers: List of calling numbers.
         :type Callers: list of str
         :param _NotBefore: Start timestamp.
         :type NotBefore: int
-        :param _NotAfter: End timestamp.
+        :param _NotAfter: End timestamp
+.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type NotAfter: int
         :param _IvrId: IvrId used by the task.
         :type IvrId: int
-        :param _State: Task status:
-0 Initial: Task created, calling not started
-1 Running
-2  Completed: All calls in the task are completed
-3 Ending: The task is due, but some calls are still not finished
-4 Ended: Task terminated due to expiration
+        :param _State: Task status:.
+0 initial: task creation, call not started.
+1 running.
+2 completed: all calls in the task are completed.
+3 ending: the task has expired, but there are still some calls not ended.
+4 ended: task terminated due to expiration.
         :type State: int
-        :param _TaskId: Task ID.
+        :param _TaskId: <Task id>.
         :type TaskId: int
         """
         self._Name = None
@@ -438,7 +807,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Task Name
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -449,7 +818,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CalleeCount(self):
-        """Number of calls.
+        """Number of called parties.
         :rtype: int
         """
         return self._CalleeCount
@@ -482,7 +851,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotAfter(self):
-        """End timestamp.
+        """End timestamp
+.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -505,12 +875,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
-        """Task status:
-0 Initial: Task created, calling not started
-1 Running
-2  Completed: All calls in the task are completed
-3 Ending: The task is due, but some calls are still not finished
-4 Ended: Task terminated due to expiration
+        """Task status:.
+0 initial: task creation, call not started.
+1 running.
+2 completed: all calls in the task are completed.
+3 ending: the task has expired, but there are still some calls not ended.
+4 ended: task terminated due to expiration.
         :rtype: int
         """
         return self._State
@@ -521,7 +891,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """Task ID.
+        """<Task id>.
         :rtype: int
         """
         return self._TaskId
@@ -557,11 +927,11 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Number: Number to be bound.
         :type Number: str
-        :param _SkillGroupIds: Skill group ID list to be bound.
+        :param _SkillGroupIds: Skill group id list to be bound.
         :type SkillGroupIds: list of int non-negative
         """
         self._SdkAppId = None
@@ -570,7 +940,7 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -592,7 +962,7 @@ class BindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """Skill group ID list to be bound.
+        """Skill group id list to be bound.
         :rtype: list of int non-negative
         """
         return self._SkillGroupIds
@@ -651,11 +1021,11 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _StaffEmail: Agent email.
         :type StaffEmail: str
-        :param _SkillGroupList: Bound skill group list
+        :param _SkillGroupList: Bound skill group list.
         :type SkillGroupList: list of int
         :param _StaffSkillGroupList: Bound skill group list (required).
         :type StaffSkillGroupList: list of StaffSkillGroupList
@@ -667,7 +1037,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -691,7 +1061,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
     def SkillGroupList(self):
         warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
 
-        """Bound skill group list
+        """Bound skill group list.
         :rtype: list of int
         """
         return self._SkillGroupList
@@ -769,13 +1139,13 @@ class CallInMetrics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IvrCount: Number of IVR residency.
+        :param _IvrCount: Number of ivr residency.
         :type IvrCount: int
         :param _QueueCount: Number in queue.
         :type QueueCount: int
         :param _RingCount: Number in ringing.
         :type RingCount: int
-        :param _AcceptCount: Number in connection.
+        :param _AcceptCount: Number of connections.
         :type AcceptCount: int
         :param _TransferOuterCount: Number of customer service transferring to the external line.
         :type TransferOuterCount: int
@@ -806,7 +1176,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def IvrCount(self):
-        """Number of IVR residency.
+        """Number of ivr residency.
         :rtype: int
         """
         return self._IvrCount
@@ -839,7 +1209,7 @@ class CallInMetrics(AbstractModel):
 
     @property
     def AcceptCount(self):
-        """Number in connection.
+        """Number of connections.
         :rtype: int
         """
         return self._AcceptCount
@@ -957,7 +1327,7 @@ class CallInNumberMetrics(AbstractModel):
         r"""
         :param _Number: Line number.
         :type Number: str
-        :param _Metrics: Line-related metrics.
+        :param _Metrics: Line-Related metrics.
         :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
         :param _SkillGroupMetrics: Bound skill group metrics.
         :type SkillGroupMetrics: list of CallInSkillGroupMetrics
@@ -979,7 +1349,7 @@ class CallInNumberMetrics(AbstractModel):
 
     @property
     def Metrics(self):
-        """Line-related metrics.
+        """Line-Related metrics.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
         """
         return self._Metrics
@@ -1028,7 +1398,7 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillGroupId: Skill group ID.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         :param _Metrics: Data metrics.
         :type Metrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
@@ -1041,7 +1411,7 @@ class CallInSkillGroupMetrics(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -1098,9 +1468,9 @@ class CalleeAttribute(AbstractModel):
         r"""
         :param _Callee: Called number.
         :type Callee: str
-        :param _UUI: Associate data.
+        :param _UUI: Accompanying data.
         :type UUI: str
-        :param _Variables: Parameter
+        :param _Variables: Parameter.
         :type Variables: list of Variable
         """
         self._Callee = None
@@ -1120,7 +1490,7 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def UUI(self):
-        """Associate data.
+        """Accompanying data.
         :rtype: str
         """
         return self._UUI
@@ -1131,7 +1501,7 @@ class CalleeAttribute(AbstractModel):
 
     @property
     def Variables(self):
-        """Parameter
+        """Parameter.
         :rtype: list of Variable
         """
         return self._Variables
@@ -1158,6 +1528,150 @@ class CalleeAttribute(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAIAgentCallRequest(AbstractModel):
+    """CreateAIAgentCall request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _AIAgentId: AI agent id.
+        :type AIAgentId: int
+        :param _Callee: Callee number.
+        :type Callee: str
+        :param _Callers: Caller number list
+        :type Callers: list of str
+        :param _PromptVariables: Prompt variable.
+        :type PromptVariables: list of Variable
+        """
+        self._SdkAppId = None
+        self._AIAgentId = None
+        self._Callee = None
+        self._Callers = None
+        self._PromptVariables = None
+
+    @property
+    def SdkAppId(self):
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AIAgentId(self):
+        """AI agent id.
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
+    @property
+    def Callee(self):
+        """Callee number.
+        :rtype: str
+        """
+        return self._Callee
+
+    @Callee.setter
+    def Callee(self, Callee):
+        self._Callee = Callee
+
+    @property
+    def Callers(self):
+        """Caller number list
+        :rtype: list of str
+        """
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def PromptVariables(self):
+        """Prompt variable.
+        :rtype: list of Variable
+        """
+        return self._PromptVariables
+
+    @PromptVariables.setter
+    def PromptVariables(self, PromptVariables):
+        self._PromptVariables = PromptVariables
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._AIAgentId = params.get("AIAgentId")
+        self._Callee = params.get("Callee")
+        self._Callers = params.get("Callers")
+        if params.get("PromptVariables") is not None:
+            self._PromptVariables = []
+            for item in params.get("PromptVariables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._PromptVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIAgentCallResponse(AbstractModel):
+    """CreateAIAgentCall response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: Newly created session id.
+        :type SessionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def SessionId(self):
+        """Newly created session id.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAICallRequest(AbstractModel):
@@ -1205,14 +1719,14 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
         :type SystemPrompt: str
         :param _LLMType: Model interface protocol types, currently compatible with three protocol types:
 
-- OpenAI protocol (including GPT, Hunyuan, DeepSeek, etc.):"openai"
+- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
 - Azure protocol:"azure"
 - Minimax protocol:"minimax"
         :type LLMType: str
         :param _Model: Model name, such as
 
 - OpenAI protocol
-"gpt-4o-mini","gpt-4o","hunyuan-standard", "hunyuan-turbo","deepseek-chat";
+"gpt-4o-mini","gpt-4o","deepseek-chat";
 
 - Azure protocol
 "gpt-4o-mini", "gpt-4o";
@@ -1232,7 +1746,6 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 
 - OpenAI protocol
 GPT:"https://api.openai.com/v1/"
-Hunyuan:"https://api.hunyuan.cloud.tencent.com/v1"
 Deepseek:"https://api.deepseek.com/v1"
 
 - Azure protocol
@@ -1277,13 +1790,15 @@ HoaiMy
 
 
         :type VoiceType: str
-        :param _Callers: List of calling numbers.
+        :param _Callers: Caller number list
         :type Callers: list of str
         :param _WelcomeMessage: Used to set the AI Agent Greeting.
         :type WelcomeMessage: str
         :param _WelcomeType: 0: Use welcomeMessage (if empty, the callee speaks first; if not empty, the bot speaks first)
 1:   Use AI to automatically generate welcomeMessage and speak first based on the prompt
         :type WelcomeType: int
+        :param _WelcomeMessagePriority: 0: interruptible by default, 1: high priority and not interruptible.
+        :type WelcomeMessagePriority: int
         :param _MaxDuration: Maximum Waiting Duration (milliseconds), default is 60 seconds, if the user does not speak within this time, the call is automatically terminated
         :type MaxDuration: int
         :param _Languages: ASR Supported Languages, default is "zh" Chinese,
@@ -1311,7 +1826,7 @@ Currently, the supported languages are as follows. The English name of the langu
 19. Italian = "it" # Italian
 20. Russian = "ru" # Russian
         :type Languages: list of str
-        :param _InterruptMode: Interrupt AI speech mode, default is 0, 0 indicates the server interrupts automatically, 1 indicates the server does not interrupt, interruption signal sent by the client side.
+        :param _InterruptMode: Interrupt ai speaking mode. default is 0. 0 indicates automatic interruption and 1 indicates no interruption.
         :type InterruptMode: int
         :param _InterruptSpeechDuration: Used when InterruptMode is 0, unit in milliseconds, default is 500ms. It means that the server-side detects ongoing vocal input for the InterruptSpeechDuration milliseconds and then interrupts.
         :type InterruptSpeechDuration: int
@@ -1319,15 +1834,15 @@ Currently, the supported languages are as follows. The English name of the langu
         :type EndFunctionEnable: bool
         :param _EndFunctionDesc: Effective when EndFunctionEnable is true; the description of call_end function calling, default is "End the call when user has to leave (like says bye) or you are instructed to do so."
         :type EndFunctionDesc: str
-        :param _TransferFunctionEnable: 
+        :param _TransferFunctionEnable: Whether the model supports (or enables) transfer_to_human function calling.
         :type TransferFunctionEnable: bool
-        :param _TransferItems: 
+        :param _TransferItems: Takes effect when transferfunctionenable is true: transfer to human configuration.
         :type TransferItems: list of AITransferItem
         :param _NotifyDuration: The duration after which the user hasn't spoken to trigger a notification, minimum 10 seconds, default 10 seconds
         :type NotifyDuration: int
         :param _NotifyMessage: The AI prompt when NotifyDuration has passed without the user speaking, default is "Sorry, I didn't hear you clearly. Can you repeat that?"
         :type NotifyMessage: str
-        :param _NotifyMaxCount: 
+        :param _NotifyMaxCount: Maximum number of times to trigger ai prompt sound, unlimited by default.
         :type NotifyMaxCount: int
         :param _CustomTTSConfig: <p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>
 <ul>
@@ -1348,35 +1863,6 @@ For configuration, please refer to <a href="https://intl.cloud.tencent.com/docum
 </code></pre>
 
   </div></div><ul>
-<li>Minimax TTS<br>
-For configuration, please refer to the <a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. Note that Minimax TTS has frequency limits, and exceeding the limit may cause response delays, <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit related documentation link</a>.</li>
-</ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-        &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS type,
-        &quot;Model&quot;: &quot;speech-01-turbo&quot;,
-        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
-        &quot;APIKey&quot;: &quot;eyxxxx&quot;,
-        &quot;GroupId&quot;: &quot;181000000000000&quot;,
-        &quot;VoiceType&quot;:&quot;female-tianmei-yujie&quot;,
-        &quot;Speed&quot;: 1.2
-}
-</code></pre>
-</div></div><ul>
-<li>Volcano TTS</li>
-</ul>
-<p>For type of sound quality configuration, refer to the<a href="https://www.volcengine.com/docs/6561/162929" target="_blank">Volcano TTS documentation</a><br>
-TTS Sound Quality List - Voice Technology - Volcano Engine<br>
-Large Model TTS Sound Quality List - Voice Technology - Volcano Engine</p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-    &quot;TTSType&quot;: &quot;volcengine&quot;,  // Required: String TTS type
-    &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // Required: String Volcano Engine assigned AppId
-    &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // Required: String type Volcano Engine access token
-    &quot;Speed&quot; : 1.0,            // Optional parameter: Playback speed, default is 1.0
-    &quot;Volume&quot;: 1.0,            // Optional parameter: Volume, default is 1.0
-    &quot;Cluster&quot; : &quot;volcano_tts&quot;, // Optional parameter: Business cluster, default is volcano_tts
-    &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // Sound quality type, default is the sound quality of the large model TTS. If using normal TTS, fill in the corresponding sound quality type. Incorrect sound quality type will result in no sound.
-}
-</code></pre>
 
 </div></div><ul>
 <li>Azure TTS<br>
@@ -1409,8 +1895,12 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
 </div></div>
         :type CustomTTSConfig: str
-        :param _PromptVariables: 
+        :param _PromptVariables: Prompt word variable.
         :type PromptVariables: list of Variable
+        :param _VadSilenceTime: Automatic speech recognition vad time ranges from 240 to 2000, with a default of 1000, measured in milliseconds. smaller values will make automatic speech recognition segment faster.
+        :type VadSilenceTime: int
+        :param _ExtractConfig: Call content extraction configuration.
+        :type ExtractConfig: list of AICallExtractConfigElement
         """
         self._SdkAppId = None
         self._Callee = None
@@ -1423,6 +1913,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._Callers = None
         self._WelcomeMessage = None
         self._WelcomeType = None
+        self._WelcomeMessagePriority = None
         self._MaxDuration = None
         self._Languages = None
         self._InterruptMode = None
@@ -1436,6 +1927,8 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._NotifyMaxCount = None
         self._CustomTTSConfig = None
         self._PromptVariables = None
+        self._VadSilenceTime = None
+        self._ExtractConfig = None
 
     @property
     def SdkAppId(self):
@@ -1504,7 +1997,7 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
     def LLMType(self):
         """Model interface protocol types, currently compatible with three protocol types:
 
-- OpenAI protocol (including GPT, Hunyuan, DeepSeek, etc.):"openai"
+- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
 - Azure protocol:"azure"
 - Minimax protocol:"minimax"
         :rtype: str
@@ -1520,7 +2013,7 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
         """Model name, such as
 
 - OpenAI protocol
-"gpt-4o-mini","gpt-4o","hunyuan-standard", "hunyuan-turbo","deepseek-chat";
+"gpt-4o-mini","gpt-4o","deepseek-chat";
 
 - Azure protocol
 "gpt-4o-mini", "gpt-4o";
@@ -1558,7 +2051,6 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 
 - OpenAI protocol
 GPT:"https://api.openai.com/v1/"
-Hunyuan:"https://api.hunyuan.cloud.tencent.com/v1"
 Deepseek:"https://api.deepseek.com/v1"
 
 - Azure protocol
@@ -1621,7 +2113,7 @@ HoaiMy
 
     @property
     def Callers(self):
-        """List of calling numbers.
+        """Caller number list
         :rtype: list of str
         """
         return self._Callers
@@ -1652,6 +2144,17 @@ HoaiMy
     @WelcomeType.setter
     def WelcomeType(self, WelcomeType):
         self._WelcomeType = WelcomeType
+
+    @property
+    def WelcomeMessagePriority(self):
+        """0: interruptible by default, 1: high priority and not interruptible.
+        :rtype: int
+        """
+        return self._WelcomeMessagePriority
+
+    @WelcomeMessagePriority.setter
+    def WelcomeMessagePriority(self, WelcomeMessagePriority):
+        self._WelcomeMessagePriority = WelcomeMessagePriority
 
     @property
     def MaxDuration(self):
@@ -1700,7 +2203,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def InterruptMode(self):
-        """Interrupt AI speech mode, default is 0, 0 indicates the server interrupts automatically, 1 indicates the server does not interrupt, interruption signal sent by the client side.
+        """Interrupt ai speaking mode. default is 0. 0 indicates automatic interruption and 1 indicates no interruption.
         :rtype: int
         """
         return self._InterruptMode
@@ -1744,7 +2247,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def TransferFunctionEnable(self):
-        """
+        """Whether the model supports (or enables) transfer_to_human function calling.
         :rtype: bool
         """
         return self._TransferFunctionEnable
@@ -1755,7 +2258,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def TransferItems(self):
-        """
+        """Takes effect when transferfunctionenable is true: transfer to human configuration.
         :rtype: list of AITransferItem
         """
         return self._TransferItems
@@ -1788,7 +2291,7 @@ Currently, the supported languages are as follows. The English name of the langu
 
     @property
     def NotifyMaxCount(self):
-        """
+        """Maximum number of times to trigger ai prompt sound, unlimited by default.
         :rtype: int
         """
         return self._NotifyMaxCount
@@ -1818,35 +2321,6 @@ For configuration, please refer to <a href="https://intl.cloud.tencent.com/docum
 </code></pre>
 
   </div></div><ul>
-<li>Minimax TTS<br>
-For configuration, please refer to the <a href="https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643" target="_blank">Minimax TTS documentation link</a>. Note that Minimax TTS has frequency limits, and exceeding the limit may cause response delays, <a href="https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572" target="_blank">Minimax TTS frequency limit related documentation link</a>.</li>
-</ul>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-        &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS type,
-        &quot;Model&quot;: &quot;speech-01-turbo&quot;,
-        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,
-        &quot;APIKey&quot;: &quot;eyxxxx&quot;,
-        &quot;GroupId&quot;: &quot;181000000000000&quot;,
-        &quot;VoiceType&quot;:&quot;female-tianmei-yujie&quot;,
-        &quot;Speed&quot;: 1.2
-}
-</code></pre>
-</div></div><ul>
-<li>Volcano TTS</li>
-</ul>
-<p>For type of sound quality configuration, refer to the<a href="https://www.volcengine.com/docs/6561/162929" target="_blank">Volcano TTS documentation</a><br>
-TTS Sound Quality List - Voice Technology - Volcano Engine<br>
-Large Model TTS Sound Quality List - Voice Technology - Volcano Engine</p>
-<div><div class="v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class"><pre class="v-md-prism-"><code>{
-    &quot;TTSType&quot;: &quot;volcengine&quot;,  // Required: String TTS type
-    &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // Required: String Volcano Engine assigned AppId
-    &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // Required: String type Volcano Engine access token
-    &quot;Speed&quot; : 1.0,            // Optional parameter: Playback speed, default is 1.0
-    &quot;Volume&quot;: 1.0,            // Optional parameter: Volume, default is 1.0
-    &quot;Cluster&quot; : &quot;volcano_tts&quot;, // Optional parameter: Business cluster, default is volcano_tts
-    &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // Sound quality type, default is the sound quality of the large model TTS. If using normal TTS, fill in the corresponding sound quality type. Incorrect sound quality type will result in no sound.
-}
-</code></pre>
 
 </div></div><ul>
 <li>Azure TTS<br>
@@ -1888,7 +2362,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def PromptVariables(self):
-        """
+        """Prompt word variable.
         :rtype: list of Variable
         """
         return self._PromptVariables
@@ -1896,6 +2370,28 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
     @PromptVariables.setter
     def PromptVariables(self, PromptVariables):
         self._PromptVariables = PromptVariables
+
+    @property
+    def VadSilenceTime(self):
+        """Automatic speech recognition vad time ranges from 240 to 2000, with a default of 1000, measured in milliseconds. smaller values will make automatic speech recognition segment faster.
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
+    @property
+    def ExtractConfig(self):
+        """Call content extraction configuration.
+        :rtype: list of AICallExtractConfigElement
+        """
+        return self._ExtractConfig
+
+    @ExtractConfig.setter
+    def ExtractConfig(self, ExtractConfig):
+        self._ExtractConfig = ExtractConfig
 
 
     def _deserialize(self, params):
@@ -1910,6 +2406,7 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._Callers = params.get("Callers")
         self._WelcomeMessage = params.get("WelcomeMessage")
         self._WelcomeType = params.get("WelcomeType")
+        self._WelcomeMessagePriority = params.get("WelcomeMessagePriority")
         self._MaxDuration = params.get("MaxDuration")
         self._Languages = params.get("Languages")
         self._InterruptMode = params.get("InterruptMode")
@@ -1933,6 +2430,13 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
                 obj = Variable()
                 obj._deserialize(item)
                 self._PromptVariables.append(obj)
+        self._VadSilenceTime = params.get("VadSilenceTime")
+        if params.get("ExtractConfig") is not None:
+            self._ExtractConfig = []
+            for item in params.get("ExtractConfig"):
+                obj = AICallExtractConfigElement()
+                obj._deserialize(item)
+                self._ExtractConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1993,7 +2497,7 @@ class CreateAdminURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _SeatUserId: Admin account.
         :type SeatUserId: str
@@ -2003,7 +2507,7 @@ class CreateAdminURLRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2044,7 +2548,7 @@ class CreateAdminURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _URL: Log-in link.
+        :param _URL: Log-In link.
         :type URL: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2054,7 +2558,7 @@ class CreateAdminURLResponse(AbstractModel):
 
     @property
     def URL(self):
-        """Log-in link.
+        """Log-In link.
         :rtype: str
         """
         return self._URL
@@ -2087,25 +2591,25 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _Name: Task Name
+        :param _Name: Task name.
         :type Name: str
-        :param _Agent: Agent Account
+        :param _Agent: Agent account.
         :type Agent: str
-        :param _ConcurrencyNumber: Single-round Concurrent Call Volume 1-20
+        :param _ConcurrencyNumber: Single-Round concurrent call volume 1-20.
         :type ConcurrencyNumber: int
-        :param _StartTime: Task start time. Unix timestamp. The task will automatically start after this time.
+        :param _StartTime: Task start time. unix timestamp. the task will automatically start after this time.
         :type StartTime: int
-        :param _EndTime: Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        :param _EndTime: Task termination time. unix timestamp. the task will automatically terminate after this time.
         :type EndTime: int
-        :param _Callees: Called list supporting E.164 or number formats without country code.
+        :param _Callees: Called list supporting e.164 or number formats without country code.
         :type Callees: list of str
         :param _Callers: Calling list using the number formats displayed on the management side.
         :type Callers: list of str
         :param _CallOrder: Being called sequence: 0 for random 1 for in order.
         :type CallOrder: int
-        :param _UUI: Caller Custom Data, Maximum Length 1024
+        :param _UUI: Caller custom data, maximum length 1024.
         :type UUI: str
         """
         self._SdkAppId = None
@@ -2121,7 +2625,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2132,7 +2636,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task Name
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -2143,7 +2647,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Agent(self):
-        """Agent Account
+        """Agent account.
         :rtype: str
         """
         return self._Agent
@@ -2154,7 +2658,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def ConcurrencyNumber(self):
-        """Single-round Concurrent Call Volume 1-20
+        """Single-Round concurrent call volume 1-20.
         :rtype: int
         """
         return self._ConcurrencyNumber
@@ -2165,7 +2669,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. Unix timestamp. The task will automatically start after this time.
+        """Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -2176,7 +2680,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        """Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -2187,7 +2691,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """Called list supporting E.164 or number formats without country code.
+        """Called list supporting e.164 or number formats without country code.
         :rtype: list of str
         """
         return self._Callees
@@ -2220,7 +2724,7 @@ class CreateAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """Caller Custom Data, Maximum Length 1024
+        """Caller custom data, maximum length 1024.
         :rtype: str
         """
         return self._UUI
@@ -2258,7 +2762,7 @@ class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CampaignId: Generated task ID.
+        :param _CampaignId: Generated task id.
         :type CampaignId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2268,7 +2772,7 @@ class CreateAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task ID.
+        """Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -2301,9 +2805,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _NotBefore: Task starting timestamp. Unix second-level timestamp.
+        :param _NotBefore: Task starting timestamp. unix second-level timestamp.
         :type NotBefore: int
         :param _Callees: List of called numbers.
         :type Callees: list of str
@@ -2313,11 +2817,11 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type IvrId: int
         :param _Name: Task name.
         :type Name: str
-        :param _Description: Task description.
+        :param _Description: <Task description>.
         :type Description: str
-        :param _NotAfter: Task stop timestamp. Unix second-level timestamp.
+        :param _NotAfter: Task stop timestamp. unix second-level timestamp.
         :type NotAfter: int
-        :param _Tries: Maximum attempts, 1-3 times
+        :param _Tries: Maximum attempts, 1-3 times.
         :type Tries: int
         :param _Variables: Custom variables (supported only in advanced versions).
         :type Variables: list of Variable
@@ -2341,7 +2845,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2352,7 +2856,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotBefore(self):
-        """Task starting timestamp. Unix second-level timestamp.
+        """Task starting timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._NotBefore
@@ -2407,7 +2911,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        """Task description.
+        """<Task description>.
         :rtype: str
         """
         return self._Description
@@ -2418,7 +2922,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotAfter(self):
-        """Task stop timestamp. Unix second-level timestamp.
+        """Task stop timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._NotAfter
@@ -2429,7 +2933,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Tries(self):
-        """Maximum attempts, 1-3 times
+        """Maximum attempts, 1-3 times.
         :rtype: int
         """
         return self._Tries
@@ -2512,7 +3016,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID.
+        :param _TaskId: Task id.
         :type TaskId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2522,7 +3026,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._TaskId
@@ -2555,14 +3059,14 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required).
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _SkillGroupName: Skill group name.
         :type SkillGroupName: str
-        :param _SkillGroupType: Skill group type 0-Cell phone, 1-Online, 3-Audio, 4-Video.
+        :param _SkillGroupType: Skill group type 0-cell phone, 1-online, 3-audio, 4-video.
         :type SkillGroupType: int
-        :param _MaxConcurrency: The maximum number of people received by the skill group (the maximum number of people that one seat in this skill group can receive) is set to 1 by default. 1. If the skill group type is online, the maximum could be set to one and above.
-2. If the skill group type is phone, audio, or video, then the maximum must be 1
+        :param _MaxConcurrency: The maximum number of people received by the skill group (the maximum number of people that one agent in this skill group can receive) is set to 1 by default. if the skill group type is online, the maximum can be set to one or more.
+2. if the skill group type is phone, audio, or video, then the reception limit must be 1.
         :type MaxConcurrency: int
         """
         self._SdkAppId = None
@@ -2572,7 +3076,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required).
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2594,7 +3098,7 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupType(self):
-        """Skill group type 0-Cell phone, 1-Online, 3-Audio, 4-Video.
+        """Skill group type 0-cell phone, 1-online, 3-audio, 4-video.
         :rtype: int
         """
         return self._SkillGroupType
@@ -2605,8 +3109,8 @@ class CreateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """The maximum number of people received by the skill group (the maximum number of people that one seat in this skill group can receive) is set to 1 by default. 1. If the skill group type is online, the maximum could be set to one and above.
-2. If the skill group type is phone, audio, or video, then the maximum must be 1
+        """The maximum number of people received by the skill group (the maximum number of people that one agent in this skill group can receive) is set to 1 by default. if the skill group type is online, the maximum can be set to one or more.
+2. if the skill group type is phone, audio, or video, then the reception limit must be 1.
         :rtype: int
         """
         return self._MaxConcurrency
@@ -2638,7 +3142,7 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillGroupId: Skill group ID.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2648,7 +3152,7 @@ class CreateCCCSkillGroupResponse(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -2681,15 +3185,15 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID
+        :param _SdkAppId: Application id.
         :type SdkAppId: int
-        :param _UserId: Customer Service User ID usually refers to the customer service email.
+        :param _UserId: Customer service user id usually refers to the customer service email.
         :type UserId: str
         :param _Callee: Called number must be preceded by 0086.
         :type Callee: str
-        :param _Caller: Caller number (obsolete one and use Callers) must be preceded by 0086.
+        :param _Caller: Caller number (obsolete one and use callers) must be preceded by 0086.
         :type Caller: str
-        :param _Callers: Designated caller number list. If the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
+        :param _Callers: Designated caller number list. if the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
         :type Callers: list of str
         :param _IsForceUseMobile: Whether to force the use of cell phone outbound call or not, currently only supports true, if true, please ensure that the allowlist has been configured.
         :type IsForceUseMobile: bool
@@ -2709,7 +3213,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID
+        """Application id.
         :rtype: int
         """
         return self._SdkAppId
@@ -2720,7 +3224,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """Customer Service User ID usually refers to the customer service email.
+        """Customer service user id usually refers to the customer service email.
         :rtype: str
         """
         return self._UserId
@@ -2742,7 +3246,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Caller(self):
-        """Caller number (obsolete one and use Callers) must be preceded by 0086.
+        """Caller number (obsolete one and use callers) must be preceded by 0086.
         :rtype: str
         """
         return self._Caller
@@ -2753,7 +3257,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def Callers(self):
-        """Designated caller number list. If the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
+        """Designated caller number list. if the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
         :rtype: list of str
         """
         return self._Callers
@@ -2826,7 +3330,7 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: Newly created session ID.
+        :param _SessionId: Newly created session id.
         :type SessionId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2836,7 +3340,7 @@ class CreateCallOutSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Newly created session ID.
+        """Newly created session id.
         :rtype: str
         """
         return self._SessionId
@@ -2869,9 +3373,9 @@ class CreateExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
         :param _ExtensionName: Extension name.
         :type ExtensionName: str
@@ -2888,7 +3392,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -2899,7 +3403,7 @@ class CreateExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -2993,17 +3497,17 @@ class CreateIVRSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Callee: Called.
         :type Callee: str
-        :param _IVRId: Specified IVR Id. Currently, it supports inbound and automatic outbound types
+        :param _IVRId: Specified ivr id. currently, it supports inbound and automatic outbound types.
         :type IVRId: int
         :param _Callers: List of calling numbers.
         :type Callers: list of str
-        :param _Variables: Custom variable
+        :param _Variables: Custom variable.
         :type Variables: list of Variable
-        :param _UUI: User Data
+        :param _UUI: User data.
         :type UUI: str
         """
         self._SdkAppId = None
@@ -3015,7 +3519,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3037,7 +3541,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified IVR Id. Currently, it supports inbound and automatic outbound types
+        """Specified ivr id. currently, it supports inbound and automatic outbound types.
         :rtype: int
         """
         return self._IVRId
@@ -3059,7 +3563,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def Variables(self):
-        """Custom variable
+        """Custom variable.
         :rtype: list of Variable
         """
         return self._Variables
@@ -3070,7 +3574,7 @@ class CreateIVRSessionRequest(AbstractModel):
 
     @property
     def UUI(self):
-        """User Data
+        """User data.
         :rtype: str
         """
         return self._UUI
@@ -3109,7 +3613,7 @@ class CreateIVRSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: Newly created session ID.
+        :param _SessionId: Newly created session id.
         :type SessionId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3119,7 +3623,7 @@ class CreateIVRSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        """Newly created session ID.
+        """Newly created session id.
         :rtype: str
         """
         return self._SessionId
@@ -3145,6 +3649,135 @@ class CreateIVRSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOwnNumberApplyRequest(AbstractModel):
+    """CreateOwnNumberApply request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SipTrunkId: SIP connection id.
+        :type SipTrunkId: int
+        :param _DetailList: Circuit-Related parameters.
+        :type DetailList: list of OwnNumberApplyDetailItem
+        :param _Prefix: Prefix for sending numbers.
+        :type Prefix: str
+        """
+        self._SdkAppId = None
+        self._SipTrunkId = None
+        self._DetailList = None
+        self._Prefix = None
+
+    @property
+    def SdkAppId(self):
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SipTrunkId(self):
+        """SIP connection id.
+        :rtype: int
+        """
+        return self._SipTrunkId
+
+    @SipTrunkId.setter
+    def SipTrunkId(self, SipTrunkId):
+        self._SipTrunkId = SipTrunkId
+
+    @property
+    def DetailList(self):
+        """Circuit-Related parameters.
+        :rtype: list of OwnNumberApplyDetailItem
+        """
+        return self._DetailList
+
+    @DetailList.setter
+    def DetailList(self, DetailList):
+        self._DetailList = DetailList
+
+    @property
+    def Prefix(self):
+        """Prefix for sending numbers.
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SipTrunkId = params.get("SipTrunkId")
+        if params.get("DetailList") is not None:
+            self._DetailList = []
+            for item in params.get("DetailList"):
+                obj = OwnNumberApplyDetailItem()
+                obj._deserialize(item)
+                self._DetailList.append(obj)
+        self._Prefix = params.get("Prefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOwnNumberApplyResponse(AbstractModel):
+    """CreateOwnNumberApply response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyId: Approval id.
+        :type ApplyId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ApplyId = None
+        self._RequestId = None
+
+    @property
+    def ApplyId(self):
+        """Approval id.
+        :rtype: int
+        """
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApplyId = params.get("ApplyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePredictiveDialingCampaignRequest(AbstractModel):
     """CreatePredictiveDialingCampaign request structure.
 
@@ -3152,11 +3785,11 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _Name: Task Name
+        :param _Name: <Task name>.
         :type Name: str
-        :param _Callees: Called list supporting E.164 or number formats without country code.
+        :param _Callees: Called list supporting e.164 or number formats without country code.
         :type Callees: list of str
         :param _Callers: Calling list using the number formats displayed on the management side.
         :type Callers: list of str
@@ -3170,14 +3803,20 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         :type ExpectedAbandonRate: int
         :param _RetryInterval: Call retry interval, in seconds, [60 - 86,400].
         :type RetryInterval: int
-        :param _StartTime: Task start time. Unix timestamp. The task will automatically start after this time.
+        :param _StartTime: Task start time. unix timestamp. the task will automatically start after this time.
         :type StartTime: int
-        :param _EndTime: Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        :param _EndTime: Task termination time. unix timestamp. the task will automatically terminate after this time.
         :type EndTime: int
-        :param _IVRId: Specified IVR ID.
+        :param _IVRId: Specified ivr id.
         :type IVRId: int
         :param _RetryTimes: Number of call retries, 0 - 2.
         :type RetryTimes: int
+        :param _Variables: Custom variable.
+        :type Variables: list of Variable
+        :param _UUI: UUI
+        :type UUI: str
+        :param _CalleeAttributes: Property of the called.
+        :type CalleeAttributes: list of CalleeAttribute
         """
         self._SdkAppId = None
         self._Name = None
@@ -3192,10 +3831,13 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = None
         self._IVRId = None
         self._RetryTimes = None
+        self._Variables = None
+        self._UUI = None
+        self._CalleeAttributes = None
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3206,7 +3848,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task Name
+        """<Task name>.
         :rtype: str
         """
         return self._Name
@@ -3217,7 +3859,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """Called list supporting E.164 or number formats without country code.
+        """Called list supporting e.164 or number formats without country code.
         :rtype: list of str
         """
         return self._Callees
@@ -3294,7 +3936,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. Unix timestamp. The task will automatically start after this time.
+        """Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -3305,7 +3947,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        """Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -3316,7 +3958,7 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified IVR ID.
+        """Specified ivr id.
         :rtype: int
         """
         return self._IVRId
@@ -3336,6 +3978,39 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
     def RetryTimes(self, RetryTimes):
         self._RetryTimes = RetryTimes
 
+    @property
+    def Variables(self):
+        """Custom variable.
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def UUI(self):
+        """UUI
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def CalleeAttributes(self):
+        """Property of the called.
+        :rtype: list of CalleeAttribute
+        """
+        return self._CalleeAttributes
+
+    @CalleeAttributes.setter
+    def CalleeAttributes(self, CalleeAttributes):
+        self._CalleeAttributes = CalleeAttributes
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3351,6 +4026,19 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._IVRId = params.get("IVRId")
         self._RetryTimes = params.get("RetryTimes")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        self._UUI = params.get("UUI")
+        if params.get("CalleeAttributes") is not None:
+            self._CalleeAttributes = []
+            for item in params.get("CalleeAttributes"):
+                obj = CalleeAttribute()
+                obj._deserialize(item)
+                self._CalleeAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3368,7 +4056,7 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CampaignId: Generated task ID.
+        :param _CampaignId: Generated task id.
         :type CampaignId: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3378,7 +4066,7 @@ class CreatePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task ID.
+        """Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -3411,11 +4099,11 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _SeatUserId: Agent account.
         :type SeatUserId: str
-        :param _OnlyOnce: Whether the generated token is for one-time verification?
+        :param _OnlyOnce: Whether the generated token is for one-time verification?.
         :type OnlyOnce: bool
         """
         self._SdkAppId = None
@@ -3424,7 +4112,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3446,7 +4134,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     @property
     def OnlyOnce(self):
-        """Whether the generated token is for one-time verification?
+        """Whether the generated token is for one-time verification?.
         :rtype: bool
         """
         return self._OnlyOnce
@@ -3477,11 +4165,11 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Token: SDK log-in Token.
+        :param _Token: SDK log-in token.
         :type Token: str
-        :param _ExpiredTime: Expiry timestamp. Unix timestamp.
+        :param _ExpiredTime: Expiry timestamp. unix timestamp.
         :type ExpiredTime: int
-        :param _SdkURL: The path in which the SDK is loaded will change with its release.
+        :param _SdkURL: The path in which the sdk is loaded will change with its release.
         :type SdkURL: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3493,7 +4181,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        """SDK log-in Token.
+        """SDK log-in token.
         :rtype: str
         """
         return self._Token
@@ -3504,7 +4192,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        """Expiry timestamp. Unix timestamp.
+        """Expiry timestamp. unix timestamp.
         :rtype: int
         """
         return self._ExpiredTime
@@ -3515,7 +4203,7 @@ class CreateSDKLoginTokenResponse(AbstractModel):
 
     @property
     def SdkURL(self):
-        """The path in which the SDK is loaded will change with its release.
+        """The path in which the sdk is loaded will change with its release.
         :rtype: str
         """
         return self._SdkURL
@@ -3550,11 +4238,11 @@ class CreateStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Staffs: Customer information, no more than 10.
         :type Staffs: list of SeatUserInfo
-        :param _SendPassword: Whether to send a password mail or not (the default is true)
+        :param _SendPassword: Whether to send a password mail or not (the default is true).
         :type SendPassword: bool
         """
         self._SdkAppId = None
@@ -3563,7 +4251,7 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3585,7 +4273,7 @@ class CreateStaffRequest(AbstractModel):
 
     @property
     def SendPassword(self):
-        """Whether to send a password mail or not (the default is true)
+        """Whether to send a password mail or not (the default is true).
         :rtype: bool
         """
         return self._SendPassword
@@ -3622,7 +4310,6 @@ class CreateStaffResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorStaffList: Error agent list and error information.
-Note: This field may return null, indicating that no valid value could be obtained.
         :type ErrorStaffList: list of ErrStaffItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3633,7 +4320,6 @@ Note: This field may return null, indicating that no valid value could be obtain
     @property
     def ErrorStaffList(self):
         """Error agent list and error information.
-Note: This field may return null, indicating that no valid value could be obtained.
         :rtype: list of ErrStaffItem
         """
         return self._ErrorStaffList
@@ -3671,9 +4357,9 @@ class DeleteExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
         """
         self._SdkAppId = None
@@ -3681,7 +4367,7 @@ class DeleteExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3692,7 +4378,7 @@ class DeleteExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -3750,9 +4436,9 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: <Task id>.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -3760,7 +4446,7 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3771,7 +4457,7 @@ class DeletePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -3829,9 +4515,9 @@ class DeleteStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _StaffList: Customer service emails, supports up to 200 at a time.
+        :param _StaffList: List of customer service emails to be deleted, supports up to 200 at a time.
         :type StaffList: list of str
         """
         self._SdkAppId = None
@@ -3839,7 +4525,7 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3850,7 +4536,7 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def StaffList(self):
-        """Customer service emails, supports up to 200 at a time.
+        """List of customer service emails to be deleted, supports up to 200 at a time.
         :rtype: list of str
         """
         return self._StaffList
@@ -3880,8 +4566,7 @@ class DeleteStaffResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OnlineStaffList: List of customer service staff that can't be deleted when being online.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OnlineStaffList: List of customer service staff that cannot be deleted when they are online.
         :type OnlineStaffList: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3891,8 +4576,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OnlineStaffList(self):
-        """List of customer service staff that can't be deleted when being online.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """List of customer service staff that cannot be deleted when they are online.
         :rtype: list of str
         """
         return self._OnlineStaffList
@@ -3918,6 +4602,135 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAICallExtractResultRequest(AbstractModel):
+    """DescribeAICallExtractResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SessionId: Session id.
+        :type SessionId: str
+        :param _StartTime: Search for the start time.
+        :type StartTime: int
+        :param _EndTime: Search for the end time.
+        :type EndTime: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SdkAppId(self):
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """Session id.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def StartTime(self):
+        """Search for the start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Search for the end time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAICallExtractResultResponse(AbstractModel):
+    """DescribeAICallExtractResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: Result list.
+        :type ResultList: list of AICallExtractResultElement
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        """Result list.
+        :rtype: list of AICallExtractResultElement
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = AICallExtractResultElement()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
     """DescribeAgentCruiseDialingCampaign request structure.
 
@@ -3925,9 +4738,9 @@ class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: Task id.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -3935,7 +4748,7 @@ class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -3946,7 +4759,7 @@ class DescribeAgentCruiseDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -3976,25 +4789,25 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Task Name
+        :param _Name: Task name.
         :type Name: str
-        :param _Agent: Agent Account
+        :param _Agent: Agent account.
         :type Agent: str
-        :param _ConcurrencyNumber: Single-round Concurrent Call Volume 1-20
+        :param _ConcurrencyNumber: Single-Round concurrent call volume 1-20.
         :type ConcurrencyNumber: int
-        :param _StartTime: Task start time. Unix timestamp. The task will automatically start after this time.
+        :param _StartTime: Task start time. unix timestamp. the task will automatically start after this time.
         :type StartTime: int
-        :param _EndTime: Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        :param _EndTime: Task termination time. unix timestamp. the task will automatically terminate after this time.
         :type EndTime: int
         :param _CallOrder: Being called sequence: 0 for random 1 for in order.
         :type CallOrder: int
-        :param _UUI: Caller Custom Data, Maximum Length 1024
+        :param _UUI: Caller custom data, maximum length 1024.
         :type UUI: str
-        :param _State: Task status 0 Not started 1 Running 2 Completed 3 Terminated
+        :param _State: Task status 0 not started 1 running 2 completed 3 terminated.
         :type State: int
-        :param _TotalCalleeCount: Total number of called parties
+        :param _TotalCalleeCount: Total number of called parties.
         :type TotalCalleeCount: int
-        :param _CalledCalleeCount: Number of called parties
+        :param _CalledCalleeCount: Number of calls made and received.
         :type CalledCalleeCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4013,7 +4826,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Task Name
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -4024,7 +4837,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def Agent(self):
-        """Agent Account
+        """Agent account.
         :rtype: str
         """
         return self._Agent
@@ -4035,7 +4848,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def ConcurrencyNumber(self):
-        """Single-round Concurrent Call Volume 1-20
+        """Single-Round concurrent call volume 1-20.
         :rtype: int
         """
         return self._ConcurrencyNumber
@@ -4046,7 +4859,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. Unix timestamp. The task will automatically start after this time.
+        """Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -4057,7 +4870,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        """Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -4079,7 +4892,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def UUI(self):
-        """Caller Custom Data, Maximum Length 1024
+        """Caller custom data, maximum length 1024.
         :rtype: str
         """
         return self._UUI
@@ -4090,7 +4903,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def State(self):
-        """Task status 0 Not started 1 Running 2 Completed 3 Terminated
+        """Task status 0 not started 1 running 2 completed 3 terminated.
         :rtype: int
         """
         return self._State
@@ -4101,7 +4914,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def TotalCalleeCount(self):
-        """Total number of called parties
+        """Total number of called parties.
         :rtype: int
         """
         return self._TotalCalleeCount
@@ -4112,7 +4925,7 @@ class DescribeAgentCruiseDialingCampaignResponse(AbstractModel):
 
     @property
     def CalledCalleeCount(self):
-        """Number of called parties
+        """Number of calls made and received.
         :rtype: int
         """
         return self._CalledCalleeCount
@@ -4154,9 +4967,9 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _TaskId: Task ID.
+        :param _TaskId: Task id.
         :type TaskId: int
         """
         self._SdkAppId = None
@@ -4164,7 +4977,7 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4175,7 +4988,7 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._TaskId
@@ -4205,9 +5018,9 @@ class DescribeAutoCalloutTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Task Name
+        :param _Name: Task name.
         :type Name: str
-        :param _Description: Task Description.
+        :param _Description: <Task description>.
         :type Description: str
         :param _NotBefore: Task start timestamp.
         :type NotBefore: int
@@ -4237,7 +5050,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Task Name
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -4248,7 +5061,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
-        """Task Description.
+        """<Task description>.
         :rtype: str
         """
         return self._Description
@@ -4360,11 +5173,11 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _PageSize: Page size
+        :param _PageSize: <Page size>.
         :type PageSize: int
-        :param _PageNumber: Page number
+        :param _PageNumber: Page number.
         :type PageNumber: int
         """
         self._SdkAppId = None
@@ -4373,7 +5186,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4384,7 +5197,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size
+        """<Page size>.
         :rtype: int
         """
         return self._PageSize
@@ -4395,7 +5208,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number
+        """Page number.
         :rtype: int
         """
         return self._PageNumber
@@ -4428,7 +5241,7 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
         r"""
         :param _TotalCount: Total quantity.
         :type TotalCount: int
-        :param _Tasks: Task list.
+        :param _Tasks: <Task list>.
         :type Tasks: list of AutoCalloutTaskInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4450,7 +5263,7 @@ class DescribeAutoCalloutTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        """Task list.
+        """<Task list>.
         :rtype: list of AutoCalloutTaskInfo
         """
         return self._Tasks
@@ -4489,14 +5302,14 @@ class DescribeCCCBuyInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppIds: Application ID list, query all applications when not transmitted.
+        :param _SdkAppIds: Application id list, query all applications when not transmitted.
         :type SdkAppIds: list of int
         """
         self._SdkAppIds = None
 
     @property
     def SdkAppIds(self):
-        """Application ID list, query all applications when not transmitted.
+        """Application id list, query all applications when not transmitted.
         :rtype: list of int
         """
         return self._SdkAppIds
@@ -4608,11 +5421,11 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _EnabledSkillGroup: Whether to return skill group dimension information or not (the default is "Yes").
+        :param _EnabledSkillGroup: Whether to return skill group dimension information or not (the default is "yes").
         :type EnabledSkillGroup: bool
-        :param _EnabledNumber: Whether to return line dimension information or not (the default is "No").
+        :param _EnabledNumber: Whether to return line dimension information or not (the default is "no").
         :type EnabledNumber: bool
         :param _GroupIdList: Filter skill group list.
         :type GroupIdList: list of int
@@ -4624,7 +5437,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4635,7 +5448,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def EnabledSkillGroup(self):
-        """Whether to return skill group dimension information or not (the default is "Yes").
+        """Whether to return skill group dimension information or not (the default is "yes").
         :rtype: bool
         """
         return self._EnabledSkillGroup
@@ -4646,7 +5459,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     @property
     def EnabledNumber(self):
-        """Whether to return line dimension information or not (the default is "No").
+        """Whether to return line dimension information or not (the default is "no").
         :rtype: bool
         """
         return self._EnabledNumber
@@ -4694,10 +5507,8 @@ class DescribeCallInMetricsResponse(AbstractModel):
         :param _TotalMetrics: Overall metrics.
         :type TotalMetrics: :class:`tencentcloud.ccc.v20200210.models.CallInMetrics`
         :param _NumberMetrics: Circuit dimension metrics.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type NumberMetrics: list of CallInNumberMetrics
-        :param _SkillGroupMetrics: Skill group dimension metrics
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupMetrics: Skill group dimension metrics.
         :type SkillGroupMetrics: list of CallInSkillGroupMetrics
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4733,7 +5544,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def NumberMetrics(self):
         """Circuit dimension metrics.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of CallInNumberMetrics
         """
         return self._NumberMetrics
@@ -4744,8 +5554,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupMetrics(self):
-        """Skill group dimension metrics
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Skill group dimension metrics.
         :rtype: list of CallInSkillGroupMetrics
         """
         return self._SkillGroupMetrics
@@ -4793,9 +5602,9 @@ class DescribeExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
         """
         self._SdkAppId = None
@@ -4803,7 +5612,7 @@ class DescribeExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4814,7 +5623,7 @@ class DescribeExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -4844,9 +5653,9 @@ class DescribeExtensionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
-        :param _ExtensionDomain: Domain name
+        :param _ExtensionDomain: Domain name.
         :type ExtensionDomain: str
         :param _Password: Registered password.
         :type Password: str
@@ -4866,7 +5675,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -4877,7 +5686,7 @@ class DescribeExtensionResponse(AbstractModel):
 
     @property
     def ExtensionDomain(self):
-        """Domain name
+        """Domain name.
         :rtype: str
         """
         return self._ExtensionDomain
@@ -4947,13 +5756,13 @@ class DescribeExtensionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _PageNumber: Page number (starting from 0)
+        :param _PageNumber: Page number (starting from 0).
         :type PageNumber: int
-        :param _ExtensionIds: Filtering extension number list
+        :param _ExtensionIds: Filtering extension number list.
         :type ExtensionIds: list of str
-        :param _PageSize: Page size
+        :param _PageSize: Page size.
         :type PageSize: int
         :param _FuzzingKeyWord: Fuzzy query field (fuzzy query for extension number, extension name, agent email, and agent name).
         :type FuzzingKeyWord: str
@@ -4969,7 +5778,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -4980,7 +5789,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number (starting from 0)
+        """Page number (starting from 0).
         :rtype: int
         """
         return self._PageNumber
@@ -4991,7 +5800,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def ExtensionIds(self):
-        """Filtering extension number list
+        """Filtering extension number list.
         :rtype: list of str
         """
         return self._ExtensionIds
@@ -5002,7 +5811,7 @@ class DescribeExtensionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size
+        """Page size.
         :rtype: int
         """
         return self._PageSize
@@ -5121,17 +5930,17 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _PageSize: Page size, upper limit 50
+        :param _PageSize: Page size, upper limit 50.
         :type PageSize: int
         :param _PageNumber: Page number starting from 0.
         :type PageNumber: int
-        :param _CustomFileName: File alias
+        :param _CustomFileName: File alias.
         :type CustomFileName: list of str
-        :param _AudioFileName: Filename
+        :param _AudioFileName: Filename.
         :type AudioFileName: list of str
-        :param _FileId: File ID
+        :param _FileId: File id.
         :type FileId: list of int non-negative
         """
         self._SdkAppId = None
@@ -5143,7 +5952,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5154,7 +5963,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, upper limit 50
+        """Page size, upper limit 50.
         :rtype: int
         """
         return self._PageSize
@@ -5176,7 +5985,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def CustomFileName(self):
-        """File alias
+        """File alias.
         :rtype: list of str
         """
         return self._CustomFileName
@@ -5187,7 +5996,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def AudioFileName(self):
-        """Filename
+        """Filename.
         :rtype: list of str
         """
         return self._AudioFileName
@@ -5198,7 +6007,7 @@ class DescribeIvrAudioListRequest(AbstractModel):
 
     @property
     def FileId(self):
-        """File ID
+        """File id.
         :rtype: list of int non-negative
         """
         return self._FileId
@@ -5232,9 +6041,9 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number
+        :param _TotalCount: Total quantity.
         :type TotalCount: int
-        :param _FileInfo: File Information
+        :param _FileInfo: File information.
         :type FileInfo: list of AudioFileInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5245,7 +6054,7 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number
+        """Total quantity.
         :rtype: int
         """
         return self._TotalCount
@@ -5256,7 +6065,7 @@ class DescribeIvrAudioListResponse(AbstractModel):
 
     @property
     def FileInfo(self):
-        """File Information
+        """File information.
         :rtype: list of AudioFileInfo
         """
         return self._FileInfo
@@ -5295,7 +6104,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _PageNumber: Page number, starting from 0.
         :type PageNumber: int
@@ -5308,7 +6117,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5361,7 +6170,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total quantity
+        :param _TotalCount: Total quantity.
         :type TotalCount: int
         :param _Numbers: Number list.
         :type Numbers: list of NumberInfo
@@ -5374,7 +6183,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total quantity
+        """Total quantity.
         :rtype: int
         """
         return self._TotalCount
@@ -5424,7 +6233,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Offset: Data offset.
         :type Offset: int
@@ -5437,7 +6246,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5553,9 +6362,9 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: <Task id>.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -5563,7 +6372,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -5574,7 +6383,7 @@ class DescribePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -5604,15 +6413,15 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CampaignId: Task ID.
+        :param _CampaignId: Task id.
         :type CampaignId: int
-        :param _Name: Task Name
+        :param _Name: Task name.
         :type Name: str
         :param _CallOrder: Being called sequence: 0 for random 1 for in order.
         :type CallOrder: int
         :param _SkillGroupId: ID of the used skill group of agents.
         :type SkillGroupId: int
-        :param _IVRId: Specified IVR ID.
+        :param _IVRId: Specified ivr id.
         :type IVRId: int
         :param _Priority: Running priority of multiple tasks in the same application, from high to low 1 - 5.
         :type Priority: int
@@ -5622,9 +6431,9 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
         :type RetryTimes: int
         :param _RetryInterval: Call retry interval, in seconds, [60 - 86,400].
         :type RetryInterval: int
-        :param _StartTime: Task start time. Unix timestamp. The task will automatically start after this time.
+        :param _StartTime: Task start time. unix timestamp. the task will automatically start after this time.
         :type StartTime: int
-        :param _EndTime: Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        :param _EndTime: Task termination time. unix timestamp. the task will automatically terminate after this time.
         :type EndTime: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5644,7 +6453,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -5655,7 +6464,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def Name(self):
-        """Task Name
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -5688,7 +6497,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified IVR ID.
+        """Specified ivr id.
         :rtype: int
         """
         return self._IVRId
@@ -5743,7 +6552,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. Unix timestamp. The task will automatically start after this time.
+        """Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -5754,7 +6563,7 @@ class DescribePredictiveDialingCampaignResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        """Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -5797,29 +6606,21 @@ class DescribePredictiveDialingCampaignsElement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CampaignId: Task ID
-Note: This field may return null if no valid value is obtained.
+        :param _CampaignId: <Task id>.
         :type CampaignId: int
-        :param _Name: Task Name
-Note: This field might return null if no valid values can be obtained.
+        :param _Name: Task name.
         :type Name: str
-        :param _Status: Task status 0 - Ready to start, 1 - In progress, 2 - Paused, 3 - Terminated, 4 - Completed.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Status: Task status 0 - ready to start, 1 - in progress, 2 - paused, 3 - terminated, 4 - completed.
         :type Status: int
-        :param _StatusReason: Task status reasons 0 - Normal, 1 - Manually ended, 2 - Ended due to overtime.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _StatusReason: Task status reasons 0 - normal, 1 - manually ended, 2 - ended due to overtime.
         :type StatusReason: int
         :param _CalleeCount: Number of called numbers.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type CalleeCount: int
         :param _FinishedCalleeCount: Number of completed calls.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type FinishedCalleeCount: int
         :param _Priority: Running priority of multiple tasks in the same application, from high to low 1 - 5.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type Priority: int
         :param _SkillGroupId: ID of the used skill group of agents.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SkillGroupId: int
         """
         self._CampaignId = None
@@ -5833,8 +6634,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CampaignId(self):
-        """Task ID
-Note: This field may return null if no valid value is obtained.
+        """<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -5845,8 +6645,7 @@ Note: This field may return null if no valid value is obtained.
 
     @property
     def Name(self):
-        """Task Name
-Note: This field might return null if no valid values can be obtained.
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -5857,8 +6656,7 @@ Note: This field might return null if no valid values can be obtained.
 
     @property
     def Status(self):
-        """Task status 0 - Ready to start, 1 - In progress, 2 - Paused, 3 - Terminated, 4 - Completed.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Task status 0 - ready to start, 1 - in progress, 2 - paused, 3 - terminated, 4 - completed.
         :rtype: int
         """
         return self._Status
@@ -5869,8 +6667,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusReason(self):
-        """Task status reasons 0 - Normal, 1 - Manually ended, 2 - Ended due to overtime.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Task status reasons 0 - normal, 1 - manually ended, 2 - ended due to overtime.
         :rtype: int
         """
         return self._StatusReason
@@ -5882,7 +6679,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def CalleeCount(self):
         """Number of called numbers.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._CalleeCount
@@ -5894,7 +6690,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def FinishedCalleeCount(self):
         """Number of completed calls.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._FinishedCalleeCount
@@ -5906,7 +6701,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def Priority(self):
         """Running priority of multiple tasks in the same application, from high to low 1 - 5.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Priority
@@ -5918,7 +6712,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def SkillGroupId(self):
         """ID of the used skill group of agents.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SkillGroupId
@@ -5954,7 +6747,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _PageSize: Page size, 100 maximum.
         :type PageSize: int
@@ -5962,7 +6755,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
         :type PageNumber: int
         :param _Name: Query the task list name keyword.
         :type Name: str
-        :param _SkillGroupId: Query task list skill group ID.
+        :param _SkillGroupId: Query task list skill group id.
         :type SkillGroupId: int
         """
         self._SdkAppId = None
@@ -5973,7 +6766,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6017,7 +6810,7 @@ class DescribePredictiveDialingCampaignsRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Query task list skill group ID.
+        """Query task list skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -6051,10 +6844,8 @@ class DescribePredictiveDialingCampaignsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _TotalCount: Total data volume.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param _CampaignList: Data
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CampaignList: Data.
         :type CampaignList: list of DescribePredictiveDialingCampaignsElement
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6066,7 +6857,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TotalCount(self):
         """Total data volume.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -6077,8 +6867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CampaignList(self):
-        """Data
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Data.
         :rtype: list of DescribePredictiveDialingCampaignsElement
         """
         return self._CampaignList
@@ -6117,11 +6906,11 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Generated task ID.
+        :param _CampaignId: Generated task id.
         :type CampaignId: int
-        :param _PageSize: Page size, maximum of 1000
+        :param _PageSize: Page size, maximum of 1000.
         :type PageSize: int
         :param _PageNumber: Page number starting from 0.
         :type PageNumber: int
@@ -6133,7 +6922,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6144,7 +6933,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task ID.
+        """Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -6155,7 +6944,7 @@ class DescribePredictiveDialingSessionsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, maximum of 1000
+        """Page size, maximum of 1000.
         :rtype: int
         """
         return self._PageSize
@@ -6200,7 +6989,7 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
         r"""
         :param _TotalCount: Total data volume.
         :type TotalCount: int
-        :param _SessionList: List of session IDs for a call. You can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1
+        :param _SessionList: List of session ids for a call. you can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1.
         :type SessionList: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6222,7 +7011,7 @@ class DescribePredictiveDialingSessionsResponse(AbstractModel):
 
     @property
     def SessionList(self):
-        """List of session IDs for a call. You can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1
+        """List of session ids for a call. you can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1.
         :rtype: list of str
         """
         return self._SessionList
@@ -6256,11 +7045,11 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStamp: Start timestamp. Unix second-level timestamp.
+        :param _StartTimeStamp: Start timestamp. unix second-level timestamp.
         :type StartTimeStamp: int
-        :param _EndTimeStamp: End timestamp. Unix second-level timestamp.
+        :param _EndTimeStamp: End timestamp. unix second-level timestamp.
         :type EndTimeStamp: int
-        :param _SdkAppId: For the Application ID, go to https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: For the application id, you can check https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _PageSize: Page size, upper limit 100.
         :type PageSize: int
@@ -6275,7 +7064,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp. Unix second-level timestamp.
+        """Start timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -6286,7 +7075,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """End timestamp. Unix second-level timestamp.
+        """End timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._EndTimeStamp
@@ -6297,7 +7086,7 @@ class DescribeProtectedTelCdrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """For the Application ID, go to https://console.cloud.tencent.com/ccc.
+        """For the application id, you can check https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6439,15 +7228,15 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _PageSize: Page size, upper limit 100.
         :type PageSize: int
-        :param _PageNumber: Page number starting from 0.
+        :param _PageNumber: <Page number starting from 0.>.
         :type PageNumber: int
-        :param _SkillGroupId: Using skill group ID when querying a single skill group.
+        :param _SkillGroupId: Using skill group id when querying a single skill group.
         :type SkillGroupId: int
-        :param _ModifiedTime: Used when querying skill groups with a modified time greater or equal to ModifiedTime.
+        :param _ModifiedTime: Used when querying skill groups with a modified time greater or equal to modifiedtime.
         :type ModifiedTime: int
         :param _SkillGroupName: Skill group name.
         :type SkillGroupName: str
@@ -6461,7 +7250,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6483,7 +7272,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number starting from 0.
+        """<Page number starting from 0.>.
         :rtype: int
         """
         return self._PageNumber
@@ -6494,7 +7283,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Using skill group ID when querying a single skill group.
+        """Using skill group id when querying a single skill group.
         :rtype: int
         """
         return self._SkillGroupId
@@ -6505,7 +7294,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """Used when querying skill groups with a modified time greater or equal to ModifiedTime.
+        """Used when querying skill groups with a modified time greater or equal to modifiedtime.
         :rtype: int
         """
         return self._ModifiedTime
@@ -6552,7 +7341,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of skill groups.
         :type TotalCount: int
-        :param _SkillGroupList: Skill Group Information List.
+        :param _SkillGroupList: Skill group information list.
         :type SkillGroupList: list of SkillGroupInfoItem
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6574,7 +7363,7 @@ class DescribeSkillGroupInfoListResponse(AbstractModel):
 
     @property
     def SkillGroupList(self):
-        """Skill Group Information List.
+        """Skill group information list.
         :rtype: list of SkillGroupInfoItem
         """
         return self._SkillGroupList
@@ -6613,17 +7402,17 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _PageSize: Page size, upper limit 9,999
+        :param _PageSize: Page size, upper limit 9,999.
         :type PageSize: int
         :param _PageNumber: Page number starting from 0.
         :type PageNumber: int
         :param _StaffMail: Agent account used when querying a single agent.
         :type StaffMail: str
-        :param _ModifiedTime: Use when querying for agents with a modification time greater or equal to ModifiedTime.
+        :param _ModifiedTime: Use when querying for agents with a modification time greater or equal to modifiedtime.
         :type ModifiedTime: int
-        :param _SkillGroupId: Skill group ID.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         """
         self._SdkAppId = None
@@ -6635,7 +7424,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6646,7 +7435,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        """Page size, upper limit 9,999
+        """Page size, upper limit 9,999.
         :rtype: int
         """
         return self._PageSize
@@ -6679,7 +7468,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        """Use when querying for agents with a modification time greater or equal to ModifiedTime.
+        """Use when querying for agents with a modification time greater or equal to modifiedtime.
         :rtype: int
         """
         return self._ModifiedTime
@@ -6690,7 +7479,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -6787,13 +7576,13 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _StaffList: Filter agent list. By default, do not pass all returned agent information.
+        :param _StaffList: Filter agent list. by default, do not pass all returned agent information.
         :type StaffList: list of str
-        :param _GroupIdList: Filter skill group ID list.
+        :param _GroupIdList: Filter skill group id list.
         :type GroupIdList: list of int
-        :param _StatusList: Filter agent status list Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline
+        :param _StatusList: Filter agent status list agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline . 
         :type StatusList: list of str
         """
         self._SdkAppId = None
@@ -6803,7 +7592,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -6814,7 +7603,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def StaffList(self):
-        """Filter agent list. By default, do not pass all returned agent information.
+        """Filter agent list. by default, do not pass all returned agent information.
         :rtype: list of str
         """
         return self._StaffList
@@ -6825,7 +7614,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def GroupIdList(self):
-        """Filter skill group ID list.
+        """Filter skill group id list.
         :rtype: list of int
         """
         return self._GroupIdList
@@ -6836,7 +7625,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     @property
     def StatusList(self):
-        """Filter agent status list Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline
+        """Filter agent status list agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline . 
         :rtype: list of str
         """
         return self._StatusList
@@ -6868,7 +7657,7 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Metrics: Real-time information on agent status.
+        :param _Metrics: Real-Time information on agent status.
         :type Metrics: list of StaffStatusMetrics
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6878,7 +7667,7 @@ class DescribeStaffStatusMetricsResponse(AbstractModel):
 
     @property
     def Metrics(self):
-        """Real-time information on agent status.
+        """Real-Time information on agent status.
         :rtype: list of StaffStatusMetrics
         """
         return self._Metrics
@@ -6916,11 +7705,11 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStamp: Start timestamp, Unix timestamp (query dimension supports only daily. For example, to query May 1st, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp. To query May 1st and May 2nd, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp)
+        :param _StartTimeStamp: Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
         :type StartTimeStamp: int
-        :param _EndTimeStamp: End timestamp, Unix timestamp, the query time range is up to 90 days (query dimension supports only daily. For example, to query May 1st, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp. To query May 1st and May 2nd, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp)
+        :param _EndTimeStamp: End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
         :type EndTimeStamp: int
-        :param _SdkAppIdList: Application ID list, when having multiple IDs, the returned value is the sum of all the IDs.
+        :param _SdkAppIdList: Application id list, when having multiple ids, the returned value is the sum of all the ids.
         :type SdkAppIdList: list of int
         """
         self._StartTimeStamp = None
@@ -6929,7 +7718,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp, Unix timestamp (query dimension supports only daily. For example, to query May 1st, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp. To query May 1st and May 2nd, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp)
+        """Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
         :rtype: int
         """
         return self._StartTimeStamp
@@ -6940,7 +7729,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """End timestamp, Unix timestamp, the query time range is up to 90 days (query dimension supports only daily. For example, to query May 1st, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59" timestamp. To query May 1st and May 2nd, pass startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59" timestamp)
+        """End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-01 23:59:59" timestamp. to query may 1st and may 2nd, pass starttime:"2023-05-01 00:00:00","endtime":"2023-05-02 23:59:59" timestamp).
         :rtype: int
         """
         return self._EndTimeStamp
@@ -6951,7 +7740,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def SdkAppIdList(self):
-        """Application ID list, when having multiple IDs, the returned value is the sum of all the IDs.
+        """Application id list, when having multiple ids, the returned value is the sum of all the ids.
         :rtype: list of int
         """
         return self._SdkAppIdList
@@ -6982,19 +7771,19 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TelCallOutCount: Number of minutes consumed by Outbound Package.
+        :param _TelCallOutCount: Number of minutes consumed by outbound package.
         :type TelCallOutCount: int
-        :param _TelCallInCount: Number of minutes consumed by Inbound Package.
+        :param _TelCallInCount: Number of minutes consumed by inbound package.
         :type TelCallInCount: int
         :param _SeatUsedCount: Number of agent usage statistics.
         :type SeatUsedCount: int
-        :param _VoipCallInCount: Number of minutes consumed by Audio package.
+        :param _VoipCallInCount: Number of minutes consumed by audio package.
         :type VoipCallInCount: int
-        :param _VOIPCallInCount: Number of minutes consumed by Audio package.
+        :param _VOIPCallInCount: Number of minutes consumed by audio package.
         :type VOIPCallInCount: int
-        :param _AsrOfflineCount: Number of minutes consumed by Offline Speech-to-Text Package.
+        :param _AsrOfflineCount: Number of minutes consumed by offline speech-to-text package.
         :type AsrOfflineCount: int
-        :param _AsrRealtimeCount: Number of minutes consumed by Real-time Speech-to-Text Package.
+        :param _AsrRealtimeCount: Number of minutes consumed by real-time speech-to-text package.
         :type AsrRealtimeCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -7010,7 +7799,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallOutCount(self):
-        """Number of minutes consumed by Outbound Package.
+        """Number of minutes consumed by outbound package.
         :rtype: int
         """
         return self._TelCallOutCount
@@ -7021,7 +7810,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallInCount(self):
-        """Number of minutes consumed by Inbound Package.
+        """Number of minutes consumed by inbound package.
         :rtype: int
         """
         return self._TelCallInCount
@@ -7045,7 +7834,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
     def VoipCallInCount(self):
         warnings.warn("parameter `VoipCallInCount` is deprecated", DeprecationWarning) 
 
-        """Number of minutes consumed by Audio package.
+        """Number of minutes consumed by audio package.
         :rtype: int
         """
         return self._VoipCallInCount
@@ -7058,7 +7847,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def VOIPCallInCount(self):
-        """Number of minutes consumed by Audio package.
+        """Number of minutes consumed by audio package.
         :rtype: int
         """
         return self._VOIPCallInCount
@@ -7069,7 +7858,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrOfflineCount(self):
-        """Number of minutes consumed by Offline Speech-to-Text Package.
+        """Number of minutes consumed by offline speech-to-text package.
         :rtype: int
         """
         return self._AsrOfflineCount
@@ -7080,7 +7869,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrRealtimeCount(self):
-        """Number of minutes consumed by Real-time Speech-to-Text Package.
+        """Number of minutes consumed by real-time speech-to-text package.
         :rtype: int
         """
         return self._AsrRealtimeCount
@@ -7119,25 +7908,25 @@ class DescribeTelCdrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStamp: Start timestamp, Unix Timestamp in Seconds. Supports up to the past 180 days.
+        :param _StartTimeStamp: Start timestamp, unix timestamp in seconds. supports up to the past 180 days.
         :type StartTimeStamp: int
-        :param _EndTimeStamp: End timestamp, Unix Timestamp in Seconds. The range between the end time and start time is less than 90 days.
+        :param _EndTimeStamp: End timestamp, unix timestamp in seconds. the range between the end time and start time is less than 90 days.
         :type EndTimeStamp: int
-        :param _InstanceId: Instance ID (deprecated).
+        :param _InstanceId: Instance id (deprecated).
         :type InstanceId: int
         :param _Limit: Maximum number of returned entries (deprecated).
         :type Limit: int
         :param _Offset: Offset (deprecated).
         :type Offset: int
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _PageSize: Page size (required), up to 100.
         :type PageSize: int
-        :param _PageNumber: Page number (required), starting from 0.
+        :param _PageNumber: <Page number (required), starting from 0.>.
         :type PageNumber: int
-        :param _Phones: Filter by Phone Number.
+        :param _Phones: Filter by phone number.
         :type Phones: list of str
-        :param _SessionIds: Filter by SessionId.
+        :param _SessionIds: Filter by sessionid.
         :type SessionIds: list of str
         """
         self._StartTimeStamp = None
@@ -7153,7 +7942,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        """Start timestamp, Unix Timestamp in Seconds. Supports up to the past 180 days.
+        """Start timestamp, unix timestamp in seconds. supports up to the past 180 days.
         :rtype: int
         """
         return self._StartTimeStamp
@@ -7164,7 +7953,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        """End timestamp, Unix Timestamp in Seconds. The range between the end time and start time is less than 90 days.
+        """End timestamp, unix timestamp in seconds. the range between the end time and start time is less than 90 days.
         :rtype: int
         """
         return self._EndTimeStamp
@@ -7177,7 +7966,7 @@ class DescribeTelCdrRequest(AbstractModel):
     def InstanceId(self):
         warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
 
-        """Instance ID (deprecated).
+        """Instance id (deprecated).
         :rtype: int
         """
         return self._InstanceId
@@ -7212,7 +8001,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7234,7 +8023,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        """Page number (required), starting from 0.
+        """<Page number (required), starting from 0.>.
         :rtype: int
         """
         return self._PageNumber
@@ -7245,7 +8034,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def Phones(self):
-        """Filter by Phone Number.
+        """Filter by phone number.
         :rtype: list of str
         """
         return self._Phones
@@ -7256,7 +8045,7 @@ class DescribeTelCdrRequest(AbstractModel):
 
     @property
     def SessionIds(self):
-        """Filter by SessionId.
+        """Filter by sessionid.
         :rtype: list of str
         """
         return self._SessionIds
@@ -7374,16 +8163,16 @@ class DescribeTelCdrResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeTelSessionRequest(AbstractModel):
-    """DescribeTelSession request structure.
+class DescribeTelRecordAsrRequest(AbstractModel):
+    """DescribeTelRecordAsr request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _SessionId: Session ID.
+        :param _SessionId: Session id.
         :type SessionId: str
         """
         self._SdkAppId = None
@@ -7391,7 +8180,7 @@ class DescribeTelSessionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7402,7 +8191,106 @@ class DescribeTelSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        """Session id.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTelRecordAsrResponse(AbstractModel):
+    """DescribeTelRecordAsr response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsrDataList: Recording to text information.
+        :type AsrDataList: list of AsrData
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsrDataList = None
+        self._RequestId = None
+
+    @property
+    def AsrDataList(self):
+        """Recording to text information.
+        :rtype: list of AsrData
+        """
+        return self._AsrDataList
+
+    @AsrDataList.setter
+    def AsrDataList(self, AsrDataList):
+        self._AsrDataList = AsrDataList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AsrDataList") is not None:
+            self._AsrDataList = []
+            for item in params.get("AsrDataList"):
+                obj = AsrData()
+                obj._deserialize(item)
+                self._AsrDataList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTelSessionRequest(AbstractModel):
+    """DescribeTelSession request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SessionId: Session id.
+        :type SessionId: str
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+
+    @property
+    def SdkAppId(self):
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """Session id.
         :rtype: str
         """
         return self._SessionId
@@ -7481,7 +8369,7 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
         :type PhoneNumbers: list of str
         :param _Disabled: Disable switch: 0 for enable, 1 for disable.
         :type Disabled: int
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: TCCC instance application id.
         :type SdkAppId: int
         """
         self._PhoneNumbers = None
@@ -7512,7 +8400,7 @@ class DisableCCCPhoneNumberRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """TCCC instance application id.
         :rtype: int
         """
         return self._SdkAppId
@@ -7571,7 +8459,7 @@ class ErrStaffItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StaffEmail: Agent Email Address
+        :param _StaffEmail: Agent email address.
         :type StaffEmail: str
         :param _Code: Error code.
         :type Code: str
@@ -7584,7 +8472,7 @@ class ErrStaffItem(AbstractModel):
 
     @property
     def StaffEmail(self):
-        """Agent Email Address
+        """Agent email address.
         :rtype: str
         """
         return self._StaffEmail
@@ -7637,27 +8525,27 @@ class ExtensionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Instance ID.
+        :param _SdkAppId: Instance id.
         :type SdkAppId: int
         :param _FullExtensionId: Extension full name.
         :type FullExtensionId: str
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
         :param _SkillGroupId: Affiliated skill group list.
         :type SkillGroupId: str
         :param _ExtensionName: Extension name.
         :type ExtensionName: str
-        :param _CreateTime: Creation Time
+        :param _CreateTime: Creation time.
         :type CreateTime: int
         :param _ModifyTime: Last modification time.
         :type ModifyTime: int
-        :param _Status: Telephone status (0 Offline, 100 Free, 200 Busy).
+        :param _Status: Telephone status (0 offline, 100 free, 200 busy).
         :type Status: int
         :param _Register: Whether to register.
         :type Register: bool
-        :param _Relation: Bind Agent Email
+        :param _Relation: Bind agent email.
         :type Relation: str
-        :param _RelationName: Bind Agent Name
+        :param _RelationName: Bind agent name.
         :type RelationName: str
         """
         self._SdkAppId = None
@@ -7674,7 +8562,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Instance ID.
+        """Instance id.
         :rtype: int
         """
         return self._SdkAppId
@@ -7696,7 +8584,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -7729,7 +8617,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        """Creation Time
+        """Creation time.
         :rtype: int
         """
         return self._CreateTime
@@ -7751,7 +8639,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Status(self):
-        """Telephone status (0 Offline, 100 Free, 200 Busy).
+        """Telephone status (0 offline, 100 free, 200 busy).
         :rtype: int
         """
         return self._Status
@@ -7773,7 +8661,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def Relation(self):
-        """Bind Agent Email
+        """Bind agent email.
         :rtype: str
         """
         return self._Relation
@@ -7784,7 +8672,7 @@ class ExtensionInfo(AbstractModel):
 
     @property
     def RelationName(self):
-        """Bind Agent Name
+        """Bind agent name.
         :rtype: str
         """
         return self._RelationName
@@ -7823,9 +8711,9 @@ class HangUpCallRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _SessionId: Session ID.
+        :param _SessionId: Session id.
         :type SessionId: str
         """
         self._SdkAppId = None
@@ -7833,7 +8721,7 @@ class HangUpCallRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7844,7 +8732,7 @@ class HangUpCallRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        """Session ID.
+        """Session id.
         :rtype: str
         """
         return self._SessionId
@@ -7902,20 +8790,29 @@ class IVRKeyPressedElement(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Key.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Key: Hit keyword or press.
         :type Key: str
-        :param _Label: Tag associated with key.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Label: Tag associated with the key.
         :type Label: str
+        :param _Timestamp: UNIX millisecond timestamp.
+        :type Timestamp: int
+        :param _NodeLabel: Node tags.
+        :type NodeLabel: str
+        :param _OriginalContent: User'S original input.
+        :type OriginalContent: str
+        :param _TTSPrompt: TTS prompt content.
+        :type TTSPrompt: str
         """
         self._Key = None
         self._Label = None
+        self._Timestamp = None
+        self._NodeLabel = None
+        self._OriginalContent = None
+        self._TTSPrompt = None
 
     @property
     def Key(self):
-        """Key.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Hit keyword or press.
         :rtype: str
         """
         return self._Key
@@ -7926,8 +8823,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Label(self):
-        """Tag associated with key.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Tag associated with the key.
         :rtype: str
         """
         return self._Label
@@ -7936,10 +8832,58 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def Label(self, Label):
         self._Label = Label
 
+    @property
+    def Timestamp(self):
+        """UNIX millisecond timestamp.
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def NodeLabel(self):
+        """Node tags.
+        :rtype: str
+        """
+        return self._NodeLabel
+
+    @NodeLabel.setter
+    def NodeLabel(self, NodeLabel):
+        self._NodeLabel = NodeLabel
+
+    @property
+    def OriginalContent(self):
+        """User'S original input.
+        :rtype: str
+        """
+        return self._OriginalContent
+
+    @OriginalContent.setter
+    def OriginalContent(self, OriginalContent):
+        self._OriginalContent = OriginalContent
+
+    @property
+    def TTSPrompt(self):
+        """TTS prompt content.
+        :rtype: str
+        """
+        return self._TTSPrompt
+
+    @TTSPrompt.setter
+    def TTSPrompt(self, TTSPrompt):
+        self._TTSPrompt = TTSPrompt
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Label = params.get("Label")
+        self._Timestamp = params.get("Timestamp")
+        self._NodeLabel = params.get("NodeLabel")
+        self._OriginalContent = params.get("OriginalContent")
+        self._TTSPrompt = params.get("TTSPrompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7957,9 +8901,9 @@ class ModifyExtensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
         :param _ExtensionName: Extension name.
         :type ExtensionName: str
@@ -7976,7 +8920,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -7987,7 +8931,7 @@ class ModifyExtensionRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -8074,6 +9018,120 @@ class ModifyExtensionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOwnNumberApplyRequest(AbstractModel):
+    """ModifyOwnNumberApply request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _DetailList: Circuit-Related parameters.
+        :type DetailList: list of OwnNumberApplyDetailItem
+        :param _ApplyId: Approval id.
+        :type ApplyId: int
+        :param _Prefix: Prefix for sending numbers.
+        :type Prefix: str
+        """
+        self._SdkAppId = None
+        self._DetailList = None
+        self._ApplyId = None
+        self._Prefix = None
+
+    @property
+    def SdkAppId(self):
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def DetailList(self):
+        """Circuit-Related parameters.
+        :rtype: list of OwnNumberApplyDetailItem
+        """
+        return self._DetailList
+
+    @DetailList.setter
+    def DetailList(self, DetailList):
+        self._DetailList = DetailList
+
+    @property
+    def ApplyId(self):
+        """Approval id.
+        :rtype: int
+        """
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def Prefix(self):
+        """Prefix for sending numbers.
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("DetailList") is not None:
+            self._DetailList = []
+            for item in params.get("DetailList"):
+                obj = OwnNumberApplyDetailItem()
+                obj._deserialize(item)
+                self._DetailList.append(obj)
+        self._ApplyId = params.get("ApplyId")
+        self._Prefix = params.get("Prefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwnNumberApplyResponse(AbstractModel):
+    """ModifyOwnNumberApply response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyStaffPasswordRequest(AbstractModel):
     """ModifyStaffPassword request structure.
 
@@ -8081,11 +9139,11 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Email: Agent email.
         :type Email: str
-        :param _Password: The set password 
+        :param _Password: The set password.
         :type Password: str
         """
         self._SdkAppId = None
@@ -8094,7 +9152,7 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -8116,7 +9174,7 @@ class ModifyStaffPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
-        """The set password 
+        """The set password.
         :rtype: str
         """
         return self._Password
@@ -8175,7 +9233,7 @@ class ModifyStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Email: Agent account.
         :type Email: str
@@ -8185,14 +9243,16 @@ class ModifyStaffRequest(AbstractModel):
         :type Phone: str
         :param _Nick: Agent nickname.
         :type Nick: str
-        :param _StaffNo: Agent ID
+        :param _StaffNo: Agent id.
         :type StaffNo: str
-        :param _SkillGroupIds: Bind skill group ID list.
+        :param _SkillGroupIds: Bind skill group id list.
         :type SkillGroupIds: list of int
         :param _UseMobileCallOut: Whether the cell phone outbound call switch is enabled or not.
         :type UseMobileCallOut: bool
-        :param _UseMobileAccept: Cell phone answering pattern: 0 - Off | 1 - Only when Offline | 2 - Always.
+        :param _UseMobileAccept: Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
         :type UseMobileAccept: int
+        :param _ExtensionNumber: Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        :type ExtensionNumber: str
         """
         self._SdkAppId = None
         self._Email = None
@@ -8203,10 +9263,11 @@ class ModifyStaffRequest(AbstractModel):
         self._SkillGroupIds = None
         self._UseMobileCallOut = None
         self._UseMobileAccept = None
+        self._ExtensionNumber = None
 
     @property
     def SdkAppId(self):
-        """Application ID
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -8261,7 +9322,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def StaffNo(self):
-        """Agent ID
+        """Agent id.
         :rtype: str
         """
         return self._StaffNo
@@ -8272,7 +9333,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """Bind skill group ID list.
+        """Bind skill group id list.
         :rtype: list of int
         """
         return self._SkillGroupIds
@@ -8294,7 +9355,7 @@ class ModifyStaffRequest(AbstractModel):
 
     @property
     def UseMobileAccept(self):
-        """Cell phone answering pattern: 0 - Off | 1 - Only when Offline | 2 - Always.
+        """Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
         :rtype: int
         """
         return self._UseMobileAccept
@@ -8302,6 +9363,17 @@ class ModifyStaffRequest(AbstractModel):
     @UseMobileAccept.setter
     def UseMobileAccept(self, UseMobileAccept):
         self._UseMobileAccept = UseMobileAccept
+
+    @property
+    def ExtensionNumber(self):
+        """Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        :rtype: str
+        """
+        return self._ExtensionNumber
+
+    @ExtensionNumber.setter
+    def ExtensionNumber(self, ExtensionNumber):
+        self._ExtensionNumber = ExtensionNumber
 
 
     def _deserialize(self, params):
@@ -8314,6 +9386,7 @@ class ModifyStaffRequest(AbstractModel):
         self._SkillGroupIds = params.get("SkillGroupIds")
         self._UseMobileCallOut = params.get("UseMobileCallOut")
         self._UseMobileAccept = params.get("UseMobileAccept")
+        self._ExtensionNumber = params.get("ExtensionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8418,6 +9491,102 @@ class NumberInfo(AbstractModel):
         
 
 
+class OwnNumberApplyDetailItem(AbstractModel):
+    """User-owned number approval detail data type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallType: Number type: 0 - inbound | 1 - outbound | 2 - inbound and outbound.
+        :type CallType: int
+        :param _PhoneNumber: Line number.
+        :type PhoneNumber: str
+        :param _MaxCallCount: Maximum concurrent call number.
+        :type MaxCallCount: int
+        :param _MaxCallPSec: Maximum number of concurrencies per second.
+        :type MaxCallPSec: int
+        :param _OutboundCalleeFormat: Outbound called number format, use {+e.164} or {e.164}. 
+        :type OutboundCalleeFormat: str
+        """
+        self._CallType = None
+        self._PhoneNumber = None
+        self._MaxCallCount = None
+        self._MaxCallPSec = None
+        self._OutboundCalleeFormat = None
+
+    @property
+    def CallType(self):
+        """Number type: 0 - inbound | 1 - outbound | 2 - inbound and outbound.
+        :rtype: int
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
+    def PhoneNumber(self):
+        """Line number.
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def MaxCallCount(self):
+        """Maximum concurrent call number.
+        :rtype: int
+        """
+        return self._MaxCallCount
+
+    @MaxCallCount.setter
+    def MaxCallCount(self, MaxCallCount):
+        self._MaxCallCount = MaxCallCount
+
+    @property
+    def MaxCallPSec(self):
+        """Maximum number of concurrencies per second.
+        :rtype: int
+        """
+        return self._MaxCallPSec
+
+    @MaxCallPSec.setter
+    def MaxCallPSec(self, MaxCallPSec):
+        self._MaxCallPSec = MaxCallPSec
+
+    @property
+    def OutboundCalleeFormat(self):
+        """Outbound called number format, use {+e.164} or {e.164}. 
+        :rtype: str
+        """
+        return self._OutboundCalleeFormat
+
+    @OutboundCalleeFormat.setter
+    def OutboundCalleeFormat(self, OutboundCalleeFormat):
+        self._OutboundCalleeFormat = OutboundCalleeFormat
+
+
+    def _deserialize(self, params):
+        self._CallType = params.get("CallType")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._MaxCallCount = params.get("MaxCallCount")
+        self._MaxCallPSec = params.get("MaxCallPSec")
+        self._OutboundCalleeFormat = params.get("OutboundCalleeFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PSTNSession(AbstractModel):
     """PSTN session type.
 
@@ -8425,39 +9594,39 @@ class PSTNSession(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionID: Session ID.
+        :param _SessionID: Session id.
         :type SessionID: str
-        :param _RoomID: Temporary room ID for session.
+        :param _RoomID: Temporary room id for session.
         :type RoomID: str
         :param _Caller: Caller.
         :type Caller: str
         :param _Callee: Called.
         :type Callee: str
-        :param _StartTimestamp: Start time. Unix timestamp.
+        :param _StartTimestamp: Start time. unix timestamp.
         :type StartTimestamp: int
-        :param _RingTimestamp: Ring time. Unix timestamp.
+        :param _RingTimestamp: Ring time. unix timestamp.
         :type RingTimestamp: int
-        :param _AcceptTimestamp: Answer time. Unix timestamp.
+        :param _AcceptTimestamp: Answer time. unix timestamp.
         :type AcceptTimestamp: int
         :param _StaffEmail: Agent email.
         :type StaffEmail: str
-        :param _StaffNumber: Agent ID
+        :param _StaffNumber: Agent id.
         :type StaffNumber: str
-        :param _SessionStatus: Session Status
-ringing Ringing
-seatJoining  waiting for the agent to answer
-inProgress  Ongoing
-finished - Completed.
+        :param _SessionStatus: Session status.
+Ringing - in progress.
+SeatJoining - waiting for the agent to answer.
+InProgress: in progress.
+Finished - completed.
         :type SessionStatus: str
-        :param _Direction: Session call direction, 0 - Inbound | 1 - Outbound.
+        :param _Direction: Session call direction, 0 - inbound | 1 - outbound.
         :type Direction: int
-        :param _OutBoundCaller: The number used for transferring to the external line (Outbound Caller).
+        :param _OutBoundCaller: The number used for transferring to the external line (outbound caller).
         :type OutBoundCaller: str
         :param _OutBoundCallee: Outbound callee.
         :type OutBoundCallee: str
-        :param _ProtectedCaller: Caller number protection ID. Effective when the number protection map feature is activated, and the Caller field is empty.
+        :param _ProtectedCaller: Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :type ProtectedCaller: str
-        :param _ProtectedCallee: Called number protection ID. Effective when the number protection map feature is activated, and the Callee field is empty.
+        :param _ProtectedCallee: Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :type ProtectedCallee: str
         """
         self._SessionID = None
@@ -8478,7 +9647,7 @@ finished - Completed.
 
     @property
     def SessionID(self):
-        """Session ID.
+        """Session id.
         :rtype: str
         """
         return self._SessionID
@@ -8489,7 +9658,7 @@ finished - Completed.
 
     @property
     def RoomID(self):
-        """Temporary room ID for session.
+        """Temporary room id for session.
         :rtype: str
         """
         return self._RoomID
@@ -8522,7 +9691,7 @@ finished - Completed.
 
     @property
     def StartTimestamp(self):
-        """Start time. Unix timestamp.
+        """Start time. unix timestamp.
         :rtype: int
         """
         return self._StartTimestamp
@@ -8533,7 +9702,7 @@ finished - Completed.
 
     @property
     def RingTimestamp(self):
-        """Ring time. Unix timestamp.
+        """Ring time. unix timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -8544,7 +9713,7 @@ finished - Completed.
 
     @property
     def AcceptTimestamp(self):
-        """Answer time. Unix timestamp.
+        """Answer time. unix timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -8566,7 +9735,7 @@ finished - Completed.
 
     @property
     def StaffNumber(self):
-        """Agent ID
+        """Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -8577,11 +9746,11 @@ finished - Completed.
 
     @property
     def SessionStatus(self):
-        """Session Status
-ringing Ringing
-seatJoining  waiting for the agent to answer
-inProgress  Ongoing
-finished - Completed.
+        """Session status.
+Ringing - in progress.
+SeatJoining - waiting for the agent to answer.
+InProgress: in progress.
+Finished - completed.
         :rtype: str
         """
         return self._SessionStatus
@@ -8592,7 +9761,7 @@ finished - Completed.
 
     @property
     def Direction(self):
-        """Session call direction, 0 - Inbound | 1 - Outbound.
+        """Session call direction, 0 - inbound | 1 - outbound.
         :rtype: int
         """
         return self._Direction
@@ -8603,7 +9772,7 @@ finished - Completed.
 
     @property
     def OutBoundCaller(self):
-        """The number used for transferring to the external line (Outbound Caller).
+        """The number used for transferring to the external line (outbound caller).
         :rtype: str
         """
         return self._OutBoundCaller
@@ -8625,7 +9794,7 @@ finished - Completed.
 
     @property
     def ProtectedCaller(self):
-        """Caller number protection ID. Effective when the number protection map feature is activated, and the Caller field is empty.
+        """Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :rtype: str
         """
         return self._ProtectedCaller
@@ -8636,7 +9805,7 @@ finished - Completed.
 
     @property
     def ProtectedCallee(self):
-        """Called number protection ID. Effective when the number protection map feature is activated, and the Callee field is empty.
+        """Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :rtype: str
         """
         return self._ProtectedCallee
@@ -8679,31 +9848,31 @@ class PSTNSessionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionID: Session ID.
+        :param _SessionID: Session id.
         :type SessionID: str
-        :param _RoomID: Temporary room ID for session.
+        :param _RoomID: Temporary room id for session.
         :type RoomID: str
         :param _Caller: Caller.
         :type Caller: str
         :param _Callee: Called.
         :type Callee: str
-        :param _StartTimestamp: Start time. Unix timestamp.
+        :param _StartTimestamp: Start time. unix timestamp.
         :type StartTimestamp: str
-        :param _AcceptTimestamp: Answer time. Unix timestamp.
+        :param _AcceptTimestamp: Answer time. unix timestamp.
         :type AcceptTimestamp: str
         :param _StaffEmail: Agent email.
         :type StaffEmail: str
-        :param _StaffNumber: Agent ID
+        :param _StaffNumber: Agent id.
         :type StaffNumber: str
-        :param _SessionStatus: Agent Status inProgress Ongoing
+        :param _SessionStatus: Agent status inprogress ongoing.
         :type SessionStatus: str
-        :param _Direction: Session call direction, 0 - Inbound | 1 - Outbound.
+        :param _Direction: Session call direction, 0 - inbound | 1 - outbound.
         :type Direction: int
-        :param _RingTimestamp: Ring time. Unix timestamp.
+        :param _RingTimestamp: Ring time. unix timestamp.
         :type RingTimestamp: int
-        :param _ProtectedCaller: Caller number protection ID. Effective when the number protection map feature is activated, and the Caller field is empty.
+        :param _ProtectedCaller: Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :type ProtectedCaller: str
-        :param _ProtectedCallee: Called number protection ID. Effective when the number protection map feature is activated, and the Callee field is empty.
+        :param _ProtectedCallee: Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :type ProtectedCallee: str
         """
         self._SessionID = None
@@ -8722,7 +9891,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def SessionID(self):
-        """Session ID.
+        """Session id.
         :rtype: str
         """
         return self._SessionID
@@ -8733,7 +9902,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def RoomID(self):
-        """Temporary room ID for session.
+        """Temporary room id for session.
         :rtype: str
         """
         return self._RoomID
@@ -8766,7 +9935,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        """Start time. Unix timestamp.
+        """Start time. unix timestamp.
         :rtype: str
         """
         return self._StartTimestamp
@@ -8777,7 +9946,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
-        """Answer time. Unix timestamp.
+        """Answer time. unix timestamp.
         :rtype: str
         """
         return self._AcceptTimestamp
@@ -8799,7 +9968,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def StaffNumber(self):
-        """Agent ID
+        """Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -8810,7 +9979,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def SessionStatus(self):
-        """Agent Status inProgress Ongoing
+        """Agent status inprogress ongoing.
         :rtype: str
         """
         return self._SessionStatus
@@ -8821,7 +9990,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def Direction(self):
-        """Session call direction, 0 - Inbound | 1 - Outbound.
+        """Session call direction, 0 - inbound | 1 - outbound.
         :rtype: int
         """
         return self._Direction
@@ -8832,7 +10001,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def RingTimestamp(self):
-        """Ring time. Unix timestamp.
+        """Ring time. unix timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -8843,7 +10012,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def ProtectedCaller(self):
-        """Caller number protection ID. Effective when the number protection map feature is activated, and the Caller field is empty.
+        """Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :rtype: str
         """
         return self._ProtectedCaller
@@ -8854,7 +10023,7 @@ class PSTNSessionInfo(AbstractModel):
 
     @property
     def ProtectedCallee(self):
-        """Called number protection ID. Effective when the number protection map feature is activated, and the Callee field is empty.
+        """Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :rtype: str
         """
         return self._ProtectedCallee
@@ -8895,17 +10064,17 @@ class PackageBuyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PackageId: Package ID.
+        :param _PackageId: Package id.
         :type PackageId: str
-        :param _Type: Package type, 0 - Outbound call package | 1 - 400 inbound call package.
+        :param _Type: Package type, 0 - outbound call package | 1 - 400 inbound call package.
         :type Type: int
-        :param _CapacitySize: Total package.
+        :param _CapacitySize: <TOTAL_PACKAGE>.
         :type CapacitySize: int
-        :param _CapacityRemain: Remaining package.
+        :param _CapacityRemain: Remaining package balance.
         :type CapacityRemain: int
         :param _BuyTime: Purchased timestamp.
         :type BuyTime: int
-        :param _EndTime: End timestamp.
+        :param _EndTime: Deadline timestamp.
         :type EndTime: int
         """
         self._PackageId = None
@@ -8917,7 +10086,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def PackageId(self):
-        """Package ID.
+        """Package id.
         :rtype: str
         """
         return self._PackageId
@@ -8928,7 +10097,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Package type, 0 - Outbound call package | 1 - 400 inbound call package.
+        """Package type, 0 - outbound call package | 1 - 400 inbound call package.
         :rtype: int
         """
         return self._Type
@@ -8939,7 +10108,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def CapacitySize(self):
-        """Total package.
+        """<TOTAL_PACKAGE>.
         :rtype: int
         """
         return self._CapacitySize
@@ -8950,7 +10119,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def CapacityRemain(self):
-        """Remaining package.
+        """Remaining package balance.
         :rtype: int
         """
         return self._CapacityRemain
@@ -8972,7 +10141,7 @@ class PackageBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp.
+        """Deadline timestamp.
         :rtype: int
         """
         return self._EndTime
@@ -9006,9 +10175,9 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: Task id.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -9016,7 +10185,7 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9027,7 +10196,7 @@ class PausePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._CampaignId
@@ -9085,17 +10254,17 @@ class PhoneNumBuyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PhoneNum: Telephone Number
+        :param _PhoneNum: Telephone number.
         :type PhoneNum: str
-        :param _Type: Number type, 0 - Landline | 1 - Virtual Business Number | 2 - ISP Number | 3 - 400 Number.
+        :param _Type: Number type, 0 - landline | 1 - virtual business number | 2 - ISP number | 3 - 400 number.
         :type Type: int
-        :param _CallType: Call type of the number, 1 - Inbound | 2 - Outbound | 3 - Inbound and outbound.
+        :param _CallType: Call type of the number, 1 - inbound | 2 - outbound | 3 - inbound and outbound.
         :type CallType: int
         :param _BuyTime: Purchased timestamp.
         :type BuyTime: int
-        :param _EndTime: End timestamp.
+        :param _EndTime: Deadline timestamp.
         :type EndTime: int
-        :param _State: Number status, 1-Normal | 2-Suspended due to non-payment | 4-Admin suspended | 5-Suspended due to violation.
+        :param _State: Number status, 1-normal | 2-suspended due to non-payment | 4-admin suspended | 5-suspended due to violation.
         :type State: int
         """
         self._PhoneNum = None
@@ -9107,7 +10276,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def PhoneNum(self):
-        """Telephone Number
+        """Telephone number.
         :rtype: str
         """
         return self._PhoneNum
@@ -9118,7 +10287,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def Type(self):
-        """Number type, 0 - Landline | 1 - Virtual Business Number | 2 - ISP Number | 3 - 400 Number.
+        """Number type, 0 - landline | 1 - virtual business number | 2 - ISP number | 3 - 400 number.
         :rtype: int
         """
         return self._Type
@@ -9129,7 +10298,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def CallType(self):
-        """Call type of the number, 1 - Inbound | 2 - Outbound | 3 - Inbound and outbound.
+        """Call type of the number, 1 - inbound | 2 - outbound | 3 - inbound and outbound.
         :rtype: int
         """
         return self._CallType
@@ -9151,7 +10320,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        """End timestamp.
+        """Deadline timestamp.
         :rtype: int
         """
         return self._EndTime
@@ -9162,7 +10331,7 @@ class PhoneNumBuyInfo(AbstractModel):
 
     @property
     def State(self):
-        """Number status, 1-Normal | 2-Suspended due to non-payment | 4-Admin suspended | 5-Suspended due to violation.
+        """Number status, 1-normal | 2-suspended due to non-payment | 4-admin suspended | 5-suspended due to violation.
         :rtype: int
         """
         return self._State
@@ -9196,9 +10365,9 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TCCC instance application ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _ExtensionId: Extension
+        :param _ExtensionId: Extension.
         :type ExtensionId: str
         """
         self._SdkAppId = None
@@ -9206,7 +10375,7 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """TCCC instance application ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9217,7 +10386,7 @@ class ResetExtensionPasswordRequest(AbstractModel):
 
     @property
     def ExtensionId(self):
-        """Extension
+        """Extension.
         :rtype: str
         """
         return self._ExtensionId
@@ -9290,9 +10459,9 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Task ID.
+        :param _CampaignId: <Task id>.
         :type CampaignId: int
         """
         self._SdkAppId = None
@@ -9300,7 +10469,7 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -9311,7 +10480,7 @@ class ResumePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Task ID.
+        """<Task id>.
         :rtype: int
         """
         return self._CampaignId
@@ -9369,18 +10538,17 @@ class SdkAppIdBuyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID
+        :param _SdkAppId: Application id.
         :type SdkAppId: int
-        :param _Name: Application Name
+        :param _Name: Application name.
         :type Name: str
-        :param _StaffBuyNum: Agent Purchase Count (still within the validity period)
+        :param _StaffBuyNum: Agent purchase count (still within the validity period).
         :type StaffBuyNum: int
-        :param _StaffBuyList: Agent Purchase List (still within the validity period)
+        :param _StaffBuyList: Agent purchase list (still within the validity period).
         :type StaffBuyList: list of StaffBuyInfo
         :param _PhoneNumBuyList: List of numbers purchased.
         :type PhoneNumBuyList: list of PhoneNumBuyInfo
         :param _SipBuyNum: Number of office telephones purchased (still within the validity period).
-Note: this field may return null, indicating that no valid values can be obtained.
         :type SipBuyNum: int
         """
         self._SdkAppId = None
@@ -9392,7 +10560,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SdkAppId(self):
-        """Application ID
+        """Application id.
         :rtype: int
         """
         return self._SdkAppId
@@ -9403,7 +10571,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
-        """Application Name
+        """Application name.
         :rtype: str
         """
         return self._Name
@@ -9414,7 +10582,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaffBuyNum(self):
-        """Agent Purchase Count (still within the validity period)
+        """Agent purchase count (still within the validity period).
         :rtype: int
         """
         return self._StaffBuyNum
@@ -9425,7 +10593,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaffBuyList(self):
-        """Agent Purchase List (still within the validity period)
+        """Agent purchase list (still within the validity period).
         :rtype: list of StaffBuyInfo
         """
         return self._StaffBuyList
@@ -9448,7 +10616,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def SipBuyNum(self):
         """Number of office telephones purchased (still within the validity period).
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SipBuyNum
@@ -9497,23 +10664,22 @@ class SeatUserInfo(AbstractModel):
         :param _Mail: Agent email.
         :type Mail: str
         :param _StaffNumber: Worker number.
-Note: This field may return null, indicating that no valid value could be obtained.
         :type StaffNumber: str
-        :param _Phone: Agent's Telephone Number (With 0086 Prefix)
+        :param _Phone: Agent'S telephone number (with 0086 prefix).
         :type Phone: str
         :param _Nick: Agent nickname.
         :type Nick: str
-        :param _UserId: User ID
+        :param _UserId: User id.
         :type UserId: str
-        :param _SkillGroupNameList: List of skill groups associated with the seat
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupNameList: List of skill groups associated with the agent.
         :type SkillGroupNameList: list of str
-        :param _Role: 1: Admin.
-2: Quality inspector.
-3: Ordinary agent.
-else: Custom Role ID.
-Note: This field may return null, indicating that no valid value could be obtained.
+        :param _Role: 1: admin.
+2: quality inspector.
+3: ordinary agent.
+Else: custom role id.
         :type Role: int
+        :param _ExtensionNumber: Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        :type ExtensionNumber: str
         """
         self._Name = None
         self._Mail = None
@@ -9523,6 +10689,7 @@ Note: This field may return null, indicating that no valid value could be obtain
         self._UserId = None
         self._SkillGroupNameList = None
         self._Role = None
+        self._ExtensionNumber = None
 
     @property
     def Name(self):
@@ -9549,7 +10716,6 @@ Note: This field may return null, indicating that no valid value could be obtain
     @property
     def StaffNumber(self):
         """Worker number.
-Note: This field may return null, indicating that no valid value could be obtained.
         :rtype: str
         """
         return self._StaffNumber
@@ -9560,7 +10726,7 @@ Note: This field may return null, indicating that no valid value could be obtain
 
     @property
     def Phone(self):
-        """Agent's Telephone Number (With 0086 Prefix)
+        """Agent'S telephone number (with 0086 prefix).
         :rtype: str
         """
         return self._Phone
@@ -9582,7 +10748,7 @@ Note: This field may return null, indicating that no valid value could be obtain
 
     @property
     def UserId(self):
-        """User ID
+        """User id.
         :rtype: str
         """
         return self._UserId
@@ -9593,8 +10759,7 @@ Note: This field may return null, indicating that no valid value could be obtain
 
     @property
     def SkillGroupNameList(self):
-        """List of skill groups associated with the seat
-Note: This field may return null, indicating that no valid values can be obtained.
+        """List of skill groups associated with the agent.
         :rtype: list of str
         """
         return self._SkillGroupNameList
@@ -9605,11 +10770,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Role(self):
-        """1: Admin.
-2: Quality inspector.
-3: Ordinary agent.
-else: Custom Role ID.
-Note: This field may return null, indicating that no valid value could be obtained.
+        """1: admin.
+2: quality inspector.
+3: ordinary agent.
+Else: custom role id.
         :rtype: int
         """
         return self._Role
@@ -9617,6 +10781,17 @@ Note: This field may return null, indicating that no valid value could be obtain
     @Role.setter
     def Role(self, Role):
         self._Role = Role
+
+    @property
+    def ExtensionNumber(self):
+        """Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        :rtype: str
+        """
+        return self._ExtensionNumber
+
+    @ExtensionNumber.setter
+    def ExtensionNumber(self, ExtensionNumber):
+        self._ExtensionNumber = ExtensionNumber
 
 
     def _deserialize(self, params):
@@ -9628,6 +10803,7 @@ Note: This field may return null, indicating that no valid value could be obtain
         self._UserId = params.get("UserId")
         self._SkillGroupNameList = params.get("SkillGroupNameList")
         self._Role = params.get("Role")
+        self._ExtensionNumber = params.get("ExtensionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9646,58 +10822,40 @@ class ServeParticipant(AbstractModel):
     def __init__(self):
         r"""
         :param _Mail: Agent email.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Mail: str
-        :param _Phone: Agent Telephone
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Phone: Agent phone number.
         :type Phone: str
-        :param _RingTimestamp: Ring timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RingTimestamp: Ringing timestamp, unix second-level timestamp.
         :type RingTimestamp: int
-        :param _AcceptTimestamp: Answer timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AcceptTimestamp: Answer timestamp. unix second-level timestamp.
         :type AcceptTimestamp: int
-        :param _EndedTimestamp: End timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EndedTimestamp: End timestamp. unix second-level timestamp.
         :type EndedTimestamp: int
-        :param _RecordId: Recording ID, which can be used to index the recording on the agent side
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RecordId: Recording id can be indexed to the agent side recording.
         :type RecordId: str
-        :param _Type: Participant type: "staffSeat", "outboundSeat", "staffPhoneSeat".
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Type: Participant type: "staffseat", "outboundseat", "staffphoneseat".
         :type Type: str
-        :param _TransferFrom: Transfer Source Agent Information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferFrom: Transfer source agent information.
         :type TransferFrom: str
-        :param _TransferFromType: Transfer source participant type is consistent with the Type value.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferFromType: Transfer source participant type is consistent with the type value.
         :type TransferFromType: str
-        :param _TransferTo: Transfer Destination Agent Information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferTo: Transfer destination agent information.
         :type TransferTo: str
-        :param _TransferToType: Transfer destination participant type is consistent with Type values.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TransferToType: Transfer destination participant type, which is consistent with type values.
         :type TransferToType: str
-        :param _SkillGroupId: Skill group ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         :param _EndStatusString: Ending status.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type EndStatusString: str
-        :param _RecordURL: Recording URL.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RecordURL: Recording url.
         :type RecordURL: str
         :param _Sequence: Participant sequence number, starting from 0.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Sequence: int
-        :param _StartTimestamp: Start timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StartTimestamp: Start timestamp. unix second-level timestamp.
         :type StartTimestamp: int
-        :param _SkillGroupName: Skill Group name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupName: Skill group name.
         :type SkillGroupName: str
-        :param _CustomRecordURL: Address of the third party COS for transferring recording.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CustomRecordURL: Address of the third-party cos for transferring recording.
         :type CustomRecordURL: str
         """
         self._Mail = None
@@ -9722,7 +10880,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Mail(self):
         """Agent email.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Mail
@@ -9733,8 +10890,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """Agent Telephone
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Agent phone number.
         :rtype: str
         """
         return self._Phone
@@ -9745,8 +10901,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RingTimestamp(self):
-        """Ring timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Ringing timestamp, unix second-level timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -9757,8 +10912,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AcceptTimestamp(self):
-        """Answer timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Answer timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -9769,8 +10923,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndedTimestamp(self):
-        """End timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """End timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._EndedTimestamp
@@ -9781,8 +10934,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordId(self):
-        """Recording ID, which can be used to index the recording on the agent side
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Recording id can be indexed to the agent side recording.
         :rtype: str
         """
         return self._RecordId
@@ -9793,8 +10945,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """Participant type: "staffSeat", "outboundSeat", "staffPhoneSeat".
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Participant type: "staffseat", "outboundseat", "staffphoneseat".
         :rtype: str
         """
         return self._Type
@@ -9805,8 +10956,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferFrom(self):
-        """Transfer Source Agent Information
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Transfer source agent information.
         :rtype: str
         """
         return self._TransferFrom
@@ -9817,8 +10967,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferFromType(self):
-        """Transfer source participant type is consistent with the Type value.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Transfer source participant type is consistent with the type value.
         :rtype: str
         """
         return self._TransferFromType
@@ -9829,8 +10978,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferTo(self):
-        """Transfer Destination Agent Information
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Transfer destination agent information.
         :rtype: str
         """
         return self._TransferTo
@@ -9841,8 +10989,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransferToType(self):
-        """Transfer destination participant type is consistent with Type values.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Transfer destination participant type, which is consistent with type values.
         :rtype: str
         """
         return self._TransferToType
@@ -9853,8 +11000,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -9866,7 +11012,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def EndStatusString(self):
         """Ending status.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EndStatusString
@@ -9877,8 +11022,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordURL(self):
-        """Recording URL.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Recording url.
         :rtype: str
         """
         return self._RecordURL
@@ -9890,7 +11034,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Sequence(self):
         """Participant sequence number, starting from 0.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Sequence
@@ -9901,8 +11044,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTimestamp(self):
-        """Start timestamp. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Start timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimestamp
@@ -9913,8 +11055,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupName(self):
-        """Skill Group name.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Skill group name.
         :rtype: str
         """
         return self._SkillGroupName
@@ -9925,8 +11066,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomRecordURL(self):
-        """Address of the third party COS for transferring recording.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Address of the third-party cos for transferring recording.
         :rtype: str
         """
         return self._CustomRecordURL
@@ -9972,29 +11112,23 @@ class SkillGroupInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillGroupId: Skill group ID.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         :param _SkillGroupName: Skill group name.
         :type SkillGroupName: str
-        :param _Type: (Deprecated) Type: IM, TEL, ALL (full media).
+        :param _Type: (Deprecated) type: im, tel, all (full media).
         :type Type: str
         :param _RoutePolicy: Session allocation policy.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type RoutePolicy: str
-        :param _UsingLastSeat: Should the conversation allocation prioritize the last service seat?
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UsingLastSeat: Whether the session is allocated to the last serviced agent first.
         :type UsingLastSeat: int
         :param _MaxConcurrency: Maximum concurrency number of single client service (default 1 for telephone type).
-Note: this field may return null, indicating that no valid values can be obtained.
         :type MaxConcurrency: int
         :param _LastModifyTimestamp: Last modification time.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifyTimestamp: int
-        :param _SkillGroupType: Skill group type 0-phone, 1-online, 3-audio, 4-video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupType: Skill group type 0-cell phone, 1-online, 3-audio, 4-video.	.	
         :type SkillGroupType: int
-        :param _Alias: Extension number within the skill group
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Alias: Intra-Skill group line number.
         :type Alias: str
         """
         self._SkillGroupId = None
@@ -10009,7 +11143,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -10031,7 +11165,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
-        """(Deprecated) Type: IM, TEL, ALL (full media).
+        """(Deprecated) type: im, tel, all (full media).
         :rtype: str
         """
         return self._Type
@@ -10043,7 +11177,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def RoutePolicy(self):
         """Session allocation policy.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._RoutePolicy
@@ -10054,8 +11187,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsingLastSeat(self):
-        """Should the conversation allocation prioritize the last service seat?
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Whether the session is allocated to the last serviced agent first.
         :rtype: int
         """
         return self._UsingLastSeat
@@ -10067,7 +11199,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def MaxConcurrency(self):
         """Maximum concurrency number of single client service (default 1 for telephone type).
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MaxConcurrency
@@ -10079,7 +11210,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def LastModifyTimestamp(self):
         """Last modification time.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._LastModifyTimestamp
@@ -10090,8 +11220,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupType(self):
-        """Skill group type 0-phone, 1-online, 3-audio, 4-video.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Skill group type 0-cell phone, 1-online, 3-audio, 4-video.	.	
         :rtype: int
         """
         return self._SkillGroupType
@@ -10102,8 +11231,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alias(self):
-        """Extension number within the skill group
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Intra-Skill group line number.
         :rtype: str
         """
         return self._Alias
@@ -10140,13 +11268,13 @@ class SkillGroupItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillGroupId: Skill group ID.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         :param _SkillGroupName: Skill group name.
         :type SkillGroupName: str
-        :param _Priority: Priority
+        :param _Priority: Priority.
         :type Priority: int
-        :param _Type: Type: IM, TEL, ALL (full media).
+        :param _Type: Type: im, tel, all (full media).
         :type Type: str
         """
         self._SkillGroupId = None
@@ -10156,7 +11284,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -10178,7 +11306,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def Priority(self):
-        """Priority
+        """Priority.
         :rtype: int
         """
         return self._Priority
@@ -10189,7 +11317,7 @@ class SkillGroupItem(AbstractModel):
 
     @property
     def Type(self):
-        """Type: IM, TEL, ALL (full media).
+        """Type: im, tel, all (full media).
         :rtype: str
         """
         return self._Type
@@ -10221,14 +11349,13 @@ class StaffBuyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Num: Number of agents purchased
+        :param _Num: Number of agents purchased.
         :type Num: int
         :param _BuyTime: Purchased timestamp.
         :type BuyTime: int
-        :param _EndTime: End timestamp.
+        :param _EndTime: Deadline timestamp.
         :type EndTime: int
-        :param _SipNum: Number of office telephones purchased.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SipNum: Quantity of office telephones purchased.
         :type SipNum: int
         """
         self._Num = None
@@ -10238,7 +11365,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Num(self):
-        """Number of agents purchased
+        """Number of agents purchased.
         :rtype: int
         """
         return self._Num
@@ -10260,7 +11387,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
-        """End timestamp.
+        """Deadline timestamp.
         :rtype: int
         """
         return self._EndTime
@@ -10271,8 +11398,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SipNum(self):
-        """Number of office telephones purchased.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Quantity of office telephones purchased.
         :rtype: int
         """
         return self._SipNum
@@ -10305,27 +11431,23 @@ class StaffInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: Agent name.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Name: str
         :param _Mail: Agent email.
         :type Mail: str
-        :param _Phone: Agent's Telephone Number
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Phone: Agent phone number.
         :type Phone: str
         :param _Nick: Agent nickname.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Nick: str
-        :param _StaffNumber: Agent ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StaffNumber: Agent id.
         :type StaffNumber: str
-        :param _RoleId: User Role ID
+        :param _RoleId: User role id.
         :type RoleId: int
-        :param _SkillGroupList: Affiliated Skill Group List.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupList: Affiliated skill group list.
         :type SkillGroupList: list of SkillGroupItem
         :param _LastModifyTimestamp: Last modification time.
-Note: this field may return null, indicating that no valid values can be obtained.
         :type LastModifyTimestamp: int
+        :param _ExtensionNumber: Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        :type ExtensionNumber: str
         """
         self._Name = None
         self._Mail = None
@@ -10335,11 +11457,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RoleId = None
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
+        self._ExtensionNumber = None
 
     @property
     def Name(self):
         """Agent name.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Name
@@ -10361,8 +11483,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Phone(self):
-        """Agent's Telephone Number
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Agent phone number.
         :rtype: str
         """
         return self._Phone
@@ -10374,7 +11495,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Nick(self):
         """Agent nickname.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Nick
@@ -10385,8 +11505,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaffNumber(self):
-        """Agent ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Agent id.
         :rtype: str
         """
         return self._StaffNumber
@@ -10397,7 +11516,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleId(self):
-        """User Role ID
+        """User role id.
         :rtype: int
         """
         return self._RoleId
@@ -10408,8 +11527,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupList(self):
-        """Affiliated Skill Group List.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Affiliated skill group list.
         :rtype: list of SkillGroupItem
         """
         return self._SkillGroupList
@@ -10421,7 +11539,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @property
     def LastModifyTimestamp(self):
         """Last modification time.
-Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._LastModifyTimestamp
@@ -10429,6 +11546,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @LastModifyTimestamp.setter
     def LastModifyTimestamp(self, LastModifyTimestamp):
         self._LastModifyTimestamp = LastModifyTimestamp
+
+    @property
+    def ExtensionNumber(self):
+        """Agent extension number (starting with 1 to 8, 4 - 6 digits).
+        :rtype: str
+        """
+        return self._ExtensionNumber
+
+    @ExtensionNumber.setter
+    def ExtensionNumber(self, ExtensionNumber):
+        self._ExtensionNumber = ExtensionNumber
 
 
     def _deserialize(self, params):
@@ -10445,6 +11573,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._SkillGroupList.append(obj)
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
+        self._ExtensionNumber = params.get("ExtensionNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10462,7 +11591,7 @@ class StaffSkillGroupList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillGroupId: Skill group ID.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
         :param _Priority: Priority of the agent in the skill group (1 is the highest, 5 is the lowest, 3 by default).
         :type Priority: int
@@ -10472,7 +11601,7 @@ class StaffSkillGroupList(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -10513,9 +11642,9 @@ class StaffStatusExtra(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: IM - Text | TEL - Cell phone | ALL - Full media.
+        :param _Type: IM - text | tel - cell phone | all - full media.
         :type Type: str
-        :param _Direct: IN - Inbound | OUT - Outbound.
+        :param _Direct: IN - inbound | out - outbound.
         :type Direct: str
         """
         self._Type = None
@@ -10523,7 +11652,7 @@ class StaffStatusExtra(AbstractModel):
 
     @property
     def Type(self):
-        """IM - Text | TEL - Cell phone | ALL - Full media.
+        """IM - text | tel - cell phone | all - full media.
         :rtype: str
         """
         return self._Type
@@ -10534,7 +11663,7 @@ class StaffStatusExtra(AbstractModel):
 
     @property
     def Direct(self):
-        """IN - Inbound | OUT - Outbound.
+        """IN - inbound | out - outbound.
         :rtype: str
         """
         return self._Direct
@@ -10566,37 +11695,37 @@ class StaffStatusMetrics(AbstractModel):
         r"""
         :param _Email: Agent email.
         :type Email: str
-        :param _Status: Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline
+        :param _Status: Agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline.
         :type Status: str
-        :param _StatusExtra: Supplementary Information on Agent Status
+        :param _StatusExtra: Supplementary information on agent status.
         :type StatusExtra: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
-        :param _OnlineDuration: Total Online duration of the day.
+        :param _OnlineDuration: Total online duration of the day.
         :type OnlineDuration: int
-        :param _FreeDuration: Total Available duration of the day.
+        :param _FreeDuration: Total available duration of the day.
         :type FreeDuration: int
-        :param _BusyDuration: Total Busy duration of the day.
+        :param _BusyDuration: Total busy duration of the day.
         :type BusyDuration: int
-        :param _NotReadyDuration: Total Not Ready status duration of the day.
+        :param _NotReadyDuration: Total not ready status duration of the day.
         :type NotReadyDuration: int
-        :param _RestDuration: Total Break duration of the day.
+        :param _RestDuration: Total break duration of the day.
         :type RestDuration: int
-        :param _AfterCallWorkDuration: Total After Call Work duration of the day.
+        :param _AfterCallWorkDuration: Adjust the total duration of after-call work for the day.
         :type AfterCallWorkDuration: int
-        :param _Reason: Reason for Break.
+        :param _Reason: Reason for break.
         :type Reason: str
-        :param _ReserveRest: Whether to reserve Break status.
+        :param _ReserveRest: Whether to reserve break status.
         :type ReserveRest: bool
-        :param _ReserveNotReady: Whether to reserve Not Ready status.
+        :param _ReserveNotReady: Whether to reserve not ready status.
         :type ReserveNotReady: bool
-        :param _UseMobileAccept: Cell phone answering pattern: 0 - Off | 1 - Only when Offline | 2 - Always.
+        :param _UseMobileAccept: Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
         :type UseMobileAccept: int
         :param _UseMobileCallOut: Cell phone outbound call switch.
         :type UseMobileCallOut: bool
         :param _LastOnlineTimestamp: Last online timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type LastOnlineTimestamp: int
         :param _LastStatusTimestamp: Last status timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type LastStatusTimestamp: int
         """
         self._Email = None
@@ -10629,7 +11758,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline
+        """Agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline.
         :rtype: str
         """
         return self._Status
@@ -10640,7 +11769,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusExtra(self):
-        """Supplementary Information on Agent Status
+        """Supplementary information on agent status.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
         """
         return self._StatusExtra
@@ -10651,7 +11780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OnlineDuration(self):
-        """Total Online duration of the day.
+        """Total online duration of the day.
         :rtype: int
         """
         return self._OnlineDuration
@@ -10662,7 +11791,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FreeDuration(self):
-        """Total Available duration of the day.
+        """Total available duration of the day.
         :rtype: int
         """
         return self._FreeDuration
@@ -10673,7 +11802,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BusyDuration(self):
-        """Total Busy duration of the day.
+        """Total busy duration of the day.
         :rtype: int
         """
         return self._BusyDuration
@@ -10684,7 +11813,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotReadyDuration(self):
-        """Total Not Ready status duration of the day.
+        """Total not ready status duration of the day.
         :rtype: int
         """
         return self._NotReadyDuration
@@ -10695,7 +11824,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RestDuration(self):
-        """Total Break duration of the day.
+        """Total break duration of the day.
         :rtype: int
         """
         return self._RestDuration
@@ -10706,7 +11835,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AfterCallWorkDuration(self):
-        """Total After Call Work duration of the day.
+        """Adjust the total duration of after-call work for the day.
         :rtype: int
         """
         return self._AfterCallWorkDuration
@@ -10717,7 +11846,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
-        """Reason for Break.
+        """Reason for break.
         :rtype: str
         """
         return self._Reason
@@ -10728,7 +11857,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveRest(self):
-        """Whether to reserve Break status.
+        """Whether to reserve break status.
         :rtype: bool
         """
         return self._ReserveRest
@@ -10739,7 +11868,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReserveNotReady(self):
-        """Whether to reserve Not Ready status.
+        """Whether to reserve not ready status.
         :rtype: bool
         """
         return self._ReserveNotReady
@@ -10750,7 +11879,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UseMobileAccept(self):
-        """Cell phone answering pattern: 0 - Off | 1 - Only when Offline | 2 - Always.
+        """Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.
         :rtype: int
         """
         return self._UseMobileAccept
@@ -10773,7 +11902,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LastOnlineTimestamp(self):
         """Last online timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._LastOnlineTimestamp
@@ -10785,7 +11914,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LastStatusTimestamp(self):
         """Last status timestamp.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._LastStatusTimestamp
@@ -10831,9 +11960,9 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Call Center Instance ID.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _TaskId: Task ID.
+        :param _TaskId: Task id.
         :type TaskId: int
         """
         self._SdkAppId = None
@@ -10841,7 +11970,7 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Call Center Instance ID.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -10852,7 +11981,7 @@ class StopAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """Task ID.
+        """Task id.
         :rtype: int
         """
         return self._TaskId
@@ -10904,7 +12033,7 @@ class StopAutoCalloutTaskResponse(AbstractModel):
 
 
 class TelCdrInfo(AbstractModel):
-    """Phone call information.
+    """Phone call information
 
     """
 
@@ -10914,205 +12043,187 @@ class TelCdrInfo(AbstractModel):
         :type Caller: str
         :param _Callee: Called number.
         :type Callee: str
-        :param _Time: Call initiation timestamp, Unix timestamp.
+        :param _Time: Call initiation timestamp, unix timestamp.
         :type Time: int
-        :param _Direction: Call direction: 0 - Inbound, 1 - Outbound.
+        :param _Direction: Call direction: 0 - inbound, 1 - outbound.
         :type Direction: int
         :param _Duration: Call duration.
         :type Duration: int
-        :param _RecordURL: Recording Information.
+        :param _RecordURL: Recording information.
         :type RecordURL: str
-        :param _RecordId: Recording ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RecordId: Recording id.
         :type RecordId: str
-        :param _SeatUser: Agent Information
+        :param _SeatUser: Agent information.
         :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
-        :param _EndStatus: EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:
+        :param _EndStatus: EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
 
-**Scenario	         EndStatus	EndStatusString	Status Description**
+**Scenario	EndStatus	EndStatusString	Status description**.
 
-Incoming & Outgoing Calls	1	        ok	                        Normal End
+Inbound call & call	1	ok	end properly.
 
-Incoming & Outgoing Calls	0	        error	                System Error
+Inbound call & call | 0 | error | system error.
 
-Incoming Call	             102	        ivrGiveUp	        User Gave Up During IVR
+Inbound call | 102 | ivrgiveup | user gives up during ivr.
 
-Incoming Call	             103	        waitingGiveUp	       User Gave Up During Queue
+Inbound call | 103 | waitinggiveup | user gives up during session queue.
 
-Incoming Call	             104	        ringingGiveUp	       User Gave Up During Ringing
+Inbound call | 104 | ringinggiveup | user gives up during session ringing.
 
-Incoming Call	             105	        noSeatOnline	       No Seat Online
+Inbound call | 105 | noseatonline | no agent online.
 
-Incoming Call              106	       notWorkTime	       Non-Working Hours   
+Inbound call              106	       non - working hour      non - working hour.   
 
-Incoming Call	            107	       ivrEnd	               Ended Directly After IVR
+Inbound call              107	       ivrend                   end directly after ivr.
 
-Incoming Call	            100	      blackList Incoming blocklist  
+Inbound call              100	       blocklist call - in      call - in blocklist. 
 
-Outgoing Call               2	              unconnected	Unconnected
+Outgoing call            2                 unconnected            unconnected.
 
-Outgoing Call             108	        restrictedCallee	Callee restricted due to high risk
+Outgoing call            108           restricted callee      callee restricted due to high - risk.
 
-Outgoing Call             109	        tooManyRequest	    Frequency limit exceeded
+Outgoing call         109        toomanyrequest        overfrequency.
 
-Outgoing Call             110	        restrictedArea	    Call to restricted area
+Outgoing call         110        restrictedarea        outbound blind area.
 
-Outgoing Call             111	        restrictedTime	Call time restricted
+Outgoing call         111        restrictedtime        outbound time restriction.
                          
-Outgoing Call             201            unknown	Unknown status
+Outgoing call         201        unknown               unknown status.
 
-Outgoing Call             202            notAnswer	Missed call
+Outgoing call         202        notanswer             unanswered.
 
-Outgoing Call            203	    userReject	Reject/Hang Up
+Outgoing call - 203 - userreject: reject call.
 
-Outgoing Call	          204	    powerOff	Shutting down
+Outgoing call - 204 - poweroff: power off.
 
-Outgoing Call           205            numberNotExist	Disconnected Number
+Outgoing call - 205 - numbernotexist: nonexistent number.
 
-Outgoing Call	         206	           busy	During the call
+Outgoing call - 206 - busy: call in progress.
 
-Outgoing Call   	        207	           outOfCredit	Overdue Payment
+Outgoing call - 207 - outofcredit: arrears.
 
-Outgoing Call	         208	           operatorError	 ISP Carrier Line Anomaly
+Outgoing call - 208 - operatorerror - ISP line exception.
 
-Outgoing Call         	209	           callerCancel	Caller Cancelled
+Outgoing call - 209 - callercancel - caller cancellation.
 
-Outgoing Call	        210	           notInService	Out of Service Area
+Outgoing call - 210 - notinservice - not in service area.
 
-Incoming & Outgoing Calls	211    clientError    Client Error
-
+Inbound and outgoing call - 211 - clienterror - client error.
+Outgoing call - 212 - carrierblocked - ISP blocking.
         :type EndStatus: int
         :param _SkillGroup: Skill group name.
         :type SkillGroup: str
-        :param _CallerLocation: Caller's location.
+        :param _CallerLocation: Caller'S location.
         :type CallerLocation: str
-        :param _IVRDuration: Time spent in IVR stage.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IVRDuration: Time spent in ivr stage.
         :type IVRDuration: int
-        :param _RingTimestamp: Ring timestamp. UNIX second-level timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RingTimestamp: Ring timestamp. unix second-level timestamp.
         :type RingTimestamp: int
-        :param _AcceptTimestamp: Answer timestamp. UNIX second-Level timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _AcceptTimestamp: Answer timestamp. unix second-level timestamp.
         :type AcceptTimestamp: int
-        :param _EndedTimestamp: End timestamp. UNIX second-level timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _EndedTimestamp: End timestamp. unix second-level timestamp.
         :type EndedTimestamp: int
-        :param _IVRKeyPressed: IVR key information, e.g. ["1","2","3"]
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IVRKeyPressed: IVR key information, e.g. ["1","2","3"].
         :type IVRKeyPressed: list of str
-        :param _HungUpSide: Hanging Up Party seat Seat user Users system system
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HungUpSide: Hang-Up side, seat, user, system.
         :type HungUpSide: str
-        :param _ServeParticipants: List of Service Participants
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ServeParticipants: Service participant list.
         :type ServeParticipants: list of ServeParticipant
-        :param _SkillGroupId: Skill group ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
-        :param _EndStatusString: EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:
+        :param _EndStatusString: EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
 
-**Scenario	         EndStatus	EndStatusString	Status Description**
+**Scenario	EndStatus	EndStatusString	Status description**.
 
-Incoming & Outgoing Calls	1	        ok	                        Normal End
+Inbound call & call	1	ok	end properly.
 
-Incoming & Outgoing Calls	0	        error	                System Error
+Inbound call & call | 0 | error | system error.
 
-Incoming Call	             102	        ivrGiveUp	        User Gave Up During IVR
+Inbound call | 102 | ivrgiveup | user gives up during ivr.
 
-Incoming Call	             103	        waitingGiveUp	       User Gave Up During Queue
+Inbound call | 103 | waitinggiveup | user gives up during session queue.
 
-Incoming Call	             104	        ringingGiveUp	       User Gave Up During Ringing
+Inbound call | 104 | ringinggiveup | user gives up during session ringing.
 
-Incoming Call	             105	        noSeatOnline	       No Seat Online
+Inbound call | 105 | noseatonline | no agent online.
 
-Incoming Call              106	       notWorkTime	       Non-Working Hours   
+Inbound call              106	       non - working hour      non - working hour.   
 
-Incoming Call	            107	       ivrEnd	               Ended Directly After IVR
+Inbound call              107	       ivrend                   end directly after ivr.
 
-Incoming Call	            100	      blackList Incoming blocklist  
+Inbound call              100	       blocklist call - in      call - in blocklist. 
 
-Outgoing Call               2	              unconnected	Unconnected
+Outgoing call            2                 unconnected            unconnected.
 
-Outgoing Call             108	        restrictedCallee	Callee restricted due to high risk
+Outgoing call            108           restricted callee      callee restricted due to high - risk.
 
-Outgoing Call             109	        tooManyRequest	    Frequency limit exceeded
+Outgoing call         109        toomanyrequest        overfrequency.
 
-Outgoing Call             110	        restrictedArea	    Call to restricted area
+Outgoing call         110        restrictedarea        outbound blind area.
 
-Outgoing Call             111	        restrictedTime	Call time restricted
+Outgoing call         111        restrictedtime        outbound time restriction.
                          
-Outgoing Call             201            unknown	Unknown status
+Outgoing call         201        unknown               unknown status.
 
-Outgoing Call             202            notAnswer	Missed call
+Outgoing call         202        notanswer             unanswered.
 
-Outgoing Call            203	    userReject	Reject/Hang Up
+Outgoing call - 203 - userreject: reject call.
 
-Outgoing Call	          204	    powerOff	Shutting down
+Outgoing call - 204 - poweroff: power off.
 
-Outgoing Call           205            numberNotExist	Disconnected Number
+Outgoing call - 205 - numbernotexist: nonexistent number.
 
-Phone Call Out	         206	           busy	In Call
+Outgoing call - 206 - busy: call in progress.
 
-Outgoing Call   	        207	           outOfCredit	Overdue Payment
+Outgoing call - 207 - outofcredit: arrears.
 
-Outgoing Call	         208	           operatorError	 ISP Carrier Line Anomaly
+Outgoing call - 208 - operatorerror - ISP line exception.
 
-Outgoing Call         	209	           callerCancel	Caller Cancelled
+Outgoing call - 209 - callercancel - caller cancellation.
 
-Outgoing Call	        210	           notInService	Out of Service Area
+Outgoing call - 210 - notinservice - not in service area.
 
-Phone Call In & Out	211    clientError    Client Error
-
-Note: This field may return null, indicating that no valid values can be obtained.
+Inbound and outgoing call - 211 - clienterror - client error.
+Outgoing call - 212 - carrierblocked - ISP blocking.
         :type EndStatusString: str
-        :param _StartTimestamp: Session start timestamp. UNIX second-level timestamp.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _StartTimestamp: Session start timestamp. unix second-level timestamp.
         :type StartTimestamp: int
-        :param _QueuedTimestamp: Queue entry time. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _QueuedTimestamp: Queue entry time. unix second-level timestamp.
         :type QueuedTimestamp: int
-        :param _PostIVRKeyPressed: Post-IVR key information (e.g. [{"Key":"1","Label":"Very Satisfied"}])
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _PostIVRKeyPressed: Post-IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
         :type PostIVRKeyPressed: list of IVRKeyPressedElement
-        :param _QueuedSkillGroupId: Queue Skill Group ID.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _QueuedSkillGroupId: Queue skill group id.
         :type QueuedSkillGroupId: int
-        :param _SessionId: Session ID.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SessionId: Session id.
         :type SessionId: str
-        :param _ProtectedCaller: Caller number protection ID. (Effective when the number protection map feature is activated, and the Caller field is empty).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProtectedCaller: Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :type ProtectedCaller: str
-        :param _ProtectedCallee: Called number protection ID (Effective when the number protection map feature is activated, and the Callee field is empty).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProtectedCallee: Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :type ProtectedCallee: str
-        :param _Uui: Customer custom data. (User-to-User Interface)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Uui: Customer custom data. (user - to - user interface).
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Uui: str
-        :param _UUI: Customer custom data. (User-to-User Interface)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UUI: Customer custom data. (user - to - user interface).
         :type UUI: str
-        :param _IVRKeyPressedEx: IVR key information (e.g.?[{"Key":"1","Label":"highly satisfied"}])
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IVRKeyPressedEx: IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
         :type IVRKeyPressedEx: list of IVRKeyPressedElement
-        :param _AsrUrl: Access to the ASR text information address of the recording.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsrUrl: Access to the asr text information address of the recording.
         :type AsrUrl: str
-        :param _CustomRecordURL: Address of the third party COS for transferring recording.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AsrStatus: ASRUrl status: complete.
+Completed;.
+Processing.
+Generating.
+NotExists.
+No record (offline asr generation is not enabled or no package is available).
+        :type AsrStatus: str
+        :param _CustomRecordURL: Address of the third-party cos for transferring recording.
         :type CustomRecordURL: str
-        :param _Remark: Remarks
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Remark: Remarks.
         :type Remark: str
         :param _QueuedSkillGroupName: Queue skill group name.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type QueuedSkillGroupName: str
-        :param _VoicemailRecordURL: Audio message recording URL during call.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VoicemailRecordURL: Audio message recording url during call.
         :type VoicemailRecordURL: list of str
-        :param _VoicemailAsrURL: Text Information address of ASR audio message during a call.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _VoicemailAsrURL: Text information address of asr audio message during a call.
         :type VoicemailAsrURL: list of str
         """
         self._Caller = None
@@ -11146,6 +12257,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UUI = None
         self._IVRKeyPressedEx = None
         self._AsrUrl = None
+        self._AsrStatus = None
         self._CustomRecordURL = None
         self._Remark = None
         self._QueuedSkillGroupName = None
@@ -11176,7 +12288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Time(self):
-        """Call initiation timestamp, Unix timestamp.
+        """Call initiation timestamp, unix timestamp.
         :rtype: int
         """
         return self._Time
@@ -11187,7 +12299,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Direction(self):
-        """Call direction: 0 - Inbound, 1 - Outbound.
+        """Call direction: 0 - inbound, 1 - outbound.
         :rtype: int
         """
         return self._Direction
@@ -11209,7 +12321,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordURL(self):
-        """Recording Information.
+        """Recording information.
         :rtype: str
         """
         return self._RecordURL
@@ -11220,8 +12332,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordId(self):
-        """Recording ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Recording id.
         :rtype: str
         """
         return self._RecordId
@@ -11232,7 +12343,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SeatUser(self):
-        """Agent Information
+        """Agent information.
         :rtype: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
         """
         return self._SeatUser
@@ -11243,60 +12354,60 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndStatus(self):
-        """EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:
+        """EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
 
-**Scenario	         EndStatus	EndStatusString	Status Description**
+**Scenario	EndStatus	EndStatusString	Status description**.
 
-Incoming & Outgoing Calls	1	        ok	                        Normal End
+Inbound call & call	1	ok	end properly.
 
-Incoming & Outgoing Calls	0	        error	                System Error
+Inbound call & call | 0 | error | system error.
 
-Incoming Call	             102	        ivrGiveUp	        User Gave Up During IVR
+Inbound call | 102 | ivrgiveup | user gives up during ivr.
 
-Incoming Call	             103	        waitingGiveUp	       User Gave Up During Queue
+Inbound call | 103 | waitinggiveup | user gives up during session queue.
 
-Incoming Call	             104	        ringingGiveUp	       User Gave Up During Ringing
+Inbound call | 104 | ringinggiveup | user gives up during session ringing.
 
-Incoming Call	             105	        noSeatOnline	       No Seat Online
+Inbound call | 105 | noseatonline | no agent online.
 
-Incoming Call              106	       notWorkTime	       Non-Working Hours   
+Inbound call              106	       non - working hour      non - working hour.   
 
-Incoming Call	            107	       ivrEnd	               Ended Directly After IVR
+Inbound call              107	       ivrend                   end directly after ivr.
 
-Incoming Call	            100	      blackList Incoming blocklist  
+Inbound call              100	       blocklist call - in      call - in blocklist. 
 
-Outgoing Call               2	              unconnected	Unconnected
+Outgoing call            2                 unconnected            unconnected.
 
-Outgoing Call             108	        restrictedCallee	Callee restricted due to high risk
+Outgoing call            108           restricted callee      callee restricted due to high - risk.
 
-Outgoing Call             109	        tooManyRequest	    Frequency limit exceeded
+Outgoing call         109        toomanyrequest        overfrequency.
 
-Outgoing Call             110	        restrictedArea	    Call to restricted area
+Outgoing call         110        restrictedarea        outbound blind area.
 
-Outgoing Call             111	        restrictedTime	Call time restricted
+Outgoing call         111        restrictedtime        outbound time restriction.
                          
-Outgoing Call             201            unknown	Unknown status
+Outgoing call         201        unknown               unknown status.
 
-Outgoing Call             202            notAnswer	Missed call
+Outgoing call         202        notanswer             unanswered.
 
-Outgoing Call            203	    userReject	Reject/Hang Up
+Outgoing call - 203 - userreject: reject call.
 
-Outgoing Call	          204	    powerOff	Shutting down
+Outgoing call - 204 - poweroff: power off.
 
-Outgoing Call           205            numberNotExist	Disconnected Number
+Outgoing call - 205 - numbernotexist: nonexistent number.
 
-Outgoing Call	         206	           busy	During the call
+Outgoing call - 206 - busy: call in progress.
 
-Outgoing Call   	        207	           outOfCredit	Overdue Payment
+Outgoing call - 207 - outofcredit: arrears.
 
-Outgoing Call	         208	           operatorError	 ISP Carrier Line Anomaly
+Outgoing call - 208 - operatorerror - ISP line exception.
 
-Outgoing Call         	209	           callerCancel	Caller Cancelled
+Outgoing call - 209 - callercancel - caller cancellation.
 
-Outgoing Call	        210	           notInService	Out of Service Area
+Outgoing call - 210 - notinservice - not in service area.
 
-Incoming & Outgoing Calls	211    clientError    Client Error
-
+Inbound and outgoing call - 211 - clienterror - client error.
+Outgoing call - 212 - carrierblocked - ISP blocking.
         :rtype: int
         """
         return self._EndStatus
@@ -11318,7 +12429,7 @@ Incoming & Outgoing Calls	211    clientError    Client Error
 
     @property
     def CallerLocation(self):
-        """Caller's location.
+        """Caller'S location.
         :rtype: str
         """
         return self._CallerLocation
@@ -11329,8 +12440,7 @@ Incoming & Outgoing Calls	211    clientError    Client Error
 
     @property
     def IVRDuration(self):
-        """Time spent in IVR stage.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Time spent in ivr stage.
         :rtype: int
         """
         return self._IVRDuration
@@ -11341,8 +12451,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RingTimestamp(self):
-        """Ring timestamp. UNIX second-level timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Ring timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._RingTimestamp
@@ -11353,8 +12462,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AcceptTimestamp(self):
-        """Answer timestamp. UNIX second-Level timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Answer timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -11365,8 +12473,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndedTimestamp(self):
-        """End timestamp. UNIX second-level timestamp
-Note: this field may return null, indicating that no valid values can be obtained.
+        """End timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._EndedTimestamp
@@ -11377,8 +12484,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IVRKeyPressed(self):
-        """IVR key information, e.g. ["1","2","3"]
-Note: this field may return null, indicating that no valid values can be obtained.
+        """IVR key information, e.g. ["1","2","3"].
         :rtype: list of str
         """
         return self._IVRKeyPressed
@@ -11389,8 +12495,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HungUpSide(self):
-        """Hanging Up Party seat Seat user Users system system
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Hang-Up side, seat, user, system.
         :rtype: str
         """
         return self._HungUpSide
@@ -11401,8 +12506,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ServeParticipants(self):
-        """List of Service Participants
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Service participant list.
         :rtype: list of ServeParticipant
         """
         return self._ServeParticipants
@@ -11413,8 +12517,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkillGroupId(self):
-        """Skill group ID.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupId
@@ -11425,61 +12528,60 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndStatusString(self):
-        """EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:
+        """EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
 
-**Scenario	         EndStatus	EndStatusString	Status Description**
+**Scenario	EndStatus	EndStatusString	Status description**.
 
-Incoming & Outgoing Calls	1	        ok	                        Normal End
+Inbound call & call	1	ok	end properly.
 
-Incoming & Outgoing Calls	0	        error	                System Error
+Inbound call & call | 0 | error | system error.
 
-Incoming Call	             102	        ivrGiveUp	        User Gave Up During IVR
+Inbound call | 102 | ivrgiveup | user gives up during ivr.
 
-Incoming Call	             103	        waitingGiveUp	       User Gave Up During Queue
+Inbound call | 103 | waitinggiveup | user gives up during session queue.
 
-Incoming Call	             104	        ringingGiveUp	       User Gave Up During Ringing
+Inbound call | 104 | ringinggiveup | user gives up during session ringing.
 
-Incoming Call	             105	        noSeatOnline	       No Seat Online
+Inbound call | 105 | noseatonline | no agent online.
 
-Incoming Call              106	       notWorkTime	       Non-Working Hours   
+Inbound call              106	       non - working hour      non - working hour.   
 
-Incoming Call	            107	       ivrEnd	               Ended Directly After IVR
+Inbound call              107	       ivrend                   end directly after ivr.
 
-Incoming Call	            100	      blackList Incoming blocklist  
+Inbound call              100	       blocklist call - in      call - in blocklist. 
 
-Outgoing Call               2	              unconnected	Unconnected
+Outgoing call            2                 unconnected            unconnected.
 
-Outgoing Call             108	        restrictedCallee	Callee restricted due to high risk
+Outgoing call            108           restricted callee      callee restricted due to high - risk.
 
-Outgoing Call             109	        tooManyRequest	    Frequency limit exceeded
+Outgoing call         109        toomanyrequest        overfrequency.
 
-Outgoing Call             110	        restrictedArea	    Call to restricted area
+Outgoing call         110        restrictedarea        outbound blind area.
 
-Outgoing Call             111	        restrictedTime	Call time restricted
+Outgoing call         111        restrictedtime        outbound time restriction.
                          
-Outgoing Call             201            unknown	Unknown status
+Outgoing call         201        unknown               unknown status.
 
-Outgoing Call             202            notAnswer	Missed call
+Outgoing call         202        notanswer             unanswered.
 
-Outgoing Call            203	    userReject	Reject/Hang Up
+Outgoing call - 203 - userreject: reject call.
 
-Outgoing Call	          204	    powerOff	Shutting down
+Outgoing call - 204 - poweroff: power off.
 
-Outgoing Call           205            numberNotExist	Disconnected Number
+Outgoing call - 205 - numbernotexist: nonexistent number.
 
-Phone Call Out	         206	           busy	In Call
+Outgoing call - 206 - busy: call in progress.
 
-Outgoing Call   	        207	           outOfCredit	Overdue Payment
+Outgoing call - 207 - outofcredit: arrears.
 
-Outgoing Call	         208	           operatorError	 ISP Carrier Line Anomaly
+Outgoing call - 208 - operatorerror - ISP line exception.
 
-Outgoing Call         	209	           callerCancel	Caller Cancelled
+Outgoing call - 209 - callercancel - caller cancellation.
 
-Outgoing Call	        210	           notInService	Out of Service Area
+Outgoing call - 210 - notinservice - not in service area.
 
-Phone Call In & Out	211    clientError    Client Error
-
-Note: This field may return null, indicating that no valid values can be obtained.
+Inbound and outgoing call - 211 - clienterror - client error.
+Outgoing call - 212 - carrierblocked - ISP blocking.
         :rtype: str
         """
         return self._EndStatusString
@@ -11490,8 +12592,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTimestamp(self):
-        """Session start timestamp. UNIX second-level timestamp.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Session start timestamp. unix second-level timestamp.
         :rtype: int
         """
         return self._StartTimestamp
@@ -11502,8 +12603,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def QueuedTimestamp(self):
-        """Queue entry time. Unix second-level timestamp.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Queue entry time. unix second-level timestamp.
         :rtype: int
         """
         return self._QueuedTimestamp
@@ -11514,8 +12614,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PostIVRKeyPressed(self):
-        """Post-IVR key information (e.g. [{"Key":"1","Label":"Very Satisfied"}])
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Post-IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
         :rtype: list of IVRKeyPressedElement
         """
         return self._PostIVRKeyPressed
@@ -11526,8 +12625,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def QueuedSkillGroupId(self):
-        """Queue Skill Group ID.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Queue skill group id.
         :rtype: int
         """
         return self._QueuedSkillGroupId
@@ -11538,8 +12636,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SessionId(self):
-        """Session ID.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Session id.
         :rtype: str
         """
         return self._SessionId
@@ -11550,8 +12647,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProtectedCaller(self):
-        """Caller number protection ID. (Effective when the number protection map feature is activated, and the Caller field is empty).
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.
         :rtype: str
         """
         return self._ProtectedCaller
@@ -11562,8 +12658,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProtectedCallee(self):
-        """Called number protection ID (Effective when the number protection map feature is activated, and the Callee field is empty).
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.
         :rtype: str
         """
         return self._ProtectedCallee
@@ -11576,8 +12671,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Uui(self):
         warnings.warn("parameter `Uui` is deprecated", DeprecationWarning) 
 
-        """Customer custom data. (User-to-User Interface)
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Customer custom data. (user - to - user interface).
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Uui
@@ -11590,8 +12685,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UUI(self):
-        """Customer custom data. (User-to-User Interface)
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Customer custom data. (user - to - user interface).
         :rtype: str
         """
         return self._UUI
@@ -11602,8 +12696,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IVRKeyPressedEx(self):
-        """IVR key information (e.g.?[{"Key":"1","Label":"highly satisfied"}])
-Note: This field may return null, indicating that no valid values can be obtained.
+        """IVR key information (e.g. [{"key":"1","label":"very satisfied"}]).
         :rtype: list of IVRKeyPressedElement
         """
         return self._IVRKeyPressedEx
@@ -11614,8 +12707,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrUrl(self):
-        """Access to the ASR text information address of the recording.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Access to the asr text information address of the recording.
         :rtype: str
         """
         return self._AsrUrl
@@ -11625,9 +12717,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AsrUrl = AsrUrl
 
     @property
+    def AsrStatus(self):
+        """ASRUrl status: complete.
+Completed;.
+Processing.
+Generating.
+NotExists.
+No record (offline asr generation is not enabled or no package is available).
+        :rtype: str
+        """
+        return self._AsrStatus
+
+    @AsrStatus.setter
+    def AsrStatus(self, AsrStatus):
+        self._AsrStatus = AsrStatus
+
+    @property
     def CustomRecordURL(self):
-        """Address of the third party COS for transferring recording.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Address of the third-party cos for transferring recording.
         :rtype: str
         """
         return self._CustomRecordURL
@@ -11638,8 +12745,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Remark(self):
-        """Remarks
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Remarks.
         :rtype: str
         """
         return self._Remark
@@ -11651,7 +12757,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def QueuedSkillGroupName(self):
         """Queue skill group name.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._QueuedSkillGroupName
@@ -11662,8 +12767,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoicemailRecordURL(self):
-        """Audio message recording URL during call.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Audio message recording url during call.
         :rtype: list of str
         """
         return self._VoicemailRecordURL
@@ -11674,8 +12778,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VoicemailAsrURL(self):
-        """Text Information address of ASR audio message during a call.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Text information address of asr audio message during a call.
         :rtype: list of str
         """
         return self._VoicemailAsrURL
@@ -11734,6 +12837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._IVRKeyPressedEx.append(obj)
         self._AsrUrl = params.get("AsrUrl")
+        self._AsrStatus = params.get("AsrStatus")
         self._CustomRecordURL = params.get("CustomRecordURL")
         self._Remark = params.get("Remark")
         self._QueuedSkillGroupName = params.get("QueuedSkillGroupName")
@@ -11756,11 +12860,11 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _Number: Number to be unbound.
         :type Number: str
-        :param _SkillGroupIds: List of skill group IDs to be unbound.
+        :param _SkillGroupIds: List of skill group ids to be unbound.
         :type SkillGroupIds: list of int non-negative
         """
         self._SdkAppId = None
@@ -11769,7 +12873,7 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11791,7 +12895,7 @@ class UnbindNumberCallOutSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupIds(self):
-        """List of skill group IDs to be unbound.
+        """List of skill group ids to be unbound.
         :rtype: list of int non-negative
         """
         return self._SkillGroupIds
@@ -11850,7 +12954,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
         :param _StaffEmail: Customer service email.
         :type StaffEmail: str
@@ -11863,7 +12967,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11944,13 +13048,13 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required).
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _SkillGroupID: Skill group ID.
+        :param _SkillGroupID: Skill group id.
         :type SkillGroupID: int
         :param _SkillGroupName: Modified skill group name.
         :type SkillGroupName: str
-        :param _MaxConcurrency: Modified maximum concurrency and the maximum synchronization is 2.
+        :param _MaxConcurrency: Modified maximum concurrency, with the maximum synchronization being 2.
         :type MaxConcurrency: int
         :param _RingAll: True for simultaneous ringing, false for sequential ringing.
         :type RingAll: bool
@@ -11963,7 +13067,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required).
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -11974,7 +13078,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def SkillGroupID(self):
-        """Skill group ID.
+        """Skill group id.
         :rtype: int
         """
         return self._SkillGroupID
@@ -11996,7 +13100,7 @@ class UpdateCCCSkillGroupRequest(AbstractModel):
 
     @property
     def MaxConcurrency(self):
-        """Modified maximum concurrency and the maximum synchronization is 2.
+        """Modified maximum concurrency, with the maximum synchronization being 2.
         :rtype: int
         """
         return self._MaxConcurrency
@@ -12068,13 +13172,13 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _CampaignId: Generated task ID.
+        :param _CampaignId: Generated task id.
         :type CampaignId: int
-        :param _Name: Task Name
+        :param _Name: Task name.
         :type Name: str
-        :param _Callees: Called list supporting E.164 or number formats without country code.
+        :param _Callees: Called list supporting e.164 or number formats without country code.
         :type Callees: list of str
         :param _Callers: Calling list using the number formats displayed on the management side.
         :type Callers: list of str
@@ -12084,18 +13188,24 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
         :type SkillGroupId: int
         :param _Priority: Running priority of multiple tasks in the same application, from high to low 1 - 5.
         :type Priority: int
-        :param _ExpectedAbandonRate: Expected call drop rate, percentage, 5 - 50.
+        :param _ExpectedAbandonRate: Expected call drop rate, percentage, 5 - 50.	.	
         :type ExpectedAbandonRate: int
         :param _RetryInterval: Call retry interval, in seconds, [60 - 86,400].
         :type RetryInterval: int
-        :param _StartTime: Task start time. Unix timestamp. The task will automatically start after this time.
+        :param _StartTime: Task start time. unix timestamp. the task will automatically start after this time.
         :type StartTime: int
-        :param _EndTime: Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        :param _EndTime: Task termination time. unix timestamp. the task will automatically terminate after this time.
         :type EndTime: int
-        :param _IVRId: Specified IVR ID.
+        :param _IVRId: Specified ivr id.
         :type IVRId: int
         :param _RetryTimes: Number of call retries, 0 - 2.
         :type RetryTimes: int
+        :param _Variables: Custom variable.
+        :type Variables: list of Variable
+        :param _UUI: 	UUI
+        :type UUI: str
+        :param _CalleeAttributes: Property of the called.
+        :type CalleeAttributes: list of CalleeAttribute
         """
         self._SdkAppId = None
         self._CampaignId = None
@@ -12111,10 +13221,13 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = None
         self._IVRId = None
         self._RetryTimes = None
+        self._Variables = None
+        self._UUI = None
+        self._CalleeAttributes = None
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -12125,7 +13238,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def CampaignId(self):
-        """Generated task ID.
+        """Generated task id.
         :rtype: int
         """
         return self._CampaignId
@@ -12136,7 +13249,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Name(self):
-        """Task Name
+        """Task name.
         :rtype: str
         """
         return self._Name
@@ -12147,7 +13260,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def Callees(self):
-        """Called list supporting E.164 or number formats without country code.
+        """Called list supporting e.164 or number formats without country code.
         :rtype: list of str
         """
         return self._Callees
@@ -12202,7 +13315,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def ExpectedAbandonRate(self):
-        """Expected call drop rate, percentage, 5 - 50.
+        """Expected call drop rate, percentage, 5 - 50.	.	
         :rtype: int
         """
         return self._ExpectedAbandonRate
@@ -12224,7 +13337,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Task start time. Unix timestamp. The task will automatically start after this time.
+        """Task start time. unix timestamp. the task will automatically start after this time.
         :rtype: int
         """
         return self._StartTime
@@ -12235,7 +13348,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """Task termination time. Unix timestamp. The task will automatically terminate after this time.
+        """Task termination time. unix timestamp. the task will automatically terminate after this time.
         :rtype: int
         """
         return self._EndTime
@@ -12246,7 +13359,7 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
 
     @property
     def IVRId(self):
-        """Specified IVR ID.
+        """Specified ivr id.
         :rtype: int
         """
         return self._IVRId
@@ -12266,6 +13379,39 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
     def RetryTimes(self, RetryTimes):
         self._RetryTimes = RetryTimes
 
+    @property
+    def Variables(self):
+        """Custom variable.
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+    @property
+    def UUI(self):
+        """	UUI
+        :rtype: str
+        """
+        return self._UUI
+
+    @UUI.setter
+    def UUI(self, UUI):
+        self._UUI = UUI
+
+    @property
+    def CalleeAttributes(self):
+        """Property of the called.
+        :rtype: list of CalleeAttribute
+        """
+        return self._CalleeAttributes
+
+    @CalleeAttributes.setter
+    def CalleeAttributes(self, CalleeAttributes):
+        self._CalleeAttributes = CalleeAttributes
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -12282,6 +13428,19 @@ class UpdatePredictiveDialingCampaignRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._IVRId = params.get("IVRId")
         self._RetryTimes = params.get("RetryTimes")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        self._UUI = params.get("UUI")
+        if params.get("CalleeAttributes") is not None:
+            self._CalleeAttributes = []
+            for item in params.get("CalleeAttributes"):
+                obj = CalleeAttribute()
+                obj._deserialize(item)
+                self._CalleeAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12327,9 +13486,9 @@ class UploadAudioInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomFileName: File Alias (can be duplicated)
+        :param _CustomFileName: File alias (can be duplicated).
         :type CustomFileName: str
-        :param _AudioUrl: Audio File Link (supports mp3 and wav formats, file size not exceeding 5MB)
+        :param _AudioUrl: Audio file link (supports mp3 and wav formats, file size not exceeding 5mb).
         :type AudioUrl: str
         """
         self._CustomFileName = None
@@ -12337,7 +13496,7 @@ class UploadAudioInfo(AbstractModel):
 
     @property
     def CustomFileName(self):
-        """File Alias (can be duplicated)
+        """File alias (can be duplicated).
         :rtype: str
         """
         return self._CustomFileName
@@ -12348,7 +13507,7 @@ class UploadAudioInfo(AbstractModel):
 
     @property
     def AudioUrl(self):
-        """Audio File Link (supports mp3 and wav formats, file size not exceeding 5MB)
+        """Audio file link (supports mp3 and wav formats, file size not exceeding 5mb).
         :rtype: str
         """
         return self._AudioUrl
@@ -12378,11 +13537,9 @@ class UploadIvrAudioFailedInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: Filename
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FileName: Filename.
         :type FileName: str
-        :param _FailedMsg: Reason for failure
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FailedMsg: Reason for failure.
         :type FailedMsg: str
         """
         self._FileName = None
@@ -12390,8 +13547,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileName(self):
-        """Filename
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Filename.
         :rtype: str
         """
         return self._FileName
@@ -12402,8 +13558,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedMsg(self):
-        """Reason for failure
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Reason for failure.
         :rtype: str
         """
         return self._FailedMsg
@@ -12433,9 +13588,9 @@ class UploadIvrAudioRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        :param _SdkAppId: Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :type SdkAppId: int
-        :param _AudioList: Audio File List
+        :param _AudioList: Audio file list.
         :type AudioList: list of UploadAudioInfo
         """
         self._SdkAppId = None
@@ -12443,7 +13598,7 @@ class UploadIvrAudioRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        """Application ID (required) can be found at https://console.cloud.tencent.com/ccc.
+        """Application id (required) can be found at https://console.cloud.tencent.com/ccc.
         :rtype: int
         """
         return self._SdkAppId
@@ -12454,7 +13609,7 @@ class UploadIvrAudioRequest(AbstractModel):
 
     @property
     def AudioList(self):
-        """Audio File List
+        """Audio file list.
         :rtype: list of UploadAudioInfo
         """
         return self._AudioList
@@ -12489,11 +13644,9 @@ class UploadIvrAudioResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FailedFileList: List of failed uploads
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FailedFileList: List of files that failed to be uploaded.
         :type FailedFileList: list of UploadIvrAudioFailedInfo
-        :param _SuccessFileList: List of successful uploads
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SuccessFileList: List of successfully uploaded files.
         :type SuccessFileList: list of AudioFileInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12504,8 +13657,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailedFileList(self):
-        """List of failed uploads
-Note: This field may return null, indicating that no valid values can be obtained.
+        """List of files that failed to be uploaded.
         :rtype: list of UploadIvrAudioFailedInfo
         """
         return self._FailedFileList
@@ -12516,8 +13668,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuccessFileList(self):
-        """List of successful uploads
-Note: This field may return null, indicating that no valid values can be obtained.
+        """List of successfully uploaded files.
         :rtype: list of AudioFileInfo
         """
         return self._SuccessFileList

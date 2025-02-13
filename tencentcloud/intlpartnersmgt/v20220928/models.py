@@ -1349,7 +1349,7 @@ Parameter value is not allowed to be 7,380,86.
         :type Area: str
         :param _Extended: Extension field, which is left empty by default.
         :type Extended: str
-        :param _VerifyCode: VerifyCode. This field is required. 
+        :param _VerifyCode: VerifyCode. This parameter is required. 
 Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.
         :type VerifyCode: str
         """
@@ -1460,7 +1460,7 @@ Parameter value is not allowed to be 7,380,86.
 
     @property
     def VerifyCode(self):
-        """VerifyCode. This field is required. 
+        """VerifyCode. This parameter is required. 
 Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.
         :rtype: str
         """
