@@ -1741,6 +1741,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCurrentPlaylist(self, request):
+        """Query current playlist of the round play.
+
+        :param request: Request instance for DescribeCurrentPlaylist.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCurrentPlaylistRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCurrentPlaylistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCurrentPlaylist", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCurrentPlaylistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDailyPlayStatFileList(self, request):
         """This API is used to query the download links of playback statistics files.
         * You can query the download links of playback statistics files in the past year. The start and end dates for query cannot be more than 90 days apart.
@@ -2759,6 +2782,29 @@ class VodClient(AbstractClient):
             body = self.call("ForbidMediaDistribution", params, headers=headers)
             response = json.loads(body)
             model = models.ForbidMediaDistributionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def HandleCurrentPlaylist(self, request):
+        """Operate the current play list . Supported operations include:<li> Insert: Insert a playing program into the current playlist.</li><li> Delete: Remove a playing program from the playlist.</li>
+
+        :param request: Request instance for HandleCurrentPlaylist.
+        :type request: :class:`tencentcloud.vod.v20180717.models.HandleCurrentPlaylistRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.HandleCurrentPlaylistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("HandleCurrentPlaylist", params, headers=headers)
+            response = json.loads(body)
+            model = models.HandleCurrentPlaylistResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

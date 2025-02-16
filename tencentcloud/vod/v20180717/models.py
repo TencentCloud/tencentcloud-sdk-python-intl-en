@@ -21595,22 +21595,26 @@ class CreateRoundPlayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :param _StartTime: The playback start time, in [iso 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
         :type StartTime: str
-        :param _RoundPlaylist: The files on the list.
-<li>Array length limit: 100.</li>
+        :param _RoundPlaylist: The program list.
+<Li>Array length limit: 100.</li>.
         :type RoundPlaylist: list of RoundPlayListItemInfo
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :type SubAppId: int
         :param _Name: The playlist name (not longer than 64 characters).
         :type Name: str
-        :param _Desc: The playlist description (not longer than 256 characters).
+        :param _Desc: The playlist description, length limit: 256 characters.
         :type Desc: str
-        :param _PlayBackMode: Play mode, optional values:
-<li>Loop: Play the playlist in a loop;</li>
-<li>Linear: Play once, stop playing after the playlist is played. </li>
-Default value: Loop.
+        :param _PlayBackMode: Play mode, optional values:.
+<Li>Loop: loop the playlist;</li>.
+<Li>Linear: single play, stop playback after the single play finishes.</li>.
+Default value: loop.
         :type PlayBackMode: str
+        :param _RoundPlayId: Playlist unique identifier id, with a length limit of 64 characters, only allowing uppercase and lowercase english letters (a-za-z), digits (0-9) and hyphens (-). if there is a playlist with the same roundplayid, return the error invalidparametervalue.roundplayalreadyexists. the default value is empty, which means it is system-assigned.
+        :type RoundPlayId: str
+        :param _ExpiredTime: Expiration time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format). the playlist will stop playing after expiration. "9999-12-31t23:59:59+08:00" means it does not expire. default value: 9999-12-31t23:59:59+08:00.
+        :type ExpiredTime: str
         """
         self._StartTime = None
         self._RoundPlaylist = None
@@ -21618,10 +21622,12 @@ Default value: Loop.
         self._Name = None
         self._Desc = None
         self._PlayBackMode = None
+        self._RoundPlayId = None
+        self._ExpiredTime = None
 
     @property
     def StartTime(self):
-        """The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        """The playback start time, in [iso 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
         :rtype: str
         """
         return self._StartTime
@@ -21632,8 +21638,8 @@ Default value: Loop.
 
     @property
     def RoundPlaylist(self):
-        """The files on the list.
-<li>Array length limit: 100.</li>
+        """The program list.
+<Li>Array length limit: 100.</li>.
         :rtype: list of RoundPlayListItemInfo
         """
         return self._RoundPlaylist
@@ -21644,7 +21650,7 @@ Default value: Loop.
 
     @property
     def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :rtype: int
         """
         return self._SubAppId
@@ -21666,7 +21672,7 @@ Default value: Loop.
 
     @property
     def Desc(self):
-        """The playlist description (not longer than 256 characters).
+        """The playlist description, length limit: 256 characters.
         :rtype: str
         """
         return self._Desc
@@ -21677,10 +21683,10 @@ Default value: Loop.
 
     @property
     def PlayBackMode(self):
-        """Play mode, optional values:
-<li>Loop: Play the playlist in a loop;</li>
-<li>Linear: Play once, stop playing after the playlist is played. </li>
-Default value: Loop.
+        """Play mode, optional values:.
+<Li>Loop: loop the playlist;</li>.
+<Li>Linear: single play, stop playback after the single play finishes.</li>.
+Default value: loop.
         :rtype: str
         """
         return self._PlayBackMode
@@ -21688,6 +21694,28 @@ Default value: Loop.
     @PlayBackMode.setter
     def PlayBackMode(self, PlayBackMode):
         self._PlayBackMode = PlayBackMode
+
+    @property
+    def RoundPlayId(self):
+        """Playlist unique identifier id, with a length limit of 64 characters, only allowing uppercase and lowercase english letters (a-za-z), digits (0-9) and hyphens (-). if there is a playlist with the same roundplayid, return the error invalidparametervalue.roundplayalreadyexists. the default value is empty, which means it is system-assigned.
+        :rtype: str
+        """
+        return self._RoundPlayId
+
+    @RoundPlayId.setter
+    def RoundPlayId(self, RoundPlayId):
+        self._RoundPlayId = RoundPlayId
+
+    @property
+    def ExpiredTime(self):
+        """Expiration time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format). the playlist will stop playing after expiration. "9999-12-31t23:59:59+08:00" means it does not expire. default value: 9999-12-31t23:59:59+08:00.
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
 
 
     def _deserialize(self, params):
@@ -21702,6 +21730,8 @@ Default value: Loop.
         self._Name = params.get("Name")
         self._Desc = params.get("Desc")
         self._PlayBackMode = params.get("PlayBackMode")
+        self._RoundPlayId = params.get("RoundPlayId")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21719,9 +21749,9 @@ class CreateRoundPlayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoundPlayId: The playlist ID, which is unique.
+        :param _RoundPlayId: The unique identifier of the playlist.
         :type RoundPlayId: str
-        :param _Url: The playlist URL.
+        :param _Url: The playlist playback url.
         :type Url: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21732,7 +21762,7 @@ class CreateRoundPlayResponse(AbstractModel):
 
     @property
     def RoundPlayId(self):
-        """The playlist ID, which is unique.
+        """The unique identifier of the playlist.
         :rtype: str
         """
         return self._RoundPlayId
@@ -21743,7 +21773,7 @@ class CreateRoundPlayResponse(AbstractModel):
 
     @property
     def Url(self):
-        """The playlist URL.
+        """The playlist playback url.
         :rtype: str
         """
         return self._Url
@@ -24953,9 +24983,9 @@ class DeleteRoundPlayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoundPlayId: The playlist ID, which is unique.
+        :param _RoundPlayId: The unique identifier of the playlist.
         :type RoundPlayId: str
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :type SubAppId: int
         """
         self._RoundPlayId = None
@@ -24963,7 +24993,7 @@ class DeleteRoundPlayRequest(AbstractModel):
 
     @property
     def RoundPlayId(self):
-        """The playlist ID, which is unique.
+        """The unique identifier of the playlist.
         :rtype: str
         """
         return self._RoundPlayId
@@ -24974,7 +25004,7 @@ class DeleteRoundPlayRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :rtype: int
         """
         return self._SubAppId
@@ -27442,6 +27472,120 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
                 obj = ContentReviewTemplateItem()
                 obj._deserialize(item)
                 self._ContentReviewTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCurrentPlaylistRequest(AbstractModel):
+    """DescribeCurrentPlaylist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id.</b>.
+        :type SubAppId: int
+        :param _RoundPlayId: The unique identifier of the playlist.
+        :type RoundPlayId: str
+        :param _Limit: The length of the returned playlist. maximum is 10, default value is 5.
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._RoundPlayId = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id.</b>.
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def RoundPlayId(self):
+        """The unique identifier of the playlist.
+        :rtype: str
+        """
+        return self._RoundPlayId
+
+    @RoundPlayId.setter
+    def RoundPlayId(self, RoundPlayId):
+        self._RoundPlayId = RoundPlayId
+
+    @property
+    def Limit(self):
+        """The length of the returned playlist. maximum is 10, default value is 5.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._RoundPlayId = params.get("RoundPlayId")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCurrentPlaylistResponse(AbstractModel):
+    """DescribeCurrentPlaylist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentPlaylist: Current playlist information.
+        :type CurrentPlaylist: list of RoundPlayFilePlayInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CurrentPlaylist = None
+        self._RequestId = None
+
+    @property
+    def CurrentPlaylist(self):
+        """Current playlist information.
+        :rtype: list of RoundPlayFilePlayInfo
+        """
+        return self._CurrentPlaylist
+
+    @CurrentPlaylist.setter
+    def CurrentPlaylist(self, CurrentPlaylist):
+        self._CurrentPlaylist = CurrentPlaylist
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CurrentPlaylist") is not None:
+            self._CurrentPlaylist = []
+            for item in params.get("CurrentPlaylist"):
+                obj = RoundPlayFilePlayInfo()
+                obj._deserialize(item)
+                self._CurrentPlaylist.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -30678,23 +30822,35 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :type SubAppId: int
-        :param _RoundPlayIds: The playlist IDs. Array length limit: 100.
+        :param _RoundPlayIds: Filter criteria: playlist identifier, array length limit: 100.
         :type RoundPlayIds: list of str
-        :param _Offset: 
+        :param _Status: Filter criteria: playlist status, optional values: <li>enabled: startup status;</li> <li>disabled: stopped status.</li>.
+        :type Status: str
+        :param _CreateTime: Filter criteria: playlist creation time.
+        :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param _UpdateTime: Filter criteria: playlist update time.
+        :type UpdateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        :param _ScrollToken: Scrolling identifier which is used for pulling in batches. if a single request cannot pull all the data entries, the API will return `scrolltoken`, and if the next request carries it, the next pull will start from the next entry.
+        :type ScrollToken: str
+        :param _Offset: Pagination offset, default value: 0. this field is obsolete. please use the `scrolltoken` parameter for batch queries.
         :type Offset: int
-        :param _Limit: The number of records to return. Default value: 10. Maximum value: 100.
+        :param _Limit: Number of returned entries. default value: 10. maximum value: 100.
         :type Limit: int
         """
         self._SubAppId = None
         self._RoundPlayIds = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ScrollToken = None
         self._Offset = None
         self._Limit = None
 
     @property
     def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :rtype: int
         """
         return self._SubAppId
@@ -30705,7 +30861,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def RoundPlayIds(self):
-        """The playlist IDs. Array length limit: 100.
+        """Filter criteria: playlist identifier, array length limit: 100.
         :rtype: list of str
         """
         return self._RoundPlayIds
@@ -30715,8 +30871,52 @@ class DescribeRoundPlaysRequest(AbstractModel):
         self._RoundPlayIds = RoundPlayIds
 
     @property
-    def Offset(self):
+    def Status(self):
+        """Filter criteria: playlist status, optional values: <li>enabled: startup status;</li> <li>disabled: stopped status.</li>.
+        :rtype: str
         """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """Filter criteria: playlist creation time.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Filter criteria: playlist update time.
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ScrollToken(self):
+        """Scrolling identifier which is used for pulling in batches. if a single request cannot pull all the data entries, the API will return `scrolltoken`, and if the next request carries it, the next pull will start from the next entry.
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def Offset(self):
+        """Pagination offset, default value: 0. this field is obsolete. please use the `scrolltoken` parameter for batch queries.
         :rtype: int
         """
         return self._Offset
@@ -30727,7 +30927,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of records to return. Default value: 10. Maximum value: 100.
+        """Number of returned entries. default value: 10. maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -30740,6 +30940,14 @@ class DescribeRoundPlaysRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._RoundPlayIds = params.get("RoundPlayIds")
+        self._Status = params.get("Status")
+        if params.get("CreateTime") is not None:
+            self._CreateTime = TimeRange()
+            self._CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("UpdateTime") is not None:
+            self._UpdateTime = TimeRange()
+            self._UpdateTime._deserialize(params.get("UpdateTime"))
+        self._ScrollToken = params.get("ScrollToken")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -30759,20 +30967,23 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: The total number of records that meet the conditions.
+        :param _TotalCount: The total number of carousel broadcast playlists that meet the filter criteria. deprecated. for batch inquiries, please use the scrolltoken parameter.
         :type TotalCount: int
-        :param _RoundPlaySet: The information of the playlists.
+        :param _RoundPlaySet: The details of the playlist.
         :type RoundPlaySet: list of RoundPlayInfo
+        :param _ScrollToken: Scrolling identifier. if a request does not return all the data entries, this field indicates the id of the next entry. if this field is empty, there is no more data.
+        :type ScrollToken: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
         self._RoundPlaySet = None
+        self._ScrollToken = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        """The total number of records that meet the conditions.
+        """The total number of carousel broadcast playlists that meet the filter criteria. deprecated. for batch inquiries, please use the scrolltoken parameter.
         :rtype: int
         """
         return self._TotalCount
@@ -30783,7 +30994,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     @property
     def RoundPlaySet(self):
-        """The information of the playlists.
+        """The details of the playlist.
         :rtype: list of RoundPlayInfo
         """
         return self._RoundPlaySet
@@ -30791,6 +31002,17 @@ class DescribeRoundPlaysResponse(AbstractModel):
     @RoundPlaySet.setter
     def RoundPlaySet(self, RoundPlaySet):
         self._RoundPlaySet = RoundPlaySet
+
+    @property
+    def ScrollToken(self):
+        """Scrolling identifier. if a request does not return all the data entries, this field indicates the id of the next entry. if this field is empty, there is no more data.
+        :rtype: str
+        """
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
 
     @property
     def RequestId(self):
@@ -30812,6 +31034,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
                 obj = RoundPlayInfo()
                 obj._deserialize(item)
                 self._RoundPlaySet.append(obj)
+        self._ScrollToken = params.get("ScrollToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -38362,6 +38585,155 @@ Note:
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class HandleCurrentPlaylistRequest(AbstractModel):
+    """HandleCurrentPlaylist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574) id.</b>.
+        :type SubAppId: int
+        :param _RoundPlayId: The unique identifier of the playlist.
+        :type RoundPlayId: str
+        :param _Operation: Operation type, available options:<li>insert: insert program into the current playlist.</li> <li>inserttemporary: temporarily insert program into the current playlist. can only be inserted after the currently playing program. temporarily inserted programs are only effective during this carousel process.</li><li>delete: delete program from the playlist. cannot delete currently playing programs.</li>.
+        :type Operation: str
+        :param _ItemId: Playlist program id. required when operation is insert, indicating the program list will be inserted after this program. the insertion position must be after the currently playing program.
+        :type ItemId: str
+        :param _RoundPlaylist: Program list. required when operation is insert, inserttemporary, delete, indicating the list of programs to be operated on. the list length can be up to a maximum of 10.
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        """
+        self._SubAppId = None
+        self._RoundPlayId = None
+        self._Operation = None
+        self._ItemId = None
+        self._RoundPlaylist = None
+
+    @property
+    def SubAppId(self):
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574) id.</b>.
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def RoundPlayId(self):
+        """The unique identifier of the playlist.
+        :rtype: str
+        """
+        return self._RoundPlayId
+
+    @RoundPlayId.setter
+    def RoundPlayId(self, RoundPlayId):
+        self._RoundPlayId = RoundPlayId
+
+    @property
+    def Operation(self):
+        """Operation type, available options:<li>insert: insert program into the current playlist.</li> <li>inserttemporary: temporarily insert program into the current playlist. can only be inserted after the currently playing program. temporarily inserted programs are only effective during this carousel process.</li><li>delete: delete program from the playlist. cannot delete currently playing programs.</li>.
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def ItemId(self):
+        """Playlist program id. required when operation is insert, indicating the program list will be inserted after this program. the insertion position must be after the currently playing program.
+        :rtype: str
+        """
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def RoundPlaylist(self):
+        """Program list. required when operation is insert, inserttemporary, delete, indicating the list of programs to be operated on. the list length can be up to a maximum of 10.
+        :rtype: list of RoundPlayListItemInfo
+        """
+        return self._RoundPlaylist
+
+    @RoundPlaylist.setter
+    def RoundPlaylist(self, RoundPlaylist):
+        self._RoundPlaylist = RoundPlaylist
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._RoundPlayId = params.get("RoundPlayId")
+        self._Operation = params.get("Operation")
+        self._ItemId = params.get("ItemId")
+        if params.get("RoundPlaylist") is not None:
+            self._RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self._RoundPlaylist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HandleCurrentPlaylistResponse(AbstractModel):
+    """HandleCurrentPlaylist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoundPlaylist: List of successfully operated programs.
+        :type RoundPlaylist: list of RoundPlayListItemInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RoundPlaylist = None
+        self._RequestId = None
+
+    @property
+    def RoundPlaylist(self):
+        """List of successfully operated programs.
+        :rtype: list of RoundPlayListItemInfo
+        """
+        return self._RoundPlaylist
+
+    @RoundPlaylist.setter
+    def RoundPlaylist(self, RoundPlaylist):
+        self._RoundPlaylist = RoundPlaylist
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RoundPlaylist") is not None:
+            self._RoundPlaylist = []
+            for item in params.get("RoundPlaylist"):
+                obj = RoundPlayListItemInfo()
+                obj._deserialize(item)
+                self._RoundPlaylist.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class HeadTailConfigureInfo(AbstractModel):
@@ -51673,27 +52045,27 @@ class ModifyRoundPlayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoundPlayId: The playlist ID, which is unique.
+        :param _RoundPlayId: The unique identifier of the playlist.
         :type RoundPlayId: str
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, for customers who enable vod, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :type SubAppId: int
-        :param _StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :param _StartTime: The playback start time, in [iso 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
         :type StartTime: str
-        :param _RoundPlaylist: The files on the list.
-<li>Array length limit: 100.</li>
+        :param _RoundPlaylist: The program list.
+<Li>Array length limit: 100.</li>.
         :type RoundPlaylist: list of RoundPlayListItemInfo
         :param _Name: The playlist name (not longer than 64 characters).
         :type Name: str
         :param _Desc: The playlist description (not longer than 256 characters).
         :type Desc: str
-        :param _Status: Playback status, optional values: 
-<li>Disabled: End playback, and the carousel task cannot be started again after the end. </li>
-
+        :param _Status: Playback status, optional values:<li>disabled: stop playback.</li><li>enabled: start playback after the duration has elapsed.</li>.
         :type Status: str
-        :param _PlayBackMode: Play mode, optional values:
-<li>Loop: Play the playlist in a loop;</li>
-<li>Linear: Play once, stop playing after the playlist is played. </li>
+        :param _PlayBackMode: Play mode, optional values:.
+<Li>Loop: loop the playlist;</li>.
+<Li>Linear: single play, stop playback after the playlist finishes.</li>.
         :type PlayBackMode: str
+        :param _ExpiredTime: Expiration time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format). the playback will stop after expiration. "9999-12-31t23:59:59+08:00" means no expiration.
+        :type ExpiredTime: str
         """
         self._RoundPlayId = None
         self._SubAppId = None
@@ -51703,10 +52075,11 @@ class ModifyRoundPlayRequest(AbstractModel):
         self._Desc = None
         self._Status = None
         self._PlayBackMode = None
+        self._ExpiredTime = None
 
     @property
     def RoundPlayId(self):
-        """The playlist ID, which is unique.
+        """The unique identifier of the playlist.
         :rtype: str
         """
         return self._RoundPlayId
@@ -51717,7 +52090,7 @@ class ModifyRoundPlayRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, for customers who enable vod, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :rtype: int
         """
         return self._SubAppId
@@ -51728,7 +52101,7 @@ class ModifyRoundPlayRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        """The playback start time, in [iso 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
         :rtype: str
         """
         return self._StartTime
@@ -51739,8 +52112,8 @@ class ModifyRoundPlayRequest(AbstractModel):
 
     @property
     def RoundPlaylist(self):
-        """The files on the list.
-<li>Array length limit: 100.</li>
+        """The program list.
+<Li>Array length limit: 100.</li>.
         :rtype: list of RoundPlayListItemInfo
         """
         return self._RoundPlaylist
@@ -51773,9 +52146,7 @@ class ModifyRoundPlayRequest(AbstractModel):
 
     @property
     def Status(self):
-        """Playback status, optional values: 
-<li>Disabled: End playback, and the carousel task cannot be started again after the end. </li>
-
+        """Playback status, optional values:<li>disabled: stop playback.</li><li>enabled: start playback after the duration has elapsed.</li>.
         :rtype: str
         """
         return self._Status
@@ -51786,9 +52157,9 @@ class ModifyRoundPlayRequest(AbstractModel):
 
     @property
     def PlayBackMode(self):
-        """Play mode, optional values:
-<li>Loop: Play the playlist in a loop;</li>
-<li>Linear: Play once, stop playing after the playlist is played. </li>
+        """Play mode, optional values:.
+<Li>Loop: loop the playlist;</li>.
+<Li>Linear: single play, stop playback after the playlist finishes.</li>.
         :rtype: str
         """
         return self._PlayBackMode
@@ -51796,6 +52167,17 @@ class ModifyRoundPlayRequest(AbstractModel):
     @PlayBackMode.setter
     def PlayBackMode(self, PlayBackMode):
         self._PlayBackMode = PlayBackMode
+
+    @property
+    def ExpiredTime(self):
+        """Expiration time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format). the playback will stop after expiration. "9999-12-31t23:59:59+08:00" means no expiration.
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
 
 
     def _deserialize(self, params):
@@ -51812,6 +52194,7 @@ class ModifyRoundPlayRequest(AbstractModel):
         self._Desc = params.get("Desc")
         self._Status = params.get("Status")
         self._PlayBackMode = params.get("PlayBackMode")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66290,6 +66673,106 @@ class ReviewTemplate(AbstractModel):
         
 
 
+class RoundPlayFilePlayInfo(AbstractModel):
+    """Playlist Program Playback Information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemId: Playlist program id, assigned by the system.
+        :type ItemId: str
+        :param _FileId: The media file id.
+        :type FileId: str
+        :param _StartPlayTime: The playback start time, in [iso 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
+        :type StartPlayTime: str
+        :param _Duration: Playback duration, in seconds.
+Note: this field may return null, indicating that no valid value was found.
+        :type Duration: float
+        :param _Progress: Playback progress, in seconds.
+Note: this field may return null, indicating that no valid value was found.
+        :type Progress: float
+        """
+        self._ItemId = None
+        self._FileId = None
+        self._StartPlayTime = None
+        self._Duration = None
+        self._Progress = None
+
+    @property
+    def ItemId(self):
+        """Playlist program id, assigned by the system.
+        :rtype: str
+        """
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
+    def FileId(self):
+        """The media file id.
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def StartPlayTime(self):
+        """The playback start time, in [iso 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
+        :rtype: str
+        """
+        return self._StartPlayTime
+
+    @StartPlayTime.setter
+    def StartPlayTime(self, StartPlayTime):
+        self._StartPlayTime = StartPlayTime
+
+    @property
+    def Duration(self):
+        """Playback duration, in seconds.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Progress(self):
+        """Playback progress, in seconds.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._ItemId = params.get("ItemId")
+        self._FileId = params.get("FileId")
+        self._StartPlayTime = params.get("StartPlayTime")
+        self._Duration = params.get("Duration")
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RoundPlayInfo(AbstractModel):
     """The information of a playlist.
 
@@ -66299,7 +66782,7 @@ class RoundPlayInfo(AbstractModel):
         r"""
         :param _RoundPlayId: The playlist ID.
         :type RoundPlayId: str
-        :param _StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        :param _StartTime: The playback start time, in [ISO 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
         :type StartTime: str
         :param _RoundPlaylist: The files on the list.
         :type RoundPlaylist: list of RoundPlayListItemInfo
@@ -66319,6 +66802,12 @@ Default value: Loop.
         :type PlayBackMode: str
         :param _Url: Carousel playback address.
         :type Url: str
+        :param _CreateTime: Creation time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
+        :type CreateTime: str
+        :param _UpdateTime: Update time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
+        :type UpdateTime: str
+        :param _ExpiredTime: Expiration time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format). the playback of the playlist will stop after expiration. "9999-12-31t23:59:59+08:00" means never expire.
+        :type ExpiredTime: str
         """
         self._RoundPlayId = None
         self._StartTime = None
@@ -66328,6 +66817,9 @@ Default value: Loop.
         self._Status = None
         self._PlayBackMode = None
         self._Url = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ExpiredTime = None
 
     @property
     def RoundPlayId(self):
@@ -66342,7 +66834,7 @@ Default value: Loop.
 
     @property
     def StartTime(self):
-        """The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
+        """The playback start time, in [ISO 8601 date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
         :rtype: str
         """
         return self._StartTime
@@ -66423,6 +66915,39 @@ Default value: Loop.
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def CreateTime(self):
+        """Creation time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Update time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ExpiredTime(self):
+        """Expiration time, in iso 8601 format. for details, see [iso date format](https://www.tencentcloud.com/document/product/266/11732?has_map=2#iso-date-format). the playback of the playlist will stop after expiration. "9999-12-31t23:59:59+08:00" means never expire.
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._RoundPlayId = params.get("RoundPlayId")
@@ -66438,6 +66963,9 @@ Default value: Loop.
         self._Status = params.get("Status")
         self._PlayBackMode = params.get("PlayBackMode")
         self._Url = params.get("Url")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66449,7 +66977,7 @@ Default value: Loop.
 
 
 class RoundPlayListItemInfo(AbstractModel):
-    """Carousel media file information
+    """Carousel program information
 
     """
 
@@ -66462,11 +66990,14 @@ class RoundPlayListItemInfo(AbstractModel):
 <li>`Original`: The original file.</li>
 The file must be in HLS format.
         :type AudioVideoType: str
-        :param _Definition: The transcoding template used to generate the transcoding output played. This parameter is required if `AudioVideoType` is `Transcode`.
+        :param _ItemId: ID of the program to be played, assigned by the system.
+        :type ItemId: str
+        :param _Definition: The transcoding template to be played is specified. this parameter is required if `audiovideotype` is `transcode`.
         :type Definition: int
         """
         self._FileId = None
         self._AudioVideoType = None
+        self._ItemId = None
         self._Definition = None
 
     @property
@@ -66495,8 +67026,19 @@ The file must be in HLS format.
         self._AudioVideoType = AudioVideoType
 
     @property
+    def ItemId(self):
+        """ID of the program to be played, assigned by the system.
+        :rtype: str
+        """
+        return self._ItemId
+
+    @ItemId.setter
+    def ItemId(self, ItemId):
+        self._ItemId = ItemId
+
+    @property
     def Definition(self):
-        """The transcoding template used to generate the transcoding output played. This parameter is required if `AudioVideoType` is `Transcode`.
+        """The transcoding template to be played is specified. this parameter is required if `audiovideotype` is `transcode`.
         :rtype: int
         """
         return self._Definition
@@ -66509,6 +67051,7 @@ The file must be in HLS format.
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
         self._AudioVideoType = params.get("AudioVideoType")
+        self._ItemId = params.get("ItemId")
         self._Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
