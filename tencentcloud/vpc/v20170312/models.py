@@ -306,7 +306,7 @@ class Address(AbstractModel):
         :type IsBlocked: bool
         :param _IsEipDirectConnection: Whether the EIP supports direct connection mode. `True` indicates the EIP supports direct connection. `False` indicates that the resource does not support direct connection.
         :type IsEipDirectConnection: bool
-        :param _AddressType: IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).
+        :param _AddressType: EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public IP), `EIP` (elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (anti-DDoS EIP).
         :type AddressType: str
         :param _CascadeRelease: Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.
         :type CascadeRelease: bool
@@ -341,14 +341,24 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _InstanceType: The type of instance bound with the EIP
 Note: this field may return `null`, indicating that no valid value was found.
         :type InstanceType: str
-        :param _Egress: 
+        :param _Egress: Static single-line IP network egress
+Note: This field may return null, indicating that no valid value was found.
         :type Egress: str
         :param _AntiDDoSPackageId: ID of the Anti-DDoS service package. It is returned if the EIP is an Anti-DDoS EIP. 
         :type AntiDDoSPackageId: str
-        :param _RenewFlag: 
+        :param _RenewFlag: Indicates whether the current EIP is auto-renewed. This field is displayed only for EIPs with monthly prepaid bandwidth. Valid values are as follows:
+<li>NOTIFY_AND_MANUAL_RENEW: Normal renewal</li><li>NOTIFY_AND_AUTO_RENEW: Automatic renewal</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: No renewal upon expiration</li>
+
         :type RenewFlag: str
-        :param _BandwidthPackageId: 
+        :param _BandwidthPackageId: Indicates the ID of the Bandwidth Package associated with the current public IP. If the public IP is not billed by Bandwidth Package, this field is empty.
+Note: This field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
+        :param _UnVpcId: Indicates the unique ID of the VPC to which the traditional EIPv6 belongs.
+Note: This field may return null, indicating that no valid value was found.
+        :type UnVpcId: str
+        :param _DedicatedClusterId: Indicates the unique ID of the CDC.
+Note: This field may return 'null', indicating that no valid value was found.
+        :type DedicatedClusterId: str
         """
         self._AddressId = None
         self._AddressName = None
@@ -375,6 +385,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._AntiDDoSPackageId = None
         self._RenewFlag = None
         self._BandwidthPackageId = None
+        self._UnVpcId = None
+        self._DedicatedClusterId = None
 
     @property
     def AddressId(self):
@@ -499,7 +511,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AddressType(self):
-        """IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).
+        """EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public IP), `EIP` (elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (anti-DDoS EIP).
         :rtype: str
         """
         return self._AddressType
@@ -624,7 +636,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Egress(self):
-        """
+        """Static single-line IP network egress
+Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
         return self._Egress
@@ -646,7 +659,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RenewFlag(self):
-        """
+        """Indicates whether the current EIP is auto-renewed. This field is displayed only for EIPs with monthly prepaid bandwidth. Valid values are as follows:
+<li>NOTIFY_AND_MANUAL_RENEW: Normal renewal</li><li>NOTIFY_AND_AUTO_RENEW: Automatic renewal</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: No renewal upon expiration</li>
+
         :rtype: str
         """
         return self._RenewFlag
@@ -657,7 +672,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def BandwidthPackageId(self):
-        """
+        """Indicates the ID of the Bandwidth Package associated with the current public IP. If the public IP is not billed by Bandwidth Package, this field is empty.
+Note: This field may return null, indicating that no valid value was found.
         :rtype: str
         """
         return self._BandwidthPackageId
@@ -665,6 +681,30 @@ Note: this field may return `null`, indicating that no valid value was found.
     @BandwidthPackageId.setter
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
+
+    @property
+    def UnVpcId(self):
+        """Indicates the unique ID of the VPC to which the traditional EIPv6 belongs.
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
+        return self._UnVpcId
+
+    @UnVpcId.setter
+    def UnVpcId(self, UnVpcId):
+        self._UnVpcId = UnVpcId
+
+    @property
+    def DedicatedClusterId(self):
+        """Indicates the unique ID of the CDC.
+Note: This field may return 'null', indicating that no valid value was found.
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
 
 
     def _deserialize(self, params):
@@ -700,6 +740,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._RenewFlag = params.get("RenewFlag")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._UnVpcId = params.get("UnVpcId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1661,6 +1703,448 @@ class AllocateAddressesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AllocateIPv6AddressesRequest(AbstractModel):
+    """AllocateIPv6Addresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressName: EIPv6 name, which is the custom EIPv6 name given by the user when the user applies for the EIPv6. Default: not named.
+        :type AddressName: str
+        :param _AddressType: Indicates the type of EIPv6. Valid values:
+
+- EIPv6: common IPv6
+- HighQualityEIPv6: dedicated IPv6
+Note: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions.
+
+Default: EIPv6.
+        :type AddressType: str
+        :param _AddressCount: Number of applied EIPv6 addresses. Default: 1.
+        :type AddressCount: int
+        :param _InternetChargeType: Indicates the billing method of EIPv6. Valid values:
+
+- BANDWIDTH_PACKAGE: billed by [Bandwidth Package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)
+- TRAFFIC_POSTPAID_BY_HOUR: postpaid by traffic on an hourly basis
+
+Default: TRAFFIC_POSTPAID_BY_HOUR.
+        :type InternetChargeType: str
+        :param _InternetServiceProvider: Indicates the type of EIPv6 line. Default: BGP.
+
+For a user who has enabled the static single-line IP allowlist, valid values include:
+- CMCC: China Mobile
+- CTCC: China Telecom
+- CUCC: China Unicom
+Note: The static single-line IP is only supported in some regions.
+        :type InternetServiceProvider: str
+        :param _InternetMaxBandwidthOut: EIPv6 bandwidth cap, in Mbps.
+
+Valid values depend on the EIP billing method:
+
+- BANDWIDTH_PACKAGE: 1 Mbps to 2000 Mbps
+- TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps
+
+Default: 1 Mbps.
+        :type InternetMaxBandwidthOut: int
+        :param _BandwidthPackageId: Unique ID of the bandwidth package.
+Setting this parameter and having InternetChargeType as BANDWIDTH_PACKAGE indicate that the created EIP will join this BGP bandwidth package and the billing method of bandwidth package will be adopted.
+        :type BandwidthPackageId: str
+        :param _Tags: List of tags to be associated.
+        :type Tags: list of Tag
+        :param _Egress: EIPv6 network egress. Valid values:
+
+- CENTER_EGRESS_1: Central egress point 1
+- CENTER_EGRESS_2: Central egress point 2
+- CENTER_EGRESS_3: Central egress point 3
+Note: The network egress for different Internet Service Providers (ISPs) or resource types requires contacting the product team for enablement.
+
+Default: CENTER_EGRESS_1.
+        :type Egress: str
+        """
+        self._AddressName = None
+        self._AddressType = None
+        self._AddressCount = None
+        self._InternetChargeType = None
+        self._InternetServiceProvider = None
+        self._InternetMaxBandwidthOut = None
+        self._BandwidthPackageId = None
+        self._Tags = None
+        self._Egress = None
+
+    @property
+    def AddressName(self):
+        """EIPv6 name, which is the custom EIPv6 name given by the user when the user applies for the EIPv6. Default: not named.
+        :rtype: str
+        """
+        return self._AddressName
+
+    @AddressName.setter
+    def AddressName(self, AddressName):
+        self._AddressName = AddressName
+
+    @property
+    def AddressType(self):
+        """Indicates the type of EIPv6. Valid values:
+
+- EIPv6: common IPv6
+- HighQualityEIPv6: dedicated IPv6
+Note: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions.
+
+Default: EIPv6.
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+    @property
+    def AddressCount(self):
+        """Number of applied EIPv6 addresses. Default: 1.
+        :rtype: int
+        """
+        return self._AddressCount
+
+    @AddressCount.setter
+    def AddressCount(self, AddressCount):
+        self._AddressCount = AddressCount
+
+    @property
+    def InternetChargeType(self):
+        """Indicates the billing method of EIPv6. Valid values:
+
+- BANDWIDTH_PACKAGE: billed by [Bandwidth Package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)
+- TRAFFIC_POSTPAID_BY_HOUR: postpaid by traffic on an hourly basis
+
+Default: TRAFFIC_POSTPAID_BY_HOUR.
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def InternetServiceProvider(self):
+        """Indicates the type of EIPv6 line. Default: BGP.
+
+For a user who has enabled the static single-line IP allowlist, valid values include:
+- CMCC: China Mobile
+- CTCC: China Telecom
+- CUCC: China Unicom
+Note: The static single-line IP is only supported in some regions.
+        :rtype: str
+        """
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """EIPv6 bandwidth cap, in Mbps.
+
+Valid values depend on the EIP billing method:
+
+- BANDWIDTH_PACKAGE: 1 Mbps to 2000 Mbps
+- TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps
+
+Default: 1 Mbps.
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def BandwidthPackageId(self):
+        """Unique ID of the bandwidth package.
+Setting this parameter and having InternetChargeType as BANDWIDTH_PACKAGE indicate that the created EIP will join this BGP bandwidth package and the billing method of bandwidth package will be adopted.
+        :rtype: str
+        """
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
+
+    @property
+    def Tags(self):
+        """List of tags to be associated.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Egress(self):
+        """EIPv6 network egress. Valid values:
+
+- CENTER_EGRESS_1: Central egress point 1
+- CENTER_EGRESS_2: Central egress point 2
+- CENTER_EGRESS_3: Central egress point 3
+Note: The network egress for different Internet Service Providers (ISPs) or resource types requires contacting the product team for enablement.
+
+Default: CENTER_EGRESS_1.
+        :rtype: str
+        """
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
+
+    def _deserialize(self, params):
+        self._AddressName = params.get("AddressName")
+        self._AddressType = params.get("AddressType")
+        self._AddressCount = params.get("AddressCount")
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Egress = params.get("Egress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocateIPv6AddressesResponse(AbstractModel):
+    """AllocateIPv6Addresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressSet: List of unique IDs of applied EIPv6 addresses.
+        :type AddressSet: list of str
+        :param _TaskId: Async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AddressSet = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def AddressSet(self):
+        """List of unique IDs of applied EIPv6 addresses.
+        :rtype: list of str
+        """
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def TaskId(self):
+        """Async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AddressSet = params.get("AddressSet")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class AllocateIp6AddressesBandwidthRequest(AbstractModel):
+    """AllocateIp6AddressesBandwidth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip6Addresses: IPv6 addresses that require the public network access capability.
+        :type Ip6Addresses: list of str
+        :param _InternetMaxBandwidthOut: Bandwidth, in Mbps. The default value is 1 Mbps.
+        :type InternetMaxBandwidthOut: int
+        :param _InternetChargeType: Network billing mode. IPv6 addresses currently support "TRAFFIC_POSTPAID_BY_HOUR" and "BANDWIDTH_PACKAGE". The default network billing mode is "TRAFFIC_POSTPAID_BY_HOUR".
+        :type InternetChargeType: str
+        :param _BandwidthPackageId: Bandwidth package ID. This ID is required for standard accounts to add the IPv6 addresses to the bandwidth package, thus using the billing mode.
+        :type BandwidthPackageId: str
+        :param _Tags: List of tags to be associated.		
+        :type Tags: list of Tag
+        """
+        self._Ip6Addresses = None
+        self._InternetMaxBandwidthOut = None
+        self._InternetChargeType = None
+        self._BandwidthPackageId = None
+        self._Tags = None
+
+    @property
+    def Ip6Addresses(self):
+        """IPv6 addresses that require the public network access capability.
+        :rtype: list of str
+        """
+        return self._Ip6Addresses
+
+    @Ip6Addresses.setter
+    def Ip6Addresses(self, Ip6Addresses):
+        self._Ip6Addresses = Ip6Addresses
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """Bandwidth, in Mbps. The default value is 1 Mbps.
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def InternetChargeType(self):
+        """Network billing mode. IPv6 addresses currently support "TRAFFIC_POSTPAID_BY_HOUR" and "BANDWIDTH_PACKAGE". The default network billing mode is "TRAFFIC_POSTPAID_BY_HOUR".
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def BandwidthPackageId(self):
+        """Bandwidth package ID. This ID is required for standard accounts to add the IPv6 addresses to the bandwidth package, thus using the billing mode.
+        :rtype: str
+        """
+        return self._BandwidthPackageId
+
+    @BandwidthPackageId.setter
+    def BandwidthPackageId(self, BandwidthPackageId):
+        self._BandwidthPackageId = BandwidthPackageId
+
+    @property
+    def Tags(self):
+        """List of tags to be associated.		
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Ip6Addresses = params.get("Ip6Addresses")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._BandwidthPackageId = params.get("BandwidthPackageId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocateIp6AddressesBandwidthResponse(AbstractModel):
+    """AllocateIp6AddressesBandwidth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressSet: List of unique IDs of Classic elastic Public IPv6 instances.
+        :type AddressSet: list of str
+        :param _TaskId: Asynchronous task ID. You can call the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AddressSet = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def AddressSet(self):
+        """List of unique IDs of Classic elastic Public IPv6 instances.
+        :rtype: list of str
+        """
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def TaskId(self):
+        """Asynchronous task ID. You can call the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AddressSet = params.get("AddressSet")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class AssignIpv6AddressesRequest(AbstractModel):
     """AssignIpv6Addresses request structure.
 
@@ -2407,6 +2891,100 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
 class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
     """AssociateDirectConnectGatewayNatGateway response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AssociateIPv6AddressRequest(AbstractModel):
+    """AssociateIPv6Address request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressId: Unique ID of the EIPv6, such as eipv6-11112222.
+        :type IPv6AddressId: str
+        :param _NetworkInterfaceId: ID of the ENI to be bound, such as eni-11112222. NetworkInterfaceId and InstanceId cannot be specified at the same time. The ENI ID can be queried by logging in to the console or obtained from the networkInterfaceId field in the returned value of the DescribeNetworkInterfaces API.
+        :type NetworkInterfaceId: str
+        :param _PrivateIPv6Address: Private IPv6 to be bound. If NetworkInterfaceId is specified, PrivateIPv6Address must also be specified, which indicates that the EIP will be bound to the specified private IPv6 of the specified ENI. At the same time, it shall be ensured that the specified PrivateIPv6Address is a private IPv6 on the specified NetworkInterfaceId. The specified ENI's private IPv6 can be queried by logging in to the console or obtained from the Ipv6AddressSet.Address field in the returned value of the DescribeNetworkInterfaces API.
+        :type PrivateIPv6Address: str
+        """
+        self._IPv6AddressId = None
+        self._NetworkInterfaceId = None
+        self._PrivateIPv6Address = None
+
+    @property
+    def IPv6AddressId(self):
+        """Unique ID of the EIPv6, such as eipv6-11112222.
+        :rtype: str
+        """
+        return self._IPv6AddressId
+
+    @IPv6AddressId.setter
+    def IPv6AddressId(self, IPv6AddressId):
+        self._IPv6AddressId = IPv6AddressId
+
+    @property
+    def NetworkInterfaceId(self):
+        """ID of the ENI to be bound, such as eni-11112222. NetworkInterfaceId and InstanceId cannot be specified at the same time. The ENI ID can be queried by logging in to the console or obtained from the networkInterfaceId field in the returned value of the DescribeNetworkInterfaces API.
+        :rtype: str
+        """
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def PrivateIPv6Address(self):
+        """Private IPv6 to be bound. If NetworkInterfaceId is specified, PrivateIPv6Address must also be specified, which indicates that the EIP will be bound to the specified private IPv6 of the specified ENI. At the same time, it shall be ensured that the specified PrivateIPv6Address is a private IPv6 on the specified NetworkInterfaceId. The specified ENI's private IPv6 can be queried by logging in to the console or obtained from the Ipv6AddressSet.Address field in the returned value of the DescribeNetworkInterfaces API.
+        :rtype: str
+        """
+        return self._PrivateIPv6Address
+
+    @PrivateIPv6Address.setter
+    def PrivateIPv6Address(self, PrivateIPv6Address):
+        self._PrivateIPv6Address = PrivateIPv6Address
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressId = params.get("IPv6AddressId")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._PrivateIPv6Address = params.get("PrivateIPv6Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateIPv6AddressResponse(AbstractModel):
+    """AssociateIPv6Address response structure.
 
     """
 
@@ -17982,6 +18560,363 @@ class DescribeHaVipsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIPv6AddressesRequest(AbstractModel):
+    """DescribeIPv6Addresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: Unique ID column identifying IPv6.
+
+- Unique ID of the traditional EIPv6, such as `eip-11112222`
+- Unique ID of the EIPv6, such as `eipv6-11112222`
+
+Note: `IPv6AddressIds` and `Filters` cannot be specified at the same time.
+        :type IPv6AddressIds: list of str
+        :param _Filters: Each request can have up to 10 `Filters` and 100 `Filter.Values`. `IPv6AddressIds` and `Filters` cannot be specified at the same time. The detailed filter conditions are as follows:
+
+- address-id - String - Required: No - (Filter condition) Filter by the unique ID of the EIPv6.
+- public-ipv6-address - String - Required: No - (Filter condition) Filter by the public IPv6 address.
+- network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of the ENI.
+- instance-id - String - Required: No - (Filter condition) Filter by the unique ID of the bound instance.
+- charge-type - String - Required: No - (Filter condition) Filter by the billing type.
+- private-ipv6-address - String - Required: No - (Filter condition) Filter by the bound private IPv6 address.
+- egress - String - Required: No - (Filter condition) Filter by the egress.
+- address-type - String - Required: No - (Filter condition) Filter by the IPv6 type. Valid values: 'EIP6', 'EIPv6', 'WanIPv6', and 'HighQualityEIPv6'. Default: 'EIPv6'.
+- address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: 'BGP', 'CMCC', 'CUCC', and 'CTCC'.
+- address-status - String - Required: No - (Filter condition) Filter by the EIP status. Valid values: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', 'BIND_ENI', and 'PRIVATE'.
+- address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.
+- tag-key - String - Required: No - (Filter condition) Filter by the tag key.
+- tag-value - String - Required: No - (Filter condition) Filter by the tag value.
+- tag:tag-key - String - Required: No - (Filter condition) Filter by the tag-key - value pair. Replace tag-key with a specific tag key.
+        :type Filters: list of Filter
+        :param _Traditional: Indicates whether to query the traditional IPv6 address information.
+        :type Traditional: bool
+        :param _Offset: Offset. Default: 0. For more information on Offset, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Offset: int
+        :param _Limit: Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Limit: int
+        """
+        self._IPv6AddressIds = None
+        self._Filters = None
+        self._Traditional = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def IPv6AddressIds(self):
+        """Unique ID column identifying IPv6.
+
+- Unique ID of the traditional EIPv6, such as `eip-11112222`
+- Unique ID of the EIPv6, such as `eipv6-11112222`
+
+Note: `IPv6AddressIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+    @property
+    def Filters(self):
+        """Each request can have up to 10 `Filters` and 100 `Filter.Values`. `IPv6AddressIds` and `Filters` cannot be specified at the same time. The detailed filter conditions are as follows:
+
+- address-id - String - Required: No - (Filter condition) Filter by the unique ID of the EIPv6.
+- public-ipv6-address - String - Required: No - (Filter condition) Filter by the public IPv6 address.
+- network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of the ENI.
+- instance-id - String - Required: No - (Filter condition) Filter by the unique ID of the bound instance.
+- charge-type - String - Required: No - (Filter condition) Filter by the billing type.
+- private-ipv6-address - String - Required: No - (Filter condition) Filter by the bound private IPv6 address.
+- egress - String - Required: No - (Filter condition) Filter by the egress.
+- address-type - String - Required: No - (Filter condition) Filter by the IPv6 type. Valid values: 'EIP6', 'EIPv6', 'WanIPv6', and 'HighQualityEIPv6'. Default: 'EIPv6'.
+- address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: 'BGP', 'CMCC', 'CUCC', and 'CTCC'.
+- address-status - String - Required: No - (Filter condition) Filter by the EIP status. Valid values: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', 'BIND_ENI', and 'PRIVATE'.
+- address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.
+- tag-key - String - Required: No - (Filter condition) Filter by the tag key.
+- tag-value - String - Required: No - (Filter condition) Filter by the tag value.
+- tag:tag-key - String - Required: No - (Filter condition) Filter by the tag-key - value pair. Replace tag-key with a specific tag key.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Traditional(self):
+        """Indicates whether to query the traditional IPv6 address information.
+        :rtype: bool
+        """
+        return self._Traditional
+
+    @Traditional.setter
+    def Traditional(self, Traditional):
+        self._Traditional = Traditional
+
+    @property
+    def Offset(self):
+        """Offset. Default: 0. For more information on Offset, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Traditional = params.get("Traditional")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPv6AddressesResponse(AbstractModel):
+    """DescribeIPv6Addresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of IPv6 meeting conditions.
+        :type TotalCount: int
+        :param _AddressSet: IPv6 detailed information list.
+        :type AddressSet: list of Address
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AddressSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Number of IPv6 meeting conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AddressSet(self):
+        """IPv6 detailed information list.
+        :rtype: list of Address
+        """
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AddressSet") is not None:
+            self._AddressSet = []
+            for item in params.get("AddressSet"):
+                obj = Address()
+                obj._deserialize(item)
+                self._AddressSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIp6AddressesRequest(AbstractModel):
+    """DescribeIp6Addresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip6AddressIds: List of unique IDs that identify IPv6 instances. The unique ID of an IPv6 instance is in the format of `eip-11112222`. Parameters `Ip6AddressIds` and `Filters` cannot be specified at the same time.
+        :type Ip6AddressIds: list of str
+        :param _Filters: Each request can have up to 10 `Filters` values and 100 `Filter.Values` values. Parameters `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li>address-ip - String - Required: No - (Filter condition) Filter by the IP address of IPv6 instances.</li>
+<li>network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of ENIs.</li>
+        :type Filters: list of Filter
+        :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Offset: int
+        :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :type Limit: int
+        """
+        self._Ip6AddressIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Ip6AddressIds(self):
+        """List of unique IDs that identify IPv6 instances. The unique ID of an IPv6 instance is in the format of `eip-11112222`. Parameters `Ip6AddressIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
+        return self._Ip6AddressIds
+
+    @Ip6AddressIds.setter
+    def Ip6AddressIds(self, Ip6AddressIds):
+        self._Ip6AddressIds = Ip6AddressIds
+
+    @property
+    def Filters(self):
+        """Each request can have up to 10 `Filters` values and 100 `Filter.Values` values. Parameters `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li>address-ip - String - Required: No - (Filter condition) Filter by the IP address of IPv6 instances.</li>
+<li>network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of ENIs.</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Ip6AddressIds = params.get("Ip6AddressIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIp6AddressesResponse(AbstractModel):
+    """DescribeIp6Addresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of IPv6 meeting conditions.
+        :type TotalCount: int
+        :param _AddressSet: IPv6 detailed information list.
+        :type AddressSet: list of Address
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AddressSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Number of IPv6 meeting conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AddressSet(self):
+        """IPv6 detailed information list.
+        :rtype: list of Address
+        """
+        return self._AddressSet
+
+    @AddressSet.setter
+    def AddressSet(self, AddressSet):
+        self._AddressSet = AddressSet
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AddressSet") is not None:
+            self._AddressSet = []
+            for item in params.get("AddressSet"):
+                obj = Address()
+                obj._deserialize(item)
+                self._AddressSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
     """DescribeIpGeolocationDatabaseUrl request structure.
 
@@ -25675,6 +26610,85 @@ class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisassociateIPv6AddressRequest(AbstractModel):
+    """DisassociateIPv6Address request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressId: Indicates the unique ID of the EIPv6, such as eipv6-11112222.
+        :type IPv6AddressId: str
+        :param _KeepBindWithEni: Indicates whether to keep the ENI bound when unbinding.
+        :type KeepBindWithEni: bool
+        """
+        self._IPv6AddressId = None
+        self._KeepBindWithEni = None
+
+    @property
+    def IPv6AddressId(self):
+        """Indicates the unique ID of the EIPv6, such as eipv6-11112222.
+        :rtype: str
+        """
+        return self._IPv6AddressId
+
+    @IPv6AddressId.setter
+    def IPv6AddressId(self, IPv6AddressId):
+        self._IPv6AddressId = IPv6AddressId
+
+    @property
+    def KeepBindWithEni(self):
+        """Indicates whether to keep the ENI bound when unbinding.
+        :rtype: bool
+        """
+        return self._KeepBindWithEni
+
+    @KeepBindWithEni.setter
+    def KeepBindWithEni(self, KeepBindWithEni):
+        self._KeepBindWithEni = KeepBindWithEni
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressId = params.get("IPv6AddressId")
+        self._KeepBindWithEni = params.get("KeepBindWithEni")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateIPv6AddressResponse(AbstractModel):
+    """DisassociateIPv6Address response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DisassociateNatGatewayAddressRequest(AbstractModel):
     """DisassociateNatGatewayAddress request structure.
 
@@ -31886,6 +32900,273 @@ class ModifyHaVipAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyIPv6AddressesAttributesRequest(AbstractModel):
+    """ModifyIPv6AddressesAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: List of unique IDs of EIPv6.
+        :type IPv6AddressIds: list of str
+        :param _IPv6AddressName: Name of the EIPv6 address
+        :type IPv6AddressName: str
+        """
+        self._IPv6AddressIds = None
+        self._IPv6AddressName = None
+
+    @property
+    def IPv6AddressIds(self):
+        """List of unique IDs of EIPv6.
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+    @property
+    def IPv6AddressName(self):
+        """Name of the EIPv6 address
+        :rtype: str
+        """
+        return self._IPv6AddressName
+
+    @IPv6AddressName.setter
+    def IPv6AddressName(self, IPv6AddressName):
+        self._IPv6AddressName = IPv6AddressName
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        self._IPv6AddressName = params.get("IPv6AddressName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIPv6AddressesAttributesResponse(AbstractModel):
+    """ModifyIPv6AddressesAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIPv6AddressesBandwidthRequest(AbstractModel):
+    """ModifyIPv6AddressesBandwidth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: Unique ID of the EIPv6 address
+        :type IPv6AddressIds: list of str
+        :param _InternetMaxBandwidthOut: Network bandwidth of the EIPv6 address
+        :type InternetMaxBandwidthOut: int
+        """
+        self._IPv6AddressIds = None
+        self._InternetMaxBandwidthOut = None
+
+    @property
+    def IPv6AddressIds(self):
+        """Unique ID of the EIPv6 address
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """Network bandwidth of the EIPv6 address
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIPv6AddressesBandwidthResponse(AbstractModel):
+    """ModifyIPv6AddressesBandwidth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIp6AddressesBandwidthRequest(AbstractModel):
+    """ModifyIp6AddressesBandwidth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetMaxBandwidthOut: Modified target bandwidth, in Mbps.
+        :type InternetMaxBandwidthOut: int
+        :param _Ip6Addresses: IPv6 addresses. Both Ip6Addresses and Ip6AddressId are required, but they cannot be specified at the same time.
+        :type Ip6Addresses: list of str
+        :param _Ip6AddressIds: Unique IDs corresponding to the IPv6 addresses. Format: eip-xxxxxxxx. Both Ip6Addresses and Ip6AddressId are required, but they cannot be specified at the same time.
+        :type Ip6AddressIds: list of str
+        """
+        self._InternetMaxBandwidthOut = None
+        self._Ip6Addresses = None
+        self._Ip6AddressIds = None
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        """Modified target bandwidth, in Mbps.
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def Ip6Addresses(self):
+        """IPv6 addresses. Both Ip6Addresses and Ip6AddressId are required, but they cannot be specified at the same time.
+        :rtype: list of str
+        """
+        return self._Ip6Addresses
+
+    @Ip6Addresses.setter
+    def Ip6Addresses(self, Ip6Addresses):
+        self._Ip6Addresses = Ip6Addresses
+
+    @property
+    def Ip6AddressIds(self):
+        """Unique IDs corresponding to the IPv6 addresses. Format: eip-xxxxxxxx. Both Ip6Addresses and Ip6AddressId are required, but they cannot be specified at the same time.
+        :rtype: list of str
+        """
+        return self._Ip6AddressIds
+
+    @Ip6AddressIds.setter
+    def Ip6AddressIds(self, Ip6AddressIds):
+        self._Ip6AddressIds = Ip6AddressIds
+
+
+    def _deserialize(self, params):
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._Ip6Addresses = params.get("Ip6Addresses")
+        self._Ip6AddressIds = params.get("Ip6AddressIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIp6AddressesBandwidthResponse(AbstractModel):
+    """ModifyIp6AddressesBandwidth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyIpv6AddressesAttributeRequest(AbstractModel):
     """ModifyIpv6AddressesAttribute request structure.
 
@@ -37592,6 +38873,164 @@ class ReleaseAddressesResponse(AbstractModel):
     @property
     def TaskId(self):
         """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ReleaseIPv6AddressesRequest(AbstractModel):
+    """ReleaseIPv6Addresses request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPv6AddressIds: Unique ID of the IPv6 address.
+        :type IPv6AddressIds: list of str
+        """
+        self._IPv6AddressIds = None
+
+    @property
+    def IPv6AddressIds(self):
+        """Unique ID of the IPv6 address.
+        :rtype: list of str
+        """
+        return self._IPv6AddressIds
+
+    @IPv6AddressIds.setter
+    def IPv6AddressIds(self, IPv6AddressIds):
+        self._IPv6AddressIds = IPv6AddressIds
+
+
+    def _deserialize(self, params):
+        self._IPv6AddressIds = params.get("IPv6AddressIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseIPv6AddressesResponse(AbstractModel):
+    """ReleaseIPv6Addresses response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReleaseIp6AddressesBandwidthRequest(AbstractModel):
+    """ReleaseIp6AddressesBandwidth request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip6Addresses: IPv6 addresses. Both Ip6Addresses and Ip6AddressIds are required, but they cannot be specified at the same time.
+        :type Ip6Addresses: list of str
+        :param _Ip6AddressIds: Unique IDs corresponding to the IPv6 addresses. Format: eip-xxxxxxxx. Both Ip6Addresses and Ip6AddressIds are required, but they cannot be specified at the same time.
+        :type Ip6AddressIds: list of str
+        """
+        self._Ip6Addresses = None
+        self._Ip6AddressIds = None
+
+    @property
+    def Ip6Addresses(self):
+        """IPv6 addresses. Both Ip6Addresses and Ip6AddressIds are required, but they cannot be specified at the same time.
+        :rtype: list of str
+        """
+        return self._Ip6Addresses
+
+    @Ip6Addresses.setter
+    def Ip6Addresses(self, Ip6Addresses):
+        self._Ip6Addresses = Ip6Addresses
+
+    @property
+    def Ip6AddressIds(self):
+        """Unique IDs corresponding to the IPv6 addresses. Format: eip-xxxxxxxx. Both Ip6Addresses and Ip6AddressIds are required, but they cannot be specified at the same time.
+        :rtype: list of str
+        """
+        return self._Ip6AddressIds
+
+    @Ip6AddressIds.setter
+    def Ip6AddressIds(self, Ip6AddressIds):
+        self._Ip6AddressIds = Ip6AddressIds
+
+
+    def _deserialize(self, params):
+        self._Ip6Addresses = params.get("Ip6Addresses")
+        self._Ip6AddressIds = params.get("Ip6AddressIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseIp6AddressesBandwidthResponse(AbstractModel):
+    """ReleaseIp6AddressesBandwidth response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Asynchronous task ID. You can call the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Asynchronous task ID. You can call the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
         :rtype: str
         """
         return self._TaskId

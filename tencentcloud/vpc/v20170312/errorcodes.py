@@ -131,6 +131,15 @@ INVALIDPARAMETERVALUE_ADDRESSINTERNETCHARGETYPECONFLICT = 'InvalidParameterValue
 # The IP address is not available now.
 INVALIDPARAMETERVALUE_ADDRESSIPNOTAVAILABLE = 'InvalidParameterValue.AddressIpNotAvailable'
 
+# IP address not found.
+INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = 'InvalidParameterValue.AddressIpNotFound'
+
+# The IP address does not exist in the VPC.
+INVALIDPARAMETERVALUE_ADDRESSIPNOTINVPC = 'InvalidParameterValue.AddressIpNotInVpc'
+
+# This IPv6 address is not published.
+INVALIDPARAMETERVALUE_ADDRESSIPNOTPUBLIC = 'InvalidParameterValue.AddressIpNotPublic'
+
 # Failed to query the address.
 INVALIDPARAMETERVALUE_ADDRESSIPSNOTFOUND = 'InvalidParameterValue.AddressIpsNotFound'
 
@@ -142,6 +151,9 @@ INVALIDPARAMETERVALUE_ADDRESSNOTCALCIP = 'InvalidParameterValue.AddressNotCalcIP
 
 # Unable to find the address.
 INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = 'InvalidParameterValue.AddressNotFound'
+
+# This IPv6 address has already been published.
+INVALIDPARAMETERVALUE_ADDRESSPUBLISHED = 'InvalidParameterValue.AddressPublished'
 
 # Invalid IP address type
 INVALIDPARAMETERVALUE_ADDRESSTYPECONFLICT = 'InvalidParameterValue.AddressTypeConflict'
@@ -230,6 +242,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = 'InvalidParameterValue
 # Operation failed: the status of the instance does not allow this operation.
 INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = 'InvalidParameterValue.InvalidInstanceState'
 
+# Invalid IPv6 addresses.
+INVALIDPARAMETERVALUE_INVALIDIPV6 = 'InvalidParameterValue.InvalidIpv6'
+
 # Invalid original bandwidth value.
 INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = 'InvalidParameterValue.InvalidOldBandwidth'
 
@@ -292,6 +307,9 @@ INVALIDPARAMETERVALUE_NETDETECTSAMEIP = 'InvalidParameterValue.NetDetectSameIp'
 
 # Incorrect network interface ID.
 INVALIDPARAMETERVALUE_NETWORKINTERFACEIDMALFORMED = 'InvalidParameterValue.NetworkInterfaceIdMalformed'
+
+# The instance bound to the ENI does not support binding the EIPv6.
+INVALIDPARAMETERVALUE_NETWORKINTERFACEINSTANCENOTSUPPORT = 'InvalidParameterValue.NetworkInterfaceInstanceNotSupport'
 
 # The network interface ID was not found. The private IP address may not be configured on the network interface.
 INVALIDPARAMETERVALUE_NETWORKINTERFACENOTFOUND = 'InvalidParameterValue.NetworkInterfaceNotFound'
@@ -548,6 +566,9 @@ LIMITEXCEEDED_TAGTAGSEXCEEDED = 'LimitExceeded.TagTagsExceeded'
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# Multiple parameters missing
+MISSINGPARAMETER_MULTIMISSINGPARAMETER = 'MissingParameter.MultiMissingParameter'
+
 # The specified public IP is isolated.
 OPERATIONDENIED_ADDRESSINARREARS = 'OperationDenied.AddressInArrears'
 
@@ -617,8 +638,17 @@ UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = 'UnsupportedOperation.AccountNotSuppo
 # The port does not exist.
 UNSUPPORTEDOPERATION_ACTIONNOTFOUND = 'UnsupportedOperation.ActionNotFound'
 
+# This operation is not supported because the account is in arrears.
+UNSUPPORTEDOPERATION_ADDRESSIPINARREAR = 'UnsupportedOperation.AddressIpInArrear'
+
+# IP addresses in this billing mode does not support this operation.
+UNSUPPORTEDOPERATION_ADDRESSIPINTERNETCHARGETYPENOTPERMIT = 'UnsupportedOperation.AddressIpInternetChargeTypeNotPermit'
+
 # The IP address bound with this instance does not support this operation
 UNSUPPORTEDOPERATION_ADDRESSIPNOTSUPPORTINSTANCE = 'UnsupportedOperation.AddressIpNotSupportInstance'
+
+# The IP address status does not support this operation.
+UNSUPPORTEDOPERATION_ADDRESSIPSTATUSNOTPERMIT = 'UnsupportedOperation.AddressIpStatusNotPermit'
 
 # This operation is not supported by the IP address status.
 UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = 'UnsupportedOperation.AddressStatusNotPermit'

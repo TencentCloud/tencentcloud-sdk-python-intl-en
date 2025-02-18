@@ -579,6 +579,11 @@ def test_import_tmt():
     from tencentcloud.tmt.v20180321 import models
 
 
+def test_import_trro():
+    from tencentcloud.trro.v20220325 import trro_client
+    from tencentcloud.trro.v20220325 import models
+
+
 def test_import_trtc():
     from tencentcloud.trtc.v20190722 import trtc_client
     from tencentcloud.trtc.v20190722 import models

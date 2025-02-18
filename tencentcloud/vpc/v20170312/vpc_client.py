@@ -121,6 +121,59 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AllocateIPv6Addresses(self, request):
+        """This API is used to apply for one or more Elastic IPv6 (EIPv6) instances.
+
+        - EIPv6 is a fixed public IPv6 address that can be independently applied for and held in a Tencent Cloud region, providing a consistent product experience with Elastic IPv4.
+        - You can quickly bind an EIPv6 instance to the private IPv6 address of a cloud resource, so as to quickly enable IPv6 public bandwidth for the cloud resource.
+        - You can also bind an EIPv6 instance to other cloud resources as needed, so as to shield instance failures.
+
+        :param request: Request instance for AllocateIPv6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AllocateIPv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AllocateIPv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateIPv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.AllocateIPv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AllocateIp6AddressesBandwidth(self, request):
+        """This API is used to allocate IPv6 public network bandwidth for classic elastic public IPv6 addresses.
+
+        - Classic elastic public IPv6 addresses only have the private network communication capability by default. They can have the IPv6 public network communication capability and be displayed in the list of Classic Elastic Public IPv6 only after IPv6 public network bandwidth is allocated in the console or by calling this API.
+        - You can allocate public network bandwidth for one or multiple Classic elastic public IPv6 addresses each time.
+
+        :param request: Request instance for AllocateIp6AddressesBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AllocateIp6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AllocateIp6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateIp6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.AllocateIp6AddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AssignIpv6Addresses(self, request):
         """This API is used to apply for an IPv6 address for the ENI. <br />
         This API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.
@@ -270,6 +323,32 @@ class VpcClient(AbstractClient):
             body = self.call("AssociateDirectConnectGatewayNatGateway", params, headers=headers)
             response = json.loads(body)
             model = models.AssociateDirectConnectGatewayNatGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssociateIPv6Address(self, request):
+        """This API is used to bind an EIPv6 instance to the private IPv6 address configured on the CVM or ENI.
+
+        - Binding an EIPv6 to the CVM essentially indicates binding the EIPv6 to the private IPv6 address configured on the ENI of the CVM.
+        - Before binding an EIPv6 to the private IPv6 of a specified ENI, ensure that the private IPv6 address is unbound before the binding operation is performed.
+
+        :param request: Request instance for AssociateIPv6Address.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AssociateIPv6AddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AssociateIPv6AddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateIPv6Address", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateIPv6AddressResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2903,6 +2982,55 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIPv6Addresses(self, request):
+        """This API is used to query detailed information of one or more EIPv6 instances.
+
+        - You can query EIPv6 and traditional EIPv6 instance information in a specified region.
+        - The system returns a certain number (as specified by the Limit, the default value is 20) of EIPv6 instances of the current user if the parameter is empty.
+
+        :param request: Request instance for DescribeIPv6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIPv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIPv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIp6Addresses(self, request):
+        """This API is used to query the detailed information on one or multiple classic elastic public IPv6 instances.
+
+        :param request: Request instance for DescribeIp6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeIp6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIp6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIp6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIpGeolocationDatabaseUrl(self, request):
         """This API is used to obtain the download link of an IP location database.
         <font color="#FF0000">This API will be discontinued soon and is only available for existing users.</font>
@@ -4135,6 +4263,32 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisassociateIPv6Address(self, request):
+        """This API is used to unbind an EIPv6 instance.
+
+        - You can unbind EIPv6 instances bound to Cloud Virtual Machine (CVM) or Elastic Network Interface (ENI).
+        - Only EIPv6 instances in BIND or BIND_ENI status can be unbound.
+
+        :param request: Request instance for DisassociateIPv6Address.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisassociateIPv6AddressRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisassociateIPv6AddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateIPv6Address", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateIPv6AddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisassociateNatGatewayAddress(self, request):
         """This API is used to unbind an EIP from a NAT gateway.
 
@@ -5042,6 +5196,80 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyIPv6AddressesAttributes(self, request):
+        """This API is used to modify the name of an EIPv6 instance.
+
+        - You can modify the name of both EIPv6 and traditional EIPv6 instances.
+
+        :param request: Request instance for ModifyIPv6AddressesAttributes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesAttributesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIPv6AddressesAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIPv6AddressesAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIPv6AddressesBandwidth(self, request):
+        """This API is used to modify the bandwidth cap of an EIPv6 instance.
+
+        :param request: Request instance for ModifyIPv6AddressesBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIPv6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIPv6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIPv6AddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIp6AddressesBandwidth(self, request):
+        """This API is used to adjust the bandwidth limit of a classic elastic public IPv6 instance.
+
+        - You can adjust the bandwidth limit of only classic elastic public IPv6 instances.
+        - To adjust the bandwidth limit of an elastic public IPv6 instance, call the ModifyIPv6AddressesBandwidth API.
+
+        :param request: Request instance for ModifyIp6AddressesBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyIp6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIp6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIp6AddressesBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyIpv6AddressesAttribute(self, request):
         """This API (ModifyIpv6AddressesAttribute) is used to modify the private IPv6 address attributes of an ENI.
 
@@ -5766,6 +5994,58 @@ class VpcClient(AbstractClient):
             body = self.call("ReleaseAddresses", params, headers=headers)
             response = json.loads(body)
             model = models.ReleaseAddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReleaseIPv6Addresses(self, request):
+        """This API is used to release one or more EIPv6 instances.
+
+        - You can release the obtained EIPv6 instances. To use them again, please reapply.
+        - Only EIPv6 instances in UNBIND status can be released.
+
+        :param request: Request instance for ReleaseIPv6Addresses.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReleaseIPv6AddressesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReleaseIPv6AddressesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseIPv6Addresses", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseIPv6AddressesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReleaseIp6AddressesBandwidth(self, request):
+        """This API is used to release the IPv6 public network bandwidth of classic elastic public IPv6 instances.
+
+        - Classic elastic public IPv6 addresses still have the IPv6 private network communication capability after the public network bandwidth is released.
+        - To allocate IPV6 public network bandwidth, call the AllocateIp6AddressesBandwidth API.
+
+        :param request: Request instance for ReleaseIp6AddressesBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ReleaseIp6AddressesBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ReleaseIp6AddressesBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseIp6AddressesBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseIp6AddressesBandwidthResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
