@@ -854,6 +854,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVpcAcRule(self, request):
+        """Query Inter-VPC rules
+
+        :param request: Request instance for DescribeVpcAcRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcAcRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcAcRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVpcAcRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVpcAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExpandCfwVertical(self, request):
         """This API is used to increase the firewall bandwidth.
 

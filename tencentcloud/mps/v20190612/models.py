@@ -4316,6 +4316,10 @@ class AiParagraphInfo(AbstractModel):
         :param _Summary: Segment summary.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Summary: str
+        :param _Title: Segment title.
+        :type Title: str
+        :param _Keywords: Segment keywords.
+        :type Keywords: list of str
         :param _StartTimeOffset: Segmentation start time point, in seconds.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTimeOffset: float
@@ -4324,6 +4328,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type EndTimeOffset: float
         """
         self._Summary = None
+        self._Title = None
+        self._Keywords = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
 
@@ -4338,6 +4344,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Summary.setter
     def Summary(self, Summary):
         self._Summary = Summary
+
+    @property
+    def Title(self):
+        """Segment title.
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Keywords(self):
+        """Segment keywords.
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
 
     @property
     def StartTimeOffset(self):
@@ -4366,6 +4394,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self._Summary = params.get("Summary")
+        self._Title = params.get("Title")
+        self._Keywords = params.get("Keywords")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         memeber_set = set(params.keys())
@@ -28237,12 +28267,18 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
         :type Description: str
         :param _Confidence: Confidence of the intelligent description, with a value range from 0 to 100.
         :type Confidence: float
+        :param _Title: Intelligent description title.
+        :type Title: str
+        :param _Keywords: Intelligent description keywords.
+        :type Keywords: list of str
         :param _Paragraphs: Segmentation result.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Paragraphs: list of AiParagraphInfo
         """
         self._Description = None
         self._Confidence = None
+        self._Title = None
+        self._Keywords = None
         self._Paragraphs = None
 
     @property
@@ -28268,6 +28304,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Confidence = Confidence
 
     @property
+    def Title(self):
+        """Intelligent description title.
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Keywords(self):
+        """Intelligent description keywords.
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
     def Paragraphs(self):
         """Segmentation result.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -28283,6 +28341,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Description = params.get("Description")
         self._Confidence = params.get("Confidence")
+        self._Title = params.get("Title")
+        self._Keywords = params.get("Keywords")
         if params.get("Paragraphs") is not None:
             self._Paragraphs = []
             for item in params.get("Paragraphs"):

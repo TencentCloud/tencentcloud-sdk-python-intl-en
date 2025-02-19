@@ -7506,6 +7506,370 @@ class QuotaInvoice(AbstractModel):
         
 
 
+class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):
+    """RecognizeBrazilDriverLicenseOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :type ImageBase64: str
+        :param _BackImageBase64: The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :type BackImageBase64: str
+        :param _ImageUrl: The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        :type ImageUrl: str
+        :param _BackImageUrl: The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        :type BackImageUrl: str
+        :param _CropPortrait: Picture switch. The default is false, and the base64 encoding of the avatar photo is not returned. When set to true, the base64 encoding of the portrait photo is returned.
+        :type CropPortrait: bool
+        """
+        self._ImageBase64 = None
+        self._BackImageBase64 = None
+        self._ImageUrl = None
+        self._BackImageUrl = None
+        self._CropPortrait = None
+
+    @property
+    def ImageBase64(self):
+        """The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def BackImageBase64(self):
+        """The Base64 value of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
+    def ImageUrl(self):
+        """The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageUrl(self):
+        """The URL address of the image. It is required that the image after Base64 encoding should not exceed 7M, the resolution is recommended to be 500*800 or above, and PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
+    def CropPortrait(self):
+        """Picture switch. The default is false, and the base64 encoding of the avatar photo is not returned. When set to true, the base64 encoding of the portrait photo is returned.
+        :rtype: bool
+        """
+        return self._CropPortrait
+
+    @CropPortrait.setter
+    def CropPortrait(self, CropPortrait):
+        self._CropPortrait = CropPortrait
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._BackImageBase64 = params.get("BackImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._BackImageUrl = params.get("BackImageUrl")
+        self._CropPortrait = params.get("CropPortrait")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
+    """RecognizeBrazilDriverLicenseOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NOME: Name
+        :type NOME: str
+        :param _CatHab: Driving license type
+        :type CatHab: str
+        :param _CNHNumber: CNH number
+        :type CNHNumber: str
+        :param _VALIDADE: Valid date
+        :type VALIDADE: str
+        :param _QUALIFICATION: Qualification
+        :type QUALIFICATION: str
+        :param _IDENTIDADE: ID number
+        :type IDENTIDADE: str
+        :param _CPF: CPF
+        :type CPF: str
+        :param _NASCIMENTO: Birthday
+        :type NASCIMENTO: str
+        :param _MEMBERSHIP: Membership
+        :type MEMBERSHIP: str
+        :param _REGISTRO: Registration number
+        :type REGISTRO: str
+        :param _OBSERVATIONS: Remark
+        :type OBSERVATIONS: str
+        :param _IssueDate: Issue date
+        :type IssueDate: str
+        :param _LOCAL: Issue location
+        :type LOCAL: str
+        :param _BackNumber: Number in the back of the card
+        :type BackNumber: str
+        :param _AdvancedInfo: Field confidence
+        :type AdvancedInfo: str
+        :param _PortraitImage: PortraitImage base64
+        :type PortraitImage: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._NOME = None
+        self._CatHab = None
+        self._CNHNumber = None
+        self._VALIDADE = None
+        self._QUALIFICATION = None
+        self._IDENTIDADE = None
+        self._CPF = None
+        self._NASCIMENTO = None
+        self._MEMBERSHIP = None
+        self._REGISTRO = None
+        self._OBSERVATIONS = None
+        self._IssueDate = None
+        self._LOCAL = None
+        self._BackNumber = None
+        self._AdvancedInfo = None
+        self._PortraitImage = None
+        self._RequestId = None
+
+    @property
+    def NOME(self):
+        """Name
+        :rtype: str
+        """
+        return self._NOME
+
+    @NOME.setter
+    def NOME(self, NOME):
+        self._NOME = NOME
+
+    @property
+    def CatHab(self):
+        """Driving license type
+        :rtype: str
+        """
+        return self._CatHab
+
+    @CatHab.setter
+    def CatHab(self, CatHab):
+        self._CatHab = CatHab
+
+    @property
+    def CNHNumber(self):
+        """CNH number
+        :rtype: str
+        """
+        return self._CNHNumber
+
+    @CNHNumber.setter
+    def CNHNumber(self, CNHNumber):
+        self._CNHNumber = CNHNumber
+
+    @property
+    def VALIDADE(self):
+        """Valid date
+        :rtype: str
+        """
+        return self._VALIDADE
+
+    @VALIDADE.setter
+    def VALIDADE(self, VALIDADE):
+        self._VALIDADE = VALIDADE
+
+    @property
+    def QUALIFICATION(self):
+        """Qualification
+        :rtype: str
+        """
+        return self._QUALIFICATION
+
+    @QUALIFICATION.setter
+    def QUALIFICATION(self, QUALIFICATION):
+        self._QUALIFICATION = QUALIFICATION
+
+    @property
+    def IDENTIDADE(self):
+        """ID number
+        :rtype: str
+        """
+        return self._IDENTIDADE
+
+    @IDENTIDADE.setter
+    def IDENTIDADE(self, IDENTIDADE):
+        self._IDENTIDADE = IDENTIDADE
+
+    @property
+    def CPF(self):
+        """CPF
+        :rtype: str
+        """
+        return self._CPF
+
+    @CPF.setter
+    def CPF(self, CPF):
+        self._CPF = CPF
+
+    @property
+    def NASCIMENTO(self):
+        """Birthday
+        :rtype: str
+        """
+        return self._NASCIMENTO
+
+    @NASCIMENTO.setter
+    def NASCIMENTO(self, NASCIMENTO):
+        self._NASCIMENTO = NASCIMENTO
+
+    @property
+    def MEMBERSHIP(self):
+        """Membership
+        :rtype: str
+        """
+        return self._MEMBERSHIP
+
+    @MEMBERSHIP.setter
+    def MEMBERSHIP(self, MEMBERSHIP):
+        self._MEMBERSHIP = MEMBERSHIP
+
+    @property
+    def REGISTRO(self):
+        """Registration number
+        :rtype: str
+        """
+        return self._REGISTRO
+
+    @REGISTRO.setter
+    def REGISTRO(self, REGISTRO):
+        self._REGISTRO = REGISTRO
+
+    @property
+    def OBSERVATIONS(self):
+        """Remark
+        :rtype: str
+        """
+        return self._OBSERVATIONS
+
+    @OBSERVATIONS.setter
+    def OBSERVATIONS(self, OBSERVATIONS):
+        self._OBSERVATIONS = OBSERVATIONS
+
+    @property
+    def IssueDate(self):
+        """Issue date
+        :rtype: str
+        """
+        return self._IssueDate
+
+    @IssueDate.setter
+    def IssueDate(self, IssueDate):
+        self._IssueDate = IssueDate
+
+    @property
+    def LOCAL(self):
+        """Issue location
+        :rtype: str
+        """
+        return self._LOCAL
+
+    @LOCAL.setter
+    def LOCAL(self, LOCAL):
+        self._LOCAL = LOCAL
+
+    @property
+    def BackNumber(self):
+        """Number in the back of the card
+        :rtype: str
+        """
+        return self._BackNumber
+
+    @BackNumber.setter
+    def BackNumber(self, BackNumber):
+        self._BackNumber = BackNumber
+
+    @property
+    def AdvancedInfo(self):
+        """Field confidence
+        :rtype: str
+        """
+        return self._AdvancedInfo
+
+    @AdvancedInfo.setter
+    def AdvancedInfo(self, AdvancedInfo):
+        self._AdvancedInfo = AdvancedInfo
+
+    @property
+    def PortraitImage(self):
+        """PortraitImage base64
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NOME = params.get("NOME")
+        self._CatHab = params.get("CatHab")
+        self._CNHNumber = params.get("CNHNumber")
+        self._VALIDADE = params.get("VALIDADE")
+        self._QUALIFICATION = params.get("QUALIFICATION")
+        self._IDENTIDADE = params.get("IDENTIDADE")
+        self._CPF = params.get("CPF")
+        self._NASCIMENTO = params.get("NASCIMENTO")
+        self._MEMBERSHIP = params.get("MEMBERSHIP")
+        self._REGISTRO = params.get("REGISTRO")
+        self._OBSERVATIONS = params.get("OBSERVATIONS")
+        self._IssueDate = params.get("IssueDate")
+        self._LOCAL = params.get("LOCAL")
+        self._BackNumber = params.get("BackNumber")
+        self._AdvancedInfo = params.get("AdvancedInfo")
+        self._PortraitImage = params.get("PortraitImage")
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeGeneralInvoiceRequest(AbstractModel):
     """RecognizeGeneralInvoice request structure.
 
