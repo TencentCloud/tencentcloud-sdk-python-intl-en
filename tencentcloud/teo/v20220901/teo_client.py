@@ -258,6 +258,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateContentIdentifier(self, request):
+        """This API is used to create content identifiers, where you can set descriptions, tags, and other information. It is also necessary to bind an enterprise edition package for billing data statistics. A content identifier can only bind one billing package, while a billing package can bind multiple content identifiers. This feature is only available to the allowlist.
+
+        :param request: Request instance for CreateContentIdentifier.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateContentIdentifierRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateContentIdentifierResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateContentIdentifier", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateContentIdentifierResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomizeErrorPage(self, request):
         """This API is used to create a custom response page.
 
@@ -282,7 +305,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateDnsRecord(self, request):
-        """This API is used to create a DNS record.
+        """After creating a site and the site is accessed in NS mode, you can create DNS records through this API.
 
         :param request: Request instance for CreateDnsRecord.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateDnsRecordRequest`
@@ -387,6 +410,29 @@ class TeoClient(AbstractClient):
             body = self.call("CreateL4ProxyRules", params, headers=headers)
             response = json.loads(body)
             model = models.CreateL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateL7AccRules(self, request):
+        """This API is used to create rules in the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1). Batch creation is supported.
+
+        :param request: Request instance for CreateL7AccRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateL7AccRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateL7AccRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateL7AccRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateL7AccRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -562,7 +608,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """This API is used to create a rule in the rule engine.
+        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [CreateL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115822?from_cn_redirect=1).
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRuleRequest`
@@ -747,6 +793,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteContentIdentifier(self, request):
+        """Delete the specified content identifier. This feature is only available to the allowlist.
+
+        :param request: Request instance for DeleteContentIdentifier.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteContentIdentifierRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteContentIdentifierResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteContentIdentifier", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteContentIdentifierResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCustomErrorPage(self, request):
         """This API is used to delete a custom response page.
 
@@ -771,7 +840,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteDnsRecords(self, request):
-        """This API is used to delete DNS records in batches.
+        """You can use this API to batch delete DNS records.
 
         :param request: Request instance for DeleteDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteDnsRecordsRequest`
@@ -885,6 +954,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteL7AccRules(self, request):
+        """This API is used to delete rules of the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1), supporting batch deletion.
+
+        :param request: Request instance for DeleteL7AccRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL7AccRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteL7AccRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteL7AccRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteL7AccRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLoadBalancer(self, request):
         """This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
 
@@ -955,7 +1047,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteRules(self, request):
-        """This API is used to batch delete rules from the rule engine.
+        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DeleteL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115821?from_cn_redirect=1).
 
         :param request: Request instance for DeleteRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteRulesRequest`
@@ -1230,6 +1322,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeContentIdentifiers(self, request):
+        """Batch query content identifiers, which can be filtered by ID, description, status, or Tag. Deleted content identifiers queried by status are retained for only three months. This feature is only open to the allowlist.
+
+        :param request: Request instance for DescribeContentIdentifiers.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeContentIdentifiersRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeContentIdentifiersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContentIdentifiers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContentIdentifiersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentQuota(self, request):
         """This API is used to query content management quotas.
 
@@ -1392,7 +1507,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDnsRecords(self, request):
-        """This API is used to query DNS records. Paging, sorting and filtering are supported.
+        """This API is used to view DNS record information under a site, including DNS record name, record type, and record content. It supports querying specific DNS record information by specifying filter conditions.
 
         :param request: Request instance for DescribeDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDnsRecordsRequest`
@@ -1507,7 +1622,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeHostsSetting(self, request):
-        """This API is used to query detailed domain name configuration.
+        """This API is an old version. EdgeOne has fully upgraded the APIs related to the rule engine. You can obtain detailed configurations of domain names through [DescribeL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115819?from_cn_redirect=1) and [DescribeL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).
 
         :param request: Request instance for DescribeHostsSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeHostsSettingRequest`
@@ -1612,6 +1727,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeL4ProxyRules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeL7AccRules(self, request):
+        """This API is used to query the rule list of the rule engine (https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1).
+
+        :param request: Request instance for DescribeL7AccRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeL7AccRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeL7AccRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeL7AccSetting(self, request):
+        """This API is used to query the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).
+
+        :param request: Request instance for DescribeL7AccSetting.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccSettingRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeL7AccSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeL7AccSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeL7AccSettingResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1806,7 +1967,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """This API is used to query the rules in the rule engine.
+        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DescribeL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRulesRequest`
@@ -1829,7 +1990,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRulesSetting(self, request):
-        """This API is used to return the list of the settings of the rule engine that can be used for request match and their detailed recommended configuration information.
+        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [RuleEngineAction](https://intl.cloud.tencent.com/document/product/1552/80721?from_cn_redirect=1#RuleEngineAction).
 
         :param request: Request instance for DescribeRulesSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRulesSettingRequest`
@@ -2062,7 +2223,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZoneSetting(self, request):
-        """This API is used to query the site configuration.
+        """This API is an old version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DescribeL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115819?from_cn_redirect=1).
 
         :param request: Request instance for DescribeZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZoneSettingRequest`
@@ -2486,6 +2647,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyContentIdentifier(self, request):
+        """Modify content identifier, only description modification is supported. This feature is only open to the allowlist.
+
+        :param request: Request instance for ModifyContentIdentifier.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyContentIdentifierRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyContentIdentifierResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyContentIdentifier", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyContentIdentifierResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomErrorPage(self, request):
         """This API is used to modify a custom response page.
 
@@ -2510,7 +2694,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecords(self, request):
-        """You can use this interface to batch modify DNS records.
+        """This API is used to bulk modify DNS records.
 
         :param request: Request instance for ModifyDnsRecords.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsRequest`
@@ -2533,7 +2717,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyDnsRecordsStatus(self, request):
-        """You can use this interface to batch modify the status of DNS records, enabling and disabling records in bulk.
+        """You can batch modify the status of DNS records through this API, enabling and disabling records in bulk.
 
         :param request: Request instance for ModifyDnsRecordsStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDnsRecordsStatusRequest`
@@ -2741,6 +2925,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyL7AccRule(self, request):
+        """This API is used to modify rules in the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1), supporting only one rule modification per request.
+
+        :param request: Request instance for ModifyL7AccRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL7AccRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL7AccRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL7AccSetting(self, request):
+        """This API is used to modify the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).
+
+        :param request: Request instance for ModifyL7AccSetting.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccSettingRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL7AccSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL7AccSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyLoadBalancer(self, request):
         """This API is used to modify LoadBalancer configuration. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
 
@@ -2834,7 +3064,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """This API is used to modify a rule in the rule engine.
+        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [ModifyL7AccRule](https://intl.cloud.tencent.com/document/product/1552/115818?from_cn_redirect=1).
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRuleRequest`
@@ -2926,7 +3156,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyZoneSetting(self, request):
-        """This API is used to modify the site configuration.
+        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [ModifyL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115817?from_cn_redirect=1).
 
         :param request: Request instance for ModifyZoneSetting.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyZoneSettingRequest`

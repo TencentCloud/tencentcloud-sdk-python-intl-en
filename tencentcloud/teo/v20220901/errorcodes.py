@@ -65,7 +65,7 @@ FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicT
 # The edge client certificate has expired. It is not supported to issue expired certificates for the time being.
 FAILEDOPERATION_EDGECLIENTCERTIFICATEHASEXPIRED = 'FailedOperation.EdgeClientCertificateHasExpired'
 
-# 
+# Failed to call dnspod. please try again later. if the issue persists, please contact the intelligent customer service or submit a ticket.
 FAILEDOPERATION_FAILEDTOCALLDNSPOD = 'FailedOperation.FailedToCallDNSPod'
 
 # Another task is being deployed. Please try again later.
@@ -859,6 +859,9 @@ INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedC
 
 # The current domain suffix is not supported for access. Please contact us if you need to use it.
 INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevelDomainNotSupport'
+
+# Referencing is not allowed on the custom page of the trial plan.
+INVALIDPARAMETERVALUE_TRIALPLANRESPONSEPAGE = 'InvalidParameterValue.TrialPlanResponsePage'
 
 # Configuration item error.
 INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'

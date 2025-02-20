@@ -58,6 +58,48 @@ class AccelerateMainland(AbstractModel):
         
 
 
+class AccelerateMainlandParameters(AbstractModel):
+    """Accelerate optimization and configuration in mainland China.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Mainland china acceleration optimization switch. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Mainland china acceleration optimization switch. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateType(AbstractModel):
     """Acceleration type
 
@@ -455,6 +497,160 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         if params.get("UpstreamCertInfo") is not None:
             self._UpstreamCertInfo = UpstreamCertInfo()
             self._UpstreamCertInfo._deserialize(params.get("UpstreamCertInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessURLRedirectParameters(AbstractModel):
+    """Access URL redirect configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: Status code. valid values: 301, 302, 303, 307, 308.
+        :type StatusCode: int
+        :param _Protocol: Target request protocol. valid values:.
+<Li>Http: target request protocol http;</li>.
+<Li>Https: target request protocol https;</li>.
+<Li>Follow: follow the request.</li>.
+        :type Protocol: str
+        :param _HostName: Target hostname.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HostName: :class:`tencentcloud.teo.v20220901.models.HostName`
+        :param _URLPath: Target path.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type URLPath: :class:`tencentcloud.teo.v20220901.models.URLPath`
+        :param _QueryString: Carry query parameters.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
+        """
+        self._StatusCode = None
+        self._Protocol = None
+        self._HostName = None
+        self._URLPath = None
+        self._QueryString = None
+
+    @property
+    def StatusCode(self):
+        """Status code. valid values: 301, 302, 303, 307, 308.
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def Protocol(self):
+        """Target request protocol. valid values:.
+<Li>Http: target request protocol http;</li>.
+<Li>Https: target request protocol https;</li>.
+<Li>Follow: follow the request.</li>.
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def HostName(self):
+        """Target hostname.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostName`
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def URLPath(self):
+        """Target path.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.URLPath`
+        """
+        return self._URLPath
+
+    @URLPath.setter
+    def URLPath(self, URLPath):
+        self._URLPath = URLPath
+
+    @property
+    def QueryString(self):
+        """Carry query parameters.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._Protocol = params.get("Protocol")
+        if params.get("HostName") is not None:
+            self._HostName = HostName()
+            self._HostName._deserialize(params.get("HostName"))
+        if params.get("URLPath") is not None:
+            self._URLPath = URLPath()
+            self._URLPath._deserialize(params.get("URLPath"))
+        if params.get("QueryString") is not None:
+            self._QueryString = AccessURLRedirectQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessURLRedirectQueryString(AbstractModel):
+    """Access URL redirect configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: Action to be executed. values:.
+<Li>`Full`: retain all</li>.
+<Li>`Ignore`: ignore all</li>.
+        :type Action: str
+        """
+        self._Action = None
+
+    @property
+    def Action(self):
+        """Action to be executed. values:.
+<Li>`Full`: retain all</li>.
+<Li>`Ignore`: ignore all</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -963,35 +1159,36 @@ class Action(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NormalAction: Common feature operations. The options for this category include:
-<li> Access URL overriding (AccessUrlRedirect);</li>
-<li> Origin URL overriding (UpstreamUrlRedirect);</li>
-<li> QUIC;</li>
-<li> WebSocket;</li>
-<li> Video dragging (VideoSeek);</li>
-<li> Token authentication (Authentication);</li>
-<li> Custom CacheKey (CacheKey);</li>
-<li> Node caching TTL (Cache);</li>
-<li> Browser caching TTL (MaxAge);</li>
-<li> Offline caching (OfflineCache);</li>
-<li> Smart routing (SmartRouting);</li>
-<li> Range-based origin pull (RangeOriginPull);</li>
-<li> HTTP/2 origin pull (UpstreamHttp2);</li>
-<li> Host header overriding (HostHeader);</li>
-<li> Forced HTTPS (ForceRedirect);</li>
-<li> HTTPS origin pull (OriginPullProtocol);</li>
-<li> Cache pre-refresh (CachePrefresh);</li>
-<li> Smart compression (Compression);</li>
-<li> Hsts;</li>
-<li> ClientIpHeader;</li>
-<li> SslTlsSecureConf;</li>
-<li> OcspStapling;</li>
-<li> HTTP/2 access (Http2);</li>
-<li> Redirection during origin pull (UpstreamFollowRedirect);</li>
-<li> Modifying origin server (Origin);</li>
-<li> Layer 7 origin pull timeout (HTTPUpstreamTimeout);</li>
-<li> HTTP response (HttpResponse).</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NormalAction: Common feature operations. the options for this category include:.
+<Li>Access url rewrite (`accessurlredirect`).</li>.
+<Li> origin url overriding (upstreamurlredirect);</li>.
+<Li> quic;</li>.
+<Li> websocket;</li>.
+<Li> video dragging (videoseek);</li>.
+<Li> token authentication (authentication);</li>.
+<Li> custom cachekey (cachekey);</li>.
+<Li> node caching ttl (cache);</li>.
+<Li> browser cache ttl (maxage);</li>.
+<Li> offline caching (offlinecache);</li>.
+<Li> smart acceleration (smartrouting);</li>.
+<Li> range-based origin pull (rangeoriginpull);</li>.
+<Li> http/2 origin pull (upstreamhttp2);</li>.
+<Li> host header overriding (hostheader);</li>.
+<Li> force https (forceredirect);</li>.
+<Li> https origin pull (originpullprotocol);</li>.
+<Li>`ResponseSpeedLimit`: single connection download speed limit.</li>.
+<Li>`CachePrefresh`: cache prefresh.</li>.
+<Li>`Compression`: smart compression.</li>.
+<Li>Hsts;</Li>.
+<Li>ClientIpHeader;</Li>.
+<Li> ssltlssecureconf;</li>.
+<Li> ocspstapling;</li>.
+<Li> http/2 access (http2);</li>.
+<Li> redirection during origin pull (upstreamfollowredirect);</li>.
+<Li> modifying origin server (origin);</li>.
+<Li> layer 7 origin pull timeout (httpupstreamtimeout).</li>.
+<Li> http response (httpresponse).</li>.
+Note: this field may return null, which indicates a failure to obtain a valid value.
         :type NormalAction: :class:`tencentcloud.teo.v20220901.models.NormalAction`
         :param _RewriteAction: Feature operation with a request/response header. Features of this type include:
 <li>`RequestHeader`: HTTP request header modification.</li>
@@ -1010,35 +1207,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NormalAction(self):
-        """Common feature operations. The options for this category include:
-<li> Access URL overriding (AccessUrlRedirect);</li>
-<li> Origin URL overriding (UpstreamUrlRedirect);</li>
-<li> QUIC;</li>
-<li> WebSocket;</li>
-<li> Video dragging (VideoSeek);</li>
-<li> Token authentication (Authentication);</li>
-<li> Custom CacheKey (CacheKey);</li>
-<li> Node caching TTL (Cache);</li>
-<li> Browser caching TTL (MaxAge);</li>
-<li> Offline caching (OfflineCache);</li>
-<li> Smart routing (SmartRouting);</li>
-<li> Range-based origin pull (RangeOriginPull);</li>
-<li> HTTP/2 origin pull (UpstreamHttp2);</li>
-<li> Host header overriding (HostHeader);</li>
-<li> Forced HTTPS (ForceRedirect);</li>
-<li> HTTPS origin pull (OriginPullProtocol);</li>
-<li> Cache pre-refresh (CachePrefresh);</li>
-<li> Smart compression (Compression);</li>
-<li> Hsts;</li>
-<li> ClientIpHeader;</li>
-<li> SslTlsSecureConf;</li>
-<li> OcspStapling;</li>
-<li> HTTP/2 access (Http2);</li>
-<li> Redirection during origin pull (UpstreamFollowRedirect);</li>
-<li> Modifying origin server (Origin);</li>
-<li> Layer 7 origin pull timeout (HTTPUpstreamTimeout);</li>
-<li> HTTP response (HttpResponse).</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Common feature operations. the options for this category include:.
+<Li>Access url rewrite (`accessurlredirect`).</li>.
+<Li> origin url overriding (upstreamurlredirect);</li>.
+<Li> quic;</li>.
+<Li> websocket;</li>.
+<Li> video dragging (videoseek);</li>.
+<Li> token authentication (authentication);</li>.
+<Li> custom cachekey (cachekey);</li>.
+<Li> node caching ttl (cache);</li>.
+<Li> browser cache ttl (maxage);</li>.
+<Li> offline caching (offlinecache);</li>.
+<Li> smart acceleration (smartrouting);</li>.
+<Li> range-based origin pull (rangeoriginpull);</li>.
+<Li> http/2 origin pull (upstreamhttp2);</li>.
+<Li> host header overriding (hostheader);</li>.
+<Li> force https (forceredirect);</li>.
+<Li> https origin pull (originpullprotocol);</li>.
+<Li>`ResponseSpeedLimit`: single connection download speed limit.</li>.
+<Li>`CachePrefresh`: cache prefresh.</li>.
+<Li>`Compression`: smart compression.</li>.
+<Li>Hsts;</Li>.
+<Li>ClientIpHeader;</Li>.
+<Li> ssltlssecureconf;</li>.
+<Li> ocspstapling;</li>.
+<Li> http/2 access (http2);</li>.
+<Li> redirection during origin pull (upstreamfollowredirect);</li>.
+<Li> modifying origin server (origin);</li>.
+<Li> layer 7 origin pull timeout (httpupstreamtimeout).</li>.
+<Li> http response (httpresponse).</li>.
+Note: this field may return null, which indicates a failure to obtain a valid value.
         :rtype: :class:`tencentcloud.teo.v20220901.models.NormalAction`
         """
         return self._NormalAction
@@ -2469,6 +2667,152 @@ class AscriptionInfo(AbstractModel):
         self._Subdomain = params.get("Subdomain")
         self._RecordType = params.get("RecordType")
         self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticationParameters(AbstractModel):
+    """Token authentication configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthType: Authentication type. valid values:.
+
+<Li>TypeA: authentication method a type, for specific meaning please refer to [authentication method a](https://intl.cloud.tencent.com/document/product/1552/109329?from_cn_redirect=1);</li>.
+<Li>TypeB: authentication method b type, for specific meaning please refer to [authentication method b](https://intl.cloud.tencent.com/document/product/1552/109330?from_cn_redirect=1);</li>.
+<Li>TypeC: authentication method c type, for specific meaning please refer to [authentication method c](https://intl.cloud.tencent.com/document/product/1552/109331?from_cn_redirect=1);</li>.
+<Li>TypeD: authentication method d type, for specific meaning please refer to [authentication method d](https://intl.cloud.tencent.com/document/product/1552/109332?from_cn_redirect=1);</li>.
+<Li>TypeVOD: authentication method v type, for specific meaning please refer to [authentication method v](https://intl.cloud.tencent.com/document/product/1552/109333?from_cn_redirect=1).</li>.
+        :type AuthType: str
+        :param _SecretKey: The primary authentication key consists of 6–40 uppercase and lowercase english letters or digits, and cannot contain " and $.
+        :type SecretKey: str
+        :param _Timeout: Validity period of the authentication url, in seconds, value range: 1–630720000. used to determine if the client access request has expired:.
+<Li>If the current time exceeds "timestamp + validity period", it is an expired request, and a 403 is returned directly.</li>.
+<Li>If the current time does not exceed "timestamp + validity period", the request is not expired, and the md5 string is further validated.</li> note: when authtype is one of typea, typeb, typec, or typed, this field is required.
+        :type Timeout: int
+        :param _BackupSecretKey: The backup authentication key consists of 6–40 uppercase and lowercase english letters or digits, and cannot contain " and $.
+        :type BackupSecretKey: str
+        :param _AuthParam: Authentication parameters name. the node will validate the value corresponding to this parameter name. consists of 1-100 uppercase and lowercase letters, numbers, or underscores.<br>note: this field is required when authtype is either typea or typed.
+        :type AuthParam: str
+        :param _TimeParam: Authentication timestamp. it cannot be the same as the value of the authparam field.<br>note: this field is required when authtype is typed.
+        :type TimeParam: str
+        :param _TimeFormat: Authentication time format. values:.
+<Li>Dec: decimal;</li>.
+<Li>Hex: hexadecimal.</li>note: this field is required when authtype is typed. the default is hex.
+        :type TimeFormat: str
+        """
+        self._AuthType = None
+        self._SecretKey = None
+        self._Timeout = None
+        self._BackupSecretKey = None
+        self._AuthParam = None
+        self._TimeParam = None
+        self._TimeFormat = None
+
+    @property
+    def AuthType(self):
+        """Authentication type. valid values:.
+
+<Li>TypeA: authentication method a type, for specific meaning please refer to [authentication method a](https://intl.cloud.tencent.com/document/product/1552/109329?from_cn_redirect=1);</li>.
+<Li>TypeB: authentication method b type, for specific meaning please refer to [authentication method b](https://intl.cloud.tencent.com/document/product/1552/109330?from_cn_redirect=1);</li>.
+<Li>TypeC: authentication method c type, for specific meaning please refer to [authentication method c](https://intl.cloud.tencent.com/document/product/1552/109331?from_cn_redirect=1);</li>.
+<Li>TypeD: authentication method d type, for specific meaning please refer to [authentication method d](https://intl.cloud.tencent.com/document/product/1552/109332?from_cn_redirect=1);</li>.
+<Li>TypeVOD: authentication method v type, for specific meaning please refer to [authentication method v](https://intl.cloud.tencent.com/document/product/1552/109333?from_cn_redirect=1).</li>.
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def SecretKey(self):
+        """The primary authentication key consists of 6–40 uppercase and lowercase english letters or digits, and cannot contain " and $.
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Timeout(self):
+        """Validity period of the authentication url, in seconds, value range: 1–630720000. used to determine if the client access request has expired:.
+<Li>If the current time exceeds "timestamp + validity period", it is an expired request, and a 403 is returned directly.</li>.
+<Li>If the current time does not exceed "timestamp + validity period", the request is not expired, and the md5 string is further validated.</li> note: when authtype is one of typea, typeb, typec, or typed, this field is required.
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def BackupSecretKey(self):
+        """The backup authentication key consists of 6–40 uppercase and lowercase english letters or digits, and cannot contain " and $.
+        :rtype: str
+        """
+        return self._BackupSecretKey
+
+    @BackupSecretKey.setter
+    def BackupSecretKey(self, BackupSecretKey):
+        self._BackupSecretKey = BackupSecretKey
+
+    @property
+    def AuthParam(self):
+        """Authentication parameters name. the node will validate the value corresponding to this parameter name. consists of 1-100 uppercase and lowercase letters, numbers, or underscores.<br>note: this field is required when authtype is either typea or typed.
+        :rtype: str
+        """
+        return self._AuthParam
+
+    @AuthParam.setter
+    def AuthParam(self, AuthParam):
+        self._AuthParam = AuthParam
+
+    @property
+    def TimeParam(self):
+        """Authentication timestamp. it cannot be the same as the value of the authparam field.<br>note: this field is required when authtype is typed.
+        :rtype: str
+        """
+        return self._TimeParam
+
+    @TimeParam.setter
+    def TimeParam(self, TimeParam):
+        self._TimeParam = TimeParam
+
+    @property
+    def TimeFormat(self):
+        """Authentication time format. values:.
+<Li>Dec: decimal;</li>.
+<Li>Hex: hexadecimal.</li>note: this field is required when authtype is typed. the default is hex.
+        :rtype: str
+        """
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+
+    def _deserialize(self, params):
+        self._AuthType = params.get("AuthType")
+        self._SecretKey = params.get("SecretKey")
+        self._Timeout = params.get("Timeout")
+        self._BackupSecretKey = params.get("BackupSecretKey")
+        self._AuthParam = params.get("AuthParam")
+        self._TimeParam = params.get("TimeParam")
+        self._TimeFormat = params.get("TimeFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4005,6 +4349,141 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CacheConfigCustomTime(AbstractModel):
+    """Node cache TTL custom cache time configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Custom cache time switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _CacheTime: Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :type CacheTime: int
+        """
+        self._Switch = None
+        self._CacheTime = None
+
+    @property
+    def Switch(self):
+        """Custom cache time switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def CacheTime(self):
+        """Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheConfigParameters(AbstractModel):
+    """Node Cache TTL configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: Follow origin server cache configuration. only one of followorigin, nocache, customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type FollowOrigin: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        :param _NoCache: No cache configuration. only one of followorigin, nocache, customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type NoCache: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        :param _CustomTime: Custom cache time configuration. only one of followorigin, nocache, customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CustomTime: :class:`tencentcloud.teo.v20220901.models.CacheConfigCustomTime`
+        """
+        self._FollowOrigin = None
+        self._NoCache = None
+        self._CustomTime = None
+
+    @property
+    def FollowOrigin(self):
+        """Follow origin server cache configuration. only one of followorigin, nocache, customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def NoCache(self):
+        """No cache configuration. only one of followorigin, nocache, customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        """
+        return self._NoCache
+
+    @NoCache.setter
+    def NoCache(self, NoCache):
+        self._NoCache = NoCache
+
+    @property
+    def CustomTime(self):
+        """Custom cache time configuration. only one of followorigin, nocache, customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheConfigCustomTime`
+        """
+        return self._CustomTime
+
+    @CustomTime.setter
+    def CustomTime(self, CustomTime):
+        self._CustomTime = CustomTime
+
+
+    def _deserialize(self, params):
+        if params.get("FollowOrigin") is not None:
+            self._FollowOrigin = FollowOrigin()
+            self._FollowOrigin._deserialize(params.get("FollowOrigin"))
+        if params.get("NoCache") is not None:
+            self._NoCache = NoCache()
+            self._NoCache._deserialize(params.get("NoCache"))
+        if params.get("CustomTime") is not None:
+            self._CustomTime = CacheConfigCustomTime()
+            self._CustomTime._deserialize(params.get("CustomTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CacheKey(AbstractModel):
     """The cache key configuration.
 
@@ -4087,6 +4566,566 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class CacheKeyConfigParameters(AbstractModel):
+    """The cache key configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullURLCache: Whether to enable full-path cache. values:.
+<Li>`On`: enable full-path cache (i.e., disable ignore query string).</li>.
+<Li>`Off`: disable full-path cache (i.e., enable ignore query string).</li>.
+        :type FullURLCache: str
+        :param _IgnoreCase: Whether to ignore case in the cache key. values:.
+<Li>`On`: ignore;</li>.
+<Li>`Off`: not ignore.</li>.
+        :type IgnoreCase: str
+        :param _QueryString: Query string retention configuration parameter. this field and fullurlcache must be set simultaneously, but cannot both be `on`.
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        """
+        self._FullURLCache = None
+        self._IgnoreCase = None
+        self._QueryString = None
+
+    @property
+    def FullURLCache(self):
+        """Whether to enable full-path cache. values:.
+<Li>`On`: enable full-path cache (i.e., disable ignore query string).</li>.
+<Li>`Off`: disable full-path cache (i.e., enable ignore query string).</li>.
+        :rtype: str
+        """
+        return self._FullURLCache
+
+    @FullURLCache.setter
+    def FullURLCache(self, FullURLCache):
+        self._FullURLCache = FullURLCache
+
+    @property
+    def IgnoreCase(self):
+        """Whether to ignore case in the cache key. values:.
+<Li>`On`: ignore;</li>.
+<Li>`Off`: not ignore.</li>.
+        :rtype: str
+        """
+        return self._IgnoreCase
+
+    @IgnoreCase.setter
+    def IgnoreCase(self, IgnoreCase):
+        self._IgnoreCase = IgnoreCase
+
+    @property
+    def QueryString(self):
+        """Query string retention configuration parameter. this field and fullurlcache must be set simultaneously, but cannot both be `on`.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._FullURLCache = params.get("FullURLCache")
+        self._IgnoreCase = params.get("IgnoreCase")
+        if params.get("QueryString") is not None:
+            self._QueryString = CacheKeyQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyCookie(AbstractModel):
+    """Custom Cache Key Cookie configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable feature. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Action: Cache action. values:.
+<Li>`Full`: retain all</li>.
+<Li> `ignore`: ignore all;</li>.
+<Li> `includecustom`: retain specified parameters;</li>.
+<Li> `excludecustom`: ignore specified parameters.</li> **note**: when `switch` is on, this field is required. when `switch` is off, this field is not required and will not take effect if filled.
+        :type Action: str
+        :param _Values: Custom cache key cookie name list.<br>note: this field is required when action is includecustom or excludecustom; when action is full or ignore, this field is not required and will not take effect if filled.
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """Whether to enable feature. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """Cache action. values:.
+<Li>`Full`: retain all</li>.
+<Li> `ignore`: ignore all;</li>.
+<Li> `includecustom`: retain specified parameters;</li>.
+<Li> `excludecustom`: ignore specified parameters.</li> **note**: when `switch` is on, this field is required. when `switch` is off, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """Custom cache key cookie name list.<br>note: this field is required when action is includecustom or excludecustom; when action is full or ignore, this field is not required and will not take effect if filled.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyHeader(AbstractModel):
+    """Custom Cache Key HTTP request header configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable feature. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Values: Custom cache key http request header list.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """Whether to enable feature. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Values(self):
+        """Custom cache key http request header list.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyParameters(AbstractModel):
+    """Custom Cache Key configuration parameters. The FullURLCache and QueryString parameters are combined. For specific examples, refer to:
+    - Retain all query strings. Enable ignore case.
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "on",
+        "QueryString": {
+          "Switch": "off"
+        },
+        "IgnoreCase": "on"
+      }
+    }
+    ```
+    - Ignore all query strings. Enable ignore case.
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "off",
+        "QueryString": {
+          "Switch": "off"
+        },
+        "IgnoreCase": "on"
+      }
+    }
+    ```
+    - Retain specified query string parameters. Disable ignore case.
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "off",
+        "QueryString": {
+            "Switch": "on",
+            "Action": "includeCustom",
+            "Values": ["name1","name2","name3"]
+        },
+        "IgnoreCase": "off"
+      }
+    }
+    ```
+    -Query string ignore specified parameters. Disable ignore case.
+    ```
+    {
+      "CacheKey": {
+        "FullURLCache": "off",
+        "QueryString": {
+            "Switch": "on",
+            "Action": "excludeCustom",
+            "Values": ["name1","name2","name3"]
+        },
+        "IgnoreCase": "off"
+      }
+    }
+    ```
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullURLCache: Switch for retaining the complete query string. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured. this field and querystring.switch must be set simultaneously, but cannot both be on.
+        :type FullURLCache: str
+        :param _QueryString: Configuration parameter for retaining the query string. this field and fullurlcache must be set simultaneously, but cannot both be on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        :param _IgnoreCase: Switch for ignoring case. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.
+        :type IgnoreCase: str
+        :param _Header: HTTP request header configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Header: :class:`tencentcloud.teo.v20220901.models.CacheKeyHeader`
+        :param _Scheme: Request protocol switch. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.
+        :type Scheme: str
+        :param _Cookie: Cookie configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Cookie: :class:`tencentcloud.teo.v20220901.models.CacheKeyCookie`
+        """
+        self._FullURLCache = None
+        self._QueryString = None
+        self._IgnoreCase = None
+        self._Header = None
+        self._Scheme = None
+        self._Cookie = None
+
+    @property
+    def FullURLCache(self):
+        """Switch for retaining the complete query string. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured. this field and querystring.switch must be set simultaneously, but cannot both be on.
+        :rtype: str
+        """
+        return self._FullURLCache
+
+    @FullURLCache.setter
+    def FullURLCache(self, FullURLCache):
+        self._FullURLCache = FullURLCache
+
+    @property
+    def QueryString(self):
+        """Configuration parameter for retaining the query string. this field and fullurlcache must be set simultaneously, but cannot both be on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def IgnoreCase(self):
+        """Switch for ignoring case. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.
+        :rtype: str
+        """
+        return self._IgnoreCase
+
+    @IgnoreCase.setter
+    def IgnoreCase(self, IgnoreCase):
+        self._IgnoreCase = IgnoreCase
+
+    @property
+    def Header(self):
+        """HTTP request header configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyHeader`
+        """
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def Scheme(self):
+        """Request protocol switch. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def Cookie(self):
+        """Cookie configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyCookie`
+        """
+        return self._Cookie
+
+    @Cookie.setter
+    def Cookie(self, Cookie):
+        self._Cookie = Cookie
+
+
+    def _deserialize(self, params):
+        self._FullURLCache = params.get("FullURLCache")
+        if params.get("QueryString") is not None:
+            self._QueryString = CacheKeyQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        self._IgnoreCase = params.get("IgnoreCase")
+        if params.get("Header") is not None:
+            self._Header = CacheKeyHeader()
+            self._Header._deserialize(params.get("Header"))
+        self._Scheme = params.get("Scheme")
+        if params.get("Cookie") is not None:
+            self._Cookie = CacheKeyCookie()
+            self._Cookie._deserialize(params.get("Cookie"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheKeyQueryString(AbstractModel):
+    """Custom Cache Key query string configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Query string retain/ignore specified parameter switch. valid values are:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Action: Actions to retain/ignore specified parameters in the query string. values:.
+<Li>`IncludeCustom`: retain partial parameters.</li>.
+<Li>`ExcludeCustom`: ignore partial parameters.</li> note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.
+        :type Action: str
+        :param _Values: List of parameter names to be retained/ignored in the query string. <br>note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """Query string retain/ignore specified parameter switch. valid values are:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """Actions to retain/ignore specified parameters in the query string. values:.
+<Li>`IncludeCustom`: retain partial parameters.</li>.
+<Li>`ExcludeCustom`: ignore partial parameters.</li> note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """List of parameter names to be retained/ignored in the query string. <br>note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheParameters(AbstractModel):
+    """Node Cache TTL configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: Cache follows origin server. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type FollowOrigin: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        :param _NoCache: No cache. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type NoCache: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        :param _CustomTime: Custom cache time. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CustomTime: :class:`tencentcloud.teo.v20220901.models.CustomTime`
+        """
+        self._FollowOrigin = None
+        self._NoCache = None
+        self._CustomTime = None
+
+    @property
+    def FollowOrigin(self):
+        """Cache follows origin server. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.FollowOrigin`
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def NoCache(self):
+        """No cache. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.NoCache`
+        """
+        return self._NoCache
+
+    @NoCache.setter
+    def NoCache(self, NoCache):
+        self._NoCache = NoCache
+
+    @property
+    def CustomTime(self):
+        """Custom cache time. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CustomTime`
+        """
+        return self._CustomTime
+
+    @CustomTime.setter
+    def CustomTime(self, CustomTime):
+        self._CustomTime = CustomTime
+
+
+    def _deserialize(self, params):
+        if params.get("FollowOrigin") is not None:
+            self._FollowOrigin = FollowOrigin()
+            self._FollowOrigin._deserialize(params.get("FollowOrigin"))
+        if params.get("NoCache") is not None:
+            self._NoCache = NoCache()
+            self._NoCache._deserialize(params.get("NoCache"))
+        if params.get("CustomTime") is not None:
+            self._CustomTime = CustomTime()
+            self._CustomTime._deserialize(params.get("CustomTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CachePrefresh(AbstractModel):
     """Cache prefresh
 
@@ -4134,6 +5173,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CachePrefreshParameters(AbstractModel):
+    """Cache prefresh configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable cache prefresh. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _CacheTimePercent: Prefresh interval set as a percentage of the node cache time. value range: 1-99.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :type CacheTimePercent: int
+        """
+        self._Switch = None
+        self._CacheTimePercent = None
+
+    @property
+    def Switch(self):
+        """Whether to enable cache prefresh. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def CacheTimePercent(self):
+        """Prefresh interval set as a percentage of the node cache time. value range: 1-99.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: int
+        """
+        return self._CacheTimePercent
+
+    @CacheTimePercent.setter
+    def CacheTimePercent(self, CacheTimePercent):
+        self._CacheTimePercent = CacheTimePercent
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._CacheTimePercent = params.get("CacheTimePercent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4498,6 +5594,120 @@ class CheckRegionHealthStatus(AbstractModel):
         
 
 
+class ClientIPCountryParameters(AbstractModel):
+    """Location information of the Client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable configuration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _HeaderName: Name of the request header that contains the client ip region. it is valid when `switch=on`. the default value `eo-client-ipcountry` is used when it is not specified.
+        :type HeaderName: str
+        """
+        self._Switch = None
+        self._HeaderName = None
+
+    @property
+    def Switch(self):
+        """Whether to enable configuration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def HeaderName(self):
+        """Name of the request header that contains the client ip region. it is valid when `switch=on`. the default value `eo-client-ipcountry` is used when it is not specified.
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClientIPHeaderParameters(AbstractModel):
+    """The header configuration for storing client request IP.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable configuration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _HeaderName: Name of the request header containing the client ip address for origin-pull. when switch is on, this parameter is required. x-forwarded-for is not allowed for this parameter.
+        :type HeaderName: str
+        """
+        self._Switch = None
+        self._HeaderName = None
+
+    @property
+    def Switch(self):
+        """Whether to enable configuration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def HeaderName(self):
+        """Name of the request header containing the client ip address for origin-pull. when switch is on, this parameter is required. x-forwarded-for is not allowed for this parameter.
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClientIpCountry(AbstractModel):
     """Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.
 
@@ -4803,6 +6013,67 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CompressionParameters(AbstractModel):
+    """Smart compression configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable smart compression. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Algorithms: Supported compression algorithm list. this field is required when switch is on; otherwise, it is not effective. valid values:.
+<Li>`Brotli`: brotli algorithm;</li>.
+<Li>`Gzip`: gzip algorithm.</li>.
+        :type Algorithms: list of str
+        """
+        self._Switch = None
+        self._Algorithms = None
+
+    @property
+    def Switch(self):
+        """Whether to enable smart compression. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Algorithms(self):
+        """Supported compression algorithm list. this field is required when switch is on; otherwise, it is not effective. valid values:.
+<Li>`Brotli`: brotli algorithm;</li>.
+<Li>`Gzip`: gzip algorithm.</li>.
+        :rtype: list of str
+        """
+        return self._Algorithms
+
+    @Algorithms.setter
+    def Algorithms(self, Algorithms):
+        self._Algorithms = Algorithms
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Algorithms = params.get("Algorithms")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigGroupVersionInfo(AbstractModel):
     """Version information about the configuration group.
 
@@ -4929,6 +6200,173 @@ class ConfigGroupVersionInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentIdentifier(AbstractModel):
+    """Content identifier. This feature is only available to the allowlist.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: Content identifier id.
+        :type ContentId: str
+        :param _Description: Content identifier description.
+        :type Description: str
+        :param _ReferenceCount: Count of citations by the rule engine.
+        :type ReferenceCount: int
+        :param _PlanId: Bound package id.
+        :type PlanId: str
+        :param _Tags: Bound tags.
+        :type Tags: list of Tag
+        :param _Status: Content identifier status. valid values:.
+<Li>`Active`: activated</li>.
+<Li>`Deleted`: deleted</li>.
+        :type Status: str
+        :param _CreatedOn: Creation time, which adopts coordinated universal time (utc) and follows the date and time format of the iso 8601 standard.
+        :type CreatedOn: str
+        :param _ModifiedOn: Latest update time, which adopts coordinated universal time (utc) and follows the date and time format of the iso 8601 standard.
+        :type ModifiedOn: str
+        :param _DeletedOn: Deletion time, which is empty when the status is not `deleted`. the time format follows the iso 8601 standard and is represented in coordinated universal time (utc).
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type DeletedOn: str
+        """
+        self._ContentId = None
+        self._Description = None
+        self._ReferenceCount = None
+        self._PlanId = None
+        self._Tags = None
+        self._Status = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+        self._DeletedOn = None
+
+    @property
+    def ContentId(self):
+        """Content identifier id.
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def Description(self):
+        """Content identifier description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ReferenceCount(self):
+        """Count of citations by the rule engine.
+        :rtype: int
+        """
+        return self._ReferenceCount
+
+    @ReferenceCount.setter
+    def ReferenceCount(self, ReferenceCount):
+        self._ReferenceCount = ReferenceCount
+
+    @property
+    def PlanId(self):
+        """Bound package id.
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Tags(self):
+        """Bound tags.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Status(self):
+        """Content identifier status. valid values:.
+<Li>`Active`: activated</li>.
+<Li>`Deleted`: deleted</li>.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedOn(self):
+        """Creation time, which adopts coordinated universal time (utc) and follows the date and time format of the iso 8601 standard.
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        """Latest update time, which adopts coordinated universal time (utc) and follows the date and time format of the iso 8601 standard.
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+    @property
+    def DeletedOn(self):
+        """Deletion time, which is empty when the status is not `deleted`. the time format follows the iso 8601 standard and is represented in coordinated universal time (utc).
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: str
+        """
+        return self._DeletedOn
+
+    @DeletedOn.setter
+    def DeletedOn(self, DeletedOn):
+        self._DeletedOn = DeletedOn
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._Description = params.get("Description")
+        self._ReferenceCount = params.get("ReferenceCount")
+        self._PlanId = params.get("PlanId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Status = params.get("Status")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        self._DeletedOn = params.get("DeletedOn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5959,6 +7397,120 @@ class CreateConfigGroupVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateContentIdentifierRequest(AbstractModel):
+    """CreateContentIdentifier request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: Description of the content identifier, length limit of up to 20 characters.
+        :type Description: str
+        :param _PlanId: Target plan id to be bound, available only for the enterprise edition. <li>if there is already a plan under your account, go to [plan management](https://console.cloud.tencent.com/edgeone/package) to get the plan id and directly bind the content identifier to the plan;</li><li>if you do not have a plan to bind, please purchase an enterprise edition plan first.</li>.
+        :type PlanId: str
+        :param _Tags: Tags of the content identifier. this parameter is used for authority control. to create tags, go to the [tag console](https://console.cloud.tencent.com/tag/taglist).
+        :type Tags: list of Tag
+        """
+        self._Description = None
+        self._PlanId = None
+        self._Tags = None
+
+    @property
+    def Description(self):
+        """Description of the content identifier, length limit of up to 20 characters.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PlanId(self):
+        """Target plan id to be bound, available only for the enterprise edition. <li>if there is already a plan under your account, go to [plan management](https://console.cloud.tencent.com/edgeone/package) to get the plan id and directly bind the content identifier to the plan;</li><li>if you do not have a plan to bind, please purchase an enterprise edition plan first.</li>.
+        :rtype: str
+        """
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def Tags(self):
+        """Tags of the content identifier. this parameter is used for authority control. to create tags, go to the [tag console](https://console.cloud.tencent.com/tag/taglist).
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._PlanId = params.get("PlanId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateContentIdentifierResponse(AbstractModel):
+    """CreateContentIdentifier response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: Generated content identifier id. after creation, you can go to the rule engine to "set the content identifier" under certain match conditions.
+        :type ContentId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ContentId = None
+        self._RequestId = None
+
+    @property
+    def ContentId(self):
+        """Generated content identifier id. after creation, you can go to the rule engine to "set the content identifier" under certain match conditions.
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCustomizeErrorPageRequest(AbstractModel):
     """CreateCustomizeErrorPage request structure.
 
@@ -6105,40 +7657,25 @@ class CreateDnsRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID of the DNS record.
+        :param _ZoneId: Zone id.
         :type ZoneId: str
-        :param _Name: The DNS record name.If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        :param _Name: DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.
         :type Name: str
-        :param _Type: DNS record types include:
-
-- A:Points the domain to an external IPv4 address, such as 8.8.8.8.
-- AAAA: Points the domain to an external IPv6 address.
-- MX: Used for mail servers. When multiple MX records exist, the one with the lowest priority value is preferred.
-- CNAME: Points the domain to another domain, which then resolves to the final IP address.
-- TXT: Provides identification and description for the domain, commonly used for domain verification and SPF records (anti-spam).
-- NS: If you need to delegate a subdomain to another DNS service provider, you need to add an NS record. NS records cannot be added to the root domain.
-- CAA: Specifies which Certificate Authorities (CAs) are allowed to issue certificates for the site.
-- SRV: Indicates that a specific server is using a particular service, commonly used in Microsoft's directory management systems.
-
-Different record types, such as SRV and CAA, have specific requirements for the host record name and record value format. For detailed descriptions and format examples of each record type, please refer to: [Introduction to DNS Record Types](https://www.tencentcloud.com/zh/document/product/1145/54764#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
+        :param _Type: DNS record type. valid values are: <li>a: points the domain name to an external ipv4 address, such as 8.8.8.8;</li><li>aaaa: points the domain name to an external ipv6 address;</li><li>mx: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;</li><li>cname: points the domain name to another domain name, which then resolves to the final ip address;</li><li>txt: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);</li><li>ns: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;</li><li>caa: specifies the ca that can issue certificates for this site;</li><li>srv: identifies a server using a service, commonly used in microsoft's directory management.</li>.
+Different record types, such as srv and caa records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
         :type Type: str
-        :param _Content: DNS record content should be filled in according to the corresponding Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        :param _Content: DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.
         :type Content: str
-        :param _Location: DNS record resolution location, if not specified, default to "Default," which means the default resolution location and is effective for all regions.
-- Resolution location configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
-- Resolution location configuration is only available for Standard and Enterprise packages.
+        :param _Location: DNS record resolution route. if not specified, the default is default, which means the default resolution route and is effective in all regions.
 
-For the values, please refer to: [Resolution Lines and Corresponding Codes Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+- resolution route configuration is only applicable when type (dns record type) is a, aaaa, or cname.
+- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).
         :type Location: str
-        :param _TTL: TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300
+        :param _TTL: Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.
         :type TTL: int
-        :param _Weight: DNS record weight can be specified within the range of -1 to 100. Setting the weight to 0 means the record will not be resolved. If not specified, the default value is -1, indicating that no weight is set.
-
-Weight configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
-
-Note: For the same subdomain, different DNS records on the same resolution line should either all have weights set or none should have weights set.
+        :param _Weight: DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is a, aaaa, or cname.<br>note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.
         :type Weight: int
-        :param _Priority: The MX record priority parameter is only effective when the Type (DNS record type) is MX. The smaller the value, the higher the priority. Users can specify a value in the range of 0 to 50. If not specified, the default value is 0.
+        :param _Priority: MX record priority, which takes effect only when type (dns record type) is mx. the smaller the value, the higher the priority. users can specify a value range of 0–50. the default value is 0 if not specified.
         :type Priority: int
         """
         self._ZoneId = None
@@ -6152,7 +7689,7 @@ Note: For the same subdomain, different DNS records on the same resolution line 
 
     @property
     def ZoneId(self):
-        """The site ID of the DNS record.
+        """Zone id.
         :rtype: str
         """
         return self._ZoneId
@@ -6163,7 +7700,7 @@ Note: For the same subdomain, different DNS records on the same resolution line 
 
     @property
     def Name(self):
-        """The DNS record name.If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        """DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.
         :rtype: str
         """
         return self._Name
@@ -6174,18 +7711,8 @@ Note: For the same subdomain, different DNS records on the same resolution line 
 
     @property
     def Type(self):
-        """DNS record types include:
-
-- A:Points the domain to an external IPv4 address, such as 8.8.8.8.
-- AAAA: Points the domain to an external IPv6 address.
-- MX: Used for mail servers. When multiple MX records exist, the one with the lowest priority value is preferred.
-- CNAME: Points the domain to another domain, which then resolves to the final IP address.
-- TXT: Provides identification and description for the domain, commonly used for domain verification and SPF records (anti-spam).
-- NS: If you need to delegate a subdomain to another DNS service provider, you need to add an NS record. NS records cannot be added to the root domain.
-- CAA: Specifies which Certificate Authorities (CAs) are allowed to issue certificates for the site.
-- SRV: Indicates that a specific server is using a particular service, commonly used in Microsoft's directory management systems.
-
-Different record types, such as SRV and CAA, have specific requirements for the host record name and record value format. For detailed descriptions and format examples of each record type, please refer to: [Introduction to DNS Record Types](https://www.tencentcloud.com/zh/document/product/1145/54764#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
+        """DNS record type. valid values are: <li>a: points the domain name to an external ipv4 address, such as 8.8.8.8;</li><li>aaaa: points the domain name to an external ipv6 address;</li><li>mx: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;</li><li>cname: points the domain name to another domain name, which then resolves to the final ip address;</li><li>txt: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);</li><li>ns: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;</li><li>caa: specifies the ca that can issue certificates for this site;</li><li>srv: identifies a server using a service, commonly used in microsoft's directory management.</li>.
+Different record types, such as srv and caa records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).
         :rtype: str
         """
         return self._Type
@@ -6196,7 +7723,7 @@ Different record types, such as SRV and CAA, have specific requirements for the 
 
     @property
     def Content(self):
-        """DNS record content should be filled in according to the corresponding Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.
+        """DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.
         :rtype: str
         """
         return self._Content
@@ -6207,11 +7734,10 @@ Different record types, such as SRV and CAA, have specific requirements for the 
 
     @property
     def Location(self):
-        """DNS record resolution location, if not specified, default to "Default," which means the default resolution location and is effective for all regions.
-- Resolution location configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
-- Resolution location configuration is only available for Standard and Enterprise packages.
+        """DNS record resolution route. if not specified, the default is default, which means the default resolution route and is effective in all regions.
 
-For the values, please refer to: [Resolution Lines and Corresponding Codes Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+- resolution route configuration is only applicable when type (dns record type) is a, aaaa, or cname.
+- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).
         :rtype: str
         """
         return self._Location
@@ -6222,7 +7748,7 @@ For the values, please refer to: [Resolution Lines and Corresponding Codes Enume
 
     @property
     def TTL(self):
-        """TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300
+        """Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.
         :rtype: int
         """
         return self._TTL
@@ -6233,11 +7759,7 @@ For the values, please refer to: [Resolution Lines and Corresponding Codes Enume
 
     @property
     def Weight(self):
-        """DNS record weight can be specified within the range of -1 to 100. Setting the weight to 0 means the record will not be resolved. If not specified, the default value is -1, indicating that no weight is set.
-
-Weight configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.
-
-Note: For the same subdomain, different DNS records on the same resolution line should either all have weights set or none should have weights set.
+        """DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is a, aaaa, or cname.<br>note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.
         :rtype: int
         """
         return self._Weight
@@ -6248,7 +7770,7 @@ Note: For the same subdomain, different DNS records on the same resolution line 
 
     @property
     def Priority(self):
-        """The MX record priority parameter is only effective when the Type (DNS record type) is MX. The smaller the value, the higher the priority. Users can specify a value in the range of 0 to 50. If not specified, the default value is 0.
+        """MX record priority, which takes effect only when type (dns record type) is mx. the smaller the value, the higher the priority. users can specify a value range of 0–50. the default value is 0 if not specified.
         :rtype: int
         """
         return self._Priority
@@ -6284,7 +7806,7 @@ class CreateDnsRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordId: The ID of the DNS record.
+        :param _RecordId: DNS record id.
         :type RecordId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6294,7 +7816,7 @@ class CreateDnsRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        """The ID of the DNS record.
+        """DNS record id.
         :rtype: str
         """
         return self._RecordId
@@ -6885,6 +8407,105 @@ class CreateL4ProxyRulesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._L4ProxyRuleIds = params.get("L4ProxyRuleIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateL7AccRulesRequest(AbstractModel):
+    """CreateL7AccRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone id.
+        :type ZoneId: str
+        :param _Rules: The rule content.
+        :type Rules: list of RuleEngineItem
+        """
+        self._ZoneId = None
+        self._Rules = None
+
+    @property
+    def ZoneId(self):
+        """Zone id.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Rules(self):
+        """The rule content.
+        :rtype: list of RuleEngineItem
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleEngineItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateL7AccRulesResponse(AbstractModel):
+    """CreateL7AccRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIds: Rule id list.
+        :type RuleIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RuleIds = None
+        self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        """Rule id list.
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -7538,6 +9159,8 @@ Note: The number of tasks that can be submitted is limited by the quota of a bil
 
     @property
     def EncodeUrl(self):
+        warnings.warn("parameter `EncodeUrl` is deprecated", DeprecationWarning) 
+
         """Whether to encode a URL according to RFC3986. Enable this field when the URL contains non-ASCII characters.
         :rtype: bool
         """
@@ -7545,6 +9168,8 @@ Note: The number of tasks that can be submitted is limited by the quota of a bil
 
     @EncodeUrl.setter
     def EncodeUrl(self, EncodeUrl):
+        warnings.warn("parameter `EncodeUrl` is deprecated", DeprecationWarning) 
+
         self._EncodeUrl = EncodeUrl
 
     @property
@@ -7651,7 +9276,9 @@ class CreatePurgeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ID of the site.
+        :param _ZoneId: Zone id.
+.
+If you want to quickly submit targets urls under different sites, you can set it to *, but the account calling this api must have permission for all site resources under the main account.
         :type ZoneId: str
         :param _Type: Type of cache purging. Values:
 <li>`purge_url`: Purge by the URL</li>
@@ -7679,7 +9306,9 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def ZoneId(self):
-        """ID of the site.
+        """Zone id.
+.
+If you want to quickly submit targets urls under different sites, you can set it to *, but the account calling this api must have permission for all site resources under the main account.
         :rtype: str
         """
         return self._ZoneId
@@ -9102,6 +10731,84 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CustomTime(AbstractModel):
+    """Node cache TTL custom cache time parameter configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Custom cache time switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _IgnoreCacheControl: Ignore origin server cachecontrol switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.
+        :type IgnoreCacheControl: str
+        :param _CacheTime: Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :type CacheTime: int
+        """
+        self._Switch = None
+        self._IgnoreCacheControl = None
+        self._CacheTime = None
+
+    @property
+    def Switch(self):
+        """Custom cache time switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def IgnoreCacheControl(self):
+        """Ignore origin server cachecontrol switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li> note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._IgnoreCacheControl
+
+    @IgnoreCacheControl.setter
+    def IgnoreCacheControl(self, IgnoreCacheControl):
+        self._IgnoreCacheControl = IgnoreCacheControl
+
+    @property
+    def CacheTime(self):
+        """Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._IgnoreCacheControl = params.get("IgnoreCacheControl")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomizedHeader(AbstractModel):
     """Custom header that can be configured for HTTP/HTTPS health check policies under a LoadBalancer.
 
@@ -10097,6 +11804,70 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteContentIdentifierRequest(AbstractModel):
+    """DeleteContentIdentifier request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: Content identifier id.
+        :type ContentId: str
+        """
+        self._ContentId = None
+
+    @property
+    def ContentId(self):
+        """Content identifier id.
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteContentIdentifierResponse(AbstractModel):
+    """DeleteContentIdentifier response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCustomErrorPageRequest(AbstractModel):
     """DeleteCustomErrorPage request structure.
 
@@ -10183,9 +11954,9 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID of the DNS record to be deleted.
+        :param _ZoneId: Zone id.
         :type ZoneId: str
-        :param _RecordIds: List of DNS record IDs to be deleted, with a maximum limit of 1000.
+        :param _RecordIds: List of dns record ids to be deleted, upper limit: 1000.
         :type RecordIds: list of str
         """
         self._ZoneId = None
@@ -10193,7 +11964,7 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """The site ID of the DNS record to be deleted.
+        """Zone id.
         :rtype: str
         """
         return self._ZoneId
@@ -10204,7 +11975,7 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
     @property
     def RecordIds(self):
-        """List of DNS record IDs to be deleted, with a maximum limit of 1000.
+        """List of dns record ids to be deleted, upper limit: 1000.
         :rtype: list of str
         """
         return self._RecordIds
@@ -10560,6 +12331,85 @@ class DeleteL4ProxyRulesRequest(AbstractModel):
 
 class DeleteL4ProxyRulesResponse(AbstractModel):
     """DeleteL4ProxyRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteL7AccRulesRequest(AbstractModel):
+    """DeleteL7AccRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone id.
+        :type ZoneId: str
+        :param _RuleIds: List of rule ids to be deleted. you can obtain ruleid through describel7accrules.
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        """Zone id.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        """List of rule ids to be deleted. you can obtain ruleid through describel7accrules.
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteL7AccRulesResponse(AbstractModel):
+    """DeleteL7AccRules response structure.
 
     """
 
@@ -12489,6 +14339,140 @@ class DescribeConfigGroupVersionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContentIdentifiersRequest(AbstractModel):
+    """DescribeContentIdentifiers request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: The offset of paginated query. default value: 0.
+        :type Offset: int
+        :param _Limit: Limit on paginated queries. default value: `20`. maximum value: `100`.
+        :type Limit: int
+        :param _Filters: Filter conditions. the upper limit for filters is 20, and the upper limit for filters.values is 20. if this parameter is not filled in, the content identifiers with permissions under the current appid are returned by default. detailed filtering conditions are as follows: <li>description: filter by content identifier description in batches; for example: test;</li><li>content-id: filter by content identifier id in batches; for example: eocontent-2noz78a8ev6k;</li><li>tag-key: filter by Tag key;</li><li>tag-value: filter by Tag value;</li><li>status: filter by content identifier status. valid values: active: active; deleted: deleted.</li>only description supports fuzzy query, other fields require precise query.
+        :type Filters: list of AdvancedFilter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        """The offset of paginated query. default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Limit on paginated queries. default value: `20`. maximum value: `100`.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """Filter conditions. the upper limit for filters is 20, and the upper limit for filters.values is 20. if this parameter is not filled in, the content identifiers with permissions under the current appid are returned by default. detailed filtering conditions are as follows: <li>description: filter by content identifier description in batches; for example: test;</li><li>content-id: filter by content identifier id in batches; for example: eocontent-2noz78a8ev6k;</li><li>tag-key: filter by Tag key;</li><li>tag-value: filter by Tag value;</li><li>status: filter by content identifier status. valid values: active: active; deleted: deleted.</li>only description supports fuzzy query, other fields require precise query.
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContentIdentifiersResponse(AbstractModel):
+    """DescribeContentIdentifiers response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of content identifiers that meet the filter conditions.	
+        :type TotalCount: int
+        :param _ContentIdentifiers: Detailed content identifier list.
+        :type ContentIdentifiers: list of ContentIdentifier
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ContentIdentifiers = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of content identifiers that meet the filter conditions.	
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ContentIdentifiers(self):
+        """Detailed content identifier list.
+        :rtype: list of ContentIdentifier
+        """
+        return self._ContentIdentifiers
+
+    @ContentIdentifiers.setter
+    def ContentIdentifiers(self, ContentIdentifiers):
+        self._ContentIdentifiers = ContentIdentifiers
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ContentIdentifiers") is not None:
+            self._ContentIdentifiers = []
+            for item in params.get("ContentIdentifiers"):
+                obj = ContentIdentifier()
+                obj._deserialize(item)
+                self._ContentIdentifiers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContentQuotaRequest(AbstractModel):
     """DescribeContentQuota request structure.
 
@@ -13775,30 +15759,19 @@ class DescribeDnsRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID of the DNS record.
+        :param _ZoneId: Zone id.
         :type ZoneId: str
-        :param _Offset: The page offset. Default value: 0
+        :param _Offset: Offset of paginated query. default value: 0.
         :type Offset: int
-        :param _Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :param _Limit: Number limit of paginated query. default value: 20. maximum value: 1000.
         :type Limit: int
-        :param _Filters: The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>id: Filter by DNS record ID, supports fuzzy query;</li><li>name: Filter by DNS record name, supports fuzzy query;</li><li>content: Filter by DNS record content, supports fuzzy query;</li><li>type: Filter by DNS record type, does not support fuzzy query. Options:<br> A: Point the domain name to an external IPv4 address, such as 8.8.8.8;<br> AAAA: Point the domain name to an external IPv6 address;<br> CNAME: Point the domain name to another domain name, which then resolves to the final IP address;<br> TXT: Identify and describe the domain name, often used for domain verification and SPF records (anti-spam);<br> NS: If you need to delegate subdomain resolution to another DNS service provider, you need to add an NS record. Root domains cannot add NS records;<br> CAA: Specify the CA that can issue certificates for this site;<br> SRV: Identify a server using a specific service, commonly used in Microsoft's directory management;<br> MX: Specify the recipient's mail server.</li><li>ttl: Filter by the time-to-live (TTL) of the record, does not support fuzzy query.</li>
+        :param _Filters: Filter conditions. up to 20 values for each filter. detailed filter conditions are as follows: <li>id: filter by dns record id, supports fuzzy search;</li><li>name: filter by dns record name, supports fuzzy search;</li><li>content: filter by dns record content, supports fuzzy search;</li><li>type: filter by dns record type, does not support fuzzy search. valid values:<br>   a: points the domain name to an external ipv4 address, such as 8.8.8.8;<br>   aaaa: points the domain name to an external ipv6 address;<br>   cname: points the domain name to another domain name, which then resolves to the final ip address;<br>   txt: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);<br>   ns: if you need to delegate the subdomain to another dns service provider, you need to add an ns record. root domain cannot add ns records;<br>   caa: specifies the ca that can issue certificates for this site;<br>   srv: identifies a server using a specific service, commonly used in microsoft's directory management;<br>   mx: specifies the recipient's mail server.</li><li>ttl: filter by resolution effective time, does not support fuzzy search.</li>.
         :type Filters: list of AdvancedFilter
-        :param _SortBy: Sort criteria, with possible values:
-<li>content: DNS record content;</li>
-<li>created-on: DNS record creation time;</li>
-<li>name: DNS record name;</li>
-<li>ttl: Time-to-live (TTL);</li>
-<li>type: DNS record type.</li>
-The default sorting is based on a combination of type and name attributes.
+        :param _SortBy: Sorting basis. values include: <li>`content`: dns record content</li><li>`created-on`: dns record creation time</li><li>`name`: dns record name</li><li>`ttl`: cache time</li><li>`type`: dns record type</li> default sorting is by the combination of `type`, `name`.
         :type SortBy: str
-        :param _SortOrder: List sorting order, with possible values:
-<li>asc: Ascending order;</li>
-<li>desc: Descending order.</li>
-The default value is asc.
+        :param _SortOrder: List sort method. values: <li>`asc`: ascending order</li><li>`desc`: sort in descending order</li> default value: `asc`.
         :type SortOrder: str
-        :param _Match: The match mode. Values:
-<li>`all`: Return all records that match the specified filter.</li>
-<li>`any`: Return any record that matches the specified filter.</li>Default value: all.
+        :param _Match: Match method. values: <li>`all`: return records that match all query conditions</li><li>`any`: return records that match any query condition</li> default value: `all`.
         :type Match: str
         """
         self._ZoneId = None
@@ -13811,7 +15784,7 @@ The default value is asc.
 
     @property
     def ZoneId(self):
-        """The site ID of the DNS record.
+        """Zone id.
         :rtype: str
         """
         return self._ZoneId
@@ -13822,7 +15795,7 @@ The default value is asc.
 
     @property
     def Offset(self):
-        """The page offset. Default value: 0
+        """Offset of paginated query. default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -13833,7 +15806,7 @@ The default value is asc.
 
     @property
     def Limit(self):
-        """The paginated query limit. Default value: 20. Maximum value: 1000.
+        """Number limit of paginated query. default value: 20. maximum value: 1000.
         :rtype: int
         """
         return self._Limit
@@ -13844,7 +15817,7 @@ The default value is asc.
 
     @property
     def Filters(self):
-        """The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>id: Filter by DNS record ID, supports fuzzy query;</li><li>name: Filter by DNS record name, supports fuzzy query;</li><li>content: Filter by DNS record content, supports fuzzy query;</li><li>type: Filter by DNS record type, does not support fuzzy query. Options:<br> A: Point the domain name to an external IPv4 address, such as 8.8.8.8;<br> AAAA: Point the domain name to an external IPv6 address;<br> CNAME: Point the domain name to another domain name, which then resolves to the final IP address;<br> TXT: Identify and describe the domain name, often used for domain verification and SPF records (anti-spam);<br> NS: If you need to delegate subdomain resolution to another DNS service provider, you need to add an NS record. Root domains cannot add NS records;<br> CAA: Specify the CA that can issue certificates for this site;<br> SRV: Identify a server using a specific service, commonly used in Microsoft's directory management;<br> MX: Specify the recipient's mail server.</li><li>ttl: Filter by the time-to-live (TTL) of the record, does not support fuzzy query.</li>
+        """Filter conditions. up to 20 values for each filter. detailed filter conditions are as follows: <li>id: filter by dns record id, supports fuzzy search;</li><li>name: filter by dns record name, supports fuzzy search;</li><li>content: filter by dns record content, supports fuzzy search;</li><li>type: filter by dns record type, does not support fuzzy search. valid values:<br>   a: points the domain name to an external ipv4 address, such as 8.8.8.8;<br>   aaaa: points the domain name to an external ipv6 address;<br>   cname: points the domain name to another domain name, which then resolves to the final ip address;<br>   txt: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);<br>   ns: if you need to delegate the subdomain to another dns service provider, you need to add an ns record. root domain cannot add ns records;<br>   caa: specifies the ca that can issue certificates for this site;<br>   srv: identifies a server using a specific service, commonly used in microsoft's directory management;<br>   mx: specifies the recipient's mail server.</li><li>ttl: filter by resolution effective time, does not support fuzzy search.</li>.
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -13855,13 +15828,7 @@ The default value is asc.
 
     @property
     def SortBy(self):
-        """Sort criteria, with possible values:
-<li>content: DNS record content;</li>
-<li>created-on: DNS record creation time;</li>
-<li>name: DNS record name;</li>
-<li>ttl: Time-to-live (TTL);</li>
-<li>type: DNS record type.</li>
-The default sorting is based on a combination of type and name attributes.
+        """Sorting basis. values include: <li>`content`: dns record content</li><li>`created-on`: dns record creation time</li><li>`name`: dns record name</li><li>`ttl`: cache time</li><li>`type`: dns record type</li> default sorting is by the combination of `type`, `name`.
         :rtype: str
         """
         return self._SortBy
@@ -13872,10 +15839,7 @@ The default sorting is based on a combination of type and name attributes.
 
     @property
     def SortOrder(self):
-        """List sorting order, with possible values:
-<li>asc: Ascending order;</li>
-<li>desc: Descending order.</li>
-The default value is asc.
+        """List sort method. values: <li>`asc`: ascending order</li><li>`desc`: sort in descending order</li> default value: `asc`.
         :rtype: str
         """
         return self._SortOrder
@@ -13886,9 +15850,7 @@ The default value is asc.
 
     @property
     def Match(self):
-        """The match mode. Values:
-<li>`all`: Return all records that match the specified filter.</li>
-<li>`any`: Return any record that matches the specified filter.</li>Default value: all.
+        """Match method. values: <li>`all`: return records that match all query conditions</li><li>`any`: return records that match any query condition</li> default value: `all`.
         :rtype: str
         """
         return self._Match
@@ -13928,9 +15890,9 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of DNS records.
+        :param _TotalCount: Total number of dns records.
         :type TotalCount: int
-        :param _DnsRecords: List of DNS records
+        :param _DnsRecords: List of dns records.
         :type DnsRecords: list of DnsRecord
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -13941,7 +15903,7 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total number of DNS records.
+        """Total number of dns records.
         :rtype: int
         """
         return self._TotalCount
@@ -13952,7 +15914,7 @@ class DescribeDnsRecordsResponse(AbstractModel):
 
     @property
     def DnsRecords(self):
-        """List of DNS records
+        """List of dns records.
         :rtype: list of DnsRecord
         """
         return self._DnsRecords
@@ -15141,6 +17103,242 @@ class DescribeL4ProxyRulesResponse(AbstractModel):
                 obj = L4ProxyRule()
                 obj._deserialize(item)
                 self._L4ProxyRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeL7AccRulesRequest(AbstractModel):
+    """DescribeL7AccRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone id.
+        :type ZoneId: str
+        :param _Filters: Filter conditions. the upper limit for filters.values is 20. if this parameter is not filled in, the rules under the site are returned in order by default. detailed filtering conditions are as follows:.
+<Li>Rule-Id: filter by rule id.</li>.
+        :type Filters: list of Filter
+        :param _Limit: Number limit of paginated query. default value: 20. maximum value: 1000.
+        :type Limit: int
+        :param _Offset: Offset of paginated query. default value: 0.
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        """Zone id.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        """Filter conditions. the upper limit for filters.values is 20. if this parameter is not filled in, the rules under the site are returned in order by default. detailed filtering conditions are as follows:.
+<Li>Rule-Id: filter by rule id.</li>.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        """Number limit of paginated query. default value: 20. maximum value: 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """Offset of paginated query. default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeL7AccRulesResponse(AbstractModel):
+    """DescribeL7AccRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of rules.
+        :type TotalCount: int
+        :param _Rules: Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1#.e4.bc.98.e5.85.88.e7.ba.a7).
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Rules: list of RuleEngineItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of rules.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Rules(self):
+        """Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1#.e4.bc.98.e5.85.88.e7.ba.a7).
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of RuleEngineItem
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleEngineItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeL7AccSettingRequest(AbstractModel):
+    """DescribeL7AccSetting request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone id.
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        """Zone id.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeL7AccSettingResponse(AbstractModel):
+    """DescribeL7AccSetting response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneSetting: Global configuration for site acceleration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ZoneSetting: :class:`tencentcloud.teo.v20220901.models.ZoneConfigParameters`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ZoneSetting = None
+        self._RequestId = None
+
+    @property
+    def ZoneSetting(self):
+        """Global configuration for site acceleration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfigParameters`
+        """
+        return self._ZoneSetting
+
+    @ZoneSetting.setter
+    def ZoneSetting(self, ZoneSetting):
+        self._ZoneSetting = ZoneSetting
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneSetting") is not None:
+            self._ZoneSetting = ZoneConfigParameters()
+            self._ZoneSetting._deserialize(params.get("ZoneSetting"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16510,8 +18708,9 @@ class DescribeRulesRequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site
         :type ZoneId: str
-        :param _Filters: Filter conditions. Each filter condition can have up to 20 entries. See below for details:
-<li>`rule-id`:<br>   Filter by the <strong>rule ID</strong><br>   Type: String<br>   Required: No</li>
+        :param _Filters: Filter criteria. the maximum value of filters.values is 20. the detailed filter criteria are as follows:
+.
+<Li>Rule-Id: filter by rule id.</li>.
         :type Filters: list of Filter
         """
         self._ZoneId = None
@@ -16530,8 +18729,9 @@ class DescribeRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter conditions. Each filter condition can have up to 20 entries. See below for details:
-<li>`rule-id`:<br>   Filter by the <strong>rule ID</strong><br>   Type: String<br>   Required: No</li>
+        """Filter criteria. the maximum value of filters.values is 20. the detailed filter criteria are as follows:
+.
+<Li>Rule-Id: filter by rule id.</li>.
         :rtype: list of Filter
         """
         return self._Filters
@@ -16814,9 +19014,7 @@ class DescribeSecurityIPGroupRequest(AbstractModel):
         r"""
         :param _ZoneId: Site ID, used to specify the scope of the queried site.
         :type ZoneId: str
-        :param _GroupIds: Specifies the ID of a security IP group.
-<li>When this parameter is provided, only the configuration of the security IP group with the specified ID is queried.</li>
-<li>When this parameter is not provided, information of all security IP groups under the site is returned.</li>
+        :param _GroupIds: Specifies the security ip group id. <li>when this parameter is provided, only the configuration of the specified security ip group id is queried;</li> <li>when this parameter is not provided, information of all security ip groups under the site is returned.</li>.
         :type GroupIds: list of int
         """
         self._ZoneId = None
@@ -16835,9 +19033,7 @@ class DescribeSecurityIPGroupRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        """Specifies the ID of a security IP group.
-<li>When this parameter is provided, only the configuration of the security IP group with the specified ID is queried.</li>
-<li>When this parameter is not provided, information of all security IP groups under the site is returned.</li>
+        """Specifies the security ip group id. <li>when this parameter is provided, only the configuration of the specified security ip group id is queried;</li> <li>when this parameter is not provided, information of all security ip groups under the site is returned.</li>.
         :rtype: list of int
         """
         return self._GroupIds
@@ -17267,14 +19463,16 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _MetricNames: Metric list. Valid values:
-<li>l7Flow_outFlux: L7 EdgeOne response traffic;</li>
-<li>l7Flow_inFlux: L7 client request traffic;</li>
-<li>l7Flow_flux: L7 total access traffic (including the EdgeOne response traffic and client request traffic);</li>
-<li>l7Flow_outBandwidth: L7 EdgeOne response bandwidth;</li>
-<li>l7Flow_inBandwidth: L7 client request bandwidth;</li>
-<li>l7Flow_bandwidth: L7 total access bandwidth (including the EdgeOne response bandwidth and client request bandwidth);</li>
-<li>l7Flow_request: L7 access request count.</li>
+        :param _MetricNames: Metric list. valid values:.
+<Li>L7Flow_outFlux: l7 edgeone response traffic, unit: byte;</li>.
+<Li>L7Flow_inFlux: l7 client request traffic, unit: byte;</li>.
+<Li>L7Flow_flux: l7 total access traffic (including the edgeone response traffic and client request traffic), unit: byte;</li>.
+<Li>L7Flow_outBandwidth: l7 edgeone response bandwidth, unit: bps;</li>.
+<Li>L7Flow_inBandwidth: l7 client request bandwidth, unit: bps;</li>.
+<Li>L7Flow_bandwidth: l7 total access bandwidth (including the edgeone response bandwidth and client request bandwidth), unit: bps;</li>.
+<Li>L7Flow_request: l7 access request count, unit: times;</li>.
+<Li> l7flow_avgresponsetime: l7 average response time, unit: ms (milliseconds);</li>.
+<Li> l7flow_avgfirstbyteresponsetime: l7 average first byte response time for access, unit: ms.</li>.
         :type MetricNames: list of str
         :param _ZoneIds: Zone ID set. This parameter is required.
         :type ZoneIds: list of str
@@ -17341,14 +19539,16 @@ If this parameter is not filled in, the default value is global.
 
     @property
     def MetricNames(self):
-        """Metric list. Valid values:
-<li>l7Flow_outFlux: L7 EdgeOne response traffic;</li>
-<li>l7Flow_inFlux: L7 client request traffic;</li>
-<li>l7Flow_flux: L7 total access traffic (including the EdgeOne response traffic and client request traffic);</li>
-<li>l7Flow_outBandwidth: L7 EdgeOne response bandwidth;</li>
-<li>l7Flow_inBandwidth: L7 client request bandwidth;</li>
-<li>l7Flow_bandwidth: L7 total access bandwidth (including the EdgeOne response bandwidth and client request bandwidth);</li>
-<li>l7Flow_request: L7 access request count.</li>
+        """Metric list. valid values:.
+<Li>L7Flow_outFlux: l7 edgeone response traffic, unit: byte;</li>.
+<Li>L7Flow_inFlux: l7 client request traffic, unit: byte;</li>.
+<Li>L7Flow_flux: l7 total access traffic (including the edgeone response traffic and client request traffic), unit: byte;</li>.
+<Li>L7Flow_outBandwidth: l7 edgeone response bandwidth, unit: bps;</li>.
+<Li>L7Flow_inBandwidth: l7 client request bandwidth, unit: bps;</li>.
+<Li>L7Flow_bandwidth: l7 total access bandwidth (including the edgeone response bandwidth and client request bandwidth), unit: bps;</li>.
+<Li>L7Flow_request: l7 access request count, unit: times;</li>.
+<Li> l7flow_avgresponsetime: l7 average response time, unit: ms (milliseconds);</li>.
+<Li> l7flow_avgfirstbyteresponsetime: l7 average first byte response time for access, unit: ms.</li>.
         :rtype: list of str
         """
         return self._MetricNames
@@ -19305,32 +21505,37 @@ class DnsRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID. 
-Note: ZoneId is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :param _ZoneId: Zone id.<br>note: zoneid is for output parameter use only and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :type ZoneId: str
-        :param _RecordId: DNS record ID.
+        :param _RecordId: DNS record id.
         :type RecordId: str
         :param _Name: DNS record name.
         :type Name: str
-        :param _Type: DNS record type, with possible values: <li>A: Points the domain name to an external IPv4 address, such as 8.8.8.8;</li> <li>AAAA: Points the domain name to an external IPv6 address;</li> <li>MX: Used for mail servers. When there are multiple MX records, the lower the priority value, the higher the priority;</li> <li>CNAME: Points the domain name to another domain name, which then resolves to the final IP address;</li> <li>TXT: Identifies and describes the domain name, commonly used for domain verification and SPF records (anti-spam);</li> <li>NS: If you need to delegate the subdomain to another DNS service provider for resolution, you need to add an NS record. NS records cannot be added to the root domain;</li> <li>CAA: Specifies the CA that can issue certificates for this site;</li> <li>SRV: Identifies a server that uses a specific service, commonly used in Microsoft's directory management.</li>
+        :param _Type: DNS record type. valid values are:.
+<Li>A: point the domain to a public network ipv4 address, such as 8.8.8.8;</li>.
+<Li>AAAA: point the domain to a public network ipv6 address;</li>.
+<Li>MX: used for email servers. when there are multiple mx records, the lower the priority, the higher the precedence;</li>.
+<Li>CNAME: point the domain to another domain name, which will resolve to the final ip address;</li>.
+<Li>TXT: identify and describe the domain, commonly used for domain verification and spf records (anti-spam);</li>.
+<Li>NS: if you need to delegate the resolution of a subdomain to another dns service provider, you need to add an ns record. ns records cannot be added to the root domain name;</li>.
+<Li>CAA: specifies the ca that can issue certificates for this site;</li>.
+<Li>SRV: indicates that a server is using a service, commonly seen in microsoft system directory management.</li>.
         :type Type: str
-        :param _Location: DNS record resolution line. If not specified, the default is Default, which means the default resolution line and is effective for all regions. The resolution line configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME. For values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+        :param _Location: DNS record resolution route, if not specified, defaults to default, indicating the default resolution route, effective in all regions.<br>resolution route configuration only applies when type (dns record type) is a, aaaa, or cname.<br>for valid values, refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).
         :type Location: str
-        :param _Content: DNS record content. Fill in the corresponding content according to the Type value.
+        :param _Content: DNS record content. fill in the corresponding content based on the type value.
         :type Content: str
-        :param _TTL: Cache time, with a range of 60~86400. The smaller the value, the faster the record modification takes effect in various regions. Unit: seconds.
+        :param _TTL: Cache time. value range: 60–86400. the smaller the value, the faster the record modification will take effect globally. unit: seconds.
         :type TTL: int
-        :param _Weight: DNS record weight, with a range of -1~100. A value of -1 means no weight is assigned, and a value of 0 means no resolution. Weight configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME.
+        :param _Weight: DNS record weight. value range: -1–100. a value of -1 means no weight is assigned, and 0 means no parsing. weight configuration is only applicable when type (dns record type) is a, aaaa, or cname.
         :type Weight: int
-        :param _Priority: MX record priority, with a range of 0~50. The smaller the value, the higher the priority.
+        :param _Priority: MX record priority. value range: 0–50. the smaller the value, the higher the priority.
         :type Priority: int
-        :param _Status: DNS record resolution status, with possible values: <li>enable: Effective;</li> <li>disable: Disabled.</li> Note: Status is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :param _Status: DNS record parsing status. valid values are: <li>enable: takes effect;</li><li>disable: disabled.</li> note: status is only used as an output parameter and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :type Status: str
-        :param _CreatedOn: The creation time.
-Note: CreatedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :param _CreatedOn: Creation time.<br>note: createdon is only used as an output parameter and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :type CreatedOn: str
-        :param _ModifiedOn: The modification time.
-Note: ModifiedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        :param _ModifiedOn: Modification time.<br>note: modifiedon is for output parameter only and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :type ModifiedOn: str
         """
         self._ZoneId = None
@@ -19348,8 +21553,7 @@ Note: ModifiedOn is only used as an output parameter and cannot be used as an in
 
     @property
     def ZoneId(self):
-        """Site ID. 
-Note: ZoneId is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        """Zone id.<br>note: zoneid is for output parameter use only and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :rtype: str
         """
         return self._ZoneId
@@ -19360,7 +21564,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def RecordId(self):
-        """DNS record ID.
+        """DNS record id.
         :rtype: str
         """
         return self._RecordId
@@ -19382,7 +21586,15 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def Type(self):
-        """DNS record type, with possible values: <li>A: Points the domain name to an external IPv4 address, such as 8.8.8.8;</li> <li>AAAA: Points the domain name to an external IPv6 address;</li> <li>MX: Used for mail servers. When there are multiple MX records, the lower the priority value, the higher the priority;</li> <li>CNAME: Points the domain name to another domain name, which then resolves to the final IP address;</li> <li>TXT: Identifies and describes the domain name, commonly used for domain verification and SPF records (anti-spam);</li> <li>NS: If you need to delegate the subdomain to another DNS service provider for resolution, you need to add an NS record. NS records cannot be added to the root domain;</li> <li>CAA: Specifies the CA that can issue certificates for this site;</li> <li>SRV: Identifies a server that uses a specific service, commonly used in Microsoft's directory management.</li>
+        """DNS record type. valid values are:.
+<Li>A: point the domain to a public network ipv4 address, such as 8.8.8.8;</li>.
+<Li>AAAA: point the domain to a public network ipv6 address;</li>.
+<Li>MX: used for email servers. when there are multiple mx records, the lower the priority, the higher the precedence;</li>.
+<Li>CNAME: point the domain to another domain name, which will resolve to the final ip address;</li>.
+<Li>TXT: identify and describe the domain, commonly used for domain verification and spf records (anti-spam);</li>.
+<Li>NS: if you need to delegate the resolution of a subdomain to another dns service provider, you need to add an ns record. ns records cannot be added to the root domain name;</li>.
+<Li>CAA: specifies the ca that can issue certificates for this site;</li>.
+<Li>SRV: indicates that a server is using a service, commonly seen in microsoft system directory management.</li>.
         :rtype: str
         """
         return self._Type
@@ -19393,7 +21605,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def Location(self):
-        """DNS record resolution line. If not specified, the default is Default, which means the default resolution line and is effective for all regions. The resolution line configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME. For values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).
+        """DNS record resolution route, if not specified, defaults to default, indicating the default resolution route, effective in all regions.<br>resolution route configuration only applies when type (dns record type) is a, aaaa, or cname.<br>for valid values, refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).
         :rtype: str
         """
         return self._Location
@@ -19404,7 +21616,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def Content(self):
-        """DNS record content. Fill in the corresponding content according to the Type value.
+        """DNS record content. fill in the corresponding content based on the type value.
         :rtype: str
         """
         return self._Content
@@ -19415,7 +21627,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def TTL(self):
-        """Cache time, with a range of 60~86400. The smaller the value, the faster the record modification takes effect in various regions. Unit: seconds.
+        """Cache time. value range: 60–86400. the smaller the value, the faster the record modification will take effect globally. unit: seconds.
         :rtype: int
         """
         return self._TTL
@@ -19426,7 +21638,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def Weight(self):
-        """DNS record weight, with a range of -1~100. A value of -1 means no weight is assigned, and a value of 0 means no resolution. Weight configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME.
+        """DNS record weight. value range: -1–100. a value of -1 means no weight is assigned, and 0 means no parsing. weight configuration is only applicable when type (dns record type) is a, aaaa, or cname.
         :rtype: int
         """
         return self._Weight
@@ -19437,7 +21649,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def Priority(self):
-        """MX record priority, with a range of 0~50. The smaller the value, the higher the priority.
+        """MX record priority. value range: 0–50. the smaller the value, the higher the priority.
         :rtype: int
         """
         return self._Priority
@@ -19448,7 +21660,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def Status(self):
-        """DNS record resolution status, with possible values: <li>enable: Effective;</li> <li>disable: Disabled.</li> Note: Status is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        """DNS record parsing status. valid values are: <li>enable: takes effect;</li><li>disable: disabled.</li> note: status is only used as an output parameter and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :rtype: str
         """
         return self._Status
@@ -19459,8 +21671,7 @@ Note: ZoneId is only used as an output parameter and cannot be used as an input 
 
     @property
     def CreatedOn(self):
-        """The creation time.
-Note: CreatedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        """Creation time.<br>note: createdon is only used as an output parameter and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :rtype: str
         """
         return self._CreatedOn
@@ -19471,8 +21682,7 @@ Note: CreatedOn is only used as an output parameter and cannot be used as an inp
 
     @property
     def ModifiedOn(self):
-        """The modification time.
-Note: ModifiedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.
+        """Modification time.<br>note: modifiedon is for output parameter only and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.
         :rtype: str
         """
         return self._ModifiedOn
@@ -20304,6 +22514,100 @@ class EnvInfo(AbstractModel):
                 self._CurrentConfigGroupVersionInfos.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrorPage(AbstractModel):
+    """Custom error page.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: Status code. supported values are 400, 403, 404, 405, 414, 416, 451, 500, 501, 502, 503, 504.
+        :type StatusCode: int
+        :param _RedirectURL: Redirect url. requires a full redirect path, such as https://www.test.com/error.html.
+        :type RedirectURL: str
+        """
+        self._StatusCode = None
+        self._RedirectURL = None
+
+    @property
+    def StatusCode(self):
+        """Status code. supported values are 400, 403, 404, 405, 414, 416, 451, 500, 501, 502, 503, 504.
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def RedirectURL(self):
+        """Redirect url. requires a full redirect path, such as https://www.test.com/error.html.
+        :rtype: str
+        """
+        return self._RedirectURL
+
+    @RedirectURL.setter
+    def RedirectURL(self, RedirectURL):
+        self._RedirectURL = RedirectURL
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._RedirectURL = params.get("RedirectURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrorPageParameters(AbstractModel):
+    """Custom error page configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorPageParams: Custom error page configuration list.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ErrorPageParams: list of ErrorPage
+        """
+        self._ErrorPageParams = None
+
+    @property
+    def ErrorPageParams(self):
+        """Custom error page configuration list.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of ErrorPage
+        """
+        return self._ErrorPageParams
+
+    @ErrorPageParams.setter
+    def ErrorPageParams(self, ErrorPageParams):
+        self._ErrorPageParams = ErrorPageParams
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorPageParams") is not None:
+            self._ErrorPageParams = []
+            for item in params.get("ErrorPageParams"):
+                obj = ErrorPage()
+                obj._deserialize(item)
+                self._ErrorPageParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21188,18 +23492,15 @@ class FollowOrigin(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param _DefaultCache: Whether to cache when an origin server does not return the Cache-Control header. This field is required when Switch is on; otherwise, it is ineffective. Valid values:
-<li>on: Cache.</li>
-<li>off: Do not cache.</li>
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _DefaultCache: Whether to cache when an origin server does not return the cache-control header. this field is required when switch is on; when switch is off, this field is not required and will be ineffective if filled. valid values:.
+<Li>On: cache;</li>.
+<Li>Off: do not cache.</li>.
         :type DefaultCache: str
-        :param _DefaultCacheStrategy: Whether to use the default caching policy when an origin server does not return the Cache-Control header. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheTime is not 0, this field should be off. Valid values:
-<li>on: Use the default caching policy.</li>
-<li>off: Do not use the default caching policy.</li>
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _DefaultCacheStrategy: Whether to use the default caching policy when an origin server does not return the cache-control header. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachetime is not 0, this field should be off. valid values:.
+<Li>On: use the default caching policy.</li>.
+<Li>Off: do not use the default caching policy.</li>.
         :type DefaultCacheStrategy: str
-        :param _DefaultCacheTime: The default cache time in seconds when an origin server does not return the Cache-Control header. The value ranges from 0 to 315360000. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheStrategy is on, this field should be 0.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _DefaultCacheTime: The default cache time in seconds when an origin server does not return the cache-control header. the value ranges from 0 to 315360000. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachestrategy is on, this field should be 0.
         :type DefaultCacheTime: int
         """
         self._Switch = None
@@ -21222,10 +23523,9 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def DefaultCache(self):
-        """Whether to cache when an origin server does not return the Cache-Control header. This field is required when Switch is on; otherwise, it is ineffective. Valid values:
-<li>on: Cache.</li>
-<li>off: Do not cache.</li>
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        """Whether to cache when an origin server does not return the cache-control header. this field is required when switch is on; when switch is off, this field is not required and will be ineffective if filled. valid values:.
+<Li>On: cache;</li>.
+<Li>Off: do not cache.</li>.
         :rtype: str
         """
         return self._DefaultCache
@@ -21236,10 +23536,9 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def DefaultCacheStrategy(self):
-        """Whether to use the default caching policy when an origin server does not return the Cache-Control header. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheTime is not 0, this field should be off. Valid values:
-<li>on: Use the default caching policy.</li>
-<li>off: Do not use the default caching policy.</li>
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        """Whether to use the default caching policy when an origin server does not return the cache-control header. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachetime is not 0, this field should be off. valid values:.
+<Li>On: use the default caching policy.</li>.
+<Li>Off: do not use the default caching policy.</li>.
         :rtype: str
         """
         return self._DefaultCacheStrategy
@@ -21250,8 +23549,7 @@ Note: This field may return null, which indicates a failure to obtain a valid va
 
     @property
     def DefaultCacheTime(self):
-        """The default cache time in seconds when an origin server does not return the Cache-Control header. The value ranges from 0 to 315360000. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheStrategy is on, this field should be 0.
-Note: This field may return null, which indicates a failure to obtain a valid value.
+        """The default cache time in seconds when an origin server does not return the cache-control header. the value ranges from 0 to 315360000. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachestrategy is on, this field should be 0.
         :rtype: int
         """
         return self._DefaultCacheTime
@@ -21315,6 +23613,67 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`301`: 301 redirect</li>
 <li>`302`: 302 redirect</li>
 Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RedirectStatusCode
+
+    @RedirectStatusCode.setter
+    def RedirectStatusCode(self, RedirectStatusCode):
+        self._RedirectStatusCode = RedirectStatusCode
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._RedirectStatusCode = params.get("RedirectStatusCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForceRedirectHTTPSParameters(AbstractModel):
+    """Forced HTTPS redirect configuration for access protocols.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable forced redirect configuration switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _RedirectStatusCode: Redirection status code. this field is required when switch is on; otherwise, it is not effective. valid values are:.
+<Li>`301`: 301 redirect;</li>.
+<Li>`302`: 302 redirect.</li>.
+        :type RedirectStatusCode: int
+        """
+        self._Switch = None
+        self._RedirectStatusCode = None
+
+    @property
+    def Switch(self):
+        """Whether to enable forced redirect configuration switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def RedirectStatusCode(self):
+        """Redirection status code. this field is required when switch is on; otherwise, it is not effective. valid values are:.
+<Li>`301`: 301 redirect;</li>.
+<Li>`302`: 302 redirect.</li>.
         :rtype: int
         """
         return self._RedirectStatusCode
@@ -21775,6 +24134,272 @@ class Grpc(AbstractModel):
         
 
 
+class GrpcParameters(AbstractModel):
+    """gRPC configuration item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable grpc. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable grpc. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HSTSParameters(AbstractModel):
+    """HSTS configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable hsts. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Timeout: Cache hsts header time, unit: seconds. value range: 1-31536000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :type Timeout: int
+        :param _IncludeSubDomains: Whether to allow other subdomains to inherit the same hsts header. values:.
+<Li>On: allows other subdomains to inherit the same hsts header.</li>.
+<Li>Off: does not allow other subdomains to inherit the same hsts header.</li> note: when switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.
+        :type IncludeSubDomains: str
+        :param _Preload: Whether to allow the browser to preload the hsts header. valid values:.
+<Li>On: allows the browser to preload the hsts header.</li>.
+<Li>Off: does not allow the browser to preload the hsts header.</li> note: when switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.
+        :type Preload: str
+        """
+        self._Switch = None
+        self._Timeout = None
+        self._IncludeSubDomains = None
+        self._Preload = None
+
+    @property
+    def Switch(self):
+        """Whether to enable hsts. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Timeout(self):
+        """Cache hsts header time, unit: seconds. value range: 1-31536000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def IncludeSubDomains(self):
+        """Whether to allow other subdomains to inherit the same hsts header. values:.
+<Li>On: allows other subdomains to inherit the same hsts header.</li>.
+<Li>Off: does not allow other subdomains to inherit the same hsts header.</li> note: when switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._IncludeSubDomains
+
+    @IncludeSubDomains.setter
+    def IncludeSubDomains(self, IncludeSubDomains):
+        self._IncludeSubDomains = IncludeSubDomains
+
+    @property
+    def Preload(self):
+        """Whether to allow the browser to preload the hsts header. valid values:.
+<Li>On: allows the browser to preload the hsts header.</li>.
+<Li>Off: does not allow the browser to preload the hsts header.</li> note: when switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._Preload
+
+    @Preload.setter
+    def Preload(self, Preload):
+        self._Preload = Preload
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Timeout = params.get("Timeout")
+        self._IncludeSubDomains = params.get("IncludeSubDomains")
+        self._Preload = params.get("Preload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTP2Parameters(AbstractModel):
+    """HTTP2 integration configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable http2 access. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable http2 access. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPResponseParameters(AbstractModel):
+    """HTTP response configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: Response status code. supports 2xx, 4xx, 5xx, excluding 499, 514, 101, 301, 302, 303, 509, 520-599.
+        :type StatusCode: int
+        :param _ResponsePage: Response page id.
+        :type ResponsePage: str
+        """
+        self._StatusCode = None
+        self._ResponsePage = None
+
+    @property
+    def StatusCode(self):
+        """Response status code. supports 2xx, 4xx, 5xx, excluding 499, 514, 101, 301, 302, 303, 509, 520-599.
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ResponsePage(self):
+        """Response page id.
+        :rtype: str
+        """
+        return self._ResponsePage
+
+    @ResponsePage.setter
+    def ResponsePage(self, ResponsePage):
+        self._ResponsePage = ResponsePage
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._ResponsePage = params.get("ResponsePage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPUpstreamTimeoutParameters(AbstractModel):
+    """Layer-7 origin-pull timeout configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResponseTimeout: HTTP response timeout in seconds. value range: 5–600.
+        :type ResponseTimeout: int
+        """
+        self._ResponseTimeout = None
+
+    @property
+    def ResponseTimeout(self):
+        """HTTP response timeout in seconds. value range: 5–600.
+        :rtype: int
+        """
+        return self._ResponseTimeout
+
+    @ResponseTimeout.setter
+    def ResponseTimeout(self, ResponseTimeout):
+        self._ResponseTimeout = ResponseTimeout
+
+
+    def _deserialize(self, params):
+        self._ResponseTimeout = params.get("ResponseTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HandleFunctionRuntimeEnvironmentRequest(AbstractModel):
     """HandleFunctionRuntimeEnvironment request structure.
 
@@ -21936,6 +24561,78 @@ class Header(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeaderAction(AbstractModel):
+    """HTTP header setting rules.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: HTTP header setting methods. valid values are:.
+<Li>`Set`: sets a value for an existing header parameter;</li>.
+<Li>`Del`: deletes a header parameter;</li>.
+<Li>`Add`: adds a header parameter.</li>.
+        :type Action: str
+        :param _Name: HTTP header name.
+        :type Name: str
+        :param _Value: HTTP header value. this parameter is required when the action is set to `set` or `add`; it is optional when the action is set to `del`.
+        :type Value: str
+        """
+        self._Action = None
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        """HTTP header setting methods. valid values are:.
+<Li>`Set`: sets a value for an existing header parameter;</li>.
+<Li>`Del`: deletes a header parameter;</li>.
+<Li>`Add`: adds a header parameter.</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Name(self):
+        """HTTP header name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        """HTTP header value. this parameter is required when the action is set to `set` or `add`; it is optional when the action is set to `del`.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
         self._Name = params.get("Name")
         self._Value = params.get("Value")
         memeber_set = set(params.keys())
@@ -22179,6 +24876,116 @@ Note: NoCheck means the health check policy is not enabled.
         self._FollowRedirect = params.get("FollowRedirect")
         self._SendContext = params.get("SendContext")
         self._RecvContext = params.get("RecvContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostHeaderParameters(AbstractModel):
+    """Host Header Rewrite configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: Action to be executed. values:.
+<Li>FollowOrigin: follow origin server domain name;</li>.
+<Li>`Custom`: custom</li>.
+        :type Action: str
+        :param _ServerName: Host header rewrite requires a complete domain name.<br>note: this field is required when switch is on; when switch is off, this field is not required and any value will be ignored.
+        :type ServerName: str
+        """
+        self._Action = None
+        self._ServerName = None
+
+    @property
+    def Action(self):
+        """Action to be executed. values:.
+<Li>FollowOrigin: follow origin server domain name;</li>.
+<Li>`Custom`: custom</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ServerName(self):
+        """Host header rewrite requires a complete domain name.<br>note: this field is required when switch is on; when switch is off, this field is not required and any value will be ignored.
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._ServerName = params.get("ServerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostName(AbstractModel):
+    """Access URL redirect HostName configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: Target hostname configuration, valid values are:.
+<Li>`Follow`: follow the request;</li>.
+<Li>`Custom`: custom</li>.
+        :type Action: str
+        :param _Value: Custom value for target hostname, maximum length is 1024.<br>note: when action is custom, this field is required; when action is follow, this field is not effective.
+        :type Value: str
+        """
+        self._Action = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        """Target hostname configuration, valid values are:.
+<Li>`Follow`: follow the request;</li>.
+<Li>`Custom`: custom</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Value(self):
+        """Custom value for target hostname, maximum length is 1024.<br>note: when action is custom, this field is required; when action is follow, this field is not effective.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22623,6 +25430,46 @@ class IPWhitelist(AbstractModel):
     def _deserialize(self, params):
         self._IPv4 = params.get("IPv4")
         self._IPv6 = params.get("IPv6")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPv6Parameters(AbstractModel):
+    """IPv6 access configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable ipv6 access functionality. valid values:.
+<Li>`On`: enable ipv6 access;</li>.
+<Li>`Off`: disable ipv6 access feature.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable ipv6 access functionality. valid values:.
+<Li>`On`: enable ipv6 access;</li>.
+<Li>`Off`: disable ipv6 access feature.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24841,6 +27688,61 @@ Note: The value `0` means not to cache.
         
 
 
+class MaxAgeParameters(AbstractModel):
+    """Browser Cache TTL configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: Specifies whether to follow the origin server cache-control configuration, with the following values:.
+<Li>`On`: follow the origin server and ignore the field cachetime;</li>.
+<Li>`Off`: do not follow the origin server and apply the field cachetime.</li>.
+        :type FollowOrigin: str
+        :param _CacheTime: Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: when followorigin is off, it means not following the origin server and using cachetime to set the cache time; otherwise, this field will not take effect.
+        :type CacheTime: int
+        """
+        self._FollowOrigin = None
+        self._CacheTime = None
+
+    @property
+    def FollowOrigin(self):
+        """Specifies whether to follow the origin server cache-control configuration, with the following values:.
+<Li>`On`: follow the origin server and ignore the field cachetime;</li>.
+<Li>`Off`: do not follow the origin server and apply the field cachetime.</li>.
+        :rtype: str
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def CacheTime(self):
+        """Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: when followorigin is off, it means not following the origin server and using cachetime to set the cache time; otherwise, this field will not take effect.
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._FollowOrigin = params.get("FollowOrigin")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAccelerationDomainRequest(AbstractModel):
     """ModifyAccelerationDomain request structure.
 
@@ -25998,6 +28900,85 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyContentIdentifierRequest(AbstractModel):
+    """ModifyContentIdentifier request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: Content identifier id.
+        :type ContentId: str
+        :param _Description: Content identifier description. length limit: 20 characters.
+        :type Description: str
+        """
+        self._ContentId = None
+        self._Description = None
+
+    @property
+    def ContentId(self):
+        """Content identifier id.
+        :rtype: str
+        """
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def Description(self):
+        """Content identifier description. length limit: 20 characters.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyContentIdentifierResponse(AbstractModel):
+    """ModifyContentIdentifier response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCustomErrorPageRequest(AbstractModel):
     """ModifyCustomErrorPage request structure.
 
@@ -26144,9 +29125,9 @@ class ModifyDnsRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID.
+        :param _ZoneId: Zone id.
         :type ZoneId: str
-        :param _DnsRecords: List of DNS record modification data, with a maximum of 100 modifications at a time.
+        :param _DnsRecords: DNS record modification data list, up to 100 entries can be modified at a time.
         :type DnsRecords: list of DnsRecord
         """
         self._ZoneId = None
@@ -26154,7 +29135,7 @@ class ModifyDnsRecordsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID.
+        """Zone id.
         :rtype: str
         """
         return self._ZoneId
@@ -26165,7 +29146,7 @@ class ModifyDnsRecordsRequest(AbstractModel):
 
     @property
     def DnsRecords(self):
-        """List of DNS record modification data, with a maximum of 100 modifications at a time.
+        """DNS record modification data list, up to 100 entries can be modified at a time.
         :rtype: list of DnsRecord
         """
         return self._DnsRecords
@@ -26228,11 +29209,11 @@ class ModifyDnsRecordsStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID.
+        :param _ZoneId: Zone id.
         :type ZoneId: str
-        :param _RecordsToEnable: List of DNS record IDs to be enabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        :param _RecordsToEnable: List of dns record ids to be enabled, upper limit: 200. <br>note: the same dns record id cannot exist in both recordstoenable and recordstodisable.
         :type RecordsToEnable: list of str
-        :param _RecordsToDisable: List of DNS record IDs to be disabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        :param _RecordsToDisable: List of dns record ids to be disabled, upper limit: 200. <br>note: the same dns record id cannot exist in both recordstoenable and recordstodisable.
         :type RecordsToDisable: list of str
         """
         self._ZoneId = None
@@ -26241,7 +29222,7 @@ class ModifyDnsRecordsStatusRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        """Site ID.
+        """Zone id.
         :rtype: str
         """
         return self._ZoneId
@@ -26252,7 +29233,7 @@ class ModifyDnsRecordsStatusRequest(AbstractModel):
 
     @property
     def RecordsToEnable(self):
-        """List of DNS record IDs to be enabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        """List of dns record ids to be enabled, upper limit: 200. <br>note: the same dns record id cannot exist in both recordstoenable and recordstodisable.
         :rtype: list of str
         """
         return self._RecordsToEnable
@@ -26263,7 +29244,7 @@ class ModifyDnsRecordsStatusRequest(AbstractModel):
 
     @property
     def RecordsToDisable(self):
-        """List of DNS record IDs to be disabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.
+        """List of dns record ids to be disabled, upper limit: 200. <br>note: the same dns record id cannot exist in both recordstoenable and recordstodisable.
         :rtype: list of str
         """
         return self._RecordsToDisable
@@ -27219,6 +30200,172 @@ class ModifyL4ProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyL7AccRuleRequest(AbstractModel):
+    """ModifyL7AccRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone id.
+        :type ZoneId: str
+        :param _Rule: Rules to be modified. you can first obtain the ruleid of the rule to be modified through the describel7accrules api, then pass in the modified rule content. the original rule content will be updated in an overriding manner.
+        :type Rule: :class:`tencentcloud.teo.v20220901.models.RuleEngineItem`
+        """
+        self._ZoneId = None
+        self._Rule = None
+
+    @property
+    def ZoneId(self):
+        """Zone id.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Rule(self):
+        """Rules to be modified. you can first obtain the ruleid of the rule to be modified through the describel7accrules api, then pass in the modified rule content. the original rule content will be updated in an overriding manner.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RuleEngineItem`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Rule") is not None:
+            self._Rule = RuleEngineItem()
+            self._Rule._deserialize(params.get("Rule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL7AccRuleResponse(AbstractModel):
+    """ModifyL7AccRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL7AccSettingRequest(AbstractModel):
+    """ModifyL7AccSetting request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone id.
+        :type ZoneId: str
+        :param _ZoneConfig: Site acceleration global configuration. the settings in this parameter will apply to all domain names under the site. you only need to modify the required settings directly, and other settings not passed in will remain unchanged.
+
+
+        :type ZoneConfig: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        self._ZoneId = None
+        self._ZoneConfig = None
+
+    @property
+    def ZoneId(self):
+        """Zone id.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneConfig(self):
+        """Site acceleration global configuration. the settings in this parameter will apply to all domain names under the site. you only need to modify the required settings directly, and other settings not passed in will remain unchanged.
+
+
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        return self._ZoneConfig
+
+    @ZoneConfig.setter
+    def ZoneConfig(self, ZoneConfig):
+        self._ZoneConfig = ZoneConfig
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ZoneConfig") is not None:
+            self._ZoneConfig = ZoneConfig()
+            self._ZoneConfig._deserialize(params.get("ZoneConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL7AccSettingResponse(AbstractModel):
+    """ModifyL7AccSetting response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyLoadBalancerRequest(AbstractModel):
     """ModifyLoadBalancer request structure.
 
@@ -27532,6 +30679,166 @@ class ModifyOriginGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyOriginParameters(AbstractModel):
+    """Modifying origin server configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginType: The origin type. values:.
+<Li>IPDomain: ipv4, ipv6, or domain name type origin server;</li>.
+<Li>OriginGroup: origin server group type origin server;</li>.
+<Li>LoadBalance: cloud load balancer (clb), this feature is in beta test. to use it, please submit a ticket or contact smart customer service;</li>.
+<Li>COS: tencent cloud COS origin server;</li>.
+<Li>AWSS3: all object storage origin servers that support the aws s3 protocol.</li>.
+        :type OriginType: str
+        :param _Origin: Origin server address, which varies according to the value of origintype:.
+<Li>When origintype = ipdomain, fill in an ipv4 address, an ipv6 address, or a domain name;</li>.
+<Li>When origintype = cos, please fill in the access domain name of the cos bucket;</li>.
+<Li>When origintype = awss3, fill in the access domain name of the s3 bucket;</li>.
+<Li>When origintype = origingroup, fill in the origin server group id;</li>.
+<Li>When origintype = loadbalance, fill in the cloud load balancer instance id. this feature is currently only available to the allowlist.</li>.
+        :type Origin: str
+        :param _OriginProtocol: Origin-Pull protocol configuration. this parameter is required when origintype is ipdomain, origingroup, or loadbalance. valid values are:.
+<Li>Http: use http protocol;</li>.
+<Li>Https: use https protocol;</li>.
+<Li>Follow: follow the protocol.</li>.
+        :type OriginProtocol: str
+        :param _HTTPOriginPort: Ports for http origin-pull requests. value range: 1-65535. this parameter takes effect only when the origin-pull protocol originprotocol is http or follow.
+        :type HTTPOriginPort: int
+        :param _HTTPSOriginPort: Ports for https origin-pull requests. value range: 1-65535. this parameter takes effect only when the origin-pull protocol originprotocol is https or follow.
+        :type HTTPSOriginPort: int
+        :param _PrivateAccess: Whether access to the private object storage origin server is allowed. this parameter is valid only when the origin server type origintype is COS or awss3. valid values:.
+<Li>On: enable private authentication;</li>.
+<Li>Off: disable private authentication.</li> if not specified, the default value is off.
+        :type PrivateAccess: str
+        :param _PrivateParameters: Private authentication parameter. this parameter is valid only when origintype = awss3 and privateaccess = on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type PrivateParameters: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
+        """
+        self._OriginType = None
+        self._Origin = None
+        self._OriginProtocol = None
+        self._HTTPOriginPort = None
+        self._HTTPSOriginPort = None
+        self._PrivateAccess = None
+        self._PrivateParameters = None
+
+    @property
+    def OriginType(self):
+        """The origin type. values:.
+<Li>IPDomain: ipv4, ipv6, or domain name type origin server;</li>.
+<Li>OriginGroup: origin server group type origin server;</li>.
+<Li>LoadBalance: cloud load balancer (clb), this feature is in beta test. to use it, please submit a ticket or contact smart customer service;</li>.
+<Li>COS: tencent cloud COS origin server;</li>.
+<Li>AWSS3: all object storage origin servers that support the aws s3 protocol.</li>.
+        :rtype: str
+        """
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def Origin(self):
+        """Origin server address, which varies according to the value of origintype:.
+<Li>When origintype = ipdomain, fill in an ipv4 address, an ipv6 address, or a domain name;</li>.
+<Li>When origintype = cos, please fill in the access domain name of the cos bucket;</li>.
+<Li>When origintype = awss3, fill in the access domain name of the s3 bucket;</li>.
+<Li>When origintype = origingroup, fill in the origin server group id;</li>.
+<Li>When origintype = loadbalance, fill in the cloud load balancer instance id. this feature is currently only available to the allowlist.</li>.
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def OriginProtocol(self):
+        """Origin-Pull protocol configuration. this parameter is required when origintype is ipdomain, origingroup, or loadbalance. valid values are:.
+<Li>Http: use http protocol;</li>.
+<Li>Https: use https protocol;</li>.
+<Li>Follow: follow the protocol.</li>.
+        :rtype: str
+        """
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HTTPOriginPort(self):
+        """Ports for http origin-pull requests. value range: 1-65535. this parameter takes effect only when the origin-pull protocol originprotocol is http or follow.
+        :rtype: int
+        """
+        return self._HTTPOriginPort
+
+    @HTTPOriginPort.setter
+    def HTTPOriginPort(self, HTTPOriginPort):
+        self._HTTPOriginPort = HTTPOriginPort
+
+    @property
+    def HTTPSOriginPort(self):
+        """Ports for https origin-pull requests. value range: 1-65535. this parameter takes effect only when the origin-pull protocol originprotocol is https or follow.
+        :rtype: int
+        """
+        return self._HTTPSOriginPort
+
+    @HTTPSOriginPort.setter
+    def HTTPSOriginPort(self, HTTPSOriginPort):
+        self._HTTPSOriginPort = HTTPSOriginPort
+
+    @property
+    def PrivateAccess(self):
+        """Whether access to the private object storage origin server is allowed. this parameter is valid only when the origin server type origintype is COS or awss3. valid values:.
+<Li>On: enable private authentication;</li>.
+<Li>Off: disable private authentication.</li> if not specified, the default value is off.
+        :rtype: str
+        """
+        return self._PrivateAccess
+
+    @PrivateAccess.setter
+    def PrivateAccess(self, PrivateAccess):
+        self._PrivateAccess = PrivateAccess
+
+    @property
+    def PrivateParameters(self):
+        """Private authentication parameter. this parameter is valid only when origintype = awss3 and privateaccess = on.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OriginPrivateParameters`
+        """
+        return self._PrivateParameters
+
+    @PrivateParameters.setter
+    def PrivateParameters(self, PrivateParameters):
+        self._PrivateParameters = PrivateParameters
+
+
+    def _deserialize(self, params):
+        self._OriginType = params.get("OriginType")
+        self._Origin = params.get("Origin")
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HTTPOriginPort = params.get("HTTPOriginPort")
+        self._HTTPSOriginPort = params.get("HTTPSOriginPort")
+        self._PrivateAccess = params.get("PrivateAccess")
+        if params.get("PrivateParameters") is not None:
+            self._PrivateParameters = OriginPrivateParameters()
+            self._PrivateParameters._deserialize(params.get("PrivateParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyPlanRequest(AbstractModel):
@@ -27866,6 +31173,92 @@ class ModifyRealtimeLogDeliveryTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyRequestHeaderParameters(AbstractModel):
+    """Modify HTTP request header configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderActions: List of http header setting rules.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HeaderActions: list of HeaderAction
+        """
+        self._HeaderActions = None
+
+    @property
+    def HeaderActions(self):
+        """List of http header setting rules.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of HeaderAction
+        """
+        return self._HeaderActions
+
+    @HeaderActions.setter
+    def HeaderActions(self, HeaderActions):
+        self._HeaderActions = HeaderActions
+
+
+    def _deserialize(self, params):
+        if params.get("HeaderActions") is not None:
+            self._HeaderActions = []
+            for item in params.get("HeaderActions"):
+                obj = HeaderAction()
+                obj._deserialize(item)
+                self._HeaderActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResponseHeaderParameters(AbstractModel):
+    """Modify HTTP node response header configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderActions: HTTP origin-pull header rules list.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HeaderActions: list of HeaderAction
+        """
+        self._HeaderActions = None
+
+    @property
+    def HeaderActions(self):
+        """HTTP origin-pull header rules list.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of HeaderAction
+        """
+        return self._HeaderActions
+
+    @HeaderActions.setter
+    def HeaderActions(self, HeaderActions):
+        self._HeaderActions = HeaderActions
+
+
+    def _deserialize(self, params):
+        if params.get("HeaderActions") is not None:
+            self._HeaderActions = []
+            for item in params.get("HeaderActions"):
+                obj = HeaderAction()
+                obj._deserialize(item)
+                self._HeaderActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyRuleRequest(AbstractModel):
@@ -29141,6 +32534,48 @@ class NsVerification(AbstractModel):
         
 
 
+class OCSPStaplingParameters(AbstractModel):
+    """OCSP stapling configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable ocsp stapling configuration switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable ocsp stapling configuration switch. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineCache(AbstractModel):
     """Offline cache feature status switch.
 
@@ -29160,6 +32595,48 @@ class OfflineCache(AbstractModel):
         """Whether offline cache is enabled. Valid values:
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OfflineCacheParameters(AbstractModel):
+    """Offline cache feature status switch.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable offline caching. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable offline caching. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
         :rtype: str
         """
         return self._Switch
@@ -30224,6 +33701,91 @@ If it is not specified, the default value is off.
         
 
 
+class OriginPrivateParameters(AbstractModel):
+    """Private authentication parameters for Cloud Object Storage origin server.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKeyId: Authentication parameter access key id.
+        :type AccessKeyId: str
+        :param _SecretAccessKey: Authentication parameter secret access key.
+        :type SecretAccessKey: str
+        :param _SignatureVersion: Authentication version. values:.
+<Li>V2: v2 version;</li>.
+<Li>V4: v4 version.</li>.
+        :type SignatureVersion: str
+        :param _Region: Region of the bucket.
+        :type Region: str
+        """
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+        self._SignatureVersion = None
+        self._Region = None
+
+    @property
+    def AccessKeyId(self):
+        """Authentication parameter access key id.
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        """Authentication parameter secret access key.
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def SignatureVersion(self):
+        """Authentication version. values:.
+<Li>V2: v2 version;</li>.
+<Li>V4: v4 version.</li>.
+        :rtype: str
+        """
+        return self._SignatureVersion
+
+    @SignatureVersion.setter
+    def SignatureVersion(self, SignatureVersion):
+        self._SignatureVersion = SignatureVersion
+
+    @property
+    def Region(self):
+        """Region of the bucket.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._SignatureVersion = params.get("SignatureVersion")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginProtectionInfo(AbstractModel):
     """Origin protection configuration
 
@@ -30896,6 +34458,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class PostMaxSizeParameters(AbstractModel):
+    """Maximum size of the file uploaded for streaming via a POST request.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable post request file upload limit, in bytes (default limit: 32 * 2<sup>20</sup> bytes). valid values: <li>`on`: enable limit;</li><li>`off`: disable limit.</li>.
+        :type Switch: str
+        :param _MaxSize: Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2<sup>20</sup> bytes to 500 * 2<sup>20</sup> bytes.
+        :type MaxSize: int
+        """
+        self._Switch = None
+        self._MaxSize = None
+
+    @property
+    def Switch(self):
+        """Whether to enable post request file upload limit, in bytes (default limit: 32 * 2<sup>20</sup> bytes). valid values: <li>`on`: enable limit;</li><li>`off`: disable limit.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def MaxSize(self):
+        """Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2<sup>20</sup> bytes to 500 * 2<sup>20</sup> bytes.
+        :rtype: int
+        """
+        return self._MaxSize
+
+    @MaxSize.setter
+    def MaxSize(self, MaxSize):
+        self._MaxSize = MaxSize
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._MaxSize = params.get("MaxSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrepaidPlanParam(AbstractModel):
     """Prepaid Plan Billing Parameters
 
@@ -31006,6 +34619,48 @@ class PrivateParameter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QUICParameters(AbstractModel):
+    """QUIC configuration item.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable quic. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable quic. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31297,6 +34952,48 @@ class Quota(AbstractModel):
         self._Daily = params.get("Daily")
         self._DailyAvailable = params.get("DailyAvailable")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangeOriginPullParameters(AbstractModel):
+    """Configuration parameters for range back-to-source.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable range gets. values are:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable range gets. values are:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32727,6 +36424,78 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ResponseSpeedLimitParameters(AbstractModel):
+    """Single-link download speed limit configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: Download rate limit mode. valid values:.
+<Li>LimitUponDownload: rate limit throughout the download process;</li>.
+<Li>LimitAfterSpecificBytesDownloaded: rate limit after downloading specific bytes at full speed;</li>.
+<Li>LimitAfterSpecificSecondsDownloaded: start speed limit after downloading at full speed for a specific duration.</li>.
+        :type Mode: str
+        :param _MaxSpeed: Rate-Limiting value, in kb/s. enter a numerical value to specify the rate limit.
+        :type MaxSpeed: str
+        :param _StartAt: Rate-Limiting start value, which can be the download size or specified duration, in kb or s. this parameter is required when mode is set to limitafterspecificbytesdownloaded or limitafterspecificsecondsdownloaded. enter a numerical value to specify the download size or duration.
+        :type StartAt: str
+        """
+        self._Mode = None
+        self._MaxSpeed = None
+        self._StartAt = None
+
+    @property
+    def Mode(self):
+        """Download rate limit mode. valid values:.
+<Li>LimitUponDownload: rate limit throughout the download process;</li>.
+<Li>LimitAfterSpecificBytesDownloaded: rate limit after downloading specific bytes at full speed;</li>.
+<Li>LimitAfterSpecificSecondsDownloaded: start speed limit after downloading at full speed for a specific duration.</li>.
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def MaxSpeed(self):
+        """Rate-Limiting value, in kb/s. enter a numerical value to specify the rate limit.
+        :rtype: str
+        """
+        return self._MaxSpeed
+
+    @MaxSpeed.setter
+    def MaxSpeed(self, MaxSpeed):
+        self._MaxSpeed = MaxSpeed
+
+    @property
+    def StartAt(self):
+        """Rate-Limiting start value, which can be the download size or specified duration, in kb or s. this parameter is required when mode is set to limitafterspecificbytesdownloaded or limitafterspecificsecondsdownloaded. enter a numerical value to specify the download size or duration.
+        :rtype: str
+        """
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._MaxSpeed = params.get("MaxSpeed")
+        self._StartAt = params.get("StartAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RewriteAction(AbstractModel):
     """Rule engine action for the HTTP request/response header
 
@@ -32897,6 +36666,88 @@ class RuleAndConditions(AbstractModel):
                 obj = RuleCondition()
                 obj._deserialize(item)
                 self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleBranch(AbstractModel):
+    """Sub-rule branch.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: [Match condition].
+](Https://Cloud.Tencent.Com/Document/Product/1552/90438#33f65828-C6c6-4b66-A011-25a20b548d5d).
+        :type Condition: str
+        :param _Actions: [Operations](Https://Cloud.Tencent.Com/Document/Product/1552/90438#C7bd7e02-9247-4a72-B0e4-11c27cadb198).<Br>Note: actions and subrules cannot both be empty.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Actions: list of RuleEngineAction
+        :param _SubRules: List of sub-rules. multiple rules exist in this list and are executed sequentially from top to bottom.<br>note: subrules and actions cannot both be empty. currently, only one layer of subrules is supported.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type SubRules: list of RuleEngineSubRule
+        """
+        self._Condition = None
+        self._Actions = None
+        self._SubRules = None
+
+    @property
+    def Condition(self):
+        """[Match condition].
+](Https://Cloud.Tencent.Com/Document/Product/1552/90438#33f65828-C6c6-4b66-A011-25a20b548d5d).
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Actions(self):
+        """[Operations](Https://Cloud.Tencent.Com/Document/Product/1552/90438#C7bd7e02-9247-4a72-B0e4-11c27cadb198).<Br>Note: actions and subrules cannot both be empty.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of RuleEngineAction
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def SubRules(self):
+        """List of sub-rules. multiple rules exist in this list and are executed sequentially from top to bottom.<br>note: subrules and actions cannot both be empty. currently, only one layer of subrules is supported.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of RuleEngineSubRule
+        """
+        return self._SubRules
+
+    @SubRules.setter
+    def SubRules(self, SubRules):
+        self._SubRules = SubRules
+
+
+    def _deserialize(self, params):
+        self._Condition = params.get("Condition")
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = RuleEngineAction()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        if params.get("SubRules") is not None:
+            self._SubRules = []
+            for item in params.get("SubRules"):
+                obj = RuleEngineSubRule()
+                obj._deserialize(item)
+                self._SubRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33285,6 +37136,866 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class RuleEngineAction(AbstractModel):
+    """Rule engine operations.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 
+        :type Name: str
+        :param _CacheParameters: Node cache ttl configuration parameter. when name is cache, this parameter is required.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CacheParameters: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
+        :param _CacheKeyParameters: Custom cache key configuration parameter. when name is cachekey, this parameter is required.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CacheKeyParameters: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
+        :param _CachePrefreshParameters: The cache prefresh configuration parameter. this parameter is required when `name` is `cacheprefresh`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CachePrefreshParameters: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        :param _AccessURLRedirectParameters: The access url redirection configuration parameter. this parameter is required when `name` is `accessurlredirect`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type AccessURLRedirectParameters: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
+        :param _UpstreamURLRewriteParameters: The origin-pull url rewrite configuration parameter. this parameter is required when `name` is `upstreamurlrewrite`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type UpstreamURLRewriteParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
+        :param _QUICParameters: The quic configuration parameter. this parameter is required when `name` is `quic`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type QUICParameters: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        :param _WebSocketParameters: The websocket configuration parameter. this parameter is required when `name` is `websocket`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type WebSocketParameters: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        :param _AuthenticationParameters: Token authentication configuration parameter. this parameter is required when `name` is `authentication`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type AuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
+        :param _MaxAgeParameters: Browser cache ttl configuration parameter. this parameter is required when `name` is `maxage`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type MaxAgeParameters: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        :param _StatusCodeCacheParameters: Status code cache ttl configuration parameter. this parameter is required when `name` is `statuscodecache`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type StatusCodeCacheParameters: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
+        :param _OfflineCacheParameters: Offline cache configuration parameter. this parameter is required when `name` is `offlinecache`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type OfflineCacheParameters: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        :param _SmartRoutingParameters: Smart acceleration configuration parameter. this parameter is required when `name` is `smartrouting`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type SmartRoutingParameters: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        :param _RangeOriginPullParameters: Shard source retrieval configuration parameter. this parameter is required when name is set to rangeoriginpull.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type RangeOriginPullParameters: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
+        :param _UpstreamHTTP2Parameters: HTTP2 origin-pull configuration parameter. this parameter is required when name is set to upstreamhttp2.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type UpstreamHTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        :param _HostHeaderParameters: Host header rewrite configuration parameter. this parameter is required when name is set to hostheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HostHeaderParameters: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
+        :param _ForceRedirectHTTPSParameters: Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ForceRedirectHTTPSParameters: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        :param _CompressionParameters: Intelligent compression configuration. this parameter is required when name is set to compression.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CompressionParameters: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        :param _HSTSParameters: HSTS configuration parameter. this parameter is required when name is hsts.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HSTSParameters: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        :param _ClientIPHeaderParameters: Client ip header configuration for storing client request ip information. this parameter is required when name is clientipheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ClientIPHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        :param _OCSPStaplingParameters: OCSP stapling configuration parameter. this parameter is required when the name is set to ocspstapling.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type OCSPStaplingParameters: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        :param _HTTP2Parameters: HTTP2 access configuration parameter. this parameter is required when name is http2.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HTTP2Parameters: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        :param _PostMaxSizeParameters: Maximum size configuration for file streaming upload via a post request. this parameter is required when name is postmaxsize.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type PostMaxSizeParameters: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        :param _ClientIPCountryParameters: Configuration parameter for carrying the region information of the client ip during origin-pull. this parameter is required when the name is set to clientipcountry.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ClientIPCountryParameters: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        :param _UpstreamFollowRedirectParameters: Configuration parameter for following redirects during origin-pull. this parameter is required when the name is set to upstreamfollowredirect.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type UpstreamFollowRedirectParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
+        :param _UpstreamRequestParameters: Configuration parameter for origin-pull request. this parameter is required when the name is set to upstreamrequest.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type UpstreamRequestParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        :param _TLSConfigParameters: SSL/TLS security configuration parameter. this parameter is required when the name is set to tlsconfig.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type TLSConfigParameters: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        :param _ModifyOriginParameters: Configuration parameter for modifying the origin server. this parameter is required when the name is set to modifyorigin.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ModifyOriginParameters: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
+        :param _HTTPUpstreamTimeoutParameters: Configuration of layer 7 origin timeout. this parameter is required when name is httpupstreamtimeout.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HTTPUpstreamTimeoutParameters: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
+        :param _HttpResponseParameters: HTTP response configuration parameters. this parameter is required when name is httpresponse.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HttpResponseParameters: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
+        :param _ErrorPageParameters: Custom error page configuration parameters. this parameter is required when name is errorpage.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ErrorPageParameters: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
+        :param _ModifyResponseHeaderParameters: Modify http node response header configuration parameters. this parameter is required when name is modifyresponseheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ModifyResponseHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
+        :param _ModifyRequestHeaderParameters: Modify http node request header configuration parameters. this parameter is required when name is modifyrequestheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ModifyRequestHeaderParameters: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
+        :param _ResponseSpeedLimitParameters: Single connection download speed limit configuration parameter. this parameter is required when name is responsespeedlimit.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ResponseSpeedLimitParameters: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
+        :param _SetContentIdentifierParameters: Content identification configuration parameter. this parameter is required when name is httpresponse.
+
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type SetContentIdentifierParameters: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
+        """
+        self._Name = None
+        self._CacheParameters = None
+        self._CacheKeyParameters = None
+        self._CachePrefreshParameters = None
+        self._AccessURLRedirectParameters = None
+        self._UpstreamURLRewriteParameters = None
+        self._QUICParameters = None
+        self._WebSocketParameters = None
+        self._AuthenticationParameters = None
+        self._MaxAgeParameters = None
+        self._StatusCodeCacheParameters = None
+        self._OfflineCacheParameters = None
+        self._SmartRoutingParameters = None
+        self._RangeOriginPullParameters = None
+        self._UpstreamHTTP2Parameters = None
+        self._HostHeaderParameters = None
+        self._ForceRedirectHTTPSParameters = None
+        self._CompressionParameters = None
+        self._HSTSParameters = None
+        self._ClientIPHeaderParameters = None
+        self._OCSPStaplingParameters = None
+        self._HTTP2Parameters = None
+        self._PostMaxSizeParameters = None
+        self._ClientIPCountryParameters = None
+        self._UpstreamFollowRedirectParameters = None
+        self._UpstreamRequestParameters = None
+        self._TLSConfigParameters = None
+        self._ModifyOriginParameters = None
+        self._HTTPUpstreamTimeoutParameters = None
+        self._HttpResponseParameters = None
+        self._ErrorPageParameters = None
+        self._ModifyResponseHeaderParameters = None
+        self._ModifyRequestHeaderParameters = None
+        self._ResponseSpeedLimitParameters = None
+        self._SetContentIdentifierParameters = None
+
+    @property
+    def Name(self):
+        """
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CacheParameters(self):
+        """Node cache ttl configuration parameter. when name is cache, this parameter is required.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheParameters`
+        """
+        return self._CacheParameters
+
+    @CacheParameters.setter
+    def CacheParameters(self, CacheParameters):
+        self._CacheParameters = CacheParameters
+
+    @property
+    def CacheKeyParameters(self):
+        """Custom cache key configuration parameter. when name is cachekey, this parameter is required.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyParameters`
+        """
+        return self._CacheKeyParameters
+
+    @CacheKeyParameters.setter
+    def CacheKeyParameters(self, CacheKeyParameters):
+        self._CacheKeyParameters = CacheKeyParameters
+
+    @property
+    def CachePrefreshParameters(self):
+        """The cache prefresh configuration parameter. this parameter is required when `name` is `cacheprefresh`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        """
+        return self._CachePrefreshParameters
+
+    @CachePrefreshParameters.setter
+    def CachePrefreshParameters(self, CachePrefreshParameters):
+        self._CachePrefreshParameters = CachePrefreshParameters
+
+    @property
+    def AccessURLRedirectParameters(self):
+        """The access url redirection configuration parameter. this parameter is required when `name` is `accessurlredirect`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectParameters`
+        """
+        return self._AccessURLRedirectParameters
+
+    @AccessURLRedirectParameters.setter
+    def AccessURLRedirectParameters(self, AccessURLRedirectParameters):
+        self._AccessURLRedirectParameters = AccessURLRedirectParameters
+
+    @property
+    def UpstreamURLRewriteParameters(self):
+        """The origin-pull url rewrite configuration parameter. this parameter is required when `name` is `upstreamurlrewrite`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamURLRewriteParameters`
+        """
+        return self._UpstreamURLRewriteParameters
+
+    @UpstreamURLRewriteParameters.setter
+    def UpstreamURLRewriteParameters(self, UpstreamURLRewriteParameters):
+        self._UpstreamURLRewriteParameters = UpstreamURLRewriteParameters
+
+    @property
+    def QUICParameters(self):
+        """The quic configuration parameter. this parameter is required when `name` is `quic`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        """
+        return self._QUICParameters
+
+    @QUICParameters.setter
+    def QUICParameters(self, QUICParameters):
+        self._QUICParameters = QUICParameters
+
+    @property
+    def WebSocketParameters(self):
+        """The websocket configuration parameter. this parameter is required when `name` is `websocket`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        """
+        return self._WebSocketParameters
+
+    @WebSocketParameters.setter
+    def WebSocketParameters(self, WebSocketParameters):
+        self._WebSocketParameters = WebSocketParameters
+
+    @property
+    def AuthenticationParameters(self):
+        """Token authentication configuration parameter. this parameter is required when `name` is `authentication`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AuthenticationParameters`
+        """
+        return self._AuthenticationParameters
+
+    @AuthenticationParameters.setter
+    def AuthenticationParameters(self, AuthenticationParameters):
+        self._AuthenticationParameters = AuthenticationParameters
+
+    @property
+    def MaxAgeParameters(self):
+        """Browser cache ttl configuration parameter. this parameter is required when `name` is `maxage`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        """
+        return self._MaxAgeParameters
+
+    @MaxAgeParameters.setter
+    def MaxAgeParameters(self, MaxAgeParameters):
+        self._MaxAgeParameters = MaxAgeParameters
+
+    @property
+    def StatusCodeCacheParameters(self):
+        """Status code cache ttl configuration parameter. this parameter is required when `name` is `statuscodecache`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.StatusCodeCacheParameters`
+        """
+        return self._StatusCodeCacheParameters
+
+    @StatusCodeCacheParameters.setter
+    def StatusCodeCacheParameters(self, StatusCodeCacheParameters):
+        self._StatusCodeCacheParameters = StatusCodeCacheParameters
+
+    @property
+    def OfflineCacheParameters(self):
+        """Offline cache configuration parameter. this parameter is required when `name` is `offlinecache`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        """
+        return self._OfflineCacheParameters
+
+    @OfflineCacheParameters.setter
+    def OfflineCacheParameters(self, OfflineCacheParameters):
+        self._OfflineCacheParameters = OfflineCacheParameters
+
+    @property
+    def SmartRoutingParameters(self):
+        """Smart acceleration configuration parameter. this parameter is required when `name` is `smartrouting`.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        """
+        return self._SmartRoutingParameters
+
+    @SmartRoutingParameters.setter
+    def SmartRoutingParameters(self, SmartRoutingParameters):
+        self._SmartRoutingParameters = SmartRoutingParameters
+
+    @property
+    def RangeOriginPullParameters(self):
+        """Shard source retrieval configuration parameter. this parameter is required when name is set to rangeoriginpull.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RangeOriginPullParameters`
+        """
+        return self._RangeOriginPullParameters
+
+    @RangeOriginPullParameters.setter
+    def RangeOriginPullParameters(self, RangeOriginPullParameters):
+        self._RangeOriginPullParameters = RangeOriginPullParameters
+
+    @property
+    def UpstreamHTTP2Parameters(self):
+        """HTTP2 origin-pull configuration parameter. this parameter is required when name is set to upstreamhttp2.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        """
+        return self._UpstreamHTTP2Parameters
+
+    @UpstreamHTTP2Parameters.setter
+    def UpstreamHTTP2Parameters(self, UpstreamHTTP2Parameters):
+        self._UpstreamHTTP2Parameters = UpstreamHTTP2Parameters
+
+    @property
+    def HostHeaderParameters(self):
+        """Host header rewrite configuration parameter. this parameter is required when name is set to hostheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostHeaderParameters`
+        """
+        return self._HostHeaderParameters
+
+    @HostHeaderParameters.setter
+    def HostHeaderParameters(self, HostHeaderParameters):
+        self._HostHeaderParameters = HostHeaderParameters
+
+    @property
+    def ForceRedirectHTTPSParameters(self):
+        """Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        """
+        return self._ForceRedirectHTTPSParameters
+
+    @ForceRedirectHTTPSParameters.setter
+    def ForceRedirectHTTPSParameters(self, ForceRedirectHTTPSParameters):
+        self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters
+
+    @property
+    def CompressionParameters(self):
+        """Intelligent compression configuration. this parameter is required when name is set to compression.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        """
+        return self._CompressionParameters
+
+    @CompressionParameters.setter
+    def CompressionParameters(self, CompressionParameters):
+        self._CompressionParameters = CompressionParameters
+
+    @property
+    def HSTSParameters(self):
+        """HSTS configuration parameter. this parameter is required when name is hsts.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        """
+        return self._HSTSParameters
+
+    @HSTSParameters.setter
+    def HSTSParameters(self, HSTSParameters):
+        self._HSTSParameters = HSTSParameters
+
+    @property
+    def ClientIPHeaderParameters(self):
+        """Client ip header configuration for storing client request ip information. this parameter is required when name is clientipheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        """
+        return self._ClientIPHeaderParameters
+
+    @ClientIPHeaderParameters.setter
+    def ClientIPHeaderParameters(self, ClientIPHeaderParameters):
+        self._ClientIPHeaderParameters = ClientIPHeaderParameters
+
+    @property
+    def OCSPStaplingParameters(self):
+        """OCSP stapling configuration parameter. this parameter is required when the name is set to ocspstapling.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        """
+        return self._OCSPStaplingParameters
+
+    @OCSPStaplingParameters.setter
+    def OCSPStaplingParameters(self, OCSPStaplingParameters):
+        self._OCSPStaplingParameters = OCSPStaplingParameters
+
+    @property
+    def HTTP2Parameters(self):
+        """HTTP2 access configuration parameter. this parameter is required when name is http2.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        """
+        return self._HTTP2Parameters
+
+    @HTTP2Parameters.setter
+    def HTTP2Parameters(self, HTTP2Parameters):
+        self._HTTP2Parameters = HTTP2Parameters
+
+    @property
+    def PostMaxSizeParameters(self):
+        """Maximum size configuration for file streaming upload via a post request. this parameter is required when name is postmaxsize.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        """
+        return self._PostMaxSizeParameters
+
+    @PostMaxSizeParameters.setter
+    def PostMaxSizeParameters(self, PostMaxSizeParameters):
+        self._PostMaxSizeParameters = PostMaxSizeParameters
+
+    @property
+    def ClientIPCountryParameters(self):
+        """Configuration parameter for carrying the region information of the client ip during origin-pull. this parameter is required when the name is set to clientipcountry.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        """
+        return self._ClientIPCountryParameters
+
+    @ClientIPCountryParameters.setter
+    def ClientIPCountryParameters(self, ClientIPCountryParameters):
+        self._ClientIPCountryParameters = ClientIPCountryParameters
+
+    @property
+    def UpstreamFollowRedirectParameters(self):
+        """Configuration parameter for following redirects during origin-pull. this parameter is required when the name is set to upstreamfollowredirect.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamFollowRedirectParameters`
+        """
+        return self._UpstreamFollowRedirectParameters
+
+    @UpstreamFollowRedirectParameters.setter
+    def UpstreamFollowRedirectParameters(self, UpstreamFollowRedirectParameters):
+        self._UpstreamFollowRedirectParameters = UpstreamFollowRedirectParameters
+
+    @property
+    def UpstreamRequestParameters(self):
+        """Configuration parameter for origin-pull request. this parameter is required when the name is set to upstreamrequest.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        """
+        return self._UpstreamRequestParameters
+
+    @UpstreamRequestParameters.setter
+    def UpstreamRequestParameters(self, UpstreamRequestParameters):
+        self._UpstreamRequestParameters = UpstreamRequestParameters
+
+    @property
+    def TLSConfigParameters(self):
+        """SSL/TLS security configuration parameter. this parameter is required when the name is set to tlsconfig.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        """
+        return self._TLSConfigParameters
+
+    @TLSConfigParameters.setter
+    def TLSConfigParameters(self, TLSConfigParameters):
+        self._TLSConfigParameters = TLSConfigParameters
+
+    @property
+    def ModifyOriginParameters(self):
+        """Configuration parameter for modifying the origin server. this parameter is required when the name is set to modifyorigin.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginParameters`
+        """
+        return self._ModifyOriginParameters
+
+    @ModifyOriginParameters.setter
+    def ModifyOriginParameters(self, ModifyOriginParameters):
+        self._ModifyOriginParameters = ModifyOriginParameters
+
+    @property
+    def HTTPUpstreamTimeoutParameters(self):
+        """Configuration of layer 7 origin timeout. this parameter is required when name is httpupstreamtimeout.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPUpstreamTimeoutParameters`
+        """
+        return self._HTTPUpstreamTimeoutParameters
+
+    @HTTPUpstreamTimeoutParameters.setter
+    def HTTPUpstreamTimeoutParameters(self, HTTPUpstreamTimeoutParameters):
+        self._HTTPUpstreamTimeoutParameters = HTTPUpstreamTimeoutParameters
+
+    @property
+    def HttpResponseParameters(self):
+        """HTTP response configuration parameters. this parameter is required when name is httpresponse.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTPResponseParameters`
+        """
+        return self._HttpResponseParameters
+
+    @HttpResponseParameters.setter
+    def HttpResponseParameters(self, HttpResponseParameters):
+        self._HttpResponseParameters = HttpResponseParameters
+
+    @property
+    def ErrorPageParameters(self):
+        """Custom error page configuration parameters. this parameter is required when name is errorpage.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ErrorPageParameters`
+        """
+        return self._ErrorPageParameters
+
+    @ErrorPageParameters.setter
+    def ErrorPageParameters(self, ErrorPageParameters):
+        self._ErrorPageParameters = ErrorPageParameters
+
+    @property
+    def ModifyResponseHeaderParameters(self):
+        """Modify http node response header configuration parameters. this parameter is required when name is modifyresponseheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyResponseHeaderParameters`
+        """
+        return self._ModifyResponseHeaderParameters
+
+    @ModifyResponseHeaderParameters.setter
+    def ModifyResponseHeaderParameters(self, ModifyResponseHeaderParameters):
+        self._ModifyResponseHeaderParameters = ModifyResponseHeaderParameters
+
+    @property
+    def ModifyRequestHeaderParameters(self):
+        """Modify http node request header configuration parameters. this parameter is required when name is modifyrequestheader.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyRequestHeaderParameters`
+        """
+        return self._ModifyRequestHeaderParameters
+
+    @ModifyRequestHeaderParameters.setter
+    def ModifyRequestHeaderParameters(self, ModifyRequestHeaderParameters):
+        self._ModifyRequestHeaderParameters = ModifyRequestHeaderParameters
+
+    @property
+    def ResponseSpeedLimitParameters(self):
+        """Single connection download speed limit configuration parameter. this parameter is required when name is responsespeedlimit.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ResponseSpeedLimitParameters`
+        """
+        return self._ResponseSpeedLimitParameters
+
+    @ResponseSpeedLimitParameters.setter
+    def ResponseSpeedLimitParameters(self, ResponseSpeedLimitParameters):
+        self._ResponseSpeedLimitParameters = ResponseSpeedLimitParameters
+
+    @property
+    def SetContentIdentifierParameters(self):
+        """Content identification configuration parameter. this parameter is required when name is httpresponse.
+
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SetContentIdentifierParameters`
+        """
+        return self._SetContentIdentifierParameters
+
+    @SetContentIdentifierParameters.setter
+    def SetContentIdentifierParameters(self, SetContentIdentifierParameters):
+        self._SetContentIdentifierParameters = SetContentIdentifierParameters
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("CacheParameters") is not None:
+            self._CacheParameters = CacheParameters()
+            self._CacheParameters._deserialize(params.get("CacheParameters"))
+        if params.get("CacheKeyParameters") is not None:
+            self._CacheKeyParameters = CacheKeyParameters()
+            self._CacheKeyParameters._deserialize(params.get("CacheKeyParameters"))
+        if params.get("CachePrefreshParameters") is not None:
+            self._CachePrefreshParameters = CachePrefreshParameters()
+            self._CachePrefreshParameters._deserialize(params.get("CachePrefreshParameters"))
+        if params.get("AccessURLRedirectParameters") is not None:
+            self._AccessURLRedirectParameters = AccessURLRedirectParameters()
+            self._AccessURLRedirectParameters._deserialize(params.get("AccessURLRedirectParameters"))
+        if params.get("UpstreamURLRewriteParameters") is not None:
+            self._UpstreamURLRewriteParameters = UpstreamURLRewriteParameters()
+            self._UpstreamURLRewriteParameters._deserialize(params.get("UpstreamURLRewriteParameters"))
+        if params.get("QUICParameters") is not None:
+            self._QUICParameters = QUICParameters()
+            self._QUICParameters._deserialize(params.get("QUICParameters"))
+        if params.get("WebSocketParameters") is not None:
+            self._WebSocketParameters = WebSocketParameters()
+            self._WebSocketParameters._deserialize(params.get("WebSocketParameters"))
+        if params.get("AuthenticationParameters") is not None:
+            self._AuthenticationParameters = AuthenticationParameters()
+            self._AuthenticationParameters._deserialize(params.get("AuthenticationParameters"))
+        if params.get("MaxAgeParameters") is not None:
+            self._MaxAgeParameters = MaxAgeParameters()
+            self._MaxAgeParameters._deserialize(params.get("MaxAgeParameters"))
+        if params.get("StatusCodeCacheParameters") is not None:
+            self._StatusCodeCacheParameters = StatusCodeCacheParameters()
+            self._StatusCodeCacheParameters._deserialize(params.get("StatusCodeCacheParameters"))
+        if params.get("OfflineCacheParameters") is not None:
+            self._OfflineCacheParameters = OfflineCacheParameters()
+            self._OfflineCacheParameters._deserialize(params.get("OfflineCacheParameters"))
+        if params.get("SmartRoutingParameters") is not None:
+            self._SmartRoutingParameters = SmartRoutingParameters()
+            self._SmartRoutingParameters._deserialize(params.get("SmartRoutingParameters"))
+        if params.get("RangeOriginPullParameters") is not None:
+            self._RangeOriginPullParameters = RangeOriginPullParameters()
+            self._RangeOriginPullParameters._deserialize(params.get("RangeOriginPullParameters"))
+        if params.get("UpstreamHTTP2Parameters") is not None:
+            self._UpstreamHTTP2Parameters = UpstreamHTTP2Parameters()
+            self._UpstreamHTTP2Parameters._deserialize(params.get("UpstreamHTTP2Parameters"))
+        if params.get("HostHeaderParameters") is not None:
+            self._HostHeaderParameters = HostHeaderParameters()
+            self._HostHeaderParameters._deserialize(params.get("HostHeaderParameters"))
+        if params.get("ForceRedirectHTTPSParameters") is not None:
+            self._ForceRedirectHTTPSParameters = ForceRedirectHTTPSParameters()
+            self._ForceRedirectHTTPSParameters._deserialize(params.get("ForceRedirectHTTPSParameters"))
+        if params.get("CompressionParameters") is not None:
+            self._CompressionParameters = CompressionParameters()
+            self._CompressionParameters._deserialize(params.get("CompressionParameters"))
+        if params.get("HSTSParameters") is not None:
+            self._HSTSParameters = HSTSParameters()
+            self._HSTSParameters._deserialize(params.get("HSTSParameters"))
+        if params.get("ClientIPHeaderParameters") is not None:
+            self._ClientIPHeaderParameters = ClientIPHeaderParameters()
+            self._ClientIPHeaderParameters._deserialize(params.get("ClientIPHeaderParameters"))
+        if params.get("OCSPStaplingParameters") is not None:
+            self._OCSPStaplingParameters = OCSPStaplingParameters()
+            self._OCSPStaplingParameters._deserialize(params.get("OCSPStaplingParameters"))
+        if params.get("HTTP2Parameters") is not None:
+            self._HTTP2Parameters = HTTP2Parameters()
+            self._HTTP2Parameters._deserialize(params.get("HTTP2Parameters"))
+        if params.get("PostMaxSizeParameters") is not None:
+            self._PostMaxSizeParameters = PostMaxSizeParameters()
+            self._PostMaxSizeParameters._deserialize(params.get("PostMaxSizeParameters"))
+        if params.get("ClientIPCountryParameters") is not None:
+            self._ClientIPCountryParameters = ClientIPCountryParameters()
+            self._ClientIPCountryParameters._deserialize(params.get("ClientIPCountryParameters"))
+        if params.get("UpstreamFollowRedirectParameters") is not None:
+            self._UpstreamFollowRedirectParameters = UpstreamFollowRedirectParameters()
+            self._UpstreamFollowRedirectParameters._deserialize(params.get("UpstreamFollowRedirectParameters"))
+        if params.get("UpstreamRequestParameters") is not None:
+            self._UpstreamRequestParameters = UpstreamRequestParameters()
+            self._UpstreamRequestParameters._deserialize(params.get("UpstreamRequestParameters"))
+        if params.get("TLSConfigParameters") is not None:
+            self._TLSConfigParameters = TLSConfigParameters()
+            self._TLSConfigParameters._deserialize(params.get("TLSConfigParameters"))
+        if params.get("ModifyOriginParameters") is not None:
+            self._ModifyOriginParameters = ModifyOriginParameters()
+            self._ModifyOriginParameters._deserialize(params.get("ModifyOriginParameters"))
+        if params.get("HTTPUpstreamTimeoutParameters") is not None:
+            self._HTTPUpstreamTimeoutParameters = HTTPUpstreamTimeoutParameters()
+            self._HTTPUpstreamTimeoutParameters._deserialize(params.get("HTTPUpstreamTimeoutParameters"))
+        if params.get("HttpResponseParameters") is not None:
+            self._HttpResponseParameters = HTTPResponseParameters()
+            self._HttpResponseParameters._deserialize(params.get("HttpResponseParameters"))
+        if params.get("ErrorPageParameters") is not None:
+            self._ErrorPageParameters = ErrorPageParameters()
+            self._ErrorPageParameters._deserialize(params.get("ErrorPageParameters"))
+        if params.get("ModifyResponseHeaderParameters") is not None:
+            self._ModifyResponseHeaderParameters = ModifyResponseHeaderParameters()
+            self._ModifyResponseHeaderParameters._deserialize(params.get("ModifyResponseHeaderParameters"))
+        if params.get("ModifyRequestHeaderParameters") is not None:
+            self._ModifyRequestHeaderParameters = ModifyRequestHeaderParameters()
+            self._ModifyRequestHeaderParameters._deserialize(params.get("ModifyRequestHeaderParameters"))
+        if params.get("ResponseSpeedLimitParameters") is not None:
+            self._ResponseSpeedLimitParameters = ResponseSpeedLimitParameters()
+            self._ResponseSpeedLimitParameters._deserialize(params.get("ResponseSpeedLimitParameters"))
+        if params.get("SetContentIdentifierParameters") is not None:
+            self._SetContentIdentifierParameters = SetContentIdentifierParameters()
+            self._SetContentIdentifierParameters._deserialize(params.get("SetContentIdentifierParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineItem(AbstractModel):
+    """Rule details of the rule engine.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Rule status. values: <li>`enable`: enabled</li> <li>`disable`: disabled</li>.
+        :type Status: str
+        :param _RuleId: Rule id. a unique identifier for the rule. this parameter is required when calling `modifyl7accrules`.
+        :type RuleId: str
+        :param _RuleName: Rule name. name length limit: 255 characters.
+        :type RuleName: str
+        :param _Description: Rule annotation. multiple annotations can be added.
+        :type Description: list of str
+        :param _Branches: Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Branches: list of RuleBranch
+        :param _RulePriority: Rule priority. only used as an output parameter.
+        :type RulePriority: int
+        """
+        self._Status = None
+        self._RuleId = None
+        self._RuleName = None
+        self._Description = None
+        self._Branches = None
+        self._RulePriority = None
+
+    @property
+    def Status(self):
+        """Rule status. values: <li>`enable`: enabled</li> <li>`disable`: disabled</li>.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleId(self):
+        """Rule id. a unique identifier for the rule. this parameter is required when calling `modifyl7accrules`.
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """Rule name. name length limit: 255 characters.
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        """Rule annotation. multiple annotations can be added.
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Branches(self):
+        """Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of RuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def RulePriority(self):
+        """Rule priority. only used as an output parameter.
+        :rtype: int
+        """
+        return self._RulePriority
+
+    @RulePriority.setter
+    def RulePriority(self, RulePriority):
+        self._RulePriority = RulePriority
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = RuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._RulePriority = params.get("RulePriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineSubRule(AbstractModel):
+    """Sub-rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Branches: Sub-Rule branch.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Branches: list of RuleBranch
+        :param _Description: Rule comments.
+        :type Description: list of str
+        """
+        self._Branches = None
+        self._Description = None
+
+    @property
+    def Branches(self):
+        """Sub-Rule branch.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of RuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Description(self):
+        """Rule comments.
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = RuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RuleExtraParameter(AbstractModel):
     """Rule engine parameter details and special parameter types.
 
@@ -33621,11 +38332,11 @@ class RulesProperties(AbstractModel):
 Note: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an empty array.
         :type ChoicesValue: list of str
         :param _Type: The parameter value type.
-<li>`CHOICE`: `If Type=CHOICE`, choose a value in `ChoiceValue`.</li>
-<li>`TOGGLE`: If `Type=TOGGLE`, choose `on` or `off` from `ChoicesValue`.</li>
-<li>`OBJECT`: Specify an object. If this is specified, `ChoiceProperties` includes attributes of the specified object. See [Example 2. Create a rule with Type=OBJECT](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)</li>
-<li>`CUSTOM_NUM`: (Integer) Custom value.</li>
-<li>`CUSTOM_STRING`: (String) Custom value.</li>
+<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>.
+<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>.
+<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>.
+<Li>`CUSTOM_NUM`: (integer) custom value.</li>.
+<Li> custom_string: parameter value is user-customized, string type.</li> note: when the parameter type is object, please refer to [example 2: creating a parameter of object type](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.e7.a4.ba.e4.be.8b2-.e4.bf.ae.e6.94.b9.e6.ba.90.e7.ab.99.e4.b8.baip.e5.9f.9f.e5.90.8d).
         :type Type: str
         :param _Max: Maximum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.
         :type Max: int
@@ -33687,11 +38398,11 @@ Note: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an em
     @property
     def Type(self):
         """The parameter value type.
-<li>`CHOICE`: `If Type=CHOICE`, choose a value in `ChoiceValue`.</li>
-<li>`TOGGLE`: If `Type=TOGGLE`, choose `on` or `off` from `ChoicesValue`.</li>
-<li>`OBJECT`: Specify an object. If this is specified, `ChoiceProperties` includes attributes of the specified object. See [Example 2. Create a rule with Type=OBJECT](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)</li>
-<li>`CUSTOM_NUM`: (Integer) Custom value.</li>
-<li>`CUSTOM_STRING`: (String) Custom value.</li>
+<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>.
+<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>.
+<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>.
+<Li>`CUSTOM_NUM`: (integer) custom value.</li>.
+<Li> custom_string: parameter value is user-customized, string type.</li> note: when the parameter type is object, please refer to [example 2: creating a parameter of object type](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.e7.a4.ba.e4.be.8b2-.e4.bf.ae.e6.94.b9.e6.ba.90.e7.ab.99.e4.b8.baip.e5.9f.9f.e5.90.8d).
         :rtype: str
         """
         return self._Type
@@ -34610,6 +39321,42 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class SetContentIdentifierParameters(AbstractModel):
+    """Content identifier configuration parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentIdentifier: Content identifier id.
+        :type ContentIdentifier: str
+        """
+        self._ContentIdentifier = None
+
+    @property
+    def ContentIdentifier(self):
+        """Content identifier id.
+        :rtype: str
+        """
+        return self._ContentIdentifier
+
+    @ContentIdentifier.setter
+    def ContentIdentifier(self, ContentIdentifier):
+        self._ContentIdentifier = ContentIdentifier
+
+
+    def _deserialize(self, params):
+        self._ContentIdentifier = params.get("ContentIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkipCondition(AbstractModel):
     """Exception rule conditions, used to filter requests by specific fields
 
@@ -34989,6 +39736,48 @@ class SmartRouting(AbstractModel):
         
 
 
+class SmartRoutingParameters(AbstractModel):
+    """Smart acceleration configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable smart acceleration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable smart acceleration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StandardDebug(AbstractModel):
     """Standard debugging
 
@@ -35049,6 +39838,172 @@ class StandardDebug(AbstractModel):
         self._Switch = params.get("Switch")
         self._AllowClientIPList = params.get("AllowClientIPList")
         self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardDebugParameters(AbstractModel):
+    """Debug structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable standard debugging. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _AllowClientIPList: The client ip to allow. it can be an ipv4/ipv6 address or a cidr block. 0.0.0.0/0 means to allow all ipv4 clients for debugging; ::/0 means to allow all ipv6 clients for debugging; 127.0.0.1 is not allowed. <br>note: this field is required when `switch=on` and the number of entries should be 1-100. when `switch=off`, this field is not required and any value specified will not take effect.
+        :type AllowClientIPList: list of str
+        :param _Expires: Debug feature expiration time. the feature will be disabled after the set time. <br>note: this field is required when `switch=on`. when `switch=off`, this field is not required and any value specified will not take effect.
+        :type Expires: str
+        """
+        self._Switch = None
+        self._AllowClientIPList = None
+        self._Expires = None
+
+    @property
+    def Switch(self):
+        """Whether to enable standard debugging. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def AllowClientIPList(self):
+        """The client ip to allow. it can be an ipv4/ipv6 address or a cidr block. 0.0.0.0/0 means to allow all ipv4 clients for debugging; ::/0 means to allow all ipv6 clients for debugging; 127.0.0.1 is not allowed. <br>note: this field is required when `switch=on` and the number of entries should be 1-100. when `switch=off`, this field is not required and any value specified will not take effect.
+        :rtype: list of str
+        """
+        return self._AllowClientIPList
+
+    @AllowClientIPList.setter
+    def AllowClientIPList(self, AllowClientIPList):
+        self._AllowClientIPList = AllowClientIPList
+
+    @property
+    def Expires(self):
+        """Debug feature expiration time. the feature will be disabled after the set time. <br>note: this field is required when `switch=on`. when `switch=off`, this field is not required and any value specified will not take effect.
+        :rtype: str
+        """
+        return self._Expires
+
+    @Expires.setter
+    def Expires(self, Expires):
+        self._Expires = Expires
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._AllowClientIPList = params.get("AllowClientIPList")
+        self._Expires = params.get("Expires")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatusCodeCacheParam(AbstractModel):
+    """Status Code Cache TTL configuration internal structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: Status code. valid values: 400, 401, 403, 404, 405, 407, 414, 500, 501, 502, 503, 504, 509, 514.
+        :type StatusCode: int
+        :param _CacheTime: Cache time value in seconds. value range: 0–31536000.
+        :type CacheTime: int
+        """
+        self._StatusCode = None
+        self._CacheTime = None
+
+    @property
+    def StatusCode(self):
+        """Status code. valid values: 400, 401, 403, 404, 405, 407, 414, 500, 501, 502, 503, 504, 509, 514.
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def CacheTime(self):
+        """Cache time value in seconds. value range: 0–31536000.
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatusCodeCacheParameters(AbstractModel):
+    """Status Code Cache TTL configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCodeCacheParams: Status code cache ttl.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type StatusCodeCacheParams: list of StatusCodeCacheParam
+        """
+        self._StatusCodeCacheParams = None
+
+    @property
+    def StatusCodeCacheParams(self):
+        """Status code cache ttl.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: list of StatusCodeCacheParam
+        """
+        return self._StatusCodeCacheParams
+
+    @StatusCodeCacheParams.setter
+    def StatusCodeCacheParams(self, StatusCodeCacheParams):
+        self._StatusCodeCacheParams = StatusCodeCacheParams
+
+
+    def _deserialize(self, params):
+        if params.get("StatusCodeCacheParams") is not None:
+            self._StatusCodeCacheParams = []
+            for item in params.get("StatusCodeCacheParams"):
+                obj = StatusCodeCacheParam()
+                obj._deserialize(item)
+                self._StatusCodeCacheParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35320,6 +40275,57 @@ class SwitchConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._WebSwitch = params.get("WebSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TLSConfigParameters(AbstractModel):
+    """SSL/TLS Security configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: TLS version. at least one must be specified. if multiple versions are specified, they must be consecutive, e.g., enable tls1, 1.1, 1.2, and 1.3. it is not allowed to enable only 1 and 1.2 while disabling 1.1. valid values: <li>`tlsv1`: tlsv1 version;</li><li>`tlsv1.1`: tlsv1.1 version;</li><li>`tlsv1.2`: tlsv1.2 version;</li><li>`tlsv1.3`: tlsv1.3 version.</li>.
+        :type Version: list of str
+        :param _CipherSuite: Cipher suite. for detailed information, please refer to [tls versions and cipher suites description](https://intl.cloud.tencent.com/document/product/1552/86545?from_cn_redirect=1). valid values: <li>`loose-v2023`: loose-v2023 cipher suite;</li><li>`general-v2023`: general-v2023 cipher suite;</li><li>`strict-v2023`: strict-v2023 cipher suite.</li>.
+        :type CipherSuite: str
+        """
+        self._Version = None
+        self._CipherSuite = None
+
+    @property
+    def Version(self):
+        """TLS version. at least one must be specified. if multiple versions are specified, they must be consecutive, e.g., enable tls1, 1.1, 1.2, and 1.3. it is not allowed to enable only 1 and 1.2 while disabling 1.1. valid values: <li>`tlsv1`: tlsv1 version;</li><li>`tlsv1.1`: tlsv1.1 version;</li><li>`tlsv1.2`: tlsv1.2 version;</li><li>`tlsv1.3`: tlsv1.3 version.</li>.
+        :rtype: list of str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CipherSuite(self):
+        """Cipher suite. for detailed information, please refer to [tls versions and cipher suites description](https://intl.cloud.tencent.com/document/product/1552/86545?from_cn_redirect=1). valid values: <li>`loose-v2023`: loose-v2023 cipher suite;</li><li>`general-v2023`: general-v2023 cipher suite;</li><li>`strict-v2023`: strict-v2023 cipher suite.</li>.
+        :rtype: str
+        """
+        return self._CipherSuite
+
+    @CipherSuite.setter
+    def CipherSuite(self, CipherSuite):
+        self._CipherSuite = CipherSuite
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._CipherSuite = params.get("CipherSuite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36060,6 +41066,78 @@ class TopEntryValue(AbstractModel):
         
 
 
+class URLPath(AbstractModel):
+    """Access URL redirect path configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: Action to be executed. values:.
+<Li>`Follow`: follow the request;</li>.
+<Li>`Custom`: custom;</li>.
+<Li>`Regex`: regular expression matching.</li>.
+        :type Action: str
+        :param _Regex: Regular expression matching expression, length range is 1-1024.<br>note: when action is regex, this field is required; when action is follow or custom, this field is not required and will not take effect if filled.
+        :type Regex: str
+        :param _Value: Redirect target url, length range is 1-1024.<br>note: when action is regex or custom, this field is required; when action is follow, this field is not required and will not take effect if filled.
+        :type Value: str
+        """
+        self._Action = None
+        self._Regex = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        """Action to be executed. values:.
+<Li>`Follow`: follow the request;</li>.
+<Li>`Custom`: custom;</li>.
+<Li>`Regex`: regular expression matching.</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Regex(self):
+        """Regular expression matching expression, length range is 1-1024.<br>note: when action is regex, this field is required; when action is follow or custom, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
+    @property
+    def Value(self):
+        """Redirect target url, length range is 1-1024.<br>note: when action is regex or custom, this field is required; when action is follow, this field is not required and will not take effect if filled.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Regex = params.get("Regex")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpgradePlanRequest(AbstractModel):
     """UpgradePlan request structure.
 
@@ -36207,6 +41285,107 @@ class UpstreamCertInfo(AbstractModel):
         
 
 
+class UpstreamFollowRedirectParameters(AbstractModel):
+    """Origin-pull redirection parameters configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable origin-pull to follow the redirection configuration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _MaxTimes: The maximum number of redirects. value range: 1-5.
+Note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :type MaxTimes: int
+        """
+        self._Switch = None
+        self._MaxTimes = None
+
+    @property
+    def Switch(self):
+        """Whether to enable origin-pull to follow the redirection configuration. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def MaxTimes(self):
+        """The maximum number of redirects. value range: 1-5.
+Note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.
+        :rtype: int
+        """
+        return self._MaxTimes
+
+    @MaxTimes.setter
+    def MaxTimes(self, MaxTimes):
+        self._MaxTimes = MaxTimes
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._MaxTimes = params.get("MaxTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamHTTP2Parameters(AbstractModel):
+    """HTTP2 origin-pull configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable http2 origin-pull. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        """Whether to enable http2 origin-pull. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpstreamHttp2(AbstractModel):
     """HTTP2 origin-pull configuration
 
@@ -36237,6 +41416,297 @@ class UpstreamHttp2(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRequestCookie(AbstractModel):
+    """Origin-pull request parameters Cookie configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable the origin-pull request parameter cookie. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Action: Origin-Pull request parameter cookie mode. this parameter is required when `switch` is on. valid values are:.
+<Li>Full: indicates full retention;</li>.
+<Li>Ignore: ignore all.</li>.
+<Li>`IncludeCustom`: retain partial parameters.</li>.
+<Li>ExcludeCustom: ignore partial parameters.</li>.
+        :type Action: str
+        :param _Values: Specifies parameter values. this parameter takes effect only when the query string mode action is `includecustom` or `excludecustom`, and is used to specify the parameters to be reserved or ignored. up to 10 parameters are supported.
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """Whether to enable the origin-pull request parameter cookie. valid values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """Origin-Pull request parameter cookie mode. this parameter is required when `switch` is on. valid values are:.
+<Li>Full: indicates full retention;</li>.
+<Li>Ignore: ignore all.</li>.
+<Li>`IncludeCustom`: retain partial parameters.</li>.
+<Li>ExcludeCustom: ignore partial parameters.</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """Specifies parameter values. this parameter takes effect only when the query string mode action is `includecustom` or `excludecustom`, and is used to specify the parameters to be reserved or ignored. up to 10 parameters are supported.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRequestParameters(AbstractModel):
+    """Origin-pull request parameters configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueryString: Query string configuration. optional. if not provided, it will not be configured.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type QueryString: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestQueryString`
+        :param _Cookie: Cookie configuration. optional. if not provided, it will not be configured.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Cookie: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestCookie`
+        """
+        self._QueryString = None
+        self._Cookie = None
+
+    @property
+    def QueryString(self):
+        """Query string configuration. optional. if not provided, it will not be configured.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestQueryString`
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def Cookie(self):
+        """Cookie configuration. optional. if not provided, it will not be configured.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestCookie`
+        """
+        return self._Cookie
+
+    @Cookie.setter
+    def Cookie(self, Cookie):
+        self._Cookie = Cookie
+
+
+    def _deserialize(self, params):
+        if params.get("QueryString") is not None:
+            self._QueryString = UpstreamRequestQueryString()
+            self._QueryString._deserialize(params.get("QueryString"))
+        if params.get("Cookie") is not None:
+            self._Cookie = UpstreamRequestCookie()
+            self._Cookie._deserialize(params.get("Cookie"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRequestQueryString(AbstractModel):
+    """Origin-pull request parameters query string configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable origin-pull request parameter query string. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :type Switch: str
+        :param _Action: Query string mode. this parameter is required when switch is on. values:.
+<Li>`Full`: retain all</li>.
+<Li>`Ignore`: ignore all;</li>.
+<Li>IncludeCustom: retain partial parameters.</li>.
+<Li>ExcludeCustom: ignore partial parameters.</li>.
+        :type Action: str
+        :param _Values: Specifies parameter values. this parameter takes effect only when the query string mode action is `includecustom` or `excludecustom`, and is used to specify the parameters to be reserved or ignored. up to 10 parameters are supported.
+        :type Values: list of str
+        """
+        self._Switch = None
+        self._Action = None
+        self._Values = None
+
+    @property
+    def Switch(self):
+        """Whether to enable origin-pull request parameter query string. values:.
+<Li>`On`: enable;</li>
+.
+<Li>Off: disable.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Action(self):
+        """Query string mode. this parameter is required when switch is on. values:.
+<Li>`Full`: retain all</li>.
+<Li>`Ignore`: ignore all;</li>.
+<Li>IncludeCustom: retain partial parameters.</li>.
+<Li>ExcludeCustom: ignore partial parameters.</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Values(self):
+        """Specifies parameter values. this parameter takes effect only when the query string mode action is `includecustom` or `excludecustom`, and is used to specify the parameters to be reserved or ignored. up to 10 parameters are supported.
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Action = params.get("Action")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamURLRewriteParameters(AbstractModel):
+    """Origin URL rewrite configuration parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Origin-Pull url rewriting type, only path is supported.
+        :type Type: str
+        :param _Action: Origin-Pull url rewrite action. valid values are:.
+<Li>`Replace`: replace the path prefix.</li>.
+<Li>`AddPrefix`: add the path prefix.</li>.
+<Li>`RmvPrefix`: remove the path prefix.</li>.
+        :type Action: str
+        :param _Value: Origin-Pull url rewrite value, maximum length 1024, must start with /.<br>note: when action is addprefix, it cannot end with /; when action is rmvprefix, * cannot be present.
+        :type Value: str
+        """
+        self._Type = None
+        self._Action = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        """Origin-Pull url rewriting type, only path is supported.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Action(self):
+        """Origin-Pull url rewrite action. valid values are:.
+<Li>`Replace`: replace the path prefix.</li>.
+<Li>`AddPrefix`: add the path prefix.</li>.
+<Li>`RmvPrefix`: remove the path prefix.</li>.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Value(self):
+        """Origin-Pull url rewrite value, maximum length 1024, must start with /.<br>note: when action is addprefix, it cannot end with /; when action is rmvprefix, * cannot be present.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Action = params.get("Action")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36749,6 +42219,61 @@ class WebSocket(AbstractModel):
         
 
 
+class WebSocketParameters(AbstractModel):
+    """WebSocket configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable websocket connection timeout. values:.
+<Li>On: use timeout as the websocket timeout;</li>.
+<Li>Off: the platform still supports websocket connections, using the system default timeout of 15 seconds.</li>.
+        :type Switch: str
+        :param _Timeout: Timeout, unit: seconds. maximum timeout is 120 seconds.<br>note: this field is required when switch is on; otherwise, this field will not take effect.
+        :type Timeout: int
+        """
+        self._Switch = None
+        self._Timeout = None
+
+    @property
+    def Switch(self):
+        """Whether to enable websocket connection timeout. values:.
+<Li>On: use timeout as the websocket timeout;</li>.
+<Li>Off: the platform still supports websocket connections, using the system default timeout of 15 seconds.</li>.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Timeout(self):
+        """Timeout, unit: seconds. maximum timeout is 120 seconds.<br>note: this field is required when switch is on; otherwise, this field will not take effect.
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Timeout = params.get("Timeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Zone(AbstractModel):
     """Site information
 
@@ -37142,6 +42667,510 @@ Note: This field may return·null, indicating that no valid values can be obtain
         if params.get("OwnershipVerification") is not None:
             self._OwnershipVerification = OwnershipVerification()
             self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneConfig(AbstractModel):
+    """Site acceleration configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmartRouting: <Intelligent acceleration configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type SmartRouting: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        :param _Cache: Node cache expiration time configuration.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Cache: :class:`tencentcloud.teo.v20220901.models.CacheConfigParameters`
+        :param _MaxAge: Browser cache rule configuration, which is used to set the default value of maxage and is disabled by default.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type MaxAge: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        :param _CacheKey: The node cache key configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CacheKey: :class:`tencentcloud.teo.v20220901.models.CacheKeyConfigParameters`
+        :param _CachePrefresh: Cache prefresh configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type CachePrefresh: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        :param _OfflineCache: Offline cache configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type OfflineCache: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        :param _Compression: Smart compression configuration.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Compression: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        :param _ForceRedirectHTTPS: Forced https redirect configuration for access protocols.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ForceRedirectHTTPS: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        :param _HSTS: HSTS configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HSTS: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        :param _TLSConfig: TLS configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type TLSConfig: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        :param _OCSPStapling: OCSP stapling configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type OCSPStapling: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        :param _HTTP2: HTTP/2 configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type HTTP2: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        :param _QUIC: QUIC access configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type QUIC: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        :param _UpstreamHTTP2: HTTP2 origin-pull configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type UpstreamHTTP2: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        :param _IPv6: IPv6 access configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type IPv6: :class:`tencentcloud.teo.v20220901.models.IPv6Parameters`
+        :param _WebSocket: WebSocket configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type WebSocket: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        :param _PostMaxSize: POST request transport configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type PostMaxSize: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        :param _ClientIPHeader: Client ip origin-pull request header configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ClientIPHeader: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        :param _ClientIPCountry: Whether to carry the region information of the client ip during origin-pull.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ClientIPCountry: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        :param _Grpc: Configuration of grpc support.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type Grpc: :class:`tencentcloud.teo.v20220901.models.GrpcParameters`
+        :param _AccelerateMainland: Accelerate optimization and configuration in mainland china.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainlandParameters`
+        :param _StandardDebug: Standard debugging configuration.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebugParameters`
+        """
+        self._SmartRouting = None
+        self._Cache = None
+        self._MaxAge = None
+        self._CacheKey = None
+        self._CachePrefresh = None
+        self._OfflineCache = None
+        self._Compression = None
+        self._ForceRedirectHTTPS = None
+        self._HSTS = None
+        self._TLSConfig = None
+        self._OCSPStapling = None
+        self._HTTP2 = None
+        self._QUIC = None
+        self._UpstreamHTTP2 = None
+        self._IPv6 = None
+        self._WebSocket = None
+        self._PostMaxSize = None
+        self._ClientIPHeader = None
+        self._ClientIPCountry = None
+        self._Grpc = None
+        self._AccelerateMainland = None
+        self._StandardDebug = None
+
+    @property
+    def SmartRouting(self):
+        """<Intelligent acceleration configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SmartRoutingParameters`
+        """
+        return self._SmartRouting
+
+    @SmartRouting.setter
+    def SmartRouting(self, SmartRouting):
+        self._SmartRouting = SmartRouting
+
+    @property
+    def Cache(self):
+        """Node cache expiration time configuration.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheConfigParameters`
+        """
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def MaxAge(self):
+        """Browser cache rule configuration, which is used to set the default value of maxage and is disabled by default.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.MaxAgeParameters`
+        """
+        return self._MaxAge
+
+    @MaxAge.setter
+    def MaxAge(self, MaxAge):
+        self._MaxAge = MaxAge
+
+    @property
+    def CacheKey(self):
+        """The node cache key configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CacheKeyConfigParameters`
+        """
+        return self._CacheKey
+
+    @CacheKey.setter
+    def CacheKey(self, CacheKey):
+        self._CacheKey = CacheKey
+
+    @property
+    def CachePrefresh(self):
+        """Cache prefresh configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CachePrefreshParameters`
+        """
+        return self._CachePrefresh
+
+    @CachePrefresh.setter
+    def CachePrefresh(self, CachePrefresh):
+        self._CachePrefresh = CachePrefresh
+
+    @property
+    def OfflineCache(self):
+        """Offline cache configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OfflineCacheParameters`
+        """
+        return self._OfflineCache
+
+    @OfflineCache.setter
+    def OfflineCache(self, OfflineCache):
+        self._OfflineCache = OfflineCache
+
+    @property
+    def Compression(self):
+        """Smart compression configuration.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CompressionParameters`
+        """
+        return self._Compression
+
+    @Compression.setter
+    def Compression(self, Compression):
+        self._Compression = Compression
+
+    @property
+    def ForceRedirectHTTPS(self):
+        """Forced https redirect configuration for access protocols.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ForceRedirectHTTPSParameters`
+        """
+        return self._ForceRedirectHTTPS
+
+    @ForceRedirectHTTPS.setter
+    def ForceRedirectHTTPS(self, ForceRedirectHTTPS):
+        self._ForceRedirectHTTPS = ForceRedirectHTTPS
+
+    @property
+    def HSTS(self):
+        """HSTS configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HSTSParameters`
+        """
+        return self._HSTS
+
+    @HSTS.setter
+    def HSTS(self, HSTS):
+        self._HSTS = HSTS
+
+    @property
+    def TLSConfig(self):
+        """TLS configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
+        """
+        return self._TLSConfig
+
+    @TLSConfig.setter
+    def TLSConfig(self, TLSConfig):
+        self._TLSConfig = TLSConfig
+
+    @property
+    def OCSPStapling(self):
+        """OCSP stapling configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OCSPStaplingParameters`
+        """
+        return self._OCSPStapling
+
+    @OCSPStapling.setter
+    def OCSPStapling(self, OCSPStapling):
+        self._OCSPStapling = OCSPStapling
+
+    @property
+    def HTTP2(self):
+        """HTTP/2 configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HTTP2Parameters`
+        """
+        return self._HTTP2
+
+    @HTTP2.setter
+    def HTTP2(self, HTTP2):
+        self._HTTP2 = HTTP2
+
+    @property
+    def QUIC(self):
+        """QUIC access configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.QUICParameters`
+        """
+        return self._QUIC
+
+    @QUIC.setter
+    def QUIC(self, QUIC):
+        self._QUIC = QUIC
+
+    @property
+    def UpstreamHTTP2(self):
+        """HTTP2 origin-pull configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpstreamHTTP2Parameters`
+        """
+        return self._UpstreamHTTP2
+
+    @UpstreamHTTP2.setter
+    def UpstreamHTTP2(self, UpstreamHTTP2):
+        self._UpstreamHTTP2 = UpstreamHTTP2
+
+    @property
+    def IPv6(self):
+        """IPv6 access configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IPv6Parameters`
+        """
+        return self._IPv6
+
+    @IPv6.setter
+    def IPv6(self, IPv6):
+        self._IPv6 = IPv6
+
+    @property
+    def WebSocket(self):
+        """WebSocket configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSocketParameters`
+        """
+        return self._WebSocket
+
+    @WebSocket.setter
+    def WebSocket(self, WebSocket):
+        self._WebSocket = WebSocket
+
+    @property
+    def PostMaxSize(self):
+        """POST request transport configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.PostMaxSizeParameters`
+        """
+        return self._PostMaxSize
+
+    @PostMaxSize.setter
+    def PostMaxSize(self, PostMaxSize):
+        self._PostMaxSize = PostMaxSize
+
+    @property
+    def ClientIPHeader(self):
+        """Client ip origin-pull request header configuration.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPHeaderParameters`
+        """
+        return self._ClientIPHeader
+
+    @ClientIPHeader.setter
+    def ClientIPHeader(self, ClientIPHeader):
+        self._ClientIPHeader = ClientIPHeader
+
+    @property
+    def ClientIPCountry(self):
+        """Whether to carry the region information of the client ip during origin-pull.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ClientIPCountryParameters`
+        """
+        return self._ClientIPCountry
+
+    @ClientIPCountry.setter
+    def ClientIPCountry(self, ClientIPCountry):
+        self._ClientIPCountry = ClientIPCountry
+
+    @property
+    def Grpc(self):
+        """Configuration of grpc support.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.GrpcParameters`
+        """
+        return self._Grpc
+
+    @Grpc.setter
+    def Grpc(self, Grpc):
+        self._Grpc = Grpc
+
+    @property
+    def AccelerateMainland(self):
+        """Accelerate optimization and configuration in mainland china.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerateMainlandParameters`
+        """
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
+    @property
+    def StandardDebug(self):
+        """Standard debugging configuration.
+.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.StandardDebugParameters`
+        """
+        return self._StandardDebug
+
+    @StandardDebug.setter
+    def StandardDebug(self, StandardDebug):
+        self._StandardDebug = StandardDebug
+
+
+    def _deserialize(self, params):
+        if params.get("SmartRouting") is not None:
+            self._SmartRouting = SmartRoutingParameters()
+            self._SmartRouting._deserialize(params.get("SmartRouting"))
+        if params.get("Cache") is not None:
+            self._Cache = CacheConfigParameters()
+            self._Cache._deserialize(params.get("Cache"))
+        if params.get("MaxAge") is not None:
+            self._MaxAge = MaxAgeParameters()
+            self._MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("CacheKey") is not None:
+            self._CacheKey = CacheKeyConfigParameters()
+            self._CacheKey._deserialize(params.get("CacheKey"))
+        if params.get("CachePrefresh") is not None:
+            self._CachePrefresh = CachePrefreshParameters()
+            self._CachePrefresh._deserialize(params.get("CachePrefresh"))
+        if params.get("OfflineCache") is not None:
+            self._OfflineCache = OfflineCacheParameters()
+            self._OfflineCache._deserialize(params.get("OfflineCache"))
+        if params.get("Compression") is not None:
+            self._Compression = CompressionParameters()
+            self._Compression._deserialize(params.get("Compression"))
+        if params.get("ForceRedirectHTTPS") is not None:
+            self._ForceRedirectHTTPS = ForceRedirectHTTPSParameters()
+            self._ForceRedirectHTTPS._deserialize(params.get("ForceRedirectHTTPS"))
+        if params.get("HSTS") is not None:
+            self._HSTS = HSTSParameters()
+            self._HSTS._deserialize(params.get("HSTS"))
+        if params.get("TLSConfig") is not None:
+            self._TLSConfig = TLSConfigParameters()
+            self._TLSConfig._deserialize(params.get("TLSConfig"))
+        if params.get("OCSPStapling") is not None:
+            self._OCSPStapling = OCSPStaplingParameters()
+            self._OCSPStapling._deserialize(params.get("OCSPStapling"))
+        if params.get("HTTP2") is not None:
+            self._HTTP2 = HTTP2Parameters()
+            self._HTTP2._deserialize(params.get("HTTP2"))
+        if params.get("QUIC") is not None:
+            self._QUIC = QUICParameters()
+            self._QUIC._deserialize(params.get("QUIC"))
+        if params.get("UpstreamHTTP2") is not None:
+            self._UpstreamHTTP2 = UpstreamHTTP2Parameters()
+            self._UpstreamHTTP2._deserialize(params.get("UpstreamHTTP2"))
+        if params.get("IPv6") is not None:
+            self._IPv6 = IPv6Parameters()
+            self._IPv6._deserialize(params.get("IPv6"))
+        if params.get("WebSocket") is not None:
+            self._WebSocket = WebSocketParameters()
+            self._WebSocket._deserialize(params.get("WebSocket"))
+        if params.get("PostMaxSize") is not None:
+            self._PostMaxSize = PostMaxSizeParameters()
+            self._PostMaxSize._deserialize(params.get("PostMaxSize"))
+        if params.get("ClientIPHeader") is not None:
+            self._ClientIPHeader = ClientIPHeaderParameters()
+            self._ClientIPHeader._deserialize(params.get("ClientIPHeader"))
+        if params.get("ClientIPCountry") is not None:
+            self._ClientIPCountry = ClientIPCountryParameters()
+            self._ClientIPCountry._deserialize(params.get("ClientIPCountry"))
+        if params.get("Grpc") is not None:
+            self._Grpc = GrpcParameters()
+            self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("AccelerateMainland") is not None:
+            self._AccelerateMainland = AccelerateMainlandParameters()
+            self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
+        if params.get("StandardDebug") is not None:
+            self._StandardDebug = StandardDebugParameters()
+            self._StandardDebug._deserialize(params.get("StandardDebug"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneConfigParameters(AbstractModel):
+    """Site configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneName: The site name.
+        :type ZoneName: str
+        :param _ZoneConfig: Site configuration information.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :type ZoneConfig: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        self._ZoneName = None
+        self._ZoneConfig = None
+
+    @property
+    def ZoneName(self):
+        """The site name.
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ZoneConfig(self):
+        """Site configuration information.
+Note: this field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        return self._ZoneConfig
+
+    @ZoneConfig.setter
+    def ZoneConfig(self, ZoneConfig):
+        self._ZoneConfig = ZoneConfig
+
+
+    def _deserialize(self, params):
+        self._ZoneName = params.get("ZoneName")
+        if params.get("ZoneConfig") is not None:
+            self._ZoneConfig = ZoneConfig()
+            self._ZoneConfig._deserialize(params.get("ZoneConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
