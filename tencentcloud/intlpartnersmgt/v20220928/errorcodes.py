@@ -56,6 +56,9 @@ FAILEDOPERATION_SENDVERIFYCODELIMIT = 'FailedOperation.SendVerifyCodeLimit'
 # The interval for sending SMS verification codes should be greater than 60 seconds. Please try again later.
 FAILEDOPERATION_SENDVERIFYCODELIMIT60 = 'FailedOperation.SendVerifyCodeLimit60'
 
+# The primary industry id and secondary industry id do not match.
+FAILEDOPERATION_TRADEINFOINCORRECT = 'FailedOperation.TradeInfoIncorrect'
+
 # Tencent cloud ka account cannot become a sub-customer.
 FAILEDOPERATION_UINALREADYKA = 'FailedOperation.UinAlreadyKA'
 
@@ -142,6 +145,9 @@ INVALIDPARAMETERVALUE_PASSWORDEMPTY = 'InvalidParameterValue.PasswordEmpty'
 
 # InvalidParameterValue.PhoneNumEmpty
 INVALIDPARAMETERVALUE_PHONENUMEMPTY = 'InvalidParameterValue.PhoneNumEmpty'
+
+# The primary industry id or secondary industry id is empty.
+INVALIDPARAMETERVALUE_TRADEINFOEMPTY = 'InvalidParameterValue.TradeInfoEmpty'
 
 # The user has become a sub-customer of another reseller.
 INVALIDPARAMETERVALUE_UINALREADYCLIENT = 'InvalidParameterValue.UinAlreadyClient'

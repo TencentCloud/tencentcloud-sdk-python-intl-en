@@ -104,8 +104,10 @@ class IntlpartnersmgtClient(AbstractClient):
     def CreateAccount(self, request):
         """This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
         1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.
-        2.  Customers need to add personal information when logging in for the first time.
-        3.  This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.
+        2. Customers need to add personal information when logging in for the first time.
+        3. This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.
+
+        Callable roles: distributor, second-level reseller, reseller
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAccountRequest`
@@ -448,6 +450,29 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("GetCountryCodes", params, headers=headers)
             response = json.loads(body)
             model = models.GetCountryCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTradeConfigList(self, request):
+        """This API is used to query industry information, including layer-1 industry and layer-2 industry.
+
+        :param request: Request instance for GetTradeConfigList.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.GetTradeConfigListRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.GetTradeConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTradeConfigList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTradeConfigListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
