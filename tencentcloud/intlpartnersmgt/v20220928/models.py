@@ -1352,9 +1352,11 @@ Parameter value is not allowed to be 7,380,86.
         :param _VerifyCode: VerifyCode. This parameter is required. 
 Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.
         :type VerifyCode: str
-        :param _TradeOne: Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181).
+        :param _TradeOne: Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181),
+such as "kghy_01".
         :type TradeOne: str
-        :param _TradeTwo: Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181).
+        :param _TradeTwo: Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181),
+such as "kghy_0101"
         :type TradeTwo: str
         """
         self._AccountType = None
@@ -1478,7 +1480,8 @@ Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/
 
     @property
     def TradeOne(self):
-        """Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181).
+        """Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181),
+such as "kghy_01".
         :rtype: str
         """
         return self._TradeOne
@@ -1489,7 +1492,8 @@ Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/
 
     @property
     def TradeTwo(self):
-        """Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181).
+        """Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181),
+such as "kghy_0101"
         :rtype: str
         """
         return self._TradeTwo
