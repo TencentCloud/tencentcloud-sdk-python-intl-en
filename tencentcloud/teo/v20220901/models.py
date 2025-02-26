@@ -36683,8 +36683,7 @@ class RuleBranch(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Condition: [Match condition].
-](Https://Cloud.Tencent.Com/Document/Product/1552/90438#33f65828-C6c6-4b66-A011-25a20b548d5d).
+        :param _Condition: [Match condition](https://www.tencentcloud.com/document/product/1145/54759).
         :type Condition: str
         :param _Actions: [Operations](Https://Cloud.Tencent.Com/Document/Product/1552/90438#C7bd7e02-9247-4a72-B0e4-11c27cadb198).<Br>Note: actions and subrules cannot both be empty.
 Note: this field may return null, which indicates a failure to obtain a valid value.
@@ -36699,8 +36698,7 @@ Note: this field may return null, which indicates a failure to obtain a valid va
 
     @property
     def Condition(self):
-        """[Match condition].
-](Https://Cloud.Tencent.Com/Document/Product/1552/90438#33f65828-C6c6-4b66-A011-25a20b548d5d).
+        """[Match condition](https://www.tencentcloud.com/document/product/1145/54759).
         :rtype: str
         """
         return self._Condition

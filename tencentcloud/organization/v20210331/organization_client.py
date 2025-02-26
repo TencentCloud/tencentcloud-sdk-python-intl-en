@@ -26,6 +26,29 @@ class OrganizationClient(AbstractClient):
     _service = 'organization'
 
 
+    def AcceptJoinShareUnitInvitation(self, request):
+        """This API is used to accept an invitation to join a shared unit.
+
+        :param request: Request instance for AcceptJoinShareUnitInvitation.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AcceptJoinShareUnitInvitationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AcceptJoinShareUnitInvitationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AcceptJoinShareUnitInvitation", params, headers=headers)
+            response = json.loads(body)
+            model = models.AcceptJoinShareUnitInvitationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddExternalSAMLIdPCertificate(self, request):
         """This API is used to add SAML signing certificates.
 
@@ -86,6 +109,75 @@ class OrganizationClient(AbstractClient):
             body = self.call("AddPermissionPolicyToRoleConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.AddPermissionPolicyToRoleConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddShareUnit(self, request):
+        """This API is used to create a shared unit.
+
+        :param request: Request instance for AddShareUnit.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AddShareUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddShareUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddShareUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddShareUnitMembers(self, request):
+        """This API is used to add a shared unit member.
+
+        :param request: Request instance for AddShareUnitMembers.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitMembersRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AddShareUnitMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddShareUnitMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddShareUnitMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddShareUnitResources(self, request):
+        """This API is used to add resources to a shared unit.
+
+        :param request: Request instance for AddShareUnitResources.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AddShareUnitResourcesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AddShareUnitResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddShareUnitResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddShareUnitResourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -739,6 +831,75 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteShareUnit(self, request):
+        """This API is used to delete a shared unit.
+
+        :param request: Request instance for DeleteShareUnit.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteShareUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteShareUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteShareUnitMembers(self, request):
+        """This API is used to delete a shared unit member.
+
+        :param request: Request instance for DeleteShareUnitMembers.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitMembersRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteShareUnitMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteShareUnitMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteShareUnitResources(self, request):
+        """This API is used to delete shared unit resources.
+
+        :param request: Request instance for DeleteShareUnitResources.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitResourcesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteShareUnitResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteShareUnitResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteShareUnitResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteUser(self, request):
         """This API is used to delete a user.
 
@@ -937,6 +1098,98 @@ class OrganizationClient(AbstractClient):
             body = self.call("DescribeOrganizationNodes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOrganizationNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeShareAreas(self, request):
+        """This API is used to obtain a list of shareable regions.
+
+        :param request: Request instance for DescribeShareAreas.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareAreasRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeShareAreasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeShareAreas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeShareAreasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeShareUnitMembers(self, request):
+        """This API is used to obtain the member list of a shared unit.
+
+        :param request: Request instance for DescribeShareUnitMembers.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitMembersRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeShareUnitMembers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeShareUnitMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeShareUnitResources(self, request):
+        """This API is used to obtain the resource list of a shared unit.
+
+        :param request: Request instance for DescribeShareUnitResources.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitResourcesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeShareUnitResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeShareUnitResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeShareUnits(self, request):
+        """This API is used to obtain a list of shared units.
+
+        :param request: Request instance for DescribeShareUnits.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitsRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeShareUnitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeShareUnits", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeShareUnitsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1659,6 +1912,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RejectJoinShareUnitInvitation(self, request):
+        """This API is used to reject an invitation to join a shared unit.
+
+        :param request: Request instance for RejectJoinShareUnitInvitation.
+        :type request: :class:`tencentcloud.organization.v20210331.models.RejectJoinShareUnitInvitationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.RejectJoinShareUnitInvitationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RejectJoinShareUnitInvitation", params, headers=headers)
+            response = json.loads(body)
+            model = models.RejectJoinShareUnitInvitationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveExternalSAMLIdPCertificate(self, request):
         """This API is used to remove SAML signing certificates.
 
@@ -1926,6 +2202,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("UpdateSCIMSynchronizationStatus", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateSCIMSynchronizationStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateShareUnit(self, request):
+        """This API is used to update a shared unit.
+
+        :param request: Request instance for UpdateShareUnit.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateShareUnitRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateShareUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateShareUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateShareUnitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
