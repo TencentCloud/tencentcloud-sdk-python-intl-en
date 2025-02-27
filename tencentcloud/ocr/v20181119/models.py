@@ -11957,6 +11957,8 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
         :type ThaiName: str
         :param _EnName: Name in English
         :type EnName: str
+        :param _ThaiSurName: Surname in Thai
+        :type ThaiSurName: str
         :param _ThaiDOB: Date of birth in Thai
         :type ThaiDOB: str
         :param _EnDOB: Date of birth in English
@@ -11989,6 +11991,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
         self._IDNumber = None
         self._ThaiName = None
         self._EnName = None
+        self._ThaiSurName = None
         self._ThaiDOB = None
         self._EnDOB = None
         self._PhotoNumber = None
@@ -12046,6 +12049,17 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
     @EnName.setter
     def EnName(self, EnName):
         self._EnName = EnName
+
+    @property
+    def ThaiSurName(self):
+        """Surname in Thai
+        :rtype: str
+        """
+        return self._ThaiSurName
+
+    @ThaiSurName.setter
+    def ThaiSurName(self, ThaiSurName):
+        self._ThaiSurName = ThaiSurName
 
     @property
     def ThaiDOB(self):
@@ -12197,6 +12211,7 @@ class RecognizeThaiPinkCardResponse(AbstractModel):
         self._IDNumber = params.get("IDNumber")
         self._ThaiName = params.get("ThaiName")
         self._EnName = params.get("EnName")
+        self._ThaiSurName = params.get("ThaiSurName")
         self._ThaiDOB = params.get("ThaiDOB")
         self._EnDOB = params.get("EnDOB")
         self._PhotoNumber = params.get("PhotoNumber")

@@ -71,7 +71,7 @@ FAILEDOPERATION_NOMASIDCARD = 'FailedOperation.NoMASIDCard'
 # Not a passport.
 FAILEDOPERATION_NOPASSPORT = 'FailedOperation.NoPassport'
 
-# OCR failed.
+# OCR failed. This error may be caused by unstable network connections,service anomalies or other issues.
 FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'
 
 # Unknown error.
@@ -80,7 +80,7 @@ FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
 # The service is not activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
-# 
+# Warning service error.
 FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
 
 # Config is not in valid JSON format.
@@ -104,5 +104,5 @@ RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = 'ResourceUnavailable.ResourcePackage
 # Exceptional billing status.
 RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = 'ResourcesSoldOut.ChargeStatusException'
 
-# 
+# Unrecognized argument.
 UNKNOWNPARAMETER = 'UnknownParameter'

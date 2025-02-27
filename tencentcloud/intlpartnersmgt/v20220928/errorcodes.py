@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# The account balance is insufficient.
+FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
+
 # The account is a group account and cannot be bound as a sub-customer.
 FAILEDOPERATION_BINDORGANIZATIONACCOUNT = 'FailedOperation.BindOrganizationAccount'
 
@@ -160,6 +163,9 @@ INVALIDPARAMETERVALUE_UINLIST = 'InvalidParameterValue.UinList'
 
 # The current region does not support creating a Tencent Cloud International account.
 INVALIDPARAMETERVALUE_UNSUPPORTAREA = 'InvalidParameterValue.UnSupportArea'
+
+# 
+INVALIDPARAMETERVALUE_VOUCHERAMOUNTOUTOFRANGE = 'InvalidParameterValue.VoucherAmountOutOfRange'
 
 # Missing parameter
 MISSINGPARAMETER = 'MissingParameter'

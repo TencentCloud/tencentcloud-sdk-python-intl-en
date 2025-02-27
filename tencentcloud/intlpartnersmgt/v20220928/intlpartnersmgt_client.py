@@ -28,6 +28,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def AllocateCreditPool(self, request):
         """This API is used to allocate credit pools to second-level resellers by distributors.
+        Callable roles: Distributor
 
         :param request: Request instance for AllocateCreditPool.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.AllocateCreditPoolRequest`
@@ -55,6 +56,8 @@ class IntlpartnersmgtClient(AbstractClient):
         2. The customer's service will be suspended when its available credit is set to 0, so caution should be exercised with this operation.
         3. To prevent the customer from making new purchases without affecting their use of previously purchased products, the partner can set their available credit to 0 after obtaining the non-stop feature privilege from the channel manager.
         4. The set credit is an increment of the current available credit and cannot exceed the remaining allocable credit. Setting the credit to a negative value indicates that it will be repossessed. The available credit can be set to 0 at the minimum.
+
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for AllocateCustomerCredit.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.AllocateCustomerCreditRequest`
@@ -107,7 +110,7 @@ class IntlpartnersmgtClient(AbstractClient):
         2. Customers need to add personal information when logging in for the first time.
         3. This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.
 
-        Callable roles: distributor, second-level reseller, reseller
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for CreateAccount.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAccountRequest`
@@ -137,6 +140,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
         Note:This API is used to manually send the invitation link to the customer if the specified email does not receive it.
 
+        Callable roles: Distributor, Second-level reseller, Reseller
+
         :param request: Request instance for CreateAndSendClientInvitationMail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAndSendClientInvitationMailRequest`
         :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAndSendClientInvitationMailResponse`
@@ -158,7 +163,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """This API is used to query bill details by customers.
+        """Description: End-customer queries its own bill details.
+        Callable role: End-customer.
 
         :param request: Request instance for DescribeBillDetail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDetailRequest`
@@ -181,7 +187,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillDownloadUrl(self, request):
-        """This API is used to download billing files and return billing file URLs by customers.
+        """Description: This API is used to download billing files and return billing file URLs for sub-customers.
+        Callable role: Enb-customer.
 
         :param request: Request instance for DescribeBillDownloadUrl.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDownloadUrlRequest`
@@ -204,7 +211,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummary(self, request):
-        """External API for the L1 billing of the customer billing center
+        """Description: External API for L1 billing of Sub-customer billing center.
+        Callable role: End-customer.
 
         :param request: Request instance for DescribeBillSummary.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryRequest`
@@ -228,6 +236,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def DescribeBillSummaryByPayMode(self, request):
         """This API is used to obtain the total amount of customer bills by payment mode.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeBillSummaryByPayMode.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByPayModeRequest`
@@ -250,7 +259,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummaryByProduct(self, request):
-        """This API is used to obtain the total amount of customer bills by product.
+        """Description: Obtain the summarized value of sub - account bills by product dimension.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeBillSummaryByProduct.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByProductRequest`
@@ -273,7 +283,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillSummaryByRegion(self, request):
-        """This API is used to obtain the total amount of customer bills by region.
+        """Description: Obtain the summarized value of sub - account bills by region through API.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeBillSummaryByRegion.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryByRegionRequest`
@@ -297,6 +308,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def DescribeCustomerBillDetail(self, request):
         """This API is used to query the customer bill details by resellers.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeCustomerBillDetail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailRequest`
@@ -345,6 +357,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def DescribeCustomerBillSummary(self, request):
         """This API is used to query the total amount of customer bills.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for DescribeCustomerBillSummary.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillSummaryRequest`
@@ -368,6 +381,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def DescribeCustomerInfo(self, request):
         """This API is used to query the customer information.
+
+        Callable roles: Distributor, Reseller
 
         :param request: Request instance for DescribeCustomerInfo.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerInfoRequest`
@@ -413,8 +428,9 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def ForceQN(self, request):
-        """This API is used to set and cancel forced service suspension.
-        Note:Reseller need to be allowlisted to use the API, please contact your business representative to apply for allowlist.
+        """Forced Service Suspension settings and cancellation can be used only after the reseller is whitelisted.
+
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for ForceQN.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ForceQNRequest`
@@ -462,6 +478,8 @@ class IntlpartnersmgtClient(AbstractClient):
     def GetTradeConfigList(self, request):
         """This API is used to query industry information, including layer-1 industry and layer-2 industry.
 
+        Callable roles: Distributor, Second-level reseller, Reseller,End-customer
+
         :param request: Request instance for GetTradeConfigList.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.GetTradeConfigListRequest`
         :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.GetTradeConfigListResponse`
@@ -485,6 +503,8 @@ class IntlpartnersmgtClient(AbstractClient):
     def ModifyClientRemark(self, request):
         """This API is used to modify customer remarks.
 
+        Callable roles: Distributor, Second-level reseller, Reseller
+
         :param request: Request instance for ModifyClientRemark.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ModifyClientRemarkRequest`
         :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ModifyClientRemarkResponse`
@@ -507,6 +527,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def QueryAccountVerificationStatus(self, request):
         """This API is used to query the account verification status.
+        Callable roles: Distributor, Reseller
 
         :param request: Request instance for QueryAccountVerificationStatus.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryAccountVerificationStatusRequest`
@@ -530,6 +551,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def QueryCreditAllocationHistory(self, request):
         """This API is used to query all the credit allocation records of a single customer.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryCreditAllocationHistory.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCreditAllocationHistoryRequest`
@@ -553,6 +575,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def QueryCreditByUinList(self, request):
         """This API is used to query the credit of users in the list.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryCreditByUinList.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCreditByUinListRequest`
@@ -565,29 +588,6 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("QueryCreditByUinList", params, headers=headers)
             response = json.loads(body)
             model = models.QueryCreditByUinListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def QueryCreditQuota(self, request):
-        """This API is used to query customer credits.
-
-        :param request: Request instance for QueryCreditQuota.
-        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCreditQuotaRequest`
-        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCreditQuotaResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryCreditQuota", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryCreditQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -625,6 +625,8 @@ class IntlpartnersmgtClient(AbstractClient):
     def QueryCustomersCredit(self, request):
         """This API is used for a partner to the credits and basic information of cutomers.
 
+        Callable roles: Distributor, Second-level reseller, Reseller
+
         :param request: Request instance for QueryCustomersCredit.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomersCreditRequest`
         :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryCustomersCreditResponse`
@@ -647,6 +649,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def QueryDirectCustomersCredit(self, request):
         """This API is used to query the credits of direct customers.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryDirectCustomersCredit.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryDirectCustomersCreditRequest`
@@ -670,6 +673,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def QueryPartnerCredit(self, request):
         """This API is used for a partner to query its own total credit, available credit, and used credit in USD.
+
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryPartnerCredit.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPartnerCreditRequest`
@@ -717,7 +722,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryPolicyProductListByCode(self, request):
-        """This API is used to query the product list information within the specified policy range. To call this API, contact your account manager to add it to the allowlist.
+        """This API is used to query the product list information within the specified policy range. To call this API, contact your business manager to apply for adding it to the allowlist.
+        Callable roles: Distributor, Second-level reseller, Reseller
 
         :param request: Request instance for QueryPolicyProductListByCode.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPolicyProductListByCodeRequest`
@@ -740,7 +746,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryVoucherAmountByUin(self, request):
-        """This API is used to query the voucher quota based on the customer UIN.
+        """This API is used by primary/secondary resellers to query the voucher quota based on the customer UIN.
+        Callable roles: Reseller, Distributor, Second-level reseller
 
         :param request: Request instance for QueryVoucherAmountByUin.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherAmountByUinRequest`
@@ -763,7 +770,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryVoucherListByUin(self, request):
-        """This API is used to query the voucher list based on the customer UIN.
+        """This API is used by primary/secondary resellers to query the voucher list based on the customer UIN.
+        Callable roles: Reseller, Distributor, Second-level reseller
 
         :param request: Request instance for QueryVoucherListByUin.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherListByUinRequest`
@@ -786,7 +794,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryVoucherPool(self, request):
-        """This API is used to query the voucher quota pool.
+        """This API is used by primary/secondary resellers to query the voucher quota pool.
+        Callable roles: Distributor, First-level reseller, Second-level reseller
 
         :param request: Request instance for QueryVoucherPool.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryVoucherPoolRequest`
@@ -810,6 +819,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def SendVerifyCode(self, request):
         """This API is used to send a verification code for account registration.
+
+        Callable roles: Distributor, Second-level reseller, Reseller,End-customer
 
         :param request: Request instance for SendVerifyCode.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.SendVerifyCodeRequest`

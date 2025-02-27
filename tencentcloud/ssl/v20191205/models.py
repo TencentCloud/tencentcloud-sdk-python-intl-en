@@ -31,8 +31,7 @@ class ApiGatewayInstanceDetail(AbstractModel):
         :type ServiceName: str
         :param _Domain: The domain.
         :type Domain: str
-        :param _CertId: The certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CertId: Certificate id.
         :type CertId: str
         :param _Protocol: The protocol.
         :type Protocol: str
@@ -78,8 +77,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
-        """The certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate id.
         :rtype: str
         """
         return self._CertId
@@ -125,15 +123,17 @@ class ApiGatewayInstanceList(AbstractModel):
         r"""
         :param _Region: The region.
         :type Region: str
-        :param _InstanceList: The list of APIGATEWAY instances.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceList: API gateway instance details.	
         :type InstanceList: list of ApiGatewayInstanceDetail
         :param _TotalCount: The total number of APIGATEWAY instances in this region.	
         :type TotalCount: int
+        :param _Error: Whether to query exceptions.
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -148,8 +148,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
-        """The list of APIGATEWAY instances.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        """API gateway instance details.	
         :rtype: list of ApiGatewayInstanceDetail
         """
         return self._InstanceList
@@ -169,6 +168,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -179,6 +189,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -196,35 +207,41 @@ class ApplyCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DvAuthMethod: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation.
+        :param _DvAuthMethod: Certificate domain validation methods:
+
+DNS_AUTO: Automatically add domain DNS validation. Requires the user's domain to be hosted on 'Cloud DNS' and associated with the same Tencent Cloud account as the certificate application.
+
+DNS: Manually add domain DNS validation. Requires the user to manually add the validation value at their domain's DNS service provider.
+
+FILE: Manually add domain file validation. Requires the user to manually add a specified path file in the root directory of the domain site for file validation. Either HTTP or HTTPS validation will suffice; the domain site must be accessible by overseas CA institutions. The specific access whitelist is: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.
         :type DvAuthMethod: str
-        :param _DomainName: Domain name
+        :param _DomainName: The domain bound to the certificate.
         :type DomainName: str
-        :param _ProjectId: Project ID
+        :param _ProjectId: The project ID associated with the certificate. Default is 0 (default project)
         :type ProjectId: int
-        :param _PackageType: Certificate type. Currently, the only supported value is 2, which indicates TrustAsia TLS RSA CA.
+        :param _PackageType: Certificate type, optional, currently only type 83 is supported. 83 = trustasia c1 dv free.
         :type PackageType: str
-        :param _ContactEmail: Email address
+        :param _ContactEmail: The email associated with the certificate order, By default, it uses the Tencent Cloud account email. If it does not exist, a fixed email address will be used.
         :type ContactEmail: str
-        :param _ContactPhone: Mobile number
+        :param _ContactPhone: The mobile phone number associated with the certificate. If it does not exist, a fixed mobile phone number will be used.
         :type ContactPhone: str
-        :param _ValidityPeriod: Validity period. The default value is 12 months, which is the only supported value currently.
+        :param _ValidityPeriod: Certificate valid period, 3 months by default, currently only 3 months is supported.
         :type ValidityPeriod: str
-        :param _CsrEncryptAlgo: Encryption algorithm. RSA and ECC are supported.
+        :param _CsrEncryptAlgo: Encryption algorithm, values can be ECC or RSA, default is RSA.
         :type CsrEncryptAlgo: str
         :param _CsrKeyParameter: Key pair parameters. RSA supports only 2048. ECC supports only prime256v1. When the encryption algorithm is set to ECC, this parameter is mandatory.
         :type CsrKeyParameter: str
-        :param _CsrKeyPassword: CSR encryption password
+        :param _CsrKeyPassword: Private key password, currently only used when generating jks, pfx format certificates; private key certificates of other formats are not encrypted.
         :type CsrKeyPassword: str
-        :param _Alias: Alias
+        :param _Alias: Certificate alias.
         :type Alias: str
-        :param _OldCertificateId: Original certificate ID, which is used to apply for a new certificate.
+        :param _OldCertificateId: Old certificate id, used for certificate renewal (the certificate valid period is within 30 days and not expired), a renewal relationship will be established, which can be hosted; not providing it means applying for a new certificate.
         :type OldCertificateId: str
-        :param _PackageId: Benefit package ID, which is used to expand the free certificate package
+        :param _PackageId: Benefit package ID, used for free certificate expansion package, the free certificate expansion package has been discontinued.
         :type PackageId: str
-        :param _DeleteDnsAutoRecord: Whether to delete the automatic domain name verification record after issuance, which is no by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.
+        :param _DeleteDnsAutoRecord: Whether to delete the automatic domain name verification record after issuance, which is fasle by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.
         :type DeleteDnsAutoRecord: bool
-        :param _DnsNames: 
+        :param _DnsNames: Other domains bound to the certificate, to be opened. This parameter is not currently supported.
         :type DnsNames: list of str
         """
         self._DvAuthMethod = None
@@ -245,7 +262,13 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DvAuthMethod(self):
-        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation.
+        """Certificate domain validation methods:
+
+DNS_AUTO: Automatically add domain DNS validation. Requires the user's domain to be hosted on 'Cloud DNS' and associated with the same Tencent Cloud account as the certificate application.
+
+DNS: Manually add domain DNS validation. Requires the user to manually add the validation value at their domain's DNS service provider.
+
+FILE: Manually add domain file validation. Requires the user to manually add a specified path file in the root directory of the domain site for file validation. Either HTTP or HTTPS validation will suffice; the domain site must be accessible by overseas CA institutions. The specific access whitelist is: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.
         :rtype: str
         """
         return self._DvAuthMethod
@@ -256,7 +279,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        """Domain name
+        """The domain bound to the certificate.
         :rtype: str
         """
         return self._DomainName
@@ -267,7 +290,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        """The project ID associated with the certificate. Default is 0 (default project)
         :rtype: int
         """
         return self._ProjectId
@@ -278,7 +301,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def PackageType(self):
-        """Certificate type. Currently, the only supported value is 2, which indicates TrustAsia TLS RSA CA.
+        """Certificate type, optional, currently only type 83 is supported. 83 = trustasia c1 dv free.
         :rtype: str
         """
         return self._PackageType
@@ -289,7 +312,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ContactEmail(self):
-        """Email address
+        """The email associated with the certificate order, By default, it uses the Tencent Cloud account email. If it does not exist, a fixed email address will be used.
         :rtype: str
         """
         return self._ContactEmail
@@ -300,7 +323,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ContactPhone(self):
-        """Mobile number
+        """The mobile phone number associated with the certificate. If it does not exist, a fixed mobile phone number will be used.
         :rtype: str
         """
         return self._ContactPhone
@@ -311,7 +334,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def ValidityPeriod(self):
-        """Validity period. The default value is 12 months, which is the only supported value currently.
+        """Certificate valid period, 3 months by default, currently only 3 months is supported.
         :rtype: str
         """
         return self._ValidityPeriod
@@ -322,7 +345,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrEncryptAlgo(self):
-        """Encryption algorithm. RSA and ECC are supported.
+        """Encryption algorithm, values can be ECC or RSA, default is RSA.
         :rtype: str
         """
         return self._CsrEncryptAlgo
@@ -344,7 +367,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def CsrKeyPassword(self):
-        """CSR encryption password
+        """Private key password, currently only used when generating jks, pfx format certificates; private key certificates of other formats are not encrypted.
         :rtype: str
         """
         return self._CsrKeyPassword
@@ -355,7 +378,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def Alias(self):
-        """Alias
+        """Certificate alias.
         :rtype: str
         """
         return self._Alias
@@ -366,7 +389,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """Original certificate ID, which is used to apply for a new certificate.
+        """Old certificate id, used for certificate renewal (the certificate valid period is within 30 days and not expired), a renewal relationship will be established, which can be hosted; not providing it means applying for a new certificate.
         :rtype: str
         """
         return self._OldCertificateId
@@ -377,7 +400,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def PackageId(self):
-        """Benefit package ID, which is used to expand the free certificate package
+        """Benefit package ID, used for free certificate expansion package, the free certificate expansion package has been discontinued.
         :rtype: str
         """
         return self._PackageId
@@ -388,7 +411,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DeleteDnsAutoRecord(self):
-        """Whether to delete the automatic domain name verification record after issuance, which is no by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.
+        """Whether to delete the automatic domain name verification record after issuance, which is fasle by default. This parameter can be passed in only for domain names of the DNS_AUTO verification type.
         :rtype: bool
         """
         return self._DeleteDnsAutoRecord
@@ -399,7 +422,7 @@ class ApplyCertificateRequest(AbstractModel):
 
     @property
     def DnsNames(self):
-        """
+        """Other domains bound to the certificate, to be opened. This parameter is not currently supported.
         :rtype: list of str
         """
         return self._DnsNames
@@ -442,7 +465,7 @@ class ApplyCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: Certificate ID
+        :param _CertificateId: The newly applied certificate id.
         :type CertificateId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -452,7 +475,7 @@ class ApplyCertificateResponse(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        """The newly applied certificate id.
         :rtype: str
         """
         return self._CertificateId
@@ -656,6 +679,92 @@ class BindResourceResult(AbstractModel):
                 obj = BindResourceRegionResult()
                 obj._deserialize(item)
                 self._BindResourceRegionResult.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class COSInstanceList(AbstractModel):
+    """COS instance details - asynchronous association of cloud resource data structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Region.
+        :type Region: str
+        :param _InstanceList: Instance details.
+        :type InstanceList: list of CosInstanceDetail
+        :param _TotalCount: Total number under the region.
+        :type TotalCount: int
+        :param _Error: Error message.
+        :type Error: str
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Error = None
+
+    @property
+    def Region(self):
+        """Region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        """Instance details.
+        :rtype: list of CosInstanceDetail
+        """
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        """Total number under the region.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Error(self):
+        """Error message.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = CosInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1094,9 +1203,9 @@ class CdnInstanceDetail(AbstractModel):
         :type Domain: str
         :param _CertId: The ID of the deployed certificate.
         :type CertId: str
-        :param _Status: The status of the domain.
+        :param _Status: Domain name status: rejected - the domain name failed the review or its registration has expired/been canceled; processing - deploying; online - started; offline - closed.
         :type Status: str
-        :param _HttpsBillingSwitch: The billing status of the domain.
+        :param _HttpsBillingSwitch: Domain billing status, where on indicates enable and off indicates disable.
         :type HttpsBillingSwitch: str
         """
         self._Domain = None
@@ -1128,7 +1237,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        """The status of the domain.
+        """Domain name status: rejected - the domain name failed the review or its registration has expired/been canceled; processing - deploying; online - started; offline - closed.
         :rtype: str
         """
         return self._Status
@@ -1139,7 +1248,7 @@ class CdnInstanceDetail(AbstractModel):
 
     @property
     def HttpsBillingSwitch(self):
-        """The billing status of the domain.
+        """Domain billing status, where on indicates enable and off indicates disable.
         :rtype: str
         """
         return self._HttpsBillingSwitch
@@ -1173,12 +1282,14 @@ class CdnInstanceList(AbstractModel):
         r"""
         :param _TotalCount: The total number of CDN domains in this region.	
         :type TotalCount: int
-        :param _InstanceList: The list of CDN domains.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceList: CDN domain name details.	
         :type InstanceList: list of CdnInstanceDetail
+        :param _Error: Whether to query exceptions.
+        :type Error: str
         """
         self._TotalCount = None
         self._InstanceList = None
+        self._Error = None
 
     @property
     def TotalCount(self):
@@ -1193,8 +1304,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
-        """The list of CDN domains.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        """CDN domain name details.	
         :rtype: list of CdnInstanceDetail
         """
         return self._InstanceList
@@ -1202,6 +1312,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @InstanceList.setter
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
+
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
@@ -1212,6 +1333,103 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = CdnInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertBasicInfo(AbstractModel):
+    """Basic information of the certificate
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Issuer: Issuer.
+        :type Issuer: str
+        :param _Subject: Issued to.
+        :type Subject: str
+        :param _Fingerprint: Certificate fingerprint.
+        :type Fingerprint: str
+        :param _ValidFrom: Certificate valid period start time.
+        :type ValidFrom: str
+        :param _ValidTo: Certificate valid period end time.
+        :type ValidTo: str
+        """
+        self._Issuer = None
+        self._Subject = None
+        self._Fingerprint = None
+        self._ValidFrom = None
+        self._ValidTo = None
+
+    @property
+    def Issuer(self):
+        """Issuer.
+        :rtype: str
+        """
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def Subject(self):
+        """Issued to.
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def Fingerprint(self):
+        """Certificate fingerprint.
+        :rtype: str
+        """
+        return self._Fingerprint
+
+    @Fingerprint.setter
+    def Fingerprint(self, Fingerprint):
+        self._Fingerprint = Fingerprint
+
+    @property
+    def ValidFrom(self):
+        """Certificate valid period start time.
+        :rtype: str
+        """
+        return self._ValidFrom
+
+    @ValidFrom.setter
+    def ValidFrom(self, ValidFrom):
+        self._ValidFrom = ValidFrom
+
+    @property
+    def ValidTo(self):
+        """Certificate valid period end time.
+        :rtype: str
+        """
+        return self._ValidTo
+
+    @ValidTo.setter
+    def ValidTo(self, ValidTo):
+        self._ValidTo = ValidTo
+
+
+    def _deserialize(self, params):
+        self._Issuer = params.get("Issuer")
+        self._Subject = params.get("Subject")
+        self._Fingerprint = params.get("Fingerprint")
+        self._ValidFrom = params.get("ValidFrom")
+        self._ValidTo = params.get("ValidTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1284,11 +1502,9 @@ class Certificate(AbstractModel):
         :type CertId: str
         :param _DnsNames: The list of domains bound to the certificate.
         :type DnsNames: list of str
-        :param _CertCaId: The root certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CertCaId: Root certificate id.
         :type CertCaId: str
-        :param _SSLMode: The authentication type. Valid values: `UNIDIRECTIONAL` (one-way authentication) and `MUTUAL` (two-way authentication).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SSLMode: Certificate authentication mode: unidirectional one-way authentication, mutual mutual authentication.
         :type SSLMode: str
         """
         self._CertId = None
@@ -1320,8 +1536,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertCaId(self):
-        """The root certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Root certificate id.
         :rtype: str
         """
         return self._CertCaId
@@ -1332,8 +1547,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SSLMode(self):
-        """The authentication type. Valid values: `UNIDIRECTIONAL` (one-way authentication) and `MUTUAL` (two-way authentication).
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate authentication mode: unidirectional one-way authentication, mutual mutual authentication.
         :rtype: str
         """
         return self._SSLMode
@@ -1365,26 +1579,23 @@ class CertificateExtra(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainNumber: Number of domain names which can be associated with the certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _DomainNumber: Quantity of configurable domain names for the certificate.
         :type DomainNumber: str
-        :param _OriginCertificateId: Original certificate ID
+        :param _OriginCertificateId: Renew the original certificate id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OriginCertificateId: str
         :param _ReplacedBy: Original ID of the new certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReplacedBy: str
-        :param _ReplacedFor: New ID of the new certificate
+        :param _ReplacedFor: Reissue certificate id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ReplacedFor: str
-        :param _RenewOrder: Certificate ID of the new order
+        :param _RenewOrder: Renewal certificate id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type RenewOrder: str
-        :param _SMCert: Whether the certificate is a Chinese SM certificate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SMCert: Whether it is a China SM certificate.
         :type SMCert: int
-        :param _CompanyType: Company type
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CompanyType: Company type, valid values: 1 (individual); 2 (company).
         :type CompanyType: int
         """
         self._DomainNumber = None
@@ -1397,8 +1608,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DomainNumber(self):
-        """Number of domain names which can be associated with the certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Quantity of configurable domain names for the certificate.
         :rtype: str
         """
         return self._DomainNumber
@@ -1409,7 +1619,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginCertificateId(self):
-        """Original certificate ID
+        """Renew the original certificate id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1433,7 +1643,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplacedFor(self):
-        """New ID of the new certificate
+        """Reissue certificate id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1445,7 +1655,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewOrder(self):
-        """Certificate ID of the new order
+        """Renewal certificate id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -1457,8 +1667,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SMCert(self):
-        """Whether the certificate is a Chinese SM certificate.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Whether it is a China SM certificate.
         :rtype: int
         """
         return self._SMCert
@@ -1469,8 +1678,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompanyType(self):
-        """Company type
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Company type, valid values: 1 (individual); 2 (company).
         :rtype: int
         """
         return self._CompanyType
@@ -1505,163 +1713,206 @@ class Certificates(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnerUin: User UIN
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OwnerUin: User uin.
         :type OwnerUin: str
-        :param _ProjectId: Project ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ProjectId: Project id.
         :type ProjectId: str
-        :param _From: Certificate source
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _From: Certificate source:.
+trustasia.
+upload.
+wosign.
+sheca.
         :type From: str
-        :param _PackageType: The certificate plan type. Valid values:
-null: Certificates uploaded by users (no plan type)
-`1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PackageType: Certificate package type:.
+Null: user uploads a certificate (without package type),.
+2: trustasia tls rsa ca,. 
+3: securesite enhanced enterprise edition (ev pro),. 
+4: securesite enhanced (ev). 
+5: securesite enterprise professional edition (ov pro).
+6: securesite enterprise (ov). 
+7: securesite enterprise (ov) wildcard. 
+8: geotrust enhanced (ev). 
+9: geotrust enterprise (ov) cert. 
+10: geotrust enterprise (ov) wildcard cert. 
+11: trustasia domain name-based multiple domain names ssl certificate. 
+12: trustasia domain name-based (dv) wildcard cert. 
+13: trustasia enterprise wildcard (ov) ssl certificate (d3). 
+14: trustasia enterprise (ov) ssl certificate (d3). 
+15: trustasia enterprise multiple domain names (ov) ssl certificate (d3). 
+16: trustasia enhanced (ev) ssl certificate (d3). 
+17: trustasia enhanced multiple domain names (ev) ssl certificate (d3). 
+18: globalsign enterprise (ov) ssl certificate. 
+19: globalsign enterprise wildcard (ov) ssl certificate. 
+20: globalsign enhanced (ev) ssl certificate. 
+21: trustasia enterprise wildcard multiple domain names (ov) ssl certificate (d3). 
+22: globalsign enterprise multiple domain names (ov) ssl certificate. 
+23: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+24: globalsign enhanced multiple domain name (ev) ssl certificate.
+25: wotrus domain name cert.
+26: wotrus domain name multiple domain name cert.
+27: wotrus domain name wildcard cert.
+28: wotrus enterprise cert.
+29: wotrus enterprise multi - domain name certificate.
+30: wotrus enterprise wildcard certificate.
+31: wotrus enhanced certificate.
+32: wotrus enhanced multi - domain name certificate.
+33: wotrus - national cryptography domain - type certificate.
+34: wotrus-national cryptography domain certificate (multiple domain names).
+35: wotrus-national cryptography domain certificate (wildcard).
+37: wotrus-national cryptography enterprise certificate.
+38: wotrus-national cryptography enterprise certificate (multiple domain names).
+39: wotrus-national cryptography enterprise certificate (wildcard).
+40: wotrus - enhanced national cryptography certificate.
+41: wotrus - enhanced national cryptography certificate (multiple domain names).
+42: trustasia - domain name type certificate (wildcard multiple domain names).
+43: DNSPod - enterprise (ov) ssl certificate.
+44: DNSPod - enterprise (ov) wildcard ssl certificate.
+45: DNSPod - enterprise (ov) multiple domain names ssl certificate.
+46: DNSPod - enhanced (ev) ssl certificate.
+47: DNSPod - enhanced (ev) multiple domain names ssl certificate.
+48: DNSPod - domain name-based (dv) ssl certificate.
+49: DNSPod - domain name-based (dv) wildcard ssl certificate.
+50: DNSPod - domain name-based (dv) multiple domain names ssl certificate.
+51: DNSPod (national cryptography) - enterprise (ov) ssl certificate.
+52: DNSPod (national cryptography) - enterprise (ov) wildcard ssl certificate.
+53: DNSPod (national cryptography) - enterprise (ov) multiple domain names ssl certificate.
+54: DNSPod (national cryptography) - domain name-based (dv) ssl certificate.
+55: DNSPod (national cryptography) - domain name-based (dv) wildcard ssl certificate.
+56: DNSPod (national cryptography) - domain name-based (dv) multiple domain names ssl certificate.
+57: securesite enterprise professional edition multiple domain names (ov pro).
+58: securesite enterprise multiple domain names (ov).
+59: securesite enhanced professional edition multiple domain names (ev pro).
+60: securesite enhanced multiple domain names (ev).
+61: geotrust enhanced multiple domain names (ev).
+75: securesite enterprise (ov).
+76: securesite enterprise (ov) wildcard.
+77: securesite enhanced (ev).
+78: geotrust enterprise (ov).
+79: geotrust enterprise wildcard (ov).
+80: geotrust enhanced (ev).
+81: globalsign enterprise (ov) ssl certificate.
+82: globalsign enterprise wildcard (ov) ssl certificate.
+83: trustasia c1 dv free.
+85: globalsign enhanced (ev) ssl certificate.
+88: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+89: globalsign enterprise multiple domain names (ov) ssl certificate.
+90: globalsign enhanced multiple domain names (ev) ssl certificate.
+91: geotrust enhanced multiple domain names (ev).
+92: securesite enterprise pro multiple domain names (ov pro).
+93: securesite enterprise multiple domain names (ov).
+94: securesite enhanced pro multiple domain names (ev pro).
+95: securesite enhanced multiple domain names (ev).
+96: securesite ev pro.
+97: securesite enterprise professional edition (ov pro).
+98: cfca enterprise (ov) ssl certificate.
+99: cfca enterprise ov ssl certificate for multiple domain names.
+100: cfca ov wildcard ssl certificate.
+101: cfca enhanced (ev) ssl certificate.
         :type PackageType: str
-        :param _CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _CertificateType: Certificate type. ca = client certificate; svr = server certificate.
         :type CertificateType: str
-        :param _ProductZhName: Issuer
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ProductZhName: Certificate product name.
         :type ProductZhName: str
-        :param _Domain: Primary domain name
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Domain: Primary domain name.
         :type Domain: str
-        :param _Alias: Alias
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Alias: Remark name.
         :type Alias: str
-        :param _Status: Status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added for domain names of the DNS_AUTO verification type; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate; `14`: Refunded.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Certificate status: 0 = under review, 1 = approved, 2 = review failed, 3 = expired, 4 = dns record added automatically, 5 = enterprise certificate, pending documentation submission, 6 = order cancellation in progress, 7 = canceled, 8 = documents submitted, pending upload of confirmation letter, 9 = certificate revocation in progress, 10 = revoked, 11 = reissue in progress, 12 = pending upload of revocation confirmation letter, 13 = free certificate pending documentation submission, 14 = certificate refunded, 15 = certificate migration in progress.
         :type Status: int
-        :param _CertificateExtra: Extended information of the certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _CertificateExtra: Certificate extended information.
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param _VulnerabilityStatus: Vulnerability scanning status. `INACTIVE`: not activated; `ACTIVE`: activated
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _VulnerabilityStatus: Vulnerability scanning status: INACTIVE = not enabled, ACTIVE = enabled.
         :type VulnerabilityStatus: str
-        :param _StatusMsg: Status information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _StatusMsg: Status information.
         :type StatusMsg: str
-        :param _VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _VerifyType: Validation type: DNS_AUTO = automatic dns validation, DNS = manual dns validation, FILE = file verification, DNS_PROXY = dns proxy validation, FILE_PROXY = file proxy verification.
         :type VerifyType: str
-        :param _CertBeginTime: Time when the certificate takes effect
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _CertBeginTime: Certificate validation time.
         :type CertBeginTime: str
-        :param _CertEndTime: Time when the certificate expires
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _CertEndTime: Certificate expiration time.
         :type CertEndTime: str
-        :param _ValidityPeriod: Validity period of the certificate, in months
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ValidityPeriod: Certificate validity period (month).
         :type ValidityPeriod: str
-        :param _InsertTime: Creation time
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _InsertTime: Creation time.
         :type InsertTime: str
-        :param _CertificateId: Certificate ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _CertificateId: Certificate id.
         :type CertificateId: str
-        :param _SubjectAltName: Domain names associated with the certificate (including the primary domain name)
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _SubjectAltName: Multiple domain names contained in the certificate (including the primary domain name).
         :type SubjectAltName: list of str
-        :param _PackageTypeName: Certificate type name
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _PackageTypeName: Certificate type name.
         :type PackageTypeName: str
-        :param _StatusName: Status description
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _StatusName: Status name.
         :type StatusName: str
-        :param _IsVip: Whether the customer is a VIP customer
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IsVip: Specifies whether the customer is a vip customer. true indicates yes and false indicates no.
         :type IsVip: bool
-        :param _IsDv: Whether the certificate is a DV certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IsDv: Specifies whether it is a dv version certificate. true indicates yes and false indicates no.
         :type IsDv: bool
-        :param _IsWildcard: Whether the certificate is a wildcard certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IsWildcard: Specifies whether it is a wildcard domain name certificate. true indicates yes and false indicates no.
         :type IsWildcard: bool
-        :param _IsVulnerability: Whether the vulnerability scanning feature is enabled
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _IsVulnerability: Whether the vulnerability scanning feature is enabled.
         :type IsVulnerability: bool
-        :param _RenewAble: Whether it can be renewed 
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RenewAble: Whether it is renewable.
         :type RenewAble: bool
-        :param _ProjectInfo: Project information
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ProjectInfo: Project information.
         :type ProjectInfo: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
-        :param _BoundResource: Associated Tencent Cloud services. Currently, this parameter is unavailable.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _BoundResource: Associated cloud resources are temporarily unavailable.
         :type BoundResource: list of str
-        :param _Deployable: Whether the certificate can be deployed
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Deployable: Whether it can be deployed.
         :type Deployable: bool
-        :param _Tags: List of tags
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Tags: Tag list.
         :type Tags: list of Tags
-        :param _IsIgnore: Whether the expiration notification was ignored
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsIgnore: Whether expiration notice has been ignored.
         :type IsIgnore: bool
-        :param _IsSM: Whether the certificate is a Chinese SM certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsSM: Whether it is a China SM certificate.
         :type IsSM: bool
-        :param _EncryptAlgorithm: Certificate algorithm
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EncryptAlgorithm: Certificate algorithm.
         :type EncryptAlgorithm: str
-        :param _CAEncryptAlgorithms: Encryption algorithm of the uploaded CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CAEncryptAlgorithms: Encryption algorithm for upload ca certificate.
         :type CAEncryptAlgorithms: list of str
-        :param _CAEndTimes: Expiration time of the uploaded CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CAEndTimes: Expiration time for upload ca certificate.
         :type CAEndTimes: list of str
-        :param _CACommonNames: Generic name of the uploaded CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CACommonNames: Common name of the upload ca certificate.
         :type CACommonNames: list of str
-        :param _PreAuditInfo: Prereview information of the certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PreAuditInfo: Certificate prereview information.
         :type PreAuditInfo: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
-        :param _AutoRenewFlag: Whether auto-renewal is enabled.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AutoRenewFlag: Whether to auto-renew.
         :type AutoRenewFlag: int
-        :param _HostingStatus: The hosting status. Valid values: `0` (hosting), `5` (replacing resources), `10` (hosting completed), and `-1` (not hosted). 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HostingStatus: Hosting status: 0, hosting; 5, resource replacement; 10, hosting completed; -1, not hosted. 
         :type HostingStatus: int
-        :param _HostingCompleteTime: The hosting completion time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HostingCompleteTime: Hosting completion time.
         :type HostingCompleteTime: str
-        :param _HostingRenewCertId: The hosted new certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HostingRenewCertId: Manage the new certificate id.
         :type HostingRenewCertId: str
-        :param _HasRenewOrder: Existing renewed certificate ID
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _HasRenewOrder: Existing renewal certificate id.
         :type HasRenewOrder: str
-        :param _ReplaceOriCertIsDelete: Whether the original certificate is deleted when a certificate is reissued.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ReplaceOriCertIsDelete: Indicates whether the original certificate is deleted during reissue.
         :type ReplaceOriCertIsDelete: bool
-        :param _IsExpiring: Whether the certificate is expiring soon. A certificate is considered to be expiring soon when there are 30 days or less left.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _IsExpiring: Indicates whether it is about to expire. a certificate is about to expire if it will expire within 30 days.
         :type IsExpiring: bool
-        :param _DVAuthDeadline: Validation expiration time for the addition of the DV certificate
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DVAuthDeadline: Add validation expiration date for DV certificate
         :type DVAuthDeadline: str
-        :param _ValidationPassedTime: Domain name validation pass time
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ValidationPassedTime: Domain verification passed time.
         :type ValidationPassedTime: str
-        :param _CertSANs: Multiple domain names with which the certificate is associated
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CertSANs: Multiple domain names associated with the certificate.
         :type CertSANs: list of str
-        :param _AwaitingValidationMsg: Domain name validation rejection information
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AwaitingValidationMsg: Domain verification rejection information.
         :type AwaitingValidationMsg: str
-        :param _AllowDownload: Whether downloading is allowed
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _AllowDownload: Whether to allow downloading.
         :type AllowDownload: bool
-        :param _IsDNSPODResolve: 
+        :param _IsDNSPODResolve: Whether all certificate domain names are managed and resolved by dnspod.
         :type IsDNSPODResolve: bool
-        :param _IsPackage: 
+        :param _IsPackage: Whether the certificate is purchased with benefit points.
         :type IsPackage: bool
-        :param _KeyPasswordCustomFlag: 
+        :param _KeyPasswordCustomFlag: Whether there is a private key password.
         :type KeyPasswordCustomFlag: bool
-        :param _SupportDownloadType: 
+        :param _SupportDownloadType: Types of web servers supported for download: nginx, apache, iis, tomcat, jks, root, other.
         :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
+        :param _CertRevokedTime: Certificate revocation completion time.
+        :type CertRevokedTime: str
+        :param _HostingResourceTypes: Hosted resource type list.
+        :type HostingResourceTypes: list of str
+        :param _HostingConfig: Managed configuration information.
+        :type HostingConfig: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1716,11 +1967,13 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._IsPackage = None
         self._KeyPasswordCustomFlag = None
         self._SupportDownloadType = None
+        self._CertRevokedTime = None
+        self._HostingResourceTypes = None
+        self._HostingConfig = None
 
     @property
     def OwnerUin(self):
-        """User UIN
-Note: this field may return null, indicating that no valid values can be obtained.
+        """User uin.
         :rtype: str
         """
         return self._OwnerUin
@@ -1731,8 +1984,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
-        """Project ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Project id.
         :rtype: str
         """
         return self._ProjectId
@@ -1743,8 +1995,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def From(self):
-        """Certificate source
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate source:.
+trustasia.
+upload.
+wosign.
+sheca.
         :rtype: str
         """
         return self._From
@@ -1755,10 +2010,91 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageType(self):
-        """The certificate plan type. Valid values:
-null: Certificates uploaded by users (no plan type)
-`1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate package type:.
+Null: user uploads a certificate (without package type),.
+2: trustasia tls rsa ca,. 
+3: securesite enhanced enterprise edition (ev pro),. 
+4: securesite enhanced (ev). 
+5: securesite enterprise professional edition (ov pro).
+6: securesite enterprise (ov). 
+7: securesite enterprise (ov) wildcard. 
+8: geotrust enhanced (ev). 
+9: geotrust enterprise (ov) cert. 
+10: geotrust enterprise (ov) wildcard cert. 
+11: trustasia domain name-based multiple domain names ssl certificate. 
+12: trustasia domain name-based (dv) wildcard cert. 
+13: trustasia enterprise wildcard (ov) ssl certificate (d3). 
+14: trustasia enterprise (ov) ssl certificate (d3). 
+15: trustasia enterprise multiple domain names (ov) ssl certificate (d3). 
+16: trustasia enhanced (ev) ssl certificate (d3). 
+17: trustasia enhanced multiple domain names (ev) ssl certificate (d3). 
+18: globalsign enterprise (ov) ssl certificate. 
+19: globalsign enterprise wildcard (ov) ssl certificate. 
+20: globalsign enhanced (ev) ssl certificate. 
+21: trustasia enterprise wildcard multiple domain names (ov) ssl certificate (d3). 
+22: globalsign enterprise multiple domain names (ov) ssl certificate. 
+23: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+24: globalsign enhanced multiple domain name (ev) ssl certificate.
+25: wotrus domain name cert.
+26: wotrus domain name multiple domain name cert.
+27: wotrus domain name wildcard cert.
+28: wotrus enterprise cert.
+29: wotrus enterprise multi - domain name certificate.
+30: wotrus enterprise wildcard certificate.
+31: wotrus enhanced certificate.
+32: wotrus enhanced multi - domain name certificate.
+33: wotrus - national cryptography domain - type certificate.
+34: wotrus-national cryptography domain certificate (multiple domain names).
+35: wotrus-national cryptography domain certificate (wildcard).
+37: wotrus-national cryptography enterprise certificate.
+38: wotrus-national cryptography enterprise certificate (multiple domain names).
+39: wotrus-national cryptography enterprise certificate (wildcard).
+40: wotrus - enhanced national cryptography certificate.
+41: wotrus - enhanced national cryptography certificate (multiple domain names).
+42: trustasia - domain name type certificate (wildcard multiple domain names).
+43: DNSPod - enterprise (ov) ssl certificate.
+44: DNSPod - enterprise (ov) wildcard ssl certificate.
+45: DNSPod - enterprise (ov) multiple domain names ssl certificate.
+46: DNSPod - enhanced (ev) ssl certificate.
+47: DNSPod - enhanced (ev) multiple domain names ssl certificate.
+48: DNSPod - domain name-based (dv) ssl certificate.
+49: DNSPod - domain name-based (dv) wildcard ssl certificate.
+50: DNSPod - domain name-based (dv) multiple domain names ssl certificate.
+51: DNSPod (national cryptography) - enterprise (ov) ssl certificate.
+52: DNSPod (national cryptography) - enterprise (ov) wildcard ssl certificate.
+53: DNSPod (national cryptography) - enterprise (ov) multiple domain names ssl certificate.
+54: DNSPod (national cryptography) - domain name-based (dv) ssl certificate.
+55: DNSPod (national cryptography) - domain name-based (dv) wildcard ssl certificate.
+56: DNSPod (national cryptography) - domain name-based (dv) multiple domain names ssl certificate.
+57: securesite enterprise professional edition multiple domain names (ov pro).
+58: securesite enterprise multiple domain names (ov).
+59: securesite enhanced professional edition multiple domain names (ev pro).
+60: securesite enhanced multiple domain names (ev).
+61: geotrust enhanced multiple domain names (ev).
+75: securesite enterprise (ov).
+76: securesite enterprise (ov) wildcard.
+77: securesite enhanced (ev).
+78: geotrust enterprise (ov).
+79: geotrust enterprise wildcard (ov).
+80: geotrust enhanced (ev).
+81: globalsign enterprise (ov) ssl certificate.
+82: globalsign enterprise wildcard (ov) ssl certificate.
+83: trustasia c1 dv free.
+85: globalsign enhanced (ev) ssl certificate.
+88: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+89: globalsign enterprise multiple domain names (ov) ssl certificate.
+90: globalsign enhanced multiple domain names (ev) ssl certificate.
+91: geotrust enhanced multiple domain names (ev).
+92: securesite enterprise pro multiple domain names (ov pro).
+93: securesite enterprise multiple domain names (ov).
+94: securesite enhanced pro multiple domain names (ev pro).
+95: securesite enhanced multiple domain names (ev).
+96: securesite ev pro.
+97: securesite enterprise professional edition (ov pro).
+98: cfca enterprise (ov) ssl certificate.
+99: cfca enterprise ov ssl certificate for multiple domain names.
+100: cfca ov wildcard ssl certificate.
+101: cfca enhanced (ev) ssl certificate.
         :rtype: str
         """
         return self._PackageType
@@ -1769,8 +2105,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateType(self):
-        """Certificate type. `CA`: client certificate; `SVR`: server certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate type. ca = client certificate; svr = server certificate.
         :rtype: str
         """
         return self._CertificateType
@@ -1781,8 +2116,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductZhName(self):
-        """Issuer
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate product name.
         :rtype: str
         """
         return self._ProductZhName
@@ -1793,8 +2127,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Primary domain name
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Primary domain name.
         :rtype: str
         """
         return self._Domain
@@ -1805,8 +2138,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Alias(self):
-        """Alias
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Remark name.
         :rtype: str
         """
         return self._Alias
@@ -1817,8 +2149,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added for domain names of the DNS_AUTO verification type; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate; `14`: Refunded.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate status: 0 = under review, 1 = approved, 2 = review failed, 3 = expired, 4 = dns record added automatically, 5 = enterprise certificate, pending documentation submission, 6 = order cancellation in progress, 7 = canceled, 8 = documents submitted, pending upload of confirmation letter, 9 = certificate revocation in progress, 10 = revoked, 11 = reissue in progress, 12 = pending upload of revocation confirmation letter, 13 = free certificate pending documentation submission, 14 = certificate refunded, 15 = certificate migration in progress.
         :rtype: int
         """
         return self._Status
@@ -1829,8 +2160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateExtra(self):
-        """Extended information of the certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate extended information.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
         return self._CertificateExtra
@@ -1841,8 +2171,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VulnerabilityStatus(self):
-        """Vulnerability scanning status. `INACTIVE`: not activated; `ACTIVE`: activated
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Vulnerability scanning status: INACTIVE = not enabled, ACTIVE = enabled.
         :rtype: str
         """
         return self._VulnerabilityStatus
@@ -1853,8 +2182,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusMsg(self):
-        """Status information
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Status information.
         :rtype: str
         """
         return self._StatusMsg
@@ -1865,8 +2193,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyType(self):
-        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Validation type: DNS_AUTO = automatic dns validation, DNS = manual dns validation, FILE = file verification, DNS_PROXY = dns proxy validation, FILE_PROXY = file proxy verification.
         :rtype: str
         """
         return self._VerifyType
@@ -1877,8 +2204,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertBeginTime(self):
-        """Time when the certificate takes effect
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate validation time.
         :rtype: str
         """
         return self._CertBeginTime
@@ -1889,8 +2215,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertEndTime(self):
-        """Time when the certificate expires
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate expiration time.
         :rtype: str
         """
         return self._CertEndTime
@@ -1901,8 +2226,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ValidityPeriod(self):
-        """Validity period of the certificate, in months
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate validity period (month).
         :rtype: str
         """
         return self._ValidityPeriod
@@ -1913,8 +2237,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InsertTime(self):
-        """Creation time
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Creation time.
         :rtype: str
         """
         return self._InsertTime
@@ -1925,8 +2248,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificateId(self):
-        """Certificate ID
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate id.
         :rtype: str
         """
         return self._CertificateId
@@ -1937,8 +2259,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubjectAltName(self):
-        """Domain names associated with the certificate (including the primary domain name)
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Multiple domain names contained in the certificate (including the primary domain name).
         :rtype: list of str
         """
         return self._SubjectAltName
@@ -1949,8 +2270,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageTypeName(self):
-        """Certificate type name
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Certificate type name.
         :rtype: str
         """
         return self._PackageTypeName
@@ -1961,8 +2281,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusName(self):
-        """Status description
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Status name.
         :rtype: str
         """
         return self._StatusName
@@ -1973,8 +2292,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVip(self):
-        """Whether the customer is a VIP customer
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Specifies whether the customer is a vip customer. true indicates yes and false indicates no.
         :rtype: bool
         """
         return self._IsVip
@@ -1985,8 +2303,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDv(self):
-        """Whether the certificate is a DV certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Specifies whether it is a dv version certificate. true indicates yes and false indicates no.
         :rtype: bool
         """
         return self._IsDv
@@ -1997,8 +2314,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsWildcard(self):
-        """Whether the certificate is a wildcard certificate
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Specifies whether it is a wildcard domain name certificate. true indicates yes and false indicates no.
         :rtype: bool
         """
         return self._IsWildcard
@@ -2009,8 +2325,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsVulnerability(self):
-        """Whether the vulnerability scanning feature is enabled
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Whether the vulnerability scanning feature is enabled.
         :rtype: bool
         """
         return self._IsVulnerability
@@ -2021,8 +2336,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewAble(self):
-        """Whether it can be renewed 
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Whether it is renewable.
         :rtype: bool
         """
         return self._RenewAble
@@ -2033,8 +2347,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProjectInfo(self):
-        """Project information
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Project information.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.ProjectInfo`
         """
         return self._ProjectInfo
@@ -2045,8 +2358,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BoundResource(self):
-        """Associated Tencent Cloud services. Currently, this parameter is unavailable.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Associated cloud resources are temporarily unavailable.
         :rtype: list of str
         """
         return self._BoundResource
@@ -2057,8 +2369,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deployable(self):
-        """Whether the certificate can be deployed
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Whether it can be deployed.
         :rtype: bool
         """
         return self._Deployable
@@ -2069,8 +2380,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """List of tags
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        """Tag list.
         :rtype: list of Tags
         """
         return self._Tags
@@ -2081,8 +2391,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsIgnore(self):
-        """Whether the expiration notification was ignored
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Whether expiration notice has been ignored.
         :rtype: bool
         """
         return self._IsIgnore
@@ -2093,8 +2402,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsSM(self):
-        """Whether the certificate is a Chinese SM certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Whether it is a China SM certificate.
         :rtype: bool
         """
         return self._IsSM
@@ -2105,8 +2413,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptAlgorithm(self):
-        """Certificate algorithm
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate algorithm.
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -2117,8 +2424,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CAEncryptAlgorithms(self):
-        """Encryption algorithm of the uploaded CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Encryption algorithm for upload ca certificate.
         :rtype: list of str
         """
         return self._CAEncryptAlgorithms
@@ -2129,8 +2435,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CAEndTimes(self):
-        """Expiration time of the uploaded CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Expiration time for upload ca certificate.
         :rtype: list of str
         """
         return self._CAEndTimes
@@ -2141,8 +2446,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CACommonNames(self):
-        """Generic name of the uploaded CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Common name of the upload ca certificate.
         :rtype: list of str
         """
         return self._CACommonNames
@@ -2153,8 +2457,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PreAuditInfo(self):
-        """Prereview information of the certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate prereview information.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
         """
         return self._PreAuditInfo
@@ -2165,8 +2468,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
-        """Whether auto-renewal is enabled.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Whether to auto-renew.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2177,8 +2479,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HostingStatus(self):
-        """The hosting status. Valid values: `0` (hosting), `5` (replacing resources), `10` (hosting completed), and `-1` (not hosted). 
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Hosting status: 0, hosting; 5, resource replacement; 10, hosting completed; -1, not hosted. 
         :rtype: int
         """
         return self._HostingStatus
@@ -2189,8 +2490,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostingCompleteTime(self):
-        """The hosting completion time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Hosting completion time.
         :rtype: str
         """
         return self._HostingCompleteTime
@@ -2201,8 +2501,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostingRenewCertId(self):
-        """The hosted new certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Manage the new certificate id.
         :rtype: str
         """
         return self._HostingRenewCertId
@@ -2213,8 +2512,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasRenewOrder(self):
-        """Existing renewed certificate ID
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Existing renewal certificate id.
         :rtype: str
         """
         return self._HasRenewOrder
@@ -2225,8 +2523,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ReplaceOriCertIsDelete(self):
-        """Whether the original certificate is deleted when a certificate is reissued.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Indicates whether the original certificate is deleted during reissue.
         :rtype: bool
         """
         return self._ReplaceOriCertIsDelete
@@ -2237,8 +2534,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsExpiring(self):
-        """Whether the certificate is expiring soon. A certificate is considered to be expiring soon when there are 30 days or less left.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Indicates whether it is about to expire. a certificate is about to expire if it will expire within 30 days.
         :rtype: bool
         """
         return self._IsExpiring
@@ -2249,8 +2545,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DVAuthDeadline(self):
-        """Validation expiration time for the addition of the DV certificate
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Add validation expiration date for DV certificate
         :rtype: str
         """
         return self._DVAuthDeadline
@@ -2261,8 +2556,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ValidationPassedTime(self):
-        """Domain name validation pass time
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Domain verification passed time.
         :rtype: str
         """
         return self._ValidationPassedTime
@@ -2273,8 +2567,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertSANs(self):
-        """Multiple domain names with which the certificate is associated
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Multiple domain names associated with the certificate.
         :rtype: list of str
         """
         return self._CertSANs
@@ -2285,8 +2578,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AwaitingValidationMsg(self):
-        """Domain name validation rejection information
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Domain verification rejection information.
         :rtype: str
         """
         return self._AwaitingValidationMsg
@@ -2297,8 +2589,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AllowDownload(self):
-        """Whether downloading is allowed
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Whether to allow downloading.
         :rtype: bool
         """
         return self._AllowDownload
@@ -2309,7 +2600,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsDNSPODResolve(self):
-        """
+        """Whether all certificate domain names are managed and resolved by dnspod.
         :rtype: bool
         """
         return self._IsDNSPODResolve
@@ -2320,7 +2611,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def IsPackage(self):
-        """
+        """Whether the certificate is purchased with benefit points.
         :rtype: bool
         """
         return self._IsPackage
@@ -2331,7 +2622,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def KeyPasswordCustomFlag(self):
-        """
+        """Whether there is a private key password.
         :rtype: bool
         """
         return self._KeyPasswordCustomFlag
@@ -2342,7 +2633,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SupportDownloadType(self):
-        """
+        """Types of web servers supported for download: nginx, apache, iis, tomcat, jks, root, other.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
         """
         return self._SupportDownloadType
@@ -2350,6 +2641,39 @@ Note: This field may return null, indicating that no valid value can be obtained
     @SupportDownloadType.setter
     def SupportDownloadType(self, SupportDownloadType):
         self._SupportDownloadType = SupportDownloadType
+
+    @property
+    def CertRevokedTime(self):
+        """Certificate revocation completion time.
+        :rtype: str
+        """
+        return self._CertRevokedTime
+
+    @CertRevokedTime.setter
+    def CertRevokedTime(self, CertRevokedTime):
+        self._CertRevokedTime = CertRevokedTime
+
+    @property
+    def HostingResourceTypes(self):
+        """Hosted resource type list.
+        :rtype: list of str
+        """
+        return self._HostingResourceTypes
+
+    @HostingResourceTypes.setter
+    def HostingResourceTypes(self, HostingResourceTypes):
+        self._HostingResourceTypes = HostingResourceTypes
+
+    @property
+    def HostingConfig(self):
+        """Managed configuration information.
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.HostingConfig`
+        """
+        return self._HostingConfig
+
+    @HostingConfig.setter
+    def HostingConfig(self, HostingConfig):
+        self._HostingConfig = HostingConfig
 
 
     def _deserialize(self, params):
@@ -2419,6 +2743,11 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SupportDownloadType") is not None:
             self._SupportDownloadType = SupportDownloadType()
             self._SupportDownloadType._deserialize(params.get("SupportDownloadType"))
+        self._CertRevokedTime = params.get("CertRevokedTime")
+        self._HostingResourceTypes = params.get("HostingResourceTypes")
+        if params.get("HostingConfig") is not None:
+            self._HostingConfig = HostingConfig()
+            self._HostingConfig._deserialize(params.get("HostingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2440,8 +2769,7 @@ class ClbInstanceDetail(AbstractModel):
         :type LoadBalancerId: str
         :param _LoadBalancerName: The CLB instance name.
         :type LoadBalancerName: str
-        :param _Listeners: The list of CLB listeners.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Listeners: CLB listener list.
         :type Listeners: list of ClbListener
         """
         self._LoadBalancerId = None
@@ -2472,8 +2800,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Listeners(self):
-        """The list of CLB listeners.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """CLB listener list.
         :rtype: list of ClbListener
         """
         return self._Listeners
@@ -2511,15 +2838,17 @@ class ClbInstanceList(AbstractModel):
         r"""
         :param _Region: The region.
         :type Region: str
-        :param _InstanceList: The list of CLB instances.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceList: CLB instance details.
         :type InstanceList: list of ClbInstanceDetail
         :param _TotalCount: The total number of CLB instances in this region.
         :type TotalCount: int
+        :param _Error: Whether to query exceptions.
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -2534,8 +2863,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
-        """The list of CLB instances.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """CLB instance details.
         :rtype: list of ClbInstanceDetail
         """
         return self._InstanceList
@@ -2555,6 +2883,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -2565,6 +2904,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2590,14 +2930,11 @@ class ClbListener(AbstractModel):
         :type SniSwitch: int
         :param _Protocol: The listener protocol type. Valid values: `HTTPS` and `TCP_SSL`.
         :type Protocol: str
-        :param _Certificate: The information of the certificate bound to the listener.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Certificate: Data of certificate bound to the listener.
         :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
-        :param _Rules: The list of the listener rules.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Rules: List of listener rules.
         :type Rules: list of ClbListenerRule
-        :param _NoMatchDomains: The list of non-matching domains.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NoMatchDomains: Domain list not matched.
         :type NoMatchDomains: list of str
         """
         self._ListenerId = None
@@ -2654,8 +2991,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificate(self):
-        """The information of the certificate bound to the listener.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Data of certificate bound to the listener.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         """
         return self._Certificate
@@ -2666,8 +3002,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rules(self):
-        """The list of the listener rules.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """List of listener rules.
         :rtype: list of ClbListenerRule
         """
         return self._Rules
@@ -2678,8 +3013,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoMatchDomains(self):
-        """The list of non-matching domains.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Domain list not matched.
         :rtype: list of str
         """
         return self._NoMatchDomains
@@ -2727,18 +3061,19 @@ class ClbListenerRule(AbstractModel):
         :type Domain: str
         :param _IsMatch: Whether the rule matches the domains to be associated with a certificate.
         :type IsMatch: bool
-        :param _Certificate: The certificates associated with the rule.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Certificate: Certificate data bound to the rule.
         :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
-        :param _NoMatchDomains: The list of non-matching domains.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NoMatchDomains: Domain list not matched.
         :type NoMatchDomains: list of str
+        :param _Url: Rule binding path.
+        :type Url: str
         """
         self._LocationId = None
         self._Domain = None
         self._IsMatch = None
         self._Certificate = None
         self._NoMatchDomains = None
+        self._Url = None
 
     @property
     def LocationId(self):
@@ -2775,8 +3110,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificate(self):
-        """The certificates associated with the rule.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate data bound to the rule.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.Certificate`
         """
         return self._Certificate
@@ -2787,8 +3121,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoMatchDomains(self):
-        """The list of non-matching domains.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Domain list not matched.
         :rtype: list of str
         """
         return self._NoMatchDomains
@@ -2796,6 +3129,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @NoMatchDomains.setter
     def NoMatchDomains(self, NoMatchDomains):
         self._NoMatchDomains = NoMatchDomains
+
+    @property
+    def Url(self):
+        """Rule binding path.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
 
 
     def _deserialize(self, params):
@@ -2806,6 +3150,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._Certificate = Certificate()
             self._Certificate._deserialize(params.get("Certificate"))
         self._NoMatchDomains = params.get("NoMatchDomains")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2823,9 +3168,12 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: Certificate ID
+        :param _CertificateId: Paid certificate id of materials to be submitted.	
         :type CertificateId: str
-        :param _VerifyType: Domain validation method
+        :param _VerifyType: Certificate domain name verification method:.
+DNS_AUTO: automatically adds domain dns verification, requiring user domain name resolution to be hosted on [cloud dns](https://console.cloud.tencent.com/cns) and under the same tencent cloud account as the certificate application.
+DNS: manually add domain dns verification, which requires users to manually add verification values to the domain resolution service provider.
+FILE: manual addition of domain name file verification. requires the user to manually add a specified path file in the root directory of the domain site for file verification, and either http or https passing is acceptable; the domain site needs to be accessible by overseas ca institutions, with the specific access allowlist being: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.
         :type VerifyType: str
         """
         self._CertificateId = None
@@ -2833,7 +3181,7 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        """Paid certificate id of materials to be submitted.	
         :rtype: str
         """
         return self._CertificateId
@@ -2844,7 +3192,10 @@ class CommitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
-        """Domain validation method
+        """Certificate domain name verification method:.
+DNS_AUTO: automatically adds domain dns verification, requiring user domain name resolution to be hosted on [cloud dns](https://console.cloud.tencent.com/cns) and under the same tencent cloud account as the certificate application.
+DNS: manually add domain dns verification, which requires users to manually add verification values to the domain resolution service provider.
+FILE: manual addition of domain name file verification. requires the user to manually add a specified path file in the root directory of the domain site for file verification, and either http or https passing is acceptable; the domain site needs to be accessible by overseas ca institutions, with the specific access allowlist being: 64.78.193.238, 216.168.247.9, 216.168.249.9, 54.189.196.217.
         :rtype: str
         """
         return self._VerifyType
@@ -2925,6 +3276,104 @@ class CommitCertificateInformationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CosInstanceDetail(AbstractModel):
+    """COS instance description.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name.
+        :type Domain: str
+        :param _CertId: Bound certificate id.
+        :type CertId: str
+        :param _Status: ENABLED: domain name online status.
+DISABLED: domain name offline status.
+        :type Status: str
+        :param _Bucket: bucket name.
+        :type Bucket: str
+        :param _Region: bucket region.
+        :type Region: str
+        """
+        self._Domain = None
+        self._CertId = None
+        self._Status = None
+        self._Bucket = None
+        self._Region = None
+
+    @property
+    def Domain(self):
+        """Domain name.
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertId(self):
+        """Bound certificate id.
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Status(self):
+        """ENABLED: domain name online status.
+DISABLED: domain name offline status.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Bucket(self):
+        """bucket name.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        """bucket region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CertId = params.get("CertId")
+        self._Status = params.get("Status")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCSRRequest(AbstractModel):
     """CreateCSR request structure.
 
@@ -2956,6 +3405,8 @@ class CreateCSRRequest(AbstractModel):
         :type KeyPassword: str
         :param _Remark: The remarks.
         :type Remark: str
+        :param _Tags: 
+        :type Tags: list of Tags
         """
         self._Domain = None
         self._Organization = None
@@ -2969,6 +3420,7 @@ class CreateCSRRequest(AbstractModel):
         self._Generate = None
         self._KeyPassword = None
         self._Remark = None
+        self._Tags = None
 
     @property
     def Domain(self):
@@ -3102,6 +3554,17 @@ class CreateCSRRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def Tags(self):
+        """
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -3116,6 +3579,12 @@ class CreateCSRRequest(AbstractModel):
         self._Generate = params.get("Generate")
         self._KeyPassword = params.get("KeyPassword")
         self._Remark = params.get("Remark")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3275,20 +3744,26 @@ class CreateCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: Certificate product ID. `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        :param _ProductId: Certificate product id. `3`: securesite ev pro; `4`: securesite ev; `5`: securesite ov pro; `6`: securesite ov; `7`: securesite ov wildcard; `8`: geotrust ev; `9`: geotrust ov; `10`: geotrust ov wildcard; `11`: trustasia dv multi-domain; `12`: trustasia dv wildcard; `13`: trustasia ov wildcard d3; `14`: trustasia ov d3; `15`: trustasia ov multi-domain d3; `16`: trustasia ev d3; `17`: trustasia ev multi-domain d3; `18`: globalsign ov; `19`: globalsign ov wildcard; `20`: globalsign ev; `21`: trustasia ov wildcard multi-domain d3; `22`: globalsign ov multi-domain; `23`: globalsign ov wildcard multi-domain; `24`: globalsign ev multi-domain; `25`: wotrus dv; `26`: wotrus dv multi-domain; `27`: wotrus dv wildcard; `28`: wotrus ov; `29`: wotrus ov multi-domain; `30`: wotrus ov wildcard; `31`: wotrus ev; `32`: wotrus ev multi-domain; `33`: DNSPod sm2 dv; `34`: DNSPod sm2 dv multi-domain; `35`: DNSPod sm2 dv wildcard; `37`: DNSPod sm2 ov; `38`: DNSPod sm2 ov multi-domain; `39`: DNSPod sm2 ov wildcard; `40`: DNSPod sm2 ev; `41`: DNSPod sm2 ev multi-domain; `42`: trustasia dv wildcard multi-domain; `43`: dnspod-ov ssl certificate; `44`: dnspod-ov wildcard ssl certificate; `45`: dnspod-ov multi-domain ssl certificate; `46`: dnspod-ev ssl certificate; `47`: dnspod-ev multi-domain ssl certificate; `48`: dnspod-dv ssl certificate; `49`: dnspod-dv wildcard ssl certificate; `50`: dnspod-dv multi-domain ssl certificate; `51`: DNSPod (sm2)-ov ssl certificate; `52`: DNSPod (sm2)-ov wildcard ssl certificate; `53`: DNSPod (sm2)-ov multi-domain ssl certificate; `54`: DNSPod (sm2)-dv ssl certificate; `55`: DNSPod (sm2)-dv wildcard ssl certificate; `56`: DNSPod (sm2)-dv multi-domain ssl certificate; `57`: securesite ov pro multi-domain; `58`: securesite ov multi-domain; `59`: securesite ev pro multi-domain; `60`: securesite ev multi-domain; `61`: geotrust ev multi-domain.
         :type ProductId: int
         :param _DomainNum: Number of domains associated with the certificate
         :type DomainNum: int
-        :param _TimeSpan: Certificate validity period. Currently, you can only purchase 1-year certificates.
+        :param _TimeSpan: Certificate validity period.
         :type TimeSpan: int
+        :param _AutoVoucher: Whether to automatically use vouchers: 1 for yes, 0 for no; the default is 1.
+        :type AutoVoucher: int
+        :param _Tags: Tag, generate tags for certificates.
+        :type Tags: list of Tags
         """
         self._ProductId = None
         self._DomainNum = None
         self._TimeSpan = None
+        self._AutoVoucher = None
+        self._Tags = None
 
     @property
     def ProductId(self):
-        """Certificate product ID. `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        """Certificate product id. `3`: securesite ev pro; `4`: securesite ev; `5`: securesite ov pro; `6`: securesite ov; `7`: securesite ov wildcard; `8`: geotrust ev; `9`: geotrust ov; `10`: geotrust ov wildcard; `11`: trustasia dv multi-domain; `12`: trustasia dv wildcard; `13`: trustasia ov wildcard d3; `14`: trustasia ov d3; `15`: trustasia ov multi-domain d3; `16`: trustasia ev d3; `17`: trustasia ev multi-domain d3; `18`: globalsign ov; `19`: globalsign ov wildcard; `20`: globalsign ev; `21`: trustasia ov wildcard multi-domain d3; `22`: globalsign ov multi-domain; `23`: globalsign ov wildcard multi-domain; `24`: globalsign ev multi-domain; `25`: wotrus dv; `26`: wotrus dv multi-domain; `27`: wotrus dv wildcard; `28`: wotrus ov; `29`: wotrus ov multi-domain; `30`: wotrus ov wildcard; `31`: wotrus ev; `32`: wotrus ev multi-domain; `33`: DNSPod sm2 dv; `34`: DNSPod sm2 dv multi-domain; `35`: DNSPod sm2 dv wildcard; `37`: DNSPod sm2 ov; `38`: DNSPod sm2 ov multi-domain; `39`: DNSPod sm2 ov wildcard; `40`: DNSPod sm2 ev; `41`: DNSPod sm2 ev multi-domain; `42`: trustasia dv wildcard multi-domain; `43`: dnspod-ov ssl certificate; `44`: dnspod-ov wildcard ssl certificate; `45`: dnspod-ov multi-domain ssl certificate; `46`: dnspod-ev ssl certificate; `47`: dnspod-ev multi-domain ssl certificate; `48`: dnspod-dv ssl certificate; `49`: dnspod-dv wildcard ssl certificate; `50`: dnspod-dv multi-domain ssl certificate; `51`: DNSPod (sm2)-ov ssl certificate; `52`: DNSPod (sm2)-ov wildcard ssl certificate; `53`: DNSPod (sm2)-ov multi-domain ssl certificate; `54`: DNSPod (sm2)-dv ssl certificate; `55`: DNSPod (sm2)-dv wildcard ssl certificate; `56`: DNSPod (sm2)-dv multi-domain ssl certificate; `57`: securesite ov pro multi-domain; `58`: securesite ov multi-domain; `59`: securesite ev pro multi-domain; `60`: securesite ev multi-domain; `61`: geotrust ev multi-domain.
         :rtype: int
         """
         return self._ProductId
@@ -3310,7 +3785,7 @@ class CreateCertificateRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        """Certificate validity period. Currently, you can only purchase 1-year certificates.
+        """Certificate validity period.
         :rtype: int
         """
         return self._TimeSpan
@@ -3319,11 +3794,40 @@ class CreateCertificateRequest(AbstractModel):
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
 
+    @property
+    def AutoVoucher(self):
+        """Whether to automatically use vouchers: 1 for yes, 0 for no; the default is 1.
+        :rtype: int
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def Tags(self):
+        """Tag, generate tags for certificates.
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DomainNum = params.get("DomainNum")
         self._TimeSpan = params.get("TimeSpan")
+        self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3405,8 +3909,7 @@ class DdosInstanceDetail(AbstractModel):
         :type InstanceId: str
         :param _Protocol: The protocol type.
         :type Protocol: str
-        :param _CertId: The certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CertId: Certificate id.
         :type CertId: str
         :param _VirtualPort: The forwarding port.
         :type VirtualPort: str
@@ -3452,8 +3955,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
-        """The certificate ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate id.
         :rtype: str
         """
         return self._CertId
@@ -3499,12 +4001,14 @@ class DdosInstanceList(AbstractModel):
         r"""
         :param _TotalCount: The total number of DDOS instances in this region.	
         :type TotalCount: int
-        :param _InstanceList: The list of DDOS instances.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceList: DDOS instance details.	
         :type InstanceList: list of DdosInstanceDetail
+        :param _Error: Whether to query exceptions.
+        :type Error: str
         """
         self._TotalCount = None
         self._InstanceList = None
+        self._Error = None
 
     @property
     def TotalCount(self):
@@ -3519,8 +4023,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
-        """The list of DDOS instances.	
-Note: This field may return null, indicating that no valid values can be obtained.
+        """DDOS instance details.	
         :rtype: list of DdosInstanceDetail
         """
         return self._InstanceList
@@ -3528,6 +4031,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @InstanceList.setter
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
+
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
 
 
     def _deserialize(self, params):
@@ -3538,6 +4052,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = DdosInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3557,7 +4072,7 @@ class DeleteCertificateRequest(AbstractModel):
         r"""
         :param _CertificateId: Certificate ID
         :type CertificateId: str
-        :param _IsCheckResource: 
+        :param _IsCheckResource: When deleting, check whether the certificate is associated with cloud resources. By default, no check is performed. if you choose to check (the authorization service role SSL_QCSLinkedRoleInReplaceLoadCertificate is required), the deletion will become asynchronous, and the API will return an asynchronous task id. you need to use the DescribeDeleteCertificatesTaskResult API to check whether the deletion is successful.
         :type IsCheckResource: bool
         """
         self._CertificateId = None
@@ -3576,7 +4091,7 @@ class DeleteCertificateRequest(AbstractModel):
 
     @property
     def IsCheckResource(self):
-        """
+        """When deleting, check whether the certificate is associated with cloud resources. By default, no check is performed. if you choose to check (the authorization service role SSL_QCSLinkedRoleInReplaceLoadCertificate is required), the deletion will become asynchronous, and the API will return an asynchronous task id. you need to use the DescribeDeleteCertificatesTaskResult API to check whether the deletion is successful.
         :rtype: bool
         """
         return self._IsCheckResource
@@ -3608,7 +4123,8 @@ class DeleteCertificateResponse(AbstractModel):
         r"""
         :param _DeleteResult: Deletion result
         :type DeleteResult: bool
-        :param _TaskId: 
+        :param _TaskId: Asynchronous deletion task id.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3630,7 +4146,8 @@ class DeleteCertificateResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        """
+        """Asynchronous deletion task id.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TaskId
@@ -4133,15 +4650,27 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The task ID, which is required to query the result of associated cloud resources.
+        :param _TaskId: Task id, which can be used to query the result of binding cloud resources according to the task id obtained from createcertificatebindresourcesynctask.
         :type TaskId: str
         :param _Limit: The number of cloud resources displayed on each page. The default value is 10, and the maximum value is 100.
         :type Limit: str
-        :param _Offset: The current offset.
+        :param _Offset: Current offset, default is 0.
         :type Offset: str
-        :param _ResourceTypes: The types of the resources to be queried. If no value is passed in, all types of resources will be queried.
+        :param _ResourceTypes: Result detail of queried resource type. if not provided, all will be queried. valid values include:.
+- clb.
+- cdn.
+- ddos.
+- live.
+- vod.
+- waf.
+- apigateway.
+- teo.
+- tke.
+- cos.
+- tse.
+- tcb.
         :type ResourceTypes: list of str
-        :param _Regions: The regions of the resources to be queried. Only CLB, TKE, WAF, APIGATEWAY, and TCB resources support the query by region.
+        :param _Regions: Data of querying region list. clb, tke, waf, api gateway, tcb, cos, and tse support region query, while other resource types do not support.
         :type Regions: list of str
         """
         self._TaskId = None
@@ -4152,7 +4681,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        """The task ID, which is required to query the result of associated cloud resources.
+        """Task id, which can be used to query the result of binding cloud resources according to the task id obtained from createcertificatebindresourcesynctask.
         :rtype: str
         """
         return self._TaskId
@@ -4174,7 +4703,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The current offset.
+        """Current offset, default is 0.
         :rtype: str
         """
         return self._Offset
@@ -4185,7 +4714,19 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """The types of the resources to be queried. If no value is passed in, all types of resources will be queried.
+        """Result detail of queried resource type. if not provided, all will be queried. valid values include:.
+- clb.
+- cdn.
+- ddos.
+- live.
+- vod.
+- waf.
+- apigateway.
+- teo.
+- tke.
+- cos.
+- tse.
+- tcb.
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -4196,7 +4737,7 @@ class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
 
     @property
     def Regions(self):
-        """The regions of the resources to be queried. Only CLB, TKE, WAF, APIGATEWAY, and TCB resources support the query by region.
+        """Data of querying region list. clb, tke, waf, api gateway, tcb, cos, and tse support region query, while other resource types do not support.
         :rtype: list of str
         """
         return self._Regions
@@ -4259,13 +4800,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TEO: The details of associated TEO resources.	
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TEO: list of TeoInstanceList
-        :param _Status: The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.
+        :param _Status: The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, check the result of `BindResourceResult` ; if the status is `2`, check the `error` .
         :type Status: int
         :param _CacheTime: The cache time of the current result.
         :type CacheTime: str
         :param _TSE: Associated TSE resource details
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TSE: list of TSEInstanceList
+        :param _COS: Information of associated cos resource.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type COS: list of COSInstanceList
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4282,6 +4826,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Status = None
         self._CacheTime = None
         self._TSE = None
+        self._COS = None
         self._RequestId = None
 
     @property
@@ -4406,7 +4951,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.
+        """The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, check the result of `BindResourceResult` ; if the status is `2`, check the `error` .
         :rtype: int
         """
         return self._Status
@@ -4437,6 +4982,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     @TSE.setter
     def TSE(self, TSE):
         self._TSE = TSE
+
+    @property
+    def COS(self):
+        """Information of associated cos resource.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of COSInstanceList
+        """
+        return self._COS
+
+    @COS.setter
+    def COS(self, COS):
+        self._COS = COS
 
     @property
     def RequestId(self):
@@ -4519,6 +5076,12 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = TSEInstanceList()
                 obj._deserialize(item)
                 self._TSE.append(obj)
+        if params.get("COS") is not None:
+            self._COS = []
+            for item in params.get("COS"):
+                obj = COSInstanceList()
+                obj._deserialize(item)
+                self._COS.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4651,33 +5214,134 @@ class DescribeCertificateDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnerUin: User UIN
+        :param _OwnerUin: Certificate belonging to user main account uin.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OwnerUin: str
         :param _ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
-        :param _From: Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
+        :param _From: Certificate source:.
+trustAsia.
+upload.
+wosign.
+sheca.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type From: str
         :param _CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param _PackageType: Certificate plan type. null: User-uploaded certificate (no plan type); `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        :param _PackageType: Certificate package type:.
+null: user uploads a certificate (no package type),.
+2: trustasia tls rsa ca,. 
+3: securesite enhanced enterprise version (ev pro),. 
+4: securesite enhanced (ev),. 
+5: securesite enterprise pro (ov pro).
+6: securesite enterprise (ov). 
+7: securesite enterprise (ov) wildcard. 
+8: geotrust enhanced (ev). 
+9: geotrust enterprise (ov). 
+10: geotrust enterprise (ov) wildcard cert. 
+11: trustasia domain name-based multiple domain names ssl certificate. 
+12: trustasia domain name-based (dv) wildcard cert. 
+13: trustasia enterprise wildcard (ov) ssl certificate (d3). 
+14: trustasia enterprise (ov) ssl certificate (d3). 
+15: trustasia enterprise multiple domain names (ov) ssl certificate (d3). 
+16: trustasia enhanced (ev) ssl certificate (d3). 
+17: trustasia enhanced multiple domain names (ev) ssl certificate (d3). 
+18: globalsign enterprise (ov) ssl certificate. 
+19: globalsign enterprise wildcard (ov) ssl certificate. 
+20: globalsign enhanced (ev) ssl certificate. 
+21: trustasia enterprise wildcard multiple domain names (ov) ssl certificate (d3). 
+22: globalsign enterprise multiple domain names (ov) ssl certificate. 
+23: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+24: globalsign enhanced multiple domain names (ev) ssl certificate.
+25: wotrus domain cert.
+26: wotrus multi-domain cert.
+27: wotrus wildcard cert.
+28: wotrus enterprise cert.
+29: wotrus enterprise multi-domain cert.
+30: wotrus enterprise wildcard certificate.
+31: wotrus enhanced certificate.
+32: wotrus enhanced multi-domain name certificate.
+33: wotrus-national cryptography domain name certificate.
+34: wotrus-national cryptography domain name certificate (multiple domain names).
+35: wotrus-national cryptography wildcard certificate.
+37: wotrus-national cryptography enterprise certificate.
+38: wotrus-national cryptography enterprise certificate (multiple domain names).
+39: wotrus-national cryptography enterprise certificate (wildcard).
+40: wotrus-national cryptography enhanced certificate.
+41: wotrus - national cryptography enhanced certificate (multiple domain names).
+42: trustasia - domain name certificate (wildcard multiple domain names).
+43: DNSPod - enterprise (ov) ssl certificate.
+44: DNSPod - enterprise (ov) wildcard ssl certificate.
+45: DNSPod - enterprise (ov) multiple domain names ssl certificate.
+46: dnspod-enhanced (ev) ssl certificate.
+47: dnspod-enhanced (ev) multiple domain names ssl certificate.
+48: dnspod-domain name-based (dv) ssl certificate.
+49: dnspod-domain name-based (dv) wildcard ssl certificate.
+50: dnspod-domain name-based (dv) multiple domain names ssl certificate.
+51: DNSPod (national cryptography) - enterprise (ov) ssl certificate.
+52: DNSPod (national cryptography) - enterprise (ov) wildcard ssl certificate.
+53: DNSPod (national cryptography) - enterprise (ov) multiple domain names ssl certificate.
+54: DNSPod (national cryptography) - domain name-based (dv) ssl certificate.
+55: DNSPod (national cryptography) - domain name-based (dv) wildcard ssl certificate.
+56: DNSPod (national cryptography) - domain name-based (dv) multiple domain names ssl certificate.
+57: securesite enterprise professional version multiple domain names (ov pro).
+58: securesite enterprise multiple domain names (ov).
+59: securesite enhanced professional version multiple domain names (ev pro).
+60: securesite enhanced multiple domain names (ev).
+61: geotrust enhanced multiple domain names (ev).
+75: securesite enterprise (ov).
+76: securesite enterprise (ov) wildcard.
+77: securesite enhanced (ev).
+78: geotrust enterprise (ov).
+79: geotrust enterprise (ov) wildcard.
+80: geotrust enhanced (ev).
+81: globalsign enterprise (ov) ssl certificate.
+82: globalsign enterprise wildcard (ov) ssl certificate.
+83: trustasia c1 dv free.
+85: globalsign enhanced (ev) ssl certificate.
+88: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+89: globalsign enterprise multiple domain names (ov) ssl certificate.
+90: globalsign enhanced multiple domain names (ev) ssl certificate.
+91: geotrust enhanced multiple domain names (ev).
+92: securesite enterprise ov pro for multiple domain names.
+93: securesite enterprise for multiple domain names (ov).
+94: securesite ev pro for multiple domain names.
+95: securesite ev for multiple domain names.
+96: securesite ev pro.
+97: securesite enterprise professional edition (ov pro).
+98: cfca enterprise (ov) ssl certificate.
+99: cfca enterprise multiple domain names (ov) ssl certificate.
+100: cfca enterprise wildcard (ov) ssl certificate.
+101: cfca enhanced (ev) ssl certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
-        :param _ProductZhName: Issuer
+        :param _ProductZhName: Certificate product name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductZhName: str
-        :param _Domain: Domain name
+        :param _Domain: Certificate binds to a common name domain.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Domain: str
         :param _Alias: Alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param _Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+        :param _Status: Certificate status: 0 = under review, 1 = approved, 2 = review failed, 3 = expired, 4 = automatically added dns records, 5 = enterprise certificate, pending document submission, 6 = order cancellation in progress, 7 = canceled, 8 = documents submitted, pending upload of confirmation letter, 9 = certificate revocation in progress, 10 = revoked, 11 = reissue in progress, 12 = pending upload of revocation confirmation letter, 13 = free certificate pending document submission, 14 = certificate has been refunded, 15 = certificate migration in progress.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param _StatusMsg: Status information
+        :param _StatusMsg: Status information. valid values:.
+//Common status information.
+PRE-REVIEWING: in prereview.
+LEGAL-REVIEWING: in legal review.
+CA-REVIEWING: in ca review.
+PENDING-DCV: in domain verification.
+WAIT-ISSUE: waiting for issue (domain verification passed).
+Certificate review failure status information.
+1. order review failed.
+2. ca review failed, and the domain name did not pass the security review.
+3. domain name verification timed out, and the order was automatically closed. please reapply for the certificate.
+4. the certificate information did not pass the review of the certificate ca agency. the reviewer will call the contact information reserved for the certificate. please pay attention to the incoming call. subsequently, you can resubmit the information through "modify information".
+To be continuously improved.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusMsg: str
         :param _VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
@@ -4695,22 +5359,22 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _ValidityPeriod: Validity period of the certificate, in months
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ValidityPeriod: str
-        :param _InsertTime: Application time
+        :param _InsertTime: Certificate application time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InsertTime: str
-        :param _OrderId: Order ID
+        :param _OrderId: CA order id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OrderId: str
         :param _CertificateExtra: Extended information of the certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param _CertificatePrivateKey: Private key of the certificate
+        :param _CertificatePrivateKey: Private key certificate; for Chinese SM certificates, it refers to the private key certificate in the signature certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificatePrivateKey: str
-        :param _CertificatePublicKey: Public key of the certificate
+        :param _CertificatePublicKey: Public key certificate; for Chinese SM certificate, it refers to the public key certificate in the signature certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificatePublicKey: str
-        :param _DvAuthDetail: DV authentication information
+        :param _DvAuthDetail: Certificate domain name verification information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         :param _VulnerabilityReport: Vulnerability scanning assessment report
@@ -4740,7 +5404,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _IsVulnerability: Whether the vulnerability scanning feature is enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVulnerability: bool
-        :param _SubmittedData: Submitted data
+        :param _SubmittedData: Profile information submitted for paid certificates.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         :param _RenewAble: Whether the certificate can be renewed.
@@ -4755,11 +5419,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _RootCert: Root certificate.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RootCert: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
-        :param _EncryptCert: Chinese SM encryption certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EncryptCert: Chinese SM certificate public key, only has value for national cryptography certificates.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type EncryptCert: str
-        :param _EncryptPrivateKey: Private key of Chinese SM encryption
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EncryptPrivateKey: Chinese SM certificate private key certificate, only has value for national cryptography certificates.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type EncryptPrivateKey: str
         :param _CertFingerprint: SHA1 fingerprint of the signature certificate
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -4767,12 +5431,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _EncryptCertFingerprint: SHA1 fingerprint of the encryption certificate (for Chinese SM certificates only)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EncryptCertFingerprint: str
-        :param _EncryptAlgorithm: Certificate algorithm
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EncryptAlgorithm: Certificate encryption algorithm (or Chinese SM certificates only).
+Note: this field may return null, indicating that no valid values can be obtained.
         :type EncryptAlgorithm: str
         :param _DvRevokeAuthDetail: The authentication value for DV certificate revocation.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DvRevokeAuthDetail: list of DvAuths
+        :param _CertChainInfo: Certificate chain information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertChainInfo: list of CertBasicInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4817,11 +5484,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EncryptCertFingerprint = None
         self._EncryptAlgorithm = None
         self._DvRevokeAuthDetail = None
+        self._CertChainInfo = None
         self._RequestId = None
 
     @property
     def OwnerUin(self):
-        """User UIN
+        """Certificate belonging to user main account uin.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4845,7 +5513,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def From(self):
-        """Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
+        """Certificate source:.
+trustAsia.
+upload.
+wosign.
+sheca.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4869,7 +5541,92 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageType(self):
-        """Certificate plan type. null: User-uploaded certificate (no plan type); `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.
+        """Certificate package type:.
+null: user uploads a certificate (no package type),.
+2: trustasia tls rsa ca,. 
+3: securesite enhanced enterprise version (ev pro),. 
+4: securesite enhanced (ev),. 
+5: securesite enterprise pro (ov pro).
+6: securesite enterprise (ov). 
+7: securesite enterprise (ov) wildcard. 
+8: geotrust enhanced (ev). 
+9: geotrust enterprise (ov). 
+10: geotrust enterprise (ov) wildcard cert. 
+11: trustasia domain name-based multiple domain names ssl certificate. 
+12: trustasia domain name-based (dv) wildcard cert. 
+13: trustasia enterprise wildcard (ov) ssl certificate (d3). 
+14: trustasia enterprise (ov) ssl certificate (d3). 
+15: trustasia enterprise multiple domain names (ov) ssl certificate (d3). 
+16: trustasia enhanced (ev) ssl certificate (d3). 
+17: trustasia enhanced multiple domain names (ev) ssl certificate (d3). 
+18: globalsign enterprise (ov) ssl certificate. 
+19: globalsign enterprise wildcard (ov) ssl certificate. 
+20: globalsign enhanced (ev) ssl certificate. 
+21: trustasia enterprise wildcard multiple domain names (ov) ssl certificate (d3). 
+22: globalsign enterprise multiple domain names (ov) ssl certificate. 
+23: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+24: globalsign enhanced multiple domain names (ev) ssl certificate.
+25: wotrus domain cert.
+26: wotrus multi-domain cert.
+27: wotrus wildcard cert.
+28: wotrus enterprise cert.
+29: wotrus enterprise multi-domain cert.
+30: wotrus enterprise wildcard certificate.
+31: wotrus enhanced certificate.
+32: wotrus enhanced multi-domain name certificate.
+33: wotrus-national cryptography domain name certificate.
+34: wotrus-national cryptography domain name certificate (multiple domain names).
+35: wotrus-national cryptography wildcard certificate.
+37: wotrus-national cryptography enterprise certificate.
+38: wotrus-national cryptography enterprise certificate (multiple domain names).
+39: wotrus-national cryptography enterprise certificate (wildcard).
+40: wotrus-national cryptography enhanced certificate.
+41: wotrus - national cryptography enhanced certificate (multiple domain names).
+42: trustasia - domain name certificate (wildcard multiple domain names).
+43: DNSPod - enterprise (ov) ssl certificate.
+44: DNSPod - enterprise (ov) wildcard ssl certificate.
+45: DNSPod - enterprise (ov) multiple domain names ssl certificate.
+46: dnspod-enhanced (ev) ssl certificate.
+47: dnspod-enhanced (ev) multiple domain names ssl certificate.
+48: dnspod-domain name-based (dv) ssl certificate.
+49: dnspod-domain name-based (dv) wildcard ssl certificate.
+50: dnspod-domain name-based (dv) multiple domain names ssl certificate.
+51: DNSPod (national cryptography) - enterprise (ov) ssl certificate.
+52: DNSPod (national cryptography) - enterprise (ov) wildcard ssl certificate.
+53: DNSPod (national cryptography) - enterprise (ov) multiple domain names ssl certificate.
+54: DNSPod (national cryptography) - domain name-based (dv) ssl certificate.
+55: DNSPod (national cryptography) - domain name-based (dv) wildcard ssl certificate.
+56: DNSPod (national cryptography) - domain name-based (dv) multiple domain names ssl certificate.
+57: securesite enterprise professional version multiple domain names (ov pro).
+58: securesite enterprise multiple domain names (ov).
+59: securesite enhanced professional version multiple domain names (ev pro).
+60: securesite enhanced multiple domain names (ev).
+61: geotrust enhanced multiple domain names (ev).
+75: securesite enterprise (ov).
+76: securesite enterprise (ov) wildcard.
+77: securesite enhanced (ev).
+78: geotrust enterprise (ov).
+79: geotrust enterprise (ov) wildcard.
+80: geotrust enhanced (ev).
+81: globalsign enterprise (ov) ssl certificate.
+82: globalsign enterprise wildcard (ov) ssl certificate.
+83: trustasia c1 dv free.
+85: globalsign enhanced (ev) ssl certificate.
+88: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+89: globalsign enterprise multiple domain names (ov) ssl certificate.
+90: globalsign enhanced multiple domain names (ev) ssl certificate.
+91: geotrust enhanced multiple domain names (ev).
+92: securesite enterprise ov pro for multiple domain names.
+93: securesite enterprise for multiple domain names (ov).
+94: securesite ev pro for multiple domain names.
+95: securesite ev for multiple domain names.
+96: securesite ev pro.
+97: securesite enterprise professional edition (ov pro).
+98: cfca enterprise (ov) ssl certificate.
+99: cfca enterprise multiple domain names (ov) ssl certificate.
+100: cfca enterprise wildcard (ov) ssl certificate.
+101: cfca enhanced (ev) ssl certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._PackageType
@@ -4880,7 +5637,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductZhName(self):
-        """Issuer
+        """Certificate product name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4892,7 +5649,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
-        """Domain name
+        """Certificate binds to a common name domain.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4916,7 +5673,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+        """Certificate status: 0 = under review, 1 = approved, 2 = review failed, 3 = expired, 4 = automatically added dns records, 5 = enterprise certificate, pending document submission, 6 = order cancellation in progress, 7 = canceled, 8 = documents submitted, pending upload of confirmation letter, 9 = certificate revocation in progress, 10 = revoked, 11 = reissue in progress, 12 = pending upload of revocation confirmation letter, 13 = free certificate pending document submission, 14 = certificate has been refunded, 15 = certificate migration in progress.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -4928,7 +5685,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusMsg(self):
-        """Status information
+        """Status information. valid values:.
+//Common status information.
+PRE-REVIEWING: in prereview.
+LEGAL-REVIEWING: in legal review.
+CA-REVIEWING: in ca review.
+PENDING-DCV: in domain verification.
+WAIT-ISSUE: waiting for issue (domain verification passed).
+Certificate review failure status information.
+1. order review failed.
+2. ca review failed, and the domain name did not pass the security review.
+3. domain name verification timed out, and the order was automatically closed. please reapply for the certificate.
+4. the certificate information did not pass the review of the certificate ca agency. the reviewer will call the contact information reserved for the certificate. please pay attention to the incoming call. subsequently, you can resubmit the information through "modify information".
+To be continuously improved.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5000,7 +5769,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InsertTime(self):
-        """Application time
+        """Certificate application time.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5012,7 +5781,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OrderId(self):
-        """Order ID
+        """CA order id.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5036,7 +5805,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificatePrivateKey(self):
-        """Private key of the certificate
+        """Private key certificate; for Chinese SM certificates, it refers to the private key certificate in the signature certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5048,7 +5817,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertificatePublicKey(self):
-        """Public key of the certificate
+        """Public key certificate; for Chinese SM certificate, it refers to the public key certificate in the signature certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5060,7 +5829,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDetail(self):
-        """DV authentication information
+        """Certificate domain name verification information.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         """
@@ -5180,7 +5949,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubmittedData(self):
-        """Submitted data
+        """Profile information submitted for paid certificates.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         """
@@ -5240,8 +6009,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptCert(self):
-        """Chinese SM encryption certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Chinese SM certificate public key, only has value for national cryptography certificates.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EncryptCert
@@ -5252,8 +6021,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptPrivateKey(self):
-        """Private key of Chinese SM encryption
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Chinese SM certificate private key certificate, only has value for national cryptography certificates.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EncryptPrivateKey
@@ -5288,8 +6057,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptAlgorithm(self):
-        """Certificate algorithm
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Certificate encryption algorithm (or Chinese SM certificates only).
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -5309,6 +6078,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DvRevokeAuthDetail.setter
     def DvRevokeAuthDetail(self, DvRevokeAuthDetail):
         self._DvRevokeAuthDetail = DvRevokeAuthDetail
+
+    @property
+    def CertChainInfo(self):
+        """Certificate chain information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CertBasicInfo
+        """
+        return self._CertChainInfo
+
+    @CertChainInfo.setter
+    def CertChainInfo(self, CertChainInfo):
+        self._CertChainInfo = CertChainInfo
 
     @property
     def RequestId(self):
@@ -5382,6 +6163,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = DvAuths()
                 obj._deserialize(item)
                 self._DvRevokeAuthDetail.append(obj)
+        if params.get("CertChainInfo") is not None:
+            self._CertChainInfo = []
+            for item in params.get("CertChainInfo"):
+                obj = CertBasicInfo()
+                obj._deserialize(item)
+                self._CertChainInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5394,7 +6181,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
         r"""
         :param _Offset: Offset. The default value is 0.
         :type Offset: int
-        :param _Limit: Number of requested logs. The default value is 20.
+        :param _Limit: Number of requested logs, 20 by default, with a maximum value of 1000. if it exceeds 1000, it will be treated as 1000.
         :type Limit: int
         :param _StartTime: Start time. The default value is 15 days ago.
         :type StartTime: str
@@ -5419,7 +6206,7 @@ class DescribeCertificateOperateLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of requested logs. The default value is 20.
+        """Number of requested logs, 20 by default, with a maximum value of 1000. if it exceeds 1000, it will be treated as 1000.
         :rtype: int
         """
         return self._Limit
@@ -5595,16 +6382,104 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _ProjectId: Project ID
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProjectId: str
-        :param _From: Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
+        :param _From: Certificate source:
+trustAsia.
+upload.
+wosign.
+sheca.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type From: str
         :param _CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CertificateType: str
-        :param _PackageType: Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
+        :param _PackageType: Certificate package type:.
+Null: user uploads a certificate (without package type),.
+2: trustasia tls rsa ca,. 
+3: securesite enhanced enterprise edition (ev pro),. 
+4: securesite enhanced (ev),. 
+5: securesite enterprise professional edition (ov pro).
+6: securesite enterprise edition (ov). 
+7: securesite enterprise edition (ov) wildcard. 
+8: geotrust enhanced (ev). 
+9: geotrust enterprise edition (ov). 
+10: geotrust enterprise (ov) wildcard cert. 
+11: trustasia domain name-based multiple domain names ssl certificate. 
+12: trustasia domain name-based (dv) wildcard cert. 
+13: trustasia enterprise wildcard (ov) ssl certificate (d3). 
+14: trustasia enterprise (ov) ssl certificate (d3). 
+15: trustasia enterprise multiple domain names (ov) ssl certificate (d3). 
+16: trustasia enhanced (ev) ssl certificate (d3). 
+17: trustasia enhanced multiple domain names (ev) ssl certificate (d3). 
+18: globalsign enterprise (ov) ssl certificate. 
+19: globalsign enterprise wildcard (ov) ssl certificate. 
+20: globalsign enhanced (ev) ssl certificate. 
+21: trustasia enterprise wildcard multiple domain names (ov) ssl certificate (d3). 
+22: globalsign enterprise multiple domain names (ov) ssl certificate. 
+23: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+24: globalsign enhanced multiple domain names (ev) ssl certificate.
+25: wotrus domain cert.
+26: wotrus multi - domain name cert.
+27: wotrus wildcard cert.
+28: wotrus enterprise cert.
+29: wotrus enterprise multi - domain name cert.
+30: wotrus enterprise wildcard certificate.
+31: wotrus enhanced certificate.
+32: wotrus enhanced multi - domain name certificate.
+33: wotrus - national cryptography domain - name certificate.
+34: wotrus - national cryptography domain - name certificate (multiple domain names).
+35: wotrus-national cryptography wildcard domain certificate.
+37: wotrus-national cryptography enterprise certificate.
+38: wotrus-national cryptography enterprise certificate (multiple domain names).
+39: wotrus-national cryptography enterprise certificate (wildcard).
+40: wotrus-national cryptography enhanced certificate.
+41: wotrus - national cryptography enhanced certificate (multiple domain names).
+42: trustasia - domain name certificate (wildcard multiple domain names).
+43: DNSPod - enterprise (ov) ssl certificate.
+44: DNSPod - enterprise (ov) wildcard ssl certificate.
+45: DNSPod - enterprise (ov) multiple domain names ssl certificate.
+46: dnspod-enhanced (ev) ssl certificate.
+47: dnspod-enhanced (ev) multiple domain names ssl certificate.
+48: dnspod-domain name-based (dv) ssl certificate.
+49: dnspod-domain name-based (dv) wildcard ssl certificate.
+50: dnspod-domain name-based (dv) multiple domain names ssl certificate.
+51: DNSPod (national cryptography) - enterprise (ov) ssl certificate.
+52: DNSPod (national cryptography) - enterprise (ov) wildcard ssl certificate.
+53: DNSPod (national cryptography) - enterprise (ov) multiple domain names ssl certificate.
+54: DNSPod (national cryptography) - domain name-based (dv) ssl certificate.
+55: DNSPod (national cryptography) - domain name-based (dv) wildcard ssl certificate.
+56: DNSPod (national cryptography) - domain name-based (dv) multiple domain names ssl certificate.
+57: securesite enterprise professional version multiple domain names (ov pro).
+58: securesite enterprise multiple domain names (ov).
+59: securesite enhanced professional version multiple domain names (ev pro).
+60: securesite enhanced multiple domain names (ev).
+61: geotrust enhanced multiple domain names (ev).
+75: securesite enterprise (ov).
+76: securesite enterprise (ov) wildcard.
+77: securesite enhanced (ev).
+78: geotrust enterprise (ov).
+79: geotrust enterprise (ov) wildcard.
+80: geotrust enhanced (ev).
+81: globalsign enterprise (ov) ssl certificate.
+82: globalsign enterprise wildcard (ov) ssl certificate.
+83: trustasia c1 dv free.
+85: globalsign enhanced (ev) ssl certificate.
+88: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+89: globalsign enterprise multiple domain names (ov) ssl certificate.
+90: globalsign enhanced multiple domain names (ev) ssl certificate.
+91: geotrust enhanced multiple domain names (ev).
+92: securesite enterprise ov pro for multiple domain names.
+93: securesite enterprise for multiple domain names (ov).
+94: securesite ev pro for multiple domain names.
+95: securesite ev for multiple domain names.
+96: securesite ev pro.
+97: securesite enterprise professional version (ov pro).
+98: cfca enterprise (ov) ssl certificate.
+99: cfca enterprise multiple domain names (ov) ssl certificate.
+100: cfca enterprise wildcard (ov) ssl certificate.
+101: cfca enhanced (ev) ssl certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type PackageType: str
-        :param _ProductZhName: Name of the certificate issuer
+        :param _ProductZhName: Certificate product name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ProductZhName: str
         :param _Domain: Domain name
@@ -5613,13 +6488,25 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Alias: Alias
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Alias: str
-        :param _Status: Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+        :param _Status: Certificate status: 0 = under review, 1 = approved, 2 = review failed, 3 = expired, 4 = dns records added automatically, 5 = enterprise certificate, pending documentation submission, 6 = order cancellation in progress, 7 = canceled, 8 = documents submitted, pending upload of confirmation letter, 9 = certificate revocation in progress, 10 = revoked, 11 = reissue in progress, 12 = pending upload of revocation confirmation letter, 13 = free certificate pending document submission, 14 = certificate has been refunded, 15 = certificate migration in progress.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
-        :param _StatusMsg: Status information
+        :param _StatusMsg: Status information. valid values:.
+//Common status information.
+1. pre-reviewing: prereviewing.
+2. legal-reviewing: under legal review.
+3. ca-reviewing: under ca review.
+4. pending-dcv: under domain verification.
+5. wait-issue: waiting for issuance (domain verification passed).
+//Certificate review failure status information.
+Order review failed.
+CA review failed; the domain name did not pass the security review.
+Domain verification timed out, and the order was automatically closed. please reapply for the certificate.
+The certificate information did not pass the review by the certificate authority. the reviewer will call the contact information reserved for the certificate. please pay attention to the incoming call. subsequently, you can resubmit the information through "modify information".
+To be continuously improved.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StatusMsg: str
-        :param _VerifyType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
+        :param _VerifyType: Validation type: DNS_AUTO = automatic dns validation, DNS = manual dns validation, FILE = file verification, DNS_PROXY = dns proxy validation, FILE_PROXY = file proxy validation.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VerifyType: str
         :param _VulnerabilityStatus: Vulnerability scanning status
@@ -5685,14 +6572,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Tags: List of tags
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Tags: list of Tags
-        :param _CAEncryptAlgorithms: All encryption algorithms of a CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CAEncryptAlgorithms: All encryption methods of the ca certificate. only valid when the certificate type CertificateType is ca.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type CAEncryptAlgorithms: list of str
-        :param _CACommonNames: All common names of a CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CACommonNames: All common names of the ca certificate. only valid when the certificate type CertificateType is ca.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type CACommonNames: list of str
-        :param _CAEndTimes: All expiration time of a CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CAEndTimes: All expiration times of the ca certificate. only valid when the certificate type CertificateType is ca.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type CAEndTimes: list of str
         :param _DvRevokeAuthDetail: The authentication value for DV certificate revocation.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -5764,7 +6651,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def From(self):
-        """Certificate source. `trustasia`: TrustAsia; `upload`: certificate uploaded by users
+        """Certificate source:
+trustAsia.
+upload.
+wosign.
+sheca.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5788,7 +6679,91 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PackageType(self):
-        """Certificate plan type. `1`: GeoTrust DV SSL CA - G3; `2`: TrustAsia TLS RSA CA; `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain
+        """Certificate package type:.
+Null: user uploads a certificate (without package type),.
+2: trustasia tls rsa ca,. 
+3: securesite enhanced enterprise edition (ev pro),. 
+4: securesite enhanced (ev),. 
+5: securesite enterprise professional edition (ov pro).
+6: securesite enterprise edition (ov). 
+7: securesite enterprise edition (ov) wildcard. 
+8: geotrust enhanced (ev). 
+9: geotrust enterprise edition (ov). 
+10: geotrust enterprise (ov) wildcard cert. 
+11: trustasia domain name-based multiple domain names ssl certificate. 
+12: trustasia domain name-based (dv) wildcard cert. 
+13: trustasia enterprise wildcard (ov) ssl certificate (d3). 
+14: trustasia enterprise (ov) ssl certificate (d3). 
+15: trustasia enterprise multiple domain names (ov) ssl certificate (d3). 
+16: trustasia enhanced (ev) ssl certificate (d3). 
+17: trustasia enhanced multiple domain names (ev) ssl certificate (d3). 
+18: globalsign enterprise (ov) ssl certificate. 
+19: globalsign enterprise wildcard (ov) ssl certificate. 
+20: globalsign enhanced (ev) ssl certificate. 
+21: trustasia enterprise wildcard multiple domain names (ov) ssl certificate (d3). 
+22: globalsign enterprise multiple domain names (ov) ssl certificate. 
+23: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+24: globalsign enhanced multiple domain names (ev) ssl certificate.
+25: wotrus domain cert.
+26: wotrus multi - domain name cert.
+27: wotrus wildcard cert.
+28: wotrus enterprise cert.
+29: wotrus enterprise multi - domain name cert.
+30: wotrus enterprise wildcard certificate.
+31: wotrus enhanced certificate.
+32: wotrus enhanced multi - domain name certificate.
+33: wotrus - national cryptography domain - name certificate.
+34: wotrus - national cryptography domain - name certificate (multiple domain names).
+35: wotrus-national cryptography wildcard domain certificate.
+37: wotrus-national cryptography enterprise certificate.
+38: wotrus-national cryptography enterprise certificate (multiple domain names).
+39: wotrus-national cryptography enterprise certificate (wildcard).
+40: wotrus-national cryptography enhanced certificate.
+41: wotrus - national cryptography enhanced certificate (multiple domain names).
+42: trustasia - domain name certificate (wildcard multiple domain names).
+43: DNSPod - enterprise (ov) ssl certificate.
+44: DNSPod - enterprise (ov) wildcard ssl certificate.
+45: DNSPod - enterprise (ov) multiple domain names ssl certificate.
+46: dnspod-enhanced (ev) ssl certificate.
+47: dnspod-enhanced (ev) multiple domain names ssl certificate.
+48: dnspod-domain name-based (dv) ssl certificate.
+49: dnspod-domain name-based (dv) wildcard ssl certificate.
+50: dnspod-domain name-based (dv) multiple domain names ssl certificate.
+51: DNSPod (national cryptography) - enterprise (ov) ssl certificate.
+52: DNSPod (national cryptography) - enterprise (ov) wildcard ssl certificate.
+53: DNSPod (national cryptography) - enterprise (ov) multiple domain names ssl certificate.
+54: DNSPod (national cryptography) - domain name-based (dv) ssl certificate.
+55: DNSPod (national cryptography) - domain name-based (dv) wildcard ssl certificate.
+56: DNSPod (national cryptography) - domain name-based (dv) multiple domain names ssl certificate.
+57: securesite enterprise professional version multiple domain names (ov pro).
+58: securesite enterprise multiple domain names (ov).
+59: securesite enhanced professional version multiple domain names (ev pro).
+60: securesite enhanced multiple domain names (ev).
+61: geotrust enhanced multiple domain names (ev).
+75: securesite enterprise (ov).
+76: securesite enterprise (ov) wildcard.
+77: securesite enhanced (ev).
+78: geotrust enterprise (ov).
+79: geotrust enterprise (ov) wildcard.
+80: geotrust enhanced (ev).
+81: globalsign enterprise (ov) ssl certificate.
+82: globalsign enterprise wildcard (ov) ssl certificate.
+83: trustasia c1 dv free.
+85: globalsign enhanced (ev) ssl certificate.
+88: globalsign enterprise wildcard multiple domain names (ov) ssl certificate.
+89: globalsign enterprise multiple domain names (ov) ssl certificate.
+90: globalsign enhanced multiple domain names (ev) ssl certificate.
+91: geotrust enhanced multiple domain names (ev).
+92: securesite enterprise ov pro for multiple domain names.
+93: securesite enterprise for multiple domain names (ov).
+94: securesite ev pro for multiple domain names.
+95: securesite ev for multiple domain names.
+96: securesite ev pro.
+97: securesite enterprise professional version (ov pro).
+98: cfca enterprise (ov) ssl certificate.
+99: cfca enterprise multiple domain names (ov) ssl certificate.
+100: cfca enterprise wildcard (ov) ssl certificate.
+101: cfca enhanced (ev) ssl certificate.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5800,7 +6775,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductZhName(self):
-        """Name of the certificate issuer
+        """Certificate product name.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5836,7 +6811,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload
+        """Certificate status: 0 = under review, 1 = approved, 2 = review failed, 3 = expired, 4 = dns records added automatically, 5 = enterprise certificate, pending documentation submission, 6 = order cancellation in progress, 7 = canceled, 8 = documents submitted, pending upload of confirmation letter, 9 = certificate revocation in progress, 10 = revoked, 11 = reissue in progress, 12 = pending upload of revocation confirmation letter, 13 = free certificate pending document submission, 14 = certificate has been refunded, 15 = certificate migration in progress.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -5848,7 +6823,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusMsg(self):
-        """Status information
+        """Status information. valid values:.
+//Common status information.
+1. pre-reviewing: prereviewing.
+2. legal-reviewing: under legal review.
+3. ca-reviewing: under ca review.
+4. pending-dcv: under domain verification.
+5. wait-issue: waiting for issuance (domain verification passed).
+//Certificate review failure status information.
+Order review failed.
+CA review failed; the domain name did not pass the security review.
+Domain verification timed out, and the order was automatically closed. please reapply for the certificate.
+The certificate information did not pass the review by the certificate authority. the reviewer will call the contact information reserved for the certificate. please pay attention to the incoming call. subsequently, you can resubmit the information through "modify information".
+To be continuously improved.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -5860,7 +6847,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyType(self):
-        """Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation; `EMAIL`: email validation
+        """Validation type: DNS_AUTO = automatic dns validation, DNS = manual dns validation, FILE = file verification, DNS_PROXY = dns proxy validation, FILE_PROXY = file proxy validation.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -6124,8 +7111,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CAEncryptAlgorithms(self):
-        """All encryption algorithms of a CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """All encryption methods of the ca certificate. only valid when the certificate type CertificateType is ca.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._CAEncryptAlgorithms
@@ -6136,8 +7123,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CACommonNames(self):
-        """All common names of a CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """All common names of the ca certificate. only valid when the certificate type CertificateType is ca.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._CACommonNames
@@ -6148,8 +7135,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CAEndTimes(self):
-        """All expiration time of a CA certificate
-Note: This field may return null, indicating that no valid values can be obtained.
+        """All expiration times of the ca certificate. only valid when the certificate type CertificateType is ca.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._CAEndTimes
@@ -6245,19 +7232,19 @@ class DescribeCertificatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Pagination offset, starting from 0
+        :param _Offset: Pagination offset, starting from 0. default is 0.
         :type Offset: int
-        :param _Limit: Number of entries per page. Default value: `20`. Maximum value: `1000`.
+        :param _Limit: Number of items per page. default is 10. maximum value is 1000; values exceeding 1000 will be treated as 1000.
         :type Limit: int
-        :param _SearchKey: Keyword for search, which can be a certificate ID, alias, or domain name, for example, a8xHcaIs
+        :param _SearchKey: Search keywords, supporting fuzzy match by certificate id, remark name, and certificate domain name.
         :type SearchKey: str
         :param _CertificateType: Certificate type. `CA`: client certificate; `SVR`: server certificate
         :type CertificateType: str
         :param _ProjectId: Project ID
         :type ProjectId: int
-        :param _ExpirationSort: Sorting by expiration time. `DESC`: descending; `ASC`: ascending
+        :param _ExpirationSort: Default sorting is by certificate application time in descending order. Sort by expiration date if the following values are passed: DESC for descending order of certificate expiration time, ASC for ascending order.
         :type ExpirationSort: str
-        :param _CertificateStatus: Certificate status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate.
+        :param _CertificateStatus: Certificate status: 0=under review, 1=approved, 2=review failed, 3=expired, 4=dns record added, 5=enterprise certificate, pending submission, 6=order cancellation in progress, 7=canceled, 8=documents submitted, pending upload of confirmation letter, 9=certificate revocation in progress, 10=revoked, 11=reissue in progress, 12=pending upload of revocation confirmation letter, 13=free certificate pending document submission, 14=refunded, 15=certificate migration in progress.
         :type CertificateStatus: list of int non-negative
         :param _Deployable: Whether the certificate can be deployed. `1`: yes; `0`: no
         :type Deployable: int
@@ -6273,6 +7260,12 @@ class DescribeCertificatesRequest(AbstractModel):
         :type FilterExpiring: int
         :param _Hostable: Whether the certificate can be hosted. Valid values: `1` for yes and `0` for no.
         :type Hostable: int
+        :param _Tags: Filter certificates with specified tags.
+        :type Tags: list of Tags
+        :param _IsPendingIssue: Whether to filter certificates pending issue: 1 for filtering, 0 and null for no filtering.
+        :type IsPendingIssue: int
+        :param _CertIds: Filter certificates by the specified certificate id, only supports certificate ids with permission.
+        :type CertIds: list of str
         """
         self._Offset = None
         self._Limit = None
@@ -6288,10 +7281,13 @@ class DescribeCertificatesRequest(AbstractModel):
         self._IsSM = None
         self._FilterExpiring = None
         self._Hostable = None
+        self._Tags = None
+        self._IsPendingIssue = None
+        self._CertIds = None
 
     @property
     def Offset(self):
-        """Pagination offset, starting from 0
+        """Pagination offset, starting from 0. default is 0.
         :rtype: int
         """
         return self._Offset
@@ -6302,7 +7298,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of entries per page. Default value: `20`. Maximum value: `1000`.
+        """Number of items per page. default is 10. maximum value is 1000; values exceeding 1000 will be treated as 1000.
         :rtype: int
         """
         return self._Limit
@@ -6313,7 +7309,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        """Keyword for search, which can be a certificate ID, alias, or domain name, for example, a8xHcaIs
+        """Search keywords, supporting fuzzy match by certificate id, remark name, and certificate domain name.
         :rtype: str
         """
         return self._SearchKey
@@ -6346,7 +7342,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def ExpirationSort(self):
-        """Sorting by expiration time. `DESC`: descending; `ASC`: ascending
+        """Default sorting is by certificate application time in descending order. Sort by expiration date if the following values are passed: DESC for descending order of certificate expiration time, ASC for ascending order.
         :rtype: str
         """
         return self._ExpirationSort
@@ -6357,7 +7353,7 @@ class DescribeCertificatesRequest(AbstractModel):
 
     @property
     def CertificateStatus(self):
-        """Certificate status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate.
+        """Certificate status: 0=under review, 1=approved, 2=review failed, 3=expired, 4=dns record added, 5=enterprise certificate, pending submission, 6=order cancellation in progress, 7=canceled, 8=documents submitted, pending upload of confirmation letter, 9=certificate revocation in progress, 10=revoked, 11=reissue in progress, 12=pending upload of revocation confirmation letter, 13=free certificate pending document submission, 14=refunded, 15=certificate migration in progress.
         :rtype: list of int non-negative
         """
         return self._CertificateStatus
@@ -6443,6 +7439,39 @@ class DescribeCertificatesRequest(AbstractModel):
     def Hostable(self, Hostable):
         self._Hostable = Hostable
 
+    @property
+    def Tags(self):
+        """Filter certificates with specified tags.
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def IsPendingIssue(self):
+        """Whether to filter certificates pending issue: 1 for filtering, 0 and null for no filtering.
+        :rtype: int
+        """
+        return self._IsPendingIssue
+
+    @IsPendingIssue.setter
+    def IsPendingIssue(self, IsPendingIssue):
+        self._IsPendingIssue = IsPendingIssue
+
+    @property
+    def CertIds(self):
+        """Filter certificates by the specified certificate id, only supports certificate ids with permission.
+        :rtype: list of str
+        """
+        return self._CertIds
+
+    @CertIds.setter
+    def CertIds(self, CertIds):
+        self._CertIds = CertIds
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -6459,6 +7488,14 @@ class DescribeCertificatesRequest(AbstractModel):
         self._IsSM = params.get("IsSM")
         self._FilterExpiring = params.get("FilterExpiring")
         self._Hostable = params.get("Hostable")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._IsPendingIssue = params.get("IsPendingIssue")
+        self._CertIds = params.get("CertIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6553,11 +7590,11 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
         :type Filters: list of Filter
         :param _OldCertificateId: The ID of the deployed certificate.
         :type OldCertificateId: str
-        :param _Offset: The pagination offset, starting from 0.
+        :param _Offset: Paging offset. default value: 0.
         :type Offset: int
-        :param _Limit: The number of instances on each page. Default value: 10.	
+        :param _Limit: Number of items per page. default: 10. maximum value: 200.	
         :type Limit: int
-        :param _AsyncCache: Whether the query is asynchronous.
+        :param _AsyncCache: Asynchronous or not. 1 means yes, 0 means no. default: 0.
         :type AsyncCache: int
         """
         self._CertificateId = None
@@ -6582,6 +7619,8 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
         """The type of resource for certificate deployment.
         :rtype: str
         """
@@ -6589,6 +7628,8 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @ResourceType.setter
     def ResourceType(self, ResourceType):
+        warnings.warn("parameter `ResourceType` is deprecated", DeprecationWarning) 
+
         self._ResourceType = ResourceType
 
     @property
@@ -6626,7 +7667,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """The pagination offset, starting from 0.
+        """Paging offset. default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -6637,7 +7678,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """The number of instances on each page. Default value: 10.	
+        """Number of items per page. default: 10. maximum value: 200.	
         :rtype: int
         """
         return self._Limit
@@ -6648,7 +7689,7 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
 
     @property
     def AsyncCache(self):
-        """Whether the query is asynchronous.
+        """Asynchronous or not. 1 means yes, 0 means no. default: 0.
         :rtype: int
         """
         return self._AsyncCache
@@ -6689,8 +7730,8 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceList: The list of EDGEONE instances.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceList: Teo instance list. if no value is obtained, an empty array is returned.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type InstanceList: list of TeoInstanceDetail
         :param _TotalCount: The total count.
         :type TotalCount: int
@@ -6703,8 +7744,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
-        """The list of EDGEONE instances.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Teo instance list. if no value is obtained, an empty array is returned.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of TeoInstanceDetail
         """
         return self._InstanceList
@@ -6754,11 +7795,11 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: One-click update record ID
+        :param _DeployRecordId: Deployment record id, which is the record id returned by calling the UpdateCertificateInstance api, or the record id returned by calling the UpdateCertificateRecordRollback rollback api.
         :type DeployRecordId: str
-        :param _Limit: Number per page, 10 by default.
+        :param _Limit: Number of items per page. the default is 10. the maximum value is 200.
         :type Limit: str
-        :param _Offset: Paging offset, starting from 0
+        :param _Offset: Pagination offset, starting from 0. default is 0.
         :type Offset: str
         """
         self._DeployRecordId = None
@@ -6767,7 +7808,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """One-click update record ID
+        """Deployment record id, which is the record id returned by calling the UpdateCertificateInstance api, or the record id returned by calling the UpdateCertificateRecordRollback rollback api.
         :rtype: str
         """
         return self._DeployRecordId
@@ -6778,7 +7819,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number per page, 10 by default.
+        """Number of items per page. the default is 10. the maximum value is 200.
         :rtype: str
         """
         return self._Limit
@@ -6789,7 +7830,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Paging offset, starting from 0
+        """Pagination offset, starting from 0. default is 0.
         :rtype: str
         """
         return self._Offset
@@ -6820,20 +7861,20 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total count
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _TotalCount: If the total number cannot be obtained, return 0.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param _RecordDetailList: Certificate deployment record list
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RecordDetailList: Certificate deployment record list; returns an empty array if no value is obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type RecordDetailList: list of UpdateRecordDetails
-        :param _SuccessTotalCount: Total successful deployments
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SuccessTotalCount: Total number of successes; returns 0 if unavailable.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type SuccessTotalCount: int
-        :param _FailedTotalCount: Total failed deployments
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _FailedTotalCount: Total number of failures. if it cannot be obtained, return 0.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type FailedTotalCount: int
-        :param _RunningTotalCount: Total running deployments
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RunningTotalCount: Total number of deployments in progress; returns 0 if unavailable.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type RunningTotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6847,8 +7888,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TotalCount(self):
-        """Total count
-Note: This field may return null, indicating that no valid value can be obtained.
+        """If the total number cannot be obtained, return 0.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -6859,8 +7900,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RecordDetailList(self):
-        """Certificate deployment record list
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Certificate deployment record list; returns an empty array if no value is obtained.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UpdateRecordDetails
         """
         return self._RecordDetailList
@@ -6871,8 +7912,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SuccessTotalCount(self):
-        """Total successful deployments
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Total number of successes; returns 0 if unavailable.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._SuccessTotalCount
@@ -6883,8 +7924,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FailedTotalCount(self):
-        """Total failed deployments
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Total number of failures. if it cannot be obtained, return 0.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._FailedTotalCount
@@ -6895,8 +7936,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RunningTotalCount(self):
-        """Total running deployments
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Total number of deployments in progress; returns 0 if unavailable.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._RunningTotalCount
@@ -7184,22 +8225,22 @@ class DvAuthDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DvAuthKey: DV authentication key
+        :param _DvAuthKey: Certificate domain name verification record key.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthKey: str
-        :param _DvAuthValue: DV authentication value
+        :param _DvAuthValue: Certificate domain name verification record value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthValue: str
-        :param _DvAuthDomain: Domain name of the DV authentication value
+        :param _DvAuthDomain: Certificate domain name verification domain value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDomain: str
-        :param _DvAuthPath: Path of the DV authentication value
+        :param _DvAuthPath: Certificate domain name verification file path, used only for file and file_proxy.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthPath: str
-        :param _DvAuthKeySubDomain: DV authentication sub-domain name
+        :param _DvAuthKeySubDomain: Certificate domain name verification subdomain.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthKeySubDomain: str
-        :param _DvAuths: DV authentication information
+        :param _DvAuths: Certificate domain verification information; multiple domain verifications use this field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuths: list of DvAuths
         """
@@ -7212,7 +8253,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthKey(self):
-        """DV authentication key
+        """Certificate domain name verification record key.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7224,7 +8265,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthValue(self):
-        """DV authentication value
+        """Certificate domain name verification record value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7236,7 +8277,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDomain(self):
-        """Domain name of the DV authentication value
+        """Certificate domain name verification domain value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7248,7 +8289,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthPath(self):
-        """Path of the DV authentication value
+        """Certificate domain name verification file path, used only for file and file_proxy.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7260,7 +8301,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthKeySubDomain(self):
-        """DV authentication sub-domain name
+        """Certificate domain name verification subdomain.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7272,7 +8313,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuths(self):
-        """DV authentication information
+        """Certificate domain verification information; multiple domain verifications use this field.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of DvAuths
         """
@@ -7312,22 +8353,25 @@ class DvAuths(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DvAuthKey: DV authentication key
+        :param _DvAuthKey: Certificate domain name verification record key.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthKey: str
-        :param _DvAuthValue: DV authentication value
+        :param _DvAuthValue: Certificate domain name verification record value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthValue: str
-        :param _DvAuthDomain: Domain name of the DV authentication value
+        :param _DvAuthDomain: Certificate domain name verification domain value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthDomain: str
-        :param _DvAuthPath: Path of the DV authentication value
+        :param _DvAuthPath: Certificate domain name verification file path, used only for file and file_proxy.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthPath: str
-        :param _DvAuthSubDomain: DV authentication sub-domain name
+        :param _DvAuthSubDomain: Certificate domain name verification subdomain.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthSubDomain: str
-        :param _DvAuthVerifyType: DV authentication type
+        :param _DvAuthVerifyType: Certificate domain verification type, valid values:.
+TXT: add txt record for dns domain verification.
+FILE: domain file verification.
+CNAME: add cname record for dns domain verification.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DvAuthVerifyType: str
         """
@@ -7340,7 +8384,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthKey(self):
-        """DV authentication key
+        """Certificate domain name verification record key.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7352,7 +8396,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthValue(self):
-        """DV authentication value
+        """Certificate domain name verification record value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7364,7 +8408,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthDomain(self):
-        """Domain name of the DV authentication value
+        """Certificate domain name verification domain value.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7376,7 +8420,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthPath(self):
-        """Path of the DV authentication value
+        """Certificate domain name verification file path, used only for file and file_proxy.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7388,7 +8432,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthSubDomain(self):
-        """DV authentication sub-domain name
+        """Certificate domain name verification subdomain.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7400,7 +8444,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DvAuthVerifyType(self):
-        """DV authentication type
+        """Certificate domain verification type, valid values:.
+TXT: add txt record for dns domain verification.
+FILE: domain file verification.
+CNAME: add cname record for dns domain verification.
 Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -7640,6 +8687,91 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class HostingConfig(AbstractModel):
+    """Managed configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplaceTime: Hosted resource replacement time, defaults to 30 days before the certificate expiration if there is a renewal certificate, then replace.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type ReplaceTime: int
+        :param _MessageTypes: Hosted send message type: 0, reminder message before hosted starts (you will receive this reminder message even if there is no renewal certificate); 1, reminder message when hosted starts (you will receive the message reminder only if there is a renewal certificate); 2, reminder message when hosted resource replacement fails; 3 reminder message when hosted resource replacement succeeds.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type MessageTypes: list of int
+        :param _ReplaceStartTime: Resource replacement start time.
+        :type ReplaceStartTime: str
+        :param _ReplaceEndTime: Resource replacement end time.
+        :type ReplaceEndTime: str
+        """
+        self._ReplaceTime = None
+        self._MessageTypes = None
+        self._ReplaceStartTime = None
+        self._ReplaceEndTime = None
+
+    @property
+    def ReplaceTime(self):
+        """Hosted resource replacement time, defaults to 30 days before the certificate expiration if there is a renewal certificate, then replace.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ReplaceTime
+
+    @ReplaceTime.setter
+    def ReplaceTime(self, ReplaceTime):
+        self._ReplaceTime = ReplaceTime
+
+    @property
+    def MessageTypes(self):
+        """Hosted send message type: 0, reminder message before hosted starts (you will receive this reminder message even if there is no renewal certificate); 1, reminder message when hosted starts (you will receive the message reminder only if there is a renewal certificate); 2, reminder message when hosted resource replacement fails; 3 reminder message when hosted resource replacement succeeds.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
+        return self._MessageTypes
+
+    @MessageTypes.setter
+    def MessageTypes(self, MessageTypes):
+        self._MessageTypes = MessageTypes
+
+    @property
+    def ReplaceStartTime(self):
+        """Resource replacement start time.
+        :rtype: str
+        """
+        return self._ReplaceStartTime
+
+    @ReplaceStartTime.setter
+    def ReplaceStartTime(self, ReplaceStartTime):
+        self._ReplaceStartTime = ReplaceStartTime
+
+    @property
+    def ReplaceEndTime(self):
+        """Resource replacement end time.
+        :rtype: str
+        """
+        return self._ReplaceEndTime
+
+    @ReplaceEndTime.setter
+    def ReplaceEndTime(self, ReplaceEndTime):
+        self._ReplaceEndTime = ReplaceEndTime
+
+
+    def _deserialize(self, params):
+        self._ReplaceTime = params.get("ReplaceTime")
+        self._MessageTypes = params.get("MessageTypes")
+        self._ReplaceStartTime = params.get("ReplaceStartTime")
+        self._ReplaceEndTime = params.get("ReplaceEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveInstanceDetail(AbstractModel):
     """Details of a LIVE instance
 
@@ -7724,9 +8856,13 @@ class LiveInstanceList(AbstractModel):
         :param _InstanceList: The list of LIVE instances.	
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceList: list of LiveInstanceDetail
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._TotalCount = None
         self._InstanceList = None
+        self._Error = None
 
     @property
     def TotalCount(self):
@@ -7751,6 +8887,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceList(self, InstanceList):
         self._InstanceList = InstanceList
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -7760,6 +8908,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = LiveInstanceDetail()
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8326,9 +9475,51 @@ class OperationLog(AbstractModel):
         :type Action: str
         :param _CreatedOn: Time when the action is performed
         :type CreatedOn: str
+        :param _Uin: Root account.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Uin: str
+        :param _SubAccountUin: Sub-Account.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type SubAccountUin: str
+        :param _CertId: Certificate id.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type CertId: str
+        :param _Type: Each operation type corresponds to a specific operation description. the following is a textual explanation of each operation type and its description:.
+1. apply: indicates applying for a free cert.
+2. delete: indicates a deletion.
+3. download - represents the download operation.
+4. upload: indicates an upload operation.
+5. revoke: indicates revoking a cert.
+6. cancelRevoke - indicates canceling the revocation operation.
+7. updateAlias - indicates updating the remark information.
+8. changeProject - indicates assigning the certificate to a certain project.
+9. uploadConfirmLetter - indicates uploading the confirmation letter.
+10. cancel - indicates canceling the order operation.
+11. replace - specifies reissuing a certificate.
+12. downloadConfirmLetter - specifies downloading a certificate revocation confirmation letter.
+13. editRevokeLetter - specifies uploading a certificate revocation confirmation letter.
+14. renewVIP - specifies renewing a paid certificate.
+15. applyVIP - specifies applying for a paid certificate.
+16. submitInfo - specifies submitting documentation.
+17. downloadConfirmLetter - specifies downloading the confirmation letter template.
+18. uploadFromYunAPI - indicates uploading via the cloud api.
+19. transferIn - indicates the certificate transfer to operation.
+20. transferOut - indicates the certificate transfer operation.
+21. refund - indicates applying for a refund.
+22. multiYearsRenew - indicates multi-year auto-renewal.
+23. modifyDownloadLimit - indicates modifying the download limit switch.
+24. issued - indicates certificate issuance.
+25. domainValidationPassed - indicates domain verification completed.
+26. Resubmit - indicates reapplying for a certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Type: str
         """
         self._Action = None
         self._CreatedOn = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CertId = None
+        self._Type = None
 
     @property
     def Action(self):
@@ -8352,10 +9543,88 @@ class OperationLog(AbstractModel):
     def CreatedOn(self, CreatedOn):
         self._CreatedOn = CreatedOn
 
+    @property
+    def Uin(self):
+        """Root account.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        """Sub-Account.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CertId(self):
+        """Certificate id.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Type(self):
+        """Each operation type corresponds to a specific operation description. the following is a textual explanation of each operation type and its description:.
+1. apply: indicates applying for a free cert.
+2. delete: indicates a deletion.
+3. download - represents the download operation.
+4. upload: indicates an upload operation.
+5. revoke: indicates revoking a cert.
+6. cancelRevoke - indicates canceling the revocation operation.
+7. updateAlias - indicates updating the remark information.
+8. changeProject - indicates assigning the certificate to a certain project.
+9. uploadConfirmLetter - indicates uploading the confirmation letter.
+10. cancel - indicates canceling the order operation.
+11. replace - specifies reissuing a certificate.
+12. downloadConfirmLetter - specifies downloading a certificate revocation confirmation letter.
+13. editRevokeLetter - specifies uploading a certificate revocation confirmation letter.
+14. renewVIP - specifies renewing a paid certificate.
+15. applyVIP - specifies applying for a paid certificate.
+16. submitInfo - specifies submitting documentation.
+17. downloadConfirmLetter - specifies downloading the confirmation letter template.
+18. uploadFromYunAPI - indicates uploading via the cloud api.
+19. transferIn - indicates the certificate transfer to operation.
+20. transferOut - indicates the certificate transfer operation.
+21. refund - indicates applying for a refund.
+22. multiYearsRenew - indicates multi-year auto-renewal.
+23. modifyDownloadLimit - indicates modifying the download limit switch.
+24. issued - indicates certificate issuance.
+25. domainValidationPassed - indicates domain verification completed.
+26. Resubmit - indicates reapplying for a certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Action = params.get("Action")
         self._CreatedOn = params.get("CreatedOn")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CertId = params.get("CertId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8572,9 +9841,9 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CertificateId: str
         :param _ValidType: Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation
         :type ValidType: str
-        :param _CsrType: Type. `original`: original certificate CSR; `upload`: uploaded manually; `online`: generated online. The default value is original.
+        :param _CsrType: Type. `Original`: original certificate CSR; `Upload`: uploaded manually; `Online`: generated online. The default value is original.
         :type CsrType: str
-        :param _CsrContent: CSR content
+        :param _CsrContent: CSR content, required when uploading manually.
         :type CsrContent: str
         :param _CsrkeyPassword: Password of the key
         :type CsrkeyPassword: str
@@ -8619,7 +9888,7 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CsrType(self):
-        """Type. `original`: original certificate CSR; `upload`: uploaded manually; `online`: generated online. The default value is original.
+        """Type. `Original`: original certificate CSR; `Upload`: uploaded manually; `Online`: generated online. The default value is original.
         :rtype: str
         """
         return self._CsrType
@@ -8630,7 +9899,7 @@ This parameter is available for selection only when the value of `CsrType` is `O
 
     @property
     def CsrContent(self):
-        """CSR content
+        """CSR content, required when uploading manually.
         :rtype: str
         """
         return self._CsrContent
@@ -8754,7 +10023,7 @@ class ResourceTypeRegions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: Cloud resource type
+        :param _ResourceType: Cloud resource types, which support clb, waf, api gateway, cos, tke, tse, and tcb.
         :type ResourceType: str
         :param _Regions: Region list
         :type Regions: list of str
@@ -8764,7 +10033,7 @@ class ResourceTypeRegions(AbstractModel):
 
     @property
     def ResourceType(self):
-        """Cloud resource type
+        """Cloud resource types, which support clb, waf, api gateway, cos, tke, tse, and tcb.
         :rtype: str
         """
         return self._ResourceType
@@ -8877,58 +10146,63 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: Certificate ID
+        :param _CertificateId: Paid certificate id of materials to be submitted.
         :type CertificateId: str
-        :param _CsrType: CSR generation mode. `online`: generated online; `parse`: uploaded manually
+        :param _CsrType: This field is required. Generation method of CSR, valid values are:
+online: tencent cloud generates the CSR and private key based on the submitted parameter information and stores them encryptedly.
+parse: generate the CSR and private key by itself, and apply for a certificate by uploading the CSR.
         :type CsrType: str
-        :param _CsrContent: Uploaded CSR content
+        :param _CsrContent: The content of the uploaded csr.
+If CsrType is parse, this field is required.
         :type CsrContent: str
-        :param _CertificateDomain: Domain name bound with the certificate
+        :param _CertificateDomain: The common name bound to the certificate. if a CSR is uploaded, the domain name must be consistent with the common name resolved from the CSR.
         :type CertificateDomain: str
-        :param _DomainList: Uploaded domain name array (can be uploaded for a multi-domain certificate)
+        :param _DomainList: Other domain names bound to the certificate. not required for single domain and wildcard domain certificates. required for multiple domain names and multiple wildcard domain names.
         :type DomainList: list of str
-        :param _KeyPassword: Password of the private key
+        :param _KeyPassword: Private key password, which is currently only used for the password when generating jks and pfx format certificates; other formats of private key certificates are not encrypted.	
         :type KeyPassword: str
-        :param _OrganizationName: Organization name
+        :param _OrganizationName: This field is required. Company name.
         :type OrganizationName: str
-        :param _OrganizationDivision: Division name
+        :param _OrganizationDivision: This field is required.  Department name.
         :type OrganizationDivision: str
-        :param _OrganizationAddress: Detailed address of the organization
+        :param _OrganizationAddress: This field is required. Company's detailed address.
         :type OrganizationAddress: str
-        :param _OrganizationCountry: Country where the organization is located, for example, CN (China)
+        :param _OrganizationCountry: This field is required.Country name such as CN.
         :type OrganizationCountry: str
-        :param _OrganizationCity: City where the organization is located
+        :param _OrganizationCity: This field is required, which specifies the city where the company is located.
         :type OrganizationCity: str
-        :param _OrganizationRegion: Province where the organization is located
+        :param _OrganizationRegion: This field is required, specifying the province where the company is located.
         :type OrganizationRegion: str
         :param _PostalCode: Postal code of the organization
         :type PostalCode: str
-        :param _PhoneAreaCode: Area code of the fixed-line phone number of the organization
+        :param _PhoneAreaCode: This field is required, the company's fixed-line phone area code.
         :type PhoneAreaCode: str
-        :param _PhoneNumber: Fixed-line phone number of the organization
+        :param _PhoneNumber: This field is required, the company's landline number.
         :type PhoneNumber: str
-        :param _VerifyType: Certificate validation method
+        :param _VerifyType: Certificate validation method. Validation types: DNS_AUTO = Automatic DNS validation (only supported for domains resolved by Tencent Cloud DNS with a normal resolution status), DNS = Manual DNS validation, FILE = File validation.
         :type VerifyType: str
-        :param _AdminFirstName: Last name of the administrator
+        :param _AdminFirstName: This field is required, manager name.
         :type AdminFirstName: str
-        :param _AdminLastName: First name of the administrator
+        :param _AdminLastName: This field is required, the manager's surname.
         :type AdminLastName: str
-        :param _AdminPhoneNum: Mobile number of the administrator
+        :param _AdminPhoneNum: This field is required, the manager's mobile phone number.
         :type AdminPhoneNum: str
-        :param _AdminEmail: Email of the administrator
+        :param _AdminEmail: This field is required, the manager's email address.
         :type AdminEmail: str
-        :param _AdminPosition: Position of the administrator
+        :param _AdminPosition: This field is required, the manager position.
         :type AdminPosition: str
-        :param _ContactFirstName: Last name of the contact
+        :param _ContactFirstName: This field is required, the contact person name.
         :type ContactFirstName: str
-        :param _ContactLastName: First name of the contact
+        :param _ContactLastName: This field is required, the contact person's surname.
         :type ContactLastName: str
-        :param _ContactEmail: Email of the contact
+        :param _ContactEmail: This field is required, the contact person's email address.
         :type ContactEmail: str
-        :param _ContactNumber: Mobile number of the contact
+        :param _ContactNumber: This field is required, the contact person's mobile phone number.
         :type ContactNumber: str
-        :param _ContactPosition: Position of the contact
+        :param _ContactPosition: This field is required, the contact person position.
         :type ContactPosition: str
+        :param _IsDV: Indicates whether it is a dv certificate. default value is false.
+        :type IsDV: bool
         """
         self._CertificateId = None
         self._CsrType = None
@@ -8956,10 +10230,11 @@ class SubmitCertificateInformationRequest(AbstractModel):
         self._ContactEmail = None
         self._ContactNumber = None
         self._ContactPosition = None
+        self._IsDV = None
 
     @property
     def CertificateId(self):
-        """Certificate ID
+        """Paid certificate id of materials to be submitted.
         :rtype: str
         """
         return self._CertificateId
@@ -8970,7 +10245,9 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CsrType(self):
-        """CSR generation mode. `online`: generated online; `parse`: uploaded manually
+        """This field is required. Generation method of CSR, valid values are:
+online: tencent cloud generates the CSR and private key based on the submitted parameter information and stores them encryptedly.
+parse: generate the CSR and private key by itself, and apply for a certificate by uploading the CSR.
         :rtype: str
         """
         return self._CsrType
@@ -8981,7 +10258,8 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CsrContent(self):
-        """Uploaded CSR content
+        """The content of the uploaded csr.
+If CsrType is parse, this field is required.
         :rtype: str
         """
         return self._CsrContent
@@ -8992,7 +10270,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def CertificateDomain(self):
-        """Domain name bound with the certificate
+        """The common name bound to the certificate. if a CSR is uploaded, the domain name must be consistent with the common name resolved from the CSR.
         :rtype: str
         """
         return self._CertificateDomain
@@ -9003,7 +10281,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        """Uploaded domain name array (can be uploaded for a multi-domain certificate)
+        """Other domain names bound to the certificate. not required for single domain and wildcard domain certificates. required for multiple domain names and multiple wildcard domain names.
         :rtype: list of str
         """
         return self._DomainList
@@ -9014,7 +10292,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def KeyPassword(self):
-        """Password of the private key
+        """Private key password, which is currently only used for the password when generating jks and pfx format certificates; other formats of private key certificates are not encrypted.	
         :rtype: str
         """
         return self._KeyPassword
@@ -9025,7 +10303,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationName(self):
-        """Organization name
+        """This field is required. Company name.
         :rtype: str
         """
         return self._OrganizationName
@@ -9036,7 +10314,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationDivision(self):
-        """Division name
+        """This field is required.  Department name.
         :rtype: str
         """
         return self._OrganizationDivision
@@ -9047,7 +10325,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationAddress(self):
-        """Detailed address of the organization
+        """This field is required. Company's detailed address.
         :rtype: str
         """
         return self._OrganizationAddress
@@ -9058,7 +10336,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationCountry(self):
-        """Country where the organization is located, for example, CN (China)
+        """This field is required.Country name such as CN.
         :rtype: str
         """
         return self._OrganizationCountry
@@ -9069,7 +10347,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationCity(self):
-        """City where the organization is located
+        """This field is required, which specifies the city where the company is located.
         :rtype: str
         """
         return self._OrganizationCity
@@ -9080,7 +10358,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def OrganizationRegion(self):
-        """Province where the organization is located
+        """This field is required, specifying the province where the company is located.
         :rtype: str
         """
         return self._OrganizationRegion
@@ -9102,7 +10380,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PhoneAreaCode(self):
-        """Area code of the fixed-line phone number of the organization
+        """This field is required, the company's fixed-line phone area code.
         :rtype: str
         """
         return self._PhoneAreaCode
@@ -9113,7 +10391,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        """Fixed-line phone number of the organization
+        """This field is required, the company's landline number.
         :rtype: str
         """
         return self._PhoneNumber
@@ -9124,7 +10402,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def VerifyType(self):
-        """Certificate validation method
+        """Certificate validation method. Validation types: DNS_AUTO = Automatic DNS validation (only supported for domains resolved by Tencent Cloud DNS with a normal resolution status), DNS = Manual DNS validation, FILE = File validation.
         :rtype: str
         """
         return self._VerifyType
@@ -9135,7 +10413,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminFirstName(self):
-        """Last name of the administrator
+        """This field is required, manager name.
         :rtype: str
         """
         return self._AdminFirstName
@@ -9146,7 +10424,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminLastName(self):
-        """First name of the administrator
+        """This field is required, the manager's surname.
         :rtype: str
         """
         return self._AdminLastName
@@ -9157,7 +10435,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminPhoneNum(self):
-        """Mobile number of the administrator
+        """This field is required, the manager's mobile phone number.
         :rtype: str
         """
         return self._AdminPhoneNum
@@ -9168,7 +10446,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminEmail(self):
-        """Email of the administrator
+        """This field is required, the manager's email address.
         :rtype: str
         """
         return self._AdminEmail
@@ -9179,7 +10457,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def AdminPosition(self):
-        """Position of the administrator
+        """This field is required, the manager position.
         :rtype: str
         """
         return self._AdminPosition
@@ -9190,7 +10468,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactFirstName(self):
-        """Last name of the contact
+        """This field is required, the contact person name.
         :rtype: str
         """
         return self._ContactFirstName
@@ -9201,7 +10479,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactLastName(self):
-        """First name of the contact
+        """This field is required, the contact person's surname.
         :rtype: str
         """
         return self._ContactLastName
@@ -9212,7 +10490,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactEmail(self):
-        """Email of the contact
+        """This field is required, the contact person's email address.
         :rtype: str
         """
         return self._ContactEmail
@@ -9223,7 +10501,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactNumber(self):
-        """Mobile number of the contact
+        """This field is required, the contact person's mobile phone number.
         :rtype: str
         """
         return self._ContactNumber
@@ -9234,7 +10512,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
 
     @property
     def ContactPosition(self):
-        """Position of the contact
+        """This field is required, the contact person position.
         :rtype: str
         """
         return self._ContactPosition
@@ -9242,6 +10520,17 @@ class SubmitCertificateInformationRequest(AbstractModel):
     @ContactPosition.setter
     def ContactPosition(self, ContactPosition):
         self._ContactPosition = ContactPosition
+
+    @property
+    def IsDV(self):
+        """Indicates whether it is a dv certificate. default value is false.
+        :rtype: bool
+        """
+        return self._IsDV
+
+    @IsDV.setter
+    def IsDV(self, IsDV):
+        self._IsDV = IsDV
 
 
     def _deserialize(self, params):
@@ -9271,6 +10560,7 @@ class SubmitCertificateInformationRequest(AbstractModel):
         self._ContactEmail = params.get("ContactEmail")
         self._ContactNumber = params.get("ContactNumber")
         self._ContactPosition = params.get("ContactPosition")
+        self._IsDV = params.get("IsDV")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9771,25 +11061,25 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class SupportDownloadType(AbstractModel):
-    """
+    """Supported types for download.
 
     """
 
     def __init__(self):
         r"""
-        :param _NGINX: 
+        :param _NGINX: Whether the available format of nginx can be downloaded.
         :type NGINX: bool
-        :param _APACHE: 
+        :param _APACHE: Whether the available format of apache can be downloaded.
         :type APACHE: bool
-        :param _TOMCAT: 
+        :param _TOMCAT: Whether the available format of tomcat can be downloaded.
         :type TOMCAT: bool
-        :param _IIS: 
+        :param _IIS: Whether the available format of iis can be downloaded.
         :type IIS: bool
-        :param _JKS: 
+        :param _JKS: Indicates whether the jks format can be downloaded.
         :type JKS: bool
-        :param _OTHER: 
+        :param _OTHER: Indicates whether other formats can be downloaded.
         :type OTHER: bool
-        :param _ROOT: 
+        :param _ROOT: Indicates whether the root certificate can be downloaded.
         :type ROOT: bool
         """
         self._NGINX = None
@@ -9802,7 +11092,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def NGINX(self):
-        """
+        """Whether the available format of nginx can be downloaded.
         :rtype: bool
         """
         return self._NGINX
@@ -9813,7 +11103,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def APACHE(self):
-        """
+        """Whether the available format of apache can be downloaded.
         :rtype: bool
         """
         return self._APACHE
@@ -9824,7 +11114,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def TOMCAT(self):
-        """
+        """Whether the available format of tomcat can be downloaded.
         :rtype: bool
         """
         return self._TOMCAT
@@ -9835,7 +11125,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def IIS(self):
-        """
+        """Whether the available format of iis can be downloaded.
         :rtype: bool
         """
         return self._IIS
@@ -9846,7 +11136,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def JKS(self):
-        """
+        """Indicates whether the jks format can be downloaded.
         :rtype: bool
         """
         return self._JKS
@@ -9857,7 +11147,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def OTHER(self):
-        """
+        """Indicates whether other formats can be downloaded.
         :rtype: bool
         """
         return self._OTHER
@@ -9868,7 +11158,7 @@ class SupportDownloadType(AbstractModel):
 
     @property
     def ROOT(self):
-        """
+        """Indicates whether the root certificate can be downloaded.
         :rtype: bool
         """
         return self._ROOT
@@ -10520,9 +11810,13 @@ class TCBInstanceList(AbstractModel):
         :param _Environments: The list of TCB environments.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Environments: list of TCBEnvironments
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._Region = None
         self._Environments = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -10547,6 +11841,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Environments(self, Environments):
         self._Environments = Environments
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -10556,6 +11862,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = TCBEnvironments()
                 obj._deserialize(item)
                 self._Environments.append(obj)
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10657,10 +11964,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type TotalCount: int
         :param _Region: Region	
         :type Region: str
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._InstanceList = None
         self._TotalCount = None
         self._Region = None
+        self._Error = None
 
     @property
     def InstanceList(self):
@@ -10696,6 +12007,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
@@ -10706,6 +12029,7 @@ Note: This field may return null, indicating that no valid value can be obtained
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._Region = params.get("Region")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10781,7 +12105,12 @@ class TeoInstanceDetail(AbstractModel):
         :param _ZoneId: The AZ ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneId: str
-        :param _Status: The status of the domain.
+        :param _Status: Domain status.
+`Deployed`: deployed;.
+`Processing`: deploying;.
+`Applying`: applying;.
+`Failed`: application failed;.
+`Issued`: binding failed.
         :type Status: str
         """
         self._Host = None
@@ -10825,7 +12154,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The status of the domain.
+        """Domain status.
+`Deployed`: deployed;.
+`Processing`: deploying;.
+`Applying`: applying;.
+`Failed`: application failed;.
+`Issued`: binding failed.
         :rtype: str
         """
         return self._Status
@@ -10862,9 +12196,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceList: list of TeoInstanceDetail
         :param _TotalCount: The total number of EDGEONE instances.	
         :type TotalCount: int
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def InstanceList(self):
@@ -10889,6 +12227,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
@@ -10898,6 +12248,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11089,10 +12440,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceList: list of TkeInstanceDetail
         :param _TotalCount: The total number of TKE instances in this region.	
         :type TotalCount: int
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -11128,6 +12483,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -11138,6 +12505,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11299,29 +12667,29 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OldCertificateId: One-click update old certificate ID
+        :param _OldCertificateId: The old certificate id for one-click update. by querying the cloud resources bound to this certificate id, and then updating these cloud resources with the new certificate.
         :type OldCertificateId: str
-        :param _ResourceTypes: Type of the resource that needs to be deployed. The following parameter values are optional: clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, and tcb.
+        :param _ResourceTypes: Resource types that need to be deployed, with optional parameter values (lowercase): clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, tcb, tse, cos.
         :type ResourceTypes: list of str
-        :param _CertificateId: One-click update new certificate ID
+        :param _CertificateId: New certificate id for one-click update. if this parameter is not provided, the public key certificate and private key certificate must be provided.
         :type CertificateId: str
         :param _Regions: List of regions that need to be deployed (deprecated)
         :type Regions: list of str
-        :param _ResourceTypesRegions: List of regions for which cloud resources need to be deployed
+        :param _ResourceTypesRegions: List of regions where cloud resources need to be deployed. the cloud resource type of the supported region must be passed. valid values: clb, tke, apigateway, waf, tcb, tse, cos.
         :type ResourceTypesRegions: list of ResourceTypeRegions
-        :param _CertificatePublicKey: Public key of the certificate. If the public key of the certificate is uploaded, CertificateId does not need to be uploaded.
+        :param _CertificatePublicKey: If a public key certificate is uploaded, the private key certificate must also be uploaded, and the CertificateId does not need to be transmitted.
         :type CertificatePublicKey: str
-        :param _CertificatePrivateKey: Private key of the certificate. If the public key of the certificate is uploaded, the private key of the certificate is required.
+        :param _CertificatePrivateKey: If a private key certificate is uploaded, then a public key certificate must be uploaded; CertificateId is not required.
         :type CertificatePrivateKey: str
-        :param _ExpiringNotificationSwitch: Whether an expiration reminder is ignored for the old certificate. 0: The notification is not ignored. 1: The notification is ignored.
+        :param _ExpiringNotificationSwitch: Whether to ignore expiration reminder for old certificate  0: do not ignore the notification. 1: ignore the notification, ignore the expiration reminder of OldCertificateId.
         :type ExpiringNotificationSwitch: int
-        :param _Repeatable: Whether repeated uploading of the same certificate is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        :param _Repeatable: It specifies whether the same certificate is allowed to be uploaded repeatedly. If the public key and private key certificates are selected for upload, this parameter can be configured. If there are duplicate certificates, the update task will fail.
         :type Repeatable: bool
-        :param _AllowDownload: Whether downloading is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        :param _AllowDownload: Whether to allow downloading. If you choose to upload a public/private key certificate, this parameter can be configured.
         :type AllowDownload: bool
-        :param _Tags: Tag list. If the public key of the certificate is uploaded, this parameter can be configured.
+        :param _Tags: Tag list. If you choose to upload a public/private key certificate, you can configure this parameter.
         :type Tags: list of Tags
-        :param _ProjectId: Project ID. If the public key of the certificate is uploaded, this parameter can be configured.
+        :param _ProjectId: Project id. If you choose to upload a public/private key certificate, you can configure this parameter.
         :type ProjectId: int
         """
         self._OldCertificateId = None
@@ -11339,7 +12707,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def OldCertificateId(self):
-        """One-click update old certificate ID
+        """The old certificate id for one-click update. by querying the cloud resources bound to this certificate id, and then updating these cloud resources with the new certificate.
         :rtype: str
         """
         return self._OldCertificateId
@@ -11350,7 +12718,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        """Type of the resource that needs to be deployed. The following parameter values are optional: clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, and tcb.
+        """Resource types that need to be deployed, with optional parameter values (lowercase): clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, tcb, tse, cos.
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -11361,7 +12729,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificateId(self):
-        """One-click update new certificate ID
+        """New certificate id for one-click update. if this parameter is not provided, the public key certificate and private key certificate must be provided.
         :rtype: str
         """
         return self._CertificateId
@@ -11387,7 +12755,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
-        """List of regions for which cloud resources need to be deployed
+        """List of regions where cloud resources need to be deployed. the cloud resource type of the supported region must be passed. valid values: clb, tke, apigateway, waf, tcb, tse, cos.
         :rtype: list of ResourceTypeRegions
         """
         return self._ResourceTypesRegions
@@ -11398,7 +12766,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        """Public key of the certificate. If the public key of the certificate is uploaded, CertificateId does not need to be uploaded.
+        """If a public key certificate is uploaded, the private key certificate must also be uploaded, and the CertificateId does not need to be transmitted.
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -11409,7 +12777,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
-        """Private key of the certificate. If the public key of the certificate is uploaded, the private key of the certificate is required.
+        """If a private key certificate is uploaded, then a public key certificate must be uploaded; CertificateId is not required.
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -11420,7 +12788,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ExpiringNotificationSwitch(self):
-        """Whether an expiration reminder is ignored for the old certificate. 0: The notification is not ignored. 1: The notification is ignored.
+        """Whether to ignore expiration reminder for old certificate  0: do not ignore the notification. 1: ignore the notification, ignore the expiration reminder of OldCertificateId.
         :rtype: int
         """
         return self._ExpiringNotificationSwitch
@@ -11431,7 +12799,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Repeatable(self):
-        """Whether repeated uploading of the same certificate is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        """It specifies whether the same certificate is allowed to be uploaded repeatedly. If the public key and private key certificates are selected for upload, this parameter can be configured. If there are duplicate certificates, the update task will fail.
         :rtype: bool
         """
         return self._Repeatable
@@ -11442,7 +12810,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def AllowDownload(self):
-        """Whether downloading is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        """Whether to allow downloading. If you choose to upload a public/private key certificate, this parameter can be configured.
         :rtype: bool
         """
         return self._AllowDownload
@@ -11453,7 +12821,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        """Tag list. If the public key of the certificate is uploaded, this parameter can be configured.
+        """Tag list. If you choose to upload a public/private key certificate, you can configure this parameter.
         :rtype: list of Tags
         """
         return self._Tags
@@ -11464,7 +12832,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID. If the public key of the certificate is uploaded, this parameter can be configured.
+        """Project id. If you choose to upload a public/private key certificate, you can configure this parameter.
         :rtype: int
         """
         return self._ProjectId
@@ -11514,12 +12882,13 @@ class UpdateCertificateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: Cloud resource deployment task ID
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DeployRecordId: Task id, DeployRecordId of 0 indicates that the task is in progress. repeatedly requesting this api, when DeployRecordId returned is greater than 0, it indicates that the task is created successfully. if not created successfully, an exception will be thrown.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DeployRecordId: int
-        :param _DeployStatus: Deployment status. 1 indicates that the deployment succeeded, and 0 indicates that the deployment failed.
+        :param _DeployStatus: Status of the task; 1 indicates successful creation; 0 indicates that there is a task being updated currently, and no new update task has been created; the returned value DeployRecordId is the task id being updated.
         :type DeployStatus: int
-        :param _UpdateSyncProgress: 
+        :param _UpdateSyncProgress: Task Progress Details.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type UpdateSyncProgress: list of UpdateSyncProgress
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11531,8 +12900,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DeployRecordId(self):
-        """Cloud resource deployment task ID
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Task id, DeployRecordId of 0 indicates that the task is in progress. repeatedly requesting this api, when DeployRecordId returned is greater than 0, it indicates that the task is created successfully. if not created successfully, an exception will be thrown.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._DeployRecordId
@@ -11543,7 +12912,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DeployStatus(self):
-        """Deployment status. 1 indicates that the deployment succeeded, and 0 indicates that the deployment failed.
+        """Status of the task; 1 indicates successful creation; 0 indicates that there is a task being updated currently, and no new update task has been created; the returned value DeployRecordId is the task id being updated.
         :rtype: int
         """
         return self._DeployStatus
@@ -11554,7 +12923,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UpdateSyncProgress(self):
-        """
+        """Task Progress Details.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UpdateSyncProgress
         """
         return self._UpdateSyncProgress
@@ -11594,9 +12964,9 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: To-be-redeployed record ID
+        :param _DeployRecordId: Record ID for pending retry deployment, which can be obtained through UpdateCertificateInstance. if this parameter is not provided, DeployRecordDetailId must be provided.
         :type DeployRecordId: int
-        :param _DeployRecordDetailId: To-be-redeployed record detail ID
+        :param _DeployRecordDetailId: Detail ID for pending retry deployment record, which can be obtained through the DescribeHostUpdateRecordDetail api. if this parameter is not provided, DeployRecordId must be provided.
         :type DeployRecordDetailId: int
         """
         self._DeployRecordId = None
@@ -11604,7 +12974,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        """To-be-redeployed record ID
+        """Record ID for pending retry deployment, which can be obtained through UpdateCertificateInstance. if this parameter is not provided, DeployRecordDetailId must be provided.
         :rtype: int
         """
         return self._DeployRecordId
@@ -11615,7 +12985,7 @@ class UpdateCertificateRecordRetryRequest(AbstractModel):
 
     @property
     def DeployRecordDetailId(self):
-        """To-be-redeployed record detail ID
+        """Detail ID for pending retry deployment record, which can be obtained through the DescribeHostUpdateRecordDetail api. if this parameter is not provided, DeployRecordId must be provided.
         :rtype: int
         """
         return self._DeployRecordDetailId
@@ -11752,21 +13122,40 @@ class UpdateRecordDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Detail record ID
+        :param _Id: Update detail record id.
         :type Id: int
-        :param _CertId: New certificate ID
+        :param _CertId: New and old certificate update - new certificate id.
         :type CertId: str
-        :param _OldCertId: Old certificate ID
+        :param _OldCertId: Old and new certificate update - old certificate id.
         :type OldCertId: str
         :param _Domains: Deployment domain name list
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Domains: list of str
-        :param _ResourceType: Deployment resource type
+        :param _ResourceType: Type of cloud resource for updating old and new certs.
+- clb.
+- cdn.
+- ddos.
+- live.
+- vod.
+- waf.
+- apigateway.
+- teo.
+- tke.
+- cos.
+- tse.
+- tcb.
         :type ResourceType: str
         :param _Region: Deployment region
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Region: str
-        :param _Status: Deployment status
+        :param _Status: Deployment status. valid values:.
+0: To be deployed.
+1: Deployment successful.
+2: Deployment failed.
+3: Deploying.
+4: Rollback succeeded.
+5: Rollback failure.
+6: No resource, no need for deployment.
         :type Status: int
         :param _ErrorMsg: Deployment error message
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -11811,6 +13200,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _TCBType: TCB deployment type
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TCBType: str
+        :param _Url: Listener url (only for CLB).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Url: str
         """
         self._Id = None
         self._CertId = None
@@ -11834,10 +13226,11 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._SecretName = None
         self._EnvId = None
         self._TCBType = None
+        self._Url = None
 
     @property
     def Id(self):
-        """Detail record ID
+        """Update detail record id.
         :rtype: int
         """
         return self._Id
@@ -11848,7 +13241,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CertId(self):
-        """New certificate ID
+        """New and old certificate update - new certificate id.
         :rtype: str
         """
         return self._CertId
@@ -11859,7 +13252,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OldCertId(self):
-        """Old certificate ID
+        """Old and new certificate update - old certificate id.
         :rtype: str
         """
         return self._OldCertId
@@ -11882,7 +13275,19 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ResourceType(self):
-        """Deployment resource type
+        """Type of cloud resource for updating old and new certs.
+- clb.
+- cdn.
+- ddos.
+- live.
+- vod.
+- waf.
+- apigateway.
+- teo.
+- tke.
+- cos.
+- tse.
+- tcb.
         :rtype: str
         """
         return self._ResourceType
@@ -11905,7 +13310,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
-        """Deployment status
+        """Deployment status. valid values:.
+0: To be deployed.
+1: Deployment successful.
+2: Deployment failed.
+3: Deploying.
+4: Rollback succeeded.
+5: Rollback failure.
+6: No resource, no need for deployment.
         :rtype: int
         """
         return self._Status
@@ -12092,6 +13504,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def TCBType(self, TCBType):
         self._TCBType = TCBType
 
+    @property
+    def Url(self):
+        """Listener url (only for CLB).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12116,6 +13540,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._SecretName = params.get("SecretName")
         self._EnvId = params.get("EnvId")
         self._TCBType = params.get("TCBType")
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12127,17 +13552,29 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class UpdateRecordDetails(AbstractModel):
-    """Update record detail list
+    """Details of update records.
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceType: Deployment resource type
+        :param _ResourceType: Type of cloud resource for updating old and new certs.
+- clb.
+- cdn.
+- ddos.
+- live.
+- vod.
+- waf.
+- apigateway.
+- teo.
+- tke.
+- cos.
+- tse.
+- tcb.
         :type ResourceType: str
-        :param _List: Deployment resource detail list
+        :param _List: The update details of the cloud resource.
         :type List: list of UpdateRecordDetail
-        :param _TotalCount: Total deployment resource count
+        :param _TotalCount: The update of the total number of cloud resources.
         :type TotalCount: int
         """
         self._ResourceType = None
@@ -12146,7 +13583,19 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def ResourceType(self):
-        """Deployment resource type
+        """Type of cloud resource for updating old and new certs.
+- clb.
+- cdn.
+- ddos.
+- live.
+- vod.
+- waf.
+- apigateway.
+- teo.
+- tke.
+- cos.
+- tse.
+- tcb.
         :rtype: str
         """
         return self._ResourceType
@@ -12157,7 +13606,7 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def List(self):
-        """Deployment resource detail list
+        """The update details of the cloud resource.
         :rtype: list of UpdateRecordDetail
         """
         return self._List
@@ -12168,7 +13617,7 @@ class UpdateRecordDetails(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Total deployment resource count
+        """The update of the total number of cloud resources.
         :rtype: int
         """
         return self._TotalCount
@@ -12341,17 +13790,20 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class UpdateSyncProgress(AbstractModel):
-    """
+    """Update the progress of asynchronous task.
 
     """
 
     def __init__(self):
         r"""
-        :param _ResourceType: 
+        :param _ResourceType: Resource type.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type ResourceType: str
-        :param _UpdateSyncProgressRegions: 
+        :param _UpdateSyncProgressRegions: Region result list.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type UpdateSyncProgressRegions: list of UpdateSyncProgressRegion
-        :param _Status: 
+        :param _Status: Asynchronous update progress status: 0, pending, 1 processed, 3 processing.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
         """
         self._ResourceType = None
@@ -12360,7 +13812,8 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def ResourceType(self):
-        """
+        """Resource type.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ResourceType
@@ -12371,7 +13824,8 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def UpdateSyncProgressRegions(self):
-        """
+        """Region result list.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: list of UpdateSyncProgressRegion
         """
         return self._UpdateSyncProgressRegions
@@ -12382,7 +13836,8 @@ class UpdateSyncProgress(AbstractModel):
 
     @property
     def Status(self):
-        """
+        """Asynchronous update progress status: 0, pending, 1 processed, 3 processing.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Status
@@ -12412,19 +13867,24 @@ class UpdateSyncProgress(AbstractModel):
 
 
 class UpdateSyncProgressRegion(AbstractModel):
-    """
+    """Update the progress of asynchronous task.
 
     """
 
     def __init__(self):
         r"""
-        :param _Region: 
+        :param _Region: Resource type.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _TotalCount: 
+        :param _TotalCount: Total number
+.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
-        :param _OffsetCount: 
+        :param _OffsetCount: Quantity of executions completed.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type OffsetCount: int
-        :param _Status: 
+        :param _Status: Asynchronous update progress status: 0, pending, 1 processed, 3 processing.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: int
         """
         self._Region = None
@@ -12434,7 +13894,8 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Region(self):
-        """
+        """Resource type.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Region
@@ -12445,7 +13906,9 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def TotalCount(self):
-        """
+        """Total number
+.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._TotalCount
@@ -12456,7 +13919,8 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def OffsetCount(self):
-        """
+        """Quantity of executions completed.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._OffsetCount
@@ -12467,7 +13931,8 @@ class UpdateSyncProgressRegion(AbstractModel):
 
     @property
     def Status(self):
-        """
+        """Asynchronous update progress status: 0, pending, 1 processed, 3 processing.
+Note: this field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Status
@@ -12509,11 +13974,11 @@ class UploadCertificateRequest(AbstractModel):
         :type Alias: str
         :param _ProjectId: Project ID
         :type ProjectId: int
-        :param _CertificateUse: 
+        :param _CertificateUse: Certificate Usage/Source, such as CLB, CDN, WAF, LIVE, DDOS.
         :type CertificateUse: str
         :param _Tags: The list of tags.
         :type Tags: list of Tags
-        :param _Repeatable: Whether a certificate can be repeatedly uploaded.
+        :param _Repeatable: Whether to allow duplicate upload of the same certificate, true: allow uploading certificates with the same fingerprint; false: do not allow uploading certificates with the same fingerprint. default value: true.
         :type Repeatable: bool
         """
         self._CertificatePublicKey = None
@@ -12582,7 +14047,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def CertificateUse(self):
-        """
+        """Certificate Usage/Source, such as CLB, CDN, WAF, LIVE, DDOS.
         :rtype: str
         """
         return self._CertificateUse
@@ -12604,7 +14069,7 @@ class UploadCertificateRequest(AbstractModel):
 
     @property
     def Repeatable(self):
-        """Whether a certificate can be repeatedly uploaded.
+        """Whether to allow duplicate upload of the same certificate, true: allow uploading certificates with the same fingerprint; false: do not allow uploading certificates with the same fingerprint. default value: true.
         :rtype: bool
         """
         return self._Repeatable
@@ -12819,9 +14284,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceList: list of VodInstanceDetail
         :param _TotalCount: The total number of VOD instances in this region.	
         :type TotalCount: int
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def InstanceList(self):
@@ -12846,6 +14315,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         if params.get("InstanceList") is not None:
@@ -12855,6 +14336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13000,10 +14482,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceList: list of WafInstanceDetail
         :param _TotalCount: The total number of WAF instances in this region.	
         :type TotalCount: int
+        :param _Error: Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Error: str
         """
         self._Region = None
         self._InstanceList = None
         self._TotalCount = None
+        self._Error = None
 
     @property
     def Region(self):
@@ -13039,6 +14525,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def Error(self):
+        """Whether to query exceptions.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -13049,6 +14547,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._Error = params.get("Error")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

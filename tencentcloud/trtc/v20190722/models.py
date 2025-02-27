@@ -7338,7 +7338,11 @@ class SetUserBlockedByStrRoomIdRequest(AbstractModel):
         :type StrRoomId: str
         :param _UserId: The user ID.
         :type UserId: str
-        :param _IsMute: Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        :param _IsMute: Controls the activation state of audio and video.
+0: Enable audio and video,
+1: Disable audio and video,
+2: Disable audio only,
+3: Disable video only.
         :type IsMute: int
         """
         self._SdkAppId = None
@@ -7381,7 +7385,11 @@ class SetUserBlockedByStrRoomIdRequest(AbstractModel):
 
     @property
     def IsMute(self):
-        """Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        """Controls the activation state of audio and video.
+0: Enable audio and video,
+1: Disable audio and video,
+2: Disable audio only,
+3: Disable video only.
         :rtype: int
         """
         return self._IsMute
@@ -7447,7 +7455,11 @@ class SetUserBlockedRequest(AbstractModel):
         :type RoomId: int
         :param _UserId: The user ID.
         :type UserId: str
-        :param _IsMute: Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        :param _IsMute: Controls the activation state of audio and video.
+0: Enable audio and video,
+1: Disable audio and video,
+2: Disable audio only,
+3: Disable video only.
         :type IsMute: int
         """
         self._SdkAppId = None
@@ -7490,7 +7502,11 @@ class SetUserBlockedRequest(AbstractModel):
 
     @property
     def IsMute(self):
-        """Whether to disable the user’s audio and video. 0: Enable; 1: Disable.
+        """Controls the activation state of audio and video.
+0: Enable audio and video,
+1: Disable audio and video,
+2: Disable audio only,
+3: Disable video only.
         :rtype: int
         """
         return self._IsMute
