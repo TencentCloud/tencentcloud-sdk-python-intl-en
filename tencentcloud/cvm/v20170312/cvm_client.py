@@ -244,6 +244,33 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLaunchTemplate(self, request):
+        """This API is used to create an instance launch template.
+
+        An instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.
+
+        When a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it’s not specified, the default template version is used.
+
+        :param request: Request instance for CreateLaunchTemplate.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLaunchTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLaunchTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLaunchTemplateVersion(self, request):
         """This API is used to create an instance launch template based on the specified template ID and the corresponding template version number. The default version number will be used when no template version numbers are specified. Each instance launch template can have up to 30 version numbers.
 
