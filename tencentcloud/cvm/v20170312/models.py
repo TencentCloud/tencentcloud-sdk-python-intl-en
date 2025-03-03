@@ -2054,6 +2054,10 @@ false (default value): send a normal request and create instance(s) if all the r
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param _DisableApiTermination: 
+        :type DisableApiTermination: bool
+        :param _LaunchTemplateTagSpecification: Instance launch template tag description list. By specifying the TemplateTag parameter, you can bind tags to the instance launch template.
+        :type LaunchTemplateTagSpecification: list of TagSpecification
         """
         self._LaunchTemplateName = None
         self._Placement = None
@@ -2081,6 +2085,8 @@ false (default value): send a normal request and create instance(s) if all the r
         self._HpcClusterId = None
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
+        self._DisableApiTermination = None
+        self._LaunchTemplateTagSpecification = None
 
     @property
     def LaunchTemplateName(self):
@@ -2373,6 +2379,28 @@ false (default value): send a normal request and create instance(s) if all the r
     def InstanceChargePrepaid(self, InstanceChargePrepaid):
         self._InstanceChargePrepaid = InstanceChargePrepaid
 
+    @property
+    def DisableApiTermination(self):
+        """
+        :rtype: bool
+        """
+        return self._DisableApiTermination
+
+    @DisableApiTermination.setter
+    def DisableApiTermination(self, DisableApiTermination):
+        self._DisableApiTermination = DisableApiTermination
+
+    @property
+    def LaunchTemplateTagSpecification(self):
+        """Instance launch template tag description list. By specifying the TemplateTag parameter, you can bind tags to the instance launch template.
+        :rtype: list of TagSpecification
+        """
+        return self._LaunchTemplateTagSpecification
+
+    @LaunchTemplateTagSpecification.setter
+    def LaunchTemplateTagSpecification(self, LaunchTemplateTagSpecification):
+        self._LaunchTemplateTagSpecification = LaunchTemplateTagSpecification
+
 
     def _deserialize(self, params):
         self._LaunchTemplateName = params.get("LaunchTemplateName")
@@ -2429,6 +2457,13 @@ false (default value): send a normal request and create instance(s) if all the r
         if params.get("InstanceChargePrepaid") is not None:
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._DisableApiTermination = params.get("DisableApiTermination")
+        if params.get("LaunchTemplateTagSpecification") is not None:
+            self._LaunchTemplateTagSpecification = []
+            for item in params.get("LaunchTemplateTagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self._LaunchTemplateTagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

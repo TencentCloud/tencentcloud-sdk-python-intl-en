@@ -249,7 +249,7 @@ class CvmClient(AbstractClient):
 
         An instance launch template contains the configuration information required to create an instance, including instance type, data/system disk type and size, and security group, etc.
 
-        When a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it’s not specified, the default template version is used.
+        When a template is created, it defaults to Version 1. You can use `CreateLaunchTemplateVersion` to create new versions of this template, with the version number increasing. When you run `RunInstances` to create instances, you can specify the instance launch template version. If it's not specified, the default template version is used.
 
         :param request: Request instance for CreateLaunchTemplate.
         :type request: :class:`tencentcloud.cvm.v20170312.models.CreateLaunchTemplateRequest`
