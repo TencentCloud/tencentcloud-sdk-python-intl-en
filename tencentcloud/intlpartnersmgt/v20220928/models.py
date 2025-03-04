@@ -4160,23 +4160,23 @@ class PolicyProductList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyCode: Dealer policy code.
+        :param _PolicyCode:  Policy code.
         :type PolicyCode: str
-        :param _ProductCode: Product level 1 code. If the return value is *, any item at this level is included in the policy product range.
+        :param _ProductCode: The code of the ProductName field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :type ProductCode: str
-        :param _ProductName: Product level 1 name. If the return value is *, any item at this level is included in the policy product range.
+        :param _ProductName: The ProductName field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :type ProductName: str
-        :param _SubProductCode: Product level 2 code. If the return value is *, any item at this level is included in the policy product range.
+        :param _SubProductCode: The code of the SubProduct field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :type SubProductCode: str
-        :param _SubProductName: Product level 2 name. If the return value is *, any item at this level is included in the policy product range.
+        :param _SubProductName: The SubProduct field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :type SubProductName: str
-        :param _ComponentTypeCode: Product level 3 code. If the return value is *, any item at this level is included in the policy product range.
+        :param _ComponentTypeCode: The code of the ComponentType field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentTypeCode: str
-        :param _ComponentTypeName: Product level 3 name. If the return value is *, any item at this level is included in the policy product range.
+        :param _ComponentTypeName: The ComponentType field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentTypeName: str
-        :param _ComponentCode: Product level 4 code. If the return value is *, any item at this level is included in the policy product range.
+        :param _ComponentCode: The code of the Component field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentCode: str
-        :param _ComponentName: Product fourth-level name. If the return value is *, any item under this level is included in the policy product scope.
+        :param _ComponentName: The Component field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :type ComponentName: str
         :param _StartDate: Policy effective time.
         :type StartDate: str
@@ -4197,7 +4197,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def PolicyCode(self):
-        """Dealer policy code.
+        """ Policy code.
         :rtype: str
         """
         return self._PolicyCode
@@ -4208,7 +4208,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Product level 1 code. If the return value is *, any item at this level is included in the policy product range.
+        """The code of the ProductName field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ProductCode
@@ -4219,7 +4219,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ProductName(self):
-        """Product level 1 name. If the return value is *, any item at this level is included in the policy product range.
+        """The ProductName field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ProductName
@@ -4230,7 +4230,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """Product level 2 code. If the return value is *, any item at this level is included in the policy product range.
+        """The code of the SubProduct field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._SubProductCode
@@ -4241,7 +4241,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def SubProductName(self):
-        """Product level 2 name. If the return value is *, any item at this level is included in the policy product range.
+        """The SubProduct field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._SubProductName
@@ -4252,7 +4252,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentTypeCode(self):
-        """Product level 3 code. If the return value is *, any item at this level is included in the policy product range.
+        """The code of the ComponentType field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentTypeCode
@@ -4263,7 +4263,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentTypeName(self):
-        """Product level 3 name. If the return value is *, any item at this level is included in the policy product range.
+        """The ComponentType field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentTypeName
@@ -4274,7 +4274,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentCode(self):
-        """Product level 4 code. If the return value is *, any item at this level is included in the policy product range.
+        """The code of the Component field in the  bill data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentCode
@@ -4285,7 +4285,7 @@ class PolicyProductList(AbstractModel):
 
     @property
     def ComponentName(self):
-        """Product fourth-level name. If the return value is *, any item under this level is included in the policy product scope.
+        """The Component field value in the billing data. If the return value is *, any item at this level is included in the policy product range.
         :rtype: str
         """
         return self._ComponentName
@@ -5797,15 +5797,15 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyCode: Dealer policy code.
+        :param _PolicyCode: Policy code.
         :type PolicyCode: str
-        :param _ProductCode: Product level 1 code.
+        :param _ProductCode: The code of the ProductName field in the  bill data.
         :type ProductCode: str
-        :param _ProductName: Product level 1 name.
+        :param _ProductName: The ProductName field value in the billing data.
         :type ProductName: str
-        :param _SubProductCode: Product level 2 code.
+        :param _SubProductCode: The code of the SubProductName field in the  bill data.
         :type SubProductCode: str
-        :param _SubProductName: Product level 2 name.
+        :param _SubProductName: The SubProductName field value in the billing data.
         :type SubProductName: str
         :param _Page: Page parameter: current page number. The minimum value is 1.
         :type Page: int
@@ -5822,7 +5822,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def PolicyCode(self):
-        """Dealer policy code.
+        """Policy code.
         :rtype: str
         """
         return self._PolicyCode
@@ -5833,7 +5833,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        """Product level 1 code.
+        """The code of the ProductName field in the  bill data.
         :rtype: str
         """
         return self._ProductCode
@@ -5844,7 +5844,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        """Product level 1 name.
+        """The ProductName field value in the billing data.
         :rtype: str
         """
         return self._ProductName
@@ -5855,7 +5855,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def SubProductCode(self):
-        """Product level 2 code.
+        """The code of the SubProductName field in the  bill data.
         :rtype: str
         """
         return self._SubProductCode
@@ -5866,7 +5866,7 @@ class QueryPolicyProductListByCodeRequest(AbstractModel):
 
     @property
     def SubProductName(self):
-        """Product level 2 name.
+        """The SubProductName field value in the billing data.
         :rtype: str
         """
         return self._SubProductName
@@ -5923,7 +5923,7 @@ class QueryPolicyProductListByCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductList: Dealer policy product list.
+        :param _ProductList: policy product list.
         :type ProductList: list of PolicyProductList
         :param _Total: Total number of data entries
         :type Total: int
@@ -5936,7 +5936,7 @@ class QueryPolicyProductListByCodeResponse(AbstractModel):
 
     @property
     def ProductList(self):
-        """Dealer policy product list.
+        """policy product list.
         :rtype: list of PolicyProductList
         """
         return self._ProductList
