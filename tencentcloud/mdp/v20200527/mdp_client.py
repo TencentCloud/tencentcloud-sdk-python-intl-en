@@ -26,6 +26,29 @@ class MdpClient(AbstractClient):
     _service = 'mdp'
 
 
+    def BindLinearAssemblyCDNDomainWithChannel(self, request):
+        """Linear Assembly channel is bound to CDN playback domain name.
+
+        :param request: Request instance for BindLinearAssemblyCDNDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.BindLinearAssemblyCDNDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.BindLinearAssemblyCDNDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindLinearAssemblyCDNDomainWithChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindLinearAssemblyCDNDomainWithChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindNewLVBDomainWithChannel(self, request):
         """This API is used to bind an LVB domain name to a channel.
 
@@ -477,6 +500,52 @@ class MdpClient(AbstractClient):
             body = self.call("DeleteStreamPackageSourceLocation", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLinearAssemblyCDNDomainWithChannel(self, request):
+        """Query the CDN domain name associated with the LinearAssembly channel.
+
+        :param request: Request instance for DescribeLinearAssemblyCDNDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeLinearAssemblyCDNDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeLinearAssemblyCDNDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLinearAssemblyCDNDomainWithChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLinearAssemblyCDNDomainWithChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLinearAssemblyCDNDomainWithChannels(self, request):
+        """Query the CDN domain names associated with all LinearAssembly channels.
+
+        :param request: Request instance for DescribeLinearAssemblyCDNDomainWithChannels.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeLinearAssemblyCDNDomainWithChannelsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeLinearAssemblyCDNDomainWithChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLinearAssemblyCDNDomainWithChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLinearAssemblyCDNDomainWithChannelsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1144,6 +1213,29 @@ class MdpClient(AbstractClient):
             body = self.call("UnbindCdnDomainWithChannel", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindCdnDomainWithChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindLinearAssemblyCDNDomainWithChannel(self, request):
+        """Unbind LinearAssembly channel with CDN domain name.
+
+        :param request: Request instance for UnbindLinearAssemblyCDNDomainWithChannel.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.UnbindLinearAssemblyCDNDomainWithChannelRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.UnbindLinearAssemblyCDNDomainWithChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindLinearAssemblyCDNDomainWithChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindLinearAssemblyCDNDomainWithChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -17,6 +17,9 @@
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# The account has been registered.
+FAILEDOPERATION_ACCOUNTALREADYREGISTER = 'FailedOperation.AccountAlreadyRegister'
+
 # The application already exists.
 FAILEDOPERATION_APPLYEXIST = 'FailedOperation.ApplyExist'
 
@@ -29,8 +32,20 @@ FAILEDOPERATION_AUTHINFONOTSAME = 'FailedOperation.AuthInfoNotSame'
 # The user has not completed enterprise identity verification.
 FAILEDOPERATION_AUTHNOTENTERPRISE = 'FailedOperation.AuthNotEnterprise'
 
+# The mailbox binding link has expired.
+FAILEDOPERATION_BINDEMAILLINKEXPIRED = 'FailedOperation.BindEmailLinkExpired'
+
+# The mailbox binding link is invalid.
+FAILEDOPERATION_BINDEMAILLINKINVALID = 'FailedOperation.BindEmailLinkInvalid'
+
 # Member permission change record exists.
 FAILEDOPERATION_CHANGEPERMISSIONRECORDEXIST = 'FailedOperation.ChangePermissionRecordExist'
+
+# Failed to check the mobile phone binding capacity limit.
+FAILEDOPERATION_CHECKACCOUNTPHONEBINDLIMIT = 'FailedOperation.CheckAccountPhoneBindLimit'
+
+# Failed to check the mailbox binding status.
+FAILEDOPERATION_CHECKMAILACCOUNT = 'FailedOperation.CheckMailAccount'
 
 # Permission configurations created for a directory exceed the upper limit.
 FAILEDOPERATION_CONFIGURATIONOVERUPPERLIMIT = 'FailedOperation.ConfigurationOverUpperLimit'
@@ -76,6 +91,12 @@ FAILEDOPERATION_DESCRIBEORGSERVICEUSAGESTATUSERR = 'FailedOperation.DescribeOrgS
 
 # You cannot quit an organization created by yourself.
 FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = 'FailedOperation.DisableQuitSelfCreatedOrganization'
+
+# The email has been used.
+FAILEDOPERATION_EMAILALREADYUSED = 'FailedOperation.EmailAlreadyUsed'
+
+# Mailbox binding has become invalid.
+FAILEDOPERATION_EMAILBINDRECORDINVALID = 'FailedOperation.EmailBindRecordInvalid'
 
 # There are shared resources with other organization members or from other organization members.
 FAILEDOPERATION_EXISTOTHERORGANIZATIONMEMBERSHARED = 'FailedOperation.ExistOtherOrganizationMemberShared'
@@ -139,6 +160,15 @@ FAILEDOPERATION_MANUALUSERNOTDELETE = 'FailedOperation.ManualUserNotDelete'
 
 # Manually created users cannot be updated.
 FAILEDOPERATION_MANUALUSERNOTUPDATE = 'FailedOperation.ManualUserNotUpdate'
+
+# Mailbox binding failed.
+FAILEDOPERATION_MEMBERBINDEMAILERROR = 'FailedOperation.MemberBindEmailError'
+
+# Verification mobile numbe binding failed.
+FAILEDOPERATION_MEMBERBINDPHONEERROR = 'FailedOperation.MemberBindPhoneError'
+
+# The member has a mailbox.
+FAILEDOPERATION_MEMBEREMAILEXIST = 'FailedOperation.MemberEmailExist'
 
 # The member has a payer and cannot be deleted.
 FAILEDOPERATION_MEMBEREXISTDELEGATEPAYERNOTALLOWDELETE = 'FailedOperation.MemberExistDelegatePayerNotAllowDelete'
@@ -377,6 +407,12 @@ INVALIDPARAMETER_ALLOWQUITILLEGAL = 'InvalidParameter.AllowQuitIllegal'
 # The permission configuration cannot be bound to this policy.
 INVALIDPARAMETER_BINDPOLICYNAMENOTALLOWED = 'InvalidParameter.BindPolicyNameNotAllowed'
 
+# Incorrect mobile phone verification code.
+INVALIDPARAMETER_CODEERROR = 'InvalidParameter.CodeError'
+
+# The mobile phone verification code has expired.
+INVALIDPARAMETER_CODEEXPIRED = 'InvalidParameter.CodeExpired'
+
 # The permission configuration name already exists.
 INVALIDPARAMETER_CONFIGURATIONNAMEALREADYEXISTS = 'InvalidParameter.ConfigurationNameAlreadyExists'
 
@@ -401,6 +437,9 @@ INVALIDPARAMETER_GROUPUSERALREADYEXISTS = 'InvalidParameter.GroupUserAlreadyExis
 # The user does not exist in the user group.
 INVALIDPARAMETER_GROUPUSERNOTEXIST = 'InvalidParameter.GroupUserNotExist'
 
+# The mailbox is invalid.
+INVALIDPARAMETER_INVALIDEMAIL = 'InvalidParameter.InvalidEmail'
+
 # Invalid nextToken.
 INVALIDPARAMETER_NEXTTOKENINVALID = 'InvalidParameter.NextTokenInvalid'
 
@@ -412,6 +451,9 @@ INVALIDPARAMETER_ORGANIZATIONNODENOTEXIST = 'InvalidParameter.OrganizationNodeNo
 
 # Parameter error.
 INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
+
+# The password is invalid.
+INVALIDPARAMETER_PASSWORDILLEGAL = 'InvalidParameter.PasswordIllegal'
 
 # The custom policy content cannot be empty.
 INVALIDPARAMETER_POLICYDOCUMENTEMPTY = 'InvalidParameter.PolicyDocumentEmpty'
@@ -485,6 +527,9 @@ LIMITEXCEEDED_CREATEUSERLIMITEXCEEDED = 'LimitExceeded.CreateUserLimitExceeded'
 # Requests for creating user synchronization tasks exceed the limit.
 LIMITEXCEEDED_CREATEUSERSYNCPROVISIONINGLIMITEXCEEDED = 'LimitExceeded.CreateUserSyncProvisioningLimitExceeded'
 
+# The mailbox configuration exceeds the daily capacity limit.
+LIMITEXCEEDED_EMAILBINDOVERLIMIT = 'LimitExceeded.EmailBindOverLimit'
+
 # The number of organization identities exceeds limit.
 LIMITEXCEEDED_IDENTITYEXCEEDLIMIT = 'LimitExceeded.IdentityExceedLimit'
 
@@ -500,11 +545,20 @@ LIMITEXCEEDED_NODEEXCEEDLIMIT = 'LimitExceeded.NodeExceedLimit'
 # The number of members exceeds the upper limit.
 LIMITEXCEEDED_ORGANIZATIONMEMBEROVERLIMIT = 'LimitExceeded.OrganizationMemberOverLimit'
 
+# The number of mobile phones exceeds the binding upper limit.
+LIMITEXCEEDED_PHONENUMBOUND = 'LimitExceeded.PhoneNumBound'
+
 # Requests for removing users from the user group exceed the limit.
 LIMITEXCEEDED_REMOVEUSERFROMGROUPLIMITEXCEEDED = 'LimitExceeded.RemoveUserFromGroupLimitExceeded'
 
 # The number of SCIM keys exceeds the limit.
 LIMITEXCEEDED_SCIMCREDENTIALLIMITEXCEEDED = 'LimitExceeded.ScimCredentialLimitExceeded'
+
+# The number of times to resend the activation email exceeds the limit.
+LIMITEXCEEDED_SENDEMAILLIMIT = 'LimitExceeded.SendEmailLimit'
+
+# The number of times to resend the activation email within one hour exceeds the limit.
+LIMITEXCEEDED_SENDEMAILWITHINONEHOURLIMIT = 'LimitExceeded.SendEmailWithinOneHourLimit'
 
 # The number of shared members for this operation exceeds the upper limit.
 LIMITEXCEEDED_SHAREUNITMEMBEROVERLIMIT = 'LimitExceeded.ShareUnitMemberOverLimit'
@@ -512,11 +566,17 @@ LIMITEXCEEDED_SHAREUNITMEMBEROVERLIMIT = 'LimitExceeded.ShareUnitMemberOverLimit
 # The number of shared resources for this operation exceeds the upper limit.
 LIMITEXCEEDED_SHAREUNITRESOURCEOVERLIMIT = 'LimitExceeded.ShareUnitResourceOverLimit'
 
+# The number of modifications to member binding information exceeds the limit.
+LIMITEXCEEDED_UPDATEEMAILBINDOVERLIMIT = 'LimitExceeded.UpdateEmailBindOverLimit'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# The mailbox binding record does not exist.
+RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = 'ResourceNotFound.EmailBindRecordNotExist'
 
 # The authorizable member identity does not exist.
 RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = 'ResourceNotFound.MemberIdentityNotExist'

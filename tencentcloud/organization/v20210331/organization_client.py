@@ -72,6 +72,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddOrganizationMemberEmail(self, request):
+        """This API is used to add an organization member's mailbox.
+
+        :param request: Request instance for AddOrganizationMemberEmail.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AddOrganizationMemberEmailRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AddOrganizationMemberEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOrganizationMemberEmail", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOrganizationMemberEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddOrganizationNode(self, request):
         """This API is used to add an organization node.
 
@@ -1029,6 +1052,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DescribeOrganizationMemberAuthIdentities", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOrganizationMemberAuthIdentitiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOrganizationMemberEmailBind(self, request):
+        """This API is used to query detailed information about member mailbox binding.
+
+        :param request: Request instance for DescribeOrganizationMemberEmailBind.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberEmailBindRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationMemberEmailBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOrganizationMemberEmailBind", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOrganizationMemberEmailBindResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2004,6 +2050,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SendOrgMemberAccountBindEmail(self, request):
+        """This API is used to resend an email for activating the member's bound mailbox.
+
+        :param request: Request instance for SendOrgMemberAccountBindEmail.
+        :type request: :class:`tencentcloud.organization.v20210331.models.SendOrgMemberAccountBindEmailRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.SendOrgMemberAccountBindEmailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendOrgMemberAccountBindEmail", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendOrgMemberAccountBindEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetExternalSAMLIdentityProvider(self, request):
         """This API is used to configure the SAML identity provider information.
 
@@ -2110,6 +2179,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("UpdateOrganizationMember", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOrganizationMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateOrganizationMemberEmailBind(self, request):
+        """This API is used to modify the mailbox of a bound member.
+
+        :param request: Request instance for UpdateOrganizationMemberEmailBind.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberEmailBindRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateOrganizationMemberEmailBindResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOrganizationMemberEmailBind", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOrganizationMemberEmailBindResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

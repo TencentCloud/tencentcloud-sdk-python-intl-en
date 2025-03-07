@@ -1461,6 +1461,32 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstancesRenewFlag(self, request):
+        """This API is used to modify the renewal flag of monthly subscription instances.
+
+        * After an instance is marked as auto-renewal, it will be automatically renewed for one month each time it expires.
+        * Batch operations are supported. The maximum number of instances for each request is 100.* You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+
+        :param request: Request instance for ModifyInstancesRenewFlag.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesRenewFlagRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancesRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancesRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstancesVpcAttribute(self, request):
         """This API is used to modify the VPC attributes of an instance, such as the VPC IP address.
         * This action will shut down the instance, and restart it after the modification is completed.
