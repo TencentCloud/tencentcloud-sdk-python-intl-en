@@ -13289,9 +13289,9 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: For one or more instance IDs to be operated, you can obtain the instance ID through the `instanceid` in the returned value from the API [describeinstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances that can be operated for each request is 100.
+        :param _InstanceIds: For one or more instance IDs to be operated. You can obtain the instance ID through the `instanceid` in the returned value from the API [DescribeInstances](https://cloud.tencent.com/document/api/213/15728). The maximum number of instances that can be operated for each request is 100.
         :type InstanceIds: list of str
-        :param _RenewFlag: Auto-renewal flag. Valid values: <br><li>notify_and_auto_renew: Notifies of expiration and performs auto-renewal.</li><li>notify_and_manual_renew: Notifies of expiration but does not perform auto-renewal.</li><li>disable_notify_and_manual_renew: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to notify_and_auto_renew, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.
+        :param _RenewFlag: Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notifies of expiration and performs auto-renewal.</li><li>NOTIFY_AND_MANUAL_RENEW: Notifies of expiration but does not perform auto-renewal.</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.
         :type RenewFlag: str
         """
         self._InstanceIds = None
@@ -13299,7 +13299,7 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """For one or more instance IDs to be operated, you can obtain the instance ID through the `instanceid` in the returned value from the API [describeinstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances that can be operated for each request is 100.
+        """For one or more instance IDs to be operated. You can obtain the instance ID through the `instanceid` in the returned value from the API [DescribeInstances](https://cloud.tencent.com/document/api/213/15728). The maximum number of instances that can be operated for each request is 100.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13310,7 +13310,7 @@ class ModifyInstancesRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        """Auto-renewal flag. Valid values: <br><li>notify_and_auto_renew: Notifies of expiration and performs auto-renewal.</li><li>notify_and_manual_renew: Notifies of expiration but does not perform auto-renewal.</li><li>disable_notify_and_manual_renew: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to notify_and_auto_renew, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.
+        """Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notifies of expiration and performs auto-renewal.</li><li>NOTIFY_AND_MANUAL_RENEW: Notifies of expiration but does not perform auto-renewal.</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Not notifies of expiration nor perform auto-renewal.</li><br>If this parameter is specified to NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis after it expires when there is sufficient account balance.
         :rtype: str
         """
         return self._RenewFlag

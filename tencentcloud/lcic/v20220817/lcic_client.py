@@ -617,9 +617,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeDocuments(self, request):
-        """有新接口替换
-
-        A new API is offered for this action now.
+        """A new API is offered for this action now.
 
         This API is used to query courseware. It has been deprecated. Please use `BatchDescribeDocument` instead.
 

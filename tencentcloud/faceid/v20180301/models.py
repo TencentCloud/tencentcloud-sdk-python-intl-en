@@ -1259,7 +1259,7 @@ class CardInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HKIDCard: Hong Kong ID Card
+        :param _HKIDCard: Hong Kong ID (China) Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HKIDCard: :class:`tencentcloud.faceid.v20180301.models.HKIDCard`
         :param _MLIDCard: Malaysia ID Card
@@ -1283,7 +1283,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _PhilippinesUMID: Philippines UMID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PhilippinesUMID: :class:`tencentcloud.faceid.v20180301.models.PhilippinesUMID`
-        :param _InternationalIDPassport: ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport
+        :param _InternationalIDPassport: ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InternationalIDPassport: :class:`tencentcloud.faceid.v20180301.models.InternationalIDPassport`
         :param _GeneralCard: General license information
@@ -1298,10 +1298,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SingaporeIDCard: Singapore ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SingaporeIDCard: :class:`tencentcloud.faceid.v20180301.models.SingaporeIDCard`
-        :param _MacaoIDCard: Macao ID Card
+        :param _MacaoIDCard: Macao (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
-        :param _TaiWanIDCard: TaiWan ID Card
+        :param _TaiWanIDCard: TaiWan (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
         :param _JapanIDCard: Japan ID Card
@@ -1347,7 +1347,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HKIDCard(self):
-        """Hong Kong ID Card
+        """Hong Kong ID (China) Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.HKIDCard`
         """
@@ -1443,7 +1443,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternationalIDPassport(self):
-        """ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport
+        """ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.InternationalIDPassport`
         """
@@ -1503,7 +1503,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MacaoIDCard(self):
-        """Macao ID Card
+        """Macao (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
         """
@@ -1515,7 +1515,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaiWanIDCard(self):
-        """TaiWan ID Card
+        """TaiWan (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
         """
@@ -1775,7 +1775,7 @@ When the value of `IdCardType` is `IndonesiaIDCard`:
 - BerlakuHingga (string): Expiry date.
 - IssuedDate (string): Issue date.
 
-(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
+(5) A passport issued in Hong Kong (China) /Macao (China) /Taiwan (China) or other countries/regions
 When the value of `IdCardType` is `MLIDPassport`:
 - FullName (string): Full name.
 - Surname (string): Surname.
@@ -1949,7 +1949,7 @@ When the value of `IdCardType` is `IndonesiaIDCard`:
 - BerlakuHingga (string): Expiry date.
 - IssuedDate (string): Issue date.
 
-(5) A passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
+(5) A passport issued in Hong Kong (China) /Macao (China) /Taiwan (China) or other countries/regions
 When the value of `IdCardType` is `MLIDPassport`:
 - FullName (string): Full name.
 - Surname (string): Surname.
@@ -5003,13 +5003,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class HKIDCard(AbstractModel):
-    """Hong Kong ID card.
+    """Hong Kong (China) ID card.
 
     """
 
     def __init__(self):
         r"""
-        :param _CnName: 
+        :param _CnName: Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+Example:  SAN, Nan
         :type CnName: str
         :param _EnName: English name
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -5055,7 +5057,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CnName(self):
-        """
+        """Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+Example:  SAN, Nan
         :rtype: str
         """
         return self._CnName
@@ -5198,7 +5202,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class HMTPermit(AbstractModel):
-    """Exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
+    """Exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China)
 
     """
 
@@ -5806,7 +5810,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class InternationalIDPassport(AbstractModel):
-    """ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+    """ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.
 
     """
 
@@ -6547,7 +6551,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MacaoIDCard(AbstractModel):
-    """Macao ID Card
+    """Macao (China) IDCard
 
     """
 
@@ -6738,7 +6742,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MainlandIDCard(AbstractModel):
-    """Mainland ID Card OCR
+    """Mainland (China) ID Card OCR
 
     """
 
@@ -7208,7 +7212,7 @@ class NormalCardInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HKIDCard: Hong Kong ID Card
+        :param _HKIDCard: Hong Kong (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HKIDCard: :class:`tencentcloud.faceid.v20180301.models.NormalHKIDCard`
         :param _MLIDCard: Malaysia ID Card
@@ -7232,7 +7236,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _PhilippinesUMID: Philippines UMID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PhilippinesUMID: :class:`tencentcloud.faceid.v20180301.models.PhilippinesUMID`
-        :param _InternationalIDPassport: ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport
+        :param _InternationalIDPassport: ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InternationalIDPassport: :class:`tencentcloud.faceid.v20180301.models.InternationalIDPassport`
         :param _GeneralCard: General license information
@@ -7247,19 +7251,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SingaporeIDCard: Singapore ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SingaporeIDCard: :class:`tencentcloud.faceid.v20180301.models.SingaporeIDCard`
-        :param _MacaoIDCard: Macao ID Card
+        :param _MacaoIDCard: Macao (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
-        :param _MainlandIDCard: Mainland ID Card
+        :param _MainlandIDCard: Mainland (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MainlandIDCard: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
         :param _JapanIDCard: Japan ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
-        :param _TaiWanIDCard: Taiwan ID Card
+        :param _TaiWanIDCard: Taiwan (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
-        :param _HMTPermitCard: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.
+        :param _HMTPermitCard: exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HMTPermitCard: :class:`tencentcloud.faceid.v20180301.models.HMTPermit`
         """
@@ -7284,7 +7288,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HKIDCard(self):
-        """Hong Kong ID Card
+        """Hong Kong (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.NormalHKIDCard`
         """
@@ -7380,7 +7384,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternationalIDPassport(self):
-        """ID Cards of Hong Kong, Macao and Taiwan (China), and International Passport
+        """ID Cards of Hong Kong (China), Macao (China) and Taiwan (China), and International Passport
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.InternationalIDPassport`
         """
@@ -7440,7 +7444,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MacaoIDCard(self):
-        """Macao ID Card
+        """Macao (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
         """
@@ -7452,7 +7456,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MainlandIDCard(self):
-        """Mainland ID Card
+        """Mainland (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
         """
@@ -7476,7 +7480,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaiWanIDCard(self):
-        """Taiwan ID Card
+        """Taiwan (China) ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
         """
@@ -7488,7 +7492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HMTPermitCard(self):
-        """exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.
+        """exit/entry permit (card) for traveling to and from Hong Kong (China), Macao (China), or Taiwan (China).
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.HMTPermit`
         """
@@ -7565,7 +7569,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class NormalHKIDCard(AbstractModel):
-    """Hong Kong ID card.
+    """Hong Kong (China) ID card.
 
     """
 
@@ -9926,7 +9930,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class TaiWanIDCard(AbstractModel):
-    """Taiwan ID card.
+    """Taiwan (China) ID card.
 
     """
 
@@ -10591,7 +10595,7 @@ Example value: 3
 6.PhilippinesTinID: Philippines TinID card
 7.PhilippinesSSSID: Philippines SSSID card
 8.PhilippinesUMID: Philippines UMID card
-9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+9.InternationalIDPassport: ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.
 10.IndonesiaDrivingLicense:Indonesia driving license
 11.ThailandIDCard: Thailand ID card
 12.ThailandDrivingLicense: Thailand driving license
@@ -10601,8 +10605,8 @@ Example value: 3
 16.JapanIDCard: Japan ID card
 17.JapanDrivingLicense: Japan driving license
 18.PhilippinesIDCard: Philippines ID card
-19.MainlandIDCard: Mainland ID card
-20.MacaoIDCard: Macao ID card
+19.MainlandIDCard: Mainland (China) ID card
+20.MacaoIDCard: Macao (China) ID card
 Example: HKIDCard
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
@@ -10698,7 +10702,7 @@ Example value: 3
 6.PhilippinesTinID: Philippines TinID card
 7.PhilippinesSSSID: Philippines SSSID card
 8.PhilippinesUMID: Philippines UMID card
-9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+9.InternationalIDPassport: ID cards of Hong Kong (China), Macao (China) and Taiwan (China), and international passport.
 10.IndonesiaDrivingLicense:Indonesia driving license
 11.ThailandIDCard: Thailand ID card
 12.ThailandDrivingLicense: Thailand driving license
@@ -10708,8 +10712,8 @@ Example value: 3
 16.JapanIDCard: Japan ID card
 17.JapanDrivingLicense: Japan driving license
 18.PhilippinesIDCard: Philippines ID card
-19.MainlandIDCard: Mainland ID card
-20.MacaoIDCard: Macao ID card
+19.MainlandIDCard: Mainland (China) ID card
+20.MacaoIDCard: Macao (China) ID card
 Example: HKIDCard
         :rtype: str
         """

@@ -53,13 +53,7 @@ class ImsClient(AbstractClient):
             <div class="rno-api-explorer-inner">
                 <div class="rno-api-explorer-hd">
                     <div class="rno-api-explorer-title">
-                        Version iteration description
-                    </div>
-                </div>
-                <div class="rno-api-explorer-body">
-                    <div class="rno-api-explorer-cont">
-                        <p>The version described on this page is 2020. The IMS APIs connected to before November 3, 2020 are on v2019, and you can directly access the following URL to perform maintenance operations: <a href="https://intl.cloud.tencent.com/document/product/1125/38206?from_cn_redirect=1" target="_blank">IMS APIs v2019</a></p>
-                        <p>v2020 is an upgrade to v2019 to support more flexible multi-scenario business policy configuration and richer recognition callback information, meeting the recognition requirements of different businesses. We recommend you upgrade the APIs according to the v2020 connection guide. Meanwhile, we will continue to maintain v2019 until users no longer use it.</p>
+                        </p>
                     </div>
                 </div>
             </div>

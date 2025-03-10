@@ -376,6 +376,155 @@ class RiskDetails(AbstractModel):
         
 
 
+class SentimentAnalysis(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 
+        :type Label: str
+        :param _Score: 
+        :type Score: int
+        :param _Detail: 
+        :type Detail: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
+        :param _Code: 
+        :type Code: str
+        :param _Message: 
+        :type Message: str
+        """
+        self._Label = None
+        self._Score = None
+        self._Detail = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Label(self):
+        """
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        """
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Detail(self):
+        """
+        :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Code(self):
+        """
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        """
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        if params.get("Detail") is not None:
+            self._Detail = SentimentDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SentimentDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Positive: 
+        :type Positive: int
+        :param _Negative: 
+        :type Negative: int
+        """
+        self._Positive = None
+        self._Negative = None
+
+    @property
+    def Positive(self):
+        """
+        :rtype: int
+        """
+        return self._Positive
+
+    @Positive.setter
+    def Positive(self, Positive):
+        self._Positive = Positive
+
+    @property
+    def Negative(self):
+        """
+        :rtype: int
+        """
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+
+    def _deserialize(self, params):
+        self._Positive = params.get("Positive")
+        self._Negative = params.get("Negative")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """Returns the keywords, label, sub-label and the score.
 
@@ -465,12 +614,15 @@ class TextModerationRequest(AbstractModel):
         :type User: :class:`tencentcloud.tms.v20201229.models.User`
         :param _Device: This field indicates the device information related with the object to be moderated, which can be used to identify violating devices at risk.
         :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
+        :param _SourceLanguage: This field Indicates the original language of the content.The enumeration values are ("en", "zh", ""), where en means English, zh means Chinese, and an empty string means the default language is Chinese. It is recommended to enter "en" only when the language of the content is clearly "English".
+        :type SourceLanguage: str
         """
         self._Content = None
         self._BizType = None
         self._DataId = None
         self._User = None
         self._Device = None
+        self._SourceLanguage = None
 
     @property
     def Content(self):
@@ -527,6 +679,17 @@ class TextModerationRequest(AbstractModel):
     def Device(self, Device):
         self._Device = Device
 
+    @property
+    def SourceLanguage(self):
+        """This field Indicates the original language of the content.The enumeration values are ("en", "zh", ""), where en means English, zh means Chinese, and an empty string means the default language is Chinese. It is recommended to enter "en" only when the language of the content is clearly "English".
+        :rtype: str
+        """
+        return self._SourceLanguage
+
+    @SourceLanguage.setter
+    def SourceLanguage(self, SourceLanguage):
+        self._SourceLanguage = SourceLanguage
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -538,6 +701,7 @@ class TextModerationRequest(AbstractModel):
         if params.get("Device") is not None:
             self._Device = Device()
             self._Device._deserialize(params.get("Device"))
+        self._SourceLanguage = params.get("SourceLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -584,6 +748,8 @@ Note: This field may return `null`, indicating that no valid value can be found.
         :param _ContextText: Returns the context text.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ContextText: str
+        :param _SentimentAnalysis: 
+        :type SentimentAnalysis: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -598,6 +764,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DataId = None
         self._SubLabel = None
         self._ContextText = None
+        self._SentimentAnalysis = None
         self._RequestId = None
 
     @property
@@ -729,6 +896,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContextText = ContextText
 
     @property
+    def SentimentAnalysis(self):
+        """
+        :rtype: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
+        """
+        return self._SentimentAnalysis
+
+    @SentimentAnalysis.setter
+    def SentimentAnalysis(self, SentimentAnalysis):
+        self._SentimentAnalysis = SentimentAnalysis
+
+    @property
     def RequestId(self):
         """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -762,6 +940,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DataId = params.get("DataId")
         self._SubLabel = params.get("SubLabel")
         self._ContextText = params.get("ContextText")
+        if params.get("SentimentAnalysis") is not None:
+            self._SentimentAnalysis = SentimentAnalysis()
+            self._SentimentAnalysis._deserialize(params.get("SentimentAnalysis"))
         self._RequestId = params.get("RequestId")
 
 

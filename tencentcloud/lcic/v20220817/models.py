@@ -5837,6 +5837,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Cover: str
         :param _Preview: Document preview address
         :type Preview: str
+        :param _Resolution: Document resolution.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Resolution: str
+        :param _MinScaleResolution: Minimum resolution of a transcoded document, consistent with the parameters provided when the document is created.Note: This field may return null, indicating that no valid values can be obtained.
+        :type MinScaleResolution: str
         """
         self._DocumentId = None
         self._DocumentUrl = None
@@ -5857,6 +5861,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Height = None
         self._Cover = None
         self._Preview = None
+        self._Resolution = None
+        self._MinScaleResolution = None
 
     @property
     def DocumentId(self):
@@ -6071,6 +6077,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Preview(self, Preview):
         self._Preview = Preview
 
+    @property
+    def Resolution(self):
+        """Document resolution.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def MinScaleResolution(self):
+        """Minimum resolution of a transcoded document, consistent with the parameters provided when the document is created.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._MinScaleResolution
+
+    @MinScaleResolution.setter
+    def MinScaleResolution(self, MinScaleResolution):
+        self._MinScaleResolution = MinScaleResolution
+
 
     def _deserialize(self, params):
         self._DocumentId = params.get("DocumentId")
@@ -6092,6 +6120,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Height = params.get("Height")
         self._Cover = params.get("Cover")
         self._Preview = params.get("Preview")
+        self._Resolution = params.get("Resolution")
+        self._MinScaleResolution = params.get("MinScaleResolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
