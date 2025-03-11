@@ -1072,6 +1072,29 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancesNetworkConfig(self, request):
+        """This API is used to obtain the network configuration list of a dedicated instance.
+
+        :param request: Request instance for DescribeInstancesNetworkConfig.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeInstancesNetworkConfigRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeInstancesNetworkConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesNetworkConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesNetworkConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogSearch(self, request):
         """This API is used to search for logs.
 
