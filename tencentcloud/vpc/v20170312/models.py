@@ -1389,6 +1389,8 @@ Whether the Anycast EIP can be bound to CLB instances.
         :type AddressName: str
         :param _DedicatedClusterId: 
         :type DedicatedClusterId: str
+        :param _IsDedicatedAddressPool: 
+        :type IsDedicatedAddressPool: bool
         :param _Egress: Network egress. It defaults to `center_egress1`.
         :type Egress: str
         :param _AntiDDoSPackageId: Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
@@ -1409,6 +1411,7 @@ Whether the Anycast EIP can be bound to CLB instances.
         self._BandwidthPackageId = None
         self._AddressName = None
         self._DedicatedClusterId = None
+        self._IsDedicatedAddressPool = None
         self._Egress = None
         self._AntiDDoSPackageId = None
         self._ClientToken = None
@@ -1578,6 +1581,17 @@ Whether the Anycast EIP can be bound to CLB instances.
         self._DedicatedClusterId = DedicatedClusterId
 
     @property
+    def IsDedicatedAddressPool(self):
+        """
+        :rtype: bool
+        """
+        return self._IsDedicatedAddressPool
+
+    @IsDedicatedAddressPool.setter
+    def IsDedicatedAddressPool(self, IsDedicatedAddressPool):
+        self._IsDedicatedAddressPool = IsDedicatedAddressPool
+
+    @property
     def Egress(self):
         """Network egress. It defaults to `center_egress1`.
         :rtype: str
@@ -1632,6 +1646,7 @@ Whether the Anycast EIP can be bound to CLB instances.
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._AddressName = params.get("AddressName")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._IsDedicatedAddressPool = params.get("IsDedicatedAddressPool")
         self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         self._ClientToken = params.get("ClientToken")

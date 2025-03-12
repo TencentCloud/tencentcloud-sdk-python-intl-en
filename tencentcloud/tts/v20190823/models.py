@@ -167,6 +167,12 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         :type EnableSubtitle: bool
         :param _SegmentRate: The threshold of speech segmentation sensibility, which can be `0` (default), `1`, or `2`. A larger value indicates fewer segments, and the model tends to only segment sentences based on punctuation marks. We recommend you not change this parameter to avoid adverse effect on speech synthesis.
         :type SegmentRate: int
+        :param _EmotionCategory: 
+        :type EmotionCategory: str
+        :param _EmotionIntensity: 
+        :type EmotionIntensity: int
+        :param _FastVoiceType: 
+        :type FastVoiceType: str
         """
         self._Text = None
         self._SessionId = None
@@ -180,6 +186,9 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         self._Codec = None
         self._EnableSubtitle = None
         self._SegmentRate = None
+        self._EmotionCategory = None
+        self._EmotionIntensity = None
+        self._FastVoiceType = None
 
     @property
     def Text(self):
@@ -318,6 +327,39 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
     def SegmentRate(self, SegmentRate):
         self._SegmentRate = SegmentRate
 
+    @property
+    def EmotionCategory(self):
+        """
+        :rtype: str
+        """
+        return self._EmotionCategory
+
+    @EmotionCategory.setter
+    def EmotionCategory(self, EmotionCategory):
+        self._EmotionCategory = EmotionCategory
+
+    @property
+    def EmotionIntensity(self):
+        """
+        :rtype: int
+        """
+        return self._EmotionIntensity
+
+    @EmotionIntensity.setter
+    def EmotionIntensity(self, EmotionIntensity):
+        self._EmotionIntensity = EmotionIntensity
+
+    @property
+    def FastVoiceType(self):
+        """
+        :rtype: str
+        """
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -332,6 +374,9 @@ It can contain up to 150 Chinese characters (a full-width punctuation as a Chine
         self._Codec = params.get("Codec")
         self._EnableSubtitle = params.get("EnableSubtitle")
         self._SegmentRate = params.get("SegmentRate")
+        self._EmotionCategory = params.get("EmotionCategory")
+        self._EmotionIntensity = params.get("EmotionIntensity")
+        self._FastVoiceType = params.get("FastVoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

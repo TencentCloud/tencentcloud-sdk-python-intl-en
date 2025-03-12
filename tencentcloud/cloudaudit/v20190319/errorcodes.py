@@ -32,6 +32,12 @@ FAILEDOPERATION_GETCLSTOPICFAILED = 'FailedOperation.GetClsTopicFailed'
 # Failed to pull the COS bucket list
 FAILEDOPERATION_GETCOSBUCKETLISTFAILED = 'FailedOperation.GetCosBucketListFailed'
 
+# 
+FAILEDOPERATION_MEMBERNOTAUDITROLE = 'FailedOperation.MemberNotAuditRole'
+
+# 
+FAILEDOPERATION_MEMBERNOTINORGANIZATION = 'FailedOperation.MemberNotInOrganization'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -163,3 +169,6 @@ RESOURCENOTFOUND_COSNOTEXIST = 'ResourceNotFound.CosNotExist'
 
 # The role doesn’t exist.
 RESOURCENOTFOUND_ROLENOTEXIST = 'ResourceNotFound.RoleNotExist'
+
+# 
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
