@@ -5940,19 +5940,19 @@ class DescribeReservedInstancesConfigInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: zone
+        :param _Filters: <li><strong>zone</li></strong>
 Filters by the availability zones in which the reserved instance can be purchased, such as `ap-guangzhou-1`.
 Type: String
 Required: no
 Valid values: list of regions/availability zones
 
-product-description
+<li><strong>product-description</li></strong>
 Filters by the platform description (operating system) of the reserved instance, such as `linux`.
 Type: String
 Required: no
 Valid value: linux
 
-duration
+<li><strong>duration</li></strong>
 Filters by the **validity** of the reserved instance, which is the purchased usage period. For example, `31536000`.
 Type: Integer
 Unit: second
@@ -5964,19 +5964,19 @@ Valid value: 31536000 (1 year)
 
     @property
     def Filters(self):
-        """zone
+        """<li><strong>zone</li></strong>
 Filters by the availability zones in which the reserved instance can be purchased, such as `ap-guangzhou-1`.
 Type: String
 Required: no
 Valid values: list of regions/availability zones
 
-product-description
+<li><strong>product-description</li></strong>
 Filters by the platform description (operating system) of the reserved instance, such as `linux`.
 Type: String
 Required: no
 Valid value: linux
 
-duration
+<li><strong>duration</li></strong>
 Filters by the **validity** of the reserved instance, which is the purchased usage period. For example, `31536000`.
 Type: Integer
 Unit: second
@@ -6264,6 +6264,187 @@ class DescribeReservedInstancesOfferingsResponse(AbstractModel):
                 obj = ReservedInstancesOffering()
                 obj._deserialize(item)
                 self._ReservedInstancesOfferingsSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReservedInstancesRequest(AbstractModel):
+    """DescribeReservedInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DryRun: Trial run. Default value: false.
+        :type DryRun: bool
+        :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Offset: int
+        :param _Limit: Number of returned instances. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Limit: int
+        :param _Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>availability zones</strong>] in which reserved instances can be purchased. For example, ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">availability zone list</a>.</p>
+<li><strong>duration</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>validity periods</strong>] of reserved instances, which is the instance purchase duration. For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer.</p><p style="padding-left: 30px;">Unit: Second.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years).</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>specifications of reserved instances</strong>]. For example, S3.MEDIUM4.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">reserved instance specification list</a>.</p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>types of reserved instances</strong>]. For example, S3.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">reserved instance type list</a>.</p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">Filter by <strong>payment types</strong>]. For example, All Upfront (fully prepaid).</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: All Upfront (fully prepaid) | Partial Upfront (partially prepaid) | No Upfront (non-prepaid).</p>
+<li><strong>product-description</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>platform descriptions</strong>] (operating system) of reserved instances. For example, linux.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid value: linux.</p>
+<li><strong>reserved-instances-id</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>IDs of purchased reserved instances</strong>]. For example, 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p>
+<li><strong>state</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>statuses of purchased reserved instances</strong>]. For example, active.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: active (created) | pending (waiting to be created) | retired (expired).</p>
+Each request can have up to 10 filters, and each filter can have up to 5 values.
+        :type Filters: list of Filter
+        """
+        self._DryRun = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def DryRun(self):
+        """Trial run. Default value: false.
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned instances. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """<li><strong>zone</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>availability zones</strong>] in which reserved instances can be purchased. For example, ap-guangzhou-1.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">availability zone list</a>.</p>
+<li><strong>duration</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>validity periods</strong>] of reserved instances, which is the instance purchase duration. For example, 31536000.</p><p style="padding-left: 30px;">Type: Integer.</p><p style="padding-left: 30px;">Unit: Second.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: 31536000 (1 year) | 94608000 (3 years).</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>specifications of reserved instances</strong>]. For example, S3.MEDIUM4.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">reserved instance specification list</a>.</p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>types of reserved instances</strong>]. For example, S3.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: See the <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">reserved instance type list</a>.</p>
+<li><strong>offering-type</strong></li>
+<p style="padding-left: 30px;">Filter by <strong>payment types</strong>]. For example, All Upfront (fully prepaid).</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: All Upfront (fully prepaid) | Partial Upfront (partially prepaid) | No Upfront (non-prepaid).</p>
+<li><strong>product-description</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>platform descriptions</strong>] (operating system) of reserved instances. For example, linux.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid value: linux.</p>
+<li><strong>reserved-instances-id</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>IDs of purchased reserved instances</strong>]. For example, 650c138f-ae7e-4750-952a-96841d6e9fc1.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p>
+<li><strong>state</strong></li>
+<p style="padding-left: 30px;">Filter by [<strong>statuses of purchased reserved instances</strong>]. For example, active.</p><p style="padding-left: 30px;">Type: String.</p><p style="padding-left: 30px;">Required: No.</p><p style="padding-left: 30px;">Valid values: active (created) | pending (waiting to be created) | retired (expired).</p>
+Each request can have up to 10 filters, and each filter can have up to 5 values.
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DryRun = params.get("DryRun")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReservedInstancesResponse(AbstractModel):
+    """DescribeReservedInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of reserved instances that meet the conditions.
+        :type TotalCount: int
+        :param _ReservedInstancesSet: List of reserved instances that meet the conditions.
+        :type ReservedInstancesSet: list of ReservedInstances
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ReservedInstancesSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Number of reserved instances that meet the conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ReservedInstancesSet(self):
+        """List of reserved instances that meet the conditions.
+        :rtype: list of ReservedInstances
+        """
+        return self._ReservedInstancesSet
+
+    @ReservedInstancesSet.setter
+    def ReservedInstancesSet(self, ReservedInstancesSet):
+        self._ReservedInstancesSet = ReservedInstancesSet
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ReservedInstancesSet") is not None:
+            self._ReservedInstancesSet = []
+            for item in params.get("ReservedInstancesSet"):
+                obj = ReservedInstances()
+                obj._deserialize(item)
+                self._ReservedInstancesSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14356,7 +14537,7 @@ class RemoveChcDeployVpcResponse(AbstractModel):
 
 
 class ReservedInstanceConfigInfoItem(AbstractModel):
-    """Static configurations of the reserved instance. Currently, RIs are only offered to beta users.
+    """Static configurations of the reserved instance.
 
     """
 
@@ -14442,7 +14623,7 @@ class ReservedInstanceConfigInfoItem(AbstractModel):
 
 
 class ReservedInstanceFamilyItem(AbstractModel):
-    """RI-related instance family. Currently, RIs are only offered to beta users.
+    """RI-related instance family.
 
     """
 
@@ -14628,7 +14809,7 @@ Note: This field may return null, indicating that no valid value is found.
 
 
 class ReservedInstancePriceItem(AbstractModel):
-    """Price information of the reserved instance based on the payment method. Currently, RIs are only offered to beta users.
+    """Price information of the reserved instance based on the payment method.
 
     """
 
@@ -14650,9 +14831,9 @@ Unit: second
         :param _ProductDescription: The operating system of the reserved instance, such as `Linux`.
 Valid value: `Linux`.
         :type ProductDescription: str
-        :param _DiscountUsagePrice: Upfront total cost, in USD.
+        :param _DiscountUsagePrice: Discount price for subsequent total cost, in USD/hr.
         :type DiscountUsagePrice: float
-        :param _DiscountFixedPrice: Discount price for subsequent total cost, in USD/hr.
+        :param _DiscountFixedPrice: Discount price for upfront total cost, in USD.
         :type DiscountFixedPrice: float
         """
         self._OfferingType = None
@@ -14746,7 +14927,7 @@ Valid value: `Linux`.
 
     @property
     def DiscountUsagePrice(self):
-        """Upfront total cost, in USD.
+        """Discount price for subsequent total cost, in USD/hr.
         :rtype: float
         """
         return self._DiscountUsagePrice
@@ -14757,7 +14938,7 @@ Valid value: `Linux`.
 
     @property
     def DiscountFixedPrice(self):
-        """Discount price for subsequent total cost, in USD/hr.
+        """Discount price for upfront total cost, in USD.
         :rtype: float
         """
         return self._DiscountFixedPrice
@@ -14788,7 +14969,7 @@ Valid value: `Linux`.
 
 
 class ReservedInstanceTypeItem(AbstractModel):
-    """Reserved instance specification. Currently, RIs are only offered to beta users.
+    """Reserved instance specification.
 
     """
 
@@ -15015,6 +15196,257 @@ class ReservedInstanceTypeItem(AbstractModel):
                 obj = ReservedInstancePriceItem()
                 obj._deserialize(item)
                 self._Prices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedInstances(AbstractModel):
+    """Information on reserved instances purchased by the user.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstancesId: (This field has been deprecated. ReservedInstanceId is recommended.) IDs of purchased reserved instances. For example, ri-rtbh4han.
+        :type ReservedInstancesId: str
+        :param _InstanceType: Specifications of reserved instances. For example, S3.MEDIUM4.
+Return values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved instance specification list.</a>
+        :type InstanceType: str
+        :param _Zone: Availability zones in which reserved instances can be purchased. For example, ap-guangzhou-1.
+Return values: <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Availability zone list.</a>
+        :type Zone: str
+        :param _StartTime: Billing start time of reserved instances. For example, 1949-10-01 00:00:00.
+        :type StartTime: str
+        :param _EndTime: Billing end time of reserved instances. For example, 1949-10-01 00:00:00.
+        :type EndTime: str
+        :param _Duration: Validity periods of reserved instances, which is the purchase duration of reserved instances. For example, 31536000.
+Unit: second.
+        :type Duration: int
+        :param _InstanceCount: Number of purchased reserved instances. For example, 10.
+        :type InstanceCount: int
+        :param _ProductDescription: Platform descriptions (operating systems) of reserved instances. For example, linux.
+Return value: linux.
+        :type ProductDescription: str
+        :param _State: Statuses of purchased reserved instances. For example: active.
+Return values: active (created) | pending (waiting to be created) | retired (expired).
+        :type State: str
+        :param _CurrencyCode: Billing currencies of purchasable reserved instances. Use standard currency codes defined in ISO 4217. For example, USD.
+Return value: USD.
+        :type CurrencyCode: str
+        :param _OfferingType: Payment types of reserved instances. For example, All Upfront.
+Return value: All Upfront (fully prepaid).
+        :type OfferingType: str
+        :param _InstanceFamily: Types of reserved instances. For example, S3.
+Return values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved instance type list.</a>
+        :type InstanceFamily: str
+        :param _ReservedInstanceId: IDs of purchased reserved instances. For example, ri-rtbh4han.
+        :type ReservedInstanceId: str
+        :param _ReservedInstanceName: Display names of reserved instances. For example, riname-01.
+        :type ReservedInstanceName: str
+        """
+        self._ReservedInstancesId = None
+        self._InstanceType = None
+        self._Zone = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Duration = None
+        self._InstanceCount = None
+        self._ProductDescription = None
+        self._State = None
+        self._CurrencyCode = None
+        self._OfferingType = None
+        self._InstanceFamily = None
+        self._ReservedInstanceId = None
+        self._ReservedInstanceName = None
+
+    @property
+    def ReservedInstancesId(self):
+        warnings.warn("parameter `ReservedInstancesId` is deprecated", DeprecationWarning) 
+
+        """(This field has been deprecated. ReservedInstanceId is recommended.) IDs of purchased reserved instances. For example, ri-rtbh4han.
+        :rtype: str
+        """
+        return self._ReservedInstancesId
+
+    @ReservedInstancesId.setter
+    def ReservedInstancesId(self, ReservedInstancesId):
+        warnings.warn("parameter `ReservedInstancesId` is deprecated", DeprecationWarning) 
+
+        self._ReservedInstancesId = ReservedInstancesId
+
+    @property
+    def InstanceType(self):
+        """Specifications of reserved instances. For example, S3.MEDIUM4.
+Return values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved instance specification list.</a>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Zone(self):
+        """Availability zones in which reserved instances can be purchased. For example, ap-guangzhou-1.
+Return values: <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Availability zone list.</a>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def StartTime(self):
+        """Billing start time of reserved instances. For example, 1949-10-01 00:00:00.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Billing end time of reserved instances. For example, 1949-10-01 00:00:00.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Duration(self):
+        """Validity periods of reserved instances, which is the purchase duration of reserved instances. For example, 31536000.
+Unit: second.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def InstanceCount(self):
+        """Number of purchased reserved instances. For example, 10.
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def ProductDescription(self):
+        """Platform descriptions (operating systems) of reserved instances. For example, linux.
+Return value: linux.
+        :rtype: str
+        """
+        return self._ProductDescription
+
+    @ProductDescription.setter
+    def ProductDescription(self, ProductDescription):
+        self._ProductDescription = ProductDescription
+
+    @property
+    def State(self):
+        """Statuses of purchased reserved instances. For example: active.
+Return values: active (created) | pending (waiting to be created) | retired (expired).
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CurrencyCode(self):
+        """Billing currencies of purchasable reserved instances. Use standard currency codes defined in ISO 4217. For example, USD.
+Return value: USD.
+        :rtype: str
+        """
+        return self._CurrencyCode
+
+    @CurrencyCode.setter
+    def CurrencyCode(self, CurrencyCode):
+        self._CurrencyCode = CurrencyCode
+
+    @property
+    def OfferingType(self):
+        """Payment types of reserved instances. For example, All Upfront.
+Return value: All Upfront (fully prepaid).
+        :rtype: str
+        """
+        return self._OfferingType
+
+    @OfferingType.setter
+    def OfferingType(self, OfferingType):
+        self._OfferingType = OfferingType
+
+    @property
+    def InstanceFamily(self):
+        """Types of reserved instances. For example, S3.
+Return values: <a href="https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1">Reserved instance type list.</a>
+        :rtype: str
+        """
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def ReservedInstanceId(self):
+        """IDs of purchased reserved instances. For example, ri-rtbh4han.
+        :rtype: str
+        """
+        return self._ReservedInstanceId
+
+    @ReservedInstanceId.setter
+    def ReservedInstanceId(self, ReservedInstanceId):
+        self._ReservedInstanceId = ReservedInstanceId
+
+    @property
+    def ReservedInstanceName(self):
+        """Display names of reserved instances. For example, riname-01.
+        :rtype: str
+        """
+        return self._ReservedInstanceName
+
+    @ReservedInstanceName.setter
+    def ReservedInstanceName(self, ReservedInstanceName):
+        self._ReservedInstanceName = ReservedInstanceName
+
+
+    def _deserialize(self, params):
+        self._ReservedInstancesId = params.get("ReservedInstancesId")
+        self._InstanceType = params.get("InstanceType")
+        self._Zone = params.get("Zone")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Duration = params.get("Duration")
+        self._InstanceCount = params.get("InstanceCount")
+        self._ProductDescription = params.get("ProductDescription")
+        self._State = params.get("State")
+        self._CurrencyCode = params.get("CurrencyCode")
+        self._OfferingType = params.get("OfferingType")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._ReservedInstanceId = params.get("ReservedInstanceId")
+        self._ReservedInstanceName = params.get("ReservedInstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

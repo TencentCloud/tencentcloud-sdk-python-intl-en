@@ -10015,8 +10015,9 @@ At least one security group is required for this parameter. The security group s
 When the public outbound network bandwidth is 0 Mbps, assigning a public IP is not allowed. Accordingly, if a public IP is assigned, the new public network outbound bandwidth must be greater than 0 Mbps.
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         :param _InstanceChargeType: Instance billing mode. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
+<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
+<li>SPOTPAID: spot instance</li>
+<li> CDCPAID: dedicated cluster</li>
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: Parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set the auto-renewal, and other attributes of the monthly-subscribed instances.
 This parameter is required when changing the instance billing mode to monthly subscription. It will be automatically discarded after you choose another billing mode.
@@ -10194,8 +10195,9 @@ When the public outbound network bandwidth is 0 Mbps, assigning a public IP is n
     @property
     def InstanceChargeType(self):
         """Instance billing mode. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
+<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
+<li>SPOTPAID: spot instance</li>
+<li> CDCPAID: dedicated cluster</li>
         :rtype: str
         """
         return self._InstanceChargeType

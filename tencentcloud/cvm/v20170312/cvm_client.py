@@ -869,8 +869,31 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReservedInstances(self, request):
+        """This API is used to list the reserved instances purchased by the user.
+
+        :param request: Request instance for DescribeReservedInstances.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReservedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReservedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeReservedInstancesConfigInfos(self, request):
-        """This API is used to describe reserved instance (RI) offerings. Currently, RIs are only offered to beta users.
+        """This API is used to describe reserved instance (RI) offerings.
 
         :param request: Request instance for DescribeReservedInstancesConfigInfos.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeReservedInstancesConfigInfosRequest`
