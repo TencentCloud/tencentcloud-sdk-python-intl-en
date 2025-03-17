@@ -439,6 +439,11 @@ def test_import_privatedns():
     from tencentcloud.privatedns.v20201028 import models
 
 
+def test_import_pts():
+    from tencentcloud.pts.v20210728 import pts_client
+    from tencentcloud.pts.v20210728 import models
+
+
 def test_import_rce():
     from tencentcloud.rce.v20201103 import rce_client
     from tencentcloud.rce.v20201103 import models

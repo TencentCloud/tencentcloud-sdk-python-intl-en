@@ -2694,6 +2694,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReportTaskDetail(self, request):
+        """This API is used to query task details for reports.
+
+        :param request: Request instance for DescribeReportTaskDetail.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskDetailRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReportTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReportTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReportTaskList(self, request):
+        """This API is used to query the task submission list.
+
+        :param request: Request instance for DescribeReportTaskList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeReportTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReportTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReportTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceManagePathTrees(self, request):
         """Retrieve resource management directory tree
 
