@@ -1415,7 +1415,7 @@ class BillDetail(AbstractModel):
         r"""
         :param _BusinessCodeName: Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
         :type BusinessCodeName: str
-        :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.
+        :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.
         :type ProductCodeName: str
         :param _PayModeName: Billing mode, which can be monthly subscription or pay-as-you-go.
         :type PayModeName: str
@@ -1485,6 +1485,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RegionTypeName: str
         :param _ReserveDetail: Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.
         :type ReserveDetail: str
+        :param _DiscountObject: the discount object for the current consumption item, such as official website discount, user discount, and event discount.
+        :type DiscountObject: str
+        :param _DiscountType: the discount type for the current consumption item, such as discount and contract price.
+
+        :type DiscountType: str
+        :param _DiscountContent: supplementary description of the discount type, such as 0.2.
+        :type DiscountContent: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -1520,6 +1527,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegionType = None
         self._RegionTypeName = None
         self._ReserveDetail = None
+        self._DiscountObject = None
+        self._DiscountType = None
+        self._DiscountContent = None
 
     @property
     def BusinessCodeName(self):
@@ -1534,7 +1544,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductCodeName(self):
-        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.
+        """Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Standard S1.
         :rtype: str
         """
         return self._ProductCodeName
@@ -1899,6 +1909,40 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ReserveDetail(self, ReserveDetail):
         self._ReserveDetail = ReserveDetail
 
+    @property
+    def DiscountObject(self):
+        """the discount object for the current consumption item, such as official website discount, user discount, and event discount.
+        :rtype: str
+        """
+        return self._DiscountObject
+
+    @DiscountObject.setter
+    def DiscountObject(self, DiscountObject):
+        self._DiscountObject = DiscountObject
+
+    @property
+    def DiscountType(self):
+        """the discount type for the current consumption item, such as discount and contract price.
+
+        :rtype: str
+        """
+        return self._DiscountType
+
+    @DiscountType.setter
+    def DiscountType(self, DiscountType):
+        self._DiscountType = DiscountType
+
+    @property
+    def DiscountContent(self):
+        """supplementary description of the discount type, such as 0.2.
+        :rtype: str
+        """
+        return self._DiscountContent
+
+    @DiscountContent.setter
+    def DiscountContent(self, DiscountContent):
+        self._DiscountContent = DiscountContent
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -1947,6 +1991,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegionType = params.get("RegionType")
         self._RegionTypeName = params.get("RegionTypeName")
         self._ReserveDetail = params.get("ReserveDetail")
+        self._DiscountObject = params.get("DiscountObject")
+        self._DiscountType = params.get("DiscountType")
+        self._DiscountContent = params.get("DiscountContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8116,7 +8163,7 @@ class DescribeBillDetailRequest(AbstractModel):
         r"""
         :param _Offset: Offset
         :type Offset: int
-        :param _Limit: Quantity, maximum is 100
+        :param _Limit: Quantity, maximum is 300
         :type Limit: int
         :param _PeriodType: The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. 
         :type PeriodType: str
@@ -8202,7 +8249,7 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def Limit(self):
-        """Quantity, maximum is 100
+        """Quantity, maximum is 300
         :rtype: int
         """
         return self._Limit
