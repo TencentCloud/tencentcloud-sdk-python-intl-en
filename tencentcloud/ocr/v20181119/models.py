@@ -7870,6 +7870,340 @@ class RecognizeBrazilDriverLicenseOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecognizeBrazilIDCardOCRRequest(AbstractModel):
+    """RecognizeBrazilIDCardOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. Image download time does not exceed 3 seconds.
+        :type ImageBase64: str
+        :param _ImageUrl: URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        :type ImageUrl: str
+        :param _BackImageBase64: Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        :type BackImageBase64: str
+        :param _BackImageUrl: The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        :type BackImageUrl: str
+        :param _ReturnHeadImage: Whether to return portrait photos.
+        :type ReturnHeadImage: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._BackImageBase64 = None
+        self._BackImageUrl = None
+        self._ReturnHeadImage = None
+
+    @property
+    def ImageBase64(self):
+        """Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. Image download time does not exceed 3 seconds.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        """URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageBase64(self):
+        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
+    def BackImageUrl(self):
+        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
+    def ReturnHeadImage(self):
+        """Whether to return portrait photos.
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._BackImageBase64 = params.get("BackImageBase64")
+        self._BackImageUrl = params.get("BackImageUrl")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeBrazilIDCardOCRResponse(AbstractModel):
+    """RecognizeBrazilIDCardOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nome: Name
+        :type Nome: str
+        :param _MemberShip: Family information
+        :type MemberShip: str
+        :param _DataNascimento: Birthday
+        :type DataNascimento: str
+        :param _IssuingAgency: Issuing agency
+        :type IssuingAgency: str
+        :param _Fatorrh: blood type
+        :type Fatorrh: str
+        :param _NaturalIDade: Birth place
+        :type NaturalIDade: str
+        :param _Observations: Additional information 
+        :type Observations: str
+        :param _CPF: CPF
+        :type CPF: str
+        :param _DNI: DNI
+        :type DNI: str
+        :param _RegistroGeral: universal registration
+        :type RegistroGeral: str
+        :param _DispatchDate: Issue date
+        :type DispatchDate: str
+        :param _Registro: address
+        :type Registro: str
+        :param _PortraitImage: Portrait image
+        :type PortraitImage: str
+        :param _DocOrigem: Original identity information
+        :type DocOrigem: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Nome = None
+        self._MemberShip = None
+        self._DataNascimento = None
+        self._IssuingAgency = None
+        self._Fatorrh = None
+        self._NaturalIDade = None
+        self._Observations = None
+        self._CPF = None
+        self._DNI = None
+        self._RegistroGeral = None
+        self._DispatchDate = None
+        self._Registro = None
+        self._PortraitImage = None
+        self._DocOrigem = None
+        self._RequestId = None
+
+    @property
+    def Nome(self):
+        """Name
+        :rtype: str
+        """
+        return self._Nome
+
+    @Nome.setter
+    def Nome(self, Nome):
+        self._Nome = Nome
+
+    @property
+    def MemberShip(self):
+        """Family information
+        :rtype: str
+        """
+        return self._MemberShip
+
+    @MemberShip.setter
+    def MemberShip(self, MemberShip):
+        self._MemberShip = MemberShip
+
+    @property
+    def DataNascimento(self):
+        """Birthday
+        :rtype: str
+        """
+        return self._DataNascimento
+
+    @DataNascimento.setter
+    def DataNascimento(self, DataNascimento):
+        self._DataNascimento = DataNascimento
+
+    @property
+    def IssuingAgency(self):
+        """Issuing agency
+        :rtype: str
+        """
+        return self._IssuingAgency
+
+    @IssuingAgency.setter
+    def IssuingAgency(self, IssuingAgency):
+        self._IssuingAgency = IssuingAgency
+
+    @property
+    def Fatorrh(self):
+        """blood type
+        :rtype: str
+        """
+        return self._Fatorrh
+
+    @Fatorrh.setter
+    def Fatorrh(self, Fatorrh):
+        self._Fatorrh = Fatorrh
+
+    @property
+    def NaturalIDade(self):
+        """Birth place
+        :rtype: str
+        """
+        return self._NaturalIDade
+
+    @NaturalIDade.setter
+    def NaturalIDade(self, NaturalIDade):
+        self._NaturalIDade = NaturalIDade
+
+    @property
+    def Observations(self):
+        """Additional information 
+        :rtype: str
+        """
+        return self._Observations
+
+    @Observations.setter
+    def Observations(self, Observations):
+        self._Observations = Observations
+
+    @property
+    def CPF(self):
+        """CPF
+        :rtype: str
+        """
+        return self._CPF
+
+    @CPF.setter
+    def CPF(self, CPF):
+        self._CPF = CPF
+
+    @property
+    def DNI(self):
+        """DNI
+        :rtype: str
+        """
+        return self._DNI
+
+    @DNI.setter
+    def DNI(self, DNI):
+        self._DNI = DNI
+
+    @property
+    def RegistroGeral(self):
+        """universal registration
+        :rtype: str
+        """
+        return self._RegistroGeral
+
+    @RegistroGeral.setter
+    def RegistroGeral(self, RegistroGeral):
+        self._RegistroGeral = RegistroGeral
+
+    @property
+    def DispatchDate(self):
+        """Issue date
+        :rtype: str
+        """
+        return self._DispatchDate
+
+    @DispatchDate.setter
+    def DispatchDate(self, DispatchDate):
+        self._DispatchDate = DispatchDate
+
+    @property
+    def Registro(self):
+        """address
+        :rtype: str
+        """
+        return self._Registro
+
+    @Registro.setter
+    def Registro(self, Registro):
+        self._Registro = Registro
+
+    @property
+    def PortraitImage(self):
+        """Portrait image
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def DocOrigem(self):
+        """Original identity information
+        :rtype: str
+        """
+        return self._DocOrigem
+
+    @DocOrigem.setter
+    def DocOrigem(self, DocOrigem):
+        self._DocOrigem = DocOrigem
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Nome = params.get("Nome")
+        self._MemberShip = params.get("MemberShip")
+        self._DataNascimento = params.get("DataNascimento")
+        self._IssuingAgency = params.get("IssuingAgency")
+        self._Fatorrh = params.get("Fatorrh")
+        self._NaturalIDade = params.get("NaturalIDade")
+        self._Observations = params.get("Observations")
+        self._CPF = params.get("CPF")
+        self._DNI = params.get("DNI")
+        self._RegistroGeral = params.get("RegistroGeral")
+        self._DispatchDate = params.get("DispatchDate")
+        self._Registro = params.get("Registro")
+        self._PortraitImage = params.get("PortraitImage")
+        self._DocOrigem = params.get("DocOrigem")
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeGeneralInvoiceRequest(AbstractModel):
     """RecognizeGeneralInvoice request structure.
 

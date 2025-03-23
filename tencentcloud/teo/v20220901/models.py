@@ -3300,6 +3300,42 @@ class BindZoneToPlanResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BlockIPActionParameters(AbstractModel):
+    """Additional parameter for SecurityAction `BlockIP`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: Penalty duration for `BlockIP`. Units: <li>`s`: second, value range 1-120;</li> <li>`m`: minute, value range 1-120;</li> <li>`h`: hour, value range 1-48.</li>.
+        :type Duration: str
+        """
+        self._Duration = None
+
+    @property
+    def Duration(self):
+        """Penalty duration for `BlockIP`. Units: <li>`s`: second, value range 1-120;</li> <li>`m`: minute, value range 1-120;</li> <li>`h`: hour, value range 1-48.</li>.
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotConfig(AbstractModel):
     """Bot security configuration
 
@@ -10721,6 +10757,175 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Name = params.get("Name")
         self._Value = params.get("Value")
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomRule(AbstractModel):
+    """Custom rule configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: The custom rule name.
+        :type Name: str
+        :param _Condition: The specifics of the custom rule, must comply with the expression grammar, please refer to product documentation for details.
+        :type Condition: str
+        :param _Action: Action for custom rules. The Name parameter of SecurityAction supports: <li>`Deny`: block;</li> <li>`Monitor`: observe;</li> <li>`ReturnCustomPage`: block with customized page;</li> <li>`Redirect`: Redirect to URL;</li> <li>`BlockIP`: IP blocking;</li> <li>`JSChallenge`: JavaScript challenge;</li> <li>`ManagedChallenge`: managed challenge;</li> <li>`Allow`: Allow.</li>.
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _Enabled: The custom rule status. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        :type Enabled: str
+        :param _Id: Custom rule ID. <br>Different rule configuration operations are supported by rule ID : <br> - Add a new rule: ID is empty or the ID parameter is not specified; <br> - Modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - Delete an existing rule: existing rules not included in the Rules parameter will be deleted.
+        :type Id: str
+        :param _RuleType: Type of custom rule. Values: <li>`BasicAccessRule`: basic access control;</li> <li>`PreciseMatchRule`: exact custom rule, default;</li> <li>`ManagedAccessRule`: expert customized rule, output parameter only.</li>The default value is PreciseMatchRule.
+        :type RuleType: str
+        :param _Priority: Customize the priority of custom rule. Range: 0-100, the default value is 0, this parameter only supports PreciseMatchRule.
+        :type Priority: int
+        """
+        self._Name = None
+        self._Condition = None
+        self._Action = None
+        self._Enabled = None
+        self._Id = None
+        self._RuleType = None
+        self._Priority = None
+
+    @property
+    def Name(self):
+        """The custom rule name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Condition(self):
+        """The specifics of the custom rule, must comply with the expression grammar, please refer to product documentation for details.
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Action(self):
+        """Action for custom rules. The Name parameter of SecurityAction supports: <li>`Deny`: block;</li> <li>`Monitor`: observe;</li> <li>`ReturnCustomPage`: block with customized page;</li> <li>`Redirect`: Redirect to URL;</li> <li>`BlockIP`: IP blocking;</li> <li>`JSChallenge`: JavaScript challenge;</li> <li>`ManagedChallenge`: managed challenge;</li> <li>`Allow`: Allow.</li>.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Enabled(self):
+        """The custom rule status. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        """Custom rule ID. <br>Different rule configuration operations are supported by rule ID : <br> - Add a new rule: ID is empty or the ID parameter is not specified; <br> - Modify an existing rule: specify the rule ID that needs to be updated/modified; <br> - Delete an existing rule: existing rules not included in the Rules parameter will be deleted.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleType(self):
+        """Type of custom rule. Values: <li>`BasicAccessRule`: basic access control;</li> <li>`PreciseMatchRule`: exact custom rule, default;</li> <li>`ManagedAccessRule`: expert customized rule, output parameter only.</li>The default value is PreciseMatchRule.
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Priority(self):
+        """Customize the priority of custom rule. Range: 0-100, the default value is 0, this parameter only supports PreciseMatchRule.
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Condition = params.get("Condition")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
+        self._RuleType = params.get("RuleType")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomRules(AbstractModel):
+    """Custom rules configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: The custom rule. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the Rules parameter is not specified: keep the existing custom rule configuration without modification.
+        :type Rules: list of CustomRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """The custom rule. <br>when modifying the Web protection configuration using ModifySecurityPolicy: <br> - if the Rules parameter is not specified or the parameter length of Rules is zero: clear all custom rule configurations. <br> - if the Rules parameter is not specified: keep the existing custom rule configuration without modification.
+        :rtype: list of CustomRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = CustomRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19104,6 +19309,134 @@ class DescribeSecurityIPGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityPolicyRequest(AbstractModel):
+    """DescribeSecurityPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Entity: `SecurityPolicy` type, the following parameter values can be used for query: <li>`ZoneDefaultPolicy`: used to specify a query for site-level policies;</li> <li>`Template`: used to specify a query for policy templates. the `TemplateId` parameter needs to be specified simultaneously;</li> <li>`Host`: used to specify a query for domain-level policies (note: when using `Host` to specify a domain name service policy, only domain name services or policy templates that have been applied domain-level policies are supported).</li>	
+        :type Entity: str
+        :param _TemplateId: Specify the policy Template ID. Use this parameter to specify the ID of the policy Template to query the Template configuration when the `Entity` parameter value is set to `Template`.
+        :type TemplateId: str
+        :param _Host: Specify the domain name. When the `Entity` parameter value is set to `Host`, use the domain-level policy specified by this parameter to query the domain configuration. For example, use `www.example.com` to configure the domain-level policy for that domain name.
+        :type Host: str
+        """
+        self._ZoneId = None
+        self._Entity = None
+        self._TemplateId = None
+        self._Host = None
+
+    @property
+    def ZoneId(self):
+        """Zone ID.
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Entity(self):
+        """`SecurityPolicy` type, the following parameter values can be used for query: <li>`ZoneDefaultPolicy`: used to specify a query for site-level policies;</li> <li>`Template`: used to specify a query for policy templates. the `TemplateId` parameter needs to be specified simultaneously;</li> <li>`Host`: used to specify a query for domain-level policies (note: when using `Host` to specify a domain name service policy, only domain name services or policy templates that have been applied domain-level policies are supported).</li>	
+        :rtype: str
+        """
+        return self._Entity
+
+    @Entity.setter
+    def Entity(self, Entity):
+        self._Entity = Entity
+
+    @property
+    def TemplateId(self):
+        """Specify the policy Template ID. Use this parameter to specify the ID of the policy Template to query the Template configuration when the `Entity` parameter value is set to `Template`.
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Host(self):
+        """Specify the domain name. When the `Entity` parameter value is set to `Host`, use the domain-level policy specified by this parameter to query the domain configuration. For example, use `www.example.com` to configure the domain-level policy for that domain name.
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Entity = params.get("Entity")
+        self._TemplateId = params.get("TemplateId")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityPolicyResponse(AbstractModel):
+    """DescribeSecurityPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityPolicy: Security policy configuration.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SecurityPolicy = None
+        self._RequestId = None
+
+    @property
+    def SecurityPolicy(self):
+        """Security policy configuration.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._SecurityPolicy
+
+    @SecurityPolicy.setter
+    def SecurityPolicy(self, SecurityPolicy):
+        self._SecurityPolicy = SecurityPolicy
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityPolicy") is not None:
+            self._SecurityPolicy = SecurityPolicy()
+            self._SecurityPolicy._deserialize(params.get("SecurityPolicy"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityTemplateBindingsRequest(AbstractModel):
     """DescribeSecurityTemplateBindings request structure.
 
@@ -21399,6 +21732,213 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("ClientIpCountry") is not None:
             self._ClientIpCountry = ClientIpCountry()
             self._ClientIpCountry._deserialize(params.get("ClientIpCountry"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectLengthLimitCondition(AbstractModel):
+    """Length limit detection condition configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Parameter name of the matched condition. Values:.
+<li>`body_depth`: detection depth of the request body packet part.</li>
+        :type Name: str
+        :param _Values: Parameter value of the matched condition, used in pairs with the `Name` parameter.
+When the `Name` value is body_depth, `Values` only support passing in a single value. Values:
+<li>`8KB`;</li>
+<li>`64KB`;</li>
+<li>`128KB`.</li>
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        """Parameter name of the matched condition. Values:.
+<li>`body_depth`: detection depth of the request body packet part.</li>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        """Parameter value of the matched condition, used in pairs with the `Name` parameter.
+When the `Name` value is body_depth, `Values` only support passing in a single value. Values:
+<li>`8KB`;</li>
+<li>`64KB`;</li>
+<li>`128KB`.</li>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectLengthLimitConfig(AbstractModel):
+    """Length limit detection configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectLengthLimitRules: List of rules that detect length limits.
+        :type DetectLengthLimitRules: list of DetectLengthLimitRule
+        """
+        self._DetectLengthLimitRules = None
+
+    @property
+    def DetectLengthLimitRules(self):
+        """List of rules that detect length limits.
+        :rtype: list of DetectLengthLimitRule
+        """
+        return self._DetectLengthLimitRules
+
+    @DetectLengthLimitRules.setter
+    def DetectLengthLimitRules(self, DetectLengthLimitRules):
+        self._DetectLengthLimitRules = DetectLengthLimitRules
+
+
+    def _deserialize(self, params):
+        if params.get("DetectLengthLimitRules") is not None:
+            self._DetectLengthLimitRules = []
+            for item in params.get("DetectLengthLimitRules"):
+                obj = DetectLengthLimitRule()
+                obj._deserialize(item)
+                self._DetectLengthLimitRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectLengthLimitRule(AbstractModel):
+    """Length limit detection rule details configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule Id, output parameter only.
+        :type RuleId: int
+        :param _RuleName: Rule name, output parameter only.
+        :type RuleName: str
+        :param _Description: Rule description, output parameter only.
+        :type Description: str
+        :param _Conditions: Rule configuration conditions, output parameter only.
+        :type Conditions: list of DetectLengthLimitCondition
+        :param _Action: Handling method. Values:.
+<li>`skip`: when request body data exceeds the detection depth set by `body_depth` in `Conditions` output parameters, skip all request body content detection.</li>.
+<li>`scan`: detect at the detection depth set by `body_depth` in the `Conditions` output parameters only. Truncate the excess part of the request body content directly, the excess part of the request body will not go through security detection.</li> Output paramter only.
+        :type Action: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._Description = None
+        self._Conditions = None
+        self._Action = None
+
+    @property
+    def RuleId(self):
+        """Rule Id, output parameter only.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """Rule name, output parameter only.
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        """Rule description, output parameter only.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Conditions(self):
+        """Rule configuration conditions, output parameter only.
+        :rtype: list of DetectLengthLimitCondition
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
+    def Action(self):
+        """Handling method. Values:.
+<li>`skip`: when request body data exceeds the detection depth set by `body_depth` in `Conditions` output parameters, skip all request body content detection.</li>.
+<li>`scan`: detect at the detection depth set by `body_depth` in the `Conditions` output parameters only. Truncate the excess part of the request body content directly, the excess part of the request body will not go through security detection.</li> Output paramter only.
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = DetectLengthLimitCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        self._Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27631,6 +28171,485 @@ class LogFormat(AbstractModel):
         
 
 
+class ManagedRuleAction(AbstractModel):
+    """Action for specific RuleId.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Specific items under ManagedRuleGroup, used to rewrite the configuration of this individual rule item, refer to product documentation for details.	
+        :type RuleId: str
+        :param _Action: Action for the managed rule item specified by RuleId, the SecurityAction Name parameter supports: <li>`Deny`: block and respond with an block page;</li> <li>`Monitor`: observe, do not process the request and record the security event in logs;</li> <li>`Disabled`: disabled, do not scan the request and skip this rule.</li>.
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._RuleId = None
+        self._Action = None
+
+    @property
+    def RuleId(self):
+        """Specific items under ManagedRuleGroup, used to rewrite the configuration of this individual rule item, refer to product documentation for details.	
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Action(self):
+        """Action for the managed rule item specified by RuleId, the SecurityAction Name parameter supports: <li>`Deny`: block and respond with an block page;</li> <li>`Monitor`: observe, do not process the request and record the security event in logs;</li> <li>`Disabled`: disabled, do not scan the request and skip this rule.</li>.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleAutoUpdate(AbstractModel):
+    """Managed rule automatic update option.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoUpdateToLatestVersion: Enable automatic update to the latest version or not. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        :type AutoUpdateToLatestVersion: str
+        :param _RulesetVersion: Current version, compliant with ISO 8601 standard format, such as 2023-12-21T12:00:32Z, empty by default, output parameter only.
+        :type RulesetVersion: str
+        """
+        self._AutoUpdateToLatestVersion = None
+        self._RulesetVersion = None
+
+    @property
+    def AutoUpdateToLatestVersion(self):
+        """Enable automatic update to the latest version or not. Values: <li>`on`: enabled</li> <li>`off`: disabled</li>.
+        :rtype: str
+        """
+        return self._AutoUpdateToLatestVersion
+
+    @AutoUpdateToLatestVersion.setter
+    def AutoUpdateToLatestVersion(self, AutoUpdateToLatestVersion):
+        self._AutoUpdateToLatestVersion = AutoUpdateToLatestVersion
+
+    @property
+    def RulesetVersion(self):
+        """Current version, compliant with ISO 8601 standard format, such as 2023-12-21T12:00:32Z, empty by default, output parameter only.
+        :rtype: str
+        """
+        return self._RulesetVersion
+
+    @RulesetVersion.setter
+    def RulesetVersion(self, RulesetVersion):
+        self._RulesetVersion = RulesetVersion
+
+
+    def _deserialize(self, params):
+        self._AutoUpdateToLatestVersion = params.get("AutoUpdateToLatestVersion")
+        self._RulesetVersion = params.get("RulesetVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleDetail(AbstractModel):
+    """Managed rule detail.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Managed rule Id.
+        :type RuleId: str
+        :param _RiskLevel: Protection level of managed rules. Values: <li>`low`: low risk, this rule has a relatively low risk and is applicable to very strict access scenarios, this level of rule may generate considerable false alarms.</li> <li>`medium`: medium risk, this means the risk of this rule is normal and is suitable for protection scenarios with stricter requirements.</li> <li>`high`: high risk, this indicates that the risk of this rule is relatively high and will not generate false alarms in most scenarios.</li> <li>`extreme`: ultra-high risk. this represents that the risk of this rule is extremely high and will not generate false alarms basically.</li>.
+        :type RiskLevel: str
+        :param _Description: Rule description.
+        :type Description: str
+        :param _Tags: Rule tag. Some types of rules do not have tags.
+        :type Tags: list of str
+        :param _RuleVersion: Rule version.
+        :type RuleVersion: str
+        """
+        self._RuleId = None
+        self._RiskLevel = None
+        self._Description = None
+        self._Tags = None
+        self._RuleVersion = None
+
+    @property
+    def RuleId(self):
+        """Managed rule Id.
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RiskLevel(self):
+        """Protection level of managed rules. Values: <li>`low`: low risk, this rule has a relatively low risk and is applicable to very strict access scenarios, this level of rule may generate considerable false alarms.</li> <li>`medium`: medium risk, this means the risk of this rule is normal and is suitable for protection scenarios with stricter requirements.</li> <li>`high`: high risk, this indicates that the risk of this rule is relatively high and will not generate false alarms in most scenarios.</li> <li>`extreme`: ultra-high risk. this represents that the risk of this rule is extremely high and will not generate false alarms basically.</li>.
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Description(self):
+        """Rule description.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        """Rule tag. Some types of rules do not have tags.
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RuleVersion(self):
+        """Rule version.
+        :rtype: str
+        """
+        return self._RuleVersion
+
+    @RuleVersion.setter
+    def RuleVersion(self, RuleVersion):
+        self._RuleVersion = RuleVersion
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._RuleVersion = params.get("RuleVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleGroup(AbstractModel):
+    """Managed rule group configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Name of the managed rule group, if the configuration for the rule group is not specified, it will be processed by default, refer to product documentation for the specific value of GroupId.
+        :type GroupId: str
+        :param _SensitivityLevel: Protection level of the managed rule group. Values: <li>`loose`: lenient, only contain ultra-high risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`normal`: normal, contain ultra-high risk and high-risk rules, at this point,Action parameter needs configured instead of RuleActions parameter;</li> <li>`strict`: strict, contains ultra-high risk, high-risk and medium-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`extreme`: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`custom`: custom, refined strategy, configure the RuleActions parameter for each individual rule, at this point, the Action field is invalid, use RuleActions to configure the refined strategy for each individual rule.</li>.
+        :type SensitivityLevel: str
+        :param _Action: Action for ManagedRuleGroup. the Name parameter value of SecurityAction supports: <li>`Deny`: block and respond with a block page;</li> <li>`Monitor`: observe, do not process requests and record security events in logs;</li> <li>`Disabled`: not enabled, do not scan requests and skip this rule.</li>.
+        :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _RuleActions: Specific configuration of rule items under the managed rule group, valid only when SensitivityLevel is custom.
+        :type RuleActions: list of ManagedRuleAction
+        :param _MetaData: ManagedRuleGroup detailed information, output parameter only.
+        :type MetaData: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
+        """
+        self._GroupId = None
+        self._SensitivityLevel = None
+        self._Action = None
+        self._RuleActions = None
+        self._MetaData = None
+
+    @property
+    def GroupId(self):
+        """Name of the managed rule group, if the configuration for the rule group is not specified, it will be processed by default, refer to product documentation for the specific value of GroupId.
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def SensitivityLevel(self):
+        """Protection level of the managed rule group. Values: <li>`loose`: lenient, only contain ultra-high risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`normal`: normal, contain ultra-high risk and high-risk rules, at this point,Action parameter needs configured instead of RuleActions parameter;</li> <li>`strict`: strict, contains ultra-high risk, high-risk and medium-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`extreme`: super strict, contains ultra-high risk, high-risk, medium-risk and low-risk rules, at this point, Action parameter needs configured instead of RuleActions parameter;</li> <li>`custom`: custom, refined strategy, configure the RuleActions parameter for each individual rule, at this point, the Action field is invalid, use RuleActions to configure the refined strategy for each individual rule.</li>.
+        :rtype: str
+        """
+        return self._SensitivityLevel
+
+    @SensitivityLevel.setter
+    def SensitivityLevel(self, SensitivityLevel):
+        self._SensitivityLevel = SensitivityLevel
+
+    @property
+    def Action(self):
+        """Action for ManagedRuleGroup. the Name parameter value of SecurityAction supports: <li>`Deny`: block and respond with a block page;</li> <li>`Monitor`: observe, do not process requests and record security events in logs;</li> <li>`Disabled`: not enabled, do not scan requests and skip this rule.</li>.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def RuleActions(self):
+        """Specific configuration of rule items under the managed rule group, valid only when SensitivityLevel is custom.
+        :rtype: list of ManagedRuleAction
+        """
+        return self._RuleActions
+
+    @RuleActions.setter
+    def RuleActions(self, RuleActions):
+        self._RuleActions = RuleActions
+
+    @property
+    def MetaData(self):
+        """ManagedRuleGroup detailed information, output parameter only.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleGroupMeta`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._SensitivityLevel = params.get("SensitivityLevel")
+        if params.get("Action") is not None:
+            self._Action = SecurityAction()
+            self._Action._deserialize(params.get("Action"))
+        if params.get("RuleActions") is not None:
+            self._RuleActions = []
+            for item in params.get("RuleActions"):
+                obj = ManagedRuleAction()
+                obj._deserialize(item)
+                self._RuleActions.append(obj)
+        if params.get("MetaData") is not None:
+            self._MetaData = ManagedRuleGroupMeta()
+            self._MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRuleGroupMeta(AbstractModel):
+    """Managed rule group meta information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupDetail: ManagedRuleGroup detailed information, output parameter only.
+        :type GroupDetail: str
+        :param _GroupName: ManagedRuleGroup name, output parameter only.
+        :type GroupName: str
+        :param _RuleDetails: All sub-rules information under current ManagedRuleGroup, output parameter only.
+        :type RuleDetails: list of ManagedRuleDetail
+        """
+        self._GroupDetail = None
+        self._GroupName = None
+        self._RuleDetails = None
+
+    @property
+    def GroupDetail(self):
+        """ManagedRuleGroup detailed information, output parameter only.
+        :rtype: str
+        """
+        return self._GroupDetail
+
+    @GroupDetail.setter
+    def GroupDetail(self, GroupDetail):
+        self._GroupDetail = GroupDetail
+
+    @property
+    def GroupName(self):
+        """ManagedRuleGroup name, output parameter only.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def RuleDetails(self):
+        """All sub-rules information under current ManagedRuleGroup, output parameter only.
+        :rtype: list of ManagedRuleDetail
+        """
+        return self._RuleDetails
+
+    @RuleDetails.setter
+    def RuleDetails(self, RuleDetails):
+        self._RuleDetails = RuleDetails
+
+
+    def _deserialize(self, params):
+        self._GroupDetail = params.get("GroupDetail")
+        self._GroupName = params.get("GroupName")
+        if params.get("RuleDetails") is not None:
+            self._RuleDetails = []
+            for item in params.get("RuleDetails"):
+                obj = ManagedRuleDetail()
+                obj._deserialize(item)
+                self._RuleDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedRules(AbstractModel):
+    """Managed rules configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: The managed rule status. Values: <li>`on`: enabled, all managed rules take effect as configured;</li> <li>`off`: disabled, all managed rules do not take effect.</li>.
+        :type Enabled: str
+        :param _DetectionOnly: Evaluation mode is enabled or not, it is valid only when the `Enabled` parameter is set to `on`. Values: <li>`on`: enabled, all managed rules take effect in `observe` mode.</li> <li>off: disabled, all managed rules take effect according to the specified configuration.</li>.
+        :type DetectionOnly: str
+        :param _SemanticAnalysis: Managed rule semantic analysis is enabled or not, it is valid only when the `Enabled` parameter is `on`. Values: <li>`on`: enabled, perform semantic analysis  before processing requests;</li> <li>`off`: disabled, process requests directly without semantic analysis.</li> <br/>The default value is `off`.
+        :type SemanticAnalysis: str
+        :param _AutoUpdate: Managed rule automatic update option.
+        :type AutoUpdate: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
+        :param _ManagedRuleGroups: Configuration of the managed rule group. If this structure is passed as an empty array or the GroupId is not included in the array, it will be processed based by default.
+        :type ManagedRuleGroups: list of ManagedRuleGroup
+        """
+        self._Enabled = None
+        self._DetectionOnly = None
+        self._SemanticAnalysis = None
+        self._AutoUpdate = None
+        self._ManagedRuleGroups = None
+
+    @property
+    def Enabled(self):
+        """The managed rule status. Values: <li>`on`: enabled, all managed rules take effect as configured;</li> <li>`off`: disabled, all managed rules do not take effect.</li>.
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def DetectionOnly(self):
+        """Evaluation mode is enabled or not, it is valid only when the `Enabled` parameter is set to `on`. Values: <li>`on`: enabled, all managed rules take effect in `observe` mode.</li> <li>off: disabled, all managed rules take effect according to the specified configuration.</li>.
+        :rtype: str
+        """
+        return self._DetectionOnly
+
+    @DetectionOnly.setter
+    def DetectionOnly(self, DetectionOnly):
+        self._DetectionOnly = DetectionOnly
+
+    @property
+    def SemanticAnalysis(self):
+        """Managed rule semantic analysis is enabled or not, it is valid only when the `Enabled` parameter is `on`. Values: <li>`on`: enabled, perform semantic analysis  before processing requests;</li> <li>`off`: disabled, process requests directly without semantic analysis.</li> <br/>The default value is `off`.
+        :rtype: str
+        """
+        return self._SemanticAnalysis
+
+    @SemanticAnalysis.setter
+    def SemanticAnalysis(self, SemanticAnalysis):
+        self._SemanticAnalysis = SemanticAnalysis
+
+    @property
+    def AutoUpdate(self):
+        """Managed rule automatic update option.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRuleAutoUpdate`
+        """
+        return self._AutoUpdate
+
+    @AutoUpdate.setter
+    def AutoUpdate(self, AutoUpdate):
+        self._AutoUpdate = AutoUpdate
+
+    @property
+    def ManagedRuleGroups(self):
+        """Configuration of the managed rule group. If this structure is passed as an empty array or the GroupId is not included in the array, it will be processed based by default.
+        :rtype: list of ManagedRuleGroup
+        """
+        return self._ManagedRuleGroups
+
+    @ManagedRuleGroups.setter
+    def ManagedRuleGroups(self, ManagedRuleGroups):
+        self._ManagedRuleGroups = ManagedRuleGroups
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._DetectionOnly = params.get("DetectionOnly")
+        self._SemanticAnalysis = params.get("SemanticAnalysis")
+        if params.get("AutoUpdate") is not None:
+            self._AutoUpdate = ManagedRuleAutoUpdate()
+            self._AutoUpdate._deserialize(params.get("AutoUpdate"))
+        if params.get("ManagedRuleGroups") is not None:
+            self._ManagedRuleGroups = []
+            for item in params.get("ManagedRuleGroups"):
+                obj = ManagedRuleGroup()
+                obj._deserialize(item)
+                self._ManagedRuleGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaxAge(AbstractModel):
     """Browser cache rule configuration, which is used to set the default value of `MaxAge` and is disabled by default.
 
@@ -31533,29 +32552,29 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _SecurityConfig: Security configuration.
+        :param _SecurityConfig: Security policy configuration. <li>When the `CustomRule` in the `SecurityPolicy` parameter is set, the `AclConfg` and `IpTableConfg` in the `SecurityConfig` parameter will be ignored;</li> <li>when the `ManagedRule` in the `SecurityPolicy` parameter is set, the `WafConfig` in the `SecurityConfig` parameter will be ignored.</li> <li>For custom rules and managed rule policy configuration, using `SecurityPolicy` parameter to configure settings is recommended.</li>
         :type SecurityConfig: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
-        :param _Entity: Subdomain/application name.
-
-Note: When both this parameter and the TemplateId parameter are specified, this parameter will not take effect. Do not specify this parameter and the TemplateId parameter at the same time.
+        :param _SecurityPolicy: Security policy configuration. The parameter is recommended to use for custom policies and managed rule configurations of web protection, it supports configuring security policies with expression grammar.	
+        :type SecurityPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        :param _Entity: `SecurityPolicy` type, the following parameter values can be used for query: <li>`ZoneDefaultPolicy`: used to specify a query for site-level policies;</li> <li>`Template`: used to specify a query for policy templates. the `TemplateId` parameter needs to be specified simultaneously;</li> <li>`Host`: used to specify a query for domain-level policies (note: when using `Host` to specify a domain name service policy, only domain name services or policy templates that have been applied domain-level policies are supported).</li>	
         :type Entity: str
-        :param _TemplateId: Specifies the policy template ID, or the site's global policy.
-- To configure a policy template, specify the policy template ID.
-- To configure the site's global policy, use the @ZoneLevel@Domain parameter value.
-
-Note: When this parameter is used, the Entity parameter will not take effect. Do not use this parameter and the Entity parameter at the same time.
+        :param _Host: Specify the domain name. When the `Entity` parameter value is set to `Host`, use the domain-level policy specified by this parameter to query the domain configuration. For example, use `www.example.com` to configure the domain-level policy for that domain name.
+        :type Host: str
+        :param _TemplateId: Specify the policy template ID. Use this parameter to specify the ID of the policy Template to query the Template configuration when the `Entity` parameter value is set to `Template`.
         :type TemplateId: str
         """
         self._ZoneId = None
         self._SecurityConfig = None
+        self._SecurityPolicy = None
         self._Entity = None
+        self._Host = None
         self._TemplateId = None
 
     @property
     def ZoneId(self):
-        """The site ID.
+        """Zone ID.
         :rtype: str
         """
         return self._ZoneId
@@ -31566,7 +32585,7 @@ Note: When this parameter is used, the Entity parameter will not take effect. Do
 
     @property
     def SecurityConfig(self):
-        """Security configuration.
+        """Security policy configuration. <li>When the `CustomRule` in the `SecurityPolicy` parameter is set, the `AclConfg` and `IpTableConfg` in the `SecurityConfig` parameter will be ignored;</li> <li>when the `ManagedRule` in the `SecurityPolicy` parameter is set, the `WafConfig` in the `SecurityConfig` parameter will be ignored.</li> <li>For custom rules and managed rule policy configuration, using `SecurityPolicy` parameter to configure settings is recommended.</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityConfig`
         """
         return self._SecurityConfig
@@ -31576,10 +32595,19 @@ Note: When this parameter is used, the Entity parameter will not take effect. Do
         self._SecurityConfig = SecurityConfig
 
     @property
-    def Entity(self):
-        """Subdomain/application name.
+    def SecurityPolicy(self):
+        """Security policy configuration. The parameter is recommended to use for custom policies and managed rule configurations of web protection, it supports configuring security policies with expression grammar.	
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._SecurityPolicy
 
-Note: When both this parameter and the TemplateId parameter are specified, this parameter will not take effect. Do not specify this parameter and the TemplateId parameter at the same time.
+    @SecurityPolicy.setter
+    def SecurityPolicy(self, SecurityPolicy):
+        self._SecurityPolicy = SecurityPolicy
+
+    @property
+    def Entity(self):
+        """`SecurityPolicy` type, the following parameter values can be used for query: <li>`ZoneDefaultPolicy`: used to specify a query for site-level policies;</li> <li>`Template`: used to specify a query for policy templates. the `TemplateId` parameter needs to be specified simultaneously;</li> <li>`Host`: used to specify a query for domain-level policies (note: when using `Host` to specify a domain name service policy, only domain name services or policy templates that have been applied domain-level policies are supported).</li>	
         :rtype: str
         """
         return self._Entity
@@ -31589,12 +32617,19 @@ Note: When both this parameter and the TemplateId parameter are specified, this 
         self._Entity = Entity
 
     @property
-    def TemplateId(self):
-        """Specifies the policy template ID, or the site's global policy.
-- To configure a policy template, specify the policy template ID.
-- To configure the site's global policy, use the @ZoneLevel@Domain parameter value.
+    def Host(self):
+        """Specify the domain name. When the `Entity` parameter value is set to `Host`, use the domain-level policy specified by this parameter to query the domain configuration. For example, use `www.example.com` to configure the domain-level policy for that domain name.
+        :rtype: str
+        """
+        return self._Host
 
-Note: When this parameter is used, the Entity parameter will not take effect. Do not use this parameter and the Entity parameter at the same time.
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def TemplateId(self):
+        """Specify the policy template ID. Use this parameter to specify the ID of the policy Template to query the Template configuration when the `Entity` parameter value is set to `Template`.
         :rtype: str
         """
         return self._TemplateId
@@ -31609,7 +32644,11 @@ Note: When this parameter is used, the Entity parameter will not take effect. Do
         if params.get("SecurityConfig") is not None:
             self._SecurityConfig = SecurityConfig()
             self._SecurityConfig._deserialize(params.get("SecurityConfig"))
+        if params.get("SecurityPolicy") is not None:
+            self._SecurityPolicy = SecurityPolicy()
+            self._SecurityPolicy._deserialize(params.get("SecurityPolicy"))
         self._Entity = params.get("Entity")
+        self._Host = params.get("Host")
         self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -36022,6 +37061,42 @@ Note: This field may return null, which indicates a failure to obtain a valid va
         
 
 
+class RedirectActionParameters(AbstractModel):
+    """Additional parameter for SecurityAction `Redirect`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URL: Redirect URL.
+        :type URL: str
+        """
+        self._URL = None
+
+    @property
+    def URL(self):
+        """Redirect URL.
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+
+    def _deserialize(self, params):
+        self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RenewFlag(AbstractModel):
     """Auto-renewal configuration item in a prepaid plan.
 
@@ -36486,6 +37561,57 @@ class ResponseSpeedLimitParameters(AbstractModel):
         self._Mode = params.get("Mode")
         self._MaxSpeed = params.get("MaxSpeed")
         self._StartAt = params.get("StartAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReturnCustomPageActionParameters(AbstractModel):
+    """Additional parameter for SecurityAction `ReturnCustomPage`.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResponseCode: Response custom status code.
+        :type ResponseCode: str
+        :param _ErrorPageId: Response custom page ID.
+        :type ErrorPageId: str
+        """
+        self._ResponseCode = None
+        self._ErrorPageId = None
+
+    @property
+    def ResponseCode(self):
+        """Response custom status code.
+        :rtype: str
+        """
+        return self._ResponseCode
+
+    @ResponseCode.setter
+    def ResponseCode(self, ResponseCode):
+        self._ResponseCode = ResponseCode
+
+    @property
+    def ErrorPageId(self):
+        """Response custom page ID.
+        :rtype: str
+        """
+        return self._ErrorPageId
+
+    @ErrorPageId.setter
+    def ErrorPageId(self, ErrorPageId):
+        self._ErrorPageId = ErrorPageId
+
+
+    def _deserialize(self, params):
+        self._ResponseCode = params.get("ResponseCode")
+        self._ErrorPageId = params.get("ErrorPageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38872,8 +39998,97 @@ class SecEntryValue(AbstractModel):
         
 
 
+class SecurityAction(AbstractModel):
+    """Action for security operation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Specific action name for security operation. Values:
+<li>`Deny`: block</li> <li>`Monitor`: monitor</li> <li>`ReturnCustomPage`: block with customized page</li> <li>`Redirect`: Redirect to URL</li> <li>`BlockIP`: IP block</li> <li>`JSChallenge`: javaScript challenge</li> <li>`ManagedChallenge`: managed challenge</li> <li>`Disabled`: disabled</li> <li>`Allow`: allow</li>.
+        :type Name: str
+        :param _BlockIPActionParameters: Additional parameter when Name is BlockIP.
+        :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+        :param _ReturnCustomPageActionParameters: Additional parameter when Name is ReturnCustomPage.
+        :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
+        :param _RedirectActionParameters: Additional parameter when Name is Redirect.
+        :type RedirectActionParameters: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
+        """
+        self._Name = None
+        self._BlockIPActionParameters = None
+        self._ReturnCustomPageActionParameters = None
+        self._RedirectActionParameters = None
+
+    @property
+    def Name(self):
+        """Specific action name for security operation. Values:
+<li>`Deny`: block</li> <li>`Monitor`: monitor</li> <li>`ReturnCustomPage`: block with customized page</li> <li>`Redirect`: Redirect to URL</li> <li>`BlockIP`: IP block</li> <li>`JSChallenge`: javaScript challenge</li> <li>`ManagedChallenge`: managed challenge</li> <li>`Disabled`: disabled</li> <li>`Allow`: allow</li>.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BlockIPActionParameters(self):
+        """Additional parameter when Name is BlockIP.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
+        """
+        return self._BlockIPActionParameters
+
+    @BlockIPActionParameters.setter
+    def BlockIPActionParameters(self, BlockIPActionParameters):
+        self._BlockIPActionParameters = BlockIPActionParameters
+
+    @property
+    def ReturnCustomPageActionParameters(self):
+        """Additional parameter when Name is ReturnCustomPage.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
+        """
+        return self._ReturnCustomPageActionParameters
+
+    @ReturnCustomPageActionParameters.setter
+    def ReturnCustomPageActionParameters(self, ReturnCustomPageActionParameters):
+        self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters
+
+    @property
+    def RedirectActionParameters(self):
+        """Additional parameter when Name is Redirect.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
+        """
+        return self._RedirectActionParameters
+
+    @RedirectActionParameters.setter
+    def RedirectActionParameters(self, RedirectActionParameters):
+        self._RedirectActionParameters = RedirectActionParameters
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("BlockIPActionParameters") is not None:
+            self._BlockIPActionParameters = BlockIPActionParameters()
+            self._BlockIPActionParameters._deserialize(params.get("BlockIPActionParameters"))
+        if params.get("ReturnCustomPageActionParameters") is not None:
+            self._ReturnCustomPageActionParameters = ReturnCustomPageActionParameters()
+            self._ReturnCustomPageActionParameters._deserialize(params.get("ReturnCustomPageActionParameters"))
+        if params.get("RedirectActionParameters") is not None:
+            self._RedirectActionParameters = RedirectActionParameters()
+            self._RedirectActionParameters._deserialize(params.get("RedirectActionParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityConfig(AbstractModel):
-    """Security configuration
+    """Web security configuration.
 
     """
 
@@ -38905,6 +40120,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type TemplateConfig: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
         :param _SlowPostConfig: Settings for slow attack defense. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.
         :type SlowPostConfig: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
+        :param _DetectLengthLimitConfig: Detect the length limit configuration, output parameter only.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type DetectLengthLimitConfig: :class:`tencentcloud.teo.v20220901.models.DetectLengthLimitConfig`
         """
         self._WafConfig = None
         self._RateLimitConfig = None
@@ -38916,6 +40134,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._DropPageConfig = None
         self._TemplateConfig = None
         self._SlowPostConfig = None
+        self._DetectLengthLimitConfig = None
 
     @property
     def WafConfig(self):
@@ -39033,6 +40252,18 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def SlowPostConfig(self, SlowPostConfig):
         self._SlowPostConfig = SlowPostConfig
 
+    @property
+    def DetectLengthLimitConfig(self):
+        """Detect the length limit configuration, output parameter only.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DetectLengthLimitConfig`
+        """
+        return self._DetectLengthLimitConfig
+
+    @DetectLengthLimitConfig.setter
+    def DetectLengthLimitConfig(self, DetectLengthLimitConfig):
+        self._DetectLengthLimitConfig = DetectLengthLimitConfig
+
 
     def _deserialize(self, params):
         if params.get("WafConfig") is not None:
@@ -39065,6 +40296,68 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("SlowPostConfig") is not None:
             self._SlowPostConfig = SlowPostConfig()
             self._SlowPostConfig._deserialize(params.get("SlowPostConfig"))
+        if params.get("DetectLengthLimitConfig") is not None:
+            self._DetectLengthLimitConfig = DetectLengthLimitConfig()
+            self._DetectLengthLimitConfig._deserialize(params.get("DetectLengthLimitConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityPolicy(AbstractModel):
+    """Web security policy.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomRules: Custom rules. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CustomRules: :class:`tencentcloud.teo.v20220901.models.CustomRules`
+        :param _ManagedRules: Managed. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
+        """
+        self._CustomRules = None
+        self._ManagedRules = None
+
+    @property
+    def CustomRules(self):
+        """Custom rules. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CustomRules`
+        """
+        return self._CustomRules
+
+    @CustomRules.setter
+    def CustomRules(self, CustomRules):
+        self._CustomRules = CustomRules
+
+    @property
+    def ManagedRules(self):
+        """Managed. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
+        """
+        return self._ManagedRules
+
+    @ManagedRules.setter
+    def ManagedRules(self, ManagedRules):
+        self._ManagedRules = ManagedRules
+
+
+    def _deserialize(self, params):
+        if params.get("CustomRules") is not None:
+            self._CustomRules = CustomRules()
+            self._CustomRules._deserialize(params.get("CustomRules"))
+        if params.get("ManagedRules") is not None:
+            self._ManagedRules = ManagedRules()
+            self._ManagedRules._deserialize(params.get("ManagedRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
