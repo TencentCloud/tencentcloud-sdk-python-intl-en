@@ -2971,6 +2971,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyL7AccRulePriority(self, request):
+        """This interface is used to modify the priority of the rule list in the [Rule Engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1). This interface requires the complete rule ID list under the site ID to be passed in. The rule ID list can be obtained through the [Query Seven-Layer Acceleration Rules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1) interface. The final priority order will be adjusted to the order of the rule ID list, and will be executed from front to back.
+
+        :param request: Request instance for ModifyL7AccRulePriority.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRulePriorityRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL7AccRulePriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL7AccRulePriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL7AccRulePriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyL7AccSetting(self, request):
         """This API is used to modify the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).
 
