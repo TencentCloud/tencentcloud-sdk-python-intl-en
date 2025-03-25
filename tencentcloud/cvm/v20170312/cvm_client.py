@@ -701,6 +701,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancesAttributes(self, request):
+        """This API is used to obtain the attributes of specified instances. Currently, it supports querying the custom data UserData of instances.
+
+        :param request: Request instance for DescribeInstancesAttributes.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesAttributesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeInstancesAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstancesOperationLimit(self, request):
         """This API is used to query limitations on operations on an instance.
 
