@@ -12353,7 +12353,7 @@ class ComposeMediaConfig(AbstractModel):
 
     The figure below outlines the relationships among tracks, elements, and the timeline.
 
-    ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item.png)
+    ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item-en.png)
 
     """
 
@@ -22498,7 +22498,7 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
         :type ComposeConfig: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
         :param _TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :param _TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10 - 10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
         :param _SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
@@ -22588,7 +22588,7 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def TasksPriority(self):
-        """Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        """Task priority. The higher the value, the higher the priority. Value range: -10 - 10. If this parameter is left empty, 0 will be used.
         :rtype: int
         """
         return self._TasksPriority

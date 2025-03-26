@@ -4064,13 +4064,13 @@ class MLIDPassportOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
+        :param _ImageBase64: Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
         :type ImageBase64: str
         :param _RetImage: Whether to return an image. 
 Default value: false.
         :type RetImage: bool
         :param _ImageUrl: URL address of image. (This field is not supported outside Chinese mainland)
-Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image formats: PNG, JPG, JPEG, BMP, PDF.
 Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
@@ -4082,7 +4082,7 @@ The download speed and stability of non-Tencent Cloud URLs may be low.
 
     @property
     def ImageBase64(self):
-        """Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
+        """Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, BMP, and PDF formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.
         :rtype: str
         """
         return self._ImageBase64
@@ -4106,7 +4106,7 @@ Default value: false.
     @property
     def ImageUrl(self):
         """URL address of image. (This field is not supported outside Chinese mainland)
-Supported image formats: PNG, JPG, JPEG. GIF is currently not supported.
+Supported image formats: PNG, JPG, JPEG, BMP, PDF.
 Supported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.
 We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.
 The download speed and stability of non-Tencent Cloud URLs may be low.
