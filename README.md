@@ -6,7 +6,7 @@ Tencent Cloud SDK for Python helps Python developers debug and use TencentCloud 
 
 1. Dependent environment: Python 2.7 to 3.6.
 2. Activate your product in the Tencent Cloud Console.
-3. Get the `SecretID`, `SecretKey`, and endpoint. The general format of endpoint is `\*.tencentcloudapi.com`. For example, the endpoint of CVM is `cvm.tencentcloudapi.com`. For more information, please see the documentation of the specified product.
+3. Get the `SecretID`, `SecretKey`, and endpoint. The general format of endpoint is `\*.intl.tencentcloudapi.com`. For example, the endpoint of CVM is `cvm.intl.tencentcloudapi.com`. For more information, please see the documentation of the specified product.
 
 # Installation
 
@@ -76,3 +76,7 @@ When you install Python 3.6 or above on macOS, you may encounter a certificate e
 
 ## Change default language
 After the latest version is released, the default language of the SDK will be set to en-US, which may affect the call results of the SDK. If you need to revert to the previous language setting, please refer to the content of `examples/cvm/v20170312/describe_zone_by_language.py` to reset the language.
+
+# Compliance Notice
+
+Please prioritize using the ​default domain names configured in the SDK for each product. If using other domains, note that ​overseas domains may pose ​data compliance risks.
