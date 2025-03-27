@@ -22,7 +22,7 @@ from tencentcloud.trro.v20220325 import models
 
 class TrroClient(AbstractClient):
     _apiVersion = '2022-03-25'
-    _endpoint = 'trro.tencentcloudapi.com'
+    _endpoint = 'trro.intl.tencentcloudapi.com'
     _service = 'trro'
 
 

@@ -22,7 +22,7 @@ from tencentcloud.facefusion.v20220927 import models
 
 class FacefusionClient(AbstractClient):
     _apiVersion = '2022-09-27'
-    _endpoint = 'facefusion.tencentcloudapi.com'
+    _endpoint = 'facefusion.intl.tencentcloudapi.com'
     _service = 'facefusion'
 
 

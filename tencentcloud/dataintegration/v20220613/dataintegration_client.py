@@ -22,7 +22,7 @@ from tencentcloud.dataintegration.v20220613 import models
 
 class DataintegrationClient(AbstractClient):
     _apiVersion = '2022-06-13'
-    _endpoint = 'dataintegration.tencentcloudapi.com'
+    _endpoint = 'dataintegration.intl.tencentcloudapi.com'
     _service = 'dataintegration'
 
 

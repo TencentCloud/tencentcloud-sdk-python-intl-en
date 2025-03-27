@@ -22,7 +22,7 @@ from tencentcloud.waf.v20180125 import models
 
 class WafClient(AbstractClient):
     _apiVersion = '2018-01-25'
-    _endpoint = 'waf.tencentcloudapi.com'
+    _endpoint = 'waf.intl.tencentcloudapi.com'
     _service = 'waf'
 
 

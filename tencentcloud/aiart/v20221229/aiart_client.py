@@ -22,7 +22,7 @@ from tencentcloud.aiart.v20221229 import models
 
 class AiartClient(AbstractClient):
     _apiVersion = '2022-12-29'
-    _endpoint = 'aiart.tencentcloudapi.com'
+    _endpoint = 'aiart.intl.tencentcloudapi.com'
     _service = 'aiart'
 
 

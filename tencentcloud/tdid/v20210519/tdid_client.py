@@ -22,7 +22,7 @@ from tencentcloud.tdid.v20210519 import models
 
 class TdidClient(AbstractClient):
     _apiVersion = '2021-05-19'
-    _endpoint = 'tdid.tencentcloudapi.com'
+    _endpoint = 'tdid.intl.tencentcloudapi.com'
     _service = 'tdid'
 
 

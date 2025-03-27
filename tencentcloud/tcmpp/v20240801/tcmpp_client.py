@@ -22,7 +22,7 @@ from tencentcloud.tcmpp.v20240801 import models
 
 class TcmppClient(AbstractClient):
     _apiVersion = '2024-08-01'
-    _endpoint = 'tcmpp.tencentcloudapi.com'
+    _endpoint = 'tcmpp.intl.tencentcloudapi.com'
     _service = 'tcmpp'
 
 

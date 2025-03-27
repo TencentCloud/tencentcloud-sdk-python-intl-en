@@ -22,7 +22,7 @@ from tencentcloud.cfg.v20210820 import models
 
 class CfgClient(AbstractClient):
     _apiVersion = '2021-08-20'
-    _endpoint = 'cfg.tencentcloudapi.com'
+    _endpoint = 'cfg.intl.tencentcloudapi.com'
     _service = 'cfg'
 
 

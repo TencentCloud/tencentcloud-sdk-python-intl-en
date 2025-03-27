@@ -22,7 +22,7 @@ from tencentcloud.tchd.v20230306 import models
 
 class TchdClient(AbstractClient):
     _apiVersion = '2023-03-06'
-    _endpoint = 'tchd.tencentcloudapi.com'
+    _endpoint = 'tchd.intl.tencentcloudapi.com'
     _service = 'tchd'
 
 

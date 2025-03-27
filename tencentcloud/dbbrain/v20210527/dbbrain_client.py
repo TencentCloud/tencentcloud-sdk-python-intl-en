@@ -22,7 +22,7 @@ from tencentcloud.dbbrain.v20210527 import models
 
 class DbbrainClient(AbstractClient):
     _apiVersion = '2021-05-27'
-    _endpoint = 'dbbrain.tencentcloudapi.com'
+    _endpoint = 'dbbrain.intl.tencentcloudapi.com'
     _service = 'dbbrain'
 
 

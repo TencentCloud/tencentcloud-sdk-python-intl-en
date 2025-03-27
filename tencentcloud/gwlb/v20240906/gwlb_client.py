@@ -22,7 +22,7 @@ from tencentcloud.gwlb.v20240906 import models
 
 class GwlbClient(AbstractClient):
     _apiVersion = '2024-09-06'
-    _endpoint = 'gwlb.tencentcloudapi.com'
+    _endpoint = 'gwlb.intl.tencentcloudapi.com'
     _service = 'gwlb'
 
 

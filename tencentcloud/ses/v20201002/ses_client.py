@@ -22,7 +22,7 @@ from tencentcloud.ses.v20201002 import models
 
 class SesClient(AbstractClient):
     _apiVersion = '2020-10-02'
-    _endpoint = 'ses.tencentcloudapi.com'
+    _endpoint = 'ses.intl.tencentcloudapi.com'
     _service = 'ses'
 
 

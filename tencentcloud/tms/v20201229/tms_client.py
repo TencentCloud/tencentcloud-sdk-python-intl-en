@@ -22,7 +22,7 @@ from tencentcloud.tms.v20201229 import models
 
 class TmsClient(AbstractClient):
     _apiVersion = '2020-12-29'
-    _endpoint = 'tms.tencentcloudapi.com'
+    _endpoint = 'tms.intl.tencentcloudapi.com'
     _service = 'tms'
 
 

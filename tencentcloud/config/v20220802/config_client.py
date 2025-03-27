@@ -22,7 +22,7 @@ from tencentcloud.config.v20220802 import models
 
 class ConfigClient(AbstractClient):
     _apiVersion = '2022-08-02'
-    _endpoint = 'config.tencentcloudapi.com'
+    _endpoint = 'config.intl.tencentcloudapi.com'
     _service = 'config'
 
 

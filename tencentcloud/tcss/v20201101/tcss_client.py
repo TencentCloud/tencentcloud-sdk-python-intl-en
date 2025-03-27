@@ -22,7 +22,7 @@ from tencentcloud.tcss.v20201101 import models
 
 class TcssClient(AbstractClient):
     _apiVersion = '2020-11-01'
-    _endpoint = 'tcss.tencentcloudapi.com'
+    _endpoint = 'tcss.intl.tencentcloudapi.com'
     _service = 'tcss'
 
 

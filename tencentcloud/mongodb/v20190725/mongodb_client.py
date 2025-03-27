@@ -22,7 +22,7 @@ from tencentcloud.mongodb.v20190725 import models
 
 class MongodbClient(AbstractClient):
     _apiVersion = '2019-07-25'
-    _endpoint = 'mongodb.tencentcloudapi.com'
+    _endpoint = 'mongodb.intl.tencentcloudapi.com'
     _service = 'mongodb'
 
 

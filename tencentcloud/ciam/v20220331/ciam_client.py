@@ -22,7 +22,7 @@ from tencentcloud.ciam.v20220331 import models
 
 class CiamClient(AbstractClient):
     _apiVersion = '2022-03-31'
-    _endpoint = 'ciam.tencentcloudapi.com'
+    _endpoint = 'ciam.intl.tencentcloudapi.com'
     _service = 'ciam'
 
 

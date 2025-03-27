@@ -22,7 +22,7 @@ from tencentcloud.rce.v20201103 import models
 
 class RceClient(AbstractClient):
     _apiVersion = '2020-11-03'
-    _endpoint = 'rce.tencentcloudapi.com'
+    _endpoint = 'rce.intl.tencentcloudapi.com'
     _service = 'rce'
 
 

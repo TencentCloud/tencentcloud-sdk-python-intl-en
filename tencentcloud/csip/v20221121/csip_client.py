@@ -22,7 +22,7 @@ from tencentcloud.csip.v20221121 import models
 
 class CsipClient(AbstractClient):
     _apiVersion = '2022-11-21'
-    _endpoint = 'csip.tencentcloudapi.com'
+    _endpoint = 'csip.intl.tencentcloudapi.com'
     _service = 'csip'
 
 

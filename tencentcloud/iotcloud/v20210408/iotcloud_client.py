@@ -22,7 +22,7 @@ from tencentcloud.iotcloud.v20210408 import models
 
 class IotcloudClient(AbstractClient):
     _apiVersion = '2021-04-08'
-    _endpoint = 'iotcloud.tencentcloudapi.com'
+    _endpoint = 'iotcloud.intl.tencentcloudapi.com'
     _service = 'iotcloud'
 
 

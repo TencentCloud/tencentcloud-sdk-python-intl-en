@@ -22,7 +22,7 @@ from tencentcloud.advisor.v20200721 import models
 
 class AdvisorClient(AbstractClient):
     _apiVersion = '2020-07-21'
-    _endpoint = 'advisor.tencentcloudapi.com'
+    _endpoint = 'advisor.intl.tencentcloudapi.com'
     _service = 'advisor'
 
 

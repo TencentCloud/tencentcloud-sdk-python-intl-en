@@ -22,7 +22,7 @@ from tencentcloud.intlpartnersmgt.v20220928 import models
 
 class IntlpartnersmgtClient(AbstractClient):
     _apiVersion = '2022-09-28'
-    _endpoint = 'intlpartnersmgt.tencentcloudapi.com'
+    _endpoint = 'intlpartnersmgt.intl.tencentcloudapi.com'
     _service = 'intlpartnersmgt'
 
 

@@ -22,7 +22,7 @@ from tencentcloud.eiam.v20210420 import models
 
 class EiamClient(AbstractClient):
     _apiVersion = '2021-04-20'
-    _endpoint = 'eiam.tencentcloudapi.com'
+    _endpoint = 'eiam.intl.tencentcloudapi.com'
     _service = 'eiam'
 
 

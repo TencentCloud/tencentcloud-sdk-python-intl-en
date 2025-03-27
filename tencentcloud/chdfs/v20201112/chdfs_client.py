@@ -22,7 +22,7 @@ from tencentcloud.chdfs.v20201112 import models
 
 class ChdfsClient(AbstractClient):
     _apiVersion = '2020-11-12'
-    _endpoint = 'chdfs.tencentcloudapi.com'
+    _endpoint = 'chdfs.intl.tencentcloudapi.com'
     _service = 'chdfs'
 
 

@@ -22,7 +22,7 @@ from tencentcloud.privatedns.v20201028 import models
 
 class PrivatednsClient(AbstractClient):
     _apiVersion = '2020-10-28'
-    _endpoint = 'privatedns.tencentcloudapi.com'
+    _endpoint = 'privatedns.intl.tencentcloudapi.com'
     _service = 'privatedns'
 
 

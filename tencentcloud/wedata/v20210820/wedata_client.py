@@ -22,7 +22,7 @@ from tencentcloud.wedata.v20210820 import models
 
 class WedataClient(AbstractClient):
     _apiVersion = '2021-08-20'
-    _endpoint = 'wedata.tencentcloudapi.com'
+    _endpoint = 'wedata.intl.tencentcloudapi.com'
     _service = 'wedata'
 
 

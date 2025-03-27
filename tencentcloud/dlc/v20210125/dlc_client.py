@@ -22,7 +22,7 @@ from tencentcloud.dlc.v20210125 import models
 
 class DlcClient(AbstractClient):
     _apiVersion = '2021-01-25'
-    _endpoint = 'dlc.tencentcloudapi.com'
+    _endpoint = 'dlc.intl.tencentcloudapi.com'
     _service = 'dlc'
 
 

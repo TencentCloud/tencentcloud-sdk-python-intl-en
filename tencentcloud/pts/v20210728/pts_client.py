@@ -22,7 +22,7 @@ from tencentcloud.pts.v20210728 import models
 
 class PtsClient(AbstractClient):
     _apiVersion = '2021-07-28'
-    _endpoint = 'pts.tencentcloudapi.com'
+    _endpoint = 'pts.intl.tencentcloudapi.com'
     _service = 'pts'
 
 

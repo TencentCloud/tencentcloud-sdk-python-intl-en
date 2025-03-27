@@ -22,7 +22,7 @@ from tencentcloud.cdwpg.v20201230 import models
 
 class CdwpgClient(AbstractClient):
     _apiVersion = '2020-12-30'
-    _endpoint = 'cdwpg.tencentcloudapi.com'
+    _endpoint = 'cdwpg.intl.tencentcloudapi.com'
     _service = 'cdwpg'
 
 

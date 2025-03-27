@@ -22,7 +22,7 @@ from tencentcloud.antiddos.v20200309 import models
 
 class AntiddosClient(AbstractClient):
     _apiVersion = '2020-03-09'
-    _endpoint = 'antiddos.tencentcloudapi.com'
+    _endpoint = 'antiddos.intl.tencentcloudapi.com'
     _service = 'antiddos'
 
 

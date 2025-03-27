@@ -22,7 +22,7 @@ from tencentcloud.autoscaling.v20180419 import models
 
 class AutoscalingClient(AbstractClient):
     _apiVersion = '2018-04-19'
-    _endpoint = 'as.tencentcloudapi.com'
+    _endpoint = 'as.intl.tencentcloudapi.com'
     _service = 'as'
 
 

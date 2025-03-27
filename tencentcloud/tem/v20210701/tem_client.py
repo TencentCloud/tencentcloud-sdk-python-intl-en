@@ -22,7 +22,7 @@ from tencentcloud.tem.v20210701 import models
 
 class TemClient(AbstractClient):
     _apiVersion = '2021-07-01'
-    _endpoint = 'tem.tencentcloudapi.com'
+    _endpoint = 'tem.intl.tencentcloudapi.com'
     _service = 'tem'
 
 

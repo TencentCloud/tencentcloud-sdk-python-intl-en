@@ -22,7 +22,7 @@ from tencentcloud.ams.v20201229 import models
 
 class AmsClient(AbstractClient):
     _apiVersion = '2020-12-29'
-    _endpoint = 'ams.tencentcloudapi.com'
+    _endpoint = 'ams.intl.tencentcloudapi.com'
     _service = 'ams'
 
 

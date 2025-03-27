@@ -22,7 +22,7 @@ from tencentcloud.eb.v20210416 import models
 
 class EbClient(AbstractClient):
     _apiVersion = '2021-04-16'
-    _endpoint = 'eb.tencentcloudapi.com'
+    _endpoint = 'eb.intl.tencentcloudapi.com'
     _service = 'eb'
 
 

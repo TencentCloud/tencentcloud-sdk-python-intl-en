@@ -22,7 +22,7 @@ from tencentcloud.ip.v20210409 import models
 
 class IpClient(AbstractClient):
     _apiVersion = '2021-04-09'
-    _endpoint = 'ip.tencentcloudapi.com'
+    _endpoint = 'ip.intl.tencentcloudapi.com'
     _service = 'ip'
 
 

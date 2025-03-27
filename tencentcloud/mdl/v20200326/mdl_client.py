@@ -22,7 +22,7 @@ from tencentcloud.mdl.v20200326 import models
 
 class MdlClient(AbstractClient):
     _apiVersion = '2020-03-26'
-    _endpoint = 'mdl.tencentcloudapi.com'
+    _endpoint = 'mdl.intl.tencentcloudapi.com'
     _service = 'mdl'
 
 

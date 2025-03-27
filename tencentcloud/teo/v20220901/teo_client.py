@@ -22,7 +22,7 @@ from tencentcloud.teo.v20220901 import models
 
 class TeoClient(AbstractClient):
     _apiVersion = '2022-09-01'
-    _endpoint = 'teo.tencentcloudapi.com'
+    _endpoint = 'teo.intl.tencentcloudapi.com'
     _service = 'teo'
 
 

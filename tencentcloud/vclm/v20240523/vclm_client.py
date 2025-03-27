@@ -22,7 +22,7 @@ from tencentcloud.vclm.v20240523 import models
 
 class VclmClient(AbstractClient):
     _apiVersion = '2024-05-23'
-    _endpoint = 'vclm.tencentcloudapi.com'
+    _endpoint = 'vclm.intl.tencentcloudapi.com'
     _service = 'vclm'
 
 

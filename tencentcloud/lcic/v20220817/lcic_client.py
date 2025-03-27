@@ -22,7 +22,7 @@ from tencentcloud.lcic.v20220817 import models
 
 class LcicClient(AbstractClient):
     _apiVersion = '2022-08-17'
-    _endpoint = 'lcic.tencentcloudapi.com'
+    _endpoint = 'lcic.intl.tencentcloudapi.com'
     _service = 'lcic'
 
 

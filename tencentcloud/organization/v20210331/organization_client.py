@@ -22,7 +22,7 @@ from tencentcloud.organization.v20210331 import models
 
 class OrganizationClient(AbstractClient):
     _apiVersion = '2021-03-31'
-    _endpoint = 'organization.tencentcloudapi.com'
+    _endpoint = 'organization.intl.tencentcloudapi.com'
     _service = 'organization'
 
 

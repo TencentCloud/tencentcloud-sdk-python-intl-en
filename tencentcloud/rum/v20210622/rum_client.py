@@ -22,7 +22,7 @@ from tencentcloud.rum.v20210622 import models
 
 class RumClient(AbstractClient):
     _apiVersion = '2021-06-22'
-    _endpoint = 'rum.tencentcloudapi.com'
+    _endpoint = 'rum.intl.tencentcloudapi.com'
     _service = 'rum'
 
 

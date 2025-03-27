@@ -22,7 +22,7 @@ from tencentcloud.mdp.v20200527 import models
 
 class MdpClient(AbstractClient):
     _apiVersion = '2020-05-27'
-    _endpoint = 'mdp.tencentcloudapi.com'
+    _endpoint = 'mdp.intl.tencentcloudapi.com'
     _service = 'mdp'
 
 

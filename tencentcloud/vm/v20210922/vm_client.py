@@ -22,7 +22,7 @@ from tencentcloud.vm.v20210922 import models
 
 class VmClient(AbstractClient):
     _apiVersion = '2021-09-22'
-    _endpoint = 'vm.tencentcloudapi.com'
+    _endpoint = 'vm.intl.tencentcloudapi.com'
     _service = 'vm'
 
 

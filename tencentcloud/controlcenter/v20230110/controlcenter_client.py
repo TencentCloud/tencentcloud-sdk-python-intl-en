@@ -22,7 +22,7 @@ from tencentcloud.controlcenter.v20230110 import models
 
 class ControlcenterClient(AbstractClient):
     _apiVersion = '2023-01-10'
-    _endpoint = 'controlcenter.tencentcloudapi.com'
+    _endpoint = 'controlcenter.intl.tencentcloudapi.com'
     _service = 'controlcenter'
 
 

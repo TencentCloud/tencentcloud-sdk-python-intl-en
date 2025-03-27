@@ -22,7 +22,7 @@ from tencentcloud.dnspod.v20210323 import models
 
 class DnspodClient(AbstractClient):
     _apiVersion = '2021-03-23'
-    _endpoint = 'dnspod.tencentcloudapi.com'
+    _endpoint = 'dnspod.intl.tencentcloudapi.com'
     _service = 'dnspod'
 
 

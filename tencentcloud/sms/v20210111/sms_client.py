@@ -22,7 +22,7 @@ from tencentcloud.sms.v20210111 import models
 
 class SmsClient(AbstractClient):
     _apiVersion = '2021-01-11'
-    _endpoint = 'sms.tencentcloudapi.com'
+    _endpoint = 'sms.intl.tencentcloudapi.com'
     _service = 'sms'
 
 

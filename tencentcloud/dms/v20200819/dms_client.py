@@ -22,7 +22,7 @@ from tencentcloud.dms.v20200819 import models
 
 class DmsClient(AbstractClient):
     _apiVersion = '2020-08-19'
-    _endpoint = 'dms.tencentcloudapi.com'
+    _endpoint = 'dms.intl.tencentcloudapi.com'
     _service = 'dms'
 
 

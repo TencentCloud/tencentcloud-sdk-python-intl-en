@@ -22,7 +22,7 @@ from tencentcloud.ssm.v20190923 import models
 
 class SsmClient(AbstractClient):
     _apiVersion = '2019-09-23'
-    _endpoint = 'ssm.tencentcloudapi.com'
+    _endpoint = 'ssm.intl.tencentcloudapi.com'
     _service = 'ssm'
 
 

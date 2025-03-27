@@ -22,7 +22,7 @@ from tencentcloud.tke.v20220501 import models
 
 class TkeClient(AbstractClient):
     _apiVersion = '2022-05-01'
-    _endpoint = 'tke.tencentcloudapi.com'
+    _endpoint = 'tke.intl.tencentcloudapi.com'
     _service = 'tke'
 
 

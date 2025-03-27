@@ -22,7 +22,7 @@ from tencentcloud.apm.v20210622 import models
 
 class ApmClient(AbstractClient):
     _apiVersion = '2021-06-22'
-    _endpoint = 'apm.tencentcloudapi.com'
+    _endpoint = 'apm.intl.tencentcloudapi.com'
     _service = 'apm'
 
 

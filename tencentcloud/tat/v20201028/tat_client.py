@@ -22,7 +22,7 @@ from tencentcloud.tat.v20201028 import models
 
 class TatClient(AbstractClient):
     _apiVersion = '2020-10-28'
-    _endpoint = 'tat.tencentcloudapi.com'
+    _endpoint = 'tat.intl.tencentcloudapi.com'
     _service = 'tat'
 
 

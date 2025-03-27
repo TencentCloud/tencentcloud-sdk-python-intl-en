@@ -22,7 +22,7 @@ from tencentcloud.iai.v20200303 import models
 
 class IaiClient(AbstractClient):
     _apiVersion = '2020-03-03'
-    _endpoint = 'iai.tencentcloudapi.com'
+    _endpoint = 'iai.intl.tencentcloudapi.com'
     _service = 'iai'
 
 

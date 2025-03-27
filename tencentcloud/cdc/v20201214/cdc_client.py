@@ -22,7 +22,7 @@ from tencentcloud.cdc.v20201214 import models
 
 class CdcClient(AbstractClient):
     _apiVersion = '2020-12-14'
-    _endpoint = 'cdc.tencentcloudapi.com'
+    _endpoint = 'cdc.intl.tencentcloudapi.com'
     _service = 'cdc'
 
 

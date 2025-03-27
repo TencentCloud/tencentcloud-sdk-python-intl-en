@@ -22,7 +22,7 @@ from tencentcloud.vpc.v20170312 import models
 
 class VpcClient(AbstractClient):
     _apiVersion = '2017-03-12'
-    _endpoint = 'vpc.tencentcloudapi.com'
+    _endpoint = 'vpc.intl.tencentcloudapi.com'
     _service = 'vpc'
 
 

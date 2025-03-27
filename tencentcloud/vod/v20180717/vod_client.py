@@ -22,7 +22,7 @@ from tencentcloud.vod.v20180717 import models
 
 class VodClient(AbstractClient):
     _apiVersion = '2018-07-17'
-    _endpoint = 'vod.tencentcloudapi.com'
+    _endpoint = 'vod.intl.tencentcloudapi.com'
     _service = 'vod'
 
 

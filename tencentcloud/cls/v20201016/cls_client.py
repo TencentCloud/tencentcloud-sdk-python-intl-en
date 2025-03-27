@@ -22,7 +22,7 @@ from tencentcloud.cls.v20201016 import models
 
 class ClsClient(AbstractClient):
     _apiVersion = '2020-10-16'
-    _endpoint = 'cls.tencentcloudapi.com'
+    _endpoint = 'cls.intl.tencentcloudapi.com'
     _service = 'cls'
 
 

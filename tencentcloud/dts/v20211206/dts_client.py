@@ -22,7 +22,7 @@ from tencentcloud.dts.v20211206 import models
 
 class DtsClient(AbstractClient):
     _apiVersion = '2021-12-06'
-    _endpoint = 'dts.tencentcloudapi.com'
+    _endpoint = 'dts.intl.tencentcloudapi.com'
     _service = 'dts'
 
 

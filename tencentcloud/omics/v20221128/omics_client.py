@@ -22,7 +22,7 @@ from tencentcloud.omics.v20221128 import models
 
 class OmicsClient(AbstractClient):
     _apiVersion = '2022-11-28'
-    _endpoint = 'omics.tencentcloudapi.com'
+    _endpoint = 'omics.intl.tencentcloudapi.com'
     _service = 'omics'
 
 

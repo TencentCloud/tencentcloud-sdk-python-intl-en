@@ -22,7 +22,7 @@ from tencentcloud.tts.v20190823 import models
 
 class TtsClient(AbstractClient):
     _apiVersion = '2019-08-23'
-    _endpoint = 'tts.tencentcloudapi.com'
+    _endpoint = 'tts.intl.tencentcloudapi.com'
     _service = 'tts'
 
 

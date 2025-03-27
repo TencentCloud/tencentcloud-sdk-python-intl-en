@@ -22,7 +22,7 @@ from tencentcloud.car.v20220110 import models
 
 class CarClient(AbstractClient):
     _apiVersion = '2022-01-10'
-    _endpoint = 'car.tencentcloudapi.com'
+    _endpoint = 'car.intl.tencentcloudapi.com'
     _service = 'car'
 
 

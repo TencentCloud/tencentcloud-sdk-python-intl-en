@@ -22,7 +22,7 @@ from tencentcloud.cdwdoris.v20211228 import models
 
 class CdwdorisClient(AbstractClient):
     _apiVersion = '2021-12-28'
-    _endpoint = 'cdwdoris.tencentcloudapi.com'
+    _endpoint = 'cdwdoris.intl.tencentcloudapi.com'
     _service = 'cdwdoris'
 
 

@@ -22,7 +22,7 @@ from tencentcloud.dayu.v20180709 import models
 
 class DayuClient(AbstractClient):
     _apiVersion = '2018-07-09'
-    _endpoint = 'dayu.tencentcloudapi.com'
+    _endpoint = 'dayu.intl.tencentcloudapi.com'
     _service = 'dayu'
 
 
