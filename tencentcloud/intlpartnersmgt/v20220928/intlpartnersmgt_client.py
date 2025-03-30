@@ -671,6 +671,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryInvitationInfo(self, request):
+        """Query usage information of invitation link. Once created, the data will only be retained for 60 days, and the system will automatically delete the invitation link after 60 days.
+        Invokable role types: Distributor, Second-level reseller, Reseller.
+
+        :param request: Request instance for QueryInvitationInfo.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryInvitationInfoRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryInvitationInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryInvitationInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryInvitationInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryPartnerCredit(self, request):
         """This API is used for a partner to query its own total credit, available credit, and used credit in USD.
 

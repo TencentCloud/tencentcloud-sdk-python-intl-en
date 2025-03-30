@@ -442,22 +442,23 @@ class Activity(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityType: Atomic task type.
-<li>input: start node.</li>
-<li>output: termination node.</li>
-<li>action-trans: transcoding.</li>
-<li>action-samplesnapshot: sampled screenshot taking.</li>
-<li>action-AIAnalysis: analysis.</li>
-<li>action-AIRecognition: recognition.</li>
-<li>action-aiReview: auditing.</li>
-<li>action-animated-graphics: animated image generating.</li>
-<li>action-image-sprite: sprite image generating.</li>
-<li>action-snapshotByTimeOffset: time point screenshot taking.</li>
-<li>action-adaptive-substream: adaptive bitrate streaming.</li>
-<li>action-AIQualityControl: media quality inspection.</li>
+<li>input: start node</li>
+<li>output: end node</li>
+<li>action-trans: transcoding</li>
+<li>action-samplesnapshot: sampled screenshot</li>
+<li>action-AIAnalysis: analysis</li>
+<li>action-AIRecognition: recognition</li>
+<li>action-aiReview: review</li>
+<li>action-animated-graphics: conversion to GIF</li>
+<li>action-image-sprite: image sprite</li>
+<li>action-snapshotByTimeOffset: time point screenshot</li>
+<li>action-adaptive-substream: adaptive bitrate stream</li>
+<li>action-AIQualityControl: media quality inspection</li>
+<li>action-SmartSubtitles: smart subtitle</li>
 
 
 
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ActivityType: str
         :param _ReardriveIndex: The indexes of the subsequent actions.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -473,22 +474,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ActivityType(self):
         """Atomic task type.
-<li>input: start node.</li>
-<li>output: termination node.</li>
-<li>action-trans: transcoding.</li>
-<li>action-samplesnapshot: sampled screenshot taking.</li>
-<li>action-AIAnalysis: analysis.</li>
-<li>action-AIRecognition: recognition.</li>
-<li>action-aiReview: auditing.</li>
-<li>action-animated-graphics: animated image generating.</li>
-<li>action-image-sprite: sprite image generating.</li>
-<li>action-snapshotByTimeOffset: time point screenshot taking.</li>
-<li>action-adaptive-substream: adaptive bitrate streaming.</li>
-<li>action-AIQualityControl: media quality inspection.</li>
+<li>input: start node</li>
+<li>output: end node</li>
+<li>action-trans: transcoding</li>
+<li>action-samplesnapshot: sampled screenshot</li>
+<li>action-AIAnalysis: analysis</li>
+<li>action-AIRecognition: recognition</li>
+<li>action-aiReview: review</li>
+<li>action-animated-graphics: conversion to GIF</li>
+<li>action-image-sprite: image sprite</li>
+<li>action-snapshotByTimeOffset: time point screenshot</li>
+<li>action-adaptive-substream: adaptive bitrate stream</li>
+<li>action-AIQualityControl: media quality inspection</li>
+<li>action-SmartSubtitles: smart subtitle</li>
 
 
 
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._ActivityType
@@ -566,6 +568,9 @@ class ActivityPara(AbstractModel):
         :param _QualityControlTask: Media quality inspection task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _SmartSubtitlesTask: Smart subtitle task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -577,6 +582,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
         self._QualityControlTask = None
+        self._SmartSubtitlesTask = None
 
     @property
     def TranscodeTask(self):
@@ -689,6 +695,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def QualityControlTask(self, QualityControlTask):
         self._QualityControlTask = QualityControlTask
 
+    @property
+    def SmartSubtitlesTask(self):
+        """Smart subtitle task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -721,6 +739,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = AiQualityControlTaskInput()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -768,6 +789,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _QualityControlTask: Media quality inspection task output.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        :param _SmartSubtitlesTask: Smart subtitle task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -779,6 +803,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReviewTask = None
         self._AnalysisTask = None
         self._QualityControlTask = None
+        self._SmartSubtitlesTask = None
 
     @property
     def TranscodeTask(self):
@@ -900,6 +925,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def QualityControlTask(self, QualityControlTask):
         self._QualityControlTask = QualityControlTask
 
+    @property
+    def SmartSubtitlesTask(self):
+        """Smart subtitle task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -932,6 +969,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = ScheduleQualityControlTaskResult()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = ScheduleSmartSubtitleTaskResult()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -950,17 +990,18 @@ class ActivityResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityType: Atomic task type.
-<li>Transcode: transcoding.</li>
-<li>SampleSnapshot: sampled screenshot taking.</li>
-<li>AnimatedGraphics: animated image generating.</li>
-<li>SnapshotByTimeOffset: time point screenshot taking.</li>
-<li>ImageSprites: sprite image generating.</li>
-<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
-<li>AiContentReview: content moderation.</li>
-<li>AIRecognition: intelligent identification.</li>
-<li>AIAnalysis: intelligent analysis.</li>
-
+<Li>Transcode: transcoding</li>
+<Li>SampleSnapshot: sampled screenshot</li>
+<Li>AnimatedGraphics: conversion to GIF</li>
+<Li>SnapshotByTimeOffset: time point screenshot</li>
+<Li>ImageSprites: image sprite</li>
+<Li>AdaptiveDynamicStreaming: adaptive bitrate stream</li>
+<Li>AiContentReview: content review</li>
+<Li>AIRecognition: intelligent recognition</li>
+<Li>AIAnalysis: intelligent analysis</li>
 <li>AiQualityControl: media quality inspection.</li>
+
+<Li>SmartSubtitles: smart subtitle</li>
         :type ActivityType: str
         :param _ActivityResItem: The execution results of the subtasks of the scheme.
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
@@ -971,17 +1012,18 @@ class ActivityResult(AbstractModel):
     @property
     def ActivityType(self):
         """Atomic task type.
-<li>Transcode: transcoding.</li>
-<li>SampleSnapshot: sampled screenshot taking.</li>
-<li>AnimatedGraphics: animated image generating.</li>
-<li>SnapshotByTimeOffset: time point screenshot taking.</li>
-<li>ImageSprites: sprite image generating.</li>
-<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
-<li>AiContentReview: content moderation.</li>
-<li>AIRecognition: intelligent identification.</li>
-<li>AIAnalysis: intelligent analysis.</li>
-
+<Li>Transcode: transcoding</li>
+<Li>SampleSnapshot: sampled screenshot</li>
+<Li>AnimatedGraphics: conversion to GIF</li>
+<Li>SnapshotByTimeOffset: time point screenshot</li>
+<Li>ImageSprites: image sprite</li>
+<Li>AdaptiveDynamicStreaming: adaptive bitrate stream</li>
+<Li>AiContentReview: content review</li>
+<Li>AIRecognition: intelligent recognition</li>
+<Li>AIAnalysis: intelligent analysis</li>
 <li>AiQualityControl: media quality inspection.</li>
+
+<Li>SmartSubtitles: smart subtitle</li>
         :rtype: str
         """
         return self._ActivityType
@@ -1555,11 +1597,16 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>0: no,</li>
 <li>1: yes.</li>
         :type RemoveVideo: int
+        :param _AudioList: List of audio parameter information.
+The parameter array has a maximum length of 64.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AudioList: list of AudioTemplateInfo
         """
         self._Audio = None
         self._Video = None
         self._RemoveAudio = None
         self._RemoveVideo = None
+        self._AudioList = None
 
     @property
     def Audio(self):
@@ -1609,6 +1656,19 @@ class AdaptiveStreamTemplate(AbstractModel):
     def RemoveVideo(self, RemoveVideo):
         self._RemoveVideo = RemoveVideo
 
+    @property
+    def AudioList(self):
+        """List of audio parameter information.
+The parameter array has a maximum length of 64.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of AudioTemplateInfo
+        """
+        return self._AudioList
+
+    @AudioList.setter
+    def AudioList(self, AudioList):
+        self._AudioList = AudioList
+
 
     def _deserialize(self, params):
         if params.get("Audio") is not None:
@@ -1619,6 +1679,12 @@ class AdaptiveStreamTemplate(AbstractModel):
             self._Video._deserialize(params.get("Video"))
         self._RemoveAudio = params.get("RemoveAudio")
         self._RemoveVideo = params.get("RemoveVideo")
+        if params.get("AudioList") is not None:
+            self._AudioList = []
+            for item in params.get("AudioList"):
+                obj = AudioTemplateInfo()
+                obj._deserialize(item)
+                self._AudioList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3566,9 +3632,13 @@ class AiAnalysisTaskInput(AbstractModel):
         r"""
         :param _Definition: Video content analysis template ID.
         :type Definition: int
-        :param _ExtendedParameter: An extended parameter, whose value is a stringfied JSON.
-Note: This parameter is for customers with special requirements. It needs to be customized offline.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExtendedParameter: Additional parameter. Its value is a serialized JSON string.
+Note: This parameter is used to meet customization requirements. References:
+Smart erase: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
+Video splitting: https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1
+Intelligent highlights: https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1
+Horizontal-to-vertical video transformation: https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ExtendedParameter: str
         """
         self._Definition = None
@@ -3587,9 +3657,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendedParameter(self):
-        """An extended parameter, whose value is a stringfied JSON.
-Note: This parameter is for customers with special requirements. It needs to be customized offline.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Additional parameter. Its value is a serialized JSON string.
+Note: This parameter is used to meet customization requirements. References:
+Smart erase: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
+Video splitting: https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1
+Intelligent highlights: https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1
+Horizontal-to-vertical video transformation: https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._ExtendedParameter
@@ -10697,6 +10771,296 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
         
 
 
+class AsrHotWordsConfigure(AbstractModel):
+    """Smart subtitle hotword parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Hotword switch.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Switch: str
+        :param _LibraryId: Hotword lexicon ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type LibraryId: str
+        """
+        self._Switch = None
+        self._LibraryId = None
+
+    @property
+    def Switch(self):
+        """Hotword switch.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def LibraryId(self):
+        """Hotword lexicon ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._LibraryId = params.get("LibraryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrHotwordsSet(AbstractModel):
+    """Returned result set of hotword lexicon query.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: Hotword lexicon ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type HotwordsId: str
+        :param _Status: Current hotword lexicon status. The value indicates the number of smart subtitle templates bound to this hotword lexicon.
+If the Status value is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.
+If the Status value is not 0, it indicates that the hotword lexicon cannot be deleted.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Status: int
+        :param _Name: Hotword lexicon name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Name: str
+        :param _WordCount: Number of hotwords in the hotword lexicon.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type WordCount: int
+        :param _FileName: Name of the uploaded hotword file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FileName: str
+        :param _CreateTime: Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, 2006-01-02T15:04:05Z.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, 2006-01-02T15:04:05Z.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UpdateTime: str
+        :param _Type: 0: temporary hotword lexicon
+1: file-based hotword lexicon
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Type: int
+        """
+        self._HotwordsId = None
+        self._Status = None
+        self._Name = None
+        self._WordCount = None
+        self._FileName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Type = None
+
+    @property
+    def HotwordsId(self):
+        """Hotword lexicon ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Status(self):
+        """Current hotword lexicon status. The value indicates the number of smart subtitle templates bound to this hotword lexicon.
+If the Status value is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.
+If the Status value is not 0, it indicates that the hotword lexicon cannot be deleted.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        """Hotword lexicon name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def WordCount(self):
+        """Number of hotwords in the hotword lexicon.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._WordCount
+
+    @WordCount.setter
+    def WordCount(self, WordCount):
+        self._WordCount = WordCount
+
+    @property
+    def FileName(self):
+        """Name of the uploaded hotword file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def CreateTime(self):
+        """Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, 2006-01-02T15:04:05Z.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, 2006-01-02T15:04:05Z.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Type(self):
+        """0: temporary hotword lexicon
+1: file-based hotword lexicon
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._WordCount = params.get("WordCount")
+        self._FileName = params.get("FileName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrHotwordsSetItem(AbstractModel):
+    """Information on a single hotword.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Hotword ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Id: int
+        :param _Text: Hotword text.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Text: str
+        :param _Weight: Hotword weight. The value can be 11 or 100 or be in the range of 1 to 10.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Weight: int
+        """
+        self._Id = None
+        self._Text = None
+        self._Weight = None
+
+    @property
+    def Id(self):
+        """Hotword ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Text(self):
+        """Hotword text.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Weight(self):
+        """Hotword weight. The value can be 11 or 100 or be in the range of 1 to 10.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Text = params.get("Text")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsrWordsConfigureInfo(AbstractModel):
     """Speech keyword recognition control parameter.
 
@@ -11144,11 +11508,16 @@ In Hz.
 When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
 Default value: 2.
         :type AudioChannel: int
+        :param _TrackChannelInfo: Merge audio track information.
+This field only takes effec in adaptive bitrate transcoding.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
         self._Codec = None
         self._Bitrate = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._TrackChannelInfo = None
 
     @property
     def Codec(self):
@@ -11220,12 +11589,28 @@ Default value: 2.
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def TrackChannelInfo(self):
+        """Merge audio track information.
+This field only takes effec in adaptive bitrate transcoding.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
+        """
+        return self._TrackChannelInfo
+
+    @TrackChannelInfo.setter
+    def TrackChannelInfo(self, TrackChannelInfo):
+        self._TrackChannelInfo = TrackChannelInfo
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._Bitrate = params.get("Bitrate")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        if params.get("TrackChannelInfo") is not None:
+            self._TrackChannelInfo = AudioTrackChannelInfo()
+            self._TrackChannelInfo._deserialize(params.get("TrackChannelInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11374,6 +11759,99 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
         self._StreamSelects = params.get("StreamSelects")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioTrackChannelInfo(AbstractModel):
+    """Audio track information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelsRemix: Whether to enable audio mix. valid values:.
+0: indicates not enabling audio mix.
+1: Indicates enabling audio mix.
+Default value: 0
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ChannelsRemix: int
+        :param _SelectType: Audio track input type. valid values:.
+trask: indicates usage of the audio track id.
+Task_channel: indicates usage of the audio track id and sound channel id.
+Default: trask.
+If the original aduio track is multichannel, recommend using trask_channel.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SelectType: str
+        :param _InputTrackInfo: Audio track information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InputTrackInfo: list of TrackInfo
+        """
+        self._ChannelsRemix = None
+        self._SelectType = None
+        self._InputTrackInfo = None
+
+    @property
+    def ChannelsRemix(self):
+        """Whether to enable audio mix. valid values:.
+0: indicates not enabling audio mix.
+1: Indicates enabling audio mix.
+Default value: 0
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._ChannelsRemix
+
+    @ChannelsRemix.setter
+    def ChannelsRemix(self, ChannelsRemix):
+        self._ChannelsRemix = ChannelsRemix
+
+    @property
+    def SelectType(self):
+        """Audio track input type. valid values:.
+trask: indicates usage of the audio track id.
+Task_channel: indicates usage of the audio track id and sound channel id.
+Default: trask.
+If the original aduio track is multichannel, recommend using trask_channel.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._SelectType
+
+    @SelectType.setter
+    def SelectType(self, SelectType):
+        self._SelectType = SelectType
+
+    @property
+    def InputTrackInfo(self):
+        """Audio track information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of TrackInfo
+        """
+        return self._InputTrackInfo
+
+    @InputTrackInfo.setter
+    def InputTrackInfo(self, InputTrackInfo):
+        self._InputTrackInfo = InputTrackInfo
+
+
+    def _deserialize(self, params):
+        self._ChannelsRemix = params.get("ChannelsRemix")
+        self._SelectType = params.get("SelectType")
+        if params.get("InputTrackInfo") is not None:
+            self._InputTrackInfo = []
+            for item in params.get("InputTrackInfo"):
+                obj = TrackInfo()
+                obj._deserialize(item)
+                self._InputTrackInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15264,6 +15742,149 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAsrHotwordsRequest(AbstractModel):
+    """CreateAsrHotwords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 0: temporary hotword; 1 file-based hotword.
+        :type Type: int
+        :param _Name: Hotword lexicon name.
+        :type Name: str
+        :param _Content: Hotword lexicon text. This field is required if Type is set to 0.
+        :type Content: str
+        :param _FileContent: Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+
+
+        :type FileContent: str
+        :param _FileName: Name of the uploaded file.
+        :type FileName: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Content = None
+        self._FileContent = None
+        self._FileName = None
+
+    @property
+    def Type(self):
+        """0: temporary hotword; 1 file-based hotword.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """Hotword lexicon name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        """Hotword lexicon text. This field is required if Type is set to 0.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FileContent(self):
+        """Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+
+
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        """Name of the uploaded file.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAsrHotwordsResponse(AbstractModel):
+    """CreateAsrHotwords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: Hotword lexicon ID.
+        :type HotwordsId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._HotwordsId = None
+        self._RequestId = None
+
+    @property
+    def HotwordsId(self):
+        """Hotword lexicon ID.
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateContentReviewTemplateRequest(AbstractModel):
     """CreateContentReviewTemplate request structure.
 
@@ -15275,11 +15896,11 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: The template description. Length limit: 256 characters.
         :type Comment: str
-        :param _PornConfigure: Control parameter for porn information
+        :param _PornConfigure: Control parameter for a pornography detection task.
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
-        :param _TerrorismConfigure: Control parameter for terrorism information
+        :param _TerrorismConfigure: Control parameter for a violence detection task.
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
-        :param _PoliticalConfigure: Control parameter for politically sensitive information
+        :param _PoliticalConfigure: Control parameter for a sensitive content detection task.
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param _ProhibitedConfigure: Control parameter of prohibited information detection. Prohibited information includes:
 <li>Abusive;</li>
@@ -15321,7 +15942,7 @@ Note: this parameter is not supported yet.
 
     @property
     def PornConfigure(self):
-        """Control parameter for porn information
+        """Control parameter for a pornography detection task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
         """
         return self._PornConfigure
@@ -15332,7 +15953,7 @@ Note: this parameter is not supported yet.
 
     @property
     def TerrorismConfigure(self):
-        """Control parameter for terrorism information
+        """Control parameter for a violence detection task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
         """
         return self._TerrorismConfigure
@@ -15343,7 +15964,7 @@ Note: this parameter is not supported yet.
 
     @property
     def PoliticalConfigure(self):
-        """Control parameter for politically sensitive information
+        """Control parameter for a sensitive content detection task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         """
         return self._PoliticalConfigure
@@ -16498,6 +17119,290 @@ class CreateScheduleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSmartSubtitleTemplateRequest(AbstractModel):
+    """CreateSmartSubtitleTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Smart subtitle template name.
+Length limit: 64 characters.
+        :type Name: str
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :type VideoSrcLanguage: str
+        :param _SubtitleType: Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :type SubtitleType: int
+        :param _Comment: Smart subtitle template description.
+Length limit: 256 characters.
+        :type Comment: str
+        :param _SubtitleFormat: Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+        :type SubtitleFormat: str
+        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _TranslateSwitch: Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+        :type TranslateSwitch: str
+        :param _TranslateDstLanguage: Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+        :type TranslateDstLanguage: str
+        """
+        self._Name = None
+        self._VideoSrcLanguage = None
+        self._SubtitleType = None
+        self._Comment = None
+        self._SubtitleFormat = None
+        self._AsrHotWordsConfigure = None
+        self._TranslateSwitch = None
+        self._TranslateDstLanguage = None
+
+    @property
+    def Name(self):
+        """Smart subtitle template name.
+Length limit: 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VideoSrcLanguage(self):
+        """Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleType(self):
+        """Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def Comment(self):
+        """Smart subtitle template description.
+Length limit: 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleFormat(self):
+        """Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR hotword lexicon parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def TranslateSwitch(self):
+        """Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def TranslateDstLanguage(self):
+        """Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleType = params.get("SubtitleType")
+        self._Comment = params.get("Comment")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSmartSubtitleTemplateResponse(AbstractModel):
+    """CreateSmartSubtitleTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart subtitle template.
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        """Unique identifier of the smart subtitle template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         self._RequestId = params.get("RequestId")
 
 
@@ -17739,6 +18644,70 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAsrHotwordsRequest(AbstractModel):
+    """DeleteAsrHotwords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: ID of the hotword lexicon to be deleted.
+        :type HotwordsId: str
+        """
+        self._HotwordsId = None
+
+    @property
+    def HotwordsId(self):
+        """ID of the hotword lexicon to be deleted.
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAsrHotwordsResponse(AbstractModel):
+    """DeleteAsrHotwords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteContentReviewTemplateRequest(AbstractModel):
     """DeleteContentReviewTemplate request structure.
 
@@ -18161,6 +19130,70 @@ class DeleteScheduleRequest(AbstractModel):
 
 class DeleteScheduleResponse(AbstractModel):
     """DeleteSchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSmartSubtitleTemplateRequest(AbstractModel):
+    """DeleteSmartSubtitleTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart subtitle template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        """Unique identifier of the smart subtitle template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSmartSubtitleTemplateResponse(AbstractModel):
+    """DeleteSmartSubtitleTemplate response structure.
 
     """
 
@@ -19175,6 +20208,613 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
                 obj = AnimatedGraphicsTemplate()
                 obj._deserialize(item)
                 self._AnimatedGraphicsTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAsrHotwordsListRequest(AbstractModel):
+    """DescribeAsrHotwordsList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: Parameter for querying by hotword lexicon ID.
+        :type HotwordsId: str
+        :param _Name: Parameter for querying by hotword lexicon name.
+        :type Name: str
+        :param _Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. All hotword lexicons are returned by default.
+        :type Limit: int
+        :param _OrderType: Hotword lexicon sorting order.
+
+0: ascending (default)
+1: descending
+        :type OrderType: int
+        :param _OrderBy: Sorts hotword lexicons by a specific field. By default, hotword lexicons are sorted by creation time. If an invalid field is used for sorting, the default sorting field applies.
+
+ - CreateTime: sort by creation time
+ - UpdateTime: sort by update time
+ - Name: sort by hotword lexicon name
+ - WordCount: sort by the number of hotwords
+ - HotwordsId: sort by hotword lexicon ID
+        :type OrderBy: str
+        :param _Types: 0: temporary hotword; 1 file-based hotword.
+        :type Types: list of int non-negative
+        """
+        self._HotwordsId = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderType = None
+        self._OrderBy = None
+        self._Types = None
+
+    @property
+    def HotwordsId(self):
+        """Parameter for querying by hotword lexicon ID.
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Name(self):
+        """Parameter for querying by hotword lexicon name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned entries. All hotword lexicons are returned by default.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderType(self):
+        """Hotword lexicon sorting order.
+
+0: ascending (default)
+1: descending
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def OrderBy(self):
+        """Sorts hotword lexicons by a specific field. By default, hotword lexicons are sorted by creation time. If an invalid field is used for sorting, the default sorting field applies.
+
+ - CreateTime: sort by creation time
+ - UpdateTime: sort by update time
+ - Name: sort by hotword lexicon name
+ - WordCount: sort by the number of hotwords
+ - HotwordsId: sort by hotword lexicon ID
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Types(self):
+        """0: temporary hotword; 1 file-based hotword.
+        :rtype: list of int non-negative
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderType = params.get("OrderType")
+        self._OrderBy = params.get("OrderBy")
+        self._Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsrHotwordsListResponse(AbstractModel):
+    """DescribeAsrHotwordsList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of hotword lexicons.
+        :type TotalCount: int
+        :param _Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. All hotword lexicons are returned by default.
+        :type Limit: int
+        :param _AsrHotwordsSet: Hotword lexicon list.
+        :type AsrHotwordsSet: list of AsrHotwordsSet
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Offset = None
+        self._Limit = None
+        self._AsrHotwordsSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of hotword lexicons.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned entries. All hotword lexicons are returned by default.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def AsrHotwordsSet(self):
+        """Hotword lexicon list.
+        :rtype: list of AsrHotwordsSet
+        """
+        return self._AsrHotwordsSet
+
+    @AsrHotwordsSet.setter
+    def AsrHotwordsSet(self, AsrHotwordsSet):
+        self._AsrHotwordsSet = AsrHotwordsSet
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("AsrHotwordsSet") is not None:
+            self._AsrHotwordsSet = []
+            for item in params.get("AsrHotwordsSet"):
+                obj = AsrHotwordsSet()
+                obj._deserialize(item)
+                self._AsrHotwordsSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAsrHotwordsRequest(AbstractModel):
+    """DescribeAsrHotwords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: ID of the hotword lexicon to be queried.
+**Note: Either HotwordsId or Name should be specified. If both are specified, HotwordsId has a higher priority than Name.**
+        :type HotwordsId: str
+        :param _Name: Hotword lexicon name.
+**Note: Either HotwordsId or Name should be specified. If both are specified, HotwordsId has a higher priority than Name.**
+        :type Name: str
+        :param _Offset: Paging offset. Default value: 0.
+
+
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param _OrderBy: Hotword sorting field. Valid values:
+
+ - Default: Sort by the hotword upload sequence.
+ - Weight: Sort by the weight.
+ - Lexical: Sort by the first letter of hotwords.
+        :type OrderBy: str
+        :param _OrderType: Hotword sorting order. 0: ascending (default); 1: descending.
+        :type OrderType: int
+        """
+        self._HotwordsId = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._OrderType = None
+
+    @property
+    def HotwordsId(self):
+        """ID of the hotword lexicon to be queried.
+**Note: Either HotwordsId or Name should be specified. If both are specified, HotwordsId has a higher priority than Name.**
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Name(self):
+        """Hotword lexicon name.
+**Note: Either HotwordsId or Name should be specified. If both are specified, HotwordsId has a higher priority than Name.**
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        """Paging offset. Default value: 0.
+
+
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        """Hotword sorting field. Valid values:
+
+ - Default: Sort by the hotword upload sequence.
+ - Weight: Sort by the weight.
+ - Lexical: Sort by the first letter of hotwords.
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        """Hotword sorting order. 0: ascending (default); 1: descending.
+        :rtype: int
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsrHotwordsResponse(AbstractModel):
+    """DescribeAsrHotwords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: ID of the hotword lexicon to be queried.
+        :type HotwordsId: str
+        :param _Status: Current status of the hotword lexicon corresponding to the ID. The value 0 indicates that no template is bound to this hotword lexicon when the query is performed and that the hotword lexicon can be deleted.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Status: int
+        :param _Name: Hotword lexicon name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Name: str
+        :param _Type: The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.
+The value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.
+
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Type: int
+        :param _FileName: Name of the uploaded hotword file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FileName: str
+        :param _HotWords: List of hotwords returned for the query.
+        :type HotWords: list of AsrHotwordsSetItem
+        :param _Content: Hotword text, which depends on the value of Type.
+If the value of Type is 0, the hotword string is returned.
+If the value of Type is 1, the base64-encoded content of the hotword file is returned.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Content: str
+        :param _WordCount: Number of words contained in the hotword lexicon.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type WordCount: int
+        :param _Offset: Paging offset. Default value: 0.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Limit: int
+        :param _CreateTime: Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".Note: This field may return null, indicating that no valid value can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Modification time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UpdateTime: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._HotwordsId = None
+        self._Status = None
+        self._Name = None
+        self._Type = None
+        self._FileName = None
+        self._HotWords = None
+        self._Content = None
+        self._WordCount = None
+        self._Offset = None
+        self._Limit = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RequestId = None
+
+    @property
+    def HotwordsId(self):
+        """ID of the hotword lexicon to be queried.
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Status(self):
+        """Current status of the hotword lexicon corresponding to the ID. The value 0 indicates that no template is bound to this hotword lexicon when the query is performed and that the hotword lexicon can be deleted.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        """Hotword lexicon name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.
+The value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.
+
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileName(self):
+        """Name of the uploaded hotword file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def HotWords(self):
+        """List of hotwords returned for the query.
+        :rtype: list of AsrHotwordsSetItem
+        """
+        return self._HotWords
+
+    @HotWords.setter
+    def HotWords(self, HotWords):
+        self._HotWords = HotWords
+
+    @property
+    def Content(self):
+        """Hotword text, which depends on the value of Type.
+If the value of Type is 0, the hotword string is returned.
+If the value of Type is 1, the base64-encoded content of the hotword file is returned.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def WordCount(self):
+        """Number of words contained in the hotword lexicon.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._WordCount
+
+    @WordCount.setter
+    def WordCount(self, WordCount):
+        self._WordCount = WordCount
+
+    @property
+    def Offset(self):
+        """Paging offset. Default value: 0.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CreateTime(self):
+        """Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Modification time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._FileName = params.get("FileName")
+        if params.get("HotWords") is not None:
+            self._HotWords = []
+            for item in params.get("HotWords"):
+                obj = AsrHotwordsSetItem()
+                obj._deserialize(item)
+                self._HotWords.append(obj)
+        self._Content = params.get("Content")
+        self._WordCount = params.get("WordCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -20432,6 +22072,169 @@ class DescribeSchedulesResponse(AbstractModel):
                 obj = SchedulesInfo()
                 obj._deserialize(item)
                 self._ScheduleInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
+    """DescribeSmartSubtitleTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: Condition for filtering smart subtitle templates by unique identifier. The array can contain up to 10 unique identifiers.
+        :type Definitions: list of int
+        :param _Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param _Type: Condition for filtering templates by type. If this field is not specified, all templates are returned. Valid values:
+* Preset: system preset template
+* Custom: user-defined template
+        :type Type: str
+        :param _Name: Condition for filtering smart subtitle templates by ID. Length limit: 64 characters.
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        """Condition for filtering smart subtitle templates by unique identifier. The array can contain up to 10 unique identifiers.
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        """Condition for filtering templates by type. If this field is not specified, all templates are returned. Valid values:
+* Preset: system preset template
+* Custom: user-defined template
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """Condition for filtering smart subtitle templates by ID. Length limit: 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSmartSubtitleTemplatesResponse(AbstractModel):
+    """DescribeSmartSubtitleTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet filter conditions.
+        :type TotalCount: int
+        :param _SmartSubtitleTemplateSet: List of smart subtitle template details.
+        :type SmartSubtitleTemplateSet: list of SmartSubtitleTemplateItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SmartSubtitleTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of records that meet filter conditions.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SmartSubtitleTemplateSet(self):
+        """List of smart subtitle template details.
+        :rtype: list of SmartSubtitleTemplateItem
+        """
+        return self._SmartSubtitleTemplateSet
+
+    @SmartSubtitleTemplateSet.setter
+    def SmartSubtitleTemplateSet(self, SmartSubtitleTemplateSet):
+        self._SmartSubtitleTemplateSet = SmartSubtitleTemplateSet
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SmartSubtitleTemplateSet") is not None:
+            self._SmartSubtitleTemplateSet = []
+            for item in params.get("SmartSubtitleTemplateSet"):
+                obj = SmartSubtitleTemplateItem()
+                obj._deserialize(item)
+                self._SmartSubtitleTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -22272,22 +24075,31 @@ class DrmInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The encryption type.
-<li>`simpleaes`: AES-128 encryption.</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _Type: Encryption type.
+<li>simpleaes: AES-128 encryption</li>
+<li> widevine</li>
+<li>fairplay: not supported for DASH streams</li>
+<li> playready</li>
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
         :param _SimpleAesDrm: The AES-128 encryption details.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
+        :param _SpekeDrm: Information about FairPlay, WideVine, and PlayReady encryption.
+        :type SpekeDrm: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
         """
         self._Type = None
         self._SimpleAesDrm = None
+        self._SpekeDrm = None
 
     @property
     def Type(self):
-        """The encryption type.
-<li>`simpleaes`: AES-128 encryption.</li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+        """Encryption type.
+<li>simpleaes: AES-128 encryption</li>
+<li> widevine</li>
+<li>fairplay: not supported for DASH streams</li>
+<li> playready</li>
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Type
@@ -22308,12 +24120,26 @@ Note: This field may return·null, indicating that no valid values can be obtain
     def SimpleAesDrm(self, SimpleAesDrm):
         self._SimpleAesDrm = SimpleAesDrm
 
+    @property
+    def SpekeDrm(self):
+        """Information about FairPlay, WideVine, and PlayReady encryption.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
+        """
+        return self._SpekeDrm
+
+    @SpekeDrm.setter
+    def SpekeDrm(self, SpekeDrm):
+        self._SpekeDrm = SpekeDrm
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         if params.get("SimpleAesDrm") is not None:
             self._SimpleAesDrm = SimpleAesDrm()
             self._SimpleAesDrm._deserialize(params.get("SimpleAesDrm"))
+        if params.get("SpekeDrm") is not None:
+            self._SpekeDrm = SpekeDrm()
+            self._SpekeDrm._deserialize(params.get("SpekeDrm"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23860,11 +25686,19 @@ class HighlightSegmentItem(AbstractModel):
         :param _SegmentTags: Segment tag.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SegmentTags: list of str
+        :param _BeginTime: The live streaming segment corresponds to the live start time point, in the ISO date format.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BeginTime: str
+        :param _EndTime: The live streaming segment corresponds to the live streaming end time, in the ISO date format.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EndTime: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
         self._SegmentTags = None
+        self._BeginTime = None
+        self._EndTime = None
 
     @property
     def Confidence(self):
@@ -23911,12 +25745,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SegmentTags(self, SegmentTags):
         self._SegmentTags = SegmentTags
 
+    @property
+    def BeginTime(self):
+        """The live streaming segment corresponds to the live start time point, in the ISO date format.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        """The live streaming segment corresponds to the live streaming end time, in the ISO date format.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._SegmentTags = params.get("SegmentTags")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31282,6 +33142,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _VideoStreamSet: Video stream information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoStreamSet: list of MediaVideoStreamItem
+        :param _CallBackExtInfo: Enhancement items used for video transcoding. Descriptions of enhancement items:
+<li>hdr: HDR configuration</li>
+<li>wd_fps: configuration of frame interpolation for higher frame rate</li>
+<li>video_super_resolution: 	super-resolution configuration</li>
+<li>repair: comprehensive enhancement configuration</li>
+<li>denoise: video denoising configuration</li>
+<Li>color_enhance: color enhancement configuration</li>
+<Li>scratch: scratch removal configuration</li>
+<li>artifact: artifact (glitch) removal configuration</li>
+<li>sharp: detail enhancement configuration</li>
+<Li>low_light: low-light enhancement configuration</li>
+<Li>face_enhance: face enhancement configuration</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CallBackExtInfo: str
         """
         self._OutputStorage = None
         self._Path = None
@@ -31295,6 +33169,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Md5 = None
         self._AudioStreamSet = None
         self._VideoStreamSet = None
+        self._CallBackExtInfo = None
 
     @property
     def OutputStorage(self):
@@ -31430,6 +33305,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VideoStreamSet(self, VideoStreamSet):
         self._VideoStreamSet = VideoStreamSet
 
+    @property
+    def CallBackExtInfo(self):
+        """Enhancement items used for video transcoding. Descriptions of enhancement items:
+<li>hdr: HDR configuration</li>
+<li>wd_fps: configuration of frame interpolation for higher frame rate</li>
+<li>video_super_resolution: 	super-resolution configuration</li>
+<li>repair: comprehensive enhancement configuration</li>
+<li>denoise: video denoising configuration</li>
+<Li>color_enhance: color enhancement configuration</li>
+<Li>scratch: scratch removal configuration</li>
+<li>artifact: artifact (glitch) removal configuration</li>
+<li>sharp: detail enhancement configuration</li>
+<Li>low_light: low-light enhancement configuration</li>
+<Li>face_enhance: face enhancement configuration</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CallBackExtInfo
+
+    @CallBackExtInfo.setter
+    def CallBackExtInfo(self, CallBackExtInfo):
+        self._CallBackExtInfo = CallBackExtInfo
+
 
     def _deserialize(self, params):
         if params.get("OutputStorage") is not None:
@@ -31456,6 +33354,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = MediaVideoStreamItem()
                 obj._deserialize(item)
                 self._VideoStreamSet.append(obj)
+        self._CallBackExtInfo = params.get("CallBackExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32449,6 +34348,136 @@ Default value: open.
 
 class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
     """ModifyAnimatedGraphicsTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAsrHotwordsRequest(AbstractModel):
+    """ModifyAsrHotwords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HotwordsId: Hotword lexicon ID.
+        :type HotwordsId: str
+        :param _Name: Hotword lexicon name.
+        :type Name: str
+        :param _Content: Hotword lexicon text.
+        :type Content: str
+        :param _FileContent: Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+
+
+
+        :type FileContent: str
+        :param _FileName: Name of the uploaded hotword file.
+        :type FileName: str
+        """
+        self._HotwordsId = None
+        self._Name = None
+        self._Content = None
+        self._FileContent = None
+        self._FileName = None
+
+    @property
+    def HotwordsId(self):
+        """Hotword lexicon ID.
+        :rtype: str
+        """
+        return self._HotwordsId
+
+    @HotwordsId.setter
+    def HotwordsId(self, HotwordsId):
+        self._HotwordsId = HotwordsId
+
+    @property
+    def Name(self):
+        """Hotword lexicon name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        """Hotword lexicon text.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def FileContent(self):
+        """Base64-encoded content of the hotword file. This field is required if Type is set to 1.
+
+
+
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileName(self):
+        """Name of the uploaded hotword file.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._HotwordsId = params.get("HotwordsId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._FileContent = params.get("FileContent")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAsrHotwordsResponse(AbstractModel):
+    """ModifyAsrHotwords response structure.
 
     """
 
@@ -33703,6 +35732,290 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
 class ModifyScheduleResponse(AbstractModel):
     """ModifySchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySmartSubtitleTemplateRequest(AbstractModel):
+    """ModifySmartSubtitleTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart subtitle template.
+        :type Definition: int
+        :param _TranslateSwitch: Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+        :type TranslateSwitch: str
+        :param _Name: Smart subtitle template name.
+Length limit: 64 characters.
+        :type Name: str
+        :param _Comment: Smart subtitle template description.
+Length limit: 256 characters.
+        :type Comment: str
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :type VideoSrcLanguage: str
+        :param _SubtitleFormat: Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+        :type SubtitleFormat: str
+        :param _SubtitleType: Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :type SubtitleType: int
+        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _TranslateDstLanguage: Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+        :type TranslateDstLanguage: str
+        """
+        self._Definition = None
+        self._TranslateSwitch = None
+        self._Name = None
+        self._Comment = None
+        self._VideoSrcLanguage = None
+        self._SubtitleFormat = None
+        self._SubtitleType = None
+        self._AsrHotWordsConfigure = None
+        self._TranslateDstLanguage = None
+
+    @property
+    def Definition(self):
+        """Unique identifier of the smart subtitle template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def TranslateSwitch(self):
+        """Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def Name(self):
+        """Smart subtitle template name.
+Length limit: 64 characters.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """Smart subtitle template description.
+Length limit: 256 characters.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def VideoSrcLanguage(self):
+        """Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleFormat(self):
+        """Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def SubtitleType(self):
+        """Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR hotword lexicon parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def TranslateDstLanguage(self):
+        """Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._SubtitleType = params.get("SubtitleType")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySmartSubtitleTemplateResponse(AbstractModel):
+    """ModifySmartSubtitleTemplate response structure.
 
     """
 
@@ -37264,6 +39577,15 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 <li> `Online` (default): A task that is executed immediately.</li>
 <li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>
         :type TaskType: str
+        :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :type ResourceId: str
+        :param _SmartSubtitlesTask: Smart subtitle task.
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _SkipMateData: Whether to skip metadata acquisition. Valid values:
+0: do not skip
+1: skip
+Default value: 0		
+        :type SkipMateData: int
         """
         self._InputInfo = None
         self._OutputStorage = None
@@ -37279,6 +39601,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
         self._SessionId = None
         self._SessionContext = None
         self._TaskType = None
+        self._ResourceId = None
+        self._SmartSubtitlesTask = None
+        self._SkipMateData = None
 
     @property
     def InputInfo(self):
@@ -37446,6 +39771,42 @@ Note 3: The trigger configured for an orchestration is for automatically startin
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def ResourceId(self):
+        """Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def SmartSubtitlesTask(self):
+        """Smart subtitle task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
+    @property
+    def SkipMateData(self):
+        """Whether to skip metadata acquisition. Valid values:
+0: do not skip
+1: skip
+Default value: 0		
+        :rtype: int
+        """
+        return self._SkipMateData
+
+    @SkipMateData.setter
+    def SkipMateData(self, SkipMateData):
+        self._SkipMateData = SkipMateData
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -37478,6 +39839,11 @@ Note 3: The trigger configured for an orchestration is for automatically startin
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TaskType = params.get("TaskType")
+        self._ResourceId = params.get("ResourceId")
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        self._SkipMateData = params.get("SkipMateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38715,6 +41081,236 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RawSmartSubtitleParameter(AbstractModel):
+    """Custom smart subtitle parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleType: Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :type SubtitleType: int
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :type VideoSrcLanguage: str
+        :param _SubtitleFormat: Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SubtitleFormat: str
+        :param _TranslateSwitch: Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TranslateSwitch: str
+        :param _TranslateDstLanguage: Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TranslateDstLanguage: str
+        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _ExtInfo: Custom parameter.
+        :type ExtInfo: str
+        """
+        self._SubtitleType = None
+        self._VideoSrcLanguage = None
+        self._SubtitleFormat = None
+        self._TranslateSwitch = None
+        self._TranslateDstLanguage = None
+        self._AsrHotWordsConfigure = None
+        self._ExtInfo = None
+
+    @property
+    def SubtitleType(self):
+        """Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def VideoSrcLanguage(self):
+        """Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleFormat(self):
+        """Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def TranslateSwitch(self):
+        """Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def TranslateDstLanguage(self):
+        """Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR hotword lexicon parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def ExtInfo(self):
+        """Custom parameter.
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubtitleType = params.get("SubtitleType")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40231,6 +42827,162 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ScheduleSmartSubtitleTaskResult(AbstractModel):
+    """Result of the smart subtitle scheduling task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Recognition task input.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _Output: Recognition task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: list of SmartSubtitlesResult
+        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BeginProcessTime: str
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        """Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """Recognition task input.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """Recognition task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of SmartSubtitlesResult
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitlesTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = []
+            for item in params.get("Output"):
+                obj = SmartSubtitlesResult()
+                obj._deserialize(item)
+                self._Output.append(obj)
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScheduleTask(AbstractModel):
     """The information of a scheme.
 
@@ -40826,6 +43578,8 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _EndTime: The end time of a live streaming segment, in the ISO date format.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type EndTime: str
+        :param _PersonId: Specifies the character ID.
+        :type PersonId: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -40837,6 +43591,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Keywords = None
         self._BeginTime = None
         self._EndTime = None
+        self._PersonId = None
 
     @property
     def Confidence(self):
@@ -40953,6 +43708,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def PersonId(self):
+        """Specifies the character ID.
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -40965,6 +43731,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Keywords = params.get("Keywords")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
+        self._PersonId = params.get("PersonId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41176,6 +43943,1179 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._Uri = params.get("Uri")
         self._Key = params.get("Key")
         self._Vector = params.get("Vector")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskAsrFullTextResult(AbstractModel):
+    """Full speech recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input information on the full speech recognition task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: Output information on the full speech recognition task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
+        :param _Progress: Task progress.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        """Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """Input information on the full speech recognition task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """Output information on the full speech recognition task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        """Task progress.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = SmartSubtitleTaskAsrFullTextResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
+    """Full speech recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: List of segments for full speech recognition.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
+        :param _SubtitlePath: Subtitle file path.
+        :type SubtitlePath: str
+        """
+        self._SegmentSet = None
+        self._SubtitlePath = None
+
+    @property
+    def SegmentSet(self):
+        """List of segments for full speech recognition.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of SmartSubtitleTaskAsrFullTextSegmentItem
+        """
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+    @property
+    def SubtitlePath(self):
+        """Subtitle file path.
+        :rtype: str
+        """
+        return self._SubtitlePath
+
+    @SubtitlePath.setter
+    def SubtitlePath(self, SubtitlePath):
+        self._SubtitlePath = SubtitlePath
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SmartSubtitleTaskAsrFullTextSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        self._SubtitlePath = params.get("SubtitlePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskAsrFullTextSegmentItem(AbstractModel):
+    """Segment undergone full speech recognition.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
+        :type Confidence: float
+        :param _StartTimeOffset: Start time offset of a recognized segment, in seconds.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: End time offset of a recognized segment, in seconds.
+        :type EndTimeOffset: float
+        :param _Text: Recognized text.
+        :type Text: str
+        :param _Wordlist: Word timestamp information.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Wordlist: list of WordResult
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Wordlist = None
+
+    @property
+    def Confidence(self):
+        """Confidence of a recognized segment. Value range: 0-100.
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        """Start time offset of a recognized segment, in seconds.
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        """End time offset of a recognized segment, in seconds.
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        """Recognized text.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Wordlist(self):
+        """Word timestamp information.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskResultInput(AbstractModel):
+    """Smart subtitle translation input.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Smart subtitle template ID.
+        :type Definition: int
+        :param _RawParameter: Custom smart subtitle parameter. It takes effect when Definition is set to 0.
+This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        self._Definition = None
+        self._RawParameter = None
+
+    @property
+    def Definition(self):
+        """Smart subtitle template ID.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RawParameter(self):
+        """Custom smart subtitle parameter. It takes effect when Definition is set to 0.
+This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawSmartSubtitleParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTransTextResult(AbstractModel):
+    """Translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _ErrCode: Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Translation task input information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Output: Translation task output information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
+        :param _Progress: Task progress.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Progress: int
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        """Error code. 0 indicates that the task is successful, and other values indicate that the task has failed. (This field is not recommended. Use the new error code field ErrCodeExt instead.)
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        """Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """Translation task input information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """Translation task output information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        """Task progress.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = SmartSubtitleTaskTransTextResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
+    """Translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: List of segments for translation.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
+        :param _SubtitlePath: Subtitle file path.
+        :type SubtitlePath: str
+        """
+        self._SegmentSet = None
+        self._SubtitlePath = None
+
+    @property
+    def SegmentSet(self):
+        """List of segments for translation.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of SmartSubtitleTaskTransTextSegmentItem
+        """
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+    @property
+    def SubtitlePath(self):
+        """Subtitle file path.
+        :rtype: str
+        """
+        return self._SubtitlePath
+
+    @SubtitlePath.setter
+    def SubtitlePath(self, SubtitlePath):
+        self._SubtitlePath = SubtitlePath
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SmartSubtitleTaskTransTextSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        self._SubtitlePath = params.get("SubtitlePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
+    """Translated segment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
+        :type Confidence: float
+        :param _StartTimeOffset: Start time offset of a recognized segment, in seconds.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: End time offset of a recognized segment, in seconds.
+        :type EndTimeOffset: float
+        :param _Text: Recognized text.
+        :type Text: str
+        :param _Trans: Translated text.
+        :type Trans: str
+        :param _Wordlist: Word timestamp information.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Wordlist: list of WordResult
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Trans = None
+        self._Wordlist = None
+
+    @property
+    def Confidence(self):
+        """Confidence of a recognized segment. Value range: 0-100.
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        """Start time offset of a recognized segment, in seconds.
+        :rtype: float
+        """
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        """End time offset of a recognized segment, in seconds.
+        :rtype: float
+        """
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        """Recognized text.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Trans(self):
+        """Translated text.
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
+    @property
+    def Wordlist(self):
+        """Word timestamp information.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of WordResult
+        """
+        return self._Wordlist
+
+    @Wordlist.setter
+    def Wordlist(self, Wordlist):
+        self._Wordlist = Wordlist
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        self._Trans = params.get("Trans")
+        if params.get("Wordlist") is not None:
+            self._Wordlist = []
+            for item in params.get("Wordlist"):
+                obj = WordResult()
+                obj._deserialize(item)
+                self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTemplateItem(AbstractModel):
+    """Smart subtitle template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of the smart subtitle template.
+        :type Definition: int
+        :param _Name: Smart subtitle template name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Name: str
+        :param _Comment: Smart subtitle template description.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Comment: str
+        :param _Type: Template type. Valid values:
+* Preset: system preset template
+* Custom: user-defined template
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Type: str
+        :param _AsrHotWordsConfigure: ASR hotword lexicon parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        :param _AsrHotWordsLibraryName: Name of the hotword lexicon associated with the template.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AsrHotWordsLibraryName: str
+        :param _VideoSrcLanguage: Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :type VideoSrcLanguage: str
+        :param _SubtitleFormat: Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SubtitleFormat: str
+        :param _SubtitleType: Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :type SubtitleType: int
+        :param _TranslateSwitch: Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TranslateSwitch: str
+        :param _TranslateDstLanguage: Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TranslateDstLanguage: str
+        :param _CreateTime: Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param _UpdateTime: Last modification time of the template in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type UpdateTime: str
+        :param _AliasName: Alias of the preset smart subtitle template.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AliasName: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._AsrHotWordsConfigure = None
+        self._AsrHotWordsLibraryName = None
+        self._VideoSrcLanguage = None
+        self._SubtitleFormat = None
+        self._SubtitleType = None
+        self._TranslateSwitch = None
+        self._TranslateDstLanguage = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AliasName = None
+
+    @property
+    def Definition(self):
+        """Unique identifier of the smart subtitle template.
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        """Smart subtitle template name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        """Smart subtitle template description.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        """Template type. Valid values:
+* Preset: system preset template
+* Custom: user-defined template
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AsrHotWordsConfigure(self):
+        """ASR hotword lexicon parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
+        """
+        return self._AsrHotWordsConfigure
+
+    @AsrHotWordsConfigure.setter
+    def AsrHotWordsConfigure(self, AsrHotWordsConfigure):
+        self._AsrHotWordsConfigure = AsrHotWordsConfigure
+
+    @property
+    def AsrHotWordsLibraryName(self):
+        """Name of the hotword lexicon associated with the template.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._AsrHotWordsLibraryName
+
+    @AsrHotWordsLibraryName.setter
+    def AsrHotWordsLibraryName(self, AsrHotWordsLibraryName):
+        self._AsrHotWordsLibraryName = AsrHotWordsLibraryName
+
+    @property
+    def VideoSrcLanguage(self):
+        """Source language of the video with smart subtitles.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+zh-PY: Chinese-English-Cantonese
+zh-medical: Medical Chinese
+yue: Cantonese
+vi: Vietnamese
+ms: Malay
+id: Indonesian
+fli: Filipino
+th: Thai
+pt: Portuguese
+tr: Turkish
+ar: Arabic
+es: Spanish
+hi: Hindi
+fr: French
+de: German
+zh-dialect: Chinese dialect
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def SubtitleFormat(self):
+        """Smart subtitle file format.
+vtt: WebVTT format
+If this field is left blank, no subtitle file will be generated.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+    @property
+    def SubtitleType(self):
+        """Smart subtitle language type.
+0: source language1: target language
+2: source language + target language
+The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+        :rtype: int
+        """
+        return self._SubtitleType
+
+    @SubtitleType.setter
+    def SubtitleType(self, SubtitleType):
+        self._SubtitleType = SubtitleType
+
+    @property
+    def TranslateSwitch(self):
+        """Subtitle translation switch.
+ON: enable translation
+OFF: disable translation
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TranslateSwitch
+
+    @TranslateSwitch.setter
+    def TranslateSwitch(self, TranslateSwitch):
+        self._TranslateSwitch = TranslateSwitch
+
+    @property
+    def TranslateDstLanguage(self):
+        """Target language for subtitle translation.
+This field takes effect when TranslateSwitch is set to ON.
+Supported languages:
+zh: Simplified Chinese
+en: English
+ja: Japanese
+ko: Korean
+fr: French
+es: Spanish
+it: Italian
+de: German
+tr: Turkish
+ru: Russian
+pt: Portuguese
+vi: Vietnamese
+id: Indonesian
+ms: Malay
+th: Thai
+ar: Arabic
+hi: Hindi
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def CreateTime(self):
+        """Template creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Last modification time of the template in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AliasName(self):
+        """Alias of the preset smart subtitle template.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        if params.get("AsrHotWordsConfigure") is not None:
+            self._AsrHotWordsConfigure = AsrHotWordsConfigure()
+            self._AsrHotWordsConfigure._deserialize(params.get("AsrHotWordsConfigure"))
+        self._AsrHotWordsLibraryName = params.get("AsrHotWordsLibraryName")
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
+        self._SubtitleType = params.get("SubtitleType")
+        self._TranslateSwitch = params.get("TranslateSwitch")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AliasName = params.get("AliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitlesResult(AbstractModel):
+    """Smart subtitle task result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Task type. Valid values:
+<Li>AsrFullTextRecognition: full speech recognition</li>
+<Li>TransTextRecognition: speech translation</li>
+        :type Type: str
+        :param _AsrFullTextTask: Full speech recognition result. When Type is
+ set to AsrFullTextRecognition, this parameter takes effect.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResult`
+        :param _TransTextTask: Translation result. When Type is
+
+ set to TransTextRecognition, this parameter takes effect.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
+        """
+        self._Type = None
+        self._AsrFullTextTask = None
+        self._TransTextTask = None
+
+    @property
+    def Type(self):
+        """Task type. Valid values:
+<Li>AsrFullTextRecognition: full speech recognition</li>
+<Li>TransTextRecognition: speech translation</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AsrFullTextTask(self):
+        """Full speech recognition result. When Type is
+ set to AsrFullTextRecognition, this parameter takes effect.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResult`
+        """
+        return self._AsrFullTextTask
+
+    @AsrFullTextTask.setter
+    def AsrFullTextTask(self, AsrFullTextTask):
+        self._AsrFullTextTask = AsrFullTextTask
+
+    @property
+    def TransTextTask(self):
+        """Translation result. When Type is
+
+ set to TransTextRecognition, this parameter takes effect.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResult`
+        """
+        return self._TransTextTask
+
+    @TransTextTask.setter
+    def TransTextTask(self, TransTextTask):
+        self._TransTextTask = TransTextTask
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("AsrFullTextTask") is not None:
+            self._AsrFullTextTask = SmartSubtitleTaskAsrFullTextResult()
+            self._AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
+        if params.get("TransTextTask") is not None:
+            self._TransTextTask = SmartSubtitleTaskTransTextResult()
+            self._TransTextTask._deserialize(params.get("TransTextTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitlesTaskInput(AbstractModel):
+    """Smart subtitle input struct.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Smart subtitle template ID.	
+        :type Definition: int
+        :param _UserExtPara: User extension field, which does not need to be filled in for general scenarios.
+        :type UserExtPara: str
+        :param _RawParameter: Custom smart subtitle parameter. It takes effect when Definition is set to 0. This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        self._Definition = None
+        self._UserExtPara = None
+        self._RawParameter = None
+
+    @property
+    def Definition(self):
+        """Smart subtitle template ID.	
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def UserExtPara(self):
+        """User extension field, which does not need to be filled in for general scenarios.
+        :rtype: str
+        """
+        return self._UserExtPara
+
+    @UserExtPara.setter
+    def UserExtPara(self, UserExtPara):
+        self._UserExtPara = UserExtPara
+
+    @property
+    def RawParameter(self):
+        """Custom smart subtitle parameter. It takes effect when Definition is set to 0. This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._UserExtPara = params.get("UserExtPara")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawSmartSubtitleParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41561,6 +45501,120 @@ Default value: black.
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpekeDrm(AbstractModel):
+    """FairPlay, WideVine, PlayReady, and other DRM encryption technologies.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Resource ID.
+It supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
+        :type ResourceId: str
+        :param _KeyServerUrl: Access address of the DRM vendor.
+
+Note: Different DRM vendors have different limits on the number of substreams. For example, PallyCon limits the number of substreams to no more than 5, and DRMtoday supports encryption of up to 9 substreams.
+        :type KeyServerUrl: str
+        :param _Vector: Initialization vector (32-byte string) for encryption.
+        :type Vector: str
+        :param _EncryptionMethod: Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.
+
+cbcs: supported by PlayReady, Widevine, and FairPlay
+cenc: supported by PlayReady and Widevine
+        :type EncryptionMethod: str
+        :param _EncryptionPreset: Substream encryption rule. Default value: preset0.
+preset 0: use the same key to encrypt all substreams
+preset1: use different keys for each substream
+
+        :type EncryptionPreset: str
+        """
+        self._ResourceId = None
+        self._KeyServerUrl = None
+        self._Vector = None
+        self._EncryptionMethod = None
+        self._EncryptionPreset = None
+
+    @property
+    def ResourceId(self):
+        """Resource ID.
+It supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def KeyServerUrl(self):
+        """Access address of the DRM vendor.
+
+Note: Different DRM vendors have different limits on the number of substreams. For example, PallyCon limits the number of substreams to no more than 5, and DRMtoday supports encryption of up to 9 substreams.
+        :rtype: str
+        """
+        return self._KeyServerUrl
+
+    @KeyServerUrl.setter
+    def KeyServerUrl(self, KeyServerUrl):
+        self._KeyServerUrl = KeyServerUrl
+
+    @property
+    def Vector(self):
+        """Initialization vector (32-byte string) for encryption.
+        :rtype: str
+        """
+        return self._Vector
+
+    @Vector.setter
+    def Vector(self, Vector):
+        self._Vector = Vector
+
+    @property
+    def EncryptionMethod(self):
+        """Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.
+
+cbcs: supported by PlayReady, Widevine, and FairPlay
+cenc: supported by PlayReady and Widevine
+        :rtype: str
+        """
+        return self._EncryptionMethod
+
+    @EncryptionMethod.setter
+    def EncryptionMethod(self, EncryptionMethod):
+        self._EncryptionMethod = EncryptionMethod
+
+    @property
+    def EncryptionPreset(self):
+        """Substream encryption rule. Default value: preset0.
+preset 0: use the same key to encrypt all substreams
+preset1: use different keys for each substream
+
+        :rtype: str
+        """
+        return self._EncryptionPreset
+
+    @EncryptionPreset.setter
+    def EncryptionPreset(self, EncryptionPreset):
+        self._EncryptionPreset = EncryptionPreset
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._KeyServerUrl = params.get("KeyServerUrl")
+        self._Vector = params.get("Vector")
+        self._EncryptionMethod = params.get("EncryptionMethod")
+        self._EncryptionPreset = params.get("EncryptionPreset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43183,6 +47237,81 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
         self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrackInfo(AbstractModel):
+    """Audio track info.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrackNum: Audio track and sound channel serial number, description:
+When the SelectType value is trask, this value is of the integer type, for example: 1.
+When the SelectType value is trask_channel, this value is of the decimal type, for example: 1.0.
+Default value: `1.0`.
+The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, and input of 0 and positive integers is supported. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TrackNum: str
+        :param _ChannelVolume: Sound channel volume. specifies the volume of the sound channel.
+When the value of AudioChannel is 1, the value length is 1.
+When the value of AudioChannel is 2, the value length is 2.
+When the value of AudioChannel is 6, the length of this value is greater than 2.
+The array value of this parameter has a valid value range of [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 means doubling the original volume. the default value is -60.
+Supports 3 decimal places.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ChannelVolume: list of float
+        """
+        self._TrackNum = None
+        self._ChannelVolume = None
+
+    @property
+    def TrackNum(self):
+        """Audio track and sound channel serial number, description:
+When the SelectType value is trask, this value is of the integer type, for example: 1.
+When the SelectType value is trask_channel, this value is of the decimal type, for example: 1.0.
+Default value: `1.0`.
+The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, and input of 0 and positive integers is supported. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TrackNum
+
+    @TrackNum.setter
+    def TrackNum(self, TrackNum):
+        self._TrackNum = TrackNum
+
+    @property
+    def ChannelVolume(self):
+        """Sound channel volume. specifies the volume of the sound channel.
+When the value of AudioChannel is 1, the value length is 1.
+When the value of AudioChannel is 2, the value length is 2.
+When the value of AudioChannel is 6, the length of this value is greater than 2.
+The array value of this parameter has a valid value range of [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 means doubling the original volume. the default value is -60.
+Supports 3 decimal places.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of float
+        """
+        return self._ChannelVolume
+
+    @ChannelVolume.setter
+    def ChannelVolume(self, ChannelVolume):
+        self._ChannelVolume = ChannelVolume
+
+
+    def _deserialize(self, params):
+        self._TrackNum = params.get("TrackNum")
+        self._ChannelVolume = params.get("ChannelVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47011,6 +51140,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AiQualityControlTaskResult: Execution status and results of a media quality inspection task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        :param _SmartSubtitlesTaskResult: Execution result of the smart subtitle task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartSubtitlesTaskResult: list of SmartSubtitlesResult
         """
         self._TaskId = None
         self._Status = None
@@ -47023,6 +51155,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AiAnalysisResultSet = None
         self._AiRecognitionResultSet = None
         self._AiQualityControlTaskResult = None
+        self._SmartSubtitlesTaskResult = None
 
     @property
     def TaskId(self):
@@ -47150,6 +51283,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AiQualityControlTaskResult(self, AiQualityControlTaskResult):
         self._AiQualityControlTaskResult = AiQualityControlTaskResult
 
+    @property
+    def SmartSubtitlesTaskResult(self):
+        """Execution result of the smart subtitle task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of SmartSubtitlesResult
+        """
+        return self._SmartSubtitlesTaskResult
+
+    @SmartSubtitlesTaskResult.setter
+    def SmartSubtitlesTaskResult(self, SmartSubtitlesTaskResult):
+        self._SmartSubtitlesTaskResult = SmartSubtitlesTaskResult
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -47189,6 +51334,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("AiQualityControlTaskResult") is not None:
             self._AiQualityControlTaskResult = ScheduleQualityControlTaskResult()
             self._AiQualityControlTaskResult._deserialize(params.get("AiQualityControlTaskResult"))
+        if params.get("SmartSubtitlesTaskResult") is not None:
+            self._SmartSubtitlesTaskResult = []
+            for item in params.get("SmartSubtitlesTaskResult"):
+                obj = SmartSubtitlesResult()
+                obj._deserialize(item)
+                self._SmartSubtitlesTaskResult.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

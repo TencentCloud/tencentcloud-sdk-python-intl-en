@@ -118,6 +118,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAsrHotwords(self, request):
+        """This API is used to create a smart subtitle hotword lexicon.
+
+        :param request: Request instance for CreateAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContentReviewTemplate(self, request):
         """This API is used to create a custom content moderation template. Up to 50 templates can be created in total.
 
@@ -281,6 +304,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSmartSubtitleTemplate(self, request):
+        """This API is used to create a custom smart subtitle template.
+
+        :param request: Request instance for CreateSmartSubtitleTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSmartSubtitleTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSmartSubtitleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSmartSubtitleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSmartSubtitleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -510,6 +556,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAsrHotwords(self, request):
+        """This API is used to delete a smart subtitle hotword lexicon.
+
+        :param request: Request instance for DeleteAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteContentReviewTemplate(self, request):
         """This API is used to delete a custom content moderation template.
 
@@ -662,6 +731,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSmartSubtitleTemplate(self, request):
+        """This API is used to delete a user-defined smart subtitle template.
+
+        :param request: Request instance for DeleteSmartSubtitleTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSmartSubtitleTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSmartSubtitleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSmartSubtitleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSmartSubtitleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -878,6 +970,52 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAsrHotwords(self, request):
+        """This API is used to query a smart subtitle hotword lexicon.
+
+        :param request: Request instance for DescribeAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAsrHotwordsList(self, request):
+        """This API is used to obtain the hotword lexicon list.
+
+        :param request: Request instance for DescribeAsrHotwordsList.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsListRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAsrHotwordsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAsrHotwordsList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAsrHotwordsListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         """This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.
 
@@ -1053,6 +1191,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeSchedules", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSchedulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSmartSubtitleTemplates(self, request):
+        """This API is used to obtain the list of smart subtitle templates based on template unique identifier. The returned result includes all matching user-defined smart subtitle templates and system preset smart subtitle templates.
+
+        :param request: Request instance for DescribeSmartSubtitleTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSmartSubtitleTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSmartSubtitleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSmartSubtitleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSmartSubtitleTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1515,6 +1676,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAsrHotwords(self, request):
+        """This API is used to update a smart subtitle hotword lexicon.
+
+        :param request: Request instance for ModifyAsrHotwords.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyAsrHotwordsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyAsrHotwordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAsrHotwords", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAsrHotwordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyContentReviewTemplate(self, request):
         """This API is used to modify a custom content moderation template.
 
@@ -1667,6 +1851,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifySchedule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySmartSubtitleTemplate(self, request):
+        """This API is used to modify a user-defined smart subtitle template.
+
+        :param request: Request instance for ModifySmartSubtitleTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySmartSubtitleTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySmartSubtitleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySmartSubtitleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySmartSubtitleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1873,18 +2080,19 @@ class MpsClient(AbstractClient):
 
 
     def ProcessMedia(self, request):
-        """This API is used to initiate a processing task for video URLs or media files in Cloud Object Storage (COS). Features include:
-        1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement);
-        2. Animated image generating;
-        3. Screenshot taking at specified time points;
-        4. Sampled screenshot taking;
-        5. Sprite screenshot taking;
-        6. Transcoding to adaptive bitrate streaming;
-        7. Intelligent auditing (porn detection and sensitive information detection);
-        8. Intelligent analysis (tagging, classification, thumbnail generating, frame-by-frame tagging, video splitting, highlights generating, opening and closing segments recognition, and game timestamping);
-        9. Intelligent identification (face, full text, text keyword, full speech, speech keyword, speech translation, and object recognition);
-
+        """This API is used to initiate a processing task for video URLs or media files in COS. Features include:
+        1. Video transcoding (standard transcoding, TSC transcoding, and audio/video enhancement).
+        2. Video-to-GIF conversion.
+        3. Time point screenshot of videos.
+        4. Sampled screenshot of videos.
+        5. Image sprite of videos.
+        6. Adaptive bitrate stream conversion for videos.
+        7. Intelligent content moderation (pornography detection and sensitive information detection).
+        8. Intelligent content analysis (tag, category, cover, frame tag, video splitting, highlight, opening and ending clips, and game tracking).
+        9. Intelligent content recognition (human face, full text, text keyword, full speech, speech keyword, speech translation, and object).
         10. Media quality inspection (live stream format diagnosis, audio and video content detection (jitter, blur, low light, overexposure, black and white edges, black and white screens, screen glitch, noise, mosaic, QR code, and more), and no-reference scoring).
+
+        11. Smart subtitle (full speech, speech hotword, and speech translation).
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

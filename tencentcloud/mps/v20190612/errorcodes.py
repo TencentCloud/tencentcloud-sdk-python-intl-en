@@ -62,6 +62,15 @@ INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# The value of the hotword lexicon configuration parameter is incorrect.
+INVALIDPARAMETERVALUE_ASRHOTWORDSCONFIGURE = 'InvalidParameterValue.AsrHotWordsConfigure'
+
+# The value of the hotword lexicon ID parameter is incorrect.
+INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = 'InvalidParameterValue.AsrHotWordsLibraryId'
+
+# The value of the hotword lexicon switch parameter is incorrect.
+INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = 'InvalidParameterValue.AsrHotWordsSwitch'
+
 # Parameter error: Audio stream bitrate.
 INVALIDPARAMETERVALUE_AUDIOBITRATE = 'InvalidParameterValue.AudioBitrate'
 
@@ -167,11 +176,20 @@ INVALIDPARAMETERVALUE_GOP = 'InvalidParameterValue.Gop'
 # Parameter error: height.
 INVALIDPARAMETERVALUE_HEIGHT = 'InvalidParameterValue.Height'
 
+# Parameter error. The hotword lexicon does not exist.
+INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = 'InvalidParameterValue.HotWordsNotExist'
+
+# Hot word vocabulary format error. see the hot word configuration instruction document (https://intl.cloud.tencent.com/document/product/862/116244?from_cn_redirect=1#afc37e17-2786-4289-9bc3-8e24435d3f45).
+INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = 'InvalidParameterValue.HotwordsFormatError'
+
 # Invalid ImageContent
 INVALIDPARAMETERVALUE_IMAGECONTENT = 'InvalidParameterValue.ImageContent'
 
 # Parameter error: image watermarking template.
 INVALIDPARAMETERVALUE_IMAGETEMPLATE = 'InvalidParameterValue.ImageTemplate'
+
+# Incorrect input parameters.
+INVALIDPARAMETERVALUE_INPUTINFO = 'InvalidParameterValue.InputInfo'
 
 # The value of the parsed `Content` is invalid.
 INVALIDPARAMETERVALUE_INVALIDCONTENT = 'InvalidParameterValue.InvalidContent'
@@ -254,6 +272,9 @@ INVALIDPARAMETERVALUE_SRCFILE = 'InvalidParameterValue.SrcFile'
 # Incorrect parameter value: The value of the `SubtitleFormat` parameter is invalid.
 INVALIDPARAMETERVALUE_SUBTITLEFORMAT = 'InvalidParameterValue.SubtitleFormat'
 
+# The value of the subtitle language type is incorrect.
+INVALIDPARAMETERVALUE_SUBTITLETYPE = 'InvalidParameterValue.SubtitleType'
+
 # Incorrect parameter value: SVG is empty.
 INVALIDPARAMETERVALUE_SVGTEMPLATE = 'InvalidParameterValue.SvgTemplate'
 
@@ -281,6 +302,12 @@ INVALIDPARAMETERVALUE_TEXTALPHA = 'InvalidParameterValue.TextAlpha'
 # Parameter error: text template.
 INVALIDPARAMETERVALUE_TEXTTEMPLATE = 'InvalidParameterValue.TextTemplate'
 
+# The value of the target language parameter is incorrect.
+INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = 'InvalidParameterValue.TranslateDstLanguage'
+
+# The value of the translation switch parameter is incorrect.
+INVALIDPARAMETERVALUE_TRANSLATESWITCH = 'InvalidParameterValue.TranslateSwitch'
+
 # Parameter error: incorrect `Type` value.
 INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 
@@ -295,6 +322,9 @@ INVALIDPARAMETERVALUE_VIDEOBITRATE = 'InvalidParameterValue.VideoBitrate'
 
 # Parameter error: video stream codec.
 INVALIDPARAMETERVALUE_VIDEOCODEC = 'InvalidParameterValue.VideoCodec'
+
+# The value of the video source language parameter is incorrect.
+INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = 'InvalidParameterValue.VideoSrcLanguage'
 
 # Parameter error: Wwdth.
 INVALIDPARAMETERVALUE_WIDTH = 'InvalidParameterValue.Width'

@@ -5441,6 +5441,239 @@ class QueryDirectCustomersCreditResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryInvitationInfoData(AbstractModel):
+    """Invitation link information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvitationToken: Invitation link token.
+        :type InvitationToken: str
+        :param _CreateTime: Creation time of the invitation link.
+        :type CreateTime: str
+        :param _Status: Invite link status.
+1: Unused.
+2: Used.
+        :type Status: int
+        :param _UseTime: Indicates the usage time of the invitation link.
+        :type UseTime: str
+        :param _ClientUin: Customer uin.
+        :type ClientUin: int
+        :param _ClientMail: Customer mailbox.
+        :type ClientMail: str
+        :param _ClientType: Customer type.
+1: Second-Level reseller.
+2: Sub-Customer.
+        :type ClientType: int
+        :param _BindTime: The binding time of the customer.
+        :type BindTime: str
+        """
+        self._InvitationToken = None
+        self._CreateTime = None
+        self._Status = None
+        self._UseTime = None
+        self._ClientUin = None
+        self._ClientMail = None
+        self._ClientType = None
+        self._BindTime = None
+
+    @property
+    def InvitationToken(self):
+        """Invitation link token.
+        :rtype: str
+        """
+        return self._InvitationToken
+
+    @InvitationToken.setter
+    def InvitationToken(self, InvitationToken):
+        self._InvitationToken = InvitationToken
+
+    @property
+    def CreateTime(self):
+        """Creation time of the invitation link.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """Invite link status.
+1: Unused.
+2: Used.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UseTime(self):
+        """Indicates the usage time of the invitation link.
+        :rtype: str
+        """
+        return self._UseTime
+
+    @UseTime.setter
+    def UseTime(self, UseTime):
+        self._UseTime = UseTime
+
+    @property
+    def ClientUin(self):
+        """Customer uin.
+        :rtype: int
+        """
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def ClientMail(self):
+        """Customer mailbox.
+        :rtype: str
+        """
+        return self._ClientMail
+
+    @ClientMail.setter
+    def ClientMail(self, ClientMail):
+        self._ClientMail = ClientMail
+
+    @property
+    def ClientType(self):
+        """Customer type.
+1: Second-Level reseller.
+2: Sub-Customer.
+        :rtype: int
+        """
+        return self._ClientType
+
+    @ClientType.setter
+    def ClientType(self, ClientType):
+        self._ClientType = ClientType
+
+    @property
+    def BindTime(self):
+        """The binding time of the customer.
+        :rtype: str
+        """
+        return self._BindTime
+
+    @BindTime.setter
+    def BindTime(self, BindTime):
+        self._BindTime = BindTime
+
+
+    def _deserialize(self, params):
+        self._InvitationToken = params.get("InvitationToken")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._UseTime = params.get("UseTime")
+        self._ClientUin = params.get("ClientUin")
+        self._ClientMail = params.get("ClientMail")
+        self._ClientType = params.get("ClientType")
+        self._BindTime = params.get("BindTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryInvitationInfoRequest(AbstractModel):
+    """QueryInvitationInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvitationToken: Invite token. array member quantity value: [1, 100].
+        :type InvitationToken: list of str
+        """
+        self._InvitationToken = None
+
+    @property
+    def InvitationToken(self):
+        """Invite token. array member quantity value: [1, 100].
+        :rtype: list of str
+        """
+        return self._InvitationToken
+
+    @InvitationToken.setter
+    def InvitationToken(self, InvitationToken):
+        self._InvitationToken = InvitationToken
+
+
+    def _deserialize(self, params):
+        self._InvitationToken = params.get("InvitationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryInvitationInfoResponse(AbstractModel):
+    """QueryInvitationInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvitationInfo: Invitation link information.
+        :type InvitationInfo: list of QueryInvitationInfoData
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InvitationInfo = None
+        self._RequestId = None
+
+    @property
+    def InvitationInfo(self):
+        """Invitation link information.
+        :rtype: list of QueryInvitationInfoData
+        """
+        return self._InvitationInfo
+
+    @InvitationInfo.setter
+    def InvitationInfo(self, InvitationInfo):
+        self._InvitationInfo = InvitationInfo
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InvitationInfo") is not None:
+            self._InvitationInfo = []
+            for item in params.get("InvitationInfo"):
+                obj = QueryInvitationInfoData()
+                obj._deserialize(item)
+                self._InvitationInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class QueryPartnerCreditRequest(AbstractModel):
     """QueryPartnerCredit request structure.
 
