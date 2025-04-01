@@ -4190,6 +4190,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableRoutes(self, request):
+        """This API is used to disable enabled subnet routes.
+
+        :param request: Request instance for DisableRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableSnapshotPolicies(self, request):
         """This API is used to disable specified snapshot policies.
 
@@ -4465,6 +4488,30 @@ class VpcClient(AbstractClient):
             body = self.call("EnableGatewayFlowMonitor", params, headers=headers)
             response = json.loads(body)
             model = models.EnableGatewayFlowMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableRoutes(self, request):
+        """This API is used to enable disabled subnet routes.<br />
+        The API is used to verify whether the enabled route conflicts with existing routes. If they conflict, the new route cannot be enabled and will result in a failure. When a route conflict occurs, you need to first disable the conflicting route before you can enable the new one.
+
+        :param request: Request instance for EnableRoutes.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableRoutesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableRoutesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
