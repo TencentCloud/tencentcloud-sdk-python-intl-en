@@ -329,6 +329,11 @@ def test_import_iai():
     from tencentcloud.iai.v20200303 import models
 
 
+def test_import_iap():
+    from tencentcloud.iap.v20240713 import iap_client
+    from tencentcloud.iap.v20240713 import models
+
+
 def test_import_ims():
     from tencentcloud.ims.v20201229 import ims_client
     from tencentcloud.ims.v20201229 import models
