@@ -769,6 +769,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryT1IndirectCustomersDetail(self, request):
+        """This API is used to query the indirect sub-customers of a first-level distributor.
+        Invokable role type: first-level reseller.
+
+        :param request: Request instance for QueryT1IndirectCustomersDetail.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryT1IndirectCustomersDetailRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryT1IndirectCustomersDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryT1IndirectCustomersDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryT1IndirectCustomersDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryVoucherAmountByUin(self, request):
         """This API is used by primary/secondary resellers to query the voucher quota based on the customer UIN.
         Callable roles: Reseller, Distributor, Second-level reseller

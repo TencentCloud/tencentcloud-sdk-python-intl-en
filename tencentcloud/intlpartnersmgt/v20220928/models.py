@@ -234,9 +234,12 @@ class AllocateCustomerCreditRequest(AbstractModel):
         :type AddedCredit: float
         :param _ClientUin: Customer UIN
         :type ClientUin: int
+        :param _Remark: Remark
+        :type Remark: str
         """
         self._AddedCredit = None
         self._ClientUin = None
+        self._Remark = None
 
     @property
     def AddedCredit(self):
@@ -260,10 +263,22 @@ class AllocateCustomerCreditRequest(AbstractModel):
     def ClientUin(self, ClientUin):
         self._ClientUin = ClientUin
 
+    @property
+    def Remark(self):
+        """Remark
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._AddedCredit = params.get("AddedCredit")
         self._ClientUin = params.get("ClientUin")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4435,12 +4450,15 @@ class QueryCreditAllocationHistoryData(AbstractModel):
         :type AllocatedCredit: float
         :param _ClientCreditAfter: Available credits after allocation.
         :type ClientCreditAfter: float
+        :param _Remark: Remark
+        :type Remark: str
         """
         self._AllocatedTime = None
         self._Operator = None
         self._Credit = None
         self._AllocatedCredit = None
         self._ClientCreditAfter = None
+        self._Remark = None
 
     @property
     def AllocatedTime(self):
@@ -4497,6 +4515,17 @@ class QueryCreditAllocationHistoryData(AbstractModel):
     def ClientCreditAfter(self, ClientCreditAfter):
         self._ClientCreditAfter = ClientCreditAfter
 
+    @property
+    def Remark(self):
+        """Remark
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._AllocatedTime = params.get("AllocatedTime")
@@ -4504,6 +4533,7 @@ class QueryCreditAllocationHistoryData(AbstractModel):
         self._Credit = params.get("Credit")
         self._AllocatedCredit = params.get("AllocatedCredit")
         self._ClientCreditAfter = params.get("ClientCreditAfter")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6210,6 +6240,233 @@ class QueryPolicyProductListByCodeResponse(AbstractModel):
                 self._ProductList.append(obj)
         self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
+
+
+class QueryT1IndirectCustomersDetailRequest(AbstractModel):
+    """QueryT1IndirectCustomersDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAgentUin: Second-level reseller UIN.
+        :type SubAgentUin: int
+        :param _Page: Pagination parameter: current page number. it starts from 1.
+        :type Page: int
+        :param _PageSize: Pagination parameter, indicates the number of entries per page. supports [1, 100] data entries per request.
+        :type PageSize: int
+        """
+        self._SubAgentUin = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def SubAgentUin(self):
+        """Second-level reseller UIN.
+        :rtype: int
+        """
+        return self._SubAgentUin
+
+    @SubAgentUin.setter
+    def SubAgentUin(self, SubAgentUin):
+        self._SubAgentUin = SubAgentUin
+
+    @property
+    def Page(self):
+        """Pagination parameter: current page number. it starts from 1.
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        """Pagination parameter, indicates the number of entries per page. supports [1, 100] data entries per request.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._SubAgentUin = params.get("SubAgentUin")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryT1IndirectCustomersDetailResponse(AbstractModel):
+    """QueryT1IndirectCustomersDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: The number of indirect sub-customers of a first-level distributor.
+        :type Total: int
+        :param _SubAgentUin: Second-level reseller UIN.
+        :type SubAgentUin: int
+        :param _SubAgentName: Second-Level reseller name.
+        :type SubAgentName: str
+        :param _Data: Indirect sub-customer information.
+        :type Data: list of QueryT1IndirectCustomersDetailResponseData
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._SubAgentUin = None
+        self._SubAgentName = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """The number of indirect sub-customers of a first-level distributor.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SubAgentUin(self):
+        """Second-level reseller UIN.
+        :rtype: int
+        """
+        return self._SubAgentUin
+
+    @SubAgentUin.setter
+    def SubAgentUin(self, SubAgentUin):
+        self._SubAgentUin = SubAgentUin
+
+    @property
+    def SubAgentName(self):
+        """Second-Level reseller name.
+        :rtype: str
+        """
+        return self._SubAgentName
+
+    @SubAgentName.setter
+    def SubAgentName(self, SubAgentName):
+        self._SubAgentName = SubAgentName
+
+    @property
+    def Data(self):
+        """Indirect sub-customer information.
+        :rtype: list of QueryT1IndirectCustomersDetailResponseData
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._SubAgentUin = params.get("SubAgentUin")
+        self._SubAgentName = params.get("SubAgentName")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = QueryT1IndirectCustomersDetailResponseData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class QueryT1IndirectCustomersDetailResponseData(AbstractModel):
+    """Query data of indirect sub-customers of a first-level distributor.
+
+    Callable roles: Distributor
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientUin: Customer uin.
+        :type ClientUin: int
+        :param _ClientName: Customer name.
+        :type ClientName: str
+        :param _ClientBindTime: The time when a sub-customer binds a second-level reseller, time zone: UTC+08:00.
+        :type ClientBindTime: str
+        """
+        self._ClientUin = None
+        self._ClientName = None
+        self._ClientBindTime = None
+
+    @property
+    def ClientUin(self):
+        """Customer uin.
+        :rtype: int
+        """
+        return self._ClientUin
+
+    @ClientUin.setter
+    def ClientUin(self, ClientUin):
+        self._ClientUin = ClientUin
+
+    @property
+    def ClientName(self):
+        """Customer name.
+        :rtype: str
+        """
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def ClientBindTime(self):
+        """The time when a sub-customer binds a second-level reseller, time zone: UTC+08:00.
+        :rtype: str
+        """
+        return self._ClientBindTime
+
+    @ClientBindTime.setter
+    def ClientBindTime(self, ClientBindTime):
+        self._ClientBindTime = ClientBindTime
+
+
+    def _deserialize(self, params):
+        self._ClientUin = params.get("ClientUin")
+        self._ClientName = params.get("ClientName")
+        self._ClientBindTime = params.get("ClientBindTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryVoucherAmountByUinItem(AbstractModel):
