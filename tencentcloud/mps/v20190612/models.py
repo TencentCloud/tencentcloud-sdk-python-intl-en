@@ -1597,8 +1597,8 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>0: no,</li>
 <li>1: yes.</li>
         :type RemoveVideo: int
-        :param _AudioList: List of audio parameter information.
-The parameter array has a maximum length of 64.
+        :param _AudioList: Audio parameter information list.
+The parameter is only used when merging multiple audio tracks with self-adaptive transcoding. the maximum length of the parameter array is 64.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AudioList: list of AudioTemplateInfo
         """
@@ -1658,8 +1658,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AudioList(self):
-        """List of audio parameter information.
-The parameter array has a maximum length of 64.
+        """Audio parameter information list.
+The parameter is only used when merging multiple audio tracks with self-adaptive transcoding. the maximum length of the parameter array is 64.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of AudioTemplateInfo
         """
@@ -11474,32 +11474,38 @@ class AudioTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Audio stream encoding format.
-When audio transcoding is not needed, the value is:
+        :param _Codec: Specifies the encoding format of the audio stream.
+When audio transcoding is not needed, the optional values are:.
 <li>copy.</li>
-When the outer parameter Container is mp3, the value is:
+When the outer parameter Container is mp3, the valid values are:.
 <li>mp3.</li>
-When the outer parameter Container is ogg or flac, the value is:
+When the outer parameter Container is ogg or flac, the valid values are:.
 <li>flac.</li>
-When the outer parameter Container is m4a, valid values are:
+When the outer parameter Container is m4a, valid values are:.
 <li>aac;</li>
 <li>ac3.</li>
-When the outer parameter Container is mp4 or flv, valid values are:
-<li>aac: more suitable for mp4;</li>
-<li>mp3: more suitable for flv;</li>
+When the outer parameter Container is mp4 or flv, valid values are:.
+<li>aac: more suitable for mp4;</li>.
+<li>mp3: more suitable for flv;</li>.
 <li>mp2.</li>
-When the outer parameter Container is hls, valid values are:
+When the outer parameter Container is hls, valid values are:.
 <li>aac;</li>
-<li>mp3.</li>
+<li>mp3;</li>
+<li>eac3: used when merging adaptive transcoding audio tracks.</li>.
         :type Codec: str
-        :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
-If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        :param _Bitrate: The bitrate of the audio stream. value ranges from 0 to 26 and in the range of [26, 256]. measurement unit: kbps.
+If the value is 0, the audio bitrate will be the same as that of the original audio.
+Specifies that when using the TrackChannelInfo parameter for adaptive transcoding audio track merging, the valid values are:.
+Cannot be set to 0.
+2). when Codec is aac, valid values: [26, 256].
+3). when Codec is ac3, valid values: [26, 640].
+4) when Codec is eac3, value range: [26, 6144]. remark: when SampleRate is 44100HZ, maximum value: 5644. when SampleRate is 48000HZ, maximum value: 6144.
+
+
         :type Bitrate: int
-        :param _SampleRate: Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
+        :param _SampleRate: The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
+Unit: Hz.
+Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
         :type SampleRate: int
         :param _AudioChannel: Audio channel mode. Valid values:
 <li>1: single channel.</li>
@@ -11521,23 +11527,24 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
-        """Audio stream encoding format.
-When audio transcoding is not needed, the value is:
+        """Specifies the encoding format of the audio stream.
+When audio transcoding is not needed, the optional values are:.
 <li>copy.</li>
-When the outer parameter Container is mp3, the value is:
+When the outer parameter Container is mp3, the valid values are:.
 <li>mp3.</li>
-When the outer parameter Container is ogg or flac, the value is:
+When the outer parameter Container is ogg or flac, the valid values are:.
 <li>flac.</li>
-When the outer parameter Container is m4a, valid values are:
+When the outer parameter Container is m4a, valid values are:.
 <li>aac;</li>
 <li>ac3.</li>
-When the outer parameter Container is mp4 or flv, valid values are:
-<li>aac: more suitable for mp4;</li>
-<li>mp3: more suitable for flv;</li>
+When the outer parameter Container is mp4 or flv, valid values are:.
+<li>aac: more suitable for mp4;</li>.
+<li>mp3: more suitable for flv;</li>.
 <li>mp2.</li>
-When the outer parameter Container is hls, valid values are:
+When the outer parameter Container is hls, valid values are:.
 <li>aac;</li>
-<li>mp3.</li>
+<li>mp3;</li>
+<li>eac3: used when merging adaptive transcoding audio tracks.</li>.
         :rtype: str
         """
         return self._Codec
@@ -11548,8 +11555,15 @@ When the outer parameter Container is hls, valid values are:
 
     @property
     def Bitrate(self):
-        """Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
-If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        """The bitrate of the audio stream. value ranges from 0 to 26 and in the range of [26, 256]. measurement unit: kbps.
+If the value is 0, the audio bitrate will be the same as that of the original audio.
+Specifies that when using the TrackChannelInfo parameter for adaptive transcoding audio track merging, the valid values are:.
+Cannot be set to 0.
+2). when Codec is aac, valid values: [26, 256].
+3). when Codec is ac3, valid values: [26, 640].
+4) when Codec is eac3, value range: [26, 6144]. remark: when SampleRate is 44100HZ, maximum value: 5644. when SampleRate is 48000HZ, maximum value: 6144.
+
+
         :rtype: int
         """
         return self._Bitrate
@@ -11560,11 +11574,9 @@ If the value is 0, the bitrate of the audio stream will be the same as that of t
 
     @property
     def SampleRate(self):
-        """Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
+        """The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
+Unit: Hz.
+Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
         :rtype: int
         """
         return self._SampleRate
@@ -11649,11 +11661,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Codec: str
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
-        :param _SampleRate: Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
+        :param _SampleRate: The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
+Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SampleRate: int
         :param _AudioChannel: Audio channel mode. Valid values:
 <li>1: single channel.</li>
@@ -11712,11 +11722,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
-        """Audio stream sample rate. Valid values:
-<li>32,000</li>
-<li>44,100</li>
-<li>48,000</li>
-In Hz.
+        """The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
+Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._SampleRate
@@ -11776,18 +11784,18 @@ class AudioTrackChannelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelsRemix: Whether to enable audio mix. valid values:.
-0: indicates not enabling audio mix.
-1: Indicates enabling audio mix.
+        :param _ChannelsRemix: Whether to enable the feature of multi-audio track mixing. valid values:
+0: indicates not enabling multi-audio track mix.
+1: Indicates enabling multi-audio track mixing.
 Default value: 0
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ChannelsRemix: int
-        :param _SelectType: Audio track input type. valid values:.
-trask: indicates usage of the audio track id.
-trask_channel: indicates usage of the audio track id and sound channel id.
-Default: trask.
-If the original aduio track is multichannel, recommend using trask_channel.
+        :param _SelectType: Set the selector type for the input audio track. valid values:
+Track: indicates the usage of audio track id;.
+Track_channel: indicates the usage of the audio track id and sound channel id.
+Default: track.
+If the original video has multiple channels, it is recommended to use track_channel.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SelectType: str
         :param _InputTrackInfo: Audio track information.
@@ -11800,9 +11808,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ChannelsRemix(self):
-        """Whether to enable audio mix. valid values:.
-0: indicates not enabling audio mix.
-1: Indicates enabling audio mix.
+        """Whether to enable the feature of multi-audio track mixing. valid values:
+0: indicates not enabling multi-audio track mix.
+1: Indicates enabling multi-audio track mixing.
 Default value: 0
 
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -11816,11 +11824,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SelectType(self):
-        """Audio track input type. valid values:.
-trask: indicates usage of the audio track id.
-trask_channel: indicates usage of the audio track id and sound channel id.
-Default: trask.
-If the original aduio track is multichannel, recommend using trask_channel.
+        """Set the selector type for the input audio track. valid values:
+Track: indicates the usage of audio track id;.
+Track_channel: indicates the usage of the audio track id and sound channel id.
+Default: track.
+If the original video has multiple channels, it is recommended to use track_channel.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -45518,14 +45526,14 @@ class SpekeDrm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: Resource ID.
+        :param _ResourceId: Resource tagging. the field content is user-customized.
 It supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
         :type ResourceId: str
-        :param _KeyServerUrl: Access address of the DRM vendor.
+        :param _KeyServerUrl: DRM manufacturer access address. the field content is obtained from the drm manufacturer.
 
-Note: Different DRM vendors have different limits on the number of substreams. For example, PallyCon limits the number of substreams to no more than 5, and DRMtoday supports encryption of up to 9 substreams.
+Note: different DRM manufacturers have different limitations on the number of substreams. for example, PallyCon limits the number of substreams to no more than 5, and DRMtoday only supports encryption of up to 9 substreams.
         :type KeyServerUrl: str
-        :param _Vector: Initialization vector (32-byte string) for encryption.
+        :param _Vector: Encryption initialization vector (32-byte string). the field content is user-customized.
         :type Vector: str
         :param _EncryptionMethod: Encryption method. cbcs: default method of FairPlay; cenc: default method of PlayReady and Widevine.
 
@@ -45546,7 +45554,7 @@ preset1: use different keys for each substream
 
     @property
     def ResourceId(self):
-        """Resource ID.
+        """Resource tagging. the field content is user-customized.
 It supports 1 to 128 characters consisting of digits, letters, underscores (_), and hyphens (-).
         :rtype: str
         """
@@ -45558,9 +45566,9 @@ It supports 1 to 128 characters consisting of digits, letters, underscores (_), 
 
     @property
     def KeyServerUrl(self):
-        """Access address of the DRM vendor.
+        """DRM manufacturer access address. the field content is obtained from the drm manufacturer.
 
-Note: Different DRM vendors have different limits on the number of substreams. For example, PallyCon limits the number of substreams to no more than 5, and DRMtoday supports encryption of up to 9 substreams.
+Note: different DRM manufacturers have different limitations on the number of substreams. for example, PallyCon limits the number of substreams to no more than 5, and DRMtoday only supports encryption of up to 9 substreams.
         :rtype: str
         """
         return self._KeyServerUrl
@@ -45571,7 +45579,7 @@ Note: Different DRM vendors have different limits on the number of substreams. F
 
     @property
     def Vector(self):
-        """Initialization vector (32-byte string) for encryption.
+        """Encryption initialization vector (32-byte string). the field content is user-customized.
         :rtype: str
         """
         return self._Vector
@@ -45950,15 +45958,15 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in %, the meaning is the same as `W%`.</li>
 Default value: 10W%.
         :type Width: str
-        :param _Height: Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
+        :param _Height: Watermark Height, which supports six formats of px, %, W%, H%, S%, and L%:
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered
- and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>
+ and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark size will be the size of the source SVG image;</li>
 <li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>
 <li>If the string ends in `H%`, the `Height` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>
 <li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>
-<li>If the string ends in %, the meaning is the same as `H%`.
-Default value: 0 px.
+<li>If the string ends in %, the meaning is the same as `W%`.</li>
+Default value: 0px.
         :type Height: str
         """
         self._Width = None
@@ -45985,15 +45993,15 @@ Default value: 10W%.
 
     @property
     def Height(self):
-        """Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
+        """Watermark Height, which supports six formats of px, %, W%, H%, S%, and L%:
 <li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered
- and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>
+ and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark size will be the size of the source SVG image;</li>
 <li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>
 <li>If the string ends in `H%`, the `Height` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Height` is 10% of the video height;</li>
 <li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>
 <li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>
-<li>If the string ends in %, the meaning is the same as `H%`.
-Default value: 0 px.
+<li>If the string ends in %, the meaning is the same as `W%`.</li>
+Default value: 0px.
         :rtype: str
         """
         return self._Height
@@ -47262,11 +47270,11 @@ The integer part represents the audio track serial number, and the decimal part 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TrackNum: str
         :param _ChannelVolume: Sound channel volume. specifies the volume of the sound channel.
-When the value of AudioChannel is 1, the value length is 1.
-When the value of AudioChannel is 2, the value length is 2.
-When the value of AudioChannel is 6, the length of this value is greater than 2.
-The array value of this parameter has a valid value range of [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 means doubling the original volume. the default value is -60.
-Supports 3 decimal places.
+Specifies that when the value of AudioChannel is 1, the length of this array is 1, for example: [6].
+Specifies that when the value of AudioChannel is 2, the array length is 2. for example: [0,6].
+When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
+Specifies the value array of this parameter. the value range is [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 indicates doubling the original volume. the default value is -60.
+Note: supports 3 decimal places.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ChannelVolume: list of float
@@ -47293,11 +47301,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def ChannelVolume(self):
         """Sound channel volume. specifies the volume of the sound channel.
-When the value of AudioChannel is 1, the value length is 1.
-When the value of AudioChannel is 2, the value length is 2.
-When the value of AudioChannel is 6, the length of this value is greater than 2.
-The array value of this parameter has a valid value range of [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 means doubling the original volume. the default value is -60.
-Supports 3 decimal places.
+Specifies that when the value of AudioChannel is 1, the length of this array is 1, for example: [6].
+Specifies that when the value of AudioChannel is 2, the array length is 2. for example: [0,6].
+When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
+Specifies the value array of this parameter. the value range is [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 indicates doubling the original volume. the default value is -60.
+Note: supports 3 decimal places.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of float
@@ -49057,11 +49065,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: The value must be greater than 0.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FpsDenominator: int
-        :param _Stereo3dType: 3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
-<li>side_by_side: side-by-side view.</li>
-<li>top_bottom: top-bottom view.</li>
+        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
+<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
+<li>top_bottom: vertical layout arrangement of original video content.</li>.
+Submit the amount and cost based on the segmented resolution size.
 Default value: side_by_side.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Stereo3dType: str
         :param _VideoProfile: Profile, suitable for different scenarios.
 baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
@@ -49383,11 +49392,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stereo3dType(self):
-        """3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
-<li>side_by_side: side-by-side view.</li>
-<li>top_bottom: top-bottom view.</li>
+        """3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
+<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
+<li>top_bottom: vertical layout arrangement of original video content.</li>.
+Submit the amount and cost based on the segmented resolution size.
 Default value: side_by_side.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Stereo3dType
@@ -49741,11 +49751,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: The value must be greater than 0.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FpsDenominator: int
-        :param _Stereo3dType: 3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
-<li>side_by_side: side-by-side view.</li>
-<li>top_bottom: top-bottom view.</li>
+        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
+<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
+<Li>Top_bottom: layout arrangement of the original video content from top to bottom.</li>.
+The usage and charges will be reported based on the segmented resolution dimensions.
 Default value: side_by_side.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Stereo3dType: str
         :param _VideoProfile: Profile, suitable for different scenarios. 
 baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
@@ -50086,11 +50097,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stereo3dType(self):
-        """3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
-<li>side_by_side: side-by-side view.</li>
-<li>top_bottom: top-bottom view.</li>
+        """3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
+<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
+<Li>Top_bottom: layout arrangement of the original video content from top to bottom.</li>.
+The usage and charges will be reported based on the segmented resolution dimensions.
 Default value: side_by_side.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Stereo3dType
