@@ -38842,6 +38842,252 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RequestId = params.get("RequestId")
 
 
+class GetInstanceLogRequest(AbstractModel):
+    """GetInstanceLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: **Project ID**.
+        :type ProjectId: str
+        :param _InstanceKey: Unique identifier of an instance.
+        :type InstanceKey: str
+        :param _LifeRoundNum: Lifecycle no.
+        :type LifeRoundNum: int
+        :param _ScheduleTimeZone: Time zone.
+Time zone. specifies the time zone. the default value is UTC+8.
+        :type ScheduleTimeZone: str
+        :param _BrokerIp: Indicates the Ip address of the executor where the log is located.
+        :type BrokerIp: str
+        :param _OriginFileName: Log file.
+When executionJobId in instance details is empty but originFileName is not empty, originFileName and brokerIp must be included in the input parameters.
+If both executionJobId and originFileName are empty, it indicates that the instance has not been dispatched for execution or has not generated logs. for example, branch node or merge node.
+        :type OriginFileName: str
+        :param _ExecutionJobId: **Execution ID**.
+
+When executionJobId in instance details is not empty, executionJobId needs to be included in the input parameters. originFileName and brokerIp are not required parameters.
+        :type ExecutionJobId: str
+        :param _LogLevel: Log level.
+Default All.
+
+- Info
+- Debug
+- Warn
+- Error
+- All
+        :type LogLevel: str
+        :param _StartLineNum: Start row number for obtaining logs.
+The default is 1.
+        :type StartLineNum: int
+        :param _EndLineCount: End line number for obtaining logs.
+The default value is 10000.
+        :type EndLineCount: int
+        """
+        self._ProjectId = None
+        self._InstanceKey = None
+        self._LifeRoundNum = None
+        self._ScheduleTimeZone = None
+        self._BrokerIp = None
+        self._OriginFileName = None
+        self._ExecutionJobId = None
+        self._LogLevel = None
+        self._StartLineNum = None
+        self._EndLineCount = None
+
+    @property
+    def ProjectId(self):
+        """**Project ID**.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def InstanceKey(self):
+        """Unique identifier of an instance.
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def LifeRoundNum(self):
+        """Lifecycle no.
+        :rtype: int
+        """
+        return self._LifeRoundNum
+
+    @LifeRoundNum.setter
+    def LifeRoundNum(self, LifeRoundNum):
+        self._LifeRoundNum = LifeRoundNum
+
+    @property
+    def ScheduleTimeZone(self):
+        """Time zone.
+Time zone. specifies the time zone. the default value is UTC+8.
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def BrokerIp(self):
+        """Indicates the Ip address of the executor where the log is located.
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def OriginFileName(self):
+        """Log file.
+When executionJobId in instance details is empty but originFileName is not empty, originFileName and brokerIp must be included in the input parameters.
+If both executionJobId and originFileName are empty, it indicates that the instance has not been dispatched for execution or has not generated logs. for example, branch node or merge node.
+        :rtype: str
+        """
+        return self._OriginFileName
+
+    @OriginFileName.setter
+    def OriginFileName(self, OriginFileName):
+        self._OriginFileName = OriginFileName
+
+    @property
+    def ExecutionJobId(self):
+        """**Execution ID**.
+
+When executionJobId in instance details is not empty, executionJobId needs to be included in the input parameters. originFileName and brokerIp are not required parameters.
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def LogLevel(self):
+        """Log level.
+Default All.
+
+- Info
+- Debug
+- Warn
+- Error
+- All
+        :rtype: str
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def StartLineNum(self):
+        """Start row number for obtaining logs.
+The default is 1.
+        :rtype: int
+        """
+        return self._StartLineNum
+
+    @StartLineNum.setter
+    def StartLineNum(self, StartLineNum):
+        self._StartLineNum = StartLineNum
+
+    @property
+    def EndLineCount(self):
+        """End line number for obtaining logs.
+The default value is 10000.
+        :rtype: int
+        """
+        return self._EndLineCount
+
+    @EndLineCount.setter
+    def EndLineCount(self, EndLineCount):
+        self._EndLineCount = EndLineCount
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._InstanceKey = params.get("InstanceKey")
+        self._LifeRoundNum = params.get("LifeRoundNum")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._BrokerIp = params.get("BrokerIp")
+        self._OriginFileName = params.get("OriginFileName")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        self._LogLevel = params.get("LogLevel")
+        self._StartLineNum = params.get("StartLineNum")
+        self._EndLineCount = params.get("EndLineCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetInstanceLogResponse(AbstractModel):
+    """GetInstanceLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Scheduling instance details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """Scheduling instance details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstanceLogVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetIntegrationNodeColumnSchemaRequest(AbstractModel):
     """GetIntegrationNodeColumnSchema request structure.
 
@@ -39232,6 +39478,121 @@ class GetOfflineInstanceListResponse(AbstractModel):
                 obj = OfflineInstance()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetTaskInstanceRequest(AbstractModel):
+    """GetTaskInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: **Project ID**.
+        :type ProjectId: str
+        :param _InstanceKey: Unique identifier of an instance.
+        :type InstanceKey: str
+        :param _ScheduleTimeZone: Time zone.
+Time zone. specifies the time zone. the default value is UTC+8.
+        :type ScheduleTimeZone: str
+        """
+        self._ProjectId = None
+        self._InstanceKey = None
+        self._ScheduleTimeZone = None
+
+    @property
+    def ProjectId(self):
+        """**Project ID**.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def InstanceKey(self):
+        """Unique identifier of an instance.
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ScheduleTimeZone(self):
+        """Time zone.
+Time zone. specifies the time zone. the default value is UTC+8.
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._InstanceKey = params.get("InstanceKey")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTaskInstanceResponse(AbstractModel):
+    """GetTaskInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Details of scheduling an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.InstanceDetailVO`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """Details of scheduling an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceDetailVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstanceDetailVO()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -39779,6 +40140,609 @@ class InstanceCondition(AbstractModel):
         
 
 
+class InstanceDetailVO(AbstractModel):
+    """Details of a scheduled instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: Unique id of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceKey: str
+        :param _ProjectId: Project ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _FolderId: Folder ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FolderId: str
+        :param _FolderName: Folder name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FolderName: str
+        :param _WorkflowId: Workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowId: str
+        :param _WorkflowName: Workflow name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowName: str
+        :param _InChargeList: Responsible person list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InChargeList: list of str
+        :param _TaskId: Task ID
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _TaskName: Task Name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskName: str
+        :param _TaskCycleType: Task cycle type.
+Support filtering multiple items with an or relationship between conditions.
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskCycleType: str
+        :param _TaskType: Task type
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        :param _ExecutorGroupId: Execution resource group ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorGroupId: str
+        :param _ExecutorGroupName: Resource group name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorGroupName: str
+        :param _CurRunDate: Standard data time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CurRunDate: str
+        :param _NextCurDate: Next standard data time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NextCurDate: str
+        :param _TryLimit: Limit on the number of retries issued each time a run fails.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TryLimit: int
+        :param _Tries: Current number of issued run attempts.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tries: int
+        :param _TotalRunNum: Cumulative running times.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalRunNum: int
+        :param _LifeRoundNum: Lifecycle no.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LifeRoundNum: int
+        :param _InstanceType: Instance type.
+
+-0 indicates the supplementary entry type.
+-1 indicates a periodic instance.
+-2 indicates a non-periodic instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: int
+        :param _InstanceState: Indicates the status of an instance.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceState: int
+        :param _SchedulerTime: Planned scheduling time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SchedulerTime: str
+        :param _StartTime: Start time of operation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _EndTime: Indicates the operation completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param _CostTime: Time spent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CostTime: str
+        :param _InstanceRunType: Instance running trigger type.
+
+-RERUN indicates rerunning.
+-ADDITION indicates supplementary recording.
+-PERIODIC indicates a period.
+-APERIODIC indicates non-periodic.
+-RERUN_SKIP_RUN indicates re-run - empty run.
+-ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
+-APERIODIC_SKIP_RUN indicates a non-periodic empty run.
+-MANUAL_TRIGGER indicates manual triggering.
+-RERUN_MANUAL_TRIGGER indicates manual triggering - rerun.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceRunType: str
+        :param _ExecutionJobId: Dispatch execution ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionJobId: str
+        :param _InstanceLifeCycleList: Instance lifecycle list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceLifeCycleList: list of InstanceLifeCycleVO
+        :param _LatestLog: The last execution log of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LatestLog: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        """
+        self._InstanceKey = None
+        self._ProjectId = None
+        self._FolderId = None
+        self._FolderName = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._InChargeList = None
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskCycleType = None
+        self._TaskType = None
+        self._ExecutorGroupId = None
+        self._ExecutorGroupName = None
+        self._CurRunDate = None
+        self._NextCurDate = None
+        self._TryLimit = None
+        self._Tries = None
+        self._TotalRunNum = None
+        self._LifeRoundNum = None
+        self._InstanceType = None
+        self._InstanceState = None
+        self._SchedulerTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CostTime = None
+        self._InstanceRunType = None
+        self._ExecutionJobId = None
+        self._InstanceLifeCycleList = None
+        self._LatestLog = None
+
+    @property
+    def InstanceKey(self):
+        """Unique id of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        """Folder ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        """Folder name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def WorkflowId(self):
+        """Workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """Workflow name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def InChargeList(self):
+        """Responsible person list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._InChargeList
+
+    @InChargeList.setter
+    def InChargeList(self, InChargeList):
+        self._InChargeList = InChargeList
+
+    @property
+    def TaskId(self):
+        """Task ID
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """Task Name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskCycleType(self):
+        """Task cycle type.
+Support filtering multiple items with an or relationship between conditions.
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskCycleType
+
+    @TaskCycleType.setter
+    def TaskCycleType(self, TaskCycleType):
+        self._TaskCycleType = TaskCycleType
+
+    @property
+    def TaskType(self):
+        """Task type
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ExecutorGroupId(self):
+        """Execution resource group ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ExecutorGroupName(self):
+        """Resource group name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+    @property
+    def CurRunDate(self):
+        """Standard data time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CurRunDate
+
+    @CurRunDate.setter
+    def CurRunDate(self, CurRunDate):
+        self._CurRunDate = CurRunDate
+
+    @property
+    def NextCurDate(self):
+        """Next standard data time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._NextCurDate
+
+    @NextCurDate.setter
+    def NextCurDate(self, NextCurDate):
+        self._NextCurDate = NextCurDate
+
+    @property
+    def TryLimit(self):
+        """Limit on the number of retries issued each time a run fails.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def Tries(self):
+        """Current number of issued run attempts.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def TotalRunNum(self):
+        """Cumulative running times.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalRunNum
+
+    @TotalRunNum.setter
+    def TotalRunNum(self, TotalRunNum):
+        self._TotalRunNum = TotalRunNum
+
+    @property
+    def LifeRoundNum(self):
+        """Lifecycle no.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LifeRoundNum
+
+    @LifeRoundNum.setter
+    def LifeRoundNum(self, LifeRoundNum):
+        self._LifeRoundNum = LifeRoundNum
+
+    @property
+    def InstanceType(self):
+        """Instance type.
+
+-0 indicates the supplementary entry type.
+-1 indicates a periodic instance.
+-2 indicates a non-periodic instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceState(self):
+        """Indicates the status of an instance.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def SchedulerTime(self):
+        """Planned scheduling time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SchedulerTime
+
+    @SchedulerTime.setter
+    def SchedulerTime(self, SchedulerTime):
+        self._SchedulerTime = SchedulerTime
+
+    @property
+    def StartTime(self):
+        """Start time of operation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Indicates the operation completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CostTime(self):
+        """Time spent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def InstanceRunType(self):
+        """Instance running trigger type.
+
+-RERUN indicates rerunning.
+-ADDITION indicates supplementary recording.
+-PERIODIC indicates a period.
+-APERIODIC indicates non-periodic.
+-RERUN_SKIP_RUN indicates re-run - empty run.
+-ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
+-APERIODIC_SKIP_RUN indicates a non-periodic empty run.
+-MANUAL_TRIGGER indicates manual triggering.
+-RERUN_MANUAL_TRIGGER indicates manual triggering - rerun.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceRunType
+
+    @InstanceRunType.setter
+    def InstanceRunType(self, InstanceRunType):
+        self._InstanceRunType = InstanceRunType
+
+    @property
+    def ExecutionJobId(self):
+        """Dispatch execution ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def InstanceLifeCycleList(self):
+        """Instance lifecycle list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of InstanceLifeCycleVO
+        """
+        return self._InstanceLifeCycleList
+
+    @InstanceLifeCycleList.setter
+    def InstanceLifeCycleList(self, InstanceLifeCycleList):
+        self._InstanceLifeCycleList = InstanceLifeCycleList
+
+    @property
+    def LatestLog(self):
+        """The last execution log of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstanceLogVO`
+        """
+        return self._LatestLog
+
+    @LatestLog.setter
+    def LatestLog(self, LatestLog):
+        self._LatestLog = LatestLog
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._InChargeList = params.get("InChargeList")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TaskCycleType = params.get("TaskCycleType")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeOpsDto()
+            self._TaskType._deserialize(params.get("TaskType"))
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
+        self._CurRunDate = params.get("CurRunDate")
+        self._NextCurDate = params.get("NextCurDate")
+        self._TryLimit = params.get("TryLimit")
+        self._Tries = params.get("Tries")
+        self._TotalRunNum = params.get("TotalRunNum")
+        self._LifeRoundNum = params.get("LifeRoundNum")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceState = params.get("InstanceState")
+        self._SchedulerTime = params.get("SchedulerTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CostTime = params.get("CostTime")
+        self._InstanceRunType = params.get("InstanceRunType")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        if params.get("InstanceLifeCycleList") is not None:
+            self._InstanceLifeCycleList = []
+            for item in params.get("InstanceLifeCycleList"):
+                obj = InstanceLifeCycleVO()
+                obj._deserialize(item)
+                self._InstanceLifeCycleList.append(obj)
+        if params.get("LatestLog") is not None:
+            self._LatestLog = InstanceLogVO()
+            self._LatestLog._deserialize(params.get("LatestLog"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceDownloadLogInfo(AbstractModel):
     """Download Log Details
 
@@ -40041,6 +41005,284 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class InstanceLifeCycleVO(AbstractModel):
+    """Details of a scheduled instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: Unique identifier of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceKey: str
+        :param _InstanceState: Instance status.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceState: int
+        :param _LifeRoundNum: Lifecycle no.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LifeRoundNum: int
+        :param _RunType: Instance running trigger type.
+
+-RERUN indicates rerunning.
+-ADDITION indicates supplementary recording.
+-PERIODIC indicates a period.
+-APERIODIC indicates non-periodic.
+-RERUN_SKIP_RUN means empty run for re-run.
+-ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
+-APERIODIC_SKIP_RUN indicates a non-periodic empty run.
+-MANUAL_TRIGGER indicates manual triggering.
+-RERUN_MANUAL_TRIGGER indicates manual triggering - rerun.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RunType: str
+        :param _Tries: Number of retries after failure.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tries: int
+        :param _LifeCycleDetailList: List of instance lifecycle.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LifeCycleDetailList: list of InstanceLifeDetailDto
+        :param _CodeFileName: Instance code file.
+The file content specifies the code used for running the execution instance this time. only some tasks support it.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CodeFileName: str
+        :param _ExecutionJobId: Dispatch execution ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionJobId: str
+        :param _BrokerIp: The execution node where the log resides.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BrokerIp: str
+        :param _OriginFileName: Log file name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginFileName: str
+        :param _LogType: Instance log type.
+
+-run: indicates the state of functioning. 
+-kill: terminates.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogType: str
+        :param _CostTime: Time spent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CostTime: str
+        """
+        self._InstanceKey = None
+        self._InstanceState = None
+        self._LifeRoundNum = None
+        self._RunType = None
+        self._Tries = None
+        self._LifeCycleDetailList = None
+        self._CodeFileName = None
+        self._ExecutionJobId = None
+        self._BrokerIp = None
+        self._OriginFileName = None
+        self._LogType = None
+        self._CostTime = None
+
+    @property
+    def InstanceKey(self):
+        """Unique identifier of the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def InstanceState(self):
+        """Instance status.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def LifeRoundNum(self):
+        """Lifecycle no.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LifeRoundNum
+
+    @LifeRoundNum.setter
+    def LifeRoundNum(self, LifeRoundNum):
+        self._LifeRoundNum = LifeRoundNum
+
+    @property
+    def RunType(self):
+        """Instance running trigger type.
+
+-RERUN indicates rerunning.
+-ADDITION indicates supplementary recording.
+-PERIODIC indicates a period.
+-APERIODIC indicates non-periodic.
+-RERUN_SKIP_RUN means empty run for re-run.
+-ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
+-APERIODIC_SKIP_RUN indicates a non-periodic empty run.
+-MANUAL_TRIGGER indicates manual triggering.
+-RERUN_MANUAL_TRIGGER indicates manual triggering - rerun.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def Tries(self):
+        """Number of retries after failure.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def LifeCycleDetailList(self):
+        """List of instance lifecycle.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of InstanceLifeDetailDto
+        """
+        return self._LifeCycleDetailList
+
+    @LifeCycleDetailList.setter
+    def LifeCycleDetailList(self, LifeCycleDetailList):
+        self._LifeCycleDetailList = LifeCycleDetailList
+
+    @property
+    def CodeFileName(self):
+        """Instance code file.
+The file content specifies the code used for running the execution instance this time. only some tasks support it.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CodeFileName
+
+    @CodeFileName.setter
+    def CodeFileName(self, CodeFileName):
+        self._CodeFileName = CodeFileName
+
+    @property
+    def ExecutionJobId(self):
+        """Dispatch execution ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutionJobId
+
+    @ExecutionJobId.setter
+    def ExecutionJobId(self, ExecutionJobId):
+        self._ExecutionJobId = ExecutionJobId
+
+    @property
+    def BrokerIp(self):
+        """The execution node where the log resides.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def OriginFileName(self):
+        """Log file name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OriginFileName
+
+    @OriginFileName.setter
+    def OriginFileName(self, OriginFileName):
+        self._OriginFileName = OriginFileName
+
+    @property
+    def LogType(self):
+        """Instance log type.
+
+-run: indicates the state of functioning. 
+-kill: terminates.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def CostTime(self):
+        """Time spent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._InstanceState = params.get("InstanceState")
+        self._LifeRoundNum = params.get("LifeRoundNum")
+        self._RunType = params.get("RunType")
+        self._Tries = params.get("Tries")
+        if params.get("LifeCycleDetailList") is not None:
+            self._LifeCycleDetailList = []
+            for item in params.get("LifeCycleDetailList"):
+                obj = InstanceLifeDetailDto()
+                obj._deserialize(item)
+                self._LifeCycleDetailList.append(obj)
+        self._CodeFileName = params.get("CodeFileName")
+        self._ExecutionJobId = params.get("ExecutionJobId")
+        self._BrokerIp = params.get("BrokerIp")
+        self._OriginFileName = params.get("OriginFileName")
+        self._LogType = params.get("LogType")
+        self._CostTime = params.get("CostTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceLifeDetailDto(AbstractModel):
     """Instance Lifecycle Detail
 
@@ -40048,13 +41290,31 @@ class InstanceLifeDetailDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _State: Instance StatusNote: This field may return null, indicating that no valid value can be obtained.
+        :param _State: Indicates the status of an instance.
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type State: str
         :param _StartTime: Start Time of the State
 Note: This field may return null, indicating that no valid value can be obtained.
         :type StartTime: str
-        :param _DetailState: Instance Lifecycle Phase Status
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DetailState: Instance lifecycle phase status.
+
+-WAIT_UPSTREAM indicates waiting for event/upstream status.
+-WAIT_RUN indicates a waiting for running status.
+-RUNNING indicates a running state.
+-COMPLETE indicates the final state - completed.
+-FAILED indicates the final state - retry on failure.
+-EXPIRED indicates the final state - failure.
+-SKIP_RUNNING indicates the final state - a branch skipped by the upstream branch node.
+-HISTORY indicates compatibility with historical instances.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DetailState: str
         :param _EndTime: End Time of the State
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -40067,7 +41327,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def State(self):
-        """Instance StatusNote: This field may return null, indicating that no valid value can be obtained.
+        """Indicates the status of an instance.
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._State
@@ -40090,8 +41359,17 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DetailState(self):
-        """Instance Lifecycle Phase Status
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Instance lifecycle phase status.
+
+-WAIT_UPSTREAM indicates waiting for event/upstream status.
+-WAIT_RUN indicates a waiting for running status.
+-RUNNING indicates a running state.
+-COMPLETE indicates the final state - completed.
+-FAILED indicates the final state - retry on failure.
+-EXPIRED indicates the final state - failure.
+-SKIP_RUNNING indicates the final state - a branch skipped by the upstream branch node.
+-HISTORY indicates compatibility with historical instances.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DetailState
@@ -40906,6 +42184,311 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._InstanceLogType = params.get("InstanceLogType")
         self._TaskName = params.get("TaskName")
         self._CostTime = params.get("CostTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceLogVO(AbstractModel):
+    """Instance log content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: Unique id of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceKey: str
+        :param _ProjectId: Project ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _InstanceState: **Instance status**.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceState: int
+        :param _RunType: Instance running trigger type.
+
+-RERUN indicates rerunning.
+-ADDITION indicates supplementary recording.
+-PERIODIC indicates a period.
+-APERIODIC indicates non-periodic.
+-RERUN_SKIP_RUN means empty run for re-run.
+-ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
+-APERIODIC_SKIP_RUN indicates a non-periodic empty run.
+-MANUAL_TRIGGER indicates manual triggering.
+-RERUN_MANUAL_TRIGGER indicates manual triggering - rerun.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RunType: str
+        :param _StartTime: Start time of running.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _EndTime: Indicates the operation completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param _CodeInfo: Run code content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CodeInfo: str
+        :param _CodeFileSize: File size for running code.
+Unit: KB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CodeFileSize: str
+        :param _BrokerIp: Log node information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BrokerIp: str
+        :param _LogInfo: Log content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogInfo: str
+        :param _LogFileSize: Log file size.
+KB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogFileSize: str
+        :param _LineCount: Row count of returned logs this time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LineCount: int
+        :param _ExtInfo: Execute platform log pagination query parameters, transparently input for each request. the value is an empty string when querying the first page.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtInfo: str
+        :param _IsEnd: Paging query for logs. indicates whether it is the last page.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsEnd: bool
+        """
+        self._InstanceKey = None
+        self._ProjectId = None
+        self._InstanceState = None
+        self._RunType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CodeInfo = None
+        self._CodeFileSize = None
+        self._BrokerIp = None
+        self._LogInfo = None
+        self._LogFileSize = None
+        self._LineCount = None
+        self._ExtInfo = None
+        self._IsEnd = None
+
+    @property
+    def InstanceKey(self):
+        """Unique id of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def InstanceState(self):
+        """**Instance status**.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-21: skip running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def RunType(self):
+        """Instance running trigger type.
+
+-RERUN indicates rerunning.
+-ADDITION indicates supplementary recording.
+-PERIODIC indicates a period.
+-APERIODIC indicates non-periodic.
+-RERUN_SKIP_RUN means empty run for re-run.
+-ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
+-APERIODIC_SKIP_RUN indicates a non-periodic empty run.
+-MANUAL_TRIGGER indicates manual triggering.
+-RERUN_MANUAL_TRIGGER indicates manual triggering - rerun.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def StartTime(self):
+        """Start time of running.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Indicates the operation completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CodeInfo(self):
+        """Run code content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CodeInfo
+
+    @CodeInfo.setter
+    def CodeInfo(self, CodeInfo):
+        self._CodeInfo = CodeInfo
+
+    @property
+    def CodeFileSize(self):
+        """File size for running code.
+Unit: KB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CodeFileSize
+
+    @CodeFileSize.setter
+    def CodeFileSize(self, CodeFileSize):
+        self._CodeFileSize = CodeFileSize
+
+    @property
+    def BrokerIp(self):
+        """Log node information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def LogInfo(self):
+        """Log content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LogInfo
+
+    @LogInfo.setter
+    def LogInfo(self, LogInfo):
+        self._LogInfo = LogInfo
+
+    @property
+    def LogFileSize(self):
+        """Log file size.
+KB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LogFileSize
+
+    @LogFileSize.setter
+    def LogFileSize(self, LogFileSize):
+        self._LogFileSize = LogFileSize
+
+    @property
+    def LineCount(self):
+        """Row count of returned logs this time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LineCount
+
+    @LineCount.setter
+    def LineCount(self, LineCount):
+        self._LineCount = LineCount
+
+    @property
+    def ExtInfo(self):
+        """Execute platform log pagination query parameters, transparently input for each request. the value is an empty string when querying the first page.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def IsEnd(self):
+        """Paging query for logs. indicates whether it is the last page.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsEnd
+
+    @IsEnd.setter
+    def IsEnd(self, IsEnd):
+        self._IsEnd = IsEnd
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ProjectId = params.get("ProjectId")
+        self._InstanceState = params.get("InstanceState")
+        self._RunType = params.get("RunType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CodeInfo = params.get("CodeInfo")
+        self._CodeFileSize = params.get("CodeFileSize")
+        self._BrokerIp = params.get("BrokerIp")
+        self._LogInfo = params.get("LogInfo")
+        self._LogFileSize = params.get("LogFileSize")
+        self._LineCount = params.get("LineCount")
+        self._ExtInfo = params.get("ExtInfo")
+        self._IsEnd = params.get("IsEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42115,6 +43698,138 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class InstancePageVO(AbstractModel):
+    """Instance list pagination entity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of entries.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param _TotalPage: Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPage: int
+        :param _PageNumber: Page number
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageNumber: int
+        :param _PageSize: Entries per page.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageSize: int
+        :param _PageCount: Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageCount: int
+        :param _Items: Data List
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Items: list of InstanceVO
+        """
+        self._TotalCount = None
+        self._TotalPage = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._PageCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        """Total number of entries.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPage(self):
+        """Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def PageNumber(self):
+        """Page number
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Entries per page.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageCount(self):
+        """Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def Items(self):
+        """Data List
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of InstanceVO
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPage = params.get("TotalPage")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._PageCount = params.get("PageCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstanceVO()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceSearchCondition(AbstractModel):
     """Instance Retrieval Criteria
 
@@ -42384,6 +44099,480 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ShowTime = params.get("ShowTime")
         self._ReportTime = params.get("ReportTime")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceVO(AbstractModel):
+    """Scheduling running instance entity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceKey: Unique identifier of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceKey: str
+        :param _ProjectId: Project ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _FolderId: Folder ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FolderId: str
+        :param _FolderName: Folder name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FolderName: str
+        :param _WorkflowId: Workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowId: str
+        :param _WorkflowName: Workflow name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkflowName: str
+        :param _InChargeList: Responsible person list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InChargeList: list of str
+        :param _TaskId: Task ID
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _TaskName: Task Name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskName: str
+        :param _TaskType: Task type
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        :param _TaskCycleType: Task cycle type.
+Supports filtering multiple conditions with an or relationship between them.
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskCycleType: str
+        :param _CurRunDate: Standard data time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CurRunDate: str
+        :param _TryLimit: Specifies the limit on the number of retries issued each time a running failure occurs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TryLimit: int
+        :param _Tries: Number of retries after failure.
+Will be reset to 0 and then recounted when triggered for execution by once again manually rerunning or using a supplementary entry instance and other methods.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tries: int
+        :param _TotalRunNum: Cumulative running times.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalRunNum: int
+        :param _InstanceType: Instance type.
+
+-0 indicates the supplementary entry type.
+-1 indicates a periodic instance.
+-2 indicates a non-periodic instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: int
+        :param _InstanceState: Indicates the status of an instance.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-[1, 19, 22]: running.
+-[21] indicates skipping running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceState: int
+        :param _StartTime: Start time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _EndTime: Operation completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param _CostTime: Time spent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CostTime: str
+        :param _SchedulerTime: Planned scheduling time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SchedulerTime: str
+        :param _ExecutorGroupId: Execution resource group ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorGroupId: str
+        :param _ExecutorGroupName: Resource group name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutorGroupName: str
+        """
+        self._InstanceKey = None
+        self._ProjectId = None
+        self._FolderId = None
+        self._FolderName = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+        self._InChargeList = None
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskType = None
+        self._TaskCycleType = None
+        self._CurRunDate = None
+        self._TryLimit = None
+        self._Tries = None
+        self._TotalRunNum = None
+        self._InstanceType = None
+        self._InstanceState = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CostTime = None
+        self._SchedulerTime = None
+        self._ExecutorGroupId = None
+        self._ExecutorGroupName = None
+
+    @property
+    def InstanceKey(self):
+        """Unique identifier of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._InstanceKey
+
+    @InstanceKey.setter
+    def InstanceKey(self, InstanceKey):
+        self._InstanceKey = InstanceKey
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FolderId(self):
+        """Folder ID.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        """Folder name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def WorkflowId(self):
+        """Workflow ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        """Workflow name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def InChargeList(self):
+        """Responsible person list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._InChargeList
+
+    @InChargeList.setter
+    def InChargeList(self, InChargeList):
+        self._InChargeList = InChargeList
+
+    @property
+    def TaskId(self):
+        """Task ID
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        """Task Name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        """Task type
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskCycleType(self):
+        """Task cycle type.
+Supports filtering multiple conditions with an or relationship between them.
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TaskCycleType
+
+    @TaskCycleType.setter
+    def TaskCycleType(self, TaskCycleType):
+        self._TaskCycleType = TaskCycleType
+
+    @property
+    def CurRunDate(self):
+        """Standard data time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CurRunDate
+
+    @CurRunDate.setter
+    def CurRunDate(self, CurRunDate):
+        self._CurRunDate = CurRunDate
+
+    @property
+    def TryLimit(self):
+        """Specifies the limit on the number of retries issued each time a running failure occurs.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def Tries(self):
+        """Number of retries after failure.
+Will be reset to 0 and then recounted when triggered for execution by once again manually rerunning or using a supplementary entry instance and other methods.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def TotalRunNum(self):
+        """Cumulative running times.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalRunNum
+
+    @TotalRunNum.setter
+    def TotalRunNum(self, TotalRunNum):
+        self._TotalRunNum = TotalRunNum
+
+    @property
+    def InstanceType(self):
+        """Instance type.
+
+-0 indicates the supplementary entry type.
+-1 indicates a periodic instance.
+-2 indicates a non-periodic instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceState(self):
+        """Indicates the status of an instance.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-[1, 19, 22]: running.
+-[21] indicates skipping running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def StartTime(self):
+        """Start time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Operation completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CostTime(self):
+        """Time spent.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def SchedulerTime(self):
+        """Planned scheduling time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SchedulerTime
+
+    @SchedulerTime.setter
+    def SchedulerTime(self, SchedulerTime):
+        self._SchedulerTime = SchedulerTime
+
+    @property
+    def ExecutorGroupId(self):
+        """Execution resource group ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ExecutorGroupName(self):
+        """Resource group name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceKey = params.get("InstanceKey")
+        self._ProjectId = params.get("ProjectId")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._InChargeList = params.get("InChargeList")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeOpsDto()
+            self._TaskType._deserialize(params.get("TaskType"))
+        self._TaskCycleType = params.get("TaskCycleType")
+        self._CurRunDate = params.get("CurRunDate")
+        self._TryLimit = params.get("TryLimit")
+        self._Tries = params.get("Tries")
+        self._TotalRunNum = params.get("TotalRunNum")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceState = params.get("InstanceState")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CostTime = params.get("CostTime")
+        self._SchedulerTime = params.get("SchedulerTime")
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44860,6 +47049,457 @@ Note: This field may return null, indicating that no valid value can be obtained
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListInstancesRequest(AbstractModel):
+    """ListInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: **Project ID**.
+        :type ProjectId: str
+        :param _ScheduleTimeFrom: Instance plan scheduling time.
+Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        :type ScheduleTimeFrom: str
+        :param _ScheduleTimeTo: Instance plan scheduling time.
+Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        :type ScheduleTimeTo: str
+        :param _PageNumber: Page number, integer.
+Use in conjunction with pageSize and cannot be less than 1. the default value is 1.
+        :type PageNumber: int
+        :param _PageSize: Number of items per page, integer.
+Use in conjunction with pageNumber and should not exceed 200. default value: 10.
+        :type PageSize: int
+        :param _SortColumn: Field used to sort query results.
+
+-SCHEDULE_DATE indicates the planned scheduling time.
+-START_TIME indicates the start execution time of an instance.
+-END_TIME indicates the execution end time of the instance.
+-COST_TIME indicates the execution duration of an instance.
+        :type SortColumn: str
+        :param _SortType: Instance sorting order.
+
+- ASC 
+- DESC
+        :type SortType: str
+        :param _InstanceType: Instance type.
+
+-0 indicates the supplementary entry type.
+-1 indicates a periodic instance.
+-2 indicates a non-periodic instance.
+        :type InstanceType: int
+        :param _InstanceStateList: Instance execution status.
+Support filtering multiple items with an "or" relationship between conditions.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-[21] indicates skipping running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+        :type InstanceStateList: list of int non-negative
+        :param _TaskTypeIdList: **Task type Id** specifies the identifier for the task type.
+
+-Supports filtering multiple items with an or relationship between conditions.
+-You can use the DescribeAllTaskType API to obtain all task types supported by the project.
+        :type TaskTypeIdList: list of int non-negative
+        :param _TaskCycleList: Task cycle type.
+Supports filtering multiple conditions with an or relationship between them.
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+        :type TaskCycleList: list of str
+        :param _Keyword: Task name or task ID.
+Supports fuzzy search filtering. multiple items are separated by english commas.
+        :type Keyword: str
+        :param _InChargeList: Task owner.
+Support filtering multiple items with an or relationship between conditions.
+        :type InChargeList: list of str
+        :param _TaskFolderIdList: File to which the task belongs.
+Supports filtering multiple conditions with an or relationship between them.
+The FindAllFolder API can be used to obtain the folder list under a project.
+        :type TaskFolderIdList: list of str
+        :param _WorkflowIdList: **Associated workflow of the task**.
+Supports filtering multiple conditions with an or relationship between them.
+The workflow list under a project can be obtained through the DescribeOpsWorkflows api.
+        :type WorkflowIdList: list of str
+        :param _ExecutorGroupIdList: Execution resource group Id.
+Supports filtering multiple conditions with an or relationship between them.
+The scheduling resource group list under the project can be obtained through the DescribeNormalSchedulerExecutorGroups api.
+The DescribeNormalIntegrationExecutorGroups API can be used to obtain the list of all integration resource groups under a project.
+        :type ExecutorGroupIdList: list of str
+        :param _StartTimeFrom: **Start time**.
+Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        :type StartTimeFrom: str
+        :param _StartTimeTo: **Start time**.
+Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        :type StartTimeTo: str
+        :param _ScheduleTimeZone: Time zone.
+Time zone. specifies the time zone. the default value is UTC+8.
+        :type ScheduleTimeZone: str
+        """
+        self._ProjectId = None
+        self._ScheduleTimeFrom = None
+        self._ScheduleTimeTo = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortColumn = None
+        self._SortType = None
+        self._InstanceType = None
+        self._InstanceStateList = None
+        self._TaskTypeIdList = None
+        self._TaskCycleList = None
+        self._Keyword = None
+        self._InChargeList = None
+        self._TaskFolderIdList = None
+        self._WorkflowIdList = None
+        self._ExecutorGroupIdList = None
+        self._StartTimeFrom = None
+        self._StartTimeTo = None
+        self._ScheduleTimeZone = None
+
+    @property
+    def ProjectId(self):
+        """**Project ID**.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ScheduleTimeFrom(self):
+        """Instance plan scheduling time.
+Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        :rtype: str
+        """
+        return self._ScheduleTimeFrom
+
+    @ScheduleTimeFrom.setter
+    def ScheduleTimeFrom(self, ScheduleTimeFrom):
+        self._ScheduleTimeFrom = ScheduleTimeFrom
+
+    @property
+    def ScheduleTimeTo(self):
+        """Instance plan scheduling time.
+Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        :rtype: str
+        """
+        return self._ScheduleTimeTo
+
+    @ScheduleTimeTo.setter
+    def ScheduleTimeTo(self, ScheduleTimeTo):
+        self._ScheduleTimeTo = ScheduleTimeTo
+
+    @property
+    def PageNumber(self):
+        """Page number, integer.
+Use in conjunction with pageSize and cannot be less than 1. the default value is 1.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Number of items per page, integer.
+Use in conjunction with pageNumber and should not exceed 200. default value: 10.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortColumn(self):
+        """Field used to sort query results.
+
+-SCHEDULE_DATE indicates the planned scheduling time.
+-START_TIME indicates the start execution time of an instance.
+-END_TIME indicates the execution end time of the instance.
+-COST_TIME indicates the execution duration of an instance.
+        :rtype: str
+        """
+        return self._SortColumn
+
+    @SortColumn.setter
+    def SortColumn(self, SortColumn):
+        self._SortColumn = SortColumn
+
+    @property
+    def SortType(self):
+        """Instance sorting order.
+
+- ASC 
+- DESC
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def InstanceType(self):
+        """Instance type.
+
+-0 indicates the supplementary entry type.
+-1 indicates a periodic instance.
+-2 indicates a non-periodic instance.
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceStateList(self):
+        """Instance execution status.
+Support filtering multiple items with an "or" relationship between conditions.
+
+-Indicates waiting for event.
+-[12] indicates waiting for upstream.
+-[6, 7, 9, 10, 18] indicates awaiting execution.
+-1, 19, 22 indicate running.
+-[21] indicates skipping running.
+-[3] indicates retry on failure.
+-[8, 4, 5, 13] indicates a failure.
+-[2] indicates a success.
+        :rtype: list of int non-negative
+        """
+        return self._InstanceStateList
+
+    @InstanceStateList.setter
+    def InstanceStateList(self, InstanceStateList):
+        self._InstanceStateList = InstanceStateList
+
+    @property
+    def TaskTypeIdList(self):
+        """**Task type Id** specifies the identifier for the task type.
+
+-Supports filtering multiple items with an or relationship between conditions.
+-You can use the DescribeAllTaskType API to obtain all task types supported by the project.
+        :rtype: list of int non-negative
+        """
+        return self._TaskTypeIdList
+
+    @TaskTypeIdList.setter
+    def TaskTypeIdList(self, TaskTypeIdList):
+        self._TaskTypeIdList = TaskTypeIdList
+
+    @property
+    def TaskCycleList(self):
+        """Task cycle type.
+Supports filtering multiple conditions with an or relationship between them.
+* O: ONEOFF_CYCLE
+* Y: YEAR_CYCLE
+* M: MONTH_CYCLE
+* W: WEEK_CYCLE
+* D: DAY_CYCLE
+* H: HOUR_CYCLE
+* I: MINUTE_CYCLE
+* C: CRONTAB_CYCLE
+        :rtype: list of str
+        """
+        return self._TaskCycleList
+
+    @TaskCycleList.setter
+    def TaskCycleList(self, TaskCycleList):
+        self._TaskCycleList = TaskCycleList
+
+    @property
+    def Keyword(self):
+        """Task name or task ID.
+Supports fuzzy search filtering. multiple items are separated by english commas.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def InChargeList(self):
+        """Task owner.
+Support filtering multiple items with an or relationship between conditions.
+        :rtype: list of str
+        """
+        return self._InChargeList
+
+    @InChargeList.setter
+    def InChargeList(self, InChargeList):
+        self._InChargeList = InChargeList
+
+    @property
+    def TaskFolderIdList(self):
+        """File to which the task belongs.
+Supports filtering multiple conditions with an or relationship between them.
+The FindAllFolder API can be used to obtain the folder list under a project.
+        :rtype: list of str
+        """
+        return self._TaskFolderIdList
+
+    @TaskFolderIdList.setter
+    def TaskFolderIdList(self, TaskFolderIdList):
+        self._TaskFolderIdList = TaskFolderIdList
+
+    @property
+    def WorkflowIdList(self):
+        """**Associated workflow of the task**.
+Supports filtering multiple conditions with an or relationship between them.
+The workflow list under a project can be obtained through the DescribeOpsWorkflows api.
+        :rtype: list of str
+        """
+        return self._WorkflowIdList
+
+    @WorkflowIdList.setter
+    def WorkflowIdList(self, WorkflowIdList):
+        self._WorkflowIdList = WorkflowIdList
+
+    @property
+    def ExecutorGroupIdList(self):
+        """Execution resource group Id.
+Supports filtering multiple conditions with an or relationship between them.
+The scheduling resource group list under the project can be obtained through the DescribeNormalSchedulerExecutorGroups api.
+The DescribeNormalIntegrationExecutorGroups API can be used to obtain the list of all integration resource groups under a project.
+        :rtype: list of str
+        """
+        return self._ExecutorGroupIdList
+
+    @ExecutorGroupIdList.setter
+    def ExecutorGroupIdList(self, ExecutorGroupIdList):
+        self._ExecutorGroupIdList = ExecutorGroupIdList
+
+    @property
+    def StartTimeFrom(self):
+        """**Start time**.
+Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        :rtype: str
+        """
+        return self._StartTimeFrom
+
+    @StartTimeFrom.setter
+    def StartTimeFrom(self, StartTimeFrom):
+        self._StartTimeFrom = StartTimeFrom
+
+    @property
+    def StartTimeTo(self):
+        """**Start time**.
+Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        :rtype: str
+        """
+        return self._StartTimeTo
+
+    @StartTimeTo.setter
+    def StartTimeTo(self, StartTimeTo):
+        self._StartTimeTo = StartTimeTo
+
+    @property
+    def ScheduleTimeZone(self):
+        """Time zone.
+Time zone. specifies the time zone. the default value is UTC+8.
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ScheduleTimeFrom = params.get("ScheduleTimeFrom")
+        self._ScheduleTimeTo = params.get("ScheduleTimeTo")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortColumn = params.get("SortColumn")
+        self._SortType = params.get("SortType")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceStateList = params.get("InstanceStateList")
+        self._TaskTypeIdList = params.get("TaskTypeIdList")
+        self._TaskCycleList = params.get("TaskCycleList")
+        self._Keyword = params.get("Keyword")
+        self._InChargeList = params.get("InChargeList")
+        self._TaskFolderIdList = params.get("TaskFolderIdList")
+        self._WorkflowIdList = params.get("WorkflowIdList")
+        self._ExecutorGroupIdList = params.get("ExecutorGroupIdList")
+        self._StartTimeFrom = params.get("StartTimeFrom")
+        self._StartTimeTo = params.get("StartTimeTo")
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListInstancesResponse(AbstractModel):
+    """ListInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Instance result set.
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.InstancePageVO`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        """Instance result set.
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.InstancePageVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstancePageVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class LockIntegrationTaskRequest(AbstractModel):

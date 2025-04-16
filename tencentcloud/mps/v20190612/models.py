@@ -1598,7 +1598,8 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>1: yes.</li>
         :type RemoveVideo: int
         :param _AudioList: Audio parameter information list.
-The parameter is only used when merging multiple audio tracks with self-adaptive transcoding. the maximum length of the parameter array is 64.
+The parameter is only used when merging multiple audio tracks in adaptive bitrate transcoding. the maximum length of the parameter array is 64.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AudioList: list of AudioTemplateInfo
         """
@@ -1659,7 +1660,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def AudioList(self):
         """Audio parameter information list.
-The parameter is only used when merging multiple audio tracks with self-adaptive transcoding. the maximum length of the parameter array is 64.
+The parameter is only used when merging multiple audio tracks in adaptive bitrate transcoding. the maximum length of the parameter array is 64.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of AudioTemplateInfo
         """
@@ -11508,14 +11510,15 @@ Unit: Hz.
 Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
         :type SampleRate: int
         :param _AudioChannel: Audio channel mode. Valid values:
-<li>1: single channel.</li>
-<li>2: dual channel.</li>
-<li>6: 5.1 surround sound.</li>
-When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
-Default value: 2.
+<li>1: mono-channel.</li>
+<li>2: dual-channel.</li>
+<li>6: 5.1 surround sound.
+<li>Default value: 2.
+When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
         :type AudioChannel: int
         :param _TrackChannelInfo: Merge audio track information.
-This field only takes effec in adaptive bitrate transcoding.
+This field only takes effect in adaptive bitrate transcoding.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TrackChannelInfo: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
@@ -11588,11 +11591,11 @@ Please ensure that the sampling rate of the source audio stream is within the va
     @property
     def AudioChannel(self):
         """Audio channel mode. Valid values:
-<li>1: single channel.</li>
-<li>2: dual channel.</li>
-<li>6: 5.1 surround sound.</li>
-When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
-Default value: 2.
+<li>1: mono-channel.</li>
+<li>2: dual-channel.</li>
+<li>6: 5.1 surround sound.
+<li>Default value: 2.
+When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
         :rtype: int
         """
         return self._AudioChannel
@@ -11604,7 +11607,8 @@ Default value: 2.
     @property
     def TrackChannelInfo(self):
         """Merge audio track information.
-This field only takes effec in adaptive bitrate transcoding.
+This field only takes effect in adaptive bitrate transcoding.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTrackChannelInfo`
         """
@@ -11661,15 +11665,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Codec: str
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
-        :param _SampleRate: The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
-Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
+        :param _SampleRate: The sampling rate of the audio stream. the sampling rate options supported by different encoding standards are different. for details, see the audio sample rate support scope document (https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+Unit: Hz.
+Please ensure that the sampling rate of the source audio stream is within the scope of the above options. otherwise, transcoding failure may occur.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SampleRate: int
         :param _AudioChannel: Audio channel mode. Valid values:
-<li>1: single channel.</li>
-<li>2: dual channel.</li>
-<li>6: 5.1 surround sound.</li>
-When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
+<li>1: mono-channel.</li>
+<li>2: dual-channel.</li>
+<li>6: 5.1 surround sound.
+When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
+
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioChannel: int
         :param _StreamSelects: The audio tracks to retain. All audio tracks are retained by default.
@@ -11722,8 +11728,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
-        """The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
-Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
+        """The sampling rate of the audio stream. the sampling rate options supported by different encoding standards are different. for details, see the audio sample rate support scope document (https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
+Unit: Hz.
+Please ensure that the sampling rate of the source audio stream is within the scope of the above options. otherwise, transcoding failure may occur.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -11736,10 +11743,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def AudioChannel(self):
         """Audio channel mode. Valid values:
-<li>1: single channel.</li>
-<li>2: dual channel.</li>
-<li>6: 5.1 surround sound.</li>
-When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
+<li>1: mono-channel.</li>
+<li>2: dual-channel.</li>
+<li>6: 5.1 surround sound.
+When the container format is audio (flac, ogg, mp3, and m4a), the audio channel cannot be set to 5.1 surround sound.
+
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -11784,21 +11792,23 @@ class AudioTrackChannelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelsRemix: Whether to enable the feature of multi-audio track mixing. valid values:
-0: indicates not enabling multi-audio track mix.
-1: Indicates enabling multi-audio track mixing.
-Default value: 0
+        :param _ChannelsRemix: Whether to enable the feature of multi-audio track mixing. Valid values:
+<li>0: To disable the multi-audio track mixing feature.
+<li>1: To enable the multi-audio track mixing feature. 
+<li>Default value: 0.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ChannelsRemix: int
-        :param _SelectType: Set the selector type for the input audio track. valid values:
-Track: indicates the usage of audio track id;.
-Track_channel: indicates the usage of the audio track id and sound channel id.
-Default: track.
-If the original video has multiple channels, it is recommended to use track_channel.
+        :param _SelectType: Set the selector type for the input audio track. Valid values:
+<li>track: indicates the usage of audio track id to identify the track to be used.
+<li>track_channel: indicates the usage of both the audio track id and sound channel id to identify the track and channel to be used.
+<li>Default value: track.
+If the original audio track has multiple sound channels, please use track_channel.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SelectType: str
         :param _InputTrackInfo: Audio track information.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :type InputTrackInfo: list of TrackInfo
         """
@@ -11808,10 +11818,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ChannelsRemix(self):
-        """Whether to enable the feature of multi-audio track mixing. valid values:
-0: indicates not enabling multi-audio track mix.
-1: Indicates enabling multi-audio track mixing.
-Default value: 0
+        """Whether to enable the feature of multi-audio track mixing. Valid values:
+<li>0: To disable the multi-audio track mixing feature.
+<li>1: To enable the multi-audio track mixing feature. 
+<li>Default value: 0.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
@@ -11824,11 +11834,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SelectType(self):
-        """Set the selector type for the input audio track. valid values:
-Track: indicates the usage of audio track id;.
-Track_channel: indicates the usage of the audio track id and sound channel id.
-Default: track.
-If the original video has multiple channels, it is recommended to use track_channel.
+        """Set the selector type for the input audio track. Valid values:
+<li>track: indicates the usage of audio track id to identify the track to be used.
+<li>track_channel: indicates the usage of both the audio track id and sound channel id to identify the track and channel to be used.
+<li>Default value: track.
+If the original audio track has multiple sound channels, please use track_channel.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -11841,6 +11852,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def InputTrackInfo(self):
         """Audio track information.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of TrackInfo
         """
@@ -47262,19 +47274,20 @@ class TrackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrackNum: Audio track and sound channel serial number, description:
-When the SelectType value is trask, this value is of the integer type, for example: 1.
-When the SelectType value is trask_channel, this value is of the decimal type, for example: 1.0.
-Default value: `1.0`.
-The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, and input of 0 and positive integers is supported. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
+        :param _TrackNum: The serial number of the audio track and sound channel.
+<li>When the value of SelectType is track, this value is an integer, for example: 1.
+<li>When the value of SelectType is track_channel, this value is a decimal, for example: 1.0.
+<li>Default value: 1.0.
+The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index value of the audio track, which can be 0 or a positive integer. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index value of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :type TrackNum: str
-        :param _ChannelVolume: Sound channel volume. specifies the volume of the sound channel.
-Specifies that when the value of AudioChannel is 1, the length of this array is 1, for example: [6].
-Specifies that when the value of AudioChannel is 2, the array length is 2. for example: [0,6].
-When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
-Specifies the value array of this parameter. the value range is [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 indicates doubling the original volume. the default value is -60.
-Note: supports 3 decimal places.
+        :param _ChannelVolume: The volume of the sound channel.
+<li>When the value of AudioChannel is 1, the length of this array is 1. For example: [6].
+<li>When the value of AudioChannel is 2, the length of this array is 2. For example: [0,6].
+<li>When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16. For example: [-60,0,0,6].
+
+Please specify the value array for this parameter. The value range is between -60 and 6, where -60 indicates mute, 0 maintains the original volume, and 6 doubles the original volume. The default value is -60. Please note: This field supports up to 3 decimal places.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ChannelVolume: list of float
@@ -47284,11 +47297,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TrackNum(self):
-        """Audio track and sound channel serial number, description:
-When the SelectType value is trask, this value is of the integer type, for example: 1.
-When the SelectType value is trask_channel, this value is of the decimal type, for example: 1.0.
-Default value: `1.0`.
-The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index of the audio track, and input of 0 and positive integers is supported. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
+        """The serial number of the audio track and sound channel.
+<li>When the value of SelectType is track, this value is an integer, for example: 1.
+<li>When the value of SelectType is track_channel, this value is a decimal, for example: 1.0.
+<li>Default value: 1.0.
+The integer part represents the audio track serial number, and the decimal part represents the sound channel. The audio track serial number is the stream index value of the audio track, which can be 0 or a positive integer. The decimal part supports up to 2 decimal places, and only 0 - 63 is supported. However, when the Codec is aac/eac3/ac3, only 0 - 15 is supported for the decimal part. For example: for an audio track with a stream index value of 1, 1.0 represents the first sound channel of this audio track, and 1.1 represents the second sound channel of this audio track.
+
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -47300,12 +47314,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ChannelVolume(self):
-        """Sound channel volume. specifies the volume of the sound channel.
-Specifies that when the value of AudioChannel is 1, the length of this array is 1, for example: [6].
-Specifies that when the value of AudioChannel is 2, the array length is 2. for example: [0,6].
-When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16, for example: [-60,0,0,6].
-Specifies the value array of this parameter. the value range is [-60, 6]. among them, -60 indicates mute, 0 indicates keeping the original volume, and 6 indicates doubling the original volume. the default value is -60.
-Note: supports 3 decimal places.
+        """The volume of the sound channel.
+<li>When the value of AudioChannel is 1, the length of this array is 1. For example: [6].
+<li>When the value of AudioChannel is 2, the length of this array is 2. For example: [0,6].
+<li>When the value of AudioChannel is 6, the length of this array is greater than 2 and less than 16. For example: [-60,0,0,6].
+
+Please specify the value array for this parameter. The value range is between -60 and 6, where -60 indicates mute, 0 maintains the original volume, and 6 doubles the original volume. The default value is -60. Please note: This field supports up to 3 decimal places.
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of float

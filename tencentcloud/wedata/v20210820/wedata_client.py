@@ -4054,6 +4054,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetInstanceLog(self, request):
+        """This API is used to obtain instance lists.
+
+        :param request: Request instance for GetInstanceLog.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.GetInstanceLogRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.GetInstanceLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetInstanceLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetInstanceLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetIntegrationNodeColumnSchema(self, request):
         """Extracting DataInLong Node Field Schema
 
@@ -4123,6 +4146,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetTaskInstance(self, request):
+        """This API is used to obtain instance lists.
+
+        :param request: Request instance for GetTaskInstance.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.GetTaskInstanceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.GetTaskInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTaskInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTaskInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def KillOpsMakePlanInstances(self, request):
         """Batch Termination of Instances by Supplement Plan.
 
@@ -4160,6 +4206,29 @@ class WedataClient(AbstractClient):
             body = self.call("KillScheduleInstances", params, headers=headers)
             response = json.loads(body)
             model = models.KillScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListInstances(self, request):
+        """This API is used to obtain instance lists.
+
+        :param request: Request instance for ListInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ListInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ListInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

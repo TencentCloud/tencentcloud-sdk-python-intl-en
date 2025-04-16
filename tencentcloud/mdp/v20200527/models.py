@@ -8983,6 +8983,10 @@ class SSAIConf(AbstractModel):
         :type SourceCDNPrefix: str
         :param _AdCDNPrefix: Advertising CDN prefix needs to start with http:// or https://
         :type AdCDNPrefix: str
+        :param _PreRollAdsUrl: Pre-roll ad decision service address.
+        :type PreRollAdsUrl: str
+        :param _PreRollMaxAllowedDuration: The maximum allowed duration of pre-roll ads, (0, 3600].
+        :type PreRollMaxAllowedDuration: int
         """
         self._AdsUrl = None
         self._ConfigAliases = None
@@ -8995,6 +8999,8 @@ class SSAIConf(AbstractModel):
         self._DeliveryRestrictions = None
         self._SourceCDNPrefix = None
         self._AdCDNPrefix = None
+        self._PreRollAdsUrl = None
+        self._PreRollMaxAllowedDuration = None
 
     @property
     def AdsUrl(self):
@@ -9131,6 +9137,28 @@ class SSAIConf(AbstractModel):
     def AdCDNPrefix(self, AdCDNPrefix):
         self._AdCDNPrefix = AdCDNPrefix
 
+    @property
+    def PreRollAdsUrl(self):
+        """Pre-roll ad decision service address.
+        :rtype: str
+        """
+        return self._PreRollAdsUrl
+
+    @PreRollAdsUrl.setter
+    def PreRollAdsUrl(self, PreRollAdsUrl):
+        self._PreRollAdsUrl = PreRollAdsUrl
+
+    @property
+    def PreRollMaxAllowedDuration(self):
+        """The maximum allowed duration of pre-roll ads, (0, 3600].
+        :rtype: int
+        """
+        return self._PreRollMaxAllowedDuration
+
+    @PreRollMaxAllowedDuration.setter
+    def PreRollMaxAllowedDuration(self, PreRollMaxAllowedDuration):
+        self._PreRollMaxAllowedDuration = PreRollMaxAllowedDuration
+
 
     def _deserialize(self, params):
         self._AdsUrl = params.get("AdsUrl")
@@ -9149,6 +9177,8 @@ class SSAIConf(AbstractModel):
         self._DeliveryRestrictions = params.get("DeliveryRestrictions")
         self._SourceCDNPrefix = params.get("SourceCDNPrefix")
         self._AdCDNPrefix = params.get("AdCDNPrefix")
+        self._PreRollAdsUrl = params.get("PreRollAdsUrl")
+        self._PreRollMaxAllowedDuration = params.get("PreRollMaxAllowedDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

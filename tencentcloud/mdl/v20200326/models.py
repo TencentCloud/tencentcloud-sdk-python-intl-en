@@ -31,9 +31,9 @@ class AVTemplate(AbstractModel):
         :type NeedVideo: int
         :param _Vcodec: Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.
         :type Vcodec: str
-        :param _Width: Video width. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video width will be used.
+        :param _Width: Video width. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video width will be used.
         :type Width: int
-        :param _Height: Video height. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video height will be used.
+        :param _Height: Video height. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video height will be used.
         :type Height: int
         :param _Fps: Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.
         :type Fps: int
@@ -174,7 +174,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Width(self):
-        """Video width. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video width will be used.
+        """Video width. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video width will be used.
         :rtype: int
         """
         return self._Width
@@ -185,7 +185,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
     @property
     def Height(self):
-        """Video height. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video height will be used.
+        """Video height. Value range: (0, 4096]. The value must be an integer multiple of 2. If this parameter is left empty, the original video height will be used.
         :rtype: int
         """
         return self._Height
@@ -3554,225 +3554,6 @@ class DescribeImageSettings(AbstractModel):
         
 
 
-class DescribeMediaLiveHighlightResultRequest(AbstractModel):
-    """DescribeMediaLiveHighlightResult request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: Media live broadcast channel ID.
-        :type Id: str
-        :param _StartTime: Query start time, unix timestamp, query data within the last 6 hours by default, and the maximum query range supports the last 7 days.
-        :type StartTime: int
-        :param _EndTime: Query end time, Unix timestamp, query data within the last 6 hours by default, and the maximum query range supports the last 7 days.
-        :type EndTime: int
-        :param _PageNum: Paging query page number.
-        :type PageNum: int
-        :param _PageSize: Paging query the size of each page.
-        :type PageSize: int
-        """
-        self._Id = None
-        self._StartTime = None
-        self._EndTime = None
-        self._PageNum = None
-        self._PageSize = None
-
-    @property
-    def Id(self):
-        """Media live broadcast channel ID.
-        :rtype: str
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def StartTime(self):
-        """Query start time, unix timestamp, query data within the last 6 hours by default, and the maximum query range supports the last 7 days.
-        :rtype: int
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        """Query end time, Unix timestamp, query data within the last 6 hours by default, and the maximum query range supports the last 7 days.
-        :rtype: int
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def PageNum(self):
-        """Paging query page number.
-        :rtype: int
-        """
-        return self._PageNum
-
-    @PageNum.setter
-    def PageNum(self, PageNum):
-        self._PageNum = PageNum
-
-    @property
-    def PageSize(self):
-        """Paging query the size of each page.
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._PageNum = params.get("PageNum")
-        self._PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeMediaLiveHighlightResultResponse(AbstractModel):
-    """DescribeMediaLiveHighlightResult response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Info: Highlight results information.
-        :type Info: list of HighlightResInfoResp
-        :param _Id: Collection id.
-        :type Id: str
-        :param _ChannelId: Media live broadcast channel id.
-        :type ChannelId: str
-        :param _PageNum: Number of pages.
-        :type PageNum: int
-        :param _PageSize: Paging Size.
-        :type PageSize: int
-        :param _TotalNum: The total number of eligible entries in the background.
-        :type TotalNum: int
-        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Info = None
-        self._Id = None
-        self._ChannelId = None
-        self._PageNum = None
-        self._PageSize = None
-        self._TotalNum = None
-        self._RequestId = None
-
-    @property
-    def Info(self):
-        """Highlight results information.
-        :rtype: list of HighlightResInfoResp
-        """
-        return self._Info
-
-    @Info.setter
-    def Info(self, Info):
-        self._Info = Info
-
-    @property
-    def Id(self):
-        """Collection id.
-        :rtype: str
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def ChannelId(self):
-        """Media live broadcast channel id.
-        :rtype: str
-        """
-        return self._ChannelId
-
-    @ChannelId.setter
-    def ChannelId(self, ChannelId):
-        self._ChannelId = ChannelId
-
-    @property
-    def PageNum(self):
-        """Number of pages.
-        :rtype: int
-        """
-        return self._PageNum
-
-    @PageNum.setter
-    def PageNum(self, PageNum):
-        self._PageNum = PageNum
-
-    @property
-    def PageSize(self):
-        """Paging Size.
-        :rtype: int
-        """
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
-
-    @property
-    def TotalNum(self):
-        """The total number of eligible entries in the background.
-        :rtype: int
-        """
-        return self._TotalNum
-
-    @TotalNum.setter
-    def TotalNum(self, TotalNum):
-        self._TotalNum = TotalNum
-
-    @property
-    def RequestId(self):
-        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Info") is not None:
-            self._Info = []
-            for item in params.get("Info"):
-                obj = HighlightResInfoResp()
-                obj._deserialize(item)
-                self._Info.append(obj)
-        self._Id = params.get("Id")
-        self._ChannelId = params.get("ChannelId")
-        self._PageNum = params.get("PageNum")
-        self._PageSize = params.get("PageSize")
-        self._TotalNum = params.get("TotalNum")
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
     """DescribeStreamLiveChannelAlerts request structure.
 
@@ -6720,132 +6501,6 @@ class HighlightInfo(AbstractModel):
         
 
 
-class HighlightResInfoResp(AbstractModel):
-    """Highlight results information.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskId: MPS task ID.
-        :type TaskId: str
-        :param _SegmentUrl: Highlights video link.
-        :type SegmentUrl: str
-        :param _CovImgUrl: Collection cover link.
-        :type CovImgUrl: str
-        :param _CreateTime: Generation time, UTC format.
-        :type CreateTime: int
-        :param _StartTime: Starting pts.
-        :type StartTime: float
-        :param _EndTime: End pts.
-        :type EndTime: float
-        :param _Duration: Duration in seconds.
-        :type Duration: float
-        """
-        self._TaskId = None
-        self._SegmentUrl = None
-        self._CovImgUrl = None
-        self._CreateTime = None
-        self._StartTime = None
-        self._EndTime = None
-        self._Duration = None
-
-    @property
-    def TaskId(self):
-        """MPS task ID.
-        :rtype: str
-        """
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-    @property
-    def SegmentUrl(self):
-        """Highlights video link.
-        :rtype: str
-        """
-        return self._SegmentUrl
-
-    @SegmentUrl.setter
-    def SegmentUrl(self, SegmentUrl):
-        self._SegmentUrl = SegmentUrl
-
-    @property
-    def CovImgUrl(self):
-        """Collection cover link.
-        :rtype: str
-        """
-        return self._CovImgUrl
-
-    @CovImgUrl.setter
-    def CovImgUrl(self, CovImgUrl):
-        self._CovImgUrl = CovImgUrl
-
-    @property
-    def CreateTime(self):
-        """Generation time, UTC format.
-        :rtype: int
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def StartTime(self):
-        """Starting pts.
-        :rtype: float
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        """End pts.
-        :rtype: float
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def Duration(self):
-        """Duration in seconds.
-        :rtype: float
-        """
-        return self._Duration
-
-    @Duration.setter
-    def Duration(self, Duration):
-        self._Duration = Duration
-
-
-    def _deserialize(self, params):
-        self._TaskId = params.get("TaskId")
-        self._SegmentUrl = params.get("SegmentUrl")
-        self._CovImgUrl = params.get("CovImgUrl")
-        self._CreateTime = params.get("CreateTime")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._Duration = params.get("Duration")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class HlsRemuxSettingsInfo(AbstractModel):
     """HLS protocol configuration.
 
@@ -6880,6 +6535,8 @@ Currently, fMP4 segments do not support DRM or time shifting.
         :type VideoResolution: int
         :param _EndListTag: Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.
         :type EndListTag: int
+        :param _AdMarkupType: Optional: `ENHANCED_SCTE35`, `DATERANGE`; default value: `ENHANCED_SCTE35`.
+        :type AdMarkupType: str
         """
         self._SegmentDuration = None
         self._SegmentNumber = None
@@ -6894,6 +6551,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._StreamOrder = None
         self._VideoResolution = None
         self._EndListTag = None
+        self._AdMarkupType = None
 
     @property
     def SegmentDuration(self):
@@ -7039,6 +6697,17 @@ Currently, fMP4 segments do not support DRM or time shifting.
     def EndListTag(self, EndListTag):
         self._EndListTag = EndListTag
 
+    @property
+    def AdMarkupType(self):
+        """Optional: `ENHANCED_SCTE35`, `DATERANGE`; default value: `ENHANCED_SCTE35`.
+        :rtype: str
+        """
+        return self._AdMarkupType
+
+    @AdMarkupType.setter
+    def AdMarkupType(self, AdMarkupType):
+        self._AdMarkupType = AdMarkupType
+
 
     def _deserialize(self, params):
         self._SegmentDuration = params.get("SegmentDuration")
@@ -7054,6 +6723,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._StreamOrder = params.get("StreamOrder")
         self._VideoResolution = params.get("VideoResolution")
         self._EndListTag = params.get("EndListTag")
+        self._AdMarkupType = params.get("AdMarkupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12159,9 +11829,9 @@ class VideoTemplateInfo(AbstractModel):
         :type Vcodec: str
         :param _VideoBitrate: Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.
         :type VideoBitrate: int
-        :param _Width: Video width. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.
+        :param _Width: Video width. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
         :type Width: int
-        :param _Height: Video height. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.
+        :param _Height: Video height. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
         :type Height: int
         :param _Fps: Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.
         :type Fps: int
@@ -12254,7 +11924,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Width(self):
-        """Video width. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.
+        """Video width. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
         :rtype: int
         """
         return self._Width
@@ -12265,7 +11935,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Height(self):
-        """Video height. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.
+        """Video height. Value range: (0,4096]. The value can only be a multiple of 2. If this parameter is left empty, the original value will be used.
         :rtype: int
         """
         return self._Height

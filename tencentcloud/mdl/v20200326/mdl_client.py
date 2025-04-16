@@ -256,29 +256,6 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeMediaLiveHighlightResult(self, request):
-        """Query the highlight result information corresponding to the media live broadcast channel.
-
-        :param request: Request instance for DescribeMediaLiveHighlightResult.
-        :type request: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveHighlightResultRequest`
-        :rtype: :class:`tencentcloud.mdl.v20200326.models.DescribeMediaLiveHighlightResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeMediaLiveHighlightResult", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeMediaLiveHighlightResultResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeStreamLiveChannel(self, request):
         """This API is used to query a StreamLive channel.
 
