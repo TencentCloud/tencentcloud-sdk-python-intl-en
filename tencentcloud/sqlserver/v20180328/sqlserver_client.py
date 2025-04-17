@@ -923,6 +923,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMaintenanceSpan(self, request):
+        """This API is used to query the maintenance time window of an instance based on its instance ID.
+
+        :param request: Request instance for DescribeMaintenanceSpan.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMaintenanceSpanRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMaintenanceSpanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaintenanceSpan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaintenanceSpanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMigrationDetail(self, request):
         """This API is used to query migration task details.
 
