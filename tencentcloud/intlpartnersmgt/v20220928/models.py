@@ -3359,19 +3359,33 @@ class DescribeCustomerInfoData(AbstractModel):
         :type Name: str
         :param _BindTime: Binding time.
         :type BindTime: str
-        :param _AccountStatus: Account status
-.
+        :param _AccountStatus: Account status.
 0: normal.
 1: forcibly mandatory (this function is not supported yet).
 2: mandatory arrears. 
         :type AccountStatus: str
-        :param _AuthStatus: Identity verification status.
--1: files not uploaded.
-0: not submitted for review.
-1: under review.
-2: review error.
-3: approved.
+        :param _AuthStatus: Specifies the identity verification status.
+-999: account information not found.
+-1: file not uploaded.
+0: pending review.
+Under review.
+Error in review: 2.
+3: pass review.
         :type AuthStatus: str
+        :param _AuthType: Real-Name type.
+-1: default value. no such information. 
+0: personal type. 
+1: enterprise type.
+        :type AuthType: int
+        :param _CidRegisterTime: Specifies the registration time of the cid.
+        :type CidRegisterTime: str
+        :param _UinRegisterTime: Specifies the registration time of the uin.
+        :type UinRegisterTime: str
+        :param _AuthPassTime: Time when real-name authentication passed.
+        :type AuthPassTime: str
+        :param _HasExpense: Whether there is consumption.
+0: no consumption; 1: consumption.
+        :type HasExpense: int
         """
         self._CustomerUin = None
         self._Email = None
@@ -3381,6 +3395,11 @@ class DescribeCustomerInfoData(AbstractModel):
         self._BindTime = None
         self._AccountStatus = None
         self._AuthStatus = None
+        self._AuthType = None
+        self._CidRegisterTime = None
+        self._UinRegisterTime = None
+        self._AuthPassTime = None
+        self._HasExpense = None
 
     @property
     def CustomerUin(self):
@@ -3450,8 +3469,7 @@ class DescribeCustomerInfoData(AbstractModel):
 
     @property
     def AccountStatus(self):
-        """Account status
-.
+        """Account status.
 0: normal.
 1: forcibly mandatory (this function is not supported yet).
 2: mandatory arrears. 
@@ -3465,12 +3483,13 @@ class DescribeCustomerInfoData(AbstractModel):
 
     @property
     def AuthStatus(self):
-        """Identity verification status.
--1: files not uploaded.
-0: not submitted for review.
-1: under review.
-2: review error.
-3: approved.
+        """Specifies the identity verification status.
+-999: account information not found.
+-1: file not uploaded.
+0: pending review.
+Under review.
+Error in review: 2.
+3: pass review.
         :rtype: str
         """
         return self._AuthStatus
@@ -3478,6 +3497,65 @@ class DescribeCustomerInfoData(AbstractModel):
     @AuthStatus.setter
     def AuthStatus(self, AuthStatus):
         self._AuthStatus = AuthStatus
+
+    @property
+    def AuthType(self):
+        """Real-Name type.
+-1: default value. no such information. 
+0: personal type. 
+1: enterprise type.
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def CidRegisterTime(self):
+        """Specifies the registration time of the cid.
+        :rtype: str
+        """
+        return self._CidRegisterTime
+
+    @CidRegisterTime.setter
+    def CidRegisterTime(self, CidRegisterTime):
+        self._CidRegisterTime = CidRegisterTime
+
+    @property
+    def UinRegisterTime(self):
+        """Specifies the registration time of the uin.
+        :rtype: str
+        """
+        return self._UinRegisterTime
+
+    @UinRegisterTime.setter
+    def UinRegisterTime(self, UinRegisterTime):
+        self._UinRegisterTime = UinRegisterTime
+
+    @property
+    def AuthPassTime(self):
+        """Time when real-name authentication passed.
+        :rtype: str
+        """
+        return self._AuthPassTime
+
+    @AuthPassTime.setter
+    def AuthPassTime(self, AuthPassTime):
+        self._AuthPassTime = AuthPassTime
+
+    @property
+    def HasExpense(self):
+        """Whether there is consumption.
+0: no consumption; 1: consumption.
+        :rtype: int
+        """
+        return self._HasExpense
+
+    @HasExpense.setter
+    def HasExpense(self, HasExpense):
+        self._HasExpense = HasExpense
 
 
     def _deserialize(self, params):
@@ -3489,6 +3567,11 @@ class DescribeCustomerInfoData(AbstractModel):
         self._BindTime = params.get("BindTime")
         self._AccountStatus = params.get("AccountStatus")
         self._AuthStatus = params.get("AuthStatus")
+        self._AuthType = params.get("AuthType")
+        self._CidRegisterTime = params.get("CidRegisterTime")
+        self._UinRegisterTime = params.get("UinRegisterTime")
+        self._AuthPassTime = params.get("AuthPassTime")
+        self._HasExpense = params.get("HasExpense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

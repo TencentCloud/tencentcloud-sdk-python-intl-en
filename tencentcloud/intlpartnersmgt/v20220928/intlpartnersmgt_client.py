@@ -380,9 +380,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerInfo(self, request):
-        """This API is used to query the customer information.
-
-        Callable roles: Distributor, Reseller
+        """This API is used to query sub-customer information.
+        Invocation roles: reseller, first-level distributor.
 
         :param request: Request instance for DescribeCustomerInfo.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerInfoRequest`
