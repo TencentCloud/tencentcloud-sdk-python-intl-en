@@ -6480,17 +6480,21 @@ class CreateBandwidthPackageRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _NetworkType: The network type of the bandwidth package. Default value: `BGP`. Valid values:
-`BGP` 
+`BGP`
 `HIGH_QUALITY_BGP`
         :type NetworkType: str
-        :param _ChargeType: The billing mode of the bandwidth package. Default value: `TOP5_POSTPAID_BY_MONTH`. Valid values:
-<li>`TOP5_POSTPAID_BY_MONTH`: monthly top 5 </li>
-<li>`PERCENT95_POSTPAID_BY_MONTH`: monthly 95th percentile</li>
-<li>`FIXED_PREPAID_BY_MONTH`: monthly subscription</li>
+        :param _ChargeType: The billing mode of the bandwidth package. Default value: `ENHANCED95_POSTPAID_BY_MONTH`. Valid values:
+<li>`ENHANCED95_POSTPAID_BY_MONTH`: Pay-as-you-go - Enhanced 95th percentile</li>
+<li>`PRIMARY_TRAFFIC_POSTPAID_BY_HOUR`: Postpaid - Main Traffic Billing</li>
+<li>`BANDWIDTH_POSTPAID_BY_DAY`: General BGP, Pay-as-you-go - Bandwidth-based</li>
+<li>`PEAK_BANDWIDTH_POSTPAID_BY_DAY`: Static single-line, Pay-as-you-go - Daily billed</li>
+<li>`TOP5_POSTPAID_BY_MONTH`: Pay-as-you-go - Monthly top 5th, If you need to use this Bglling mode, please submit a ticket.</li>
+
+
         :type ChargeType: str
         :param _BandwidthPackageName: The name of the bandwidth package.
         :type BandwidthPackageName: str
-        :param _BandwidthPackageCount: The number of bandwidth packages to create. Valid range: 1-20. It can only be “1” for bill-by-CVM accounts.
+        :param _BandwidthPackageCount: The number of bandwidth packages to create. Valid range: 1-20. It can only be "1" for bill-by-CVM accounts.
         :type BandwidthPackageCount: int
         :param _InternetMaxBandwidth: The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit. This feature is currently in beta.
         :type InternetMaxBandwidth: int
@@ -6500,6 +6504,10 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type Protocol: str
         :param _TimeSpan: 
         :type TimeSpan: int
+        :param _Egress:     Network egress. It defaults to `center_egress1`. Valid values:
+center_egress1,center_egress2,center_egress3
+
+        :type Egress: str
         """
         self._NetworkType = None
         self._ChargeType = None
@@ -6509,11 +6517,12 @@ class CreateBandwidthPackageRequest(AbstractModel):
         self._Tags = None
         self._Protocol = None
         self._TimeSpan = None
+        self._Egress = None
 
     @property
     def NetworkType(self):
         """The network type of the bandwidth package. Default value: `BGP`. Valid values:
-`BGP` 
+`BGP`
 `HIGH_QUALITY_BGP`
         :rtype: str
         """
@@ -6525,10 +6534,14 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def ChargeType(self):
-        """The billing mode of the bandwidth package. Default value: `TOP5_POSTPAID_BY_MONTH`. Valid values:
-<li>`TOP5_POSTPAID_BY_MONTH`: monthly top 5 </li>
-<li>`PERCENT95_POSTPAID_BY_MONTH`: monthly 95th percentile</li>
-<li>`FIXED_PREPAID_BY_MONTH`: monthly subscription</li>
+        """The billing mode of the bandwidth package. Default value: `ENHANCED95_POSTPAID_BY_MONTH`. Valid values:
+<li>`ENHANCED95_POSTPAID_BY_MONTH`: Pay-as-you-go - Enhanced 95th percentile</li>
+<li>`PRIMARY_TRAFFIC_POSTPAID_BY_HOUR`: Postpaid - Main Traffic Billing</li>
+<li>`BANDWIDTH_POSTPAID_BY_DAY`: General BGP, Pay-as-you-go - Bandwidth-based</li>
+<li>`PEAK_BANDWIDTH_POSTPAID_BY_DAY`: Static single-line, Pay-as-you-go - Daily billed</li>
+<li>`TOP5_POSTPAID_BY_MONTH`: Pay-as-you-go - Monthly top 5th, If you need to use this Bglling mode, please submit a ticket.</li>
+
+
         :rtype: str
         """
         return self._ChargeType
@@ -6550,7 +6563,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def BandwidthPackageCount(self):
-        """The number of bandwidth packages to create. Valid range: 1-20. It can only be “1” for bill-by-CVM accounts.
+        """The number of bandwidth packages to create. Valid range: 1-20. It can only be "1" for bill-by-CVM accounts.
         :rtype: int
         """
         return self._BandwidthPackageCount
@@ -6603,6 +6616,19 @@ class CreateBandwidthPackageRequest(AbstractModel):
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
 
+    @property
+    def Egress(self):
+        """    Network egress. It defaults to `center_egress1`. Valid values:
+center_egress1,center_egress2,center_egress3
+
+        :rtype: str
+        """
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._NetworkType = params.get("NetworkType")
@@ -6618,6 +6644,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
                 self._Tags.append(obj)
         self._Protocol = params.get("Protocol")
         self._TimeSpan = params.get("TimeSpan")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

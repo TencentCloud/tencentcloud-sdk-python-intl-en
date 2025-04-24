@@ -14,6 +14,12 @@
 # limitations under the License.
 
 
+# 
+FAILEDOPERATION_AICONCURRENTNOPACKAGE = 'FailedOperation.AIConcurrentNoPackage'
+
+# 
+FAILEDOPERATION_AICONCURRENTOVERFREQUENCY = 'FailedOperation.AIConcurrentOverFrequency'
+
 # Outbound call failure.
 FAILEDOPERATION_CALLOUTFAILED = 'FailedOperation.CallOutFailed'
 
@@ -118,6 +124,9 @@ INVALIDPARAMETERVALUE_APPLYIDNOTEXIST = 'InvalidParameterValue.ApplyIDNotExist'
 
 # Error in the status of the review form.
 INVALIDPARAMETERVALUE_ERRORAPPLYSTATUS = 'InvalidParameterValue.ErrorApplyStatus'
+
+# 
+INVALIDPARAMETERVALUE_EXPERIENCEACCOUNT = 'InvalidParameterValue.ExperienceAccount'
 
 # The SDKAppID does not exist.
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'

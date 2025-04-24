@@ -1600,6 +1600,8 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def PromptVariables(self):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         """Prompt variable.
         :rtype: list of Variable
         """
@@ -1607,6 +1609,8 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @PromptVariables.setter
     def PromptVariables(self, PromptVariables):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         self._PromptVariables = PromptVariables
 
 
@@ -1685,6 +1689,32 @@ class CreateAICallRequest(AbstractModel):
         :type SdkAppId: int
         :param _Callee: Called number.
         :type Callee: str
+        :param _LLMType: Model interface protocol types, currently compatible with three protocol types:
+
+- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
+- Azure protocol:"azure"
+- Minimax protocol:"minimax"
+        :type LLMType: str
+        :param _APIKey: Model API key, for authentication information, please refer to the respective model's official website
+
+- OpenAI protocol: [GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key), [DeepSeek](https://api-docs.deepseek.com/zh-cn/);
+
+- Azure protocol: [Azure GPT](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-studio#key-settings);
+
+- Minimax:[Minimax](https://platform.minimaxi.com/document/Fast%20access?key=66701cf51d57f38758d581b2)
+        :type APIKey: str
+        :param _APIUrl: Model interface address
+
+- OpenAI protocol
+GPT:"https://api.openai.com/v1/"
+Deepseek:"https://api.deepseek.com/v1"
+
+- Azure protocol
+ "https://{your-resource-name}.openai.azure.com?api-version={api-version}"
+
+- Minimax protocol
+"https://api.minimax.chat/v1"
+        :type APIUrl: str
         :param _SystemPrompt: ## Identity
 You are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.
 
@@ -1717,12 +1747,6 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
   - If user asks something you do not know, let them know you don't have the answer. Ask them if they have any other questions.
   - If user do not have any questions, call function end_call to hang up.
         :type SystemPrompt: str
-        :param _LLMType: Model interface protocol types, currently compatible with three protocol types:
-
-- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
-- Azure protocol:"azure"
-- Minimax protocol:"minimax"
-        :type LLMType: str
         :param _Model: Model name, such as
 
 - OpenAI protocol
@@ -1734,26 +1758,6 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
 - Minimax protocol
 "deepseek-chat".
         :type Model: str
-        :param _APIKey: Model API key, for authentication information, please refer to the respective model's official website
-
-- OpenAI protocol: [GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key), [DeepSeek](https://api-docs.deepseek.com/zh-cn/);
-
-- Azure protocol: [Azure GPT](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-studio#key-settings);
-
-- Minimax:[Minimax](https://platform.minimaxi.com/document/Fast%20access?key=66701cf51d57f38758d581b2)
-        :type APIKey: str
-        :param _APIUrl: Model interface address
-
-- OpenAI protocol
-GPT:"https://api.openai.com/v1/"
-Deepseek:"https://api.deepseek.com/v1"
-
-- Azure protocol
- "https://{your-resource-name}.openai.azure.com?api-version={api-version}"
-
-- Minimax protocol
-"https://api.minimax.chat/v1"
-        :type APIUrl: str
         :param _VoiceType: The following voice parameter values are available by default. If you wish to customize the voice type, please leave VoiceType blank and configure it in the CustomTTSConfig parameter.
 
 Chinese:
@@ -1904,11 +1908,11 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         """
         self._SdkAppId = None
         self._Callee = None
-        self._SystemPrompt = None
         self._LLMType = None
-        self._Model = None
         self._APIKey = None
         self._APIUrl = None
+        self._SystemPrompt = None
+        self._Model = None
         self._VoiceType = None
         self._Callers = None
         self._WelcomeMessage = None
@@ -1953,6 +1957,59 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._Callee = Callee
 
     @property
+    def LLMType(self):
+        """Model interface protocol types, currently compatible with three protocol types:
+
+- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
+- Azure protocol:"azure"
+- Minimax protocol:"minimax"
+        :rtype: str
+        """
+        return self._LLMType
+
+    @LLMType.setter
+    def LLMType(self, LLMType):
+        self._LLMType = LLMType
+
+    @property
+    def APIKey(self):
+        """Model API key, for authentication information, please refer to the respective model's official website
+
+- OpenAI protocol: [GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key), [DeepSeek](https://api-docs.deepseek.com/zh-cn/);
+
+- Azure protocol: [Azure GPT](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-studio#key-settings);
+
+- Minimax:[Minimax](https://platform.minimaxi.com/document/Fast%20access?key=66701cf51d57f38758d581b2)
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
+    def APIUrl(self):
+        """Model interface address
+
+- OpenAI protocol
+GPT:"https://api.openai.com/v1/"
+Deepseek:"https://api.deepseek.com/v1"
+
+- Azure protocol
+ "https://{your-resource-name}.openai.azure.com?api-version={api-version}"
+
+- Minimax protocol
+"https://api.minimax.chat/v1"
+        :rtype: str
+        """
+        return self._APIUrl
+
+    @APIUrl.setter
+    def APIUrl(self, APIUrl):
+        self._APIUrl = APIUrl
+
+    @property
     def SystemPrompt(self):
         """## Identity
 You are Kate from the appointment department at Retell Health calling Cindy over the phone to prepare for the annual checkup coming up. You are a pleasant and friendly receptionist caring deeply for the user. You don't provide medical advice but would use the medical knowledge to understand user responses.
@@ -1994,21 +2051,6 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
         self._SystemPrompt = SystemPrompt
 
     @property
-    def LLMType(self):
-        """Model interface protocol types, currently compatible with three protocol types:
-
-- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
-- Azure protocol:"azure"
-- Minimax protocol:"minimax"
-        :rtype: str
-        """
-        return self._LLMType
-
-    @LLMType.setter
-    def LLMType(self, LLMType):
-        self._LLMType = LLMType
-
-    @property
     def Model(self):
         """Model name, such as
 
@@ -2027,44 +2069,6 @@ If at any time the user showed anger or wanted a human agent, call transfer_call
     @Model.setter
     def Model(self, Model):
         self._Model = Model
-
-    @property
-    def APIKey(self):
-        """Model API key, for authentication information, please refer to the respective model's official website
-
-- OpenAI protocol: [GPT](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key), [DeepSeek](https://api-docs.deepseek.com/zh-cn/);
-
-- Azure protocol: [Azure GPT](https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Ctypescript%2Cpython-new&pivots=programming-language-studio#key-settings);
-
-- Minimax:[Minimax](https://platform.minimaxi.com/document/Fast%20access?key=66701cf51d57f38758d581b2)
-        :rtype: str
-        """
-        return self._APIKey
-
-    @APIKey.setter
-    def APIKey(self, APIKey):
-        self._APIKey = APIKey
-
-    @property
-    def APIUrl(self):
-        """Model interface address
-
-- OpenAI protocol
-GPT:"https://api.openai.com/v1/"
-Deepseek:"https://api.deepseek.com/v1"
-
-- Azure protocol
- "https://{your-resource-name}.openai.azure.com?api-version={api-version}"
-
-- Minimax protocol
-"https://api.minimax.chat/v1"
-        :rtype: str
-        """
-        return self._APIUrl
-
-    @APIUrl.setter
-    def APIUrl(self, APIUrl):
-        self._APIUrl = APIUrl
 
     @property
     def VoiceType(self):
@@ -2362,6 +2366,8 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def PromptVariables(self):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         """Prompt word variable.
         :rtype: list of Variable
         """
@@ -2369,6 +2375,8 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @PromptVariables.setter
     def PromptVariables(self, PromptVariables):
+        warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
+
         self._PromptVariables = PromptVariables
 
     @property
@@ -2397,11 +2405,11 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._Callee = params.get("Callee")
-        self._SystemPrompt = params.get("SystemPrompt")
         self._LLMType = params.get("LLMType")
-        self._Model = params.get("Model")
         self._APIKey = params.get("APIKey")
         self._APIUrl = params.get("APIUrl")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._Model = params.get("Model")
         self._VoiceType = params.get("VoiceType")
         self._Callers = params.get("Callers")
         self._WelcomeMessage = params.get("WelcomeMessage")
@@ -11516,6 +11524,8 @@ class StaffInfo(AbstractModel):
 
     @property
     def RoleId(self):
+        warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
+
         """User role id.
         :rtype: int
         """
@@ -11523,6 +11533,8 @@ class StaffInfo(AbstractModel):
 
     @RoleId.setter
     def RoleId(self, RoleId):
+        warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
+
         self._RoleId = RoleId
 
     @property
