@@ -426,6 +426,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRebateDownloadUrl(self, request):
+        """This API is used to download the commission bill file by resellers/agents. The file URL is returned.
+        Resellers/Agents can call this API.
+
+        :param request: Request instance for DescribeRebateDownloadUrl.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeRebateDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeRebateDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRebateDownloadUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRebateDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ForceQN(self, request):
         """Forced Service Suspension settings and cancellation can be used only after the reseller is whitelisted.
 
