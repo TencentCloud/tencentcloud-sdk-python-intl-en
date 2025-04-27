@@ -22368,9 +22368,12 @@ class CreateSubAppIdRequest(AbstractModel):
         :type Name: str
         :param _Description: Subapplication overview. Length limit: 300 characters.
         :type Description: str
+        :param _Type: 
+        :type Type: str
         """
         self._Name = None
         self._Description = None
+        self._Type = None
 
     @property
     def Name(self):
@@ -22394,10 +22397,22 @@ class CreateSubAppIdRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def Type(self):
+        """
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Description = params.get("Description")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25922,17 +25937,17 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :param _SubAppId: <B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :type SubAppId: int
-        :param _Definitions: Unique ID filter of transcoding to adaptive bitrate streaming templates. Array length limit: 100.
+        :param _Definitions: Unique id filter of transcoding to adaptive bitrate streaming templates. array length limit: 100.
         :type Definitions: list of int non-negative
-        :param _Offset: Paged offset. Default value: 0.
+        :param _Offset: Pagination offset. default value: 0.
         :type Offset: int
-        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :param _Limit: Number of returned entries. default value: 10. maximum value: 100.
         :type Limit: int
-        :param _Type: Template type filter. Valid values:
-<li>Preset: preset template;</li>
-<li>Custom: custom template.</li>
+        :param _Type: Template type filter. valid values:.
+<Li>Preset: system preset template;</li>.
+<Li>Custom: user-defined template.</li>.
         :type Type: str
         """
         self._SubAppId = None
@@ -25943,7 +25958,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        """<B>VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) id. starting from december 25, 2023, if you want to access resources in the vod application (whether it is the default application or a newly created application), you must enter the application id in this field.</b>.
         :rtype: int
         """
         return self._SubAppId
@@ -25954,7 +25969,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        """Unique ID filter of transcoding to adaptive bitrate streaming templates. Array length limit: 100.
+        """Unique id filter of transcoding to adaptive bitrate streaming templates. array length limit: 100.
         :rtype: list of int non-negative
         """
         return self._Definitions
@@ -25965,7 +25980,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        """Paged offset. Default value: 0.
+        """Pagination offset. default value: 0.
         :rtype: int
         """
         return self._Offset
@@ -25976,7 +25991,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        """Number of returned entries. Default value: 10. Maximum value: 100.
+        """Number of returned entries. default value: 10. maximum value: 100.
         :rtype: int
         """
         return self._Limit
@@ -25987,9 +26002,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
-        """Template type filter. Valid values:
-<li>Preset: preset template;</li>
-<li>Custom: custom template.</li>
+        """Template type filter. valid values:.
+<Li>Preset: system preset template;</li>.
+<Li>Custom: user-defined template.</li>.
         :rtype: str
         """
         return self._Type
@@ -26022,7 +26037,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of eligible entries.
+        :param _TotalCount: The total number of records matching the filter criteria.
         :type TotalCount: int
         :param _AdaptiveDynamicStreamingTemplateSet: List of transcoding to adaptive bitrate streaming template details.
         :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
@@ -26035,7 +26050,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of eligible entries.
+        """The total number of records matching the filter criteria.
         :rtype: int
         """
         return self._TotalCount
@@ -35549,7 +35564,7 @@ class EnhanceMediaQualityOutputConfig(AbstractModel):
         :param _ClassId: Category ID, used for media classification management, can be obtained by [creating a category](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) interface, create a category, get the category ID.
 <li>Default value: 0, which means other categories.</li>
         :type ClassId: int
-        :param _ExpireTime: The expiration time of the output file, the file will be deleted after this time, the default is never to expire, the format is in accordance with the ISO 8601 standard, see [ISO date format description](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)。
+        :param _ExpireTime: The expiration time of the output file, the file will be deleted after this time, the default is never to expire, the format is in accordance with the ISO 8601 standard, see [ISO date format description](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type ExpireTime: str
         """
         self._MediaName = None
@@ -35581,7 +35596,7 @@ class EnhanceMediaQualityOutputConfig(AbstractModel):
 
     @property
     def ExpireTime(self):
-        """The expiration time of the output file, the file will be deleted after this time, the default is never to expire, the format is in accordance with the ISO 8601 standard, see [ISO date format description](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)。
+        """The expiration time of the output file, the file will be deleted after this time, the default is never to expire, the format is in accordance with the ISO 8601 standard, see [ISO date format description](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :rtype: str
         """
         return self._ExpireTime
@@ -64961,10 +64976,10 @@ class RestoreMediaRequest(AbstractModel):
         r"""
         :param _FileIds: Media file unique identifier list, maximum length: 100.
         :type FileIds: list of str
-        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
-        :type SubAppId: int
         :param _RestoreDay: The accessible duration of the unfrozen temporary media files must be greater than 0, and the unit is "days".
         :type RestoreDay: int
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :type SubAppId: int
         :param _RestoreTier: The retrieval mode. If the current storage class is ARCHIVE, the valid values for this parameter are as follows:
 <li>Expedited: The files are made available in five minutes.</li>
 <li>Standard: The files are made available in five hours.</li>
@@ -64975,8 +64990,8 @@ If the current storage class is DEEP ARCHIVE, the valid values for this paramete
         :type RestoreTier: str
         """
         self._FileIds = None
-        self._SubAppId = None
         self._RestoreDay = None
+        self._SubAppId = None
         self._RestoreTier = None
 
     @property
@@ -64991,17 +65006,6 @@ If the current storage class is DEEP ARCHIVE, the valid values for this paramete
         self._FileIds = FileIds
 
     @property
-    def SubAppId(self):
-        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
-        :rtype: int
-        """
-        return self._SubAppId
-
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
-
-    @property
     def RestoreDay(self):
         """The accessible duration of the unfrozen temporary media files must be greater than 0, and the unit is "days".
         :rtype: int
@@ -65011,6 +65015,17 @@ If the current storage class is DEEP ARCHIVE, the valid values for this paramete
     @RestoreDay.setter
     def RestoreDay(self, RestoreDay):
         self._RestoreDay = RestoreDay
+
+    @property
+    def SubAppId(self):
+        """<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def RestoreTier(self):
@@ -65032,8 +65047,8 @@ If the current storage class is DEEP ARCHIVE, the valid values for this paramete
 
     def _deserialize(self, params):
         self._FileIds = params.get("FileIds")
-        self._SubAppId = params.get("SubAppId")
         self._RestoreDay = params.get("RestoreDay")
+        self._SubAppId = params.get("SubAppId")
         self._RestoreTier = params.get("RestoreTier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -71279,6 +71294,8 @@ Default value: 0 px.
 
     @property
     def CycleConfig(self):
+        warnings.warn("parameter `CycleConfig` is deprecated", DeprecationWarning) 
+
         """Watermark period configuration is used to configure the watermark to be displayed and hidden periodically. 
 The main usage scenario is: in order to prevent video from being blocked, watermarks are set in multiple places on the video. These watermarks are periodically displayed and hidden in a fixed order. 
 For example, set four watermarks A, B, C, and D to be located in the upper left corner, upper right corner, lower right corner, and lower left corner of the video respectively. When the video starts, { A displays for 5 seconds -> B displays for 5 seconds -> C Display for 5 seconds -> D Display for 5 seconds} -> A Display for 5 seconds -> B Display for 5 seconds -> ..., only one watermark is displayed at any time. 
@@ -71292,6 +71309,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @CycleConfig.setter
     def CycleConfig(self, CycleConfig):
+        warnings.warn("parameter `CycleConfig` is deprecated", DeprecationWarning) 
+
         self._CycleConfig = CycleConfig
 
 

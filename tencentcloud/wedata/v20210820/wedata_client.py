@@ -26,6 +26,29 @@ class WedataClient(AbstractClient):
     _service = 'wedata'
 
 
+    def AddProjectUserRole(self, request):
+        """This API is used to add a user role to a project.
+
+        :param request: Request instance for AddProjectUserRole.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.AddProjectUserRoleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.AddProjectUserRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddProjectUserRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddProjectUserRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchCreateIntegrationTaskAlarms(self, request):
         """Bulk Create Task Alert Rules
 
@@ -2763,6 +2786,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRoleList(self, request):
+        """This API is used to retrieve role list information.
+
+        :param request: Request instance for DescribeRoleList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRoleListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRoleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRule(self, request):
         """Queries rule details
 
@@ -5203,6 +5249,29 @@ class WedataClient(AbstractClient):
             body = self.call("UnlockIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.UnlockIntegrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateProjectUserRole(self, request):
+        """This API is used to modify user roles in a project.
+
+        :param request: Request instance for UpdateProjectUserRole.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateProjectUserRoleRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateProjectUserRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProjectUserRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateProjectUserRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
