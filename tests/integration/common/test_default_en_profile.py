@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import json
 import os
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
@@ -8,25 +7,21 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.cvm.v20170312 import cvm_client, models
 
 
-def test_request_common_param_language():
-    endpoint = "cvm.tencentcloudapi.com"
-    region = "ap-guangzhou"
-    language = "zh-CN"
-
+def test_default_en_profile():
     try:
         cred = credential.Credential(
             os.environ.get("TENCENTCLOUD_SECRET_ID"),
             os.environ.get("TENCENTCLOUD_SECRET_KEY"))
         httpProfile = HttpProfile()
-        httpProfile.endpoint = endpoint
+        httpProfile.endpoint = "cvm.tencentcloudapi.com"
 
-        clientProfile = ClientProfile(language=language)
+        clientProfile = ClientProfile()
         clientProfile.httpProfile = httpProfile
-        client = cvm_client.CvmClient(cred, region, clientProfile)
+        client = cvm_client.CvmClient(cred, "ap-guangzhou", clientProfile)
 
         req = models.DescribeZonesRequest()
         resp = client.DescribeZones(req)
         if resp.TotalCount > 0:
-            assert "Guangzhou" not in resp.to_json_string(), "language=zh-CN not working"
+            assert "Guangzhou" in resp.to_json_string(), "default \"language=en-US\" not working"
     except TencentCloudSDKException as err:
         assert False, "unexpected request failure"
