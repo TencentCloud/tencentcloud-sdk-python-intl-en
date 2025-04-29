@@ -8553,6 +8553,370 @@ class RecognizeBrazilRNEOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecognizeBrazilRNMOCRRequest(AbstractModel):
+    """RecognizeBrazilRNMOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
+        :type ImageBase64: str
+        :param _ImageUrl: URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        :type ImageUrl: str
+        :param _BackImageBase64: Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        :type BackImageBase64: str
+        :param _BackImageUrl: The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        :type BackImageUrl: str
+        :param _ReturnHeadImage: Whether to return portrait photos.
+        :type ReturnHeadImage: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._BackImageBase64 = None
+        self._BackImageUrl = None
+        self._ReturnHeadImage = None
+
+    @property
+    def ImageBase64(self):
+        """Base64 value of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image downloading time should not exceed 3 seconds.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        """URL address of the image. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. URLs of images stored in Tencent Cloud can guarantee higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The speed and stability of URLs not stored in Tencent Cloud may be affected to a certain extent.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageBase64(self):
+        """Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image should not exceed 7M after Base64 encoding. Image download time should not exceed 3 seconds. An ImageUrl and ImageBase64 must be provided. If both are provided, only ImageUrl will be used.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
+    def BackImageUrl(self):
+        """The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download time does not exceed 3 seconds. The URL of the image stored in Tencent Cloud can ensure higher download speed and stability. It is recommended to store the image in Tencent Cloud. The speed and stability of the URL stored outside Tencent Cloud may be affected to a certain extent.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
+    def ReturnHeadImage(self):
+        """Whether to return portrait photos.
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._BackImageBase64 = params.get("BackImageBase64")
+        self._BackImageUrl = params.get("BackImageUrl")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeBrazilRNMOCRResponse(AbstractModel):
+    """RecognizeBrazilRNMOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SOBRENOME: Last name
+        :type SOBRENOME: str
+        :param _NOME: First name
+        :type NOME: str
+        :param _DATADENASCIMENTO: Date of Birth
+        :type DATADENASCIMENTO: str
+        :param _SEXO: Gender
+        :type SEXO: str
+        :param _MEMBERSHIP: Parents name
+        :type MEMBERSHIP: str
+        :param _NACIONALIDADE: Nationality
+        :type NACIONALIDADE: str
+        :param _VALIDADE: Expiry Date
+        :type VALIDADE: str
+        :param _RNM: RNM
+        :type RNM: str
+        :param _CPF: CPF
+        :type CPF: str
+        :param _CLASSIFICATION: 
+        :type CLASSIFICATION: str
+        :param _PRAZODERESIDENCIA: 
+        :type PRAZODERESIDENCIA: str
+        :param _ISSUANCE: Issue Date
+        :type ISSUANCE: str
+        :param _AMPAROLEGAL: Legal basis
+        :type AMPAROLEGAL: str
+        :param _MRZ: Machine readable zone code
+        :type MRZ: str
+        :param _PortraitImage: PortraitImage
+        :type PortraitImage: str
+        :param _PortraitImageBack: PortraitImage(Back)
+        :type PortraitImageBack: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SOBRENOME = None
+        self._NOME = None
+        self._DATADENASCIMENTO = None
+        self._SEXO = None
+        self._MEMBERSHIP = None
+        self._NACIONALIDADE = None
+        self._VALIDADE = None
+        self._RNM = None
+        self._CPF = None
+        self._CLASSIFICATION = None
+        self._PRAZODERESIDENCIA = None
+        self._ISSUANCE = None
+        self._AMPAROLEGAL = None
+        self._MRZ = None
+        self._PortraitImage = None
+        self._PortraitImageBack = None
+        self._RequestId = None
+
+    @property
+    def SOBRENOME(self):
+        """Last name
+        :rtype: str
+        """
+        return self._SOBRENOME
+
+    @SOBRENOME.setter
+    def SOBRENOME(self, SOBRENOME):
+        self._SOBRENOME = SOBRENOME
+
+    @property
+    def NOME(self):
+        """First name
+        :rtype: str
+        """
+        return self._NOME
+
+    @NOME.setter
+    def NOME(self, NOME):
+        self._NOME = NOME
+
+    @property
+    def DATADENASCIMENTO(self):
+        """Date of Birth
+        :rtype: str
+        """
+        return self._DATADENASCIMENTO
+
+    @DATADENASCIMENTO.setter
+    def DATADENASCIMENTO(self, DATADENASCIMENTO):
+        self._DATADENASCIMENTO = DATADENASCIMENTO
+
+    @property
+    def SEXO(self):
+        """Gender
+        :rtype: str
+        """
+        return self._SEXO
+
+    @SEXO.setter
+    def SEXO(self, SEXO):
+        self._SEXO = SEXO
+
+    @property
+    def MEMBERSHIP(self):
+        """Parents name
+        :rtype: str
+        """
+        return self._MEMBERSHIP
+
+    @MEMBERSHIP.setter
+    def MEMBERSHIP(self, MEMBERSHIP):
+        self._MEMBERSHIP = MEMBERSHIP
+
+    @property
+    def NACIONALIDADE(self):
+        """Nationality
+        :rtype: str
+        """
+        return self._NACIONALIDADE
+
+    @NACIONALIDADE.setter
+    def NACIONALIDADE(self, NACIONALIDADE):
+        self._NACIONALIDADE = NACIONALIDADE
+
+    @property
+    def VALIDADE(self):
+        """Expiry Date
+        :rtype: str
+        """
+        return self._VALIDADE
+
+    @VALIDADE.setter
+    def VALIDADE(self, VALIDADE):
+        self._VALIDADE = VALIDADE
+
+    @property
+    def RNM(self):
+        """RNM
+        :rtype: str
+        """
+        return self._RNM
+
+    @RNM.setter
+    def RNM(self, RNM):
+        self._RNM = RNM
+
+    @property
+    def CPF(self):
+        """CPF
+        :rtype: str
+        """
+        return self._CPF
+
+    @CPF.setter
+    def CPF(self, CPF):
+        self._CPF = CPF
+
+    @property
+    def CLASSIFICATION(self):
+        """
+        :rtype: str
+        """
+        return self._CLASSIFICATION
+
+    @CLASSIFICATION.setter
+    def CLASSIFICATION(self, CLASSIFICATION):
+        self._CLASSIFICATION = CLASSIFICATION
+
+    @property
+    def PRAZODERESIDENCIA(self):
+        """
+        :rtype: str
+        """
+        return self._PRAZODERESIDENCIA
+
+    @PRAZODERESIDENCIA.setter
+    def PRAZODERESIDENCIA(self, PRAZODERESIDENCIA):
+        self._PRAZODERESIDENCIA = PRAZODERESIDENCIA
+
+    @property
+    def ISSUANCE(self):
+        """Issue Date
+        :rtype: str
+        """
+        return self._ISSUANCE
+
+    @ISSUANCE.setter
+    def ISSUANCE(self, ISSUANCE):
+        self._ISSUANCE = ISSUANCE
+
+    @property
+    def AMPAROLEGAL(self):
+        """Legal basis
+        :rtype: str
+        """
+        return self._AMPAROLEGAL
+
+    @AMPAROLEGAL.setter
+    def AMPAROLEGAL(self, AMPAROLEGAL):
+        self._AMPAROLEGAL = AMPAROLEGAL
+
+    @property
+    def MRZ(self):
+        """Machine readable zone code
+        :rtype: str
+        """
+        return self._MRZ
+
+    @MRZ.setter
+    def MRZ(self, MRZ):
+        self._MRZ = MRZ
+
+    @property
+    def PortraitImage(self):
+        """PortraitImage
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def PortraitImageBack(self):
+        """PortraitImage(Back)
+        :rtype: str
+        """
+        return self._PortraitImageBack
+
+    @PortraitImageBack.setter
+    def PortraitImageBack(self, PortraitImageBack):
+        self._PortraitImageBack = PortraitImageBack
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SOBRENOME = params.get("SOBRENOME")
+        self._NOME = params.get("NOME")
+        self._DATADENASCIMENTO = params.get("DATADENASCIMENTO")
+        self._SEXO = params.get("SEXO")
+        self._MEMBERSHIP = params.get("MEMBERSHIP")
+        self._NACIONALIDADE = params.get("NACIONALIDADE")
+        self._VALIDADE = params.get("VALIDADE")
+        self._RNM = params.get("RNM")
+        self._CPF = params.get("CPF")
+        self._CLASSIFICATION = params.get("CLASSIFICATION")
+        self._PRAZODERESIDENCIA = params.get("PRAZODERESIDENCIA")
+        self._ISSUANCE = params.get("ISSUANCE")
+        self._AMPAROLEGAL = params.get("AMPAROLEGAL")
+        self._MRZ = params.get("MRZ")
+        self._PortraitImage = params.get("PortraitImage")
+        self._PortraitImageBack = params.get("PortraitImageBack")
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeGeneralInvoiceRequest(AbstractModel):
     """RecognizeGeneralInvoice request structure.
 

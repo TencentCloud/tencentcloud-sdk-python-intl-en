@@ -39568,7 +39568,9 @@ class GetInstanceLogRequest(AbstractModel):
         :type ProjectId: str
         :param _InstanceKey: Unique identifier of an instance.
         :type InstanceKey: str
-        :param _LifeRoundNum: Lifecycle no.
+        :param _LifeRoundNum: Instance lifetime number, which identifies one-time execution of the instance.
+
+For example: the number of the first run of a periodic instance is 0. when the user reruns the instance later, the number of the second execution is 1.
         :type LifeRoundNum: int
         :param _ScheduleTimeZone: Time zone.
 Time zone. specifies the time zone. the default value is UTC+8.
@@ -39598,6 +39600,11 @@ The default is 1.
         :param _EndLineCount: End line number for obtaining logs.
 The default value is 10000.
         :type EndLineCount: int
+        :param _ExtInfo: Used when performing a paging query for logs. it has no specific business meaning.
+
+Specifies that the value is null for the first query. 
+Use the ExtInfo field value in the returned information from the previous query for the second and subsequent queries.
+        :type ExtInfo: str
         """
         self._ProjectId = None
         self._InstanceKey = None
@@ -39609,6 +39616,7 @@ The default value is 10000.
         self._LogLevel = None
         self._StartLineNum = None
         self._EndLineCount = None
+        self._ExtInfo = None
 
     @property
     def ProjectId(self):
@@ -39634,7 +39642,9 @@ The default value is 10000.
 
     @property
     def LifeRoundNum(self):
-        """Lifecycle no.
+        """Instance lifetime number, which identifies one-time execution of the instance.
+
+For example: the number of the first run of a periodic instance is 0. when the user reruns the instance later, the number of the second execution is 1.
         :rtype: int
         """
         return self._LifeRoundNum
@@ -39734,6 +39744,20 @@ The default value is 10000.
     def EndLineCount(self, EndLineCount):
         self._EndLineCount = EndLineCount
 
+    @property
+    def ExtInfo(self):
+        """Used when performing a paging query for logs. it has no specific business meaning.
+
+Specifies that the value is null for the first query. 
+Use the ExtInfo field value in the returned information from the previous query for the second and subsequent queries.
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -39746,6 +39770,7 @@ The default value is 10000.
         self._LogLevel = params.get("LogLevel")
         self._StartLineNum = params.get("StartLineNum")
         self._EndLineCount = params.get("EndLineCount")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40917,10 +40942,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecutorGroupName: str
-        :param _CurRunDate: Standard data time.
+        :param _CurRunDate: Instance data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CurRunDate: str
-        :param _NextCurDate: Next standard data time.
+        :param _NextCurDate: Next instance data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NextCurDate: str
         :param _TryLimit: Limit on the number of retries issued each time a run fails.
@@ -40932,23 +40957,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TotalRunNum: Cumulative running times.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalRunNum: int
-        :param _LifeRoundNum: Lifecycle no.
+        :param _LifeRoundNum: Instance lifetime number, which identifies one-time execution of the instance.
+
+For example: the number of the first run of a periodic instance is 0. after the user reruns the instance later, the number of the second execution is 1.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LifeRoundNum: int
         :param _InstanceType: Instance type.
 
--0 indicates the supplementary entry type.
--1 indicates a periodic instance.
--2 indicates a non-periodic instance.
+-0 indicates Replenished Instance.
+-1 indicates Periodic Instance.
+-2 indicates Non-Periodic Instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: int
         :param _InstanceState: Indicates the status of an instance.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22] indicate running.
+-[21]: skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -40969,11 +40996,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _InstanceRunType: Instance running trigger type.
 
 -RERUN indicates rerunning.
--ADDITION indicates supplementary recording.
+-ADDITION indicates data replenishment.
 -PERIODIC indicates a period.
 -APERIODIC indicates non-periodic.
 -RERUN_SKIP_RUN indicates re-run - empty run.
--ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-ADDITION_SKIP_RUN indicates a data replenishment run - empty run.
 -PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
 -APERIODIC_SKIP_RUN indicates a non-periodic empty run.
 -MANUAL_TRIGGER indicates manual triggering.
@@ -41194,7 +41221,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurRunDate(self):
-        """Standard data time.
+        """Instance data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -41206,7 +41233,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextCurDate(self):
-        """Next standard data time.
+        """Next instance data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -41254,7 +41281,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifeRoundNum(self):
-        """Lifecycle no.
+        """Instance lifetime number, which identifies one-time execution of the instance.
+
+For example: the number of the first run of a periodic instance is 0. after the user reruns the instance later, the number of the second execution is 1.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -41268,9 +41297,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceType(self):
         """Instance type.
 
--0 indicates the supplementary entry type.
--1 indicates a periodic instance.
--2 indicates a non-periodic instance.
+-0 indicates Replenished Instance.
+-1 indicates Periodic Instance.
+-2 indicates Non-Periodic Instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -41284,11 +41313,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceState(self):
         """Indicates the status of an instance.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22] indicate running.
+-[21]: skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -41354,11 +41383,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """Instance running trigger type.
 
 -RERUN indicates rerunning.
--ADDITION indicates supplementary recording.
+-ADDITION indicates data replenishment.
 -PERIODIC indicates a period.
 -APERIODIC indicates non-periodic.
 -RERUN_SKIP_RUN indicates re-run - empty run.
--ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-ADDITION_SKIP_RUN indicates a data replenishment run - empty run.
 -PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
 -APERIODIC_SKIP_RUN indicates a non-periodic empty run.
 -MANUAL_TRIGGER indicates manual triggering.
@@ -41732,27 +41761,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceKey: str
         :param _InstanceState: Instance status.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22] indicate running.
+-[21] skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceState: int
-        :param _LifeRoundNum: Lifecycle no.
+        :param _LifeRoundNum: Instance lifetime number, which identifies one-time execution of the instance.
+
+For example: the number of the first run of a periodic instance is 0. when the user reruns the instance later, the number of the second execution is 1.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LifeRoundNum: int
         :param _RunType: Instance running trigger type.
 
 -RERUN indicates rerunning.
--ADDITION indicates supplementary recording.
+-ADDITION indicates data replenishment.
 -PERIODIC indicates a period.
 -APERIODIC indicates non-periodic.
 -RERUN_SKIP_RUN means empty run for re-run.
--ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-ADDITION_SKIP_RUN indicates data replenishment - empty run.
 -PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
 -APERIODIC_SKIP_RUN indicates a non-periodic empty run.
 -MANUAL_TRIGGER indicates manual triggering.
@@ -41770,6 +41801,8 @@ The file content specifies the code used for running the execution instance this
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CodeFileName: str
         :param _ExecutionJobId: Dispatch execution ID.
+The unified execution platform dispatches execution to the new version executor with a unique ID to identify a specific execution, while the existing old executors do not have this ID when dispatching execution.
+If it is unknown whether the executor version supports this ID, contact tencent cloud's operations team.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecutionJobId: str
         :param _BrokerIp: The execution node where the log resides.
@@ -41817,11 +41850,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceState(self):
         """Instance status.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22] indicate running.
+-[21] skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -41836,7 +41869,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifeRoundNum(self):
-        """Lifecycle no.
+        """Instance lifetime number, which identifies one-time execution of the instance.
+
+For example: the number of the first run of a periodic instance is 0. when the user reruns the instance later, the number of the second execution is 1.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
@@ -41851,11 +41886,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """Instance running trigger type.
 
 -RERUN indicates rerunning.
--ADDITION indicates supplementary recording.
+-ADDITION indicates data replenishment.
 -PERIODIC indicates a period.
 -APERIODIC indicates non-periodic.
 -RERUN_SKIP_RUN means empty run for re-run.
--ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-ADDITION_SKIP_RUN indicates data replenishment - empty run.
 -PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
 -APERIODIC_SKIP_RUN indicates a non-periodic empty run.
 -MANUAL_TRIGGER indicates manual triggering.
@@ -41909,6 +41944,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ExecutionJobId(self):
         """Dispatch execution ID.
+The unified execution platform dispatches execution to the new version executor with a unique ID to identify a specific execution, while the existing old executors do not have this ID when dispatching execution.
+If it is unknown whether the executor version supports this ID, contact tencent cloud's operations team.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -42006,11 +42043,11 @@ class InstanceLifeDetailDto(AbstractModel):
     def __init__(self):
         r"""
         :param _State: Indicates the status of an instance.
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22]  indicate running.
+-[21] skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -42021,14 +42058,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         :type StartTime: str
         :param _DetailState: Instance lifecycle phase status.
 
--WAIT_UPSTREAM indicates waiting for event/upstream status.
--WAIT_RUN indicates a waiting for running status.
--RUNNING indicates a running state.
--COMPLETE indicates the final state - completed.
--FAILED indicates the final state - retry on failure.
--EXPIRED indicates the final state - failure.
--SKIP_RUNNING indicates the final state - a branch skipped by the upstream branch node.
--HISTORY indicates compatibility with historical instances.
+-WAIT_UPSTREAM indicates waiting for an event or upstream status.
+-WAIT_RUN indicates waiting for running status.
+-RUNNING indicates the running state.
+-COMPLETE indicates terminal state - completed.
+-FAILED indicates terminal state - retry after failure.
+-EXPIRED indicates terminal state - failure.
+-SKIP_RUNNING indicates terminal state - a branch skipped by the upstream branch node.
+-HISTORY indicates compatibility with historical instances before march 30, 2024. no need to pay attention to this enumeration type for instances afterward.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DetailState: str
         :param _EndTime: End Time of the State
@@ -42043,11 +42080,11 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def State(self):
         """Indicates the status of an instance.
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22]  indicate running.
+-[21] skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -42076,14 +42113,14 @@ Note: This field may return null, indicating that no valid value can be obtained
     def DetailState(self):
         """Instance lifecycle phase status.
 
--WAIT_UPSTREAM indicates waiting for event/upstream status.
--WAIT_RUN indicates a waiting for running status.
--RUNNING indicates a running state.
--COMPLETE indicates the final state - completed.
--FAILED indicates the final state - retry on failure.
--EXPIRED indicates the final state - failure.
--SKIP_RUNNING indicates the final state - a branch skipped by the upstream branch node.
--HISTORY indicates compatibility with historical instances.
+-WAIT_UPSTREAM indicates waiting for an event or upstream status.
+-WAIT_RUN indicates waiting for running status.
+-RUNNING indicates the running state.
+-COMPLETE indicates terminal state - completed.
+-FAILED indicates terminal state - retry after failure.
+-EXPIRED indicates terminal state - failure.
+-SKIP_RUNNING indicates terminal state - a branch skipped by the upstream branch node.
+-HISTORY indicates compatibility with historical instances before march 30, 2024. no need to pay attention to this enumeration type for instances afterward.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -42925,11 +42962,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ProjectId: str
         :param _InstanceState: **Instance status**.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22] indicate running.
+-[21] skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -42937,12 +42974,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceState: int
         :param _RunType: Instance running trigger type.
 
--RERUN indicates rerunning.
+-RERUN indicates data replenishment.
 -ADDITION indicates supplementary recording.
 -PERIODIC indicates a period.
 -APERIODIC indicates non-periodic.
 -RERUN_SKIP_RUN means empty run for re-run.
--ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-ADDITION_SKIP_RUN indicates data replenishment - empty run.
 -PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
 -APERIODIC_SKIP_RUN indicates a non-periodic empty run.
 -MANUAL_TRIGGER indicates manual triggering.
@@ -42975,7 +43012,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _LineCount: Row count of returned logs this time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LineCount: int
-        :param _ExtInfo: Execute platform log pagination query parameters, transparently input for each request. the value is an empty string when querying the first page.
+        :param _ExtInfo: Used when performing a paging query for logs. it has no specific business meaning.
+
+Specifies that the value is null for the first query. 
+Specifies that you can use the field value of ExtInfo in the returned information from the previous query for the second and subsequent queries.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExtInfo: str
         :param _IsEnd: Paging query for logs. indicates whether it is the last page.
@@ -43026,11 +43066,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceState(self):
         """**Instance status**.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
--21: skip running.
+-[1, 19, 22] indicate running.
+-[21] skip running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
 -[2] indicates a success.
@@ -43047,12 +43087,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RunType(self):
         """Instance running trigger type.
 
--RERUN indicates rerunning.
+-RERUN indicates data replenishment.
 -ADDITION indicates supplementary recording.
 -PERIODIC indicates a period.
 -APERIODIC indicates non-periodic.
 -RERUN_SKIP_RUN means empty run for re-run.
--ADDITION_SKIP_RUN indicates a supplementary run - empty run.
+-ADDITION_SKIP_RUN indicates data replenishment - empty run.
 -PERIODIC_SKIP_RUN indicates an empty run in a periodic cycle.
 -APERIODIC_SKIP_RUN indicates a non-periodic empty run.
 -MANUAL_TRIGGER indicates manual triggering.
@@ -43166,7 +43206,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtInfo(self):
-        """Execute platform log pagination query parameters, transparently input for each request. the value is an empty string when querying the first page.
+        """Used when performing a paging query for logs. it has no specific business meaning.
+
+Specifies that the value is null for the first query. 
+Specifies that you can use the field value of ExtInfo in the returned information from the previous query for the second and subsequent queries.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -44879,7 +44922,7 @@ Supports filtering multiple conditions with an or relationship between them.
 * C: CRONTAB_CYCLE
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskCycleType: str
-        :param _CurRunDate: Standard data time.
+        :param _CurRunDate: Instance data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CurRunDate: str
         :param _TryLimit: Specifies the limit on the number of retries issued each time a running failure occurs.
@@ -44901,7 +44944,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceType: int
         :param _InstanceState: Indicates the status of an instance.
 
--Indicates waiting for event.
+-[0]Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
 -[1, 19, 22]: running.
@@ -45104,7 +45147,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurRunDate(self):
-        """Standard data time.
+        """Instance data time.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -45171,7 +45214,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def InstanceState(self):
         """Indicates the status of an instance.
 
--Indicates waiting for event.
+-[0]Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
 -[1, 19, 22]: running.
@@ -47775,11 +47818,11 @@ class ListInstancesRequest(AbstractModel):
         r"""
         :param _ProjectId: **Project ID**.
         :type ProjectId: str
-        :param _ScheduleTimeFrom: Instance plan scheduling time.
-Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        :param _ScheduleTimeFrom: Filter criteria for instance planned scheduling time.
+Specifies the start time for filtering. the time format is yyyy-MM-dd HH:MM:ss.
         :type ScheduleTimeFrom: str
-        :param _ScheduleTimeTo: Instance plan scheduling time.
-Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        :param _ScheduleTimeTo: Filter criteria for instance planned scheduling time.
+Filter expiration time. the time format is yyyy-MM-dd HH:MM:ss.
         :type ScheduleTimeTo: str
         :param _PageNumber: Page number, integer.
 Use in conjunction with pageSize and cannot be less than 1. the default value is 1.
@@ -47787,12 +47830,12 @@ Use in conjunction with pageSize and cannot be less than 1. the default value is
         :param _PageSize: Number of items per page, integer.
 Use in conjunction with pageNumber and should not exceed 200. default value: 10.
         :type PageSize: int
-        :param _SortColumn: Field used to sort query results.
+        :param _SortColumn: Sorting field for query results.
 
--SCHEDULE_DATE indicates the planned scheduling time.
--START_TIME indicates the start execution time of an instance.
--END_TIME indicates the execution end time of the instance.
--COST_TIME indicates the execution duration of an instance.
+-SCHEDULE_DATE indicates sorting based on the planned scheduling time.
+-START_TIME indicates sorting by the instance's start execution time.
+-END_TIME indicates sorting based on the instance execution end time.
+-COST_TIME indicates sorting based on instance execution duration.
         :type SortColumn: str
         :param _SortType: Instance sorting order.
 
@@ -47801,17 +47844,17 @@ Use in conjunction with pageNumber and should not exceed 200. default value: 10.
         :type SortType: str
         :param _InstanceType: Instance type.
 
--0 indicates the supplementary entry type.
--1 indicates a periodic instance.
--2 indicates a non-periodic instance.
+-0 indicates Replenished Instance.
+-1 indicates Periodic Instance.
+-2 indicates Non-Periodic instance.
         :type InstanceType: int
         :param _InstanceStateList: Instance execution status.
 Support filtering multiple items with an "or" relationship between conditions.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
+-[1, 19, 22] indicate running.
 -[21] indicates skipping running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
@@ -47852,11 +47895,11 @@ Supports filtering multiple conditions with an or relationship between them.
 The scheduling resource group list under the project can be obtained through the DescribeNormalSchedulerExecutorGroups api.
 The DescribeNormalIntegrationExecutorGroups API can be used to obtain the list of all integration resource groups under a project.
         :type ExecutorGroupIdList: list of str
-        :param _StartTimeFrom: **Start time**.
-Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        :param _StartTimeFrom: Instance execution start time filter criteria.
+Specifies the start time for filtering. the time format is yyyy-MM-dd HH:MM:ss.
         :type StartTimeFrom: str
-        :param _StartTimeTo: **Start time**.
-Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        :param _StartTimeTo: Instance execution start time filter criteria.
+Filter expiration time. the time format is yyyy-MM-dd HH:MM:ss.
         :type StartTimeTo: str
         :param _ScheduleTimeZone: Time zone.
 Time zone. specifies the time zone. the default value is UTC+8.
@@ -47895,8 +47938,8 @@ Time zone. specifies the time zone. the default value is UTC+8.
 
     @property
     def ScheduleTimeFrom(self):
-        """Instance plan scheduling time.
-Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        """Filter criteria for instance planned scheduling time.
+Specifies the start time for filtering. the time format is yyyy-MM-dd HH:MM:ss.
         :rtype: str
         """
         return self._ScheduleTimeFrom
@@ -47907,8 +47950,8 @@ Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
 
     @property
     def ScheduleTimeTo(self):
-        """Instance plan scheduling time.
-Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        """Filter criteria for instance planned scheduling time.
+Filter expiration time. the time format is yyyy-MM-dd HH:MM:ss.
         :rtype: str
         """
         return self._ScheduleTimeTo
@@ -47943,12 +47986,12 @@ Use in conjunction with pageNumber and should not exceed 200. default value: 10.
 
     @property
     def SortColumn(self):
-        """Field used to sort query results.
+        """Sorting field for query results.
 
--SCHEDULE_DATE indicates the planned scheduling time.
--START_TIME indicates the start execution time of an instance.
--END_TIME indicates the execution end time of the instance.
--COST_TIME indicates the execution duration of an instance.
+-SCHEDULE_DATE indicates sorting based on the planned scheduling time.
+-START_TIME indicates sorting by the instance's start execution time.
+-END_TIME indicates sorting based on the instance execution end time.
+-COST_TIME indicates sorting based on instance execution duration.
         :rtype: str
         """
         return self._SortColumn
@@ -47975,9 +48018,9 @@ Use in conjunction with pageNumber and should not exceed 200. default value: 10.
     def InstanceType(self):
         """Instance type.
 
--0 indicates the supplementary entry type.
--1 indicates a periodic instance.
--2 indicates a non-periodic instance.
+-0 indicates Replenished Instance.
+-1 indicates Periodic Instance.
+-2 indicates Non-Periodic instance.
         :rtype: int
         """
         return self._InstanceType
@@ -47991,10 +48034,10 @@ Use in conjunction with pageNumber and should not exceed 200. default value: 10.
         """Instance execution status.
 Support filtering multiple items with an "or" relationship between conditions.
 
--Indicates waiting for event.
+-[0] Indicates waiting for event.
 -[12] indicates waiting for upstream.
 -[6, 7, 9, 10, 18] indicates awaiting execution.
--1, 19, 22 indicate running.
+-[1, 19, 22] indicate running.
 -[21] indicates skipping running.
 -[3] indicates retry on failure.
 -[8, 4, 5, 13] indicates a failure.
@@ -48107,8 +48150,8 @@ The DescribeNormalIntegrationExecutorGroups API can be used to obtain the list o
 
     @property
     def StartTimeFrom(self):
-        """**Start time**.
-Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
+        """Instance execution start time filter criteria.
+Specifies the start time for filtering. the time format is yyyy-MM-dd HH:MM:ss.
         :rtype: str
         """
         return self._StartTimeFrom
@@ -48119,8 +48162,8 @@ Filter start time. the time format is yyyy-MM-dd HH:MM:ss.
 
     @property
     def StartTimeTo(self):
-        """**Start time**.
-Filter expiration time. time format: yyyy-MM-dd HH:MM:ss.
+        """Instance execution start time filter criteria.
+Filter expiration time. the time format is yyyy-MM-dd HH:MM:ss.
         :rtype: str
         """
         return self._StartTimeTo

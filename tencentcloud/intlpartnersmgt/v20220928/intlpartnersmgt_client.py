@@ -792,6 +792,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QuerySubAgentsDetailV2(self, request):
+        """This API is used to query information of second-level resellers.
+        Invocation Role:Distributor.
+
+        :param request: Request instance for QuerySubAgentsDetailV2.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QuerySubAgentsDetailV2Request`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QuerySubAgentsDetailV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QuerySubAgentsDetailV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.QuerySubAgentsDetailV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryT1IndirectCustomersDetail(self, request):
         """This API is used to query the indirect sub-customers of a first-level distributor.
         Invokable role type: first-level reseller.

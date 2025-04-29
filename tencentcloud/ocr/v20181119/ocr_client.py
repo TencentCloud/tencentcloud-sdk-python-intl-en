@@ -422,6 +422,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeBrazilRNMOCR(self, request):
+        """This interface supports identification of the front and back of Brazilian RNM license. The default interface request frequency limit is 5 times per second.
+
+        :param request: Request instance for RecognizeBrazilRNMOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeBrazilRNMOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeBrazilRNMOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeBrazilRNMOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeBrazilRNMOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeGeneralInvoice(self, request):
         """This API is used to recognize various types of invoices or tickets in an image or PDF file. You can also specify a type. 14 types of standard expense reimbursement invoices are supported, including value-added tax (VAT) invoice (special, general, roll, blockchain, and toll), fully digitalized electronic invoice (special and general), non-tax revenue invoice (general receipt and general payment voucher), quota invoice, general machine-printed invoice, car sales invoice (motor vehicle sales invoice and used car invoice), train ticket, taxi receipt, itinerary/receipt of e-ticket for air transportation, bus ticket, ship ticket, toll receipt, and medical invoice (inpatient and outpatient). This API can also be used for intelligent recognition of other types of invoices. To try now, click [here](https://intl.cloud.tencent.com/product/ocr?from_cn_redirect=1).
 
