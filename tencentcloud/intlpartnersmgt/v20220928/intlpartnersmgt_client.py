@@ -817,8 +817,8 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def QueryT1IndirectCustomersDetail(self, request):
-        """This API is used to query the indirect sub-customers of a first-level distributor.
-        Invokable role type: first-level reseller.
+        """This API is used to query the indirect sub-customers of a distributor.
+        Invokable role type: Distributor
 
         :param request: Request instance for QueryT1IndirectCustomersDetail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryT1IndirectCustomersDetailRequest`

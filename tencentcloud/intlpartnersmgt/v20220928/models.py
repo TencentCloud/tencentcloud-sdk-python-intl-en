@@ -6870,7 +6870,7 @@ class QueryT1IndirectCustomersDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: The number of indirect sub-customers of a first-level distributor.
+        :param _Total: The number of indirect sub-customers of a distributor.
         :type Total: int
         :param _SubAgentUin: Second-level reseller UIN.
         :type SubAgentUin: int
@@ -6889,7 +6889,7 @@ class QueryT1IndirectCustomersDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        """The number of indirect sub-customers of a first-level distributor.
+        """The number of indirect sub-customers of a distributor.
         :rtype: int
         """
         return self._Total
