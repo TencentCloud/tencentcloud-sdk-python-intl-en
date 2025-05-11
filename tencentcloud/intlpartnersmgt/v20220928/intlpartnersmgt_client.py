@@ -104,6 +104,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApproveSubAgentApply(self, request):
+        """This API is used to approve applications for second-level resellers.
+        Invocation Role: Distributor.
+
+        :param request: Request instance for ApproveSubAgentApply.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ApproveSubAgentApplyRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ApproveSubAgentApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApproveSubAgentApply", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApproveSubAgentApplyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccount(self, request):
         """This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:
         1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.
@@ -133,14 +157,13 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def CreateAndSendClientInvitationMail(self, request):
-        """This API is used to apply for the allowlist. If needed, please contact your business representative.Directions:
-        1.This API is used to create an invitation link, which you can send to a specified email address.
-        2.Customer need to click the invitation link in the email, fill in and submit the required information.
-        3.You can review the customer's application in customer management  after submission.
+        """This API is used to perform operations. Application for allowlist is required before usage. If needed, contact your business representative to request allowlisting. The specific usage process is as follows;.
+        This API is used to create an invitation link. You can send the invitation link to your designated email address.
+        2. Customers need to click the invitation link in the mailbox, fill in and submit relevant information.
+        3. After customer submission, you can view the application of this sub-customer on the customer management page and review it.
 
-        Note:This API is used to manually send the invitation link to the customer if the specified email does not receive it.
-
-        Callable roles: Distributor, Second-level reseller, Reseller
+        This API is used to handle cases where if the designated mailbox does not receive the invitation link, you can send the invitation link returned by the API to the customer manually.
+        Invocation roles: resellers, distributors, second-level reseller.
 
         :param request: Request instance for CreateAndSendClientInvitationMail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.CreateAndSendClientInvitationMailRequest`
@@ -759,6 +782,30 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("QueryPendingClientsV2", params, headers=headers)
             response = json.loads(body)
             model = models.QueryPendingClientsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryPendingSubAgentsV2(self, request):
+        """This API is used to query information of second-level resellers in application.
+        Invocation Role: Distributor.
+
+        :param request: Request instance for QueryPendingSubAgentsV2.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPendingSubAgentsV2Request`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.QueryPendingSubAgentsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryPendingSubAgentsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryPendingSubAgentsV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

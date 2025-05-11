@@ -464,7 +464,7 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCESOURCE = 'InvalidParameterValue.InvalidInst
 # Invalid IP address.
 INVALIDPARAMETERVALUE_INVALIDIPFORMAT = 'InvalidParameterValue.InvalidIpFormat'
 
-# Incorrect format of instance launch template description.
+# Instance boot template description format is incorrect.
 INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATEDESCRIPTION = 'InvalidParameterValue.InvalidLaunchTemplateDescription'
 
 # Incorrect format of instance launch template name.
