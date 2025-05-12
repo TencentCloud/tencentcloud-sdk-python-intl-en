@@ -27,7 +27,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ActivateInstance(self, request):
-        """This API is used to remove the isolation of an instance to make it accessible again.
+        """This interface (ActivateInstance) restores access to isolated instances.
 
         :param request: Request instance for ActivateInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ActivateInstanceRequest`
@@ -50,7 +50,7 @@ class CynosdbClient(AbstractClient):
 
 
     def AddClusterSlaveZone(self, request):
-        """This API is used to add the replica AZ.
+        """This interface (AddClusterSlaveZone) is used to enable multi-az deployment for a cluster.
 
         :param request: Request instance for AddClusterSlaveZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddClusterSlaveZoneRequest`
@@ -73,7 +73,7 @@ class CynosdbClient(AbstractClient):
 
 
     def AddInstances(self, request):
-        """This API is used to add an instance in a cluster.
+        """This API is used to add instances to a cluster.
 
         :param request: Request instance for AddInstances.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.AddInstancesRequest`
@@ -96,7 +96,7 @@ class CynosdbClient(AbstractClient):
 
 
     def BindClusterResourcePackages(self, request):
-        """This API is used to bind a resource pack to a cluster.
+        """This API is used to bind resource packages to a cluster.
 
         :param request: Request instance for BindClusterResourcePackages.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.BindClusterResourcePackagesRequest`
@@ -119,7 +119,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseAuditService(self, request):
-        """This API is used to disable the audit service for a TDSQL-C for MySQL instance.
+        """This API is used to close the database audit service for TDSQL-C MySQL instances.
 
         :param request: Request instance for CloseAuditService.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseAuditServiceRequest`
@@ -142,7 +142,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseClusterPasswordComplexity(self, request):
-        """This API is used to disable the password complexity for a cluster.
+        """This API is used to close cluster password complexity.
 
         :param request: Request instance for CloseClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseClusterPasswordComplexityRequest`
@@ -165,7 +165,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseProxy(self, request):
-        """This API is used to disable the database proxy.
+        """This API is used to close the database proxy service of a cluster.
 
         :param request: Request instance for CloseProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyRequest`
@@ -187,8 +187,54 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseProxyEndPoint(self, request):
+        """This API is used to close the database proxy connection address.
+
+        :param request: Request instance for CloseProxyEndPoint.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyEndPointRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseProxyEndPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseProxyEndPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CloseSSL(self, request):
+        """This API is used to disable SSL encryption.
+
+        :param request: Request instance for CloseSSL.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseSSLRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseWan(self, request):
-        """This API is used to disable the public network.
+        """This interface (CloseWan) is used to disable public network.
 
         :param request: Request instance for CloseWan.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseWanRequest`
@@ -211,7 +257,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CopyClusterPasswordComplexity(self, request):
-        """This API is used to replicate the password complexity for a cluster.
+        """This API is used to copy the password complexity of a replication cluster.
 
         :param request: Request instance for CopyClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CopyClusterPasswordComplexityRequest`
@@ -234,7 +280,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateAccounts(self, request):
-        """This API is used to create an account.
+        """This API is used to create user accounts.
 
         :param request: Request instance for CreateAccounts.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAccountsRequest`
@@ -257,7 +303,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateAuditRuleTemplate(self, request):
-        """This API is used to create an audit rule template.
+        """This API is used to create audit rule templates.
 
         :param request: Request instance for CreateAuditRuleTemplate.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAuditRuleTemplateRequest`
@@ -280,7 +326,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateBackup(self, request):
-        """This API is used to create manual backup.
+        """This API is used to create a manual backup for a cluster.
 
         :param request: Request instance for CreateBackup.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateBackupRequest`
@@ -326,7 +372,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateClusters(self, request):
-        """This API is used to create a cluster.
+        """This API is used to purchase new clusters.
 
         :param request: Request instance for CreateClusters.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersRequest`
@@ -349,7 +395,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """This API is used to create a parameter template.
+        """This API is used to create parameter templates.
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateParamTemplateRequest`
@@ -372,7 +418,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateProxy(self, request):
-        """This API is used to create a database proxy.
+        """This API is used to enable the database proxy of a cluster.
 
         :param request: Request instance for CreateProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyRequest`
@@ -395,7 +441,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateProxyEndPoint(self, request):
-        """This API is used to create a database proxy connection.
+        """This API is used to create a database proxy connection point.
 
         :param request: Request instance for CreateProxyEndPoint.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyEndPointRequest`
@@ -418,7 +464,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateResourcePackage(self, request):
-        """This API is used to purchase a resource pack.
+        """This API is used to purchase new resource packets.
 
         :param request: Request instance for CreateResourcePackage.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateResourcePackageRequest`
@@ -441,7 +487,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteAccounts(self, request):
-        """This API is used to delete an account.
+        """This API is used to delete user accounts.
 
         :param request: Request instance for DeleteAccounts.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAccountsRequest`
@@ -464,7 +510,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteAuditRuleTemplates(self, request):
-        """This API is used to delete an audit rule template.
+        """This API is used to delete audit rule templates.
 
         :param request: Request instance for DeleteAuditRuleTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAuditRuleTemplatesRequest`
@@ -487,7 +533,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteBackup(self, request):
-        """This API is used to delete the manual backup for a cluster. It cannot be used to delete the automatic backup.
+        """This API is used to delete manual backups for a cluster. Automatic backups cannot be deleted.
 
         :param request: Request instance for DeleteBackup.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteBackupRequest`
@@ -510,7 +556,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteClusterDatabase(self, request):
-        """This API is used to delete a database.
+        """This interface is used to delete a database.
 
         :param request: Request instance for DeleteClusterDatabase.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteClusterDatabaseRequest`
@@ -556,7 +602,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAccountPrivileges(self, request):
-        """This API is used to query the existing permissions of an account.
+        """This API is used to query account privileges.
 
         :param request: Request instance for DescribeAccountPrivileges.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountPrivilegesRequest`
@@ -579,7 +625,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAccounts(self, request):
-        """This API is used to query database management accounts.
+        """This API is used to query the database account list.
 
         :param request: Request instance for DescribeAccounts.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountsRequest`
@@ -602,7 +648,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAuditRuleTemplates(self, request):
-        """This API is used to query audit rule templates.
+        """This API is used to query audit rule template information.
 
         :param request: Request instance for DescribeAuditRuleTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleTemplatesRequest`
@@ -625,7 +671,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAuditRuleWithInstanceIds(self, request):
-        """This API is used to get the audit rule templates of an instance.
+        """This API is used to obtain the audit rules of the instance.
 
         :param request: Request instance for DescribeAuditRuleWithInstanceIds.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleWithInstanceIdsRequest`
@@ -648,7 +694,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeBackupConfig(self, request):
-        """This API is used to get the backup configuration information of the specified cluster, including the full backup time range and backup file retention period.
+        """This API is used to obtain the backup configuration information of a specified cluster, including the full backup time period and the backup file retention time.
 
         :param request: Request instance for DescribeBackupConfig.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupConfigRequest`
@@ -671,7 +717,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeBackupDownloadUrl(self, request):
-        """This API is used to query the download address of a cluster backup file.
+        """This API is used to query the download link of cluster backup files.
 
         :param request: Request instance for DescribeBackupDownloadUrl.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadUrlRequest`
@@ -694,7 +740,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeBackupList(self, request):
-        """This API is used to query the list of backup files.
+        """This API is used to query the backup file list of a cluster.
 
         :param request: Request instance for DescribeBackupList.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupListRequest`
@@ -716,8 +762,31 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBinlogConfig(self, request):
+        """This API is used to query binlog configurations.
+
+        :param request: Request instance for DescribeBinlogConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBinlogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBinlogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBinlogDownloadUrl(self, request):
-        """This API is used to query the download address of a binlog.
+        """This API is used to query the download address of Binlog.
 
         :param request: Request instance for DescribeBinlogDownloadUrl.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogDownloadUrlRequest`
@@ -763,7 +832,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeBinlogs(self, request):
-        """This API is used to query the list of binlogs in a cluster.
+        """This interface (DescribeBinlogs) queries the cluster binlog list.
 
         :param request: Request instance for DescribeBinlogs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogsRequest`
@@ -785,8 +854,31 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterDatabaseTables(self, request):
+        """This API is used to access the table list.
+
+        :param request: Request instance for DescribeClusterDatabaseTables.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabaseTablesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabaseTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterDatabaseTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterDatabaseTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterDetail(self, request):
-        """This API is used to show the details of an instance.
+        """This API is used to display cluster details.
 
         :param request: Request instance for DescribeClusterDetail.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailRequest`
@@ -809,7 +901,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterDetailDatabases(self, request):
-        """This API is used to query the database list.
+        """This API is used to query database list.
 
         :param request: Request instance for DescribeClusterDetailDatabases.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDetailDatabasesRequest`
@@ -855,7 +947,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterParams(self, request):
-        """This API is used to query the parameters of a cluster.
+        """This API is used to query cluster parameters.
 
         :param request: Request instance for DescribeClusterParams.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterParamsRequest`
@@ -878,7 +970,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterPasswordComplexity(self, request):
-        """This API is used to query the details of password complexity for a cluster.
+        """This API is used to view the cluster password complexity details.
 
         :param request: Request instance for DescribeClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterPasswordComplexityRequest`
@@ -900,8 +992,31 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterTransparentEncryptInfo(self, request):
+        """This API is used to query cluster transparent encryption information.
+
+        :param request: Request instance for DescribeClusterTransparentEncryptInfo.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterTransparentEncryptInfoRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterTransparentEncryptInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterTransparentEncryptInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterTransparentEncryptInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusters(self, request):
-        """This API is used to the list of clusters.
+        """This API is used to describe clusters.
 
         :param request: Request instance for DescribeClusters.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClustersRequest`
@@ -924,7 +1039,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeDBSecurityGroups(self, request):
-        """This API is used to query the security group information of an instance.
+        """This API is used to query instance security group information.
 
         :param request: Request instance for DescribeDBSecurityGroups.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeDBSecurityGroupsRequest`
@@ -993,7 +1108,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeInstanceErrorLogs(self, request):
-        """This API is used to query the list of error logs for an instance.
+        """This API is used to query the list of instance error logs.
 
         :param request: Request instance for DescribeInstanceErrorLogs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceErrorLogsRequest`
@@ -1016,7 +1131,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """This API is used to query the parameter list of an instance.
+        """This API is used to query the instance parameter list.
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceParamsRequest`
@@ -1062,7 +1177,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeInstanceSpecs(self, request):
-        """This API is used to query instance specifications.
+        """This interface (DescribeInstanceSpecs) is used to query the instance specifications available for purchase on the query purchase page.
 
         :param request: Request instance for DescribeInstanceSpecs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsRequest`
@@ -1107,8 +1222,54 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancesWithinSameCluster(self, request):
+        """This API is used to query the instance list under the same cluster.
+
+        :param request: Request instance for DescribeInstancesWithinSameCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesWithinSameClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstancesWithinSameClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesWithinSameCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesWithinSameClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIsolatedInstances(self, request):
+        """This interface is used for querying the recycle bin instance list.
+
+        :param request: Request instance for DescribeIsolatedInstances.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIsolatedInstancesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeIsolatedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIsolatedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIsolatedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMaintainPeriod(self, request):
-        """This API is used to query the instance maintenance window.
+        """This interface (DescribeMaintainPeriod) is used to query the instance maintenance window.
 
         :param request: Request instance for DescribeMaintainPeriod.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeMaintainPeriodRequest`
@@ -1131,7 +1292,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeParamTemplateDetail(self, request):
-        """This API is used to query the details of a parameter template.
+        """This API is used to query user parameter template details.
 
         :param request: Request instance for DescribeParamTemplateDetail.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeParamTemplateDetailRequest`
@@ -1154,7 +1315,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """This API is used to query all parameter templates information of a user-specified product.
+        """This API is used to query all parameter template information under the user-specified product.
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeParamTemplatesRequest`
@@ -1177,7 +1338,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeProjectSecurityGroups(self, request):
-        """This API is used to query the security group information of a project.
+        """This API is used to query project security group information.
 
         :param request: Request instance for DescribeProjectSecurityGroups.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProjectSecurityGroupsRequest`
@@ -1200,7 +1361,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeProxies(self, request):
-        """This API is used to query the list of database proxies.
+        """This API is used to query agent list.
 
         :param request: Request instance for DescribeProxies.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxiesRequest`
@@ -1246,7 +1407,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeProxySpecs(self, request):
-        """This API is used to query the specifications of a database proxy.
+        """This API is used to query database proxy specifications.
 
         :param request: Request instance for DescribeProxySpecs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxySpecsRequest`
@@ -1269,7 +1430,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeResourcePackageDetail(self, request):
-        """This API is used to query the usage details of a resource pack.
+        """This API is used to query resource package usage details.
 
         :param request: Request instance for DescribeResourcePackageDetail.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageDetailRequest`
@@ -1292,7 +1453,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeResourcePackageList(self, request):
-        """This API is used to query the list of the resource packs.
+        """This API is used to query resource package list.
 
         :param request: Request instance for DescribeResourcePackageList.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageListRequest`
@@ -1315,7 +1476,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeResourcePackageSaleSpec(self, request):
-        """This API is used to query the specifications of a resource pack.
+        """This API is used to query resource package specifications.
 
         :param request: Request instance for DescribeResourcePackageSaleSpec.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcePackageSaleSpecRequest`
@@ -1338,7 +1499,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeResourcesByDealName(self, request):
-        """This API is used to query the list of resources by billing order ID.
+        """This interface (DescribeResourcesByDealName) is used to query order-associated instances.
 
         :param request: Request instance for DescribeResourcesByDealName.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeResourcesByDealNameRequest`
@@ -1361,7 +1522,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeRollbackTimeRange(self, request):
-        """This API is used to query the valid rollback time range for the specified cluster.
+        """This API is used to query the rollback time range.
 
         :param request: Request instance for DescribeRollbackTimeRange.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeRangeRequest`
@@ -1383,20 +1544,66 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeRollbackTimeValidity(self, request):
-        """This API is used to query whether rollback is possible based on the specified time and cluster.
+    def DescribeServerlessInstanceSpecs(self, request):
+        """This API is used to query available specifications of Serverless instances.
 
-        :param request: Request instance for DescribeRollbackTimeValidity.
-        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityRequest`
-        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRollbackTimeValidityResponse`
+        :param request: Request instance for DescribeServerlessInstanceSpecs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessInstanceSpecsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessInstanceSpecsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeRollbackTimeValidity", params, headers=headers)
+            body = self.call("DescribeServerlessInstanceSpecs", params, headers=headers)
             response = json.loads(body)
-            model = models.DescribeRollbackTimeValidityResponse()
+            model = models.DescribeServerlessInstanceSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServerlessStrategy(self, request):
+        """This API is used to query serverless policies.
+
+        :param request: Request instance for DescribeServerlessStrategy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessStrategyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeServerlessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSlaveZones(self, request):
+        """This API is used to query from availability zones.
+
+        :param request: Request instance for DescribeSlaveZones.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSlaveZonesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSlaveZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSlaveZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSlaveZonesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1407,7 +1614,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeSupportProxyVersion(self, request):
-        """This API is used to query the supported database proxy versions.
+        """This API is used to query supported database proxy versions.
 
         :param request: Request instance for DescribeSupportProxyVersion.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSupportProxyVersionRequest`
@@ -1430,7 +1637,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This API is used to query the AZ information in a purchasable region.
+        """This API is used to query marketable regional availability zone information.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeZonesRequest`
@@ -1476,7 +1683,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ExportInstanceSlowQueries(self, request):
-        """This API is used to export the slow logs of an instance.
+        """This API is used to export instance slow logs.
 
         :param request: Request instance for ExportInstanceSlowQueries.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ExportInstanceSlowQueriesRequest`
@@ -1498,8 +1705,31 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportResourcePackageDeductDetails(self, request):
+        """This API is used to export the usage details of a resource package.
+
+        :param request: Request instance for ExportResourcePackageDeductDetails.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ExportResourcePackageDeductDetailsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ExportResourcePackageDeductDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportResourcePackageDeductDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportResourcePackageDeductDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquirePriceCreate(self, request):
-        """This API is used to query the purchasable price of a cluster.
+        """This interface (InquirePriceCreate) is used for price inquiry of newly purchased clusters.
 
         :param request: Request instance for InquirePriceCreate.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceCreateRequest`
@@ -1512,6 +1742,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("InquirePriceCreate", params, headers=headers)
             response = json.loads(body)
             model = models.InquirePriceCreateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquirePriceModify(self, request):
+        """This API is used to query the price for modifying the specifications of a prepaid cluster.
+
+        :param request: Request instance for InquirePriceModify.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceModifyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceModifyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceModify", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceModifyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1545,7 +1798,7 @@ class CynosdbClient(AbstractClient):
 
 
     def IsolateCluster(self, request):
-        """This API is used to isolate a cluster.
+        """This interface (IsolateCluster) is used to isolate a cluster.
 
         :param request: Request instance for IsolateCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.IsolateClusterRequest`
@@ -1614,7 +1867,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyAccountHost(self, request):
-        """This API is used to modify the account host.
+        """This API is used to modify account hosts.
 
         :param request: Request instance for ModifyAccountHost.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountHostRequest`
@@ -1637,7 +1890,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyAccountPrivileges(self, request):
-        """This API is used to modify the account permissions.
+        """This API is used to modify account database and table permissions.
 
         :param request: Request instance for ModifyAccountPrivileges.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountPrivilegesRequest`
@@ -1660,7 +1913,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyAuditRuleTemplates(self, request):
-        """This API is used to modify an audit rule template.
+        """This API is used to modify audit rule templates.
 
         :param request: Request instance for ModifyAuditRuleTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAuditRuleTemplatesRequest`
@@ -1706,7 +1959,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyBackupConfig(self, request):
-        """This API is used to modify the backup configuration of the specified cluster.
+        """This API is used to modify the backup configuration of a specified cluster.
 
         :param request: Request instance for ModifyBackupConfig.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupConfigRequest`
@@ -1751,6 +2004,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBinlogConfig(self, request):
+        """This API is used to modify Binlog configuration.
+
+        :param request: Request instance for ModifyBinlogConfig.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBinlogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBinlogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBinlogSaveDays(self, request):
         """This API is used to modify the binlog retention period in days.
 
@@ -1775,7 +2051,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterDatabase(self, request):
-        """This API is used to modify the database.
+        """This API is used to modify account authorization of a database.
 
         :param request: Request instance for ModifyClusterDatabase.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterDatabaseRequest`
@@ -1798,7 +2074,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterName(self, request):
-        """This API is used to modify cluster name.
+        """This API is used to modify cluster names.
 
         :param request: Request instance for ModifyClusterName.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterNameRequest`
@@ -1821,7 +2097,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterParam(self, request):
-        """This API is used to modify the parameters of a cluster.
+        """This API is used to modify cluster parameters.
 
         :param request: Request instance for ModifyClusterParam.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterParamRequest`
@@ -1844,7 +2120,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterPasswordComplexity(self, request):
-        """This API is used to modify or enable the password complexity for a cluster.
+        """This API is used to modify or enable cluster password complexity.
 
         :param request: Request instance for ModifyClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterPasswordComplexityRequest`
@@ -1867,7 +2143,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterSlaveZone(self, request):
-        """This API is used to modify the replica AZ.
+        """This API is used to modify the slave availability zone of a cluster.
 
         :param request: Request instance for ModifyClusterSlaveZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterSlaveZoneRequest`
@@ -1890,7 +2166,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroups(self, request):
-        """This API is used to modify the security groups bound to an instance.
+        """This API is used to modify the security group bound to the instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroups.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDBInstanceSecurityGroupsRequest`
@@ -1959,7 +2235,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyMaintainPeriodConfig(self, request):
-        """This API is used to modify the maintenance time configuration.
+        """This API is used to modify maintenance time configuration.
 
         :param request: Request instance for ModifyMaintainPeriodConfig.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyMaintainPeriodConfigRequest`
@@ -2028,7 +2304,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyProxyRwSplit(self, request):
-        """This API is used to configure the read/write separation of a database proxy.
+        """This API is used to configure read-write separation for database proxy.
 
         :param request: Request instance for ModifyProxyRwSplit.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyProxyRwSplitRequest`
@@ -2051,7 +2327,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyResourcePackageClusters(self, request):
-        """This API is used to bind a resource pack to a cluster.
+        """This API is used to modify the binding relationship between resource packages and clusters.
 
         :param request: Request instance for ModifyResourcePackageClusters.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageClustersRequest`
@@ -2074,7 +2350,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyResourcePackageName(self, request):
-        """This API is used to modify the name of a resource pack.
+        """This API is used to modify resource package name.
 
         :param request: Request instance for ModifyResourcePackageName.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackageNameRequest`
@@ -2096,8 +2372,54 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourcePackagesDeductionPriority(self, request):
+        """This API is used to modify the deduction priority of the bound resource package.
+
+        :param request: Request instance for ModifyResourcePackagesDeductionPriority.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackagesDeductionPriorityRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyResourcePackagesDeductionPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcePackagesDeductionPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcePackagesDeductionPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyServerlessStrategy(self, request):
+        """This API is used to modify the serverless policy.
+
+        :param request: Request instance for ModifyServerlessStrategy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyServerlessStrategyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyServerlessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServerlessStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServerlessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyVipVport(self, request):
-        """This API is used to modify the IP and port of an instance group.
+        """This API is used to modify the ip and port of an instance group.
 
         :param request: Request instance for ModifyVipVport.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyVipVportRequest`
@@ -2120,7 +2442,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OfflineCluster(self, request):
-        """This API is used to deactivate a cluster.
+        """This interface (OfflineCluster) is used to terminate clusters.
 
         :param request: Request instance for OfflineCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineClusterRequest`
@@ -2143,7 +2465,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OfflineInstance(self, request):
-        """This API is used to deactivate an instance.
+        """This interface (OfflineInstance) is used to terminate an instance.
 
         :param request: Request instance for OfflineInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineInstanceRequest`
@@ -2166,7 +2488,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenAuditService(self, request):
-        """This API is used to enable the audit service for a TDSQL-C for MySQL instance.
+        """This API is used to enable database audit service for an instance.
 
         :param request: Request instance for OpenAuditService.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenAuditServiceRequest`
@@ -2189,7 +2511,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenClusterPasswordComplexity(self, request):
-        """This API is used to enable the password complexity for a cluster.
+        """This API is used to enable the custom password complexity feature.
 
         :param request: Request instance for OpenClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterPasswordComplexityRequest`
@@ -2212,7 +2534,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenClusterReadOnlyInstanceGroupAccess(self, request):
-        """This API is used to enable the access to read-only instance group.
+        """This API is used to enable read-only instance group access.
 
         :param request: Request instance for OpenClusterReadOnlyInstanceGroupAccess.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterReadOnlyInstanceGroupAccessRequest`
@@ -2234,8 +2556,31 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenClusterTransparentEncrypt(self, request):
+        """Enable transparent data encryption for the cluster.
+
+        :param request: Request instance for OpenClusterTransparentEncrypt.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterTransparentEncryptRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterTransparentEncryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClusterTransparentEncrypt", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClusterTransparentEncryptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenReadOnlyInstanceExclusiveAccess(self, request):
-        """This API is used to enable the dedicated access group for a read-only instance.
+        """This interface (OpenReadOnlyInstanceExclusiveAccess) is used to enable the dedicated access access group for a read-only instance.
 
         :param request: Request instance for OpenReadOnlyInstanceExclusiveAccess.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenReadOnlyInstanceExclusiveAccessRequest`
@@ -2258,7 +2603,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenWan(self, request):
-        """This API is used to enable the public network.
+        """This interface (OpenWan) is used to enable external network.
 
         :param request: Request instance for OpenWan.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenWanRequest`
@@ -2281,7 +2626,7 @@ class CynosdbClient(AbstractClient):
 
 
     def PauseServerless(self, request):
-        """This API is used to pause a serverless cluster.
+        """This API is used to suspend a serverless cluster.
 
         :param request: Request instance for PauseServerless.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.PauseServerlessRequest`
@@ -2304,7 +2649,7 @@ class CynosdbClient(AbstractClient):
 
 
     def RefundResourcePackage(self, request):
-        """This API is used to refund a resource pack.
+        """This API is used to refund a resource package.
 
         :param request: Request instance for RefundResourcePackage.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.RefundResourcePackageRequest`
@@ -2327,7 +2672,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ReloadBalanceProxyNode(self, request):
-        """This API is used to rebalance the load on the database proxy.
+        """This API is used to reload the database proxy of Cloud Load Balancer.
 
         :param request: Request instance for ReloadBalanceProxyNode.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ReloadBalanceProxyNodeRequest`
@@ -2350,7 +2695,7 @@ class CynosdbClient(AbstractClient):
 
 
     def RemoveClusterSlaveZone(self, request):
-        """This API is used to delete the replica AZ.
+        """This API is used to disable multi-AZ deployment for a cluster.
 
         :param request: Request instance for RemoveClusterSlaveZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.RemoveClusterSlaveZoneRequest`
@@ -2373,7 +2718,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """This API is used to reset the password of a TencentDB instance account.
+        """This API is used to modify the database account password.
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResetAccountPasswordRequest`
@@ -2396,7 +2741,7 @@ class CynosdbClient(AbstractClient):
 
 
     def RestartInstance(self, request):
-        """This API is used to restart an instance.
+        """This API is used to reboot an instance.
 
         :param request: Request instance for RestartInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.RestartInstanceRequest`
@@ -2419,7 +2764,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ResumeServerless(self, request):
-        """This API is used to resume a serverless cluster.
+        """This API is used to restore a serverless cluster.
 
         :param request: Request instance for ResumeServerless.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResumeServerlessRequest`
@@ -2442,7 +2787,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SearchClusterDatabases(self, request):
-        """This API is used to search the list of cluster databases.
+        """This API is used to search cluster database lists.
 
         :param request: Request instance for SearchClusterDatabases.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterDatabasesRequest`
@@ -2465,7 +2810,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SearchClusterTables(self, request):
-        """This API is used to search the list of cluster data tables.
+        """This API is used to search cluster data table lists.
 
         :param request: Request instance for SearchClusterTables.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterTablesRequest`
@@ -2488,7 +2833,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SetRenewFlag(self, request):
-        """This API is used to set auto-renewal for an instance.
+        """This API is used to set the auto-renewal feature of an instance.
 
         :param request: Request instance for SetRenewFlag.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SetRenewFlagRequest`
@@ -2511,7 +2856,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SwitchClusterVpc(self, request):
-        """This API is used to modify the cluster VPC.
+        """This API is used to replace the cluster vpc.
 
         :param request: Request instance for SwitchClusterVpc.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterVpcRequest`
@@ -2534,7 +2879,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SwitchClusterZone(self, request):
-        """This API is used to switch to the replica AZ.
+        """This API is used to switch the primary and secondary AZs of a cluster.
 
         :param request: Request instance for SwitchClusterZone.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterZoneRequest`
@@ -2557,7 +2902,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SwitchProxyVpc(self, request):
-        """This API is used to modify the database proxy VPC.
+        """This API is used to replace the vpc of the database proxy.
 
         :param request: Request instance for SwitchProxyVpc.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SwitchProxyVpcRequest`
@@ -2580,7 +2925,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UnbindClusterResourcePackages(self, request):
-        """This API is used to unbind a TDSQL-C for MySQL resource pack.
+        """This API is used to unbind resource packages from clusters.
 
         :param request: Request instance for UnbindClusterResourcePackages.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UnbindClusterResourcePackagesRequest`
@@ -2603,7 +2948,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeClusterVersion(self, request):
-        """This API is used to upgrade the kernel version of a TDSQL-C for MySQL cluster.
+        """This interface (UpgradeClusterVersion) is used to update the kernel minor version.
 
         :param request: Request instance for UpgradeClusterVersion.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeClusterVersionRequest`
@@ -2626,7 +2971,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """This API is used to upgrade an instance.
+        """This interface (UpgradeInstance) is used to upgrade instances.
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeInstanceRequest`
@@ -2649,7 +2994,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeProxy(self, request):
-        """This API is used to upgrade the configuration of a database proxy.
+        """This API is used to upgrade database proxy configuration.
 
         :param request: Request instance for UpgradeProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyRequest`
@@ -2672,7 +3017,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeProxyVersion(self, request):
-        """This API is used to upgrade the version of a database proxy.
+        """This API is used to upgrade the database proxy version.
 
         :param request: Request instance for UpgradeProxyVersion.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyVersionRequest`
