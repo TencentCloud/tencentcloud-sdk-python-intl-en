@@ -514,6 +514,11 @@ def test_import_tat():
     from tencentcloud.tat.v20201028 import models
 
 
+def test_import_tbaas():
+    from tencentcloud.tbaas.v20180416 import tbaas_client
+    from tencentcloud.tbaas.v20180416 import models
+
+
 def test_import_tcaplusdb():
     from tencentcloud.tcaplusdb.v20190823 import tcaplusdb_client
     from tencentcloud.tcaplusdb.v20190823 import models

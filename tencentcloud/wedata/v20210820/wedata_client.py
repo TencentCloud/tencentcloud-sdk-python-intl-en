@@ -72,6 +72,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchCreateTaskVersionAsync(self, request):
+        """This API is used to asynchronously create task versions in batches.
+
+        :param request: Request instance for BatchCreateTaskVersionAsync.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionAsyncRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateTaskVersionAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateTaskVersionAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchDeleteIntegrationTasks(self, request):
         """Batch Delete Integration Tasks.
 
@@ -832,7 +855,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """Creating task
+        """This API is used to create a task. This API is deprecated. Use the CreateTaskNew API.
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskRequest`
@@ -891,6 +914,29 @@ class WedataClient(AbstractClient):
             body = self.call("CreateTaskFolder", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTaskNew(self, request):
+        """This API is used to aggregate task creation.
+
+        :param request: Request instance for CreateTaskNew.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskNewRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateTaskNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskNewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4608,8 +4654,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskLinks(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
-        Add Parent Task Dependency
+        """<p style="color:red;">[Note: This version is only available to some whitelist customers in the Guangzhou zone]</p>.
+        Add parent task dependency. This API is deprecated. Use API ModifyTaskLinksDs.
 
         :param request: Request instance for ModifyTaskLinks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskLinksRequest`
@@ -4622,6 +4668,29 @@ class WedataClient(AbstractClient):
             body = self.call("ModifyTaskLinks", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTaskLinksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTaskLinksDs(self, request):
+        """This API is used to add parent task dependency.
+
+        :param request: Request instance for ModifyTaskLinksDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskLinksDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskLinksDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTaskLinksDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTaskLinksDsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4679,7 +4748,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowInfo(self, request):
-        """Update Workflow Information
+        """This API is used to update workflow information. (deprecated). Use API UpdateWorkflowInfo.
 
         :param request: Request instance for ModifyWorkflowInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowInfoRequest`
@@ -4702,7 +4771,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowSchedule(self, request):
-        """Update Workflow Scheduling
+        """This API is used to update workflow scheduling. This API is deprecated. Use the RenewWorkflowSchedulerInfoDs API instead.
 
         :param request: Request instance for ModifyWorkflowSchedule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowScheduleRequest`
@@ -4747,9 +4816,32 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RegisterDsEvent(self, request):
+        """This API is used to register an event.
+
+        :param request: Request instance for RegisterDsEvent.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterDsEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterDsEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RegisterEvent(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
-        Registration Event
+        """<p style="color:red;">[Note: This version is only available for partial allowlisted customers in the Guangzhou region]</p>.
+        This API is used to register events. This API is deprecated. Use API RegisterDsEvent.
 
         :param request: Request instance for RegisterEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterEventRequest`
@@ -4809,6 +4901,52 @@ class WedataClient(AbstractClient):
             body = self.call("RemoveWorkflowDs", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveWorkflowDsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewWorkflowOwnerDs(self, request):
+        """This API is used to batch update the task owner under a workflow.
+
+        :param request: Request instance for RenewWorkflowOwnerDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RenewWorkflowOwnerDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RenewWorkflowOwnerDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewWorkflowOwnerDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewWorkflowOwnerDsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewWorkflowSchedulerInfoDs(self, request):
+        """This API is used to update task scheduling information under a workflow.
+
+        :param request: Request instance for RenewWorkflowSchedulerInfoDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RenewWorkflowSchedulerInfoDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RenewWorkflowSchedulerInfoDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewWorkflowSchedulerInfoDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewWorkflowSchedulerInfoDsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5073,8 +5211,8 @@ class WedataClient(AbstractClient):
 
 
     def SubmitTask(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
-        Submit a Task
+        """<p style="color:red;">[Note: This version is only available for partial whitelist customers in the Guangzhou zone]</p>.
+        This API is used to submit tasks. This API is deprecated. Use the CreateTaskVersionDs API.
 
         :param request: Request instance for SubmitTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitTaskRequest`
@@ -5120,7 +5258,7 @@ class WedataClient(AbstractClient):
 
 
     def SubmitWorkflow(self, request):
-        """Submit Workflow
+        """Submit a workflow. This API is deprecated. Use the BatchCreateTaskVersionAsync API.
 
         :param request: Request instance for SubmitWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitWorkflowRequest`
@@ -5212,8 +5350,8 @@ class WedataClient(AbstractClient):
 
 
     def TriggerEvent(self, request):
-        """<p style="color:red;">[Note: This version is only available to a portion of allowlist customers in the Guangzhou Region]</p>
-        Trigger events
+        """<p style="color:red;">[Note: This version is only available to some allowlisted customers in the Guangzhou region]</p>.
+        This API is used to trigger event. This API is deprecated. Use API TriggerDsEvent.
 
         :param request: Request instance for TriggerEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.TriggerEventRequest`
@@ -5281,8 +5419,32 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateWorkflowInfo(self, request):
+        """This API is developed in ds.
+        This API is used to update a workflow, including its basic information and workflow parameters.
+
+        :param request: Request instance for UpdateWorkflowInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateWorkflowInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UpdateWorkflowInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateWorkflowInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateWorkflowInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateWorkflowOwner(self, request):
-        """Modifying Workflow Person in Charge
+        """This API is used to modify the workflow owner. Deprecated. Use the RenewWorkflowOwnerDs API.
 
         :param request: Request instance for UpdateWorkflowOwner.
         :type request: :class:`tencentcloud.wedata.v20210820.models.UpdateWorkflowOwnerRequest`
