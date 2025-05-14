@@ -2542,8 +2542,9 @@ Note that this project ID is not the same as the project ID of the scaling group
         :param _UserData: Base64-encoded custom data of up to 16 KB.
         :type UserData: str
         :param _InstanceChargeType: Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
+<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
+<li>SPOTPAID: spot instance</li>
+<li> CDCPAID: dedicated cluster</li>
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
@@ -2743,8 +2744,9 @@ Note that this project ID is not the same as the project ID of the scaling group
     @property
     def InstanceChargeType(self):
         """Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
+<li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>
+<li>SPOTPAID: spot instance</li>
+<li> CDCPAID: dedicated cluster</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -3909,19 +3911,17 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Data disk type. For restrictions on data disk type, see [Cloud Block Storage Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
-<li>LOCAL_BASIC: Local hard disk.</li>
+        :param _DiskType: Data disk type. For restrictions on the data disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
+<li>LOCAL_BASIC: Local Disk.</li>
 <li>LOCAL_SSD: Local SSD.</li>
-<li>CLOUD_BASIC: General cloud disk.</li>
-<li>CLOUD_PREMIUM: Premium cloud disk.</li>
+<li>CLOUD_BASIC: Basic Cloud Disk.</li>
+<li>CLOUD_PREMIUM: Premium Disk.</li>
 <li>CLOUD_SSD: Cloud SSD.</li>
 <li>CLOUD_HSSD: Enhanced SSD.</li>
-<li>CLOUD_TSSD: Ultra SSD.</li>
+<li>CLOUD_TSSD: Tremendous SSD.</li>
 The default value is consistent with the system disk type (SystemDisk.DiskType).
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param _DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiskSize: Data disk size, in GB. The minimum adjustment step size is 10 GB. The value range varies according to the data disk type. For specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Default value: 0, which means that no data disk is purchased. For more restrictions, see the product documentation.
         :type DiskSize: int
         :param _SnapshotId: Data disk snapshot ID, such as `snap-l8psqwnt`.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -3956,16 +3956,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
-        """Data disk type. For restrictions on data disk type, see [Cloud Block Storage Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
-<li>LOCAL_BASIC: Local hard disk.</li>
+        """Data disk type. For restrictions on the data disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
+<li>LOCAL_BASIC: Local Disk.</li>
 <li>LOCAL_SSD: Local SSD.</li>
-<li>CLOUD_BASIC: General cloud disk.</li>
-<li>CLOUD_PREMIUM: Premium cloud disk.</li>
+<li>CLOUD_BASIC: Basic Cloud Disk.</li>
+<li>CLOUD_PREMIUM: Premium Disk.</li>
 <li>CLOUD_SSD: Cloud SSD.</li>
 <li>CLOUD_HSSD: Enhanced SSD.</li>
-<li>CLOUD_TSSD: Ultra SSD.</li>
+<li>CLOUD_TSSD: Tremendous SSD.</li>
 The default value is consistent with the system disk type (SystemDisk.DiskType).
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DiskType
@@ -3976,8 +3975,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
-        """Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Data disk size, in GB. The minimum adjustment step size is 10 GB. The value range varies according to the data disk type. For specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Default value: 0, which means that no data disk is purchased. For more restrictions, see the product documentation.
         :rtype: int
         """
         return self._DiskSize
@@ -4830,14 +4828,17 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupIds: ID list of an auto scaling group.
+        :param _AutoScalingGroupIds: ID list of auto scaling groups.
         :type AutoScalingGroupIds: list of str
+        :param _ExcludeCancelledActivity: Excludes cancelled type activities when querying. Default value is false, which means cancelled type activities are not excluded.
+        :type ExcludeCancelledActivity: bool
         """
         self._AutoScalingGroupIds = None
+        self._ExcludeCancelledActivity = None
 
     @property
     def AutoScalingGroupIds(self):
-        """ID list of an auto scaling group.
+        """ID list of auto scaling groups.
         :rtype: list of str
         """
         return self._AutoScalingGroupIds
@@ -4846,9 +4847,21 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
     def AutoScalingGroupIds(self, AutoScalingGroupIds):
         self._AutoScalingGroupIds = AutoScalingGroupIds
 
+    @property
+    def ExcludeCancelledActivity(self):
+        """Excludes cancelled type activities when querying. Default value is false, which means cancelled type activities are not excluded.
+        :rtype: bool
+        """
+        return self._ExcludeCancelledActivity
+
+    @ExcludeCancelledActivity.setter
+    def ExcludeCancelledActivity(self, ExcludeCancelledActivity):
+        self._ExcludeCancelledActivity = ExcludeCancelledActivity
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupIds = params.get("AutoScalingGroupIds")
+        self._ExcludeCancelledActivity = params.get("ExcludeCancelledActivity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7682,8 +7695,7 @@ class InstanceMarketOptionsRequest(AbstractModel):
         r"""
         :param _SpotOptions: Bidding-related options
         :type SpotOptions: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
-        :param _MarketType: Market option type. Currently, this only supports the value "spot"
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MarketType: Market option type. The value can only be spot currently.
         :type MarketType: str
         """
         self._SpotOptions = None
@@ -7702,8 +7714,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MarketType(self):
-        """Market option type. Currently, this only supports the value "spot"
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Market option type. The value can only be spot currently.
         :rtype: str
         """
         return self._MarketType
@@ -8011,22 +8022,16 @@ class InvocationResult(AbstractModel):
     def __init__(self):
         r"""
         :param _InstanceId: Instance ID.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
         :param _InvocationId: Execution activity ID.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type InvocationId: str
-        :param _InvocationTaskId: Execution task ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InvocationTaskId: Task ID.
         :type InvocationTaskId: str
         :param _CommandId: Command ID.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type CommandId: str
-        :param _TaskStatus: Execution Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskStatus: Specifies the execution task status.
         :type TaskStatus: str
-        :param _ErrorMessage: Execution exception information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ErrorMessage: Specifies the exception information during execution.
         :type ErrorMessage: str
         """
         self._InstanceId = None
@@ -8039,7 +8044,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def InstanceId(self):
         """Instance ID.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InstanceId
@@ -8051,7 +8055,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def InvocationId(self):
         """Execution activity ID.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._InvocationId
@@ -8062,8 +8065,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InvocationTaskId(self):
-        """Execution task ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Task ID.
         :rtype: str
         """
         return self._InvocationTaskId
@@ -8075,7 +8077,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CommandId(self):
         """Command ID.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._CommandId
@@ -8086,8 +8087,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStatus(self):
-        """Execution Status
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the execution task status.
         :rtype: str
         """
         return self._TaskStatus
@@ -8098,8 +8098,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMessage(self):
-        """Execution exception information
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the exception information during execution.
         :rtype: str
         """
         return self._ErrorMessage
@@ -12503,22 +12502,20 @@ class RunMonitorServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether [TCOP (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) is enabled. Valid values:
-<li>TRUE: enabled</li>
-<li>FALSE: disabled</li>
+        :param _Enabled: Whether to enable [Tencent Cloud Observability Platform (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) (TCOP). Valid values:
+<li>TRUE: enable TCOP.</li>
+<li>FALSE: disable TCOP.</li>
 Default value: TRUE.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Enabled: bool
         """
         self._Enabled = None
 
     @property
     def Enabled(self):
-        """Whether [TCOP (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) is enabled. Valid values:
-<li>TRUE: enabled</li>
-<li>FALSE: disabled</li>
+        """Whether to enable [Tencent Cloud Observability Platform (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) (TCOP). Valid values:
+<li>TRUE: enable TCOP.</li>
+<li>FALSE: disable TCOP.</li>
 Default value: TRUE.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
         return self._Enabled
@@ -12547,22 +12544,20 @@ class RunSecurityServiceEnabled(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enabled: Whether to enable the [Cloud Workload Protection Platform](https://www.tencentcloud.com/document/product/296?lang=en&pg=) service. Valid values:
-<li>TRUE: enable.</li>
-<li>FALSE: disable.</li>
+        :param _Enabled: Whether to enable [Cloud Workload Protection Platform (CWPP)](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values:
+<li>TRUE: enable CWPP.</li>
+<li>FALSE: disable CWPP.</li>
 Default value: TRUE.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Enabled: bool
         """
         self._Enabled = None
 
     @property
     def Enabled(self):
-        """Whether to enable the [Cloud Workload Protection Platform](https://www.tencentcloud.com/document/product/296?lang=en&pg=) service. Valid values:
-<li>TRUE: enable.</li>
-<li>FALSE: disable.</li>
+        """Whether to enable [Cloud Workload Protection Platform (CWPP)](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values:
+<li>TRUE: enable CWPP.</li>
+<li>FALSE: disable CWPP.</li>
 Default value: TRUE.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
         return self._Enabled
@@ -13427,8 +13422,7 @@ class SpotMarketOptions(AbstractModel):
         r"""
         :param _MaxPrice: Bidding price such as "1.05"
         :type MaxPrice: str
-        :param _SpotInstanceType: Bid request type. Currently, only "one-time" type is supported. Default value: one-time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SpotInstanceType: Spot instance type. The value can only be one-time currently. Default value: one-time.
         :type SpotInstanceType: str
         """
         self._MaxPrice = None
@@ -13447,8 +13441,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpotInstanceType(self):
-        """Bid request type. Currently, only "one-time" type is supported. Default value: one-time
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Spot instance type. The value can only be one-time currently. Default value: one-time.
         :rtype: str
         """
         return self._SpotInstanceType
@@ -13984,11 +13977,15 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>Default value: `CLOUD_PREMIUM`.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param _DiskType: System disk type. For restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
+<li>LOCAL_BASIC: Local Disk.</li>
+<li>LOCAL_SSD: Local SSD.</li>
+<li>CLOUD_BASIC: Basic Cloud Disk.</li>
+<li>CLOUD_PREMIUM: Premium Disk.</li>
+<li>CLOUD_SSD: Cloud SSD.</li>
+<li>Default value: CLOUD_PREMIUM.</li>
         :type DiskType: str
-        :param _DiskSize: System disk size in GB. Default value: 50
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DiskSize: System disk size, in GB. Default value: 50.
         :type DiskSize: int
         """
         self._DiskType = None
@@ -13996,8 +13993,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
-        """System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>Default value: `CLOUD_PREMIUM`.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        """System disk type. For restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
+<li>LOCAL_BASIC: Local Disk.</li>
+<li>LOCAL_SSD: Local SSD.</li>
+<li>CLOUD_BASIC: Basic Cloud Disk.</li>
+<li>CLOUD_PREMIUM: Premium Disk.</li>
+<li>CLOUD_SSD: Cloud SSD.</li>
+<li>Default value: CLOUD_PREMIUM.</li>
         :rtype: str
         """
         return self._DiskType
@@ -14008,8 +14010,7 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def DiskSize(self):
-        """System disk size in GB. Default value: 50
-Note: This field may return null, indicating that no valid values can be obtained.
+        """System disk size, in GB. Default value: 50.
         :rtype: int
         """
         return self._DiskSize
