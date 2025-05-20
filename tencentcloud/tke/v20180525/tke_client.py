@@ -2418,6 +2418,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetTkeAppChartList(self, request):
+        """This API is used to retrieve the App List supported by TKE.
+
+        :param request: Request instance for GetTkeAppChartList.
+        :type request: :class:`tencentcloud.tke.v20180525.models.GetTkeAppChartListRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.GetTkeAppChartListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTkeAppChartList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTkeAppChartListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetUpgradeInstanceProgress(self, request):
         """This API is used to obtain the current progress of node upgrade. If the cluster is not in node upgrade status, the API will report an error: Task not found.
 
