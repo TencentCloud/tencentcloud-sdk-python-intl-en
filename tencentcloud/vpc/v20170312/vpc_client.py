@@ -72,6 +72,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddTemplateMember(self, request):
+        """This API is used to add a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
+
+        :param request: Request instance for AddTemplateMember.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AddTemplateMemberRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddTemplateMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddTemplateMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddTemplateMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AdjustPublicAddress(self, request):
         """This API is used to change the public IP of a CVM or the EIP of the associated bandwidth package.
 
@@ -2207,6 +2230,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteSubnet", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSubnetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTemplateMember(self, request):
+        """This API is used to delete a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
+
+        :param request: Request instance for DeleteTemplateMember.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTemplateMemberRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteTemplateMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTemplateMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTemplateMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5788,6 +5834,29 @@ class VpcClient(AbstractClient):
             body = self.call("ModifySubnetAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySubnetAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTemplateMember(self, request):
+        """This API is used to modify a parameter template of the IP address, protocol port, IP address group, or protocol port group type.
+
+        :param request: Request instance for ModifyTemplateMember.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyTemplateMemberRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyTemplateMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTemplateMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTemplateMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
