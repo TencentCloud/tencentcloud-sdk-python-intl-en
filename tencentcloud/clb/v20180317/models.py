@@ -2707,8 +2707,7 @@ class ClusterItem(AbstractModel):
         r"""
         :param _ClusterId: Unique cluster ID
         :type ClusterId: str
-        :param _ClusterName: Cluster name
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ClusterName: Cluster name.
         :type ClusterName: str
         :param _Zone: Cluster AZ, such as ap-guangzhou-1
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2731,8 +2730,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterName(self):
-        """Cluster name
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Cluster name.
         :rtype: str
         """
         return self._ClusterName
@@ -3379,7 +3377,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :type LoadBalancerName: str
         :param _VpcId: Network ID of the target device on the CLB backend, such as `vpc-12345678`, which can be obtained through the `DescribeVpcEx` API. If this parameter is not entered, `DefaultVPC` is used by default. This parameter is required when creating a private network instance.
         :type VpcId: str
-        :param _SubnetId: A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is required for creating a CLB instance.
+        :param _SubnetId: A subnet ID should be specified when you purchase a private network CLB instance under a VPC. The VIP of the private network CLB instance is in this subnet. This parameter is required when you create a private network CLB instance but not supported when you create a public network IPv4 CLB instance.
         :type SubnetId: str
         :param _ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the `DescribeProject` API. If this parameter is not entered, the default project will be used.
         :type ProjectId: int
@@ -3387,11 +3385,12 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :type AddressIPVersion: str
         :param _Number: Number of CLBs to be created. Default value: 1.
         :type Number: int
-        :param _MasterZoneId: ID of the primary availability zone configured for cross-availability zone disaster recovery, such as 100001 or ap-guangzhou-1. It applies only to public network CLB.Note: The primary availability zone is the one that carries traffic. The replica availability zone does not carry traffic by default and is only used when the primary availability zone is unavailable. Currently, primary and replica availability zones are supported only for the IPv4 CLB instances in the regions of Guangzhou, Shanghai, Nanjing, Beijing, Chengdu, Shenzhen Finance Zone, Hong Kong (China), Seoul, Frankfurt, and Singapore. You can query the list of primary availability zones in a region through the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API.
+        :param _MasterZoneId: Applicable only to public network IPv4 CLB instances. This parameter specifies the primary AZ ID for cross-AZ disaster recovery. For example, 100001 or ap-guangzhou-1.
+Note: The primary AZ sustains traffic. The secondary AZ does not sustain traffic by default and is used only when the primary AZ is unavailable. Currently, primary and secondary AZs are supported only for IPv4 CLB instances in Guangzhou, Shanghai, Nanjing, Beijing, Chengdu, Shenzhen Finance, Hong Kong (China), Seoul, Frankfurt, and Singapore regions. You can call the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type MasterZoneId: str
-        :param _ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
+        :param _ZoneId: Applicable only to public network IPv4 CLB instances. This parameter specifies the AZ ID for creating a CLB instance. For example, ap-guangzhou-1.
         :type ZoneId: str
-        :param _InternetAccessible: Maximum outbound bandwidth under the network billing mode. It applies only to LCU-supported instances of the private network type and all instances of the public network type.
+        :param _InternetAccessible: Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param _VipIsp: ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
         :type VipIsp: str
@@ -3416,8 +3415,8 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
         :type SnatIps: list of SnatIp
         :param _ClusterTag: Tag for the STGW exclusive cluster.
         :type ClusterTag: str
-        :param _SlaveZoneId: Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
-Note: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
+        :param _SlaveZoneId: Applicable only to public network IPv4 CLB instances. This parameter specifies the secondary AZ ID for cross-AZ disaster recovery. For example, 100001 or ap-guangzhou-1.
+Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type SlaveZoneId: str
         :param _EipAddressId: Unique ID of an EIP, which can only be used when binding the EIP of a private network CLB instance. E.g., `eip-11112222`.
         :type EipAddressId: str
@@ -3427,8 +3426,12 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         :type DynamicVip: bool
         :param _Egress: Network egress point
         :type Egress: str
-        :param _LBChargePrepaid: Prepaid billing attributes of a CLB instance
+        :param _LBChargePrepaid: Prepayment-related attributes of a CLB instance. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type LBChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param _LBChargeType: Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :type LBChargeType: str
+        :param _AccessLogTopicId: Topic ID of logs of traffic access over layer-7 protocols.
+        :type AccessLogTopicId: str
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -3458,6 +3461,8 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         self._DynamicVip = None
         self._Egress = None
         self._LBChargePrepaid = None
+        self._LBChargeType = None
+        self._AccessLogTopicId = None
 
     @property
     def LoadBalancerType(self):
@@ -3507,7 +3512,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def SubnetId(self):
-        """A subnet ID must be specified when you purchase a private network CLB instance in a VPC, and the VIP of this instance will be generated in this subnet. This parameter is required for creating a CLB instance.
+        """A subnet ID should be specified when you purchase a private network CLB instance under a VPC. The VIP of the private network CLB instance is in this subnet. This parameter is required when you create a private network CLB instance but not supported when you create a public network IPv4 CLB instance.
         :rtype: str
         """
         return self._SubnetId
@@ -3551,7 +3556,8 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def MasterZoneId(self):
-        """ID of the primary availability zone configured for cross-availability zone disaster recovery, such as 100001 or ap-guangzhou-1. It applies only to public network CLB.Note: The primary availability zone is the one that carries traffic. The replica availability zone does not carry traffic by default and is only used when the primary availability zone is unavailable. Currently, primary and replica availability zones are supported only for the IPv4 CLB instances in the regions of Guangzhou, Shanghai, Nanjing, Beijing, Chengdu, Shenzhen Finance Zone, Hong Kong (China), Seoul, Frankfurt, and Singapore. You can query the list of primary availability zones in a region through the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API.
+        """Applicable only to public network IPv4 CLB instances. This parameter specifies the primary AZ ID for cross-AZ disaster recovery. For example, 100001 or ap-guangzhou-1.
+Note: The primary AZ sustains traffic. The secondary AZ does not sustain traffic by default and is used only when the primary AZ is unavailable. Currently, primary and secondary AZs are supported only for IPv4 CLB instances in Guangzhou, Shanghai, Nanjing, Beijing, Chengdu, Shenzhen Finance, Hong Kong (China), Seoul, Frankfurt, and Singapore regions. You can call the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: str
         """
         return self._MasterZoneId
@@ -3562,7 +3568,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def ZoneId(self):
-        """Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
+        """Applicable only to public network IPv4 CLB instances. This parameter specifies the AZ ID for creating a CLB instance. For example, ap-guangzhou-1.
         :rtype: str
         """
         return self._ZoneId
@@ -3573,7 +3579,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
 
     @property
     def InternetAccessible(self):
-        """Maximum outbound bandwidth under the network billing mode. It applies only to LCU-supported instances of the private network type and all instances of the public network type.
+        """Network billing mode by the maximum outbound bandwidth. It applies only to private network LCU-supported instances and all public network instances. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -3706,8 +3712,8 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
 
     @property
     def SlaveZoneId(self):
-        """Specifies the secondary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It is applicable only to public network CLB.
-Note: The traffic only goes to the secondary AZ when the primary AZ is unavailable. You can query the list of primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
+        """Applicable only to public network IPv4 CLB instances. This parameter specifies the secondary AZ ID for cross-AZ disaster recovery. For example, 100001 or ap-guangzhou-1.
+Note: The secondary AZ sustains traffic when the primary AZ encounters faults. You can call the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API to query the list of primary/secondary AZs in a region. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: str
         """
         return self._SlaveZoneId
@@ -3762,7 +3768,7 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
 
     @property
     def LBChargePrepaid(self):
-        """Prepaid billing attributes of a CLB instance
+        """Prepayment-related attributes of a CLB instance. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :rtype: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
         """
         return self._LBChargePrepaid
@@ -3770,6 +3776,28 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
     @LBChargePrepaid.setter
     def LBChargePrepaid(self, LBChargePrepaid):
         self._LBChargePrepaid = LBChargePrepaid
+
+    @property
+    def LBChargeType(self):
+        """Billing type of a CLB instance. Valid values: POSTPAID_BY_HOUR and PREPAID. Default value: POSTPAID_BY_HOUR. The feature of purchasing monthly subscription instances via an API is under grayscale release. If you want to experience this feature, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :rtype: str
+        """
+        return self._LBChargeType
+
+    @LBChargeType.setter
+    def LBChargeType(self, LBChargeType):
+        self._LBChargeType = LBChargeType
+
+    @property
+    def AccessLogTopicId(self):
+        """Topic ID of logs of traffic access over layer-7 protocols.
+        :rtype: str
+        """
+        return self._AccessLogTopicId
+
+    @AccessLogTopicId.setter
+    def AccessLogTopicId(self, AccessLogTopicId):
+        self._AccessLogTopicId = AccessLogTopicId
 
 
     def _deserialize(self, params):
@@ -3817,6 +3845,8 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         if params.get("LBChargePrepaid") is not None:
             self._LBChargePrepaid = LBChargePrepaid()
             self._LBChargePrepaid._deserialize(params.get("LBChargePrepaid"))
+        self._LBChargeType = params.get("LBChargeType")
+        self._AccessLogTopicId = params.get("AccessLogTopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10362,10 +10392,12 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR: hourly pay-as-you-go by traffic; BANDWIDTH_POSTPAID_BY_HOUR: hourly pay-as-you-go by bandwidth;
-BANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is supported only if the ISP is specified)
+        :param _InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR: Postpaid by traffic on an hourly basis. BANDWIDTH_POSTPAID_BY_HOUR: Postpaid by bandwidth on an hourly basis. International site users do not support this billing mode. BANDWIDTH_PACKAGE: Charged by bandwidth package. BANDWIDTH_PREPAID: Bandwidth prepaid.
         :type InternetChargeType: str
-        :param _InternetMaxBandwidthOut: Maximum outbound bandwidth, in Mbps. This applies only to shared, LCU-supported, and exclusive CLB instances of the public network type, as well as the LCU-supported CLB instances of the private network type.- For shared and exclusive CLB instances of the public network type, the maximum outbound bandwidth ranges from 1 Mbps to 2048 Mbps.- For LCU-supported CLB instances of the public network type and the private network type, the maximum outbound bandwidth ranges from 1 Mbps to 61440 Mbps.(If this parameter is not specified when CreateLoadBalancer is called to create a CLB instance, it defaults to 10 Mbps. This upper limit can be adjusted.)Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InternetMaxBandwidthOut: Maximum outbound bandwidth, in Mbps. This parameter is valid only for public network shared, LCU-supported, and exclusive CLB instances and private network LCU-supported CLB instances.
+- The range of the maximum outbound bandwidth for public network shared and exclusive CLB instances is 1 Mbps to 2,048 Mbps.
+- The range of the maximum outbound bandwidth for public network and private network LCU-supported CLB instances is 1 Mbps to 61,440 Mbps.
+(If this parameter is not specified when CreateLoadBalancer is called to create a CLB instance, the default value of 10 Mbps is used. This value can be modified.)
         :type InternetMaxBandwidthOut: int
         :param _BandwidthpkgSubType: Bandwidth package type, such as SINGLEISP (single-line) and BGP (multi-line).Note: This field may return null, indicating that no valid values can be obtained.
         :type BandwidthpkgSubType: str
@@ -10376,8 +10408,7 @@ BANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is suppor
 
     @property
     def InternetChargeType(self):
-        """TRAFFIC_POSTPAID_BY_HOUR: hourly pay-as-you-go by traffic; BANDWIDTH_POSTPAID_BY_HOUR: hourly pay-as-you-go by bandwidth;
-BANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is supported only if the ISP is specified)
+        """TRAFFIC_POSTPAID_BY_HOUR: Postpaid by traffic on an hourly basis. BANDWIDTH_POSTPAID_BY_HOUR: Postpaid by bandwidth on an hourly basis. International site users do not support this billing mode. BANDWIDTH_PACKAGE: Charged by bandwidth package. BANDWIDTH_PREPAID: Bandwidth prepaid.
         :rtype: str
         """
         return self._InternetChargeType
@@ -10388,7 +10419,10 @@ BANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is suppor
 
     @property
     def InternetMaxBandwidthOut(self):
-        """Maximum outbound bandwidth, in Mbps. This applies only to shared, LCU-supported, and exclusive CLB instances of the public network type, as well as the LCU-supported CLB instances of the private network type.- For shared and exclusive CLB instances of the public network type, the maximum outbound bandwidth ranges from 1 Mbps to 2048 Mbps.- For LCU-supported CLB instances of the public network type and the private network type, the maximum outbound bandwidth ranges from 1 Mbps to 61440 Mbps.(If this parameter is not specified when CreateLoadBalancer is called to create a CLB instance, it defaults to 10 Mbps. This upper limit can be adjusted.)Note: This field may return null, indicating that no valid values can be obtained.
+        """Maximum outbound bandwidth, in Mbps. This parameter is valid only for public network shared, LCU-supported, and exclusive CLB instances and private network LCU-supported CLB instances.
+- The range of the maximum outbound bandwidth for public network shared and exclusive CLB instances is 1 Mbps to 2,048 Mbps.
+- The range of the maximum outbound bandwidth for public network and private network LCU-supported CLB instances is 1 Mbps to 61,440 Mbps.
+(If this parameter is not specified when CreateLoadBalancer is called to create a CLB instance, the default value of 10 Mbps is used. This value can be modified.)
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -10557,11 +10591,9 @@ class LBChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RenewFlag: Renewal type. AUTO_RENEW: automatic renewal; MANUAL_RENEW: manual renewal
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RenewFlag: Reserved field.
         :type RenewFlag: str
-        :param _Period: Cycle, indicating the number of months (reserved field)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Period: Reserved field.
         :type Period: int
         """
         self._RenewFlag = None
@@ -10569,8 +10601,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
-        """Renewal type. AUTO_RENEW: automatic renewal; MANUAL_RENEW: manual renewal
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Reserved field.
         :rtype: str
         """
         return self._RenewFlag
@@ -10581,8 +10612,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Period(self):
-        """Cycle, indicating the number of months (reserved field)
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Reserved field.
         :rtype: int
         """
         return self._Period
