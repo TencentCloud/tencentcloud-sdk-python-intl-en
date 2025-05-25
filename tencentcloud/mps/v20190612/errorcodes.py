@@ -335,6 +335,12 @@ INVALIDPARAMETERVALUE_XPOS = 'InvalidParameterValue.XPos'
 # The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported.
 INVALIDPARAMETERVALUE_YPOS = 'InvalidParameterValue.YPos'
 
+# The number of created hotword lexicons has reached the default upper limit.
+LIMITEXCEEDED_TOOMUCHHOTWORDS = 'LimitExceeded.TooMuchHotWords'
+
+# The number of created large hotword lexicons has reached the upper limit.
+LIMITEXCEEDED_TOOMUCHLARGEHOTWORDS = 'LimitExceeded.TooMuchLargeHotWords'
+
 # Limit reached: the number of templates exceeds the limit.
 LIMITEXCEEDED_TOOMUCHTEMPLATE = 'LimitExceeded.TooMuchTemplate'
 

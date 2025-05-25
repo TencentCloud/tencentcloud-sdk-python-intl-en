@@ -3636,10 +3636,10 @@ class AiAnalysisTaskInput(AbstractModel):
         :type Definition: int
         :param _ExtendedParameter: Additional parameter. Its value is a serialized JSON string.
 Note: This parameter is used to meet customization requirements. References:
-Smart erase: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
-Video splitting: https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1
-Intelligent highlights: https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1
-Horizontal-to-vertical video transformation: https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1
+[Smart Erase Tutorial]: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
+[Video Splitting (Long Videos to Short Videos) Tutorial](https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1)
+[Intelligent Highlights Tutorial](https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1)
+[Horizontal-to-Vertical Video Transformation Tutorial](https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1)
 Note: This field may return null, indicating that no valid value can be obtained.
         :type ExtendedParameter: str
         """
@@ -3661,10 +3661,10 @@ Note: This field may return null, indicating that no valid value can be obtained
     def ExtendedParameter(self):
         """Additional parameter. Its value is a serialized JSON string.
 Note: This parameter is used to meet customization requirements. References:
-Smart erase: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
-Video splitting: https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1
-Intelligent highlights: https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1
-Horizontal-to-vertical video transformation: https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1
+[Smart Erase Tutorial]: https://intl.cloud.tencent.com/document/product/862/101530?from_cn_redirect=1
+[Video Splitting (Long Videos to Short Videos) Tutorial](https://intl.cloud.tencent.com/document/product/862/112098?from_cn_redirect=1)
+[Intelligent Highlights Tutorial](https://intl.cloud.tencent.com/document/product/862/107280?from_cn_redirect=1)
+[Horizontal-to-Vertical Video Transformation Tutorial](https://intl.cloud.tencent.com/document/product/862/112112?from_cn_redirect=1)
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -11505,9 +11505,9 @@ Cannot be set to 0.
 
 
         :type Bitrate: int
-        :param _SampleRate: The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
+        :param _SampleRate: Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. For details, see [Audio/Video Transcoding Template](https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
-Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
+Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :type SampleRate: int
         :param _AudioChannel: Audio channel mode. Valid values:
 <li>1: mono-channel.</li>
@@ -11577,9 +11577,9 @@ Cannot be set to 0.
 
     @property
     def SampleRate(self):
-        """The sampling rate of the audio stream. the supported sampling rate options vary for different encoding standards. for details, see audio sampling rate support scope document https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53.
+        """Audio stream sampling rate. Different sampling rate options are provided for different encoding standards. For details, see [Audio/Video Transcoding Template](https://intl.cloud.tencent.com/document/product/862/77166?from_cn_redirect=1#f3b039f1-d817-4a96-b4e4-90132d31cd53).
 Unit: Hz.
-Please ensure that the sampling rate of the source audio stream is within the value range of the above options. otherwise, transcoding failure may occur.
+Note: Make sure that the sampling rate of the source audio stream is among the above options. Otherwise, transcoding may fail.
         :rtype: int
         """
         return self._SampleRate
@@ -13104,7 +13104,7 @@ class ComposeMediaTrack(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The track type. Valid values:<ul><li>`Video`: Video track. A video track can consist of the following elements:</li><ul><li>Video</li><li>Image</li><li>Transition</li><li>Empty</li></ul><li>`Audio`: Audio track. An audio track can consist of the following elements:</li><ul><li>Audio</li><li>Transition</li><li>Empty</li></ul><li>`Title`: Text track. A text track can consist of the following elements: </li><ul><li>Subtitle</li></ul>
+        :param _Type: Track type. Valid values: <ul><li>Video: video track. It can consist of the following elements:</li><ul><li>Video elements</li><li>Image elements</li><li>Transition elements</li><li>Empty elements</li></ul><li>Audio: audio track. It can consist of the following elements:</li><ul><li>Audio elements</li><li>Transition elements</li><li>Empty elements</li></ul><li>Title: text track. It can consist of the following elements:</li><ul><li>Subtitle elements</li></ul></ul>
         :type Type: str
         :param _Items: The elements of a track.
         :type Items: list of ComposeMediaItem
@@ -13114,7 +13114,7 @@ class ComposeMediaTrack(AbstractModel):
 
     @property
     def Type(self):
-        """The track type. Valid values:<ul><li>`Video`: Video track. A video track can consist of the following elements:</li><ul><li>Video</li><li>Image</li><li>Transition</li><li>Empty</li></ul><li>`Audio`: Audio track. An audio track can consist of the following elements:</li><ul><li>Audio</li><li>Transition</li><li>Empty</li></ul><li>`Title`: Text track. A text track can consist of the following elements: </li><ul><li>Subtitle</li></ul>
+        """Track type. Valid values: <ul><li>Video: video track. It can consist of the following elements:</li><ul><li>Video elements</li><li>Image elements</li><li>Transition elements</li><li>Empty elements</li></ul><li>Audio: audio track. It can consist of the following elements:</li><ul><li>Audio elements</li><li>Transition elements</li><li>Empty elements</li></ul><li>Title: text track. It can consist of the following elements:</li><ul><li>Subtitle elements</li></ul></ul>
         :rtype: str
         """
         return self._Type
@@ -16346,20 +16346,23 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HLSConfigure: HLS configuration parameters.
+        :param _HLSConfigure: HLS configuration parameter. Either this parameter or MP4Configure should be specified.
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _MP4Configure: MP4 configuration parameter. Either this parameter or HLSConfigure should be specified.
+        :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
         :param _Name: Recording template name. Length limit: 64 characters.
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
         :type Comment: str
         """
         self._HLSConfigure = None
+        self._MP4Configure = None
         self._Name = None
         self._Comment = None
 
     @property
     def HLSConfigure(self):
-        """HLS configuration parameters.
+        """HLS configuration parameter. Either this parameter or MP4Configure should be specified.
         :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
         """
         return self._HLSConfigure
@@ -16367,6 +16370,17 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
     @HLSConfigure.setter
     def HLSConfigure(self, HLSConfigure):
         self._HLSConfigure = HLSConfigure
+
+    @property
+    def MP4Configure(self):
+        """MP4 configuration parameter. Either this parameter or HLSConfigure should be specified.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
+        """
+        return self._MP4Configure
+
+    @MP4Configure.setter
+    def MP4Configure(self, MP4Configure):
+        self._MP4Configure = MP4Configure
 
     @property
     def Name(self):
@@ -16395,6 +16409,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("HLSConfigure") is not None:
             self._HLSConfigure = HLSConfigureInfo()
             self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        if params.get("MP4Configure") is not None:
+            self._MP4Configure = MP4ConfigureInfo()
+            self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
@@ -17642,6 +17659,8 @@ Default value: 0.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _EnhanceConfig: Audio/Video enhancement configuration.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        :param _StdExtInfo: 
+        :type StdExtInfo: str
         """
         self._Container = None
         self._Name = None
@@ -17652,6 +17671,7 @@ Default value: 0.
         self._AudioTemplate = None
         self._TEHDConfig = None
         self._EnhanceConfig = None
+        self._StdExtInfo = None
 
     @property
     def Container(self):
@@ -17758,6 +17778,17 @@ Default value: 0.
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def StdExtInfo(self):
+        """
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -17777,6 +17808,7 @@ Default value: 0.
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22102,7 +22134,7 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: Condition for filtering smart subtitle templates by unique identifier. The array can contain up to 10 unique identifiers.
+        :param _Definitions: Unique identifiers of smart subtitle templates for filtering. The array can contain up to 100 unique identifiers.
         :type Definitions: list of int
         :param _Offset: Paging offset. Default value: 0.
         :type Offset: int
@@ -22123,7 +22155,7 @@ class DescribeSmartSubtitleTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        """Condition for filtering smart subtitle templates by unique identifier. The array can contain up to 10 unique identifiers.
+        """Unique identifiers of smart subtitle templates for filtering. The array can contain up to 100 unique identifiers.
         :rtype: list of int
         """
         return self._Definitions
@@ -25807,6 +25839,84 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class ImageAreaBoxInfo(AbstractModel):
+    """Information on the box selection area in an image.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Type of the box selection area in the image. Valid values:
+<li>logo: icon</li>
+<li>text: text</li>
+Default value: logo.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Type: str
+        :param _AreaCoordSet: Coordinates (pixel-level) of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner.
+For example, [101, 85, 111, 95].
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AreaCoordSet: list of int
+        :param _BoundingBox: 
+        :type BoundingBox: list of float
+        """
+        self._Type = None
+        self._AreaCoordSet = None
+        self._BoundingBox = None
+
+    @property
+    def Type(self):
+        """Type of the box selection area in the image. Valid values:
+<li>logo: icon</li>
+<li>text: text</li>
+Default value: logo.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AreaCoordSet(self):
+        """Coordinates (pixel-level) of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner.
+For example, [101, 85, 111, 95].
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of int
+        """
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+    @property
+    def BoundingBox(self):
+        """
+        :rtype: list of float
+        """
+        return self._BoundingBox
+
+    @BoundingBox.setter
+    def BoundingBox(self, BoundingBox):
+        self._BoundingBox = BoundingBox
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._AreaCoordSet = params.get("AreaCoordSet")
+        self._BoundingBox = params.get("BoundingBox")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageEncodeConfig(AbstractModel):
     """Image encoding format parameters
 
@@ -25814,7 +25924,7 @@ class ImageEncodeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: Image format. Valid values: JPG, BMP, GIF, PNG, and WebP. The default is the original image format.
+        :param _Format: Image format. Valid values: JPEG, PNG, BMP, and WebP. If it is not specified, the original image format is used. Animations are not supported.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Format: str
         :param _Quality: Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.
@@ -25826,7 +25936,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Format(self):
-        """Image format. Valid values: JPG, BMP, GIF, PNG, and WebP. The default is the original image format.
+        """Image format. Valid values: JPEG, PNG, BMP, and WebP. If it is not specified, the original image format is used. Animations are not supported.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
@@ -25949,6 +26059,116 @@ class ImageEnhanceConfig(AbstractModel):
         if params.get("FaceEnhance") is not None:
             self._FaceEnhance = FaceEnhanceConfig()
             self._FaceEnhance._deserialize(params.get("FaceEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEraseConfig(AbstractModel):
+    """Image erasing parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageEraseLogo: Icon erasing configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ImageEraseLogo: :class:`tencentcloud.mps.v20190612.models.ImageEraseLogoConfig`
+        """
+        self._ImageEraseLogo = None
+
+    @property
+    def ImageEraseLogo(self):
+        """Icon erasing configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseLogoConfig`
+        """
+        return self._ImageEraseLogo
+
+    @ImageEraseLogo.setter
+    def ImageEraseLogo(self, ImageEraseLogo):
+        self._ImageEraseLogo = ImageEraseLogo
+
+
+    def _deserialize(self, params):
+        if params.get("ImageEraseLogo") is not None:
+            self._ImageEraseLogo = ImageEraseLogoConfig()
+            self._ImageEraseLogo._deserialize(params.get("ImageEraseLogo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEraseLogoConfig(AbstractModel):
+    """Icon erasing configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Capability configuration enabling status. Valid values:
+<li>ON: enabled</li>
+<li>OFF: disabled</li>
+Default value: ON.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Switch: str
+        :param _ImageAreaBoxes: Multiple box selection areas to be erased. Note: The value array of this parameter can contain up to 2 values.
+Note: This field may return null, indicating that no valid value can be obtained.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ImageAreaBoxes: list of ImageAreaBoxInfo
+        """
+        self._Switch = None
+        self._ImageAreaBoxes = None
+
+    @property
+    def Switch(self):
+        """Capability configuration enabling status. Valid values:
+<li>ON: enabled</li>
+<li>OFF: disabled</li>
+Default value: ON.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ImageAreaBoxes(self):
+        """Multiple box selection areas to be erased. Note: The value array of this parameter can contain up to 2 values.
+Note: This field may return null, indicating that no valid value can be obtained.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of ImageAreaBoxInfo
+        """
+        return self._ImageAreaBoxes
+
+    @ImageAreaBoxes.setter
+    def ImageAreaBoxes(self, ImageAreaBoxes):
+        self._ImageAreaBoxes = ImageAreaBoxes
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        if params.get("ImageAreaBoxes") is not None:
+            self._ImageAreaBoxes = []
+            for item in params.get("ImageAreaBoxes"):
+                obj = ImageAreaBoxInfo()
+                obj._deserialize(item)
+                self._ImageAreaBoxes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26417,9 +26637,13 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _EnhanceConfig: Image enhancement configuration.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.ImageEnhanceConfig`
+        :param _EraseConfig: Image erasing configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EraseConfig: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
+        self._EraseConfig = None
 
     @property
     def EncodeConfig(self):
@@ -26445,6 +26669,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def EraseConfig(self):
+        """Image erasing configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageEraseConfig`
+        """
+        return self._EraseConfig
+
+    @EraseConfig.setter
+    def EraseConfig(self, EraseConfig):
+        self._EraseConfig = EraseConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -26453,6 +26689,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = ImageEnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        if params.get("EraseConfig") is not None:
+            self._EraseConfig = ImageEraseConfig()
+            self._EraseConfig._deserialize(params.get("EraseConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27131,6 +27370,8 @@ class LiveRecordTemplate(AbstractModel):
         :type Definition: int
         :param _HLSConfigure: HLS configuration parameters
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _MP4Configure: MP4 configuration parameter.
+        :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
         :param _Name: Recording template name.
         :type Name: str
         :param _Comment: Template description.
@@ -27147,6 +27388,7 @@ class LiveRecordTemplate(AbstractModel):
         """
         self._Definition = None
         self._HLSConfigure = None
+        self._MP4Configure = None
         self._Name = None
         self._Comment = None
         self._Type = None
@@ -27174,6 +27416,17 @@ class LiveRecordTemplate(AbstractModel):
     @HLSConfigure.setter
     def HLSConfigure(self, HLSConfigure):
         self._HLSConfigure = HLSConfigure
+
+    @property
+    def MP4Configure(self):
+        """MP4 configuration parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
+        """
+        return self._MP4Configure
+
+    @MP4Configure.setter
+    def MP4Configure(self, MP4Configure):
+        self._MP4Configure = MP4Configure
 
     @property
     def Name(self):
@@ -27239,6 +27492,9 @@ class LiveRecordTemplate(AbstractModel):
         if params.get("HLSConfigure") is not None:
             self._HLSConfigure = HLSConfigureInfo()
             self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        if params.get("MP4Configure") is not None:
+            self._MP4Configure = MP4ConfigureInfo()
+            self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         self._Type = params.get("Type")
@@ -29935,6 +30191,42 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MP4ConfigureInfo(AbstractModel):
+    """MP4 configuration parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Interval: Recording duration, in seconds. The interval can range from 10 minutes to 720 minutes. It is 60 minutes (3,600 seconds) by default.
+        :type Interval: int
+        """
+        self._Interval = None
+
+    @property
+    def Interval(self):
+        """Recording duration, in seconds. The interval can range from 10 minutes to 720 minutes. It is 60 minutes (3,600 seconds) by default.
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+
+    def _deserialize(self, params):
+        self._Interval = params.get("Interval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34401,7 +34693,11 @@ class ModifyAsrHotwordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HotwordsId: Hotword lexicon ID.
+        :param _HotwordsId: Hotword lexicon ID. 
+ 
+Either Name or Content should be specified if the hotword lexicon is a text-based hotword lexicon.
+One of Name, FileContent, and FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
+
         :type HotwordsId: str
         :param _Name: Hotword lexicon name.
         :type Name: str
@@ -34423,7 +34719,11 @@ class ModifyAsrHotwordsRequest(AbstractModel):
 
     @property
     def HotwordsId(self):
-        """Hotword lexicon ID.
+        """Hotword lexicon ID. 
+ 
+Either Name or Content should be specified if the hotword lexicon is a text-based hotword lexicon.
+One of Name, FileContent, and FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
+
         :rtype: str
         """
         return self._HotwordsId
@@ -34967,8 +35267,10 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Specifies the recording template unique identifier.
         :type Definition: int
-        :param _HLSConfigure: HLS configuration parameters.
+        :param _HLSConfigure: HLS configuration parameter. Either this parameter or MP4Configure should be specified.
         :type HLSConfigure: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
+        :param _MP4Configure: MP4 configuration parameter. Either this parameter or HLSConfigure should be specified.
+        :type MP4Configure: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
         :param _Name: Recording template name. Length limit: 64 characters.
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
@@ -34976,6 +35278,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         """
         self._Definition = None
         self._HLSConfigure = None
+        self._MP4Configure = None
         self._Name = None
         self._Comment = None
 
@@ -34992,7 +35295,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
 
     @property
     def HLSConfigure(self):
-        """HLS configuration parameters.
+        """HLS configuration parameter. Either this parameter or MP4Configure should be specified.
         :rtype: :class:`tencentcloud.mps.v20190612.models.HLSConfigureInfo`
         """
         return self._HLSConfigure
@@ -35000,6 +35303,17 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
     @HLSConfigure.setter
     def HLSConfigure(self, HLSConfigure):
         self._HLSConfigure = HLSConfigure
+
+    @property
+    def MP4Configure(self):
+        """MP4 configuration parameter. Either this parameter or HLSConfigure should be specified.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MP4ConfigureInfo`
+        """
+        return self._MP4Configure
+
+    @MP4Configure.setter
+    def MP4Configure(self, MP4Configure):
+        self._MP4Configure = MP4Configure
 
     @property
     def Name(self):
@@ -35029,6 +35343,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("HLSConfigure") is not None:
             self._HLSConfigure = HLSConfigureInfo()
             self._HLSConfigure._deserialize(params.get("HLSConfigure"))
+        if params.get("MP4Configure") is not None:
+            self._MP4Configure = MP4ConfigureInfo()
+            self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
@@ -40320,9 +40637,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _NoVideo: Whether there is a video track. `true` indicates that there isn't.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NoVideo: bool
-        :param _QualityEvaluationScore: The no-reference video quality score. Value range: 0-100.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QualityEvaluationScore: No-reference quality score of the video (100 points in total).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityEvaluationScore: int
+        :param _QualityEvaluationMeanOpinionScore: No-reference quality score of the video (MOS).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type QualityEvaluationMeanOpinionScore: float
         :param _QualityControlResultSet: Exception items detected in content quality inspection.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlResultSet: list of QualityControlResult
@@ -40333,6 +40653,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
+        self._QualityEvaluationMeanOpinionScore = None
         self._QualityControlResultSet = None
         self._ContainerDiagnoseResultSet = None
 
@@ -40362,8 +40683,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityEvaluationScore(self):
-        """The no-reference video quality score. Value range: 0-100.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """No-reference quality score of the video (100 points in total).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._QualityEvaluationScore
@@ -40371,6 +40692,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @QualityEvaluationScore.setter
     def QualityEvaluationScore(self, QualityEvaluationScore):
         self._QualityEvaluationScore = QualityEvaluationScore
+
+    @property
+    def QualityEvaluationMeanOpinionScore(self):
+        """No-reference quality score of the video (MOS).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: float
+        """
+        return self._QualityEvaluationMeanOpinionScore
+
+    @QualityEvaluationMeanOpinionScore.setter
+    def QualityEvaluationMeanOpinionScore(self, QualityEvaluationMeanOpinionScore):
+        self._QualityEvaluationMeanOpinionScore = QualityEvaluationMeanOpinionScore
 
     @property
     def QualityControlResultSet(self):
@@ -40401,6 +40734,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NoAudio = params.get("NoAudio")
         self._NoVideo = params.get("NoVideo")
         self._QualityEvaluationScore = params.get("QualityEvaluationScore")
+        self._QualityEvaluationMeanOpinionScore = params.get("QualityEvaluationMeanOpinionScore")
         if params.get("QualityControlResultSet") is not None:
             self._QualityControlResultSet = []
             for item in params.get("QualityControlResultSet"):
@@ -50820,10 +51154,13 @@ class WordResult(AbstractModel):
         :type Start: float
         :param _End: Word end timestamp, in seconds.
         :type End: float
+        :param _Trans: Text after translation.
+        :type Trans: str
         """
         self._Word = None
         self._Start = None
         self._End = None
+        self._Trans = None
 
     @property
     def Word(self):
@@ -50858,11 +51195,23 @@ class WordResult(AbstractModel):
     def End(self, End):
         self._End = End
 
+    @property
+    def Trans(self):
+        """Text after translation.
+        :rtype: str
+        """
+        return self._Trans
+
+    @Trans.setter
+    def Trans(self, Trans):
+        self._Trans = Trans
+
 
     def _deserialize(self, params):
         self._Word = params.get("Word")
         self._Start = params.get("Start")
         self._End = params.get("End")
+        self._Trans = params.get("Trans")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
