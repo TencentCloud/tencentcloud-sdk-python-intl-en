@@ -95,6 +95,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllocationUnitDetail(self, request):
+        """Query the details of a cost allocation unit.
+
+        :param request: Request instance for DescribeAllocationUnitDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationUnitDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationUnitDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationUnitDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationUnitDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillAdjustInfo(self, request):
         """This API is used to check whether the current UIN has any adjustment, enabling customers to proactively obtain the adjustment status faster.
 
