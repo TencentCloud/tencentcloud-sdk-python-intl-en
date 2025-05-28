@@ -6837,13 +6837,14 @@ class QuerySubAgentsDetailV2Request(AbstractModel):
         :param _PageSize: Number of items per page. supports up to 100.
         :type PageSize: int
         :param _FilterType: Filter criteria, support the following filter parameters.
-Note: Email, SubAgentUin, and ClientUin only support exact search. other conditions support fuzzy retrieval.
-Name: filter criteria based on customer name.
+Note: Email, SubAgentUin, and ClientUin only support exact search. other conditions support fuzzy retrieval.The following are the definitions of filtering  items:
+
+Name: specifies second-level reseller name.
 SubAgentUin: specifies the uin of the second-level reseller.
-Remark: remark.
+Remark: specifies remark.
 Mobile: specifies the mobile number.
-Specifies the mailbox.
-ClientUin: specifies the sub-customer uin.
+Email: specifies email address.
+ClientUin: specifies the Indirect customer uin.
         :type FilterType: str
         :param _Filter: Filter value
         :type Filter: str
@@ -6883,13 +6884,14 @@ acs: ascending.
     @property
     def FilterType(self):
         """Filter criteria, support the following filter parameters.
-Note: Email, SubAgentUin, and ClientUin only support exact search. other conditions support fuzzy retrieval.
-Name: filter criteria based on customer name.
+Note: Email, SubAgentUin, and ClientUin only support exact search. other conditions support fuzzy retrieval.The following are the definitions of filtering  items:
+
+Name: specifies second-level reseller name.
 SubAgentUin: specifies the uin of the second-level reseller.
-Remark: remark.
+Remark: specifies remark.
 Mobile: specifies the mobile number.
-Specifies the mailbox.
-ClientUin: specifies the sub-customer uin.
+Email: specifies email address.
+ClientUin: specifies the Indirect customer uin.
         :rtype: str
         """
         return self._FilterType

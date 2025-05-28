@@ -7086,17 +7086,17 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 class InputSettingInfo(AbstractModel):
     """The input settings.
-    The format of an RTMP_PUSH address is ${InputAddress}/${AppName}/${StreamName}.
+    The format of an RTMP_PUSH/RTMPS_PUSH address is ${InputAddress}/${AppName}/${StreamName}.
     The format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.
 
     """
 
     def __init__(self):
         r"""
-        :param _AppName: Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
+        :param _AppName: Application name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :type AppName: str
-        :param _StreamName: Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
+        :param _StreamName: Stream name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :type StreamName: str
         :param _SourceUrl: Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`,  `MP4_PULL`, `RTSP_PULL` or `SRT_PULL`, and can contain 1-512 characters
@@ -7108,8 +7108,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _SourceType: Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.
 Note: this field may return `null`, indicating that no valid value was found.
         :type SourceType: str
-        :param _DelayTime: Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`
-Value range: 0 (default) or 10000-600000
+        :param _DelayTime: Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`.
+Value range: 0 (default) or 10000-600000.
 The value must be a multiple of 1,000.
 Note: This field may return `null`, indicating that no valid value was found.
         :type DelayTime: int
@@ -7137,7 +7137,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def AppName(self):
-        """Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
+        """Application name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7149,7 +7149,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def StreamName(self):
-        """Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
+        """Stream name, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`, and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: str
         """
@@ -7197,8 +7197,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DelayTime(self):
-        """Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`
-Value range: 0 (default) or 10000-600000
+        """Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH` or `RTMPS_PUSH`.
+Value range: 0 (default) or 10000-600000.
 The value must be a multiple of 1,000.
 Note: This field may return `null`, indicating that no valid value was found.
         :rtype: int
