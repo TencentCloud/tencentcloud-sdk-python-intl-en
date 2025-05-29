@@ -1287,6 +1287,215 @@ class BackupFileInfo(AbstractModel):
         
 
 
+class BackupLimitClusterRestriction(AbstractModel):
+    """Specifies the backup download cluster restrictions parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _BackupLimitRestriction: Download limit configuration.
+        :type BackupLimitRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        self._ClusterId = None
+        self._BackupLimitRestriction = None
+
+    @property
+    def ClusterId(self):
+        """Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupLimitRestriction(self):
+        """Download limit configuration.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        return self._BackupLimitRestriction
+
+    @BackupLimitRestriction.setter
+    def BackupLimitRestriction(self, BackupLimitRestriction):
+        self._BackupLimitRestriction = BackupLimitRestriction
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("BackupLimitRestriction") is not None:
+            self._BackupLimitRestriction = BackupLimitRestriction()
+            self._BackupLimitRestriction._deserialize(params.get("BackupLimitRestriction"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupLimitRestriction(AbstractModel):
+    """Specifies the backup download limit parameter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitType: Restriction type.
+        :type LimitType: str
+        :param _VpcComparisonSymbol: This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.
+        :type VpcComparisonSymbol: str
+        :param _IpComparisonSymbol: Specified ips can download; specified ips are not allowed to download.
+        :type IpComparisonSymbol: str
+        :param _LimitVpcs: Specifies the vpc setting for download restrictions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LimitVpcs: list of BackupLimitVpcItem
+        :param _LimitIps: Specifies the ip settings for limiting downloads.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LimitIps: list of str
+        """
+        self._LimitType = None
+        self._VpcComparisonSymbol = None
+        self._IpComparisonSymbol = None
+        self._LimitVpcs = None
+        self._LimitIps = None
+
+    @property
+    def LimitType(self):
+        """Restriction type.
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+    @property
+    def VpcComparisonSymbol(self):
+        """This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.
+        :rtype: str
+        """
+        return self._VpcComparisonSymbol
+
+    @VpcComparisonSymbol.setter
+    def VpcComparisonSymbol(self, VpcComparisonSymbol):
+        self._VpcComparisonSymbol = VpcComparisonSymbol
+
+    @property
+    def IpComparisonSymbol(self):
+        """Specified ips can download; specified ips are not allowed to download.
+        :rtype: str
+        """
+        return self._IpComparisonSymbol
+
+    @IpComparisonSymbol.setter
+    def IpComparisonSymbol(self, IpComparisonSymbol):
+        self._IpComparisonSymbol = IpComparisonSymbol
+
+    @property
+    def LimitVpcs(self):
+        """Specifies the vpc setting for download restrictions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BackupLimitVpcItem
+        """
+        return self._LimitVpcs
+
+    @LimitVpcs.setter
+    def LimitVpcs(self, LimitVpcs):
+        self._LimitVpcs = LimitVpcs
+
+    @property
+    def LimitIps(self):
+        """Specifies the ip settings for limiting downloads.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._LimitIps
+
+    @LimitIps.setter
+    def LimitIps(self, LimitIps):
+        self._LimitIps = LimitIps
+
+
+    def _deserialize(self, params):
+        self._LimitType = params.get("LimitType")
+        self._VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self._IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpcs") is not None:
+            self._LimitVpcs = []
+            for item in params.get("LimitVpcs"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self._LimitVpcs.append(obj)
+        self._LimitIps = params.get("LimitIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupLimitVpcItem(AbstractModel):
+    """VPC settings for restricting backup download sources.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Specifies the region for limiting download sources. currently only supports the current region.
+        :type Region: str
+        :param _VpcList: Limit the vpc list for downloads.
+        :type VpcList: list of str
+        """
+        self._Region = None
+        self._VpcList = None
+
+    @property
+    def Region(self):
+        """Specifies the region for limiting download sources. currently only supports the current region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VpcList(self):
+        """Limit the vpc list for downloads.
+        :rtype: list of str
+        """
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._VpcList = params.get("VpcList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillingResourceInfo(AbstractModel):
     """Billable resource information
 
@@ -2539,6 +2748,108 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._DbMode = params.get("DbMode")
         self._NodeList = params.get("NodeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterReadOnlyValue(AbstractModel):
+    """Cluster read-only switch list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ReadOnlyValue: Specifies the value of the read-only switch.
+        :type ReadOnlyValue: str
+        """
+        self._ClusterId = None
+        self._ReadOnlyValue = None
+
+    @property
+    def ClusterId(self):
+        """Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ReadOnlyValue(self):
+        """Specifies the value of the read-only switch.
+        :rtype: str
+        """
+        return self._ReadOnlyValue
+
+    @ReadOnlyValue.setter
+    def ReadOnlyValue(self, ReadOnlyValue):
+        self._ReadOnlyValue = ReadOnlyValue
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ReadOnlyValue = params.get("ReadOnlyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterTaskId(AbstractModel):
+    """Cluster task ID.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _TaskId: Task ID
+        :type TaskId: str
+        """
+        self._ClusterId = None
+        self._TaskId = None
+
+    @property
+    def ClusterId(self):
+        """Cluster ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TaskId(self):
+        """Task ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9826,6 +10137,92 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupDownloadRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: Cluster ID
+        :type ClusterIds: list of str
+        """
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        """Cluster ID
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupLimitClusterRestrictions: Cluster backup download limit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupLimitClusterRestrictions: list of BackupLimitClusterRestriction
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackupLimitClusterRestrictions = None
+        self._RequestId = None
+
+    @property
+    def BackupLimitClusterRestrictions(self):
+        """Cluster backup download limit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BackupLimitClusterRestriction
+        """
+        return self._BackupLimitClusterRestrictions
+
+    @BackupLimitClusterRestrictions.setter
+    def BackupLimitClusterRestrictions(self, BackupLimitClusterRestrictions):
+        self._BackupLimitClusterRestrictions = BackupLimitClusterRestrictions
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackupLimitClusterRestrictions") is not None:
+            self._BackupLimitClusterRestrictions = []
+            for item in params.get("BackupLimitClusterRestrictions"):
+                obj = BackupLimitClusterRestriction()
+                obj._deserialize(item)
+                self._BackupLimitClusterRestrictions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupDownloadUrlRequest(AbstractModel):
     """DescribeBackupDownloadUrl request structure.
 
@@ -9837,9 +10234,12 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
         :type ClusterId: str
         :param _BackupId: Backup ID
         :type BackupId: int
+        :param _DownloadRestriction: Backup download source restriction condition.
+        :type DownloadRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         self._ClusterId = None
         self._BackupId = None
+        self._DownloadRestriction = None
 
     @property
     def ClusterId(self):
@@ -9863,10 +10263,24 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
     def BackupId(self, BackupId):
         self._BackupId = BackupId
 
+    @property
+    def DownloadRestriction(self):
+        """Backup download source restriction condition.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        return self._DownloadRestriction
+
+    @DownloadRestriction.setter
+    def DownloadRestriction(self, DownloadRestriction):
+        self._DownloadRestriction = DownloadRestriction
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._BackupId = params.get("BackupId")
+        if params.get("DownloadRestriction") is not None:
+            self._DownloadRestriction = BackupLimitRestriction()
+            self._DownloadRestriction._deserialize(params.get("DownloadRestriction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9917,6 +10331,137 @@ class DescribeBackupDownloadUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackupDownloadUserRestrictionRequest(AbstractModel):
+    """DescribeBackupDownloadUserRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Pagination size
+        :type Limit: int
+        :param _Offset: Offset.
+        :type Offset: int
+        :param _OnlyUserRestriction: Specifies whether to query only user-level download limits. true - yes, false - no.
+        :type OnlyUserRestriction: bool
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OnlyUserRestriction = None
+
+    @property
+    def Limit(self):
+        """Pagination size
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """Offset.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OnlyUserRestriction(self):
+        """Specifies whether to query only user-level download limits. true - yes, false - no.
+        :rtype: bool
+        """
+        return self._OnlyUserRestriction
+
+    @OnlyUserRestriction.setter
+    def OnlyUserRestriction(self, OnlyUserRestriction):
+        self._OnlyUserRestriction = OnlyUserRestriction
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OnlyUserRestriction = params.get("OnlyUserRestriction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupDownloadUserRestrictionResponse(AbstractModel):
+    """DescribeBackupDownloadUserRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupLimitClusterRestrictions: Cluster backup download limit information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupLimitClusterRestrictions: list of BackupLimitClusterRestriction
+        :param _TotalCount: Total number of entries
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackupLimitClusterRestrictions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def BackupLimitClusterRestrictions(self):
+        """Cluster backup download limit information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of BackupLimitClusterRestriction
+        """
+        return self._BackupLimitClusterRestrictions
+
+    @BackupLimitClusterRestrictions.setter
+    def BackupLimitClusterRestrictions(self, BackupLimitClusterRestrictions):
+        self._BackupLimitClusterRestrictions = BackupLimitClusterRestrictions
+
+    @property
+    def TotalCount(self):
+        """Total number of entries
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackupLimitClusterRestrictions") is not None:
+            self._BackupLimitClusterRestrictions = []
+            for item in params.get("BackupLimitClusterRestrictions"):
+                obj = BackupLimitClusterRestriction()
+                obj._deserialize(item)
+                self._BackupLimitClusterRestrictions.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -10308,9 +10853,12 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
         :type ClusterId: str
         :param _BinlogId: Binlog file ID
         :type BinlogId: int
+        :param _DownloadRestriction: Backup download source restriction condition.
+        :type DownloadRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         self._ClusterId = None
         self._BinlogId = None
+        self._DownloadRestriction = None
 
     @property
     def ClusterId(self):
@@ -10334,10 +10882,24 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
     def BinlogId(self, BinlogId):
         self._BinlogId = BinlogId
 
+    @property
+    def DownloadRestriction(self):
+        """Backup download source restriction condition.
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
+        """
+        return self._DownloadRestriction
+
+    @DownloadRestriction.setter
+    def DownloadRestriction(self, DownloadRestriction):
+        self._DownloadRestriction = DownloadRestriction
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._BinlogId = params.get("BinlogId")
+        if params.get("DownloadRestriction") is not None:
+            self._DownloadRestriction = BackupLimitRestriction()
+            self._DownloadRestriction._deserialize(params.get("DownloadRestriction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11420,6 +11982,90 @@ class DescribeClusterPasswordComplexityResponse(AbstractModel):
         if params.get("ValidatePasswordSpecialCharCount") is not None:
             self._ValidatePasswordSpecialCharCount = ParamInfo()
             self._ValidatePasswordSpecialCharCount._deserialize(params.get("ValidatePasswordSpecialCharCount"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterReadOnlyRequest(AbstractModel):
+    """DescribeClusterReadOnly request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: List of cluster IDs
+        :type ClusterIds: list of str
+        """
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        """List of cluster IDs
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterReadOnlyResponse(AbstractModel):
+    """DescribeClusterReadOnly response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterReadOnlyValues: List of cluster read-only switches.
+        :type ClusterReadOnlyValues: list of ClusterReadOnlyValue
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ClusterReadOnlyValues = None
+        self._RequestId = None
+
+    @property
+    def ClusterReadOnlyValues(self):
+        """List of cluster read-only switches.
+        :rtype: list of ClusterReadOnlyValue
+        """
+        return self._ClusterReadOnlyValues
+
+    @ClusterReadOnlyValues.setter
+    def ClusterReadOnlyValues(self, ClusterReadOnlyValues):
+        self._ClusterReadOnlyValues = ClusterReadOnlyValues
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterReadOnlyValues") is not None:
+            self._ClusterReadOnlyValues = []
+            for item in params.get("ClusterReadOnlyValues"):
+                obj = ClusterReadOnlyValue()
+                obj._deserialize(item)
+                self._ClusterReadOnlyValues.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18925,6 +19571,279 @@ class ModifyBackupConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBackupDownloadRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: Cluster ID
+        :type ClusterIds: list of str
+        :param _LimitType: Download limit type. valid values: NoLimit (unlimited), LimitOnlyIntranet (limited to private network), Customize (custom).
+        :type LimitType: str
+        :param _VpcComparisonSymbol: This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.
+        :type VpcComparisonSymbol: str
+        :param _IpComparisonSymbol: Specified ips can download; specified ips are not allowed to download.
+        :type IpComparisonSymbol: str
+        :param _LimitVpcs: Limit the vpc settings for downloads.
+        :type LimitVpcs: list of BackupLimitVpcItem
+        :param _LimitIps: Specifies the ip settings for limiting downloads.
+        :type LimitIps: list of str
+        """
+        self._ClusterIds = None
+        self._LimitType = None
+        self._VpcComparisonSymbol = None
+        self._IpComparisonSymbol = None
+        self._LimitVpcs = None
+        self._LimitIps = None
+
+    @property
+    def ClusterIds(self):
+        """Cluster ID
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def LimitType(self):
+        """Download limit type. valid values: NoLimit (unlimited), LimitOnlyIntranet (limited to private network), Customize (custom).
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+    @property
+    def VpcComparisonSymbol(self):
+        """This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.
+        :rtype: str
+        """
+        return self._VpcComparisonSymbol
+
+    @VpcComparisonSymbol.setter
+    def VpcComparisonSymbol(self, VpcComparisonSymbol):
+        self._VpcComparisonSymbol = VpcComparisonSymbol
+
+    @property
+    def IpComparisonSymbol(self):
+        """Specified ips can download; specified ips are not allowed to download.
+        :rtype: str
+        """
+        return self._IpComparisonSymbol
+
+    @IpComparisonSymbol.setter
+    def IpComparisonSymbol(self, IpComparisonSymbol):
+        self._IpComparisonSymbol = IpComparisonSymbol
+
+    @property
+    def LimitVpcs(self):
+        """Limit the vpc settings for downloads.
+        :rtype: list of BackupLimitVpcItem
+        """
+        return self._LimitVpcs
+
+    @LimitVpcs.setter
+    def LimitVpcs(self, LimitVpcs):
+        self._LimitVpcs = LimitVpcs
+
+    @property
+    def LimitIps(self):
+        """Specifies the ip settings for limiting downloads.
+        :rtype: list of str
+        """
+        return self._LimitIps
+
+    @LimitIps.setter
+    def LimitIps(self, LimitIps):
+        self._LimitIps = LimitIps
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        self._LimitType = params.get("LimitType")
+        self._VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self._IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpcs") is not None:
+            self._LimitVpcs = []
+            for item in params.get("LimitVpcs"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self._LimitVpcs.append(obj)
+        self._LimitIps = params.get("LimitIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBackupDownloadUserRestrictionRequest(AbstractModel):
+    """ModifyBackupDownloadUserRestriction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitType: Download limit type. valid values: NoLimit (unlimited), LimitOnlyIntranet (limited to private network), Customize (custom).
+        :type LimitType: str
+        :param _VpcComparisonSymbol: This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.
+        :type VpcComparisonSymbol: str
+        :param _IpComparisonSymbol: Specified ips can download; specified ips are not allowed to download.
+        :type IpComparisonSymbol: str
+        :param _LimitVpcs: Limit the vpc settings for downloads.
+        :type LimitVpcs: list of BackupLimitVpcItem
+        :param _LimitIps: Specifies the ip settings for limiting downloads.
+        :type LimitIps: list of str
+        """
+        self._LimitType = None
+        self._VpcComparisonSymbol = None
+        self._IpComparisonSymbol = None
+        self._LimitVpcs = None
+        self._LimitIps = None
+
+    @property
+    def LimitType(self):
+        """Download limit type. valid values: NoLimit (unlimited), LimitOnlyIntranet (limited to private network), Customize (custom).
+        :rtype: str
+        """
+        return self._LimitType
+
+    @LimitType.setter
+    def LimitType(self, LimitType):
+        self._LimitType = LimitType
+
+    @property
+    def VpcComparisonSymbol(self):
+        """This parameter only supports In, which indicates that the vpc specified by LimitVpc can be downloaded. the default is In.
+        :rtype: str
+        """
+        return self._VpcComparisonSymbol
+
+    @VpcComparisonSymbol.setter
+    def VpcComparisonSymbol(self, VpcComparisonSymbol):
+        self._VpcComparisonSymbol = VpcComparisonSymbol
+
+    @property
+    def IpComparisonSymbol(self):
+        """Specified ips can download; specified ips are not allowed to download.
+        :rtype: str
+        """
+        return self._IpComparisonSymbol
+
+    @IpComparisonSymbol.setter
+    def IpComparisonSymbol(self, IpComparisonSymbol):
+        self._IpComparisonSymbol = IpComparisonSymbol
+
+    @property
+    def LimitVpcs(self):
+        """Limit the vpc settings for downloads.
+        :rtype: list of BackupLimitVpcItem
+        """
+        return self._LimitVpcs
+
+    @LimitVpcs.setter
+    def LimitVpcs(self, LimitVpcs):
+        self._LimitVpcs = LimitVpcs
+
+    @property
+    def LimitIps(self):
+        """Specifies the ip settings for limiting downloads.
+        :rtype: list of str
+        """
+        return self._LimitIps
+
+    @LimitIps.setter
+    def LimitIps(self, LimitIps):
+        self._LimitIps = LimitIps
+
+
+    def _deserialize(self, params):
+        self._LimitType = params.get("LimitType")
+        self._VpcComparisonSymbol = params.get("VpcComparisonSymbol")
+        self._IpComparisonSymbol = params.get("IpComparisonSymbol")
+        if params.get("LimitVpcs") is not None:
+            self._LimitVpcs = []
+            for item in params.get("LimitVpcs"):
+                obj = BackupLimitVpcItem()
+                obj._deserialize(item)
+                self._LimitVpcs.append(obj)
+        self._LimitIps = params.get("LimitIps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupDownloadUserRestrictionResponse(AbstractModel):
+    """ModifyBackupDownloadUserRestriction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyBackupNameRequest(AbstractModel):
     """ModifyBackupName request structure.
 
@@ -19672,6 +20591,120 @@ class ModifyClusterPasswordComplexityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyClusterReadOnlyRequest(AbstractModel):
+    """ModifyClusterReadOnly request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: List of cluster IDs
+        :type ClusterIds: list of str
+        :param _ReadOnlyOperation: Cluster read-only switch, valid values: ON, OFF.
+        :type ReadOnlyOperation: str
+        :param _IsInMaintainPeriod: Valid values: `yes` (modify in maintenance window), `no` (execute now by default).
+        :type IsInMaintainPeriod: str
+        """
+        self._ClusterIds = None
+        self._ReadOnlyOperation = None
+        self._IsInMaintainPeriod = None
+
+    @property
+    def ClusterIds(self):
+        """List of cluster IDs
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def ReadOnlyOperation(self):
+        """Cluster read-only switch, valid values: ON, OFF.
+        :rtype: str
+        """
+        return self._ReadOnlyOperation
+
+    @ReadOnlyOperation.setter
+    def ReadOnlyOperation(self, ReadOnlyOperation):
+        self._ReadOnlyOperation = ReadOnlyOperation
+
+    @property
+    def IsInMaintainPeriod(self):
+        """Valid values: `yes` (modify in maintenance window), `no` (execute now by default).
+        :rtype: str
+        """
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        self._ReadOnlyOperation = params.get("ReadOnlyOperation")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterReadOnlyResponse(AbstractModel):
+    """ModifyClusterReadOnly response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterTaskIds: List of cluster task ids.
+        :type ClusterTaskIds: list of ClusterTaskId
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ClusterTaskIds = None
+        self._RequestId = None
+
+    @property
+    def ClusterTaskIds(self):
+        """List of cluster task ids.
+        :rtype: list of ClusterTaskId
+        """
+        return self._ClusterTaskIds
+
+    @ClusterTaskIds.setter
+    def ClusterTaskIds(self, ClusterTaskIds):
+        self._ClusterTaskIds = ClusterTaskIds
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterTaskIds") is not None:
+            self._ClusterTaskIds = []
+            for item in params.get("ClusterTaskIds"):
+                obj = ClusterTaskId()
+                obj._deserialize(item)
+                self._ClusterTaskIds.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -22228,6 +23261,8 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @property
     def AuditRuleFilters(self):
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
         """Audit rule. If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
         :rtype: list of AuditRuleFilters
         """
@@ -22235,6 +23270,8 @@ class OpenAuditServiceRequest(AbstractModel):
 
     @AuditRuleFilters.setter
     def AuditRuleFilters(self, AuditRuleFilters):
+        warnings.warn("parameter `AuditRuleFilters` is deprecated", DeprecationWarning) 
+
         self._AuditRuleFilters = AuditRuleFilters
 
     @property

@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Invalid App ID.
 FAILEDOPERATION_INVALIDAPPID = 'FailedOperation.InvalidAppId'
 
+# The quantity exceeds the maximum limit.
+FAILEDOPERATION_NUMLIMITERROR = 'FailedOperation.NumLimitError'
+
 # Payment failed. Please contact Tencent Cloud to resolve this issue.
 FAILEDOPERATION_PAYPRICEERROR = 'FailedOperation.PayPriceError'
 
@@ -37,6 +40,9 @@ FAILEDOPERATION_TAGKEYNOTEXIST = 'FailedOperation.TagKeyNotExist'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
+
+# Database operation failed.
+INTERNALERROR_DBOPERATERROR = 'InternalError.DbOperatError'
 
 # Gateway error.
 INTERNALERROR_GATEWAYERROR = 'InternalError.GatewayError'
@@ -55,6 +61,9 @@ INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# Operation denied.
+OPERATIONDENIED = 'OperationDenied'
 
 # The account does not have CAM permission.
 UNAUTHORIZEDOPERATION_CAMNOAUTH = 'UnauthorizedOperation.CamNoAuth'

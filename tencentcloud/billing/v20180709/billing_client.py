@@ -49,6 +49,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAllocationUnit(self, request):
+        """This API is used to create allocation units.
+
+        :param request: Request instance for CreateAllocationUnit.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationUnitRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateAllocationUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAllocationUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAllocationTag(self, request):
         """u200cThis API is used to batch cancel cost allocation tags.
 
@@ -63,6 +86,29 @@ class BillingClient(AbstractClient):
             body = self.call("DeleteAllocationTag", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAllocationTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAllocationUnit(self, request):
+        """Delete a cost allocation unit.
+
+        :param request: Request instance for DeleteAllocationUnit.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationUnitRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAllocationUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAllocationUnitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -665,6 +711,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeVoucherUsageDetails", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVoucherUsageDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAllocationUnit(self, request):
+        """This API is used to modify cost allocation unit information.
+
+        :param request: Request instance for ModifyAllocationUnit.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationUnitRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationUnitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAllocationUnit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAllocationUnitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

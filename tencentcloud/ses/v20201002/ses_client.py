@@ -49,6 +49,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAddressUnsubscribeConfig(self, request):
+        """This API is used to create an address-level unsubscribe configuration.
+
+        :param request: Request instance for CreateAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAddressUnsubscribeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEmailAddress(self, request):
         """After the sender domain is verified, you need a sender address to send emails. For example, if your sender domain is mail.qcloud.com, your sender address can be service@mail.qcloud.com. If you want to display your name (such as "Tencent Cloud") in the inbox list of the recipients, the sender address should be in the format of `Tencent Cloud <email address>`. Please note that there must be a space between your name and the first angle bracket.
 
@@ -156,6 +179,29 @@ class SesClient(AbstractClient):
             body = self.call("CreateReceiverDetail", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReceiverDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAddressUnsubscribeConfig(self, request):
+        """Remove address-level unsubscribe configuration.
+
+        :param request: Request instance for DeleteAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAddressUnsubscribeConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -373,6 +419,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAddressUnsubscribeConfig(self, request):
+        """This API is used to get the address and unsubscribe configuration list.
+
+        :param request: Request instance for ListAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAddressUnsubscribeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListBlackEmailAddress(self, request):
         """The API is used to get blocklisted addresses. In the case of a hard bounce, Tencent Cloud will blocklist the recipient address and do not allow any user to send emails to this address. If you confirm that this is a misjudgment, you can remove it from the blocklist.
 
@@ -525,6 +594,29 @@ class SesClient(AbstractClient):
             body = self.call("SendEmail", params, headers=headers)
             response = json.loads(body)
             model = models.SendEmailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAddressUnsubscribeConfig(self, request):
+        """This API is used to update address-level unsubscribe configurations.
+
+        :param request: Request instance for UpdateAddressUnsubscribeConfig.
+        :type request: :class:`tencentcloud.ses.v20201002.models.UpdateAddressUnsubscribeConfigRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.UpdateAddressUnsubscribeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAddressUnsubscribeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAddressUnsubscribeConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

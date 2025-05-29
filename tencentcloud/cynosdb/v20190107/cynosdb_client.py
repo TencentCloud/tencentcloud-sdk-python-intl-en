@@ -716,6 +716,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupDownloadRestriction(self, request):
+        """This API is used to query the download source limit of the default backup configured by the user in the current region.
+
+        :param request: Request instance for DescribeBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupDownloadUrl(self, request):
         """This API is used to query the download link of cluster backup files.
 
@@ -730,6 +753,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeBackupDownloadUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupDownloadUserRestriction(self, request):
+        """This API is used to query the default backup download access restrictions of user-level settings in the current region.
+
+        :param request: Request instance for DescribeBackupDownloadUserRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadUserRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupDownloadUserRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadUserRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupDownloadUserRestrictionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -983,6 +1029,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeClusterPasswordComplexity", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterPasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterReadOnly(self, request):
+        """This API is used to query the cluster read-only switch.
+
+        :param request: Request instance for DescribeClusterReadOnly.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterReadOnlyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterReadOnlyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterReadOnly", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterReadOnlyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1981,6 +2050,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBackupDownloadRestriction(self, request):
+        """This API is used to modify the download source limit of the backup file for the user in the current region. It can be configured to allow downloads from both private and public networks, only the private network, or a designated vpc or ip within the private network.
+
+        :param request: Request instance for ModifyBackupDownloadRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBackupDownloadUserRestriction(self, request):
+        """This API is used to modify the download source restrictions for backup files in the user's current region. It can be configured to allow downloads from both private and public networks, only from a private network, or from a designated vpc or ip within the private network.
+
+        :param request: Request instance for ModifyBackupDownloadUserRestriction.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadUserRestrictionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyBackupDownloadUserRestrictionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadUserRestriction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupDownloadUserRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBackupName(self, request):
         """This API is used to rename a backup file.
 
@@ -2133,6 +2248,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyClusterPasswordComplexity", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterPasswordComplexityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterReadOnly(self, request):
+        """This API is used to modify the read-only switch of a cluster.
+
+        :param request: Request instance for ModifyClusterReadOnly.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterReadOnlyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterReadOnlyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterReadOnly", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterReadOnlyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

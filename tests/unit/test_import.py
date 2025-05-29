@@ -374,6 +374,11 @@ def test_import_live():
     from tencentcloud.live.v20180801 import models
 
 
+def test_import_lke():
+    from tencentcloud.lke.v20231130 import lke_client
+    from tencentcloud.lke.v20231130 import models
+
+
 def test_import_mariadb():
     from tencentcloud.mariadb.v20170312 import mariadb_client
     from tencentcloud.mariadb.v20170312 import models
