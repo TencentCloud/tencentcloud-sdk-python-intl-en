@@ -26,6 +26,29 @@ class BillingClient(AbstractClient):
     _service = 'billing'
 
 
+    def CreateAllocationRule(self, request):
+        """Create a sharing rule.
+
+        :param request: Request instance for CreateAllocationRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateAllocationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAllocationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAllocationRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAllocationTag(self, request):
         """This API is used to batch set cost allocation tags.
 
@@ -63,6 +86,52 @@ class BillingClient(AbstractClient):
             body = self.call("CreateAllocationUnit", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateGatherRule(self, request):
+        """Create a collection rule.
+
+        :param request: Request instance for CreateGatherRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateGatherRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateGatherRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGatherRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGatherRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAllocationRule(self, request):
+        """Delete sharing rule interface.
+
+        :param request: Request instance for DeleteAllocationRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAllocationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAllocationRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -118,6 +187,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteGatherRule(self, request):
+        """Delete a collection rule.
+
+        :param request: Request instance for DeleteGatherRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteGatherRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteGatherRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGatherRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGatherRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountBalance(self, request):
         """This API is used to check the Tencent Cloud account balance.
 
@@ -132,6 +224,75 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeAccountBalance", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccountBalanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationRuleDetail(self, request):
+        """This API is used to query sharing rule details.
+
+        :param request: Request instance for DescribeAllocationRuleDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationRuleSummary(self, request):
+        """This API is used to query all sharing rule overviews.
+
+        :param request: Request instance for DescribeAllocationRuleSummary.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleSummaryRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationRuleSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationRuleSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationRuleSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationTree(self, request):
+        """This API is used to query the cost tree.
+
+        :param request: Request instance for DescribeAllocationTree.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTreeRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTreeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationTree", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationTreeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -651,6 +812,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGatherRuleDetail(self, request):
+        """This API is used to query the collection rule details.
+
+        :param request: Request instance for DescribeGatherRuleDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherRuleDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeGatherRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatherRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatherRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTagList(self, request):
         """This API is used to get cost allocation tags.
 
@@ -720,6 +904,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAllocationRule(self, request):
+        """Edit sharing rules.
+
+        :param request: Request instance for ModifyAllocationRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyAllocationRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAllocationRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAllocationRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAllocationUnit(self, request):
         """This API is used to modify cost allocation unit information.
 
@@ -734,6 +941,29 @@ class BillingClient(AbstractClient):
             body = self.call("ModifyAllocationUnit", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAllocationUnitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGatherRule(self, request):
+        """Edit a collection rule.
+
+        :param request: Request instance for ModifyGatherRule.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyGatherRuleRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyGatherRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGatherRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGatherRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

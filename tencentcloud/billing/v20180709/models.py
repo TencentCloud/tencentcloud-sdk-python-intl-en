@@ -330,6 +330,534 @@ Example value: 333.00000000.
         
 
 
+class AllocationRationExpression(AbstractModel):
+    """Expression for sharing proportion.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: Cost allocation unit ID that the sharing rule belongs to.
+        :type NodeId: int
+        :param _Ratio: Sharing proportion occupied by allocation unit, pass 0 for allocation by proportion.
+        :type Ratio: float
+        """
+        self._NodeId = None
+        self._Ratio = None
+
+    @property
+    def NodeId(self):
+        """Cost allocation unit ID that the sharing rule belongs to.
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Ratio(self):
+        """Sharing proportion occupied by allocation unit, pass 0 for allocation by proportion.
+        :rtype: float
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRuleExpression(AbstractModel):
+    """Cost allocation regular expression.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleKey: RuleKey: cost allocation dimension.
+Enumeration value.
+ownerUin - user UIN.
+Operator UIN.
+businessCode - product-level code.
+productCode - 2-tier product code.
+itemCode - 4-tier product code.
+projectId - specifies the project ID.
+regionId.
+resourceId - specifies the resource ID.
+tag - tag key-value pair.
+payMode - billing mode.
+instanceType - instance type.
+actionType - transaction type.
+        :type RuleKey: str
+        :param _Operator: Specifies the dimension rules for cost allocation.
+Enumeration value.
+in.
+not in.
+        :type Operator: str
+        :param _RuleValue: Cost allocation dimension value. for example, when RuleKey is businessCode, ["p_cbs","p_sqlserver"] indicates the cost of products at the "p_cbs","p_sqlserver" level.
+        :type RuleValue: list of str
+        :param _Connectors: Logical connection for cost allocation, enumeration values are as follows:.
+Create and bind a policy query an instance reset the access password of an instance.
+Create and bind a policy query an instance reset the access password of an instance.
+        :type Connectors: str
+        :param _Children: Nested rule.
+        :type Children: list of AllocationRuleExpression
+        """
+        self._RuleKey = None
+        self._Operator = None
+        self._RuleValue = None
+        self._Connectors = None
+        self._Children = None
+
+    @property
+    def RuleKey(self):
+        """RuleKey: cost allocation dimension.
+Enumeration value.
+ownerUin - user UIN.
+Operator UIN.
+businessCode - product-level code.
+productCode - 2-tier product code.
+itemCode - 4-tier product code.
+projectId - specifies the project ID.
+regionId.
+resourceId - specifies the resource ID.
+tag - tag key-value pair.
+payMode - billing mode.
+instanceType - instance type.
+actionType - transaction type.
+        :rtype: str
+        """
+        return self._RuleKey
+
+    @RuleKey.setter
+    def RuleKey(self, RuleKey):
+        self._RuleKey = RuleKey
+
+    @property
+    def Operator(self):
+        """Specifies the dimension rules for cost allocation.
+Enumeration value.
+in.
+not in.
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def RuleValue(self):
+        """Cost allocation dimension value. for example, when RuleKey is businessCode, ["p_cbs","p_sqlserver"] indicates the cost of products at the "p_cbs","p_sqlserver" level.
+        :rtype: list of str
+        """
+        return self._RuleValue
+
+    @RuleValue.setter
+    def RuleValue(self, RuleValue):
+        self._RuleValue = RuleValue
+
+    @property
+    def Connectors(self):
+        """Logical connection for cost allocation, enumeration values are as follows:.
+Create and bind a policy query an instance reset the access password of an instance.
+Create and bind a policy query an instance reset the access password of an instance.
+        :rtype: str
+        """
+        return self._Connectors
+
+    @Connectors.setter
+    def Connectors(self, Connectors):
+        self._Connectors = Connectors
+
+    @property
+    def Children(self):
+        """Nested rule.
+        :rtype: list of AllocationRuleExpression
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._RuleKey = params.get("RuleKey")
+        self._Operator = params.get("Operator")
+        self._RuleValue = params.get("RuleValue")
+        self._Connectors = params.get("Connectors")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationRuleExpression()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRuleOverview(AbstractModel):
+    """Overview of sharing rules.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Sharing rule ID.
+        :type RuleId: int
+        :param _RuleName: Sharing rule name.
+        :type RuleName: str
+        :param _Type: Public area policy type.
+Enumeration value.
+1 - custom sharing proportion. 
+2 - proportional allocation. 
+3 - allocation by proportion.
+        :type Type: int
+        :param _UpdateTime: Last update time of the sharing rules.
+        :type UpdateTime: str
+        :param _AllocationNode: Overview of cost allocation units.
+        :type AllocationNode: list of AllocationUnit
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._Type = None
+        self._UpdateTime = None
+        self._AllocationNode = None
+
+    @property
+    def RuleId(self):
+        """Sharing rule ID.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        """Sharing rule name.
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Type(self):
+        """Public area policy type.
+Enumeration value.
+1 - custom sharing proportion. 
+2 - proportional allocation. 
+3 - allocation by proportion.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdateTime(self):
+        """Last update time of the sharing rules.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AllocationNode(self):
+        """Overview of cost allocation units.
+        :rtype: list of AllocationUnit
+        """
+        return self._AllocationNode
+
+    @AllocationNode.setter
+    def AllocationNode(self, AllocationNode):
+        self._AllocationNode = AllocationNode
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Type = params.get("Type")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("AllocationNode") is not None:
+            self._AllocationNode = []
+            for item in params.get("AllocationNode"):
+                obj = AllocationUnit()
+                obj._deserialize(item)
+                self._AllocationNode.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRulesSummary(AbstractModel):
+    """List of sharing rules.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Add new sharing rule name.
+        :type Name: str
+        :param _Type: Specifies the sharing rule policy type. the enumeration values are as follows:.
+1 - custom sharing proportion. 
+2 - proportional allocation.
+3 - allocation by proportion.
+        :type Type: int
+        :param _RuleDetail: Sharing rule expression.
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RatioDetail: Sharing proportion expression, allocation by proportion not passed.
+        :type RatioDetail: list of AllocationRationExpression
+        """
+        self._Name = None
+        self._Type = None
+        self._RuleDetail = None
+        self._RatioDetail = None
+
+    @property
+    def Name(self):
+        """Add new sharing rule name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """Specifies the sharing rule policy type. the enumeration values are as follows:.
+1 - custom sharing proportion. 
+2 - proportional allocation.
+3 - allocation by proportion.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleDetail(self):
+        """Sharing rule expression.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RatioDetail(self):
+        """Sharing proportion expression, allocation by proportion not passed.
+        :rtype: list of AllocationRationExpression
+        """
+        return self._RatioDetail
+
+    @RatioDetail.setter
+    def RatioDetail(self, RatioDetail):
+        self._RatioDetail = RatioDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        if params.get("RatioDetail") is not None:
+            self._RatioDetail = []
+            for item in params.get("RatioDetail"):
+                obj = AllocationRationExpression()
+                obj._deserialize(item)
+                self._RatioDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationTree(AbstractModel):
+    """Cost allocation tree.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: ID of a cost allocation unit.
+        :type Id: int
+        :param _Name: Cost allocation unit name.
+        :type Name: str
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _Children: Subtree.
+        :type Children: list of AllocationTree
+        """
+        self._Id = None
+        self._Name = None
+        self._TreeNodeUniqKey = None
+        self._Children = None
+
+    @property
+    def Id(self):
+        """ID of a cost allocation unit.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Cost allocation unit name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TreeNodeUniqKey(self):
+        """Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def Children(self):
+        """Subtree.
+        :rtype: list of AllocationTree
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationTree()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationUnit(AbstractModel):
+    """Specifies the ID and name of a cost allocation unit.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: Cost allocation unit ID.
+        :type NodeId: int
+        :param _TreeNodeUniqKeyName: Specifies the name of a cost allocation rule.
+        :type TreeNodeUniqKeyName: str
+        """
+        self._NodeId = None
+        self._TreeNodeUniqKeyName = None
+
+    @property
+    def NodeId(self):
+        """Cost allocation unit ID.
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        """Specifies the name of a cost allocation rule.
+        :rtype: str
+        """
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalyseActionTypeDetail(AbstractModel):
     """Cost analysis transaction type complex type
 
@@ -6832,6 +7360,102 @@ class CostDetail(AbstractModel):
         
 
 
+class CreateAllocationRuleRequest(AbstractModel):
+    """CreateAllocationRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: List of sharing rules.
+        :type RuleList: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
+        :param _Month: Month, the current month by default if not provided.
+        :type Month: str
+        """
+        self._RuleList = None
+        self._Month = None
+
+    @property
+    def RuleList(self):
+        """List of sharing rules.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Month(self):
+        """Month, the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = AllocationRulesSummary()
+            self._RuleList._deserialize(params.get("RuleList"))
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAllocationRuleResponse(AbstractModel):
+    """CreateAllocationRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Add new sharing rule ID.
+        :type Id: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """Add new sharing rule ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAllocationTagRequest(AbstractModel):
     """CreateAllocationTag request structure.
 
@@ -7017,6 +7641,117 @@ class CreateAllocationUnitResponse(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGatherRuleRequest(AbstractModel):
+    """CreateGatherRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Cost allocation unit ID that the rule belongs to.
+        :type Id: int
+        :param _RuleList: Collection rule details.
+        :type RuleList: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        """
+        self._Id = None
+        self._RuleList = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """Cost allocation unit ID that the rule belongs to.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleList(self):
+        """Collection rule details.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("RuleList") is not None:
+            self._RuleList = GatherRuleSummary()
+            self._RuleList._deserialize(params.get("RuleList"))
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGatherRuleResponse(AbstractModel):
+    """CreateGatherRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Collection  rule ID.
+        :type Id: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """Collection  rule ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -7478,6 +8213,85 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DeleteAllocationRuleRequest(AbstractModel):
+    """DeleteAllocationRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: The deleted sharing rule ID.
+        :type RuleId: int
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """The deleted sharing rule ID.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAllocationRuleResponse(AbstractModel):
+    """DeleteAllocationRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAllocationTagRequest(AbstractModel):
     """DeleteAllocationTag request structure.
 
@@ -7595,6 +8409,85 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
 class DeleteAllocationUnitResponse(AbstractModel):
     """DeleteAllocationUnit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGatherRuleRequest(AbstractModel):
+    """DeleteGatherRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: The deleted collection rule ID.
+        :type RuleId: int
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """The deleted collection rule ID.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGatherRuleResponse(AbstractModel):
+    """DeleteGatherRule response structure.
 
     """
 
@@ -7847,6 +8740,484 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = params.get("CreditAmount")
         self._CreditBalance = params.get("CreditBalance")
         self._RealCreditBalance = params.get("RealCreditBalance")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationRuleDetailRequest(AbstractModel):
+    """DescribeAllocationRuleDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: The queried sharing rule ID.
+        :type RuleId: int
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """The queried sharing rule ID.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationRuleDetailResponse(AbstractModel):
+    """DescribeAllocationRuleDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Sharing rule ID.
+        :type Id: int
+        :param _Uin: Sharing rule ownership UIN.
+        :type Uin: str
+        :param _Name: Sharing rule name.
+        :type Name: str
+        :param _Type: Specifies the public area policy type. the enumeration values are as follows:.
+1 - custom sharing proportion. 
+2 - proportional allocation. 
+3 - allocation by proportion.
+        :type Type: int
+        :param _RuleDetail: Public sharing rule expression.
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RatioDetail: Sharing proportion expression. returns when Type is 1 or 2.
+        :type RatioDetail: list of AllocationRationExpression
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Uin = None
+        self._Name = None
+        self._Type = None
+        self._RuleDetail = None
+        self._RatioDetail = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """Sharing rule ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        """Sharing rule ownership UIN.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        """Sharing rule name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """Specifies the public area policy type. the enumeration values are as follows:.
+1 - custom sharing proportion. 
+2 - proportional allocation. 
+3 - allocation by proportion.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleDetail(self):
+        """Public sharing rule expression.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RatioDetail(self):
+        """Sharing proportion expression. returns when Type is 1 or 2.
+        :rtype: list of AllocationRationExpression
+        """
+        return self._RatioDetail
+
+    @RatioDetail.setter
+    def RatioDetail(self, RatioDetail):
+        self._RatioDetail = RatioDetail
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        if params.get("RatioDetail") is not None:
+            self._RatioDetail = []
+            for item in params.get("RatioDetail"):
+                obj = AllocationRationExpression()
+                obj._deserialize(item)
+                self._RatioDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationRuleSummaryRequest(AbstractModel):
+    """DescribeAllocationRuleSummary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Specifies the data quantity per fetch. the maximum value is 1000.
+        :type Limit: int
+        :param _Offset: Pagination offset
+        :type Offset: int
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        :param _Type: Public area policy type, for filtering.
+Enumeration values are as follows:. 
+1 - custom sharing proportion. 
+2 - proportional allocation. 
+3 - allocation by proportion.
+        :type Type: int
+        :param _Name: Sharing rule name or cost allocation unit name, used for fuzzy filter criteria.
+        :type Name: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Limit(self):
+        """Specifies the data quantity per fetch. the maximum value is 1000.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """Pagination offset
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Type(self):
+        """Public area policy type, for filtering.
+Enumeration values are as follows:. 
+1 - custom sharing proportion. 
+2 - proportional allocation. 
+3 - allocation by proportion.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        """Sharing rule name or cost allocation unit name, used for fuzzy filter criteria.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationRuleSummaryResponse(AbstractModel):
+    """DescribeAllocationRuleSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: Sharing rule expression.
+        :type RuleList: list of AllocationRuleOverview
+        :param _Total: Total number of rules.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RuleList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def RuleList(self):
+        """Sharing rule expression.
+        :rtype: list of AllocationRuleOverview
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def Total(self):
+        """Total number of rules.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = AllocationRuleOverview()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationTreeRequest(AbstractModel):
+    """DescribeAllocationTree request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Month, the current month by default if not provided.
+        :type Month: str
+        """
+        self._Month = None
+
+    @property
+    def Month(self):
+        """Month, the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationTreeResponse(AbstractModel):
+    """DescribeAllocationTree response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Cost allocation unit ID.
+        :type Id: int
+        :param _Name: Specifies the name of a cost allocation unit.
+        :type Name: str
+        :param _TreeNodeUniqKey: Unique identifier of a cost allocation unit
+        :type TreeNodeUniqKey: str
+        :param _Children: Specifies a subtree.
+        :type Children: list of AllocationTree
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._TreeNodeUniqKey = None
+        self._Children = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """Cost allocation unit ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Specifies the name of a cost allocation unit.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TreeNodeUniqKey(self):
+        """Unique identifier of a cost allocation unit
+        :rtype: str
+        """
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def Children(self):
+        """Specifies a subtree.
+        :rtype: list of AllocationTree
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationTree()
+                obj._deserialize(item)
+                self._Children.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12478,6 +13849,147 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGatherRuleDetailRequest(AbstractModel):
+    """DescribeGatherRuleDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Specifies the ID of the queried collection rule.
+        :type Id: int
+        :param _Month: Month, the current month by default if not provided.
+        :type Month: str
+        """
+        self._Id = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """Specifies the ID of the queried collection rule.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Month(self):
+        """Month, the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatherRuleDetailResponse(AbstractModel):
+    """DescribeGatherRuleDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Specifies the collection rule ID.
+        :type Id: int
+        :param _Uin: Associated UIN of the collection rule.
+        :type Uin: str
+        :param _UpdateTime: Collection rule last update time.
+        :type UpdateTime: str
+        :param _RuleDetail: Collection rule details.
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Uin = None
+        self._UpdateTime = None
+        self._RuleDetail = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        """Specifies the collection rule ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Uin(self):
+        """Associated UIN of the collection rule.
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def UpdateTime(self):
+        """Collection rule last update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RuleDetail(self):
+        """Collection rule details.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Uin = params.get("Uin")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTagListRequest(AbstractModel):
     """DescribeTagList request structure.
 
@@ -13691,6 +15203,190 @@ class ExcludedProducts(AbstractModel):
         
 
 
+class GatherRuleSummary(AbstractModel):
+    """List of collection rules.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleDetail: Cost allocation regular expression.
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        self._RuleDetail = None
+
+    @property
+    def RuleDetail(self):
+        """Cost allocation regular expression.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+
+    def _deserialize(self, params):
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAllocationRuleRequest(AbstractModel):
+    """ModifyAllocationRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: The edited sharing rule ID.
+        :type RuleId: int
+        :param _Name: Edited sharing rule name.
+        :type Name: str
+        :param _Type: Public sharing policy types, enumeration values are as follows: 1 - custom sharing proportion 2 - proportional allocation 3 - allocation by proportion.
+        :type Type: int
+        :param _RuleDetail: Edited share rules expression.
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _RatioDetail: Edited sharing proportion expression.
+        :type RatioDetail: list of AllocationRationExpression
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Type = None
+        self._RuleDetail = None
+        self._RatioDetail = None
+        self._Month = None
+
+    @property
+    def RuleId(self):
+        """The edited sharing rule ID.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """Edited sharing rule name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """Public sharing policy types, enumeration values are as follows: 1 - custom sharing proportion 2 - proportional allocation 3 - allocation by proportion.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleDetail(self):
+        """Edited share rules expression.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def RatioDetail(self):
+        """Edited sharing proportion expression.
+        :rtype: list of AllocationRationExpression
+        """
+        return self._RatioDetail
+
+    @RatioDetail.setter
+    def RatioDetail(self, RatioDetail):
+        self._RatioDetail = RatioDetail
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        if params.get("RatioDetail") is not None:
+            self._RatioDetail = []
+            for item in params.get("RatioDetail"):
+                obj = AllocationRationExpression()
+                obj._deserialize(item)
+                self._RatioDetail.append(obj)
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAllocationRuleResponse(AbstractModel):
+    """ModifyAllocationRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAllocationUnitRequest(AbstractModel):
     """ModifyAllocationUnit request structure.
 
@@ -13804,6 +15500,102 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
 class ModifyAllocationUnitResponse(AbstractModel):
     """ModifyAllocationUnit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGatherRuleRequest(AbstractModel):
+    """ModifyGatherRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Edit collection rule ID.
+        :type Id: int
+        :param _RuleDetail: Rule detail of the edited collection rule.
+        :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        :param _Month: Month, which is the current month by default if not provided.
+        :type Month: str
+        """
+        self._Id = None
+        self._RuleDetail = None
+        self._Month = None
+
+    @property
+    def Id(self):
+        """Edit collection rule ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RuleDetail(self):
+        """Rule detail of the edited collection rule.
+        :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
+        """
+        return self._RuleDetail
+
+    @RuleDetail.setter
+    def RuleDetail(self, RuleDetail):
+        self._RuleDetail = RuleDetail
+
+    @property
+    def Month(self):
+        """Month, which is the current month by default if not provided.
+        :rtype: str
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("RuleDetail") is not None:
+            self._RuleDetail = AllocationRuleExpression()
+            self._RuleDetail._deserialize(params.get("RuleDetail"))
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGatherRuleResponse(AbstractModel):
+    """ModifyGatherRule response structure.
 
     """
 
