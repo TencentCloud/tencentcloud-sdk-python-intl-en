@@ -601,6 +601,29 @@ class MdlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAbWatermarkPlayUrl(self, request):
+        """Get AB watermark play url.
+
+        :param request: Request instance for GetAbWatermarkPlayUrl.
+        :type request: :class:`tencentcloud.mdl.v20200326.models.GetAbWatermarkPlayUrlRequest`
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.GetAbWatermarkPlayUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAbWatermarkPlayUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAbWatermarkPlayUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyStreamLiveChannel(self, request):
         """This API is used to modify a StreamLive channel.
 
