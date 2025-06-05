@@ -555,6 +555,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecord(self, request):
+        """This API is used to obtain the private domain records.
+
+        :param request: Request instance for DescribeRecord.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeRecordRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRequestData(self, request):
         """This API is used to get the DNS request volume of a private domain.
 

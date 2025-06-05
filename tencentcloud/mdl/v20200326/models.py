@@ -6367,7 +6367,7 @@ class GetAbWatermarkPlayUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uuid: Client UUID, 32-bit unsigned integer.
+        :param _Uuid: Client UUID, 32-bit unsigned integer, [0, 4294967295].
         :type Uuid: int
         :param _StreamPackageChannelId: Channel ID of Stream Package.
         :type StreamPackageChannelId: str
@@ -6380,7 +6380,7 @@ class GetAbWatermarkPlayUrlRequest(AbstractModel):
 
     @property
     def Uuid(self):
-        """Client UUID, 32-bit unsigned integer.
+        """Client UUID, 32-bit unsigned integer, [0, 4294967295].
         :rtype: int
         """
         return self._Uuid
