@@ -331,7 +331,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
     def DescribeCustomerBillDetail(self, request):
         """This API is used to query the customer bill details by resellers.
-        Callable roles: Distributor, Second-level reseller, Reseller
+        Callable roles: Distributor, Second-level reseller, Reseller.
 
         :param request: Request instance for DescribeCustomerBillDetail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailRequest`

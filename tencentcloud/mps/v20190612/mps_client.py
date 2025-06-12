@@ -26,6 +26,30 @@ class MpsClient(AbstractClient):
     _service = 'mps'
 
 
+    def BatchProcessMedia(self, request):
+        """This API is used to initiate batch processing tasks for URL video links, with features including:
+        Smart subtitle (full speech, speech hotword, and speech translation)
+
+        :param request: Request instance for BatchProcessMedia.
+        :type request: :class:`tencentcloud.mps.v20190612.models.BatchProcessMediaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchProcessMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchProcessMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchProcessMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIAnalysisTemplate(self, request):
         """This API is used to create a custom content analysis template. Up to 50 templates can be created.
 
@@ -1016,6 +1040,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBatchTaskDetail(self, request):
+        """This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+
+        :param request: Request instance for DescribeBatchTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeBatchTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeBatchTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContentReviewTemplates(self, request):
         """This API is used to query content moderation templates by template ID. Both custom and preset templates that match the template IDs passed in will be returned.
 
@@ -1053,6 +1100,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageSpriteTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageTaskDetail(self, request):
+        """This API is used to query the details of the task execution status and results by task ID (tasks submitted within the last 7 days can be queried).
+
+        :param request: Request instance for DescribeImageTaskDetail.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeImageTaskDetailRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeImageTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageTaskDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2024,9 +2094,10 @@ class MpsClient(AbstractClient):
 
 
     def ProcessImage(self, request):
-        """This API is used to initiate image processing. Its features include:
-        1. Format conversion;
-        2. Image enhancement;
+        """This API is used to initiate image processing, with features including:
+        1. Format conversion.
+        2. Image enhancement.
+        3. Image erasure.
 
         :param request: Request instance for ProcessImage.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessImageRequest`

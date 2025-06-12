@@ -2879,7 +2879,7 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
         r"""
         :param _CustomerUin: Sub-account UIN
         :type CustomerUin: int
-        :param _Month: Inquiry month, in the format of YYYY-MM, such as 2023-01
+        :param _Month: Inquiry month, in the format of YYYY-MM, such as 2023-01.
         :type Month: str
         :param _PageSize: Page parameter: number of entries per page. Value range: [1, 200]
         :type PageSize: int
@@ -2943,7 +2943,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def Month(self):
-        """Inquiry month, in the format of YYYY-MM, such as 2023-01
+        """Inquiry month, in the format of YYYY-MM, such as 2023-01.
         :rtype: str
         """
         return self._Month

@@ -10839,8 +10839,8 @@ class AsrHotwordsSet(AbstractModel):
 Note: This field may return null, indicating that no valid value can be obtained.
         :type HotwordsId: str
         :param _Status: Current hotword lexicon status. The value indicates the number of smart subtitle templates bound to this hotword lexicon.
-If the Status value is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.
-If the Status value is not 0, it indicates that the hotword lexicon cannot be deleted.
+If the value of Status is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.
+If the value of Status is not 0, it indicates that the hotword lexicon cannot be deleted.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Status: int
         :param _Name: Hotword lexicon name.
@@ -10887,8 +10887,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Status(self):
         """Current hotword lexicon status. The value indicates the number of smart subtitle templates bound to this hotword lexicon.
-If the Status value is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.
-If the Status value is not 0, it indicates that the hotword lexicon cannot be deleted.
+If the value of Status is 0, it indicates that the hotword lexicon is not referenced by any smart subtitle template and that it can be deleted.
+If the value of Status is not 0, it indicates that the hotword lexicon cannot be deleted.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
@@ -12097,6 +12097,372 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._SQSQueueName = params.get("SQSQueueName")
         self._S3SecretId = params.get("S3SecretId")
         self._S3SecretKey = params.get("S3SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchProcessMediaRequest(AbstractModel):
+    """BatchProcessMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: Path of the input file.
+        :type InputInfo: list of MediaInputInfo
+        :param _OutputStorage: Storage bucket for the output file. If it is left blank, the storage location in InputInfo will be inherited.
+Note: When InputInfo.Type is URL, this parameter is required.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputDir: Storage directory for the output file. It should start and end with a slash (/), such as `/movie/201907/`.
+If left blank, it indicates that the directory is the same as the one where the file is located in InputInfo.
+        :type OutputDir: str
+        :param _SmartSubtitlesTask: Smart subtitle.
+        :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        :param _TaskNotifyConfig: Event notification information of the task. If left blank, it indicates that no event notification will be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _TasksPriority: Priority of the task flow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
+        :type TasksPriority: int
+        :param _SessionContext: Source context, which is used to pass through the user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.
+        :type SessionContext: str
+        :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :type ResourceId: str
+        :param _SkipMateData: Whether to skip metadata acquisition. Valid values:
+0: do not skip.
+1: skip.
+Default value: 0		
+        :type SkipMateData: int
+        """
+        self._InputInfo = None
+        self._OutputStorage = None
+        self._OutputDir = None
+        self._SmartSubtitlesTask = None
+        self._TaskNotifyConfig = None
+        self._TasksPriority = None
+        self._SessionContext = None
+        self._ResourceId = None
+        self._SkipMateData = None
+
+    @property
+    def InputInfo(self):
+        """Path of the input file.
+        :rtype: list of MediaInputInfo
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def OutputStorage(self):
+        """Storage bucket for the output file. If it is left blank, the storage location in InputInfo will be inherited.
+Note: When InputInfo.Type is URL, this parameter is required.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputDir(self):
+        """Storage directory for the output file. It should start and end with a slash (/), such as `/movie/201907/`.
+If left blank, it indicates that the directory is the same as the one where the file is located in InputInfo.
+        :rtype: str
+        """
+        return self._OutputDir
+
+    @OutputDir.setter
+    def OutputDir(self, OutputDir):
+        self._OutputDir = OutputDir
+
+    @property
+    def SmartSubtitlesTask(self):
+        """Smart subtitle.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
+        """
+        return self._SmartSubtitlesTask
+
+    @SmartSubtitlesTask.setter
+    def SmartSubtitlesTask(self, SmartSubtitlesTask):
+        self._SmartSubtitlesTask = SmartSubtitlesTask
+
+    @property
+    def TaskNotifyConfig(self):
+        """Event notification information of the task. If left blank, it indicates that no event notification will be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+    @property
+    def TasksPriority(self):
+        """Priority of the task flow. The higher the value, the higher the priority. The value range is from -10 to 10. If left blank, the default value is 0.
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def SessionContext(self):
+        """Source context, which is used to pass through the user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def ResourceId(self):
+        """Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def SkipMateData(self):
+        """Whether to skip metadata acquisition. Valid values:
+0: do not skip.
+1: skip.
+Default value: 0		
+        :rtype: int
+        """
+        return self._SkipMateData
+
+    @SkipMateData.setter
+    def SkipMateData(self, SkipMateData):
+        self._SkipMateData = SkipMateData
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = []
+            for item in params.get("InputInfo"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self._InputInfo.append(obj)
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputDir = params.get("OutputDir")
+        if params.get("SmartSubtitlesTask") is not None:
+            self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
+            self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._TasksPriority = params.get("TasksPriority")
+        self._SessionContext = params.get("SessionContext")
+        self._ResourceId = params.get("ResourceId")
+        self._SkipMateData = params.get("SkipMateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchProcessMediaResponse(AbstractModel):
+    """BatchProcessMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class BatchSmartSubtitlesResult(AbstractModel):
+    """Smart subtitle task result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: Input information for smart subtitle tasks.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        :param _Outputs: Output information for smart subtitle tasks.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Outputs: list of SmartSubtitleTaskBatchOutput
+        """
+        self._Input = None
+        self._Outputs = None
+
+    @property
+    def Input(self):
+        """Input information for smart subtitle tasks.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskResultInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Outputs(self):
+        """Output information for smart subtitle tasks.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of SmartSubtitleTaskBatchOutput
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = SmartSubtitleTaskResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = SmartSubtitleTaskBatchOutput()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchSubTaskResult(AbstractModel):
+    """Results of subtasks for a batch task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfos: Input information for a batch task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InputInfos: list of MediaInputInfo
+        :param _Metadatas: Metadata of the original video.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Metadatas: list of MediaMetaData
+        :param _SmartSubtitlesTaskResult: Execution result of the smart subtitle task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SmartSubtitlesTaskResult: :class:`tencentcloud.mps.v20190612.models.BatchSmartSubtitlesResult`
+        """
+        self._InputInfos = None
+        self._Metadatas = None
+        self._SmartSubtitlesTaskResult = None
+
+    @property
+    def InputInfos(self):
+        """Input information for a batch task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of MediaInputInfo
+        """
+        return self._InputInfos
+
+    @InputInfos.setter
+    def InputInfos(self, InputInfos):
+        self._InputInfos = InputInfos
+
+    @property
+    def Metadatas(self):
+        """Metadata of the original video.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of MediaMetaData
+        """
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def SmartSubtitlesTaskResult(self):
+        """Execution result of the smart subtitle task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSmartSubtitlesResult`
+        """
+        return self._SmartSubtitlesTaskResult
+
+    @SmartSubtitlesTaskResult.setter
+    def SmartSubtitlesTaskResult(self, SmartSubtitlesTaskResult):
+        self._SmartSubtitlesTaskResult = SmartSubtitlesTaskResult
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfos") is not None:
+            self._InputInfos = []
+            for item in params.get("InputInfos"):
+                obj = MediaInputInfo()
+                obj._deserialize(item)
+                self._InputInfos.append(obj)
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = MediaMetaData()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        if params.get("SmartSubtitlesTaskResult") is not None:
+            self._SmartSubtitlesTaskResult = BatchSmartSubtitlesResult()
+            self._SmartSubtitlesTaskResult._deserialize(params.get("SmartSubtitlesTaskResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17181,7 +17547,7 @@ yue: Cantonese
 vi: Vietnamese
 ms: Malay
 id: Indonesian
-fli: Filipino
+fil: Filipino
 th: Thai
 pt: Portuguese
 tr: Turkish
@@ -17267,7 +17633,7 @@ yue: Cantonese
 vi: Vietnamese
 ms: Malay
 id: Indonesian
-fli: Filipino
+fil: Filipino
 th: Thai
 pt: Portuguese
 tr: Turkish
@@ -17659,7 +18025,7 @@ Default value: 0.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _EnhanceConfig: Audio/Video enhancement configuration.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
-        :param _StdExtInfo: 
+        :param _StdExtInfo: Additional parameter, which is a serialized JSON string.
         :type StdExtInfo: str
         """
         self._Container = None
@@ -17780,7 +18146,7 @@ Default value: 0.
 
     @property
     def StdExtInfo(self):
-        """
+        """Additional parameter, which is a serialized JSON string.
         :rtype: str
         """
         return self._StdExtInfo
@@ -20870,6 +21236,266 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBatchTaskDetailRequest(AbstractModel):
+    """DescribeBatchTaskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Video processing task ID.
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """Video processing task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchTaskDetailResponse(AbstractModel):
+    """DescribeBatchTaskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: Task type. Currently, the valid values include:
+<Li>BatchTask: batch processing task for video workflows.</li>.
+        :type TaskType: str
+        :param _Status: Task status. Valid values:
+<Li>WAITING: waiting.</li>
+<Li>PROCESSING: processing.</li>
+<li>FINISH: completed.</li>
+        :type Status: str
+        :param _CreateTime: Task creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type CreateTime: str
+        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type BeginProcessTime: str
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type FinishTime: str
+        :param _TaskId: Media processing task ID.
+        :type TaskId: str
+        :param _BatchTaskResult: Video processing task information. This field has a value only when TaskType is BatchTask.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BatchTaskResult: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
+        :param _TaskNotifyConfig: Event notification information of the task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _TasksPriority: Priority of the task flow, with a value range of [-10, 10].
+        :type TasksPriority: int
+        :param _SessionId: An identifier for deduplication. If there has been a request with the same identifier within the past seven days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using a null string indicates no deduplication is required.
+        :type SessionId: str
+        :param _SessionContext: Source context, which is used to pass through user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.
+        :type SessionContext: str
+        :param _ExtInfo: Additional information field, only used in specific scenarios.
+        :type ExtInfo: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskType = None
+        self._Status = None
+        self._CreateTime = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+        self._TaskId = None
+        self._BatchTaskResult = None
+        self._TaskNotifyConfig = None
+        self._TasksPriority = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def TaskType(self):
+        """Task type. Currently, the valid values include:
+<Li>BatchTask: batch processing task for video workflows.</li>.
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Status(self):
+        """Task status. Valid values:
+<Li>WAITING: waiting.</li>
+<Li>PROCESSING: processing.</li>
+<li>FINISH: completed.</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """Task creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BeginProcessTime(self):
+        """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def TaskId(self):
+        """Media processing task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def BatchTaskResult(self):
+        """Video processing task information. This field has a value only when TaskType is BatchTask.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
+        """
+        return self._BatchTaskResult
+
+    @BatchTaskResult.setter
+    def BatchTaskResult(self, BatchTaskResult):
+        self._BatchTaskResult = BatchTaskResult
+
+    @property
+    def TaskNotifyConfig(self):
+        """Event notification information of the task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+    @property
+    def TasksPriority(self):
+        """Priority of the task flow, with a value range of [-10, 10].
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def SessionId(self):
+        """An identifier for deduplication. If there has been a request with the same identifier within the past seven days, an error will be returned for the current request. The maximum length is 50 characters. Leaving it blank or using a null string indicates no deduplication is required.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        """Source context, which is used to pass through user request information. The callback for task flow status changes will return the value of this field. The maximum length is 1,000 characters.
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def ExtInfo(self):
+        """Additional information field, only used in specific scenarios.
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        self._TaskId = params.get("TaskId")
+        if params.get("BatchTaskResult") is not None:
+            self._BatchTaskResult = BatchSubTaskResult()
+            self._BatchTaskResult._deserialize(params.get("BatchTaskResult"))
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = TaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._TasksPriority = params.get("TasksPriority")
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     """DescribeContentReviewTemplates request structure.
 
@@ -21193,6 +21819,170 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
                 obj = ImageSpriteTemplate()
                 obj._deserialize(item)
                 self._ImageSpriteTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageTaskDetailRequest(AbstractModel):
+    """DescribeImageTaskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Image processing task ID.
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """Image processing task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageTaskDetailResponse(AbstractModel):
+    """DescribeImageTaskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: Task type. Currently, the valid values include:
+<Li>WorkflowTask: workflow processing task.</li>
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TaskType: str
+        :param _Status: Task status. Valid values:
+<Li>WAITING: waiting.</li>
+<Li>PROCESSING: processing.</li>
+<li>FINISH: completed.</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Status: str
+        :param _ImageProcessTaskResultSet: Execution status and results of the image processing task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ImageProcessTaskResultSet: list of ImageProcessTaskResult
+        :param _CreateTime: Task creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CreateTime: str
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FinishTime: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskType = None
+        self._Status = None
+        self._ImageProcessTaskResultSet = None
+        self._CreateTime = None
+        self._FinishTime = None
+        self._RequestId = None
+
+    @property
+    def TaskType(self):
+        """Task type. Currently, the valid values include:
+<Li>WorkflowTask: workflow processing task.</li>
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Status(self):
+        """Task status. Valid values:
+<Li>WAITING: waiting.</li>
+<Li>PROCESSING: processing.</li>
+<li>FINISH: completed.</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ImageProcessTaskResultSet(self):
+        """Execution status and results of the image processing task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of ImageProcessTaskResult
+        """
+        return self._ImageProcessTaskResultSet
+
+    @ImageProcessTaskResultSet.setter
+    def ImageProcessTaskResultSet(self, ImageProcessTaskResultSet):
+        self._ImageProcessTaskResultSet = ImageProcessTaskResultSet
+
+    @property
+    def CreateTime(self):
+        """Task creation time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def FinishTime(self):
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Status = params.get("Status")
+        if params.get("ImageProcessTaskResultSet") is not None:
+            self._ImageProcessTaskResultSet = []
+            for item in params.get("ImageProcessTaskResultSet"):
+                obj = ImageProcessTaskResult()
+                obj._deserialize(item)
+                self._ImageProcessTaskResultSet.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._FinishTime = params.get("FinishTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -25847,8 +26637,8 @@ class ImageAreaBoxInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Type of the box selection area in the image. Valid values:
-<li>logo: icon</li>
-<li>text: text</li>
+<li>logo: icon.</li>
+<li>Text: text.</li>
 Default value: logo.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
@@ -25856,7 +26646,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 For example, [101, 85, 111, 95].
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AreaCoordSet: list of int
-        :param _BoundingBox: 
+        :param _BoundingBox: Coordinates of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner. This parameter takes effect when AreaCoordSet is not specified.
+ - [0.1, 0.1, 0.3, 0.3]: Indicates the ratio (values are less than 1).
+ -[50, 50, 350, 280]: Indicates the pixel (values are greater than or equal to 1).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type BoundingBox: list of float
         """
         self._Type = None
@@ -25866,8 +26659,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Type(self):
         """Type of the box selection area in the image. Valid values:
-<li>logo: icon</li>
-<li>text: text</li>
+<li>logo: icon.</li>
+<li>Text: text.</li>
 Default value: logo.
 Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
@@ -25893,7 +26686,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BoundingBox(self):
-        """
+        """Coordinates of the box selection area in the image. Format: [x1, y1, x2, y2], which indicates the coordinates of the top left corner and the bottom right corner. This parameter takes effect when AreaCoordSet is not specified.
+ - [0.1, 0.1, 0.3, 0.3]: Indicates the ratio (values are less than 1).
+ -[50, 50, 350, 280]: Indicates the pixel (values are greater than or equal to 1).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: list of float
         """
         return self._BoundingBox
@@ -25907,6 +26703,71 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._Type = params.get("Type")
         self._AreaCoordSet = params.get("AreaCoordSet")
         self._BoundingBox = params.get("BoundingBox")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageDenoiseConfig(AbstractModel):
+    """Image denoising configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Capability configuration enabling status. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: ON.
+        :type Switch: str
+        :param _Type: Type, with valid values including:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        """Capability configuration enabling status. Valid values:
+<li>ON: enabled.</li>
+<li>OFF: disabled.</li>
+Default value: ON.
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        """Type, with valid values including:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25982,6 +26843,12 @@ class ImageEnhanceConfig(AbstractModel):
         :param _SuperResolution: Super-resolution configuration.
 
         :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param _Denoise: Denoising configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Denoise: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
+        :param _ImageQualityEnhance: Comprehensive enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
         :param _ColorEnhance: Color enhancement configuration.
 
         :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
@@ -25991,11 +26858,17 @@ class ImageEnhanceConfig(AbstractModel):
         :param _FaceEnhance: Face enhancement configuration.
 
         :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        :param _LowLightEnhance: Low-light enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
         """
         self._SuperResolution = None
+        self._Denoise = None
+        self._ImageQualityEnhance = None
         self._ColorEnhance = None
         self._SharpEnhance = None
         self._FaceEnhance = None
+        self._LowLightEnhance = None
 
     @property
     def SuperResolution(self):
@@ -26008,6 +26881,30 @@ class ImageEnhanceConfig(AbstractModel):
     @SuperResolution.setter
     def SuperResolution(self, SuperResolution):
         self._SuperResolution = SuperResolution
+
+    @property
+    def Denoise(self):
+        """Denoising configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageDenoiseConfig`
+        """
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def ImageQualityEnhance(self):
+        """Comprehensive enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
+        """
+        return self._ImageQualityEnhance
+
+    @ImageQualityEnhance.setter
+    def ImageQualityEnhance(self, ImageQualityEnhance):
+        self._ImageQualityEnhance = ImageQualityEnhance
 
     @property
     def ColorEnhance(self):
@@ -26045,11 +26942,29 @@ class ImageEnhanceConfig(AbstractModel):
     def FaceEnhance(self, FaceEnhance):
         self._FaceEnhance = FaceEnhance
 
+    @property
+    def LowLightEnhance(self):
+        """Low-light enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
+        """
+        return self._LowLightEnhance
+
+    @LowLightEnhance.setter
+    def LowLightEnhance(self, LowLightEnhance):
+        self._LowLightEnhance = LowLightEnhance
+
 
     def _deserialize(self, params):
         if params.get("SuperResolution") is not None:
             self._SuperResolution = SuperResolutionConfig()
             self._SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("Denoise") is not None:
+            self._Denoise = ImageDenoiseConfig()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("ImageQualityEnhance") is not None:
+            self._ImageQualityEnhance = ImageQualityEnhanceConfig()
+            self._ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
         if params.get("ColorEnhance") is not None:
             self._ColorEnhance = ColorEnhanceConfig()
             self._ColorEnhance._deserialize(params.get("ColorEnhance"))
@@ -26059,6 +26974,9 @@ class ImageEnhanceConfig(AbstractModel):
         if params.get("FaceEnhance") is not None:
             self._FaceEnhance = FaceEnhanceConfig()
             self._FaceEnhance._deserialize(params.get("FaceEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self._LowLightEnhance = LowLightEnhanceConfig()
+            self._LowLightEnhance._deserialize(params.get("LowLightEnhance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26122,7 +27040,7 @@ class ImageEraseLogoConfig(AbstractModel):
 Default value: ON.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Switch: str
-        :param _ImageAreaBoxes: Multiple box selection areas to be erased. Note: The value array of this parameter can contain up to 2 values.
+        :param _ImageAreaBoxes: Multiple box selection areas that need to be erased, with a maximum of 16 areas available.
 Note: This field may return null, indicating that no valid value can be obtained.
 
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -26148,7 +27066,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ImageAreaBoxes(self):
-        """Multiple box selection areas to be erased. Note: The value array of this parameter can contain up to 2 values.
+        """Multiple box selection areas that need to be erased, with a maximum of 16 areas available.
 Note: This field may return null, indicating that no valid value can be obtained.
 
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -26169,6 +27087,154 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = ImageAreaBoxInfo()
                 obj._deserialize(item)
                 self._ImageAreaBoxes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageProcessTaskOutput(AbstractModel):
+    """Image processing result information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: Path of the output file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Path: str
+        :param _OutputStorage: Storage location of the output file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        """Path of the output file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        """Storage location of the output file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageProcessTaskResult(AbstractModel):
+    """Result type of the image processing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Status: str
+        :param _Message: Error message.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Message: str
+        :param _Output: Transcoding task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.ImageProcessTaskOutput`
+        :param _Progress: Transcoding progress, with a value range of [0-100].
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Progress: int
+        """
+        self._Status = None
+        self._Message = None
+        self._Output = None
+        self._Progress = None
+
+    @property
+    def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        """Error message.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Output(self):
+        """Transcoding task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageProcessTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        """Transcoding progress, with a value range of [0-100].
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        if params.get("Output") is not None:
+            self._Output = ImageProcessTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34695,8 +35761,8 @@ class ModifyAsrHotwordsRequest(AbstractModel):
         r"""
         :param _HotwordsId: Hotword lexicon ID. 
  
-Either Name or Content should be specified if the hotword lexicon is a text-based hotword lexicon.
-One of Name, FileContent, and FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
+Either Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon.
+Either Name, FileContent, or FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
 
         :type HotwordsId: str
         :param _Name: Hotword lexicon name.
@@ -34721,8 +35787,8 @@ One of Name, FileContent, and FileName should be specified if the hotword lexico
     def HotwordsId(self):
         """Hotword lexicon ID. 
  
-Either Name or Content should be specified if the hotword lexicon is a text-based hotword lexicon.
-One of Name, FileContent, and FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
+Either Name or Content should be specified if the hotword lexicon is a temporary hotword lexicon.
+Either Name, FileContent, or FileName should be specified if the hotword lexicon is a file-based hotword lexicon.
 
         :rtype: str
         """
@@ -36126,7 +37192,7 @@ yue: Cantonese
 vi: Vietnamese
 ms: Malay
 id: Indonesian
-fli: Filipino
+fil: Filipino
 th: Thai
 pt: Portuguese
 tr: Turkish
@@ -36242,7 +37308,7 @@ yue: Cantonese
 vi: Vietnamese
 ms: Malay
 id: Indonesian
-fli: Filipino
+fil: Filipino
 th: Thai
 pt: Portuguese
 tr: Turkish
@@ -41453,9 +42519,10 @@ class RawSmartSubtitleParameter(AbstractModel):
     def __init__(self):
         r"""
         :param _SubtitleType: Smart subtitle language type.
-0: source language1: target language
+0: source language
+1: target language
 2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :type SubtitleType: int
         :param _VideoSrcLanguage: Source language of the video with smart subtitles.
 Supported languages:
@@ -41469,7 +42536,7 @@ yue: Cantonese
 vi: Vietnamese
 ms: Malay
 id: Indonesian
-fli: Filipino
+fil: Filipino
 th: Thai
 pt: Portuguese
 tr: Turkish
@@ -41529,9 +42596,10 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SubtitleType(self):
         """Smart subtitle language type.
-0: source language1: target language
+0: source language
+1: target language
 2: source language + target language
-The value can only be 0 when TranslateSwitch is set to OFF.The value can only be 1 or 2 when TranslateSwitch is set to ON.
+The value can only be 0 when TranslateSwitch is set to OFF. The value can only be 1 or 2 when TranslateSwitch is set to ON.
         :rtype: int
         """
         return self._SubtitleType
@@ -41554,7 +42622,7 @@ yue: Cantonese
 vi: Vietnamese
 ms: Malay
 id: Indonesian
-fli: Filipino
+fil: Filipino
 th: Thai
 pt: Portuguese
 tr: Turkish
@@ -41700,6 +42768,12 @@ Default value: 0.
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         :param _TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        :param _StdExtInfo: Additional parameter, which is a serialized JSON string.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type StdExtInfo: str
+        :param _EnhanceConfig: Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self._Container = None
         self._RemoveVideo = None
@@ -41707,6 +42781,8 @@ Default value: 0.
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._StdExtInfo = None
+        self._EnhanceConfig = None
 
     @property
     def Container(self):
@@ -41780,6 +42856,30 @@ Default value: 0.
     def TEHDConfig(self, TEHDConfig):
         self._TEHDConfig = TEHDConfig
 
+    @property
+    def StdExtInfo(self):
+        """Additional parameter, which is a serialized JSON string.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
+    @property
+    def EnhanceConfig(self):
+        """Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
+        return self._EnhanceConfig
+
+    @EnhanceConfig.setter
+    def EnhanceConfig(self, EnhanceConfig):
+        self._EnhanceConfig = EnhanceConfig
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -41794,6 +42894,10 @@ Default value: 0.
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfig()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self._StdExtInfo = params.get("StdExtInfo")
+        if params.get("EnhanceConfig") is not None:
+            self._EnhanceConfig = EnhanceConfig()
+            self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44596,6 +45700,125 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartSubtitleTaskBatchOutput(AbstractModel):
+    """Output information for smart subtitle tasks.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Progress: Task progress.
+        :type Progress: int
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :type ErrCodeExt: str
+        :param _Message: Error message.
+        :type Message: str
+        :param _TransTextTask: Translation task output information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
+        :param _AsrFullTextTask: Output information on the full speech recognition task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
+        """
+        self._Progress = None
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._TransTextTask = None
+        self._AsrFullTextTask = None
+
+    @property
+    def Progress(self):
+        """Task progress.
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """Error code. An empty string indicates that the task is successful, and other values indicate that the task has failed. For specific values, see [Error Codes] (https://intl.cloud.tencent.com/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81).
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        """Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def TransTextTask(self):
+        """Translation task output information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
+        """
+        return self._TransTextTask
+
+    @TransTextTask.setter
+    def TransTextTask(self, TransTextTask):
+        self._TransTextTask = TransTextTask
+
+    @property
+    def AsrFullTextTask(self):
+        """Output information on the full speech recognition task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
+        """
+        return self._AsrFullTextTask
+
+    @AsrFullTextTask.setter
+    def AsrFullTextTask(self, AsrFullTextTask):
+        self._AsrFullTextTask = AsrFullTextTask
+
+
+    def _deserialize(self, params):
+        self._Progress = params.get("Progress")
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("TransTextTask") is not None:
+            self._TransTextTask = SmartSubtitleTaskTransTextResultOutput()
+            self._TransTextTask._deserialize(params.get("TransTextTask"))
+        if params.get("AsrFullTextTask") is not None:
+            self._AsrFullTextTask = SmartSubtitleTaskAsrFullTextResultOutput()
+            self._AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
