@@ -1738,6 +1738,42 @@ class AttrLabelRefer(AbstractModel):
         
 
 
+class AttributeFilters(AbstractModel):
+    """Export knowledge label filter.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Query: Retrieve, attribute or label name.
+        :type Query: str
+        """
+        self._Query = None
+
+    @property
+    def Query(self):
+        """Retrieve, attribute or label name.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttributeLabel(AbstractModel):
     """Label value.
 
@@ -2071,6 +2107,430 @@ class CallDetail(AbstractModel):
         
 
 
+class CateInfo(AbstractModel):
+    """Category information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CateBizId: Category ID.
+        :type CateBizId: str
+        :param _Name: Category name.
+        :type Name: str
+        :param _Total: Quantity of records (such as documents, synonyms, etc.) under the category.
+        :type Total: int
+        :param _CanAdd: Whether it is possible to add.
+        :type CanAdd: bool
+        :param _CanEdit: Whether it can be edited.
+        :type CanEdit: bool
+        :param _CanDelete: Whether it can be deleted.
+        :type CanDelete: bool
+        :param _Children: Subcategory.
+        :type Children: list of CateInfo
+        """
+        self._CateBizId = None
+        self._Name = None
+        self._Total = None
+        self._CanAdd = None
+        self._CanEdit = None
+        self._CanDelete = None
+        self._Children = None
+
+    @property
+    def CateBizId(self):
+        """Category ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def Name(self):
+        """Category name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Total(self):
+        """Quantity of records (such as documents, synonyms, etc.) under the category.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def CanAdd(self):
+        """Whether it is possible to add.
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanEdit(self):
+        """Whether it can be edited.
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanDelete(self):
+        """Whether it can be deleted.
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def Children(self):
+        """Subcategory.
+        :rtype: list of CateInfo
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._CateBizId = params.get("CateBizId")
+        self._Name = params.get("Name")
+        self._Total = params.get("Total")
+        self._CanAdd = params.get("CanAdd")
+        self._CanEdit = params.get("CanEdit")
+        self._CanDelete = params.get("CanDelete")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = CateInfo()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckAttributeLabelExistRequest(AbstractModel):
+    """CheckAttributeLabelExist request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _LabelName: Attribute name.
+        :type LabelName: str
+        :param _AttributeBizId: Attribute ID.
+        :type AttributeBizId: str
+        :param _LoginUin: Log in to the user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Log in to the user's sub-account (required in integrator mode).
+        :type LoginSubAccountUin: str
+        :param _LastLabelBizId: Scroll loading, the last attribute label ID.
+        :type LastLabelBizId: str
+        """
+        self._BotBizId = None
+        self._LabelName = None
+        self._AttributeBizId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._LastLabelBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def LabelName(self):
+        """Attribute name.
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def AttributeBizId(self):
+        """Attribute ID.
+        :rtype: str
+        """
+        return self._AttributeBizId
+
+    @AttributeBizId.setter
+    def AttributeBizId(self, AttributeBizId):
+        self._AttributeBizId = AttributeBizId
+
+    @property
+    def LoginUin(self):
+        """Log in to the user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Log in to the user's sub-account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def LastLabelBizId(self):
+        """Scroll loading, the last attribute label ID.
+        :rtype: str
+        """
+        return self._LastLabelBizId
+
+    @LastLabelBizId.setter
+    def LastLabelBizId(self, LastLabelBizId):
+        self._LastLabelBizId = LastLabelBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._LabelName = params.get("LabelName")
+        self._AttributeBizId = params.get("AttributeBizId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._LastLabelBizId = params.get("LastLabelBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckAttributeLabelExistResponse(AbstractModel):
+    """CheckAttributeLabelExist response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsExist: Whether it exists.
+        :type IsExist: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._IsExist = None
+        self._RequestId = None
+
+    @property
+    def IsExist(self):
+        """Whether it exists.
+        :rtype: bool
+        """
+        return self._IsExist
+
+    @IsExist.setter
+    def IsExist(self, IsExist):
+        self._IsExist = IsExist
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsExist = params.get("IsExist")
+        self._RequestId = params.get("RequestId")
+
+
+class CheckAttributeLabelReferRequest(AbstractModel):
+    """CheckAttributeLabelRefer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _LoginUin: Log in to user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Log in to user's sub-account (required in integrator mode).
+        :type LoginSubAccountUin: str
+        :param _LabelBizId: Attribute label.
+        :type LabelBizId: str
+        :param _AttributeBizId: Attribute ID.
+        :type AttributeBizId: list of str
+        """
+        self._BotBizId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._LabelBizId = None
+        self._AttributeBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def LoginUin(self):
+        """Log in to user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Log in to user's sub-account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def LabelBizId(self):
+        """Attribute label.
+        :rtype: str
+        """
+        return self._LabelBizId
+
+    @LabelBizId.setter
+    def LabelBizId(self, LabelBizId):
+        self._LabelBizId = LabelBizId
+
+    @property
+    def AttributeBizId(self):
+        """Attribute ID.
+        :rtype: list of str
+        """
+        return self._AttributeBizId
+
+    @AttributeBizId.setter
+    def AttributeBizId(self, AttributeBizId):
+        self._AttributeBizId = AttributeBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._LabelBizId = params.get("LabelBizId")
+        self._AttributeBizId = params.get("AttributeBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckAttributeLabelReferResponse(AbstractModel):
+    """CheckAttributeLabelRefer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsRefer: Whether to reference.
+        :type IsRefer: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._IsRefer = None
+        self._RequestId = None
+
+    @property
+    def IsRefer(self):
+        """Whether to reference.
+        :rtype: bool
+        """
+        return self._IsRefer
+
+    @IsRefer.setter
+    def IsRefer(self, IsRefer):
+        self._IsRefer = IsRefer
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsRefer = params.get("IsRefer")
+        self._RequestId = params.get("RequestId")
+
+
 class ClassifyConfig(AbstractModel):
     """Label extraction configuration.
 
@@ -2341,6 +2801,276 @@ class Context(AbstractModel):
         
 
 
+class CreateAppRequest(AbstractModel):
+    """CreateApp request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppType: Application type; knowledge_qa - knowledge qa management.
+        :type AppType: str
+        :param _BaseConfig: Basic application configuration.
+        :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
+        """
+        self._AppType = None
+        self._BaseConfig = None
+
+    @property
+    def AppType(self):
+        """Application type; knowledge_qa - knowledge qa management.
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def BaseConfig(self):
+        """Basic application configuration.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
+        """
+        return self._BaseConfig
+
+    @BaseConfig.setter
+    def BaseConfig(self, BaseConfig):
+        self._BaseConfig = BaseConfig
+
+
+    def _deserialize(self, params):
+        self._AppType = params.get("AppType")
+        if params.get("BaseConfig") is not None:
+            self._BaseConfig = BaseConfig()
+            self._BaseConfig._deserialize(params.get("BaseConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAppResponse(AbstractModel):
+    """CreateApp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: Application ID.
+        :type AppBizId: str
+        :param _IsCustomList: Whether the account application list permissions are customized. A user interaction prompt.
+        :type IsCustomList: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AppBizId = None
+        self._IsCustomList = None
+        self._RequestId = None
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def IsCustomList(self):
+        """Whether the account application list permissions are customized. A user interaction prompt.
+        :rtype: bool
+        """
+        return self._IsCustomList
+
+    @IsCustomList.setter
+    def IsCustomList(self, IsCustomList):
+        self._IsCustomList = IsCustomList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._IsCustomList = params.get("IsCustomList")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAttributeLabelRequest(AbstractModel):
+    """CreateAttributeLabel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _AttrName: Label name.
+        :type AttrName: str
+        :param _Labels: Label value.
+        :type Labels: list of AttributeLabel
+        :param _AttrKey: Label identification (not effective, no need to fill in) . Abolished.
+        :type AttrKey: str
+        :param _LoginUin: Log in to user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Log in to user's sub-account (required in integrator mode).
+        :type LoginSubAccountUin: str
+        """
+        self._BotBizId = None
+        self._AttrName = None
+        self._Labels = None
+        self._AttrKey = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def AttrName(self):
+        """Label name.
+        :rtype: str
+        """
+        return self._AttrName
+
+    @AttrName.setter
+    def AttrName(self, AttrName):
+        self._AttrName = AttrName
+
+    @property
+    def Labels(self):
+        """Label value.
+        :rtype: list of AttributeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def AttrKey(self):
+        """Label identification (not effective, no need to fill in) . Abolished.
+        :rtype: str
+        """
+        return self._AttrKey
+
+    @AttrKey.setter
+    def AttrKey(self, AttrKey):
+        self._AttrKey = AttrKey
+
+    @property
+    def LoginUin(self):
+        """Log in to user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Log in to user's sub-account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._AttrName = params.get("AttrName")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = AttributeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        self._AttrKey = params.get("AttrKey")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAttributeLabelResponse(AbstractModel):
+    """CreateAttributeLabel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttrBizId: Label ID.
+        :type AttrBizId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AttrBizId = None
+        self._RequestId = None
+
+    @property
+    def AttrBizId(self):
+        """Label ID.
+        :rtype: str
+        """
+        return self._AttrBizId
+
+    @AttrBizId.setter
+    def AttrBizId(self, AttrBizId):
+        self._AttrBizId = AttrBizId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AttrBizId = params.get("AttrBizId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCorpRequest(AbstractModel):
     """CreateCorp request structure.
 
@@ -2462,6 +3192,575 @@ class CreateCorpResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CorpBizId = params.get("CorpBizId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDocCateRequest(AbstractModel):
+    """CreateDocCate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _ParentBizId: Parent business ID.
+        :type ParentBizId: str
+        :param _Name: Category name.
+
+        :type Name: str
+        """
+        self._BotBizId = None
+        self._ParentBizId = None
+        self._Name = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def ParentBizId(self):
+        """Parent business ID.
+        :rtype: str
+        """
+        return self._ParentBizId
+
+    @ParentBizId.setter
+    def ParentBizId(self, ParentBizId):
+        self._ParentBizId = ParentBizId
+
+    @property
+    def Name(self):
+        """Category name.
+
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._ParentBizId = params.get("ParentBizId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDocCateResponse(AbstractModel):
+    """CreateDocCate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanAdd: Whether it is possible to add.
+
+        :type CanAdd: bool
+        :param _CanEdit: Whether it is editable.
+        :type CanEdit: bool
+        :param _CanDelete: Whether it can be deleted.
+
+        :type CanDelete: bool
+        :param _CateBizId: Category business ID.
+        :type CateBizId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CanAdd = None
+        self._CanEdit = None
+        self._CanDelete = None
+        self._CateBizId = None
+        self._RequestId = None
+
+    @property
+    def CanAdd(self):
+        """Whether it is possible to add.
+
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanEdit(self):
+        """Whether it is editable.
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanDelete(self):
+        """Whether it can be deleted.
+
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CateBizId(self):
+        """Category business ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CanAdd = params.get("CanAdd")
+        self._CanEdit = params.get("CanEdit")
+        self._CanDelete = params.get("CanDelete")
+        self._CateBizId = params.get("CateBizId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateQACateRequest(AbstractModel):
+    """CreateQACate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID
+        :type BotBizId: str
+        :param _ParentBizId: Parent business id. pass the string "0" when creating a top-level category.
+        :type ParentBizId: str
+        :param _Name: Category name.
+
+        :type Name: str
+        """
+        self._BotBizId = None
+        self._ParentBizId = None
+        self._Name = None
+
+    @property
+    def BotBizId(self):
+        """Application ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def ParentBizId(self):
+        """Parent business id. pass the string "0" when creating a top-level category.
+        :rtype: str
+        """
+        return self._ParentBizId
+
+    @ParentBizId.setter
+    def ParentBizId(self, ParentBizId):
+        self._ParentBizId = ParentBizId
+
+    @property
+    def Name(self):
+        """Category name.
+
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._ParentBizId = params.get("ParentBizId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQACateResponse(AbstractModel):
+    """CreateQACate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanAdd: Whether it is possible to add.
+
+        :type CanAdd: bool
+        :param _CanEdit: Whether it is editable.
+        :type CanEdit: bool
+        :param _CanDelete: Whether it can be deleted.
+
+        :type CanDelete: bool
+        :param _CateBizId: Category business ID.
+        :type CateBizId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CanAdd = None
+        self._CanEdit = None
+        self._CanDelete = None
+        self._CateBizId = None
+        self._RequestId = None
+
+    @property
+    def CanAdd(self):
+        """Whether it is possible to add.
+
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanEdit(self):
+        """Whether it is editable.
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanDelete(self):
+        """Whether it can be deleted.
+
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CateBizId(self):
+        """Category business ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CanAdd = params.get("CanAdd")
+        self._CanEdit = params.get("CanEdit")
+        self._CanDelete = params.get("CanDelete")
+        self._CateBizId = params.get("CateBizId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateQARequest(AbstractModel):
+    """CreateQA request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _Question: Question.
+        :type Question: str
+        :param _Answer: Answer.
+        :type Answer: str
+        :param _AttrRange: Applicable scope of labels: 1. all; 2. by conditions.
+        :type AttrRange: int
+        :param _CustomParam: Custom parameter.
+        :type CustomParam: str
+        :param _AttrLabels: Label reference.
+        :type AttrLabels: list of AttrLabelRefer
+        :param _DocBizId: Document ID.
+        :type DocBizId: str
+        :param _CateBizId: Category ID.
+        :type CateBizId: str
+        :param _ExpireStart: Effective start time, unix timestamp.
+        :type ExpireStart: str
+        :param _ExpireEnd: Effective end time, unix timestamp. 0 indicates permanent validity.
+        :type ExpireEnd: str
+        :param _SimilarQuestions: Similar question content.
+        :type SimilarQuestions: list of str
+        :param _QuestionDesc: Question description.
+        :type QuestionDesc: str
+        """
+        self._BotBizId = None
+        self._Question = None
+        self._Answer = None
+        self._AttrRange = None
+        self._CustomParam = None
+        self._AttrLabels = None
+        self._DocBizId = None
+        self._CateBizId = None
+        self._ExpireStart = None
+        self._ExpireEnd = None
+        self._SimilarQuestions = None
+        self._QuestionDesc = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def Question(self):
+        """Question.
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        """Answer.
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def AttrRange(self):
+        """Applicable scope of labels: 1. all; 2. by conditions.
+        :rtype: int
+        """
+        return self._AttrRange
+
+    @AttrRange.setter
+    def AttrRange(self, AttrRange):
+        self._AttrRange = AttrRange
+
+    @property
+    def CustomParam(self):
+        """Custom parameter.
+        :rtype: str
+        """
+        return self._CustomParam
+
+    @CustomParam.setter
+    def CustomParam(self, CustomParam):
+        self._CustomParam = CustomParam
+
+    @property
+    def AttrLabels(self):
+        """Label reference.
+        :rtype: list of AttrLabelRefer
+        """
+        return self._AttrLabels
+
+    @AttrLabels.setter
+    def AttrLabels(self, AttrLabels):
+        self._AttrLabels = AttrLabels
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def CateBizId(self):
+        """Category ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def ExpireStart(self):
+        """Effective start time, unix timestamp.
+        :rtype: str
+        """
+        return self._ExpireStart
+
+    @ExpireStart.setter
+    def ExpireStart(self, ExpireStart):
+        self._ExpireStart = ExpireStart
+
+    @property
+    def ExpireEnd(self):
+        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        :rtype: str
+        """
+        return self._ExpireEnd
+
+    @ExpireEnd.setter
+    def ExpireEnd(self, ExpireEnd):
+        self._ExpireEnd = ExpireEnd
+
+    @property
+    def SimilarQuestions(self):
+        """Similar question content.
+        :rtype: list of str
+        """
+        return self._SimilarQuestions
+
+    @SimilarQuestions.setter
+    def SimilarQuestions(self, SimilarQuestions):
+        self._SimilarQuestions = SimilarQuestions
+
+    @property
+    def QuestionDesc(self):
+        """Question description.
+        :rtype: str
+        """
+        return self._QuestionDesc
+
+    @QuestionDesc.setter
+    def QuestionDesc(self, QuestionDesc):
+        self._QuestionDesc = QuestionDesc
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
+        self._AttrRange = params.get("AttrRange")
+        self._CustomParam = params.get("CustomParam")
+        if params.get("AttrLabels") is not None:
+            self._AttrLabels = []
+            for item in params.get("AttrLabels"):
+                obj = AttrLabelRefer()
+                obj._deserialize(item)
+                self._AttrLabels.append(obj)
+        self._DocBizId = params.get("DocBizId")
+        self._CateBizId = params.get("CateBizId")
+        self._ExpireStart = params.get("ExpireStart")
+        self._ExpireEnd = params.get("ExpireEnd")
+        self._SimilarQuestions = params.get("SimilarQuestions")
+        self._QuestionDesc = params.get("QuestionDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQAResponse(AbstractModel):
+    """CreateQA response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QaBizId: Q&A ID.
+        :type QaBizId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._QaBizId = None
+        self._RequestId = None
+
+    @property
+    def QaBizId(self):
+        """Q&A ID.
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QaBizId = params.get("QaBizId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2692,6 +3991,119 @@ class CreateReconstructDocumentFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRejectedQuestionRequest(AbstractModel):
+    """CreateRejectedQuestion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID
+        :type BotBizId: str
+        :param _Question: Rejected question
+        :type Question: str
+        :param _BusinessSource: Unique ID of the data source for the rejected question - "2" will be returned when the rejected question is not satisfied - The rejected question comes from manual addition.
+        :type BusinessSource: int
+        :param _BusinessId: Unique ID of the data source for the rejected question.
+
+
+        :type BusinessId: str
+        """
+        self._BotBizId = None
+        self._Question = None
+        self._BusinessSource = None
+        self._BusinessId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def Question(self):
+        """Rejected question
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def BusinessSource(self):
+        """Unique ID of the data source for the rejected question - "2" will be returned when the rejected question is not satisfied - The rejected question comes from manual addition.
+        :rtype: int
+        """
+        return self._BusinessSource
+
+    @BusinessSource.setter
+    def BusinessSource(self, BusinessSource):
+        self._BusinessSource = BusinessSource
+
+    @property
+    def BusinessId(self):
+        """Unique ID of the data source for the rejected question.
+
+
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._Question = params.get("Question")
+        self._BusinessSource = params.get("BusinessSource")
+        self._BusinessId = params.get("BusinessId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRejectedQuestionResponse(AbstractModel):
+    """CreateRejectedQuestion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateReleaseRequest(AbstractModel):
     """CreateRelease request structure.
 
@@ -2786,6 +4198,87 @@ class CreateReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Credentials(AbstractModel):
+    """Temporary key structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: Token.
+        :type Token: str
+        :param _TmpSecretId: Temporary license key ID.
+        :type TmpSecretId: str
+        :param _TmpSecretKey: Temporary license key.
+        :type TmpSecretKey: str
+        :param _AppId: Temporary license appid.
+        :type AppId: int
+        """
+        self._Token = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._AppId = None
+
+    @property
+    def Token(self):
+        """Token.
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def TmpSecretId(self):
+        """Temporary license key ID.
+        :rtype: str
+        """
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        """Temporary license key.
+        :rtype: str
+        """
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def AppId(self):
+        """Temporary license appid.
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAppRequest(AbstractModel):
     """DeleteApp request structure.
 
@@ -2839,6 +4332,194 @@ class DeleteAppRequest(AbstractModel):
 
 class DeleteAppResponse(AbstractModel):
     """DeleteApp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAttributeLabelRequest(AbstractModel):
+    """DeleteAttributeLabel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _AttributeBizIds: Label ID.
+        :type AttributeBizIds: list of str
+        :param _LoginUin: Log in to user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Log in to user's sub-account (required in integrator mode).
+        :type LoginSubAccountUin: str
+        """
+        self._BotBizId = None
+        self._AttributeBizIds = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def AttributeBizIds(self):
+        """Label ID.
+        :rtype: list of str
+        """
+        return self._AttributeBizIds
+
+    @AttributeBizIds.setter
+    def AttributeBizIds(self, AttributeBizIds):
+        self._AttributeBizIds = AttributeBizIds
+
+    @property
+    def LoginUin(self):
+        """Log in to user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Log in to user's sub-account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._AttributeBizIds = params.get("AttributeBizIds")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAttributeLabelResponse(AbstractModel):
+    """DeleteAttributeLabel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDocCateRequest(AbstractModel):
+    """DeleteDocCate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _CateBizId: Category business ID.
+        :type CateBizId: str
+        """
+        self._BotBizId = None
+        self._CateBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def CateBizId(self):
+        """Category business ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._CateBizId = params.get("CateBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDocCateResponse(AbstractModel):
+    """DeleteDocCate response structure.
 
     """
 
@@ -3184,6 +4865,299 @@ class DeleteRejectedQuestionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAppRequest(AbstractModel):
+    """DescribeApp request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: Application ID.
+        :type AppBizId: str
+        :param _AppType: Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        :type AppType: str
+        :param _IsRelease: Whether it is the configuration after release.
+        :type IsRelease: bool
+        """
+        self._AppBizId = None
+        self._AppType = None
+        self._IsRelease = None
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def AppType(self):
+        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def IsRelease(self):
+        """Whether it is the configuration after release.
+        :rtype: bool
+        """
+        return self._IsRelease
+
+    @IsRelease.setter
+    def IsRelease(self, IsRelease):
+        self._IsRelease = IsRelease
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._AppType = params.get("AppType")
+        self._IsRelease = params.get("IsRelease")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppResponse(AbstractModel):
+    """DescribeApp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: Application ID.
+        :type AppBizId: str
+        :param _AppType: Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        :type AppType: str
+        :param _AppTypeDesc: Application type description.
+        :type AppTypeDesc: str
+        :param _BaseConfig: Application type description.
+        :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
+        :param _AppConfig: Application configuration.
+        :type AppConfig: :class:`tencentcloud.lke.v20231130.models.AppConfig`
+        :param _AvatarInAppeal: Whether the avatar is under appeal.
+        :type AvatarInAppeal: bool
+        :param _RoleInAppeal: Whether the role description is under appeal.
+        :type RoleInAppeal: bool
+        :param _NameInAppeal: Whether the name is under appeal.
+        :type NameInAppeal: bool
+        :param _GreetingInAppeal: Whether the welcome words are under appeal.
+        :type GreetingInAppeal: bool
+        :param _BareAnswerInAppeal: Whether the response message for unknown questions is under appeal.
+        :type BareAnswerInAppeal: bool
+        :param _AppKey: App key of the application.
+        :type AppKey: str
+        :param _AppStatus: Application status. 1: offline; 2: running; 3: disabled.
+        :type AppStatus: int
+        :param _AppStatusDesc: Status description.
+        :type AppStatusDesc: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AppBizId = None
+        self._AppType = None
+        self._AppTypeDesc = None
+        self._BaseConfig = None
+        self._AppConfig = None
+        self._AvatarInAppeal = None
+        self._RoleInAppeal = None
+        self._NameInAppeal = None
+        self._GreetingInAppeal = None
+        self._BareAnswerInAppeal = None
+        self._AppKey = None
+        self._AppStatus = None
+        self._AppStatusDesc = None
+        self._RequestId = None
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def AppType(self):
+        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def AppTypeDesc(self):
+        """Application type description.
+        :rtype: str
+        """
+        return self._AppTypeDesc
+
+    @AppTypeDesc.setter
+    def AppTypeDesc(self, AppTypeDesc):
+        self._AppTypeDesc = AppTypeDesc
+
+    @property
+    def BaseConfig(self):
+        """Application type description.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
+        """
+        return self._BaseConfig
+
+    @BaseConfig.setter
+    def BaseConfig(self, BaseConfig):
+        self._BaseConfig = BaseConfig
+
+    @property
+    def AppConfig(self):
+        """Application configuration.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AppConfig`
+        """
+        return self._AppConfig
+
+    @AppConfig.setter
+    def AppConfig(self, AppConfig):
+        self._AppConfig = AppConfig
+
+    @property
+    def AvatarInAppeal(self):
+        """Whether the avatar is under appeal.
+        :rtype: bool
+        """
+        return self._AvatarInAppeal
+
+    @AvatarInAppeal.setter
+    def AvatarInAppeal(self, AvatarInAppeal):
+        self._AvatarInAppeal = AvatarInAppeal
+
+    @property
+    def RoleInAppeal(self):
+        """Whether the role description is under appeal.
+        :rtype: bool
+        """
+        return self._RoleInAppeal
+
+    @RoleInAppeal.setter
+    def RoleInAppeal(self, RoleInAppeal):
+        self._RoleInAppeal = RoleInAppeal
+
+    @property
+    def NameInAppeal(self):
+        """Whether the name is under appeal.
+        :rtype: bool
+        """
+        return self._NameInAppeal
+
+    @NameInAppeal.setter
+    def NameInAppeal(self, NameInAppeal):
+        self._NameInAppeal = NameInAppeal
+
+    @property
+    def GreetingInAppeal(self):
+        """Whether the welcome words are under appeal.
+        :rtype: bool
+        """
+        return self._GreetingInAppeal
+
+    @GreetingInAppeal.setter
+    def GreetingInAppeal(self, GreetingInAppeal):
+        self._GreetingInAppeal = GreetingInAppeal
+
+    @property
+    def BareAnswerInAppeal(self):
+        """Whether the response message for unknown questions is under appeal.
+        :rtype: bool
+        """
+        return self._BareAnswerInAppeal
+
+    @BareAnswerInAppeal.setter
+    def BareAnswerInAppeal(self, BareAnswerInAppeal):
+        self._BareAnswerInAppeal = BareAnswerInAppeal
+
+    @property
+    def AppKey(self):
+        """App key of the application.
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def AppStatus(self):
+        """Application status. 1: offline; 2: running; 3: disabled.
+        :rtype: int
+        """
+        return self._AppStatus
+
+    @AppStatus.setter
+    def AppStatus(self, AppStatus):
+        self._AppStatus = AppStatus
+
+    @property
+    def AppStatusDesc(self):
+        """Status description.
+        :rtype: str
+        """
+        return self._AppStatusDesc
+
+    @AppStatusDesc.setter
+    def AppStatusDesc(self, AppStatusDesc):
+        self._AppStatusDesc = AppStatusDesc
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        self._AppType = params.get("AppType")
+        self._AppTypeDesc = params.get("AppTypeDesc")
+        if params.get("BaseConfig") is not None:
+            self._BaseConfig = BaseConfig()
+            self._BaseConfig._deserialize(params.get("BaseConfig"))
+        if params.get("AppConfig") is not None:
+            self._AppConfig = AppConfig()
+            self._AppConfig._deserialize(params.get("AppConfig"))
+        self._AvatarInAppeal = params.get("AvatarInAppeal")
+        self._RoleInAppeal = params.get("RoleInAppeal")
+        self._NameInAppeal = params.get("NameInAppeal")
+        self._GreetingInAppeal = params.get("GreetingInAppeal")
+        self._BareAnswerInAppeal = params.get("BareAnswerInAppeal")
+        self._AppKey = params.get("AppKey")
+        self._AppStatus = params.get("AppStatus")
+        self._AppStatusDesc = params.get("AppStatusDesc")
         self._RequestId = params.get("RequestId")
 
 
@@ -4014,6 +5988,149 @@ class DescribeConcurrencyUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCorpRequest(AbstractModel):
+    """DescribeCorp request structure.
+
+    """
+
+
+class DescribeCorpResponse(AbstractModel):
+    """DescribeCorp response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpBizId: Corporate ID.
+
+        :type CorpBizId: str
+        :param _RobotQuota: Application quota.
+        :type RobotQuota: int
+        :param _FullName: Full name of the corporate.
+
+        :type FullName: str
+        :param _IsTrial: Whether to try out.
+        :type IsTrial: bool
+        :param _IsTrialExpired: Whether the trial has expired.
+        :type IsTrialExpired: bool
+        :param _AvailableAppQuota: Quantity of available applications.
+        :type AvailableAppQuota: int
+        :param _IsSupportCustomModel: Whether custom model configuration is supported.
+        :type IsSupportCustomModel: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CorpBizId = None
+        self._RobotQuota = None
+        self._FullName = None
+        self._IsTrial = None
+        self._IsTrialExpired = None
+        self._AvailableAppQuota = None
+        self._IsSupportCustomModel = None
+        self._RequestId = None
+
+    @property
+    def CorpBizId(self):
+        """Corporate ID.
+
+        :rtype: str
+        """
+        return self._CorpBizId
+
+    @CorpBizId.setter
+    def CorpBizId(self, CorpBizId):
+        self._CorpBizId = CorpBizId
+
+    @property
+    def RobotQuota(self):
+        """Application quota.
+        :rtype: int
+        """
+        return self._RobotQuota
+
+    @RobotQuota.setter
+    def RobotQuota(self, RobotQuota):
+        self._RobotQuota = RobotQuota
+
+    @property
+    def FullName(self):
+        """Full name of the corporate.
+
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def IsTrial(self):
+        """Whether to try out.
+        :rtype: bool
+        """
+        return self._IsTrial
+
+    @IsTrial.setter
+    def IsTrial(self, IsTrial):
+        self._IsTrial = IsTrial
+
+    @property
+    def IsTrialExpired(self):
+        """Whether the trial has expired.
+        :rtype: bool
+        """
+        return self._IsTrialExpired
+
+    @IsTrialExpired.setter
+    def IsTrialExpired(self, IsTrialExpired):
+        self._IsTrialExpired = IsTrialExpired
+
+    @property
+    def AvailableAppQuota(self):
+        """Quantity of available applications.
+        :rtype: int
+        """
+        return self._AvailableAppQuota
+
+    @AvailableAppQuota.setter
+    def AvailableAppQuota(self, AvailableAppQuota):
+        self._AvailableAppQuota = AvailableAppQuota
+
+    @property
+    def IsSupportCustomModel(self):
+        """Whether custom model configuration is supported.
+        :rtype: bool
+        """
+        return self._IsSupportCustomModel
+
+    @IsSupportCustomModel.setter
+    def IsSupportCustomModel(self, IsSupportCustomModel):
+        self._IsSupportCustomModel = IsSupportCustomModel
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CorpBizId = params.get("CorpBizId")
+        self._RobotQuota = params.get("RobotQuota")
+        self._FullName = params.get("FullName")
+        self._IsTrial = params.get("IsTrial")
+        self._IsTrialExpired = params.get("IsTrialExpired")
+        self._AvailableAppQuota = params.get("AvailableAppQuota")
+        self._IsSupportCustomModel = params.get("IsSupportCustomModel")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDocRequest(AbstractModel):
     """DescribeDoc request structure.
 
@@ -4636,6 +6753,840 @@ class DescribeKnowledgeUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeQARequest(AbstractModel):
+    """DescribeQA request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QaBizId: Q&A business ID.
+
+        :type QaBizId: str
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        """
+        self._QaBizId = None
+        self._BotBizId = None
+
+    @property
+    def QaBizId(self):
+        """Q&A business ID.
+
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+
+    def _deserialize(self, params):
+        self._QaBizId = params.get("QaBizId")
+        self._BotBizId = params.get("BotBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQAResponse(AbstractModel):
+    """DescribeQA response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QaBizId: Q&A business ID.
+
+        :type QaBizId: str
+        :param _Question: Question.
+
+        :type Question: str
+        :param _Answer: Answer.
+
+        :type Answer: str
+        :param _CustomParam: Custom parameter.
+        :type CustomParam: str
+        :param _Source: Source:
+1 - Q&A pairs generated from documents.
+2 - Q&A pairs imported in batches.
+3 - Q&A pairs input manually one by one.
+
+
+        :type Source: int
+        :param _SourceDesc: Source description.
+
+        :type SourceDesc: str
+        :param _UpdateTime: Update time.
+
+
+        :type UpdateTime: str
+        :param _Status: Status<br>1 - pending verification; 2 - not released; 3 - releasing; 4 - released; 5 - release failed; 6 - not approved; 7 - under review; 8 - review failed, 9 - review failed, pending manual review after appeal; 11 - review failed, manual review not passed after appeal; 12 - expired; 13 - excessive invalid; 14 - excessive invalid recovered; 19 - learning; 20 - learning failed.
+
+
+        :type Status: int
+        :param _StatusDesc: Status description.
+
+
+        :type StatusDesc: str
+        :param _CateBizId: Category ID.
+
+        :type CateBizId: str
+        :param _IsAllowAccept: Whether verification is allowed.
+
+        :type IsAllowAccept: bool
+        :param _IsAllowDelete: Whether deletion is allowed.
+
+        :type IsAllowDelete: bool
+        :param _IsAllowEdit: Whether editing is allowed.
+
+        :type IsAllowEdit: bool
+        :param _DocBizId: Document ID.
+
+        :type DocBizId: str
+        :param _FileName: Document name.
+
+        :type FileName: str
+        :param _FileType: Document type.
+
+        :type FileType: str
+        :param _SegmentBizId: Segment ID.
+
+        :type SegmentBizId: str
+        :param _PageContent: Segment content.
+        :type PageContent: str
+        :param _Highlights: Segment highlight content.
+        :type Highlights: list of Highlight
+        :param _OrgData: Segment content.
+
+        :type OrgData: str
+        :param _AttrRange: Applicable scope of label.
+        :type AttrRange: int
+        :param _AttrLabels: Label.
+        :type AttrLabels: list of AttrLabel
+        :param _ExpireStart: Effective start time, unix timestamp.
+        :type ExpireStart: str
+        :param _ExpireEnd: Effective end time, unix timestamp. 0 indicates permanent validity.
+        :type ExpireEnd: str
+        :param _SimilarQuestions: Similar question list information.
+        :type SimilarQuestions: list of SimilarQuestion
+        :param _QaAuditStatus: Review status of Q&A text: 1 - review failed.
+        :type QaAuditStatus: int
+        :param _PicAuditStatus: Review status of image in Q&A: 1-review failed.
+        :type PicAuditStatus: int
+        :param _VideoAuditStatus: Review status of video in Q&A: 1 - review failed.
+        :type VideoAuditStatus: int
+        :param _QuestionDesc: Question description.
+        :type QuestionDesc: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._QaBizId = None
+        self._Question = None
+        self._Answer = None
+        self._CustomParam = None
+        self._Source = None
+        self._SourceDesc = None
+        self._UpdateTime = None
+        self._Status = None
+        self._StatusDesc = None
+        self._CateBizId = None
+        self._IsAllowAccept = None
+        self._IsAllowDelete = None
+        self._IsAllowEdit = None
+        self._DocBizId = None
+        self._FileName = None
+        self._FileType = None
+        self._SegmentBizId = None
+        self._PageContent = None
+        self._Highlights = None
+        self._OrgData = None
+        self._AttrRange = None
+        self._AttrLabels = None
+        self._ExpireStart = None
+        self._ExpireEnd = None
+        self._SimilarQuestions = None
+        self._QaAuditStatus = None
+        self._PicAuditStatus = None
+        self._VideoAuditStatus = None
+        self._QuestionDesc = None
+        self._RequestId = None
+
+    @property
+    def QaBizId(self):
+        """Q&A business ID.
+
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def Question(self):
+        """Question.
+
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        """Answer.
+
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def CustomParam(self):
+        """Custom parameter.
+        :rtype: str
+        """
+        return self._CustomParam
+
+    @CustomParam.setter
+    def CustomParam(self, CustomParam):
+        self._CustomParam = CustomParam
+
+    @property
+    def Source(self):
+        """Source:
+1 - Q&A pairs generated from documents.
+2 - Q&A pairs imported in batches.
+3 - Q&A pairs input manually one by one.
+
+
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceDesc(self):
+        """Source description.
+
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+
+
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        """Status<br>1 - pending verification; 2 - not released; 3 - releasing; 4 - released; 5 - release failed; 6 - not approved; 7 - under review; 8 - review failed, 9 - review failed, pending manual review after appeal; 11 - review failed, manual review not passed after appeal; 12 - expired; 13 - excessive invalid; 14 - excessive invalid recovered; 19 - learning; 20 - learning failed.
+
+
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        """Status description.
+
+
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def CateBizId(self):
+        """Category ID.
+
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def IsAllowAccept(self):
+        """Whether verification is allowed.
+
+        :rtype: bool
+        """
+        return self._IsAllowAccept
+
+    @IsAllowAccept.setter
+    def IsAllowAccept(self, IsAllowAccept):
+        self._IsAllowAccept = IsAllowAccept
+
+    @property
+    def IsAllowDelete(self):
+        """Whether deletion is allowed.
+
+        :rtype: bool
+        """
+        return self._IsAllowDelete
+
+    @IsAllowDelete.setter
+    def IsAllowDelete(self, IsAllowDelete):
+        self._IsAllowDelete = IsAllowDelete
+
+    @property
+    def IsAllowEdit(self):
+        """Whether editing is allowed.
+
+        :rtype: bool
+        """
+        return self._IsAllowEdit
+
+    @IsAllowEdit.setter
+    def IsAllowEdit(self, IsAllowEdit):
+        self._IsAllowEdit = IsAllowEdit
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def FileName(self):
+        """Document name.
+
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        """Document type.
+
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def SegmentBizId(self):
+        """Segment ID.
+
+        :rtype: str
+        """
+        return self._SegmentBizId
+
+    @SegmentBizId.setter
+    def SegmentBizId(self, SegmentBizId):
+        self._SegmentBizId = SegmentBizId
+
+    @property
+    def PageContent(self):
+        """Segment content.
+        :rtype: str
+        """
+        return self._PageContent
+
+    @PageContent.setter
+    def PageContent(self, PageContent):
+        self._PageContent = PageContent
+
+    @property
+    def Highlights(self):
+        """Segment highlight content.
+        :rtype: list of Highlight
+        """
+        return self._Highlights
+
+    @Highlights.setter
+    def Highlights(self, Highlights):
+        self._Highlights = Highlights
+
+    @property
+    def OrgData(self):
+        """Segment content.
+
+        :rtype: str
+        """
+        return self._OrgData
+
+    @OrgData.setter
+    def OrgData(self, OrgData):
+        self._OrgData = OrgData
+
+    @property
+    def AttrRange(self):
+        """Applicable scope of label.
+        :rtype: int
+        """
+        return self._AttrRange
+
+    @AttrRange.setter
+    def AttrRange(self, AttrRange):
+        self._AttrRange = AttrRange
+
+    @property
+    def AttrLabels(self):
+        """Label.
+        :rtype: list of AttrLabel
+        """
+        return self._AttrLabels
+
+    @AttrLabels.setter
+    def AttrLabels(self, AttrLabels):
+        self._AttrLabels = AttrLabels
+
+    @property
+    def ExpireStart(self):
+        """Effective start time, unix timestamp.
+        :rtype: str
+        """
+        return self._ExpireStart
+
+    @ExpireStart.setter
+    def ExpireStart(self, ExpireStart):
+        self._ExpireStart = ExpireStart
+
+    @property
+    def ExpireEnd(self):
+        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        :rtype: str
+        """
+        return self._ExpireEnd
+
+    @ExpireEnd.setter
+    def ExpireEnd(self, ExpireEnd):
+        self._ExpireEnd = ExpireEnd
+
+    @property
+    def SimilarQuestions(self):
+        """Similar question list information.
+        :rtype: list of SimilarQuestion
+        """
+        return self._SimilarQuestions
+
+    @SimilarQuestions.setter
+    def SimilarQuestions(self, SimilarQuestions):
+        self._SimilarQuestions = SimilarQuestions
+
+    @property
+    def QaAuditStatus(self):
+        """Review status of Q&A text: 1 - review failed.
+        :rtype: int
+        """
+        return self._QaAuditStatus
+
+    @QaAuditStatus.setter
+    def QaAuditStatus(self, QaAuditStatus):
+        self._QaAuditStatus = QaAuditStatus
+
+    @property
+    def PicAuditStatus(self):
+        """Review status of image in Q&A: 1-review failed.
+        :rtype: int
+        """
+        return self._PicAuditStatus
+
+    @PicAuditStatus.setter
+    def PicAuditStatus(self, PicAuditStatus):
+        self._PicAuditStatus = PicAuditStatus
+
+    @property
+    def VideoAuditStatus(self):
+        """Review status of video in Q&A: 1 - review failed.
+        :rtype: int
+        """
+        return self._VideoAuditStatus
+
+    @VideoAuditStatus.setter
+    def VideoAuditStatus(self, VideoAuditStatus):
+        self._VideoAuditStatus = VideoAuditStatus
+
+    @property
+    def QuestionDesc(self):
+        """Question description.
+        :rtype: str
+        """
+        return self._QuestionDesc
+
+    @QuestionDesc.setter
+    def QuestionDesc(self, QuestionDesc):
+        self._QuestionDesc = QuestionDesc
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QaBizId = params.get("QaBizId")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
+        self._CustomParam = params.get("CustomParam")
+        self._Source = params.get("Source")
+        self._SourceDesc = params.get("SourceDesc")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._CateBizId = params.get("CateBizId")
+        self._IsAllowAccept = params.get("IsAllowAccept")
+        self._IsAllowDelete = params.get("IsAllowDelete")
+        self._IsAllowEdit = params.get("IsAllowEdit")
+        self._DocBizId = params.get("DocBizId")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._SegmentBizId = params.get("SegmentBizId")
+        self._PageContent = params.get("PageContent")
+        if params.get("Highlights") is not None:
+            self._Highlights = []
+            for item in params.get("Highlights"):
+                obj = Highlight()
+                obj._deserialize(item)
+                self._Highlights.append(obj)
+        self._OrgData = params.get("OrgData")
+        self._AttrRange = params.get("AttrRange")
+        if params.get("AttrLabels") is not None:
+            self._AttrLabels = []
+            for item in params.get("AttrLabels"):
+                obj = AttrLabel()
+                obj._deserialize(item)
+                self._AttrLabels.append(obj)
+        self._ExpireStart = params.get("ExpireStart")
+        self._ExpireEnd = params.get("ExpireEnd")
+        if params.get("SimilarQuestions") is not None:
+            self._SimilarQuestions = []
+            for item in params.get("SimilarQuestions"):
+                obj = SimilarQuestion()
+                obj._deserialize(item)
+                self._SimilarQuestions.append(obj)
+        self._QaAuditStatus = params.get("QaAuditStatus")
+        self._PicAuditStatus = params.get("PicAuditStatus")
+        self._VideoAuditStatus = params.get("VideoAuditStatus")
+        self._QuestionDesc = params.get("QuestionDesc")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReferRequest(AbstractModel):
+    """DescribeRefer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID
+        :type BotBizId: str
+        :param _ReferBizIds: Quota ID
+        :type ReferBizIds: list of str
+        :param _LoginUin: Log in to the user's root account (required in the integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login user sub-account (required in integrator mode).
+        :type LoginSubAccountUin: str
+        """
+        self._BotBizId = None
+        self._ReferBizIds = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def BotBizId(self):
+        """Application ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def ReferBizIds(self):
+        """Quota ID
+        :rtype: list of str
+        """
+        return self._ReferBizIds
+
+    @ReferBizIds.setter
+    def ReferBizIds(self, ReferBizIds):
+        self._ReferBizIds = ReferBizIds
+
+    @property
+    def LoginUin(self):
+        """Log in to the user's root account (required in the integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login user sub-account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._ReferBizIds = params.get("ReferBizIds")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReferResponse(AbstractModel):
+    """DescribeRefer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Reference list.
+        :type List: list of ReferDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """Reference list.
+        :rtype: list of ReferDetail
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ReferDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReleaseInfoRequest(AbstractModel):
+    """DescribeReleaseInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        """
+        self._BotBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReleaseInfoResponse(AbstractModel):
+    """DescribeReleaseInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastTime: The last release time.
+        :type LastTime: str
+        :param _Status: Release status: 1: pending release; 2: releasing; 3: release successful; 4: release failed; 5: under review; 6: review successful; 7: review failed; 8: release successful, callback processing; 9: release paused; 10: appeal under review; 11: appeal approved; 12: appeal rejected.
+        :type Status: int
+        :param _IsUpdated: Whether it has been edited. When it is true, it means it can be released.
+        :type IsUpdated: bool
+        :param _Msg: Reason for failure.
+
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._LastTime = None
+        self._Status = None
+        self._IsUpdated = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def LastTime(self):
+        """The last release time.
+        :rtype: str
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+    @property
+    def Status(self):
+        """Release status: 1: pending release; 2: releasing; 3: release successful; 4: release failed; 5: under review; 6: review successful; 7: review failed; 8: release successful, callback processing; 9: release paused; 10: appeal under review; 11: appeal approved; 12: appeal rejected.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsUpdated(self):
+        """Whether it has been edited. When it is true, it means it can be released.
+        :rtype: bool
+        """
+        return self._IsUpdated
+
+    @IsUpdated.setter
+    def IsUpdated(self, IsUpdated):
+        self._IsUpdated = IsUpdated
+
+    @property
+    def Msg(self):
+        """Reason for failure.
+
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LastTime = params.get("LastTime")
+        self._Status = params.get("Status")
+        self._IsUpdated = params.get("IsUpdated")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReleaseRequest(AbstractModel):
     """DescribeRelease request structure.
 
@@ -5040,6 +7991,368 @@ class DescribeSearchStatsGraphResponse(AbstractModel):
                 obj = Stat()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSegmentsRequest(AbstractModel):
+    """DescribeSegments request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID
+        :type BotBizId: str
+        :param _SegBizId: Document fragment ID.
+        :type SegBizId: list of str
+        """
+        self._BotBizId = None
+        self._SegBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def SegBizId(self):
+        """Document fragment ID.
+        :rtype: list of str
+        """
+        return self._SegBizId
+
+    @SegBizId.setter
+    def SegBizId(self, SegBizId):
+        self._SegBizId = SegBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._SegBizId = params.get("SegBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSegmentsResponse(AbstractModel):
+    """DescribeSegments response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Fragment list.
+        :type List: list of DocSegment
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """Fragment list.
+        :rtype: list of DocSegment
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DocSegment()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStorageCredentialRequest(AbstractModel):
+    """DescribeStorageCredential request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID. The parameter still needs to be filled in. Different combinations of parameters will result in different permissions. For details, see https://cloud.tencent.com/document/product/1759/116238.
+        :type BotBizId: str
+        :param _FileType: File type, normal file name type suffixes, such as xlsx, pdf, docx, png, etc.
+        :type FileType: str
+        :param _IsPublic: This parameter is used to select a scenario when uploading a file or an image. When uploading an image in a chat, "Ispublic" is "true." When uploading a file (including files in the document library, images, etc. and files in a chat), "Ispublic" is "false."
+
+        :type IsPublic: bool
+        :param _TypeKey: Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
+        :type TypeKey: str
+        """
+        self._BotBizId = None
+        self._FileType = None
+        self._IsPublic = None
+        self._TypeKey = None
+
+    @property
+    def BotBizId(self):
+        """Application ID. The parameter still needs to be filled in. Different combinations of parameters will result in different permissions. For details, see https://cloud.tencent.com/document/product/1759/116238.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def FileType(self):
+        """File type, normal file name type suffixes, such as xlsx, pdf, docx, png, etc.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def IsPublic(self):
+        """This parameter is used to select a scenario when uploading a file or an image. When uploading an image in a chat, "Ispublic" is "true." When uploading a file (including files in the document library, images, etc. and files in a chat), "Ispublic" is "false."
+
+        :rtype: bool
+        """
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
+    @property
+    def TypeKey(self):
+        """Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
+        :rtype: str
+        """
+        return self._TypeKey
+
+    @TypeKey.setter
+    def TypeKey(self, TypeKey):
+        self._TypeKey = TypeKey
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._FileType = params.get("FileType")
+        self._IsPublic = params.get("IsPublic")
+        self._TypeKey = params.get("TypeKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStorageCredentialResponse(AbstractModel):
+    """DescribeStorageCredential response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Credentials: Key information.
+        :type Credentials: :class:`tencentcloud.lke.v20231130.models.Credentials`
+        :param _ExpiredTime: Expiration time.
+        :type ExpiredTime: int
+        :param _StartTime: Start time.
+        :type StartTime: int
+        :param _Bucket: Cloud object storage bucket.
+        :type Bucket: str
+        :param _Region: COS availability zone.
+        :type Region: str
+        :param _FilePath: Cloud file storage directory.
+        :type FilePath: str
+        :param _Type: Storage type.
+        :type Type: str
+        :param _CorpUin: Primary account.
+        :type CorpUin: str
+        :param _ImagePath: Image storage directory.
+        :type ImagePath: str
+        :param _UploadPath: Upload storage path to a specific file.
+        :type UploadPath: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Credentials = None
+        self._ExpiredTime = None
+        self._StartTime = None
+        self._Bucket = None
+        self._Region = None
+        self._FilePath = None
+        self._Type = None
+        self._CorpUin = None
+        self._ImagePath = None
+        self._UploadPath = None
+        self._RequestId = None
+
+    @property
+    def Credentials(self):
+        """Key information.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Credentials`
+        """
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def ExpiredTime(self):
+        """Expiration time.
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def StartTime(self):
+        """Start time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Bucket(self):
+        """Cloud object storage bucket.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        """COS availability zone.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def FilePath(self):
+        """Cloud file storage directory.
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def Type(self):
+        """Storage type.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CorpUin(self):
+        """Primary account.
+        :rtype: str
+        """
+        return self._CorpUin
+
+    @CorpUin.setter
+    def CorpUin(self, CorpUin):
+        self._CorpUin = CorpUin
+
+    @property
+    def ImagePath(self):
+        """Image storage directory.
+        :rtype: str
+        """
+        return self._ImagePath
+
+    @ImagePath.setter
+    def ImagePath(self, ImagePath):
+        self._ImagePath = ImagePath
+
+    @property
+    def UploadPath(self):
+        """Upload storage path to a specific file.
+        :rtype: str
+        """
+        return self._UploadPath
+
+    @UploadPath.setter
+    def UploadPath(self, UploadPath):
+        self._UploadPath = UploadPath
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Credentials") is not None:
+            self._Credentials = Credentials()
+            self._Credentials._deserialize(params.get("Credentials"))
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._StartTime = params.get("StartTime")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._FilePath = params.get("FilePath")
+        self._Type = params.get("Type")
+        self._CorpUin = params.get("CorpUin")
+        self._ImagePath = params.get("ImagePath")
+        self._UploadPath = params.get("UploadPath")
         self._RequestId = params.get("RequestId")
 
 
@@ -5756,6 +9069,369 @@ class DigitalHumanConfig(AbstractModel):
         
 
 
+class DocFilterFlag(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Flag: 
+        :type Flag: str
+        :param _Value: 
+        :type Value: bool
+        """
+        self._Flag = None
+        self._Value = None
+
+    @property
+    def Flag(self):
+        """
+        :rtype: str
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def Value(self):
+        """
+        :rtype: bool
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Flag = params.get("Flag")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocSegment(AbstractModel):
+    """Document fragment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Fragment ID.
+        :type Id: str
+        :param _BusinessId: Business ID.
+        :type BusinessId: str
+        :param _FileType: File type (markdown, word, txt).
+        :type FileType: str
+        :param _SegmentType: Document segment type (segment, table).
+        :type SegmentType: str
+        :param _Title: Title.
+        :type Title: str
+        :param _PageContent: Paragraph content.
+        :type PageContent: str
+        :param _OrgData: Original paragraph.
+        :type OrgData: str
+        :param _DocId: Article ID.
+        :type DocId: str
+        :param _DocBizId: Document business ID.
+        :type DocBizId: str
+        :param _DocUrl: Document URL.
+        :type DocUrl: str
+        """
+        self._Id = None
+        self._BusinessId = None
+        self._FileType = None
+        self._SegmentType = None
+        self._Title = None
+        self._PageContent = None
+        self._OrgData = None
+        self._DocId = None
+        self._DocBizId = None
+        self._DocUrl = None
+
+    @property
+    def Id(self):
+        """Fragment ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BusinessId(self):
+        """Business ID.
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def FileType(self):
+        """File type (markdown, word, txt).
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def SegmentType(self):
+        """Document segment type (segment, table).
+        :rtype: str
+        """
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
+    @property
+    def Title(self):
+        """Title.
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def PageContent(self):
+        """Paragraph content.
+        :rtype: str
+        """
+        return self._PageContent
+
+    @PageContent.setter
+    def PageContent(self, PageContent):
+        self._PageContent = PageContent
+
+    @property
+    def OrgData(self):
+        """Original paragraph.
+        :rtype: str
+        """
+        return self._OrgData
+
+    @OrgData.setter
+    def OrgData(self, OrgData):
+        self._OrgData = OrgData
+
+    @property
+    def DocId(self):
+        """Article ID.
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def DocBizId(self):
+        """Document business ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def DocUrl(self):
+        """Document URL.
+        :rtype: str
+        """
+        return self._DocUrl
+
+    @DocUrl.setter
+    def DocUrl(self, DocUrl):
+        self._DocUrl = DocUrl
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._BusinessId = params.get("BusinessId")
+        self._FileType = params.get("FileType")
+        self._SegmentType = params.get("SegmentType")
+        self._Title = params.get("Title")
+        self._PageContent = params.get("PageContent")
+        self._OrgData = params.get("OrgData")
+        self._DocId = params.get("DocId")
+        self._DocBizId = params.get("DocBizId")
+        self._DocUrl = params.get("DocUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportAttributeLabelRequest(AbstractModel):
+    """ExportAttributeLabel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _LoginUin: Login to user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).
+        :type LoginSubAccountUin: str
+        :param _AttributeBizIds: Attribute ID.
+        :type AttributeBizIds: list of str
+        :param _Filters: Export according to the filtered data.
+        :type Filters: :class:`tencentcloud.lke.v20231130.models.AttributeFilters`
+        """
+        self._BotBizId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._AttributeBizIds = None
+        self._Filters = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def LoginUin(self):
+        """Login to user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login to user's sub-account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def AttributeBizIds(self):
+        """Attribute ID.
+        :rtype: list of str
+        """
+        return self._AttributeBizIds
+
+    @AttributeBizIds.setter
+    def AttributeBizIds(self, AttributeBizIds):
+        self._AttributeBizIds = AttributeBizIds
+
+    @property
+    def Filters(self):
+        """Export according to the filtered data.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.AttributeFilters`
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._AttributeBizIds = params.get("AttributeBizIds")
+        if params.get("Filters") is not None:
+            self._Filters = AttributeFilters()
+            self._Filters._deserialize(params.get("Filters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportAttributeLabelResponse(AbstractModel):
+    """ExportAttributeLabel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Export task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Export task ID.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ExportQAListRequest(AbstractModel):
     """ExportQAList request structure.
 
@@ -6257,6 +9933,977 @@ class GenerateQAResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetAnswerTypeDataCountRequest(AbstractModel):
+    """GetAnswerTypeDataCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start date.
+        :type StartTime: int
+        :param _EndTime: End date.
+        :type EndTime: int
+        :param _AppBizId: Application ID.
+        :type AppBizId: list of str
+        :param _Type: Message source (1. shared from user end; 2. chat API; 3. chat test, 4. application evaluation).
+        :type Type: int
+        :param _LoginUin: Login to user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).	
+        :type LoginSubAccountUin: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizId = None
+        self._Type = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def StartTime(self):
+        """Start date.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End date.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: list of str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Type(self):
+        """Message source (1. shared from user end; 2. chat API; 3. chat test, 4. application evaluation).
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LoginUin(self):
+        """Login to user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login to user's sub-account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizId = params.get("AppBizId")
+        self._Type = params.get("Type")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAnswerTypeDataCountResponse(AbstractModel):
+    """GetAnswerTypeDataCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of messages.
+        :type Total: int
+        :param _ModelReplyCount: Total number of direct responses by the large model.
+        :type ModelReplyCount: int
+        :param _KnowledgeCount: Total number of knowledge-based responses.
+        :type KnowledgeCount: int
+        :param _TaskFlowCount: Total number of task flow responses.
+        :type TaskFlowCount: int
+        :param _SearchEngineCount: Total number of search engine responses.
+        :type SearchEngineCount: int
+        :param _ImageUnderstandingCount: Total number of image understanding responses.
+        :type ImageUnderstandingCount: int
+        :param _RejectCount: Total number of responses to rejected questions.
+        :type RejectCount: int
+        :param _SensitiveCount: Total number of sensitive responses.
+        :type SensitiveCount: int
+        :param _ConcurrentLimitCount: Total number of responses for concurrency exceeded.
+        :type ConcurrentLimitCount: int
+        :param _UnknownIssuesCount: Total number of unknown question responses.
+        :type UnknownIssuesCount: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._ModelReplyCount = None
+        self._KnowledgeCount = None
+        self._TaskFlowCount = None
+        self._SearchEngineCount = None
+        self._ImageUnderstandingCount = None
+        self._RejectCount = None
+        self._SensitiveCount = None
+        self._ConcurrentLimitCount = None
+        self._UnknownIssuesCount = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Total number of messages.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ModelReplyCount(self):
+        """Total number of direct responses by the large model.
+        :rtype: int
+        """
+        return self._ModelReplyCount
+
+    @ModelReplyCount.setter
+    def ModelReplyCount(self, ModelReplyCount):
+        self._ModelReplyCount = ModelReplyCount
+
+    @property
+    def KnowledgeCount(self):
+        """Total number of knowledge-based responses.
+        :rtype: int
+        """
+        return self._KnowledgeCount
+
+    @KnowledgeCount.setter
+    def KnowledgeCount(self, KnowledgeCount):
+        self._KnowledgeCount = KnowledgeCount
+
+    @property
+    def TaskFlowCount(self):
+        """Total number of task flow responses.
+        :rtype: int
+        """
+        return self._TaskFlowCount
+
+    @TaskFlowCount.setter
+    def TaskFlowCount(self, TaskFlowCount):
+        self._TaskFlowCount = TaskFlowCount
+
+    @property
+    def SearchEngineCount(self):
+        """Total number of search engine responses.
+        :rtype: int
+        """
+        return self._SearchEngineCount
+
+    @SearchEngineCount.setter
+    def SearchEngineCount(self, SearchEngineCount):
+        self._SearchEngineCount = SearchEngineCount
+
+    @property
+    def ImageUnderstandingCount(self):
+        """Total number of image understanding responses.
+        :rtype: int
+        """
+        return self._ImageUnderstandingCount
+
+    @ImageUnderstandingCount.setter
+    def ImageUnderstandingCount(self, ImageUnderstandingCount):
+        self._ImageUnderstandingCount = ImageUnderstandingCount
+
+    @property
+    def RejectCount(self):
+        """Total number of responses to rejected questions.
+        :rtype: int
+        """
+        return self._RejectCount
+
+    @RejectCount.setter
+    def RejectCount(self, RejectCount):
+        self._RejectCount = RejectCount
+
+    @property
+    def SensitiveCount(self):
+        """Total number of sensitive responses.
+        :rtype: int
+        """
+        return self._SensitiveCount
+
+    @SensitiveCount.setter
+    def SensitiveCount(self, SensitiveCount):
+        self._SensitiveCount = SensitiveCount
+
+    @property
+    def ConcurrentLimitCount(self):
+        """Total number of responses for concurrency exceeded.
+        :rtype: int
+        """
+        return self._ConcurrentLimitCount
+
+    @ConcurrentLimitCount.setter
+    def ConcurrentLimitCount(self, ConcurrentLimitCount):
+        self._ConcurrentLimitCount = ConcurrentLimitCount
+
+    @property
+    def UnknownIssuesCount(self):
+        """Total number of unknown question responses.
+        :rtype: int
+        """
+        return self._UnknownIssuesCount
+
+    @UnknownIssuesCount.setter
+    def UnknownIssuesCount(self, UnknownIssuesCount):
+        self._UnknownIssuesCount = UnknownIssuesCount
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._ModelReplyCount = params.get("ModelReplyCount")
+        self._KnowledgeCount = params.get("KnowledgeCount")
+        self._TaskFlowCount = params.get("TaskFlowCount")
+        self._SearchEngineCount = params.get("SearchEngineCount")
+        self._ImageUnderstandingCount = params.get("ImageUnderstandingCount")
+        self._RejectCount = params.get("RejectCount")
+        self._SensitiveCount = params.get("SensitiveCount")
+        self._ConcurrentLimitCount = params.get("ConcurrentLimitCount")
+        self._UnknownIssuesCount = params.get("UnknownIssuesCount")
+        self._RequestId = params.get("RequestId")
+
+
+class GetAppKnowledgeCountRequest(AbstractModel):
+    """GetAppKnowledgeCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Type: doc - document; qa - Q&A pair.
+        :type Type: str
+        :param _AppBizId: Application ID.
+        :type AppBizId: str
+        :param _LoginUin: Login to user's root account (required in integrator mode).	
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).	
+        :type LoginSubAccountUin: str
+        """
+        self._Type = None
+        self._AppBizId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def Type(self):
+        """Type: doc - document; qa - Q&A pair.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def LoginUin(self):
+        """Login to user's root account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login to user's sub-account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._AppBizId = params.get("AppBizId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAppKnowledgeCountResponse(AbstractModel):
+    """GetAppKnowledgeCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+        :type Total: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Total number.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class GetAppSecretRequest(AbstractModel):
+    """GetAppSecret request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppBizId: Application ID.
+        :type AppBizId: str
+        """
+        self._AppBizId = None
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+
+    def _deserialize(self, params):
+        self._AppBizId = params.get("AppBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAppSecretResponse(AbstractModel):
+    """GetAppSecret response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: Application key.
+        :type AppKey: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _IsRelease: Whether to release.
+        :type IsRelease: bool
+        :param _HasPermission: Whether there is permission to view.
+        :type HasPermission: bool
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AppKey = None
+        self._CreateTime = None
+        self._IsRelease = None
+        self._HasPermission = None
+        self._RequestId = None
+
+    @property
+    def AppKey(self):
+        """Application key.
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def CreateTime(self):
+        """Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsRelease(self):
+        """Whether to release.
+        :rtype: bool
+        """
+        return self._IsRelease
+
+    @IsRelease.setter
+    def IsRelease(self, IsRelease):
+        self._IsRelease = IsRelease
+
+    @property
+    def HasPermission(self):
+        """Whether there is permission to view.
+        :rtype: bool
+        """
+        return self._HasPermission
+
+    @HasPermission.setter
+    def HasPermission(self, HasPermission):
+        self._HasPermission = HasPermission
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._CreateTime = params.get("CreateTime")
+        self._IsRelease = params.get("IsRelease")
+        self._HasPermission = params.get("HasPermission")
+        self._RequestId = params.get("RequestId")
+
+
+class GetDocPreviewRequest(AbstractModel):
+    """GetDocPreview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocBizId: Document BizID.
+        :type DocBizId: str
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _TypeKey: Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
+        :type TypeKey: str
+        """
+        self._DocBizId = None
+        self._BotBizId = None
+        self._TypeKey = None
+
+    @property
+    def DocBizId(self):
+        """Document BizID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def TypeKey(self):
+        """Storage type: offline - offline file; realtime - real-time file. If empty, it defaults to offline.
+        :rtype: str
+        """
+        return self._TypeKey
+
+    @TypeKey.setter
+    def TypeKey(self, TypeKey):
+        self._TypeKey = TypeKey
+
+
+    def _deserialize(self, params):
+        self._DocBizId = params.get("DocBizId")
+        self._BotBizId = params.get("BotBizId")
+        self._TypeKey = params.get("TypeKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDocPreviewResponse(AbstractModel):
+    """GetDocPreview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Filename. The release end always uses this name.
+        :type FileName: str
+        :param _FileType: File type.
+        :type FileType: str
+        :param _CosUrl: COS path.
+
+        :type CosUrl: str
+        :param _Url: COS temporary url.
+
+        :type Url: str
+        :param _Bucket: COS bucket.
+
+        :type Bucket: str
+        :param _NewName: It is the new name in the case of document renaming. It shall be used preferentially on the evaluation end.
+        :type NewName: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FileName = None
+        self._FileType = None
+        self._CosUrl = None
+        self._Url = None
+        self._Bucket = None
+        self._NewName = None
+        self._RequestId = None
+
+    @property
+    def FileName(self):
+        """Filename. The release end always uses this name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        """File type.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def CosUrl(self):
+        """COS path.
+
+        :rtype: str
+        """
+        return self._CosUrl
+
+    @CosUrl.setter
+    def CosUrl(self, CosUrl):
+        self._CosUrl = CosUrl
+
+    @property
+    def Url(self):
+        """COS temporary url.
+
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Bucket(self):
+        """COS bucket.
+
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def NewName(self):
+        """It is the new name in the case of document renaming. It shall be used preferentially on the evaluation end.
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._CosUrl = params.get("CosUrl")
+        self._Url = params.get("Url")
+        self._Bucket = params.get("Bucket")
+        self._NewName = params.get("NewName")
+        self._RequestId = params.get("RequestId")
+
+
+class GetLikeDataCountRequest(AbstractModel):
+    """GetLikeDataCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start date.
+        :type StartTime: int
+        :param _EndTime: End date.
+        :type EndTime: int
+        :param _AppBizId: Application ID.
+        :type AppBizId: list of str
+        :param _Type: Message source (1. shared from user end, 2. chat api).
+        :type Type: int
+        :param _LoginUin: Login to user's root account (required in integrator mode).
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).	
+        :type LoginSubAccountUin: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._AppBizId = None
+        self._Type = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def StartTime(self):
+        """Start date.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End date.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AppBizId(self):
+        """Application ID.
+        :rtype: list of str
+        """
+        return self._AppBizId
+
+    @AppBizId.setter
+    def AppBizId(self, AppBizId):
+        self._AppBizId = AppBizId
+
+    @property
+    def Type(self):
+        """Message source (1. shared from user end, 2. chat api).
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LoginUin(self):
+        """Login to user's root account (required in integrator mode).
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login to user's sub-account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AppBizId = params.get("AppBizId")
+        self._Type = params.get("Type")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLikeDataCountResponse(AbstractModel):
+    """GetLikeDataCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Number of messages that can be evaluated.
+        :type Total: int
+        :param _AppraisalTotal: Number of comments.
+        :type AppraisalTotal: int
+        :param _ParticipationRate: Participation rate.
+        :type ParticipationRate: float
+        :param _LikeTotal: Number of likes.
+        :type LikeTotal: int
+        :param _LikeRate: Like rate.
+        :type LikeRate: float
+        :param _DislikeTotal: Number of dislikes.
+        :type DislikeTotal: int
+        :param _DislikeRate: Dislike rate.
+        :type DislikeRate: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._AppraisalTotal = None
+        self._ParticipationRate = None
+        self._LikeTotal = None
+        self._LikeRate = None
+        self._DislikeTotal = None
+        self._DislikeRate = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Number of messages that can be evaluated.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AppraisalTotal(self):
+        """Number of comments.
+        :rtype: int
+        """
+        return self._AppraisalTotal
+
+    @AppraisalTotal.setter
+    def AppraisalTotal(self, AppraisalTotal):
+        self._AppraisalTotal = AppraisalTotal
+
+    @property
+    def ParticipationRate(self):
+        """Participation rate.
+        :rtype: float
+        """
+        return self._ParticipationRate
+
+    @ParticipationRate.setter
+    def ParticipationRate(self, ParticipationRate):
+        self._ParticipationRate = ParticipationRate
+
+    @property
+    def LikeTotal(self):
+        """Number of likes.
+        :rtype: int
+        """
+        return self._LikeTotal
+
+    @LikeTotal.setter
+    def LikeTotal(self, LikeTotal):
+        self._LikeTotal = LikeTotal
+
+    @property
+    def LikeRate(self):
+        """Like rate.
+        :rtype: float
+        """
+        return self._LikeRate
+
+    @LikeRate.setter
+    def LikeRate(self, LikeRate):
+        self._LikeRate = LikeRate
+
+    @property
+    def DislikeTotal(self):
+        """Number of dislikes.
+        :rtype: int
+        """
+        return self._DislikeTotal
+
+    @DislikeTotal.setter
+    def DislikeTotal(self, DislikeTotal):
+        self._DislikeTotal = DislikeTotal
+
+    @property
+    def DislikeRate(self):
+        """Dislike rate.
+        :rtype: float
+        """
+        return self._DislikeRate
+
+    @DislikeRate.setter
+    def DislikeRate(self, DislikeRate):
+        self._DislikeRate = DislikeRate
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._AppraisalTotal = params.get("AppraisalTotal")
+        self._ParticipationRate = params.get("ParticipationRate")
+        self._LikeTotal = params.get("LikeTotal")
+        self._LikeRate = params.get("LikeRate")
+        self._DislikeTotal = params.get("DislikeTotal")
+        self._DislikeRate = params.get("DislikeRate")
+        self._RequestId = params.get("RequestId")
+
+
 class GetMsgRecordRequest(AbstractModel):
     """GetMsgRecord request structure.
 
@@ -6443,6 +11090,120 @@ class GetMsgRecordResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Records.append(obj)
         self._SessionDisassociatedTimestamp = params.get("SessionDisassociatedTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class GetReconstructDocumentResultRequest(AbstractModel):
+    """GetReconstructDocumentResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the task. It is the TaskId returned by [CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506).
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetReconstructDocumentResultResponse(AbstractModel):
+    """GetReconstructDocumentResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.
+        :type Status: str
+        :param _DocumentRecognizeResultUrl: The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.
+        :type DocumentRecognizeResultUrl: str
+        :param _FailedPages: Page number information where document parsing failed this time.
+        :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._DocumentRecognizeResultUrl = None
+        self._FailedPages = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        """Task status: success - execution completed; processing - executing; failed - execution failed; waitexecute - waiting to execute.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DocumentRecognizeResultUrl(self):
+        """The result file of this document parsing task, stored in the download url of Tencent Cloud cos. The valid period of the download url is 10 minutes.
+        :rtype: str
+        """
+        return self._DocumentRecognizeResultUrl
+
+    @DocumentRecognizeResultUrl.setter
+    def DocumentRecognizeResultUrl(self, DocumentRecognizeResultUrl):
+        self._DocumentRecognizeResultUrl = DocumentRecognizeResultUrl
+
+    @property
+    def FailedPages(self):
+        """Page number information where document parsing failed this time.
+        :rtype: list of ReconstructDocumentFailedPage
+        """
+        return self._FailedPages
+
+    @FailedPages.setter
+    def FailedPages(self, FailedPages):
+        self._FailedPages = FailedPages
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._DocumentRecognizeResultUrl = params.get("DocumentRecognizeResultUrl")
+        if params.get("FailedPages") is not None:
+            self._FailedPages = []
+            for item in params.get("FailedPages"):
+                obj = ReconstructDocumentFailedPage()
+                obj._deserialize(item)
+                self._FailedPages.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6863,6 +11624,260 @@ class GetWsTokenResponse(AbstractModel):
             self._SingleWorkflow = KnowledgeQaSingleWorkflow()
             self._SingleWorkflow._deserialize(params.get("SingleWorkflow"))
         self._RequestId = params.get("RequestId")
+
+
+class GroupDocRequest(AbstractModel):
+    """GroupDoc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _BizIds: List of business IDs of operation objects.
+        :type BizIds: list of str
+        :param _CateBizId: Group ID.
+        :type CateBizId: str
+        """
+        self._BotBizId = None
+        self._BizIds = None
+        self._CateBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def BizIds(self):
+        """List of business IDs of operation objects.
+        :rtype: list of str
+        """
+        return self._BizIds
+
+    @BizIds.setter
+    def BizIds(self, BizIds):
+        self._BizIds = BizIds
+
+    @property
+    def CateBizId(self):
+        """Group ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._BizIds = params.get("BizIds")
+        self._CateBizId = params.get("CateBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupDocResponse(AbstractModel):
+    """GroupDoc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class GroupQARequest(AbstractModel):
+    """GroupQA request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID
+        :type BotBizId: str
+        :param _QaBizIds: List of QaBizIDs.
+        :type QaBizIds: list of str
+        :param _CateBizId: Group ID.
+        :type CateBizId: str
+        """
+        self._BotBizId = None
+        self._QaBizIds = None
+        self._CateBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def QaBizIds(self):
+        """List of QaBizIDs.
+        :rtype: list of str
+        """
+        return self._QaBizIds
+
+    @QaBizIds.setter
+    def QaBizIds(self, QaBizIds):
+        self._QaBizIds = QaBizIds
+
+    @property
+    def CateBizId(self):
+        """Group ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._QaBizIds = params.get("QaBizIds")
+        self._CateBizId = params.get("CateBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupQAResponse(AbstractModel):
+    """GroupQA response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class Highlight(AbstractModel):
+    """Fragment highlight content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartPos: Highlight starting position.
+        :type StartPos: str
+        :param _EndPos: Highlight end position.
+        :type EndPos: str
+        :param _Text: Highlight subtext.
+        :type Text: str
+        """
+        self._StartPos = None
+        self._EndPos = None
+        self._Text = None
+
+    @property
+    def StartPos(self):
+        """Highlight starting position.
+        :rtype: str
+        """
+        return self._StartPos
+
+    @StartPos.setter
+    def StartPos(self, StartPos):
+        self._StartPos = StartPos
+
+    @property
+    def EndPos(self):
+        """Highlight end position.
+        :rtype: str
+        """
+        return self._EndPos
+
+    @EndPos.setter
+    def EndPos(self, EndPos):
+        self._EndPos = EndPos
+
+    @property
+    def Text(self):
+        """Highlight subtext.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._StartPos = params.get("StartPos")
+        self._EndPos = params.get("EndPos")
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HistorySummary(AbstractModel):
@@ -7288,6 +12303,87 @@ class KnowledgeCapacityPieGraphDetail(AbstractModel):
         self._AppName = params.get("AppName")
         self._UsedCharSize = params.get("UsedCharSize")
         self._Proportion = params.get("Proportion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeDetail(AbstractModel):
+    """Application usage details of knowledge library capacity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: Application name.
+        :type AppName: str
+        :param _UsedCharSize: Number of used characters.
+        :type UsedCharSize: str
+        :param _Proportion: Usage proportion.
+        :type Proportion: float
+        :param _ExceedCharSize: Exceeding character count.
+        :type ExceedCharSize: str
+        """
+        self._AppName = None
+        self._UsedCharSize = None
+        self._Proportion = None
+        self._ExceedCharSize = None
+
+    @property
+    def AppName(self):
+        """Application name.
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UsedCharSize(self):
+        """Number of used characters.
+        :rtype: str
+        """
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+    @property
+    def Proportion(self):
+        """Usage proportion.
+        :rtype: float
+        """
+        return self._Proportion
+
+    @Proportion.setter
+    def Proportion(self, Proportion):
+        self._Proportion = Proportion
+
+    @property
+    def ExceedCharSize(self):
+        """Exceeding character count.
+        :rtype: str
+        """
+        return self._ExceedCharSize
+
+    @ExceedCharSize.setter
+    def ExceedCharSize(self, ExceedCharSize):
+        self._ExceedCharSize = ExceedCharSize
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._UsedCharSize = params.get("UsedCharSize")
+        self._Proportion = params.get("Proportion")
+        self._ExceedCharSize = params.get("ExceedCharSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8300,6 +13396,255 @@ class Label(AbstractModel):
         
 
 
+class ListAppCategoryRequest(AbstractModel):
+    """ListAppCategory request structure.
+
+    """
+
+
+class ListAppCategoryResponse(AbstractModel):
+    """ListAppCategory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Application type list.
+        :type List: list of ListAppCategoryRspOption
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """Application type list.
+        :rtype: list of ListAppCategoryRspOption
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListAppCategoryRspOption()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListAppCategoryRspOption(AbstractModel):
+    """Application type details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: Type name.
+        :type Text: str
+        :param _Value: Type value.
+        :type Value: str
+        :param _Logo: Type log.
+        :type Logo: str
+        """
+        self._Text = None
+        self._Value = None
+        self._Logo = None
+
+    @property
+    def Text(self):
+        """Type name.
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Value(self):
+        """Type value.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Logo(self):
+        """Type log.
+        :rtype: str
+        """
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Value = params.get("Value")
+        self._Logo = params.get("Logo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAppKnowledgeDetailRequest(AbstractModel):
+    """ListAppKnowledgeDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Page size.
+        :type PageSize: int
+        :param _AppBizIds: Application ID list.
+        :type AppBizIds: list of str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._AppBizIds = None
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Page size.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AppBizIds(self):
+        """Application ID list.
+        :rtype: list of str
+        """
+        return self._AppBizIds
+
+    @AppBizIds.setter
+    def AppBizIds(self, AppBizIds):
+        self._AppBizIds = AppBizIds
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._AppBizIds = params.get("AppBizIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAppKnowledgeDetailResponse(AbstractModel):
+    """ListAppKnowledgeDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of lists.
+        :type Total: int
+        :param _List: Details of knowledge base capacity usage by application.
+        :type List: list of KnowledgeDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Total number of lists.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """Details of knowledge base capacity usage by application.
+        :rtype: list of KnowledgeDetail
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = KnowledgeDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListAppRequest(AbstractModel):
     """ListApp request structure.
 
@@ -8633,6 +13978,1000 @@ class ListAttributeLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListDocCateRequest(AbstractModel):
+    """ListDocCate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        """
+        self._BotBizId = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDocCateResponse(AbstractModel):
+    """ListDocCate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: List.
+        :type List: list of CateInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """List.
+        :rtype: list of CateInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CateInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListDocItem(AbstractModel):
+    """Description of document list details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocBizId: Document ID.
+        :type DocBizId: str
+        :param _FileName: File name.
+        :type FileName: str
+        :param _NewName: The new document name after renaming. This name remains until the document is published after the renaming submission.
+        :type NewName: str
+        :param _FileType: File type.
+        :type FileType: str
+        :param _CosUrl: COS path.
+        :type CosUrl: str
+        :param _UpdateTime: Update time.
+        :type UpdateTime: str
+        :param _Status: Document status.
+        :type Status: int
+        :param _StatusDesc: Document status description.
+        :type StatusDesc: str
+        :param _Reason: Reason.
+        :type Reason: str
+        :param _IsRefer: Whether to refer to an answer.
+        :type IsRefer: bool
+        :param _QaNum: Quantity of Q&A pairs.
+        :type QaNum: int
+        :param _IsDeleted: Whether it has been deleted.
+        :type IsDeleted: bool
+        :param _Source: Document source.
+        :type Source: int
+        :param _SourceDesc: Document source description.
+        :type SourceDesc: str
+        :param _IsAllowRestart: Whether regeneration is allowed.
+        :type IsAllowRestart: bool
+        :param _IsDeletedQa: Whether the Q&A has been deleted.
+        :type IsDeletedQa: bool
+        :param _IsCreatingQa: Whether the Q&A is being generated.
+        :type IsCreatingQa: bool
+        :param _IsAllowDelete: Whether deletion is allowed.
+        :type IsAllowDelete: bool
+        :param _IsAllowRefer: Whether to allow operation reference switch.
+        :type IsAllowRefer: bool
+        :param _IsCreatedQa: Whether Q&A has been generated.
+        :type IsCreatedQa: bool
+        :param _DocCharSize: Document character count.
+        :type DocCharSize: str
+        :param _AttrRange: Applicable range of attribute label.
+        :type AttrRange: int
+        :param _AttrLabels: Attribute label.
+        :type AttrLabels: list of AttrLabel
+        :param _IsAllowEdit: Whether editing is allowed.
+        :type IsAllowEdit: bool
+        :param _ReferUrlType: External reference URL type, 0: system URL; 1: custom URL.
+When the value is 1, the WebUrl field cannot be empty; otherwise, it will not take effect.
+        :type ReferUrlType: int
+        :param _WebUrl: Web page URL (or custom URL) .
+        :type WebUrl: str
+        :param _ExpireStart: Effective start time, unix timestamp.
+        :type ExpireStart: str
+        :param _ExpireEnd: Effective end time, unix timestamp. 0 indicates permanent validity.
+        :type ExpireEnd: str
+        :param _IsAllowRetry: Whether retries are allowed, 0: no, 1: yes.
+        :type IsAllowRetry: bool
+        :param _Processing: 0: document comparison processing; 1: Q&A generation from document.
+        :type Processing: list of int
+        :param _CreateTime: Time when the document was created and stored into the database.
+        :type CreateTime: str
+        :param _CateBizId: ID of the document's category.
+        :type CateBizId: str
+        :param _CustomerKnowledgeId: User-defined ID of the document.
+        :type CustomerKnowledgeId: str
+        :param _AttributeFlags: Attribute label of the document. 0: Do not perform external user permission verification.
+        :type AttributeFlags: list of int non-negative
+        """
+        self._DocBizId = None
+        self._FileName = None
+        self._NewName = None
+        self._FileType = None
+        self._CosUrl = None
+        self._UpdateTime = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Reason = None
+        self._IsRefer = None
+        self._QaNum = None
+        self._IsDeleted = None
+        self._Source = None
+        self._SourceDesc = None
+        self._IsAllowRestart = None
+        self._IsDeletedQa = None
+        self._IsCreatingQa = None
+        self._IsAllowDelete = None
+        self._IsAllowRefer = None
+        self._IsCreatedQa = None
+        self._DocCharSize = None
+        self._AttrRange = None
+        self._AttrLabels = None
+        self._IsAllowEdit = None
+        self._ReferUrlType = None
+        self._WebUrl = None
+        self._ExpireStart = None
+        self._ExpireEnd = None
+        self._IsAllowRetry = None
+        self._Processing = None
+        self._CreateTime = None
+        self._CateBizId = None
+        self._CustomerKnowledgeId = None
+        self._AttributeFlags = None
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def FileName(self):
+        """File name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def NewName(self):
+        """The new document name after renaming. This name remains until the document is published after the renaming submission.
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
+    def FileType(self):
+        """File type.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def CosUrl(self):
+        """COS path.
+        :rtype: str
+        """
+        return self._CosUrl
+
+    @CosUrl.setter
+    def CosUrl(self, CosUrl):
+        self._CosUrl = CosUrl
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        """Document status.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        """Document status description.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Reason(self):
+        """Reason.
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def IsRefer(self):
+        """Whether to refer to an answer.
+        :rtype: bool
+        """
+        return self._IsRefer
+
+    @IsRefer.setter
+    def IsRefer(self, IsRefer):
+        self._IsRefer = IsRefer
+
+    @property
+    def QaNum(self):
+        """Quantity of Q&A pairs.
+        :rtype: int
+        """
+        return self._QaNum
+
+    @QaNum.setter
+    def QaNum(self, QaNum):
+        self._QaNum = QaNum
+
+    @property
+    def IsDeleted(self):
+        """Whether it has been deleted.
+        :rtype: bool
+        """
+        return self._IsDeleted
+
+    @IsDeleted.setter
+    def IsDeleted(self, IsDeleted):
+        self._IsDeleted = IsDeleted
+
+    @property
+    def Source(self):
+        """Document source.
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceDesc(self):
+        """Document source description.
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def IsAllowRestart(self):
+        """Whether regeneration is allowed.
+        :rtype: bool
+        """
+        return self._IsAllowRestart
+
+    @IsAllowRestart.setter
+    def IsAllowRestart(self, IsAllowRestart):
+        self._IsAllowRestart = IsAllowRestart
+
+    @property
+    def IsDeletedQa(self):
+        """Whether the Q&A has been deleted.
+        :rtype: bool
+        """
+        return self._IsDeletedQa
+
+    @IsDeletedQa.setter
+    def IsDeletedQa(self, IsDeletedQa):
+        self._IsDeletedQa = IsDeletedQa
+
+    @property
+    def IsCreatingQa(self):
+        """Whether the Q&A is being generated.
+        :rtype: bool
+        """
+        return self._IsCreatingQa
+
+    @IsCreatingQa.setter
+    def IsCreatingQa(self, IsCreatingQa):
+        self._IsCreatingQa = IsCreatingQa
+
+    @property
+    def IsAllowDelete(self):
+        """Whether deletion is allowed.
+        :rtype: bool
+        """
+        return self._IsAllowDelete
+
+    @IsAllowDelete.setter
+    def IsAllowDelete(self, IsAllowDelete):
+        self._IsAllowDelete = IsAllowDelete
+
+    @property
+    def IsAllowRefer(self):
+        """Whether to allow operation reference switch.
+        :rtype: bool
+        """
+        return self._IsAllowRefer
+
+    @IsAllowRefer.setter
+    def IsAllowRefer(self, IsAllowRefer):
+        self._IsAllowRefer = IsAllowRefer
+
+    @property
+    def IsCreatedQa(self):
+        """Whether Q&A has been generated.
+        :rtype: bool
+        """
+        return self._IsCreatedQa
+
+    @IsCreatedQa.setter
+    def IsCreatedQa(self, IsCreatedQa):
+        self._IsCreatedQa = IsCreatedQa
+
+    @property
+    def DocCharSize(self):
+        """Document character count.
+        :rtype: str
+        """
+        return self._DocCharSize
+
+    @DocCharSize.setter
+    def DocCharSize(self, DocCharSize):
+        self._DocCharSize = DocCharSize
+
+    @property
+    def AttrRange(self):
+        """Applicable range of attribute label.
+        :rtype: int
+        """
+        return self._AttrRange
+
+    @AttrRange.setter
+    def AttrRange(self, AttrRange):
+        self._AttrRange = AttrRange
+
+    @property
+    def AttrLabels(self):
+        """Attribute label.
+        :rtype: list of AttrLabel
+        """
+        return self._AttrLabels
+
+    @AttrLabels.setter
+    def AttrLabels(self, AttrLabels):
+        self._AttrLabels = AttrLabels
+
+    @property
+    def IsAllowEdit(self):
+        """Whether editing is allowed.
+        :rtype: bool
+        """
+        return self._IsAllowEdit
+
+    @IsAllowEdit.setter
+    def IsAllowEdit(self, IsAllowEdit):
+        self._IsAllowEdit = IsAllowEdit
+
+    @property
+    def ReferUrlType(self):
+        """External reference URL type, 0: system URL; 1: custom URL.
+When the value is 1, the WebUrl field cannot be empty; otherwise, it will not take effect.
+        :rtype: int
+        """
+        return self._ReferUrlType
+
+    @ReferUrlType.setter
+    def ReferUrlType(self, ReferUrlType):
+        self._ReferUrlType = ReferUrlType
+
+    @property
+    def WebUrl(self):
+        """Web page URL (or custom URL) .
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
+
+    @property
+    def ExpireStart(self):
+        """Effective start time, unix timestamp.
+        :rtype: str
+        """
+        return self._ExpireStart
+
+    @ExpireStart.setter
+    def ExpireStart(self, ExpireStart):
+        self._ExpireStart = ExpireStart
+
+    @property
+    def ExpireEnd(self):
+        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        :rtype: str
+        """
+        return self._ExpireEnd
+
+    @ExpireEnd.setter
+    def ExpireEnd(self, ExpireEnd):
+        self._ExpireEnd = ExpireEnd
+
+    @property
+    def IsAllowRetry(self):
+        """Whether retries are allowed, 0: no, 1: yes.
+        :rtype: bool
+        """
+        return self._IsAllowRetry
+
+    @IsAllowRetry.setter
+    def IsAllowRetry(self, IsAllowRetry):
+        self._IsAllowRetry = IsAllowRetry
+
+    @property
+    def Processing(self):
+        """0: document comparison processing; 1: Q&A generation from document.
+        :rtype: list of int
+        """
+        return self._Processing
+
+    @Processing.setter
+    def Processing(self, Processing):
+        self._Processing = Processing
+
+    @property
+    def CreateTime(self):
+        """Time when the document was created and stored into the database.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CateBizId(self):
+        """ID of the document's category.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def CustomerKnowledgeId(self):
+        """User-defined ID of the document.
+        :rtype: str
+        """
+        return self._CustomerKnowledgeId
+
+    @CustomerKnowledgeId.setter
+    def CustomerKnowledgeId(self, CustomerKnowledgeId):
+        self._CustomerKnowledgeId = CustomerKnowledgeId
+
+    @property
+    def AttributeFlags(self):
+        """Attribute label of the document. 0: Do not perform external user permission verification.
+        :rtype: list of int non-negative
+        """
+        return self._AttributeFlags
+
+    @AttributeFlags.setter
+    def AttributeFlags(self, AttributeFlags):
+        self._AttributeFlags = AttributeFlags
+
+
+    def _deserialize(self, params):
+        self._DocBizId = params.get("DocBizId")
+        self._FileName = params.get("FileName")
+        self._NewName = params.get("NewName")
+        self._FileType = params.get("FileType")
+        self._CosUrl = params.get("CosUrl")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Reason = params.get("Reason")
+        self._IsRefer = params.get("IsRefer")
+        self._QaNum = params.get("QaNum")
+        self._IsDeleted = params.get("IsDeleted")
+        self._Source = params.get("Source")
+        self._SourceDesc = params.get("SourceDesc")
+        self._IsAllowRestart = params.get("IsAllowRestart")
+        self._IsDeletedQa = params.get("IsDeletedQa")
+        self._IsCreatingQa = params.get("IsCreatingQa")
+        self._IsAllowDelete = params.get("IsAllowDelete")
+        self._IsAllowRefer = params.get("IsAllowRefer")
+        self._IsCreatedQa = params.get("IsCreatedQa")
+        self._DocCharSize = params.get("DocCharSize")
+        self._AttrRange = params.get("AttrRange")
+        if params.get("AttrLabels") is not None:
+            self._AttrLabels = []
+            for item in params.get("AttrLabels"):
+                obj = AttrLabel()
+                obj._deserialize(item)
+                self._AttrLabels.append(obj)
+        self._IsAllowEdit = params.get("IsAllowEdit")
+        self._ReferUrlType = params.get("ReferUrlType")
+        self._WebUrl = params.get("WebUrl")
+        self._ExpireStart = params.get("ExpireStart")
+        self._ExpireEnd = params.get("ExpireEnd")
+        self._IsAllowRetry = params.get("IsAllowRetry")
+        self._Processing = params.get("Processing")
+        self._CreateTime = params.get("CreateTime")
+        self._CateBizId = params.get("CateBizId")
+        self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
+        self._AttributeFlags = params.get("AttributeFlags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDocRequest(AbstractModel):
+    """ListDoc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Quantity per page.
+        :type PageSize: int
+        :param _Query: Query content.
+        :type Query: str
+        :param _Status: Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.
+        :type Status: list of int
+        :param _QueryType: Query type: filename - document; attribute - label.
+        :type QueryType: str
+        :param _CateBizId: Category ID.
+        :type CateBizId: str
+        :param _FileTypes: File type classification and filtering.
+        :type FileTypes: list of str
+        :param _FilterFlag: Document list filter flag
+        :type FilterFlag: list of DocFilterFlag
+        """
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._Status = None
+        self._QueryType = None
+        self._CateBizId = None
+        self._FileTypes = None
+        self._FilterFlag = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Quantity per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        """Query content.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Status(self):
+        """Document status : 1: not generated; 2: generating; 3: generation successful; 4: generation failed; 5: deleting; 6: deleted successfully; 7: under review; 8: review failed; 9: review successful; 10: pending release; 11: releasing; 12: released; 13: learning; 14: learning failed; 15: updating; 16: update failed; 17: parsing; 18: parsing failed; 19: import failed; 20: expired; 21: excessive invalid; 22: excessive invalid recovered.
+        :rtype: list of int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def QueryType(self):
+        """Query type: filename - document; attribute - label.
+        :rtype: str
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def CateBizId(self):
+        """Category ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def FileTypes(self):
+        """File type classification and filtering.
+        :rtype: list of str
+        """
+        return self._FileTypes
+
+    @FileTypes.setter
+    def FileTypes(self, FileTypes):
+        self._FileTypes = FileTypes
+
+    @property
+    def FilterFlag(self):
+        """Document list filter flag
+        :rtype: list of DocFilterFlag
+        """
+        return self._FilterFlag
+
+    @FilterFlag.setter
+    def FilterFlag(self, FilterFlag):
+        self._FilterFlag = FilterFlag
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        self._Status = params.get("Status")
+        self._QueryType = params.get("QueryType")
+        self._CateBizId = params.get("CateBizId")
+        self._FileTypes = params.get("FileTypes")
+        if params.get("FilterFlag") is not None:
+            self._FilterFlag = []
+            for item in params.get("FilterFlag"):
+                obj = DocFilterFlag()
+                obj._deserialize(item)
+                self._FilterFlag.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListDocResponse(AbstractModel):
+    """ListDoc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Quantity of documents.
+        :type Total: str
+        :param _List: List of documents.
+        :type List: list of ListDocItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Quantity of documents.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """List of documents.
+        :rtype: list of ListDocItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListDocItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListModelRequest(AbstractModel):
+    """ListModel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppType: Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        :type AppType: str
+        :param _Pattern: Application mode standard: standard; agent; single_workflow.
+        :type Pattern: str
+        :param _ModelCategory: Model category: 
+Generate: Generative model
+Thought: Thinking model
+        :type ModelCategory: str
+        :param _LoginUin: Login to user's root account (required in integrator mode).	
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).	
+        :type LoginSubAccountUin: str
+        """
+        self._AppType = None
+        self._Pattern = None
+        self._ModelCategory = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def AppType(self):
+        """Application type; knowledge_qa - knowledge Q&A management; summary - knowledge summary; classifys - knowledge label extraction.
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def Pattern(self):
+        """Application mode standard: standard; agent; single_workflow.
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def ModelCategory(self):
+        """Model category: 
+Generate: Generative model
+Thought: Thinking model
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def LoginUin(self):
+        """Login to user's root account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login to user's sub-account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._AppType = params.get("AppType")
+        self._Pattern = params.get("Pattern")
+        self._ModelCategory = params.get("ModelCategory")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListModelResponse(AbstractModel):
+    """ListModel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Model list.
+        :type List: list of ModelInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        """Model list.
+        :rtype: list of ModelInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ModelInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListQACateRequest(AbstractModel):
     """ListQACate request structure.
 
@@ -8712,6 +15051,890 @@ class ListQACateResponse(AbstractModel):
             self._List = []
             for item in params.get("List"):
                 obj = QACate()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListQARequest(AbstractModel):
+    """ListQA request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Page size.
+        :type PageSize: int
+        :param _Query: Query a question.
+        :type Query: str
+        :param _AcceptStatus: Verification status (1: not verified 2: adopted 3: not adopted).
+        :type AcceptStatus: list of int
+        :param _ReleaseStatus: Release status (2: pending release; 3: releasing; 4: released; 7: under review; 8: review failed; 9: under manual appeal; 11: manual appeal failed; 12: expired; 13: excessive invalid; 14: excessive invalid recovered).
+        :type ReleaseStatus: list of int
+        :param _DocBizId: Document ID.
+        :type DocBizId: str
+        :param _Source: Source (1: generated from document; 2: import in batches; 3: manually added).
+        :type Source: int
+        :param _QueryAnswer: Query an answer.
+        :type QueryAnswer: str
+        :param _CateBizId: Category ID.
+        :type CateBizId: str
+        :param _QaBizIds: Q&A business ID list.
+        :type QaBizIds: list of str
+        :param _QueryType: Query type: filename; attribute label.
+        :type QueryType: str
+        """
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._AcceptStatus = None
+        self._ReleaseStatus = None
+        self._DocBizId = None
+        self._Source = None
+        self._QueryAnswer = None
+        self._CateBizId = None
+        self._QaBizIds = None
+        self._QueryType = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Page size.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        """Query a question.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def AcceptStatus(self):
+        """Verification status (1: not verified 2: adopted 3: not adopted).
+        :rtype: list of int
+        """
+        return self._AcceptStatus
+
+    @AcceptStatus.setter
+    def AcceptStatus(self, AcceptStatus):
+        self._AcceptStatus = AcceptStatus
+
+    @property
+    def ReleaseStatus(self):
+        """Release status (2: pending release; 3: releasing; 4: released; 7: under review; 8: review failed; 9: under manual appeal; 11: manual appeal failed; 12: expired; 13: excessive invalid; 14: excessive invalid recovered).
+        :rtype: list of int
+        """
+        return self._ReleaseStatus
+
+    @ReleaseStatus.setter
+    def ReleaseStatus(self, ReleaseStatus):
+        self._ReleaseStatus = ReleaseStatus
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def Source(self):
+        """Source (1: generated from document; 2: import in batches; 3: manually added).
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def QueryAnswer(self):
+        """Query an answer.
+        :rtype: str
+        """
+        return self._QueryAnswer
+
+    @QueryAnswer.setter
+    def QueryAnswer(self, QueryAnswer):
+        self._QueryAnswer = QueryAnswer
+
+    @property
+    def CateBizId(self):
+        """Category ID.
+        :rtype: str
+        """
+        return self._CateBizId
+
+    @CateBizId.setter
+    def CateBizId(self, CateBizId):
+        self._CateBizId = CateBizId
+
+    @property
+    def QaBizIds(self):
+        """Q&A business ID list.
+        :rtype: list of str
+        """
+        return self._QaBizIds
+
+    @QaBizIds.setter
+    def QaBizIds(self, QaBizIds):
+        self._QaBizIds = QaBizIds
+
+    @property
+    def QueryType(self):
+        """Query type: filename; attribute label.
+        :rtype: str
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        self._AcceptStatus = params.get("AcceptStatus")
+        self._ReleaseStatus = params.get("ReleaseStatus")
+        self._DocBizId = params.get("DocBizId")
+        self._Source = params.get("Source")
+        self._QueryAnswer = params.get("QueryAnswer")
+        self._CateBizId = params.get("CateBizId")
+        self._QaBizIds = params.get("QaBizIds")
+        self._QueryType = params.get("QueryType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListQAResponse(AbstractModel):
+    """ListQA response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Q&A quantity.
+        :type Total: str
+        :param _WaitVerifyTotal: Quantity of pending verification Q&As.
+        :type WaitVerifyTotal: str
+        :param _NotAcceptedTotal: Quantity of not adopted Q&As.
+        :type NotAcceptedTotal: str
+        :param _AcceptedTotal: Quantity of adopted Q&As.
+        :type AcceptedTotal: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _List: Q&As details.
+        :type List: list of ListQaItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._WaitVerifyTotal = None
+        self._NotAcceptedTotal = None
+        self._AcceptedTotal = None
+        self._PageNumber = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Q&A quantity.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def WaitVerifyTotal(self):
+        """Quantity of pending verification Q&As.
+        :rtype: str
+        """
+        return self._WaitVerifyTotal
+
+    @WaitVerifyTotal.setter
+    def WaitVerifyTotal(self, WaitVerifyTotal):
+        self._WaitVerifyTotal = WaitVerifyTotal
+
+    @property
+    def NotAcceptedTotal(self):
+        """Quantity of not adopted Q&As.
+        :rtype: str
+        """
+        return self._NotAcceptedTotal
+
+    @NotAcceptedTotal.setter
+    def NotAcceptedTotal(self, NotAcceptedTotal):
+        self._NotAcceptedTotal = NotAcceptedTotal
+
+    @property
+    def AcceptedTotal(self):
+        """Quantity of adopted Q&As.
+        :rtype: str
+        """
+        return self._AcceptedTotal
+
+    @AcceptedTotal.setter
+    def AcceptedTotal(self, AcceptedTotal):
+        self._AcceptedTotal = AcceptedTotal
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def List(self):
+        """Q&As details.
+        :rtype: list of ListQaItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._WaitVerifyTotal = params.get("WaitVerifyTotal")
+        self._NotAcceptedTotal = params.get("NotAcceptedTotal")
+        self._AcceptedTotal = params.get("AcceptedTotal")
+        self._PageNumber = params.get("PageNumber")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListQaItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListQaItem(AbstractModel):
+    """Q&A details data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QaBizId: Q&A ID.
+        :type QaBizId: str
+        :param _Question: Question.
+        :type Question: str
+        :param _Answer: Answer.
+        :type Answer: str
+        :param _Source: Source.
+        :type Source: int
+        :param _SourceDesc: Source description.
+        :type SourceDesc: str
+        :param _UpdateTime: Update time.
+        :type UpdateTime: str
+        :param _Status: Status.
+        :type Status: int
+        :param _StatusDesc: Status description.
+        :type StatusDesc: str
+        :param _DocBizId: Document ID.
+        :type DocBizId: str
+        :param _CreateTime: Creation time.
+        :type CreateTime: str
+        :param _IsAllowEdit: Whether editing is allowed.
+        :type IsAllowEdit: bool
+        :param _IsAllowDelete: Whether deletion is allowed.
+        :type IsAllowDelete: bool
+        :param _IsAllowAccept: Whether verification is allowed.
+        :type IsAllowAccept: bool
+        :param _FileName: Document name.
+        :type FileName: str
+        :param _FileType: Document type.
+        :type FileType: str
+        :param _QaCharSize: Number of Q&A characters.
+        :type QaCharSize: str
+        :param _ExpireStart: Effective start time, unix timestamp.
+        :type ExpireStart: str
+        :param _ExpireEnd: Effective end time, unix timestamp. 0 indicates permanent validity.
+        :type ExpireEnd: str
+        :param _AttrRange: Applicable range of attribute label, 1: all, 2: by conditions.
+        :type AttrRange: int
+        :param _AttrLabels: Attribute label.
+        :type AttrLabels: list of AttrLabel
+        :param _SimilarQuestionNum: Count of similar questions.
+        :type SimilarQuestionNum: int
+        :param _SimilarQuestionTips: Return similar questions associated with the Q&A and perform linked search. Only one similar question will be displayed.
+        :type SimilarQuestionTips: str
+        """
+        self._QaBizId = None
+        self._Question = None
+        self._Answer = None
+        self._Source = None
+        self._SourceDesc = None
+        self._UpdateTime = None
+        self._Status = None
+        self._StatusDesc = None
+        self._DocBizId = None
+        self._CreateTime = None
+        self._IsAllowEdit = None
+        self._IsAllowDelete = None
+        self._IsAllowAccept = None
+        self._FileName = None
+        self._FileType = None
+        self._QaCharSize = None
+        self._ExpireStart = None
+        self._ExpireEnd = None
+        self._AttrRange = None
+        self._AttrLabels = None
+        self._SimilarQuestionNum = None
+        self._SimilarQuestionTips = None
+
+    @property
+    def QaBizId(self):
+        """Q&A ID.
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def Question(self):
+        """Question.
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        """Answer.
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def Source(self):
+        """Source.
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceDesc(self):
+        """Source description.
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        """Status.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        """Status description.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def CreateTime(self):
+        """Creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsAllowEdit(self):
+        """Whether editing is allowed.
+        :rtype: bool
+        """
+        return self._IsAllowEdit
+
+    @IsAllowEdit.setter
+    def IsAllowEdit(self, IsAllowEdit):
+        self._IsAllowEdit = IsAllowEdit
+
+    @property
+    def IsAllowDelete(self):
+        """Whether deletion is allowed.
+        :rtype: bool
+        """
+        return self._IsAllowDelete
+
+    @IsAllowDelete.setter
+    def IsAllowDelete(self, IsAllowDelete):
+        self._IsAllowDelete = IsAllowDelete
+
+    @property
+    def IsAllowAccept(self):
+        """Whether verification is allowed.
+        :rtype: bool
+        """
+        return self._IsAllowAccept
+
+    @IsAllowAccept.setter
+    def IsAllowAccept(self, IsAllowAccept):
+        self._IsAllowAccept = IsAllowAccept
+
+    @property
+    def FileName(self):
+        """Document name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        """Document type.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def QaCharSize(self):
+        """Number of Q&A characters.
+        :rtype: str
+        """
+        return self._QaCharSize
+
+    @QaCharSize.setter
+    def QaCharSize(self, QaCharSize):
+        self._QaCharSize = QaCharSize
+
+    @property
+    def ExpireStart(self):
+        """Effective start time, unix timestamp.
+        :rtype: str
+        """
+        return self._ExpireStart
+
+    @ExpireStart.setter
+    def ExpireStart(self, ExpireStart):
+        self._ExpireStart = ExpireStart
+
+    @property
+    def ExpireEnd(self):
+        """Effective end time, unix timestamp. 0 indicates permanent validity.
+        :rtype: str
+        """
+        return self._ExpireEnd
+
+    @ExpireEnd.setter
+    def ExpireEnd(self, ExpireEnd):
+        self._ExpireEnd = ExpireEnd
+
+    @property
+    def AttrRange(self):
+        """Applicable range of attribute label, 1: all, 2: by conditions.
+        :rtype: int
+        """
+        return self._AttrRange
+
+    @AttrRange.setter
+    def AttrRange(self, AttrRange):
+        self._AttrRange = AttrRange
+
+    @property
+    def AttrLabels(self):
+        """Attribute label.
+        :rtype: list of AttrLabel
+        """
+        return self._AttrLabels
+
+    @AttrLabels.setter
+    def AttrLabels(self, AttrLabels):
+        self._AttrLabels = AttrLabels
+
+    @property
+    def SimilarQuestionNum(self):
+        """Count of similar questions.
+        :rtype: int
+        """
+        return self._SimilarQuestionNum
+
+    @SimilarQuestionNum.setter
+    def SimilarQuestionNum(self, SimilarQuestionNum):
+        self._SimilarQuestionNum = SimilarQuestionNum
+
+    @property
+    def SimilarQuestionTips(self):
+        """Return similar questions associated with the Q&A and perform linked search. Only one similar question will be displayed.
+        :rtype: str
+        """
+        return self._SimilarQuestionTips
+
+    @SimilarQuestionTips.setter
+    def SimilarQuestionTips(self, SimilarQuestionTips):
+        self._SimilarQuestionTips = SimilarQuestionTips
+
+
+    def _deserialize(self, params):
+        self._QaBizId = params.get("QaBizId")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
+        self._Source = params.get("Source")
+        self._SourceDesc = params.get("SourceDesc")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._DocBizId = params.get("DocBizId")
+        self._CreateTime = params.get("CreateTime")
+        self._IsAllowEdit = params.get("IsAllowEdit")
+        self._IsAllowDelete = params.get("IsAllowDelete")
+        self._IsAllowAccept = params.get("IsAllowAccept")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._QaCharSize = params.get("QaCharSize")
+        self._ExpireStart = params.get("ExpireStart")
+        self._ExpireEnd = params.get("ExpireEnd")
+        self._AttrRange = params.get("AttrRange")
+        if params.get("AttrLabels") is not None:
+            self._AttrLabels = []
+            for item in params.get("AttrLabels"):
+                obj = AttrLabel()
+                obj._deserialize(item)
+                self._AttrLabels.append(obj)
+        self._SimilarQuestionNum = params.get("SimilarQuestionNum")
+        self._SimilarQuestionTips = params.get("SimilarQuestionTips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListRejectedQuestionPreviewRequest(AbstractModel):
+    """ListRejectedQuestionPreview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Number of items per page.
+        :type PageSize: int
+        :param _Query: Query content.
+        :type Query: str
+        :param _ReleaseBizId: Release ticket ID.
+        :type ReleaseBizId: str
+        :param _Actions: Status (1: newly-added; 2: updated; 3:  deleted).
+        :type Actions: list of int non-negative
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        """
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._ReleaseBizId = None
+        self._Actions = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Number of items per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        """Query content.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def ReleaseBizId(self):
+        """Release ticket ID.
+        :rtype: str
+        """
+        return self._ReleaseBizId
+
+    @ReleaseBizId.setter
+    def ReleaseBizId(self, ReleaseBizId):
+        self._ReleaseBizId = ReleaseBizId
+
+    @property
+    def Actions(self):
+        """Status (1: newly-added; 2: updated; 3:  deleted).
+        :rtype: list of int non-negative
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def StartTime(self):
+        """Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        self._ReleaseBizId = params.get("ReleaseBizId")
+        self._Actions = params.get("Actions")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListRejectedQuestionPreviewResponse(AbstractModel):
+    """ListRejectedQuestionPreview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Quantity of documents.
+        :type Total: str
+        :param _List: List of documents.
+        :type List: list of ReleaseRejectedQuestion
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Quantity of documents.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """List of documents.
+        :rtype: list of ReleaseRejectedQuestion
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ReleaseRejectedQuestion()
                 obj._deserialize(item)
                 self._List.append(obj)
         self._RequestId = params.get("RequestId")
@@ -9083,6 +16306,714 @@ class ListReleaseConfigPreviewResponse(AbstractModel):
             self._List = []
             for item in params.get("List"):
                 obj = ReleaseConfigs()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListReleaseDocPreviewRequest(AbstractModel):
+    """ListReleaseDocPreview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Number of items per page.
+        :type PageSize: int
+        :param _Query: Query content.
+        :type Query: str
+        :param _ReleaseBizId: Release ticket ID.
+        :type ReleaseBizId: str
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        :param _Actions: Status (1: newly-added; 2: modified; 3: deleted).
+        :type Actions: list of int non-negative
+        """
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._ReleaseBizId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Actions = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Number of items per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        """Query content.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def ReleaseBizId(self):
+        """Release ticket ID.
+        :rtype: str
+        """
+        return self._ReleaseBizId
+
+    @ReleaseBizId.setter
+    def ReleaseBizId(self, ReleaseBizId):
+        self._ReleaseBizId = ReleaseBizId
+
+    @property
+    def StartTime(self):
+        """Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Actions(self):
+        """Status (1: newly-added; 2: modified; 3: deleted).
+        :rtype: list of int non-negative
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        self._ReleaseBizId = params.get("ReleaseBizId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Actions = params.get("Actions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReleaseDocPreviewResponse(AbstractModel):
+    """ListReleaseDocPreview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Document quantity.
+        :type Total: str
+        :param _List: Document list.
+        :type List: list of ReleaseDoc
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Document quantity.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """Document list.
+        :rtype: list of ReleaseDoc
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ReleaseDoc()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListReleaseItem(AbstractModel):
+    """Details of release list.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReleaseBizId: Version ID.
+        :type ReleaseBizId: str
+        :param _Operator: Releaser.
+        :type Operator: str
+        :param _Desc: Release description.
+        :type Desc: str
+        :param _UpdateTime: Update time.
+        :type UpdateTime: str
+        :param _Status: Release status.
+        :type Status: int
+        :param _StatusDesc: Release status description.
+        :type StatusDesc: str
+        :param _Reason: Reason for failure.
+        :type Reason: str
+        :param _SuccessCount: Number of successful releases.
+        :type SuccessCount: int
+        :param _FailCount: Number of failed releases.
+        :type FailCount: int
+        """
+        self._ReleaseBizId = None
+        self._Operator = None
+        self._Desc = None
+        self._UpdateTime = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Reason = None
+        self._SuccessCount = None
+        self._FailCount = None
+
+    @property
+    def ReleaseBizId(self):
+        """Version ID.
+        :rtype: str
+        """
+        return self._ReleaseBizId
+
+    @ReleaseBizId.setter
+    def ReleaseBizId(self, ReleaseBizId):
+        self._ReleaseBizId = ReleaseBizId
+
+    @property
+    def Operator(self):
+        """Releaser.
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Desc(self):
+        """Release description.
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        """Release status.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        """Release status description.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Reason(self):
+        """Reason for failure.
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def SuccessCount(self):
+        """Number of successful releases.
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        """Number of failed releases.
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+
+    def _deserialize(self, params):
+        self._ReleaseBizId = params.get("ReleaseBizId")
+        self._Operator = params.get("Operator")
+        self._Desc = params.get("Desc")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Reason = params.get("Reason")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReleaseQAPreviewRequest(AbstractModel):
+    """ListReleaseQAPreview request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Number of items per page.
+        :type PageSize: int
+        :param _Query: Query content.
+        :type Query: str
+        :param _ReleaseBizId: Release ticket ID.
+        :type ReleaseBizId: str
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        :param _Actions: Status (1: newly-added; 2: modified; 3: deleted).
+        :type Actions: list of int non-negative
+        :param _ReleaseStatus: Release status (4: release successful; 5: release failed).
+        :type ReleaseStatus: list of int non-negative
+        """
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._ReleaseBizId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Actions = None
+        self._ReleaseStatus = None
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Number of items per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        """Query content.
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def ReleaseBizId(self):
+        """Release ticket ID.
+        :rtype: str
+        """
+        return self._ReleaseBizId
+
+    @ReleaseBizId.setter
+    def ReleaseBizId(self, ReleaseBizId):
+        self._ReleaseBizId = ReleaseBizId
+
+    @property
+    def StartTime(self):
+        """Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Actions(self):
+        """Status (1: newly-added; 2: modified; 3: deleted).
+        :rtype: list of int non-negative
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def ReleaseStatus(self):
+        """Release status (4: release successful; 5: release failed).
+        :rtype: list of int non-negative
+        """
+        return self._ReleaseStatus
+
+    @ReleaseStatus.setter
+    def ReleaseStatus(self, ReleaseStatus):
+        self._ReleaseStatus = ReleaseStatus
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        self._ReleaseBizId = params.get("ReleaseBizId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Actions = params.get("Actions")
+        self._ReleaseStatus = params.get("ReleaseStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReleaseQAPreviewResponse(AbstractModel):
+    """ListReleaseQAPreview response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Document quantity.
+        :type Total: str
+        :param _List: The list of documents.
+        :type List: list of ReleaseQA
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Document quantity.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """The list of documents.
+        :rtype: list of ReleaseQA
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ReleaseQA()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListReleaseRequest(AbstractModel):
+    """ListRelease request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotBizId: Robot ID.
+        :type BotBizId: str
+        :param _PageNumber: Page number.
+        :type PageNumber: int
+        :param _PageSize: Number of items per page.
+        :type PageSize: int
+        """
+        self._BotBizId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def BotBizId(self):
+        """Robot ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def PageNumber(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        """Number of items per page.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._BotBizId = params.get("BotBizId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReleaseResponse(AbstractModel):
+    """ListRelease response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Number of release lists.
+        :type Total: str
+        :param _List: Release list.
+        :type List: list of ListReleaseItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Number of release lists.
+        :rtype: str
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """Release list.
+        :rtype: list of ListReleaseItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ListReleaseItem()
                 obj._deserialize(item)
                 self._List.append(obj)
         self._RequestId = params.get("RequestId")
@@ -9610,6 +17541,379 @@ class ListUsageCallDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class ModelInfo(AbstractModel):
+    """Model information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: Model name.
+        :type ModelName: str
+        :param _ModelDesc: Model description.
+        :type ModelDesc: str
+        :param _AliasName: Model name.
+        :type AliasName: str
+        :param _ResourceStatus: Resource status, 1: available; 2: exhausted.
+        :type ResourceStatus: int
+        :param _PromptWordsLimit: Character limit of prompt content.
+        :type PromptWordsLimit: str
+        :param _TopP: By controlling the diversity of content generation through core sampling, a higher Top P value will lead to more diverse content generation.
+        :type TopP: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        :param _Temperature: Temperature control randomness.
+        :type Temperature: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        :param _MaxTokens: Maximum quantity of tokens that can be generated.
+        :type MaxTokens: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        :param _Source: Model source, Hunyuan: Tencent Hunyuan; Industry: Tencent Cloud industry large model; Experience: new model experience.
+        :type Source: str
+        :param _Icon: Model icon.
+        :type Icon: str
+        :param _IsFree: Whether it is free.
+        :type IsFree: bool
+        :param _InputLenLimit: Maximum characters input in the model dialog box.
+        :type InputLenLimit: int
+        :param _SupportWorkflowStatus: Workflow support levels:
+0 - Not supported by the model;
+1 - Supported by the model;
+2 - Poorly supported by the model.
+        :type SupportWorkflowStatus: int
+        :param _ModelCategory: Model categories:
+Generate: Generative model
+Thought: Thinking model
+        :type ModelCategory: str
+        :param _IsDefault: Whether it is the default model.
+        :type IsDefault: bool
+        :param _RoleLenLimit: Maximum characters of role prompt words.
+        :type RoleLenLimit: int
+        :param _IsExclusive: Whether it is an exclusive concurrency model.
+        :type IsExclusive: bool
+        :param _SupportAiCallStatus: The model supports intelligent call effects.
+        :type SupportAiCallStatus: int
+        """
+        self._ModelName = None
+        self._ModelDesc = None
+        self._AliasName = None
+        self._ResourceStatus = None
+        self._PromptWordsLimit = None
+        self._TopP = None
+        self._Temperature = None
+        self._MaxTokens = None
+        self._Source = None
+        self._Icon = None
+        self._IsFree = None
+        self._InputLenLimit = None
+        self._SupportWorkflowStatus = None
+        self._ModelCategory = None
+        self._IsDefault = None
+        self._RoleLenLimit = None
+        self._IsExclusive = None
+        self._SupportAiCallStatus = None
+
+    @property
+    def ModelName(self):
+        """Model name.
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelDesc(self):
+        """Model description.
+        :rtype: str
+        """
+        return self._ModelDesc
+
+    @ModelDesc.setter
+    def ModelDesc(self, ModelDesc):
+        self._ModelDesc = ModelDesc
+
+    @property
+    def AliasName(self):
+        """Model name.
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def ResourceStatus(self):
+        """Resource status, 1: available; 2: exhausted.
+        :rtype: int
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+    @property
+    def PromptWordsLimit(self):
+        """Character limit of prompt content.
+        :rtype: str
+        """
+        return self._PromptWordsLimit
+
+    @PromptWordsLimit.setter
+    def PromptWordsLimit(self, PromptWordsLimit):
+        self._PromptWordsLimit = PromptWordsLimit
+
+    @property
+    def TopP(self):
+        """By controlling the diversity of content generation through core sampling, a higher Top P value will lead to more diverse content generation.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def Temperature(self):
+        """Temperature control randomness.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def MaxTokens(self):
+        """Maximum quantity of tokens that can be generated.
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def Source(self):
+        """Model source, Hunyuan: Tencent Hunyuan; Industry: Tencent Cloud industry large model; Experience: new model experience.
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Icon(self):
+        """Model icon.
+        :rtype: str
+        """
+        return self._Icon
+
+    @Icon.setter
+    def Icon(self, Icon):
+        self._Icon = Icon
+
+    @property
+    def IsFree(self):
+        """Whether it is free.
+        :rtype: bool
+        """
+        return self._IsFree
+
+    @IsFree.setter
+    def IsFree(self, IsFree):
+        self._IsFree = IsFree
+
+    @property
+    def InputLenLimit(self):
+        """Maximum characters input in the model dialog box.
+        :rtype: int
+        """
+        return self._InputLenLimit
+
+    @InputLenLimit.setter
+    def InputLenLimit(self, InputLenLimit):
+        self._InputLenLimit = InputLenLimit
+
+    @property
+    def SupportWorkflowStatus(self):
+        """Workflow support levels:
+0 - Not supported by the model;
+1 - Supported by the model;
+2 - Poorly supported by the model.
+        :rtype: int
+        """
+        return self._SupportWorkflowStatus
+
+    @SupportWorkflowStatus.setter
+    def SupportWorkflowStatus(self, SupportWorkflowStatus):
+        self._SupportWorkflowStatus = SupportWorkflowStatus
+
+    @property
+    def ModelCategory(self):
+        """Model categories:
+Generate: Generative model
+Thought: Thinking model
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def IsDefault(self):
+        """Whether it is the default model.
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def RoleLenLimit(self):
+        """Maximum characters of role prompt words.
+        :rtype: int
+        """
+        return self._RoleLenLimit
+
+    @RoleLenLimit.setter
+    def RoleLenLimit(self, RoleLenLimit):
+        self._RoleLenLimit = RoleLenLimit
+
+    @property
+    def IsExclusive(self):
+        """Whether it is an exclusive concurrency model.
+        :rtype: bool
+        """
+        return self._IsExclusive
+
+    @IsExclusive.setter
+    def IsExclusive(self, IsExclusive):
+        self._IsExclusive = IsExclusive
+
+    @property
+    def SupportAiCallStatus(self):
+        """The model supports intelligent call effects.
+        :rtype: int
+        """
+        return self._SupportAiCallStatus
+
+    @SupportAiCallStatus.setter
+    def SupportAiCallStatus(self, SupportAiCallStatus):
+        self._SupportAiCallStatus = SupportAiCallStatus
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelDesc = params.get("ModelDesc")
+        self._AliasName = params.get("AliasName")
+        self._ResourceStatus = params.get("ResourceStatus")
+        self._PromptWordsLimit = params.get("PromptWordsLimit")
+        if params.get("TopP") is not None:
+            self._TopP = ModelParameter()
+            self._TopP._deserialize(params.get("TopP"))
+        if params.get("Temperature") is not None:
+            self._Temperature = ModelParameter()
+            self._Temperature._deserialize(params.get("Temperature"))
+        if params.get("MaxTokens") is not None:
+            self._MaxTokens = ModelParameter()
+            self._MaxTokens._deserialize(params.get("MaxTokens"))
+        self._Source = params.get("Source")
+        self._Icon = params.get("Icon")
+        self._IsFree = params.get("IsFree")
+        self._InputLenLimit = params.get("InputLenLimit")
+        self._SupportWorkflowStatus = params.get("SupportWorkflowStatus")
+        self._ModelCategory = params.get("ModelCategory")
+        self._IsDefault = params.get("IsDefault")
+        self._RoleLenLimit = params.get("RoleLenLimit")
+        self._IsExclusive = params.get("IsExclusive")
+        self._SupportAiCallStatus = params.get("SupportAiCallStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelParameter(AbstractModel):
+    """Model parameter value range.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Default: Default value.
+        :type Default: float
+        :param _Min: Minimum value.
+        :type Min: float
+        :param _Max: Maximum value.
+        :type Max: float
+        """
+        self._Default = None
+        self._Min = None
+        self._Max = None
+
+    @property
+    def Default(self):
+        """Default value.
+        :rtype: float
+        """
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+    @property
+    def Min(self):
+        """Minimum value.
+        :rtype: float
+        """
+        return self._Min
+
+    @Min.setter
+    def Min(self, Min):
+        self._Min = Min
+
+    @property
+    def Max(self):
+        """Maximum value.
+        :rtype: float
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+
+    def _deserialize(self, params):
+        self._Default = params.get("Default")
+        self._Min = params.get("Min")
+        self._Max = params.get("Max")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyAppRequest(AbstractModel):
@@ -12762,6 +21066,263 @@ class RateMsgRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReconstructDocumentFailedPage(AbstractModel):
+    """Document parsing failure record.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: Failure page number.
+        :type PageNumber: int
+        """
+        self._PageNumber = None
+
+    @property
+    def PageNumber(self):
+        """Failure page number.
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReferDetail(AbstractModel):
+    """Reference source details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferBizId: Reference ID.
+        :type ReferBizId: str
+        :param _DocType: Document type (1: Q&A; 2: document paragraph).
+        :type DocType: int
+        :param _DocName: Document name.
+        :type DocName: str
+        :param _PageContent: Fragment content.
+        :type PageContent: str
+        :param _Question: Question.
+        :type Question: str
+        :param _Answer: Answer.
+        :type Answer: str
+        :param _Confidence: Confidence.
+        :type Confidence: float
+        :param _Mark: Mark.
+        :type Mark: int
+        :param _Highlights: Fragment highlight content.
+        :type Highlights: list of Highlight
+        :param _OrgData: Original content.
+        :type OrgData: str
+        :param _PageInfos: Page number information.
+        :type PageInfos: list of int non-negative
+        :param _SheetInfos: Sheet information.
+        :type SheetInfos: list of str
+        :param _DocBizId: Document ID.
+        :type DocBizId: str
+        """
+        self._ReferBizId = None
+        self._DocType = None
+        self._DocName = None
+        self._PageContent = None
+        self._Question = None
+        self._Answer = None
+        self._Confidence = None
+        self._Mark = None
+        self._Highlights = None
+        self._OrgData = None
+        self._PageInfos = None
+        self._SheetInfos = None
+        self._DocBizId = None
+
+    @property
+    def ReferBizId(self):
+        """Reference ID.
+        :rtype: str
+        """
+        return self._ReferBizId
+
+    @ReferBizId.setter
+    def ReferBizId(self, ReferBizId):
+        self._ReferBizId = ReferBizId
+
+    @property
+    def DocType(self):
+        """Document type (1: Q&A; 2: document paragraph).
+        :rtype: int
+        """
+        return self._DocType
+
+    @DocType.setter
+    def DocType(self, DocType):
+        self._DocType = DocType
+
+    @property
+    def DocName(self):
+        """Document name.
+        :rtype: str
+        """
+        return self._DocName
+
+    @DocName.setter
+    def DocName(self, DocName):
+        self._DocName = DocName
+
+    @property
+    def PageContent(self):
+        """Fragment content.
+        :rtype: str
+        """
+        return self._PageContent
+
+    @PageContent.setter
+    def PageContent(self, PageContent):
+        self._PageContent = PageContent
+
+    @property
+    def Question(self):
+        """Question.
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        """Answer.
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def Confidence(self):
+        """Confidence.
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Mark(self):
+        """Mark.
+        :rtype: int
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def Highlights(self):
+        """Fragment highlight content.
+        :rtype: list of Highlight
+        """
+        return self._Highlights
+
+    @Highlights.setter
+    def Highlights(self, Highlights):
+        self._Highlights = Highlights
+
+    @property
+    def OrgData(self):
+        """Original content.
+        :rtype: str
+        """
+        return self._OrgData
+
+    @OrgData.setter
+    def OrgData(self, OrgData):
+        self._OrgData = OrgData
+
+    @property
+    def PageInfos(self):
+        """Page number information.
+        :rtype: list of int non-negative
+        """
+        return self._PageInfos
+
+    @PageInfos.setter
+    def PageInfos(self, PageInfos):
+        self._PageInfos = PageInfos
+
+    @property
+    def SheetInfos(self):
+        """Sheet information.
+        :rtype: list of str
+        """
+        return self._SheetInfos
+
+    @SheetInfos.setter
+    def SheetInfos(self, SheetInfos):
+        self._SheetInfos = SheetInfos
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+
+    def _deserialize(self, params):
+        self._ReferBizId = params.get("ReferBizId")
+        self._DocType = params.get("DocType")
+        self._DocName = params.get("DocName")
+        self._PageContent = params.get("PageContent")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
+        self._Confidence = params.get("Confidence")
+        self._Mark = params.get("Mark")
+        if params.get("Highlights") is not None:
+            self._Highlights = []
+            for item in params.get("Highlights"):
+                obj = Highlight()
+                obj._deserialize(item)
+                self._Highlights.append(obj)
+        self._OrgData = params.get("OrgData")
+        self._PageInfos = params.get("PageInfos")
+        self._SheetInfos = params.get("SheetInfos")
+        self._DocBizId = params.get("DocBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RejectedQuestion(AbstractModel):
     """Release rejected questions.
 
@@ -13012,6 +21573,553 @@ class ReleaseConfigs(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReleaseDoc(AbstractModel):
+    """Release document details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: File name.
+        :type FileName: str
+        :param _FileType: File type.
+        :type FileType: str
+        :param _UpdateTime: Update time.
+        :type UpdateTime: str
+        :param _Action: Status.
+        :type Action: int
+        :param _ActionDesc: Status description.
+        :type ActionDesc: str
+        :param _Message: Reason for failure.
+        :type Message: str
+        :param _DocBizId: Document business ID.
+        :type DocBizId: str
+        """
+        self._FileName = None
+        self._FileType = None
+        self._UpdateTime = None
+        self._Action = None
+        self._ActionDesc = None
+        self._Message = None
+        self._DocBizId = None
+
+    @property
+    def FileName(self):
+        """File name.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        """File type.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Action(self):
+        """Status.
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ActionDesc(self):
+        """Status description.
+        :rtype: str
+        """
+        return self._ActionDesc
+
+    @ActionDesc.setter
+    def ActionDesc(self, ActionDesc):
+        self._ActionDesc = ActionDesc
+
+    @property
+    def Message(self):
+        """Reason for failure.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def DocBizId(self):
+        """Document business ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Action = params.get("Action")
+        self._ActionDesc = params.get("ActionDesc")
+        self._Message = params.get("Message")
+        self._DocBizId = params.get("DocBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseQA(AbstractModel):
+    """Release Q&A.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: Question.
+        :type Question: str
+        :param _UpdateTime: Update time.
+        :type UpdateTime: str
+        :param _Action: Status.
+        :type Action: int
+        :param _ActionDesc: Status description.
+        :type ActionDesc: str
+        :param _Source: Source, 1: documentation generation; 2: batch import; 3: manual addition.
+        :type Source: int
+        :param _SourceDesc: Source description.
+        :type SourceDesc: str
+        :param _FileName: Filename.
+        :type FileName: str
+        :param _FileType: Document type.
+        :type FileType: str
+        :param _Message: Reason for failure
+        :type Message: str
+        :param _ReleaseStatus: Release status.
+        :type ReleaseStatus: int
+        :param _QaBizId: Q&A ID.
+        :type QaBizId: str
+        :param _DocBizId: Document business ID.
+        :type DocBizId: str
+        """
+        self._Question = None
+        self._UpdateTime = None
+        self._Action = None
+        self._ActionDesc = None
+        self._Source = None
+        self._SourceDesc = None
+        self._FileName = None
+        self._FileType = None
+        self._Message = None
+        self._ReleaseStatus = None
+        self._QaBizId = None
+        self._DocBizId = None
+
+    @property
+    def Question(self):
+        """Question.
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Action(self):
+        """Status.
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ActionDesc(self):
+        """Status description.
+        :rtype: str
+        """
+        return self._ActionDesc
+
+    @ActionDesc.setter
+    def ActionDesc(self, ActionDesc):
+        self._ActionDesc = ActionDesc
+
+    @property
+    def Source(self):
+        """Source, 1: documentation generation; 2: batch import; 3: manual addition.
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def SourceDesc(self):
+        """Source description.
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def FileName(self):
+        """Filename.
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        """Document type.
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Message(self):
+        """Reason for failure
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ReleaseStatus(self):
+        """Release status.
+        :rtype: int
+        """
+        return self._ReleaseStatus
+
+    @ReleaseStatus.setter
+    def ReleaseStatus(self, ReleaseStatus):
+        self._ReleaseStatus = ReleaseStatus
+
+    @property
+    def QaBizId(self):
+        """Q&A ID.
+        :rtype: str
+        """
+        return self._QaBizId
+
+    @QaBizId.setter
+    def QaBizId(self, QaBizId):
+        self._QaBizId = QaBizId
+
+    @property
+    def DocBizId(self):
+        """Document business ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Action = params.get("Action")
+        self._ActionDesc = params.get("ActionDesc")
+        self._Source = params.get("Source")
+        self._SourceDesc = params.get("SourceDesc")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._Message = params.get("Message")
+        self._ReleaseStatus = params.get("ReleaseStatus")
+        self._QaBizId = params.get("QaBizId")
+        self._DocBizId = params.get("DocBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseRejectedQuestion(AbstractModel):
+    """Release rejected questions.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: Question.
+        :type Question: str
+        :param _UpdateTime: Update time.
+        :type UpdateTime: str
+        :param _Action: Status.
+        :type Action: int
+        :param _ActionDesc: Status description.
+        :type ActionDesc: str
+        :param _Message: Reason for failure.
+        :type Message: str
+        """
+        self._Question = None
+        self._UpdateTime = None
+        self._Action = None
+        self._ActionDesc = None
+        self._Message = None
+
+    @property
+    def Question(self):
+        """Question.
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def UpdateTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Action(self):
+        """Status.
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ActionDesc(self):
+        """Status description.
+        :rtype: str
+        """
+        return self._ActionDesc
+
+    @ActionDesc.setter
+    def ActionDesc(self, ActionDesc):
+        self._ActionDesc = ActionDesc
+
+    @property
+    def Message(self):
+        """Reason for failure.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Action = params.get("Action")
+        self._ActionDesc = params.get("ActionDesc")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenameDocRequest(AbstractModel):
+    """RenameDoc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoginUin: Login to user's root account (required in integrator mode).	
+        :type LoginUin: str
+        :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).	
+        :type LoginSubAccountUin: str
+        :param _BotBizId: Application ID.
+        :type BotBizId: str
+        :param _DocBizId: Document ID.
+        :type DocBizId: str
+        :param _NewName: New document name, which needs to include the suffix.
+        :type NewName: str
+        """
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._BotBizId = None
+        self._DocBizId = None
+        self._NewName = None
+
+    @property
+    def LoginUin(self):
+        """Login to user's root account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        """Login to user's sub-account (required in integrator mode).	
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def BotBizId(self):
+        """Application ID.
+        :rtype: str
+        """
+        return self._BotBizId
+
+    @BotBizId.setter
+    def BotBizId(self, BotBizId):
+        self._BotBizId = BotBizId
+
+    @property
+    def DocBizId(self):
+        """Document ID.
+        :rtype: str
+        """
+        return self._DocBizId
+
+    @DocBizId.setter
+    def DocBizId(self, DocBizId):
+        self._DocBizId = DocBizId
+
+    @property
+    def NewName(self):
+        """New document name, which needs to include the suffix.
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+
+    def _deserialize(self, params):
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._BotBizId = params.get("BotBizId")
+        self._DocBizId = params.get("DocBizId")
+        self._NewName = params.get("NewName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenameDocResponse(AbstractModel):
+    """RenameDoc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RetryDocAuditRequest(AbstractModel):

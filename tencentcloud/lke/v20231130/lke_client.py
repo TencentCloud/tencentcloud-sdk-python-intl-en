@@ -26,6 +26,98 @@ class LkeClient(AbstractClient):
     _service = 'lke'
 
 
+    def CheckAttributeLabelExist(self, request):
+        """This API is used to check if the label name under an attribute exist.
+
+        :param request: Request instance for CheckAttributeLabelExist.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelExistRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelExistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckAttributeLabelExist", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckAttributeLabelExistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckAttributeLabelRefer(self, request):
+        """This API is used to check attribute label references.
+
+        :param request: Request instance for CheckAttributeLabelRefer.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelReferRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CheckAttributeLabelReferResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckAttributeLabelRefer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckAttributeLabelReferResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateApp(self, request):
+        """This API is used to create knowledge engine applications.
+
+        :param request: Request instance for CreateApp.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateAppRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAttributeLabel(self, request):
+        """This API is used to create attributes.
+
+        :param request: Request instance for CreateAttributeLabel.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateAttributeLabelRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateAttributeLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAttributeLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAttributeLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCorp(self, request):
         """This API is used to create enterprises.
 
@@ -40,6 +132,75 @@ class LkeClient(AbstractClient):
             body = self.call("CreateCorp", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCorpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDocCate(self, request):
+        """This API is used to create doc categories.
+
+        :param request: Request instance for CreateDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDocCateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateQA(self, request):
+        """This API is used to enter Q&As.
+
+        :param request: Request instance for CreateQA.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateQARequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateQACate(self, request):
+        """This API is used to create Q&A categories.
+
+        :param request: Request instance for CreateQACate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateQACateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateQACateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQACate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQACateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -65,6 +226,29 @@ class LkeClient(AbstractClient):
             body = self.call("CreateReconstructDocumentFlow", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReconstructDocumentFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRejectedQuestion(self, request):
+        """This API is used to create rejected questions.
+
+        :param request: Request instance for CreateRejectedQuestion.
+        :type request: :class:`tencentcloud.lke.v20231130.models.CreateRejectedQuestionRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.CreateRejectedQuestionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRejectedQuestion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRejectedQuestionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -120,6 +304,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAttributeLabel(self, request):
+        """This API is used to delete attribute labels.
+
+        :param request: Request instance for DeleteAttributeLabel.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DeleteAttributeLabelRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DeleteAttributeLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAttributeLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAttributeLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDoc(self, request):
         """This API is used to delete documents.
 
@@ -134,6 +341,29 @@ class LkeClient(AbstractClient):
             body = self.call("DeleteDoc", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDocCate(self, request):
+        """This API is used to delete Doc categories.
+
+        :param request: Request instance for DeleteDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DeleteDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DeleteDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDocCateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -203,6 +433,29 @@ class LkeClient(AbstractClient):
             body = self.call("DeleteRejectedQuestion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRejectedQuestionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApp(self, request):
+        """This API is used to obtain application details under the corporate.
+
+        :param request: Request instance for DescribeApp.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeAppRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -304,6 +557,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCorp(self, request):
+        """This API is used to query corporate details.
+
+        :param request: Request instance for DescribeCorp.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeCorpRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeCorpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCorp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCorpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDoc(self, request):
         """This API is used to query document details.
 
@@ -373,6 +649,52 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeQA(self, request):
+        """This API is used to query Q&A details.
+
+        :param request: Request instance for DescribeQA.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeQARequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRefer(self, request):
+        """This API is used to get the reference source details list.
+
+        :param request: Request instance for DescribeRefer.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReferRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeReferResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRefer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReferResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRelease(self, request):
         """This API is used to query release details.
 
@@ -387,6 +709,29 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeRelease", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReleaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReleaseInfo(self, request):
+        """This API is used to pull the release button status and last release time.
+
+        :param request: Request instance for DescribeReleaseInfo.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeReleaseInfoRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeReleaseInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReleaseInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReleaseInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -433,6 +778,52 @@ class LkeClient(AbstractClient):
             body = self.call("DescribeSearchStatsGraph", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSearchStatsGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSegments(self, request):
+        """This API is used to get fragment details.
+
+        :param request: Request instance for DescribeSegments.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeSegmentsRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeSegmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSegments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSegmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStorageCredential(self, request):
+        """This API is used to get the temporary key for file upload.
+
+        :param request: Request instance for DescribeStorageCredential.
+        :type request: :class:`tencentcloud.lke.v20231130.models.DescribeStorageCredentialRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.DescribeStorageCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStorageCredential", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStorageCredentialResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -511,6 +902,29 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportAttributeLabel(self, request):
+        """This API is used to export attribute labels.
+
+        :param request: Request instance for ExportAttributeLabel.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ExportAttributeLabelRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ExportAttributeLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportAttributeLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportAttributeLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportQAList(self, request):
         """This API is used to export Q&A list.
 
@@ -580,6 +994,121 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetAnswerTypeDataCount(self, request):
+        """This API is used to get response type data statistics.
+
+        :param request: Request instance for GetAnswerTypeDataCount.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetAnswerTypeDataCountRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetAnswerTypeDataCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAnswerTypeDataCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAnswerTypeDataCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetAppKnowledgeCount(self, request):
+        """This API is used to get a model list.
+
+        :param request: Request instance for GetAppKnowledgeCount.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetAppKnowledgeCountRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetAppKnowledgeCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAppKnowledgeCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAppKnowledgeCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetAppSecret(self, request):
+        """This API is used to get application secret keys.
+
+        :param request: Request instance for GetAppSecret.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetAppSecretRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetAppSecretResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAppSecret", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetAppSecretResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetDocPreview(self, request):
+        """This API is used to get document preview information.
+
+        :param request: Request instance for GetDocPreview.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetDocPreviewRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetDocPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDocPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDocPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLikeDataCount(self, request):
+        """This API is used to get likes and dislikes data statistics.
+
+        :param request: Request instance for GetLikeDataCount.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetLikeDataCountRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetLikeDataCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLikeDataCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLikeDataCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMsgRecord(self, request):
         """This API is used to obtain chat history based on the session ID (only historical session data within the past 180 days will be retained).
 
@@ -594,6 +1123,29 @@ class LkeClient(AbstractClient):
             body = self.call("GetMsgRecord", params, headers=headers)
             response = json.loads(body)
             model = models.GetMsgRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetReconstructDocumentResult(self, request):
+        """This is an asynchronous APIs, used to get document parsing task results.
+
+        :param request: Request instance for GetReconstructDocumentResult.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GetReconstructDocumentResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetReconstructDocumentResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetReconstructDocumentResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -649,6 +1201,52 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GroupDoc(self, request):
+        """DocGroup.
+
+        :param request: Request instance for GroupDoc.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GroupDocRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GroupDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GroupDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.GroupDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GroupQA(self, request):
+        """Q&A Group.
+
+        :param request: Request instance for GroupQA.
+        :type request: :class:`tencentcloud.lke.v20231130.models.GroupQARequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.GroupQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GroupQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.GroupQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def IgnoreUnsatisfiedReply(self, request):
         """This API is used to ignore dissatisfied responses.
 
@@ -695,6 +1293,52 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAppCategory(self, request):
+        """This API is used to get list of application types.
+
+        :param request: Request instance for ListAppCategory.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListAppCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAppCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAppCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListAppKnowledgeDetail(self, request):
+        """This API is used to query the knowledge base capacity details in a list.
+
+        :param request: Request instance for ListAppKnowledgeDetail.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListAppKnowledgeDetailRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListAppKnowledgeDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAppKnowledgeDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAppKnowledgeDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListAttributeLabel(self, request):
         """This API is used to query attribute label lists.
 
@@ -709,6 +1353,98 @@ class LkeClient(AbstractClient):
             body = self.call("ListAttributeLabel", params, headers=headers)
             response = json.loads(body)
             model = models.ListAttributeLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDoc(self, request):
+        """This API is used to get document list.
+
+        :param request: Request instance for ListDoc.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListDocRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDocCate(self, request):
+        """This API is used to get document category.
+
+        :param request: Request instance for ListDocCate.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListDocCateRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListDocCateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDocCate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDocCateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListModel(self, request):
+        """This API is used to get the model list.
+
+        :param request: Request instance for ListModel.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListModelRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListQA(self, request):
+        """This API is used to query Q&A lists.
+
+        :param request: Request instance for ListQA.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListQARequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListQAResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -764,6 +1500,52 @@ class LkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListRejectedQuestionPreview(self, request):
+        """This API is used to release a preview of rejected questions.
+
+        :param request: Request instance for ListRejectedQuestionPreview.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListRejectedQuestionPreviewRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListRejectedQuestionPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListRejectedQuestionPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListRejectedQuestionPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListRelease(self, request):
+        """This API is used to get the release list.
+
+        :param request: Request instance for ListRelease.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListRelease", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReleaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListReleaseConfigPreview(self, request):
         """This API is used to preview the release configuration items.
 
@@ -778,6 +1560,52 @@ class LkeClient(AbstractClient):
             body = self.call("ListReleaseConfigPreview", params, headers=headers)
             response = json.loads(body)
             model = models.ListReleaseConfigPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListReleaseDocPreview(self, request):
+        """This API is used to preview released documents.
+
+        :param request: Request instance for ListReleaseDocPreview.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseDocPreviewRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListReleaseDocPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListReleaseDocPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReleaseDocPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListReleaseQAPreview(self, request):
+        """List of documents.
+
+        :param request: Request instance for ListReleaseQAPreview.
+        :type request: :class:`tencentcloud.lke.v20231130.models.ListReleaseQAPreviewRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ListReleaseQAPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListReleaseQAPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReleaseQAPreviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1077,6 +1905,29 @@ class LkeClient(AbstractClient):
             body = self.call("RateMsgRecord", params, headers=headers)
             response = json.loads(body)
             model = models.RateMsgRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenameDoc(self, request):
+        """This API is used to rename a document.
+
+        :param request: Request instance for RenameDoc.
+        :type request: :class:`tencentcloud.lke.v20231130.models.RenameDocRequest`
+        :rtype: :class:`tencentcloud.lke.v20231130.models.RenameDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenameDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenameDocResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
