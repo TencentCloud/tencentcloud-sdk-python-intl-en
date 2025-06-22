@@ -33910,12 +33910,19 @@ If this field is not specified, the default value 'off' will be used.
         :param _PrivateParameters: Private authentication parameter. This parameter is valid only when PrivateAccess is on.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PrivateParameters: list of PrivateParameter
+        :param _HostHeader: current configured origin HOST header.
+        :type HostHeader: str
         :param _VodeoSubAppId: MO sub-application ID
         :type VodeoSubAppId: int
         :param _VodeoDistributionRange: MO distribution range. Valid values: <li>All: all</li> <li>Bucket: bucket</li>
         :type VodeoDistributionRange: str
         :param _VodeoBucketId: MO bucket ID, required when the distribution range (DistributionRange) is bucket (Bucket)
         :type VodeoBucketId: str
+        :param _VodOriginScope: VOD origin-pull range. this parameter returns a value when OriginType = VOD. valid values: <li>all: all files in the VOD application corresponding to the current origin server. the default value is all;</li> <li>bucket: files in a specified bucket under the VOD application corresponding to the current origin server. specify the bucket by the VodBucketId parameter.</li>.
+</li>
+        :type VodOriginScope: str
+        :param _VodBucketId: VOD bucket ID. this parameter is required when OriginType = VOD and VodOriginScope = bucket. data source: storage ID of the bucket under the VOD professional application.
+        :type VodBucketId: str
         """
         self._OriginType = None
         self._Origin = None
@@ -33924,9 +33931,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BackOriginGroupName = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._HostHeader = None
         self._VodeoSubAppId = None
         self._VodeoDistributionRange = None
         self._VodeoBucketId = None
+        self._VodOriginScope = None
+        self._VodBucketId = None
 
     @property
     def OriginType(self):
@@ -34022,6 +34032,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PrivateParameters = PrivateParameters
 
     @property
+    def HostHeader(self):
+        """current configured origin HOST header.
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
     def VodeoSubAppId(self):
         warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
 
@@ -34066,6 +34087,29 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
         self._VodeoBucketId = VodeoBucketId
 
+    @property
+    def VodOriginScope(self):
+        """VOD origin-pull range. this parameter returns a value when OriginType = VOD. valid values: <li>all: all files in the VOD application corresponding to the current origin server. the default value is all;</li> <li>bucket: files in a specified bucket under the VOD application corresponding to the current origin server. specify the bucket by the VodBucketId parameter.</li>.
+</li>
+        :rtype: str
+        """
+        return self._VodOriginScope
+
+    @VodOriginScope.setter
+    def VodOriginScope(self, VodOriginScope):
+        self._VodOriginScope = VodOriginScope
+
+    @property
+    def VodBucketId(self):
+        """VOD bucket ID. this parameter is required when OriginType = VOD and VodOriginScope = bucket. data source: storage ID of the bucket under the VOD professional application.
+        :rtype: str
+        """
+        return self._VodBucketId
+
+    @VodBucketId.setter
+    def VodBucketId(self, VodBucketId):
+        self._VodBucketId = VodBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -34080,9 +34124,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._HostHeader = params.get("HostHeader")
         self._VodeoSubAppId = params.get("VodeoSubAppId")
         self._VodeoDistributionRange = params.get("VodeoDistributionRange")
         self._VodeoBucketId = params.get("VodeoBucketId")
+        self._VodOriginScope = params.get("VodOriginScope")
+        self._VodBucketId = params.get("VodBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34655,6 +34702,12 @@ If it is not specified, the default value is off.
         :type PrivateAccess: str
         :param _PrivateParameters: Private authentication parameter. This parameter is valid only when PrivateAccess is on.
         :type PrivateParameters: list of PrivateParameter
+        :param _HostHeader: Custom origin HOST header, this parameter only takes effect when OriginType=IP_DOMAIN. 
+
+- If OriginType=COS or AWS_S3, the origin HOST header will be consistent with the origin domain name. 
+- If OriginType=ORIGIN_GROUP, the origin HOST header follows the configuration within the origin group;if not configured, it defaults to the acceleration domain name. 
+- If OriginType=VOD or SPACE, there is no need to configure this header, and it will take effect according to the corresponding origin domain name.
+        :type HostHeader: str
         :param _VodeoSubAppId: VODEO sub-application ID. This parameter is required when OriginType is VODEO.
         :type VodeoSubAppId: int
         :param _VodeoDistributionRange: VOD on EO distribution range. This parameter is required when OriginType = VODEO. The values are: 
@@ -34663,15 +34716,23 @@ If it is not specified, the default value is off.
         :type VodeoDistributionRange: str
         :param _VodeoBucketId: VODEO storage bucket ID. This parameter is required when OriginType is VODEO and VodeoDistributionRange is Bucket.
         :type VodeoBucketId: str
+        :param _VodOriginScope: VOD origin-pull scope. this parameter is valid only when OriginType = VOD. valid values: <li>all: all files in the VOD application corresponding to the current origin server. the default value is all;</li> <li>bucket: files in a specified bucket under the VOD application corresponding to the current origin server. specify the bucket by the parameter VodBucketId.</li>.
+</li>
+        :type VodOriginScope: str
+        :param _VodBucketId: VOD bucket ID. this parameter is required when OriginType = VOD and VodOriginScope = bucket. data source: storage ID of the bucket under the VOD professional edition application.
+        :type VodBucketId: str
         """
         self._OriginType = None
         self._Origin = None
         self._BackupOrigin = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._HostHeader = None
         self._VodeoSubAppId = None
         self._VodeoDistributionRange = None
         self._VodeoBucketId = None
+        self._VodOriginScope = None
+        self._VodBucketId = None
 
     @property
     def OriginType(self):
@@ -34746,6 +34807,21 @@ If it is not specified, the default value is off.
         self._PrivateParameters = PrivateParameters
 
     @property
+    def HostHeader(self):
+        """Custom origin HOST header, this parameter only takes effect when OriginType=IP_DOMAIN. 
+
+- If OriginType=COS or AWS_S3, the origin HOST header will be consistent with the origin domain name. 
+- If OriginType=ORIGIN_GROUP, the origin HOST header follows the configuration within the origin group;if not configured, it defaults to the acceleration domain name. 
+- If OriginType=VOD or SPACE, there is no need to configure this header, and it will take effect according to the corresponding origin domain name.
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
     def VodeoSubAppId(self):
         warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
 
@@ -34792,6 +34868,29 @@ If it is not specified, the default value is off.
 
         self._VodeoBucketId = VodeoBucketId
 
+    @property
+    def VodOriginScope(self):
+        """VOD origin-pull scope. this parameter is valid only when OriginType = VOD. valid values: <li>all: all files in the VOD application corresponding to the current origin server. the default value is all;</li> <li>bucket: files in a specified bucket under the VOD application corresponding to the current origin server. specify the bucket by the parameter VodBucketId.</li>.
+</li>
+        :rtype: str
+        """
+        return self._VodOriginScope
+
+    @VodOriginScope.setter
+    def VodOriginScope(self, VodOriginScope):
+        self._VodOriginScope = VodOriginScope
+
+    @property
+    def VodBucketId(self):
+        """VOD bucket ID. this parameter is required when OriginType = VOD and VodOriginScope = bucket. data source: storage ID of the bucket under the VOD professional edition application.
+        :rtype: str
+        """
+        return self._VodBucketId
+
+    @VodBucketId.setter
+    def VodBucketId(self, VodBucketId):
+        self._VodBucketId = VodBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -34804,9 +34903,12 @@ If it is not specified, the default value is off.
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._HostHeader = params.get("HostHeader")
         self._VodeoSubAppId = params.get("VodeoSubAppId")
         self._VodeoDistributionRange = params.get("VodeoDistributionRange")
         self._VodeoBucketId = params.get("VodeoBucketId")
+        self._VodOriginScope = params.get("VodOriginScope")
+        self._VodBucketId = params.get("VodBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
