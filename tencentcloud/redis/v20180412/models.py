@@ -4250,6 +4250,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DownloadUrl(self):
+        warnings.warn("parameter `DownloadUrl` is deprecated", DeprecationWarning) 
+
         """Public network download address (valid for six hours). This field will be disused soon.
         :rtype: list of str
         """
@@ -4257,10 +4259,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
+        warnings.warn("parameter `DownloadUrl` is deprecated", DeprecationWarning) 
+
         self._DownloadUrl = DownloadUrl
 
     @property
     def InnerDownloadUrl(self):
+        warnings.warn("parameter `InnerDownloadUrl` is deprecated", DeprecationWarning) 
+
         """Private network download address (valid for six hours). This field will be disused soon.
         :rtype: list of str
         """
@@ -4268,10 +4274,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @InnerDownloadUrl.setter
     def InnerDownloadUrl(self, InnerDownloadUrl):
+        warnings.warn("parameter `InnerDownloadUrl` is deprecated", DeprecationWarning) 
+
         self._InnerDownloadUrl = InnerDownloadUrl
 
     @property
     def Filenames(self):
+        warnings.warn("parameter `Filenames` is deprecated", DeprecationWarning) 
+
         """Filename. This field will be disused soon.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
@@ -4280,6 +4290,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @Filenames.setter
     def Filenames(self, Filenames):
+        warnings.warn("parameter `Filenames` is deprecated", DeprecationWarning) 
+
         self._Filenames = Filenames
 
     @property
@@ -10151,6 +10163,8 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @property
     def InstanceSlowlogDetail(self):
+        warnings.warn("parameter `InstanceSlowlogDetail` is deprecated", DeprecationWarning) 
+
         """Slow query log details. This parameter has been deprecated and will be replaced by InstanceSlowLogDetail because it is not properly named.
         :rtype: list of InstanceSlowlogDetail
         """
@@ -10158,6 +10172,8 @@ class DescribeSlowLogResponse(AbstractModel):
 
     @InstanceSlowlogDetail.setter
     def InstanceSlowlogDetail(self, InstanceSlowlogDetail):
+        warnings.warn("parameter `InstanceSlowlogDetail` is deprecated", DeprecationWarning) 
+
         self._InstanceSlowlogDetail = InstanceSlowlogDetail
 
     @property
@@ -10622,6 +10638,8 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def OperatorUin(self):
+        warnings.warn("parameter `OperatorUin` is deprecated", DeprecationWarning) 
+
         """The field `OperatorUin` has been disused and replaced by `OperateUin`.
         :rtype: list of int
         """
@@ -10629,6 +10647,8 @@ class DescribeTaskListRequest(AbstractModel):
 
     @OperatorUin.setter
     def OperatorUin(self, OperatorUin):
+        warnings.warn("parameter `OperatorUin` is deprecated", DeprecationWarning) 
+
         self._OperatorUin = OperatorUin
 
     @property
@@ -11315,6 +11335,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         """Valid values: `ERROR`, `OK`. This field has been disused.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
@@ -11323,6 +11345,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
@@ -13738,6 +13762,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SizeUsed(self):
+        warnings.warn("parameter `SizeUsed` is deprecated", DeprecationWarning) 
+
         """This parameter has been deprecated. Obtain the memory capacity used by the instance through the TCOP API [GetMonitorData](https://intl.cloud.tencent.com/document/product/248/31014?from_cn_redirect=1).
         :rtype: float
         """
@@ -13745,6 +13771,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @SizeUsed.setter
     def SizeUsed(self, SizeUsed):
+        warnings.warn("parameter `SizeUsed` is deprecated", DeprecationWarning) 
+
         self._SizeUsed = SizeUsed
 
     @property
@@ -17093,6 +17121,8 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         """This parameter is currently being deprecated and can still be used by existing users. It is recommended that new users use InstanceIds.
         :rtype: str
         """
@@ -17100,10 +17130,14 @@ class ModifyInstanceRequest(AbstractModel):
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
 
     @property
     def InstanceName(self):
+        warnings.warn("parameter `InstanceName` is deprecated", DeprecationWarning) 
+
         """Disused
         :rtype: str
         """
@@ -17111,10 +17145,14 @@ class ModifyInstanceRequest(AbstractModel):
 
     @InstanceName.setter
     def InstanceName(self, InstanceName):
+        warnings.warn("parameter `InstanceName` is deprecated", DeprecationWarning) 
+
         self._InstanceName = InstanceName
 
     @property
     def AutoRenew(self):
+        warnings.warn("parameter `AutoRenew` is deprecated", DeprecationWarning) 
+
         """This parameter has been deprecated.
         :rtype: int
         """
@@ -17122,6 +17160,8 @@ class ModifyInstanceRequest(AbstractModel):
 
     @AutoRenew.setter
     def AutoRenew(self, AutoRenew):
+        warnings.warn("parameter `AutoRenew` is deprecated", DeprecationWarning) 
+
         self._AutoRenew = AutoRenew
 
 
@@ -18447,6 +18487,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EnableRepicaReadOnly(self):
+        warnings.warn("parameter `EnableRepicaReadOnly` is deprecated", DeprecationWarning) 
+
         """Due to spelling inconsistency in this parameter name, it is recommended to use the **EnableReplicaReadOnly** parameter instead. Its meaning refers to whether the Read-Only Replica is supported.
 - true: Supported.
 - false: Not supported.
@@ -18456,6 +18498,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @EnableRepicaReadOnly.setter
     def EnableRepicaReadOnly(self, EnableRepicaReadOnly):
+        warnings.warn("parameter `EnableRepicaReadOnly` is deprecated", DeprecationWarning) 
+
         self._EnableRepicaReadOnly = EnableRepicaReadOnly
 
     @property
@@ -20926,6 +20970,8 @@ class StartupInstanceResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         """This parameter has been deprecated. Determine whether the instance has been deisolated based on the status obtained through the instance query API.
         :rtype: int
         """
@@ -20933,6 +20979,8 @@ class StartupInstanceResponse(AbstractModel):
 
     @TaskId.setter
     def TaskId(self, TaskId):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         self._TaskId = TaskId
 
     @property
@@ -21717,7 +21765,7 @@ class TradeDealDetail(AbstractModel):
         :type Status: int
         :param _Description: Order status description
         :type Description: str
-        :param _Price: Actual total price of the order in 0.01 CNY
+        :param _Price: Order actual total price (in cents)
         :type Price: int
         :param _InstanceIds: Instance ID
         :type InstanceIds: list of str
@@ -21847,7 +21895,7 @@ class TradeDealDetail(AbstractModel):
 
     @property
     def Price(self):
-        """Actual total price of the order in 0.01 CNY
+        """Order actual total price (in cents)
         :rtype: int
         """
         return self._Price

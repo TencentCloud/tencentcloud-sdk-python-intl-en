@@ -4174,6 +4174,561 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DeployRecord(AbstractModel):
+    """Managed records.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _SuccessTotalCount: Total successes
+        :type SuccessTotalCount: int
+        :param _FailedTotalCount: Total failed deployments.
+        :type FailedTotalCount: int
+        :param _RunningTotalCount: Deployment in progress total number.
+        :type RunningTotalCount: int
+        :param _Type: Deployment record type 0 specifies deployment, 1 indicates rollback.
+        :type Type: int
+        :param _RecordDetailList: Deployment record detail list.
+        :type RecordDetailList: list of DeployRecordList
+        :param _Status: Hosted resource deployment state: `0` (awaiting deployment), `1` (deployment successful), `2` (deployment failed), `3` (deploying), `4` (rollback successful), `5` (rollback failure).
+        :type Status: int
+        :param _CreateTime: Managed resource creation time.
+        :type CreateTime: str
+        """
+        self._TotalCount = None
+        self._SuccessTotalCount = None
+        self._FailedTotalCount = None
+        self._RunningTotalCount = None
+        self._Type = None
+        self._RecordDetailList = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def TotalCount(self):
+        """Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SuccessTotalCount(self):
+        """Total successes
+        :rtype: int
+        """
+        return self._SuccessTotalCount
+
+    @SuccessTotalCount.setter
+    def SuccessTotalCount(self, SuccessTotalCount):
+        self._SuccessTotalCount = SuccessTotalCount
+
+    @property
+    def FailedTotalCount(self):
+        """Total failed deployments.
+        :rtype: int
+        """
+        return self._FailedTotalCount
+
+    @FailedTotalCount.setter
+    def FailedTotalCount(self, FailedTotalCount):
+        self._FailedTotalCount = FailedTotalCount
+
+    @property
+    def RunningTotalCount(self):
+        """Deployment in progress total number.
+        :rtype: int
+        """
+        return self._RunningTotalCount
+
+    @RunningTotalCount.setter
+    def RunningTotalCount(self, RunningTotalCount):
+        self._RunningTotalCount = RunningTotalCount
+
+    @property
+    def Type(self):
+        """Deployment record type 0 specifies deployment, 1 indicates rollback.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RecordDetailList(self):
+        """Deployment record detail list.
+        :rtype: list of DeployRecordList
+        """
+        return self._RecordDetailList
+
+    @RecordDetailList.setter
+    def RecordDetailList(self, RecordDetailList):
+        self._RecordDetailList = RecordDetailList
+
+    @property
+    def Status(self):
+        """Hosted resource deployment state: `0` (awaiting deployment), `1` (deployment successful), `2` (deployment failed), `3` (deploying), `4` (rollback successful), `5` (rollback failure).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """Managed resource creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SuccessTotalCount = params.get("SuccessTotalCount")
+        self._FailedTotalCount = params.get("FailedTotalCount")
+        self._RunningTotalCount = params.get("RunningTotalCount")
+        self._Type = params.get("Type")
+        if params.get("RecordDetailList") is not None:
+            self._RecordDetailList = []
+            for item in params.get("RecordDetailList"):
+                obj = DeployRecordList()
+                obj._deserialize(item)
+                self._RecordDetailList.append(obj)
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployRecordItem(AbstractModel):
+    """Deployment record details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Deployment record detail ID.
+        :type Id: int
+        :param _OldCertId: Bound certificate ID.
+        :type OldCertId: str
+        :param _InstanceId: Deployment instance ID.
+        :type InstanceId: str
+        :param _InstanceName: Specifies the deployment instance name.
+        :type InstanceName: str
+        :param _ListenerId: Deploy the listener ID.
+        :type ListenerId: str
+        :param _Domains: Deployment domain name list.
+        :type Domains: list of str
+        :param _Protocol: Deploy listener protocol.
+        :type Protocol: str
+        :param _Status: Deployment state.
+        :type Status: int
+        :param _ErrorMsg: Deployment error information.
+        :type ErrorMsg: str
+        :param _CreateTime: Describes the creation time of the deployment record detail.
+        :type CreateTime: str
+        :param _UpdateTime: Specifies the last update time of the deployment record detail.
+        :type UpdateTime: str
+        :param _ListenerName: Deploy listener name.
+        :type ListenerName: str
+        :param _SniSwitch: Whether SNI is enabled.
+        :type SniSwitch: int
+        :param _Bucket: COS bucket name.
+        :type Bucket: str
+        :param _Namespace: Namespace name.
+        :type Namespace: str
+        :param _SecretName: The secret name.
+        :type SecretName: str
+        :param _Port: Port
+        :type Port: int
+        :param _Region: Deployed TCB region.
+        :type Region: str
+        :param _Forward: CLB type. valid values: 0 (classic clb); 1 (application clb).
+        :type Forward: int
+        :param _SSLMode: Certificate authentication mode: UNIDIRECTIONAL for one-way authentication, MUTUAL for MUTUAL authentication.
+        :type SSLMode: str
+        :param _ResourceType: Deployment resource type.
+        :type ResourceType: str
+        """
+        self._Id = None
+        self._OldCertId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ListenerId = None
+        self._Domains = None
+        self._Protocol = None
+        self._Status = None
+        self._ErrorMsg = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ListenerName = None
+        self._SniSwitch = None
+        self._Bucket = None
+        self._Namespace = None
+        self._SecretName = None
+        self._Port = None
+        self._Region = None
+        self._Forward = None
+        self._SSLMode = None
+        self._ResourceType = None
+
+    @property
+    def Id(self):
+        """Deployment record detail ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OldCertId(self):
+        """Bound certificate ID.
+        :rtype: str
+        """
+        return self._OldCertId
+
+    @OldCertId.setter
+    def OldCertId(self, OldCertId):
+        self._OldCertId = OldCertId
+
+    @property
+    def InstanceId(self):
+        """Deployment instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """Specifies the deployment instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ListenerId(self):
+        """Deploy the listener ID.
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Domains(self):
+        """Deployment domain name list.
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Protocol(self):
+        """Deploy listener protocol.
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Status(self):
+        """Deployment state.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        """Deployment error information.
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def CreateTime(self):
+        """Describes the creation time of the deployment record detail.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Specifies the last update time of the deployment record detail.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ListenerName(self):
+        """Deploy listener name.
+        :rtype: str
+        """
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def SniSwitch(self):
+        """Whether SNI is enabled.
+        :rtype: int
+        """
+        return self._SniSwitch
+
+    @SniSwitch.setter
+    def SniSwitch(self, SniSwitch):
+        self._SniSwitch = SniSwitch
+
+    @property
+    def Bucket(self):
+        """COS bucket name.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Namespace(self):
+        """Namespace name.
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SecretName(self):
+        """The secret name.
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def Port(self):
+        """Port
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Region(self):
+        """Deployed TCB region.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Forward(self):
+        """CLB type. valid values: 0 (classic clb); 1 (application clb).
+        :rtype: int
+        """
+        return self._Forward
+
+    @Forward.setter
+    def Forward(self, Forward):
+        self._Forward = Forward
+
+    @property
+    def SSLMode(self):
+        """Certificate authentication mode: UNIDIRECTIONAL for one-way authentication, MUTUAL for MUTUAL authentication.
+        :rtype: str
+        """
+        return self._SSLMode
+
+    @SSLMode.setter
+    def SSLMode(self, SSLMode):
+        self._SSLMode = SSLMode
+
+    @property
+    def ResourceType(self):
+        """Deployment resource type.
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OldCertId = params.get("OldCertId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ListenerId = params.get("ListenerId")
+        self._Domains = params.get("Domains")
+        self._Protocol = params.get("Protocol")
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ListenerName = params.get("ListenerName")
+        self._SniSwitch = params.get("SniSwitch")
+        self._Bucket = params.get("Bucket")
+        self._Namespace = params.get("Namespace")
+        self._SecretName = params.get("SecretName")
+        self._Port = params.get("Port")
+        self._Region = params.get("Region")
+        self._Forward = params.get("Forward")
+        self._SSLMode = params.get("SSLMode")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployRecordList(AbstractModel):
+    """Managed record detailed information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: Deployment resource type.
+        :type ResourceType: str
+        :param _List: Deployment resource detail list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of DeployRecordItem
+        :param _TotalCount: Total count of deployment resources.
+        :type TotalCount: int
+        """
+        self._ResourceType = None
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def ResourceType(self):
+        """Deployment resource type.
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def List(self):
+        """Deployment resource detail list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DeployRecordItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        """Total count of deployment resources.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DeployRecordItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeCSRRequest(AbstractModel):
     """DescribeCSR request structure.
 
@@ -8120,6 +8675,249 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHostUploadUpdateRecordDetailRequest(AbstractModel):
+    """DescribeHostUploadUpdateRecordDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: Hosting record ID.
+        :type DeployRecordId: int
+        :param _Limit: Number of items per page. default is 10, maximum is 200. exceeds 200 will be set to 200.
+        :type Limit: int
+        :param _Offset: Offset. Default value: 0.
+        :type Offset: int
+        """
+        self._DeployRecordId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def DeployRecordId(self):
+        """Hosting record ID.
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def Limit(self):
+        """Number of items per page. default is 10, maximum is 200. exceeds 200 will be set to 200.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUploadUpdateRecordDetailResponse(AbstractModel):
+    """DescribeHostUploadUpdateRecordDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordDetail: Hosting record detail list.
+        :type DeployRecordDetail: list of DeployRecord
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeployRecordDetail = None
+        self._RequestId = None
+
+    @property
+    def DeployRecordDetail(self):
+        """Hosting record detail list.
+        :rtype: list of DeployRecord
+        """
+        return self._DeployRecordDetail
+
+    @DeployRecordDetail.setter
+    def DeployRecordDetail(self, DeployRecordDetail):
+        self._DeployRecordDetail = DeployRecordDetail
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeployRecordDetail") is not None:
+            self._DeployRecordDetail = []
+            for item in params.get("DeployRecordDetail"):
+                obj = DeployRecord()
+                obj._deserialize(item)
+                self._DeployRecordDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostUploadUpdateRecordRequest(AbstractModel):
+    """DescribeHostUploadUpdateRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Pagination offset, starting from 0.
+        :type Offset: int
+        :param _Limit: Number of items per page. default is 10.
+        :type Limit: int
+        :param _OldCertificateId: Original certificate ID
+        :type OldCertificateId: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._OldCertificateId = None
+
+    @property
+    def Offset(self):
+        """Pagination offset, starting from 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of items per page. default is 10.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OldCertificateId(self):
+        """Original certificate ID
+        :rtype: str
+        """
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUploadUpdateRecordResponse(AbstractModel):
+    """DescribeHostUploadUpdateRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number.
+        :type TotalCount: int
+        :param _DeployRecordList: Certificate deployment record list.
+        :type DeployRecordList: list of UploadUpdateRecordInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DeployRecordList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DeployRecordList(self):
+        """Certificate deployment record list.
+        :rtype: list of UploadUpdateRecordInfo
+        """
+        return self._DeployRecordList
+
+    @DeployRecordList.setter
+    def DeployRecordList(self, DeployRecordList):
+        self._DeployRecordList = DeployRecordList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DeployRecordList") is not None:
+            self._DeployRecordList = []
+            for item in params.get("DeployRecordList"):
+                obj = UploadUpdateRecordInfo()
+                obj._deserialize(item)
+                self._DeployRecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DownloadCertificateRequest(AbstractModel):
     """DownloadCertificate request structure.
 
@@ -9461,6 +10259,100 @@ class ModifyCertificateResubmitResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCertificatesExpiringNotificationSwitchRequest(AbstractModel):
+    """ModifyCertificatesExpiringNotificationSwitch request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateIds: Certificate ID list. maximum of 50.
+        :type CertificateIds: list of str
+        :param _SwitchStatus: 0: do not ignore notifications. 1: ignore notifications.
+        :type SwitchStatus: int
+        """
+        self._CertificateIds = None
+        self._SwitchStatus = None
+
+    @property
+    def CertificateIds(self):
+        """Certificate ID list. maximum of 50.
+        :rtype: list of str
+        """
+        return self._CertificateIds
+
+    @CertificateIds.setter
+    def CertificateIds(self, CertificateIds):
+        self._CertificateIds = CertificateIds
+
+    @property
+    def SwitchStatus(self):
+        """0: do not ignore notifications. 1: ignore notifications.
+        :rtype: int
+        """
+        return self._SwitchStatus
+
+    @SwitchStatus.setter
+    def SwitchStatus(self, SwitchStatus):
+        self._SwitchStatus = SwitchStatus
+
+
+    def _deserialize(self, params):
+        self._CertificateIds = params.get("CertificateIds")
+        self._SwitchStatus = params.get("SwitchStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
+    """ModifyCertificatesExpiringNotificationSwitch response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateIds: Certificate ID list.
+        :type CertificateIds: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CertificateIds = None
+        self._RequestId = None
+
+    @property
+    def CertificateIds(self):
+        """Certificate ID list.
+        :rtype: list of str
+        """
+        return self._CertificateIds
+
+    @CertificateIds.setter
+    def CertificateIds(self, CertificateIds):
+        self._CertificateIds = CertificateIds
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CertificateIds = params.get("CertificateIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -14270,6 +15162,441 @@ class UploadConfirmLetterResponse(AbstractModel):
         self._CertificateId = params.get("CertificateId")
         self._IsSuccess = params.get("IsSuccess")
         self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateCertificateInstanceRequest(AbstractModel):
+    """UploadUpdateCertificateInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldCertificateId: Old Certificate ID for One-Click Update. Query the tencent cloud resources bound to this certificate ID and use the new certificate to update these resources.
+        :type OldCertificateId: str
+        :param _ResourceTypes: Resource type that needs to be deployed, parameter value (lowercase): clb.
+        :type ResourceTypes: list of str
+        :param _CertificatePublicKey: Public key certificate.
+        :type CertificatePublicKey: str
+        :param _CertificatePrivateKey: Private key certificate.
+        :type CertificatePrivateKey: str
+        :param _ResourceTypesRegions: The list of regions where cloud resources need to be deployed. The cloud resource type supported in the region is required. Value: clb.
+        :type ResourceTypesRegions: list of ResourceTypeRegions
+        """
+        self._OldCertificateId = None
+        self._ResourceTypes = None
+        self._CertificatePublicKey = None
+        self._CertificatePrivateKey = None
+        self._ResourceTypesRegions = None
+
+    @property
+    def OldCertificateId(self):
+        """Old Certificate ID for One-Click Update. Query the tencent cloud resources bound to this certificate ID and use the new certificate to update these resources.
+        :rtype: str
+        """
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+    @property
+    def ResourceTypes(self):
+        """Resource type that needs to be deployed, parameter value (lowercase): clb.
+        :rtype: list of str
+        """
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def CertificatePublicKey(self):
+        """Public key certificate.
+        :rtype: str
+        """
+        return self._CertificatePublicKey
+
+    @CertificatePublicKey.setter
+    def CertificatePublicKey(self, CertificatePublicKey):
+        self._CertificatePublicKey = CertificatePublicKey
+
+    @property
+    def CertificatePrivateKey(self):
+        """Private key certificate.
+        :rtype: str
+        """
+        return self._CertificatePrivateKey
+
+    @CertificatePrivateKey.setter
+    def CertificatePrivateKey(self, CertificatePrivateKey):
+        self._CertificatePrivateKey = CertificatePrivateKey
+
+    @property
+    def ResourceTypesRegions(self):
+        """The list of regions where cloud resources need to be deployed. The cloud resource type supported in the region is required. Value: clb.
+        :rtype: list of ResourceTypeRegions
+        """
+        return self._ResourceTypesRegions
+
+    @ResourceTypesRegions.setter
+    def ResourceTypesRegions(self, ResourceTypesRegions):
+        self._ResourceTypesRegions = ResourceTypesRegions
+
+
+    def _deserialize(self, params):
+        self._OldCertificateId = params.get("OldCertificateId")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._CertificatePublicKey = params.get("CertificatePublicKey")
+        self._CertificatePrivateKey = params.get("CertificatePrivateKey")
+        if params.get("ResourceTypesRegions") is not None:
+            self._ResourceTypesRegions = []
+            for item in params.get("ResourceTypesRegions"):
+                obj = ResourceTypeRegions()
+                obj._deserialize(item)
+                self._ResourceTypesRegions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadUpdateCertificateInstanceResponse(AbstractModel):
+    """UploadUpdateCertificateInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: The tencent cloud resource update task ID. DeployRecordId equals 0 indicates the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If not successfully created, an exception will be thrown.
+        :type DeployRecordId: int
+        :param _DeployStatus: Update task creation status: 1 indicates successful creation; 0 indicates an existing ongoing update task, and no new update task was created. The return value DeployRecordId represents the ID of the ongoing update task.
+        :type DeployStatus: int
+        :param _UpdateSyncProgress: Create progress details for asynchronous update tasks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateSyncProgress: list of UpdateSyncProgress
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeployRecordId = None
+        self._DeployStatus = None
+        self._UpdateSyncProgress = None
+        self._RequestId = None
+
+    @property
+    def DeployRecordId(self):
+        """The tencent cloud resource update task ID. DeployRecordId equals 0 indicates the task is in progress. Repeatedly request this API, and when DeployRecordId is greater than 0, it means the task has been successfully created. If not successfully created, an exception will be thrown.
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def DeployStatus(self):
+        """Update task creation status: 1 indicates successful creation; 0 indicates an existing ongoing update task, and no new update task was created. The return value DeployRecordId represents the ID of the ongoing update task.
+        :rtype: int
+        """
+        return self._DeployStatus
+
+    @DeployStatus.setter
+    def DeployStatus(self, DeployStatus):
+        self._DeployStatus = DeployStatus
+
+    @property
+    def UpdateSyncProgress(self):
+        """Create progress details for asynchronous update tasks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UpdateSyncProgress
+        """
+        return self._UpdateSyncProgress
+
+    @UpdateSyncProgress.setter
+    def UpdateSyncProgress(self, UpdateSyncProgress):
+        self._UpdateSyncProgress = UpdateSyncProgress
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._DeployStatus = params.get("DeployStatus")
+        if params.get("UpdateSyncProgress") is not None:
+            self._UpdateSyncProgress = []
+            for item in params.get("UpdateSyncProgress"):
+                obj = UpdateSyncProgress()
+                obj._deserialize(item)
+                self._UpdateSyncProgress.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateCertificateRecordRetryRequest(AbstractModel):
+    """UploadUpdateCertificateRecordRetry request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: Retry deployment record ID, obtained through UpdateCertificateInstance to get the deployment record ID. If this parameter is not provided, DeployRecordDetailId must be provided.
+        :type DeployRecordId: int
+        :param _DeployRecordDetailId: Retry deployment record detail ID, obtained through the DescribeHostUpdateRecordDetail API. If this parameter is not provided, DeployRecordId must be provided.
+        :type DeployRecordDetailId: int
+        """
+        self._DeployRecordId = None
+        self._DeployRecordDetailId = None
+
+    @property
+    def DeployRecordId(self):
+        """Retry deployment record ID, obtained through UpdateCertificateInstance to get the deployment record ID. If this parameter is not provided, DeployRecordDetailId must be provided.
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def DeployRecordDetailId(self):
+        """Retry deployment record detail ID, obtained through the DescribeHostUpdateRecordDetail API. If this parameter is not provided, DeployRecordId must be provided.
+        :rtype: int
+        """
+        return self._DeployRecordDetailId
+
+    @DeployRecordDetailId.setter
+    def DeployRecordDetailId(self, DeployRecordDetailId):
+        self._DeployRecordDetailId = DeployRecordDetailId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._DeployRecordDetailId = params.get("DeployRecordDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadUpdateCertificateRecordRetryResponse(AbstractModel):
+    """UploadUpdateCertificateRecordRetry response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateCertificateRecordRollbackRequest(AbstractModel):
+    """UploadUpdateCertificateRecordRollback request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: Record ID of the certificate pending rollback, obtained through the UpdateCertificateInstance API.
+        :type DeployRecordId: int
+        """
+        self._DeployRecordId = None
+
+    @property
+    def DeployRecordId(self):
+        """Record ID of the certificate pending rollback, obtained through the UpdateCertificateInstance API.
+        :rtype: int
+        """
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadUpdateCertificateRecordRollbackResponse(AbstractModel):
+    """UploadUpdateCertificateRecordRollback response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UploadUpdateRecordInfo(AbstractModel):
+    """Deployment record list information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Record ID
+        :type Id: int
+        :param _OldCertId: Original certificate ID
+        :type OldCertId: str
+        :param _ResourceTypes: Deployment resource type list.
+        :type ResourceTypes: list of str
+        :param _Status: Deployment state.
+        :type Status: int
+        :param _CreateTime: Deployment time.
+        :type CreateTime: str
+        :param _UpdateTime: Last update time.
+        :type UpdateTime: str
+        """
+        self._Id = None
+        self._OldCertId = None
+        self._ResourceTypes = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        """Record ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OldCertId(self):
+        """Original certificate ID
+        :rtype: str
+        """
+        return self._OldCertId
+
+    @OldCertId.setter
+    def OldCertId(self, OldCertId):
+        self._OldCertId = OldCertId
+
+    @property
+    def ResourceTypes(self):
+        """Deployment resource type list.
+        :rtype: list of str
+        """
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def Status(self):
+        """Deployment state.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        """Deployment time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Last update time.
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OldCertId = params.get("OldCertId")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VODInstanceList(AbstractModel):

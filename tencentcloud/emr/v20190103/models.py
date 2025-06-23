@@ -6886,26 +6886,32 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         r"""
         :param _TimeSpan: How long the instance will be renewed for, which needs to be used together with `TimeUnit`.
         :type TimeSpan: int
-        :param _ResourceIds: List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
-        :type ResourceIds: list of str
-        :param _Placement: Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param _PayMode: Instance billing mode.
         :type PayMode: int
+        :param _ResourceIds: List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :type ResourceIds: list of str
         :param _TimeUnit: Unit of time for instance renewal.
         :type TimeUnit: str
         :param _Currency: Currency.
         :type Currency: str
+        :param _Placement: Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param _ModifyPayMode: Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
         :type ModifyPayMode: int
+        :param _NeedDetail: 
+        :type NeedDetail: bool
+        :param _InstanceId: 
+        :type InstanceId: str
         """
         self._TimeSpan = None
-        self._ResourceIds = None
-        self._Placement = None
         self._PayMode = None
+        self._ResourceIds = None
         self._TimeUnit = None
         self._Currency = None
+        self._Placement = None
         self._ModifyPayMode = None
+        self._NeedDetail = None
+        self._InstanceId = None
 
     @property
     def TimeSpan(self):
@@ -6919,28 +6925,6 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self._TimeSpan = TimeSpan
 
     @property
-    def ResourceIds(self):
-        """List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
-        :rtype: list of str
-        """
-        return self._ResourceIds
-
-    @ResourceIds.setter
-    def ResourceIds(self, ResourceIds):
-        self._ResourceIds = ResourceIds
-
-    @property
-    def Placement(self):
-        """Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
-        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
-        """
-        return self._Placement
-
-    @Placement.setter
-    def Placement(self, Placement):
-        self._Placement = Placement
-
-    @property
     def PayMode(self):
         """Instance billing mode.
         :rtype: int
@@ -6950,6 +6934,17 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     @PayMode.setter
     def PayMode(self, PayMode):
         self._PayMode = PayMode
+
+    @property
+    def ResourceIds(self):
+        """List of resource IDs of the node to be renewed. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
 
     @property
     def TimeUnit(self):
@@ -6974,6 +6969,17 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
         self._Currency = Currency
 
     @property
+    def Placement(self):
+        """Location of the instance. This parameter is used to specify the AZ, project, and other attributes of the instance.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Placement`
+        """
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+    @property
     def ModifyPayMode(self):
         """Whether to change from pay-as-you-go billing to monthly subscription billing. `0`: no; `1`: yes
         :rtype: int
@@ -6984,17 +6990,41 @@ class InquiryPriceRenewInstanceRequest(AbstractModel):
     def ModifyPayMode(self, ModifyPayMode):
         self._ModifyPayMode = ModifyPayMode
 
+    @property
+    def NeedDetail(self):
+        """
+        :rtype: bool
+        """
+        return self._NeedDetail
+
+    @NeedDetail.setter
+    def NeedDetail(self, NeedDetail):
+        self._NeedDetail = NeedDetail
+
+    @property
+    def InstanceId(self):
+        """
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
         self._ResourceIds = params.get("ResourceIds")
+        self._TimeUnit = params.get("TimeUnit")
+        self._Currency = params.get("Currency")
         if params.get("Placement") is not None:
             self._Placement = Placement()
             self._Placement._deserialize(params.get("Placement"))
-        self._PayMode = params.get("PayMode")
-        self._TimeUnit = params.get("TimeUnit")
-        self._Currency = params.get("Currency")
         self._ModifyPayMode = params.get("ModifyPayMode")
+        self._NeedDetail = params.get("NeedDetail")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7024,13 +7054,19 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _TimeSpan: How long the instance will be renewed for.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TimeSpan: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _PriceDetail: 
+        :type PriceDetail: list of PriceDetail
+        :param _NodeRenewPriceDetails: 
+        :type NodeRenewPriceDetails: list of NodeRenewPriceDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._OriginalCost = None
         self._DiscountCost = None
         self._TimeUnit = None
         self._TimeSpan = None
+        self._PriceDetail = None
+        self._NodeRenewPriceDetails = None
         self._RequestId = None
 
     @property
@@ -7082,8 +7118,30 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._TimeSpan = TimeSpan
 
     @property
+    def PriceDetail(self):
+        """
+        :rtype: list of PriceDetail
+        """
+        return self._PriceDetail
+
+    @PriceDetail.setter
+    def PriceDetail(self, PriceDetail):
+        self._PriceDetail = PriceDetail
+
+    @property
+    def NodeRenewPriceDetails(self):
+        """
+        :rtype: list of NodeRenewPriceDetail
+        """
+        return self._NodeRenewPriceDetails
+
+    @NodeRenewPriceDetails.setter
+    def NodeRenewPriceDetails(self, NodeRenewPriceDetails):
+        self._NodeRenewPriceDetails = NodeRenewPriceDetails
+
+    @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -7098,6 +7156,18 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._DiscountCost = params.get("DiscountCost")
         self._TimeUnit = params.get("TimeUnit")
         self._TimeSpan = params.get("TimeSpan")
+        if params.get("PriceDetail") is not None:
+            self._PriceDetail = []
+            for item in params.get("PriceDetail"):
+                obj = PriceDetail()
+                obj._deserialize(item)
+                self._PriceDetail.append(obj)
+        if params.get("NodeRenewPriceDetails") is not None:
+            self._NodeRenewPriceDetails = []
+            for item in params.get("NodeRenewPriceDetails"):
+                obj = NodeRenewPriceDetail()
+                obj._deserialize(item)
+                self._NodeRenewPriceDetails.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7131,6 +7201,12 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         :type RouterCount: int
         :param _MasterCount: Number of master nodes to be added.
         :type MasterCount: int
+        :param _ResourceBaseType: The type can be ComputeResource, EMR, or a default value. The default value is EMR.
+        :type ResourceBaseType: str
+        :param _ComputeResourceId: Computing resource ID.
+        :type ComputeResourceId: str
+        :param _HardwareResourceType: Scale-out resource type.
+        :type HardwareResourceType: str
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -7142,6 +7218,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self._Currency = None
         self._RouterCount = None
         self._MasterCount = None
+        self._ResourceBaseType = None
+        self._ComputeResourceId = None
+        self._HardwareResourceType = None
 
     @property
     def TimeUnit(self):
@@ -7256,6 +7335,39 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
     def MasterCount(self, MasterCount):
         self._MasterCount = MasterCount
 
+    @property
+    def ResourceBaseType(self):
+        """The type can be ComputeResource, EMR, or a default value. The default value is EMR.
+        :rtype: str
+        """
+        return self._ResourceBaseType
+
+    @ResourceBaseType.setter
+    def ResourceBaseType(self, ResourceBaseType):
+        self._ResourceBaseType = ResourceBaseType
+
+    @property
+    def ComputeResourceId(self):
+        """Computing resource ID.
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+    @property
+    def HardwareResourceType(self):
+        """Scale-out resource type.
+        :rtype: str
+        """
+        return self._HardwareResourceType
+
+    @HardwareResourceType.setter
+    def HardwareResourceType(self, HardwareResourceType):
+        self._HardwareResourceType = HardwareResourceType
+
 
     def _deserialize(self, params):
         self._TimeUnit = params.get("TimeUnit")
@@ -7268,6 +7380,9 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self._Currency = params.get("Currency")
         self._RouterCount = params.get("RouterCount")
         self._MasterCount = params.get("MasterCount")
+        self._ResourceBaseType = params.get("ResourceBaseType")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        self._HardwareResourceType = params.get("HardwareResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7301,7 +7416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MultipleEmrPrice: The inquiry results corresponding to the specs specified by the input parameter `MultipleResources`, with the result of the first spec returned by other output parameters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MultipleEmrPrice: list of EmrPrice
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._OriginalCost = None
@@ -7374,7 +7489,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId
@@ -9805,6 +9920,152 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class NodeRenewPriceDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeType: 
+        :type ChargeType: int
+        :param _EmrResourceId: 
+        :type EmrResourceId: str
+        :param _NodeType: 
+        :type NodeType: str
+        :param _Ip: 
+        :type Ip: str
+        :param _ExpireTime: 
+        :type ExpireTime: str
+        :param _OriginalCost: 
+        :type OriginalCost: float
+        :param _DiscountCost: 
+        :type DiscountCost: float
+        :param _RenewPriceDetails: 
+        :type RenewPriceDetails: list of RenewPriceDetail
+        """
+        self._ChargeType = None
+        self._EmrResourceId = None
+        self._NodeType = None
+        self._Ip = None
+        self._ExpireTime = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+        self._RenewPriceDetails = None
+
+    @property
+    def ChargeType(self):
+        """
+        :rtype: int
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def EmrResourceId(self):
+        """
+        :rtype: str
+        """
+        return self._EmrResourceId
+
+    @EmrResourceId.setter
+    def EmrResourceId(self, EmrResourceId):
+        self._EmrResourceId = EmrResourceId
+
+    @property
+    def NodeType(self):
+        """
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Ip(self):
+        """
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ExpireTime(self):
+        """
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def OriginalCost(self):
+        """
+        :rtype: float
+        """
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        """
+        :rtype: float
+        """
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+    @property
+    def RenewPriceDetails(self):
+        """
+        :rtype: list of RenewPriceDetail
+        """
+        return self._RenewPriceDetails
+
+    @RenewPriceDetails.setter
+    def RenewPriceDetails(self, RenewPriceDetails):
+        self._RenewPriceDetails = RenewPriceDetails
+
+
+    def _deserialize(self, params):
+        self._ChargeType = params.get("ChargeType")
+        self._EmrResourceId = params.get("EmrResourceId")
+        self._NodeType = params.get("NodeType")
+        self._Ip = params.get("Ip")
+        self._ExpireTime = params.get("ExpireTime")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
+        if params.get("RenewPriceDetails") is not None:
+            self._RenewPriceDetails = []
+            for item in params.get("RenewPriceDetails"):
+                obj = RenewPriceDetail()
+                obj._deserialize(item)
+                self._RenewPriceDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NodeResourceSpec(AbstractModel):
     """Resource details
 
@@ -12079,6 +12340,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._Tags.append(obj)
         self._DiskNum = params.get("DiskNum")
         self._LocalDiskNum = params.get("LocalDiskNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewPriceDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingName: 
+        :type BillingName: str
+        :param _Policy: 
+        :type Policy: float
+        :param _Quantity: 
+        :type Quantity: int
+        :param _OriginalCost: 
+        :type OriginalCost: float
+        :param _DiscountCost: 
+        :type DiscountCost: float
+        """
+        self._BillingName = None
+        self._Policy = None
+        self._Quantity = None
+        self._OriginalCost = None
+        self._DiscountCost = None
+
+    @property
+    def BillingName(self):
+        """
+        :rtype: str
+        """
+        return self._BillingName
+
+    @BillingName.setter
+    def BillingName(self, BillingName):
+        self._BillingName = BillingName
+
+    @property
+    def Policy(self):
+        """
+        :rtype: float
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def Quantity(self):
+        """
+        :rtype: int
+        """
+        return self._Quantity
+
+    @Quantity.setter
+    def Quantity(self, Quantity):
+        self._Quantity = Quantity
+
+    @property
+    def OriginalCost(self):
+        """
+        :rtype: float
+        """
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def DiscountCost(self):
+        """
+        :rtype: float
+        """
+        return self._DiscountCost
+
+    @DiscountCost.setter
+    def DiscountCost(self, DiscountCost):
+        self._DiscountCost = DiscountCost
+
+
+    def _deserialize(self, params):
+        self._BillingName = params.get("BillingName")
+        self._Policy = params.get("Policy")
+        self._Quantity = params.get("Quantity")
+        self._OriginalCost = params.get("OriginalCost")
+        self._DiscountCost = params.get("DiscountCost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

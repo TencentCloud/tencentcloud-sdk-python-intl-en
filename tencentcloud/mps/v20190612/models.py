@@ -551,11 +551,11 @@ class ActivityPara(AbstractModel):
         :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
         :param _AnimatedGraphicTask: An animated screenshot generation task.
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
-        :param _SnapshotByTimeOffsetTask: A time point screencapturing task.
+        :param _SnapshotByTimeOffsetTask: A time point screenshot task.
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
-        :param _SampleSnapshotTask: A sampled screencapturing task.
+        :param _SampleSnapshotTask: A sampled screenshot task.
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
-        :param _ImageSpriteTask: An image sprite generation task.
+        :param _ImageSpriteTask: An image sprite screenshot task.
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
         :param _AdaptiveDynamicStreamingTask: An adaptive bitrate streaming task.
         :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
@@ -608,7 +608,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SnapshotByTimeOffsetTask(self):
-        """A time point screencapturing task.
+        """A time point screenshot task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
         """
         return self._SnapshotByTimeOffsetTask
@@ -619,7 +619,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SampleSnapshotTask(self):
-        """A sampled screencapturing task.
+        """A sampled screenshot task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
         """
         return self._SampleSnapshotTask
@@ -630,7 +630,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ImageSpriteTask(self):
-        """An image sprite generation task.
+        """An image sprite screenshot task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
         """
         return self._ImageSpriteTask
@@ -3245,7 +3245,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
         :param _HighlightSet: A list of the highlight segments generated.
         :type HighlightSet: list of MediaAiAnalysisHighlightItem
         :param _OutputStorage: The storage location of the highlight segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._HighlightSet = None
@@ -3265,7 +3265,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def OutputStorage(self):
         """The storage location of the highlight segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -7905,7 +7905,7 @@ class AiReviewPornTaskInput(AbstractModel):
     def __init__(self):
         r"""
         :param _Definition: The ID of a porn detection template.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         """
         self._Definition = None
@@ -7913,7 +7913,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Definition(self):
         """The ID of a porn detection template.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Definition
@@ -11193,7 +11193,7 @@ Default value: `ON`.
 <li>`declick`: Noise removal.</li>
 <li>`deesser`: De-essing.</li>
 Default: `declick`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Types: list of str
         """
         self._Switch = None
@@ -11219,7 +11219,7 @@ Default value: `ON`.
 <li>`declick`: Noise removal.</li>
 <li>`deesser`: De-essing.</li>
 Default: `declick`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of str
         """
         return self._Types
@@ -11292,16 +11292,16 @@ class AudioEnhanceConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Denoise: The audio noise reduction configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
         :param _Separate: The audio separation configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Separate: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
         :param _VolumeBalance: The volume equalization configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VolumeBalance: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
         :param _Beautify: The audio improvement configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Beautify: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
         self._Denoise = None
@@ -11312,7 +11312,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Denoise(self):
         """The audio noise reduction configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
         """
         return self._Denoise
@@ -11324,7 +11324,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Separate(self):
         """The audio separation configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
         """
         return self._Separate
@@ -11336,7 +11336,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def VolumeBalance(self):
         """The volume equalization configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
         """
         return self._VolumeBalance
@@ -11348,7 +11348,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Beautify(self):
         """The audio improvement configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
         return self._Beautify
@@ -11397,13 +11397,13 @@ Default value: `ON`.
 <li>`normal`: Separate voice and background audio.</li>
 <li>`music`: Separate vocals and instrumentals.</li>
 Default value: `normal`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _Track: The output audio track. Valid values:
 <li>`vocal`: Voice.</li>
 <li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
 Default value: `vocal`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Track: str
         """
         self._Switch = None
@@ -11430,7 +11430,7 @@ Default value: `ON`.
 <li>`normal`: Separate voice and background audio.</li>
 <li>`music`: Separate vocals and instrumentals.</li>
 Default value: `normal`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -11445,7 +11445,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 <li>`vocal`: Voice.</li>
 <li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
 Default value: `vocal`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Track
@@ -12026,16 +12026,16 @@ class AwsSQS(AbstractModel):
     def __init__(self):
         r"""
         :param _SQSRegion: The region of the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SQSRegion: str
         :param _SQSQueueName: The name of the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SQSQueueName: str
         :param _S3SecretId: The key ID required to read from/write to the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type S3SecretId: str
         :param _S3SecretKey: The key required to read from/write to the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type S3SecretKey: str
         """
         self._SQSRegion = None
@@ -12046,7 +12046,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def SQSRegion(self):
         """The region of the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SQSRegion
@@ -12058,7 +12058,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def SQSQueueName(self):
         """The name of the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._SQSQueueName
@@ -12070,7 +12070,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def S3SecretId(self):
         """The key ID required to read from/write to the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._S3SecretId
@@ -12082,7 +12082,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def S3SecretKey(self):
         """The key required to read from/write to the SQS queue.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._S3SecretKey
@@ -24925,7 +24925,7 @@ class DrmInfo(AbstractModel):
 Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: str
         :param _SimpleAesDrm: The AES-128 encryption details.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         :param _SpekeDrm: Information about FairPlay, WideVine, and PlayReady encryption.
         :type SpekeDrm: :class:`tencentcloud.mps.v20190612.models.SpekeDrm`
@@ -24953,7 +24953,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def SimpleAesDrm(self):
         """The AES-128 encryption details.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         """
         return self._SimpleAesDrm
@@ -25008,7 +25008,7 @@ class EditMediaFileInfo(AbstractModel):
         :param _Id: The ID of the material associated with an element. This parameter is required for video compositing tasks.
 
 Note: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Id: str
         """
         self._InputInfo = None
@@ -25054,7 +25054,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         """The ID of the material associated with an element. This parameter is required for video compositing tasks.
 
 Note: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Id
@@ -25089,7 +25089,7 @@ class EditMediaOutputConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Container: The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Container: str
         :param _Type: Editing mode. Optional values:
 normal (default): Precise editing
@@ -25104,7 +25104,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Container(self):
         """The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Container
@@ -25720,7 +25720,7 @@ class EnhanceConfig(AbstractModel):
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoEnhance: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
         :param _AudioEnhance: The audio enhancement configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioEnhance: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         self._VideoEnhance = None
@@ -25741,7 +25741,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def AudioEnhance(self):
         """The audio enhancement configuration.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         return self._AudioEnhance
@@ -26455,10 +26455,10 @@ class HeadTailParameter(AbstractModel):
     def __init__(self):
         r"""
         :param _HeadSet: The opening segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HeadSet: list of MediaInputInfo
         :param _TailSet: The closing segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TailSet: list of MediaInputInfo
         """
         self._HeadSet = None
@@ -26467,7 +26467,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def HeadSet(self):
         """The opening segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MediaInputInfo
         """
         return self._HeadSet
@@ -26479,7 +26479,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def TailSet(self):
         """The closing segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of MediaInputInfo
         """
         return self._TailSet
@@ -28073,7 +28073,7 @@ class LiveActivityResItem(AbstractModel):
     def __init__(self):
         r"""
         :param _LiveRecordTask: The output of a live recording task.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveRecordTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
         :param _LiveQualityControlTask: Media quality inspection task output.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -28085,7 +28085,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LiveRecordTask(self):
         """The output of a live recording task.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
         """
         return self._LiveRecordTask
@@ -28137,7 +28137,7 @@ class LiveActivityResult(AbstractModel):
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ActivityType: str
         :param _LiveActivityResItem: The task output.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveActivityResItem: :class:`tencentcloud.mps.v20190612.models.LiveActivityResItem`
         """
         self._ActivityType = None
@@ -28160,7 +28160,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LiveActivityResItem(self):
         """The task output.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveActivityResItem`
         """
         return self._LiveActivityResItem
@@ -28193,19 +28193,19 @@ class LiveRecordFile(AbstractModel):
     def __init__(self):
         r"""
         :param _Url: The URL of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Url: str
         :param _Size: The size of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Size: int
         :param _Duration: The duration of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Duration: int
         :param _StartTime: The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
         :param _EndTime: The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
         """
         self._Url = None
@@ -28217,7 +28217,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Url(self):
         """The URL of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Url
@@ -28229,7 +28229,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Size(self):
         """The size of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Size
@@ -28241,7 +28241,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Duration(self):
         """The duration of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._Duration
@@ -28253,7 +28253,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def StartTime(self):
         """The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._StartTime
@@ -28265,7 +28265,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def EndTime(self):
         """The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EndTime
@@ -28299,10 +28299,10 @@ class LiveRecordResult(AbstractModel):
     def __init__(self):
         r"""
         :param _OutputStorage: The storage of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _FileList: The recording segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FileList: list of LiveRecordFile
         """
         self._OutputStorage = None
@@ -28311,7 +28311,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def OutputStorage(self):
         """The storage of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -28323,7 +28323,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def FileList(self):
         """The recording segments.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of LiveRecordFile
         """
         return self._FileList
@@ -28363,10 +28363,10 @@ class LiveRecordTaskInput(AbstractModel):
         :param _Definition: The live recording template ID.
         :type Definition: int
         :param _OutputStorage: The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: The output path of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputObjectPath: str
         """
         self._Definition = None
@@ -28387,7 +28387,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def OutputStorage(self):
         """The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -28399,7 +28399,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def OutputObjectPath(self):
         """The output path of the recording file.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OutputObjectPath
@@ -28586,25 +28586,25 @@ class LiveScheduleLiveRecordTaskResult(AbstractModel):
         :param _Status: The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
         :type Status: str
         :param _ErrCodeExt: The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrCodeExt: str
         :param _ErrCode: The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrCode: int
         :param _Message: The error message.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Message: str
         :param _Input: The input of a live recording task.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Input: :class:`tencentcloud.mps.v20190612.models.LiveRecordTaskInput`
         :param _Output: The output of a live recording task.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.LiveRecordResult`
         :param _BeginProcessTime: The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BeginProcessTime: str
         :param _FinishTime: The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FinishTime: str
         """
         self._Status = None
@@ -28630,7 +28630,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def ErrCodeExt(self):
         """The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ErrCodeExt
@@ -28642,7 +28642,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def ErrCode(self):
         """The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ErrCode
@@ -28654,7 +28654,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Message(self):
         """The error message.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Message
@@ -28666,7 +28666,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Input(self):
         """The input of a live recording task.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveRecordTaskInput`
         """
         return self._Input
@@ -28678,7 +28678,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Output(self):
         """The output of a live recording task.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveRecordResult`
         """
         return self._Output
@@ -28690,7 +28690,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def BeginProcessTime(self):
         """The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._BeginProcessTime
@@ -28702,7 +28702,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def FinishTime(self):
         """The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FinishTime
@@ -28743,24 +28743,24 @@ class LiveScheduleTask(AbstractModel):
     def __init__(self):
         r"""
         :param _TaskId: The ID of a live scheme subtask.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TaskId: str
         :param _Status: The task status. Valid values:
 <li>`PROCESSING`</li>
 <li>`FINISH` </li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
         :param _ErrCode: If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrCode: int
         :param _Message: If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Message: str
         :param _Url: The URL of the live stream.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Url: str
         :param _LiveActivityResultSet: The task output.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LiveActivityResultSet: list of LiveActivityResult
         """
         self._TaskId = None
@@ -28773,7 +28773,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def TaskId(self):
         """The ID of a live scheme subtask.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TaskId
@@ -28787,7 +28787,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         """The task status. Valid values:
 <li>`PROCESSING`</li>
 <li>`FINISH` </li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Status
@@ -28799,7 +28799,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def ErrCode(self):
         """If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ErrCode
@@ -28811,7 +28811,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Message(self):
         """If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Message
@@ -28823,7 +28823,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Url(self):
         """The URL of the live stream.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Url
@@ -28835,7 +28835,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def LiveActivityResultSet(self):
         """The task output.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of LiveActivityResult
         """
         return self._LiveActivityResultSet
@@ -33561,13 +33561,13 @@ class MediaProcessTaskInput(AbstractModel):
         r"""
         :param _TranscodeTaskSet: List of transcoding tasks.
         :type TranscodeTaskSet: list of TranscodeTaskInput
-        :param _AnimatedGraphicTaskSet: List of animated image generating tasks.
+        :param _AnimatedGraphicTaskSet: List of animated image screenshot tasks.
         :type AnimatedGraphicTaskSet: list of AnimatedGraphicTaskInput
-        :param _SnapshotByTimeOffsetTaskSet: List of time point screencapturing tasks.
+        :param _SnapshotByTimeOffsetTaskSet: List of time point screenshot tasks.
         :type SnapshotByTimeOffsetTaskSet: list of SnapshotByTimeOffsetTaskInput
-        :param _SampleSnapshotTaskSet: List of sampled screencapturing tasks.
+        :param _SampleSnapshotTaskSet: List of sampled screenshot tasks.
         :type SampleSnapshotTaskSet: list of SampleSnapshotTaskInput
-        :param _ImageSpriteTaskSet: List of image sprite generating tasks.
+        :param _ImageSpriteTaskSet: List of image sprite screenshot tasks.
         :type ImageSpriteTaskSet: list of ImageSpriteTaskInput
         :param _AdaptiveDynamicStreamingTaskSet: List of adaptive bitrate streaming tasks.
         :type AdaptiveDynamicStreamingTaskSet: list of AdaptiveDynamicStreamingTaskInput
@@ -33592,7 +33592,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def AnimatedGraphicTaskSet(self):
-        """List of animated image generating tasks.
+        """List of animated image screenshot tasks.
         :rtype: list of AnimatedGraphicTaskInput
         """
         return self._AnimatedGraphicTaskSet
@@ -33603,7 +33603,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTaskSet(self):
-        """List of time point screencapturing tasks.
+        """List of time point screenshot tasks.
         :rtype: list of SnapshotByTimeOffsetTaskInput
         """
         return self._SnapshotByTimeOffsetTaskSet
@@ -33614,7 +33614,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SampleSnapshotTaskSet(self):
-        """List of sampled screencapturing tasks.
+        """List of sampled screenshot tasks.
         :rtype: list of SampleSnapshotTaskInput
         """
         return self._SampleSnapshotTaskSet
@@ -33625,7 +33625,7 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def ImageSpriteTaskSet(self):
-        """List of image sprite generating tasks.
+        """List of image sprite screenshot tasks.
         :rtype: list of ImageSpriteTaskInput
         """
         return self._ImageSpriteTaskSet
@@ -33703,10 +33703,10 @@ class MediaProcessTaskResult(AbstractModel):
         :param _Type: Task type. Valid values:
 <li>Transcode: Transcoding</li>
 <li>AnimatedGraphics: Animated image generating</li>
-<li>SnapshotByTimeOffset: Time point screencapturing</li>
-<li>SampleSnapshot: Sampled screencapturing</li>
-<li>ImageSprites: Image sprite generating</li>
-<li>CoverBySnapshot: Screencapturing for cover image</li>
+<li>SnapshotByTimeOffset: Time point screenshot</li>
+<li>SampleSnapshot: Sampled screenshot</li>
+<li>ImageSprites: Image sprite screenshot</li>
+<li>CoverBySnapshot: Screenshot for cover image</li>
 <li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>
         :type Type: str
         :param _TranscodeTask: Query result of a transcoding task, which is valid when task type is `Transcode`.
@@ -33715,13 +33715,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AnimatedGraphicTask: Query result of an animated image generating task, which is valid when task type is `AnimatedGraphics`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
-        :param _SnapshotByTimeOffsetTask: Query result of a time point screencapturing task, which is valid when task type is `SnapshotByTimeOffset`.
+        :param _SnapshotByTimeOffsetTask: Query result of a time point screenshot task, which is valid when task type is `SnapshotByTimeOffset`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
-        :param _SampleSnapshotTask: Query result of a sampled screencapturing task, which is valid when task type is `SampleSnapshot`.
+        :param _SampleSnapshotTask: Query result of a sampled screenshot task, which is valid when task type is `SampleSnapshot`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
-        :param _ImageSpriteTask: Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.
+        :param _ImageSpriteTask: Query result of an image sprite screenshot task, which is valid when task type is `ImageSprite`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
         :param _AdaptiveDynamicStreamingTask: Query result of an adaptive bitrate streaming task, which is valid if the task type is `AdaptiveDynamicStreaming`.
@@ -33741,10 +33741,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         """Task type. Valid values:
 <li>Transcode: Transcoding</li>
 <li>AnimatedGraphics: Animated image generating</li>
-<li>SnapshotByTimeOffset: Time point screencapturing</li>
-<li>SampleSnapshot: Sampled screencapturing</li>
-<li>ImageSprites: Image sprite generating</li>
-<li>CoverBySnapshot: Screencapturing for cover image</li>
+<li>SnapshotByTimeOffset: Time point screenshot</li>
+<li>SampleSnapshot: Sampled screenshot</li>
+<li>ImageSprites: Image sprite screenshot</li>
+<li>CoverBySnapshot: Screenshot for cover image</li>
 <li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>
         :rtype: str
         """
@@ -33780,7 +33780,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotByTimeOffsetTask(self):
-        """Query result of a time point screencapturing task, which is valid when task type is `SnapshotByTimeOffset`.
+        """Query result of a time point screenshot task, which is valid when task type is `SnapshotByTimeOffset`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         """
@@ -33792,7 +33792,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleSnapshotTask(self):
-        """Query result of a sampled screencapturing task, which is valid when task type is `SampleSnapshot`.
+        """Query result of a sampled screenshot task, which is valid when task type is `SampleSnapshot`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
         """
@@ -33804,7 +33804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageSpriteTask(self):
-        """Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.
+        """Query result of an image sprite screenshot task, which is valid when task type is `ImageSprite`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
         """
@@ -33858,7 +33858,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class MediaProcessTaskSampleSnapshotResult(AbstractModel):
-    """Result type of a sampled screencapturing task
+    """Result type of a sampled screenshot task
 
     """
 
@@ -33873,11 +33873,15 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         :param _Message: Error message.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Message: str
-        :param _Input: Input for a sampled screencapturing task.
+        :param _Input: Input for a sampled screenshot task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
-        :param _Output: Output of a sampled screencapturing task.
+        :param _Output: Output of a sampled screenshot task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
+        :param _BeginProcessTime: 
+        :type BeginProcessTime: str
+        :param _FinishTime: 
+        :type FinishTime: str
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -33885,6 +33889,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
 
     @property
     def Status(self):
@@ -33933,7 +33939,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
-        """Input for a sampled screencapturing task.
+        """Input for a sampled screenshot task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
         """
         return self._Input
@@ -33944,7 +33950,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Output of a sampled screencapturing task.
+        """Output of a sampled screenshot task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
@@ -33953,6 +33959,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Output.setter
     def Output(self, Output):
         self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
 
 
     def _deserialize(self, params):
@@ -33966,6 +33994,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self._Output = MediaSampleSnapshotItem()
             self._Output._deserialize(params.get("Output"))
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33977,7 +34007,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
-    """Result type of a time point screencapturing task
+    """Result type of a time point screenshot task
 
     """
 
@@ -33991,11 +34021,15 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Input for a time point screencapturing task.
+        :param _Input: Input for a time point screenshot task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
-        :param _Output: Output of a time point screencapturing task.
+        :param _Output: Output of a time point screenshot task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
+        :param _BeginProcessTime: The time when the task started executing, in ISO date format.
+        :type BeginProcessTime: str
+        :param _FinishTime: The time when the task finished, in ISO date format.
+        :type FinishTime: str
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -34003,6 +34037,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
 
     @property
     def Status(self):
@@ -34050,7 +34086,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
-        """Input for a time point screencapturing task.
+        """Input for a time point screenshot task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
         """
         return self._Input
@@ -34061,7 +34097,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Output of a time point screencapturing task.
+        """Output of a time point screenshot task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
@@ -34070,6 +34106,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Output.setter
     def Output(self, Output):
         self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """The time when the task started executing, in ISO date format.
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """The time when the task finished, in ISO date format.
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
 
 
     def _deserialize(self, params):
@@ -34083,6 +34141,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self._Output = MediaSnapshotByTimeOffsetItem()
             self._Output._deserialize(params.get("Output"))
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34234,7 +34294,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param _Definition: Sampled screenshot specification ID. For more information, please see [Sampled Screenshot Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :type Definition: int
         :param _SampleType: Sample type. Valid values:
 <li>Percent: Samples at the specified percentage interval.</li>
@@ -34260,7 +34320,7 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Definition(self):
-        """Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        """Sampled screenshot specification ID. For more information, please see [Sampled Screenshot Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
         :rtype: int
         """
         return self._Definition
@@ -34355,7 +34415,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param _Definition: Specification of a time point screenshot template. 
         :type Definition: int
         :param _PicInfoSet: Information set of screenshots of the same specification. Each element represents a screenshot.
         :type PicInfoSet: list of MediaSnapshotByTimePicInfoItem
@@ -34368,7 +34428,7 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Definition(self):
-        """Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        """Specification of a time point screenshot template. 
         :rtype: int
         """
         return self._Definition
@@ -38650,10 +38710,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AddonAudioStream: list of MediaInputInfo
         :param _StdExtInfo: An extended field for transcoding.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StdExtInfo: str
         :param _AddOnSubtitles: The subtitle file to add.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Container = None
@@ -38765,7 +38825,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def StdExtInfo(self):
         """An extended field for transcoding.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._StdExtInfo
@@ -38777,7 +38837,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def AddOnSubtitles(self):
         """The subtitle file to add.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of AddOnSubtitle
         """
         return self._AddOnSubtitles
@@ -43432,13 +43492,13 @@ class S3OutputStorage(AbstractModel):
 
 
 class SampleSnapshotTaskInput(AbstractModel):
-    """Input parameter type of a sampled screencapturing task.
+    """Input parameter type of a sampled screenshot task.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Sampled screencapturing template ID.
+        :param _Definition: Sampled screenshot template ID.
         :type Definition: int
         :param _WatermarkSet: List of up to 10 image or text watermarks.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -43466,7 +43526,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
-        """Sampled screencapturing template ID.
+        """Sampled screenshot template ID.
         :rtype: int
         """
         return self._Definition
@@ -43555,19 +43615,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SampleSnapshotTemplate(AbstractModel):
-    """Details of a sampled screencapturing template
+    """Details of a sampled screenshot template
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a sampled screencapturing template.
+        :param _Definition: Unique ID of a sampled screenshot template.
         :type Definition: int
         :param _Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
 <li>Custom: Custom template.</li>
         :type Type: str
-        :param _Name: Name of a sampled screencapturing template.
+        :param _Name: Name of a sampled screenshot template.
         :type Name: str
         :param _Comment: Template description.
         :type Comment: str
@@ -43592,7 +43652,7 @@ Default value: open.
         :type ResolutionAdaptive: str
         :param _Format: Image format.
         :type Format: str
-        :param _SampleType: Sampled screencapturing type.
+        :param _SampleType: Sampled screenshot type.
         :type SampleType: str
         :param _SampleInterval: Sampling interval.
         :type SampleInterval: int
@@ -43624,7 +43684,7 @@ Default value: black.
 
     @property
     def Definition(self):
-        """Unique ID of a sampled screencapturing template.
+        """Unique ID of a sampled screenshot template.
         :rtype: int
         """
         return self._Definition
@@ -43648,7 +43708,7 @@ Default value: black.
 
     @property
     def Name(self):
-        """Name of a sampled screencapturing template.
+        """Name of a sampled screenshot template.
         :rtype: str
         """
         return self._Name
@@ -43727,7 +43787,7 @@ Default value: open.
 
     @property
     def SampleType(self):
-        """Sampled screencapturing type.
+        """Sampled screenshot type.
         :rtype: str
         """
         return self._SampleType
@@ -44601,7 +44661,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Type: The scheme type. Valid values:
  <li>`Preset`</li>
 <li>`Custom` </li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _Status: The scheme status. Valid values:
 `Enabled`
@@ -44674,7 +44734,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """The scheme type. Valid values:
  <li>`Preset`</li>
 <li>`Custom` </li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -45347,13 +45407,13 @@ class SimpleAesDrm(AbstractModel):
     def __init__(self):
         r"""
         :param _Uri: The URI of decryption key.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Uri: str
         :param _Key: The encryption key (a 32-byte string).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Key: str
         :param _Vector: The initialization vector for encryption (a 32-byte string).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Vector: str
         """
         self._Uri = None
@@ -45363,7 +45423,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Uri(self):
         """The URI of decryption key.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Uri
@@ -45375,7 +45435,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Key(self):
         """The encryption key (a 32-byte string).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Key
@@ -45387,7 +45447,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Vector(self):
         """The initialization vector for encryption (a 32-byte string).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Vector
@@ -46704,13 +46764,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 
 class SnapshotByTimeOffsetTaskInput(AbstractModel):
-    """Input parameter type of a time point screencapturing task
+    """Input parameter type of a time point screenshot task
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: ID of a time point screencapturing template.
+        :param _Definition: ID of a time point screenshot template.
         :type Definition: int
         :param _ExtTimeOffsetSet: List of screenshot time points in the format of `s` or `%`:
 <li>If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;</li>
@@ -46747,7 +46807,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
-        """ID of a time point screencapturing template.
+        """ID of a time point screenshot template.
         :rtype: int
         """
         return self._Definition
@@ -46863,19 +46923,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SnapshotByTimeOffsetTemplate(AbstractModel):
-    """Details of a time point screencapturing template.
+    """Details of a time point screenshot template.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: Unique ID of a time point screencapturing template.
+        :param _Definition: Unique ID of a time point screenshot template.
         :type Definition: int
         :param _Type: Template type. Valid values:
 <li>Preset: Preset template;</li>
 <li>Custom: Custom template.</li>
         :type Type: str
-        :param _Name: Name of a time point screencapturing template.
+        :param _Name: Name of a time point screenshot template.
         :type Name: str
         :param _Comment: Template description.
         :type Comment: str
@@ -46926,7 +46986,7 @@ Default value: black.
 
     @property
     def Definition(self):
-        """Unique ID of a time point screencapturing template.
+        """Unique ID of a time point screenshot template.
         :rtype: int
         """
         return self._Definition
@@ -46950,7 +47010,7 @@ Default value: black.
 
     @property
     def Name(self):
-        """Name of a time point screencapturing template.
+        """Name of a time point screenshot template.
         :rtype: str
         """
         return self._Name
@@ -47210,10 +47270,10 @@ class SubtitleTemplate(AbstractModel):
     def __init__(self):
         r"""
         :param _Path: The URL of the subtitles to add to the video.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Path: str
         :param _StreamIndex: The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StreamIndex: int
         :param _FontType: The font. Valid values:
 <li>`hei.ttf`: Heiti.</li>
@@ -47221,19 +47281,19 @@ Note: This field may return·null, indicating that no valid values can be obtain
 <li>`simkai.ttf`: Kaiti.</li>
 <li>`arial.ttf`: Arial.</li>
 The default is `hei.ttf`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FontType: str
         :param _FontSize: The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FontSize: str
         :param _FontColor: The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FontColor: str
         :param _FontAlpha: The text transparency. Value range: 0-1.
 <li>`0`: Fully transparent.</li>
 <li>`1`: Fully opaque.</li>
 Default value: 1.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FontAlpha: float
         """
         self._Path = None
@@ -47246,7 +47306,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def Path(self):
         """The URL of the subtitles to add to the video.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Path
@@ -47258,7 +47318,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def StreamIndex(self):
         """The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._StreamIndex
@@ -47275,7 +47335,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 <li>`simkai.ttf`: Kaiti.</li>
 <li>`arial.ttf`: Arial.</li>
 The default is `hei.ttf`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FontType
@@ -47287,7 +47347,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def FontSize(self):
         """The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FontSize
@@ -47299,7 +47359,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def FontColor(self):
         """The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._FontColor
@@ -47314,7 +47374,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 <li>`0`: Fully transparent.</li>
 <li>`1`: Fully opaque.</li>
 Default value: 1.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: float
         """
         return self._FontAlpha
@@ -47661,10 +47721,10 @@ class TEHDConfigForUpdate(AbstractModel):
 <li>`TEHD-100`: TSC-100 (video TSC). </li>
 <li>`TEHD-200`: TSC-200 (audio TSC). </li>
 If this parameter is left blank, no modification will be made.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _MaxVideoBitrate: The maximum video bitrate. If this parameter is not specified, no modifications will be made.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MaxVideoBitrate: int
         """
         self._Type = None
@@ -47676,7 +47736,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
 <li>`TEHD-100`: TSC-100 (video TSC). </li>
 <li>`TEHD-200`: TSC-200 (audio TSC). </li>
 If this parameter is left blank, no modification will be made.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type
@@ -47688,7 +47748,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
     @property
     def MaxVideoBitrate(self):
         """The maximum video bitrate. If this parameter is not specified, no modifications will be made.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._MaxVideoBitrate
@@ -47823,7 +47883,7 @@ class TaskNotifyConfig(AbstractModel):
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         :param _NotifyKey: The key used to generate the callback signature.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NotifyKey: str
         """
         self._NotifyType = None
@@ -47935,7 +47995,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def NotifyKey(self):
         """The key used to generate the callback signature.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._NotifyKey
@@ -47976,7 +48036,7 @@ class TaskOutputStorage(AbstractModel):
         r"""
         :param _Type: The storage type for a media processing output file. Valid values:
 <li>`COS`: Tencent Cloud COS</li>
-<li>`>AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
+<li>`AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
         :type Type: str
         :param _CosOutputStorage: The location to save the output object in COS. This parameter is valid and required when `Type` is COS.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -47993,7 +48053,7 @@ Note: This field may return null, indicating that no valid value can be obtained
     def Type(self):
         """The storage type for a media processing output file. Valid values:
 <li>`COS`: Tencent Cloud COS</li>
-<li>`>AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
+<li>`AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
         :rtype: str
         """
         return self._Type
@@ -50636,9 +50696,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: The value must be greater than 0.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FpsDenominator: int
-        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
-<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
-<li>top_bottom: vertical layout arrangement of original video content.</li>.
+        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
+<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
+<li>top_bottom: vertical layout arrangement of original video content.</li>
 Submit the amount and cost based on the segmented resolution size.
 Default value: side_by_side.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -50963,9 +51023,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stereo3dType(self):
-        """3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
-<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
-<li>top_bottom: vertical layout arrangement of original video content.</li>.
+        """3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
+<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
+<li>top_bottom: vertical layout arrangement of original video content.</li>
 Submit the amount and cost based on the segmented resolution size.
 Default value: side_by_side.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -51238,7 +51298,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
 Note: 
 AV1 encoding containers currently only support mp4, webm, and mkv.
-H.266 encoding containers currently only support mp4, hls, ts, and move. 
+H.266 encoding containers currently only support mp4, hls, ts, and mov. 
 VP8 and VP9 encoding containers currently only support webm and mkv.
 MPEG2 and DNxHD encoding containers currently only support mxf.
 MV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.
@@ -51322,9 +51382,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 Note: The value must be greater than 0.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FpsDenominator: int
-        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
-<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
-<Li>Top_bottom: layout arrangement of the original video content from top to bottom.</li>.
+        :param _Stereo3dType: 3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
+<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
+<Li>top_bottom: layout arrangement of the original video content from top to bottom.</li>
 The usage and charges will be reported based on the segmented resolution dimensions.
 Default value: side_by_side.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -51458,7 +51518,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
 Note: 
 AV1 encoding containers currently only support mp4, webm, and mkv.
-H.266 encoding containers currently only support mp4, hls, ts, and move. 
+H.266 encoding containers currently only support mp4, hls, ts, and mov. 
 VP8 and VP9 encoding containers currently only support webm and mkv.
 MPEG2 and DNxHD encoding containers currently only support mxf.
 MV-HEVC encoding containers only support mp4, hls, and mov. Also, the hls format only supports mp4 segmentation format.
@@ -51668,9 +51728,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stereo3dType(self):
-        """3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:.
-<Li>Side_by_side: the original video content is arranged in a left-right layout.</li>.
-<Li>Top_bottom: layout arrangement of the original video content from top to bottom.</li>.
+        """3D video splicing mode, applicable only to mv-hevc and effective for 3d videos. valid values:
+<Li>side_by_side: the original video content is arranged in a left-right layout.</li>
+<Li>top_bottom: layout arrangement of the original video content from top to bottom.</li>
 The usage and charges will be reported based on the segmented resolution dimensions.
 Default value: side_by_side.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -51941,7 +52001,7 @@ Default value: `ON`.
 <li>`loudNorm`: Loudness normalization.</li>
 <li>`gainControl`: Volume leveling.</li>
 Default value: `loudNorm`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Switch = None
@@ -51967,7 +52027,7 @@ Default value: `ON`.
 <li>`loudNorm`: Loudness normalization.</li>
 <li>`gainControl`: Volume leveling.</li>
 Default value: `loudNorm`.
-Note: This field may return·null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Type

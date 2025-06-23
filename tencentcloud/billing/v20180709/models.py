@@ -7795,42 +7795,35 @@ class Deal(AbstractModel):
         :param _TotalCost: Original price (cents)
         :type TotalCost: float
         :param _ProductCode: Product code
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ProductCode: str
         :param _SubProductCode: Subproduct code
         :type SubProductCode: str
         :param _BigDealId: Large order number.
         :type BigDealId: str
-        :param _Formula: Refund formula
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Formula: Refund formula.
         :type Formula: str
-        :param _RefReturnDeals: Refund involves order information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RefReturnDeals: Refund involves order information.
         :type RefReturnDeals: str
         :param _PayMode: Billing mode: `prePay` (prepaid), `postPay` (pay-as-you-go), `riPay` (reserved instance)
         :type PayMode: str
         :param _Action: Transaction type
 
-`modifyNetworkMode`: Adjusting bandwidth mode
-`modifyNetworkSize`: Adjusting bandwidth size
-`refund`: Refund
-`downgrade`: Downgrade
-upgrade (upgrade)
-renew
-purchase
-preMoveOut annual and monthly subscription resources
-preMoveIn annual and monthly subscription resources
-preToPost prepaid to postpaid
-postMoveOut move out pay-as-you-go resources
-postMoveIn move in pay-as-you-go resources
-Note: This field may return null, indicating that no valid values can be obtained.
+Modify network mode adjust bandwidth mode.
+Adjust bandwidth size.
+`Refund`: refund.
+downgrade.
+upgrade configuration.
+renew.
+purchase.
+preMoveOut monthly subscription resource migration out.
+preMoveIn specifies the monthly subscription resources to migrate.
+preToPost specifies the prepaid to postpaid conversion.
+postMoveOut specifies the pay-as-you-go resources to be migrated out.
+postMoveIn specifies the pay-as-you-go resources for inbound migration.
         :type Action: str
-        :param _ProductName: Product code Chinese name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProductName: Product code chinese name.
         :type ProductName: str
-        :param _SubProductName: Subproduct code Chinese name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubProductName: Sub-Product code chinese name.
         :type SubProductName: str
         :param _ResourceId: The resource ID corresponding to the order. If the query parameter `Limit` exceeds 200, null will be returned.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -8042,8 +8035,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ProductCode(self):
         """Product code
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ProductCode
@@ -8076,8 +8067,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formula(self):
-        """Refund formula
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Refund formula.
         :rtype: str
         """
         return self._Formula
@@ -8088,8 +8078,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RefReturnDeals(self):
-        """Refund involves order information
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Refund involves order information.
         :rtype: str
         """
         return self._RefReturnDeals
@@ -8113,19 +8102,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Action(self):
         """Transaction type
 
-`modifyNetworkMode`: Adjusting bandwidth mode
-`modifyNetworkSize`: Adjusting bandwidth size
-`refund`: Refund
-`downgrade`: Downgrade
-upgrade (upgrade)
-renew
-purchase
-preMoveOut annual and monthly subscription resources
-preMoveIn annual and monthly subscription resources
-preToPost prepaid to postpaid
-postMoveOut move out pay-as-you-go resources
-postMoveIn move in pay-as-you-go resources
-Note: This field may return null, indicating that no valid values can be obtained.
+Modify network mode adjust bandwidth mode.
+Adjust bandwidth size.
+`Refund`: refund.
+downgrade.
+upgrade configuration.
+renew.
+purchase.
+preMoveOut monthly subscription resource migration out.
+preMoveIn specifies the monthly subscription resources to migrate.
+preToPost specifies the prepaid to postpaid conversion.
+postMoveOut specifies the pay-as-you-go resources to be migrated out.
+postMoveIn specifies the pay-as-you-go resources for inbound migration.
         :rtype: str
         """
         return self._Action
@@ -8136,8 +8124,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProductName(self):
-        """Product code Chinese name
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Product code chinese name.
         :rtype: str
         """
         return self._ProductName
@@ -8148,8 +8135,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubProductName(self):
-        """Subproduct code Chinese name
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Sub-Product code chinese name.
         :rtype: str
         """
         return self._SubProductName

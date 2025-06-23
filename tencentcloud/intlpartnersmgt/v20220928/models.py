@@ -557,7 +557,6 @@ Pay-As-You-Go resources.
 Standard ri reserved instance.
         :type BillingMode: str
         :param _ProjectName: Project name.
-.
 
         :type ProjectName: str
         :param _Region: Resource region.
@@ -602,7 +601,7 @@ Standard ri reserved instance.
         :param _OriginalCost: Total original price.
 Original cost = component list price * component usage * usage duration.
         :type OriginalCost: str
-        :param _DiscountRate: Discount (default is 1).
+        :param _DiscountRate: Discount (default is 1) - abandoned.
         :type DiscountRate: str
         :param _Currency: Currency.
         :type Currency: str
@@ -614,6 +613,8 @@ Original cost = component list price * component usage * usage duration.
         :type TotalCost: str
         :param _Id: Identifier (id).
         :type Id: str
+        :param _CustomerDiscountRate: customer discount rate. The discount rate applied to the reseller's customer, which set by reseller, default value equal to 1.
+        :type CustomerDiscountRate: str
         """
         self._PayerAccountId = None
         self._OwnerAccountId = None
@@ -646,6 +647,7 @@ Original cost = component list price * component usage * usage duration.
         self._VoucherDeduction = None
         self._TotalCost = None
         self._Id = None
+        self._CustomerDiscountRate = None
 
     @property
     def PayerAccountId(self):
@@ -709,7 +711,6 @@ Standard ri reserved instance.
     @property
     def ProjectName(self):
         """Project name.
-.
 
         :rtype: str
         """
@@ -934,7 +935,7 @@ Original cost = component list price * component usage * usage duration.
 
     @property
     def DiscountRate(self):
-        """Discount (default is 1).
+        """Discount (default is 1) - abandoned.
         :rtype: str
         """
         return self._DiscountRate
@@ -998,6 +999,17 @@ Original cost = component list price * component usage * usage duration.
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def CustomerDiscountRate(self):
+        """customer discount rate. The discount rate applied to the reseller's customer, which set by reseller, default value equal to 1.
+        :rtype: str
+        """
+        return self._CustomerDiscountRate
+
+    @CustomerDiscountRate.setter
+    def CustomerDiscountRate(self, CustomerDiscountRate):
+        self._CustomerDiscountRate = CustomerDiscountRate
+
 
     def _deserialize(self, params):
         self._PayerAccountId = params.get("PayerAccountId")
@@ -1031,6 +1043,7 @@ Original cost = component list price * component usage * usage duration.
         self._VoucherDeduction = params.get("VoucherDeduction")
         self._TotalCost = params.get("TotalCost")
         self._Id = params.get("Id")
+        self._CustomerDiscountRate = params.get("CustomerDiscountRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2877,7 +2890,7 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerUin: Sub-account UIN
+        :param _CustomerUin: Sub-account UIN.
         :type CustomerUin: int
         :param _Month: Inquiry month, in the format of YYYY-MM, such as 2023-01.
         :type Month: str
@@ -2932,7 +2945,7 @@ pre_downgrade (Upgrade/Downgrade)
 
     @property
     def CustomerUin(self):
-        """Sub-account UIN
+        """Sub-account UIN.
         :rtype: int
         """
         return self._CustomerUin
