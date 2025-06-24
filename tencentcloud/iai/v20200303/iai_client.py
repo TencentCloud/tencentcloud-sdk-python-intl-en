@@ -294,7 +294,6 @@ class IaiClient(AbstractClient):
         >
         - Please use the signature algorithm v3 to calculate the signature in the common parameters, that is, set the `SignatureMethod` parameter to `TC3-HMAC-SHA256`.
 
-
         :param request: Request instance for DetectFace.
         :type request: :class:`tencentcloud.iai.v20200303.models.DetectFaceRequest`
         :rtype: :class:`tencentcloud.iai.v20200303.models.DetectFaceResponse`
