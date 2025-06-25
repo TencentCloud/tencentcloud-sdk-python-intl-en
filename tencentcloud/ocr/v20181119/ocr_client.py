@@ -714,6 +714,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeMexicoVTID(self, request):
+        """This interface supports identification of the front and back of Mexican Voter ID Card. The default interface request frequency limit is 5 times per second.
+
+        :param request: Request instance for RecognizeMexicoVTID.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeMexicoVTIDRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeMexicoVTIDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeMexicoVTID", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeMexicoVTIDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizePhilippinesDrivingLicenseOCR(self, request):
         """This API is used to recognize a Philippine driver's license.
 
