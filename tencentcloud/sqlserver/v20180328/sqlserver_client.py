@@ -280,7 +280,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateDBInstances(self, request):
-        """This API is used to create high-availability instances (local disk)
+        """This API is used to create high-availability instances (local disk).
 
         :param request: Request instance for CreateDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateDBInstancesRequest`

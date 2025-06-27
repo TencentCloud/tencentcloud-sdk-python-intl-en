@@ -353,6 +353,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomerBillDetailByDay(self, request):
+        """This API is used to query the daily bill expenditure of cu by resellers.
+        Invocation Role: first-level reseller, second-level reseller, reseller.
+
+        :param request: Request instance for DescribeCustomerBillDetailByDay.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailByDayRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailByDayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerBillDetailByDay", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerBillDetailByDayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCustomerBillDownloadUrl(self, request):
         """This API is used to get the URL for downloading the customer bill file by reseller. The download conditions are as follows:
         1. Detailed bills (billDetail and billDetailPack) can be downloaded starting from June 2022; resource bills (billResource and billResourcePack) can be downloaded starting from November 2023.

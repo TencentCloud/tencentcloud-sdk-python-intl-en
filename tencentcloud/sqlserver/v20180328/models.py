@@ -3597,27 +3597,27 @@ class CreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API
+        :param _Zone: Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :type Zone: str
-        :param _Memory: Instance memory size in GB
+        :param _Memory: Instance memory size in GB.
         :type Memory: int
-        :param _Storage: Instance storage capacity in GB
+        :param _Storage: Instance storage capacity in GB.
         :type Storage: int
         :param _InstanceChargeType: Billing mode. Valid value: POSTPAID (pay-as-you-go).
         :type InstanceChargeType: str
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param _GoodsNum: Number of instances purchased this time. Default value: 1. Maximum value: 10
+        :param _GoodsNum: Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :type GoodsNum: int
-        :param _SubnetId: VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously
+        :param _SubnetId: VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :type SubnetId: str
-        :param _VpcId: VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously
+        :param _VpcId: VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :type VpcId: str
-        :param _Period: Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48
+        :param _Period: Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :type Period: int
-        :param _AutoVoucher: Whether to automatically use voucher. 0: no, 1: yes. Default value: no
+        :param _AutoVoucher: Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
         :type AutoVoucher: int
-        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
+        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order).
         :type VoucherIds: list of str
         :param _DBVersion: SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :type DBVersion: str
@@ -3635,12 +3635,16 @@ class CreateDBInstancesRequest(AbstractModel):
         :type HAType: str
         :param _MultiZones: Whether to deploy across availability zones. Default value: false.
         :type MultiZones: bool
-        :param _ResourceTags: Tags associated with the instances to be created
+        :param _ResourceTags: Tags associated with the instances to be created.
         :type ResourceTags: list of ResourceTag
         :param _Collation: Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :type Collation: str
         :param _TimeZone: System time zone. Default value: `China Standard Time`.
         :type TimeZone: str
+        :param _MultiNodes: Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.
+        :type MultiNodes: bool
+        :param _DrZones: The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
+        :type DrZones: list of str
         """
         self._Zone = None
         self._Memory = None
@@ -3664,10 +3668,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._MultiNodes = None
+        self._DrZones = None
 
     @property
     def Zone(self):
-        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API
+        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -3678,7 +3684,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB
+        """Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -3689,7 +3695,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance storage capacity in GB
+        """Instance storage capacity in GB.
         :rtype: int
         """
         return self._Storage
@@ -3711,7 +3717,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """Project ID
+        """Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -3722,7 +3728,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """Number of instances purchased this time. Default value: 1. Maximum value: 10
+        """Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :rtype: int
         """
         return self._GoodsNum
@@ -3733,7 +3739,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously
+        """VPC subnet ID in the format of subnet-bdoe83fa. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :rtype: str
         """
         return self._SubnetId
@@ -3744,7 +3750,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously
+        """VPC ID in the format of vpc-dsp338hz. `SubnetId` and `VpcId` should be set or ignored simultaneously.
         :rtype: str
         """
         return self._VpcId
@@ -3755,7 +3761,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48
+        """Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :rtype: int
         """
         return self._Period
@@ -3766,7 +3772,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """Whether to automatically use voucher. 0: no, 1: yes. Default value: no
+        """Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
         :rtype: int
         """
         return self._AutoVoucher
@@ -3777,7 +3783,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order)
+        """Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3876,7 +3882,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created
+        """Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3907,6 +3913,28 @@ class CreateDBInstancesRequest(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def MultiNodes(self):
+        """Whether it is a multi-node architecture instance. Default value: `false`.If MultiNodes = true, the value of the MultiZones parameter must be true.
+        :rtype: bool
+        """
+        return self._MultiNodes
+
+    @MultiNodes.setter
+    def MultiNodes(self, MultiNodes):
+        self._MultiNodes = MultiNodes
+
+    @property
+    def DrZones(self):
+        """The zone in which the standby node is available. Default is empty. When MultiNodes = true, the availability zones of the primary and standby nodes cannot all be the same. The minimum number of availability zones for the standby nodes is 2, and the maximum is 5.
+        :rtype: list of str
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3936,6 +3964,8 @@ class CreateDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._MultiNodes = params.get("MultiNodes")
+        self._DrZones = params.get("DrZones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3953,9 +3983,9 @@ class CreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: Order name
+        :param _DealName: Order name.
         :type DealName: str
-        :param _DealNames: Order name array
+        :param _DealNames: Order name array.
         :type DealNames: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3966,7 +3996,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name
+        """Order name.
         :rtype: str
         """
         return self._DealName
@@ -3977,7 +4007,7 @@ class CreateDBInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order name array
+        """Order name array.
         :rtype: list of str
         """
         return self._DealNames
