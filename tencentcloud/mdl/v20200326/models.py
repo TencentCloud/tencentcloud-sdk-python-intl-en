@@ -2102,6 +2102,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type Tags: list of Tag
         :param _FrameCaptureTemplates: Frame capture templates.
         :type FrameCaptureTemplates: list of FrameCaptureTemplate
+        :param _GeneralSettings: General settings.
+        :type GeneralSettings: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         self._Name = None
         self._AttachedInputs = None
@@ -2117,6 +2119,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self._InputAnalysisSettings = None
         self._Tags = None
         self._FrameCaptureTemplates = None
+        self._GeneralSettings = None
 
     @property
     def Name(self):
@@ -2272,6 +2275,17 @@ class CreateStreamLiveChannelRequest(AbstractModel):
     def FrameCaptureTemplates(self, FrameCaptureTemplates):
         self._FrameCaptureTemplates = FrameCaptureTemplates
 
+    @property
+    def GeneralSettings(self):
+        """General settings.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
+        """
+        return self._GeneralSettings
+
+    @GeneralSettings.setter
+    def GeneralSettings(self, GeneralSettings):
+        self._GeneralSettings = GeneralSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2338,6 +2352,9 @@ class CreateStreamLiveChannelRequest(AbstractModel):
                 obj = FrameCaptureTemplate()
                 obj._deserialize(item)
                 self._FrameCaptureTemplates.append(obj)
+        if params.get("GeneralSettings") is not None:
+            self._GeneralSettings = GeneralSetting()
+            self._GeneralSettings._deserialize(params.get("GeneralSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5855,6 +5872,10 @@ class EventSettingsReq(AbstractModel):
         :type SpliceDuration: int
         :param _TimedMetadataSetting: Meta information plan configuration.
         :type TimedMetadataSetting: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataInfo`
+        :param _StaticImageActivateSetting: Static image activate setting.
+        :type StaticImageActivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
+        :param _StaticImageDeactivateSetting: Static image deactivate setting.
+        :type StaticImageDeactivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -5865,6 +5886,8 @@ class EventSettingsReq(AbstractModel):
         self._SpliceEventID = None
         self._SpliceDuration = None
         self._TimedMetadataSetting = None
+        self._StaticImageActivateSetting = None
+        self._StaticImageDeactivateSetting = None
 
     @property
     def EventType(self):
@@ -5965,6 +5988,28 @@ class EventSettingsReq(AbstractModel):
     def TimedMetadataSetting(self, TimedMetadataSetting):
         self._TimedMetadataSetting = TimedMetadataSetting
 
+    @property
+    def StaticImageActivateSetting(self):
+        """Static image activate setting.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
+        """
+        return self._StaticImageActivateSetting
+
+    @StaticImageActivateSetting.setter
+    def StaticImageActivateSetting(self, StaticImageActivateSetting):
+        self._StaticImageActivateSetting = StaticImageActivateSetting
+
+    @property
+    def StaticImageDeactivateSetting(self):
+        """Static image deactivate setting.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
+        """
+        return self._StaticImageDeactivateSetting
+
+    @StaticImageDeactivateSetting.setter
+    def StaticImageDeactivateSetting(self, StaticImageDeactivateSetting):
+        self._StaticImageDeactivateSetting = StaticImageDeactivateSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -5988,6 +6033,12 @@ class EventSettingsReq(AbstractModel):
         if params.get("TimedMetadataSetting") is not None:
             self._TimedMetadataSetting = TimedMetadataInfo()
             self._TimedMetadataSetting._deserialize(params.get("TimedMetadataSetting"))
+        if params.get("StaticImageActivateSetting") is not None:
+            self._StaticImageActivateSetting = StaticImageActivateSetting()
+            self._StaticImageActivateSetting._deserialize(params.get("StaticImageActivateSetting"))
+        if params.get("StaticImageDeactivateSetting") is not None:
+            self._StaticImageDeactivateSetting = StaticImageDeactivateSetting()
+            self._StaticImageDeactivateSetting._deserialize(params.get("StaticImageDeactivateSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6023,6 +6074,10 @@ class EventSettingsResp(AbstractModel):
         :type SpliceDuration: str
         :param _TimedMetadataSetting: Meta information plan configuration.
         :type TimedMetadataSetting: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataInfo`
+        :param _StaticImageActivateSetting: Static image activate setting.
+        :type StaticImageActivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
+        :param _StaticImageDeactivateSetting: Static image deactivate setting.
+        :type StaticImageDeactivateSetting: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -6033,6 +6088,8 @@ class EventSettingsResp(AbstractModel):
         self._SpliceEventID = None
         self._SpliceDuration = None
         self._TimedMetadataSetting = None
+        self._StaticImageActivateSetting = None
+        self._StaticImageDeactivateSetting = None
 
     @property
     def EventType(self):
@@ -6133,6 +6190,28 @@ class EventSettingsResp(AbstractModel):
     def TimedMetadataSetting(self, TimedMetadataSetting):
         self._TimedMetadataSetting = TimedMetadataSetting
 
+    @property
+    def StaticImageActivateSetting(self):
+        """Static image activate setting.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageActivateSetting`
+        """
+        return self._StaticImageActivateSetting
+
+    @StaticImageActivateSetting.setter
+    def StaticImageActivateSetting(self, StaticImageActivateSetting):
+        self._StaticImageActivateSetting = StaticImageActivateSetting
+
+    @property
+    def StaticImageDeactivateSetting(self):
+        """Static image deactivate setting.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageDeactivateSetting`
+        """
+        return self._StaticImageDeactivateSetting
+
+    @StaticImageDeactivateSetting.setter
+    def StaticImageDeactivateSetting(self, StaticImageDeactivateSetting):
+        self._StaticImageDeactivateSetting = StaticImageDeactivateSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -6156,6 +6235,12 @@ class EventSettingsResp(AbstractModel):
         if params.get("TimedMetadataSetting") is not None:
             self._TimedMetadataSetting = TimedMetadataInfo()
             self._TimedMetadataSetting._deserialize(params.get("TimedMetadataSetting"))
+        if params.get("StaticImageActivateSetting") is not None:
+            self._StaticImageActivateSetting = StaticImageActivateSetting()
+            self._StaticImageActivateSetting._deserialize(params.get("StaticImageActivateSetting"))
+        if params.get("StaticImageDeactivateSetting") is not None:
+            self._StaticImageDeactivateSetting = StaticImageDeactivateSetting()
+            self._StaticImageDeactivateSetting._deserialize(params.get("StaticImageDeactivateSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6350,6 +6435,44 @@ class FrameCaptureTemplate(AbstractModel):
         self._CaptureIntervalUnits = params.get("CaptureIntervalUnits")
         self._ScalingBehavior = params.get("ScalingBehavior")
         self._Sharpness = params.get("Sharpness")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralSetting(AbstractModel):
+    """General setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StaticImageSettings: Static graphic overlay configuration.
+        :type StaticImageSettings: :class:`tencentcloud.mdl.v20200326.models.StaticImageSettings`
+        """
+        self._StaticImageSettings = None
+
+    @property
+    def StaticImageSettings(self):
+        """Static graphic overlay configuration.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.StaticImageSettings`
+        """
+        return self._StaticImageSettings
+
+    @StaticImageSettings.setter
+    def StaticImageSettings(self, StaticImageSettings):
+        self._StaticImageSettings = StaticImageSettings
+
+
+    def _deserialize(self, params):
+        if params.get("StaticImageSettings") is not None:
+            self._StaticImageSettings = StaticImageSettings()
+            self._StaticImageSettings._deserialize(params.get("StaticImageSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7752,6 +7875,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type Tags: list of Tag
         :param _FrameCaptureTemplates: Frame capture templates.
         :type FrameCaptureTemplates: list of FrameCaptureTemplate
+        :param _GeneralSettings: General settings.
+        :type GeneralSettings: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         self._Id = None
         self._Name = None
@@ -7768,6 +7893,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self._InputAnalysisSettings = None
         self._Tags = None
         self._FrameCaptureTemplates = None
+        self._GeneralSettings = None
 
     @property
     def Id(self):
@@ -7934,6 +8060,17 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
     def FrameCaptureTemplates(self, FrameCaptureTemplates):
         self._FrameCaptureTemplates = FrameCaptureTemplates
 
+    @property
+    def GeneralSettings(self):
+        """General settings.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
+        """
+        return self._GeneralSettings
+
+    @GeneralSettings.setter
+    def GeneralSettings(self, GeneralSettings):
+        self._GeneralSettings = GeneralSettings
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8001,6 +8138,9 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
                 obj = FrameCaptureTemplate()
                 obj._deserialize(item)
                 self._FrameCaptureTemplates.append(obj)
+        if params.get("GeneralSettings") is not None:
+            self._GeneralSettings = GeneralSetting()
+            self._GeneralSettings._deserialize(params.get("GeneralSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9891,6 +10031,264 @@ class StartStreamLiveChannelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StaticImageActivateSetting(AbstractModel):
+    """Static image activate setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: The address of the image to be inserted, starting with http or https and ending with .png .PNG .bmp .BMP .tga .TGA.
+        :type ImageUrl: str
+        :param _Layer: The layer of the superimposed image, 0-7; the default value is 0, and a higher layer means it is on the top.
+        :type Layer: int
+        :param _Opacity: Opacity, range 0-100; the default value is 100, which means completely opaque.
+        :type Opacity: int
+        :param _ImageX: The distance from the left edge in pixels; the default value is 0 and the maximum value is 4096.
+        :type ImageX: int
+        :param _ImageY: The distance from the top edge in pixels; the default value is 0 and the maximum value is 2160.
+        :type ImageY: int
+        :param _Width: The width of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means using the original image size. The minimum value is 1 and the maximum value is 4096.
+        :type Width: int
+        :param _Height: The height of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means the original image size is used. The minimum value is 1 and the maximum value is 2160.
+        :type Height: int
+        :param _Duration: Overlay duration, in milliseconds, range 0-86400000; default value 0, 0 means continuous.
+        :type Duration: int
+        :param _FadeIn: Fade-in duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-in effect.
+        :type FadeIn: int
+        :param _FadeOut: Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
+        :type FadeOut: int
+        """
+        self._ImageUrl = None
+        self._Layer = None
+        self._Opacity = None
+        self._ImageX = None
+        self._ImageY = None
+        self._Width = None
+        self._Height = None
+        self._Duration = None
+        self._FadeIn = None
+        self._FadeOut = None
+
+    @property
+    def ImageUrl(self):
+        """The address of the image to be inserted, starting with http or https and ending with .png .PNG .bmp .BMP .tga .TGA.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Layer(self):
+        """The layer of the superimposed image, 0-7; the default value is 0, and a higher layer means it is on the top.
+        :rtype: int
+        """
+        return self._Layer
+
+    @Layer.setter
+    def Layer(self, Layer):
+        self._Layer = Layer
+
+    @property
+    def Opacity(self):
+        """Opacity, range 0-100; the default value is 100, which means completely opaque.
+        :rtype: int
+        """
+        return self._Opacity
+
+    @Opacity.setter
+    def Opacity(self, Opacity):
+        self._Opacity = Opacity
+
+    @property
+    def ImageX(self):
+        """The distance from the left edge in pixels; the default value is 0 and the maximum value is 4096.
+        :rtype: int
+        """
+        return self._ImageX
+
+    @ImageX.setter
+    def ImageX(self, ImageX):
+        self._ImageX = ImageX
+
+    @property
+    def ImageY(self):
+        """The distance from the top edge in pixels; the default value is 0 and the maximum value is 2160.
+        :rtype: int
+        """
+        return self._ImageY
+
+    @ImageY.setter
+    def ImageY(self, ImageY):
+        self._ImageY = ImageY
+
+    @property
+    def Width(self):
+        """The width of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means using the original image size. The minimum value is 1 and the maximum value is 4096.
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        """The height of the image superimposed on the video frame, in pixels. The default value is empty (not set), which means the original image size is used. The minimum value is 1 and the maximum value is 2160.
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Duration(self):
+        """Overlay duration, in milliseconds, range 0-86400000; default value 0, 0 means continuous.
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def FadeIn(self):
+        """Fade-in duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-in effect.
+        :rtype: int
+        """
+        return self._FadeIn
+
+    @FadeIn.setter
+    def FadeIn(self, FadeIn):
+        self._FadeIn = FadeIn
+
+    @property
+    def FadeOut(self):
+        """Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
+        :rtype: int
+        """
+        return self._FadeOut
+
+    @FadeOut.setter
+    def FadeOut(self, FadeOut):
+        self._FadeOut = FadeOut
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._Layer = params.get("Layer")
+        self._Opacity = params.get("Opacity")
+        self._ImageX = params.get("ImageX")
+        self._ImageY = params.get("ImageY")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Duration = params.get("Duration")
+        self._FadeIn = params.get("FadeIn")
+        self._FadeOut = params.get("FadeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaticImageDeactivateSetting(AbstractModel):
+    """Static image deactivate setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Layer: The overlay level to be canceled, range 0-7, default value 0.
+        :type Layer: int
+        :param _FadeOut: Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
+        :type FadeOut: int
+        """
+        self._Layer = None
+        self._FadeOut = None
+
+    @property
+    def Layer(self):
+        """The overlay level to be canceled, range 0-7, default value 0.
+        :rtype: int
+        """
+        return self._Layer
+
+    @Layer.setter
+    def Layer(self, Layer):
+        self._Layer = Layer
+
+    @property
+    def FadeOut(self):
+        """Fade-out duration, in milliseconds, range 0-5000; default value 0, 0 means no fade-out effect.
+        :rtype: int
+        """
+        return self._FadeOut
+
+    @FadeOut.setter
+    def FadeOut(self, FadeOut):
+        self._FadeOut = FadeOut
+
+
+    def _deserialize(self, params):
+        self._Layer = params.get("Layer")
+        self._FadeOut = params.get("FadeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaticImageSettings(AbstractModel):
+    """Static graphic overlay configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalImageOverlayEnabled: Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.
+        :type GlobalImageOverlayEnabled: int
+        """
+        self._GlobalImageOverlayEnabled = None
+
+    @property
+    def GlobalImageOverlayEnabled(self):
+        """Whether to enable global static image overlay, 0: Disable, 1: Enable; Default value: 0.
+        :rtype: int
+        """
+        return self._GlobalImageOverlayEnabled
+
+    @GlobalImageOverlayEnabled.setter
+    def GlobalImageOverlayEnabled(self, GlobalImageOverlayEnabled):
+        self._GlobalImageOverlayEnabled = GlobalImageOverlayEnabled
+
+
+    def _deserialize(self, params):
+        self._GlobalImageOverlayEnabled = params.get("GlobalImageOverlayEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopStreamLiveChannelRequest(AbstractModel):
     """StopStreamLiveChannel request structure.
 
@@ -10183,7 +10581,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _AVTemplates: Audio/Video transcoding templates
 Note: this field may return `null`, indicating that no valid value was found.
         :type AVTemplates: list of AVTemplate
-        :param _CaptionTemplates: 
+        :param _CaptionTemplates: Caption templates.
         :type CaptionTemplates: list of SubtitleConf
         :param _PlanSettings: Event settings
 Note: This field may return `null`, indicating that no valid value was found.
@@ -10201,6 +10599,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of Tag
         :param _FrameCaptureTemplates: Frame capture templates.
         :type FrameCaptureTemplates: list of FrameCaptureTemplate
+        :param _GeneralSettings: General settings.
+        :type GeneralSettings: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
         """
         self._Id = None
         self._State = None
@@ -10218,6 +10618,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._InputAnalysisSettings = None
         self._Tags = None
         self._FrameCaptureTemplates = None
+        self._GeneralSettings = None
 
     @property
     def Id(self):
@@ -10312,7 +10713,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CaptionTemplates(self):
-        """
+        """Caption templates.
         :rtype: list of SubtitleConf
         """
         return self._CaptionTemplates
@@ -10400,6 +10801,17 @@ Note: This field may return `null`, indicating that no valid value was found.
     def FrameCaptureTemplates(self, FrameCaptureTemplates):
         self._FrameCaptureTemplates = FrameCaptureTemplates
 
+    @property
+    def GeneralSettings(self):
+        """General settings.
+        :rtype: :class:`tencentcloud.mdl.v20200326.models.GeneralSetting`
+        """
+        return self._GeneralSettings
+
+    @GeneralSettings.setter
+    def GeneralSettings(self, GeneralSettings):
+        self._GeneralSettings = GeneralSettings
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10468,6 +10880,9 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = FrameCaptureTemplate()
                 obj._deserialize(item)
                 self._FrameCaptureTemplates.append(obj)
+        if params.get("GeneralSettings") is not None:
+            self._GeneralSettings = GeneralSetting()
+            self._GeneralSettings._deserialize(params.get("GeneralSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

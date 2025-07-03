@@ -294,6 +294,257 @@ class AICallExtractResultInfo(AbstractModel):
         
 
 
+class AILatencyDetail(AbstractModel):
+    """AI latency details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoundId: Dialog ID.
+        :type RoundId: str
+        :param _ASRLatency: Specifies the asr latency in milliseconds.
+        :type ASRLatency: int
+        :param _TTSLatency: Specifies the tts delay in milliseconds.
+        :type TTSLatency: int
+        :param _LLMLatency: llm latency (ms).
+        :type LLMLatency: int
+        :param _ETELatency: End-To-End delay (ms).
+        :type ETELatency: int
+        """
+        self._RoundId = None
+        self._ASRLatency = None
+        self._TTSLatency = None
+        self._LLMLatency = None
+        self._ETELatency = None
+
+    @property
+    def RoundId(self):
+        """Dialog ID.
+        :rtype: str
+        """
+        return self._RoundId
+
+    @RoundId.setter
+    def RoundId(self, RoundId):
+        self._RoundId = RoundId
+
+    @property
+    def ASRLatency(self):
+        """Specifies the asr latency in milliseconds.
+        :rtype: int
+        """
+        return self._ASRLatency
+
+    @ASRLatency.setter
+    def ASRLatency(self, ASRLatency):
+        self._ASRLatency = ASRLatency
+
+    @property
+    def TTSLatency(self):
+        """Specifies the tts delay in milliseconds.
+        :rtype: int
+        """
+        return self._TTSLatency
+
+    @TTSLatency.setter
+    def TTSLatency(self, TTSLatency):
+        self._TTSLatency = TTSLatency
+
+    @property
+    def LLMLatency(self):
+        """llm latency (ms).
+        :rtype: int
+        """
+        return self._LLMLatency
+
+    @LLMLatency.setter
+    def LLMLatency(self, LLMLatency):
+        self._LLMLatency = LLMLatency
+
+    @property
+    def ETELatency(self):
+        """End-To-End delay (ms).
+        :rtype: int
+        """
+        return self._ETELatency
+
+    @ETELatency.setter
+    def ETELatency(self, ETELatency):
+        self._ETELatency = ETELatency
+
+
+    def _deserialize(self, params):
+        self._RoundId = params.get("RoundId")
+        self._ASRLatency = params.get("ASRLatency")
+        self._TTSLatency = params.get("TTSLatency")
+        self._LLMLatency = params.get("LLMLatency")
+        self._ETELatency = params.get("ETELatency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AILatencyStatistics(AbstractModel):
+    """AI latency statistics.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ASRLatency: Specifies the asr latency statistics.
+        :type ASRLatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        :param _TTSLatency: Specifies the statistics of tts delay.
+        :type TTSLatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        :param _LLMLatency: llm latency statistics.
+        :type LLMLatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        :param _ETELatency: Specifies the end-to-end latency statistics.
+        :type ETELatency: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        self._ASRLatency = None
+        self._TTSLatency = None
+        self._LLMLatency = None
+        self._ETELatency = None
+
+    @property
+    def ASRLatency(self):
+        """Specifies the asr latency statistics.
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._ASRLatency
+
+    @ASRLatency.setter
+    def ASRLatency(self, ASRLatency):
+        self._ASRLatency = ASRLatency
+
+    @property
+    def TTSLatency(self):
+        """Specifies the statistics of tts delay.
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._TTSLatency
+
+    @TTSLatency.setter
+    def TTSLatency(self, TTSLatency):
+        self._TTSLatency = TTSLatency
+
+    @property
+    def LLMLatency(self):
+        """llm latency statistics.
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._LLMLatency
+
+    @LLMLatency.setter
+    def LLMLatency(self, LLMLatency):
+        self._LLMLatency = LLMLatency
+
+    @property
+    def ETELatency(self):
+        """Specifies the end-to-end latency statistics.
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatisticsInfo`
+        """
+        return self._ETELatency
+
+    @ETELatency.setter
+    def ETELatency(self, ETELatency):
+        self._ETELatency = ETELatency
+
+
+    def _deserialize(self, params):
+        if params.get("ASRLatency") is not None:
+            self._ASRLatency = AILatencyStatisticsInfo()
+            self._ASRLatency._deserialize(params.get("ASRLatency"))
+        if params.get("TTSLatency") is not None:
+            self._TTSLatency = AILatencyStatisticsInfo()
+            self._TTSLatency._deserialize(params.get("TTSLatency"))
+        if params.get("LLMLatency") is not None:
+            self._LLMLatency = AILatencyStatisticsInfo()
+            self._LLMLatency._deserialize(params.get("LLMLatency"))
+        if params.get("ETELatency") is not None:
+            self._ETELatency = AILatencyStatisticsInfo()
+            self._ETELatency._deserialize(params.get("ETELatency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AILatencyStatisticsInfo(AbstractModel):
+    """AI latency statistics.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinLatency: Specifies the minimum value.
+        :type MinLatency: int
+        :param _MiddleLatency: Specifies the median.
+        :type MiddleLatency: int
+        :param _P90Latency: p90
+        :type P90Latency: int
+        """
+        self._MinLatency = None
+        self._MiddleLatency = None
+        self._P90Latency = None
+
+    @property
+    def MinLatency(self):
+        """Specifies the minimum value.
+        :rtype: int
+        """
+        return self._MinLatency
+
+    @MinLatency.setter
+    def MinLatency(self, MinLatency):
+        self._MinLatency = MinLatency
+
+    @property
+    def MiddleLatency(self):
+        """Specifies the median.
+        :rtype: int
+        """
+        return self._MiddleLatency
+
+    @MiddleLatency.setter
+    def MiddleLatency(self, MiddleLatency):
+        self._MiddleLatency = MiddleLatency
+
+    @property
+    def P90Latency(self):
+        """p90
+        :rtype: int
+        """
+        return self._P90Latency
+
+    @P90Latency.setter
+    def P90Latency(self, P90Latency):
+        self._P90Latency = P90Latency
+
+
+    def _deserialize(self, params):
+        self._MinLatency = params.get("MinLatency")
+        self._MiddleLatency = params.get("MiddleLatency")
+        self._P90Latency = params.get("P90Latency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AITransferItem(AbstractModel):
     """AI to human configuration item.
 
@@ -1547,12 +1798,19 @@ class CreateAIAgentCallRequest(AbstractModel):
         :type Callers: list of str
         :param _PromptVariables: Prompt variable.
         :type PromptVariables: list of Variable
+        :param _Variables: <P>Prompt variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
+
+dify-inputs-xxx specifies the inputs variable for dify.
+2. the dify-inputs-user specifies the user value for dify.
+3. dify-inputs-conversation_id is the conversation_id value of dify.
+        :type Variables: list of Variable
         """
         self._SdkAppId = None
         self._AIAgentId = None
         self._Callee = None
         self._Callers = None
         self._PromptVariables = None
+        self._Variables = None
 
     @property
     def SdkAppId(self):
@@ -1613,6 +1871,21 @@ class CreateAIAgentCallRequest(AbstractModel):
 
         self._PromptVariables = PromptVariables
 
+    @property
+    def Variables(self):
+        """<P>Prompt variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
+
+dify-inputs-xxx specifies the inputs variable for dify.
+2. the dify-inputs-user specifies the user value for dify.
+3. dify-inputs-conversation_id is the conversation_id value of dify.
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -1625,6 +1898,12 @@ class CreateAIAgentCallRequest(AbstractModel):
                 obj = Variable()
                 obj._deserialize(item)
                 self._PromptVariables.append(obj)
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1689,11 +1968,12 @@ class CreateAICallRequest(AbstractModel):
         :type SdkAppId: int
         :param _Callee: Called number.
         :type Callee: str
-        :param _LLMType: Model interface protocol types, currently compatible with three protocol types:
+        :param _LLMType: Model API protocol type. currently compatible with four protocol types:.
 
-- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
-- Azure protocol:"azure"
-- Minimax protocol:"minimax"
+-OpenAI protocol (including GPT, hunyuan, DeepSeek, etc.): "OpenAI".
+-Azure protocol: "azure".
+-Specifies the "Minimax" protocol.
+-Dify protocol: "dify".
         :type LLMType: str
         :param _APIKey: Model API key, for authentication information, please refer to the respective model's official website
 
@@ -1905,6 +2185,14 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         :type VadSilenceTime: int
         :param _ExtractConfig: Call content extraction configuration.
         :type ExtractConfig: list of AICallExtractConfigElement
+        :param _Temperature: Model temperature control.
+        :type Temperature: float
+        :param _Variables: Common variable: <p>prompt content variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
+
+dify-inputs-xxx specifies the inputs variable for dify.
+2. the dify-inputs-user specifies the user value for dify.
+3. dify-inputs-conversation_id is the conversation_id value of dify.
+        :type Variables: list of Variable
         """
         self._SdkAppId = None
         self._Callee = None
@@ -1933,6 +2221,8 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
         self._PromptVariables = None
         self._VadSilenceTime = None
         self._ExtractConfig = None
+        self._Temperature = None
+        self._Variables = None
 
     @property
     def SdkAppId(self):
@@ -1958,11 +2248,12 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
 
     @property
     def LLMType(self):
-        """Model interface protocol types, currently compatible with three protocol types:
+        """Model API protocol type. currently compatible with four protocol types:.
 
-- OpenAI protocol (including GPT, DeepSeek, etc.):"openai"
-- Azure protocol:"azure"
-- Minimax protocol:"minimax"
+-OpenAI protocol (including GPT, hunyuan, DeepSeek, etc.): "OpenAI".
+-Azure protocol: "azure".
+-Specifies the "Minimax" protocol.
+-Dify protocol: "dify".
         :rtype: str
         """
         return self._LLMType
@@ -2401,6 +2692,32 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
     def ExtractConfig(self, ExtractConfig):
         self._ExtractConfig = ExtractConfig
 
+    @property
+    def Temperature(self):
+        """Model temperature control.
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def Variables(self):
+        """Common variable: <p>prompt content variable</p> <p>welcome message variable</p> <p>welcome message delay playback (in seconds): welcome-message-delay</p> <p>dify variable</p>.  
+
+dify-inputs-xxx specifies the inputs variable for dify.
+2. the dify-inputs-user specifies the user value for dify.
+3. dify-inputs-conversation_id is the conversation_id value of dify.
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2445,6 +2762,13 @@ Please refer to the specific protocol standards in the <a href="https://doc.weix
                 obj = AICallExtractConfigElement()
                 obj._deserialize(item)
                 self._ExtractConfig.append(obj)
+        self._Temperature = params.get("Temperature")
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2821,7 +3145,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type Callees: list of str
         :param _Callers: List of calling numbers.
         :type Callers: list of str
-        :param _IvrId: IVR used for calling.
+        :param _IvrId: IVR Id used for calling. if not filled, AIAgentId needs to be filled.
         :type IvrId: int
         :param _Name: Task name.
         :type Name: str
@@ -2837,6 +3161,12 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         :type UUI: str
         :param _CalleeAttributes: Property of the called.
         :type CalleeAttributes: list of CalleeAttribute
+        :param _TimeZone: IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
+        :type TimeZone: str
+        :param _AvailableTime: Available time period.
+        :type AvailableTime: list of TimeRange
+        :param _AIAgentId: Intelligent agent ID. if not filled, IvrId needs to be filled.
+        :type AIAgentId: int
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -2850,6 +3180,9 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._Variables = None
         self._UUI = None
         self._CalleeAttributes = None
+        self._TimeZone = None
+        self._AvailableTime = None
+        self._AIAgentId = None
 
     @property
     def SdkAppId(self):
@@ -2897,7 +3230,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def IvrId(self):
-        """IVR used for calling.
+        """IVR Id used for calling. if not filled, AIAgentId needs to be filled.
         :rtype: int
         """
         return self._IvrId
@@ -2983,6 +3316,39 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     def CalleeAttributes(self, CalleeAttributes):
         self._CalleeAttributes = CalleeAttributes
 
+    @property
+    def TimeZone(self):
+        """IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def AvailableTime(self):
+        """Available time period.
+        :rtype: list of TimeRange
+        """
+        return self._AvailableTime
+
+    @AvailableTime.setter
+    def AvailableTime(self, AvailableTime):
+        self._AvailableTime = AvailableTime
+
+    @property
+    def AIAgentId(self):
+        """Intelligent agent ID. if not filled, IvrId needs to be filled.
+        :rtype: int
+        """
+        return self._AIAgentId
+
+    @AIAgentId.setter
+    def AIAgentId(self, AIAgentId):
+        self._AIAgentId = AIAgentId
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -3007,6 +3373,14 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
                 obj = CalleeAttribute()
                 obj._deserialize(item)
                 self._CalleeAttributes.append(obj)
+        self._TimeZone = params.get("TimeZone")
+        if params.get("AvailableTime") is not None:
+            self._AvailableTime = []
+            for item in params.get("AvailableTime"):
+                obj = TimeRange()
+                obj._deserialize(item)
+                self._AvailableTime.append(obj)
+        self._AIAgentId = params.get("AIAgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3195,7 +3569,7 @@ class CreateCallOutSessionRequest(AbstractModel):
         r"""
         :param _SdkAppId: Application id.
         :type SdkAppId: int
-        :param _UserId: Customer service user id usually refers to the customer service email.
+        :param _UserId: Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
         :type UserId: str
         :param _Callee: Called number must be preceded by 0086.
         :type Callee: str
@@ -3203,7 +3577,7 @@ class CreateCallOutSessionRequest(AbstractModel):
         :type Caller: str
         :param _Callers: Designated caller number list. if the prior number fails, it will automatically switch to the next number that must be preceded by 0086.
         :type Callers: list of str
-        :param _IsForceUseMobile: Whether to force the use of cell phone outbound call or not, currently only supports true, if true, please ensure that the allowlist has been configured.
+        :param _IsForceUseMobile: Whether to force the use of mobile outbound call. currently only supports true. if set to true, ensure the allowlist is configured. https://intl.cloud.tencent.com/document/product/679/76744?from_cn_redirect=1#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4.
         :type IsForceUseMobile: bool
         :param _Uui: Custom data, length limited to 1024 bytes.
         :type Uui: str
@@ -3232,7 +3606,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def UserId(self):
-        """Customer service user id usually refers to the customer service email.
+        """Customer service user ID, generally the customer service email. ensure that the mobile number has been bound. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
         :rtype: str
         """
         return self._UserId
@@ -3276,7 +3650,7 @@ class CreateCallOutSessionRequest(AbstractModel):
 
     @property
     def IsForceUseMobile(self):
-        """Whether to force the use of cell phone outbound call or not, currently only supports true, if true, please ensure that the allowlist has been configured.
+        """Whether to force the use of mobile outbound call. currently only supports true. if set to true, ensure the allowlist is configured. https://intl.cloud.tencent.com/document/product/679/76744?from_cn_redirect=1#.E6.93.8D.E4.BD.9C.E6.AD.A5.E9.AA.A4.
         :rtype: bool
         """
         return self._IsForceUseMobile
@@ -3825,6 +4199,10 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         :type UUI: str
         :param _CalleeAttributes: Property of the called.
         :type CalleeAttributes: list of CalleeAttribute
+        :param _TimeZone: IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
+        :type TimeZone: str
+        :param _AvailableTime: Value range of available time.
+        :type AvailableTime: list of TimeRange
         """
         self._SdkAppId = None
         self._Name = None
@@ -3842,6 +4220,8 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
         self._Variables = None
         self._UUI = None
         self._CalleeAttributes = None
+        self._TimeZone = None
+        self._AvailableTime = None
 
     @property
     def SdkAppId(self):
@@ -4019,6 +4399,28 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
     def CalleeAttributes(self, CalleeAttributes):
         self._CalleeAttributes = CalleeAttributes
 
+    @property
+    def TimeZone(self):
+        """IANA time zone name. see https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones.
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def AvailableTime(self):
+        """Value range of available time.
+        :rtype: list of TimeRange
+        """
+        return self._AvailableTime
+
+    @AvailableTime.setter
+    def AvailableTime(self, AvailableTime):
+        self._AvailableTime = AvailableTime
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -4047,6 +4449,13 @@ class CreatePredictiveDialingCampaignRequest(AbstractModel):
                 obj = CalleeAttribute()
                 obj._deserialize(item)
                 self._CalleeAttributes.append(obj)
+        self._TimeZone = params.get("TimeZone")
+        if params.get("AvailableTime") is not None:
+            self._AvailableTime = []
+            for item in params.get("AvailableTime"):
+                obj = TimeRange()
+                obj._deserialize(item)
+                self._AvailableTime.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4355,6 +4764,85 @@ class CreateStaffResponse(AbstractModel):
                 obj = ErrStaffItem()
                 obj._deserialize(item)
                 self._ErrorStaffList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCCCSkillGroupRequest(AbstractModel):
+    """DeleteCCCSkillGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SkillGroupId: Skill group ID.
+        :type SkillGroupId: int
+        """
+        self._SdkAppId = None
+        self._SkillGroupId = None
+
+    @property
+    def SdkAppId(self):
+        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SkillGroupId(self):
+        """Skill group ID.
+        :rtype: int
+        """
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SkillGroupId = params.get("SkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCCCSkillGroupResponse(AbstractModel):
+    """DeleteCCCSkillGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -4736,6 +5224,156 @@ class DescribeAICallExtractResultResponse(AbstractModel):
                 obj = AICallExtractResultElement()
                 obj._deserialize(item)
                 self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAILatencyRequest(AbstractModel):
+    """DescribeAILatency request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SessionId: Session ID.
+        :type SessionId: str
+        :param _StartTime: Search start time.	
+        :type StartTime: int
+        :param _EndTime: 1737350008
+        :type EndTime: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SdkAppId(self):
+        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """Session ID.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def StartTime(self):
+        """Search start time.	
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """1737350008
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAILatencyResponse(AbstractModel):
+    """DescribeAILatency response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AILatencyDetail: Detailed data of latency.
+-1 indicates no corresponding data.
+        :type AILatencyDetail: list of AILatencyDetail
+        :param _AILatencyStatistics: Latency statistical data.
+-1 indicates no corresponding data.
+        :type AILatencyStatistics: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatistics`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AILatencyDetail = None
+        self._AILatencyStatistics = None
+        self._RequestId = None
+
+    @property
+    def AILatencyDetail(self):
+        """Detailed data of latency.
+-1 indicates no corresponding data.
+        :rtype: list of AILatencyDetail
+        """
+        return self._AILatencyDetail
+
+    @AILatencyDetail.setter
+    def AILatencyDetail(self, AILatencyDetail):
+        self._AILatencyDetail = AILatencyDetail
+
+    @property
+    def AILatencyStatistics(self):
+        """Latency statistical data.
+-1 indicates no corresponding data.
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AILatencyStatistics`
+        """
+        return self._AILatencyStatistics
+
+    @AILatencyStatistics.setter
+    def AILatencyStatistics(self, AILatencyStatistics):
+        self._AILatencyStatistics = AILatencyStatistics
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AILatencyDetail") is not None:
+            self._AILatencyDetail = []
+            for item in params.get("AILatencyDetail"):
+                obj = AILatencyDetail()
+                obj._deserialize(item)
+                self._AILatencyDetail.append(obj)
+        if params.get("AILatencyStatistics") is not None:
+            self._AILatencyStatistics = AILatencyStatistics()
+            self._AILatencyStatistics._deserialize(params.get("AILatencyStatistics"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8712,6 +9350,85 @@ class ExtensionInfo(AbstractModel):
         
 
 
+class ForceMemberOfflineRequest(AbstractModel):
+    """ForceMemberOffline request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _UserId: Customer service ID.
+        :type UserId: str
+        """
+        self._SdkAppId = None
+        self._UserId = None
+
+    @property
+    def SdkAppId(self):
+        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def UserId(self):
+        """Customer service ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForceMemberOfflineResponse(AbstractModel):
+    """ForceMemberOffline response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class HangUpCallRequest(AbstractModel):
     """HangUpCall request structure.
 
@@ -10460,6 +11177,85 @@ class ResetExtensionPasswordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RestoreMemberOnlineRequest(AbstractModel):
+    """RestoreMemberOnline request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _UserId: Customer service ID.
+        :type UserId: str
+        """
+        self._SdkAppId = None
+        self._UserId = None
+
+    @property
+    def SdkAppId(self):
+        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def UserId(self):
+        """Customer service ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreMemberOnlineResponse(AbstractModel):
+    """RestoreMemberOnline response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResumePredictiveDialingCampaignRequest(AbstractModel):
     """ResumePredictiveDialingCampaign request structure.
 
@@ -11449,7 +12245,12 @@ class StaffInfo(AbstractModel):
         :param _StaffNumber: Agent id.
         :type StaffNumber: str
         :param _RoleId: User role id.
+When a user is bound to multiple roles, RoleIdList shall prevail.
         :type RoleId: int
+        :param _RoleIdList: User role id list.
+        :type RoleIdList: int
+        :param _RoleList: 
+        :type RoleList: list of int non-negative
         :param _SkillGroupList: Affiliated skill group list.
         :type SkillGroupList: list of SkillGroupItem
         :param _LastModifyTimestamp: Last modification time.
@@ -11463,6 +12264,8 @@ class StaffInfo(AbstractModel):
         self._Nick = None
         self._StaffNumber = None
         self._RoleId = None
+        self._RoleIdList = None
+        self._RoleList = None
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
         self._ExtensionNumber = None
@@ -11527,6 +12330,7 @@ class StaffInfo(AbstractModel):
         warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
 
         """User role id.
+When a user is bound to multiple roles, RoleIdList shall prevail.
         :rtype: int
         """
         return self._RoleId
@@ -11536,6 +12340,32 @@ class StaffInfo(AbstractModel):
         warnings.warn("parameter `RoleId` is deprecated", DeprecationWarning) 
 
         self._RoleId = RoleId
+
+    @property
+    def RoleIdList(self):
+        warnings.warn("parameter `RoleIdList` is deprecated", DeprecationWarning) 
+
+        """User role id list.
+        :rtype: int
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        warnings.warn("parameter `RoleIdList` is deprecated", DeprecationWarning) 
+
+        self._RoleIdList = RoleIdList
+
+    @property
+    def RoleList(self):
+        """
+        :rtype: list of int non-negative
+        """
+        return self._RoleList
+
+    @RoleList.setter
+    def RoleList(self, RoleList):
+        self._RoleList = RoleList
 
     @property
     def SkillGroupList(self):
@@ -11578,6 +12408,8 @@ class StaffInfo(AbstractModel):
         self._Nick = params.get("Nick")
         self._StaffNumber = params.get("StaffNumber")
         self._RoleId = params.get("RoleId")
+        self._RoleIdList = params.get("RoleIdList")
+        self._RoleList = params.get("RoleList")
         if params.get("SkillGroupList") is not None:
             self._SkillGroupList = []
             for item in params.get("SkillGroupList"):
@@ -12059,6 +12891,8 @@ class TelCdrInfo(AbstractModel):
         :type Time: int
         :param _Direction: Call direction: 0 - inbound, 1 - outbound.
         :type Direction: int
+        :param _CallType: Call Type: 1. Voice outbound call 2. Voice Inbound call 3. Audio Inbound 5 Predictive Dialing Call 6. Internal Call between Staff
+        :type CallType: int
         :param _Duration: Call duration.
         :type Duration: int
         :param _RecordURL: Recording information.
@@ -12067,60 +12901,60 @@ class TelCdrInfo(AbstractModel):
         :type RecordId: str
         :param _SeatUser: Agent information.
         :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
-        :param _EndStatus: EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
+        :param _EndStatus: EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
-**Scenario	EndStatus	EndStatusString	Status description**.
+**Scenario         EndStatus         EndStatusString         status description**.
 
-Inbound call & call	1	ok	end properly.
+Incoming and outgoing calls.
 
-Inbound call & call | 0 | error | system error.
+Incoming and outgoing calls	0	error	exception termination.
 
-Inbound call | 102 | ivrgiveup | user gives up during ivr.
+Inbound call 102 ivrGiveUp user hang up during IVR.
 
-Inbound call | 103 | waitinggiveup | user gives up during session queue.
+Inbound call 103 waitingGiveUp user gives up while queuing.
 
-Inbound call | 104 | ringinggiveup | user gives up during session ringing.
+Inbound call 104 ringingGiveUp user give up during ringing.
 
-Inbound call | 105 | noseatonline | no agent online.
+Inbound call 105 no agent online.
 
-Inbound call              106	       non - working hour      non - working hour.   
+Inbound call 106 notWorkTime outside working hours.   
 
-Inbound call              107	       ivrend                   end directly after ivr.
+Inbound call 107 ivrEnd ends after IVR.
 
-Inbound call              100	       blocklist call - in      call - in blocklist. 
+Inbound call 100 blackList. 
 
-Outgoing call            2                 unconnected            unconnected.
+Outbound call 2 unconnected unanswered.
 
-Outgoing call            108           restricted callee      callee restricted due to high - risk.
+Outgoing call        108        restrictedCallee    the callee is restricted due to high risk.
 
-Outgoing call         109        toomanyrequest        overfrequency.
+Outbound call 109 too many requests outbound over-frequency limit.
 
-Outgoing call         110        restrictedarea        outbound blind area.
+Outgoing call             110	        restrictedArea	    valid values for the area where outgoing calls are restricted.
 
-Outgoing call         111        restrictedtime        outbound time restriction.
+Outbound call 111 restrictedTime outgoing call time limit.
                          
-Outgoing call         201        unknown               unknown status.
+Outbound call 201 unknown unknown status.
 
-Outgoing call         202        notanswer             unanswered.
+Outgoing call 202 not answered the callee did not answer.
 
-Outgoing call - 203 - userreject: reject call.
+Outgoing call            203	    userReject	callee rejects and hangs up.
 
-Outgoing call - 204 - poweroff: power off.
+Outbound call 204 powerOff callee is powered off.
 
-Outgoing call - 205 - numbernotexist: nonexistent number.
+Outbound call 205 number does not exist the callee's number is non - existent.
 
-Outgoing call - 206 - busy: call in progress.
+Outbound call 206 busy callee is busy.
 
-Outgoing call - 207 - outofcredit: arrears.
+Outbound call 207 arrears callee in arrears.
 
-Outgoing call - 208 - operatorerror - ISP line exception.
+Outbound call 208 operator channel exception.
 
-Outgoing call - 209 - callercancel - caller cancellation.
+Outbound call 209 callerCancel call cancellation by the caller.
 
-Outgoing call - 210 - notinservice - not in service area.
+Outgoing call 210 notInService callee out of service area.
 
-Inbound and outgoing call - 211 - clienterror - client error.
-Outgoing call - 212 - carrierblocked - ISP blocking.
+Incoming and outgoing calls 211 clientError client errors.
+Outbound call 212 carrier blocked.
         :type EndStatus: int
         :param _SkillGroup: Skill group name.
         :type SkillGroup: str
@@ -12142,60 +12976,60 @@ Outgoing call - 212 - carrierblocked - ISP blocking.
         :type ServeParticipants: list of ServeParticipant
         :param _SkillGroupId: Skill group id.
         :type SkillGroupId: int
-        :param _EndStatusString: EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
+        :param _EndStatusString: EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
-**Scenario	EndStatus	EndStatusString	Status description**.
+**Scenario         EndStatus         EndStatusString         status description**.
 
-Inbound call & call	1	ok	end properly.
+Incoming and outgoing calls.
 
-Inbound call & call | 0 | error | system error.
+Incoming and outgoing calls	0	error	exception termination.
 
-Inbound call | 102 | ivrgiveup | user gives up during ivr.
+Inbound call 102 ivrGiveUp user hang up during IVR.
 
-Inbound call | 103 | waitinggiveup | user gives up during session queue.
+Inbound call 103 waitingGiveUp user gives up while queuing.
 
-Inbound call | 104 | ringinggiveup | user gives up during session ringing.
+Inbound call 104 ringingGiveUp user give up during ringing.
 
-Inbound call | 105 | noseatonline | no agent online.
+Inbound call 105 no agent online.
 
-Inbound call              106	       non - working hour      non - working hour.   
+Inbound call 106 notWorkTime outside working hours.   
 
-Inbound call              107	       ivrend                   end directly after ivr.
+Inbound call 107 ivrEnd ends after IVR.
 
-Inbound call              100	       blocklist call - in      call - in blocklist. 
+Inbound call 100 blackList. 
 
-Outgoing call            2                 unconnected            unconnected.
+Outbound call 2 unconnected unanswered.
 
-Outgoing call            108           restricted callee      callee restricted due to high - risk.
+Outgoing call        108        restrictedCallee    the callee is restricted due to high risk.
 
-Outgoing call         109        toomanyrequest        overfrequency.
+Outbound call 109 too many requests outbound over-frequency limit.
 
-Outgoing call         110        restrictedarea        outbound blind area.
+Outgoing call             110	        restrictedArea	    valid values for the area where outgoing calls are restricted.
 
-Outgoing call         111        restrictedtime        outbound time restriction.
+Outbound call 111 restrictedTime outgoing call time limit.
                          
-Outgoing call         201        unknown               unknown status.
+Outgoing call 201 unknown unknown status.
 
-Outgoing call         202        notanswer             unanswered.
+Outgoing call 202 notAnswer callee not answered.
 
-Outgoing call - 203 - userreject: reject call.
+Outgoing call            203	    userReject	callee rejects and hangs up.
 
-Outgoing call - 204 - poweroff: power off.
+Outbound call 204 powerOff callee is powered off.
 
-Outgoing call - 205 - numbernotexist: nonexistent number.
+Outbound call 205 number does not exist the callee's number is non - existent.
 
-Outgoing call - 206 - busy: call in progress.
+Outgoing call 206 busy callee is busy.
 
-Outgoing call - 207 - outofcredit: arrears.
+Outbound call 207 out of credit callee in arrears.
 
-Outgoing call - 208 - operatorerror - ISP line exception.
+Outbound call 208 operator channel exception.
 
-Outgoing call - 209 - callercancel - caller cancellation.
+Outgoing call 209 callerCancel call cancellation by the caller.
 
-Outgoing call - 210 - notinservice - not in service area.
+Outgoing call 210 notInService callee out of service area.
 
-Inbound and outgoing call - 211 - clienterror - client error.
-Outgoing call - 212 - carrierblocked - ISP blocking.
+Incoming and outgoing calls 211 clientError client errors.
+Outbound call 212 carrier blocked.
         :type EndStatusString: str
         :param _StartTimestamp: Session start timestamp. unix second-level timestamp.
         :type StartTimestamp: int
@@ -12242,6 +13076,7 @@ No record (offline asr generation is not enabled or no package is available).
         self._Callee = None
         self._Time = None
         self._Direction = None
+        self._CallType = None
         self._Duration = None
         self._RecordURL = None
         self._RecordId = None
@@ -12321,6 +13156,17 @@ No record (offline asr generation is not enabled or no package is available).
         self._Direction = Direction
 
     @property
+    def CallType(self):
+        """Call Type: 1. Voice outbound call 2. Voice Inbound call 3. Audio Inbound 5 Predictive Dialing Call 6. Internal Call between Staff
+        :rtype: int
+        """
+        return self._CallType
+
+    @CallType.setter
+    def CallType(self, CallType):
+        self._CallType = CallType
+
+    @property
     def Duration(self):
         """Call duration.
         :rtype: int
@@ -12366,60 +13212,60 @@ No record (offline asr generation is not enabled or no package is available).
 
     @property
     def EndStatus(self):
-        """EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
+        """EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
-**Scenario	EndStatus	EndStatusString	Status description**.
+**Scenario         EndStatus         EndStatusString         status description**.
 
-Inbound call & call	1	ok	end properly.
+Incoming and outgoing calls.
 
-Inbound call & call | 0 | error | system error.
+Incoming and outgoing calls	0	error	exception termination.
 
-Inbound call | 102 | ivrgiveup | user gives up during ivr.
+Inbound call 102 ivrGiveUp user hang up during IVR.
 
-Inbound call | 103 | waitinggiveup | user gives up during session queue.
+Inbound call 103 waitingGiveUp user gives up while queuing.
 
-Inbound call | 104 | ringinggiveup | user gives up during session ringing.
+Inbound call 104 ringingGiveUp user give up during ringing.
 
-Inbound call | 105 | noseatonline | no agent online.
+Inbound call 105 no agent online.
 
-Inbound call              106	       non - working hour      non - working hour.   
+Inbound call 106 notWorkTime outside working hours.   
 
-Inbound call              107	       ivrend                   end directly after ivr.
+Inbound call 107 ivrEnd ends after IVR.
 
-Inbound call              100	       blocklist call - in      call - in blocklist. 
+Inbound call 100 blackList. 
 
-Outgoing call            2                 unconnected            unconnected.
+Outbound call 2 unconnected unanswered.
 
-Outgoing call            108           restricted callee      callee restricted due to high - risk.
+Outgoing call        108        restrictedCallee    the callee is restricted due to high risk.
 
-Outgoing call         109        toomanyrequest        overfrequency.
+Outbound call 109 too many requests outbound over-frequency limit.
 
-Outgoing call         110        restrictedarea        outbound blind area.
+Outgoing call             110	        restrictedArea	    valid values for the area where outgoing calls are restricted.
 
-Outgoing call         111        restrictedtime        outbound time restriction.
+Outbound call 111 restrictedTime outgoing call time limit.
                          
-Outgoing call         201        unknown               unknown status.
+Outbound call 201 unknown unknown status.
 
-Outgoing call         202        notanswer             unanswered.
+Outgoing call 202 not answered the callee did not answer.
 
-Outgoing call - 203 - userreject: reject call.
+Outgoing call            203	    userReject	callee rejects and hangs up.
 
-Outgoing call - 204 - poweroff: power off.
+Outbound call 204 powerOff callee is powered off.
 
-Outgoing call - 205 - numbernotexist: nonexistent number.
+Outbound call 205 number does not exist the callee's number is non - existent.
 
-Outgoing call - 206 - busy: call in progress.
+Outbound call 206 busy callee is busy.
 
-Outgoing call - 207 - outofcredit: arrears.
+Outbound call 207 arrears callee in arrears.
 
-Outgoing call - 208 - operatorerror - ISP line exception.
+Outbound call 208 operator channel exception.
 
-Outgoing call - 209 - callercancel - caller cancellation.
+Outbound call 209 callerCancel call cancellation by the caller.
 
-Outgoing call - 210 - notinservice - not in service area.
+Outgoing call 210 notInService callee out of service area.
 
-Inbound and outgoing call - 211 - clienterror - client error.
-Outgoing call - 212 - carrierblocked - ISP blocking.
+Incoming and outgoing calls 211 clientError client errors.
+Outbound call 212 carrier blocked.
         :rtype: int
         """
         return self._EndStatus
@@ -12540,60 +13386,60 @@ Outgoing call - 212 - carrierblocked - ISP blocking.
 
     @property
     def EndStatusString(self):
-        """EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.
+        """EndStatus corresponds one-to-one with EndStatusString. the specific enumeration is as follows:.
 
-**Scenario	EndStatus	EndStatusString	Status description**.
+**Scenario         EndStatus         EndStatusString         status description**.
 
-Inbound call & call	1	ok	end properly.
+Incoming and outgoing calls.
 
-Inbound call & call | 0 | error | system error.
+Incoming and outgoing calls	0	error	exception termination.
 
-Inbound call | 102 | ivrgiveup | user gives up during ivr.
+Inbound call 102 ivrGiveUp user hang up during IVR.
 
-Inbound call | 103 | waitinggiveup | user gives up during session queue.
+Inbound call 103 waitingGiveUp user gives up while queuing.
 
-Inbound call | 104 | ringinggiveup | user gives up during session ringing.
+Inbound call 104 ringingGiveUp user give up during ringing.
 
-Inbound call | 105 | noseatonline | no agent online.
+Inbound call 105 no agent online.
 
-Inbound call              106	       non - working hour      non - working hour.   
+Inbound call 106 notWorkTime outside working hours.   
 
-Inbound call              107	       ivrend                   end directly after ivr.
+Inbound call 107 ivrEnd ends after IVR.
 
-Inbound call              100	       blocklist call - in      call - in blocklist. 
+Inbound call 100 blackList. 
 
-Outgoing call            2                 unconnected            unconnected.
+Outbound call 2 unconnected unanswered.
 
-Outgoing call            108           restricted callee      callee restricted due to high - risk.
+Outgoing call        108        restrictedCallee    the callee is restricted due to high risk.
 
-Outgoing call         109        toomanyrequest        overfrequency.
+Outbound call 109 too many requests outbound over-frequency limit.
 
-Outgoing call         110        restrictedarea        outbound blind area.
+Outgoing call             110	        restrictedArea	    valid values for the area where outgoing calls are restricted.
 
-Outgoing call         111        restrictedtime        outbound time restriction.
+Outbound call 111 restrictedTime outgoing call time limit.
                          
-Outgoing call         201        unknown               unknown status.
+Outgoing call 201 unknown unknown status.
 
-Outgoing call         202        notanswer             unanswered.
+Outgoing call 202 notAnswer callee not answered.
 
-Outgoing call - 203 - userreject: reject call.
+Outgoing call            203	    userReject	callee rejects and hangs up.
 
-Outgoing call - 204 - poweroff: power off.
+Outbound call 204 powerOff callee is powered off.
 
-Outgoing call - 205 - numbernotexist: nonexistent number.
+Outbound call 205 number does not exist the callee's number is non - existent.
 
-Outgoing call - 206 - busy: call in progress.
+Outgoing call 206 busy callee is busy.
 
-Outgoing call - 207 - outofcredit: arrears.
+Outbound call 207 out of credit callee in arrears.
 
-Outgoing call - 208 - operatorerror - ISP line exception.
+Outbound call 208 operator channel exception.
 
-Outgoing call - 209 - callercancel - caller cancellation.
+Outgoing call 209 callerCancel call cancellation by the caller.
 
-Outgoing call - 210 - notinservice - not in service area.
+Outgoing call 210 notInService callee out of service area.
 
-Inbound and outgoing call - 211 - clienterror - client error.
-Outgoing call - 212 - carrierblocked - ISP blocking.
+Incoming and outgoing calls 211 clientError client errors.
+Outbound call 212 carrier blocked.
         :rtype: str
         """
         return self._EndStatusString
@@ -12805,6 +13651,7 @@ No record (offline asr generation is not enabled or no package is available).
         self._Callee = params.get("Callee")
         self._Time = params.get("Time")
         self._Direction = params.get("Direction")
+        self._CallType = params.get("CallType")
         self._Duration = params.get("Duration")
         self._RecordURL = params.get("RecordURL")
         self._RecordId = params.get("RecordId")
@@ -12863,6 +13710,151 @@ No record (offline asr generation is not enabled or no package is available).
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TimeRange(AbstractModel):
+    """Time range, 24-hour system, format: 09:00:00.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time.
+        :type StartTime: str
+        :param _EndTime: End time.
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        """Start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """End time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransferToManualRequest(AbstractModel):
+    """TransferToManual request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :type SdkAppId: int
+        :param _SessionId: Session ID.
+        :type SessionId: str
+        :param _SkillGroupId: Skill group Id.
+        :type SkillGroupId: int
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+        self._SkillGroupId = None
+
+    @property
+    def SdkAppId(self):
+        """App ID (required), which can be viewed at https://console.cloud.tencent.com/ccc.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        """Session ID.
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SkillGroupId(self):
+        """Skill group Id.
+        :rtype: int
+        """
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        self._SkillGroupId = params.get("SkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransferToManualResponse(AbstractModel):
+    """TransferToManual response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindNumberCallOutSkillGroupRequest(AbstractModel):

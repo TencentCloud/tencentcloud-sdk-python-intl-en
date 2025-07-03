@@ -121,7 +121,7 @@ class CccClient(AbstractClient):
     def CreateAIAgentCall(self, request):
         """This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.
 
-        Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://intl.cloud.tencent.com/document/product/679/112100?from_cn_redirect=1).
+        Before initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/70681).
 
         :param request: Request instance for CreateAIAgentCall.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAIAgentCallRequest`
@@ -261,7 +261,11 @@ class CccClient(AbstractClient):
 
 
     def CreateCallOutSession(self, request):
-        """This API is used to create outbound sessions. Currently, only dual call is supported. That is, firstly, please use the platform number to call the agent's cell phone. After the agent answers, then please make outbound calls to the user. Due to ISP frequency restrictions, the agent's phone number must first be added to the allowlist to avoid frequency control which may lead to the failure of the outbound call.
+        """This API is used to create an outbound call session. Currently, only dual calls are supported. That is, first use the platform number to call the agent mobile phone. After the agent answers, then make an outbound call to the user. Moreover, due to ISP frequency restrictions, the agent phone number must be added to the allowlist first to avoid frequency control leading to the failure of the outbound call. Therefore, before calling this API, the following operations have been completed.
+        1. The agent specified by UserId has already bound the mobile number. https://intl.cloud.tencent.com/document/product/679/76067?from_cn_redirect=1#.E6.AD.A5.E9.AA.A42.EF.BC.9A.E5.AE.8C.E5.96.84.E8.B4.A6.E5.8F.B7.E4.BF.A1.E6.81.AF.
+        2. The agent's bound mobile number has applied for and passed the outbound call allowlist.
+        This API is used to make calls. Currently, the agent side can only call the user's mobile phone, so the IsForceMobile field must be true.
+        4. Do not fill in the mobile number bound to the current UserId for the callee, otherwise it can lead to call failure due to a busy line.
 
         :param request: Request instance for CreateCallOutSession.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCallOutSessionRequest`
@@ -421,6 +425,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCCCSkillGroup(self, request):
+        """This API is used to delete a skill group.
+
+        :param request: Request instance for DeleteCCCSkillGroup.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteCCCSkillGroupRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DeleteCCCSkillGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCCCSkillGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCCCSkillGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteExtension(self, request):
         """This API is used to delete telephone accounts.
 
@@ -504,6 +531,29 @@ class CccClient(AbstractClient):
             body = self.call("DescribeAICallExtractResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAICallExtractResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAILatency(self, request):
+        """This API is used to obtain AI latency information.
+
+        :param request: Request instance for DescribeAILatency.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAILatencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAILatency", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAILatencyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1019,6 +1069,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ForceMemberOffline(self, request):
+        """This API is used to force customer service to go offline.
+
+        :param request: Request instance for ForceMemberOffline.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ForceMemberOfflineRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ForceMemberOfflineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForceMemberOffline", params, headers=headers)
+            response = json.loads(body)
+            model = models.ForceMemberOfflineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def HangUpCall(self, request):
         """This API is used to hang up the phone.
 
@@ -1180,6 +1253,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestoreMemberOnline(self, request):
+        """This API is used to restore customer service to go live.
+
+        :param request: Request instance for RestoreMemberOnline.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.RestoreMemberOnlineRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.RestoreMemberOnlineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreMemberOnline", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreMemberOnlineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResumePredictiveDialingCampaign(self, request):
         """This API is used to resume the predictive outbound call task.
 
@@ -1217,6 +1313,29 @@ class CccClient(AbstractClient):
             body = self.call("StopAutoCalloutTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopAutoCalloutTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferToManual(self, request):
+        """This API is used to transfer a session to an agent in specific scenarios.
+
+        :param request: Request instance for TransferToManual.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.TransferToManualRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.TransferToManualResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferToManual", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferToManualResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

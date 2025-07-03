@@ -14950,9 +14950,9 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time of the query period.
+        :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: End time of the query period.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
         :param _MetricNames: Statistical metrics.
 <li>`ddos_attackMaxBandwidth`: Peak attack bandwidth;</li>
@@ -14960,15 +14960,15 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 <li>`ddos_attackBandwidth`: Time-series data of attack bandwidth;</li>
 <li>`ddos_attackPackageRate`: Time-series data of attack packet rate.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: ZoneId set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :type ZoneIds: list of str
         :param _PolicyIds: IDs of DDoS policies to be queried. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
-        :param _Interval: The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < Period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+        :param _Interval: Query period granularity. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
         :param _Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -14986,7 +14986,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the query period.
+        """The start time.
         :rtype: str
         """
         return self._StartTime
@@ -14997,7 +14997,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the query period.
+        """The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -15023,7 +15023,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """ZoneId set. This parameter is required.
+        """Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15045,11 +15045,11 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        """The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < Period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+        """Query period granularity. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
         :rtype: str
         """
         return self._Interval
@@ -15163,13 +15163,13 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time. Time range: 30 days.
+        :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: End time. Time range: 30 days.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
         :param _PolicyIds: List of DDoS policy IDs. All policies are selected if this field is not specified.
         :type PolicyIds: list of int
-        :param _ZoneIds: ZoneId set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :type ZoneIds: list of str
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
         :type Limit: int
@@ -15204,7 +15204,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time. Time range: 30 days.
+        """The start time.
         :rtype: str
         """
         return self._StartTime
@@ -15215,7 +15215,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time. Time range: 30 days.
+        """The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -15237,7 +15237,7 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """ZoneId set. This parameter is required.
+        """Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15415,7 +15415,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
         r"""
         :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: The end time.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
         :param _MetricName: The statistical metric. Values:
 <li>`ddos_attackFlux_protocol`: Rank protocols by the attack traffic.</li>
@@ -15425,7 +15425,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 <li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>
 <li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>
         :type MetricName: str
-        :param _ZoneIds: Site ID set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :type ZoneIds: list of str
         :param _PolicyIds: The list of DDoS policy IDs to be specified. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -15445,7 +15445,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
         :type Limit: int
         :param _Area: Data storage region. Values:
 <li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user's location.
         :type Area: str
         """
         self._StartTime = None
@@ -15472,7 +15472,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end time.
+        """The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -15500,7 +15500,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Site ID set. This parameter is required.
+        """Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -15574,7 +15574,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
     def Area(self):
         """Data storage region. Values:
 <li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
+<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user's location.
         :rtype: str
         """
         return self._Area
@@ -19557,15 +19557,17 @@ class DescribeTimingL4DataRequest(AbstractModel):
         r"""
         :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: The end time.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
-        :param _MetricNames: Query indicator. Values: 
-<li>l4Flow_connections: Number of access connections;</li>
-<li>l4Flow_flux: Total access traffic;</li>
-<li>l4Flow_inFlux: Ingress access traffic;</li>
-<li>l4Flow_outFlux: Egress access traffic. </li>
+        :param _MetricNames: Metric list. Valid values:
+<Li>l4Flow_connections: number of concurrent connections;</li>
+<Li>l4Flow_flux: total traffic;</li>
+<Li>l4Flow_inFlux: inbound traffic;</li>
+<Li>l4Flow_outFlux: outbound traffic.</li>
+<Li>l4Flow_inBandwidth: inbound peak bandwidth.</li>
+<Li>l4Flow_outBandwidth: outbound peak bandwidth.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: ZoneId set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy IDs. All L4 proxies will be selected if this field is not specified.
         :type ProxyIds: list of str
@@ -19573,16 +19575,14 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>`min`: 1 minute;</li>
 <li>`5min`: 5 minutes;</li>
 <li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+
         :type Interval: str
-        :param _Filters: Filter criteria. The detailed Key values of filter criteria are as follows:
-<li>ruleId: Filter by forwarding rule ID.</li>
-<li>proxyId: Filter by L4 proxy instance ID.</li>
+        :param _Filters: Filter criteria. The detailed key values of filter criteria are as follows:
+<li>ruleId: filter by forwarding rule ID.</li>
+<li>proxyId: filter by L4 proxy instance ID.</li>
         :type Filters: list of QueryCondition
-        :param _Area: Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :param _Area: Data ownership region. This parameter is deprecated. Please filter data by client region in Filters.country.
         :type Area: str
         """
         self._StartTime = None
@@ -19607,7 +19607,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end time.
+        """The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -19618,11 +19618,13 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        """Query indicator. Values: 
-<li>l4Flow_connections: Number of access connections;</li>
-<li>l4Flow_flux: Total access traffic;</li>
-<li>l4Flow_inFlux: Ingress access traffic;</li>
-<li>l4Flow_outFlux: Egress access traffic. </li>
+        """Metric list. Valid values:
+<Li>l4Flow_connections: number of concurrent connections;</li>
+<Li>l4Flow_flux: total traffic;</li>
+<Li>l4Flow_inFlux: inbound traffic;</li>
+<Li>l4Flow_outFlux: outbound traffic.</li>
+<Li>l4Flow_inBandwidth: inbound peak bandwidth.</li>
+<Li>l4Flow_outBandwidth: outbound peak bandwidth.</li>
         :rtype: list of str
         """
         return self._MetricNames
@@ -19633,7 +19635,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """ZoneId set. This parameter is required.
+        """Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -19659,7 +19661,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>`min`: 1 minute;</li>
 <li>`5min`: 5 minutes;</li>
 <li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
+<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+
         :rtype: str
         """
         return self._Interval
@@ -19670,9 +19673,9 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter criteria. The detailed Key values of filter criteria are as follows:
-<li>ruleId: Filter by forwarding rule ID.</li>
-<li>proxyId: Filter by L4 proxy instance ID.</li>
+        """Filter criteria. The detailed key values of filter criteria are as follows:
+<li>ruleId: filter by forwarding rule ID.</li>
+<li>proxyId: filter by L4 proxy instance ID.</li>
         :rtype: list of QueryCondition
         """
         return self._Filters
@@ -19683,10 +19686,7 @@ class DescribeTimingL4DataRequest(AbstractModel):
 
     @property
     def Area(self):
-        """Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        """Data ownership region. This parameter is deprecated. Please filter data by client region in Filters.country.
         :rtype: str
         """
         return self._Area
@@ -19794,7 +19794,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         r"""
         :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: The end time.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
         :param _MetricNames: Metric list. Valid values:.
 <Li>l7Flow_outFlux: L7 EdgeOne response traffic. Unit: byte;</li>
@@ -19807,13 +19807,13 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <Li>l7Flow_avgResponseTime: Average L7 edge response time. Unit: ms (milliseconds);</li>
 <Li>l7Flow_avgFirstByteResponseTime: Average L7 edge first byte response time. Unit: ms.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: Zone ID set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :type ZoneIds: list of str
         :param _Interval: Query period granularity. Valid values:
 <li>min: 1 minute;</li>
 <li>5min: 5 minutes;</li>
 <li>hour: 1 hour;</li>
-<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
         :type Interval: str
         :param _Filters: Filter criteria. The detailed key values of filter criteria are as follows:
 <li>country: filter by country/region. The country/region follows the <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166-1 alpha-2</a> standard. Example value: CN.</li>
@@ -19860,7 +19860,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end time.
+        """The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -19891,7 +19891,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """Zone ID set. This parameter is required.
+        """Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :rtype: list of str
         """
         return self._ZoneIds
@@ -19906,7 +19906,7 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
 <li>min: 1 minute;</li>
 <li>5min: 5 minutes;</li>
 <li>hour: 1 hour;</li>
-<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 2 hours, no more than 2 days, no more than 7 days, and over 7 days.
+<li>day: 1 day.</li>If this parameter is not filled in, the granularity will be automatically calculated based on the interval between the start time and end time. Specifically, data will be queried with a granularity of min, 5min, hour, and day respectively when the period is no more than 1 hour, no more than 2 days, no more than 7 days, and over 7 days.
         :rtype: str
         """
         return self._Interval
@@ -20284,7 +20284,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         r"""
         :param _StartTime: The start time.
         :type StartTime: str
-        :param _EndTime: The end time.
+        :param _EndTime: The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :type EndTime: str
         :param _MetricName: Queried metric. Valid values:
 <li> l7Flow_outFlux_country: L7 EdgeOne response traffic aggregated by the country/region dimension;</li>
@@ -20312,7 +20312,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_ua_os: L7 request count aggregated by the operating system type dimension.</li>
 <li> l7Flow_request_ua: L7 request count aggregated by the User-Agent dimension.</li>
         :type MetricName: str
-        :param _ZoneIds: ZoneId set. This parameter is required.
+        :param _ZoneIds: Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :type ZoneIds: list of str
         :param _Limit: Indicates the top N data to be queried. The maximum value is 1000. If this parameter is not input, the default value is 10, indicating querying the top 10 data.
         :type Limit: int
@@ -20368,7 +20368,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        """The end time.
+        """The end time. The query time range (`EndTime` - `StartTime`) must be less than or equal to 31 days.
         :rtype: str
         """
         return self._EndTime
@@ -20414,7 +20414,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        """ZoneId set. This parameter is required.
+        """Zone ID set. This parameter is required. A maximum of 100 zone IDs can be passed in. If you need to query data for all zones under the Tencent Cloud main account, please use "*" instead. To query account-level data, you need to have full resource permissions for all zones of this interface.
         :rtype: list of str
         """
         return self._ZoneIds

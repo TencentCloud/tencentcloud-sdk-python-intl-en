@@ -354,7 +354,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerBillDetailByDay(self, request):
-        """This API is used to query the daily bill expenditure of cu by resellers.
+        """This API is used to query the daily bill expenditure of customer by resellers.
         Invocation Role: first-level reseller, second-level reseller, reseller.
 
         :param request: Request instance for DescribeCustomerBillDetailByDay.
