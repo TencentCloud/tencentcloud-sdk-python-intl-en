@@ -118,6 +118,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConfirmOriginACLUpdate(self, request):
+        """This API is used to confirm that the latest origin ACLs have been updated to the origin server firewall when the origin ACLs change. After confirming the update to the latest version, related change notifications will stop pushing.
+
+        :param request: Request instance for ConfirmOriginACLUpdate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ConfirmOriginACLUpdateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ConfirmOriginACLUpdateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfirmOriginACLUpdate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConfirmOriginACLUpdateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccelerationDomain(self, request):
         """This API is used to create an acceleration domain name.
 
@@ -1805,6 +1828,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOriginACL(self, request):
+        """This API is used to query the binding relationship between L7 acceleration domains/L4 proxy instances and origin ACLs under a site, as well as IP range details. If you want to periodically obtain the latest version of origin IP ranges through an automation script, you can poll this API at a low-frequency (recommended every three days). If the NextOriginACL field has a return value, synchronize the latest origin IP ranges to the origin server firewall configuration.
+
+        :param request: Request instance for DescribeOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOriginGroup(self, request):
         """This API is used to obtain a list of origin groups.
 
@@ -2321,6 +2367,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableOriginACL(self, request):
+        """This API is used to disable 'Origin Protection' of a site. Once disabled, resources related to it will no longer use only the origin ACLs provided by "origin protection" to request your origin, and stops sending update notifications on the origin ACLs.
+
+        :param request: Request instance for DisableOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DisableOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DisableOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableOriginACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadL4Logs(self, request):
         """This API is used to download L4 logs.
 
@@ -2358,6 +2427,35 @@ class TeoClient(AbstractClient):
             body = self.call("DownloadL7Logs", params, headers=headers)
             response = json.loads(body)
             model = models.DownloadL7LogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableOriginACL(self, request):
+        """This API is used to enable 'Origin Protection' for Layer 4 or Layer 7 instances. The number of enabled instances has an upper limit: 200 for Layer 7 domains and 100 for Layer 4 proxy instances. The total number of instances cannot exceed 200, otherwise an error reminder will be triggered. You can first enable the maximum allowed number and use the ModifyOriginACL API to set the excess quantity.
+
+        This API is used to enable 'Origin Protection' for the site for the first time. Once enabled, EdgeOne will use specific origin IP ranges for L7 acceleration domains and L4 proxy instances. The maximum number of L7 acceleration domain that can be submitted in a single request is 200, and the maximum number of L4 proxy instance is 100. Mixed submissions of L7 acceleration domains and L4 proxy instances are supported, with a total maximum of 200 instances. If you need to enable more than 200 instances, you can first enable the maximum number by specifying the instances, and then enable the remaining instances through the API ModifyOriginACL. Any subsequent addition of  L7 acceleration domains or L4 proxy instances should be configured through the API ModifyOriginACL.
+
+        Note:
+        - Calling this API is considered as agreeing to [Origin Protection Enablement Conditions of Use](https://www.tencentcloud.com/document/product/1145/70561?!longPreview).
+        - The origin IP ranges may change periodically. EdgeOne will notify you of changes to the origin IP ranges 14 days, 7 days, 3 days, and 1 day in advance through one or more methods such as internal messages, SMS, and email. To ensure you receive notifications about changes to the origin IP ranges, please make sure that you have selected the relevant product service notifications for the Edge Security Acceleration Platform (EO) in [Tencent Cloud Message Center](https://console.tencentcloud.com/message/subscription) and have configured the correct message recipients. For configuration details, please refer to Message [Subscription Management](https://www.tencentcloud.com/document/product/1233/60778).
+
+        :param request: Request instance for EnableOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.EnableOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.EnableOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableOriginACLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3031,6 +3129,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyLoadBalancer", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOriginACL(self, request):
+        """This API is used to enable or disable specific origin ACLs for L7 acceleration domain names or L4 proxy instances. A single submission supports up to 200 L7 acceleration domain names or 100 L4 proxy instances. Hybrid submissions of L7 acceleration domain names and L4 proxy instances are supported, with a maximum total number of instances of 200. If changes are needed for exceeding 200 instances, submit them in batches via this API.
+
+        :param request: Request instance for ModifyOriginACL.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginACLRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOriginACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOriginACLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -389,6 +389,9 @@ INVALIDPARAMETER_INVALIDCONDITIONS = 'InvalidParameter.InvalidConditions'
 # Invalid origin-pull configuration. When `OriginType` is `COS` or `AWS_S3`, the origin address must be an object storage domain name.
 INVALIDPARAMETER_INVALIDCOSDOMAIN = 'InvalidParameter.InvalidCosDomain'
 
+# The domain name is illegal. check whether a non-existent domain name is passed in the input parameters.
+INVALIDPARAMETER_INVALIDDOMAINS = 'InvalidParameter.InvalidDomains'
+
 # Invalid smart acceleration.
 INVALIDPARAMETER_INVALIDDYNAMICROUTINE = 'InvalidParameter.InvalidDynamicRoutine'
 
@@ -481,6 +484,9 @@ INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = 'InvalidParameter.InvalidPrivateAc
 
 # The value of `PrivateAccess` should be `on` or `off`.
 INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = 'InvalidParameter.InvalidPrivateAccessSwitch'
+
+# The layer 4 proxy is illegal. check whether a non-existing proxy is passed in the input parameters.
+INVALIDPARAMETER_INVALIDPROXIES = 'InvalidParameter.InvalidProxies'
 
 # The plan does not support QUIC.
 INVALIDPARAMETER_INVALIDQUICBILLING = 'InvalidParameter.InvalidQuicBilling'
@@ -1046,6 +1052,9 @@ OPERATIONDENIED_L4STATUSNOTINONLINE = 'OperationDenied.L4StatusNotInOnline'
 # The EdgeOne service cannot be disabled for the site: An accelerated domain name is being deployed.
 OPERATIONDENIED_L7HOSTINPROCESSSTATUS = 'OperationDenied.L7HostInProcessStatus'
 
+# The origin allowlist is already the latest version. no need to update.
+OPERATIONDENIED_LATESTVERSIONNOW = 'OperationDenied.LatestVersionNow'
+
 # The affiliated Cloud Load Balancer is not in a running state. Operation is forbidden.
 OPERATIONDENIED_LOADBALANCESTATUSNOTINONLINE = 'OperationDenied.LoadBalanceStatusNotInOnline'
 
@@ -1132,6 +1141,12 @@ OPERATIONDENIED_STATICIPAREACONFLICT = 'OperationDenied.StaticIpAreaConflict'
 
 # Disabling the origin-pull mutual authentication is not supported now. To disable it, please change the edge HTTPS certificate configuration to 'none'.
 OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = 'OperationDenied.UnSupportToCloseUpstreamMTLS'
+
+# The package is not supported.
+OPERATIONDENIED_UNSUPPORTEDPLAN = 'OperationDenied.UnsupportedPlan'
+
+# Please first update the IP allowlist.
+OPERATIONDENIED_UPDATEIPWHITELISTFIRST = 'OperationDenied.UpdateIPWhitelistFirst'
 
 # To enable the origin-pull mutual authentication, please configure the edge HTTPS certificate first.
 OPERATIONDENIED_USEUPSTREAMMTLSNEEDOPENHTTPS = 'OperationDenied.UseUpstreamMTLSNeedOpenHttps'
