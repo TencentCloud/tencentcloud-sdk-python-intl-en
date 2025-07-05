@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -10005,6 +10005,9 @@ Note: this field may return null, indicating that no valid value was found.
         :param _LatestOperationErrorMsg: Latest operation errors of the instance.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type LatestOperationErrorMsg: str
+        :param _PublicIPv6Addresses: Public IPv6 address of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :type PublicIPv6Addresses: list of str
         """
         self._Placement = None
         self._InstanceId = None
@@ -10047,6 +10050,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._DefaultLoginUser = None
         self._DefaultLoginPort = None
         self._LatestOperationErrorMsg = None
+        self._PublicIPv6Addresses = None
 
     @property
     def Placement(self):
@@ -10510,6 +10514,18 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def LatestOperationErrorMsg(self, LatestOperationErrorMsg):
         self._LatestOperationErrorMsg = LatestOperationErrorMsg
 
+    @property
+    def PublicIPv6Addresses(self):
+        """Public IPv6 address of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: list of str
+        """
+        return self._PublicIPv6Addresses
+
+    @PublicIPv6Addresses.setter
+    def PublicIPv6Addresses(self, PublicIPv6Addresses):
+        self._PublicIPv6Addresses = PublicIPv6Addresses
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -10575,6 +10591,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._DefaultLoginUser = params.get("DefaultLoginUser")
         self._DefaultLoginPort = params.get("DefaultLoginPort")
         self._LatestOperationErrorMsg = params.get("LatestOperationErrorMsg")
+        self._PublicIPv6Addresses = params.get("PublicIPv6Addresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11249,11 +11266,50 @@ class InternetAccessible(AbstractModel):
         :type PublicIpAssigned: bool
         :param _BandwidthPackageId: Bandwidth package ID. it can be obtained through the `BandwidthPackageId` in the return value from the DescribeBandwidthPackages api. this parameter is used as an input parameter only in the RunInstances api.
         :type BandwidthPackageId: str
+        :param _InternetServiceProvider: The EIP line type. 
+ <li>BGP Default: BGP</li>
+
+For a user who has activated the static single-line IP allowlist, possible values are:
+
+ <li>CMCC: China Mobile</li>
+ <li>CTCC: China Telecom</li>
+ <li>CUCC: China Unicom</li>
+
+Note: Only certain regions support static single-line IP addresses.
+        :type InternetServiceProvider: str
+        :param _IPv4AddressType: AddressType. Default value: `WanIP`.
+
+For beta users of dedicated IP, the value can be:
+<li>HighQualityEIP: Dedicated IP</li>
+Note that dedicated IPs are only available in partial regions.
+
+For beta users of Anti-DDoS IP, the value can be:
+<li>AntiDDoSEIP: Anti-DDoS EIP</li>
+Note that Anti-DDoS IPs are only available in partial regions.
+
+This feature is currently in gradually released phase. To access it, please contact us.
+        :type IPv4AddressType: str
+        :param _IPv6AddressType: Indicates the type of EIPv6. Valid values:
+
+<li>EIPv6: common IPv6</li>
+<li>HighQualityEIPv6: dedicated IPv6</li>
+Note: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions. 
+
+Default: `EIPv6`
+
+This feature is currently in gradually released phase. To access it, please contact us.
+        :type IPv6AddressType: str
+        :param _AntiDDoSPackageId: Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
+        :type AntiDDoSPackageId: str
         """
         self._InternetChargeType = None
         self._InternetMaxBandwidthOut = None
         self._PublicIpAssigned = None
         self._BandwidthPackageId = None
+        self._InternetServiceProvider = None
+        self._IPv4AddressType = None
+        self._IPv6AddressType = None
+        self._AntiDDoSPackageId = None
 
     @property
     def InternetChargeType(self):
@@ -11299,12 +11355,87 @@ class InternetAccessible(AbstractModel):
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
 
+    @property
+    def InternetServiceProvider(self):
+        """The EIP line type. 
+ <li>BGP Default: BGP</li>
+
+For a user who has activated the static single-line IP allowlist, possible values are:
+
+ <li>CMCC: China Mobile</li>
+ <li>CTCC: China Telecom</li>
+ <li>CUCC: China Unicom</li>
+
+Note: Only certain regions support static single-line IP addresses.
+        :rtype: str
+        """
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def IPv4AddressType(self):
+        """AddressType. Default value: `WanIP`.
+
+For beta users of dedicated IP, the value can be:
+<li>HighQualityEIP: Dedicated IP</li>
+Note that dedicated IPs are only available in partial regions.
+
+For beta users of Anti-DDoS IP, the value can be:
+<li>AntiDDoSEIP: Anti-DDoS EIP</li>
+Note that Anti-DDoS IPs are only available in partial regions.
+
+This feature is currently in gradually released phase. To access it, please contact us.
+        :rtype: str
+        """
+        return self._IPv4AddressType
+
+    @IPv4AddressType.setter
+    def IPv4AddressType(self, IPv4AddressType):
+        self._IPv4AddressType = IPv4AddressType
+
+    @property
+    def IPv6AddressType(self):
+        """Indicates the type of EIPv6. Valid values:
+
+<li>EIPv6: common IPv6</li>
+<li>HighQualityEIPv6: dedicated IPv6</li>
+Note: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions. 
+
+Default: `EIPv6`
+
+This feature is currently in gradually released phase. To access it, please contact us.
+        :rtype: str
+        """
+        return self._IPv6AddressType
+
+    @IPv6AddressType.setter
+    def IPv6AddressType(self, IPv6AddressType):
+        self._IPv6AddressType = IPv6AddressType
+
+    @property
+    def AntiDDoSPackageId(self):
+        """Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
+        :rtype: str
+        """
+        return self._AntiDDoSPackageId
+
+    @AntiDDoSPackageId.setter
+    def AntiDDoSPackageId(self, AntiDDoSPackageId):
+        self._AntiDDoSPackageId = AntiDDoSPackageId
+
 
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._PublicIpAssigned = params.get("PublicIpAssigned")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._IPv4AddressType = params.get("IPv4AddressType")
+        self._IPv6AddressType = params.get("IPv6AddressType")
+        self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16595,7 +16726,7 @@ class RunInstancesRequest(AbstractModel):
  <b>Note: `Placement` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `Placement` prevails.</b>
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
         :param _InstanceType: The instance model. 
-<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, `S1.SMALL1` will be used by default.<br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
+<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :type InstanceType: str
         :param _ImageId: The [image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images:<br/><li>Public images</li><li>Custom images</li><li>Shared images</li><br/>To check the image ID:<br/><li>For public images, custom images, and shared images, go to the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE). </li><li>Call [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1), pass in `InstanceType` to retrieve the list of images supported by the current model, and then find the `ImageId` in the response.</li>
  <b>Note: `ImageId` is required when `LaunchTemplate` is not specified. If both the parameters are passed in, `ImageId` prevails.</b>
@@ -16632,6 +16763,8 @@ class RunInstancesRequest(AbstractModel):
         :type InstanceMarketOptions: :class:`tencentcloud.cvm.v20170312.models.InstanceMarketOptionsRequest`
         :param _UserData: User data provided to the instance. This parameter needs to be encoded in base64 format with the maximum size of 16 KB. For more information on how to get the value of this parameter, see the commands you need to execute on startup for [Windows](https://intl.cloud.tencent.com/document/product/213/17526) or [Linux](https://intl.cloud.tencent.com/document/product/213/17525).
         :type UserData: str
+        :param _Metadata: 
+        :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _DryRun: Whether the request is a dry run only.
 `true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
 If the dry run fails, the corresponding error code will be returned.
@@ -16652,6 +16785,8 @@ If the dry run succeeds, the RequestId will be returned.
         :type ChcIds: list of str
         :param _DisableApiTermination: Instance termination protection flag, indicating whether an instance is allowed to be deleted through an API. Valid values:<br><li>true: Instance protection is enabled, and the instance is not allowed to be deleted through the API.</li><br><li>false: Instance protection is disabled, and the instance is allowed to be deleted through the API.</li><br><br>Default value: false.
         :type DisableApiTermination: bool
+        :param _EnableJumboFrame: 
+        :type EnableJumboFrame: bool
         """
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
@@ -16674,6 +16809,7 @@ If the dry run succeeds, the RequestId will be returned.
         self._TagSpecification = None
         self._InstanceMarketOptions = None
         self._UserData = None
+        self._Metadata = None
         self._DryRun = None
         self._CpuTopology = None
         self._CamRoleName = None
@@ -16682,6 +16818,7 @@ If the dry run succeeds, the RequestId will be returned.
         self._DedicatedClusterId = None
         self._ChcIds = None
         self._DisableApiTermination = None
+        self._EnableJumboFrame = None
 
     @property
     def InstanceChargeType(self):
@@ -16720,7 +16857,7 @@ If the dry run succeeds, the RequestId will be returned.
     @property
     def InstanceType(self):
         """The instance model. 
-<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). If this parameter is not specified, `S1.SMALL1` will be used by default.<br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
+<br><li>To view specific values for `POSTPAID_BY_HOUR` instances, you can call [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) or refer to [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1). <br><li>For `CDHPAID` instances, the value of this parameter is in the format of `CDH_XCXG` based on the number of CPU cores and memory capacity. For example, if you want to create a CDH instance with a single-core CPU and 1 GB memory, specify this parameter as `CDH_1C1G`.
         :rtype: str
         """
         return self._InstanceType
@@ -16918,6 +17055,17 @@ If the dry run succeeds, the RequestId will be returned.
         self._UserData = UserData
 
     @property
+    def Metadata(self):
+        """
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
     def DryRun(self):
         """Whether the request is a dry run only.
 `true`: dry run only. The request will not create instance(s). A dry run can check whether all the required parameters are specified, whether the request format is right, whether the request exceeds service limits, and whether the specified CVMs are available.
@@ -17009,6 +17157,17 @@ If the dry run succeeds, the RequestId will be returned.
     def DisableApiTermination(self, DisableApiTermination):
         self._DisableApiTermination = DisableApiTermination
 
+    @property
+    def EnableJumboFrame(self):
+        """
+        :rtype: bool
+        """
+        return self._EnableJumboFrame
+
+    @EnableJumboFrame.setter
+    def EnableJumboFrame(self, EnableJumboFrame):
+        self._EnableJumboFrame = EnableJumboFrame
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -17060,6 +17219,9 @@ If the dry run succeeds, the RequestId will be returned.
             self._InstanceMarketOptions = InstanceMarketOptionsRequest()
             self._InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self._UserData = params.get("UserData")
+        if params.get("Metadata") is not None:
+            self._Metadata = Metadata()
+            self._Metadata._deserialize(params.get("Metadata"))
         self._DryRun = params.get("DryRun")
         if params.get("CpuTopology") is not None:
             self._CpuTopology = CpuTopology()
@@ -17072,6 +17234,7 @@ If the dry run succeeds, the RequestId will be returned.
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._ChcIds = params.get("ChcIds")
         self._DisableApiTermination = params.get("DisableApiTermination")
+        self._EnableJumboFrame = params.get("EnableJumboFrame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17860,15 +18023,15 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>.
-<Li>LOCAL_BASIC: specifies a local hard disk.</li>.
-<Li>LOCAL_SSD: specifies a local ssd.</li>.
-<Li>CLOUD_BASIC: ordinary cloud disk.</li>.
-<Li>CLOUD_SSD: ssd cloud disk</li>.
-<Li>CLOUD_PREMIUM: high-performance cloud block storage.</li>.
-<Li>CLOUD_BSSD: universal type ssd cloud disk</li>.
-<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
-<li>CLOUD_TSSD: ultra-fast SSD cbs</li.
+        :param _DiskType: Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>
+<li>LOCAL_BASIC: Local SATA disk</li>
+<li>LOCAL_SSD: Local NVMe SSD</li>
+<li>CLOUD_BASIC: Cloud SATA disk</li>
+<li>CLOUD_SSD: Cloud SSD</li>
+<li>CLOUD_PREMIUM: Premium SSD</li>
+<li>CLOUD_BSSD: Balanced SSD</li>
+<li>CLOUD_HSSD: Enhanced SSD</li>
+<li>CLOUD_TSSD: Tremendous SSD</li>
 Default value: Current disk types with inventory available.
         :type DiskType: str
         :param _DiskId: Specifies the system disk ID.
@@ -17889,15 +18052,15 @@ This parameter currently only serves as a response parameter for query apis such
 
     @property
     def DiskType(self):
-        """Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>.
-<Li>LOCAL_BASIC: specifies a local hard disk.</li>.
-<Li>LOCAL_SSD: specifies a local ssd.</li>.
-<Li>CLOUD_BASIC: ordinary cloud disk.</li>.
-<Li>CLOUD_SSD: ssd cloud disk</li>.
-<Li>CLOUD_PREMIUM: high-performance cloud block storage.</li>.
-<Li>CLOUD_BSSD: universal type ssd cloud disk</li>.
-<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
-<li>CLOUD_TSSD: ultra-fast SSD cbs</li.
+        """Specifies the system disk type. for the restrictions on the system disk type, refer to [storage overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). value range:<br>
+<li>LOCAL_BASIC: Local SATA disk</li>
+<li>LOCAL_SSD: Local NVMe SSD</li>
+<li>CLOUD_BASIC: Cloud SATA disk</li>
+<li>CLOUD_SSD: Cloud SSD</li>
+<li>CLOUD_PREMIUM: Premium SSD</li>
+<li>CLOUD_BSSD: Balanced SSD</li>
+<li>CLOUD_HSSD: Enhanced SSD</li>
+<li>CLOUD_TSSD: Tremendous SSD</li>
 Default value: Current disk types with inventory available.
         :rtype: str
         """
@@ -18136,11 +18299,17 @@ class TerminateInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
         :type InstanceIds: list of str
+        :param _ReleaseAddress: Release an Elastic IP. Under EIP 2.0, only the first EIP on the primary network interface can be released, and currently supported release types are limited to HighQualityEIP, AntiDDoSEIP, EIPv6, and HighQualityEIPv6.
+Default value:  `false`.
+
+This feature is currently in gradually released phase. To access it, please contact us.
+        :type ReleaseAddress: bool
         :param _ReleasePrepaidDataDisks: Whether to release a monthly subscription data disk mounted on an instance. true: Release the data disk along with termination of the instance. false: Only terminate the instance.
 Default value: `false`.
         :type ReleasePrepaidDataDisks: bool
         """
         self._InstanceIds = None
+        self._ReleaseAddress = None
         self._ReleasePrepaidDataDisks = None
 
     @property
@@ -18153,6 +18322,20 @@ Default value: `false`.
     @InstanceIds.setter
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
+
+    @property
+    def ReleaseAddress(self):
+        """Release an Elastic IP. Under EIP 2.0, only the first EIP on the primary network interface can be released, and currently supported release types are limited to HighQualityEIP, AntiDDoSEIP, EIPv6, and HighQualityEIPv6.
+Default value:  `false`.
+
+This feature is currently in gradually released phase. To access it, please contact us.
+        :rtype: bool
+        """
+        return self._ReleaseAddress
+
+    @ReleaseAddress.setter
+    def ReleaseAddress(self, ReleaseAddress):
+        self._ReleaseAddress = ReleaseAddress
 
     @property
     def ReleasePrepaidDataDisks(self):
@@ -18169,6 +18352,7 @@ Default value: `false`.
 
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
+        self._ReleaseAddress = params.get("ReleaseAddress")
         self._ReleasePrepaidDataDisks = params.get("ReleasePrepaidDataDisks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -18224,6 +18408,7 @@ class VirtualPrivateCloud(AbstractModel):
         :param _PrivateIpAddresses: Array of VPC subnet IPs. You can use this parameter when creating instances or modifying VPC attributes of instances. Currently you can specify multiple IPs in one subnet only when creating multiple instances at the same time.
         :type PrivateIpAddresses: list of str
         :param _Ipv6AddressCount: Number of IPv6 addresses randomly generated for the ENI.
+If IPv6AddressType is specified under InternetAccessible, this parameter must not be set to 0.
         :type Ipv6AddressCount: int
         """
         self._VpcId = None
@@ -18279,6 +18464,7 @@ class VirtualPrivateCloud(AbstractModel):
     @property
     def Ipv6AddressCount(self):
         """Number of IPv6 addresses randomly generated for the ENI.
+If IPv6AddressType is specified under InternetAccessible, this parameter must not be set to 0.
         :rtype: int
         """
         return self._Ipv6AddressCount

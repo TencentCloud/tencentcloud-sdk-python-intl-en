@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -377,6 +377,12 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # Duplicate tags.
 INVALIDPARAMETERVALUE_DUPLICATETAGS = 'InvalidParameterValue.DuplicateTags'
 
+# 
+INVALIDPARAMETERVALUE_ELASTICNETWORKNOTEXIST = 'InvalidParameterValue.ElasticNetworkNotExist'
+
+# 
+INVALIDPARAMETERVALUE_ELASTICNETWORKVPCSUBNETMISMATCH = 'InvalidParameterValue.ElasticNetworkVpcSubnetMismatch'
+
 # The number of requested public IP addresses exceeds the quota of this instance type.
 INVALIDPARAMETERVALUE_EXTERNALIPQUOTALIMITED = 'InvalidParameterValue.ExternalIpQuotaLimited'
 
@@ -406,6 +412,9 @@ INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = 'InvalidParameterValue.InstanceIdMal
 
 # The specified instance type does not exist.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
+
+# 
+INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTELASTICNETWORKS = 'InvalidParameterValue.InstanceTypeNotSupportElasticNetworks'
 
 # This type of instances cannot be added to the HPC cluster.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTHPCCLUSTER = 'InvalidParameterValue.InstanceTypeNotSupportHpcCluster'
@@ -476,6 +485,9 @@ INVALIDPARAMETERVALUE_INVALIDLAUNCHTEMPLATEVERSIONDESCRIPTION = 'InvalidParamete
 # Invalid license type.
 INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = 'InvalidParameterValue.InvalidLicenseType'
 
+# 
+INVALIDPARAMETERVALUE_INVALIDNETWORKINTERFACEID = 'InvalidParameterValue.InvalidNetworkInterfaceId'
+
 # Invalid parameter value.
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.InvalidParameterValueLimit'
 
@@ -493,6 +505,9 @@ INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = 'InvalidParameterValue.InvalidUser
 
 # Invalid fuzzy query string
 INVALIDPARAMETERVALUE_INVALIDVAGUENAME = 'InvalidParameterValue.InvalidVagueName'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDVPCIDSUBNETIDNOTFOUND = 'InvalidParameterValue.InvalidVpcIdSubnetIdNotFound'
 
 # Edge zones do not support this ISP.
 INVALIDPARAMETERVALUE_ISPNOTSUPPORTFOREDGEZONE = 'InvalidParameterValue.IspNotSupportForEdgeZone'
@@ -533,6 +548,9 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # The parameter value must be a DHCP-enabled VPC.
 INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = 'InvalidParameterValue.MustDhcpEnabledVpc'
 
+# 
+INVALIDPARAMETERVALUE_MUSTENABLEDISRDMA = 'InvalidParameterValue.MustEnabledIsRdma'
+
 # The subnet is not in the CDC cluster.
 INVALIDPARAMETERVALUE_NOTCDCSUBNET = 'InvalidParameterValue.NotCdcSubnet'
 
@@ -563,6 +581,9 @@ INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = 'InvalidParameterValue.SnapshotIdMal
 # Invalid subnet ID. Please provide a subnet ID in the format of subnet-xxxxxxxx, where “x” can be a lowercase letter or number.
 INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = 'InvalidParameterValue.SubnetIdMalformed'
 
+# 
+INVALIDPARAMETERVALUE_SUBNETIDZONEIDNOTMATCH = 'InvalidParameterValue.SubnetIdZoneIdNotMatch'
+
 # Creation failed: the subnet does not exist. Please specify another subnet.
 INVALIDPARAMETERVALUE_SUBNETNOTEXIST = 'InvalidParameterValue.SubnetNotExist'
 
@@ -589,6 +610,9 @@ INVALIDPARAMETERVALUE_VPCIDMALFORMED = 'InvalidParameterValue.VpcIdMalformed'
 
 # The specified VpcId doesn't exist.
 INVALIDPARAMETERVALUE_VPCIDNOTEXIST = 'InvalidParameterValue.VpcIdNotExist'
+
+# 
+INVALIDPARAMETERVALUE_VPCIDSUBNETIDNOTMATCH = 'InvalidParameterValue.VpcIdSubnetIdNotMatch'
 
 # The VPC and instance must be in the same availability zone.
 INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = 'InvalidParameterValue.VpcIdZoneIdNotMatch'
@@ -946,6 +970,12 @@ UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = 'UnsupportedOperation.InstanceSta
 
 # The instance is being terminated, and the operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = 'UnsupportedOperation.InstanceStateTerminating'
+
+# 
+UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTCONFIDENTIALITY = 'UnsupportedOperation.InstanceTypeNotSupportConfidentiality'
+
+# 
+UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTGRIDLICENCE = 'UnsupportedOperation.InstanceTypeNotSupportGridLicence'
 
 # The instance type does not support setting the `EnableJumboFrame` status.
 UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTJUMBOFRAME = 'UnsupportedOperation.InstanceTypeNotSupportJumboFrame'
