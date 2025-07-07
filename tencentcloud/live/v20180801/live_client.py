@@ -2721,6 +2721,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopLivePadStream(self, request):
+        """Call this API to end the transition to standby footage.
+
+        :param request: Request instance for StopLivePadStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopLivePadStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopLivePadStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLivePadStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopLivePadStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopLiveRecord(self, request):
         """Note: Recording files are stored on the VOD platform. To use the recording feature, you need to activate a VOD account and ensure that it is available. After the recording files are stored, applicable fees (including storage fees and downstream playback traffic fees) will be charged according to the VOD billing method. For more information, please see the corresponding document.
 
