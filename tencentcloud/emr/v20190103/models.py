@@ -3091,6 +3091,217 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class CreateSLInstanceRequest(AbstractModel):
+    """CreateSLInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: Instance name.
+        :type InstanceName: str
+        :param _PayMode: Instance billing mode. 0 indicates postpaid, i.e., pay-as-you-go.
+        :type PayMode: int
+        :param _DiskType: Instance storage type. Fill in CLOUD_HSSD to represent high-performance cloud storage.
+        :type DiskType: str
+        :param _DiskSize: The disk capacity of a single node of the instance, in GB. The disk capacity of a single node should be greater than or equal to 100 and less than or equal to 250 x the number of CPU cores. The capacity adjustment step is 100.
+        :type DiskSize: int
+        :param _NodeType: Instance node specification. You can fill in 4C16G, 8C32G, 16C64G, or 32C128G, which is case-insensitive.
+        :type NodeType: str
+        :param _ZoneSettings: Detailed configuration of the instance AZ. Currently, multiple availability zones are supported. The number of AZs must be 1 or 3, including the region names, VPC information, and number of nodes. The total number of nodes across all zones must be greater than or equal to 3 and less than or equal to 50.
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: List of tags to be bound to the instance.
+        :type Tags: list of Tag
+        :param _PrePaySetting: Prepaid parameter.
+        :type PrePaySetting: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
+        :param _ClientToken: The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.
+        :type ClientToken: str
+        """
+        self._InstanceName = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._ZoneSettings = None
+        self._Tags = None
+        self._PrePaySetting = None
+        self._ClientToken = None
+
+    @property
+    def InstanceName(self):
+        """Instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        """Instance billing mode. 0 indicates postpaid, i.e., pay-as-you-go.
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        """Instance storage type. Fill in CLOUD_HSSD to represent high-performance cloud storage.
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        """The disk capacity of a single node of the instance, in GB. The disk capacity of a single node should be greater than or equal to 100 and less than or equal to 250 x the number of CPU cores. The capacity adjustment step is 100.
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        """Instance node specification. You can fill in 4C16G, 8C32G, 16C64G, or 32C128G, which is case-insensitive.
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ZoneSettings(self):
+        """Detailed configuration of the instance AZ. Currently, multiple availability zones are supported. The number of AZs must be 1 or 3, including the region names, VPC information, and number of nodes. The total number of nodes across all zones must be greater than or equal to 3 and less than or equal to 50.
+        :rtype: list of ZoneSetting
+        """
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        """List of tags to be bound to the instance.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PrePaySetting(self):
+        """Prepaid parameter.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.PrePaySetting`
+        """
+        return self._PrePaySetting
+
+    @PrePaySetting.setter
+    def PrePaySetting(self, PrePaySetting):
+        self._PrePaySetting = PrePaySetting
+
+    @property
+    def ClientToken(self):
+        """The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PrePaySetting") is not None:
+            self._PrePaySetting = PrePaySetting()
+            self._PrePaySetting._deserialize(params.get("PrePaySetting"))
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSLInstanceResponse(AbstractModel):
+    """CreateSLInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance unique identifier (string).
+        :type InstanceId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """Instance unique identifier (string).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CustomMetaDBInfo(AbstractModel):
     """The user-created Hive-MetaDB instance information.
 
@@ -4748,6 +4959,516 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self._Scheduler = params.get("Scheduler")
         self._FSInfo = params.get("FSInfo")
         self._CSInfo = params.get("CSInfo")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSLInstanceListRequest(AbstractModel):
+    """DescribeSLInstanceList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisplayStrategy: Instance filtering policy. Valid values: <li>clusterList: Query the list of instances except for those that have been terminated.</li> <li>monitorManage: Query the list of instances except for those that have been terminated, are being created, or fail to be created.</li>
+        :type DisplayStrategy: str
+        :param _Offset: Page number. The default value is 0, indicating the first page.
+        :type Offset: int
+        :param _Limit: Number of records to be returned per page. The default value is 10, and the maximum value is 100.	
+        :type Limit: int
+        :param _OrderField: Sorting field. Valid values: <li>clusterId: Sort by instance ID.</li> <li>addTime: Sort by instance creation time.</li> <li>status: Sort by instance status code.</li>
+        :type OrderField: str
+        :param _Asc: Sorts by OrderField in ascending or descending order. Valid values: <li>0: ascending order;</li> <li>1: descending order.</li> The default value is 0.
+        :type Asc: int
+        :param _Filters: Custom search filters. Examples: <li>Filter instances by ClusterId: [{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li> Filter instances by clusterName: [{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>Filter instances by ClusterStatus: [{"Name": "ClusterStatus","Values": ["2"]}]</li>
+        :type Filters: list of Filters
+        """
+        self._DisplayStrategy = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Asc = None
+        self._Filters = None
+
+    @property
+    def DisplayStrategy(self):
+        """Instance filtering policy. Valid values: <li>clusterList: Query the list of instances except for those that have been terminated.</li> <li>monitorManage: Query the list of instances except for those that have been terminated, are being created, or fail to be created.</li>
+        :rtype: str
+        """
+        return self._DisplayStrategy
+
+    @DisplayStrategy.setter
+    def DisplayStrategy(self, DisplayStrategy):
+        self._DisplayStrategy = DisplayStrategy
+
+    @property
+    def Offset(self):
+        """Page number. The default value is 0, indicating the first page.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Number of records to be returned per page. The default value is 10, and the maximum value is 100.	
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        """Sorting field. Valid values: <li>clusterId: Sort by instance ID.</li> <li>addTime: Sort by instance creation time.</li> <li>status: Sort by instance status code.</li>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Asc(self):
+        """Sorts by OrderField in ascending or descending order. Valid values: <li>0: ascending order;</li> <li>1: descending order.</li> The default value is 0.
+        :rtype: int
+        """
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def Filters(self):
+        """Custom search filters. Examples: <li>Filter instances by ClusterId: [{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li> Filter instances by clusterName: [{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>Filter instances by ClusterStatus: [{"Name": "ClusterStatus","Values": ["2"]}]</li>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DisplayStrategy = params.get("DisplayStrategy")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSLInstanceListResponse(AbstractModel):
+    """DescribeSLInstanceList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: Total number of qualified instances	.
+        :type TotalCnt: int
+        :param _InstancesList: Instance information list. If pagination is applied, only the current page's instance information list is displayed.
+        :type InstancesList: list of SLInstanceInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCnt = None
+        self._InstancesList = None
+        self._RequestId = None
+
+    @property
+    def TotalCnt(self):
+        """Total number of qualified instances	.
+        :rtype: int
+        """
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def InstancesList(self):
+        """Instance information list. If pagination is applied, only the current page's instance information list is displayed.
+        :rtype: list of SLInstanceInfo
+        """
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        if params.get("InstancesList") is not None:
+            self._InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = SLInstanceInfo()
+                obj._deserialize(item)
+                self._InstancesList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSLInstanceRequest(AbstractModel):
+    """DescribeSLInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance unique identifier (string).
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """Instance unique identifier (string).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSLInstanceResponse(AbstractModel):
+    """DescribeSLInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Character string identifier of the instance.
+        :type InstanceId: str
+        :param _InstanceName: Instance name.
+        :type InstanceName: str
+        :param _PayMode: Instance billing mode. 0 indicates postpaid, i.e., pay-as-you-go; 1 indicates prepaid, i.e., monthly subscription.
+        :type PayMode: int
+        :param _DiskType: Instance storage type.
+        :type DiskType: str
+        :param _DiskSize: Instance single-node disk capacity, in GB.
+        :type DiskSize: int
+        :param _NodeType: Instance node specifications.
+        :type NodeType: str
+        :param _ZoneSettings: Detailed configuration of the instance AZ, including the AZ name, VPC information, and number of nodes.
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: List of tags bound to the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param _ClusterId: Numeric identifier of the instance.
+        :type ClusterId: int
+        :param _RegionId: Instance region ID.
+        :type RegionId: int
+        :param _Zone: Primary AZ of the instance.
+        :type Zone: str
+        :param _ExpireTime: Instance expiration time. For post-paid instances, the API returns 0000-00-00 00:00:00.
+        :type ExpireTime: str
+        :param _IsolateTime: Instance isolation time. For instances that are not isolated, the API returns 0000-00-00 00:00:00.
+        :type IsolateTime: str
+        :param _CreateTime: Instance creation time.
+        :type CreateTime: str
+        :param _Status: Instance status code: -2: "TERMINATED", 2: "RUNNING", 14: "TERMINATING", 19: "ISOLATING", 22: "ADJUSTING", and 201: "ISOLATED".
+        :type Status: int
+        :param _AutoRenewFlag: Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew. If the business does not support renewal, the value is 0.
+        :type AutoRenewFlag: int
+        :param _NodeNum: Total number of instance nodes.
+        :type NodeNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._PayMode = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._ZoneSettings = None
+        self._Tags = None
+        self._ClusterId = None
+        self._RegionId = None
+        self._Zone = None
+        self._ExpireTime = None
+        self._IsolateTime = None
+        self._CreateTime = None
+        self._Status = None
+        self._AutoRenewFlag = None
+        self._NodeNum = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        """Character string identifier of the instance.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        """Instance name.
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PayMode(self):
+        """Instance billing mode. 0 indicates postpaid, i.e., pay-as-you-go; 1 indicates prepaid, i.e., monthly subscription.
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def DiskType(self):
+        """Instance storage type.
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        """Instance single-node disk capacity, in GB.
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        """Instance node specifications.
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ZoneSettings(self):
+        """Detailed configuration of the instance AZ, including the AZ name, VPC information, and number of nodes.
+        :rtype: list of ZoneSetting
+        """
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        """List of tags bound to the instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClusterId(self):
+        """Numeric identifier of the instance.
+        :rtype: int
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RegionId(self):
+        """Instance region ID.
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Zone(self):
+        """Primary AZ of the instance.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ExpireTime(self):
+        """Instance expiration time. For post-paid instances, the API returns 0000-00-00 00:00:00.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IsolateTime(self):
+        """Instance isolation time. For instances that are not isolated, the API returns 0000-00-00 00:00:00.
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def CreateTime(self):
+        """Instance creation time.
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        """Instance status code: -2: "TERMINATED", 2: "RUNNING", 14: "TERMINATING", 19: "ISOLATING", 22: "ADJUSTING", and 201: "ISOLATED".
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew. If the business does not support renewal, the value is 0.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def NodeNum(self):
+        """Total number of instance nodes.
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._PayMode = params.get("PayMode")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClusterId = params.get("ClusterId")
+        self._RegionId = params.get("RegionId")
+        self._Zone = params.get("Zone")
+        self._ExpireTime = params.get("ExpireTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._NodeNum = params.get("NodeNum")
         self._RequestId = params.get("RequestId")
 
 
@@ -8482,6 +9203,194 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class ModifySLInstanceBasicRequest(AbstractModel):
+    """ModifySLInstanceBasic request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _ClusterName: Instance name.
+        :type ClusterName: str
+        """
+        self._InstanceId = None
+        self._ClusterName = None
+
+    @property
+    def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClusterName(self):
+        """Instance name.
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySLInstanceBasicResponse(AbstractModel):
+    """ModifySLInstanceBasic response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySLInstanceRequest(AbstractModel):
+    """ModifySLInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance unique identifier (string).
+        :type InstanceId: str
+        :param _Zone: Region name to be changed.
+        :type Zone: str
+        :param _NodeNum: Target node count after configuration change in this region. The total number of nodes across all regions should be greater than or equal to 3 and less than or equal to 50.
+        :type NodeNum: int
+        :param _ClientToken: The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.
+        :type ClientToken: str
+        """
+        self._InstanceId = None
+        self._Zone = None
+        self._NodeNum = None
+        self._ClientToken = None
+
+    @property
+    def InstanceId(self):
+        """Instance unique identifier (string).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Zone(self):
+        """Region name to be changed.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeNum(self):
+        """Target node count after configuration change in this region. The total number of nodes across all regions should be greater than or equal to 3 and less than or equal to 50.
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def ClientToken(self):
+        """The unique random identifier with a time efficiency of 5 minutes, which needs to be specified by the caller to prevent the client from creating resources repeatedly. For example: a9a90aa6-****-****-****-fae360632808.
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Zone = params.get("Zone")
+        self._NodeNum = params.get("NodeNum")
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySLInstanceResponse(AbstractModel):
+    """ModifySLInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyUserManagerPwdRequest(AbstractModel):
     """ModifyUserManagerPwd request structure.
 
@@ -10532,6 +11441,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Period(AbstractModel):
+    """Serverless HBase monthly subscription duration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeSpan: Time span.
+        :type TimeSpan: int
+        :param _TimeUnit: Time unit, "m" stands for month.
+        :type TimeUnit: str
+        """
+        self._TimeSpan = None
+        self._TimeUnit = None
+
+    @property
+    def TimeSpan(self):
+        """Time span.
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        """Time unit, "m" stands for month.
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+
+    def _deserialize(self, params):
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersistentVolumeContext(AbstractModel):
     """Description of Pod `PVC` storage method
 
@@ -12017,6 +12977,61 @@ class PreExecuteFileSettings(AbstractModel):
         
 
 
+class PrePaySetting(AbstractModel):
+    """Serverless HBase prepaid settings
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: Time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Period: :class:`tencentcloud.emr.v20190103.models.Period`
+        :param _AutoRenewFlag: Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew.
+        :type AutoRenewFlag: int
+        """
+        self._Period = None
+        self._AutoRenewFlag = None
+
+    @property
+    def Period(self):
+        """Time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.Period`
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+
+    def _deserialize(self, params):
+        if params.get("Period") is not None:
+            self._Period = Period()
+            self._Period._deserialize(params.get("Period"))
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PriceDetail(AbstractModel):
     """Pricing details
 
@@ -12691,6 +13706,326 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._InstanceType = params.get("InstanceType")
         self._LocalDiskNum = params.get("LocalDiskNum")
         self._DiskNum = params.get("DiskNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SLInstanceInfo(AbstractModel):
+    """Serverless HBase instance information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Instance string ID.
+        :type ClusterId: str
+        :param _Id: Instance numeric ID
+        :type Id: int
+        :param _StatusDesc: Status description.
+        :type StatusDesc: str
+        :param _HealthStatus: Health status.
+        :type HealthStatus: str
+        :param _ClusterName: Instance name
+        :type ClusterName: str
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _ZoneId: Primary AZ ID.
+        :type ZoneId: int
+        :param _Zone: Primary AZ.
+        :type Zone: str
+        :param _AppId: User APP ID.
+        :type AppId: int
+        :param _VpcId: Primary AZ VPC ID.
+        :type VpcId: int
+        :param _SubnetId: Primary AZ subnet ID.
+        :type SubnetId: int
+        :param _Status: Status code
+        :type Status: int
+        :param _AddTime: Creation time.
+        :type AddTime: str
+        :param _PayMode: Cluster billing type. 0 indicates pay-as-you-go. 1 indicates monthly subscription.
+        :type PayMode: int
+        :param _ZoneSettings: Multi-AZ information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneSettings: list of ZoneSetting
+        :param _Tags: Instance tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
+        :param _AutoRenewFlag: Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew. If the business does not support renewal, the value is set to 0.
+        :type AutoRenewFlag: int
+        :param _IsolateTime: Isolation time. For instances that are not isolated, the API returns 0000-00-00 00:00:00.
+        :type IsolateTime: str
+        :param _ExpireTime: Expiration time. For post-paid instances, the API returns 0000-00-00 00:00:00.
+        :type ExpireTime: str
+        """
+        self._ClusterId = None
+        self._Id = None
+        self._StatusDesc = None
+        self._HealthStatus = None
+        self._ClusterName = None
+        self._RegionId = None
+        self._ZoneId = None
+        self._Zone = None
+        self._AppId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Status = None
+        self._AddTime = None
+        self._PayMode = None
+        self._ZoneSettings = None
+        self._Tags = None
+        self._AutoRenewFlag = None
+        self._IsolateTime = None
+        self._ExpireTime = None
+
+    @property
+    def ClusterId(self):
+        """Instance string ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Id(self):
+        """Instance numeric ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StatusDesc(self):
+        """Status description.
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def HealthStatus(self):
+        """Health status.
+        :rtype: str
+        """
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def ClusterName(self):
+        """Instance name
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RegionId(self):
+        """Region ID
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ZoneId(self):
+        """Primary AZ ID.
+        :rtype: int
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Zone(self):
+        """Primary AZ.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AppId(self):
+        """User APP ID.
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def VpcId(self):
+        """Primary AZ VPC ID.
+        :rtype: int
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        """Primary AZ subnet ID.
+        :rtype: int
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Status(self):
+        """Status code
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AddTime(self):
+        """Creation time.
+        :rtype: str
+        """
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def PayMode(self):
+        """Cluster billing type. 0 indicates pay-as-you-go. 1 indicates monthly subscription.
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ZoneSettings(self):
+        """Multi-AZ information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ZoneSetting
+        """
+        return self._ZoneSettings
+
+    @ZoneSettings.setter
+    def ZoneSettings(self, ZoneSettings):
+        self._ZoneSettings = ZoneSettings
+
+    @property
+    def Tags(self):
+        """Instance tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AutoRenewFlag(self):
+        """Auto-renewal flag. 0: notify before expiration but do not auto-renew; 1: notify before expiration and auto-renew; and 2: do not notify before expiration and do not auto-renew. If the business does not support renewal, the value is set to 0.
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def IsolateTime(self):
+        """Isolation time. For instances that are not isolated, the API returns 0000-00-00 00:00:00.
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def ExpireTime(self):
+        """Expiration time. For post-paid instances, the API returns 0000-00-00 00:00:00.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Id = params.get("Id")
+        self._StatusDesc = params.get("StatusDesc")
+        self._HealthStatus = params.get("HealthStatus")
+        self._ClusterName = params.get("ClusterName")
+        self._RegionId = params.get("RegionId")
+        self._ZoneId = params.get("ZoneId")
+        self._Zone = params.get("Zone")
+        self._AppId = params.get("AppId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Status = params.get("Status")
+        self._AddTime = params.get("AddTime")
+        self._PayMode = params.get("PayMode")
+        if params.get("ZoneSettings") is not None:
+            self._ZoneSettings = []
+            for item in params.get("ZoneSettings"):
+                obj = ZoneSetting()
+                obj._deserialize(item)
+                self._ZoneSettings.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._IsolateTime = params.get("IsolateTime")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14707,6 +16042,70 @@ class TerminateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TerminateSLInstanceRequest(AbstractModel):
+    """TerminateSLInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance unique identifier (string).
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        """Instance unique identifier (string).
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateSLInstanceResponse(AbstractModel):
+    """TerminateSLInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class TerminateTasksRequest(AbstractModel):
     """TerminateTasks request structure.
 
@@ -15451,6 +16850,74 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._AllNodeResourceSpec = AllNodeResourceSpec()
             self._AllNodeResourceSpec._deserialize(params.get("AllNodeResourceSpec"))
         self._ZoneTag = params.get("ZoneTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneSetting(AbstractModel):
+    """AZ configuration description.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Availability zone name
+        :type Zone: str
+        :param _VPCSettings: AZ VPC and subnet.
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param _NodeNum: Number of AZ nodes.
+        :type NodeNum: int
+        """
+        self._Zone = None
+        self._VPCSettings = None
+        self._NodeNum = None
+
+    @property
+    def Zone(self):
+        """Availability zone name
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VPCSettings(self):
+        """AZ VPC and subnet.
+        :rtype: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        """
+        return self._VPCSettings
+
+    @VPCSettings.setter
+    def VPCSettings(self, VPCSettings):
+        self._VPCSettings = VPCSettings
+
+    @property
+    def NodeNum(self):
+        """Number of AZ nodes.
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        if params.get("VPCSettings") is not None:
+            self._VPCSettings = VPCSettings()
+            self._VPCSettings._deserialize(params.get("VPCSettings"))
+        self._NodeNum = params.get("NodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10106,6 +10106,8 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @property
     def ProductCode(self):
+        warnings.warn("parameter `ProductCode` is deprecated", DeprecationWarning) 
+
         """Queries information on a specified product
         :rtype: str
         """
@@ -10113,6 +10115,8 @@ ccli billing DescribeBillDetail --cli-unfold-argument --Offset 1 --Limit 100 --M
 
     @ProductCode.setter
     def ProductCode(self, ProductCode):
+        warnings.warn("parameter `ProductCode` is deprecated", DeprecationWarning) 
+
         self._ProductCode = ProductCode
 
     @property

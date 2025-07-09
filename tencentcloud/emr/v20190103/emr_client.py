@@ -96,6 +96,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSLInstance(self, request):
+        """This API is used to create a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the InstanceId of the created instance and the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.
+
+        :param request: Request instance for CreateSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAutoScaleRecords(self, request):
         """This API is used to inquiry detailed records of cluster autoscaling.
 
@@ -248,6 +271,52 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeResourceSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeResourceScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSLInstance(self, request):
+        """This API is used to query the basic information of Serverless HBase instances.
+
+        :param request: Request instance for DescribeSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSLInstanceList(self, request):
+        """This API is used to query the detailed information of the Serverless HBase instance list.
+
+        :param request: Request instance for DescribeSLInstanceList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeSLInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSLInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSLInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -442,6 +511,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySLInstance(self, request):
+        """This API is used to resize a Serverless HBase instance.- If the API call is successful, a Serverless HBase instance will be created. If the instance creation request is successful, the RequestID of the request will be returned.- This is an asynchronous API. The operation is not completed immediately when the API call returns. The instance operation result can be viewed by calling DescribeInstancesList to view the StatusDesc status of the current instance.
+
+        :param request: Request instance for ModifySLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySLInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySLInstanceBasic(self, request):
+        """This API is used to modify the Serverless HBase instance name.
+
+        :param request: Request instance for ModifySLInstanceBasic.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceBasicRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifySLInstanceBasicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySLInstanceBasic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySLInstanceBasicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserManagerPwd(self, request):
         """This API is used to change user password (user management).
 
@@ -571,6 +686,29 @@ class EmrClient(AbstractClient):
             body = self.call("TerminateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateSLInstance(self, request):
+        """This API is used to terminate a Serverless HBase instance.
+
+        :param request: Request instance for TerminateSLInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateSLInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateSLInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateSLInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
