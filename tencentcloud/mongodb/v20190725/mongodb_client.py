@@ -27,7 +27,7 @@ class MongodbClient(AbstractClient):
 
 
     def AssignProject(self, request):
-        """This API is used to specify the project to which a TencentDB instance belongs.
+        """This API is used to specify the project of a TencentDB for MongoDB instance.
 
         :param request: Request instance for AssignProject.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.AssignProjectRequest`
@@ -50,7 +50,7 @@ class MongodbClient(AbstractClient):
 
 
     def CreateBackupDBInstance(self, request):
-        """This API is used to create instance backups.
+        """This API is used to back up an instance.
 
         :param request: Request instance for CreateBackupDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.CreateBackupDBInstanceRequest`
@@ -142,7 +142,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeAsyncRequestInfo(self, request):
-        """This API is used to query async task status.
+        """This API is used to query the asynchronous task status.
 
         :param request: Request instance for DescribeAsyncRequestInfo.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAsyncRequestInfoRequest`
@@ -188,7 +188,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeClientConnections(self, request):
-        """This API is used to query the client connection information of an instance, including the IP and number of connections. Currently, only instances of MongoDB 3.2 are supported.
+        """This API is used to query the client connection information on an instance, including the IP address for connection and the number of connections.
 
         :param request: Request instance for DescribeClientConnections.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeClientConnectionsRequest`
@@ -234,7 +234,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeDBInstanceDeal(self, request):
-        """This API is used to get details of purchase, renewal, and specification adjustment orders of a MongoDB instance.
+        """This API is used to get order details of purchase, renewal, and specification adjustment of a MongoDB instance.
 
         :param request: Request instance for DescribeDBInstanceDeal.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceDealRequest`
@@ -256,8 +256,31 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceNamespace(self, request):
+        """This API is used to query the table information on a database.
+
+        :param request: Request instance for DescribeDBInstanceNamespace.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceNamespaceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstanceNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceNamespace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstances(self, request):
-        """This API is used to query the list of TencentDB instances (which can be primary, disaster recovery, or read-only instances). It supports filtering instances by project ID, instance ID, and instance status.
+        """This API is used to query the list of TencentDB for MongoDB instances. It supports filtering primary instances, disaster recovery instances, and read-only instances by project ID, instance ID, instance status, and other conditions.
 
         :param request: Request instance for DescribeDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeDBInstancesRequest`
@@ -280,7 +303,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeInstanceParams(self, request):
-        """This API is used to query the modifiable parameter list of an instance.
+        """This API is used to query the list of parameters that can be modified for the current instance.
 
         :param request: Request instance for DescribeInstanceParams.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeInstanceParamsRequest`
@@ -303,7 +326,7 @@ class MongodbClient(AbstractClient):
 
 
     def DescribeSecurityGroup(self, request):
-        """This API is used to query the security groups associated with an instance.
+        """This API is used to query security groups bound to an instance.
 
         :param request: Request instance for DescribeSecurityGroup.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeSecurityGroupRequest`
@@ -510,7 +533,7 @@ class MongodbClient(AbstractClient):
 
 
     def ModifyDBInstanceNetworkAddress(self, request):
-        """This API is used to modify the network settings of a TencentDB instance, such as switching its network type from classic network to VPC or between VPCs.
+        """This API is used to modify the network information on a TencentDB for MongoDB instance. It supports switching from a basic network to a VPC network or from one VPC network to another VPC network.
 
         :param request: Request instance for ModifyDBInstanceNetworkAddress.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceNetworkAddressRequest`
@@ -533,7 +556,7 @@ class MongodbClient(AbstractClient):
 
 
     def ModifyDBInstanceSecurityGroup(self, request):
-        """This API is used to modify the security groups associated with an instance.
+        """This API is used to modify security groups bound to an instance.
 
         :param request: Request instance for ModifyDBInstanceSecurityGroup.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceSecurityGroupRequest`
@@ -556,7 +579,7 @@ class MongodbClient(AbstractClient):
 
 
     def ModifyDBInstanceSpec(self, request):
-        """This API is used to adjust the specification configuration of a TencentDB for MongoDB. The purchasable specifications supported by the API can be obtained through the DescribeSpecInfo API.
+        """This API is used to adjust the configuration of a TencentDB for MongoDB instance. Saleable specifications supported for this API can be obtained from the DescribeSpecInfo API for querying saleable TencentDB for MongoDB specifications.
 
         :param request: Request instance for ModifyDBInstanceSpec.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceSpecRequest`

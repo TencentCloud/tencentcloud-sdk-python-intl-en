@@ -17,6 +17,9 @@
 # CAM signature/authentication error
 AUTHFAILURE = 'AuthFailure'
 
+# Public network access has been enabled for the current instance.
+FAILEDOPERATION_NOTALLOWMODIFYADDRAFTEROPENWANSERVICE = 'FailedOperation.NotAllowModifyAddrAfterOpenWanService'
+
 # Internal error
 INTERNALERROR = 'InternalError'
 
@@ -35,7 +38,7 @@ INVALIDPARAMETER_CURRENTINSTANCENOTSUPPORTMODIFYPARAMS = 'InvalidParameter.Curre
 # Invalid Vip information
 INVALIDPARAMETER_INVALIDVIP = 'InvalidParameter.InvalidVip'
 
-# The current subaccount has no permission to perform this operation.
+# The current sub-account has no permission to perform this operation.
 INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
 
 # Instances are not purchasable in this AZ.
@@ -131,7 +134,7 @@ INVALIDPARAMETERVALUE_SECURITYGROUPID = 'InvalidParameterValue.SecurityGroupId'
 # The disk size to be set cannot be less than 1.2 times the used disk capacity.
 INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = 'InvalidParameterValue.SetDiskLessThanUsed'
 
-# The value of the `slowMS` parameter should be at least 100 ms.
+# The value range of the slowMS parameter is [100,65536].
 INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = 'InvalidParameterValue.SlowMSBelowLimit'
 
 # Incorrect purchasable specification.
@@ -157,6 +160,9 @@ INVALIDPARAMETERVALUE_ZONECLOSED = 'InvalidParameterValue.ZoneClosed'
 
 # Invalid availability zone
 INVALIDPARAMETERVALUE_ZONEERROR = 'InvalidParameterValue.ZoneError'
+
+# The API frequency limit is triggered due to frequent requests.
+LIMITEXCEEDED_TOOMANYREQUESTS = 'LimitExceeded.TooManyRequests'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
