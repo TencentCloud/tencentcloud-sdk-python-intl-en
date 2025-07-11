@@ -218,6 +218,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLivePadRule(self, request):
+        """create a live pad rule.
+
+        :param request: Request instance for CreateLivePadRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLivePadRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLivePadRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLivePadRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLivePadTemplate(self, request):
+        """create a live pad template
+
+        :param request: Request instance for CreateLivePadTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLivePadTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLivePadTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLivePadTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLivePadTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLivePullStreamTask(self, request):
         """This API is used to create a task to pull streams from video files or an external live streaming source and publish them to a specified destination URL.
         Notes:
