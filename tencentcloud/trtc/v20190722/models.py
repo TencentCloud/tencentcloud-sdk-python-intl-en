@@ -4405,6 +4405,46 @@ In cases where `SubscribeAudioList` and `UnSubscribeAudioList` are used at the s
         
 
 
+class McuCloudVod(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _McuTencentVod: Tencent VOD Parameters
+Example :{"ExpireTime":86400}
+        :type McuTencentVod: :class:`tencentcloud.trtc.v20190722.models.McuTencentVod`
+        """
+        self._McuTencentVod = None
+
+    @property
+    def McuTencentVod(self):
+        """Tencent VOD Parameters
+Example :{"ExpireTime":86400}
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuTencentVod`
+        """
+        return self._McuTencentVod
+
+    @McuTencentVod.setter
+    def McuTencentVod(self, McuTencentVod):
+        self._McuTencentVod = McuTencentVod
+
+
+    def _deserialize(self, params):
+        if params.get("McuTencentVod") is not None:
+            self._McuTencentVod = McuTencentVod()
+            self._McuTencentVod._deserialize(params.get("McuTencentVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuCustomCrop(AbstractModel):
     """The cropping parameters for mixed videos.
 
@@ -5103,6 +5143,211 @@ class McuPublishCdnParam(AbstractModel):
         
 
 
+class McuRecordParams(AbstractModel):
+    """Relay Recording Parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniRecord: Relay Recording Mode
+0/blank: Not currently supported, behavior undefined.
+1: Disable recording.
+2: Start recording (uses console's auto-recording template parameters. Reference: [Link to Documentation]).
+3: Start recording (uses API-specified parameters).
+Example: 2
+        :type UniRecord: int
+        :param _RecordKey: Recording Task Key
+Identifies a recording task. This parameter allows merging multiple relay tasks into one recording file. If unspecified, only records the current relay task.
+[Format: Up to 128 bytes; only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).]
+Example: test_record_key_a
+        :type RecordKey: str
+        :param _RecordWaitTime: [Valid only when UniRecord=3]
+Recording Resume Wait Time
+Corresponds to template parameter "Resume Wait Duration." Unit: seconds.
+Range: 5-86400 (24 hours). Default: 30. Recording stops if idle longer than this value.
+Example: 30
+        :type RecordWaitTime: int
+        :param _RecordFormat: [Valid only when UniRecord=3]
+Recording Output Formats
+Corresponds to template parameter "File Format." Supported values: hls, mp4, aac. Default: mp4.
+Note: mp4 and aac formats are mutually exclusive.
+Example (MP4 only): ["mp4"]
+Example (MP4 + HLS): ["mp4","hls"]
+        :type RecordFormat: list of str
+        :param _MaxMediaFileDuration: [Valid only when UniRecord=3]
+Single File Duration
+Corresponds to template parameter "Max File Duration." Unit: minutes.
+Range: 1-1440 (24 hours). Default: 1440. Applies only to mp4/aac. Actual duration is capped at 2GB file size.
+Example: 1440
+        :type MaxMediaFileDuration: int
+        :param _StreamType: [Valid only when UniRecord=3]
+Recording Media Type
+Corresponds to template parameter "Recording Format."
+0: Audio+Video, 1: Audio only, 2: Video only. Output is the intersection of this setting and relay content.
+Example: 0
+        :type StreamType: int
+        :param _UserDefineRecordPrefix: Recording Filename Prefix
+Filename prefix (<=64 bytes). Applies only to VOD storage.
+*Format: Letters (a-z, A-Z), numbers (0-9), underscores (_), hyphens (-).*
+Example: mcu_record_prefix
+        :type UserDefineRecordPrefix: str
+        :param _McuStorageParams: [Valid only when UniRecord=3]
+Recording Storage Parameters
+Corresponds to console parameter "Storage Location." Supports Tencent VOD or COS (exclusively).
+Example: {"McuCloudVod":{"McuTencentVod":{"ExpireTime":86400}}}
+        :type McuStorageParams: :class:`tencentcloud.trtc.v20190722.models.McuStorageParams`
+        """
+        self._UniRecord = None
+        self._RecordKey = None
+        self._RecordWaitTime = None
+        self._RecordFormat = None
+        self._MaxMediaFileDuration = None
+        self._StreamType = None
+        self._UserDefineRecordPrefix = None
+        self._McuStorageParams = None
+
+    @property
+    def UniRecord(self):
+        """Relay Recording Mode
+0/blank: Not currently supported, behavior undefined.
+1: Disable recording.
+2: Start recording (uses console's auto-recording template parameters. Reference: [Link to Documentation]).
+3: Start recording (uses API-specified parameters).
+Example: 2
+        :rtype: int
+        """
+        return self._UniRecord
+
+    @UniRecord.setter
+    def UniRecord(self, UniRecord):
+        self._UniRecord = UniRecord
+
+    @property
+    def RecordKey(self):
+        """Recording Task Key
+Identifies a recording task. This parameter allows merging multiple relay tasks into one recording file. If unspecified, only records the current relay task.
+[Format: Up to 128 bytes; only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-).]
+Example: test_record_key_a
+        :rtype: str
+        """
+        return self._RecordKey
+
+    @RecordKey.setter
+    def RecordKey(self, RecordKey):
+        self._RecordKey = RecordKey
+
+    @property
+    def RecordWaitTime(self):
+        """[Valid only when UniRecord=3]
+Recording Resume Wait Time
+Corresponds to template parameter "Resume Wait Duration." Unit: seconds.
+Range: 5-86400 (24 hours). Default: 30. Recording stops if idle longer than this value.
+Example: 30
+        :rtype: int
+        """
+        return self._RecordWaitTime
+
+    @RecordWaitTime.setter
+    def RecordWaitTime(self, RecordWaitTime):
+        self._RecordWaitTime = RecordWaitTime
+
+    @property
+    def RecordFormat(self):
+        """[Valid only when UniRecord=3]
+Recording Output Formats
+Corresponds to template parameter "File Format." Supported values: hls, mp4, aac. Default: mp4.
+Note: mp4 and aac formats are mutually exclusive.
+Example (MP4 only): ["mp4"]
+Example (MP4 + HLS): ["mp4","hls"]
+        :rtype: list of str
+        """
+        return self._RecordFormat
+
+    @RecordFormat.setter
+    def RecordFormat(self, RecordFormat):
+        self._RecordFormat = RecordFormat
+
+    @property
+    def MaxMediaFileDuration(self):
+        """[Valid only when UniRecord=3]
+Single File Duration
+Corresponds to template parameter "Max File Duration." Unit: minutes.
+Range: 1-1440 (24 hours). Default: 1440. Applies only to mp4/aac. Actual duration is capped at 2GB file size.
+Example: 1440
+        :rtype: int
+        """
+        return self._MaxMediaFileDuration
+
+    @MaxMediaFileDuration.setter
+    def MaxMediaFileDuration(self, MaxMediaFileDuration):
+        self._MaxMediaFileDuration = MaxMediaFileDuration
+
+    @property
+    def StreamType(self):
+        """[Valid only when UniRecord=3]
+Recording Media Type
+Corresponds to template parameter "Recording Format."
+0: Audio+Video, 1: Audio only, 2: Video only. Output is the intersection of this setting and relay content.
+Example: 0
+        :rtype: int
+        """
+        return self._StreamType
+
+    @StreamType.setter
+    def StreamType(self, StreamType):
+        self._StreamType = StreamType
+
+    @property
+    def UserDefineRecordPrefix(self):
+        """Recording Filename Prefix
+Filename prefix (<=64 bytes). Applies only to VOD storage.
+*Format: Letters (a-z, A-Z), numbers (0-9), underscores (_), hyphens (-).*
+Example: mcu_record_prefix
+        :rtype: str
+        """
+        return self._UserDefineRecordPrefix
+
+    @UserDefineRecordPrefix.setter
+    def UserDefineRecordPrefix(self, UserDefineRecordPrefix):
+        self._UserDefineRecordPrefix = UserDefineRecordPrefix
+
+    @property
+    def McuStorageParams(self):
+        """[Valid only when UniRecord=3]
+Recording Storage Parameters
+Corresponds to console parameter "Storage Location." Supports Tencent VOD or COS (exclusively).
+Example: {"McuCloudVod":{"McuTencentVod":{"ExpireTime":86400}}}
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuStorageParams`
+        """
+        return self._McuStorageParams
+
+    @McuStorageParams.setter
+    def McuStorageParams(self, McuStorageParams):
+        self._McuStorageParams = McuStorageParams
+
+
+    def _deserialize(self, params):
+        self._UniRecord = params.get("UniRecord")
+        self._RecordKey = params.get("RecordKey")
+        self._RecordWaitTime = params.get("RecordWaitTime")
+        self._RecordFormat = params.get("RecordFormat")
+        self._MaxMediaFileDuration = params.get("MaxMediaFileDuration")
+        self._StreamType = params.get("StreamType")
+        self._UserDefineRecordPrefix = params.get("UserDefineRecordPrefix")
+        if params.get("McuStorageParams") is not None:
+            self._McuStorageParams = McuStorageParams()
+            self._McuStorageParams._deserialize(params.get("McuStorageParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class McuSeiParams(AbstractModel):
     """The stream mixing SEI parameters.
 
@@ -5148,6 +5393,229 @@ class McuSeiParams(AbstractModel):
         if params.get("PassThrough") is not None:
             self._PassThrough = McuPassThrough()
             self._PassThrough._deserialize(params.get("PassThrough"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuStorageParams(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudStorage: Third-Party Cloud Storage Account Information
+(Note: Storing files in Object Storage COS will incur recording file delivery fees. For details, see [Cloud Recording Billing]. Storing in VOD does not incur this fee.)
+Example:{"Vendor":0,"Region":"ap-shanghai","Bucket":"*","AccessKey":"*","SecretKey":"***","FileNamePrefix":["mcu_record"]}
+        :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        :param _McuCloudVod: Tencent Cloud VOD Account Information
+Example:{"McuTencentVod":{"ExpireTime":86400}}
+        :type McuCloudVod: :class:`tencentcloud.trtc.v20190722.models.McuCloudVod`
+        """
+        self._CloudStorage = None
+        self._McuCloudVod = None
+
+    @property
+    def CloudStorage(self):
+        """Third-Party Cloud Storage Account Information
+(Note: Storing files in Object Storage COS will incur recording file delivery fees. For details, see [Cloud Recording Billing]. Storing in VOD does not incur this fee.)
+Example:{"Vendor":0,"Region":"ap-shanghai","Bucket":"*","AccessKey":"*","SecretKey":"***","FileNamePrefix":["mcu_record"]}
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
+        return self._CloudStorage
+
+    @CloudStorage.setter
+    def CloudStorage(self, CloudStorage):
+        self._CloudStorage = CloudStorage
+
+    @property
+    def McuCloudVod(self):
+        """Tencent Cloud VOD Account Information
+Example:{"McuTencentVod":{"ExpireTime":86400}}
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuCloudVod`
+        """
+        return self._McuCloudVod
+
+    @McuCloudVod.setter
+    def McuCloudVod(self, McuCloudVod):
+        self._McuCloudVod = McuCloudVod
+
+
+    def _deserialize(self, params):
+        if params.get("CloudStorage") is not None:
+            self._CloudStorage = CloudStorage()
+            self._CloudStorage._deserialize(params.get("CloudStorage"))
+        if params.get("McuCloudVod") is not None:
+            self._McuCloudVod = McuCloudVod()
+            self._McuCloudVod._deserialize(params.get("McuCloudVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McuTencentVod(AbstractModel):
+    """Mcu Relay Recording and Tencent VOD Parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Procedure: Post-Upload Task Processing
+Automatically initiates task flows after media uploads complete. Value = Task flow template name.
+VOD supports creating and naming task flow templates.
+Example: template_name
+        :type Procedure: str
+        :param _ExpireTime: Media File Expiration Time
+Absolute expiration time from current timestamp.
+86400 = 1 day retention
+0 = permanent storage (default)
+Example: 86400
+        :type ExpireTime: int
+        :param _StorageRegion: Upload Region Specification
+For users requiring specific upload regions.
+Example: ap-shanghai
+        :type StorageRegion: str
+        :param _ClassId: Category ID
+Manages media classification. Obtain via category creation API.
+Default: 0 (Other category)
+Example: 0
+        :type ClassId: int
+        :param _SubAppId: VOD SubAppId
+Required when accessing sub-application resources. Leave empty otherwise.
+Example: 0
+        :type SubAppId: int
+        :param _SessionContext: Task Flow Context
+Passed through in task completion callbacks.
+Example: user_custom
+        :type SessionContext: str
+        :param _SourceContext: Upload Context
+Passed through in upload completion callbacks.
+Example: user_custom
+        :type SourceContext: str
+        """
+        self._Procedure = None
+        self._ExpireTime = None
+        self._StorageRegion = None
+        self._ClassId = None
+        self._SubAppId = None
+        self._SessionContext = None
+        self._SourceContext = None
+
+    @property
+    def Procedure(self):
+        """Post-Upload Task Processing
+Automatically initiates task flows after media uploads complete. Value = Task flow template name.
+VOD supports creating and naming task flow templates.
+Example: template_name
+        :rtype: str
+        """
+        return self._Procedure
+
+    @Procedure.setter
+    def Procedure(self, Procedure):
+        self._Procedure = Procedure
+
+    @property
+    def ExpireTime(self):
+        """Media File Expiration Time
+Absolute expiration time from current timestamp.
+86400 = 1 day retention
+0 = permanent storage (default)
+Example: 86400
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def StorageRegion(self):
+        """Upload Region Specification
+For users requiring specific upload regions.
+Example: ap-shanghai
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def ClassId(self):
+        """Category ID
+Manages media classification. Obtain via category creation API.
+Default: 0 (Other category)
+Example: 0
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def SubAppId(self):
+        """VOD SubAppId
+Required when accessing sub-application resources. Leave empty otherwise.
+Example: 0
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def SessionContext(self):
+        """Task Flow Context
+Passed through in task completion callbacks.
+Example: user_custom
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SourceContext(self):
+        """Upload Context
+Passed through in upload completion callbacks.
+Example: user_custom
+        :rtype: str
+        """
+        return self._SourceContext
+
+    @SourceContext.setter
+    def SourceContext(self, SourceContext):
+        self._SourceContext = SourceContext
+
+
+    def _deserialize(self, params):
+        self._Procedure = params.get("Procedure")
+        self._ExpireTime = params.get("ExpireTime")
+        self._StorageRegion = params.get("StorageRegion")
+        self._ClassId = params.get("ClassId")
+        self._SubAppId = params.get("SubAppId")
+        self._SessionContext = params.get("SessionContext")
+        self._SourceContext = params.get("SourceContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7976,6 +8444,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         :param _FeedBackRoomParams: The information of the room to which streams are relayed. Between this parameter and `PublishCdnParams`, you must specify at least one. Please note that relaying to a TRTC room is only supported in some SDK versions. For details, please contact technical support.
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
+        :param _RecordParams: Relay Recording Parameters.
+Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
+        :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -7988,6 +8459,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
         self._PublishCdnParams = None
         self._SeiParams = None
         self._FeedBackRoomParams = None
+        self._RecordParams = None
 
     @property
     def SdkAppId(self):
@@ -8110,6 +8582,18 @@ class StartPublishCdnStreamRequest(AbstractModel):
     def FeedBackRoomParams(self, FeedBackRoomParams):
         self._FeedBackRoomParams = FeedBackRoomParams
 
+    @property
+    def RecordParams(self):
+        """Relay Recording Parameters.
+Example value:{"UniRecord":1,"RecordKey": "test_recore_key_a"}
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
+        """
+        return self._RecordParams
+
+    @RecordParams.setter
+    def RecordParams(self, RecordParams):
+        self._RecordParams = RecordParams
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -8143,6 +8627,9 @@ class StartPublishCdnStreamRequest(AbstractModel):
                 obj = McuFeedBackRoomParams()
                 obj._deserialize(item)
                 self._FeedBackRoomParams.append(obj)
+        if params.get("RecordParams") is not None:
+            self._RecordParams = McuRecordParams()
+            self._RecordParams._deserialize(params.get("RecordParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
