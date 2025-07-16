@@ -17,6 +17,9 @@
 # CAM signature/authentication error
 AUTHFAILURE = 'AuthFailure'
 
+# Unauthorized operation.
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
@@ -50,6 +53,12 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # The alias already exists.
 INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = 'InvalidParameterValue.AliasAlreadyExists'
 
+# The data key name already exists.
+INVALIDPARAMETERVALUE_DATAKEYNAMEALREADYEXISTS = 'InvalidParameterValue.DataKeyNameAlreadyExists'
+
+# Duplicate data key ID exists.
+INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = 'InvalidParameterValue.DuplicatedDataKeyId'
+
 # Duplicate `KeyId`.
 INVALIDPARAMETERVALUE_DUPLICATEDKEYID = 'InvalidParameterValue.DuplicatedKeyId'
 
@@ -59,8 +68,17 @@ INVALIDPARAMETERVALUE_INVALIDALIAS = 'InvalidParameterValue.InvalidAlias'
 # Incorrect ciphertext format
 INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = 'InvalidParameterValue.InvalidCiphertext'
 
+# Invalid data key ID.
+INVALIDPARAMETERVALUE_INVALIDDATAKEYID = 'InvalidParameterValue.InvalidDataKeyId'
+
+# Invalid data key name.
+INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = 'InvalidParameterValue.InvalidDataKeyName'
+
 # Invalid HSM cluster ID.
 INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = 'InvalidParameterValue.InvalidHsmClusterId'
+
+# The imported data key is valid.
+INVALIDPARAMETERVALUE_INVALIDIMPORTKEYMATERIAL = 'InvalidParameterValue.InvalidImportKeyMaterial'
 
 # Invalid `KeyId`.
 INVALIDPARAMETERVALUE_INVALIDKEYID = 'InvalidParameterValue.InvalidKeyId'
@@ -85,6 +103,9 @@ INVALIDPARAMETERVALUE_TAGSNOTEXISTED = 'InvalidParameterValue.TagsNotExisted'
 
 # The number of CMKs has reached the upper limit.
 LIMITEXCEEDED_CMKLIMITEXCEEDED = 'LimitExceeded.CmkLimitExceeded'
+
+# DataKey exceeds the upper limit.
+LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = 'LimitExceeded.DataKeyLimitExceeded'
 
 # The number of device fingerprints exceeded the limit.
 LIMITEXCEEDED_FINGERPRINTSLIMITEXCEEDED = 'LimitExceeded.FingerprintsLimitExceeded'
@@ -118,6 +139,21 @@ RESOURCEUNAVAILABLE_CMKSHOULDBEDISABLED = 'ResourceUnavailable.CmkShouldBeDisabl
 
 # This operation cannot be performed under the current CMK status.
 RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = 'ResourceUnavailable.CmkStateNotSupport'
+
+# The data key is disabled.
+RESOURCEUNAVAILABLE_DATAKEYDISABLED = 'ResourceUnavailable.DataKeyDisabled'
+
+# The data key does not exist.
+RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = 'ResourceUnavailable.DataKeyNotFound'
+
+# The data key is not in scheduled deletion status and cannot execute cancel scheduled deletion.
+RESOURCEUNAVAILABLE_DATAKEYNOTPENDINGDELETE = 'ResourceUnavailable.DataKeyNotPendingDelete'
+
+# The data key is scheduled for deletion.
+RESOURCEUNAVAILABLE_DATAKEYPENDINGDELETE = 'ResourceUnavailable.DataKeyPendingDelete'
+
+# Data operation is not supported for the data key status.
+RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = 'ResourceUnavailable.DataKeyStateNotSupport'
 
 # The key has been disabled.
 RESOURCEUNAVAILABLE_KEYDISABLED = 'ResourceUnavailable.KeyDisabled'

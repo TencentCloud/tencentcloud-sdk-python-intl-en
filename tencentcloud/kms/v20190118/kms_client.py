@@ -118,6 +118,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelDataKeyDeletion(self, request):
+        """This API is used to cancel scheduled deletion for a data key.
+
+        :param request: Request instance for CancelDataKeyDeletion.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CancelDataKeyDeletionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CancelDataKeyDeletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelDataKeyDeletion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelDataKeyDeletionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelKeyArchive(self, request):
         """This API is used to unarchive keys. If a key is unarchived, its status will be `Enabled`.
 
@@ -270,6 +293,52 @@ class KmsClient(AbstractClient):
             body = self.call("DeleteWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWhiteBoxKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataKey(self, request):
+        """This API is used to retrieve data key details.
+
+        :param request: Request instance for DescribeDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataKeys(self, request):
+        """This API is used to return the key attribute information list.
+
+        :param request: Request instance for DescribeDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DescribeDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -440,6 +509,52 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableDataKey(self, request):
+        """This API is used to disable the data key.
+
+        :param request: Request instance for DisableDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DisableDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DisableDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisableDataKeys(self, request):
+        """This API is used to batch disable data keys.
+
+        :param request: Request instance for DisableDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.DisableDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.DisableDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableDataKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableKey(self, request):
         """This API is used to disable a master key. The disabled key cannot be used for encryption and decryption operations.
 
@@ -546,6 +661,52 @@ class KmsClient(AbstractClient):
             body = self.call("DisableWhiteBoxKeys", params, headers=headers)
             response = json.loads(body)
             model = models.DisableWhiteBoxKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableDataKey(self, request):
+        """This API is used to enable the data key.
+
+        :param request: Request instance for EnableDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EnableDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EnableDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableDataKeys(self, request):
+        """This API is used to batch enable data keys.
+
+        :param request: Request instance for EnableDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.EnableDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.EnableDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableDataKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -762,6 +923,52 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetDataKeyCiphertextBlob(self, request):
+        """This API is used to download the encrypted data key.
+
+        :param request: Request instance for GetDataKeyCiphertextBlob.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetDataKeyCiphertextBlobRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetDataKeyCiphertextBlobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDataKeyCiphertextBlob", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDataKeyCiphertextBlobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetDataKeyPlaintext(self, request):
+        """This API is used to retrieve the key plaintext.
+
+        :param request: Request instance for GetDataKeyPlaintext.
+        :type request: :class:`tencentcloud.kms.v20190118.models.GetDataKeyPlaintextRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.GetDataKeyPlaintextResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDataKeyPlaintext", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDataKeyPlaintextResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetKeyRotationStatus(self, request):
         """Query whether the specified CMK has the key rotation function.
 
@@ -877,6 +1084,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportDataKey(self, request):
+        """Data key import API, managed by KMS.
+
+        :param request: Request instance for ImportDataKey.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ImportDataKeyRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ImportDataKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportDataKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportDataKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportKeyMaterial(self, request):
         """This API is used to import key material into an EXTERNAL CMK. The key obtained through the `GetParametersForImport` API is used to encrypt the key material. You can only reimport the same key material into the specified CMK and set a new expiration time. After the CMK key material is imported, it cannot be replaced. After the key material is expired or deleted, the CMK will remain unavailable until the same key material is reimported. CMKs are independent, which means that the same key material can be imported into different CMKs, but data encrypted by one CMK cannot be decrypted by another one.
         Key material can only be imported into CMKs in `Enabled` and `PendingImport` status.
@@ -915,6 +1145,52 @@ class KmsClient(AbstractClient):
             body = self.call("ListAlgorithms", params, headers=headers)
             response = json.loads(body)
             model = models.ListAlgorithmsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDataKeyDetail(self, request):
+        """This API is used to retrieve data key list details based on specified Offset and Limit.
+
+        :param request: Request instance for ListDataKeyDetail.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ListDataKeyDetailRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ListDataKeyDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDataKeyDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDataKeyDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListDataKeys(self, request):
+        """This API is used to query the list of data keys.
+
+        :param request: Request instance for ListDataKeys.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ListDataKeysRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ListDataKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListDataKeys", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListDataKeysResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1108,6 +1384,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ScheduleDataKeyDeletion(self, request):
+        """Schedule deletion for a data key.
+
+        :param request: Request instance for ScheduleDataKeyDeletion.
+        :type request: :class:`tencentcloud.kms.v20190118.models.ScheduleDataKeyDeletionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.ScheduleDataKeyDeletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScheduleDataKeyDeletion", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScheduleDataKeyDeletionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScheduleKeyDeletion(self, request):
         """CMK planned deletion API, used to specify the time of CMK deletion, the optional time interval is [7,30] days
 
@@ -1192,6 +1491,52 @@ class KmsClient(AbstractClient):
             body = self.call("UpdateAlias", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAliasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataKeyDescription(self, request):
+        """This API is used to modify the description of a data key.
+
+        :param request: Request instance for UpdateDataKeyDescription.
+        :type request: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyDescriptionRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataKeyDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataKeyDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataKeyName(self, request):
+        """This API is used to modify the data key name.
+
+        :param request: Request instance for UpdateDataKeyName.
+        :type request: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyNameRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.UpdateDataKeyNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataKeyName", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataKeyNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
