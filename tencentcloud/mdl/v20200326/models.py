@@ -5854,7 +5854,7 @@ class EventSettingsReq(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK. If it is not specified, `INPUT_SWITCH` will be used.
+        :param _EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`,`TIMED_METADATA `,`STATIC_IMAGE_ACTIVATE `,`STATIC_IMAGE_DEACTIVATE `. If it is not specified, `INPUT_SWITCH` will be used.
         :type EventType: str
         :param _InputAttachment: ID of the input to attach, which is required if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
@@ -5891,7 +5891,7 @@ class EventSettingsReq(AbstractModel):
 
     @property
     def EventType(self):
-        """Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK. If it is not specified, `INPUT_SWITCH` will be used.
+        """Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`,`TIMED_METADATA `,`STATIC_IMAGE_ACTIVATE `,`STATIC_IMAGE_DEACTIVATE `. If it is not specified, `INPUT_SWITCH` will be used.
         :rtype: str
         """
         return self._EventType
@@ -6056,7 +6056,7 @@ class EventSettingsResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventType: Valid values: INPUT_SWITCH, TIMED_RECORD, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK.
+        :param _EventType: Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`, `STATIC_IMAGE_ACTIVATE`, `STATIC_IMAGE_DEACTIVATE`.
         :type EventType: str
         :param _InputAttachment: ID of the input attached, which is not empty if `EventType` is `INPUT_SWITCH`
         :type InputAttachment: str
@@ -6093,7 +6093,7 @@ class EventSettingsResp(AbstractModel):
 
     @property
     def EventType(self):
-        """Valid values: INPUT_SWITCH, TIMED_RECORD, SCTE35_TIME_SIGNAL, SCTE35_SPLICE_INSERT, SCTE35_RETURN_TO_NETWORK.
+        """Valid values: `INPUT_SWITCH`, `TIMED_RECORD`, `SCTE35_TIME_SIGNAL`, `SCTE35_SPLICE_INSERT`, `SCTE35_RETURN_TO_NETWORK`, `STATIC_IMAGE_ACTIVATE`, `STATIC_IMAGE_DEACTIVATE`.
         :rtype: str
         """
         return self._EventType

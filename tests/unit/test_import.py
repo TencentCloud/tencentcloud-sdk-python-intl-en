@@ -464,6 +464,11 @@ def test_import_redis():
     from tencentcloud.redis.v20180412 import models
 
 
+def test_import_region():
+    from tencentcloud.region.v20220627 import region_client
+    from tencentcloud.region.v20220627 import models
+
+
 def test_import_rum():
     from tencentcloud.rum.v20210622 import rum_client
     from tencentcloud.rum.v20210622 import models
