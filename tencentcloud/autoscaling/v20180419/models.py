@@ -19,7 +19,7 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Activity(AbstractModel):
-    """Information on eligible scaling activities.
+    """Information of auto scaling activity.
 
     """
 
@@ -30,16 +30,16 @@ class Activity(AbstractModel):
         :param _ActivityId: Scaling activity ID.
         :type ActivityId: str
         :param _ActivityType: Scaling activity type. Valid values:
-<li>SCALE_OUT: Scale out an instance.</li>
-<li>SCALE_IN: Scale in an instance.</li>
-<li>ATTACH_INSTANCES: Add an instance.</li>
-<li>REMOVE_INSTANCES: Terminate an instance.</li>
-<li>DETACH_INSTANCES: Remove an instance.</li>
-<li>TERMINATE_INSTANCES_UNEXPECTEDLY: Terminate an instance in the CVM console.</li>
-<li>REPLACE_UNHEALTHY_INSTANCE: Replace an unhealthy instance.</li>
-<li>START_INSTANCES: Start an instance.</li>
-<li>STOP_INSTANCES: Stop an instance.</li>
-<li>INVOKE_COMMAND: Execute a command.</li>
+<li>SCALE_OUT: Scale out instance(s).</li>
+<li>SCALE_IN: Scale in instance(s).</li>
+<li>ATTACH_INSTANCES: Add instance(s).</li>
+<li>REMOVE_INSTANCES: Terminate instance(s).</li>
+<li>DETACH_INSTANCES: Remove instance(s).</li>
+<li>TERMINATE_INSTANCES_UNEXPECTEDLY: Instance(s) unexpectedly terminated in the CVM console.</li>
+<li>REPLACE_UNHEALTHY_INSTANCE: Replace unhealthy instance(s).</li>
+<li>START_INSTANCES: Start instance(s).</li>
+<li>STOP_INSTANCES: Stop instance(s).</li>
+<li>INVOKE_COMMAND: Execute a command in instance(s).</li>
         :type ActivityType: str
         :param _StatusCode: Scaling activity status. Valid values:
 <li>INIT: initializing.</li>
@@ -55,11 +55,11 @@ class Activity(AbstractModel):
         :type Cause: str
         :param _Description: Description of the scaling activity.
         :type Description: str
-        :param _StartTime: Start time of the scaling activity.
+        :param _StartTime: Start time of the auto scaling activity in UTC standard time.
         :type StartTime: str
-        :param _EndTime: End time of the scaling activity.
+        :param _EndTime: End time of the scaling activity in UTC standard time.
         :type EndTime: str
-        :param _CreatedTime: Creation time of the scaling activity.
+        :param _CreatedTime: Create time of the scaling activity in UTC standard time.
         :type CreatedTime: str
         :param _ActivityRelatedInstanceSet: This parameter has been deprecated.
         :type ActivityRelatedInstanceSet: list of ActivtyRelatedInstance
@@ -67,11 +67,11 @@ class Activity(AbstractModel):
         :type StatusMessageSimplified: str
         :param _LifecycleActionResultSet: Result of the lifecycle hook action in the scaling activity
         :type LifecycleActionResultSet: list of LifecycleActionResultInfo
-        :param _DetailedStatusMessageSet: Detailed description of scaling activity status
+        :param _DetailedStatusMessageSet: Detailed description of the scaling activity status
         :type DetailedStatusMessageSet: list of DetailedStatusMessage
         :param _InvocationResultSet: Result of the command execution
         :type InvocationResultSet: list of InvocationResult
-        :param _RelatedInstanceSet: Information set of the instances related to the scaling activity.
+        :param _RelatedInstanceSet: Related instance information set of the scaling activity.
         :type RelatedInstanceSet: list of RelatedInstance
         """
         self._AutoScalingGroupId = None
@@ -116,16 +116,16 @@ class Activity(AbstractModel):
     @property
     def ActivityType(self):
         """Scaling activity type. Valid values:
-<li>SCALE_OUT: Scale out an instance.</li>
-<li>SCALE_IN: Scale in an instance.</li>
-<li>ATTACH_INSTANCES: Add an instance.</li>
-<li>REMOVE_INSTANCES: Terminate an instance.</li>
-<li>DETACH_INSTANCES: Remove an instance.</li>
-<li>TERMINATE_INSTANCES_UNEXPECTEDLY: Terminate an instance in the CVM console.</li>
-<li>REPLACE_UNHEALTHY_INSTANCE: Replace an unhealthy instance.</li>
-<li>START_INSTANCES: Start an instance.</li>
-<li>STOP_INSTANCES: Stop an instance.</li>
-<li>INVOKE_COMMAND: Execute a command.</li>
+<li>SCALE_OUT: Scale out instance(s).</li>
+<li>SCALE_IN: Scale in instance(s).</li>
+<li>ATTACH_INSTANCES: Add instance(s).</li>
+<li>REMOVE_INSTANCES: Terminate instance(s).</li>
+<li>DETACH_INSTANCES: Remove instance(s).</li>
+<li>TERMINATE_INSTANCES_UNEXPECTEDLY: Instance(s) unexpectedly terminated in the CVM console.</li>
+<li>REPLACE_UNHEALTHY_INSTANCE: Replace unhealthy instance(s).</li>
+<li>START_INSTANCES: Start instance(s).</li>
+<li>STOP_INSTANCES: Stop instance(s).</li>
+<li>INVOKE_COMMAND: Execute a command in instance(s).</li>
         :rtype: str
         """
         return self._ActivityType
@@ -186,7 +186,7 @@ class Activity(AbstractModel):
 
     @property
     def StartTime(self):
-        """Start time of the scaling activity.
+        """Start time of the auto scaling activity in UTC standard time.
         :rtype: str
         """
         return self._StartTime
@@ -197,7 +197,7 @@ class Activity(AbstractModel):
 
     @property
     def EndTime(self):
-        """End time of the scaling activity.
+        """End time of the scaling activity in UTC standard time.
         :rtype: str
         """
         return self._EndTime
@@ -208,7 +208,7 @@ class Activity(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """Creation time of the scaling activity.
+        """Create time of the scaling activity in UTC standard time.
         :rtype: str
         """
         return self._CreatedTime
@@ -256,7 +256,7 @@ class Activity(AbstractModel):
 
     @property
     def DetailedStatusMessageSet(self):
-        """Detailed description of scaling activity status
+        """Detailed description of the scaling activity status
         :rtype: list of DetailedStatusMessage
         """
         return self._DetailedStatusMessageSet
@@ -278,7 +278,7 @@ class Activity(AbstractModel):
 
     @property
     def RelatedInstanceSet(self):
-        """Information set of the instances related to the scaling activity.
+        """Related instance information set of the scaling activity.
         :rtype: list of RelatedInstance
         """
         return self._RelatedInstanceSet
@@ -483,9 +483,13 @@ class AttachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: List of CVM instance IDs
+        :param _InstanceIds: CVM instance ID list. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :type InstanceIds: list of str
         """
         self._AutoScalingGroupId = None
@@ -493,7 +497,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -504,7 +510,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of CVM instance IDs
+        """CVM instance ID list. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -577,11 +585,11 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
-        :param _LoadBalancerIds: List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param _LoadBalancerIds: Specifies a list of classic clb ids. each scaling group can bind a maximum of 20 classic clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type LoadBalancerIds: list of str
-        :param _ForwardLoadBalancers: List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param _ForwardLoadBalancers: Specifies the list of load balancers. each scaling group can bind a maximum of 100 application clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         """
         self._AutoScalingGroupId = None
@@ -590,7 +598,7 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -601,7 +609,7 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        """Specifies a list of classic clb ids. each scaling group can bind a maximum of 20 classic clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -612,7 +620,7 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
-        """List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        """Specifies the list of load balancers. each scaling group can bind a maximum of 100 application clbs. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of ForwardLoadBalancer
         """
         return self._ForwardLoadBalancers
@@ -812,13 +820,18 @@ class AutoScalingGroup(AbstractModel):
         :type ProjectId: int
         :param _SubnetIdSet: List of subnet IDs
         :type SubnetIdSet: list of str
-        :param _TerminationPolicySet: Termination policy
+        :param _TerminationPolicySet: Destruction policy. valid values are as follows:.
+<Li>OLDEST_INSTANCE: terminate the oldest instance in the scaling group first, default value.</li>.
+<Li>NEWEST_INSTANCE: terminate the newest instance in the scaling group first.</li>.
         :type TerminationPolicySet: list of str
-        :param _VpcId: VPC ID
+        :param _VpcId: VPC ID.
         :type VpcId: str
         :param _ZoneSet: List of availability zones
         :type ZoneSet: list of str
-        :param _RetryPolicy: Retry policy
+        :param _RetryPolicy: Retry policy. a partially successful scaling operation is considered a failed activity. valid values are as follows:.
+<Li>IMMEDIATE_RETRY: default value, means retry immediately, attempting retries in rapid succession over a short period. cease further retries after a certain number of consecutive failures (5).</li>.
+<Li>INCREMENTAL_INTERVALS: specifies incremental interval retry. with the number of consecutive failures, the retry interval gradually increases. the first 10 retries are quick retry, and the follow-up retry interval gradually expands to 10 minutes, 30 minutes, 60 minutes, and one day.</li>.
+<Li>NO_RETRY: there will be no retry until another user call or Alarm information is received.</li>.
         :type RetryPolicy: str
         :param _InActivityStatus: Whether the auto scaling group is performing a scaling activity. `IN_ACTIVITY` indicates yes, and `NOT_IN_ACTIVITY` indicates no.
         :type InActivityStatus: str
@@ -826,7 +839,7 @@ class AutoScalingGroup(AbstractModel):
         :type Tags: list of Tag
         :param _ServiceSettings: Service settings
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
-        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has.
+        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
         :type Ipv6AddressCount: int
         :param _MultiZoneSubnetPolicy: Multi-AZ/subnet policy.
 <li>PRIORITY: The instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
@@ -836,7 +849,8 @@ class AutoScalingGroup(AbstractModel):
 <li>CVM: Determine whether an instance is unhealthy based on its network status. An unhealthy network status is indicated by an event where instances become unreachable via PING. Detailed criteria of judgment can be found in [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1).</li>
 <li>CLB: Determine whether an instance is unhealthy based on the health check status of CLB. For principles behind CLB health checks, see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).</li>
         :type HealthCheckType: str
-        :param _LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
+        :param _LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check. the scaled-out instances IN `IN_SERVICE` will not be marked as `CLB_UNHEALTHY` within the specified time range.
+Default value: 0. value range: [0, 7200]. measurement unit: seconds.
         :type LoadBalancerHealthCheckGracePeriod: int
         :param _InstanceAllocationPolicy: Instance assignment policy, whose valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.
 <li>LAUNCH_CONFIGURATION: Represent the traditional mode of assigning instances according to the launch configuration.</li>
@@ -850,7 +864,6 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
 <li>FALSE: Disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>
         :type CapacityRebalance: bool
         :param _InstanceNameIndexSettings: Instance name sequencing settings.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupId = None
@@ -1085,7 +1098,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TerminationPolicySet(self):
-        """Termination policy
+        """Destruction policy. valid values are as follows:.
+<Li>OLDEST_INSTANCE: terminate the oldest instance in the scaling group first, default value.</li>.
+<Li>NEWEST_INSTANCE: terminate the newest instance in the scaling group first.</li>.
         :rtype: list of str
         """
         return self._TerminationPolicySet
@@ -1096,7 +1111,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VpcId(self):
-        """VPC ID
+        """VPC ID.
         :rtype: str
         """
         return self._VpcId
@@ -1118,7 +1133,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RetryPolicy(self):
-        """Retry policy
+        """Retry policy. a partially successful scaling operation is considered a failed activity. valid values are as follows:.
+<Li>IMMEDIATE_RETRY: default value, means retry immediately, attempting retries in rapid succession over a short period. cease further retries after a certain number of consecutive failures (5).</li>.
+<Li>INCREMENTAL_INTERVALS: specifies incremental interval retry. with the number of consecutive failures, the retry interval gradually increases. the first 10 retries are quick retry, and the follow-up retry interval gradually expands to 10 minutes, 30 minutes, 60 minutes, and one day.</li>.
+<Li>NO_RETRY: there will be no retry until another user call or Alarm information is received.</li>.
         :rtype: str
         """
         return self._RetryPolicy
@@ -1162,7 +1180,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Ipv6AddressCount(self):
-        """The number of IPv6 addresses that an instance has.
+        """The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports ip and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -1199,7 +1217,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
-        """Grace period of the CLB health check
+        """Grace period of the CLB health check. the scaled-out instances IN `IN_SERVICE` will not be marked as `CLB_UNHEALTHY` within the specified time range.
+Default value: 0. value range: [0, 7200]. measurement unit: seconds.
         :rtype: int
         """
         return self._LoadBalancerHealthCheckGracePeriod
@@ -1249,7 +1268,6 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
     @property
     def InstanceNameIndexSettings(self):
         """Instance name sequencing settings.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         return self._InstanceNameIndexSettings
@@ -1380,15 +1398,26 @@ class AutoScalingNotification(AbstractModel):
         :type AutoScalingGroupId: str
         :param _NotificationUserGroupIds: List of user group IDs.
         :type NotificationUserGroupIds: list of str
-        :param _NotificationTypes: List of notification events.
+        :param _NotificationTypes: Notification event list. valid values are as follows:.
+<Li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>.
+<Li>SCALE_OUT_FAILED: scale-out failed</li>.
+<Li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>.
+<Li>SCALE_IN_FAILED: scale-in failed</li>.
+<Li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>.
+<Li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>.
         :type NotificationTypes: list of str
         :param _AutoScalingNotificationId: Event notification ID.
         :type AutoScalingNotificationId: str
-        :param _TargetType: Notification receiver type.
+        :param _TargetType: Notification receiver type. valid values:.
+USER_GROUP: specifies the user group.
+TDMQ_CMQ_TOPIC: tdmq for cmq topic.
+TDMQ_CMQ_QUEUE: specifies the tdmq cmq queue.
+`CMQ_QUEUE`: cmq queue. [cmq API offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). unable to select.
+CMQ_TOPIC: cmq topic. [cmq API offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1), unable to select.
         :type TargetType: str
-        :param _QueueName: CMQ queue name.
+        :param _QueueName: TDMQ CMQ queue name.
         :type QueueName: str
-        :param _TopicName: CMQ topic name.
+        :param _TopicName: TDMQ CMQ topic name.
         :type TopicName: str
         """
         self._AutoScalingGroupId = None
@@ -1423,7 +1452,13 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def NotificationTypes(self):
-        """List of notification events.
+        """Notification event list. valid values are as follows:.
+<Li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>.
+<Li>SCALE_OUT_FAILED: scale-out failed</li>.
+<Li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>.
+<Li>SCALE_IN_FAILED: scale-in failed</li>.
+<Li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>.
+<Li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>.
         :rtype: list of str
         """
         return self._NotificationTypes
@@ -1445,7 +1480,12 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def TargetType(self):
-        """Notification receiver type.
+        """Notification receiver type. valid values:.
+USER_GROUP: specifies the user group.
+TDMQ_CMQ_TOPIC: tdmq for cmq topic.
+TDMQ_CMQ_QUEUE: specifies the tdmq cmq queue.
+`CMQ_QUEUE`: cmq queue. [cmq API offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). unable to select.
+CMQ_TOPIC: cmq topic. [cmq API offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1), unable to select.
         :rtype: str
         """
         return self._TargetType
@@ -1456,7 +1496,7 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def QueueName(self):
-        """CMQ queue name.
+        """TDMQ CMQ queue name.
         :rtype: str
         """
         return self._QueueName
@@ -1467,7 +1507,7 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def TopicName(self):
-        """CMQ topic name.
+        """TDMQ CMQ topic name.
         :rtype: str
         """
         return self._TopicName
@@ -1502,9 +1542,11 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _RefreshActivityId: Refresh activity ID.
+        :param _RefreshActivityId: Refresh activity ID. you can obtain the instance refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the RefreshActivityId from the returned information.
         :type RefreshActivityId: str
         """
         self._AutoScalingGroupId = None
@@ -1512,7 +1554,9 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID.
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -1523,7 +1567,7 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
-        """Refresh activity ID.
+        """Refresh activity ID. you can obtain the instance refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the RefreshActivityId from the returned information.
         :rtype: str
         """
         return self._RefreshActivityId
@@ -1581,7 +1625,9 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: Launch configuration ID
+        :param _LaunchConfigurationId: Launch configuration ID. obtain in the following ways:.
+<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
+<li>Get the launch configuration ID by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.
         :type LaunchConfigurationId: str
         :param _ClearDataDisks: Whether to clear data disk information. This parameter is optional and the default value is `false`.
 Setting it to `true` will clear data disks, which means that CVM newly created on this launch configuration will have no data disk.
@@ -1611,7 +1657,9 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def LaunchConfigurationId(self):
-        """Launch configuration ID
+        """Launch configuration ID. obtain in the following ways:.
+<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
+<li>Get the launch configuration ID by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -1745,13 +1793,16 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LifecycleHookId: Lifecycle hook ID
+        :param _LifecycleHookId: Lifecycle hook ID. you can get the lifecycle hook ID by calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the `LifecycleHookId` from the returned information.
         :type LifecycleHookId: str
-        :param _LifecycleActionResult: Result of the lifecycle action. Value range: "CONTINUE", "ABANDON"
+        :param _LifecycleActionResult: Describes the result of the lifecycle action. valid values are as follows:.
+<Li>CONTINUE: default value, means continue execution of capacity expansion or reduction</li>.
+<li>ABANDON: for scale-out hooks, CVM instances with hook timeout or failed LifecycleCommand execution will be released directly or moved; for scale-in hooks, scale-in activities will continue.</li>.
         :type LifecycleActionResult: str
-        :param _InstanceId: Instance ID. Either "InstanceId" or "LifecycleActionToken" must be specified
+        :param _InstanceId: One of the parameters `InstanceId` or `LifecycleActionToken` is required. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.
         :type InstanceId: str
-        :param _LifecycleActionToken: Either "InstanceId" or "LifecycleActionToken" must be specified
+        :param _LifecycleActionToken: Lifecycle action token. specifies that one of `InstanceId` or `LifecycleActionToken` must be filled.
+The method for accessing the parameter is as follows: when the hook of the `NotificationTarget` parameter is triggered, deliver a message containing the token to the message queue specified in the `NotificationTarget` parameter. the message queue consumer can obtain the token from the message.
         :type LifecycleActionToken: str
         """
         self._LifecycleHookId = None
@@ -1761,7 +1812,7 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
-        """Lifecycle hook ID
+        """Lifecycle hook ID. you can get the lifecycle hook ID by calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the `LifecycleHookId` from the returned information.
         :rtype: str
         """
         return self._LifecycleHookId
@@ -1772,7 +1823,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleActionResult(self):
-        """Result of the lifecycle action. Value range: "CONTINUE", "ABANDON"
+        """Describes the result of the lifecycle action. valid values are as follows:.
+<Li>CONTINUE: default value, means continue execution of capacity expansion or reduction</li>.
+<li>ABANDON: for scale-out hooks, CVM instances with hook timeout or failed LifecycleCommand execution will be released directly or moved; for scale-in hooks, scale-in activities will continue.</li>.
         :rtype: str
         """
         return self._LifecycleActionResult
@@ -1783,7 +1836,7 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID. Either "InstanceId" or "LifecycleActionToken" must be specified
+        """One of the parameters `InstanceId` or `LifecycleActionToken` is required. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.
         :rtype: str
         """
         return self._InstanceId
@@ -1794,7 +1847,8 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleActionToken(self):
-        """Either "InstanceId" or "LifecycleActionToken" must be specified
+        """Lifecycle action token. specifies that one of `InstanceId` or `LifecycleActionToken` must be filled.
+The method for accessing the parameter is as follows: when the hook of the `NotificationTarget` parameter is triggered, deliver a message containing the token to the message queue specified in the `NotificationTarget` parameter. the message queue consumer can obtain the token from the message.
         :rtype: str
         """
         return self._LifecycleActionToken
@@ -1856,13 +1910,13 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
         r"""
         :param _AutoScalingGroupName: The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
         :type AutoScalingGroupName: str
-        :param _InstanceId: The instance ID.
+        :param _InstanceId: Instance ID. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.
         :type InstanceId: str
-        :param _MinSize: The minimum number of instances. Value range: 0-2000.
+        :param _MinSize: Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.
         :type MinSize: int
-        :param _MaxSize: The maximum number of instances. Value range: 0-2000.
+        :param _MaxSize: Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.
         :type MaxSize: int
-        :param _DesiredCapacity: The desired capacity. Its value must be greater than the minimum and smaller than the maximum.
+        :param _DesiredCapacity: Expected number of instances, value ranges from 0 to 2000, default value equals current MinSize, to meet MaxSize >= DesiredCapacity >= MinSize.
         :type DesiredCapacity: int
         :param _InheritInstanceTag: Whether to inherit the instance tag. Default value: False
         :type InheritInstanceTag: bool
@@ -1887,7 +1941,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """The instance ID.
+        """Instance ID. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.
         :rtype: str
         """
         return self._InstanceId
@@ -1898,7 +1952,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def MinSize(self):
-        """The minimum number of instances. Value range: 0-2000.
+        """Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.
         :rtype: int
         """
         return self._MinSize
@@ -1909,7 +1963,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def MaxSize(self):
-        """The maximum number of instances. Value range: 0-2000.
+        """Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.
         :rtype: int
         """
         return self._MaxSize
@@ -1920,7 +1974,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
-        """The desired capacity. Its value must be greater than the minimum and smaller than the maximum.
+        """Expected number of instances, value ranges from 0 to 2000, default value equals current MinSize, to meet MaxSize >= DesiredCapacity >= MinSize.
         :rtype: int
         """
         return self._DesiredCapacity
@@ -2010,25 +2064,25 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         r"""
         :param _AutoScalingGroupName: Auto scaling group name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 55 bytes and must be unique under your account.
         :type AutoScalingGroupName: str
-        :param _LaunchConfigurationId: Launch configuration ID
+        :param _LaunchConfigurationId: Launch configuration ID. you can obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or making an api call to [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.
         :type LaunchConfigurationId: str
-        :param _MaxSize: Maximum number of instances. Value range: 0-2,000.
+        :param _MaxSize: Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.
         :type MaxSize: int
-        :param _MinSize: Minimum number of instances. Value range: 0-2,000.
+        :param _MinSize: Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.
         :type MinSize: int
-        :param _VpcId: VPC ID; if on a basic network, enter an empty string
+        :param _VpcId: vpc ID. a valid vpc ID can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc). you can also call the api DescribeVpc (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) and obtain it from the VpcId field in the api response.
         :type VpcId: str
-        :param _DefaultCooldown: Default cooldown period in seconds. Default value: 300
+        :param _DefaultCooldown: Default cooldown period in seconds. default value: 300. value range: [0,3600].
         :type DefaultCooldown: int
-        :param _DesiredCapacity: Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances
+        :param _DesiredCapacity: The expected number of instances, in the range of [0,2000], default value equals current MinSize, and must meet MaxSize >= DesiredCapacity >= MinSize.
         :type DesiredCapacity: int
-        :param _LoadBalancerIds: List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        :param _LoadBalancerIds: A list of classic load balancer ids with a current maximum length of 20. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type LoadBalancerIds: list of str
-        :param _ProjectId: Project ID of an instance in a scaling group. The default project is used if it’s left blank.
+        :param _ProjectId: Project ID of the instance within the scaling group. default value is 0, indicates usage of the default project. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `projectId` field in the return value.
         :type ProjectId: int
-        :param _ForwardLoadBalancers: List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param _ForwardLoadBalancers: Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
-        :param _SubnetIds: List of subnet IDs. A subnet must be specified in the VPC scenario. If multiple subnets are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.
+        :param _SubnetIds: The subnet ID list must specify a subnet in VPC scenarios. multiple subnets are attempted sequentially based on the fill-in order as priority until successful instance creation. effective VPC subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/VPC/subnet) or obtained from the SubnetId field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1).
         :type SubnetIds: list of str
         :param _TerminationPolicies: Termination policy, whose maximum length is currently 1. Valid values: OLDEST_INSTANCE and NEWEST_INSTANCE. Default value: OLDEST_INSTANCE.
 <li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>
@@ -2048,11 +2102,11 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 Common reasons for unavailable AZs or subnets include the CVM InstanceType in the AZ being sold out, the CBS cloud disk in the AZ being sold out, insufficient quota in the AZ, and insufficient IP addresses in the subnet.
 If there is no AZ or subnet in Zones/SubnetIds, a verification error will be reported regardless of the values of ZonesCheckPolicy.
         :type ZonesCheckPolicy: str
-        :param _Tags: List of tag descriptions. In this parameter, you can specify the tags to be bound with a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.
+        :param _Tags: List of Tag descriptions. by specifying this parameter, you can bind tags to a scaling group and corresponding resource instances. each scaling group supports up to 30 tags. you can call the [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) API to retrieve existing Tag key-value pairs based on the response.
         :type Tags: list of Tag
         :param _ServiceSettings: Service settings such as unhealthy instance replacement.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
-        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. Valid values: 0 and 1. Default value: 0.
+        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
         :type Ipv6AddressCount: int
         :param _MultiZoneSubnetPolicy: Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
 <li>PRIORITY: The instances are attempted to be created taking the order of the AZ/subnet list as the priority. If instances can be successfully created in the highest-priority AZ/subnet, they will always be created in that AZ/subnet.</li>
@@ -2125,7 +2179,7 @@ Default value: FALSE.
 
     @property
     def LaunchConfigurationId(self):
-        """Launch configuration ID
+        """Launch configuration ID. you can obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or making an api call to [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -2136,7 +2190,7 @@ Default value: FALSE.
 
     @property
     def MaxSize(self):
-        """Maximum number of instances. Value range: 0-2,000.
+        """Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.
         :rtype: int
         """
         return self._MaxSize
@@ -2147,7 +2201,7 @@ Default value: FALSE.
 
     @property
     def MinSize(self):
-        """Minimum number of instances. Value range: 0-2,000.
+        """Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.
         :rtype: int
         """
         return self._MinSize
@@ -2158,7 +2212,7 @@ Default value: FALSE.
 
     @property
     def VpcId(self):
-        """VPC ID; if on a basic network, enter an empty string
+        """vpc ID. a valid vpc ID can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc). you can also call the api DescribeVpc (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1) and obtain it from the VpcId field in the api response.
         :rtype: str
         """
         return self._VpcId
@@ -2169,7 +2223,7 @@ Default value: FALSE.
 
     @property
     def DefaultCooldown(self):
-        """Default cooldown period in seconds. Default value: 300
+        """Default cooldown period in seconds. default value: 300. value range: [0,3600].
         :rtype: int
         """
         return self._DefaultCooldown
@@ -2180,7 +2234,7 @@ Default value: FALSE.
 
     @property
     def DesiredCapacity(self):
-        """Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances
+        """The expected number of instances, in the range of [0,2000], default value equals current MinSize, and must meet MaxSize >= DesiredCapacity >= MinSize.
         :rtype: int
         """
         return self._DesiredCapacity
@@ -2191,7 +2245,7 @@ Default value: FALSE.
 
     @property
     def LoadBalancerIds(self):
-        """List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        """A list of classic load balancer ids with a current maximum length of 20. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -2202,7 +2256,7 @@ Default value: FALSE.
 
     @property
     def ProjectId(self):
-        """Project ID of an instance in a scaling group. The default project is used if it’s left blank.
+        """Project ID of the instance within the scaling group. default value is 0, indicates usage of the default project. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `projectId` field in the return value.
         :rtype: int
         """
         return self._ProjectId
@@ -2213,7 +2267,7 @@ Default value: FALSE.
 
     @property
     def ForwardLoadBalancers(self):
-        """List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        """Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time.
         :rtype: list of ForwardLoadBalancer
         """
         return self._ForwardLoadBalancers
@@ -2224,7 +2278,7 @@ Default value: FALSE.
 
     @property
     def SubnetIds(self):
-        """List of subnet IDs. A subnet must be specified in the VPC scenario. If multiple subnets are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.
+        """The subnet ID list must specify a subnet in VPC scenarios. multiple subnets are attempted sequentially based on the fill-in order as priority until successful instance creation. effective VPC subnet ids can be queried by logging in to the console (https://console.cloud.tencent.com/VPC/subnet) or obtained from the SubnetId field in the API response by calling the DescribeSubnets API (https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._SubnetIds
@@ -2289,7 +2343,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def Tags(self):
-        """List of tag descriptions. In this parameter, you can specify the tags to be bound with a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.
+        """List of Tag descriptions. by specifying this parameter, you can bind tags to a scaling group and corresponding resource instances. each scaling group supports up to 30 tags. you can call the [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) API to retrieve existing Tag key-value pairs based on the response.
         :rtype: list of Tag
         """
         return self._Tags
@@ -2311,7 +2365,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def Ipv6AddressCount(self):
-        """The number of IPv6 addresses that an instance has. Valid values: 0 and 1. Default value: 0.
+        """The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for other usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -2521,8 +2575,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type LaunchConfigurationName: str
         :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
         :type ImageId: str
-        :param _ProjectId: Project ID of the launch configuration. The default project is used if it is left blank.
-Note that this project ID is not the same as the project ID of the scaling group. 
+        :param _ProjectId: Project ID of the launch configuration. default value is 0, indicating usage of the default project. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1).
+Note: the instance's project ID within the scaling group takes the project ID of the scaling group, which is irrelevant here.
         :type ProjectId: int
         :param _InstanceType: Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
 `InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
@@ -2548,16 +2602,16 @@ Note that this project ID is not the same as the project ID of the scaling group
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _InstanceTypes: List of instance models. Different instance models specify different resource specifications. Up to 10 instance models can be supported.
-`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
+        :param _InstanceTypes: Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.
+The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :type InstanceTypes: list of str
-        :param _CamRoleName: CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :param _CamRoleName: CAM role name. you can obtain it from the roleName in the return value from the API [DescribeRoleList](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :type CamRoleName: str
-        :param _InstanceTypesCheckPolicy: InstanceType verification policy, whose valid values include ALL and ANY, with the default value being ANY.
-<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
-<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
+        :param _InstanceTypesCheckPolicy: Instance type validation policy. valid values include ALL and ANY. default value: ANY. this parameter is valid only when the InstanceTypes parameter contains multiple instance types.
+<li>ALL: verification passes if ALL instancetypes are available; otherwise, a verification error will be reported.</li>.
+<li>ANY: verification passes if ANY InstanceType is available; otherwise, a verification error will be reported.</li>.
 
-Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
+Common reasons for unavailable instancetypes include the instancetype being sold out and the corresponding cloud disk being sold out.
 If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
         :type InstanceTypesCheckPolicy: str
         :param _InstanceTags: List of tags. This parameter is used to bind up to 10 tags to newly added instances.
@@ -2575,16 +2629,16 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
 <li>ORIGINAL: Use the set cloud disk type.</li>
 <li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
         :type DiskTypePolicy: str
-        :param _HpcClusterId: HPC ID<br>
-Note: This field is default to empty
+        :param _HpcClusterId: High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+Note: this field is empty by default.
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         :param _DisasterRecoverGroupIds: Placement group ID. Only one is allowed.
         :type DisasterRecoverGroupIds: list of str
-        :param _ImageFamily: Image family name. Either image ID or image family name should be filled in, and only one of which can be filled.
+        :param _ImageFamily: Image family name. one and only one must be filled in between image Id and image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
         :type ImageFamily: str
-        :param _DedicatedClusterId: CDC ID.
+        :param _DedicatedClusterId: Local exclusive cluster ID. this parameter can be obtained through the [DescribeDedicatedClusters](https://intl.cloud.tencent.com/document/product/1346/73758?from_cn_redirect=1) api.
         :type DedicatedClusterId: str
         :param _Metadata: Custom metadata.
         :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
@@ -2642,8 +2696,8 @@ Note: This field is default to empty
 
     @property
     def ProjectId(self):
-        """Project ID of the launch configuration. The default project is used if it is left blank.
-Note that this project ID is not the same as the project ID of the scaling group. 
+        """Project ID of the launch configuration. default value is 0, indicating usage of the default project. obtain this parameter by calling the projectId field in the return value of [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1).
+Note: the instance's project ID within the scaling group takes the project ID of the scaling group, which is irrelevant here.
         :rtype: int
         """
         return self._ProjectId
@@ -2768,8 +2822,8 @@ Note that this project ID is not the same as the project ID of the scaling group
 
     @property
     def InstanceTypes(self):
-        """List of instance models. Different instance models specify different resource specifications. Up to 10 instance models can be supported.
-`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
+        """Instance model list. different instance models specify different resource specifications. supports up to 10 instance models.
+The `InstanceType` and `InstanceTypes` parameters are mutually exclusive. one and only one must be filled in. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -2780,7 +2834,7 @@ Note that this project ID is not the same as the project ID of the scaling group
 
     @property
     def CamRoleName(self):
-        """CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        """CAM role name. you can obtain it from the roleName in the return value from the API [DescribeRoleList](https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :rtype: str
         """
         return self._CamRoleName
@@ -2791,11 +2845,11 @@ Note that this project ID is not the same as the project ID of the scaling group
 
     @property
     def InstanceTypesCheckPolicy(self):
-        """InstanceType verification policy, whose valid values include ALL and ANY, with the default value being ANY.
-<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
-<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
+        """Instance type validation policy. valid values include ALL and ANY. default value: ANY. this parameter is valid only when the InstanceTypes parameter contains multiple instance types.
+<li>ALL: verification passes if ALL instancetypes are available; otherwise, a verification error will be reported.</li>.
+<li>ANY: verification passes if ANY InstanceType is available; otherwise, a verification error will be reported.</li>.
 
-Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
+Common reasons for unavailable instancetypes include the instancetype being sold out and the corresponding cloud disk being sold out.
 If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
         :rtype: str
         """
@@ -2876,8 +2930,8 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
 
     @property
     def HpcClusterId(self):
-        """HPC ID<br>
-Note: This field is default to empty
+        """High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+Note: this field is empty by default.
         :rtype: str
         """
         return self._HpcClusterId
@@ -2910,7 +2964,7 @@ Note: This field is default to empty
 
     @property
     def ImageFamily(self):
-        """Image family name. Either image ID or image family name should be filled in, and only one of which can be filled.
+        """Image family name. one and only one must be filled in between image Id and image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._ImageFamily
@@ -2921,7 +2975,7 @@ Note: This field is default to empty
 
     @property
     def DedicatedClusterId(self):
-        """CDC ID.
+        """Local exclusive cluster ID. this parameter can be obtained through the [DescribeDedicatedClusters](https://intl.cloud.tencent.com/document/product/1346/73758?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -3066,23 +3120,30 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
         :param _LifecycleHookName: Lifecycle hook name, which can contain Chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 bytes.
         :type LifecycleHookName: str
-        :param _LifecycleTransition: Scenario for the lifecycle hook. Valid values: "INSTANCE_LAUNCHING" and "INSTANCE_TERMINATING"
+        :param _LifecycleTransition: Scenario for performing the lifecycle hook. valid values:.
+<Li>`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.</li>.
+<Li>`INSTANCE_TERMINATING`: scaling in lifecycle hook</li>.
         :type LifecycleTransition: str
-        :param _DefaultResult: Defined actions when lifecycle hook times out. Valid values: "CONTINUE" and "ABANDON". Default value: "CONTINUE"
+        :param _DefaultResult: Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.
+<Li>CONTINUE: default value, means continue execution of capacity expansion or reduction</li>.
+<li>ABANDON: for scale-out hooks, CVM instances with hook timeout or failed LifecycleCommand execution will be released directly or removed. for scale-in hooks, scale-in activities will continue.</li>.
         :type DefaultResult: str
         :param _HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
         :type HeartbeatTimeout: int
-        :param _NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: ""). Up to 1024 characters are allowed.
+        :param _NotificationMetadata: Additional information of a notification that auto scaling sends to targets. this parameter is set when you configure a notification (default value: ""), with a maximum length of 1024 characters. NotificationMetadata and LifecycleCommand are mutually exclusive, and either can be specified.
         :type NotificationMetadata: str
         :param _NotificationTarget: Notification target. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
-        :param _LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
+        :param _LifecycleTransitionType: Specifies the scenario type for performing the lifecycle hook. valid values: NORMAL and EXTENSION. default value: NORMAL.
+`EXTENSION`: the lifecycle hook will be triggered when calling [AttachInstances](https://intl.cloud.tencent.com/document/api/377/20441?from_cn_redirect=1), [DetachInstances](https://intl.cloud.tencent.com/document/api/377/20436?from_cn_redirect=1), [removeinstances](https://intl.cloud.tencent.com/document/api/377/20431?from_cn_redirect=1), [StopAutoScalingInstances](https://intl.cloud.tencent.com/document/api/377/40286?from_cn_redirect=1), [StartAutoScalingInstances](https://intl.cloud.tencent.com/document/api/377/40287?from_cn_redirect=1), or [StartInstanceRefresh](https://intl.cloud.tencent.com/document/api/377/99172?from_cn_redirect=1). `NORMAL`: the lifecycle hook is not triggered by these apis.
         :type LifecycleTransitionType: str
-        :param _LifecycleCommand: Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :param _LifecycleCommand: Specifies the remote command execution object. NotificationTarget and NotificationMetadata are mutually exclusive with this parameter. either cannot be specified simultaneously.
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self._AutoScalingGroupId = None
@@ -3097,7 +3158,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -3119,7 +3182,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
-        """Scenario for the lifecycle hook. Valid values: "INSTANCE_LAUNCHING" and "INSTANCE_TERMINATING"
+        """Scenario for performing the lifecycle hook. valid values:.
+<Li>`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.</li>.
+<Li>`INSTANCE_TERMINATING`: scaling in lifecycle hook</li>.
         :rtype: str
         """
         return self._LifecycleTransition
@@ -3130,7 +3195,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
-        """Defined actions when lifecycle hook times out. Valid values: "CONTINUE" and "ABANDON". Default value: "CONTINUE"
+        """Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.
+<Li>CONTINUE: default value, means continue execution of capacity expansion or reduction</li>.
+<li>ABANDON: for scale-out hooks, CVM instances with hook timeout or failed LifecycleCommand execution will be released directly or removed. for scale-in hooks, scale-in activities will continue.</li>.
         :rtype: str
         """
         return self._DefaultResult
@@ -3152,7 +3219,7 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
-        """Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: ""). Up to 1024 characters are allowed.
+        """Additional information of a notification that auto scaling sends to targets. this parameter is set when you configure a notification (default value: ""), with a maximum length of 1024 characters. NotificationMetadata and LifecycleCommand are mutually exclusive, and either can be specified.
         :rtype: str
         """
         return self._NotificationMetadata
@@ -3174,7 +3241,8 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
-        """The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
+        """Specifies the scenario type for performing the lifecycle hook. valid values: NORMAL and EXTENSION. default value: NORMAL.
+`EXTENSION`: the lifecycle hook will be triggered when calling [AttachInstances](https://intl.cloud.tencent.com/document/api/377/20441?from_cn_redirect=1), [DetachInstances](https://intl.cloud.tencent.com/document/api/377/20436?from_cn_redirect=1), [removeinstances](https://intl.cloud.tencent.com/document/api/377/20431?from_cn_redirect=1), [StopAutoScalingInstances](https://intl.cloud.tencent.com/document/api/377/40286?from_cn_redirect=1), [StartAutoScalingInstances](https://intl.cloud.tencent.com/document/api/377/40287?from_cn_redirect=1), or [StartInstanceRefresh](https://intl.cloud.tencent.com/document/api/377/99172?from_cn_redirect=1). `NORMAL`: the lifecycle hook is not triggered by these apis.
         :rtype: str
         """
         return self._LifecycleTransitionType
@@ -3185,7 +3253,7 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
-        """Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        """Specifies the remote command execution object. NotificationTarget and NotificationMetadata are mutually exclusive with this parameter. either cannot be specified simultaneously.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         return self._LifecycleCommand
@@ -3269,7 +3337,7 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
         :param _NotificationTypes: Notification type, i.e., the set of types of notifications to be subscribed to. Value range:
 <li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>
@@ -3279,20 +3347,20 @@ class CreateNotificationConfigurationRequest(AbstractModel):
 <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>
 <li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>
         :type NotificationTypes: list of str
-        :param _NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
+        :param _NotificationUserGroupIds: Notification GROUP ID, which is the USER GROUP ID collection. USER GROUP ID can be accessed through [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1). this parameter is valid only when TargetType is USER_GROUP.
         :type NotificationUserGroupIds: list of str
-        :param _TargetType: Notification receiver type. Valid values:
-<br><li>USER_GROUP:User group
-<br><li>CMQ_QUEUE:CMQ queue
-<br><li>CMQ_TOPIC:CMQ topic
-<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic
-<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue
+        :param _TargetType: Notification receiver type. values as follows:.
+<Li>USER_GROUP: user group</li>.
+<Li>TDMQ_CMQ_TOPIC: tdmq cmq topic</li>.
+<Li>TDMQ_CMQ_QUEUE: tdmq cmq queue</li>.
+<li>CMQ_QUEUE: CMQ QUEUE. [CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended.</li>.
+<li>CMQ_TOPIC: specifies the CMQ TOPIC. [CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, TDMQ CMQ is recommended for use.</li>.
 
 Default value: `USER_GROUP`.
         :type TargetType: str
-        :param _QueueName: CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
+        :param _QueueName: TDMQ CMQ QUEUE name. this field is required if TargetType value is `TDMQ_CMQ_QUEUE`.
         :type QueueName: str
-        :param _TopicName: CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.
+        :param _TopicName: TDMQ CMQ TOPIC name. this field is required when `TargetType` is `TDMQ_CMQ_TOPIC`.
         :type TopicName: str
         """
         self._AutoScalingGroupId = None
@@ -3304,7 +3372,7 @@ Default value: `USER_GROUP`.
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID.
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -3332,7 +3400,7 @@ Default value: `USER_GROUP`.
 
     @property
     def NotificationUserGroupIds(self):
-        """Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
+        """Notification GROUP ID, which is the USER GROUP ID collection. USER GROUP ID can be accessed through [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1). this parameter is valid only when TargetType is USER_GROUP.
         :rtype: list of str
         """
         return self._NotificationUserGroupIds
@@ -3343,12 +3411,12 @@ Default value: `USER_GROUP`.
 
     @property
     def TargetType(self):
-        """Notification receiver type. Valid values:
-<br><li>USER_GROUP:User group
-<br><li>CMQ_QUEUE:CMQ queue
-<br><li>CMQ_TOPIC:CMQ topic
-<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic
-<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue
+        """Notification receiver type. values as follows:.
+<Li>USER_GROUP: user group</li>.
+<Li>TDMQ_CMQ_TOPIC: tdmq cmq topic</li>.
+<Li>TDMQ_CMQ_QUEUE: tdmq cmq queue</li>.
+<li>CMQ_QUEUE: CMQ QUEUE. [CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended.</li>.
+<li>CMQ_TOPIC: specifies the CMQ TOPIC. [CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, TDMQ CMQ is recommended for use.</li>.
 
 Default value: `USER_GROUP`.
         :rtype: str
@@ -3361,7 +3429,7 @@ Default value: `USER_GROUP`.
 
     @property
     def QueueName(self):
-        """CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
+        """TDMQ CMQ QUEUE name. this field is required if TargetType value is `TDMQ_CMQ_QUEUE`.
         :rtype: str
         """
         return self._QueueName
@@ -3372,7 +3440,7 @@ Default value: `USER_GROUP`.
 
     @property
     def TopicName(self):
-        """CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.
+        """TDMQ CMQ TOPIC name. this field is required when `TargetType` is `TDMQ_CMQ_TOPIC`.
         :rtype: str
         """
         return self._TopicName
@@ -3449,35 +3517,40 @@ class CreateScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
-        :param _ScalingPolicyName: Alarm trigger policy name.
+        :param _ScalingPolicyName: The Alarm policy name must be unique in your account. the name length cannot exceed 60 characters. the name only supports chinese, english, digits, underscores, hyphens, and decimal points.
         :type ScalingPolicyName: str
-        :param _ScalingPolicyType: Scaling policy type. Valid values: <br><li>`SIMPLE` (default): A simple policy</li><li>`TARGET_TRACKING`: A target tracking policy</li>.
+        :param _ScalingPolicyType: Alarm trigger policy type. default: SIMPLE. valid values:.
+<Li>`SIMPLE`: a simple policy.</li>.
+<Li>`TARGET_TRACKING`: a target tracking policy.</li>.
         :type ScalingPolicyType: str
-        :param _AdjustmentType: The method to adjust the desired capacity after the alarm is triggered. It is only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        :param _AdjustmentType: After an Alarm is triggered, specifies the method for modifying the expected number of instances. required in the scenario of simple policies. valid values:.
+<Li>CHANGE_IN_CAPACITY: increase or decrease the expected number of instances</li>.
+<Li>EXACT_CAPACITY: adjust to the expected number of instances</li>.
+<Li>PERCENT_CHANGE_IN_CAPACITY: adjust expected instance number by percent</li>.
         :type AdjustmentType: str
-        :param _AdjustmentValue: Adjustment value for the expected number of instances after an alarm is triggered, which is applicable only to simple policies.
-<li>When AdjustmentType is set to CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances after the alarm is triggered, while a negative value indicates a decrease in the number of instances after the alarm is triggered.</li>
-<li>When AdjustmentType is set to EXACT_CAPACITY, the value of AdjustmentValue indicates the new desired number of instances after the alarm is triggered. It should be greater than or equal to 0.</li>
+        :param _AdjustmentValue: Adjustment value for the expected number of instances after an Alarm is triggered, which is applicable only to simple policies and required in simple policy scenarios.
+<li>When AdjustmentType is CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase IN instances after Alarm trigger, while a negative value indicates a decrease IN instances after Alarm trigger.</li>. 
+<li>When AdjustmentType is set to EXACT_CAPACITY, the value of AdjustmentValue indicates the new desired number of instances after the Alarm is triggered. it must be at least 0.</li>. 
 <li>When AdjustmentType is set to PERCENT_CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances by a percentage after the alarm is triggered, while a negative value indicates a decrease in the number of instances by a percentage after the alarm is triggered. Unit: %.</li>
         :type AdjustmentValue: int
         :param _Cooldown: Cooldown period (in seconds). This parameter is only applicable to a simple policy. Default value: 300.
         :type Cooldown: int
-        :param _MetricAlarm: Alarm monitoring metric. It is only available when `ScalingPolicyType` is `Simple`.
+        :param _MetricAlarm: Alarm monitoring metric, apply only to simple policies, required in the scenario of simple policy.
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
-        :param _PredefinedMetricType: Predefined monitoring item, applicable only to target tracking policies. Valid values:
-<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization</li>
-<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth</li>
-<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>
-<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth</li>
+        :param _PredefinedMetricType: Predefined monitoring item, applicable only to target tracking policies. required in the scenario. value range:.
+<Li>ASG_AVG_CPU_UTILIZATION: average cpu utilization</li>.
+<Li>ASG_AVG_LAN_TRAFFIC_OUT: specifies the average outbound private network bandwidth.</li>.
+<Li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>.
+<Li>ASG_AVG_WAN_TRAFFIC_OUT: specifies the average outbound public network bandwidth.</li>.
 <li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>
         :type PredefinedMetricType: str
-        :param _TargetValue: Target value, which is applicable only to target tracking policies.
-<li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>
-<li>ASG_AVG_LAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>
-<li>ASG_AVG_LAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>
-<li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>
+        :param _TargetValue: Target value, applicable only to the target tracking policy, required in the scenario.
+<Li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>.
+<li>ASG_AVG_LAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>.
+<li>ASG_AVG_LAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>.
+<li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>.
 <li>ASG_AVG_WAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>
         :type TargetValue: int
         :param _EstimatedInstanceWarmup: Instance warm-up period (in seconds). It is only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.
@@ -3505,7 +3578,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID.
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -3516,7 +3589,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def ScalingPolicyName(self):
-        """Alarm trigger policy name.
+        """The Alarm policy name must be unique in your account. the name length cannot exceed 60 characters. the name only supports chinese, english, digits, underscores, hyphens, and decimal points.
         :rtype: str
         """
         return self._ScalingPolicyName
@@ -3527,7 +3600,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def ScalingPolicyType(self):
-        """Scaling policy type. Valid values: <br><li>`SIMPLE` (default): A simple policy</li><li>`TARGET_TRACKING`: A target tracking policy</li>.
+        """Alarm trigger policy type. default: SIMPLE. valid values:.
+<Li>`SIMPLE`: a simple policy.</li>.
+<Li>`TARGET_TRACKING`: a target tracking policy.</li>.
         :rtype: str
         """
         return self._ScalingPolicyType
@@ -3538,7 +3613,10 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentType(self):
-        """The method to adjust the desired capacity after the alarm is triggered. It is only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        """After an Alarm is triggered, specifies the method for modifying the expected number of instances. required in the scenario of simple policies. valid values:.
+<Li>CHANGE_IN_CAPACITY: increase or decrease the expected number of instances</li>.
+<Li>EXACT_CAPACITY: adjust to the expected number of instances</li>.
+<Li>PERCENT_CHANGE_IN_CAPACITY: adjust expected instance number by percent</li>.
         :rtype: str
         """
         return self._AdjustmentType
@@ -3549,9 +3627,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentValue(self):
-        """Adjustment value for the expected number of instances after an alarm is triggered, which is applicable only to simple policies.
-<li>When AdjustmentType is set to CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances after the alarm is triggered, while a negative value indicates a decrease in the number of instances after the alarm is triggered.</li>
-<li>When AdjustmentType is set to EXACT_CAPACITY, the value of AdjustmentValue indicates the new desired number of instances after the alarm is triggered. It should be greater than or equal to 0.</li>
+        """Adjustment value for the expected number of instances after an Alarm is triggered, which is applicable only to simple policies and required in simple policy scenarios.
+<li>When AdjustmentType is CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase IN instances after Alarm trigger, while a negative value indicates a decrease IN instances after Alarm trigger.</li>. 
+<li>When AdjustmentType is set to EXACT_CAPACITY, the value of AdjustmentValue indicates the new desired number of instances after the Alarm is triggered. it must be at least 0.</li>. 
 <li>When AdjustmentType is set to PERCENT_CHANGE_IN_CAPACITY, a positive value of AdjustmentValue indicates an increase in the number of instances by a percentage after the alarm is triggered, while a negative value indicates a decrease in the number of instances by a percentage after the alarm is triggered. Unit: %.</li>
         :rtype: int
         """
@@ -3574,7 +3652,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def MetricAlarm(self):
-        """Alarm monitoring metric. It is only available when `ScalingPolicyType` is `Simple`.
+        """Alarm monitoring metric, apply only to simple policies, required in the scenario of simple policy.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
         """
         return self._MetricAlarm
@@ -3585,11 +3663,11 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def PredefinedMetricType(self):
-        """Predefined monitoring item, applicable only to target tracking policies. Valid values:
-<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization</li>
-<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth</li>
-<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>
-<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth</li>
+        """Predefined monitoring item, applicable only to target tracking policies. required in the scenario. value range:.
+<Li>ASG_AVG_CPU_UTILIZATION: average cpu utilization</li>.
+<Li>ASG_AVG_LAN_TRAFFIC_OUT: specifies the average outbound private network bandwidth.</li>.
+<Li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>.
+<Li>ASG_AVG_WAN_TRAFFIC_OUT: specifies the average outbound public network bandwidth.</li>.
 <li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>
         :rtype: str
         """
@@ -3601,11 +3679,11 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def TargetValue(self):
-        """Target value, which is applicable only to target tracking policies.
-<li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>
-<li>ASG_AVG_LAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>
-<li>ASG_AVG_LAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>
-<li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>
+        """Target value, applicable only to the target tracking policy, required in the scenario.
+<Li>ASG_AVG_CPU_UTILIZATION: value range: [1, 100); unit: %.</li>.
+<li>ASG_AVG_LAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>.
+<li>ASG_AVG_LAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>.
+<li>ASG_AVG_WAN_TRAFFIC_OUT: value range: > 0; unit: Mbps.</li>.
 <li>ASG_AVG_WAN_TRAFFIC_IN: value range: > 0; unit: Mbps.</li>
         :rtype: int
         """
@@ -3727,7 +3805,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
         :param _ScheduledActionName: Scheduled task name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.
         :type ScheduledActionName: str
@@ -3741,7 +3821,7 @@ class CreateScheduledActionRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br><br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.
         :type EndTime: str
-        :param _Recurrence: Repeating mode of the scheduled task, which is in standard cron format. <br><br>This parameter and `EndTime` need to be specified at the same time.
+        :param _Recurrence: The repeating mode of a scheduled task follows the standard Cron format. the [Recurrence parameter limits](https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) in a scheduled task consist of 5 fields separated by spaces, with the structure: minute, hour, date, month, week. this parameter must be simultaneously specified with `EndTime`.
         :type Recurrence: str
         """
         self._AutoScalingGroupId = None
@@ -3755,7 +3835,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -3832,7 +3914,7 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def Recurrence(self):
-        """Repeating mode of the scheduled task, which is in standard cron format. <br><br>This parameter and `EndTime` need to be specified at the same time.
+        """The repeating mode of a scheduled task follows the standard Cron format. the [Recurrence parameter limits](https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) in a scheduled task consist of 5 fields separated by spaces, with the structure: minute, hour, date, month, week. this parameter must be simultaneously specified with `EndTime`.
         :rtype: str
         """
         return self._Recurrence
@@ -3911,19 +3993,20 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Data disk type. For restrictions on the data disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
-<li>LOCAL_BASIC: Local Disk.</li>
-<li>LOCAL_SSD: Local SSD.</li>
-<li>CLOUD_BASIC: Basic Cloud Disk.</li>
-<li>CLOUD_PREMIUM: Premium Disk.</li>
-<li>CLOUD_SSD: Cloud SSD.</li>
-<li>CLOUD_HSSD: Enhanced SSD.</li>
-<li>CLOUD_TSSD: Tremendous SSD.</li>
+        :param _DiskType: Data disk type. for restrictions on data disk types, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
+<Li>LOCAL_BASIC: local hard disk.</li>.
+<Li>LOCAL_SSD: local ssd.</li>.
+<Li>CLOUD_BASIC: general cloud disk.</li>.
+<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
+<Li>CLOUD_SSD: cloud ssd</li>.
+<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
+<Li>CLOUD_TSSD: ultra ssd.</li>.
+<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
 The default value is consistent with the system disk type (SystemDisk.DiskType).
         :type DiskType: str
-        :param _DiskSize: Data disk size, in GB. The minimum adjustment step size is 10 GB. The value range varies according to the data disk type. For specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Default value: 0, which means that no data disk is purchased. For more restrictions, see the product documentation.
+        :param _DiskSize: Data disk size, in GB. the value range varies according to the data disk type. for specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). default value: 0, which means no data disk is purchased. for more restrictions, see the [product documentation](https://intl.cloud.tencent.com/document/product/362/5145?from_cn_redirect=1).
         :type DiskSize: int
-        :param _SnapshotId: Data disk snapshot ID, such as `snap-l8psqwnt`.
+        :param _SnapshotId: The data disk snapshot ID can be obtained through the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) api.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotId: str
         :param _DeleteWithInstance: Whether the data disk is terminated along with the instance. Valid values:
@@ -3940,9 +4023,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ThroughputPerformance: int
-        :param _BurstPerformance: Burst performance: Whether to enable burst performance. The default value is false.
-
-Note: This feature is in beta test and requires a ticket to be submitted for usage.
+        :param _BurstPerformance: Burst performance. specifies whether to enable burst performance. default value is false. this parameter only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity > 460GB.
+Note: this feature is in beta test and requires a ticket to be submitted for usage.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BurstPerformance: bool
         """
@@ -3956,14 +4038,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
-        """Data disk type. For restrictions on the data disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
-<li>LOCAL_BASIC: Local Disk.</li>
-<li>LOCAL_SSD: Local SSD.</li>
-<li>CLOUD_BASIC: Basic Cloud Disk.</li>
-<li>CLOUD_PREMIUM: Premium Disk.</li>
-<li>CLOUD_SSD: Cloud SSD.</li>
-<li>CLOUD_HSSD: Enhanced SSD.</li>
-<li>CLOUD_TSSD: Tremendous SSD.</li>
+        """Data disk type. for restrictions on data disk types, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
+<Li>LOCAL_BASIC: local hard disk.</li>.
+<Li>LOCAL_SSD: local ssd.</li>.
+<Li>CLOUD_BASIC: general cloud disk.</li>.
+<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
+<Li>CLOUD_SSD: cloud ssd</li>.
+<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
+<Li>CLOUD_TSSD: ultra ssd.</li>.
+<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
 The default value is consistent with the system disk type (SystemDisk.DiskType).
         :rtype: str
         """
@@ -3975,7 +4058,7 @@ The default value is consistent with the system disk type (SystemDisk.DiskType).
 
     @property
     def DiskSize(self):
-        """Data disk size, in GB. The minimum adjustment step size is 10 GB. The value range varies according to the data disk type. For specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). Default value: 0, which means that no data disk is purchased. For more restrictions, see the product documentation.
+        """Data disk size, in GB. the value range varies according to the data disk type. for specific restrictions, see [CVM instance configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). default value: 0, which means no data disk is purchased. for more restrictions, see the [product documentation](https://intl.cloud.tencent.com/document/product/362/5145?from_cn_redirect=1).
         :rtype: int
         """
         return self._DiskSize
@@ -3986,7 +4069,7 @@ The default value is consistent with the system disk type (SystemDisk.DiskType).
 
     @property
     def SnapshotId(self):
-        """Data disk snapshot ID, such as `snap-l8psqwnt`.
+        """The data disk snapshot ID can be obtained through the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) api.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
@@ -4039,9 +4122,8 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BurstPerformance(self):
-        """Burst performance: Whether to enable burst performance. The default value is false.
-
-Note: This feature is in beta test and requires a ticket to be submitted for usage.
+        """Burst performance. specifies whether to enable burst performance. default value is false. this parameter only supports ultra-fast CLOUD disk (CLOUD_TSSD) and enhanced SSD CLOUD disk (CLOUD_HSSD) with capacity > 460GB.
+Note: this feature is in beta test and requires a ticket to be submitted for usage.
 Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: bool
         """
@@ -4077,14 +4159,14 @@ class DeleteAutoScalingGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
         """
         self._AutoScalingGroupId = None
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -4141,14 +4223,14 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: ID of the launch configuration to be deleted.
+        :param _LaunchConfigurationId: Specifies the launch configuration ID that needs to be deleted. you can obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.
         :type LaunchConfigurationId: str
         """
         self._LaunchConfigurationId = None
 
     @property
     def LaunchConfigurationId(self):
-        """ID of the launch configuration to be deleted.
+        """Specifies the launch configuration ID that needs to be deleted. you can obtain the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config) or calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -4205,14 +4287,14 @@ class DeleteLifecycleHookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LifecycleHookId: Lifecycle hook ID
+        :param _LifecycleHookId: Lifecycle hook ID. calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the LifecycleHookId from the returned information obtains the lifecycle hook ID.
         :type LifecycleHookId: str
         """
         self._LifecycleHookId = None
 
     @property
     def LifecycleHookId(self):
-        """Lifecycle hook ID
+        """Lifecycle hook ID. calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the LifecycleHookId from the returned information obtains the lifecycle hook ID.
         :rtype: str
         """
         return self._LifecycleHookId
@@ -4269,14 +4351,14 @@ class DeleteNotificationConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingNotificationId: ID of the notification to be deleted.
+        :param _AutoScalingNotificationId: The notification ID to be deleted. this is currently a required parameter. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and retrieving the AutoScalingNotificationId from the returned information.
         :type AutoScalingNotificationId: str
         """
         self._AutoScalingNotificationId = None
 
     @property
     def AutoScalingNotificationId(self):
-        """ID of the notification to be deleted.
+        """The notification ID to be deleted. this is currently a required parameter. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and retrieving the AutoScalingNotificationId from the returned information.
         :rtype: str
         """
         return self._AutoScalingNotificationId
@@ -4333,14 +4415,14 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingPolicyId: ID of the alarm policy to be deleted.
+        :param _AutoScalingPolicyId: The Alarm policy ID to be deleted. you can obtain the Alarm policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1) and retrieving the AutoScalingPolicyId from the returned information.
         :type AutoScalingPolicyId: str
         """
         self._AutoScalingPolicyId = None
 
     @property
     def AutoScalingPolicyId(self):
-        """ID of the alarm policy to be deleted.
+        """The Alarm policy ID to be deleted. you can obtain the Alarm policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1) and retrieving the AutoScalingPolicyId from the returned information.
         :rtype: str
         """
         return self._AutoScalingPolicyId
@@ -4397,14 +4479,14 @@ class DeleteScheduledActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduledActionId: ID of the scheduled task to be deleted.
+        :param _ScheduledActionId: Scheduled task ID to be deleted. obtain the scheduled task ID by calling the api [DescribeScheduledActions](https://intl.cloud.tencent.com/document/api/377/20450?from_cn_redirect=1) and retrieving the ScheduledActionId from the returned information.
         :type ScheduledActionId: str
         """
         self._ScheduledActionId = None
 
     @property
     def ScheduledActionId(self):
-        """ID of the scheduled task to be deleted.
+        """Scheduled task ID to be deleted. obtain the scheduled task ID by calling the api [DescribeScheduledActions](https://intl.cloud.tencent.com/document/api/377/20450?from_cn_redirect=1) and retrieving the ScheduledActionId from the returned information.
         :rtype: str
         """
         return self._ScheduledActionId
@@ -4557,12 +4639,10 @@ class DescribeAutoScalingActivitiesRequest(AbstractModel):
         r"""
         :param _ActivityIds: Queries by one or more scaling activity IDs in the format of `asa-5l2ejpfo`. The maximum quantity per request is 100. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.
         :type ActivityIds: list of str
-        :param _Filters: Filter.
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-<li> activity-status-code - String - Required: No - (Filter) Filter by scaling activity status . (INIT: initializing | RUNNING: running | SUCCESSFUL: succeeded | PARTIALLY_SUCCESSFUL: partially succeeded | FAILED: failed | CANCELLED: canceled)</li>
-<li> activity-type - String - Required: No - (Filter) Filter by scaling activity type. (SCALE_OUT: scale-out | SCALE_IN: scale-in | ATTACH_INSTANCES: adding an instance | REMOVE_INSTANCES: terminating an instance | DETACH_INSTANCES: removing an instance | TERMINATE_INSTANCES_UNEXPECTEDLY: terminating an instance in the CVM console | REPLACE_UNHEALTHY_INSTANCE: replacing an unhealthy instance | UPDATE_LOAD_BALANCERS: updating a load balancer)</li>
-<li> activity-id - String - Required: No - (Filter) Filter by scaling activity ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.
+        :param _Filters: Filter criteria. the filter field value ranges from...to.
+<ul>
+<li><strong>auto-scaling-group-id</strong><ul><li>Filter by [<strong>scaling group id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) or call the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) to obtain the scaling group id from the returned information.</li><li>type: String</li><li>required: no</li><li>example value: asg-kiju7yt5</li></ul></li>  <li><strong>activity-status-code</strong><ul><li>filter by [<strong>scaling activity status</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>INIT: initializing</li><li>RUNNING: RUNNING</li><li>SUCCESSFUL: SUCCESSFUL activity</li><li>PARTIALLY_SUCCESSFUL: PARTIALLY SUCCESSFUL activity</li><li>FAILED: activity FAILED</li><li>CANCELLED: activity CANCELLED</li></ul></ul></li>  <li><strong>activity-type</strong><ul><li>filter by [<strong>scaling activity type</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>SCALE_OUT: SCALE-OUT activity</li><li>SCALE_IN: SCALE-IN activity</li><li>ATTACH_INSTANCES: adding INSTANCES</li><li>REMOVE_INSTANCES: terminating INSTANCES</li><li>DETACH_INSTANCES: REMOVE INSTANCE</li><li>TERMINATE_INSTANCES_UNEXPECTEDLY: TERMINATE INSTANCE IN CVM console</li><li>REPLACE_UNHEALTHY_INSTANCE: REPLACE UNHEALTHY INSTANCES</li><li>START_INSTANCES: START INSTANCES</li><li>STOP_INSTANCES: shut down INSTANCE</li><li>INVOKE_COMMAND: execute COMMAND</li></ul></ul></li>  <li><strong>activity-id</strong><ul><li>filter by [<strong>scaling activity id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) to obtain the scaling activity id.</li><li>type: String</li><li>required: no</li><li>example value: asa-hy6tr4ed</li></ul></li></ul>.
+The maximum number of `Filters` per request is 10. the upper limit for `Filter.Values` is 5. parameters must not specify both `ActivityIds` and `Filters` simultaneously.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -4593,12 +4673,10 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
-        """Filter.
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-<li> activity-status-code - String - Required: No - (Filter) Filter by scaling activity status . (INIT: initializing | RUNNING: running | SUCCESSFUL: succeeded | PARTIALLY_SUCCESSFUL: partially succeeded | FAILED: failed | CANCELLED: canceled)</li>
-<li> activity-type - String - Required: No - (Filter) Filter by scaling activity type. (SCALE_OUT: scale-out | SCALE_IN: scale-in | ATTACH_INSTANCES: adding an instance | REMOVE_INSTANCES: terminating an instance | DETACH_INSTANCES: removing an instance | TERMINATE_INSTANCES_UNEXPECTEDLY: terminating an instance in the CVM console | REPLACE_UNHEALTHY_INSTANCE: replacing an unhealthy instance | UPDATE_LOAD_BALANCERS: updating a load balancer)</li>
-<li> activity-id - String - Required: No - (Filter) Filter by scaling activity ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.
+        """Filter criteria. the filter field value ranges from...to.
+<ul>
+<li><strong>auto-scaling-group-id</strong><ul><li>Filter by [<strong>scaling group id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) or call the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) to obtain the scaling group id from the returned information.</li><li>type: String</li><li>required: no</li><li>example value: asg-kiju7yt5</li></ul></li>  <li><strong>activity-status-code</strong><ul><li>filter by [<strong>scaling activity status</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>INIT: initializing</li><li>RUNNING: RUNNING</li><li>SUCCESSFUL: SUCCESSFUL activity</li><li>PARTIALLY_SUCCESSFUL: PARTIALLY SUCCESSFUL activity</li><li>FAILED: activity FAILED</li><li>CANCELLED: activity CANCELLED</li></ul></ul></li>  <li><strong>activity-type</strong><ul><li>filter by [<strong>scaling activity type</strong>]</li><li>type: String</li><li>required: no</li><li>options: </li><ul><li>SCALE_OUT: SCALE-OUT activity</li><li>SCALE_IN: SCALE-IN activity</li><li>ATTACH_INSTANCES: adding INSTANCES</li><li>REMOVE_INSTANCES: terminating INSTANCES</li><li>DETACH_INSTANCES: REMOVE INSTANCE</li><li>TERMINATE_INSTANCES_UNEXPECTEDLY: TERMINATE INSTANCE IN CVM console</li><li>REPLACE_UNHEALTHY_INSTANCE: REPLACE UNHEALTHY INSTANCES</li><li>START_INSTANCES: START INSTANCES</li><li>STOP_INSTANCES: shut down INSTANCE</li><li>INVOKE_COMMAND: execute COMMAND</li></ul></ul></li>  <li><strong>activity-id</strong><ul><li>filter by [<strong>scaling activity id</strong>]. you can log IN to the [console](https://console.cloud.tencent.com/autoscaling/group) to obtain the scaling activity id.</li><li>type: String</li><li>required: no</li><li>example value: asa-hy6tr4ed</li></ul></li></ul>.
+The maximum number of `Filters` per request is 10. the upper limit for `Filter.Values` is 5. parameters must not specify both `ActivityIds` and `Filters` simultaneously.
         :rtype: list of Filter
         """
         return self._Filters
@@ -4744,14 +4822,14 @@ class DescribeAutoScalingAdvicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupIds: List of scaling groups to be queried. Upper limit: 100.
+        :param _AutoScalingGroupIds: The scaling group list to be queried, with an upper limit of 100. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.
         :type AutoScalingGroupIds: list of str
         """
         self._AutoScalingGroupIds = None
 
     @property
     def AutoScalingGroupIds(self):
-        """List of scaling groups to be queried. Upper limit: 100.
+        """The scaling group list to be queried, with an upper limit of 100. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.
         :rtype: list of str
         """
         return self._AutoScalingGroupIds
@@ -4828,7 +4906,7 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupIds: ID list of auto scaling groups.
+        :param _AutoScalingGroupIds: Auto scaling group ID list. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving AutoScalingGroupId from the returned information.
         :type AutoScalingGroupIds: list of str
         :param _ExcludeCancelledActivity: Excludes cancelled type activities when querying. Default value is false, which means cancelled type activities are not excluded.
         :type ExcludeCancelledActivity: bool
@@ -4838,7 +4916,7 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupIds(self):
-        """ID list of auto scaling groups.
+        """Auto scaling group ID list. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving AutoScalingGroupId from the returned information.
         :rtype: list of str
         """
         return self._AutoScalingGroupIds
@@ -4929,15 +5007,17 @@ class DescribeAutoScalingGroupsRequest(AbstractModel):
         r"""
         :param _AutoScalingGroupIds: Queries by one or more auto scaling group IDs in the format of `asg-nkdwoui0`. The maximum quantity per request is 100. This parameter does not support specifying both `AutoScalingGroupIds` and `Filters` at the same time.
         :type AutoScalingGroupIds: list of str
-        :param _Filters: Filters.
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>
-<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>
-<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>
-<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>
-<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>
-<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>
-The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time.
+        :param _Filters: Filter criteria
+
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.
+Specifies the scaling group ID obtained by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.
+<li> auto-scaling-group-name - String - required: no - (filter) filter by auto scaling group name.</li>.
+<li> vague-auto-scaling-group-name - String - required: no - (filter) filter by scaling group name fuzzy search.</li>.
+<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration id. you can obtain the launch configuration id by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.
+<li> `tag-key` - String - optional - filter by the tag key. you can call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the tag key from the returned information.</li>.
+<li>tag-value - String - required: no - (filter condition) filter by tag value. you can obtain the tag value by calling the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) and retrieving the TagValue from the returned information.</li>.
+<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key. see example 2 for reference. call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the TagKey from the returned information.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingGroupIds` and `Filters` parameters cannot be specified simultaneously.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -4962,15 +5042,17 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Filters(self):
-        """Filters.
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>
-<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>
-<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>
-<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>
-<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>
-<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>
-The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time.
+        """Filter criteria
+
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.
+Specifies the scaling group ID obtained by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.
+<li> auto-scaling-group-name - String - required: no - (filter) filter by auto scaling group name.</li>.
+<li> vague-auto-scaling-group-name - String - required: no - (filter) filter by scaling group name fuzzy search.</li>.
+<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration id. you can obtain the launch configuration id by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the returned information.</li>.
+<li> `tag-key` - String - optional - filter by the tag key. you can call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the tag key from the returned information.</li>.
+<li>tag-value - String - required: no - (filter condition) filter by tag value. you can obtain the tag value by calling the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) and retrieving the TagValue from the returned information.</li>.
+<li>tag:tag-key - String - required: no - (filter condition) filter by tag key-value pair. replace tag-key with a specific tag key. see example 2 for reference. call the API [GetTags](https://intl.cloud.tencent.com/document/product/651/72275?from_cn_redirect=1) to obtain the TagKey from the returned information.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingGroupIds` and `Filters` parameters cannot be specified simultaneously.
         :rtype: list of Filter
         """
         return self._Filters
@@ -5092,12 +5174,16 @@ class DescribeAutoScalingInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: IDs of the CVM instances to query. Up to 100 IDs can be queried at one time. `InstanceIds` and `Filters` can not be both specified.
+        :param _InstanceIds: IDs of the CVM instances to query. the instance ID list has a length limit of 100. `InstanceIds` and `Filters` cannot be specified simultaneously.
+You can get available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :type InstanceIds: list of str
-        :param _Filters: Filter.
-<li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `InstanceIds` and `Filters` at the same time.
+        :param _Filters: Filter criteria
+
+<li> instance-id - String - required: no - (filter condition) filter by instance id. get the instance id by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1), and retrieve the `InstanceId` from the returned information.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. parameters do not support specifying both `InstanceIds` and `Filters`.
         :type Filters: list of Filter
         :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
@@ -5111,7 +5197,10 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def InstanceIds(self):
-        """IDs of the CVM instances to query. Up to 100 IDs can be queried at one time. `InstanceIds` and `Filters` can not be both specified.
+        """IDs of the CVM instances to query. the instance ID list has a length limit of 100. `InstanceIds` and `Filters` cannot be specified simultaneously.
+You can get available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -5122,10 +5211,11 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
-        """Filter.
-<li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `InstanceIds` and `Filters` at the same time.
+        """Filter criteria
+
+<li> instance-id - String - required: no - (filter condition) filter by instance id. get the instance id by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1), and retrieve the `InstanceId` from the returned information.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. parameters do not support specifying both `InstanceIds` and `Filters`.
         :rtype: list of Filter
         """
         return self._Filters
@@ -5569,12 +5659,13 @@ class DescribeNotificationConfigurationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingNotificationIds: Queries by one or more notification IDs in the format of asn-2sestqbr. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.
+        :param _AutoScalingNotificationIds: Query by one or more notification ids. the list length limit is 100. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). parameters AutoScalingNotificationIds and Filters must not be specified simultaneously.
         :type AutoScalingNotificationIds: list of str
-        :param _Filters: Filter.
-<li> auto-scaling-notification-id - String - Required: No - (Filter) Filter by notification ID.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.
+        :param _Filters: Filter criteria
+
+<li> auto-scaling-notification-id - String - required: no - (filter) filter by notification id.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingNotificationIds` and `Filters` parameters cannot be specified simultaneously.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -5588,7 +5679,7 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def AutoScalingNotificationIds(self):
-        """Queries by one or more notification IDs in the format of asn-2sestqbr. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.
+        """Query by one or more notification ids. the list length limit is 100. you can obtain the notification ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). parameters AutoScalingNotificationIds and Filters must not be specified simultaneously.
         :rtype: list of str
         """
         return self._AutoScalingNotificationIds
@@ -5599,10 +5690,11 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
-        """Filter.
-<li> auto-scaling-notification-id - String - Required: No - (Filter) Filter by notification ID.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.
+        """Filter criteria
+
+<li> auto-scaling-notification-id - String - required: no - (filter) filter by notification id.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. you can obtain the scaling group id by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingNotificationIds` and `Filters` parameters cannot be specified simultaneously.
         :rtype: list of Filter
         """
         return self._Filters
@@ -5728,10 +5820,10 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
         :type RefreshActivityIds: list of str
         :param _Filters: Filter criteria
 
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-<li> refresh-activity-status-code - String - Required: No - (Filter)Filter based on refresh activity status. (INIT: Initialization | RUNNING:Running | SUCCESSFUL: Successful Activity | FAILED_PAUSE: Failed & Paused | AUTO_PAUSE: Auto Paused | MANUAL_PAUSE: Manually Paused | CANCELLED: Activity Cancelled | FAILED: Activity Failed)</li>
-<li> refresh-activity-type - String - Required: No - (Filter) Filter by refresh activity types. (NORMAL: Regular Refresh Activity | ROLLBACK: Rollback Refresh Activity)</li>
-<li> refresh-activity-id - String - Required: No - (Filter) Filter by refresh activity ID.</li>
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+<li> refresh-activity-status-code - String - required: no - (filter criteria) filters by refresh activity status. (INIT: initializing | RUNNING: RUNNING | SUCCESSFUL: activity SUCCESSFUL | FAILED_PAUSE: PAUSE on failure | AUTO_PAUSE: AUTO PAUSE | MANUAL_PAUSE: manually PAUSE | CANCELLED: activity CANCELLED | FAILED: activity FAILED)</li>.
+<li> refresh-activity-type - String - required: no - (filter) filter by refresh activity types. (NORMAL: regular refresh activity | ROLLBACK: ROLLBACK refresh activity)</li>.
+<li> refresh-activity-id - String - required: no - (filter) filter by refresh activity id.</li>.
 <li>The upper limit of Filters per request is 10, and that of Filter.Values is 5. The RefreshActivityIds and Filters parameters cannot be specified at the same time.</li>
         :type Filters: list of Filter
         :param _Limit: Number of returned pieces. Default value: 20. Maximum value: 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
@@ -5759,10 +5851,10 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
     def Filters(self):
         """Filter criteria
 
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
-<li> refresh-activity-status-code - String - Required: No - (Filter)Filter based on refresh activity status. (INIT: Initialization | RUNNING:Running | SUCCESSFUL: Successful Activity | FAILED_PAUSE: Failed & Paused | AUTO_PAUSE: Auto Paused | MANUAL_PAUSE: Manually Paused | CANCELLED: Activity Cancelled | FAILED: Activity Failed)</li>
-<li> refresh-activity-type - String - Required: No - (Filter) Filter by refresh activity types. (NORMAL: Regular Refresh Activity | ROLLBACK: Rollback Refresh Activity)</li>
-<li> refresh-activity-id - String - Required: No - (Filter) Filter by refresh activity ID.</li>
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+<li> refresh-activity-status-code - String - required: no - (filter criteria) filters by refresh activity status. (INIT: initializing | RUNNING: RUNNING | SUCCESSFUL: activity SUCCESSFUL | FAILED_PAUSE: PAUSE on failure | AUTO_PAUSE: AUTO PAUSE | MANUAL_PAUSE: manually PAUSE | CANCELLED: activity CANCELLED | FAILED: activity FAILED)</li>.
+<li> refresh-activity-type - String - required: no - (filter) filter by refresh activity types. (NORMAL: regular refresh activity | ROLLBACK: ROLLBACK refresh activity)</li>.
+<li> refresh-activity-id - String - required: no - (filter) filter by refresh activity id.</li>.
 <li>The upper limit of Filters per request is 10, and that of Filter.Values is 5. The RefreshActivityIds and Filters parameters cannot be specified at the same time.</li>
         :rtype: list of Filter
         """
@@ -5887,12 +5979,13 @@ class DescribeScalingPoliciesRequest(AbstractModel):
         r"""
         :param _AutoScalingPolicyIds: Queries by one or more alarm policy IDs in the format of asp-i9vkg894. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingPolicyIds` and `Filters` at the same time.
         :type AutoScalingPolicyIds: list of str
-        :param _Filters: Filters.
-<li> `auto-scaling-policy-id` - String - Optional - Filter by the alarm policy ID.</li>
-<li> `auto-scaling-group-id` - String - Optional - Filter by the scaling group ID.</li>
-<li> `scaling-policy-name` - String - Optional - Filter by the alarm policy name.</li>
-<li> `scaling-policy-type` - String - Optional - Filter by the alarm policy type. Valid values: `SIMPLE`, `TARGET_TRACKING`.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. You cannot specify `AutoScalingPolicyIds` and `Filters` at the same time.
+        :param _Filters: Filter criteria
+
+<li> auto-scaling-policy-id - String - required: no - (filter) filter by alert policy id.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+<li>scaling-policy-name - String - required: no - (filter condition) filters by Alarm policy name.</li>.
+<li>scaling-policy-type - String - required: no - (filter criteria) filters by Alarm policy type. valid values: SIMPLE, TARGET_TRACKING, representing SIMPLE policy and TARGET TRACKING policy respectively.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingPolicyIds` and `Filters` parameters cannot be specified simultaneously.
         :type Filters: list of Filter
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -5917,12 +6010,13 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
-        """Filters.
-<li> `auto-scaling-policy-id` - String - Optional - Filter by the alarm policy ID.</li>
-<li> `auto-scaling-group-id` - String - Optional - Filter by the scaling group ID.</li>
-<li> `scaling-policy-name` - String - Optional - Filter by the alarm policy name.</li>
-<li> `scaling-policy-type` - String - Optional - Filter by the alarm policy type. Valid values: `SIMPLE`, `TARGET_TRACKING`.</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. You cannot specify `AutoScalingPolicyIds` and `Filters` at the same time.
+        """Filter criteria
+
+<li> auto-scaling-policy-id - String - required: no - (filter) filter by alert policy id.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id. obtain the scaling group id by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
+<li>scaling-policy-name - String - required: no - (filter condition) filters by Alarm policy name.</li>.
+<li>scaling-policy-type - String - required: no - (filter criteria) filters by Alarm policy type. valid values: SIMPLE, TARGET_TRACKING, representing SIMPLE policy and TARGET TRACKING policy respectively.</li>.
+The maximum number of `Filters` per request is 10, and that of `Filter.Values` is 5. the `AutoScalingPolicyIds` and `Filters` parameters cannot be specified simultaneously.
         :rtype: list of Filter
         """
         return self._Filters
@@ -6044,12 +6138,12 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduledActionIds: Queries by one or more scheduled task IDs in the format of asst-am691zxo. The maximum number of instances per request is 100. This parameter does not support specifying both ScheduledActionIds` and `Filters` at the same time.
+        :param _ScheduledActionIds: Query by one or more scheduled task ids. you can obtain the scheduled task ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). the maximum number of instances per request is 100. parameters ScheduledActionIds and Filters must not be specified simultaneously.
         :type ScheduledActionIds: list of str
-        :param _Filters: Filter.
-<li> scheduled-action-id - String - Required: No - (Filter) Filter by scheduled task ID.</li>
-<li> scheduled-action-name - String - Required: No - (Filter) Filter by scheduled task name.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+        :param _Filters: Filter criteria. obtain the scheduled task ID, scheduled task name, and scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group).
+<li> scheduled-action-id - String - required: no - (filter) filter by scheduled task id.</li>.
+<li> scheduled-action-name - String - required: no - (filter criteria) filters by scheduled task name.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.
         :type Filters: list of Filter
         :param _Offset: Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Offset: int
@@ -6063,7 +6157,7 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def ScheduledActionIds(self):
-        """Queries by one or more scheduled task IDs in the format of asst-am691zxo. The maximum number of instances per request is 100. This parameter does not support specifying both ScheduledActionIds` and `Filters` at the same time.
+        """Query by one or more scheduled task ids. you can obtain the scheduled task ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group). the maximum number of instances per request is 100. parameters ScheduledActionIds and Filters must not be specified simultaneously.
         :rtype: list of str
         """
         return self._ScheduledActionIds
@@ -6074,10 +6168,10 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        """Filter.
-<li> scheduled-action-id - String - Required: No - (Filter) Filter by scheduled task ID.</li>
-<li> scheduled-action-name - String - Required: No - (Filter) Filter by scheduled task name.</li>
-<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+        """Filter criteria. obtain the scheduled task ID, scheduled task name, and scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group).
+<li> scheduled-action-id - String - required: no - (filter) filter by scheduled task id.</li>.
+<li> scheduled-action-name - String - required: no - (filter criteria) filters by scheduled task name.</li>.
+<li> auto-scaling-group-id - String - required: no - (filter) filter by auto scaling group id.</li>.
         :rtype: list of Filter
         """
         return self._Filters
@@ -6199,9 +6293,13 @@ class DetachInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: List of CVM instance IDs
+        :param _InstanceIds: List of CVM instance ids. you can obtain available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :type InstanceIds: list of str
         """
         self._AutoScalingGroupId = None
@@ -6209,7 +6307,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -6220,7 +6320,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of CVM instance IDs
+        """List of CVM instance ids. you can obtain available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -6293,11 +6395,11 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
-        :param _LoadBalancerIds: List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        :param _LoadBalancerIds: Specifies a list of classic load balancer ids with a maximum length of 20. either LoadBalancerIds or ForwardLoadBalancerIdentifications can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type LoadBalancerIds: list of str
-        :param _ForwardLoadBalancerIdentifications: List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        :param _ForwardLoadBalancerIdentifications: Specifies the list of cloud load balancer identification information with a maximum length of 100. either LoadBalancerIds or ForwardLoadBalancerIdentifications can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type ForwardLoadBalancerIdentifications: list of ForwardLoadBalancerIdentification
         """
         self._AutoScalingGroupId = None
@@ -6306,7 +6408,7 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -6317,7 +6419,7 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        """Specifies a list of classic load balancer ids with a maximum length of 20. either LoadBalancerIds or ForwardLoadBalancerIdentifications can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -6328,7 +6430,7 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancerIdentifications(self):
-        """List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        """Specifies the list of cloud load balancer identification information with a maximum length of 100. either LoadBalancerIds or ForwardLoadBalancerIdentifications can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of ForwardLoadBalancerIdentification
         """
         return self._ForwardLoadBalancerIdentifications
@@ -6533,14 +6635,14 @@ class DisableAutoScalingGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
         """
         self._AutoScalingGroupId = None
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -6597,14 +6699,14 @@ class EnableAutoScalingGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. you can obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
         """
         self._AutoScalingGroupId = None
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. you can obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or making an api call to [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -6750,6 +6852,108 @@ class EnhancedService(AbstractModel):
         
 
 
+class EnterStandbyRequest(AbstractModel):
+    """EnterStandby request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
+        :type AutoScalingGroupId: str
+        :param _InstanceIds: List of running instances. non-running instances are not supported. you can obtain available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
+        :type InstanceIds: list of str
+        """
+        self._AutoScalingGroupId = None
+        self._InstanceIds = None
+
+    @property
+    def AutoScalingGroupId(self):
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
+        :rtype: str
+        """
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def InstanceIds(self):
+        """List of running instances. non-running instances are not supported. you can obtain available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnterStandbyResponse(AbstractModel):
+    """EnterStandby response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityId: Scaling activity ID.
+        :type ActivityId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ActivityId = None
+        self._RequestId = None
+
+    @property
+    def ActivityId(self):
+        """Scaling activity ID.
+        :rtype: str
+        """
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActivityId = params.get("ActivityId")
+        self._RequestId = params.get("RequestId")
+
+
 class ExecuteScalingPolicyRequest(AbstractModel):
     """ExecuteScalingPolicy request structure.
 
@@ -6757,7 +6961,7 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingPolicyId: Auto-scaling policy ID. This parameter is not available to a target tracking policy.
+        :param _AutoScalingPolicyId: Alarm scaling policy ID. target tracking policy is unsupported. the alert policy type can be obtained via the `ScalingPolicyType` parameter in the api response of [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1).
         :type AutoScalingPolicyId: str
         :param _HonorCooldown: Whether to check if the auto scaling group is in the cooldown period. Default value: false
         :type HonorCooldown: bool
@@ -6770,7 +6974,7 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
-        """Auto-scaling policy ID. This parameter is not available to a target tracking policy.
+        """Alarm scaling policy ID. target tracking policy is unsupported. the alert policy type can be obtained via the `ScalingPolicyType` parameter in the api response of [DescribeScalingPolicies](https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1).
         :rtype: str
         """
         return self._AutoScalingPolicyId
@@ -6866,9 +7070,13 @@ class ExitStandbyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID.
+        :param _AutoScalingGroupId: Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: List of CVM instances in standby status.
+        :param _InstanceIds: List of CVM instances in standby status. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :type InstanceIds: list of str
         """
         self._AutoScalingGroupId = None
@@ -6876,7 +7084,9 @@ class ExitStandbyRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID.
+        """Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -6887,7 +7097,9 @@ class ExitStandbyRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of CVM instances in standby status.
+        """List of CVM instances in standby status. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -6918,7 +7130,6 @@ class ExitStandbyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityId: Scaling activity ID.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type ActivityId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6929,7 +7140,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def ActivityId(self):
         """Scaling activity ID.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._ActivityId
@@ -7015,13 +7225,13 @@ class ForwardLoadBalancer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: Load balancer ID
+        :param _LoadBalancerId: ID of the load balancer. this parameter is required as an input parameter. you can obtain it through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type LoadBalancerId: str
-        :param _ListenerId: Application load balancer listener ID
+        :param _ListenerId: CLB listener ID. as an input parameter, this parameter is required. you can obtain it through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type ListenerId: str
-        :param _TargetAttributes: List of target rule attributes
+        :param _TargetAttributes: Target rule attribute list. as an input parameter, this parameter is required.
         :type TargetAttributes: list of TargetAttribute
-        :param _LocationId: ID of a forwarding rule. This parameter is required for layer-7 listeners.
+        :param _LocationId: The forwarding rule ID. note: this parameter is required for layer-7 (http/https) listeners. it can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type LocationId: str
         :param _Region: The region of CLB instance. It defaults to the region of AS service and is in the format of the common parameter `Region`, such as `ap-guangzhou`.
         :type Region: str
@@ -7034,7 +7244,7 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        """Load balancer ID
+        """ID of the load balancer. this parameter is required as an input parameter. you can obtain it through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._LoadBalancerId
@@ -7045,7 +7255,7 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def ListenerId(self):
-        """Application load balancer listener ID
+        """CLB listener ID. as an input parameter, this parameter is required. you can obtain it through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._ListenerId
@@ -7056,7 +7266,7 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def TargetAttributes(self):
-        """List of target rule attributes
+        """Target rule attribute list. as an input parameter, this parameter is required.
         :rtype: list of TargetAttribute
         """
         return self._TargetAttributes
@@ -7067,7 +7277,7 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def LocationId(self):
-        """ID of a forwarding rule. This parameter is required for layer-7 listeners.
+        """The forwarding rule ID. note: this parameter is required for layer-7 (http/https) listeners. it can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._LocationId
@@ -7356,28 +7566,31 @@ class Instance(AbstractModel):
         :type LaunchConfigurationId: str
         :param _LaunchConfigurationName: Launch configuration name
         :type LaunchConfigurationName: str
-        :param _LifeCycleState: Lifecycle status. Valid values:<br>
-<li>`IN_SERVICE`: The instance is running.
-<li>`CREATING`: The instance is being created.
-<li>`CREATION_FAILED`: The instance fails to be created.
-<li>`TERMINATING`: The instance is being terminated.
-<li>`TERMINATION_FAILED`: The instance fails to be terminated.
-<li>`ATTACHING`: The instance is being bound.
-<li>`ATTACH_FAILED`: The instance fails to be bound.
-<li>`DETACHING`: The instance is being unbound.
-<li>`DETACH_FAILED`: The instance fails to be unbound.
-<li>`ATTACHING_LB`: The LB is being bound.
-<li>DETACHING_LB: The LB is being unbound.
-<li>`MODIFYING_LB`: The LB is being modified.
-<li>`STARTING`: The instance is being started up.
-<li>`START_FAILED`: The instance fails to be started up.
-<li>`STOPPING`: The instance is being shut down.
-<li>`STOP_FAILED`: The instance fails to be shut down.
-<li>`STOPPED`: The instance is shut down.
-<li>`IN_LAUNCHING_HOOK`: The lifecycle hook is being scaled out.
-<li>`IN_TERMINATING_HOOK`: The lifecycle hook is being scaled in.
+        :param _LifeCycleState: Lifecycle status. valid values are as follows:.
+<Li>IN_SERVICE: running</li>.
+<Li>CREATING: specifies the instance is being created.</li>.
+<Li>CREATION_FAILED: creation failed.</li>.
+<Li>`TERMINATING`: the instance is being terminated.</li>.
+<Li>`TERMINATION_FAILED`: the instance fails to be terminated.</li>.
+<Li>ATTACHING: binding</li>.
+<Li>`ATTACH_FAILED`: the instance fails to be bound.</li>.
+<Li>DETACHING: specifies the unbinding is in progress.</li>.
+<Li>`DETACH_FAILED`: the instance fails to be unbound.</li>.
+<Li>`ATTACHING_LB`: binding to lb</li>.
+<Li>DETACHING_LB: the lb is being unbound.</li>.
+<Li>`MODIFYING_LB`: the lb is being modified.</li>.
+<Li>`STARTING`: the instance is being started up.</li>.
+<Li>`START_FAILED`: the instance fails to be started up.</li>.
+<Li>`STOPPING`: the instance is being shut down.</li>.
+<Li>`STOP_FAILED`: the instance fails to be shut down.</li>.
+<Li>`STOPPED`: the instance is shut down.</li>.
+<Li>`IN_LAUNCHING_HOOK`: the lifecycle hook is being scaled out.</li>.
+<Li>`IN_TERMINATING_HOOK`: the lifecycle hook is being scaled in.</li>.
         :type LifeCycleState: str
-        :param _HealthStatus: Health status. Value range: HEALTHY, UNHEALTHY
+        :param _HealthStatus: Health status. valid values are as follows:.
+<Li>HEALTHY: the instance is in Healthy status.</li>.
+<Li>UNHEALTHY: instance ping unreachable</li>.
+<Li>CLB_UNHEALTHY: the instance port listened by clb is unhealthy</li>.
         :type HealthStatus: str
         :param _ProtectedFromScaleIn: Whether to add scale-in protection
         :type ProtectedFromScaleIn: bool
@@ -7385,7 +7598,7 @@ class Instance(AbstractModel):
         :type Zone: str
         :param _CreationType: Creation type. Value range: AUTO_CREATION, MANUAL_ATTACHING.
         :type CreationType: str
-        :param _AddTime: Instance addition time
+        :param _AddTime: Instance join time is displayed in a format that conforms to the ISO8601 standard and uses UTC time.
         :type AddTime: str
         :param _InstanceType: Instance type
         :type InstanceType: str
@@ -7393,14 +7606,13 @@ class Instance(AbstractModel):
         :type VersionNumber: int
         :param _AutoScalingGroupName: Auto scaling group name
         :type AutoScalingGroupName: str
-        :param _WarmupStatus: Warming up status. Valid values:
-<li>`WAITING_ENTER_WARMUP`: The instance is waiting to be warmed up.
-<li>`NO_NEED_WARMUP`: Warming up is not required.
-<li>`IN_WARMUP`: The instance is being warmed up.
-<li>`AFTER_WARMUP`: Warming up is completed.
+        :param _WarmupStatus: Preheat status. valid values are as follows:.
+<Li>WAITING_ENTER_WARMUP: specifies the instance is waiting to enter preheating.</li>.
+<Li>`NO_NEED_WARMUP`: warming up is not required.</li>.
+<Li>IN_WARMUP: preheating.</li>.
+<Li>AFTER_WARMUP: indicates the preheating is completed.</li>.
         :type WarmupStatus: str
-        :param _DisasterRecoverGroupIds: Placement group ID. Only one is allowed.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _DisasterRecoverGroupIds: Placement group ID. Only one can be specified.
         :type DisasterRecoverGroupIds: list of str
         """
         self._InstanceId = None
@@ -7465,26 +7677,26 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LifeCycleState(self):
-        """Lifecycle status. Valid values:<br>
-<li>`IN_SERVICE`: The instance is running.
-<li>`CREATING`: The instance is being created.
-<li>`CREATION_FAILED`: The instance fails to be created.
-<li>`TERMINATING`: The instance is being terminated.
-<li>`TERMINATION_FAILED`: The instance fails to be terminated.
-<li>`ATTACHING`: The instance is being bound.
-<li>`ATTACH_FAILED`: The instance fails to be bound.
-<li>`DETACHING`: The instance is being unbound.
-<li>`DETACH_FAILED`: The instance fails to be unbound.
-<li>`ATTACHING_LB`: The LB is being bound.
-<li>DETACHING_LB: The LB is being unbound.
-<li>`MODIFYING_LB`: The LB is being modified.
-<li>`STARTING`: The instance is being started up.
-<li>`START_FAILED`: The instance fails to be started up.
-<li>`STOPPING`: The instance is being shut down.
-<li>`STOP_FAILED`: The instance fails to be shut down.
-<li>`STOPPED`: The instance is shut down.
-<li>`IN_LAUNCHING_HOOK`: The lifecycle hook is being scaled out.
-<li>`IN_TERMINATING_HOOK`: The lifecycle hook is being scaled in.
+        """Lifecycle status. valid values are as follows:.
+<Li>IN_SERVICE: running</li>.
+<Li>CREATING: specifies the instance is being created.</li>.
+<Li>CREATION_FAILED: creation failed.</li>.
+<Li>`TERMINATING`: the instance is being terminated.</li>.
+<Li>`TERMINATION_FAILED`: the instance fails to be terminated.</li>.
+<Li>ATTACHING: binding</li>.
+<Li>`ATTACH_FAILED`: the instance fails to be bound.</li>.
+<Li>DETACHING: specifies the unbinding is in progress.</li>.
+<Li>`DETACH_FAILED`: the instance fails to be unbound.</li>.
+<Li>`ATTACHING_LB`: binding to lb</li>.
+<Li>DETACHING_LB: the lb is being unbound.</li>.
+<Li>`MODIFYING_LB`: the lb is being modified.</li>.
+<Li>`STARTING`: the instance is being started up.</li>.
+<Li>`START_FAILED`: the instance fails to be started up.</li>.
+<Li>`STOPPING`: the instance is being shut down.</li>.
+<Li>`STOP_FAILED`: the instance fails to be shut down.</li>.
+<Li>`STOPPED`: the instance is shut down.</li>.
+<Li>`IN_LAUNCHING_HOOK`: the lifecycle hook is being scaled out.</li>.
+<Li>`IN_TERMINATING_HOOK`: the lifecycle hook is being scaled in.</li>.
         :rtype: str
         """
         return self._LifeCycleState
@@ -7495,7 +7707,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HealthStatus(self):
-        """Health status. Value range: HEALTHY, UNHEALTHY
+        """Health status. valid values are as follows:.
+<Li>HEALTHY: the instance is in Healthy status.</li>.
+<Li>UNHEALTHY: instance ping unreachable</li>.
+<Li>CLB_UNHEALTHY: the instance port listened by clb is unhealthy</li>.
         :rtype: str
         """
         return self._HealthStatus
@@ -7539,7 +7754,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
-        """Instance addition time
+        """Instance join time is displayed in a format that conforms to the ISO8601 standard and uses UTC time.
         :rtype: str
         """
         return self._AddTime
@@ -7583,11 +7798,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WarmupStatus(self):
-        """Warming up status. Valid values:
-<li>`WAITING_ENTER_WARMUP`: The instance is waiting to be warmed up.
-<li>`NO_NEED_WARMUP`: Warming up is not required.
-<li>`IN_WARMUP`: The instance is being warmed up.
-<li>`AFTER_WARMUP`: Warming up is completed.
+        """Preheat status. valid values are as follows:.
+<Li>WAITING_ENTER_WARMUP: specifies the instance is waiting to enter preheating.</li>.
+<Li>`NO_NEED_WARMUP`: warming up is not required.</li>.
+<Li>IN_WARMUP: preheating.</li>.
+<Li>AFTER_WARMUP: indicates the preheating is completed.</li>.
         :rtype: str
         """
         return self._WarmupStatus
@@ -7598,8 +7813,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisasterRecoverGroupIds(self):
-        """Placement group ID. Only one is allowed.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        """Placement group ID. Only one can be specified.
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -7944,11 +8158,40 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
 Note: this field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
+        :param _InternetServiceProvider: Describes the line type. For details, refer to [EIP Product Overview](https://intl.cloud.tencent.com/document/product/1199/41646?from_cn_redirect=1). default value: `BGP`.
+
+<Li>BGP: general bgp line.</li>
+For a user who has enabled the static single-line IP allowlist, valid values include:
+ <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
+Note: Only certain regions support static single-line IP addresses.
+
+
+        :type InternetServiceProvider: str
+        :param _IPv4AddressType: Type of public IP address.
+
+<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://cloud.tencent.com/document/product/1199/41646). </li> Specify the type of public IPv4 address to assign a public IPv4 address to the resource. Premium IP and Anti-DDoS IP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.cloud.tencent.com/workorder/category).
+        :type IPv4AddressType: str
+        :param _AntiDDoSPackageId: Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
+        :type AntiDDoSPackageId: str
+        :param _IsKeepEIP: Whether to delete the bound EIP when the instance is destroyed.
+
+Range of values:
+
+<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>
+
+Note that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. 
+WanIP is unaffected by this field and will always be deleted with the instance. 
+Changing this field configuration will take effect immediately for resources already bound to a scaling group.
+        :type IsKeepEIP: bool
         """
         self._InternetChargeType = None
         self._InternetMaxBandwidthOut = None
         self._PublicIpAssigned = None
         self._BandwidthPackageId = None
+        self._InternetServiceProvider = None
+        self._IPv4AddressType = None
+        self._AntiDDoSPackageId = None
+        self._IsKeepEIP = None
 
     @property
     def InternetChargeType(self):
@@ -7998,12 +8241,77 @@ Note: this field may return null, indicating that no valid value was found.
     def BandwidthPackageId(self, BandwidthPackageId):
         self._BandwidthPackageId = BandwidthPackageId
 
+    @property
+    def InternetServiceProvider(self):
+        """Describes the line type. For details, refer to [EIP Product Overview](https://intl.cloud.tencent.com/document/product/1199/41646?from_cn_redirect=1). default value: `BGP`.
+
+<Li>BGP: general bgp line.</li>
+For a user who has enabled the static single-line IP allowlist, valid values include:
+ <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
+Note: Only certain regions support static single-line IP addresses.
+
+
+        :rtype: str
+        """
+        return self._InternetServiceProvider
+
+    @InternetServiceProvider.setter
+    def InternetServiceProvider(self, InternetServiceProvider):
+        self._InternetServiceProvider = InternetServiceProvider
+
+    @property
+    def IPv4AddressType(self):
+        """Type of public IP address.
+
+<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://cloud.tencent.com/document/product/1199/41646). </li> Specify the type of public IPv4 address to assign a public IPv4 address to the resource. Premium IP and Anti-DDoS IP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.cloud.tencent.com/workorder/category).
+        :rtype: str
+        """
+        return self._IPv4AddressType
+
+    @IPv4AddressType.setter
+    def IPv4AddressType(self, IPv4AddressType):
+        self._IPv4AddressType = IPv4AddressType
+
+    @property
+    def AntiDDoSPackageId(self):
+        """Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
+        :rtype: str
+        """
+        return self._AntiDDoSPackageId
+
+    @AntiDDoSPackageId.setter
+    def AntiDDoSPackageId(self, AntiDDoSPackageId):
+        self._AntiDDoSPackageId = AntiDDoSPackageId
+
+    @property
+    def IsKeepEIP(self):
+        """Whether to delete the bound EIP when the instance is destroyed.
+
+Range of values:
+
+<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>
+
+Note that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. 
+WanIP is unaffected by this field and will always be deleted with the instance. 
+Changing this field configuration will take effect immediately for resources already bound to a scaling group.
+        :rtype: bool
+        """
+        return self._IsKeepEIP
+
+    @IsKeepEIP.setter
+    def IsKeepEIP(self, IsKeepEIP):
+        self._IsKeepEIP = IsKeepEIP
+
 
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._PublicIpAssigned = params.get("PublicIpAssigned")
         self._BandwidthPackageId = params.get("BandwidthPackageId")
+        self._InternetServiceProvider = params.get("InternetServiceProvider")
+        self._IPv4AddressType = params.get("IPv4AddressType")
+        self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
+        self._IsKeepEIP = params.get("IsKeepEIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8155,7 +8463,7 @@ class LaunchConfiguration(AbstractModel):
         :param _UserData: Custom data.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UserData: str
-        :param _CreatedTime: Creation time of the launch configuration.
+        :param _CreatedTime: Specifies the startup configuration creation time. uses UTC standard time.
         :type CreatedTime: str
         :param _EnhancedService: Conditions of enhancement services for the instance and their settings.
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
@@ -8163,7 +8471,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ImageId: str
         :param _LaunchConfigurationStatus: Current status of the launch configuration. Valid values: <li>NORMAL: Normal.</li> <li>IMAGE_ABNORMAL: Image exception in the launch configuration.</li> <li>CBS_SNAP_ABNORMAL: Exception with data disk snapshot in the launch configuration.</li> <li>SECURITY_GROUP_ABNORMAL: Security group exception in the launch configuration.</li>
         :type LaunchConfigurationStatus: str
-        :param _InstanceChargeType: Instance billing type, with the CVM default value processed as POSTPAID_BY_HOUR. <li>POSTPAID_BY_HOUR: Hourly postpaid billing.</li> <li>SPOTPAID: Spot billing.</li>
+        :param _InstanceChargeType: Instance billing type. valid values:.
+<Li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>.
+<Li>SPOTPAID: spot payment</li>.
+<Li>PREPAID: prepaid, i.e., monthly subscription</li>.
+<Li>CDCPAID: dedicated cluster payment</li>.
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -8172,14 +8484,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceTypes: list of str
         :param _InstanceTags: List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.
         :type InstanceTags: list of InstanceTag
-        :param _Tags: Tag list.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Tags: Tag list. this parameter specifies tags only used for binding the launch configuration and will not be passed to CVM instances scaled out based on it.
         :type Tags: list of Tag
         :param _VersionNumber: Version
         :type VersionNumber: int
-        :param _UpdatedTime: Update time
+        :param _UpdatedTime: Last update time is in standard UTC time.
         :type UpdatedTime: str
-        :param _CamRoleName: CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :param _CamRoleName: Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :type CamRoleName: str
         :param _LastOperationInstanceTypesCheckPolicy: Value of InstanceTypesCheckPolicy upon the last operation.
         :type LastOperationInstanceTypesCheckPolicy: str
@@ -8199,7 +8510,6 @@ Note: This field is default to empty
         :param _DisasterRecoverGroupIds: Placement group ID, supporting specification of only one.
         :type DisasterRecoverGroupIds: list of str
         :param _ImageFamily: Image family name.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ImageFamily: str
         :param _DedicatedClusterId: CDC ID.
         :type DedicatedClusterId: str
@@ -8362,7 +8672,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time of the launch configuration.
+        """Specifies the startup configuration creation time. uses UTC standard time.
         :rtype: str
         """
         return self._CreatedTime
@@ -8406,7 +8716,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
-        """Instance billing type, with the CVM default value processed as POSTPAID_BY_HOUR. <li>POSTPAID_BY_HOUR: Hourly postpaid billing.</li> <li>SPOTPAID: Spot billing.</li>
+        """Instance billing type. valid values:.
+<Li>POSTPAID_BY_HOUR: pay-as-you-go hourly</li>.
+<Li>SPOTPAID: spot payment</li>.
+<Li>PREPAID: prepaid, i.e., monthly subscription</li>.
+<Li>CDCPAID: dedicated cluster payment</li>.
         :rtype: str
         """
         return self._InstanceChargeType
@@ -8451,8 +8765,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
-        """Tag list.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Tag list. this parameter specifies tags only used for binding the launch configuration and will not be passed to CVM instances scaled out based on it.
         :rtype: list of Tag
         """
         return self._Tags
@@ -8474,7 +8787,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedTime(self):
-        """Update time
+        """Last update time is in standard UTC time.
         :rtype: str
         """
         return self._UpdatedTime
@@ -8485,7 +8798,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CamRoleName(self):
-        """CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        """Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :rtype: str
         """
         return self._CamRoleName
@@ -8586,7 +8899,6 @@ Note: This field is default to empty
     @property
     def ImageFamily(self):
         """Image family name.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ImageFamily
@@ -8850,14 +9162,12 @@ class LifecycleCommand(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommandId: Remote command ID. It’s required to execute a command.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CommandId: Remote command ID. this item is required if you select to execute command.
         :type CommandId: str
-        :param _Parameters: Custom parameter. The field type is JSON encoded string. For example, {"varA": "222"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If this parameter is not specified, the `DefaultParameters` of `Command` is used.
-Up to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Parameters: Custom parameter. field type is json encoded string, for example: {"varA": "222"}.
+key specifies the custom parameter name, and value specifies the default. both are string type.
+If the parameter value is not provided, the DefaultParameters of Command will be used to replace it.
+Custom parameters support a maximum of 20 entries. the custom parameter name must meet the following standard: number of characters has a cap of 64, value range [a-zA-Z0-9-_].
         :type Parameters: str
         """
         self._CommandId = None
@@ -8865,8 +9175,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CommandId(self):
-        """Remote command ID. It’s required to execute a command.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Remote command ID. this item is required if you select to execute command.
         :rtype: str
         """
         return self._CommandId
@@ -8877,11 +9186,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Parameters(self):
-        """Custom parameter. The field type is JSON encoded string. For example, {"varA": "222"}.
-`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
-If this parameter is not specified, the `DefaultParameters` of `Command` is used.
-Up to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Custom parameter. field type is json encoded string, for example: {"varA": "222"}.
+key specifies the custom parameter name, and value specifies the default. both are string type.
+If the parameter value is not provided, the DefaultParameters of Command will be used to replace it.
+Custom parameters support a maximum of 20 entries. the custom parameter name must meet the following standard: number of characters has a cap of 64, value range [a-zA-Z0-9-_].
         :rtype: str
         """
         return self._Parameters
@@ -8917,22 +9225,26 @@ class LifecycleHook(AbstractModel):
         :type LifecycleHookName: str
         :param _AutoScalingGroupId: Auto scaling group ID
         :type AutoScalingGroupId: str
-        :param _DefaultResult: Default result of the lifecycle hook
+        :param _DefaultResult: Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.
+-CONTINUE execution by default means capacity expansion or reduction.
+-For scale-out hooks, cvms with hook timeout or failed LifecycleCommand execution will be released directly or removed; for scale-in hooks, scale-in activities will continue.
         :type DefaultResult: str
-        :param _HeartbeatTimeout: Wait timeout period of the lifecycle hook
+        :param _HeartbeatTimeout: Specifies the timeout waiting time of the lifecycle hook in seconds. value range: 30 to 7200.
         :type HeartbeatTimeout: int
-        :param _LifecycleTransition: Applicable scenario of the lifecycle hook
+        :param _LifecycleTransition: Scenario for entering the lifecycle hook. valid values:.
+-`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.
+-INSTANCE_TERMINATING: scale-in lifecycle hook.
         :type LifecycleTransition: str
         :param _NotificationMetadata: Additional information for the notification target
         :type NotificationMetadata: str
-        :param _CreatedTime: Creation time
+        :param _CreatedTime: Creation time. uses UTC for timing.
         :type CreatedTime: str
         :param _NotificationTarget: Notification target
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
-        :param _LifecycleTransitionType: Applicable scenario of the lifecycle hook
+        :param _LifecycleTransitionType: Specifies the scenario type for performing the lifecycle hook. valid values: NORMAL and EXTENSION. default value: NORMAL.
+Description: when set to `EXTENSION`, the lifecycle hook will be triggered during `AttachInstances`, `DetachInstances`, or `RemoveInstances` API calls. if set to `NORMAL`, the lifecycle hook will not be triggered by these apis.
         :type LifecycleTransitionType: str
         :param _LifecycleCommand: Remote command execution object.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self._LifecycleHookId = None
@@ -8982,7 +9294,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultResult(self):
-        """Default result of the lifecycle hook
+        """Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.
+-CONTINUE execution by default means capacity expansion or reduction.
+-For scale-out hooks, cvms with hook timeout or failed LifecycleCommand execution will be released directly or removed; for scale-in hooks, scale-in activities will continue.
         :rtype: str
         """
         return self._DefaultResult
@@ -8993,7 +9307,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeartbeatTimeout(self):
-        """Wait timeout period of the lifecycle hook
+        """Specifies the timeout waiting time of the lifecycle hook in seconds. value range: 30 to 7200.
         :rtype: int
         """
         return self._HeartbeatTimeout
@@ -9004,7 +9318,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleTransition(self):
-        """Applicable scenario of the lifecycle hook
+        """Scenario for entering the lifecycle hook. valid values:.
+-`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.
+-INSTANCE_TERMINATING: scale-in lifecycle hook.
         :rtype: str
         """
         return self._LifecycleTransition
@@ -9026,7 +9342,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
-        """Creation time
+        """Creation time. uses UTC for timing.
         :rtype: str
         """
         return self._CreatedTime
@@ -9048,7 +9364,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleTransitionType(self):
-        """Applicable scenario of the lifecycle hook
+        """Specifies the scenario type for performing the lifecycle hook. valid values: NORMAL and EXTENSION. default value: NORMAL.
+Description: when set to `EXTENSION`, the lifecycle hook will be triggered during `AttachInstances`, `DetachInstances`, or `RemoveInstances` API calls. if set to `NORMAL`, the lifecycle hook will not be triggered by these apis.
         :rtype: str
         """
         return self._LifecycleTransitionType
@@ -9060,7 +9377,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def LifecycleCommand(self):
         """Remote command execution object.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         return self._LifecycleCommand
@@ -9144,7 +9460,7 @@ class LoginSettings(AbstractModel):
 - For a Windows system, the password should contain 12 to 30 characters consisting of at least three of the four character types: lowercase letters, uppercase letters, digits, and special characters.
 - If this parameter is not specified, the system will generate a random password and notify the user via the message centerSupported special characters: ( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /
         :type Password: str
-        :param _KeyIds: List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+        :param _KeyIds: List of key ids. after associating a key, you can access the instance through the corresponding private key. KeyId can be obtained by calling the api [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1). key and password cannot be specified simultaneously. the Windows operating system does not support specifying a key. currently, only one key can be specified during purchase.
         :type KeyIds: list of str
         :param _KeepImageLogin: Retain the original settings of the image. This parameter cannot be specified simultaneously with Password or KeyIds.N. It can only be set to TRUE when you create an instance by using a custom image, shared image, or externally imported image. Valid values:
 <li>TRUE: Retain the login settings of the image.</li>
@@ -9171,7 +9487,7 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
-        """List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+        """List of key ids. after associating a key, you can access the instance through the corresponding private key. KeyId can be obtained by calling the api [DescribeKeyPairs](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1). key and password cannot be specified simultaneously. the Windows operating system does not support specifying a key. currently, only one key can be specified during purchase.
         :rtype: list of str
         """
         return self._KeyIds
@@ -9433,29 +9749,33 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
         :param _AutoScalingGroupName: Auto scaling group name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 55 bytes and must be unique under your account.
         :type AutoScalingGroupName: str
-        :param _DefaultCooldown: Default cooldown period in seconds. Default value: 300
+        :param _DefaultCooldown: Default cooldown period in seconds. value ranges from 0 to 3600. default value: 300.
         :type DefaultCooldown: int
-        :param _DesiredCapacity: Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances
+        :param _DesiredCapacity: Expected number of instances, value ranges from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
         :type DesiredCapacity: int
-        :param _LaunchConfigurationId: Launch configuration ID
+        :param _LaunchConfigurationId: Launch configuration ID. obtain available launch configuration ids in the following ways:.
+<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
+<li>Specifies the launch configuration ID obtained by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.</li>.
         :type LaunchConfigurationId: str
-        :param _MaxSize: Maximum number of instances. Value range: 0-2,000.
+        :param _MaxSize: Maximum number of instances, value range from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
         :type MaxSize: int
-        :param _MinSize: Minimum number of instances. Value range: 0-2,000.
+        :param _MinSize: Minimum number of instances. value range [0,2000]. to meet maximum value equal to or greater than expected value, expected value equal to or greater than minimum value.
         :type MinSize: int
-        :param _ProjectId: Project ID
+        :param _ProjectId: Project ID. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `ProjectId` field in the return value. default value is 0, indicates usage of the default project.
         :type ProjectId: int
-        :param _SubnetIds: List of subnet IDs
+        :param _SubnetIds: subnet ID list. you can obtain a valid vpc subnet ID by logging in to the [console](https://console.cloud.tencent.com/vpc/subnet). you can also call the API [DescribeSubnets](https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1) and retrieve the valid vpc subnet ID from the SubnetId field in the API response.
         :type SubnetIds: list of str
         :param _TerminationPolicies: Termination policy, whose maximum length is currently 1. Valid values include OLDEST_INSTANCE and NEWEST_INSTANCE.
 <li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>
 <li>NEWEST_INSTANCE: Terminate the newest instance in the scaling group first.</li>
         :type TerminationPolicies: list of str
-        :param _VpcId: VPC ID. This field is left empty for basic networks. You need to specify SubnetIds when modifying the network of the auto scaling group to a VPC with a specified VPC ID. Specify Zones when modifying the network to a basic network.
+        :param _VpcId: vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc) or obtained from the VpcId field in the api response by calling the DescribeVpc api (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1).
         :type VpcId: str
         :param _Zones: List of availability zones
         :type Zones: list of str
@@ -9473,7 +9793,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
         :type ZonesCheckPolicy: str
         :param _ServiceSettings: Service settings such as unhealthy instance replacement.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
-        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. Valid values: 0 and 1.
+        :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
         :type Ipv6AddressCount: int
         :param _MultiZoneSubnetPolicy: Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
 <li>PRIORITY: Instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
@@ -9530,7 +9850,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -9552,7 +9874,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def DefaultCooldown(self):
-        """Default cooldown period in seconds. Default value: 300
+        """Default cooldown period in seconds. value ranges from 0 to 3600. default value: 300.
         :rtype: int
         """
         return self._DefaultCooldown
@@ -9563,7 +9885,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def DesiredCapacity(self):
-        """Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances
+        """Expected number of instances, value ranges from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
         :rtype: int
         """
         return self._DesiredCapacity
@@ -9574,7 +9896,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def LaunchConfigurationId(self):
-        """Launch configuration ID
+        """Launch configuration ID. obtain available launch configuration ids in the following ways:.
+<li>Queries the launch configuration ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/config).</li>.
+<li>Specifies the launch configuration ID obtained by calling the api [DescribeLaunchConfigurations](https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.</li>.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -9585,7 +9909,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MaxSize(self):
-        """Maximum number of instances. Value range: 0-2,000.
+        """Maximum number of instances, value range from 0 to 2000. to meet maximum value greater than or equal to expected value, expected value greater than or equal to minimum value.
         :rtype: int
         """
         return self._MaxSize
@@ -9596,7 +9920,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MinSize(self):
-        """Minimum number of instances. Value range: 0-2,000.
+        """Minimum number of instances. value range [0,2000]. to meet maximum value equal to or greater than expected value, expected value equal to or greater than minimum value.
         :rtype: int
         """
         return self._MinSize
@@ -9607,7 +9931,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def ProjectId(self):
-        """Project ID
+        """Project ID. obtain this parameter by calling [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1), `ProjectId` field in the return value. default value is 0, indicates usage of the default project.
         :rtype: int
         """
         return self._ProjectId
@@ -9618,7 +9942,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def SubnetIds(self):
-        """List of subnet IDs
+        """subnet ID list. you can obtain a valid vpc subnet ID by logging in to the [console](https://console.cloud.tencent.com/vpc/subnet). you can also call the API [DescribeSubnets](https://intl.cloud.tencent.com/document/product/215/15784?from_cn_redirect=1) and retrieve the valid vpc subnet ID from the SubnetId field in the API response.
         :rtype: list of str
         """
         return self._SubnetIds
@@ -9642,7 +9966,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def VpcId(self):
-        """VPC ID. This field is left empty for basic networks. You need to specify SubnetIds when modifying the network of the auto scaling group to a VPC with a specified VPC ID. Specify Zones when modifying the network to a basic network.
+        """vpc ID. when modifying the vpc, you need to change the SubnetIds parameter to the subnet of this vpc. effective VpcId can be queried by logging in to the console (https://console.cloud.tencent.com/vpc/vpc) or obtained from the VpcId field in the api response by calling the DescribeVpc api (https://intl.cloud.tencent.com/document/api/215/15778?from_cn_redirect=1).
         :rtype: str
         """
         return self._VpcId
@@ -9705,7 +10029,7 @@ If there is no AZ or subnet in Zones/SubnetIds, a verification error will be rep
 
     @property
     def Ipv6AddressCount(self):
-        """The number of IPv6 addresses that an instance has. Valid values: 0 and 1.
+        """The number of IPv6 addresses that an instance has. valid values: 0 and 1. default value: 0, which means the instance does not allocate an IPv6 address. use a private network that supports IPv6 and enable IPv6 CIDR in the subnet. for usage restrictions, see [IPv6 usage limits](https://intl.cloud.tencent.com/document/product/1142/38369?from_cn_redirect=1).
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -9881,13 +10205,13 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
-        :param _DesiredCapacity: Desired capacity
+        :param _DesiredCapacity: Expected number of instances, value ranges from 0 to 2000, to meet MaxSize >= DesiredCapacity >= MinSize.
         :type DesiredCapacity: int
-        :param _MinSize: Minimum number of instances. Value range: 0-2000.
+        :param _MinSize: Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.
         :type MinSize: int
-        :param _MaxSize: Maximum number of instances. Value range: 0-2000.
+        :param _MaxSize: Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.
         :type MaxSize: int
         """
         self._AutoScalingGroupId = None
@@ -9897,7 +10221,7 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -9908,7 +10232,7 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
-        """Desired capacity
+        """Expected number of instances, value ranges from 0 to 2000, to meet MaxSize >= DesiredCapacity >= MinSize.
         :rtype: int
         """
         return self._DesiredCapacity
@@ -9919,7 +10243,7 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def MinSize(self):
-        """Minimum number of instances. Value range: 0-2000.
+        """Minimum number of instances. value range: [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize at the same time.
         :rtype: int
         """
         return self._MinSize
@@ -9930,7 +10254,7 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def MaxSize(self):
-        """Maximum number of instances. Value range: 0-2000.
+        """Maximum instance count. value range [0,2000]. to meet MaxSize >= DesiredCapacity >= MinSize.
         :rtype: int
         """
         return self._MaxSize
@@ -9990,12 +10314,12 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: Launch configuration ID
+        :param _LaunchConfigurationId: Launch configuration ID. obtain the launch configuration ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.
         :type LaunchConfigurationId: str
         :param _ImageId: [Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
         :type ImageId: str
-        :param _InstanceTypes: List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.
+        :param _InstanceTypes: Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.
+The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :type InstanceTypes: list of str
         :param _InstanceTypesCheckPolicy: InstanceType verification policy, which is effective when actual modification is made to InstanceTypes. Valid values include ALL and ANY and the default value is ANY.
 <li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
@@ -10048,21 +10372,21 @@ This field requires passing in the `InstanceName` field. Other fields that are n
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _EnhancedService: Specifies whether to enable additional services, such as security services and monitoring service.
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param _CamRoleName: CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :param _CamRoleName: Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :type CamRoleName: str
-        :param _HpcClusterId: HPC ID<br>
-Note: This field is default to empty
+        :param _HpcClusterId: High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+Note: this field is empty by default.
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
-        :param _DisasterRecoverGroupIds: Placement group ID. Only one is allowed.
+        :param _DisasterRecoverGroupIds: Placement group id. only one can be specified. obtain through the API [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1).
         :type DisasterRecoverGroupIds: list of str
         :param _LoginSettings: Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         :param _InstanceTags: Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.
 This parameter will overwrite the original instance tag list. To add new tags, you need to pass the new tags along with the original tags.
         :type InstanceTags: list of InstanceTag
-        :param _ImageFamily: Image family name.
+        :param _ImageFamily: Image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
         :type ImageFamily: str
         :param _DedicatedClusterId: Cloud Dedicated Cluster (CDC) ID.
         :type DedicatedClusterId: str
@@ -10098,7 +10422,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def LaunchConfigurationId(self):
-        """Launch configuration ID
+        """Launch configuration ID. obtain the launch configuration ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/config) or calling the api DescribeLaunchConfigurations (https://intl.cloud.tencent.com/document/api/377/20445?from_cn_redirect=1) and retrieving the LaunchConfigurationId from the return information.
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -10120,8 +10444,8 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceTypes(self):
-        """List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.
-The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.
+        """Types of cvm instances. different instance models specify different resource specifications. supports up to 10 instance models.
+The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. specifying the `InstanceTypes` field will invalidate the original `InstanceType`. specific values can be obtained by calling the api [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) to obtain the latest specification table or refer to [instance specifications](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -10309,7 +10633,7 @@ This field requires passing in the `InstanceName` field. Other fields that are n
 
     @property
     def CamRoleName(self):
-        """CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        """Role name of the CAM role. can be obtained from roleName in the return value from the DescribeRoleList API (https://intl.cloud.tencent.com/document/product/598/36223?from_cn_redirect=1).
         :rtype: str
         """
         return self._CamRoleName
@@ -10320,8 +10644,8 @@ This field requires passing in the `InstanceName` field. Other fields that are n
 
     @property
     def HpcClusterId(self):
-        """HPC ID<br>
-Note: This field is default to empty
+        """High-Performance computing cluster ID. you can obtain this parameter by calling the [DescribeHpcClusters](https://intl.cloud.tencent.com/document/product/213/83220?from_cn_redirect=1) api.
+Note: this field is empty by default.
         :rtype: str
         """
         return self._HpcClusterId
@@ -10343,7 +10667,7 @@ Note: This field is default to empty
 
     @property
     def DisasterRecoverGroupIds(self):
-        """Placement group ID. Only one is allowed.
+        """Placement group id. only one can be specified. obtain through the API [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1).
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -10377,7 +10701,7 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def ImageFamily(self):
-        """Image family name.
+        """Image family name. this parameter can be obtained by calling the [DescribeImages](https://intl.cloud.tencent.com/document/product/213/15715?from_cn_redirect=1) api.
         :rtype: str
         """
         return self._ImageFamily
@@ -10511,27 +10835,27 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LifecycleHookId: Lifecycle hook ID.
+        :param _LifecycleHookId: Lifecycle hook ID. you can get the lifecycle hook ID by calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the LifecycleHookId from the returned information.
         :type LifecycleHookId: str
-        :param _LifecycleHookName: Lifecycle hook name.
+        :param _LifecycleHookName: Lifecycle hook name. Name only supports chinese, english, digits, underscore (_), hyphen (-), decimal point (.), maximum length cannot exceed 128.
         :type LifecycleHookName: str
-        :param _LifecycleTransition: Scenario for entering the lifecycle hook. Valid values:
-<li>INSTANCE_LAUNCHING: after the instance is launched.</li>
-<li>INSTANCE_TERMINATING: before the instance is terminated.</li>
+        :param _LifecycleTransition: Scenario for entering the lifecycle hook. valid values:.
+`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.
+`INSTANCE_TERMINATING`: the lifecycle hook is being scaled in.
         :type LifecycleTransition: str
-        :param _DefaultResult: Action to be taken by the scaling group in case of lifecycle hook timeout. Valid values:
-<li>CONTINUE: Continue the scaling activity after timeout.</li>
-<li>ABANDON: Terminate the scaling activity after timeout.</li>
+        :param _DefaultResult: Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.
+Default value means CONTINUE to execute capacity expansion or reduction.
+* ABANDON: for scale-out hooks, cvms that time out or fail to execute LifecycleCommand are released directly or removed. for scale-in hooks, scale-in activities continue.
         :type DefaultResult: str
         :param _HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30 - 7,200 seconds.
         :type HeartbeatTimeout: int
-        :param _NotificationMetadata: Additional information sent by AS to the notification target.
+        :param _NotificationMetadata: Specifies the additional information sent by auto scaling to the notification target. NotificationMetadata and LifecycleCommand are mutually exclusive. the two cannot be specified simultaneously.
         :type NotificationMetadata: str
         :param _LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: The lifecycle hook will be triggered when `AttachInstances`, `DetachInstances` or `RemoveInstances` is called. `NORMAL`: The lifecycle hook is not triggered by the above APIs.
         :type LifecycleTransitionType: str
-        :param _NotificationTarget: Information of the notification target.
+        :param _NotificationTarget: Notify the target information. NotificationTarget and LifecycleCommand are mutually exclusive. the two cannot be specified simultaneously.
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
-        :param _LifecycleCommand: Remote command execution object.
+        :param _LifecycleCommand: Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` cannot be specified at the same time.
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self._LifecycleHookId = None
@@ -10546,7 +10870,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
-        """Lifecycle hook ID.
+        """Lifecycle hook ID. you can get the lifecycle hook ID by calling the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieving the LifecycleHookId from the returned information.
         :rtype: str
         """
         return self._LifecycleHookId
@@ -10557,7 +10881,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
-        """Lifecycle hook name.
+        """Lifecycle hook name. Name only supports chinese, english, digits, underscore (_), hyphen (-), decimal point (.), maximum length cannot exceed 128.
         :rtype: str
         """
         return self._LifecycleHookName
@@ -10568,9 +10892,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
-        """Scenario for entering the lifecycle hook. Valid values:
-<li>INSTANCE_LAUNCHING: after the instance is launched.</li>
-<li>INSTANCE_TERMINATING: before the instance is terminated.</li>
+        """Scenario for entering the lifecycle hook. valid values:.
+`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.
+`INSTANCE_TERMINATING`: the lifecycle hook is being scaled in.
         :rtype: str
         """
         return self._LifecycleTransition
@@ -10581,9 +10905,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
-        """Action to be taken by the scaling group in case of lifecycle hook timeout. Valid values:
-<li>CONTINUE: Continue the scaling activity after timeout.</li>
-<li>ABANDON: Terminate the scaling activity after timeout.</li>
+        """Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values:.
+Default value means CONTINUE to execute capacity expansion or reduction.
+* ABANDON: for scale-out hooks, cvms that time out or fail to execute LifecycleCommand are released directly or removed. for scale-in hooks, scale-in activities continue.
         :rtype: str
         """
         return self._DefaultResult
@@ -10605,7 +10929,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
-        """Additional information sent by AS to the notification target.
+        """Specifies the additional information sent by auto scaling to the notification target. NotificationMetadata and LifecycleCommand are mutually exclusive. the two cannot be specified simultaneously.
         :rtype: str
         """
         return self._NotificationMetadata
@@ -10627,7 +10951,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
-        """Information of the notification target.
+        """Notify the target information. NotificationTarget and LifecycleCommand are mutually exclusive. the two cannot be specified simultaneously.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         """
         return self._NotificationTarget
@@ -10638,7 +10962,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
-        """Remote command execution object.
+        """Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` cannot be specified at the same time.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         return self._LifecycleCommand
@@ -10707,9 +11031,9 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
-        :param _ForwardLoadBalancers: List of application CLBs to modify. Up to 100 CLBs allowed.
+        :param _ForwardLoadBalancers: Specifies the list of load balancers whose target rule attributes need modification, with a list length limit of 100. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         """
         self._AutoScalingGroupId = None
@@ -10717,7 +11041,7 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID
+        """Scaling group ID. obtain the scaling group ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeAutoScalingGroups (https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1), and retrieve AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -10728,7 +11052,7 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
-        """List of application CLBs to modify. Up to 100 CLBs allowed.
+        """Specifies the list of load balancers whose target rule attributes need modification, with a list length limit of 100. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of ForwardLoadBalancer
         """
         return self._ForwardLoadBalancers
@@ -10806,11 +11130,11 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. you can obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.
         :type AutoScalingGroupId: str
-        :param _LoadBalancerIds: List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        :param _LoadBalancerIds: List of classic clb ids. currently, the maximum length is 20. you cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time. it can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type LoadBalancerIds: list of str
-        :param _ForwardLoadBalancers: List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :param _ForwardLoadBalancers: Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :type ForwardLoadBalancers: list of ForwardLoadBalancer
         :param _LoadBalancersCheckPolicy: CLB verification policy. Valid values: ALL and DIFF. Default value: ALL.
 <li>ALL: The CLB passes the verification only when all CLB parameters are valid. Otherwise, a verification error occurs.</li>
@@ -10824,7 +11148,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. you can obtain the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -10835,7 +11159,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        """List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        """List of classic clb ids. currently, the maximum length is 20. you cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time. it can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -10846,7 +11170,7 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
-        """List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        """Specifies the list of load balancers with a current maximum length of 100. either LoadBalancerIds or ForwardLoadBalancers can be specified at the same time. can be obtained through the [DescribeLoadBalancers](https://intl.cloud.tencent.com/document/product/214/30685?from_cn_redirect=1) api.
         :rtype: list of ForwardLoadBalancer
         """
         return self._ForwardLoadBalancers
@@ -10939,7 +11263,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingNotificationId: ID of the notification to be modified.
+        :param _AutoScalingNotificationId: Specifies the notification ID that needs modification. get the notification ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and getting `AutoScalingNotificationId` from the returned information.
         :type AutoScalingNotificationId: str
         :param _NotificationTypes: Notification type, i.e., the set of types of notifications to be subscribed to. Value range:
 <li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>
@@ -10949,11 +11273,11 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>
 <li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>
         :type NotificationTypes: list of str
-        :param _NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
+        :param _NotificationUserGroupIds: Notification GROUP ID, which is the USER GROUP ID collection. USER GROUP ID can be accessed through [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1). this parameter is valid only when `TargetType` is `USER_GROUP`.
         :type NotificationUserGroupIds: list of str
-        :param _QueueName: CMQ or TDMQ CMQ queue name.
+        :param _QueueName: The TDMQ CMQ QUEUE name. [the original CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended for use. this parameter is valid only when `TargetType` is `TDMQ_CMQ_QUEUE`.
         :type QueueName: str
-        :param _TopicName: CMQ or TDMQ CMQ toipc name.
+        :param _TopicName: The TDMQ CMQ TOPIC name. [original CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended for use. this parameter is valid only when `TargetType` is `TDMQ_CMQ_TOPIC`.
         :type TopicName: str
         """
         self._AutoScalingNotificationId = None
@@ -10964,7 +11288,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
-        """ID of the notification to be modified.
+        """Specifies the notification ID that needs modification. get the notification ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group) or calling the api [DescribeNotificationConfigurations](https://intl.cloud.tencent.com/document/api/377/33183?from_cn_redirect=1) and getting `AutoScalingNotificationId` from the returned information.
         :rtype: str
         """
         return self._AutoScalingNotificationId
@@ -10992,7 +11316,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
-        """Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
+        """Notification GROUP ID, which is the USER GROUP ID collection. USER GROUP ID can be accessed through [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1). this parameter is valid only when `TargetType` is `USER_GROUP`.
         :rtype: list of str
         """
         return self._NotificationUserGroupIds
@@ -11003,7 +11327,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        """CMQ or TDMQ CMQ queue name.
+        """The TDMQ CMQ QUEUE name. [the original CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended for use. this parameter is valid only when `TargetType` is `TDMQ_CMQ_QUEUE`.
         :rtype: str
         """
         return self._QueueName
@@ -11014,7 +11338,7 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        """CMQ or TDMQ CMQ toipc name.
+        """The TDMQ CMQ TOPIC name. [original CMQ is offline](https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1). currently, only TDMQ CMQ is recommended for use. this parameter is valid only when `TargetType` is `TDMQ_CMQ_TOPIC`.
         :rtype: str
         """
         return self._TopicName
@@ -11075,9 +11399,9 @@ class ModifyScalingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingPolicyId: Alarm policy ID.
+        :param _AutoScalingPolicyId: Specifies the alert policy ID. obtain the alert policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeScalingPolicies (https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1), and retrieve the AutoScalingPolicyId from the returned information.
         :type AutoScalingPolicyId: str
-        :param _ScalingPolicyName: Alarm policy name.
+        :param _ScalingPolicyName: The Alarm policy name must be unique in your account. the name length cannot exceed 60 characters. the name only supports chinese, english, digits, underscores, hyphens, and decimal separators.
         :type ScalingPolicyName: str
         :param _AdjustmentType: The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
         :type AdjustmentType: str
@@ -11113,7 +11437,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AutoScalingPolicyId(self):
-        """Alarm policy ID.
+        """Specifies the alert policy ID. obtain the alert policy ID by logging in to the console (https://console.cloud.tencent.com/autoscaling/group) or calling the api DescribeScalingPolicies (https://intl.cloud.tencent.com/document/api/377/33178?from_cn_redirect=1), and retrieve the AutoScalingPolicyId from the returned information.
         :rtype: str
         """
         return self._AutoScalingPolicyId
@@ -11124,7 +11448,7 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def ScalingPolicyName(self):
-        """Alarm policy name.
+        """The Alarm policy name must be unique in your account. the name length cannot exceed 60 characters. the name only supports chinese, english, digits, underscores, hyphens, and decimal separators.
         :rtype: str
         """
         return self._ScalingPolicyName
@@ -11293,7 +11617,7 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduledActionId: ID of the scheduled task to be edited
+        :param _ScheduledActionId: Scheduled task ID that needs modification. obtain the scheduled task ID by calling the api [DescribeScheduledActions](https://intl.cloud.tencent.com/document/api/377/20450?from_cn_redirect=1) and retrieving the ScheduledActionId from the returned information.
         :type ScheduledActionId: str
         :param _ScheduledActionName: Scheduled task name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.
         :type ScheduledActionName: str
@@ -11307,7 +11631,7 @@ class ModifyScheduledActionRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.
         :type EndTime: str
-        :param _Recurrence: Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time.
+        :param _Recurrence: The repeating mode of the scheduled task. follows the standard Cron format. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hr, date, month, week. this parameter must be simultaneously specified with `EndTime`.
         :type Recurrence: str
         """
         self._ScheduledActionId = None
@@ -11321,7 +11645,7 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionId(self):
-        """ID of the scheduled task to be edited
+        """Scheduled task ID that needs modification. obtain the scheduled task ID by calling the api [DescribeScheduledActions](https://intl.cloud.tencent.com/document/api/377/20450?from_cn_redirect=1) and retrieving the ScheduledActionId from the returned information.
         :rtype: str
         """
         return self._ScheduledActionId
@@ -11398,7 +11722,7 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def Recurrence(self):
-        """Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time.
+        """The repeating mode of the scheduled task. follows the standard Cron format. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hr, date, month, week. this parameter must be simultaneously specified with `EndTime`.
         :rtype: str
         """
         return self._Recurrence
@@ -11462,11 +11786,11 @@ class NotificationTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetType: Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.
-<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>
-<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>
-<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>
-<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>
+        :param _TargetType: Target type. valid values include `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE`, `TDMQ_CMQ_TOPIC`.
+<li>CMQ_QUEUE, specifies tencent cloud message QUEUE - queueing model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_QUEUE (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.
+<li>CMQ_TOPIC, specifies tencent cloud message queue - TOPIC model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_TOPIC (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.
+<li> TDMQ_CMQ_QUEUE. specifies the tencent cloud TDMQ message QUEUE - queueing model.</li>.
+<Li>TDMQ_CMQ_TOPIC. specifies tencent cloud tdmq message queue - topic model.</li>.
         :type TargetType: str
         :param _QueueName: Queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
         :type QueueName: str
@@ -11479,11 +11803,11 @@ class NotificationTarget(AbstractModel):
 
     @property
     def TargetType(self):
-        """Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.
-<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>
-<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>
-<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>
-<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>
+        """Target type. valid values include `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE`, `TDMQ_CMQ_TOPIC`.
+<li>CMQ_QUEUE, specifies tencent cloud message QUEUE - queueing model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_QUEUE (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.
+<li>CMQ_TOPIC, specifies tencent cloud message queue - TOPIC model. the corresponding product is offline. it is recommended to switch to TDMQ_CMQ_TOPIC (https://intl.cloud.tencent.com/document/product/1496/83970?from_cn_redirect=1).</li>.
+<li> TDMQ_CMQ_QUEUE. specifies the tencent cloud TDMQ message QUEUE - queueing model.</li>.
+<Li>TDMQ_CMQ_TOPIC. specifies tencent cloud tdmq message queue - topic model.</li>.
         :rtype: str
         """
         return self._TargetType
@@ -11540,12 +11864,13 @@ class RefreshActivity(AbstractModel):
         :type AutoScalingGroupId: str
         :param _RefreshActivityId: Refresh activity ID.
         :type RefreshActivityId: str
-        :param _OriginRefreshActivityId: Original refresh activity ID, which exists only in the rollback refresh activity.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _OriginRefreshActivityId: Original refresh activity ID. exists only in rollback refresh activity.
         :type OriginRefreshActivityId: str
         :param _RefreshBatchSet: Refresh batch information list.
         :type RefreshBatchSet: list of RefreshBatch
-        :param _RefreshMode: Refresh mode.
+        :param _RefreshMode: Refresh mode. valid values as follows:.
+<Li>ROLLING_UPDATE_RESET: reinstall the system for rolling updates.</li>.
+<li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>
         :type RefreshMode: str
         :param _RefreshSettings: Instance update setting parameters.
         :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
@@ -11563,17 +11888,15 @@ Note: This field may return null, indicating that no valid value can be obtained
 <li>CANCELLED: canceled.</li>
 <li>FAILED: failed.</li>
         :type Status: str
-        :param _CurrentRefreshBatchNum: Current refresh batch number. For example, a value of 2 indicates that the current activity is refreshing the second batch of instances.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CurrentRefreshBatchNum: Current refresh batch number. for example, 2 indicates the second batch of instances is being refreshed by the current activity.
         :type CurrentRefreshBatchNum: int
-        :param _StartTime: Refresh activity start time.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _StartTime: The activity start time is refreshed in standard `UTC` time, in the format `YYYY-MM-DDTHH:MM:ssZ`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param _EndTime: Refresh activity end time.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EndTime: Refresh activity end time, in standard UTC time, in the format YYYY-MM-DDTHH:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
-        :param _CreatedTime: Refresh activity creation time.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CreatedTime: Refresh activity creation time, in standard UTC time, in the format YYYY-MM-DDTHH:MM:ssZ.
         :type CreatedTime: str
         """
         self._AutoScalingGroupId = None
@@ -11613,8 +11936,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OriginRefreshActivityId(self):
-        """Original refresh activity ID, which exists only in the rollback refresh activity.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Original refresh activity ID. exists only in rollback refresh activity.
         :rtype: str
         """
         return self._OriginRefreshActivityId
@@ -11636,7 +11958,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshMode(self):
-        """Refresh mode.
+        """Refresh mode. valid values as follows:.
+<Li>ROLLING_UPDATE_RESET: reinstall the system for rolling updates.</li>.
+<li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>
         :rtype: str
         """
         return self._RefreshMode
@@ -11690,8 +12014,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CurrentRefreshBatchNum(self):
-        """Current refresh batch number. For example, a value of 2 indicates that the current activity is refreshing the second batch of instances.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Current refresh batch number. for example, 2 indicates the second batch of instances is being refreshed by the current activity.
         :rtype: int
         """
         return self._CurrentRefreshBatchNum
@@ -11702,8 +12025,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTime(self):
-        """Refresh activity start time.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """The activity start time is refreshed in standard `UTC` time, in the format `YYYY-MM-DDTHH:MM:ssZ`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._StartTime
@@ -11714,8 +12037,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
-        """Refresh activity end time.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Refresh activity end time, in standard UTC time, in the format YYYY-MM-DDTHH:MM:ssZ.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EndTime
@@ -11726,8 +12049,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreatedTime(self):
-        """Refresh activity creation time.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Refresh activity creation time, in standard UTC time, in the format YYYY-MM-DDTHH:MM:ssZ.
         :rtype: str
         """
         return self._CreatedTime
@@ -11881,14 +12203,12 @@ class RefreshBatchRelatedInstance(AbstractModel):
         r"""
         :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _InstanceStatus: Refresh instance status. If an instance is removed or destroyed during the refresh process, its status will be updated to NOT_FOUND. Valid values: <br><li>WAITING: pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing in progress.</li> <li>FAILED: Refresh failed.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.</li> <li>NOT_FOUND: Instance not found.
+        :param _InstanceStatus: Refresh instance status. if the instance is removed or terminated during refresh, the status will be updated to NOT_FOUND. valid values: <li>WAITING: pending refresh;</li> <li>INIT: initializing;</li> <li>RUNNING: refreshing;</li> <li>FAILED: refresh FAILED;</li> <li>CANCELLED: CANCELLED;</li> <li>SUCCESSFUL: refresh SUCCESSFUL;</li> <li>NOT_FOUND: instance does NOT exist.</li>.
         :type InstanceStatus: str
-        :param _LastActivityId: The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities API.
+        :param _LastActivityId: The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities api.
 Please note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type LastActivityId: str
-        :param _InstanceStatusMessage: Instance refresh status information.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _InstanceStatusMessage: Describes the instance refresh status.
         :type InstanceStatusMessage: str
         """
         self._InstanceId = None
@@ -11909,7 +12229,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceStatus(self):
-        """Refresh instance status. If an instance is removed or destroyed during the refresh process, its status will be updated to NOT_FOUND. Valid values: <br><li>WAITING: pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing in progress.</li> <li>FAILED: Refresh failed.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.</li> <li>NOT_FOUND: Instance not found.
+        """Refresh instance status. if the instance is removed or terminated during refresh, the status will be updated to NOT_FOUND. valid values: <li>WAITING: pending refresh;</li> <li>INIT: initializing;</li> <li>RUNNING: refreshing;</li> <li>FAILED: refresh FAILED;</li> <li>CANCELLED: CANCELLED;</li> <li>SUCCESSFUL: refresh SUCCESSFUL;</li> <li>NOT_FOUND: instance does NOT exist.</li>.
         :rtype: str
         """
         return self._InstanceStatus
@@ -11920,9 +12240,8 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LastActivityId(self):
-        """The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities API.
+        """The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities api.
 Please note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._LastActivityId
@@ -11933,8 +12252,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceStatusMessage(self):
-        """Instance refresh status information.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Describes the instance refresh status.
         :rtype: str
         """
         return self._InstanceStatusMessage
@@ -11966,7 +12284,7 @@ class RefreshSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RollingUpdateSettings: Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RollingUpdateSettings: Rolling update settings parameters. RefreshMode is rolling update. this parameter must be filled in.
         :type RollingUpdateSettings: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
         :param _CheckInstanceTargetHealth: Whether to enable the backend service health check for the instance. Default value: FALSE. This parameter is valid only for the scaling group bound to an application-based CLB. After this feature is enabled, if the instance fails the check after refresh, the port weight of the CLB will be always 0, and it will be marked as a refresh failure. Valid values: <li>TRUE: enable;</li> <li>FALSE: disable.</li>
         :type CheckInstanceTargetHealth: bool
@@ -11976,7 +12294,7 @@ class RefreshSettings(AbstractModel):
 
     @property
     def RollingUpdateSettings(self):
-        """Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.
+        """Rolling update settings parameters. RefreshMode is rolling update. this parameter must be filled in.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
         """
         return self._RollingUpdateSettings
@@ -12078,9 +12396,13 @@ class RemoveInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: List of CVM instance IDs
+        :param _InstanceIds: CVM instance ID list. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :type InstanceIds: list of str
         """
         self._AutoScalingGroupId = None
@@ -12088,7 +12410,9 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12099,7 +12423,9 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """List of CVM instance IDs
+        """CVM instance ID list. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -12172,9 +12498,11 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. obtain in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _RefreshActivityId: Refresh activity ID.
+        :param _RefreshActivityId: Refresh activity ID. you can get the instance refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the RefreshActivityId from the returned information.
         :type RefreshActivityId: str
         :param _ResumeMode: Recovery mode of instances that have failed to be refreshed in the current batch. If there are no failed instances, this parameter is invalid. Default value: RETRY. Valid values: <li>RETRY: Retry instances that have failed to be refreshed in the current batch.</li> <li>CONTINUE: Skip instances that have failed to be refreshed in the current batch.</li>
         :type ResumeMode: str
@@ -12185,7 +12513,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID.
+        """Scaling group ID. obtain in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12196,7 +12526,7 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
-        """Refresh activity ID.
+        """Refresh activity ID. you can get the instance refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the RefreshActivityId from the returned information.
         :rtype: str
         """
         return self._RefreshActivityId
@@ -12266,11 +12596,13 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. you can obtain available scaling group ids in the following ways. 
+<li>Query the scaling group ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li>.
+<li>Obtain the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
         :type AutoScalingGroupId: str
         :param _RefreshSettings: Refresh settings.
         :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
-        :param _OriginRefreshActivityId: Original refresh activity ID.
+        :param _OriginRefreshActivityId: The original refresh activity ID. you can obtain the original refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the OriginRefreshActivityId from the returned information.
         :type OriginRefreshActivityId: str
         :param _RefreshMode: Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.
         :type RefreshMode: str
@@ -12282,7 +12614,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID.
+        """Scaling group ID. you can obtain available scaling group ids in the following ways. 
+<li>Query the scaling group ID by logging in to the <a href="https://console.cloud.tencent.com/autoscaling/group">console</a>.</li>.
+<li>Obtain the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12304,7 +12638,7 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def OriginRefreshActivityId(self):
-        """Original refresh activity ID.
+        """The original refresh activity ID. you can obtain the original refresh activity ID by calling the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and retrieving the OriginRefreshActivityId from the returned information.
         :rtype: str
         """
         return self._OriginRefreshActivityId
@@ -12401,10 +12735,16 @@ class RollingUpdateSettings(AbstractModel):
         :type BatchPause: str
         :param _MaxSurge: The maximum additional quantity of instances. After this parameter is set, create a batch of additional pay-as-you-go instances according to the launch configuration before the rolling update starts. After the rolling update is completed, the additional instances will be terminated.This parameter is used to ensure a certain number of instances available during the rolling update. The maximum additional quantity of instances cannot exceed the number of refreshing instances in a single batch of the rolling update. The rollback process does not support this parameter currently.
         :type MaxSurge: int
+        :param _FailProcess: Failure handling strategy. default value: AUTO_PAUSE. valid values:.
+<Li>AUTO_PAUSE: suspended after refresh fails</li>.
+<li>AUTO_ROLLBACK: roll back after a refresh fails. each batch rolls back one instance during ROLLBACK, and the CheckInstanceTargetHealth parameter value matches the original refresh activity. no need to roll back if the shrinkage process introduced by the MaxSurge parameter fails. a cancel action will replace the ROLLBACK.</li>.
+<Li>AUTO_CANCEL: cancel after refresh fails</li>.
+        :type FailProcess: str
         """
         self._BatchNumber = None
         self._BatchPause = None
         self._MaxSurge = None
+        self._FailProcess = None
 
     @property
     def BatchNumber(self):
@@ -12442,11 +12782,26 @@ class RollingUpdateSettings(AbstractModel):
     def MaxSurge(self, MaxSurge):
         self._MaxSurge = MaxSurge
 
+    @property
+    def FailProcess(self):
+        """Failure handling strategy. default value: AUTO_PAUSE. valid values:.
+<Li>AUTO_PAUSE: suspended after refresh fails</li>.
+<li>AUTO_ROLLBACK: roll back after a refresh fails. each batch rolls back one instance during ROLLBACK, and the CheckInstanceTargetHealth parameter value matches the original refresh activity. no need to roll back if the shrinkage process introduced by the MaxSurge parameter fails. a cancel action will replace the ROLLBACK.</li>.
+<Li>AUTO_CANCEL: cancel after refresh fails</li>.
+        :rtype: str
+        """
+        return self._FailProcess
+
+    @FailProcess.setter
+    def FailProcess(self, FailProcess):
+        self._FailProcess = FailProcess
+
 
     def _deserialize(self, params):
         self._BatchNumber = params.get("BatchNumber")
         self._BatchPause = params.get("BatchPause")
         self._MaxSurge = params.get("MaxSurge")
+        self._FailProcess = params.get("FailProcess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12586,9 +12941,11 @@ class ScaleInInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _ScaleInNumber: Number of instances to be reduced
+        :param _ScaleInNumber: Number of resource instances to scale in. this parameter has a static value range of [1,2000] and must not be larger than the difference between the desired number and the minimum value. for example, if the scaling group desired number is 100 and the minimum value is 20, the permissible range is [1,80].
         :type ScaleInNumber: int
         """
         self._AutoScalingGroupId = None
@@ -12596,7 +12953,9 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -12607,7 +12966,7 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def ScaleInNumber(self):
-        """Number of instances to be reduced
+        """Number of resource instances to scale in. this parameter has a static value range of [1,2000] and must not be larger than the difference between the desired number and the minimum value. for example, if the scaling group desired number is 100 and the minimum value is 20, the permissible range is [1,80].
         :rtype: int
         """
         return self._ScaleInNumber
@@ -12788,7 +13147,7 @@ class ScalingPolicy(AbstractModel):
         :type AdjustmentType: str
         :param _AdjustmentValue: The adjusted value of desired capacity after the alarm is triggered. This parameter is only applicable to a simple policy.
         :type AdjustmentValue: int
-        :param _Cooldown: Cooldown period. This parameter is only applicable to a simple policy.
+        :param _Cooldown: Cooldown duration in seconds, applies only to simple policies. value range [0,3600]. default cooldown: 300 seconds.
         :type Cooldown: int
         :param _MetricAlarm: Alarm monitoring metrics of a simple policy.
         :type MetricAlarm: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
@@ -12895,7 +13254,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cooldown(self):
-        """Cooldown period. This parameter is only applicable to a simple policy.
+        """Cooldown duration in seconds, applies only to simple policies. value range [0,3600]. default cooldown: 300 seconds.
         :rtype: int
         """
         return self._Cooldown
@@ -13034,7 +13393,7 @@ class ScheduledAction(AbstractModel):
         :type AutoScalingGroupId: str
         :param _StartTime: Start time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.
         :type StartTime: str
-        :param _Recurrence: Repeating mode of the scheduled task.
+        :param _Recurrence: Specifies the repeating mode of the scheduled task. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hour, date, month, week.
         :type Recurrence: str
         :param _EndTime: End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.
         :type EndTime: str
@@ -13044,7 +13403,7 @@ class ScheduledAction(AbstractModel):
         :type DesiredCapacity: int
         :param _MinSize: Minimum number of instances set by the scheduled task.
         :type MinSize: int
-        :param _CreatedTime: Creation time of the scheduled task. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.
+        :param _CreatedTime: The creation time of the scheduled task. value is in standard `UTC` time, formatted as `YYYY-MM-DDThh:MM:ssZ` according to the `ISO8601` standard.
         :type CreatedTime: str
         :param _ScheduledType: Scheduled task execution type. Valid values:
 <li>CRONTAB: repeated execution.</li>
@@ -13109,7 +13468,7 @@ class ScheduledAction(AbstractModel):
 
     @property
     def Recurrence(self):
-        """Repeating mode of the scheduled task.
+        """Specifies the repeating mode of the scheduled task. the Recurrence parameter limits (https://intl.cloud.tencent.com/document/product/377/88119?from_cn_redirect=1) consist of 5 fields separated by space, with the structure: minute, hour, date, month, week.
         :rtype: str
         """
         return self._Recurrence
@@ -13164,7 +13523,7 @@ class ScheduledAction(AbstractModel):
 
     @property
     def CreatedTime(self):
-        """Creation time of the scheduled task. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.
+        """The creation time of the scheduled task. value is in standard `UTC` time, formatted as `YYYY-MM-DDThh:MM:ssZ` according to the `ISO8601` standard.
         :rtype: str
         """
         return self._CreatedTime
@@ -13225,20 +13584,24 @@ Default value: CLASSIC_SCALING
         :type ScalingMode: str
         :param _ReplaceLoadBalancerUnhealthy: Enable unhealthy instance replacement. If this feature is enabled, AS will replace instances that are found unhealthy in the CLB health check. If this parameter is not specified, the default value `False` will be used.
         :type ReplaceLoadBalancerUnhealthy: bool
-        :param _ReplaceMode: Replace mode of unhealthy replacement service. Valid values:
-RECREATE: Rebuild an instance to replace the original unhealthy instance.
-RESET: Performing a system reinstallation on unhealthy instances to keep information such as data disks, private IP addresses, and instance IDs unchanged. The instance login settings, HostName, enhanced services, and UserData will remain consistent with the current launch configuration.
+        :param _ReplaceMode: Replacement mode of the unhealthy replacement service. valid values:.
+RECREATE: rebuild an instance to replace the unhealthy instance.
+RESET: performs a system reinstallation on unhealthy instances while keeping the data disk, private IP address, instance id, and other information unchanged. the instance login settings, hostname, enhanced services, and UserData remain consistent with the current launch configuration.
 Default value: RECREATE.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type ReplaceMode: str
-        :param _AutoUpdateInstanceTags: Automatic instance tag update. The default value is false. If this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (This feature takes effect for tag creation and editing but not tag deletion.) The update does not take effect immediately due to certain latency.
+        :param _AutoUpdateInstanceTags: Automatic instance Tag update. the default value is False. if this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (this feature takes effect for Tag creation and editing but not Tag deletion.) the update does not take effect immediately due to certain latency.
         :type AutoUpdateInstanceTags: bool
+        :param _DesiredCapacitySyncWithMaxMinSize: Expected number of instances sync minimum and maximum value. default value is False. this parameter only takes effect in scenarios where the expected number is not passed in to modify scaling group api.
+<Li>True: when modifying the maximum or minimum value, if a conflict exists with the current expected value, synchronously adjust the expected value. for example, if the input minimum value is 2 while the current expected value is 1, the expected value will be synchronously adjusted to 2.</li>.
+<Li>False: if a conflict exists between the current expected value when modifying the maximum or minimum value, an error message indicates it is not allowed to be modified.</li>.
+        :type DesiredCapacitySyncWithMaxMinSize: bool
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
         self._ReplaceLoadBalancerUnhealthy = None
         self._ReplaceMode = None
         self._AutoUpdateInstanceTags = None
+        self._DesiredCapacitySyncWithMaxMinSize = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -13278,11 +13641,10 @@ Default value: CLASSIC_SCALING
 
     @property
     def ReplaceMode(self):
-        """Replace mode of unhealthy replacement service. Valid values:
-RECREATE: Rebuild an instance to replace the original unhealthy instance.
-RESET: Performing a system reinstallation on unhealthy instances to keep information such as data disks, private IP addresses, and instance IDs unchanged. The instance login settings, HostName, enhanced services, and UserData will remain consistent with the current launch configuration.
+        """Replacement mode of the unhealthy replacement service. valid values:.
+RECREATE: rebuild an instance to replace the unhealthy instance.
+RESET: performs a system reinstallation on unhealthy instances while keeping the data disk, private IP address, instance id, and other information unchanged. the instance login settings, hostname, enhanced services, and UserData remain consistent with the current launch configuration.
 Default value: RECREATE.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._ReplaceMode
@@ -13293,7 +13655,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoUpdateInstanceTags(self):
-        """Automatic instance tag update. The default value is false. If this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (This feature takes effect for tag creation and editing but not tag deletion.) The update does not take effect immediately due to certain latency.
+        """Automatic instance Tag update. the default value is False. if this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (this feature takes effect for Tag creation and editing but not Tag deletion.) the update does not take effect immediately due to certain latency.
         :rtype: bool
         """
         return self._AutoUpdateInstanceTags
@@ -13302,6 +13664,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AutoUpdateInstanceTags(self, AutoUpdateInstanceTags):
         self._AutoUpdateInstanceTags = AutoUpdateInstanceTags
 
+    @property
+    def DesiredCapacitySyncWithMaxMinSize(self):
+        """Expected number of instances sync minimum and maximum value. default value is False. this parameter only takes effect in scenarios where the expected number is not passed in to modify scaling group api.
+<Li>True: when modifying the maximum or minimum value, if a conflict exists with the current expected value, synchronously adjust the expected value. for example, if the input minimum value is 2 while the current expected value is 1, the expected value will be synchronously adjusted to 2.</li>.
+<Li>False: if a conflict exists between the current expected value when modifying the maximum or minimum value, an error message indicates it is not allowed to be modified.</li>.
+        :rtype: bool
+        """
+        return self._DesiredCapacitySyncWithMaxMinSize
+
+    @DesiredCapacitySyncWithMaxMinSize.setter
+    def DesiredCapacitySyncWithMaxMinSize(self, DesiredCapacitySyncWithMaxMinSize):
+        self._DesiredCapacitySyncWithMaxMinSize = DesiredCapacitySyncWithMaxMinSize
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
@@ -13309,6 +13684,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
         self._ReplaceMode = params.get("ReplaceMode")
         self._AutoUpdateInstanceTags = params.get("AutoUpdateInstanceTags")
+        self._DesiredCapacitySyncWithMaxMinSize = params.get("DesiredCapacitySyncWithMaxMinSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13326,9 +13702,13 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Auto scaling group ID.
+        :param _AutoScalingGroupId: Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: Instance ID.
+        :param _InstanceIds: Instance ID. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :type InstanceIds: list of str
         :param _ProtectedFromScaleIn: Whether to enable scale-in protection for this instance
         :type ProtectedFromScaleIn: bool
@@ -13339,7 +13719,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Auto scaling group ID.
+        """Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -13350,7 +13732,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """Instance ID.
+        """Instance ID. you can obtain available instance ID in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13574,9 +13958,13 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: The scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: The list of the CVM instances you want to start up.
+        :param _InstanceIds: Specifies the instance ID list of CVM to enable. you can obtain available instance ID in the following ways.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :type InstanceIds: list of str
         """
         self._AutoScalingGroupId = None
@@ -13584,7 +13972,9 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """The scaling group ID.
+        """Scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -13595,7 +13985,9 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        """The list of the CVM instances you want to start up.
+        """Specifies the instance ID list of CVM to enable. you can obtain available instance ID in the following ways.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Get the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13672,8 +14064,8 @@ class StartInstanceRefreshRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param _RefreshSettings: Refresh settings.
         :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
-        :param _RefreshMode: Refresh mode. Valid values:
-<li>ROLLING_UPDATE_RESET: Reinstall the system for rolling updates.</li>
+        :param _RefreshMode: Refresh mode. default value: ROLLING_UPDATE_RESET. valid values:.
+<Li>ROLLING_UPDATE_RESET: reinstall the system for rolling updates.</li>.
 <li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>
         :type RefreshMode: str
         """
@@ -13705,8 +14097,8 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
-        """Refresh mode. Valid values:
-<li>ROLLING_UPDATE_RESET: Reinstall the system for rolling updates.</li>
+        """Refresh mode. default value: ROLLING_UPDATE_RESET. valid values:.
+<Li>ROLLING_UPDATE_RESET: reinstall the system for rolling updates.</li>.
 <li>ROLLING_UPDATE_REPLACE: Create an instance and replace the old instance with it for rolling updates. This mode does not support the rollback API currently.</li>
         :rtype: str
         """
@@ -13783,9 +14175,13 @@ class StopAutoScalingInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: The scaling group ID.
+        :param _AutoScalingGroupId: Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :type AutoScalingGroupId: str
-        :param _InstanceIds: The list of the CVM instances you want to shut down.
+        :param _InstanceIds: List of CVM instance ids to be closed. you can obtain available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :type InstanceIds: list of str
         :param _StoppedMode: Whether the shutdown instances will be charged. Valid values:  
 KEEP_CHARGING: keep charging after shutdown.  
@@ -13799,7 +14195,9 @@ Default value: KEEP_CHARGING.
 
     @property
     def AutoScalingGroupId(self):
-        """The scaling group ID.
+        """Auto scaling group ID. obtain available scaling group ids in the following ways:.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Specifies the scaling group ID obtained by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the return information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -13810,7 +14208,9 @@ Default value: KEEP_CHARGING.
 
     @property
     def InstanceIds(self):
-        """The list of the CVM instances you want to shut down.
+        """List of CVM instance ids to be closed. you can obtain available instance ids in the following ways:.
+<li>Query instance ID by logging in to the <a href="https://console.cloud.tencent.com/cvm/index">console</a>.</li>.
+<li>Specifies the instance ID by calling the api [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and getting `InstanceId` from the return information.</li>.
         :rtype: list of str
         """
         return self._InstanceIds
@@ -13898,9 +14298,11 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupId: Scaling group ID.
+        :param _AutoScalingGroupId: Scaling group ID. you can obtain available scaling group ids in the following ways.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Get the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
         :type AutoScalingGroupId: str
-        :param _RefreshActivityId: Refresh activity ID.
+        :param _RefreshActivityId: Refresh activity ID. you can call the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and obtain the instance refresh activity ID from the returned information.
         :type RefreshActivityId: str
         """
         self._AutoScalingGroupId = None
@@ -13908,7 +14310,9 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
-        """Scaling group ID.
+        """Scaling group ID. you can obtain available scaling group ids in the following ways.
+<li>Query the scaling group ID by logging in to the [console](https://console.cloud.tencent.com/autoscaling/group).</li>.
+<li>Get the scaling group ID by calling the api [DescribeAutoScalingGroups](https://intl.cloud.tencent.com/document/api/377/20438?from_cn_redirect=1) and retrieving the AutoScalingGroupId from the returned information.</li>.
         :rtype: str
         """
         return self._AutoScalingGroupId
@@ -13919,7 +14323,7 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
-        """Refresh activity ID.
+        """Refresh activity ID. you can call the api [DescribeRefreshActivities](https://intl.cloud.tencent.com/document/api/377/99175?from_cn_redirect=1) and obtain the instance refresh activity ID from the returned information.
         :rtype: str
         """
         return self._RefreshActivityId
@@ -13977,12 +14381,15 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: System disk type. For restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
-<li>LOCAL_BASIC: Local Disk.</li>
-<li>LOCAL_SSD: Local SSD.</li>
-<li>CLOUD_BASIC: Basic Cloud Disk.</li>
-<li>CLOUD_PREMIUM: Premium Disk.</li>
-<li>CLOUD_SSD: Cloud SSD.</li>
+        :param _DiskType: System disk type. for restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
+<Li>LOCAL_BASIC: local hard disk.</li>.
+<Li>LOCAL_SSD: local ssd.</li>.
+<Li>CLOUD_BASIC: general cloud disk.</li>.
+<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
+<Li>CLOUD_SSD: cloud ssd</li>.
+<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
+<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
+<Li>CLOUD_TSSD: ultra ssd.</li>.
 <li>Default value: CLOUD_PREMIUM.</li>
         :type DiskType: str
         :param _DiskSize: System disk size, in GB. Default value: 50.
@@ -13993,12 +14400,15 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        """System disk type. For restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
-<li>LOCAL_BASIC: Local Disk.</li>
-<li>LOCAL_SSD: Local SSD.</li>
-<li>CLOUD_BASIC: Basic Cloud Disk.</li>
-<li>CLOUD_PREMIUM: Premium Disk.</li>
-<li>CLOUD_SSD: Cloud SSD.</li>
+        """System disk type. for restrictions on the system disk type, see [cloud block storage types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). valid values:.
+<Li>LOCAL_BASIC: local hard disk.</li>.
+<Li>LOCAL_SSD: local ssd.</li>.
+<Li>CLOUD_BASIC: general cloud disk.</li>.
+<Li>CLOUD_PREMIUM: high-performance cloud block storage</li>.
+<Li>CLOUD_SSD: cloud ssd</li>.
+<Li>CLOUD_BSSD: universal ssd cloud disk</li>.
+<Li>CLOUD_HSSD: enhanced ssd cloud disk</li>.
+<Li>CLOUD_TSSD: ultra ssd.</li>.
 <li>Default value: CLOUD_PREMIUM.</li>
         :rtype: str
         """
@@ -14044,8 +14454,7 @@ class Tag(AbstractModel):
         :type Key: str
         :param _Value: Tag value
         :type Value: str
-        :param _ResourceType: Resource type bound with tags. Valid values: auto-scaling-group and launch-configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ResourceType: Specifies the resource type bound to the tag. type currently supported: "auto-scaling-group", "launch-configuration". valid values: scaling group resources and launch configuration resources respectively.
         :type ResourceType: str
         """
         self._Key = None
@@ -14076,8 +14485,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceType(self):
-        """Resource type bound with tags. Valid values: auto-scaling-group and launch-configuration.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the resource type bound to the tag. type currently supported: "auto-scaling-group", "launch-configuration". valid values: scaling group resources and launch configuration resources respectively.
         :rtype: str
         """
         return self._ResourceType
@@ -14108,9 +14516,9 @@ class TargetAttribute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Port: Port
+        :param _Port: Port. value range: [1,65535]. as an input parameter, this parameter is required.
         :type Port: int
-        :param _Weight: Weight
+        :param _Weight: Weight. value range: [0,100]. this parameter is required as an input parameter.
         :type Weight: int
         """
         self._Port = None
@@ -14118,7 +14526,7 @@ class TargetAttribute(AbstractModel):
 
     @property
     def Port(self):
-        """Port
+        """Port. value range: [1,65535]. as an input parameter, this parameter is required.
         :rtype: int
         """
         return self._Port
@@ -14129,7 +14537,7 @@ class TargetAttribute(AbstractModel):
 
     @property
     def Weight(self):
-        """Weight
+        """Weight. value range: [0,100]. this parameter is required as an input parameter.
         :rtype: int
         """
         return self._Weight
@@ -14584,23 +14992,27 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LifecycleHookId: Lifecycle hook ID
+        :param _LifecycleHookId: Lifecycle hook ID. you can call the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieve the LifecycleHookId from the returned information to obtain the lifecycle hook ID.
         :type LifecycleHookId: str
-        :param _LifecycleHookName: Lifecycle hook name
+        :param _LifecycleHookName: Lifecycle hook name, which can contain chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 characters.
         :type LifecycleHookName: str
-        :param _LifecycleTransition: Scenario for the lifecycle hook. Value range: "INSTANCE_LAUNCHING", "INSTANCE_TERMINATING"
+        :param _LifecycleTransition: Scenario for performing the lifecycle hook. valid values:.
+`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.
+`INSTANCE_TERMINATING`: the lifecycle hook is being scaled in.
         :type LifecycleTransition: str
-        :param _DefaultResult: Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: "CONTINUE", "ABANDON". Default value: "CONTINUE"
+        :param _DefaultResult: Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values are as follows:.
+Default value, means CONTINUE to execute capacity expansion or reduction.
+* ABANDON: for scale-out hooks, cvms that time out or fail to execute LifecycleCommand will be released directly or removed. for scale-in hooks, scale-in activities will continue.
         :type DefaultResult: str
         :param _HeartbeatTimeout: The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
         :type HeartbeatTimeout: int
-        :param _NotificationMetadata: Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: "").
+        :param _NotificationMetadata: Additional information sent by auto scaling to notification targets, used when configuring a notification (default value: ""). NotificationMetadata and LifecycleCommand are mutually exclusive parameters and cannot be specified simultaneously.
         :type NotificationMetadata: str
         :param _NotificationTarget: Notification result. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param _LifecycleTransitionType: The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
         :type LifecycleTransitionType: str
-        :param _LifecycleCommand: Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :param _LifecycleCommand: Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` are mutually exclusive and cannot be specified simultaneously.
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self._LifecycleHookId = None
@@ -14615,7 +15027,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
-        """Lifecycle hook ID
+        """Lifecycle hook ID. you can call the api [DescribeLifecycleHooks](https://intl.cloud.tencent.com/document/api/377/34452?from_cn_redirect=1) and retrieve the LifecycleHookId from the returned information to obtain the lifecycle hook ID.
         :rtype: str
         """
         return self._LifecycleHookId
@@ -14626,7 +15038,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
-        """Lifecycle hook name
+        """Lifecycle hook name, which can contain chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 characters.
         :rtype: str
         """
         return self._LifecycleHookName
@@ -14637,7 +15049,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
-        """Scenario for the lifecycle hook. Value range: "INSTANCE_LAUNCHING", "INSTANCE_TERMINATING"
+        """Scenario for performing the lifecycle hook. valid values:.
+`INSTANCE_LAUNCHING`: the lifecycle hook is being scaled out.
+`INSTANCE_TERMINATING`: the lifecycle hook is being scaled in.
         :rtype: str
         """
         return self._LifecycleTransition
@@ -14648,7 +15062,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
-        """Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: "CONTINUE", "ABANDON". Default value: "CONTINUE"
+        """Action to be taken by the scaling group in case of lifecycle hook timeout or LifecycleCommand execution failure. valid values are as follows:.
+Default value, means CONTINUE to execute capacity expansion or reduction.
+* ABANDON: for scale-out hooks, cvms that time out or fail to execute LifecycleCommand will be released directly or removed. for scale-in hooks, scale-in activities will continue.
         :rtype: str
         """
         return self._DefaultResult
@@ -14670,7 +15086,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
-        """Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: "").
+        """Additional information sent by auto scaling to notification targets, used when configuring a notification (default value: ""). NotificationMetadata and LifecycleCommand are mutually exclusive parameters and cannot be specified simultaneously.
         :rtype: str
         """
         return self._NotificationMetadata
@@ -14703,7 +15119,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
-        """Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        """Remote command execution object. `NotificationMetadata`, `NotificationTarget`, and `LifecycleCommand` are mutually exclusive and cannot be specified simultaneously.
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         return self._LifecycleCommand

@@ -2576,19 +2576,21 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. 
-The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
-The face must be greater than 100*100 px in size.
-Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        :param _Image: Specifies the base64 code of the image.
+-base64-Encoded size cannot exceed 5M.
+-The long side pixel of a jpg image must not exceed 4000. the long side pixel of another format image cannot exceed 2000. 
+-Specifies the image aspect ratio should be close to 3:4. mobile phone shooting proportion is best.
+-Specifies the human face dimension is greater than 100X100 pixels.
+-Supported image formats include PNG, JPG, JPEG, and BMP. GIF is not supported.
         :type Image: str
-        :param _Url: Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
-The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
-The face must be greater than 100*100 px in size.
-We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
-Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        :param _Url: Specifies the Url of the image.
+-Specifies the maximum size of the corresponding image after base64 encoding is 5M.
+-The long side pixel of a jpg image must not exceed 4000. the long side pixel of another format image must not exceed 2000.
+-Url or Image must be provided. if both are provided, only use Url. 
+-Specifies the image aspect ratio should be close to 3:4. mobile phone shooting proportion is best.
+-Specifies the human face dimension is greater than 100X100 pixels.
+-Image storage Url on tencent cloud guarantees higher download speed and stability. it is recommended to store images on tencent cloud. non-tencent cloud storage urls may be impacted in speed and stability.
+-Supported image formats include PNG, JPG, JPEG, and BMP. GIF is not supported.
         :type Url: str
         :param _FaceModelVersion: Algorithm model version used for face recognition. Valid value: `3.0`.
         :type FaceModelVersion: str
@@ -2599,11 +2601,12 @@ Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not suppor
 
     @property
     def Image(self):
-        """Base64-encoded image data, which cannot exceed 5 MB.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. 
-The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
-The face must be greater than 100*100 px in size.
-Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        """Specifies the base64 code of the image.
+-base64-Encoded size cannot exceed 5M.
+-The long side pixel of a jpg image must not exceed 4000. the long side pixel of another format image cannot exceed 2000. 
+-Specifies the image aspect ratio should be close to 3:4. mobile phone shooting proportion is best.
+-Specifies the human face dimension is greater than 100X100 pixels.
+-Supported image formats include PNG, JPG, JPEG, and BMP. GIF is not supported.
         :rtype: str
         """
         return self._Image
@@ -2614,13 +2617,14 @@ Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not suppor
 
     @property
     def Url(self):
-        """Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.
-The long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.
-Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. 
-The recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).
-The face must be greater than 100*100 px in size.
-We recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.
-Supported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.
+        """Specifies the Url of the image.
+-Specifies the maximum size of the corresponding image after base64 encoding is 5M.
+-The long side pixel of a jpg image must not exceed 4000. the long side pixel of another format image must not exceed 2000.
+-Url or Image must be provided. if both are provided, only use Url. 
+-Specifies the image aspect ratio should be close to 3:4. mobile phone shooting proportion is best.
+-Specifies the human face dimension is greater than 100X100 pixels.
+-Image storage Url on tencent cloud guarantees higher download speed and stability. it is recommended to store images on tencent cloud. non-tencent cloud storage urls may be impacted in speed and stability.
+-Supported image formats include PNG, JPG, JPEG, and BMP. GIF is not supported.
         :rtype: str
         """
         return self._Url
@@ -2662,11 +2666,14 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Score: Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend you use the threshold of 40.
+        :param _Score: Liveness scoring.
+-Value range: [0,100].
+-Determines whether it is a rephotograph based on the liveness score and threshold range.
+-Current threshold can be divided into [5,10,40,70,90]. among them, the recommended threshold is 40.
         :type Score: float
         :param _FaceModelVersion: Algorithm model version used for face recognition.
         :type FaceModelVersion: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Score = None
@@ -2675,7 +2682,10 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def Score(self):
-        """Liveness score. Value range: [0, 100]. You can set several thresholds such as 5, 10, 40, 70 and 90 to determine whether the image is photographed. We recommend you use the threshold of 40.
+        """Liveness scoring.
+-Value range: [0,100].
+-Determines whether it is a rephotograph based on the liveness score and threshold range.
+-Current threshold can be divided into [5,10,40,70,90]. among them, the recommended threshold is 40.
         :rtype: float
         """
         return self._Score
@@ -2697,7 +2707,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def RequestId(self):
-        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
         """
         return self._RequestId

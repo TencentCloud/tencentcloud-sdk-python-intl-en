@@ -293,6 +293,9 @@ INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
 # The function name conflicts with that of another function under this account.
 INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
 
+# 
+INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = 'InvalidParameter.GroupByLimitExceeded'
+
 # To enable gRPC support, HTTP/2 support must be enabled as well.
 INVALIDPARAMETER_GRPCREQUIREHTTP2 = 'InvalidParameter.GrpcRequireHttp2'
 

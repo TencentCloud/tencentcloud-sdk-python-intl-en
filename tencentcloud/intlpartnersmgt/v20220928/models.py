@@ -5632,7 +5632,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilterType: Search condition type. You can only search by customer ID, name, remarks, or email.
+        :param _FilterType: Search condition type. You can only search by ClientUin, Name, Remark, or Email.
         :type FilterType: str
         :param _Filter: Search condition
         :type Filter: str
@@ -5651,7 +5651,7 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def FilterType(self):
-        """Search condition type. You can only search by customer ID, name, remarks, or email.
+        """Search condition type. You can only search by ClientUin, Name, Remark, or Email.
         :rtype: str
         """
         return self._FilterType

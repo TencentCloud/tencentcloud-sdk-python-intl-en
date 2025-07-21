@@ -287,6 +287,9 @@ INVALIDPARAMETERVALUE_STARTTIMEBEFORECURRENTTIME = 'InvalidParameterValue.StartT
 # The subnet information is invalid.
 INVALIDPARAMETERVALUE_SUBNETIDS = 'InvalidParameterValue.SubnetIds'
 
+# The subnet is not in the designated local dedicated cluster.
+INVALIDPARAMETERVALUE_SUBNETNOTINDEDICATEDCLUSTER = 'InvalidParameterValue.SubnetNotInDedicatedCluster'
+
 # The backend port of the CLB layer-4 listener already exists.
 INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = 'InvalidParameterValue.TargetPortDuplicated'
 
@@ -397,6 +400,9 @@ RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = 'ResourceNotFound.AutoScaling
 
 # The specified bandwidth package ID is not found.
 RESOURCENOTFOUND_BANDWIDTHPACKAGEIDNOTFOUND = 'ResourceNotFound.BandwidthPackageIdNotFound'
+
+# 
+RESOURCENOTFOUND_CLASSICLOADBALANCERNOTFOUND = 'ResourceNotFound.ClassicLoadBalancerNotFound'
 
 # The specified CMQ queue does not exist.
 RESOURCENOTFOUND_CMQQUEUENOTFOUND = 'ResourceNotFound.CmqQueueNotFound'

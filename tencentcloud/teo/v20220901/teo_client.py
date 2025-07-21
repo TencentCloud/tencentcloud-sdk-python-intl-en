@@ -699,6 +699,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWebSecurityTemplate(self, request):
+        """This API is used to create a security policy configuration template.
+
+        :param request: Request instance for CreateWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWebSecurityTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateZone(self, request):
         """This API is used to create a site. After you create the site, you can connect it to EdgeOne via the CNAME or NS (see [Quick Start](https://intl.cloud.tencent.com/document/product/1552/87601?from_cn_redirect=1)), or connect it without a domain name (see [Quick Access to L4 Proxy Service](https://intl.cloud.tencent.com/document/product/1552/96051?from_cn_redirect=1)).
 
@@ -1129,6 +1152,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteSharedCNAME", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSharedCNAMEResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWebSecurityTemplate(self, request):
+        """This API is used to delete a security policy configuration template.
+
+        :param request: Request instance for DeleteWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWebSecurityTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2268,6 +2314,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWebSecurityTemplate(self, request):
+        """This API is used to query security policy configuration template details.
+
+        :param request: Request instance for DescribeWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebSecurityTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWebSecurityTemplates(self, request):
+        """This API is used to query the security policy configuration template list.
+
+        :param request: Request instance for DescribeWebSecurityTemplates.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplatesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeWebSecurityTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebSecurityTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebSecurityTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZoneConfigImportResult(self, request):
         """This API is used to query the results of site configuration import via API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.
 
@@ -3290,6 +3382,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifySecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWebSecurityTemplate(self, request):
+        """This API is used to modify the security policy configuration template.
+
+        :param request: Request instance for ModifyWebSecurityTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyWebSecurityTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyWebSecurityTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWebSecurityTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWebSecurityTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
