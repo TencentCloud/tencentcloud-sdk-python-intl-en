@@ -1074,6 +1074,42 @@ class BusInvoice(AbstractModel):
         
 
 
+class ConfigAdvanced(AbstractModel):
+    """Supports single attribute configuration for templates.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: Single attribute configuration of a template.
+        :type Scene: str
+        """
+        self._Scene = None
+
+    @property
+    def Scene(self):
+        """Single attribute configuration of a template.
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Coord(AbstractModel):
     """Coordinates
 
@@ -1215,6 +1251,332 @@ class DetectedWords(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExtractDocMultiRequest(AbstractModel):
+    """ExtractDocMulti request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: The Url address of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after Base64 encoding. image download time should not exceed 3 seconds. supported image pixels: between 20-10000px. images stored in tencent cloud's Url ensure higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.
+        :type ImageUrl: str
+        :param _ImageBase64: The Base64 value of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after encoding the downloaded image with Base64. image download time: no more than 3 seconds. supported image pixels: between 20-10000px. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        :type ImageBase64: str
+        :param _PdfPageNumber: Specifies the page number of the PDF to be recognized. only single page recognition is supported. valid when uploading a PDF file with the IsPdf parameter set to true. default value is the first 3 pages.
+        :type PdfPageNumber: int
+        :param _ItemNames: Specifies the field names to be returned by the customized structuring feature. for example, if the customer wants to add the recognition result of two fields, name and gender, manually input ItemNames=["name","gender"].
+        :type ItemNames: list of str
+        :param _ItemNamesShowMode: true: only custom field.
+False: default value field + custom field.
+Default true.
+        :type ItemNamesShowMode: bool
+        :param _ReturnFullText: Whether the full-text field recognition is enabled.
+        :type ReturnFullText: bool
+        :param _ConfigId: Configuration ID support: 
+-- General
+-- InvoiceEng
+-- WayBillEng
+-- CustomsDeclaration
+-- WeightNote
+-- MedicalMeter
+-- BillOfLading
+-- EntrustmentBook
+-- Statement
+-- BookingConfirmation
+-- AirWayBill
+-- Table
+-- SteelLabel
+-- CarInsurance
+-- MultiRealEstateCertificate
+-- MultiRealEstateMaterial
+-- HongKongUtilityBill
+        :type ConfigId: str
+        :param _EnableCoord: Whether the full-text field coordinate value recognition is enabled.
+        :type EnableCoord: bool
+        :param _OutputParentKey: Whether parent-child key recognition is enabled. the option is selected by default.
+        :type OutputParentKey: bool
+        :param _ConfigAdvanced: Single attribute configuration of a template.
+        :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
+        :param _OutputLanguage: When cn, the added key is chinese.  
+When set to en, the added key is english.
+        :type OutputLanguage: str
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._PdfPageNumber = None
+        self._ItemNames = None
+        self._ItemNamesShowMode = None
+        self._ReturnFullText = None
+        self._ConfigId = None
+        self._EnableCoord = None
+        self._OutputParentKey = None
+        self._ConfigAdvanced = None
+        self._OutputLanguage = None
+
+    @property
+    def ImageUrl(self):
+        """The Url address of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after Base64 encoding. image download time should not exceed 3 seconds. supported image pixels: between 20-10000px. images stored in tencent cloud's Url ensure higher download speed and stability. it is recommended to store images in tencent cloud. the speed and stability of non-tencent cloud storage urls may be impacted.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        """The Base64 value of the image. supported image formats: PNG, JPG, JPEG, WORD, EXCEL. GIF format is not currently supported. supported image size: no more than 10M after encoding the downloaded image with Base64. image download time: no more than 3 seconds. supported image pixels: between 20-10000px. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def PdfPageNumber(self):
+        """Specifies the page number of the PDF to be recognized. only single page recognition is supported. valid when uploading a PDF file with the IsPdf parameter set to true. default value is the first 3 pages.
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def ItemNames(self):
+        """Specifies the field names to be returned by the customized structuring feature. for example, if the customer wants to add the recognition result of two fields, name and gender, manually input ItemNames=["name","gender"].
+        :rtype: list of str
+        """
+        return self._ItemNames
+
+    @ItemNames.setter
+    def ItemNames(self, ItemNames):
+        self._ItemNames = ItemNames
+
+    @property
+    def ItemNamesShowMode(self):
+        """true: only custom field.
+False: default value field + custom field.
+Default true.
+        :rtype: bool
+        """
+        return self._ItemNamesShowMode
+
+    @ItemNamesShowMode.setter
+    def ItemNamesShowMode(self, ItemNamesShowMode):
+        self._ItemNamesShowMode = ItemNamesShowMode
+
+    @property
+    def ReturnFullText(self):
+        """Whether the full-text field recognition is enabled.
+        :rtype: bool
+        """
+        return self._ReturnFullText
+
+    @ReturnFullText.setter
+    def ReturnFullText(self, ReturnFullText):
+        self._ReturnFullText = ReturnFullText
+
+    @property
+    def ConfigId(self):
+        """Configuration ID support: 
+-- General
+-- InvoiceEng
+-- WayBillEng
+-- CustomsDeclaration
+-- WeightNote
+-- MedicalMeter
+-- BillOfLading
+-- EntrustmentBook
+-- Statement
+-- BookingConfirmation
+-- AirWayBill
+-- Table
+-- SteelLabel
+-- CarInsurance
+-- MultiRealEstateCertificate
+-- MultiRealEstateMaterial
+-- HongKongUtilityBill
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def EnableCoord(self):
+        """Whether the full-text field coordinate value recognition is enabled.
+        :rtype: bool
+        """
+        return self._EnableCoord
+
+    @EnableCoord.setter
+    def EnableCoord(self, EnableCoord):
+        self._EnableCoord = EnableCoord
+
+    @property
+    def OutputParentKey(self):
+        """Whether parent-child key recognition is enabled. the option is selected by default.
+        :rtype: bool
+        """
+        return self._OutputParentKey
+
+    @OutputParentKey.setter
+    def OutputParentKey(self, OutputParentKey):
+        self._OutputParentKey = OutputParentKey
+
+    @property
+    def ConfigAdvanced(self):
+        """Single attribute configuration of a template.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
+        """
+        return self._ConfigAdvanced
+
+    @ConfigAdvanced.setter
+    def ConfigAdvanced(self, ConfigAdvanced):
+        self._ConfigAdvanced = ConfigAdvanced
+
+    @property
+    def OutputLanguage(self):
+        """When cn, the added key is chinese.  
+When set to en, the added key is english.
+        :rtype: str
+        """
+        return self._OutputLanguage
+
+    @OutputLanguage.setter
+    def OutputLanguage(self, OutputLanguage):
+        self._OutputLanguage = OutputLanguage
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._ItemNames = params.get("ItemNames")
+        self._ItemNamesShowMode = params.get("ItemNamesShowMode")
+        self._ReturnFullText = params.get("ReturnFullText")
+        self._ConfigId = params.get("ConfigId")
+        self._EnableCoord = params.get("EnableCoord")
+        self._OutputParentKey = params.get("OutputParentKey")
+        if params.get("ConfigAdvanced") is not None:
+            self._ConfigAdvanced = ConfigAdvanced()
+            self._ConfigAdvanced._deserialize(params.get("ConfigAdvanced"))
+        self._OutputLanguage = params.get("OutputLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractDocMultiResponse(AbstractModel):
+    """ExtractDocMulti response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Angle: Image rotation angle (angle system). the text's horizontal direction is 0. clockwise is positive; counterclockwise is negative.
+        :type Angle: float
+        :param _StructuralList: Configures the structured text info.
+        :type StructuralList: list of GroupInfo
+        :param _WordList: Restore text information.
+        :type WordList: list of WordItem
+        :param _TokenNum: Number of sample identification fields.
+        :type TokenNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Angle = None
+        self._StructuralList = None
+        self._WordList = None
+        self._TokenNum = None
+        self._RequestId = None
+
+    @property
+    def Angle(self):
+        """Image rotation angle (angle system). the text's horizontal direction is 0. clockwise is positive; counterclockwise is negative.
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def StructuralList(self):
+        """Configures the structured text info.
+        :rtype: list of GroupInfo
+        """
+        return self._StructuralList
+
+    @StructuralList.setter
+    def StructuralList(self, StructuralList):
+        self._StructuralList = StructuralList
+
+    @property
+    def WordList(self):
+        """Restore text information.
+        :rtype: list of WordItem
+        """
+        return self._WordList
+
+    @WordList.setter
+    def WordList(self, WordList):
+        self._WordList = WordList
+
+    @property
+    def TokenNum(self):
+        """Number of sample identification fields.
+        :rtype: int
+        """
+        return self._TokenNum
+
+    @TokenNum.setter
+    def TokenNum(self, TokenNum):
+        self._TokenNum = TokenNum
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Angle = params.get("Angle")
+        if params.get("StructuralList") is not None:
+            self._StructuralList = []
+            for item in params.get("StructuralList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._StructuralList.append(obj)
+        if params.get("WordList") is not None:
+            self._WordList = []
+            for item in params.get("WordList"):
+                obj = WordItem()
+                obj._deserialize(item)
+                self._WordList.append(obj)
+        self._TokenNum = params.get("TokenNum")
+        self._RequestId = params.get("RequestId")
 
 
 class FlightItem(AbstractModel):
@@ -19257,6 +19619,94 @@ class VinOCRResponse(AbstractModel):
 
 class WordItem(AbstractModel):
     """The recognized text information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetectedText: The text content.
+        :type DetectedText: str
+        :param _Coord: The coordinates of the four vertices.
+        :type Coord: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        :param _AdvancedInfo: Description.
+        :type AdvancedInfo: str
+        :param _WordCoord: Specifies the four-point coordinate of the word.
+        :type WordCoord: list of WordPolygon
+        """
+        self._DetectedText = None
+        self._Coord = None
+        self._AdvancedInfo = None
+        self._WordCoord = None
+
+    @property
+    def DetectedText(self):
+        """The text content.
+        :rtype: str
+        """
+        return self._DetectedText
+
+    @DetectedText.setter
+    def DetectedText(self, DetectedText):
+        self._DetectedText = DetectedText
+
+    @property
+    def Coord(self):
+        """The coordinates of the four vertices.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Polygon`
+        """
+        return self._Coord
+
+    @Coord.setter
+    def Coord(self, Coord):
+        self._Coord = Coord
+
+    @property
+    def AdvancedInfo(self):
+        """Description.
+        :rtype: str
+        """
+        return self._AdvancedInfo
+
+    @AdvancedInfo.setter
+    def AdvancedInfo(self, AdvancedInfo):
+        self._AdvancedInfo = AdvancedInfo
+
+    @property
+    def WordCoord(self):
+        """Specifies the four-point coordinate of the word.
+        :rtype: list of WordPolygon
+        """
+        return self._WordCoord
+
+    @WordCoord.setter
+    def WordCoord(self, WordCoord):
+        self._WordCoord = WordCoord
+
+
+    def _deserialize(self, params):
+        self._DetectedText = params.get("DetectedText")
+        if params.get("Coord") is not None:
+            self._Coord = Polygon()
+            self._Coord._deserialize(params.get("Coord"))
+        self._AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("WordCoord") is not None:
+            self._WordCoord = []
+            for item in params.get("WordCoord"):
+                obj = WordPolygon()
+                obj._deserialize(item)
+                self._WordCoord.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WordPolygon(AbstractModel):
+    """Word coordinates info.
 
     """
 

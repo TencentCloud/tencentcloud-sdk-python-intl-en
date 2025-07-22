@@ -603,6 +603,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWebRecord(self, request):
+        """Queries the status of a web-page recording task
+
+        :param request: Request instance for DescribeWebRecord.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeWebRecordRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeWebRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DismissRoom(self, request):
         """This API is used to remove all users from a room and dismiss the room. It supports all platforms. For Android, iOS, Windows, and macOS, the TRTC SDK needs to be upgraded to v6.6 or above.
 
@@ -914,6 +937,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartWebRecord(self, request):
+        """This interface can be used to initiate a web-page recording task. In the interface parameters, specify the recording URL, recording resolution, recording result storage and other parameters. If there are parameter or API logic problems, the result will be returned immediately. If there are page problems, such as the page cannot be accessed, the result will be returned in the callback. Please pay attention.
+
+        :param request: Request instance for StartWebRecord.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartWebRecordRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartWebRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartWebRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartWebRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopAIConversation(self, request):
         """Stop AI conversation task
 
@@ -997,6 +1043,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StopStreamIngest", params, headers=headers)
             response = json.loads(body)
             model = models.StopStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopWebRecord(self, request):
+        """Stop an web-page recording task
+
+        :param request: Request instance for StopWebRecord.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopWebRecordRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopWebRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopWebRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopWebRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

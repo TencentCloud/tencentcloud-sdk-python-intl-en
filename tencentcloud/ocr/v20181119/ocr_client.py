@@ -51,6 +51,33 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExtractDocMulti(self, request):
+        """This API supports identifying and extracting field information in structured scenarios such as complex scenarios and multiple formats. Key scenarios include: finance, health care, transportation, travel, insurance. Click [experience now](https://ocrdemo.cloud.tencent.com/).
+
+        This API is used to set the alias SmartStructuralPro.
+
+        The default API request rate limit is 5 requests per second.
+
+        :param request: Request instance for ExtractDocMulti.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ExtractDocMultiRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ExtractDocMultiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExtractDocMulti", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExtractDocMultiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GeneralAccurateOCR(self, request):
         """This API is used to detect and recognize characters in an image. It can recognize Chinese, English, Chinese-English, digits, and special symbols and return the text box positions and characters.
 

@@ -442,26 +442,24 @@ class Activity(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityType: Atomic task type.
-<li>input: start node</li>
-<li>output: end node</li>
-<li>action-trans: transcoding</li>
-<li>action-samplesnapshot: sampled screenshot</li>
-<li>action-AIAnalysis: analysis</li>
-<li>action-AIRecognition: recognition</li>
-<li>action-aiReview: review</li>
-<li>action-animated-graphics: conversion to GIF</li>
-<li>action-image-sprite: image sprite</li>
-<li>action-snapshotByTimeOffset: time point screenshot</li>
-<li>action-adaptive-substream: adaptive bitrate stream</li>
-<li>action-AIQualityControl: media quality inspection</li>
-<li>action-SmartSubtitles: smart subtitle</li>
+<li>input: starting node.</li>.
+<li>`output`: termination node</li>.
+<li>action-trans: transcoding.</li>.
+<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.
+<li>action-AIAnalysis: analysis.</li>.
+<li>action-AIRecognition: specifies recognition.</li>.
+<li>action-aiReview: specifies the review action.</li>.
+<li>action-animated-graphics: specifies the animated image.</li>.
+<li>action-image-sprite: specifies the sprite sheet.</li>.
+<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.
+<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.
+<li>action-AIQualityControl: media quality inspection.</li>.
+<li>action-SmartSubtitles: specifies smart subtitling.</li>.
 
 
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :type ActivityType: str
-        :param _ReardriveIndex: The indexes of the subsequent actions.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReardriveIndex: Rear node index array.
         :type ReardriveIndex: list of int
         :param _ActivityPara: The parameters of a subtask.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -474,23 +472,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ActivityType(self):
         """Atomic task type.
-<li>input: start node</li>
-<li>output: end node</li>
-<li>action-trans: transcoding</li>
-<li>action-samplesnapshot: sampled screenshot</li>
-<li>action-AIAnalysis: analysis</li>
-<li>action-AIRecognition: recognition</li>
-<li>action-aiReview: review</li>
-<li>action-animated-graphics: conversion to GIF</li>
-<li>action-image-sprite: image sprite</li>
-<li>action-snapshotByTimeOffset: time point screenshot</li>
-<li>action-adaptive-substream: adaptive bitrate stream</li>
-<li>action-AIQualityControl: media quality inspection</li>
-<li>action-SmartSubtitles: smart subtitle</li>
+<li>input: starting node.</li>.
+<li>`output`: termination node</li>.
+<li>action-trans: transcoding.</li>.
+<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.
+<li>action-AIAnalysis: analysis.</li>.
+<li>action-AIRecognition: specifies recognition.</li>.
+<li>action-aiReview: specifies the review action.</li>.
+<li>action-animated-graphics: specifies the animated image.</li>.
+<li>action-image-sprite: specifies the sprite sheet.</li>.
+<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.
+<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.
+<li>action-AIQualityControl: media quality inspection.</li>.
+<li>action-SmartSubtitles: specifies smart subtitling.</li>.
 
 
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._ActivityType
@@ -501,8 +498,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ReardriveIndex(self):
-        """The indexes of the subsequent actions.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Rear node index array.
         :rtype: list of int
         """
         return self._ReardriveIndex
@@ -1173,13 +1169,13 @@ If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicS
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
         :param _DrmInfo: Drm information.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: Adaptive transcoding template type.
-Common: audio-video.
+Common: audio/video type.
 PureAudio: audio-only.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type DefinitionType: str
+        :param _SubtitleTemplate: Subtitle setting.
+        :type SubtitleTemplate: str
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1190,6 +1186,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AddOnSubtitles = None
         self._DrmInfo = None
         self._DefinitionType = None
+        self._SubtitleTemplate = None
 
     @property
     def Definition(self):
@@ -1280,7 +1277,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def DrmInfo(self):
         """Drm information.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         return self._DrmInfo
@@ -1292,9 +1288,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def DefinitionType(self):
         """Adaptive transcoding template type.
-Common: audio-video.
+Common: audio/video type.
 PureAudio: audio-only.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DefinitionType
@@ -1302,6 +1297,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DefinitionType.setter
     def DefinitionType(self, DefinitionType):
         self._DefinitionType = DefinitionType
+
+    @property
+    def SubtitleTemplate(self):
+        """Subtitle setting.
+        :rtype: str
+        """
+        return self._SubtitleTemplate
+
+    @SubtitleTemplate.setter
+    def SubtitleTemplate(self, SubtitleTemplate):
+        self._SubtitleTemplate = SubtitleTemplate
 
 
     def _deserialize(self, params):
@@ -1328,6 +1334,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._DrmInfo = DrmInfo()
             self._DrmInfo._deserialize(params.get("DrmInfo"))
         self._DefinitionType = params.get("DefinitionType")
+        self._SubtitleTemplate = params.get("SubtitleTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2462,10 +2469,8 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :param _OutputStorage: Storage location of a file after removal.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OriginSubtitlePath: Path of a subtitle file extracted from a video.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginSubtitlePath: str
         :param _TranslateSubtitlePath: Path of a subtitle translation file extracted from a video.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type TranslateSubtitlePath: str
         """
         self._Path = None
@@ -2498,7 +2503,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def OriginSubtitlePath(self):
         """Path of a subtitle file extracted from a video.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OriginSubtitlePath
@@ -2510,7 +2514,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def TranslateSubtitlePath(self):
         """Path of a subtitle translation file extracted from a video.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._TranslateSubtitlePath
@@ -5580,38 +5583,29 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
         :type Name: str
         :param _SegmentSet: Result set of segments that contain a figure.
         :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
-        :param _Gender: The person’s gender.
-<li>Male</li>
-<li>Female</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Gender: Gender of the person.
+<Li>Male: man.</li>.
+<Li>Female: specifies the woman.</li>.
         :type Gender: str
-        :param _Birthday: The person’s birth date.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Birthday: Date of birth.
         :type Birthday: str
-        :param _Profession: The person’s job or job title.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Profession: Occupation or position of a person.
         :type Profession: str
-        :param _SchoolOfGraduation: The college the person graduated from.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _SchoolOfGraduation: Specifies the graduation institution of the person.
         :type SchoolOfGraduation: str
-        :param _Abstract: The person’s profile.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Abstract: Description of the person.
         :type Abstract: str
-        :param _PlaceOfBirth: The person’s place of birth.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _PlaceOfBirth: Specifies the birthplace or place of origin.
         :type PlaceOfBirth: str
-        :param _PersonType: Whether the person is a politician or artist.
-<li>Politician</li>
-<li>Artist</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _PersonType: Person type.
+<Li>Politician: specifies the official.</li>.
+<Li>Artist: specifies the artist.</li>.
         :type PersonType: str
-        :param _Remark: Sensitivity
-<li>Normal</li>
-<li>Sensitive</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Remark: Sensitivity labeling.
+<Li>Normal: specifies the scaling group is normal.</li>.
+<Li>Sensitive: specifies sensitivity.</li>.
         :type Remark: str
-        :param _Url: The screenshot URL.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Url: Specifies the screenshot link.
         :type Url: str
         """
         self._Id = None
@@ -5676,10 +5670,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Gender(self):
-        """The person’s gender.
-<li>Male</li>
-<li>Female</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Gender of the person.
+<Li>Male: man.</li>.
+<Li>Female: specifies the woman.</li>.
         :rtype: str
         """
         return self._Gender
@@ -5690,8 +5683,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Birthday(self):
-        """The person’s birth date.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Date of birth.
         :rtype: str
         """
         return self._Birthday
@@ -5702,8 +5694,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Profession(self):
-        """The person’s job or job title.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Occupation or position of a person.
         :rtype: str
         """
         return self._Profession
@@ -5714,8 +5705,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SchoolOfGraduation(self):
-        """The college the person graduated from.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Specifies the graduation institution of the person.
         :rtype: str
         """
         return self._SchoolOfGraduation
@@ -5726,8 +5716,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Abstract(self):
-        """The person’s profile.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Description of the person.
         :rtype: str
         """
         return self._Abstract
@@ -5738,8 +5727,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PlaceOfBirth(self):
-        """The person’s place of birth.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Specifies the birthplace or place of origin.
         :rtype: str
         """
         return self._PlaceOfBirth
@@ -5750,10 +5738,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PersonType(self):
-        """Whether the person is a politician or artist.
-<li>Politician</li>
-<li>Artist</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Person type.
+<Li>Politician: specifies the official.</li>.
+<Li>Artist: specifies the artist.</li>.
         :rtype: str
         """
         return self._PersonType
@@ -5764,10 +5751,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Remark(self):
-        """Sensitivity
-<li>Normal</li>
-<li>Sensitive</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Sensitivity labeling.
+<Li>Normal: specifies the scaling group is normal.</li>.
+<Li>Sensitive: specifies sensitivity.</li>.
         :rtype: str
         """
         return self._Remark
@@ -5778,8 +5764,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Url(self):
-        """The screenshot URL.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Specifies the screenshot link.
         :rtype: str
         """
         return self._Url
@@ -13682,7 +13667,7 @@ class ComposeSubtitleItem(AbstractModel):
         r"""
         :param _StyleId: The subtitle style ID, which corresponds to the `Id` field of `ComposeStyles`.
         :type StyleId: str
-        :param _Text: The subtitle text.
+        :param _Text: Subtitle text. note: long text may exceed the frame. recommend using \n for line breaks.
         :type Text: str
         :param _TrackTime: The time of the element in the timeline. If this is not specified, the element will follow the previous element.	
         :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
@@ -13704,7 +13689,7 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def Text(self):
-        """The subtitle text.
+        """Subtitle text. note: long text may exceed the frame. recommend using \n for line breaks.
         :rtype: str
         """
         return self._Text
@@ -17019,10 +17004,14 @@ class CreateQualityControlTemplateRequest(AbstractModel):
         :type QualityControlItemSet: list of QualityControlItemConfig
         :param _Comment: Media quality inspection template description, with a length limit of 256 characters.
         :type Comment: str
+        :param _RecordFormat: Recording file format. Valid values:
+<li>PNG: PNG image.</li>
+        :type RecordFormat: str
         """
         self._Name = None
         self._QualityControlItemSet = None
         self._Comment = None
+        self._RecordFormat = None
 
     @property
     def Name(self):
@@ -17057,6 +17046,18 @@ class CreateQualityControlTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def RecordFormat(self):
+        """Recording file format. Valid values:
+<li>PNG: PNG image.</li>
+        :rtype: str
+        """
+        return self._RecordFormat
+
+    @RecordFormat.setter
+    def RecordFormat(self, RecordFormat):
+        self._RecordFormat = RecordFormat
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -17067,6 +17068,7 @@ class CreateQualityControlTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._QualityControlItemSet.append(obj)
         self._Comment = params.get("Comment")
+        self._RecordFormat = params.get("RecordFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21002,42 +21004,32 @@ class DescribeAsrHotwordsResponse(AbstractModel):
         r"""
         :param _HotwordsId: ID of the hotword lexicon to be queried.
         :type HotwordsId: str
-        :param _Status: Current status of the hotword lexicon corresponding to the ID. The value 0 indicates that no template is bound to this hotword lexicon when the query is performed and that the hotword lexicon can be deleted.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Status: Current hotword lexicon id status. a value of 0 indicates that no template is bound to this hotword lexicon at the query moment and it can be deleted.
         :type Status: int
-        :param _Name: Hotword lexicon name.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Name: Name of the hot lexicon.
         :type Name: str
-        :param _Type: The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.
-The value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.
+        :param _Type: Specifies the value is 0 for a temporary hotword lexicon and returns the string provided during creation.
+Specifies the value is 1 for a file-based hotword lexicon, and returns the content of the file uploaded during creation.
 
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Type: int
         :param _FileName: Name of the uploaded hotword file.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type FileName: str
         :param _HotWords: List of hotwords returned for the query.
         :type HotWords: list of AsrHotwordsSetItem
         :param _Content: Hotword text, which depends on the value of Type.
 If the value of Type is 0, the hotword string is returned.
 If the value of Type is 1, the base64-encoded content of the hotword file is returned.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Content: str
         :param _WordCount: Number of words contained in the hotword lexicon.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type WordCount: int
         :param _Offset: Paging offset. Default value: 0.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Offset: int
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Limit: int
-        :param _CreateTime: Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CreateTime: Hot word lexicon createtime in ISOUTC format "2006-01-02T15:04:05Z".
         :type CreateTime: str
-        :param _UpdateTime: Modification time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _UpdateTime: Hot lexicon last modified in ISOUTC format "2006-01-02T15:04:05Z".
         :type UpdateTime: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -21069,8 +21061,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
-        """Current status of the hotword lexicon corresponding to the ID. The value 0 indicates that no template is bound to this hotword lexicon when the query is performed and that the hotword lexicon can be deleted.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Current hotword lexicon id status. a value of 0 indicates that no template is bound to this hotword lexicon at the query moment and it can be deleted.
         :rtype: int
         """
         return self._Status
@@ -21081,8 +21072,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Name(self):
-        """Hotword lexicon name.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Name of the hot lexicon.
         :rtype: str
         """
         return self._Name
@@ -21093,11 +21083,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Type(self):
-        """The value is 0 for a temporary hotword lexicon, and the string provided during creation is returned.
-The value is 1 for a file-based hotword lexicon, and the content of the file uploaded during creation is returned.
+        """Specifies the value is 0 for a temporary hotword lexicon and returns the string provided during creation.
+Specifies the value is 1 for a file-based hotword lexicon, and returns the content of the file uploaded during creation.
 
 
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Type
@@ -21109,7 +21098,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def FileName(self):
         """Name of the uploaded hotword file.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FileName
@@ -21134,7 +21122,6 @@ Note: This field may return null, indicating that no valid value can be obtained
         """Hotword text, which depends on the value of Type.
 If the value of Type is 0, the hotword string is returned.
 If the value of Type is 1, the base64-encoded content of the hotword file is returned.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Content
@@ -21146,7 +21133,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def WordCount(self):
         """Number of words contained in the hotword lexicon.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._WordCount
@@ -21158,8 +21144,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Offset(self):
         """Paging offset. Default value: 0.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Offset
@@ -21171,7 +21155,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Limit(self):
         """Number of returned entries. Default value: 10. Maximum value: 100.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._Limit
@@ -21182,7 +21165,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreateTime(self):
-        """Creation time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".Note: This field may return null, indicating that no valid value can be obtained.
+        """Hot word lexicon createtime in ISOUTC format "2006-01-02T15:04:05Z".
         :rtype: str
         """
         return self._CreateTime
@@ -21193,8 +21176,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UpdateTime(self):
-        """Modification time of the hotword lexicon in ISO datetime format (UTC time). For example, "2006-01-02T15:04:05Z".
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Hot lexicon last modified in ISOUTC format "2006-01-02T15:04:05Z".
         :rtype: str
         """
         return self._UpdateTime
@@ -21295,8 +21277,7 @@ class DescribeBatchTaskDetailResponse(AbstractModel):
         :type FinishTime: str
         :param _TaskId: Media processing task ID.
         :type TaskId: str
-        :param _BatchTaskResult: Video processing task information. This field has a value only when TaskType is BatchTask.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BatchTaskResult: Video processing task information. this field has a value only when TaskType is BatchTask.
         :type BatchTaskResult: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         :param _TaskNotifyConfig: Event notification information of the task.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -21398,8 +21379,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BatchTaskResult(self):
-        """Video processing task information. This field has a value only when TaskType is BatchTask.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Video processing task information. this field has a value only when TaskType is BatchTask.
         :rtype: :class:`tencentcloud.mps.v20190612.models.BatchSubTaskResult`
         """
         return self._BatchTaskResult
@@ -24349,8 +24329,7 @@ class DescribeWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of eligible entries.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Total number of qualified records.
         :type TotalCount: int
         :param _WordSet: Keyword information.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -24364,8 +24343,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
-        """Number of eligible entries.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Total number of qualified records.
         :rtype: int
         """
         return self._TotalCount
@@ -24918,11 +24896,25 @@ class DrmInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Encryption type.
-<li>simpleaes: AES-128 encryption</li>
-<li> widevine</li>
-<li>fairplay: not supported for DASH streams</li>
-<li> playready</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+
+- simpleaes
+Can only be used for HLS. format support ts and mp4.
+Only can be used in slice mode. cannot be used in singlefile mode.
+
+- fairplay:
+Can only be used for HLS. valid values: mp4.
+Available for use in slice mode or singlefile mode.
+
+- widevine:
+Can be used for HLS and DASH. format can only be mp4.
+Output HLS: available for use in slice mode or singlefile mode.
+Output DASH: can only be in singlefile mode.
+
+- playready:
+Can be used for HLS and DASH. format can only be mp4.
+Output HLS: available for use in slice mode or singlefile mode.
+Output DASH: can only be singlefile mode.
+
         :type Type: str
         :param _SimpleAesDrm: The AES-128 encryption details.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -24937,11 +24929,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def Type(self):
         """Encryption type.
-<li>simpleaes: AES-128 encryption</li>
-<li> widevine</li>
-<li>fairplay: not supported for DASH streams</li>
-<li> playready</li>
-Note: This field may return null, indicating that no valid value can be obtained.
+
+- simpleaes
+Can only be used for HLS. format support ts and mp4.
+Only can be used in slice mode. cannot be used in singlefile mode.
+
+- fairplay:
+Can only be used for HLS. valid values: mp4.
+Available for use in slice mode or singlefile mode.
+
+- widevine:
+Can be used for HLS and DASH. format can only be mp4.
+Output HLS: available for use in slice mode or singlefile mode.
+Output DASH: can only be in singlefile mode.
+
+- playready:
+Can be used for HLS and DASH. format can only be mp4.
+Output HLS: available for use in slice mode or singlefile mode.
+Output DASH: can only be singlefile mode.
+
         :rtype: str
         """
         return self._Type
@@ -30088,11 +30094,23 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
         :type EndPtsTime: float
         :param _Confidence: Confidence of recognized segment. Value range: 0–100.
         :type Confidence: float
+        :param _StartTime: 
+        :type StartTime: str
+        :param _EndTime: 
+        :type EndTime: str
+        :param _SteadyState: 
+        :type SteadyState: bool
+        :param _UserId: User ID in the result of recognition via WebSocket and TRTC.Note: This field may return null, indicating that no valid value can be obtained.
+        :type UserId: str
         """
         self._Text = None
         self._StartPtsTime = None
         self._EndPtsTime = None
         self._Confidence = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SteadyState = None
+        self._UserId = None
 
     @property
     def Text(self):
@@ -30138,12 +30156,60 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
     def Confidence(self, Confidence):
         self._Confidence = Confidence
 
+    @property
+    def StartTime(self):
+        """
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SteadyState(self):
+        """
+        :rtype: bool
+        """
+        return self._SteadyState
+
+    @SteadyState.setter
+    def SteadyState(self, SteadyState):
+        self._SteadyState = SteadyState
+
+    @property
+    def UserId(self):
+        """User ID in the result of recognition via WebSocket and TRTC.Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
         self._StartPtsTime = params.get("StartPtsTime")
         self._EndPtsTime = params.get("EndPtsTime")
         self._Confidence = params.get("Confidence")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SteadyState = params.get("SteadyState")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31125,12 +31191,25 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         :type Confidence: float
         :param _Trans: The translation.
         :type Trans: str
+        :param _StartTime: 
+        :type StartTime: str
+        :param _EndTime: 
+        :type EndTime: str
+        :param _SteadyState: 
+        :type SteadyState: bool
+        :param _UserId: User ID in the result of real-time translation via WebSocket and TRTC.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type UserId: str
         """
         self._Text = None
         self._StartPtsTime = None
         self._EndPtsTime = None
         self._Confidence = None
         self._Trans = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SteadyState = None
+        self._UserId = None
 
     @property
     def Text(self):
@@ -31187,6 +31266,51 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
     def Trans(self, Trans):
         self._Trans = Trans
 
+    @property
+    def StartTime(self):
+        """
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SteadyState(self):
+        """
+        :rtype: bool
+        """
+        return self._SteadyState
+
+    @SteadyState.setter
+    def SteadyState(self, SteadyState):
+        self._SteadyState = SteadyState
+
+    @property
+    def UserId(self):
+        """User ID in the result of real-time translation via WebSocket and TRTC.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -31194,6 +31318,10 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
         self._EndPtsTime = params.get("EndPtsTime")
         self._Confidence = params.get("Confidence")
         self._Trans = params.get("Trans")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SteadyState = params.get("SteadyState")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31512,12 +31640,16 @@ class MediaAiAnalysisDescriptionItem(AbstractModel):
         :param _Paragraphs: Segmentation result.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Paragraphs: list of AiParagraphInfo
+        :param _MindMapUrl: Address of the mind map of a summary task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type MindMapUrl: str
         """
         self._Description = None
         self._Confidence = None
         self._Title = None
         self._Keywords = None
         self._Paragraphs = None
+        self._MindMapUrl = None
 
     @property
     def Description(self):
@@ -31575,6 +31707,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Paragraphs(self, Paragraphs):
         self._Paragraphs = Paragraphs
 
+    @property
+    def MindMapUrl(self):
+        """Address of the mind map of a summary task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._MindMapUrl
+
+    @MindMapUrl.setter
+    def MindMapUrl(self, MindMapUrl):
+        self._MindMapUrl = MindMapUrl
+
 
     def _deserialize(self, params):
         self._Description = params.get("Description")
@@ -31587,6 +31731,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AiParagraphInfo()
                 obj._deserialize(item)
                 self._Paragraphs.append(obj)
+        self._MindMapUrl = params.get("MindMapUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31897,7 +32042,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
         :type Storage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _Path: Path to a generated animated image file.
         :type Path: str
-        :param _Definition: ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :param _Definition: Specifies the rotating image template ID. see [rotating image template](https://intl.cloud.tencent.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(ID.3Amove)).
         :type Definition: int
         :param _Container: Animated image format, such as gif.
         :type Container: str
@@ -31952,7 +32097,7 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Definition(self):
-        """ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        """Specifies the rotating image template ID. see [rotating image template](https://intl.cloud.tencent.com/document/product/862/77168?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(ID.3Amove)).
         :rtype: int
         """
         return self._Definition
@@ -33452,9 +33597,12 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :type Message: str
         :param _Input: Input for an image sprite generating task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
-        :param _Output: Output of an image sprite generating task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Specifies the output of an image sprite task for a video.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
+        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type BeginProcessTime: str
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type FinishTime: str
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -33462,6 +33610,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
 
     @property
     def Status(self):
@@ -33520,8 +33670,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Output of an image sprite generating task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the output of an image sprite task for a video.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         return self._Output
@@ -33529,6 +33678,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Output.setter
     def Output(self, Output):
         self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
 
 
     def _deserialize(self, params):
@@ -33542,6 +33713,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self._Output = MediaImageSpriteItem()
             self._Output._deserialize(params.get("Output"))
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33875,12 +34048,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Message: str
         :param _Input: Input for a sampled screenshot task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
-        :param _Output: Output of a sampled screenshot task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Specifies the output of a sampling screenshot task for a video.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type FinishTime: str
         """
         self._Status = None
@@ -33950,8 +34122,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Output of a sampled screenshot task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the output of a sampling screenshot task for a video.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         return self._Output
@@ -33962,7 +34133,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginProcessTime(self):
-        """
+        """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._BeginProcessTime
@@ -33973,7 +34144,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishTime(self):
-        """
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._FinishTime
@@ -34023,12 +34194,11 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :type Message: str
         :param _Input: Input for a time point screenshot task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
-        :param _Output: Output of a time point screenshot task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Specifies the output of a screenshot task at specified time points for a video.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
-        :param _BeginProcessTime: The time when the task started executing, in ISO date format.
+        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
-        :param _FinishTime: The time when the task finished, in ISO date format.
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type FinishTime: str
         """
         self._Status = None
@@ -34097,8 +34267,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Output of a time point screenshot task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the output of a screenshot task at specified time points for a video.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         return self._Output
@@ -34109,7 +34278,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginProcessTime(self):
-        """The time when the task started executing, in ISO date format.
+        """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._BeginProcessTime
@@ -34120,7 +34289,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishTime(self):
-        """The time when the task finished, in ISO date format.
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :rtype: str
         """
         return self._FinishTime
@@ -34173,8 +34342,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         :param _Output: Output of a transcoding task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
-        :param _Progress: Transcoding progress. Value range: 0-100
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _Progress: Transcoding progress, with a value range of [0-100].
         :type Progress: int
         """
         self._Status = None
@@ -34254,8 +34422,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
-        """Transcoding progress. Value range: 0-100
-Note: This field may return `null`, indicating that no valid value was found.
+        """Transcoding progress, with a value range of [0-100].
         :rtype: int
         """
         return self._Progress
@@ -36642,8 +36809,7 @@ class ModifyPersonSampleResponse(AbstractModel):
         r"""
         :param _Person: Image information
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
-        :param _FailFaceInfoSet: Information of images that failed the verification by facial feature positioning.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _FailFaceInfoSet: Indicates the information of facial features with processing failure.
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -36665,8 +36831,7 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FailFaceInfoSet(self):
-        """Information of images that failed the verification by facial feature positioning.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        """Indicates the information of facial features with processing failure.
         :rtype: list of AiSampleFailFaceInfo
         """
         return self._FailFaceInfoSet
@@ -36715,11 +36880,15 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
         :type Comment: str
         :param _QualityControlItemSet: Media quality inspection configuration parameters.
         :type QualityControlItemSet: list of QualityControlItemConfig
+        :param _RecordFormat: Recording file format. Valid values:
+<li>PNG: PNG image.</li>
+        :type RecordFormat: str
         """
         self._Definition = None
         self._Name = None
         self._Comment = None
         self._QualityControlItemSet = None
+        self._RecordFormat = None
 
     @property
     def Definition(self):
@@ -36765,6 +36934,18 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
     def QualityControlItemSet(self, QualityControlItemSet):
         self._QualityControlItemSet = QualityControlItemSet
 
+    @property
+    def RecordFormat(self):
+        """Recording file format. Valid values:
+<li>PNG: PNG image.</li>
+        :rtype: str
+        """
+        return self._RecordFormat
+
+    @RecordFormat.setter
+    def RecordFormat(self, RecordFormat):
+        self._RecordFormat = RecordFormat
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -36776,6 +36957,7 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
                 obj = QualityControlItemConfig()
                 obj._deserialize(item)
                 self._QualityControlItemSet.append(obj)
+        self._RecordFormat = params.get("RecordFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38703,17 +38885,13 @@ class OverrideTranscodeParameter(AbstractModel):
         :param _TEHDConfig: The TSC transcoding parameters.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
-        :param _SubtitleTemplate: The subtitle settings.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubtitleTemplate: Subtitle stream configuration parameter.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
-        :param _AddonAudioStream: The information of the external audio track to add.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AddonAudioStream: Specifies the external audio track parameter.
         :type AddonAudioStream: list of MediaInputInfo
-        :param _StdExtInfo: An extended field for transcoding.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StdExtInfo: Extension field for transcoding.
         :type StdExtInfo: str
-        :param _AddOnSubtitles: The subtitle file to add.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AddOnSubtitles: Subtitle file to be inserted.
         :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Container = None
@@ -38800,8 +38978,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubtitleTemplate(self):
-        """The subtitle settings.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Subtitle stream configuration parameter.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
@@ -38812,8 +38989,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddonAudioStream(self):
-        """The information of the external audio track to add.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the external audio track parameter.
         :rtype: list of MediaInputInfo
         """
         return self._AddonAudioStream
@@ -38824,8 +39000,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StdExtInfo(self):
-        """An extended field for transcoding.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Extension field for transcoding.
         :rtype: str
         """
         return self._StdExtInfo
@@ -38836,8 +39011,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddOnSubtitles(self):
-        """The subtitle file to add.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Subtitle file to be inserted.
         :rtype: list of AddOnSubtitle
         """
         return self._AddOnSubtitles
@@ -38957,12 +39131,9 @@ Note: when this field return null, means no valid values can be obtained.
         :type SessionId: str
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param _Timestamp: - Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Timestamp: - expiration time, event notification signature expiration in UNIX Timestamp format. - notifications from media processing default to an expiration time of 10 minutes. if the time specified by the Timestamp value in a message notification has expired, the notification can be deemed invalid, furthermore preventing network replay attacks. - the Timestamp format is decimal UNIX Timestamp, seconds elapsed since midnight (UTC/GMT) on january 1, 1970.
         :type Timestamp: int
         :param _Sign: Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :type Sign: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -39101,8 +39272,7 @@ Note: when this field return null, means no valid values can be obtained.
 
     @property
     def Timestamp(self):
-        """- Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).
-Note: This field may return null, indicating that no valid value can be obtained.
+        """- expiration time, event notification signature expiration in UNIX Timestamp format. - notifications from media processing default to an expiration time of 10 minutes. if the time specified by the Timestamp value in a message notification has expired, the notification can be deemed invalid, furthermore preventing network replay attacks. - the Timestamp format is decimal UNIX Timestamp, seconds elapsed since midnight (UTC/GMT) on january 1, 1970.
         :rtype: int
         """
         return self._Timestamp
@@ -39114,8 +39284,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Sign(self):
         """Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
-
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._Sign
@@ -40751,7 +40919,13 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.
+        :param _Url: Live stream URL. (It should be a live streaming file address. RTMP, HLS, FLV, and TRTC addresses are supported.)
+A TRTC address is as follows:
+ trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
+`<roomid>` is the TRTC room ID, which is a number.
+`<sdkappid>` is the SDK app ID of TRTC.
+`<userid>` is the user ID for accessing a room, which can be used to distinguish robots.
+<`usersig>` is the TRTC user signature.
         :type Url: str
         :param _TaskNotifyConfig: Event notification information of a task, which is used to specify the live stream processing result.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -40792,7 +40966,13 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def Url(self):
-        """Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.
+        """Live stream URL. (It should be a live streaming file address. RTMP, HLS, FLV, and TRTC addresses are supported.)
+A TRTC address is as follows:
+ trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
+`<roomid>` is the TRTC room ID, which is a number.
+`<sdkappid>` is the SDK app ID of TRTC.
+`<userid>` is the user ID for accessing a room, which can be used to distinguish robots.
+<`usersig>` is the TRTC user signature.
         :rtype: str
         """
         return self._Url
@@ -42829,7 +43009,6 @@ Default value: 0.
         :param _TEHDConfig: TESHD transcoding parameter.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         :param _StdExtInfo: Additional parameter, which is a serialized JSON string.
-Note: This field may return null, indicating that no valid value can be obtained.
         :type StdExtInfo: str
         :param _EnhanceConfig: Audio/Video enhancement configuration.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -42919,7 +43098,6 @@ Default value: 0.
     @property
     def StdExtInfo(self):
         """Additional parameter, which is a serialized JSON string.
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._StdExtInfo
@@ -42978,8 +43156,12 @@ class RawWatermarkParameter(AbstractModel):
         :param _Type: Watermark type. Valid values:
 <li>image: image watermark.</li>
         :type Type: str
-        :param _CoordinateOrigin: Origin position, which currently can only be:
-<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.</li>
+        :param _CoordinateOrigin: Origin position. valid values:.
+<Li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>.
+<Li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>.
+<Li>BottomLeft: indicates that the coordinate origin is at the bottom-left corner of the video image and the watermark origin is at the bottom-left corner of the image or text.</li>.
+<li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>
+
 Default value: TopLeft.
         :type CoordinateOrigin: str
         :param _XPos: The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
@@ -43015,8 +43197,12 @@ Default value: 0 px.
 
     @property
     def CoordinateOrigin(self):
-        """Origin position, which currently can only be:
-<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.</li>
+        """Origin position. valid values:.
+<Li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>.
+<Li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>.
+<Li>BottomLeft: indicates that the coordinate origin is at the bottom-left corner of the video image and the watermark origin is at the bottom-left corner of the image or text.</li>.
+<li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>
+
 Default value: TopLeft.
         :rtype: str
         """
@@ -44122,9 +44308,12 @@ class ScheduleRecognitionTaskResult(AbstractModel):
         :type Message: str
         :param _Input: The input of the content recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _Output: The output of the content recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Output of the identification task.
         :type Output: list of AiRecognitionResult
+        :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type BeginProcessTime: str
+        :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :type FinishTime: str
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -44132,6 +44321,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
 
     @property
     def Status(self):
@@ -44190,8 +44381,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """The output of the content recognition task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Output of the identification task.
         :rtype: list of AiRecognitionResult
         """
         return self._Output
@@ -44199,6 +44389,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Output.setter
     def Output(self, Output):
         self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
 
 
     def _deserialize(self, params):
@@ -44215,6 +44427,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AiRecognitionResult()
                 obj._deserialize(item)
                 self._Output.append(obj)
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44360,17 +44574,13 @@ class ScheduleSmartSubtitleTaskResult(AbstractModel):
         :type ErrCode: int
         :param _Message: Error message.
         :type Message: str
-        :param _Input: Recognition task input.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Input: Input of the recognition task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
-        :param _Output: Recognition task output.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Output: Output of the identification task.
         :type Output: list of SmartSubtitlesResult
         :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type BeginProcessTime: str
         :param _FinishTime: Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type FinishTime: str
         """
         self._Status = None
@@ -44428,8 +44638,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Input(self):
-        """Recognition task input.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Input of the recognition task.
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
         return self._Input
@@ -44440,8 +44649,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Output(self):
-        """Recognition task output.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Output of the identification task.
         :rtype: list of SmartSubtitlesResult
         """
         return self._Output
@@ -44453,7 +44661,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def BeginProcessTime(self):
         """Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._BeginProcessTime
@@ -44465,7 +44672,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def FinishTime(self):
         """Task execution completion time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FinishTime
@@ -45077,24 +45283,19 @@ class SegmentRecognitionItem(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: 
         :type EndTimeOffset: float
-        :param _SegmentUrl: 
+        :param _SegmentUrl: Specifies the split segment URL.
         :type SegmentUrl: str
-        :param _CovImgUrl: Segment cover.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CovImgUrl: Specifies the segment cover.
         :type CovImgUrl: str
         :param _Title: Segment title.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Title: str
-        :param _Summary: Segment summary.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Summary: Specifies the segment summary.
         :type Summary: str
         :param _Keywords: Segmentation keywords.
         :type Keywords: list of str
-        :param _BeginTime: The start time of a live streaming segment, in the ISO date format.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BeginTime: Specifies the start time of a live streaming segment in the ISO date format.
         :type BeginTime: str
-        :param _EndTime: The end time of a live streaming segment, in the ISO date format.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EndTime: Specifies the end time of a live streaming segment in the ISO date format.
         :type EndTime: str
         :param _PersonId: Specifies the character ID.
         :type PersonId: str
@@ -45146,7 +45347,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentUrl(self):
-        """
+        """Specifies the split segment URL.
         :rtype: str
         """
         return self._SegmentUrl
@@ -45157,8 +45358,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CovImgUrl(self):
-        """Segment cover.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Specifies the segment cover.
         :rtype: str
         """
         return self._CovImgUrl
@@ -45170,7 +45370,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Title(self):
         """Segment title.
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Title
@@ -45181,8 +45380,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Summary(self):
-        """Segment summary.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the segment summary.
         :rtype: str
         """
         return self._Summary
@@ -45204,8 +45402,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginTime(self):
-        """The start time of a live streaming segment, in the ISO date format.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Specifies the start time of a live streaming segment in the ISO date format.
         :rtype: str
         """
         return self._BeginTime
@@ -45216,8 +45413,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
-        """The end time of a live streaming segment, in the ISO date format.
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Specifies the end time of a live streaming segment in the ISO date format.
         :rtype: str
         """
         return self._EndTime
@@ -47272,22 +47468,40 @@ class SubtitleTemplate(AbstractModel):
         :param _Path: The URL of the subtitles to add to the video.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Path: str
-        :param _StreamIndex: The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StreamIndex: Specifies the subtitle track for embedding subtitles into the video. the Streamindex parameter takes value starting from 0, where 0 indicates usage of the first subtitle track in the source video. if Path is specified, use Path preferentially. either Path or Streamindex should be specified.
+
+-Note: StreamIndex must match the subtitle track index in the source file. for example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. otherwise, task processing failed.
+
+
+Note: This field may return null, indicating that no valid value can be obtained.
         :type StreamIndex: int
-        :param _FontType: The font. Valid values:
-<li>`hei.ttf`: Heiti.</li>
-<li>`song.ttf`: Songti.</li>
-<li>`simkai.ttf`: Kaiti.</li>
-<li>`arial.ttf`: Arial.</li>
-The default is `hei.ttf`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FontType: Font type. valid values:.
+<li>hei.ttf: simhei.</li>.
+<li>song.ttf: simsun.</li>.
+<Li>Kai.Ttf (recommend) or simkai.ttf: kaiti.</li>.
+<li>msyh.ttf: microsoft yahei</li>.
+<li>msyhbd.ttf: microsoft yahei in bold.</li>.
+<li>hkjgt.ttf: dynafont king gothic</li>.
+<li>dhttx.ttf: dianheitexiti.</li>.
+<li>xqgdzt.ttf: xiqueguzidianti</li>.
+<li>qpcyt.ttf: smart splice super round body.</li>.
+<li>arial.ttf: english only.</li>.
+<li>dinalternate.ttf:DIN Alternate Bold</li>
+<li>helveticalt.ttf:Helvetica</li>
+<li>helveticains.ttf:Helvetica Inserat</li>
+<li>trajanpro.ttf:TrajanPro-Bold</li>
+<li>korean.ttf: specifies the korean language.</li>.
+<li>japanese.ttf: specifies the japanese language.</li>.
+<li>thai.ttf: specifies the thai language.</li>.
+Default: hei.ttf (heiti). note: kaiti is recommended for use with kai.ttf.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FontType: str
-        :param _FontSize: The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FontSize: Font size. Format: Npx, where N is a numerical value. If it is not specified, the font size of the subtitle file applies.
+It is 5% of the source video height by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FontSize: str
-        :param _FontColor: The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _FontColor: Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FontColor: str
         :param _FontAlpha: The text transparency. Value range: 0-1.
 <li>`0`: Fully transparent.</li>
@@ -47295,6 +47509,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Default value: 1.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FontAlpha: float
+        :param _YPos: Subtitle position on the Y-axis. If this parameter is specified, the built-in coordinates in the subtitle file will be ignored. The pixel and percentage formats are supported.
+
+ - Pixel: Npx. Value range of N: [0,4096].
+ - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle position on the Y-axis is 10% of the video height.
+
+By default, the position is 4% of the source video height.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type YPos: str
+        :param _BoardY: Subtitle background position on the Y-axis. Pixel and percentage formats are supported.
+
+ - Pixel: Npx. Value range of N: [0,4096].
+ - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle background position on the Y-axis is 10% of the video height.
+
+If this parameter is not specified, the subtitle background is disabled.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background is at the bottom of the central axis of the source video, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BoardY: str
+        :param _BoardWidth: Board width. Unit: pixels. Value range: [0,4096].
+It is 90% of the source video width by default.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BoardWidth: int
+        :param _BoardHeight: Board height. Unit: pixels. Value range: [0,4096].
+It is 15% of the source video height by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BoardHeight: int
+        :param _BoardColor: Board color. Format: 0xRRGGBB.
+Default value: 0x000000 (black).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BoardColor: str
+        :param _BoardAlpha: Subtitle background transparency. Value range: [0, 1].
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 0.8.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BoardAlpha: float
         """
         self._Path = None
         self._StreamIndex = None
@@ -47302,6 +47557,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FontSize = None
         self._FontColor = None
         self._FontAlpha = None
+        self._YPos = None
+        self._BoardY = None
+        self._BoardWidth = None
+        self._BoardHeight = None
+        self._BoardColor = None
+        self._BoardAlpha = None
 
     @property
     def Path(self):
@@ -47317,8 +47578,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamIndex(self):
-        """The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the subtitle track for embedding subtitles into the video. the Streamindex parameter takes value starting from 0, where 0 indicates usage of the first subtitle track in the source video. if Path is specified, use Path preferentially. either Path or Streamindex should be specified.
+
+-Note: StreamIndex must match the subtitle track index in the source file. for example, if the subtitle track in the source file is stream#0:3, StreamIndex should be 3. otherwise, task processing failed.
+
+
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._StreamIndex
@@ -47329,13 +47594,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontType(self):
-        """The font. Valid values:
-<li>`hei.ttf`: Heiti.</li>
-<li>`song.ttf`: Songti.</li>
-<li>`simkai.ttf`: Kaiti.</li>
-<li>`arial.ttf`: Arial.</li>
-The default is `hei.ttf`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Font type. valid values:.
+<li>hei.ttf: simhei.</li>.
+<li>song.ttf: simsun.</li>.
+<Li>Kai.Ttf (recommend) or simkai.ttf: kaiti.</li>.
+<li>msyh.ttf: microsoft yahei</li>.
+<li>msyhbd.ttf: microsoft yahei in bold.</li>.
+<li>hkjgt.ttf: dynafont king gothic</li>.
+<li>dhttx.ttf: dianheitexiti.</li>.
+<li>xqgdzt.ttf: xiqueguzidianti</li>.
+<li>qpcyt.ttf: smart splice super round body.</li>.
+<li>arial.ttf: english only.</li>.
+<li>dinalternate.ttf:DIN Alternate Bold</li>
+<li>helveticalt.ttf:Helvetica</li>
+<li>helveticains.ttf:Helvetica Inserat</li>
+<li>trajanpro.ttf:TrajanPro-Bold</li>
+<li>korean.ttf: specifies the korean language.</li>.
+<li>japanese.ttf: specifies the japanese language.</li>.
+<li>thai.ttf: specifies the thai language.</li>.
+Default: hei.ttf (heiti). note: kaiti is recommended for use with kai.ttf.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FontType
@@ -47346,8 +47624,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontSize(self):
-        """The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Font size. Format: Npx, where N is a numerical value. If it is not specified, the font size of the subtitle file applies.
+It is 5% of the source video height by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FontSize
@@ -47358,8 +47637,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontColor(self):
-        """The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Font color. Format: 0xRRGGBB. Default value: 0xFFFFFF (white).
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: str
         """
         return self._FontColor
@@ -47383,6 +47662,101 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def FontAlpha(self, FontAlpha):
         self._FontAlpha = FontAlpha
 
+    @property
+    def YPos(self):
+        """Subtitle position on the Y-axis. If this parameter is specified, the built-in coordinates in the subtitle file will be ignored. The pixel and percentage formats are supported.
+
+ - Pixel: Npx. Value range of N: [0,4096].
+ - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle position on the Y-axis is 10% of the video height.
+
+By default, the position is 4% of the source video height.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the subtitle reference position is at the bottom of the central axis of the subtitles, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def BoardY(self):
+        """Subtitle background position on the Y-axis. Pixel and percentage formats are supported.
+
+ - Pixel: Npx. Value range of N: [0,4096].
+ - Percentage: N%. Value range of N: [0,100]. For example, 10% indicates that the subtitle background position on the Y-axis is 10% of the video height.
+
+If this parameter is not specified, the subtitle background is disabled.
+Note: The origin of the coordinate axes is at the bottom of the central axis of the source video, and the reference position of the subtitle background is at the bottom of the central axis of the source video, as shown in the figure below.
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._BoardY
+
+    @BoardY.setter
+    def BoardY(self, BoardY):
+        self._BoardY = BoardY
+
+    @property
+    def BoardWidth(self):
+        """Board width. Unit: pixels. Value range: [0,4096].
+It is 90% of the source video width by default.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._BoardWidth
+
+    @BoardWidth.setter
+    def BoardWidth(self, BoardWidth):
+        self._BoardWidth = BoardWidth
+
+    @property
+    def BoardHeight(self):
+        """Board height. Unit: pixels. Value range: [0,4096].
+It is 15% of the source video height by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
+        return self._BoardHeight
+
+    @BoardHeight.setter
+    def BoardHeight(self, BoardHeight):
+        self._BoardHeight = BoardHeight
+
+    @property
+    def BoardColor(self):
+        """Board color. Format: 0xRRGGBB.
+Default value: 0x000000 (black).
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._BoardColor
+
+    @BoardColor.setter
+    def BoardColor(self, BoardColor):
+        self._BoardColor = BoardColor
+
+    @property
+    def BoardAlpha(self):
+        """Subtitle background transparency. Value range: [0, 1].
+<li>0: completely transparent.</li>
+<li>1: completely opaque.</li>
+Default value: 0.8.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: float
+        """
+        return self._BoardAlpha
+
+    @BoardAlpha.setter
+    def BoardAlpha(self, BoardAlpha):
+        self._BoardAlpha = BoardAlpha
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -47391,6 +47765,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        self._YPos = params.get("YPos")
+        self._BoardY = params.get("BoardY")
+        self._BoardWidth = params.get("BoardWidth")
+        self._BoardHeight = params.get("BoardHeight")
+        self._BoardColor = params.get("BoardColor")
+        self._BoardAlpha = params.get("BoardAlpha")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47858,13 +48238,13 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyType: The notification type. Valid values:
-<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
-<li>`TDMQ-CMQ`: Message queue</li>
-<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
-<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>
-<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>
-<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+        :param _NotifyType: Notification type. available values:.
+<li>CMQ: offline. switch to TDMQ-CMQ.</li>.
+<Li>TDMQ-CMQ: message queue</li>.
+<li>URL: when a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. the callback protocol is HTTP+json. the content of the packet body is the same as the output parameters of the parseeventnotification api.</li>.
+<Li>SCF: not recommended. additional configuration is required in the console.</li>.
+<Li>AWS-SQS: aws queue, suitable for aws tasks only and requires the same region.</li>.
+<font color="red">note: if left blank, it is TDMQ-CMQ by default. to use another type, you need to fill in the corresponding type value. if using TDMQ-CMQ message queue, an excessively large task response may cause queue failure.</font>.
         :type NotifyType: str
         :param _NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
         :type NotifyMode: str
@@ -47882,8 +48262,7 @@ class TaskNotifyConfig(AbstractModel):
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
-        :param _NotifyKey: The key used to generate the callback signature.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NotifyKey: key used to generate a callback signature.
         :type NotifyKey: str
         """
         self._NotifyType = None
@@ -47898,13 +48277,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyType(self):
-        """The notification type. Valid values:
-<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
-<li>`TDMQ-CMQ`: Message queue</li>
-<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
-<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>
-<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>
-<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+        """Notification type. available values:.
+<li>CMQ: offline. switch to TDMQ-CMQ.</li>.
+<Li>TDMQ-CMQ: message queue</li>.
+<li>URL: when a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. the callback protocol is HTTP+json. the content of the packet body is the same as the output parameters of the parseeventnotification api.</li>.
+<Li>SCF: not recommended. additional configuration is required in the console.</li>.
+<Li>AWS-SQS: aws queue, suitable for aws tasks only and requires the same region.</li>.
+<font color="red">note: if left blank, it is TDMQ-CMQ by default. to use another type, you need to fill in the corresponding type value. if using TDMQ-CMQ message queue, an excessively large task response may cause queue failure.</font>.
         :rtype: str
         """
         return self._NotifyType
@@ -47994,8 +48373,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyKey(self):
-        """The key used to generate the callback signature.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """key used to generate a callback signature.
         :rtype: str
         """
         return self._NotifyKey
@@ -48970,16 +49348,15 @@ class TranscodeTaskInput(AbstractModel):
         r"""
         :param _Definition: ID of a video transcoding template.
         :type Definition: int
-        :param _RawParameter: Custom video transcoding parameter, which is valid if `Definition` is 0.
-This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.
+        :param _RawParameter: Custom video transcoding parameter. valid when Definition is set to 0.
+This parameter is used in high customization scenarios. it is recommended that you preferentially use Definition to specify transcoding parameters.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         :param _OverrideParameter: Video transcoding custom parameter, which is valid when `Definition` is not 0.
 When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.
 This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.
 Note: this field may return `null`, indicating that no valid value was found.
         :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
-        :param _WatermarkSet: List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
         :param _MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
@@ -49039,8 +49416,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RawParameter(self):
-        """Custom video transcoding parameter, which is valid if `Definition` is 0.
-This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.
+        """Custom video transcoding parameter. valid when Definition is set to 0.
+This parameter is used in high customization scenarios. it is recommended that you preferentially use Definition to specify transcoding parameters.
         :rtype: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
         """
         return self._RawParameter
@@ -49065,8 +49442,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def WatermarkSet(self):
-        """List of up to 10 image or text watermarks.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -52230,10 +52606,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
         :param _CoordinateOrigin: Origin position. Valid values:
-<li>topLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
-<li>topRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
-<li>bottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
-<li>bottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+<li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>
+<li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>
+<li>BottomLeft: indicates that the coordinate origin is at the bottom left corner of the video image and the watermark origin is at the bottom left corner of the image or text.</li>
+<li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>
         :type CoordinateOrigin: str
         """
         self._Definition = None
@@ -52382,10 +52758,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def CoordinateOrigin(self):
         """Origin position. Valid values:
-<li>topLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
-<li>topRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
-<li>bottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
-<li>bottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+<li>TopLeft: indicates that the coordinate origin is at the top left corner of the video image and the watermark origin is at the top left corner of the image or text.</li>
+<li>TopRight: indicates that the coordinate origin is at the top right corner of the video image and the watermark origin is at the top right corner of the image or text.</li>
+<li>BottomLeft: indicates that the coordinate origin is at the bottom left corner of the video image and the watermark origin is at the bottom left corner of the image or text.</li>
+<li>BottomRight: indicates that the coordinate origin is at the bottom right corner of the video image and the watermark origin is at the bottom right corner of the image or text.</li>
         :rtype: str
         """
         return self._CoordinateOrigin
