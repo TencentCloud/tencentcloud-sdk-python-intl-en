@@ -1174,8 +1174,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 Common: audio/video type.
 PureAudio: audio-only.
         :type DefinitionType: str
-        :param _SubtitleTemplate: Subtitle setting.
-        :type SubtitleTemplate: str
+        :param _SubtitleTemplate: Specifies the subtitle parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1300,8 +1301,9 @@ PureAudio: audio-only.
 
     @property
     def SubtitleTemplate(self):
-        """Subtitle setting.
-        :rtype: str
+        """Specifies the subtitle parameter.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         return self._SubtitleTemplate
 
@@ -1334,7 +1336,9 @@ PureAudio: audio-only.
             self._DrmInfo = DrmInfo()
             self._DrmInfo._deserialize(params.get("DrmInfo"))
         self._DefinitionType = params.get("DefinitionType")
-        self._SubtitleTemplate = params.get("SubtitleTemplate")
+        if params.get("SubtitleTemplate") is not None:
+            self._SubtitleTemplate = SubtitleTemplate()
+            self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

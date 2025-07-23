@@ -2855,6 +2855,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ReplayInstanceAuditLog(self, request):
+        """This API is used to replay instance audit logs.
+
+        :param request: Request instance for ReplayInstanceAuditLog.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ReplayInstanceAuditLogRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ReplayInstanceAuditLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReplayInstanceAuditLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReplayInstanceAuditLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetAccountPassword(self, request):
         """This API is used to modify the database account password.
 

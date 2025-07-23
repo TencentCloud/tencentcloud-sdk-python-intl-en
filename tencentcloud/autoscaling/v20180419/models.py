@@ -1908,7 +1908,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoScalingGroupName: The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
+        :param _AutoScalingGroupName: The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen "-" and periods. It cannot exceed 55 bytes.
         :type AutoScalingGroupName: str
         :param _InstanceId: Instance ID. you can get the instance ID by logging in to the [console](https://console.cloud.tencent.com/cvm/index) or making an api call to [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) and retrieving the `InstanceId` from the returned information.
         :type InstanceId: str
@@ -1930,7 +1930,7 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
-        """The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
+        """The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen "-" and periods. It cannot exceed 55 bytes.
         :rtype: str
         """
         return self._AutoScalingGroupName
@@ -8158,28 +8158,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _BandwidthPackageId: Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
 Note: this field may return null, indicating that no valid value was found.
         :type BandwidthPackageId: str
-        :param _InternetServiceProvider: Describes the line type. For details, refer to [EIP Product Overview](https://intl.cloud.tencent.com/document/product/1199/41646?from_cn_redirect=1). default value: `BGP`.
+        :param _InternetServiceProvider: Describes the line type. For details, refer to [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). default value: `BGP`.
 
 <Li>BGP: general bgp line.</li>
 For a user who has enabled the static single-line IP allowlist, valid values include:
  <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
 Note: Only certain regions support static single-line IP addresses.
 
-
         :type InternetServiceProvider: str
         :param _IPv4AddressType: Type of public IP address.
 
-<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://cloud.tencent.com/document/product/1199/41646). </li> Specify the type of public IPv4 address to assign a public IPv4 address to the resource. Premium IP and Anti-DDoS IP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.cloud.tencent.com/workorder/category).
+<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). </li> 
+Specify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.tencentcloud.com/workorder).
         :type IPv4AddressType: str
         :param _AntiDDoSPackageId: Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
         :type AntiDDoSPackageId: str
-        :param _IsKeepEIP: Whether to delete the bound EIP when the instance is destroyed.
+        :param _IsKeepEIP: Whether to delete the bound EIP(HighQualityEIP and AntiDDoSEIP) when the instance is destroyed.
 
 Range of values:
 
-<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>
-
-Note that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. 
+<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>Note that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. 
 WanIP is unaffected by this field and will always be deleted with the instance. 
 Changing this field configuration will take effect immediately for resources already bound to a scaling group.
         :type IsKeepEIP: bool
@@ -8243,13 +8241,12 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InternetServiceProvider(self):
-        """Describes the line type. For details, refer to [EIP Product Overview](https://intl.cloud.tencent.com/document/product/1199/41646?from_cn_redirect=1). default value: `BGP`.
+        """Describes the line type. For details, refer to [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). default value: `BGP`.
 
 <Li>BGP: general bgp line.</li>
 For a user who has enabled the static single-line IP allowlist, valid values include:
  <li>CMCC: China Mobile</li> <li>CTCC: China Telecom</li> <li>CUCC: China Unicom</li>
 Note: Only certain regions support static single-line IP addresses.
-
 
         :rtype: str
         """
@@ -8263,7 +8260,8 @@ Note: Only certain regions support static single-line IP addresses.
     def IPv4AddressType(self):
         """Type of public IP address.
 
-<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://cloud.tencent.com/document/product/1199/41646). </li> Specify the type of public IPv4 address to assign a public IPv4 address to the resource. Premium IP and Anti-DDoS IP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.cloud.tencent.com/workorder/category).
+<li> WanIP: Ordinary public IP address. </li> <li> HighQualityEIP: High Quality EIP is supported only in Singapore and Hong Kong. </li> <li> AntiDDoSEIP: Anti-DDoS IP is supported only in specific regions. For details, see [EIP Product Overview](https://www.tencentcloud.com/document/product/213/5733). </li> 
+Specify the type of public IPv4 address to assign a public IPv4 address to the resource. HighQualityEIP and AntiDDoSEIP features are gradually released in select regions. For usage, [submit a ticket for consultation](https://console.tencentcloud.com/workorder).
         :rtype: str
         """
         return self._IPv4AddressType
@@ -8285,13 +8283,11 @@ Note: Only certain regions support static single-line IP addresses.
 
     @property
     def IsKeepEIP(self):
-        """Whether to delete the bound EIP when the instance is destroyed.
+        """Whether to delete the bound EIP(HighQualityEIP and AntiDDoSEIP) when the instance is destroyed.
 
 Range of values:
 
-<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>
-
-Note that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. 
+<li>TRUE: retain the EIP</li> <li>FALSE: not retain the EIP</li>Note that when the IPv4AddressType field specifies the EIP type, the default behavior is not to retain the EIP. 
 WanIP is unaffected by this field and will always be deleted with the instance. 
 Changing this field configuration will take effect immediately for resources already bound to a scaling group.
         :rtype: bool

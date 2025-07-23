@@ -971,3 +971,26 @@ class BillingClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PayDeals(self, request):
+        """This API is used to pay for an order.
+
+        :param request: Request instance for PayDeals.
+        :type request: :class:`tencentcloud.billing.v20180709.models.PayDealsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.PayDealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PayDeals", params, headers=headers)
+            response = json.loads(body)
+            model = models.PayDealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

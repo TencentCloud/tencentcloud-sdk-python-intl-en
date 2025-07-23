@@ -184,6 +184,8 @@ class ImageModerationRequest(AbstractModel):
         :type User: :class:`tencentcloud.ims.v20201229.models.User`
         :param _Device: This field indicates the information of the device that corresponds to the object to be detected. It can be passed in to identify the device involved in the violation.
         :type Device: :class:`tencentcloud.ims.v20201229.models.Device`
+        :param _Type: 
+        :type Type: str
         """
         self._BizType = None
         self._DataId = None
@@ -193,6 +195,7 @@ class ImageModerationRequest(AbstractModel):
         self._MaxFrames = None
         self._User = None
         self._Device = None
+        self._Type = None
 
     @property
     def BizType(self):
@@ -282,6 +285,17 @@ class ImageModerationRequest(AbstractModel):
     def Device(self, Device):
         self._Device = Device
 
+    @property
+    def Type(self):
+        """
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._BizType = params.get("BizType")
@@ -296,6 +310,7 @@ class ImageModerationRequest(AbstractModel):
         if params.get("Device") is not None:
             self._Device = Device()
             self._Device._deserialize(params.get("Device"))
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

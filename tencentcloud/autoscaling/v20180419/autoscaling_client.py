@@ -177,8 +177,6 @@ class AutoscalingClient(AbstractClient):
     def CreateAutoScalingGroupFromInstance(self, request):
         """This API is used to create launch configurations and scaling groups based on an instance.
 
-        Note: for a scaling group that is created based on a monthly-subscribed instance, the instances added for scale-out are pay-as-you-go instance.
-
         :param request: Request instance for CreateAutoScalingGroupFromInstance.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupFromInstanceRequest`
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CreateAutoScalingGroupFromInstanceResponse`
