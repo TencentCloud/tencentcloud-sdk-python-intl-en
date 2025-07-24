@@ -2894,7 +2894,8 @@ class DescribeCustomerBillDetailByDayRequest(AbstractModel):
 Such as "10000000001"
         :type CustomerUin: int
         :param _Date: Date.
-Such as" 2025-06-25"
+Such as" 2025-06-25".
+Please note: Historical daily bill dated before "2025-06-01",cannot be queried.
         :type Date: str
         """
         self._CustomerUin = None
@@ -2915,7 +2916,8 @@ Such as "10000000001"
     @property
     def Date(self):
         """Date.
-Such as" 2025-06-25"
+Such as" 2025-06-25".
+Please note: Historical daily bill dated before "2025-06-01",cannot be queried.
         :rtype: str
         """
         return self._Date
