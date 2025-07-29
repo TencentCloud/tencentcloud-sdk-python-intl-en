@@ -839,6 +839,10 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
         :type TimeShiftEnable: bool
         :param _TimeShiftDuration: The number of days to look back in TimeShift, up to 30 days is supported.
         :type TimeShiftDuration: int
+        :param _DRMEnabled: Enable DRM. This is only effective for CMAF protocol.
+        :type DRMEnabled: bool
+        :param _DRMInfo: DRM configuration information.
+        :type DRMInfo: :class:`tencentcloud.mdp.v20200527.models.DRMInfo`
         """
         self._Id = None
         self._Name = None
@@ -847,6 +851,8 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
         self._Manifest = None
         self._TimeShiftEnable = None
         self._TimeShiftDuration = None
+        self._DRMEnabled = None
+        self._DRMInfo = None
 
     @property
     def Id(self):
@@ -925,6 +931,28 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
     def TimeShiftDuration(self, TimeShiftDuration):
         self._TimeShiftDuration = TimeShiftDuration
 
+    @property
+    def DRMEnabled(self):
+        """Enable DRM. This is only effective for CMAF protocol.
+        :rtype: bool
+        """
+        return self._DRMEnabled
+
+    @DRMEnabled.setter
+    def DRMEnabled(self, DRMEnabled):
+        self._DRMEnabled = DRMEnabled
+
+    @property
+    def DRMInfo(self):
+        """DRM configuration information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DRMInfo`
+        """
+        return self._DRMInfo
+
+    @DRMInfo.setter
+    def DRMInfo(self, DRMInfo):
+        self._DRMInfo = DRMInfo
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -936,6 +964,10 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
         self._Manifest = params.get("Manifest")
         self._TimeShiftEnable = params.get("TimeShiftEnable")
         self._TimeShiftDuration = params.get("TimeShiftDuration")
+        self._DRMEnabled = params.get("DRMEnabled")
+        if params.get("DRMInfo") is not None:
+            self._DRMInfo = DRMInfo()
+            self._DRMInfo._deserialize(params.get("DRMInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6764,6 +6796,10 @@ Calculation starts from the first '/' in the url path, and the subscript starts 
         :param _CustomUrlParam: Customer-defined url parameters are inserted into the specified position of the Endpoint url based on the CustomUrlParamIndex.
 The parameters can only contain digits, letters, underscores (_), and hyphens (-), with a length of 1 to 64 chars.
         :type CustomUrlParam: str
+        :param _DRMEnabled: Enable DRM. This is only effective for CMAF protocol.
+        :type DRMEnabled: bool
+        :param _DRMInfo: DRM configuration information
+        :type DRMInfo: :class:`tencentcloud.mdp.v20200527.models.DRMInfo`
         """
         self._Id = None
         self._Url = None
@@ -6776,6 +6812,8 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
         self._SSAIInfo = None
         self._CustomUrlParamIndex = None
         self._CustomUrlParam = None
+        self._DRMEnabled = None
+        self._DRMInfo = None
 
     @property
     def Id(self):
@@ -6900,6 +6938,28 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
     def CustomUrlParam(self, CustomUrlParam):
         self._CustomUrlParam = CustomUrlParam
 
+    @property
+    def DRMEnabled(self):
+        """Enable DRM. This is only effective for CMAF protocol.
+        :rtype: bool
+        """
+        return self._DRMEnabled
+
+    @DRMEnabled.setter
+    def DRMEnabled(self, DRMEnabled):
+        self._DRMEnabled = DRMEnabled
+
+    @property
+    def DRMInfo(self):
+        """DRM configuration information
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DRMInfo`
+        """
+        return self._DRMInfo
+
+    @DRMInfo.setter
+    def DRMInfo(self, DRMInfo):
+        self._DRMInfo = DRMInfo
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6917,6 +6977,10 @@ The parameters can only contain digits, letters, underscores (_), and hyphens (-
             self._SSAIInfo._deserialize(params.get("SSAIInfo"))
         self._CustomUrlParamIndex = params.get("CustomUrlParamIndex")
         self._CustomUrlParam = params.get("CustomUrlParam")
+        self._DRMEnabled = params.get("DRMEnabled")
+        if params.get("DRMInfo") is not None:
+            self._DRMInfo = DRMInfo()
+            self._DRMInfo._deserialize(params.get("DRMInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

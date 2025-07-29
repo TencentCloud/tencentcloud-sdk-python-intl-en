@@ -184,6 +184,11 @@ def test_import_csip():
     from tencentcloud.csip.v20221121 import models
 
 
+def test_import_ctsdb():
+    from tencentcloud.ctsdb.v20230202 import ctsdb_client
+    from tencentcloud.ctsdb.v20230202 import models
+
+
 def test_import_cvm():
     from tencentcloud.cvm.v20170312 import cvm_client
     from tencentcloud.cvm.v20170312 import models
