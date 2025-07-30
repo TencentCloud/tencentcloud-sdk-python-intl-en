@@ -1177,6 +1177,8 @@ PureAudio: audio-only.
         :param _SubtitleTemplate: Specifies the subtitle parameter.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        :param _StdExtInfo: Extension field for transcoding.
+        :type StdExtInfo: str
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -1188,6 +1190,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._DrmInfo = None
         self._DefinitionType = None
         self._SubtitleTemplate = None
+        self._StdExtInfo = None
 
     @property
     def Definition(self):
@@ -1311,6 +1314,17 @@ Note: This field may return null, indicating that no valid value can be obtained
     def SubtitleTemplate(self, SubtitleTemplate):
         self._SubtitleTemplate = SubtitleTemplate
 
+    @property
+    def StdExtInfo(self):
+        """Extension field for transcoding.
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1339,6 +1353,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("SubtitleTemplate") is not None:
             self._SubtitleTemplate = SubtitleTemplate()
             self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

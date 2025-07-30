@@ -1224,7 +1224,7 @@ class AudioTemplateInfo(AbstractModel):
         :param _AudioBitrate: Audio bitrate. If this parameter is left empty, the original value will be used.
 Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000
         :type AudioBitrate: int
-        :param _LanguageCode: Audio language code, whose length is always 3 characters.
+        :param _LanguageCode: Audio language code, which length is between 2 and 20.
         :type LanguageCode: str
         :param _AudioNormalization: Audio transcoding special configuration information.
         :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
@@ -1232,6 +1232,8 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         :type AudioSampleRate: int
         :param _AudioCodecDetails: Audio encoding parameters.
         :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
+        :param _LanguageDescription: Audio language description, which maximum length is 100.
+        :type LanguageDescription: str
         """
         self._AudioSelectorName = None
         self._Name = None
@@ -1241,6 +1243,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         self._AudioNormalization = None
         self._AudioSampleRate = None
         self._AudioCodecDetails = None
+        self._LanguageDescription = None
 
     @property
     def AudioSelectorName(self):
@@ -1289,7 +1292,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
 
     @property
     def LanguageCode(self):
-        """Audio language code, whose length is always 3 characters.
+        """Audio language code, which length is between 2 and 20.
         :rtype: str
         """
         return self._LanguageCode
@@ -1331,6 +1334,17 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
     def AudioCodecDetails(self, AudioCodecDetails):
         self._AudioCodecDetails = AudioCodecDetails
 
+    @property
+    def LanguageDescription(self):
+        """Audio language description, which maximum length is 100.
+        :rtype: str
+        """
+        return self._LanguageDescription
+
+    @LanguageDescription.setter
+    def LanguageDescription(self, LanguageDescription):
+        self._LanguageDescription = LanguageDescription
+
 
     def _deserialize(self, params):
         self._AudioSelectorName = params.get("AudioSelectorName")
@@ -1345,6 +1359,7 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         if params.get("AudioCodecDetails") is not None:
             self._AudioCodecDetails = AudioCodecDetail()
             self._AudioCodecDetails._deserialize(params.get("AudioCodecDetails"))
+        self._LanguageDescription = params.get("LanguageDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

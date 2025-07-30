@@ -831,6 +831,29 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamPackageSSAIUsage(self, request):
+        """This API is used to query SSAI ad replacement usage.
+
+        :param request: Request instance for DescribeStreamPackageSSAIUsage.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIUsageRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageSSAIUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSSAIUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSSAIUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStreamPackageSource(self, request):
         """Query channel linear assembly Source information.
 
