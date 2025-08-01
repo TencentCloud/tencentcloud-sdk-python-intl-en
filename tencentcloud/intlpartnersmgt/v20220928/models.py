@@ -3911,6 +3911,336 @@ class DescribeCustomerInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCustomerOwnVoucherItem(AbstractModel):
+    """Voucher data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoucherId: Voucher ID.
+        :type VoucherId: int
+        :param _CustomerUin: Sub-account UIN
+        :type CustomerUin: int
+        :param _VoucherStatus: Voucher status: Issued/Used/Expired/Invalidated.
+        :type VoucherStatus: str
+        :param _RemainingAmount: Remaining amount.
+        :type RemainingAmount: float
+        :param _TotalAmount: Denomination.
+        :type TotalAmount: float
+        :param _PaymentMode: Payment mode. valid values: AllPayment, Prepaid, and Postpaid.
+        :type PaymentMode: str
+        :param _ProductScope: Applicable product: AllProducts/SpecifyProducts/SpecifyProductsBlacklist.
+        :type ProductScope: str
+        :param _EffectiveTime: Start time.
+        :type EffectiveTime: str
+        :param _ExpireTime: End time.
+        :type ExpireTime: str
+        """
+        self._VoucherId = None
+        self._CustomerUin = None
+        self._VoucherStatus = None
+        self._RemainingAmount = None
+        self._TotalAmount = None
+        self._PaymentMode = None
+        self._ProductScope = None
+        self._EffectiveTime = None
+        self._ExpireTime = None
+
+    @property
+    def VoucherId(self):
+        """Voucher ID.
+        :rtype: int
+        """
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+    @property
+    def CustomerUin(self):
+        """Sub-account UIN
+        :rtype: int
+        """
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def VoucherStatus(self):
+        """Voucher status: Issued/Used/Expired/Invalidated.
+        :rtype: str
+        """
+        return self._VoucherStatus
+
+    @VoucherStatus.setter
+    def VoucherStatus(self, VoucherStatus):
+        self._VoucherStatus = VoucherStatus
+
+    @property
+    def RemainingAmount(self):
+        """Remaining amount.
+        :rtype: float
+        """
+        return self._RemainingAmount
+
+    @RemainingAmount.setter
+    def RemainingAmount(self, RemainingAmount):
+        self._RemainingAmount = RemainingAmount
+
+    @property
+    def TotalAmount(self):
+        """Denomination.
+        :rtype: float
+        """
+        return self._TotalAmount
+
+    @TotalAmount.setter
+    def TotalAmount(self, TotalAmount):
+        self._TotalAmount = TotalAmount
+
+    @property
+    def PaymentMode(self):
+        """Payment mode. valid values: AllPayment, Prepaid, and Postpaid.
+        :rtype: str
+        """
+        return self._PaymentMode
+
+    @PaymentMode.setter
+    def PaymentMode(self, PaymentMode):
+        self._PaymentMode = PaymentMode
+
+    @property
+    def ProductScope(self):
+        """Applicable product: AllProducts/SpecifyProducts/SpecifyProductsBlacklist.
+        :rtype: str
+        """
+        return self._ProductScope
+
+    @ProductScope.setter
+    def ProductScope(self, ProductScope):
+        self._ProductScope = ProductScope
+
+    @property
+    def EffectiveTime(self):
+        """Start time.
+        :rtype: str
+        """
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def ExpireTime(self):
+        """End time.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._VoucherId = params.get("VoucherId")
+        self._CustomerUin = params.get("CustomerUin")
+        self._VoucherStatus = params.get("VoucherStatus")
+        self._RemainingAmount = params.get("RemainingAmount")
+        self._TotalAmount = params.get("TotalAmount")
+        self._PaymentMode = params.get("PaymentMode")
+        self._ProductScope = params.get("ProductScope")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerOwnVoucherListRequest(AbstractModel):
+    """DescribeCustomerOwnVoucherList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: Page number, starts from 1.
+        :type Page: int
+        :param _PageSize: Number of items per page. value range: 1-100.
+        :type PageSize: int
+        :param _VoucherStatus: Voucher status. valid values: Issued, Used, Expired, Invalidated.
+        :type VoucherStatus: str
+        :param _PaymentMode: Payment mode. valid values: AllPayment, Prepaid, Postpaid.
+        :type PaymentMode: str
+        :param _ProductScope: Applicable product. valid values: AllProducts, SpecifyProducts, SpecifyProductsBlacklist.
+        :type ProductScope: str
+        :param _VoucherId: Voucher ID.
+        :type VoucherId: int
+        """
+        self._Page = None
+        self._PageSize = None
+        self._VoucherStatus = None
+        self._PaymentMode = None
+        self._ProductScope = None
+        self._VoucherId = None
+
+    @property
+    def Page(self):
+        """Page number, starts from 1.
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        """Number of items per page. value range: 1-100.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def VoucherStatus(self):
+        """Voucher status. valid values: Issued, Used, Expired, Invalidated.
+        :rtype: str
+        """
+        return self._VoucherStatus
+
+    @VoucherStatus.setter
+    def VoucherStatus(self, VoucherStatus):
+        self._VoucherStatus = VoucherStatus
+
+    @property
+    def PaymentMode(self):
+        """Payment mode. valid values: AllPayment, Prepaid, Postpaid.
+        :rtype: str
+        """
+        return self._PaymentMode
+
+    @PaymentMode.setter
+    def PaymentMode(self, PaymentMode):
+        self._PaymentMode = PaymentMode
+
+    @property
+    def ProductScope(self):
+        """Applicable product. valid values: AllProducts, SpecifyProducts, SpecifyProductsBlacklist.
+        :rtype: str
+        """
+        return self._ProductScope
+
+    @ProductScope.setter
+    def ProductScope(self, ProductScope):
+        self._ProductScope = ProductScope
+
+    @property
+    def VoucherId(self):
+        """Voucher ID.
+        :rtype: int
+        """
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._VoucherStatus = params.get("VoucherStatus")
+        self._PaymentMode = params.get("PaymentMode")
+        self._ProductScope = params.get("ProductScope")
+        self._VoucherId = params.get("VoucherId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerOwnVoucherListResponse(AbstractModel):
+    """DescribeCustomerOwnVoucherList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of the list.
+        :type TotalCount: int
+        :param _Data: Voucher information description.
+        :type Data: list of DescribeCustomerOwnVoucherItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of the list.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """Voucher information description.
+        :rtype: list of DescribeCustomerOwnVoucherItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeCustomerOwnVoucherItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCustomerUinData(AbstractModel):
     """List of customer UINs
 
@@ -4058,6 +4388,396 @@ class DescribeCustomerUinResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomerVoucherItem(AbstractModel):
+    """Voucher data.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoucherId: Voucher ID.
+        :type VoucherId: int
+        :param _CustomerUin: Sub-account UIN
+        :type CustomerUin: int
+        :param _VoucherStatus: Voucher status: Issued/Used/Expired/Invalidated.
+        :type VoucherStatus: str
+        :param _RemainingAmount: Remaining amount.
+        :type RemainingAmount: float
+        :param _TotalAmount: Denomination.
+        :type TotalAmount: float
+        :param _Usage: Purpose: ProductTrial/CustomerOffer.
+        :type Usage: str
+        :param _PaymentMode: Payment mode. valid values: AllPayment, Prepaid, and Postpaid.
+        :type PaymentMode: str
+        :param _ProductScope: Applicable product: AllProducts/SpecifyProducts/SpecifyProductsBlacklist.
+        :type ProductScope: str
+        :param _EffectiveTime: Start time.
+        :type EffectiveTime: str
+        :param _ExpireTime: End time.
+        :type ExpireTime: str
+        :param _ApplyReason: Application notes
+        :type ApplyReason: str
+        """
+        self._VoucherId = None
+        self._CustomerUin = None
+        self._VoucherStatus = None
+        self._RemainingAmount = None
+        self._TotalAmount = None
+        self._Usage = None
+        self._PaymentMode = None
+        self._ProductScope = None
+        self._EffectiveTime = None
+        self._ExpireTime = None
+        self._ApplyReason = None
+
+    @property
+    def VoucherId(self):
+        """Voucher ID.
+        :rtype: int
+        """
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+    @property
+    def CustomerUin(self):
+        """Sub-account UIN
+        :rtype: int
+        """
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def VoucherStatus(self):
+        """Voucher status: Issued/Used/Expired/Invalidated.
+        :rtype: str
+        """
+        return self._VoucherStatus
+
+    @VoucherStatus.setter
+    def VoucherStatus(self, VoucherStatus):
+        self._VoucherStatus = VoucherStatus
+
+    @property
+    def RemainingAmount(self):
+        """Remaining amount.
+        :rtype: float
+        """
+        return self._RemainingAmount
+
+    @RemainingAmount.setter
+    def RemainingAmount(self, RemainingAmount):
+        self._RemainingAmount = RemainingAmount
+
+    @property
+    def TotalAmount(self):
+        """Denomination.
+        :rtype: float
+        """
+        return self._TotalAmount
+
+    @TotalAmount.setter
+    def TotalAmount(self, TotalAmount):
+        self._TotalAmount = TotalAmount
+
+    @property
+    def Usage(self):
+        """Purpose: ProductTrial/CustomerOffer.
+        :rtype: str
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def PaymentMode(self):
+        """Payment mode. valid values: AllPayment, Prepaid, and Postpaid.
+        :rtype: str
+        """
+        return self._PaymentMode
+
+    @PaymentMode.setter
+    def PaymentMode(self, PaymentMode):
+        self._PaymentMode = PaymentMode
+
+    @property
+    def ProductScope(self):
+        """Applicable product: AllProducts/SpecifyProducts/SpecifyProductsBlacklist.
+        :rtype: str
+        """
+        return self._ProductScope
+
+    @ProductScope.setter
+    def ProductScope(self, ProductScope):
+        self._ProductScope = ProductScope
+
+    @property
+    def EffectiveTime(self):
+        """Start time.
+        :rtype: str
+        """
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def ExpireTime(self):
+        """End time.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ApplyReason(self):
+        """Application notes
+        :rtype: str
+        """
+        return self._ApplyReason
+
+    @ApplyReason.setter
+    def ApplyReason(self, ApplyReason):
+        self._ApplyReason = ApplyReason
+
+
+    def _deserialize(self, params):
+        self._VoucherId = params.get("VoucherId")
+        self._CustomerUin = params.get("CustomerUin")
+        self._VoucherStatus = params.get("VoucherStatus")
+        self._RemainingAmount = params.get("RemainingAmount")
+        self._TotalAmount = params.get("TotalAmount")
+        self._Usage = params.get("Usage")
+        self._PaymentMode = params.get("PaymentMode")
+        self._ProductScope = params.get("ProductScope")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ApplyReason = params.get("ApplyReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerVoucherListRequest(AbstractModel):
+    """DescribeCustomerVoucherList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: Page number, starts from 1.
+        :type Page: int
+        :param _PageSize: Number of items per page. value range: 1-100.
+        :type PageSize: int
+        :param _CustomerUin: Customer UIN.
+        :type CustomerUin: int
+        :param _VoucherStatus: Voucher status. valid values: Issued, Used, Expired, Invalidated.
+        :type VoucherStatus: str
+        :param _PaymentMode: Payment mode. valid values: AllPayment, Prepaid, Postpaid.
+        :type PaymentMode: str
+        :param _Usage: valid values: ProductTrial, CustomerOffer.
+        :type Usage: str
+        :param _ProductScope: Applicable product. valid values: AllProducts, SpecifyProducts, SpecifyProductsBlacklist.
+        :type ProductScope: str
+        :param _VoucherId: Voucher ID.
+        :type VoucherId: int
+        """
+        self._Page = None
+        self._PageSize = None
+        self._CustomerUin = None
+        self._VoucherStatus = None
+        self._PaymentMode = None
+        self._Usage = None
+        self._ProductScope = None
+        self._VoucherId = None
+
+    @property
+    def Page(self):
+        """Page number, starts from 1.
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        """Number of items per page. value range: 1-100.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def CustomerUin(self):
+        """Customer UIN.
+        :rtype: int
+        """
+        return self._CustomerUin
+
+    @CustomerUin.setter
+    def CustomerUin(self, CustomerUin):
+        self._CustomerUin = CustomerUin
+
+    @property
+    def VoucherStatus(self):
+        """Voucher status. valid values: Issued, Used, Expired, Invalidated.
+        :rtype: str
+        """
+        return self._VoucherStatus
+
+    @VoucherStatus.setter
+    def VoucherStatus(self, VoucherStatus):
+        self._VoucherStatus = VoucherStatus
+
+    @property
+    def PaymentMode(self):
+        """Payment mode. valid values: AllPayment, Prepaid, Postpaid.
+        :rtype: str
+        """
+        return self._PaymentMode
+
+    @PaymentMode.setter
+    def PaymentMode(self, PaymentMode):
+        self._PaymentMode = PaymentMode
+
+    @property
+    def Usage(self):
+        """valid values: ProductTrial, CustomerOffer.
+        :rtype: str
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def ProductScope(self):
+        """Applicable product. valid values: AllProducts, SpecifyProducts, SpecifyProductsBlacklist.
+        :rtype: str
+        """
+        return self._ProductScope
+
+    @ProductScope.setter
+    def ProductScope(self, ProductScope):
+        self._ProductScope = ProductScope
+
+    @property
+    def VoucherId(self):
+        """Voucher ID.
+        :rtype: int
+        """
+        return self._VoucherId
+
+    @VoucherId.setter
+    def VoucherId(self, VoucherId):
+        self._VoucherId = VoucherId
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._CustomerUin = params.get("CustomerUin")
+        self._VoucherStatus = params.get("VoucherStatus")
+        self._PaymentMode = params.get("PaymentMode")
+        self._Usage = params.get("Usage")
+        self._ProductScope = params.get("ProductScope")
+        self._VoucherId = params.get("VoucherId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomerVoucherListResponse(AbstractModel):
+    """DescribeCustomerVoucherList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of the list.
+        :type TotalCount: int
+        :param _Data: Voucher information description.
+        :type Data: list of DescribeCustomerVoucherItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        """Total number of the list.
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        """Voucher information description.
+        :rtype: list of DescribeCustomerVoucherItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DescribeCustomerVoucherItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

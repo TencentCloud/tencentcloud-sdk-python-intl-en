@@ -450,6 +450,30 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomerOwnVoucherList(self, request):
+        """This API is used to query the voucher list by Customer.
+        Callable roles: Customer.
+
+        :param request: Request instance for DescribeCustomerOwnVoucherList.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerOwnVoucherListRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerOwnVoucherListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerOwnVoucherList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerOwnVoucherListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCustomerUin(self, request):
         """This API is used to query the list of customer UINs.
 
@@ -464,6 +488,30 @@ class IntlpartnersmgtClient(AbstractClient):
             body = self.call("DescribeCustomerUin", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCustomerUinResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomerVoucherList(self, request):
+        """This API is used to query the customer voucher list by Reseller, Second-level Reseller or Distributor.
+        Callable roles: Reseller, Second-level Reseller or Distributor.
+
+        :param request: Request instance for DescribeCustomerVoucherList.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerVoucherListRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerVoucherListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomerVoucherList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomerVoucherListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

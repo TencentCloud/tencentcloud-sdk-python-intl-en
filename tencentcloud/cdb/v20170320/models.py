@@ -410,6 +410,10 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         :type ConnectionPool: bool
         :param _ProxyAllocation: Assignment of read/write weights If `system` is passed in for `WeightMode`, only the default weight assigned by the system will take effect.
         :type ProxyAllocation: list of ProxyAllocation
+        :param _AutoLoadBalance: 
+        :type AutoLoadBalance: bool
+        :param _AccessMode: 
+        :type AccessMode: str
         """
         self._ProxyGroupId = None
         self._WeightMode = None
@@ -423,6 +427,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
         self._TransSplit = None
         self._ConnectionPool = None
         self._ProxyAllocation = None
+        self._AutoLoadBalance = None
+        self._AccessMode = None
 
     @property
     def ProxyGroupId(self):
@@ -556,6 +562,28 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
     def ProxyAllocation(self, ProxyAllocation):
         self._ProxyAllocation = ProxyAllocation
 
+    @property
+    def AutoLoadBalance(self):
+        """
+        :rtype: bool
+        """
+        return self._AutoLoadBalance
+
+    @AutoLoadBalance.setter
+    def AutoLoadBalance(self, AutoLoadBalance):
+        self._AutoLoadBalance = AutoLoadBalance
+
+    @property
+    def AccessMode(self):
+        """
+        :rtype: str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
 
     def _deserialize(self, params):
         self._ProxyGroupId = params.get("ProxyGroupId")
@@ -575,6 +603,8 @@ class AdjustCdbProxyAddressRequest(AbstractModel):
                 obj = ProxyAllocation()
                 obj._deserialize(item)
                 self._ProxyAllocation.append(obj)
+        self._AutoLoadBalance = params.get("AutoLoadBalance")
+        self._AccessMode = params.get("AccessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5264,6 +5294,10 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param _ConnectionPoolType: Connection pool type, which will take effect only when `ConnectionPool` is `true`. Valid values:  `transaction` (transaction-level), `connection` (session-level).
         :type ConnectionPoolType: str
+        :param _AutoLoadBalance: 
+        :type AutoLoadBalance: bool
+        :param _AccessMode: 
+        :type AccessMode: str
         """
         self._ProxyGroupId = None
         self._WeightMode = None
@@ -5283,6 +5317,8 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         self._VPort = None
         self._SecurityGroup = None
         self._ConnectionPoolType = None
+        self._AutoLoadBalance = None
+        self._AccessMode = None
 
     @property
     def ProxyGroupId(self):
@@ -5482,6 +5518,28 @@ class CreateCdbProxyAddressRequest(AbstractModel):
     def ConnectionPoolType(self, ConnectionPoolType):
         self._ConnectionPoolType = ConnectionPoolType
 
+    @property
+    def AutoLoadBalance(self):
+        """
+        :rtype: bool
+        """
+        return self._AutoLoadBalance
+
+    @AutoLoadBalance.setter
+    def AutoLoadBalance(self, AutoLoadBalance):
+        self._AutoLoadBalance = AutoLoadBalance
+
+    @property
+    def AccessMode(self):
+        """
+        :rtype: str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
 
     def _deserialize(self, params):
         self._ProxyGroupId = params.get("ProxyGroupId")
@@ -5507,6 +5565,8 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         self._VPort = params.get("VPort")
         self._SecurityGroup = params.get("SecurityGroup")
         self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._AutoLoadBalance = params.get("AutoLoadBalance")
+        self._AccessMode = params.get("AccessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13065,7 +13125,7 @@ class DescribeDBPriceRequest(AbstractModel):
         r"""
         :param _Period: Instance validity period in months. Value range: 1-36. This field is invalid when querying the prices of pay-as-you-go instances.
         :type Period: int
-        :param _Zone: AZ information in the format of "ap-guangzhou-2". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
+        :param _Zone: AZ information in the format of "ap-guangzhou-3". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
         :type Zone: str
         :param _GoodsNum: Number of instances. Value range: 1-100. Default value: 1. This parameter is required when `InstanceId` is empty.
         :type GoodsNum: int
@@ -13089,6 +13149,8 @@ class DescribeDBPriceRequest(AbstractModel):
         :type InstanceId: str
         :param _Ladder: Tiered pay-as-you-go pricing, which is valid only when `PayType` is set to `HOUR_PAID`. Valid values: `1`, `2`, `3`. For more information on tiered duration, visit https://intl.cloud.tencent.com/document/product/236/18335.?from_cn_redirect=1
         :type Ladder: int
+        :param _DiskType: 
+        :type DiskType: str
         """
         self._Period = None
         self._Zone = None
@@ -13103,6 +13165,7 @@ class DescribeDBPriceRequest(AbstractModel):
         self._Cpu = None
         self._InstanceId = None
         self._Ladder = None
+        self._DiskType = None
 
     @property
     def Period(self):
@@ -13117,7 +13180,7 @@ class DescribeDBPriceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ information in the format of "ap-guangzhou-2". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
+        """AZ information in the format of "ap-guangzhou-3". You can use the <a href="https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1">DescribeDBZoneConfig</a> API to query the configurable values. This parameter is required when `InstanceId` is empty.
         :rtype: str
         """
         return self._Zone
@@ -13247,6 +13310,17 @@ class DescribeDBPriceRequest(AbstractModel):
     def Ladder(self, Ladder):
         self._Ladder = Ladder
 
+    @property
+    def DiskType(self):
+        """
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
 
     def _deserialize(self, params):
         self._Period = params.get("Period")
@@ -13262,6 +13336,7 @@ class DescribeDBPriceRequest(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._InstanceId = params.get("InstanceId")
         self._Ladder = params.get("Ladder")
+        self._DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

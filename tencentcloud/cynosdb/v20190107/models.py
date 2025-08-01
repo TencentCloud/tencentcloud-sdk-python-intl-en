@@ -16220,9 +16220,9 @@ class DescribeZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IncludeVirtualZones: Whether the virtual zone is included.–
+        :param _IncludeVirtualZones: Whether the virtual zone is included.
         :type IncludeVirtualZones: bool
-        :param _ShowPermission: Whether to display all AZs in a region and the user’s permissions in each AZ.
+        :param _ShowPermission: Whether to display all AZs in a region and the user's permissions in each AZ.
         :type ShowPermission: bool
         """
         self._IncludeVirtualZones = None
@@ -16230,7 +16230,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def IncludeVirtualZones(self):
-        """Whether the virtual zone is included.–
+        """Whether the virtual zone is included.
         :rtype: bool
         """
         return self._IncludeVirtualZones
@@ -16241,7 +16241,7 @@ class DescribeZonesRequest(AbstractModel):
 
     @property
     def ShowPermission(self):
-        """Whether to display all AZs in a region and the user’s permissions in each AZ.
+        """Whether to display all AZs in a region and the user's permissions in each AZ.
         :rtype: bool
         """
         return self._ShowPermission
@@ -20723,11 +20723,14 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
         :type NewSlaveZone: str
         :param _BinlogSyncWay: Specifies the binlog synchronization mode. the default value is async. valid values are sync, semisync, and async.
         :type BinlogSyncWay: str
+        :param _SemiSyncTimeout: 
+        :type SemiSyncTimeout: int
         """
         self._ClusterId = None
         self._OldSlaveZone = None
         self._NewSlaveZone = None
         self._BinlogSyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def ClusterId(self):
@@ -20773,12 +20776,24 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
     def BinlogSyncWay(self, BinlogSyncWay):
         self._BinlogSyncWay = BinlogSyncWay
 
+    @property
+    def SemiSyncTimeout(self):
+        """
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._OldSlaveZone = params.get("OldSlaveZone")
         self._NewSlaveZone = params.get("NewSlaveZone")
         self._BinlogSyncWay = params.get("BinlogSyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
