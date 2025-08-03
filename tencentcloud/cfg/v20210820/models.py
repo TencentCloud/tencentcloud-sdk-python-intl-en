@@ -1736,6 +1736,10 @@ class DescribeTaskListRequest(AbstractModel):
         :type ApplicationName: list of str
         :param _TaskStatusList: Task status for filtering, supporting multiple states (1001: not started; 1002: in progress; 1003: paused; 1004: ended)
         :type TaskStatusList: list of int non-negative
+        :param _ArchId: 
+        :type ArchId: str
+        :param _ArchName: 
+        :type ArchName: str
         """
         self._Limit = None
         self._Offset = None
@@ -1751,6 +1755,8 @@ class DescribeTaskListRequest(AbstractModel):
         self._ApplicationId = None
         self._ApplicationName = None
         self._TaskStatusList = None
+        self._ArchId = None
+        self._ArchName = None
 
     @property
     def Limit(self):
@@ -1906,6 +1912,28 @@ class DescribeTaskListRequest(AbstractModel):
     def TaskStatusList(self, TaskStatusList):
         self._TaskStatusList = TaskStatusList
 
+    @property
+    def ArchId(self):
+        """
+        :rtype: str
+        """
+        return self._ArchId
+
+    @ArchId.setter
+    def ArchId(self, ArchId):
+        self._ArchId = ArchId
+
+    @property
+    def ArchName(self):
+        """
+        :rtype: str
+        """
+        return self._ArchName
+
+    @ArchName.setter
+    def ArchName(self, ArchName):
+        self._ArchName = ArchName
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -1932,6 +1960,8 @@ class DescribeTaskListRequest(AbstractModel):
         self._ApplicationId = params.get("ApplicationId")
         self._ApplicationName = params.get("ApplicationName")
         self._TaskStatusList = params.get("TaskStatusList")
+        self._ArchId = params.get("ArchId")
+        self._ArchName = params.get("ArchName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
