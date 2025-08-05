@@ -5235,7 +5235,7 @@ class DBInstance(AbstractModel):
         :type VersionName: str
         :param _RenewFlag: Instance renewal flag
         :type RenewFlag: int
-        :param _Model: High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)
+        :param _Model: Instance disaster recovery type. 1: dual-server high availability; 2: single-node; 3: cross-AZ; 4: cross-AZ cluster; 5: cluster; 6: multi-node cluster; 7: multi-node cross-AZ cluster.
         :type Model: int
         :param _Region: Instance region name, such as ap-guangzhou
         :type Region: str
@@ -5259,19 +5259,19 @@ class DBInstance(AbstractModel):
         :type UniqVpcId: str
         :param _UniqSubnetId: Unique string-type ID of instance subnet in the format of `subnet-xxx`, which is an empty string if the basic network is used
         :type UniqSubnetId: str
-        :param _IsolateOperator: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IsolateOperator: Instance isolation operation.
         :type IsolateOperator: str
-        :param _SubFlag: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SubFlag: Publishing/Subscription flag. SUB: subscription instance; PUB: publishing instance. If this parameter is left blank, the instance is an ordinary instance that does not involve publishing or subscription.
         :type SubFlag: str
-        :param _ROFlag: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ROFlag: Read-only flag. RO: read-only instance; MASTER: primary instance bound to a read-only instance. If this parameter is left blank, the instance is not a read-only instance and is not in any read-only group.
         :type ROFlag: str
-        :param _HAFlag: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HAFlag: Disaster recovery type. MIRROR: image; ALWAYSON: Always On; SINGLE: single instance.
         :type HAFlag: str
         :param _ResourceTags: Note: This field may return null, indicating that no valid values can be obtained.
         :type ResourceTags: list of ResourceTag
-        :param _BackupModel: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BackupModel: Backup mode. master_pkg: backup on the primary node (default value); master_no_pkg: no backup on the primary node; slave_pkg: backup on secondary nodes (valid for Always On clusters); slave_no_pkg: no backup on secondary nodes (valid for Always On clusters). This parameter is invalid for read-only instances.
         :type BackupModel: str
-        :param _InstanceNote: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceNote: Instance backup information.
         :type InstanceNote: str
         :param _BackupCycle: Backup cycle
         :type BackupCycle: list of int
@@ -5279,7 +5279,8 @@ class DBInstance(AbstractModel):
         :type BackupCycleType: str
         :param _BackupSaveDays: Data (log) backup retention period
         :type BackupSaveDays: int
-        :param _InstanceType: Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
+        :param _InstanceType: Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
+
         :type InstanceType: str
         :param _CrossRegions: The target region of cross-region backup. If this parameter left empty, it indicates that cross-region backup is disabled.
         :type CrossRegions: list of str
@@ -5297,12 +5298,14 @@ class DBInstance(AbstractModel):
         :type TimeZone: str
         :param _IsDrZone: Whether the instance is deployed across AZs
         :type IsDrZone: bool
-        :param _SlaveZones: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SlaveZones: Secondary AZ information on the two-node instance.
         :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
-        :param _Architecture: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Architecture: Architecture flag. SINGLE: single-node; DOUBLE: two-node.
         :type Architecture: str
-        :param _Style: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Style: Type flag. EXCLUSIVE: exclusive; SHARED: shared.
         :type Style: str
+        :param _MultiSlaveZones: 
+        :type MultiSlaveZones: list of SlaveZones
         """
         self._InstanceId = None
         self._Name = None
@@ -5358,6 +5361,7 @@ class DBInstance(AbstractModel):
         self._SlaveZones = None
         self._Architecture = None
         self._Style = None
+        self._MultiSlaveZones = None
 
     @property
     def InstanceId(self):
@@ -5581,7 +5585,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Model(self):
-        """High-availability instance type. Valid values: 1 (dual-server high-availability), 2 (standalone), 3 (multi-AZ), 4 (multi-AZ cluster), 5 (cluster), 9 (private consumption)
+        """Instance disaster recovery type. 1: dual-server high availability; 2: single-node; 3: cross-AZ; 4: cross-AZ cluster; 5: cluster; 6: multi-node cluster; 7: multi-node cross-AZ cluster.
         :rtype: int
         """
         return self._Model
@@ -5713,7 +5717,7 @@ class DBInstance(AbstractModel):
 
     @property
     def IsolateOperator(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance isolation operation.
         :rtype: str
         """
         return self._IsolateOperator
@@ -5724,7 +5728,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SubFlag(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Publishing/Subscription flag. SUB: subscription instance; PUB: publishing instance. If this parameter is left blank, the instance is an ordinary instance that does not involve publishing or subscription.
         :rtype: str
         """
         return self._SubFlag
@@ -5735,7 +5739,7 @@ class DBInstance(AbstractModel):
 
     @property
     def ROFlag(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Read-only flag. RO: read-only instance; MASTER: primary instance bound to a read-only instance. If this parameter is left blank, the instance is not a read-only instance and is not in any read-only group.
         :rtype: str
         """
         return self._ROFlag
@@ -5746,7 +5750,7 @@ class DBInstance(AbstractModel):
 
     @property
     def HAFlag(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Disaster recovery type. MIRROR: image; ALWAYSON: Always On; SINGLE: single instance.
         :rtype: str
         """
         return self._HAFlag
@@ -5768,7 +5772,7 @@ class DBInstance(AbstractModel):
 
     @property
     def BackupModel(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Backup mode. master_pkg: backup on the primary node (default value); master_no_pkg: no backup on the primary node; slave_pkg: backup on secondary nodes (valid for Always On clusters); slave_no_pkg: no backup on secondary nodes (valid for Always On clusters). This parameter is invalid for read-only instances.
         :rtype: str
         """
         return self._BackupModel
@@ -5779,7 +5783,7 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceNote(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Instance backup information.
         :rtype: str
         """
         return self._InstanceNote
@@ -5823,7 +5827,8 @@ class DBInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
+        """Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
+
         :rtype: str
         """
         return self._InstanceType
@@ -5922,7 +5927,7 @@ class DBInstance(AbstractModel):
 
     @property
     def SlaveZones(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Secondary AZ information on the two-node instance.
         :rtype: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
         """
         return self._SlaveZones
@@ -5933,7 +5938,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Architecture(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Architecture flag. SINGLE: single-node; DOUBLE: two-node.
         :rtype: str
         """
         return self._Architecture
@@ -5944,7 +5949,7 @@ class DBInstance(AbstractModel):
 
     @property
     def Style(self):
-        """Note: This field may return null, indicating that no valid values can be obtained.
+        """Type flag. EXCLUSIVE: exclusive; SHARED: shared.
         :rtype: str
         """
         return self._Style
@@ -5952,6 +5957,17 @@ class DBInstance(AbstractModel):
     @Style.setter
     def Style(self, Style):
         self._Style = Style
+
+    @property
+    def MultiSlaveZones(self):
+        """
+        :rtype: list of SlaveZones
+        """
+        return self._MultiSlaveZones
+
+    @MultiSlaveZones.setter
+    def MultiSlaveZones(self, MultiSlaveZones):
+        self._MultiSlaveZones = MultiSlaveZones
 
 
     def _deserialize(self, params):
@@ -6016,6 +6032,12 @@ class DBInstance(AbstractModel):
             self._SlaveZones._deserialize(params.get("SlaveZones"))
         self._Architecture = params.get("Architecture")
         self._Style = params.get("Style")
+        if params.get("MultiSlaveZones") is not None:
+            self._MultiSlaveZones = []
+            for item in params.get("MultiSlaveZones"):
+                obj = SlaveZones()
+                obj._deserialize(item)
+                self._MultiSlaveZones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9205,7 +9227,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type InstanceNameSet: list of str
         :param _VersionSet: The list of instance version numbers, such as 2008R2, 2012SP3
         :type VersionSet: list of str
-        :param _Zone: Instance availability zone, such as ap-guangzhou-2
+        :param _Zone: Instance availability zone, such as ap-guangzhou-3
         :type Zone: str
         :param _TagKeys: The list of instance tags
         :type TagKeys: list of str
@@ -9213,9 +9235,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SearchKey: str
         :param _UidSet: Unique Uid of an instance
         :type UidSet: list of str
-        :param _InstanceType: Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
+        :param _InstanceType: Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: dual-server high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
         :type InstanceType: str
-        :param _PaginationType: 
+        :param _PaginationType: Pagination query method. offset - pagination query by offset; pageNumber - pagination query by number of pages. The default value is pageNumber.
         :type PaginationType: str
         """
         self._ProjectId = None
@@ -9371,7 +9393,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance availability zone, such as ap-guangzhou-2
+        """Instance availability zone, such as ap-guangzhou-3
         :rtype: str
         """
         return self._Zone
@@ -9415,7 +9437,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Instance type. Valid values: `HA` (high-availability), `RO` (read-only), `SI` (basic edition), `BI` (business intelligence service).
+        """Instance type. HA: high-availability instance; RO: read-only instance; SI: basic edition instance; BI: business intelligence service instance; cvmHA: dual-server high-availability instance with cloud disk; cvmRO: read-only instance with cloud disk; MultiHA: multi-node instance; cvmMultiHA: multi-node instance with cloud disk.
         :rtype: str
         """
         return self._InstanceType
@@ -9426,7 +9448,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PaginationType(self):
-        """
+        """Pagination query method. offset - pagination query by offset; pageNumber - pagination query by number of pages. The default value is pageNumber.
         :rtype: str
         """
         return self._PaginationType
@@ -12054,9 +12076,9 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of AZs returned
+        :param _TotalCount: Number of AZs returned.
         :type TotalCount: int
-        :param _ZoneSet: Array of AZs
+        :param _ZoneSet: Array of AZs.
         :type ZoneSet: list of ZoneInfo
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12067,7 +12089,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of AZs returned
+        """Number of AZs returned.
         :rtype: int
         """
         return self._TotalCount
@@ -12078,7 +12100,7 @@ class DescribeZonesResponse(AbstractModel):
 
     @property
     def ZoneSet(self):
-        """Array of AZs
+        """Array of AZs.
         :rtype: list of ZoneInfo
         """
         return self._ZoneSet

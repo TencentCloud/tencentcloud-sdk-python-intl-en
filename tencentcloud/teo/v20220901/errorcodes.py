@@ -35,11 +35,17 @@ FAILEDOPERATION_CONFIGCONDITIONUNKNOWNTARGET = 'FailedOperation.ConfigConditionU
 # The value field of the condition expression cannot be empty in the configuration file.
 FAILEDOPERATION_CONFIGCONDITIONVALUEEMPTYERROR = 'FailedOperation.ConfigConditionValueEmptyError'
 
+# The keyword in the configuration file cannot be duplicated.
+FAILEDOPERATION_CONFIGDUPLICATEKEYERROR = 'FailedOperation.ConfigDuplicateKeyError'
+
 # The configuration file contains fields with inconsistent data types.
 FAILEDOPERATION_CONFIGFIELDTYPEERROR = 'FailedOperation.ConfigFieldTypeError'
 
 # Syntax error in the configuration file.
 FAILEDOPERATION_CONFIGFORMATERROR = 'FailedOperation.ConfigFormatError'
+
+# Version management configuration file JSON format error.
+FAILEDOPERATION_CONFIGJSONFORMATERROR = 'FailedOperation.ConfigJSONFormatError'
 
 # Incorrect format of the configuration file. Parsing failed.
 FAILEDOPERATION_CONFIGMALFORMEDCONTENT = 'FailedOperation.ConfigMalformedContent'
@@ -47,8 +53,14 @@ FAILEDOPERATION_CONFIGMALFORMEDCONTENT = 'FailedOperation.ConfigMalformedContent
 # Parameter verification error in the configuration file.
 FAILEDOPERATION_CONFIGPARAMVALIDATEERRORS = 'FailedOperation.ConfigParamValidateErrors'
 
+# Time format parsing error.
+FAILEDOPERATION_CONFIGTIMEPARSINGERROR = 'FailedOperation.ConfigTimeParsingError'
+
 # The specified field in the configuration file is not recognized, indicating a possible spelling error or incorrect placement within the file structure.
 FAILEDOPERATION_CONFIGUNKNOWNFIELD = 'FailedOperation.ConfigUnknownField'
+
+# Unsupported configuration item Action.
+FAILEDOPERATION_CONFIGUNSUPPORTEDACTION = 'FailedOperation.ConfigUnsupportedAction'
 
 # The current configuration file version is not supported.
 FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = 'FailedOperation.ConfigUnsupportedFormatVersion'
@@ -83,6 +95,12 @@ FAILEDOPERATION_MISSINGCONFIGCHUNK = 'FailedOperation.MissingConfigChunk'
 # Operation failed.
 FAILEDOPERATION_MODIFYFAILED = 'FailedOperation.ModifyFailed'
 
+# The product will already be discontinued. operation denied.
+FAILEDOPERATION_PRODUCTDISCONTINUED = 'FailedOperation.ProductDiscontinued'
+
+# This product is not enabled. please enable it and try again.
+FAILEDOPERATION_PRODUCTNOTACTIVATED = 'FailedOperation.ProductNotActivated'
+
 # The real-time log authentication failed.
 FAILEDOPERATION_REALTIMELOGAUTHFAILURE = 'FailedOperation.RealtimeLogAuthFailure'
 
@@ -91,6 +109,9 @@ FAILEDOPERATION_REALTIMELOGNOTFOUND = 'FailedOperation.RealtimeLogNotFound'
 
 # Function rule operations conflict under this site.
 FAILEDOPERATION_RULEOPERATIONCONFLICT = 'FailedOperation.RuleOperationConflict'
+
+# The number of templates under this site exceeds the maximum quantity limit.
+FAILEDOPERATION_TEMPLATEOVERLIMIT = 'FailedOperation.TemplateOverLimit'
 
 # Unknown configuration group type.
 FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
@@ -133,6 +154,9 @@ INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 
 # Unknown error.
 INTERNALERROR_UNKNOWERROR = 'InternalError.UnknowError'
+
+# Invalid Filter
+INVALIDFILTER = 'InvalidFilter'
 
 # Parameter error.
 INVALIDPARAMETER = 'InvalidParameter'
@@ -293,7 +317,7 @@ INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
 # The function name conflicts with that of another function under this account.
 INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
 
-# 
+# The GroupBy parameter exceeds the limit.
 INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = 'InvalidParameter.GroupByLimitExceeded'
 
 # To enable gRPC support, HTTP/2 support must be enabled as well.
@@ -590,6 +614,9 @@ INVALIDPARAMETER_LOADBALANCERBINDL4NOTINSTABLESTATUS = 'InvalidParameter.LoadBal
 # The Layer-7 domain name service referencing a LoadBalancer is being deployed. Please edit later.
 INVALIDPARAMETER_LOADBALANCERBINDL7NOTINSTABLESTATUS = 'InvalidParameter.LoadBalancerBindL7NotInStableStatus'
 
+# The load balancer bound to the origin server group is unavailable.
+INVALIDPARAMETER_LOADBALANCERBINDORIGINGROUPINVALID = 'InvalidParameter.LoadBalancerBindOriginGroupInvalid'
+
 # The LoadBalancer names under the same site should be unique.
 INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = 'InvalidParameter.LoadBalancerNameRepeated'
 
@@ -869,6 +896,12 @@ INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = 'InvalidParameterValue.Serv
 # Enter a valid shared CNAME prefix of up to 50 characters.
 INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedCNAMEPrefixNotMatch'
 
+# The input template contains a template that is not a custom template.
+INVALIDPARAMETERVALUE_TEMPLATENOTCUSTOM = 'InvalidParameterValue.TemplateNotCustom'
+
+# The template contains non-existing templates. please check whether the template id is correct.
+INVALIDPARAMETERVALUE_TEMPLATENOTFOUND = 'InvalidParameterValue.TemplateNotFound'
+
 # The current domain suffix is not supported for access. Please contact us if you need to use it.
 INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevelDomainNotSupport'
 
@@ -889,6 +922,12 @@ INVALIDPARAMETERVALUE_ZONENAMENOTSUPPORTPUNYCODE = 'InvalidParameterValue.ZoneNa
 
 # The zone does not support subdomain access. Please use second-level domains for zone access.
 INVALIDPARAMETERVALUE_ZONENAMENOTSUPPORTSUBDOMAIN = 'InvalidParameterValue.ZoneNameNotSupportSubDomain'
+
+# No corresponding site. please ensure correct information entry.
+INVALIDPARAMETERVALUE_ZONENOTFOUND = 'InvalidParameterValue.ZoneNotFound'
+
+# The site is disabled. check current site status.
+INVALIDPARAMETERVALUE_ZONEPAUSED = 'InvalidParameterValue.ZonePaused'
 
 # The site alias already exists. 
 INVALIDPARAMETERVALUE_ZONESAMEASNAME = 'InvalidParameterValue.ZoneSameAsName'
@@ -1133,6 +1172,9 @@ OPERATIONDENIED_RESOURCEHASBEENLOCKED = 'OperationDenied.ResourceHasBeenLocked'
 # This operation conflicts with concurrent operations. Try again later.
 OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = 'OperationDenied.ResourceLockedTemporary'
 
+# Advanced protection resources are in high demand and sold out. urgently restocking. currently, advanced protection cannot be enabled. please wait patiently.
+OPERATIONDENIED_SECURITYLACKOFRESOURCES = 'OperationDenied.SecurityLackOfResources'
+
 # The domain name is bound with a shared CNAME and cannot be changed to "Cross-MLC-border acceleration". Please unbind the domain name from the shared CNAME first.
 OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = 'OperationDenied.SharedCNAMEUnsupportedAccelerateMainland'
 
@@ -1180,6 +1222,9 @@ RESOURCEINUSE_ALIASDOMAIN = 'ResourceInUse.AliasDomain'
 
 # The alias domain name already exists.
 RESOURCEINUSE_ALIASNAME = 'ResourceInUse.AliasName'
+
+# The domain name already exists as an acceleration domain name. repeated access is not supported.
+RESOURCEINUSE_ALREADYEXISTSASANACCELERATIONDOMAIN = 'ResourceInUse.AlreadyExistsAsAnAccelerationDomain'
 
 # Resources occupied by this account via CNAME.
 RESOURCEINUSE_CNAME = 'ResourceInUse.Cname'

@@ -2316,8 +2316,10 @@ class CompareResult(AbstractModel):
         :type ErrorMsg: str
         :param _LiveData: The liveness algorithm package generated during this SDK-based liveness detection.
         :type LiveData: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
-        :param _LiveVideo: The download URL of the video used for verification, which is valid for 10 minutes.
+        :param _LiveVideo: The download URL of the video used for verification, which contains specific color reflection effects, is valid for 10 minutes.
         :type LiveVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        :param _ActionVideo: Records the specific action performed by the user, used for AI Face Shield analysis.
+        :type ActionVideo: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param _LiveErrorCode: The liveness detection result code.
 0: Success.
 1001: Failed to call the liveness detection engine.
@@ -2358,6 +2360,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ErrorMsg = None
         self._LiveData = None
         self._LiveVideo = None
+        self._ActionVideo = None
         self._LiveErrorCode = None
         self._LiveErrorMsg = None
         self._BestFrame = None
@@ -2413,7 +2416,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveVideo(self):
-        """The download URL of the video used for verification, which is valid for 10 minutes.
+        """The download URL of the video used for verification, which contains specific color reflection effects, is valid for 10 minutes.
         :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         """
         return self._LiveVideo
@@ -2421,6 +2424,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @LiveVideo.setter
     def LiveVideo(self, LiveVideo):
         self._LiveVideo = LiveVideo
+
+    @property
+    def ActionVideo(self):
+        """Records the specific action performed by the user, used for AI Face Shield analysis.
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
+        """
+        return self._ActionVideo
+
+    @ActionVideo.setter
+    def ActionVideo(self, ActionVideo):
+        self._ActionVideo = ActionVideo
 
     @property
     def LiveErrorCode(self):
@@ -2557,6 +2571,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("LiveVideo") is not None:
             self._LiveVideo = FileInfo()
             self._LiveVideo._deserialize(params.get("LiveVideo"))
+        if params.get("ActionVideo") is not None:
+            self._ActionVideo = FileInfo()
+            self._ActionVideo._deserialize(params.get("ActionVideo"))
         self._LiveErrorCode = params.get("LiveErrorCode")
         self._LiveErrorMsg = params.get("LiveErrorMsg")
         if params.get("BestFrame") is not None:
@@ -4052,8 +4069,10 @@ class GetFaceIdResultIntlResponse(AbstractModel):
         :type Description: str
         :param _BestFrame: The best frame screenshot (in Base64) obtained during the verification.
         :type BestFrame: str
-        :param _Video: The video file (Base64) for verification.
+        :param _Video: The video file (Base64) for verification.Used for verification, contains specific color reflection effects.
         :type Video: str
+        :param _ActionVideo: Records the specific action performed by the user, used for AI Face Shield analysis.
+        :type ActionVideo: str
         :param _Similarity: The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Similarity: float
@@ -4067,6 +4086,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Description = None
         self._BestFrame = None
         self._Video = None
+        self._ActionVideo = None
         self._Similarity = None
         self._Extra = None
         self._RequestId = None
@@ -4116,7 +4136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Video(self):
-        """The video file (Base64) for verification.
+        """The video file (Base64) for verification.Used for verification, contains specific color reflection effects.
         :rtype: str
         """
         return self._Video
@@ -4124,6 +4144,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Video.setter
     def Video(self, Video):
         self._Video = Video
+
+    @property
+    def ActionVideo(self):
+        """Records the specific action performed by the user, used for AI Face Shield analysis.
+        :rtype: str
+        """
+        return self._ActionVideo
+
+    @ActionVideo.setter
+    def ActionVideo(self, ActionVideo):
+        self._ActionVideo = ActionVideo
 
     @property
     def Similarity(self):
@@ -4166,6 +4197,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Description = params.get("Description")
         self._BestFrame = params.get("BestFrame")
         self._Video = params.get("Video")
+        self._ActionVideo = params.get("ActionVideo")
         self._Similarity = params.get("Similarity")
         self._Extra = params.get("Extra")
         self._RequestId = params.get("RequestId")

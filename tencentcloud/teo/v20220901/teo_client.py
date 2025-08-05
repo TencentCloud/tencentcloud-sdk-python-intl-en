@@ -168,6 +168,7 @@ class TeoClient(AbstractClient):
 
     def CreateAliasDomain(self, request):
         """This API is used to create an alias domain name.
+        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, please [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
 
         :param request: Request instance for CreateAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateAliasDomainRequest`
@@ -396,6 +397,31 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateJustInTimeTranscodeTemplate(self, request):
+        """JIT transcoding already provides preset transcoding templates to meet most needs. If there are personalized transcoding requirements, you can create custom transcoding templates through this API, with up to 100 custom transcoding templates allowed.
+        This API is used to ensure the consistency of JIT transcoding effect, avoid video output exceptions caused by EO cache or M3U8 sharding template changes during the process, and templates cannot be modified after creation.
+        This API is used to learn about the detailed capacity of JIT transcoding. EdgeOne video instant processing function introduction (https://www.tencentcloud.comom/document/product/1552/111927?from_cn_redirect=1).
+
+        :param request: Request instance for CreateJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateL4Proxy(self, request):
         """This API is used to create Layer 4 proxy instances.
 
@@ -479,6 +505,75 @@ class TeoClient(AbstractClient):
             body = self.call("CreateLoadBalancer", params, headers=headers)
             response = json.loads(body)
             model = models.CreateLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMultiPathGateway(self, request):
+        """Create a multi-channel security acceleration gateway via this API, including Cloud Gateway (gateway created and managed by Tencent Cloud) and private gateway (gateway deployed by users). Query the status using DescribeMultiPathGateway, and creation is successful if the status is online.
+
+        :param request: Request instance for CreateMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMultiPathGatewayLine(self, request):
+        """This API is used to create lines integrated with the multi-channel security acceleration gateway, including EdgeOne Layer-4 proxy and custom lines.
+
+        :param request: Request instance for CreateMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMultiPathGatewaySecretKey(self, request):
+        """This API creates an access key for the multi-channel security acceleration gateway. Customers use the access key to sign requests for accessing the gateway. Each site can have only one key, which is applicable to all gateways under that site. Query the key via the DescribeMultiPathGatewaySecretKey API.
+
+        :param request: Request instance for CreateMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMultiPathGatewaySecretKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -607,8 +702,15 @@ class TeoClient(AbstractClient):
 
 
     def CreateRealtimeLogDeliveryTask(self, request):
-        """This API is used to create a real-time log delivery task. The following limits apply:
-        An entity (a Layer 7 domain name or a Layer 4 proxy instance) under the combination of the same data delivery type (LogType) and data delivery area (Area) can be added to only one real-time log delivery task. It is recommended to first query the real-time log delivery task list by entity through the [DescribeRealtimeLogDeliveryTasks](https://intl.cloud.tencent.com/document/product/1552/104110?from_cn_redirect=1) API to check whether the entity has been added to another real-time log delivery task.
+        """This API is used to create a real-time log delivery task.
+        The following restrictions apply:
+
+        - When the log type (`LogType`) is site acceleration log (L7 access log) (`domain`), L4 proxy log (`application`), or Edge Function execution log (`function`), the same entity (L7 domain, L4 proxy instance, or Edge Function instance) can be added to only one of the following `TaskType` combinations within the same `LogType`-`Area` pair:
+            - One task delivering to Tencent Cloud CLS plus one task delivering to a custom HTTP(S) endpoint;
+            - One task delivering to Tencent Cloud CLS plus one task delivering to an AWS S3-compatible bucket.
+        - When the log type (`LogType`) is rate-limiting & CC attack protection log (`web-rateLiming`), managed rule log (`web-attack`), custom rule log (`web-rule`), or bot management log (`web-bot`), the same entity can be added to only one real-time log delivery task within the same `LogType`-`Area` pair.
+
+        Before creating a task, we recommend that you first call [DescribeRealtimeLogDeliveryTasks](https://intl.cloud.tencent.com/document/product/1552/104110?from_cn_redirect=1) to list existing tasks for the entity and verify whether it has already been added to another task.
 
         :param request: Request instance for CreateRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`
@@ -631,7 +733,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [CreateL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115822?from_cn_redirect=1).
+        """This interface is the old version of the rule engine creation interface. EdgeOne has fully upgraded the rule engine related interfaces on January 21, 2025. For details on the new version of the seven-layer acceleration rule creation interface, please refer to [CreateL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115822?from_cn_redirect=1).<p style="color: red;">Note: Starting from January 21, 2025, the old version of the interface will stop updating and iteration. Subsequent new features will only be provided in the new version of the interface, and the original capabilities supported by the old version of the interface will not be affected. To avoid data field conflicts when using the old version of the interface, it is recommended that you migrate to the new version of the rule engine interface as soon as possible. </p>
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRuleRequest`
@@ -644,6 +746,75 @@ class TeoClient(AbstractClient):
             body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityAPIResource(self, request):
+        """This API is used to create an API resource.
+
+        :param request: Request instance for CreateSecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityAPIService(self, request):
+        """This API is used to create an API service.
+
+        :param request: Request instance for CreateSecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityClientAttester(self, request):
+        """This API is used to create client authentication options.
+
+        :param request: Request instance for CreateSecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityClientAttesterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -667,6 +838,29 @@ class TeoClient(AbstractClient):
             body = self.call("CreateSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSecurityJSInjectionRule(self, request):
+        """This API is used to create a JavaScript injection rule.
+
+        :param request: Request instance for CreateSecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -772,6 +966,7 @@ class TeoClient(AbstractClient):
 
     def DeleteAliasDomain(self, request):
         """This API is used to delete an alias domain name.
+        The feature is only supported by the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
 
         :param request: Request instance for DeleteAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteAliasDomainRequest`
@@ -954,6 +1149,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteJustInTimeTranscodeTemplates(self, request):
+        """This API is used to delete the appropriate just in time transcoding template based on the unique template identifier under the site ID.
+
+        :param request: Request instance for DeleteJustInTimeTranscodeTemplates.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteJustInTimeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteJustInTimeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJustInTimeTranscodeTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJustInTimeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteL4Proxy(self, request):
         """This API is used to delete a Layer 4 proxy instance.
 
@@ -1046,6 +1264,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteMultiPathGateway(self, request):
+        """This API is used to delete a multi-channel security acceleration gateway, including private gateways and Cloud Gateways.
+
+        :param request: Request instance for DeleteMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMultiPathGatewayLine(self, request):
+        """This API is used to delete lines integrated with the multi-channel security acceleration gateway. Only custom lines support deletion.
+
+        :param request: Request instance for DeleteMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOriginGroup(self, request):
         """This API is used to delete an origin group. Note that an origin group can not be deleted if it is referenced by services (e.g. L4 Proxy, domain name service, load balancing, rule engines).
 
@@ -1093,7 +1357,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteRules(self, request):
-        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DeleteL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115821?from_cn_redirect=1).
+        """This interface is the old version of the rule engine deletion interface. EdgeOne has fully upgraded the rule engine related interfaces on January 21, 2025. For details on the new version of the seven-layer acceleration rule deletion interface, please refer to [DeleteL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115821?from_cn_redirect=1).<0>Note: Starting from January 21, 2025, the earlier version API will no longer be updated. Subsequent new features will only be provided in the latest version interface. The original capabilities supported by the earlier version API will not be affected. To avoid field conflicts when using the earlier version API, it is recommended that you migrate to the new version rule engine API as soon as possible.</0>.
 
         :param request: Request instance for DeleteRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteRulesRequest`
@@ -1106,6 +1370,75 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteRules", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityAPIResource(self, request):
+        """This API is used to delete API resources.
+
+        :param request: Request instance for DeleteSecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityAPIService(self, request):
+        """This API is used to delete the API service.
+
+        :param request: Request instance for DeleteSecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityClientAttester(self, request):
+        """This API is used to delete client authentication options.
+
+        :param request: Request instance for DeleteSecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityClientAttesterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1129,6 +1462,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSecurityJSInjectionRule(self, request):
+        """This API is used to delete JavaScript injection rules.
+
+        :param request: Request instance for DeleteSecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1254,7 +1610,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAliasDomains(self, request):
-        """This API is used to query the information of alias domain names.
+        """This API is used to query the alias domain name information list.
+        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
 
         :param request: Request instance for DescribeAliasDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAliasDomainsRequest`
@@ -1529,6 +1886,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDDoSProtection(self, request):
+        """This API is used to search for site exclusive Anti-DDoS information.
+
+        :param request: Request instance for DescribeDDoSProtection.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSProtectionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDDoSProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDDoSProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDDoSProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDefaultCertificates(self, request):
         """This API is used to query a list of default certificates.
 
@@ -1759,6 +2139,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJustInTimeTranscodeTemplates(self, request):
+        """This API is used to search the transcoding template detail list according to the name, template type, or unique identifier of the just-in-time transcoding template. The returned results include all eligible custom templates and preset templates.
+
+        :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeJustInTimeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeJustInTimeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJustInTimeTranscodeTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJustInTimeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeL4Proxy(self, request):
         """This API is used to query a Layer 4 proxy instance list.
 
@@ -1874,6 +2277,121 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMultiPathGateway(self, request):
+        """This API is used to query multi-channel security acceleration gateway details such as name, Gateway ID, IP, port and type.
+
+        :param request: Request instance for DescribeMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGatewayLine(self, request):
+        """Use this API to query the lines integrated with the multi-channel security acceleration gateway, including direct connection lines, EdgeOne Layer-4 proxy lines, and custom lines.
+
+        :param request: Request instance for DescribeMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGatewayRegions(self, request):
+        """This API is used to query the list of available regions for user-created multi-channel security acceleration gateways (Cloud Gateway).
+
+        :param request: Request instance for DescribeMultiPathGatewayRegions.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRegionsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewayRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewayRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewayRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGatewaySecretKey(self, request):
+        """This API is used to query keys for integrating multi-channel security acceleration gateways. Customers access multi-channel security acceleration gateways based on key signature.
+
+        :param request: Request instance for DescribeMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMultiPathGateways(self, request):
+        """Query the multi-channel security acceleration gateway list created by the user through this interface. Supports pagination.
+
+        :param request: Request instance for DescribeMultiPathGateways.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaysRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeMultiPathGatewaysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMultiPathGateways", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMultiPathGatewaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOriginACL(self, request):
         """This API is used to query the binding relationship between L7 acceleration domains/L4 proxy instances and origin ACLs under a site, as well as IP range details. If you want to periodically obtain the latest version of origin IP ranges through an automation script, you can poll this API at a low-frequency (recommended every three days). If the NextOriginACL field has a return value, synchronize the latest origin IP ranges to the origin server firewall configuration.
 
@@ -1944,7 +2462,9 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOriginProtection(self, request):
-        """This API is used to query the origin protection configuration.
+        """This API is used to query origin protection on an earlier version. EdgeOne comprehensively upgraded relevant APIs for origin protection on June 27, 2025. For details on the new version, see [DescribeOriginACL](https://intl.cloud.tencent.com/document/product/1552/120408?from_cn_redirect=1).
+
+        Note: Starting from June 27, 2025, the legacy version APIs will stop updating. New features will only be provided in the latest version APIs. To avoid data field conflicts when using legacy version APIs, it is recommended to migrate to the new version origin protection APIs as soon as possible.
 
         :param request: Request instance for DescribeOriginProtection.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeOriginProtectionRequest`
@@ -1980,6 +2500,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeOverviewL7Data", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOverviewL7DataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePlans(self, request):
+        """This API is used to query package information list with pagination support.
+
+        :param request: Request instance for DescribePlans.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribePlansRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribePlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlansResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2059,7 +2602,8 @@ class TeoClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DescribeL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).
+        """This API is on an earlier version to query engine rules. EdgeOne has comprehensively upgraded relevant APIs of the rule engine on January 21, 2025. For details about the new version API to query layer-7 acceleration rules, see DescribeL7AccRules(https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).
+        <p style="color: red;">Note: Starting from January 21, 2025, the old version of the interface will stop updating and iteration. Subsequent new features will only be provided in the new version of the interface, and the original capabilities supported by the old version of the interface will not be affected. To avoid data field conflicts when using the old version of the interface, it is recommended that you migrate to the new version of the rule engine interface as soon as possible. </p>
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRulesRequest`
@@ -2104,8 +2648,77 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityAPIResource(self, request):
+        """This API is used to query API resources under a site.
+
+        :param request: Request instance for DescribeSecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityAPIService(self, request):
+        """This API is used to query API services under a site.
+
+        :param request: Request instance for DescribeSecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityClientAttester(self, request):
+        """This API is used to query client authentication option configuration.
+
+        :param request: Request instance for DescribeSecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityClientAttesterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityIPGroup(self, request):
-        """This API is used to query the configuration information of a security IP group, including the ID, name, and content of the security IP group.
+        """This API is used to query the configuration information of a security IP group, including the ID, name and content of the security IP group. The query result of this API only returns up to 2000 IPs or CIDR blocks for each IP group. If there is a very large IP group exceeding 2000 IPs or CIDR blocks, call DescribeSecurityIPGroupContent to perform a paging query.
 
         :param request: Request instance for DescribeSecurityIPGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupRequest`
@@ -2118,6 +2731,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityIPGroupContent(self, request):
+        """This API is used to perform a paging query for the IP address list in a designated IP group. When the number of IP addresses in the group exceeds 2000, you can use this API to perform a paging query to obtain the complete IP address list.
+
+        :param request: Request instance for DescribeSecurityIPGroupContent.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupContentRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupContentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityIPGroupContent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityIPGroupContentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2144,6 +2780,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeSecurityIPGroupInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSecurityIPGroupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityJSInjectionRule(self, request):
+        """This API is used to query JavaScript injection rules.
+
+        :param request: Request instance for DescribeSecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2529,13 +3188,11 @@ class TeoClient(AbstractClient):
 
 
     def EnableOriginACL(self, request):
-        """This API is used to enable 'Origin Protection' for Layer 4 or Layer 7 instances. The number of enabled instances has an upper limit: 200 for Layer 7 domains and 100 for Layer 4 proxy instances. The total number of instances cannot exceed 200, otherwise an error reminder will be triggered. You can first enable the maximum allowed number and use the ModifyOriginACL API to set the excess quantity.
+        """This API is used to enable origin protection for a site for the first time. Enabled, EdgeOne will use specific origin IP ranges to backhaul traffic for L7 acceleration domains/L4 proxy instances. The maximum allowed number of L7 acceleration domains per submission is 200, and the maximum allowed number of L4 proxy instances is 100. Mixing L7 acceleration domains and L4 proxy instances in a single submission is supported, with a total maximum of 200 instances. To enable more than 200 resources, first enable the maximum quantity via specified resources, then enable the remaining resources via the ModifyOriginACL API. Subsequent addition of L7 acceleration domains/L4 proxy instances should be configured via the ModifyOriginACL API.
 
-        This API is used to enable 'Origin Protection' for the site for the first time. Once enabled, EdgeOne will use specific origin IP ranges for L7 acceleration domains and L4 proxy instances. The maximum number of L7 acceleration domain that can be submitted in a single request is 200, and the maximum number of L4 proxy instance is 100. Mixed submissions of L7 acceleration domains and L4 proxy instances are supported, with a total maximum of 200 instances. If you need to enable more than 200 instances, you can first enable the maximum number by specifying the instances, and then enable the remaining instances through the API ModifyOriginACL. Any subsequent addition of  L7 acceleration domains or L4 proxy instances should be configured through the API ModifyOriginACL.
-
-        Note:
-        - Calling this API is considered as agreeing to [Origin Protection Enablement Conditions of Use](https://www.tencentcloud.com/document/product/1145/70561?!longPreview).
-        - The origin IP ranges may change periodically. EdgeOne will notify you of changes to the origin IP ranges 14 days, 7 days, 3 days, and 1 day in advance through one or more methods such as internal messages, SMS, and email. To ensure you receive notifications about changes to the origin IP ranges, please make sure that you have selected the relevant product service notifications for the Edge Security Acceleration Platform (EO) in [Tencent Cloud Message Center](https://console.tencentcloud.com/message/subscription) and have configured the correct message recipients. For configuration details, please refer to Message [Subscription Management](https://www.tencentcloud.com/document/product/1233/60778).
+        Create and bind policy Query instance Reset instance access password.
+        -Call this API to deem as consent to the origin protection enablement special agreement (https://intl.cloud.tencent.com/document/product/1552/120141?from_cn_redirect=1);.
+        -The origin IP range may change irregularly. tencent cloud EdgeOne (EdgeOne) will trigger notifications via message Center, SMS, or email 14 days, 7 days, 3 days, and 1 day before the change. To ensure you receive the change notification for the origin IP range, please ensure you have selected EdgeOne product services in the [tencent cloud message Center console](https://console.cloud.tencent.com/message) and configured the correct message recipient. For the setting method, refer to [message Subscription Management](https://intl.cloud.tencent.com/document/product/567/43476?from_cn_redirect=1).
 
         :param request: Request instance for EnableOriginACL.
         :type request: :class:`tencentcloud.teo.v20220901.models.EnableOriginACLRequest`
@@ -2722,6 +3379,7 @@ class TeoClient(AbstractClient):
 
     def ModifyAliasDomain(self, request):
         """This API is used to modify an alias domain name.
+        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
 
         :param request: Request instance for ModifyAliasDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainRequest`
@@ -2745,6 +3403,7 @@ class TeoClient(AbstractClient):
 
     def ModifyAliasDomainStatus(self, request):
         """This API is used to modify the status of an alias domain name.
+        The feature is only supported in the enterprise plan and is currently in closed beta testing. If you need to use it, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service?from=connect-us).
 
         :param request: Request instance for ModifyAliasDomainStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyAliasDomainStatusRequest`
@@ -2897,6 +3556,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyCustomErrorPage", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCustomErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDDoSProtection(self, request):
+        """This API is used to modify site exclusive Anti-DDoS protection.
+
+        :param request: Request instance for ModifyDDoSProtection.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyDDoSProtectionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyDDoSProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDDoSProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDDoSProtectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3230,6 +3912,75 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMultiPathGateway(self, request):
+        """This API is used to modify multi-channel security acceleration gateway information, such as name, gateway ID, IP and port.
+
+        :param request: Request instance for ModifyMultiPathGateway.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMultiPathGatewayLine(self, request):
+        """This API is used to modify the access lines of the multi-channel security acceleration gateway, including EdgeOne Layer-4 proxy lines and custom lines.
+
+        :param request: Request instance for ModifyMultiPathGatewayLine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayLineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewayLineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGatewayLine", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewayLineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMultiPathGatewaySecretKey(self, request):
+        """This API is used to modify the access key for the multi-channel security acceleration gateway.The access key is used by customers to sign requests for gateway access. The original key becomes invalid after modification.
+
+        :param request: Request instance for ModifyMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMultiPathGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyOriginACL(self, request):
         """This API is used to enable or disable specific origin ACLs for L7 acceleration domain names or L4 proxy instances. A single submission supports up to 200 L7 acceleration domain names or 100 L4 proxy instances. Hybrid submissions of L7 acceleration domain names and L4 proxy instances are supported, with a maximum total number of instances of 200. If changes are needed for exceeding 200 instances, submit them in batches via this API.
 
@@ -3323,7 +4074,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [ModifyL7AccRule](https://intl.cloud.tencent.com/document/product/1552/115818?from_cn_redirect=1).
+        """This API is on an earlier version. EdgeOne has comprehensively upgraded the relevant APIs of the rule engine on January 21, 2025. For details about the new version of the API for modifying layer-7 acceleration rules, see ModifyL7AccRule(https://intl.cloud.tencent.com/document/product/1552/115818?from_cn_redirect=1).
+        <p style="color: red;">Note: Starting from January 21, 2025, the old version of the interface will stop updating and iteration. Subsequent new features will only be provided in the new version of the interface, and the original capabilities supported by the old version of the interface will not be affected. To avoid data field conflicts when using the old version of the interface, it is recommended that you migrate to the new version of the rule engine interface as soon as possible. </p>
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRuleRequest`
@@ -3336,6 +4088,75 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityAPIResource(self, request):
+        """This API is used to modify an API resource.
+
+        :param request: Request instance for ModifySecurityAPIResource.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIResourceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityAPIResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityAPIResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityAPIService(self, request):
+        """This API is used to modify an API service.
+
+        :param request: Request instance for ModifySecurityAPIService.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIServiceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityAPIServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityAPIService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityAPIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityClientAttester(self, request):
+        """This API is used to modify client authentication options.
+
+        :param request: Request instance for ModifySecurityClientAttester.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityClientAttesterRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityClientAttesterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityClientAttester", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityClientAttesterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3359,6 +4180,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifySecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySecurityJSInjectionRule(self, request):
+        """This API is used to modify JavaScript injection rules.
+
+        :param request: Request instance for ModifySecurityJSInjectionRule.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySecurityJSInjectionRuleRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySecurityJSInjectionRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityJSInjectionRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySecurityJSInjectionRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3474,6 +4318,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RefreshMultiPathGatewaySecretKey(self, request):
+        """This API is used to refresh keys for multi-channel security acceleration gateways. Customers access multi-channel security acceleration gateways based on integration key signatures. Each site has only one access key, which applies to all gateways under that site. After refreshing the key, the original key becomes invalid.
+
+        :param request: Request instance for RefreshMultiPathGatewaySecretKey.
+        :type request: :class:`tencentcloud.teo.v20220901.models.RefreshMultiPathGatewaySecretKeyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RefreshMultiPathGatewaySecretKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefreshMultiPathGatewaySecretKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.RefreshMultiPathGatewaySecretKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

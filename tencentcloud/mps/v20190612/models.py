@@ -441,20 +441,21 @@ class Activity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityType: Atomic task type.
-<li>input: starting node.</li>.
-<li>`output`: termination node</li>.
-<li>action-trans: transcoding.</li>.
-<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.
-<li>action-AIAnalysis: analysis.</li>.
-<li>action-AIRecognition: specifies recognition.</li>.
-<li>action-aiReview: specifies the review action.</li>.
-<li>action-animated-graphics: specifies the animated image.</li>.
-<li>action-image-sprite: specifies the sprite sheet.</li>.
-<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.
-<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.
-<li>action-AIQualityControl: media quality inspection.</li>.
-<li>action-SmartSubtitles: specifies smart subtitling.</li>.
+        :param _ActivityType: Atomic task type:
+<li>input: start node</li>
+<li>output: end node</li>
+<li>action-trans: transcoding</li>
+<li>action-samplesnapshot: sampled screenshot</li>
+<li>action-AIAnalysis: analysis</li>
+<li>action-AIRecognition: recognition</li>
+<li>action-aiReview: review</li>
+<li>action-animated-graphics: conversion to GIF</li>
+<li>action-image-sprite: image sprite</li>
+<li>action-snapshotByTimeOffset: time point screenshot</li>
+<li>action-adaptive-substream: adaptive bitrate stream</li>
+<li>action-AIQualityControl: media quality inspection</li>
+<li>action-SmartSubtitles: smart subtitle</li>
+<li>action-exec-rules: judgment rule</li>
 
 
 
@@ -471,20 +472,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActivityType(self):
-        """Atomic task type.
-<li>input: starting node.</li>.
-<li>`output`: termination node</li>.
-<li>action-trans: transcoding.</li>.
-<li>action-samplesnapshot: specifies sampled screenshot taking.</li>.
-<li>action-AIAnalysis: analysis.</li>.
-<li>action-AIRecognition: specifies recognition.</li>.
-<li>action-aiReview: specifies the review action.</li>.
-<li>action-animated-graphics: specifies the animated image.</li>.
-<li>action-image-sprite: specifies the sprite sheet.</li>.
-<li>action-snapshotByTimeOffset: specifies time point screenshot taking.</li>.
-<li>action-adaptive-substream: specifies the adaptive bitrate stream.</li>.
-<li>action-AIQualityControl: media quality inspection.</li>.
-<li>action-SmartSubtitles: specifies smart subtitling.</li>.
+        """Atomic task type:
+<li>input: start node</li>
+<li>output: end node</li>
+<li>action-trans: transcoding</li>
+<li>action-samplesnapshot: sampled screenshot</li>
+<li>action-AIAnalysis: analysis</li>
+<li>action-AIRecognition: recognition</li>
+<li>action-aiReview: review</li>
+<li>action-animated-graphics: conversion to GIF</li>
+<li>action-image-sprite: image sprite</li>
+<li>action-snapshotByTimeOffset: time point screenshot</li>
+<li>action-adaptive-substream: adaptive bitrate stream</li>
+<li>action-AIQualityControl: media quality inspection</li>
+<li>action-SmartSubtitles: smart subtitle</li>
+<li>action-exec-rules: judgment rule</li>
 
 
 
@@ -564,6 +566,9 @@ class ActivityPara(AbstractModel):
         :param _QualityControlTask: Media quality inspection task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        :param _ExecRulesTask: Conditional judgment of the task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ExecRulesTask: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
         :param _SmartSubtitlesTask: Smart subtitle task.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
@@ -578,6 +583,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
         self._QualityControlTask = None
+        self._ExecRulesTask = None
         self._SmartSubtitlesTask = None
 
     @property
@@ -692,6 +698,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._QualityControlTask = QualityControlTask
 
     @property
+    def ExecRulesTask(self):
+        """Conditional judgment of the task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
+        """
+        return self._ExecRulesTask
+
+    @ExecRulesTask.setter
+    def ExecRulesTask(self, ExecRulesTask):
+        self._ExecRulesTask = ExecRulesTask
+
+    @property
     def SmartSubtitlesTask(self):
         """Smart subtitle task.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -735,6 +753,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = AiQualityControlTaskInput()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("ExecRulesTask") is not None:
+            self._ExecRulesTask = ExecRulesTask()
+            self._ExecRulesTask._deserialize(params.get("ExecRulesTask"))
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = SmartSubtitlesTaskInput()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
@@ -785,6 +806,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _QualityControlTask: Media quality inspection task output.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        :param _ExecRuleTask: Conditional judgment task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ExecRuleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
         :param _SmartSubtitlesTask: Smart subtitle task output.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
@@ -799,6 +823,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ReviewTask = None
         self._AnalysisTask = None
         self._QualityControlTask = None
+        self._ExecRuleTask = None
         self._SmartSubtitlesTask = None
 
     @property
@@ -922,6 +947,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._QualityControlTask = QualityControlTask
 
     @property
+    def ExecRuleTask(self):
+        """Conditional judgment task output.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
+        """
+        return self._ExecRuleTask
+
+    @ExecRuleTask.setter
+    def ExecRuleTask(self, ExecRuleTask):
+        self._ExecRuleTask = ExecRuleTask
+
+    @property
     def SmartSubtitlesTask(self):
         """Smart subtitle task output.
 Note: This field may return null, indicating that no valid value can be obtained.
@@ -965,6 +1002,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("QualityControlTask") is not None:
             self._QualityControlTask = ScheduleQualityControlTaskResult()
             self._QualityControlTask._deserialize(params.get("QualityControlTask"))
+        if params.get("ExecRuleTask") is not None:
+            self._ExecRuleTask = ScheduleExecRuleTaskResult()
+            self._ExecRuleTask._deserialize(params.get("ExecRuleTask"))
         if params.get("SmartSubtitlesTask") is not None:
             self._SmartSubtitlesTask = ScheduleSmartSubtitleTaskResult()
             self._SmartSubtitlesTask._deserialize(params.get("SmartSubtitlesTask"))
@@ -1177,7 +1217,7 @@ PureAudio: audio-only.
         :param _SubtitleTemplate: Specifies the subtitle parameter.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
-        :param _StdExtInfo: Extension field for transcoding.
+        :param _StdExtInfo: Transcoding parameter extension field.
         :type StdExtInfo: str
         """
         self._Definition = None
@@ -1316,7 +1356,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StdExtInfo(self):
-        """Extension field for transcoding.
+        """Transcoding parameter extension field.
         :rtype: str
         """
         return self._StdExtInfo
@@ -2491,11 +2531,15 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :type OriginSubtitlePath: str
         :param _TranslateSubtitlePath: Path of a subtitle translation file extracted from a video.
         :type TranslateSubtitlePath: str
+        :param _SubtitlePos: Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
         """
         self._Path = None
         self._OutputStorage = None
         self._OriginSubtitlePath = None
         self._TranslateSubtitlePath = None
+        self._SubtitlePos = None
 
     @property
     def Path(self):
@@ -2541,6 +2585,18 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
     def TranslateSubtitlePath(self, TranslateSubtitlePath):
         self._TranslateSubtitlePath = TranslateSubtitlePath
 
+    @property
+    def SubtitlePos(self):
+        """Position of the erased subtitle. Note: This field is only valid for subtitle extraction when the option to return subtitle positions is enabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        """
+        return self._SubtitlePos
+
+    @SubtitlePos.setter
+    def SubtitlePos(self, SubtitlePos):
+        self._SubtitlePos = SubtitlePos
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -2549,6 +2605,9 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
             self._OutputStorage._deserialize(params.get("OutputStorage"))
         self._OriginSubtitlePath = params.get("OriginSubtitlePath")
         self._TranslateSubtitlePath = params.get("TranslateSubtitlePath")
+        if params.get("SubtitlePos") is not None:
+            self._SubtitlePos = SubtitlePosition()
+            self._SubtitlePos._deserialize(params.get("SubtitlePos"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17026,11 +17085,14 @@ class CreateQualityControlTemplateRequest(AbstractModel):
         :param _RecordFormat: Recording file format. Valid values:
 <li>PNG: PNG image.</li>
         :type RecordFormat: str
+        :param _Strategy: Spot check policy for media quality inspection.
+        :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Name = None
         self._QualityControlItemSet = None
         self._Comment = None
         self._RecordFormat = None
+        self._Strategy = None
 
     @property
     def Name(self):
@@ -17077,6 +17139,17 @@ class CreateQualityControlTemplateRequest(AbstractModel):
     def RecordFormat(self, RecordFormat):
         self._RecordFormat = RecordFormat
 
+    @property
+    def Strategy(self):
+        """Spot check policy for media quality inspection.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -17088,6 +17161,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
                 self._QualityControlItemSet.append(obj)
         self._Comment = params.get("Comment")
         self._RecordFormat = params.get("RecordFormat")
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityControlStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22526,8 +22602,7 @@ class DescribeQualityControlTemplatesResponse(AbstractModel):
         r"""
         :param _TotalCount: Total number of records that meet filter conditions.
         :type TotalCount: int
-        :param _QualityControlTemplateSet: Media quality inspection template details list.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QualityControlTemplateSet: List of media quality inspection templates.
         :type QualityControlTemplateSet: list of QualityControlTemplate
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -22549,8 +22624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlTemplateSet(self):
-        """Media quality inspection template details list.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """List of media quality inspection templates.
         :rtype: list of QualityControlTemplate
         """
         return self._QualityControlTemplateSet
@@ -23653,10 +23727,16 @@ class DescribeTasksRequest(AbstractModel):
         :type Limit: int
         :param _ScrollToken: Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
         :type ScrollToken: str
+        :param _StartTime: Query task start time.
+        :type StartTime: str
+        :param _EndTime: Query task end time.
+        :type EndTime: str
         """
         self._Status = None
         self._Limit = None
         self._ScrollToken = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def Status(self):
@@ -23691,11 +23771,35 @@ class DescribeTasksRequest(AbstractModel):
     def ScrollToken(self, ScrollToken):
         self._ScrollToken = ScrollToken
 
+    @property
+    def StartTime(self):
+        """Query task start time.
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """Query task end time.
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Limit = params.get("Limit")
         self._ScrollToken = params.get("ScrollToken")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25793,6 +25897,85 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ExecRuleTaskData(AbstractModel):
+    """Conditional judgment output.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RearDriveIndex: Indexes of nodes that needs to be executed based on the conditional judgment for quality inspection.
+        :type RearDriveIndex: list of int
+        """
+        self._RearDriveIndex = None
+
+    @property
+    def RearDriveIndex(self):
+        """Indexes of nodes that needs to be executed based on the conditional judgment for quality inspection.
+        :rtype: list of int
+        """
+        return self._RearDriveIndex
+
+    @RearDriveIndex.setter
+    def RearDriveIndex(self, RearDriveIndex):
+        self._RearDriveIndex = RearDriveIndex
+
+
+    def _deserialize(self, params):
+        self._RearDriveIndex = params.get("RearDriveIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecRulesTask(AbstractModel):
+    """Task judgment conditions.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: Conditional judgment information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Rules: list of Rules
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        """Conditional judgment information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of Rules
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = Rules()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecuteFunctionRequest(AbstractModel):
     """ExecuteFunction request structure.
 
@@ -26553,11 +26736,9 @@ class HighlightSegmentItem(AbstractModel):
         :param _SegmentTags: Segment tag.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SegmentTags: list of str
-        :param _BeginTime: The live streaming segment corresponds to the live start time point, in the ISO date format.	
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _BeginTime: Start time of the live streaming segment in ISO date and time format.	
         :type BeginTime: str
-        :param _EndTime: The live streaming segment corresponds to the live streaming end time, in the ISO date format.	
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _EndTime: End time of the live streaming segment in ISO date and time format.	
         :type EndTime: str
         """
         self._Confidence = None
@@ -26614,8 +26795,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginTime(self):
-        """The live streaming segment corresponds to the live start time point, in the ISO date format.	
-Note: This field may return null, indicating that no valid value can be obtained.
+        """Start time of the live streaming segment in ISO date and time format.	
         :rtype: str
         """
         return self._BeginTime
@@ -26626,8 +26806,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
-        """The live streaming segment corresponds to the live streaming end time, in the ISO date format.	
-Note: This field may return null, indicating that no valid value can be obtained.
+        """End time of the live streaming segment in ISO date and time format.	
         :rtype: str
         """
         return self._EndTime
@@ -28157,9 +28336,8 @@ class LiveActivityResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ActivityType: Atomic task type.
-<li>LiveRecord: live recording.</li>
-<li>AiQualityControl: media quality inspection.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+<li>LiveRecord: live recording</li>
+<li>AiQualityControl: media quality inspection</li>
         :type ActivityType: str
         :param _LiveActivityResItem: The task output.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -28171,9 +28349,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def ActivityType(self):
         """Atomic task type.
-<li>LiveRecord: live recording.</li>
-<li>AiQualityControl: media quality inspection.</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+<li>LiveRecord: live recording</li>
+<li>AiQualityControl: media quality inspection</li>
         :rtype: str
         """
         return self._ActivityType
@@ -28767,22 +28944,17 @@ class LiveScheduleTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The ID of a live scheme subtask.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskId: Live orchestration task ID.
         :type TaskId: str
-        :param _Status: The task status. Valid values:
-<li>`PROCESSING`</li>
-<li>`FINISH` </li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Task stream status. Valid values:
+<li>PROCESSING: processing</li>
+<li>FINISH: completed</li>
         :type Status: str
-        :param _ErrCode: If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ErrCode: An error code other than 0 is returned in case of a source exception. Use the error code of the specific task when a value of 0 is returned.
         :type ErrCode: int
-        :param _Message: If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Message: The corresponding exception message is returned in case of a source exception. If no source exception occurs, use the message of each specific task.
         :type Message: str
-        :param _Url: The URL of the live stream.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Url: Live stream URL.
         :type Url: str
         :param _LiveActivityResultSet: The task output.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -28797,8 +28969,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
-        """The ID of a live scheme subtask.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Live orchestration task ID.
         :rtype: str
         """
         return self._TaskId
@@ -28809,10 +28980,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
-        """The task status. Valid values:
-<li>`PROCESSING`</li>
-<li>`FINISH` </li>
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Task stream status. Valid values:
+<li>PROCESSING: processing</li>
+<li>FINISH: completed</li>
         :rtype: str
         """
         return self._Status
@@ -28823,8 +28993,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
-        """If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """An error code other than 0 is returned in case of a source exception. Use the error code of the specific task when a value of 0 is returned.
         :rtype: int
         """
         return self._ErrCode
@@ -28835,8 +29004,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
-        """If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """The corresponding exception message is returned in case of a source exception. If no source exception occurs, use the message of each specific task.
         :rtype: str
         """
         return self._Message
@@ -28847,8 +29015,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Url(self):
-        """The URL of the live stream.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Live stream URL.
         :rtype: str
         """
         return self._Url
@@ -32010,9 +32177,12 @@ class MediaAiAnalysisTagItem(AbstractModel):
         :type Tag: str
         :param _Confidence: Confidence of tag between 0 and 100.
         :type Confidence: float
+        :param _SpecialInfo: Varies based on different types.
+        :type SpecialInfo: str
         """
         self._Tag = None
         self._Confidence = None
+        self._SpecialInfo = None
 
     @property
     def Tag(self):
@@ -32036,10 +32206,22 @@ class MediaAiAnalysisTagItem(AbstractModel):
     def Confidence(self, Confidence):
         self._Confidence = Confidence
 
+    @property
+    def SpecialInfo(self):
+        """Varies based on different types.
+        :rtype: str
+        """
+        return self._SpecialInfo
+
+    @SpecialInfo.setter
+    def SpecialInfo(self, SpecialInfo):
+        self._SpecialInfo = SpecialInfo
+
 
     def _deserialize(self, params):
         self._Tag = params.get("Tag")
         self._Confidence = params.get("Confidence")
+        self._SpecialInfo = params.get("SpecialInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33616,7 +33798,8 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         :type Message: str
         :param _Input: Input for an image sprite generating task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
-        :param _Output: Specifies the output of an image sprite task for a video.
+        :param _Output: Output of the image sprite task for videos.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -33689,7 +33872,8 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
     @property
     def Output(self):
-        """Specifies the output of an image sprite task for a video.
+        """Output of the image sprite task for videos.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
         """
         return self._Output
@@ -34067,7 +34251,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Message: str
         :param _Input: Input for a sampled screenshot task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
-        :param _Output: Specifies the output of a sampling screenshot task for a video.
+        :param _Output: Output of the sampled screenshot task for videos.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -34141,7 +34326,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """Specifies the output of a sampling screenshot task for a video.
+        """Output of the sampled screenshot task for videos.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
         """
         return self._Output
@@ -34213,7 +34399,8 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         :type Message: str
         :param _Input: Input for a time point screenshot task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
-        :param _Output: Specifies the output of a screenshot task at specified time points for a video.
+        :param _Output: Output of the time point screenshot task for videos.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         :param _BeginProcessTime: Task execution start time in [ISO datetime format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
         :type BeginProcessTime: str
@@ -34286,7 +34473,8 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
 
     @property
     def Output(self):
-        """Specifies the output of a screenshot task at specified time points for a video.
+        """Output of the time point screenshot task for videos.
+Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
         """
         return self._Output
@@ -36902,12 +37090,15 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
         :param _RecordFormat: Recording file format. Valid values:
 <li>PNG: PNG image.</li>
         :type RecordFormat: str
+        :param _Strategy: Spot check policy for media quality inspection.
+        :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Definition = None
         self._Name = None
         self._Comment = None
         self._QualityControlItemSet = None
         self._RecordFormat = None
+        self._Strategy = None
 
     @property
     def Definition(self):
@@ -36965,6 +37156,17 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
     def RecordFormat(self, RecordFormat):
         self._RecordFormat = RecordFormat
 
+    @property
+    def Strategy(self):
+        """Spot check policy for media quality inspection.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -36977,6 +37179,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._QualityControlItemSet.append(obj)
         self._RecordFormat = params.get("RecordFormat")
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityControlStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41956,23 +42161,17 @@ class QualityControlData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoAudio: Whether there is an audio track. `true` indicates that there isn't.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NoAudio: When this field is set to true, it indicates that the video has no audio track.
         :type NoAudio: bool
-        :param _NoVideo: Whether there is a video track. `true` indicates that there isn't.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _NoVideo: When this field is set to true, it indicates that the video has no video track.
         :type NoVideo: bool
         :param _QualityEvaluationScore: No-reference quality score of the video (100 points in total).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityEvaluationScore: int
         :param _QualityEvaluationMeanOpinionScore: No-reference quality score of the video (MOS).
-Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityEvaluationMeanOpinionScore: float
-        :param _QualityControlResultSet: Exception items detected in content quality inspection.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QualityControlResultSet: Exception items identified in content quality inspection.
         :type QualityControlResultSet: list of QualityControlResult
-        :param _ContainerDiagnoseResultSet: Exception items detected in format diagnosis.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ContainerDiagnoseResultSet: Exception items identified in format diagnosis.
         :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
         """
         self._NoAudio = None
@@ -41984,8 +42183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoAudio(self):
-        """Whether there is an audio track. `true` indicates that there isn't.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """When this field is set to true, it indicates that the video has no audio track.
         :rtype: bool
         """
         return self._NoAudio
@@ -41996,8 +42194,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoVideo(self):
-        """Whether there is a video track. `true` indicates that there isn't.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """When this field is set to true, it indicates that the video has no video track.
         :rtype: bool
         """
         return self._NoVideo
@@ -42009,7 +42206,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def QualityEvaluationScore(self):
         """No-reference quality score of the video (100 points in total).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: int
         """
         return self._QualityEvaluationScore
@@ -42021,7 +42217,6 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def QualityEvaluationMeanOpinionScore(self):
         """No-reference quality score of the video (MOS).
-Note: This field may return null, indicating that no valid value can be obtained.
         :rtype: float
         """
         return self._QualityEvaluationMeanOpinionScore
@@ -42032,8 +42227,7 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def QualityControlResultSet(self):
-        """Exception items detected in content quality inspection.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Exception items identified in content quality inspection.
         :rtype: list of QualityControlResult
         """
         return self._QualityControlResultSet
@@ -42044,8 +42238,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContainerDiagnoseResultSet(self):
-        """Exception items detected in format diagnosis.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Exception items identified in format diagnosis.
         :rtype: list of ContainerDiagnoseResultItem
         """
         return self._ContainerDiagnoseResultSet
@@ -42512,6 +42705,61 @@ class QualityControlResult(AbstractModel):
         
 
 
+class QualityControlStrategy(AbstractModel):
+    """Detection policy for media quality inspection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: Policy type. Valid values:
+- TimeSpotCheck
+        :type StrategyType: str
+        :param _TimeSpotCheck: Spot check policy based on time.
+        :type TimeSpotCheck: :class:`tencentcloud.mps.v20190612.models.TimeSpotCheck`
+        """
+        self._StrategyType = None
+        self._TimeSpotCheck = None
+
+    @property
+    def StrategyType(self):
+        """Policy type. Valid values:
+- TimeSpotCheck
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TimeSpotCheck(self):
+        """Spot check policy based on time.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TimeSpotCheck`
+        """
+        return self._TimeSpotCheck
+
+    @TimeSpotCheck.setter
+    def TimeSpotCheck(self, TimeSpotCheck):
+        self._TimeSpotCheck = TimeSpotCheck
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        if params.get("TimeSpotCheck") is not None:
+            self._TimeSpotCheck = TimeSpotCheck()
+            self._TimeSpotCheck._deserialize(params.get("TimeSpotCheck"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityControlTemplate(AbstractModel):
     """Media quality inspection template details.
 
@@ -42546,6 +42794,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
+        :param _Strategy: Spot check policy for media quality inspection.
+        :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Definition = None
         self._Name = None
@@ -42554,6 +42804,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._QualityControlItemSet = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Strategy = None
 
     @property
     def Definition(self):
@@ -42645,6 +42896,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Strategy(self):
+        """Spot check policy for media quality inspection.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -42659,6 +42921,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._QualityControlItemSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityControlStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43519,6 +43784,155 @@ class ResetWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RuleConditionItem(AbstractModel):
+    """Rule condition configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key of the quality inspection item condition.
+        :type Key: str
+        :param _Value: Value corresponding to the condition.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        """Key of the quality inspection item condition.
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        """Value corresponding to the condition.
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Rules(AbstractModel):
+    """Task judgment conditions.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Judgment condition ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Id: str
+        :param _Conditions: Judgment condition configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Conditions: list of RuleConditionItem
+        :param _Linker: Logical operator for the list of conditions. Valid values:
+
+ - &&: logical AND
+ - ||: logical OR
+        :type Linker: str
+        :param _RearDriveIndexs: Indexes of the nodes to execute if the judgment conditions are met.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RearDriveIndexs: list of int
+        """
+        self._Id = None
+        self._Conditions = None
+        self._Linker = None
+        self._RearDriveIndexs = None
+
+    @property
+    def Id(self):
+        """Judgment condition ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Conditions(self):
+        """Judgment condition configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of RuleConditionItem
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
+    def Linker(self):
+        """Logical operator for the list of conditions. Valid values:
+
+ - &&: logical AND
+ - ||: logical OR
+        :rtype: str
+        """
+        return self._Linker
+
+    @Linker.setter
+    def Linker(self, Linker):
+        self._Linker = Linker
+
+    @property
+    def RearDriveIndexs(self):
+        """Indexes of the nodes to execute if the judgment conditions are met.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of int
+        """
+        return self._RearDriveIndexs
+
+    @RearDriveIndexs.setter
+    def RearDriveIndexs(self, RearDriveIndexs):
+        self._RearDriveIndexs = RearDriveIndexs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = RuleConditionItem()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        self._Linker = params.get("Linker")
+        self._RearDriveIndexs = params.get("RearDriveIndexs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class S3InputInfo(AbstractModel):
     """The AWS S3 storage information of a source file.
 
@@ -44092,9 +44506,12 @@ class ScheduleAnalysisTaskResult(AbstractModel):
         :type Message: str
         :param _Input: The input of the content analysis task.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _Output: The output of the content analysis task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Analysis task output.
         :type Output: list of AiAnalysisResult
+        :param _BeginProcessTime: Task execution start time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :type BeginProcessTime: str
+        :param _FinishTime: Task execution completion time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :type FinishTime: str
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -44102,6 +44519,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
 
     @property
     def Status(self):
@@ -44160,8 +44579,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
-        """The output of the content analysis task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Analysis task output.
         :rtype: list of AiAnalysisResult
         """
         return self._Output
@@ -44169,6 +44587,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Output.setter
     def Output(self, Output):
         self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        """Task execution start time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        """Task execution completion time in [ISO date and time format](https://www.tencentcloud.comom/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
 
 
     def _deserialize(self, params):
@@ -44185,6 +44625,110 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = AiAnalysisResult()
                 obj._deserialize(item)
                 self._Output.append(obj)
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleExecRuleTaskResult(AbstractModel):
+    """Result type of the media quality inspection task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, which can be PROCESSING, SUCCESS, or FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        :type ErrCodeExt: str
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input of the conditional judgment task.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
+        :param _Output: Output of the conditional judgment task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.ExecRuleTaskData`
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        """Task status, which can be PROCESSING, SUCCESS, or FAIL.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        """Error code. An empty string indicates success, while other values indicate failure. For specific values, see the list of MPS error codes at https://www.tencentcloud.comom/document/product/862/50369?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81.
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        """Error message.
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        """Input of the conditional judgment task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        """Output of the conditional judgment task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRuleTaskData`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = ExecRulesTask()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = ExecRuleTaskData()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46832,8 +47376,8 @@ class SmartSubtitlesResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Task type. Valid values:
-<Li>AsrFullTextRecognition: full speech recognition</li>
-<Li>TransTextRecognition: speech translation</li>
+<li>AsrFullTextRecognition: full speech recognition</li>
+<li>TransTextRecognition: speech translation</li>
         :type Type: str
         :param _AsrFullTextTask: Full speech recognition result. When Type is
  set to AsrFullTextRecognition, this parameter takes effect.
@@ -46852,8 +47396,8 @@ Note: This field may return null, indicating that no valid value can be obtained
     @property
     def Type(self):
         """Task type. Valid values:
-<Li>AsrFullTextRecognition: full speech recognition</li>
-<Li>TransTextRecognition: speech translation</li>
+<li>AsrFullTextRecognition: full speech recognition</li>
+<li>TransTextRecognition: speech translation</li>
         :rtype: str
         """
         return self._Type
@@ -46922,10 +47466,28 @@ class SmartSubtitlesTaskInput(AbstractModel):
         :param _RawParameter: Custom smart subtitle parameter. It takes effect when Definition is set to 0. This parameter is used in high customization scenarios. It is recommended that you preferentially use Definition to specify smart subtitle parameters.	
 Note: This field may return null, indicating that no valid value can be obtained.
         :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawSmartSubtitleParameter`
+        :param _OutputStorage: Bucket that stores the output file. If it is left unspecified, the storage location in InputInfo will be inherited.
+**Note**: This parameter is required when InputInfo.Type is set to URL.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputObjectPath: Output path of the generated subtitle file, which can be a relative or absolute path.
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
+
+Relative path example:
+ - File name_{variable name}.{format}.
+ - File name.{format}.
+
+Absolute path example:
+ -/Custom path/File name_{variable name}.{format}.
+
+If this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.
+        :type OutputObjectPath: str
         """
         self._Definition = None
         self._UserExtPara = None
         self._RawParameter = None
+        self._OutputStorage = None
+        self._OutputObjectPath = None
 
     @property
     def Definition(self):
@@ -46961,6 +47523,40 @@ Note: This field may return null, indicating that no valid value can be obtained
     def RawParameter(self, RawParameter):
         self._RawParameter = RawParameter
 
+    @property
+    def OutputStorage(self):
+        """Bucket that stores the output file. If it is left unspecified, the storage location in InputInfo will be inherited.
+**Note**: This parameter is required when InputInfo.Type is set to URL.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputObjectPath(self):
+        """Output path of the generated subtitle file, which can be a relative or absolute path.
+To define the output path, end the path with .{format}. For variable names, see the description of file name variables at https://www.tencentcloud.comom/document/product/862/37039.?from_cn_redirect=1
+
+Relative path example:
+ - File name_{variable name}.{format}.
+ - File name.{format}.
+
+Absolute path example:
+ -/Custom path/File name_{variable name}.{format}.
+
+If this field is left unspecified, the default value is the relative path in the following format: {inputName}_smartsubtitle_{definition}.{format}.
+        :rtype: str
+        """
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -46968,6 +47564,10 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("RawParameter") is not None:
             self._RawParameter = RawSmartSubtitleParameter()
             self._RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputObjectPath = params.get("OutputObjectPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47467,6 +48067,42 @@ preset1: use different keys for each substream
         self._Vector = params.get("Vector")
         self._EncryptionMethod = params.get("EncryptionMethod")
         self._EncryptionPreset = params.get("EncryptionPreset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitlePosition(AbstractModel):
+    """Subtitle position information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CenterY: Y-coordinate value when the subtitle is centered.
+        :type CenterY: int
+        """
+        self._CenterY = None
+
+    @property
+    def CenterY(self):
+        """Y-coordinate value when the subtitle is centered.
+        :rtype: int
+        """
+        return self._CenterY
+
+    @CenterY.setter
+    def CenterY(self, CenterY):
+        self._CenterY = CenterY
+
+
+    def _deserialize(self, params):
+        self._CenterY = params.get("CenterY")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49271,6 +49907,95 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
         self._TextContent = params.get("TextContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeSpotCheck(AbstractModel):
+    """Detection policy for media quality inspection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckDuration: Duration of each loop detection in the spot check policy, in seconds. Valid values:
+
+ - Minimum value: 10.
+ - Maximum value: 86400.
+
+        :type CheckDuration: int
+        :param _CheckInterval: Detection interval of the spot check policy, which indicates how long to wait before conducting the next detection after one detection is completed.
+        :type CheckInterval: int
+        :param _SkipDuration: Duration for which the opening clip is skipped.
+        :type SkipDuration: int
+        :param _CirclesNumber: Number of loops. When this field is empty or set to 0, the default behavior is to loop until the video ends.
+        :type CirclesNumber: int
+        """
+        self._CheckDuration = None
+        self._CheckInterval = None
+        self._SkipDuration = None
+        self._CirclesNumber = None
+
+    @property
+    def CheckDuration(self):
+        """Duration of each loop detection in the spot check policy, in seconds. Valid values:
+
+ - Minimum value: 10.
+ - Maximum value: 86400.
+
+        :rtype: int
+        """
+        return self._CheckDuration
+
+    @CheckDuration.setter
+    def CheckDuration(self, CheckDuration):
+        self._CheckDuration = CheckDuration
+
+    @property
+    def CheckInterval(self):
+        """Detection interval of the spot check policy, which indicates how long to wait before conducting the next detection after one detection is completed.
+        :rtype: int
+        """
+        return self._CheckInterval
+
+    @CheckInterval.setter
+    def CheckInterval(self, CheckInterval):
+        self._CheckInterval = CheckInterval
+
+    @property
+    def SkipDuration(self):
+        """Duration for which the opening clip is skipped.
+        :rtype: int
+        """
+        return self._SkipDuration
+
+    @SkipDuration.setter
+    def SkipDuration(self, SkipDuration):
+        self._SkipDuration = SkipDuration
+
+    @property
+    def CirclesNumber(self):
+        """Number of loops. When this field is empty or set to 0, the default behavior is to loop until the video ends.
+        :rtype: int
+        """
+        return self._CirclesNumber
+
+    @CirclesNumber.setter
+    def CirclesNumber(self, CirclesNumber):
+        self._CirclesNumber = CirclesNumber
+
+
+    def _deserialize(self, params):
+        self._CheckDuration = params.get("CheckDuration")
+        self._CheckInterval = params.get("CheckInterval")
+        self._SkipDuration = params.get("SkipDuration")
+        self._CirclesNumber = params.get("CirclesNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
