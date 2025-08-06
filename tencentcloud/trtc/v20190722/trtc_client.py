@@ -83,6 +83,33 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudSliceTask(self, request):
+        """API description:
+        This API is used to enable the cloud slicing feature, completing audio and video slicing tasks in the room, and uploading them to the specified cloud storage.
+        This API is used to achieve the following goals:
+        * This API is used to specify the slicing parameter (SliceParams) to define the blocklist or allowlist of the anchors that require slicing.
+        * This API is used to specify the storage parameter (SliceStorageParams) to specify the cloud storage you want to upload to. Currently, Tencent Cloud Object Storage (COS) and third-party AWS are supported.
+
+        :param request: Request instance for CreateCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudRecording(self, request):
         """This API is used to stop a recording task. If a task is stopped successfully, but the uploading of recording files has not completed, the backend will continue to upload the files and will notify you via a callback when the upload is completed.
 
@@ -97,6 +124,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudSliceTask(self, request):
+        """This API is used to stop the slicing task after it is started. Successfully stopping the slicing does not mean that all files are fully transmitted; if the transmission is not completed, the backend will continue to upload files. After the upload is successful, a notification is sent to the customer, prompting that all files have been transmitted, through the event callback.
+
+        :param request: Request instance for DeleteCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -193,6 +243,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudSliceTask(self, request):
+        """This API is used to query the status of the slicing task after it is started, which is valid only when the task is in progress. An error will be returned if the task is exited.
+
+        :param request: Request instance for DescribeCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -686,6 +759,29 @@ class TrtcClient(AbstractClient):
             body = self.call("ModifyCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudSliceTask(self, request):
+        """This API is used to update the slicing task after it is started. It can be used to update the allowlist or blocklist for the specified subscription stream.
+
+        :param request: Request instance for ModifyCloudSliceTask.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudSliceTaskRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudSliceTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudSliceTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudSliceTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

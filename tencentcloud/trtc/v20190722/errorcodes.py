@@ -32,6 +32,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Unsupported on-cloud recording method.
 FAILEDOPERATION_CRUNSUPPORTMETHOD = 'FailedOperation.CRUnsupportMethod'
 
+# The cloud slicing method is not supported.
+FAILEDOPERATION_CSUNSUPPORTMETHOD = 'FailedOperation.CSUnsupportMethod'
+
 # Need to unlock the required ability
 FAILEDOPERATION_NOTABILITY = 'FailedOperation.NotAbility'
 
@@ -73,6 +76,9 @@ INTERNALERROR = 'InternalError'
 
 # On-cloud recording internal error.
 INTERNALERROR_CRINTERNALERROR = 'InternalError.CRInternalError'
+
+# Internal service error of cloud slicing occurs.
+INTERNALERROR_CSINTERNALERROR = 'InternalError.CSInternalError'
 
 # An error occurred while querying the database.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
@@ -223,6 +229,15 @@ MISSINGPARAMETER_SDKAPPID = 'MissingParameter.SdkAppId'
 
 # `SecretKey` parameter missing.
 MISSINGPARAMETER_SECRETKEY = 'MissingParameter.SecretKey'
+
+# The SliceParams parameter is required.
+MISSINGPARAMETER_SLICEPARAMS = 'MissingParameter.SliceParams'
+
+# The SliceStorageParams parameter is required.
+MISSINGPARAMETER_SLICESTORAGEPARAMS = 'MissingParameter.SliceStorageParams'
+
+# The SliceType parameter is required.
+MISSINGPARAMETER_SLICETYPE = 'MissingParameter.SliceType'
 
 # `startTS_s` is missing.
 MISSINGPARAMETER_STARTTS = 'MissingParameter.StartTs'

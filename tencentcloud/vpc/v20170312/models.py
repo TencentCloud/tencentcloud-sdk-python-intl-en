@@ -30735,7 +30735,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param _ChargeUnit: Billing unit. Valid values: <ul> <li>HOUR: Indicates that the billing unit is calculated hourly. The scenarios currently involving this billing unit include TRAFFIC_POSTPAID_BY_HOUR and BANDWIDTH_POSTPAID_BY_HOUR.</li></ul>
 Note: This field may return null, indicating that no valid value was found.
         :type ChargeUnit: str
-        :param _OriginalPrice: Original price. Unit: CNY. Returned only for prepaid price inquiry.
+        :param _OriginalPrice: Original price. Unit: USD. Returned only for prepaid price inquiry.
         :type OriginalPrice: float
         """
         self._UnitPrice = None
@@ -30780,7 +30780,7 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def OriginalPrice(self):
-        """Original price. Unit: CNY. Returned only for prepaid price inquiry.
+        """Original price. Unit: USD. Returned only for prepaid price inquiry.
         :rtype: float
         """
         return self._OriginalPrice

@@ -587,6 +587,139 @@ class AudioParams(AbstractModel):
         
 
 
+class CloudSliceStorage(AbstractModel):
+    """Information about Tencent COS and third-party cloud storage accounts.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: Information about Tencent COS and third-party cloud storage accounts.
+0: Tencent COS.
+1: AWS S3.
+2: Alibaba Cloud OSS.
+Example value: 0.
+        :type Vendor: int
+        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+Example value: cn-shanghai-1.
+[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
+Example value: ap-southeast-3.	
+        :type Region: str
+        :param _Bucket: Cloud bucket name.
+        :type Bucket: str
+        :param _AccessKey: access_key account information of the cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
+Example value: test-accesskey.
+        :type AccessKey: str
+        :param _SecretKey: secret_key account information of the cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
+Example value: test-secretkey.
+        :type SecretKey: str
+        :param _FileNamePrefix: Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        :type FileNamePrefix: list of str
+        """
+        self._Vendor = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._FileNamePrefix = None
+
+    @property
+    def Vendor(self):
+        """Information about Tencent COS and third-party cloud storage accounts.
+0: Tencent COS.
+1: AWS S3.
+2: Alibaba Cloud OSS.
+Example value: 0.
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Region(self):
+        """[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+Example value: cn-shanghai-1.
+[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
+Example value: ap-southeast-3.	
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        """Cloud bucket name.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKey(self):
+        """access_key account information of the cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
+Example value: test-accesskey.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        """secret_key account information of the cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
+Example value: test-secretkey.
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def FileNamePrefix(self):
+        """Specified location of the cloud bucket, which consists of an array of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        :rtype: list of str
+        """
+        return self._FileNamePrefix
+
+    @FileNamePrefix.setter
+    def FileNamePrefix(self, FileNamePrefix):
+        self._FileNamePrefix = FileNamePrefix
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudStorage(AbstractModel):
     """The cloud storage information.
 
@@ -1077,6 +1210,209 @@ class CreateCloudRecordingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudSliceTaskRequest(AbstractModel):
+    """CreateCloudSliceTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        :type SdkAppId: int
+        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        :type RoomId: str
+        :param _UserId: Chatbot's UserId, which is used to enter the room and initiate a slicing task. [*note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple slicing tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous slicing task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.
+        :type UserId: str
+        :param _UserSig: Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. For specific calculation methods, see TRTC solution for calculating UserSig.
+        :type UserSig: str
+        :param _SliceParams: Control parameters for cloud slicing.
+        :type SliceParams: :class:`tencentcloud.trtc.v20190722.models.SliceParams`
+        :param _SliceStorageParams: Parameters for uploading cloud slicing files to the cloud storage.
+        :type SliceStorageParams: :class:`tencentcloud.trtc.v20190722.models.SliceStorageParams`
+        :param _RoomIdType: Type of the TRTC room number. [*Note] It should be the same as the type of the RoomId corresponding to the recording room. 0: string type; 1: 32-bit integer type (default value). Example value: 1.
+        :type RoomIdType: int
+        :param _ResourceExpiredHour: Validity period for calling the API, which starts upon successful initiation of recording and obtaining the task ID. After the timeout, APIs such as querying, updating, or stopping cannot be called, but the recording task is not stopped. The unit of the parameter is hours, with a default value of 72 hours (3 days). The maximum value is 720 hours (30 days), while the minimum value is 6 hours. For example, if this parameter is not specified, the validity period for calling the querying, updating, and stopping recording APIs is 72 hours upon the successful start of recording. Example value: 24.
+        :type ResourceExpiredHour: int
+        :param _PrivateMapKey: TRTC room permission encryption string, which is required only when advanced permission control is enabled in the TRTC console. After enabling, the TRTC backend service system verifies a "permission ticket" called [PrivateMapKey], which contains an encrypted RoomId and an encrypted "permission bit list". Since the PrivateMapKey includes the RoomId, the specified room cannot be entered if only UserSig is provided and PrivateMapKey is not provided. Example value: eJw1jcEKgkAURX9FZlvY****fL9rfNX4_.
+        :type PrivateMapKey: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._UserId = None
+        self._UserSig = None
+        self._SliceParams = None
+        self._SliceStorageParams = None
+        self._RoomIdType = None
+        self._ResourceExpiredHour = None
+        self._PrivateMapKey = None
+
+    @property
+    def SdkAppId(self):
+        """[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        """Chatbot's UserId, which is used to enter the room and initiate a slicing task. [*note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple slicing tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous slicing task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        """Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. For specific calculation methods, see TRTC solution for calculating UserSig.
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def SliceParams(self):
+        """Control parameters for cloud slicing.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SliceParams`
+        """
+        return self._SliceParams
+
+    @SliceParams.setter
+    def SliceParams(self, SliceParams):
+        self._SliceParams = SliceParams
+
+    @property
+    def SliceStorageParams(self):
+        """Parameters for uploading cloud slicing files to the cloud storage.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SliceStorageParams`
+        """
+        return self._SliceStorageParams
+
+    @SliceStorageParams.setter
+    def SliceStorageParams(self, SliceStorageParams):
+        self._SliceStorageParams = SliceStorageParams
+
+    @property
+    def RoomIdType(self):
+        """Type of the TRTC room number. [*Note] It should be the same as the type of the RoomId corresponding to the recording room. 0: string type; 1: 32-bit integer type (default value). Example value: 1.
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def ResourceExpiredHour(self):
+        """Validity period for calling the API, which starts upon successful initiation of recording and obtaining the task ID. After the timeout, APIs such as querying, updating, or stopping cannot be called, but the recording task is not stopped. The unit of the parameter is hours, with a default value of 72 hours (3 days). The maximum value is 720 hours (30 days), while the minimum value is 6 hours. For example, if this parameter is not specified, the validity period for calling the querying, updating, and stopping recording APIs is 72 hours upon the successful start of recording. Example value: 24.
+        :rtype: int
+        """
+        return self._ResourceExpiredHour
+
+    @ResourceExpiredHour.setter
+    def ResourceExpiredHour(self, ResourceExpiredHour):
+        self._ResourceExpiredHour = ResourceExpiredHour
+
+    @property
+    def PrivateMapKey(self):
+        """TRTC room permission encryption string, which is required only when advanced permission control is enabled in the TRTC console. After enabling, the TRTC backend service system verifies a "permission ticket" called [PrivateMapKey], which contains an encrypted RoomId and an encrypted "permission bit list". Since the PrivateMapKey includes the RoomId, the specified room cannot be entered if only UserSig is provided and PrivateMapKey is not provided. Example value: eJw1jcEKgkAURX9FZlvY****fL9rfNX4_.
+        :rtype: str
+        """
+        return self._PrivateMapKey
+
+    @PrivateMapKey.setter
+    def PrivateMapKey(self, PrivateMapKey):
+        self._PrivateMapKey = PrivateMapKey
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        if params.get("SliceParams") is not None:
+            self._SliceParams = SliceParams()
+            self._SliceParams._deserialize(params.get("SliceParams"))
+        if params.get("SliceStorageParams") is not None:
+            self._SliceStorageParams = SliceStorageParams()
+            self._SliceStorageParams._deserialize(params.get("SliceStorageParams"))
+        self._RoomIdType = params.get("RoomIdType")
+        self._ResourceExpiredHour = params.get("ResourceExpiredHour")
+        self._PrivateMapKey = params.get("PrivateMapKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudSliceTaskResponse(AbstractModel):
+    """CreateCloudSliceTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID assigned by the cloud slicing service. It is a unique identifier for the lifecycle of a slicing task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Task ID assigned by the cloud slicing service. It is a unique identifier for the lifecycle of a slicing task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudRecordingRequest(AbstractModel):
     """DeleteCloudRecording request structure.
 
@@ -1146,6 +1482,100 @@ class DeleteCloudRecordingResponse(AbstractModel):
     @property
     def TaskId(self):
         """The task ID assigned by the recording service, which uniquely identifies a recording process and becomes invalid after a recording task ends.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudSliceTaskRequest(AbstractModel):
+    """DeleteCloudSliceTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the slicing task, which is returned after the task is started.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudSliceTaskResponse(AbstractModel):
+    """DeleteCloudSliceTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the slicing task, which is returned after the task is started.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the slicing task, which is returned after the task is started.
         :rtype: str
         """
         return self._TaskId
@@ -1879,6 +2309,115 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = StorageFile()
                 obj._deserialize(item)
                 self._StorageFileList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudSliceTaskRequest(AbstractModel):
+    """DescribeCloudSliceTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the recording room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the slicing task, which is returned after the task is started.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the recording room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudSliceTaskResponse(AbstractModel):
+    """DescribeCloudSliceTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the slicing task, which is returned after the task is started.
+        :type TaskId: str
+        :param _Status: Information about the status of the cloud slicing task. Idle: indicates the current task is idle; InProgress: indicates the current task is in progress; Exited: indicates the current task is being exited.
+        :type Status: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        """Information about the status of the cloud slicing task. Idle: indicates the current task is idle; InProgress: indicates the current task is in progress; Exited: indicates the current task is being exited.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -6987,6 +7526,117 @@ class ModifyCloudRecordingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCloudSliceTaskRequest(AbstractModel):
+    """ModifyCloudSliceTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the slicing task, which is returned after the task is started.
+        :type TaskId: str
+        :param _SubscribeStreamUserIds: Specifies the allowlist or blocklist for the subscription stream.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SubscribeStreamUserIds = None
+
+    @property
+    def SdkAppId(self):
+        """SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """Specifies the allowlist or blocklist for the subscription stream.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudSliceTaskResponse(AbstractModel):
+    """ModifyCloudSliceTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the slicing task, which is returned after the task is started.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the slicing task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class QualityData(AbstractModel):
     """The quality data returned by ES.
 
@@ -8245,6 +8895,167 @@ class SingleSubscribeParams(AbstractModel):
         if params.get("UserMediaStream") is not None:
             self._UserMediaStream = UserMediaStream()
             self._UserMediaStream._deserialize(params.get("UserMediaStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SliceParams(AbstractModel):
+    """Control parameters for cloud slicing.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SliceType: Slicing task type.
+1: audio slicing;
+2: video frame extraction;
+3: audio/video slicing + video frame extraction.
+Example value: 1.
+        :type SliceType: int
+        :param _MaxIdleTime: Recording is stopped automatically when there is no anchor in the room for more than MaxIdleTime. Unit: seconds. Default value: 30 seconds. This value needs to be greater than or equal to 5 seconds and less than or equal to 86,400 seconds (24 hours).
+Example value: 30.
+        :type MaxIdleTime: int
+        :param _SliceAudio: Audio slicing duration. Default value: 15s. Example value: 15.
+        :type SliceAudio: int
+        :param _SliceVideo: Interval for video frame extraction. Default value: 5s. Example value: 5.
+        :type SliceVideo: int
+        :param _SubscribeStreamUserIds: Specifies the allowlist or blocklist for the subscription stream.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        :param _SliceCallbackUrl: Depreciated. The callback URL is configured in the console.
+        :type SliceCallbackUrl: str
+        """
+        self._SliceType = None
+        self._MaxIdleTime = None
+        self._SliceAudio = None
+        self._SliceVideo = None
+        self._SubscribeStreamUserIds = None
+        self._SliceCallbackUrl = None
+
+    @property
+    def SliceType(self):
+        """Slicing task type.
+1: audio slicing;
+2: video frame extraction;
+3: audio/video slicing + video frame extraction.
+Example value: 1.
+        :rtype: int
+        """
+        return self._SliceType
+
+    @SliceType.setter
+    def SliceType(self, SliceType):
+        self._SliceType = SliceType
+
+    @property
+    def MaxIdleTime(self):
+        """Recording is stopped automatically when there is no anchor in the room for more than MaxIdleTime. Unit: seconds. Default value: 30 seconds. This value needs to be greater than or equal to 5 seconds and less than or equal to 86,400 seconds (24 hours).
+Example value: 30.
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SliceAudio(self):
+        """Audio slicing duration. Default value: 15s. Example value: 15.
+        :rtype: int
+        """
+        return self._SliceAudio
+
+    @SliceAudio.setter
+    def SliceAudio(self, SliceAudio):
+        self._SliceAudio = SliceAudio
+
+    @property
+    def SliceVideo(self):
+        """Interval for video frame extraction. Default value: 5s. Example value: 5.
+        :rtype: int
+        """
+        return self._SliceVideo
+
+    @SliceVideo.setter
+    def SliceVideo(self, SliceVideo):
+        self._SliceVideo = SliceVideo
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """Specifies the allowlist or blocklist for the subscription stream.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+    @property
+    def SliceCallbackUrl(self):
+        """Depreciated. The callback URL is configured in the console.
+        :rtype: str
+        """
+        return self._SliceCallbackUrl
+
+    @SliceCallbackUrl.setter
+    def SliceCallbackUrl(self, SliceCallbackUrl):
+        self._SliceCallbackUrl = SliceCallbackUrl
+
+
+    def _deserialize(self, params):
+        self._SliceType = params.get("SliceType")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SliceAudio = params.get("SliceAudio")
+        self._SliceVideo = params.get("SliceVideo")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        self._SliceCallbackUrl = params.get("SliceCallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SliceStorageParams(AbstractModel):
+    """Storage parameters for the slicing files.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudSliceStorage: Information about Tencent COS and third-party cloud storage accounts.
+        :type CloudSliceStorage: :class:`tencentcloud.trtc.v20190722.models.CloudSliceStorage`
+        """
+        self._CloudSliceStorage = None
+
+    @property
+    def CloudSliceStorage(self):
+        """Information about Tencent COS and third-party cloud storage accounts.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudSliceStorage`
+        """
+        return self._CloudSliceStorage
+
+    @CloudSliceStorage.setter
+    def CloudSliceStorage(self, CloudSliceStorage):
+        self._CloudSliceStorage = CloudSliceStorage
+
+
+    def _deserialize(self, params):
+        if params.get("CloudSliceStorage") is not None:
+            self._CloudSliceStorage = CloudSliceStorage()
+            self._CloudSliceStorage._deserialize(params.get("CloudSliceStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
