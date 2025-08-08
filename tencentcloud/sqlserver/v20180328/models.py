@@ -3174,11 +3174,11 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         :type Zone: str
         :param _ReadOnlyGroupType: Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
         :type ReadOnlyGroupType: int
-        :param _Memory: Instance memory size in GB
+        :param _Memory: Instance memory size in GB.
         :type Memory: int
-        :param _Storage: Instance disk size in GB
+        :param _Storage: Instance disk size in GB.
         :type Storage: int
-        :param _Cpu: Number of instance cores
+        :param _Cpu: Number of instance cores.
         :type Cpu: int
         :param _MachineType: The host type of purchased instance. Valid values: `CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
         :type MachineType: str
@@ -3208,14 +3208,16 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         :type SecurityGroupList: list of str
         :param _AutoVoucher: Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :type AutoVoucher: int
-        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order)
+        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order).
         :type VoucherIds: list of str
-        :param _ResourceTags: Tags associated with the instances to be created
+        :param _ResourceTags: Tags associated with the instances to be created.
         :type ResourceTags: list of ResourceTag
-        :param _Collation: Collation of system character sets. Default value:  Chinese_PRC_CI_AS
+        :param _Collation: Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
         :type Collation: str
-        :param _TimeZone: System time zone. Default value:  `China Standard Time`
+        :param _TimeZone: System time zone. Default value:  `China Standard Time`.
         :type TimeZone: str
+        :param _DiskEncryptFlag: Disk encryption identification, 0 - no encryption, 1 - encryption.
+        :type DiskEncryptFlag: int
         """
         self._InstanceId = None
         self._Zone = None
@@ -3241,6 +3243,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._DiskEncryptFlag = None
 
     @property
     def InstanceId(self):
@@ -3277,7 +3280,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Instance memory size in GB
+        """Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -3288,7 +3291,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Instance disk size in GB
+        """Instance disk size in GB.
         :rtype: int
         """
         return self._Storage
@@ -3299,7 +3302,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """Number of instance cores
+        """Number of instance cores.
         :rtype: int
         """
         return self._Cpu
@@ -3464,7 +3467,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """Array of voucher IDs (currently, only one voucher can be used per order)
+        """Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -3475,7 +3478,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """Tags associated with the instances to be created
+        """Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -3486,7 +3489,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """Collation of system character sets. Default value:  Chinese_PRC_CI_AS
+        """Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
         :rtype: str
         """
         return self._Collation
@@ -3497,7 +3500,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """System time zone. Default value:  `China Standard Time`
+        """System time zone. Default value:  `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -3505,6 +3508,17 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
     @TimeZone.setter
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
+
+    @property
+    def DiskEncryptFlag(self):
+        """Disk encryption identification, 0 - no encryption, 1 - encryption.
+        :rtype: int
+        """
+        return self._DiskEncryptFlag
+
+    @DiskEncryptFlag.setter
+    def DiskEncryptFlag(self, DiskEncryptFlag):
+        self._DiskEncryptFlag = DiskEncryptFlag
 
 
     def _deserialize(self, params):
@@ -3537,6 +3551,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._DiskEncryptFlag = params.get("DiskEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3554,7 +3569,7 @@ class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealNames: Order name in array
+        :param _DealNames: Order name in array.
         :type DealNames: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -3564,7 +3579,7 @@ class CreateCloudReadOnlyDBInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """Order name in array
+        """Order name in array.
         :rtype: list of str
         """
         return self._DealNames
@@ -4447,49 +4462,49 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 
+        :param _InstanceId: Instance ID in the format of  `mssql-3l3fgqn7`.
         :type InstanceId: str
-        :param _Zone: 
+        :param _Zone: Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :type Zone: str
-        :param _ReadOnlyGroupType: 
+        :param _ReadOnlyGroupType: Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
         :type ReadOnlyGroupType: int
-        :param _Memory: 
+        :param _Memory: Instance memory size in GB.
         :type Memory: int
-        :param _Storage: 
+        :param _Storage: Instance disk size in GB.
         :type Storage: int
-        :param _ReadOnlyGroupForcedUpgrade: 
+        :param _ReadOnlyGroupForcedUpgrade: Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
         :type ReadOnlyGroupForcedUpgrade: int
-        :param _ReadOnlyGroupId: 
+        :param _ReadOnlyGroupId: Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
         :type ReadOnlyGroupId: str
-        :param _ReadOnlyGroupName: 
+        :param _ReadOnlyGroupName: New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
         :type ReadOnlyGroupName: str
-        :param _ReadOnlyGroupIsOfflineDelay: 
+        :param _ReadOnlyGroupIsOfflineDelay: Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
         :type ReadOnlyGroupIsOfflineDelay: int
-        :param _ReadOnlyGroupMaxDelayTime: 
+        :param _ReadOnlyGroupMaxDelayTime: The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :type ReadOnlyGroupMaxDelayTime: int
-        :param _ReadOnlyGroupMinInGroup: 
+        :param _ReadOnlyGroupMinInGroup: Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :type ReadOnlyGroupMinInGroup: int
-        :param _InstanceChargeType: 
+        :param _InstanceChargeType: Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
         :type InstanceChargeType: str
-        :param _GoodsNum: 
+        :param _GoodsNum: Number of read-only instances to be purchased this time. Default value: `2`.
         :type GoodsNum: int
-        :param _SubnetId: 
+        :param _SubnetId: VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :type SubnetId: str
-        :param _VpcId: 
+        :param _VpcId: VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :type VpcId: str
-        :param _Period: 
+        :param _Period: The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
         :type Period: int
-        :param _SecurityGroupList: 
+        :param _SecurityGroupList: Security group list, which contains security group IDs in the format of `sg-xxx`.
         :type SecurityGroupList: list of str
-        :param _AutoVoucher: 
+        :param _AutoVoucher: Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :type AutoVoucher: int
-        :param _VoucherIds: 
+        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order).
         :type VoucherIds: list of str
-        :param _ResourceTags: 
+        :param _ResourceTags: Tags associated with the instances to be created.
         :type ResourceTags: list of ResourceTag
-        :param _Collation: 
+        :param _Collation: Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
         :type Collation: str
-        :param _TimeZone: 
+        :param _TimeZone: System time zone. Default value:  `China Standard Time`.
         :type TimeZone: str
         """
         self._InstanceId = None
@@ -4517,7 +4532,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """
+        """Instance ID in the format of  `mssql-3l3fgqn7`.
         :rtype: str
         """
         return self._InstanceId
@@ -4528,7 +4543,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """
+        """Instance AZ, such as `ap-guangzhou-1` (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the`DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -4539,7 +4554,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupType(self):
-        """
+        """Read-only group types. Valid values: `1` (each read-only replica is placed in one auto-created read-only group), `2` (all read-only replicas are placed in one auto-created read-only group), `3` (all read-only replicas are placed in one existing read-only group).
         :rtype: int
         """
         return self._ReadOnlyGroupType
@@ -4550,7 +4565,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """
+        """Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -4561,7 +4576,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """
+        """Instance disk size in GB.
         :rtype: int
         """
         return self._Storage
@@ -4572,7 +4587,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupForcedUpgrade(self):
-        """
+        """Valid values: `0` (not upgrade the primary instance by default), `1` (upgrade the primary instance to complete the RO deployment).  You need to pass in `1` for this parameter and upgrade the primary instance to cluster edition.
         :rtype: int
         """
         return self._ReadOnlyGroupForcedUpgrade
@@ -4583,7 +4598,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupId(self):
-        """
+        """Existing read-only group ID, which is required when `ReadOnlyGroupType` is `3`.
         :rtype: str
         """
         return self._ReadOnlyGroupId
@@ -4594,7 +4609,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupName(self):
-        """
+        """New read-only group ID, which is required when `ReadOnlyGroupType` is `2`.
         :rtype: str
         """
         return self._ReadOnlyGroupName
@@ -4605,7 +4620,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupIsOfflineDelay(self):
-        """
+        """Whether delayed read-only instance removal is enabled in a new read-only group, which is required when `ReadOnlyGroupType` is `2`. Valid values: `1` (enabled), `0` (disabled).  The read-only replica will be automatically removed when the delay between it and the primary instance exceeds the threshold.
         :rtype: int
         """
         return self._ReadOnlyGroupIsOfflineDelay
@@ -4616,7 +4631,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupMaxDelayTime(self):
-        """
+        """The delay threshold for a new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :rtype: int
         """
         return self._ReadOnlyGroupMaxDelayTime
@@ -4627,7 +4642,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyGroupMinInGroup(self):
-        """
+        """Minimum number of reserved read-only replicas when the delayed removal is enabled for the new read-only group, which is required when `ReadOnlyGroupType` is `2` and `ReadOnlyGroupIsOfflineDelay` is `1`.
         :rtype: int
         """
         return self._ReadOnlyGroupMinInGroup
@@ -4638,7 +4653,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """
+        """Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -4649,7 +4664,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """
+        """Number of read-only instances to be purchased this time. Default value: `2`.
         :rtype: int
         """
         return self._GoodsNum
@@ -4660,7 +4675,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """
+        """VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._SubnetId
@@ -4671,7 +4686,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """
+        """VPC ID in the format of `vpc-dsp338hz`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :rtype: str
         """
         return self._VpcId
@@ -4682,7 +4697,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """
+        """The purchase period of an instance. Default value: `1` (one month).  Maximum value: `48`.
         :rtype: int
         """
         return self._Period
@@ -4693,7 +4708,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """
+        """Security group list, which contains security group IDs in the format of `sg-xxx`.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -4704,7 +4719,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """
+        """Whether to automatically use voucher. Valid values: `0` (no, default), `1` (yes).
         :rtype: int
         """
         return self._AutoVoucher
@@ -4715,7 +4730,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """
+        """Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -4726,7 +4741,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """
+        """Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -4737,7 +4752,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """
+        """Collation of system character sets. Default value:  Chinese_PRC_CI_AS.
         :rtype: str
         """
         return self._Collation
@@ -4748,7 +4763,7 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """
+        """System time zone. Default value:  `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -4803,7 +4818,7 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealNames: 
+        :param _DealNames: Order name in array.
         :type DealNames: list of str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4813,7 +4828,7 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        """
+        """Order name in array.
         :rtype: list of str
         """
         return self._DealNames
@@ -8766,13 +8781,13 @@ class DescribeDBInstanceInterRequest(AbstractModel):
         r"""
         :param _Limit: The maximum number of results returned per page. Value range: 1-100.
         :type Limit: int
-        :param _InstanceId: Filter by instance ID
+        :param _InstanceId: Filter by instance ID.
         :type InstanceId: str
         :param _Status: Filter by status. Valid values: `1` (Enabling interworking IP), `2` (Enabled interworking IP), `3` (Adding to interworking group), `4` (Added to interworking group), `5` (Reclaiming interworking IP), `6` (Reclaimed interworking IP), `7` (Removing from interworking group), `8` (Removed from interworking group).
         :type Status: int
-        :param _VersionSet: The list of instance version numbers
+        :param _VersionSet: The list of instance version numbers.
         :type VersionSet: list of str
-        :param _Zone: Instance AZ ID in the format of ap-guangzhou-2
+        :param _Zone: Instance AZ ID in the format of ap-guangzhou-3.
         :type Zone: str
         :param _Offset: Page number. Default value: `0`.
         :type Offset: int
@@ -8797,7 +8812,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Filter by instance ID
+        """Filter by instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -8819,7 +8834,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def VersionSet(self):
-        """The list of instance version numbers
+        """The list of instance version numbers.
         :rtype: list of str
         """
         return self._VersionSet
@@ -8830,7 +8845,7 @@ class DescribeDBInstanceInterRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """Instance AZ ID in the format of ap-guangzhou-2
+        """Instance AZ ID in the format of ap-guangzhou-3.
         :rtype: str
         """
         return self._Zone
@@ -8875,9 +8890,9 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of records returned
+        :param _TotalCount: Number of records returned.
         :type TotalCount: int
-        :param _InterInstanceSet: Details of instance in the interworking group
+        :param _InterInstanceSet: Details of instance in the interworking group.
         :type InterInstanceSet: list of InterInstance
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -8888,7 +8903,7 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of records returned
+        """Number of records returned.
         :rtype: int
         """
         return self._TotalCount
@@ -8899,7 +8914,7 @@ class DescribeDBInstanceInterResponse(AbstractModel):
 
     @property
     def InterInstanceSet(self):
-        """Details of instance in the interworking group
+        """Details of instance in the interworking group.
         :rtype: list of InterInstance
         """
         return self._InterInstanceSet
@@ -11104,9 +11119,9 @@ class DescribeProductConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: AZ ID in the format of ap-guangzhou-1
+        :param _Zone: AZ ID in the format of ap-guangzhou-1.
         :type Zone: str
-        :param _InstanceType: Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica
+        :param _InstanceType: Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica.
         :type InstanceType: str
         """
         self._Zone = None
@@ -11114,7 +11129,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def Zone(self):
-        """AZ ID in the format of ap-guangzhou-1
+        """AZ ID in the format of ap-guangzhou-1.
         :rtype: str
         """
         return self._Zone
@@ -11125,7 +11140,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        """Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica
+        """Type of purchased instance. Valid values: HA - local disk high availability (including dual-machine high availability, AlwaysOn Cluster), RO - local disk read-only replica, SI - cloud disk edition single node, BI - business intelligence service, cvmHA - cloud disk edition high availability, cvmRO - cloud disk edition read-only replica.
         :rtype: str
         """
         return self._InstanceType
@@ -11155,9 +11170,9 @@ class DescribeProductConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecInfoList: Specification information array
+        :param _SpecInfoList: Specification information array.
         :type SpecInfoList: list of SpecInfo
-        :param _TotalCount: Number of date entries returned
+        :param _TotalCount: Number of date entries returned.
         :type TotalCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11168,7 +11183,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def SpecInfoList(self):
-        """Specification information array
+        """Specification information array.
         :rtype: list of SpecInfo
         """
         return self._SpecInfoList
@@ -11179,7 +11194,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        """Number of date entries returned
+        """Number of date entries returned.
         :rtype: int
         """
         return self._TotalCount

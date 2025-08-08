@@ -50,11 +50,17 @@ FAILEDOPERATION_LOGINAREANOTALLOWED = 'FailedOperation.LoginAreaNotAllowed'
 # Login failed. Check whether the account and password are correct.
 FAILEDOPERATION_LOGINFAILED = 'FailedOperation.LoginFailed'
 
+# Failed to get the balance of the international account or no card is bound.
+FAILEDOPERATION_NOTBINDCREDITCARD = 'FailedOperation.NotBindCreditCard'
+
 # You are not the domain owner.
 FAILEDOPERATION_NOTDOMAINOWNER = 'FailedOperation.NotDomainOwner'
 
 # Your account identity has not been verified. Complete identity verification first before performing this operation.
 FAILEDOPERATION_NOTREALNAMEDUSER = 'FailedOperation.NotRealNamedUser'
+
+# Postpaid billing account not opened.
+FAILEDOPERATION_POSTPAYPAYMENTNOTOPEN = 'FailedOperation.PostPayPaymentNotOpen'
 
 # The number of requests is currently unavailable. Try again later.
 FAILEDOPERATION_TEMPORARYERROR = 'FailedOperation.TemporaryError'

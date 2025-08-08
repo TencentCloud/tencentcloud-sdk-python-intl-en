@@ -497,7 +497,7 @@ UNAUTHORIZEDOPERATION_MFAEXPIRED = 'UnauthorizedOperation.MFAExpired'
 # MFA does not exist.
 UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
 
-# No permission
+# No permission.
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
 
 # 
@@ -590,7 +590,7 @@ UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = 'UnsupportedOperation.ResourceNotRe
 # The snapshot is busy.
 UNSUPPORTEDOPERATION_SNAPSHOTBUSY = 'UnsupportedOperation.SnapshotBusy'
 
-# System busy
+# System busy.
 UNSUPPORTEDOPERATION_SYSTEMBUSY = 'UnsupportedOperation.SystemBusy'
 
 # TAT agent on the instance is not online.

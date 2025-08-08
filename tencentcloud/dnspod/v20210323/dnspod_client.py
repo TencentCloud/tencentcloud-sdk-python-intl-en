@@ -118,6 +118,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePackageOrder(self, request):
+        """This API is used to enable a paid plan on the international website.
+
+        :param request: Request instance for CreatePackageOrder.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreatePackageOrderRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreatePackageOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePackageOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePackageOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRecord(self, request):
         """This API is used to add a record.
 
