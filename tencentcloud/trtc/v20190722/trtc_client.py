@@ -49,6 +49,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudModeration(self, request):
+        """API description:
+        This API is used to enable the cloud moderation feature to complete audio and video slicing, video frame extraction, and audio stream recording in the room, and submit them to the specified moderation supplier for completing the moderation.
+
+        This API is used to achieve the following goals:
+        * This API is used to specify the moderation parameters (ModerationParams) to specify the detailed parameters required for moderation.
+        * This API is used to specify the storage parameter (SliceStorageParams) to specify the cloud storage you want to upload the file complying with the moderation policy to. Currently, Tencent Cloud Object Storage (COS) and third-party AWS are supported.
+
+        :param request: Request instance for CreateCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudModerationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudRecording(self, request):
         """API description:
         This API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.
@@ -101,6 +129,29 @@ class TrtcClient(AbstractClient):
             body = self.call("CreateCloudSliceTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudModeration(self, request):
+        """This API is used to stop submission for moderation after the cloud moderation task is successfully started.
+
+        :param request: Request instance for DeleteCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudModerationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -219,6 +270,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeCallDetailInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCallDetailInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudModeration(self, request):
+        """This API is used to query the status of the moderation task and information about the subscription blocklist and allowlist after the task is started, which is valid only when the task is in progress. An error will be returned if the task is exited.
+
+        :param request: Request instance for DescribeCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudModerationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -736,6 +810,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DismissRoomByStrRoomId", params, headers=headers)
             response = json.loads(body)
             model = models.DismissRoomByStrRoomIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudModeration(self, request):
+        """This API is used to update the subscription blocklist and allowlist after the cloud moderation task is successfully started.
+
+        :param request: Request instance for ModifyCloudModeration.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudModerationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudModerationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudModeration", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudModerationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

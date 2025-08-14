@@ -2390,6 +2390,8 @@ For more information on creating `KeyId`, see [Enabling TDE](https://www.tencent
         :param _KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.
 For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).
         :type KMSRegion: str
+        :param _KMSClusterId: 
+        :type KMSClusterId: str
         :param _DBEngine: Database engine, which supports:
 <li>`postgresql`: TencentDB for PostgreSQL</li>
 <li>`mssql_compatible`: MSSQL compatible - TencentDB for PostgreSQL</li>
@@ -2442,6 +2444,7 @@ Default value: 0
         self._NeedSupportTDE = None
         self._KMSKeyId = None
         self._KMSRegion = None
+        self._KMSClusterId = None
         self._DBEngine = None
         self._DBEngineConfig = None
         self._SyncMode = None
@@ -2768,6 +2771,17 @@ For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tence
         self._KMSRegion = KMSRegion
 
     @property
+    def KMSClusterId(self):
+        """
+        :rtype: str
+        """
+        return self._KMSClusterId
+
+    @KMSClusterId.setter
+    def KMSClusterId(self, KMSClusterId):
+        self._KMSClusterId = KMSClusterId
+
+    @property
     def DBEngine(self):
         """Database engine, which supports:
 <li>`postgresql`: TencentDB for PostgreSQL</li>
@@ -2866,6 +2880,7 @@ Default value: 0
         self._NeedSupportTDE = params.get("NeedSupportTDE")
         self._KMSKeyId = params.get("KMSKeyId")
         self._KMSRegion = params.get("KMSRegion")
+        self._KMSClusterId = params.get("KMSClusterId")
         self._DBEngine = params.get("DBEngine")
         self._DBEngineConfig = params.get("DBEngineConfig")
         self._SyncMode = params.get("SyncMode")
@@ -3138,8 +3153,10 @@ Default value: `0`.
         :type NeedSupportIpv6: int
         :param _Name: Instance name (which will be supported in the future)
         :type Name: str
-        :param _DBVersion: (Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.
+        :param _DBVersion: (Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.
         :type DBVersion: str
+        :param _DedicatedClusterId: 
+        :type DedicatedClusterId: str
         """
         self._Zone = None
         self._MasterDBInstanceId = None
@@ -3161,6 +3178,7 @@ Default value: `0`.
         self._NeedSupportIpv6 = None
         self._Name = None
         self._DBVersion = None
+        self._DedicatedClusterId = None
 
     @property
     def Zone(self):
@@ -3389,14 +3407,29 @@ Default value: `0`.
 
     @property
     def DBVersion(self):
-        """(Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.
+        warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
+
+        """(Disused) You don't need to specify a version, as the kernel version is as the same as that of the instance.
         :rtype: str
         """
         return self._DBVersion
 
     @DBVersion.setter
     def DBVersion(self, DBVersion):
+        warnings.warn("parameter `DBVersion` is deprecated", DeprecationWarning) 
+
         self._DBVersion = DBVersion
+
+    @property
+    def DedicatedClusterId(self):
+        """
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
 
 
     def _deserialize(self, params):
@@ -3422,6 +3455,7 @@ Default value: `0`.
         self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
         self._Name = params.get("Name")
         self._DBVersion = params.get("DBVersion")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4314,12 +4348,12 @@ class DBInstance(AbstractModel):
         :param _DBInstanceClass: Purchasable specification ID
         :type DBInstanceClass: str
         :param _DBMajorVersion: The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DBMajorVersion: str
         :param _DBVersion: Number of the major PostgreSQL community version and minor version, such as 12.4, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
         :type DBVersion: str
         :param _DBKernelVersion: PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DBKernelVersion: str
         :param _DBInstanceType: Instance type, which includes:
 <li>primary: primary instance </li>
@@ -4361,22 +4395,22 @@ Default value: 0
         :param _ProjectId: Project ID
         :type ProjectId: int
         :param _TagList: The information of tags associated with instances
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TagList: list of Tag
         :param _MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type MasterDBInstanceId: str
         :param _ReadOnlyInstanceNum: Number of read-only instances
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ReadOnlyInstanceNum: int
         :param _StatusInReadonlyGroup: The status of a read-only instance in a read-only group
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StatusInReadonlyGroup: str
         :param _OfflineTime: Offline time
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
         :param _DBNodeSet: Instance node information
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DBNodeSet: list of DBNode
         :param _IsSupportTDE: Whether the instance supports TDE data encryption:
 <li>0: not supported</li>
@@ -4573,7 +4607,7 @@ Default value: 0
     @property
     def DBMajorVersion(self):
         """The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DBMajorVersion
@@ -4596,7 +4630,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     @property
     def DBKernelVersion(self):
         """PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._DBKernelVersion
@@ -4773,7 +4807,7 @@ Default value: 0
     @property
     def TagList(self):
         """The information of tags associated with instances
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of Tag
         """
         return self._TagList
@@ -4785,7 +4819,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     @property
     def MasterDBInstanceId(self):
         """Primary instance information, which is returned only when the instance is read-only.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._MasterDBInstanceId
@@ -4797,7 +4831,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     @property
     def ReadOnlyInstanceNum(self):
         """Number of read-only instances
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: int
         """
         return self._ReadOnlyInstanceNum
@@ -4809,7 +4843,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     @property
     def StatusInReadonlyGroup(self):
         """The status of a read-only instance in a read-only group
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._StatusInReadonlyGroup
@@ -4821,7 +4855,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     @property
     def OfflineTime(self):
         """Offline time
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._OfflineTime
@@ -4833,7 +4867,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     @property
     def DBNodeSet(self):
         """Instance node information
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: list of DBNode
         """
         return self._DBNodeSet
@@ -8034,11 +8068,11 @@ db-tag-key: filter by tag key (in string format)
 db-private-ip: filter by instance VPC IP (in string format)
 db-public-address: filter by instance public network address (in string format)
         :type Filters: list of Filter
-        :param _Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`
+        :param _Limit: The maximum number of results returned per page. Value range: 1-100. Default: `10`.
         :type Limit: int
         :param _Offset: Data offset, which starts from 0.
         :type Offset: int
-        :param _OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime
+        :param _OrderBy: Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime.
         :type OrderBy: str
         :param _OrderByType: Sorting order. Valid values: `asc` (ascending), `desc` (descending)
         :type OrderByType: str
@@ -8069,7 +8103,7 @@ db-public-address: filter by instance public network address (in string format)
 
     @property
     def Limit(self):
-        """The maximum number of results returned per page. Value range: 1-100. Default: `10`
+        """The maximum number of results returned per page. Value range: 1-100. Default: `10`.
         :rtype: int
         """
         return self._Limit
@@ -8091,7 +8125,7 @@ db-public-address: filter by instance public network address (in string format)
 
     @property
     def OrderBy(self):
-        """Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime
+        """Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime.
         :rtype: str
         """
         return self._OrderBy

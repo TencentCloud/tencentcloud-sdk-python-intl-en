@@ -257,6 +257,9 @@ INTERNALERROR_INSTANCEDATAERROR = 'InternalError.InstanceDataError'
 # An exception occurred while executing the request.
 INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
 
+# 
+INTERNALERROR_JSONPARSEERROR = 'InternalError.JsonParseError'
+
 # Failed to parse background data. Please contact customer service.
 INTERNALERROR_MARSHALERROR = 'InternalError.MarshalError'
 
@@ -320,6 +323,9 @@ INVALIDPARAMETERVALUE_CHARSETNOTFOUNDERROR = 'InvalidParameterValue.CharsetNotFo
 # Failed to convert data format. Please contact customer service.
 INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
 
+# 
+INVALIDPARAMETERVALUE_DECRYPTPASSWORDFAILED = 'InvalidParameterValue.DecryptPasswordFailed'
+
 # Unsupported billing type.
 INVALIDPARAMETERVALUE_ILLEGALCHARGETYPE = 'InvalidParameterValue.IllegalChargeType'
 
@@ -352,6 +358,12 @@ INVALIDPARAMETERVALUE_INVALIDACCOUNTFORMAT = 'InvalidParameterValue.InvalidAccou
 
 # The current account name cannot be a reserved character.
 INVALIDPARAMETERVALUE_INVALIDACCOUNTNAME = 'InvalidParameterValue.InvalidAccountName'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEERROR = 'InvalidParameterValue.InvalidAccountNameError'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDACCOUNTNAMEFORMATERROR = 'InvalidParameterValue.InvalidAccountNameFormatError'
 
 # Incorrect database character set. Currently, only `UTF8` and `LATIN1` are supported.
 INVALIDPARAMETERVALUE_INVALIDCHARSET = 'InvalidParameterValue.InvalidCharset'
@@ -464,6 +476,9 @@ OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = 'OperationDenied.InstanceStatusLimi
 # Invalid instance type
 OPERATIONDENIED_INSTANCETYPEDENIED = 'OperationDenied.InstanceTypeDenied'
 
+# 
+OPERATIONDENIED_INSUFFICIENTBALANCEERROR = 'OperationDenied.InsufficientBalanceError'
+
 # Serverless is not supported in this availability zone.
 OPERATIONDENIED_NOTSUPPORTZONEERROR = 'OperationDenied.NotSupportZoneError'
 
@@ -484,6 +499,9 @@ OPERATIONDENIED_ROINSTANCESTATUSLIMITOPERROR = 'OperationDenied.ROInstanceStatus
 
 # The total number of read-only nodes should not exceed the upper limit.
 OPERATIONDENIED_ROINSTANCECOUNTEXEEDERROR = 'OperationDenied.RoInstanceCountExeedError'
+
+# 
+OPERATIONDENIED_TRADEPERMISSIONERROR = 'OperationDenied.TradePermissionError'
 
 # You need to verify your identity to make a purchase.
 OPERATIONDENIED_USERNOTAUTHENTICATEDERROR = 'OperationDenied.UserNotAuthenticatedError'

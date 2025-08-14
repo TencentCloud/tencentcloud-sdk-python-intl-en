@@ -602,7 +602,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeGlobalReplicationArea(self, request):
-        """This API is used to query the supported regions for global replication.
+        """This API is used to query the information on regions supported for global replication.
 
         :param request: Request instance for DescribeGlobalReplicationArea.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeGlobalReplicationAreaRequest`
@@ -855,7 +855,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorSIP(self, request):
-        """This API is used to query the access source information of an instance.
+        """This API is no longer used. Please use the TencentDB for DBbrain API [DescribeProxyProcessStatistics](https://intl.cloud.tencent.com/document/product/1130/84544?from_cn_redirect=1) to obtain the instance access source.
 
         :param request: Request instance for DescribeInstanceMonitorSIP.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorSIPRequest`
@@ -901,7 +901,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceMonitorTopNCmd(self, request):
-        """This API is used to query an instance access command.
+        """This API is used to query instance access commands.
 
         :param request: Request instance for DescribeInstanceMonitorTopNCmd.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceMonitorTopNCmdRequest`
@@ -970,7 +970,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceParamRecords(self, request):
-        """This API is used to query the list of parameter modifications.
+        """This API is used to query the parameter modification record list.
 
         :param request: Request instance for DescribeInstanceParamRecords.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceParamRecordsRequest`
@@ -1200,7 +1200,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """This API is used to query the list of parameter templates.
+        """This API is used to query the parameter template list.
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplatesRequest`
@@ -1420,6 +1420,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeSSLStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSSLStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecondLevelBackupInfo(self, request):
+        """This API is used to query the second-level backup information on an instance.
+
+        :param request: Request instance for DescribeSecondLevelBackupInfo.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeSecondLevelBackupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecondLevelBackupInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecondLevelBackupInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1912,6 +1935,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceBackupMode(self, request):
+        """This API is used to modify the instance backup mode.
+
+        :param request: Request instance for ModifyInstanceBackupMode.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceBackupModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceBackupMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceBackupModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceEvent(self, request):
         """This API is used to modify the operations event execution schedule of an instance.
 
@@ -2165,6 +2211,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RemoveReplicationGroup(self, request):
+        """This API is used to delete a replication group.
+
+        :param request: Request instance for RemoveReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.RemoveReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveReplicationGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveReplicationInstance(self, request):
         """This API is used to remove instances from a replication group.
 
@@ -2235,7 +2304,7 @@ class RedisClient(AbstractClient):
 
 
     def RestoreInstance(self, request):
-        """This API is used to restore a Redis instance.
+        """This API is used to restore an instance.
 
         :param request: Request instance for RestoreInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.RestoreInstanceRequest`

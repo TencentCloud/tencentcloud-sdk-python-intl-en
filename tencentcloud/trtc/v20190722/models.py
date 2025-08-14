@@ -587,6 +587,141 @@ class AudioParams(AbstractModel):
         
 
 
+class CloudModerationStorage(AbstractModel):
+    """Information about Tencent COS and third-party cloud storage accounts.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: Information about Tencent COS and third-party cloud storage accounts.
+0: Tencent COS.
+1: AWS S3.
+2: Alibaba Cloud OSS.
+Example value: 0.
+        :type Vendor: int
+        :param _Region: [Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+Example value: cn-shanghai-1.
+
+[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
+Example value: ap-southeast-3.	
+        :type Region: str
+        :param _Bucket: Cloud bucket name.
+        :type Bucket: str
+        :param _AccessKey: access_key account information of the cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
+Example value: test-accesskey.
+        :type AccessKey: str
+        :param _SecretKey: secret_key account information of cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
+Example value: test-secretkey.
+        :type SecretKey: str
+        :param _FileNamePrefix: Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        :type FileNamePrefix: list of str
+        """
+        self._Vendor = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._FileNamePrefix = None
+
+    @property
+    def Vendor(self):
+        """Information about Tencent COS and third-party cloud storage accounts.
+0: Tencent COS.
+1: AWS S3.
+2: Alibaba Cloud OSS.
+Example value: 0.
+        :rtype: int
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Region(self):
+        """[Region information](https://www.tencentcloud.comom/document/product/436/6224?from_cn_redirect=1#.E5.9C.B0.E5.9F.9F) of Tencent COS.
+Example value: cn-shanghai-1.
+
+[Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions) of AWS S3.
+Example value: ap-southeast-3.	
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        """Cloud bucket name.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessKey(self):
+        """access_key account information of the cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretId value corresponding to the key fields in the link.
+Example value: test-accesskey.
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        """secret_key account information of cloud storage.
+To store files to Tencent COS, visit https://console.cloud.tencent.com/cam/capi to view or create the SecretKey value corresponding to the key fields in the link.
+Example value: test-secretkey.
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def FileNamePrefix(self):
+        """Specified location of the cloud bucket, which consists of arrays of strings. Value range for the strings is lowercase letters (a–z), uppercase letters (A–Z), digits (0–9), and special characters (_-). For example, under the feature of ["prefix1", "prefix2"], the audio slicing file (xxx.mp3) is stored as prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC time}.ogg, while the video frame is stored as prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC time}.png.
+        :rtype: list of str
+        """
+        return self._FileNamePrefix
+
+    @FileNamePrefix.setter
+    def FileNamePrefix(self, FileNamePrefix):
+        self._FileNamePrefix = FileNamePrefix
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudSliceStorage(AbstractModel):
     """Information about Tencent COS and third-party cloud storage accounts.
 
@@ -966,6 +1101,194 @@ class ControlAIConversationResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudModerationRequest(AbstractModel):
+    """CreateCloudModeration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: [SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        :type SdkAppId: int
+        :param _RoomId: [RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        :type RoomId: str
+        :param _UserId: Chatbot's UserId, which is used to enter the room and initiate a moderation task. [*Note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple moderation tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous moderation task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.
+        :type UserId: str
+        :param _UserSig: Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. For specific calculation methods, see TRTC solution for calculating UserSig.
+        :type UserSig: str
+        :param _ModerationParams: Control parameters for cloud moderation.
+        :type ModerationParams: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
+        :param _ModerationStorageParams: Parameters for uploading cloud moderation files to the cloud storage.
+        :type ModerationStorageParams: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
+        :param _RoomIdType: Type of the TRTC room number. [*Note] It should be the same as the type of the RoomId corresponding to the recording room. 0: string type; 1: 32-bit integer type (default value). Example value: 1.
+        :type RoomIdType: int
+        :param _ResourceExpiredHour: Validity period for calling the task ID, which starts upon successful initiation of the task and obtaining the task ID. After the timeout, APIs such as querying, updating, or stopping cannot be called, but the moderation task is not stopped. The unit of the parameter is hours, with a default value of 24 hours (1 day). The maximum value is 72 hours (3 days), while the minimum value is 6 hours. For example, if this parameter is not specified, the validity period for calling the querying, updating, and stopping slicing APIs is 24 hours upon the successful start of slicing.
+        :type ResourceExpiredHour: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._UserId = None
+        self._UserSig = None
+        self._ModerationParams = None
+        self._ModerationStorageParams = None
+        self._RoomIdType = None
+        self._ResourceExpiredHour = None
+
+    @property
+    def SdkAppId(self):
+        """[SdkAppId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#sdkappid) of TRTC, which is the same as the SdkAppId corresponding to the TRTC room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        """[RoomId](https://www.tencentcloud.comom/document/product/647/46351?from_cn_redirect=1#roomid) of TRTC, which is the RoomId corresponding to the TRTC room.
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        """Chatbot's UserId, which is used to enter the room and initiate a moderation task. [*Note] This UserId should not be duplicated with the UserIds of the current anchors or audience members in the room. If multiple moderation tasks are initiated in one room, the chatbot's UserId should also be unique; otherwise, the previous moderation task is interrupted. It is recommended to include the room ID as part of the UserId, ensuring that the chatbot's UserId is unique in the room.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        """Signature verification corresponding to the chatbot's UserId, namely, the UserId and UserSig serve as the login password for the chatbot to enter the room. For specific calculation methods, see TRTC solution for calculating UserSig.
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def ModerationParams(self):
+        """Control parameters for cloud moderation.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationParams`
+        """
+        return self._ModerationParams
+
+    @ModerationParams.setter
+    def ModerationParams(self, ModerationParams):
+        self._ModerationParams = ModerationParams
+
+    @property
+    def ModerationStorageParams(self):
+        """Parameters for uploading cloud moderation files to the cloud storage.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationStorageParams`
+        """
+        return self._ModerationStorageParams
+
+    @ModerationStorageParams.setter
+    def ModerationStorageParams(self, ModerationStorageParams):
+        self._ModerationStorageParams = ModerationStorageParams
+
+    @property
+    def RoomIdType(self):
+        """Type of the TRTC room number. [*Note] It should be the same as the type of the RoomId corresponding to the recording room. 0: string type; 1: 32-bit integer type (default value). Example value: 1.
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def ResourceExpiredHour(self):
+        """Validity period for calling the task ID, which starts upon successful initiation of the task and obtaining the task ID. After the timeout, APIs such as querying, updating, or stopping cannot be called, but the moderation task is not stopped. The unit of the parameter is hours, with a default value of 24 hours (1 day). The maximum value is 72 hours (3 days), while the minimum value is 6 hours. For example, if this parameter is not specified, the validity period for calling the querying, updating, and stopping slicing APIs is 24 hours upon the successful start of slicing.
+        :rtype: int
+        """
+        return self._ResourceExpiredHour
+
+    @ResourceExpiredHour.setter
+    def ResourceExpiredHour(self, ResourceExpiredHour):
+        self._ResourceExpiredHour = ResourceExpiredHour
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        if params.get("ModerationParams") is not None:
+            self._ModerationParams = ModerationParams()
+            self._ModerationParams._deserialize(params.get("ModerationParams"))
+        if params.get("ModerationStorageParams") is not None:
+            self._ModerationStorageParams = ModerationStorageParams()
+            self._ModerationStorageParams._deserialize(params.get("ModerationStorageParams"))
+        self._RoomIdType = params.get("RoomIdType")
+        self._ResourceExpiredHour = params.get("ResourceExpiredHour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudModerationResponse(AbstractModel):
+    """CreateCloudModeration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID assigned by the cloud moderation service. It is a unique identifier for the lifecycle of a moderation task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Task ID assigned by the cloud moderation service. It is a unique identifier for the lifecycle of a moderation task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1388,6 +1711,100 @@ class CreateCloudSliceTaskResponse(AbstractModel):
     @property
     def TaskId(self):
         """Task ID assigned by the cloud slicing service. It is a unique identifier for the lifecycle of a slicing task, which loses its significance after the task is completed. The task ID needs to be retained by the business system as a parameter for future operations related to this task.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudModerationRequest(AbstractModel):
+    """DeleteCloudModeration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the moderation task, which is returned after the task is started.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """Unique ID of the moderation task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudModerationResponse(AbstractModel):
+    """DeleteCloudModeration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the moderation task, which is returned after the task is started.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the moderation task, which is returned after the task is started.
         :rtype: str
         """
         return self._TaskId
@@ -2172,6 +2589,132 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = QualityData()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudModerationRequest(AbstractModel):
+    """DescribeCloudModeration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the recording room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the cloud moderation task, which is returned after the task is started.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        """SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the recording room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """Unique ID of the cloud moderation task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudModerationResponse(AbstractModel):
+    """DescribeCloudModeration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the moderation task, which is returned after the task is started.
+        :type TaskId: str
+        :param _Status: Information about the status of the cloud moderation task. Idle: indicates the current task is idle; InProgress: indicates the current task is in progress; Exited: indicates the current task is being exited.
+        :type Status: str
+        :param _SubscribeStreamUserIds: Subscription blocklist and allowlist.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._SubscribeStreamUserIds = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the moderation task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        """Information about the status of the cloud moderation task. Idle: indicates the current task is idle; InProgress: indicates the current task is in progress; Exited: indicates the current task is being exited.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """Subscription blocklist and allowlist.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeModerationUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7398,6 +7941,419 @@ class MixUserInfo(AbstractModel):
         
 
 
+class ModerationParams(AbstractModel):
+    """Control parameters for cloud moderation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModerationType: Moderation task type. 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio slicing moderation + video frame extraction moderation; 4: audio stream moderation; 5: audio stream moderation + video frame extraction moderation. The default value is 1. (Support from suppliers is required for stream moderation to take effect.)
+        :type ModerationType: int
+        :param _MaxIdleTime: Slicing is stopped automatically when there is no user (anchor) performing upstream push in the room for more than MaxIdleTime. Unit: seconds. Default value: 30 seconds. This value needs to be greater than or equal to 5 seconds and less than or equal to 1800 seconds (0.5 hours). Example value: 30.
+        :type MaxIdleTime: int
+        :param _SliceAudio: Audio slicing duration. Default value: 15s. Example value: 15.
+        :type SliceAudio: int
+        :param _SliceVideo: Interval for video frame extraction. Default value: 5s.
+        :type SliceVideo: int
+        :param _ModerationSupplier: Enumeration values for suppliers.
+tianyu: Tencent Tianyu content security. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+ace: ACE content security. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+shumei: shumei moderation. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+Yidun: NetEase Yidun moderation. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+        :type ModerationSupplier: str
+        :param _ModerationSupplierParam: Configuration information required for submitting content to the third-party moderation supplier.
+        :type ModerationSupplierParam: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
+        :param _SaveModerationFile: Whether to save the hit file. 0: not save by default; 1: save.
+        :type SaveModerationFile: int
+        :param _CallbackAllResults: Whether to call back all moderation results: 0: call back all results by default; 1: only call back hit results.
+        :type CallbackAllResults: int
+        :param _SubscribeStreamUserIds: Specifies the allowlist or blocklist for the subscription stream.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        """
+        self._ModerationType = None
+        self._MaxIdleTime = None
+        self._SliceAudio = None
+        self._SliceVideo = None
+        self._ModerationSupplier = None
+        self._ModerationSupplierParam = None
+        self._SaveModerationFile = None
+        self._CallbackAllResults = None
+        self._SubscribeStreamUserIds = None
+
+    @property
+    def ModerationType(self):
+        """Moderation task type. 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio slicing moderation + video frame extraction moderation; 4: audio stream moderation; 5: audio stream moderation + video frame extraction moderation. The default value is 1. (Support from suppliers is required for stream moderation to take effect.)
+        :rtype: int
+        """
+        return self._ModerationType
+
+    @ModerationType.setter
+    def ModerationType(self, ModerationType):
+        self._ModerationType = ModerationType
+
+    @property
+    def MaxIdleTime(self):
+        """Slicing is stopped automatically when there is no user (anchor) performing upstream push in the room for more than MaxIdleTime. Unit: seconds. Default value: 30 seconds. This value needs to be greater than or equal to 5 seconds and less than or equal to 1800 seconds (0.5 hours). Example value: 30.
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SliceAudio(self):
+        """Audio slicing duration. Default value: 15s. Example value: 15.
+        :rtype: int
+        """
+        return self._SliceAudio
+
+    @SliceAudio.setter
+    def SliceAudio(self, SliceAudio):
+        self._SliceAudio = SliceAudio
+
+    @property
+    def SliceVideo(self):
+        """Interval for video frame extraction. Default value: 5s.
+        :rtype: int
+        """
+        return self._SliceVideo
+
+    @SliceVideo.setter
+    def SliceVideo(self, SliceVideo):
+        self._SliceVideo = SliceVideo
+
+    @property
+    def ModerationSupplier(self):
+        """Enumeration values for suppliers.
+tianyu: Tencent Tianyu content security. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+ace: ACE content security. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+shumei: shumei moderation. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+Yidun: NetEase Yidun moderation. (Valid values: 1: audio slicing moderation; 2: video frame extraction moderation; 3: audio-visual slicing moderation + video frame extraction moderation.)
+        :rtype: str
+        """
+        return self._ModerationSupplier
+
+    @ModerationSupplier.setter
+    def ModerationSupplier(self, ModerationSupplier):
+        self._ModerationSupplier = ModerationSupplier
+
+    @property
+    def ModerationSupplierParam(self):
+        """Configuration information required for submitting content to the third-party moderation supplier.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModerationSupplierParam`
+        """
+        return self._ModerationSupplierParam
+
+    @ModerationSupplierParam.setter
+    def ModerationSupplierParam(self, ModerationSupplierParam):
+        self._ModerationSupplierParam = ModerationSupplierParam
+
+    @property
+    def SaveModerationFile(self):
+        """Whether to save the hit file. 0: not save by default; 1: save.
+        :rtype: int
+        """
+        return self._SaveModerationFile
+
+    @SaveModerationFile.setter
+    def SaveModerationFile(self, SaveModerationFile):
+        self._SaveModerationFile = SaveModerationFile
+
+    @property
+    def CallbackAllResults(self):
+        """Whether to call back all moderation results: 0: call back all results by default; 1: only call back hit results.
+        :rtype: int
+        """
+        return self._CallbackAllResults
+
+    @CallbackAllResults.setter
+    def CallbackAllResults(self, CallbackAllResults):
+        self._CallbackAllResults = CallbackAllResults
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """Specifies the allowlist or blocklist for the subscription stream.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeModerationUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+
+    def _deserialize(self, params):
+        self._ModerationType = params.get("ModerationType")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SliceAudio = params.get("SliceAudio")
+        self._SliceVideo = params.get("SliceVideo")
+        self._ModerationSupplier = params.get("ModerationSupplier")
+        if params.get("ModerationSupplierParam") is not None:
+            self._ModerationSupplierParam = ModerationSupplierParam()
+            self._ModerationSupplierParam._deserialize(params.get("ModerationSupplierParam"))
+        self._SaveModerationFile = params.get("SaveModerationFile")
+        self._CallbackAllResults = params.get("CallbackAllResults")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeModerationUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerationStorageParams(AbstractModel):
+    """Moderation file storage parameters.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudModerationStorage: Information about Tencent COS and third-party cloud storage accounts.
+        :type CloudModerationStorage: :class:`tencentcloud.trtc.v20190722.models.CloudModerationStorage`
+        """
+        self._CloudModerationStorage = None
+
+    @property
+    def CloudModerationStorage(self):
+        """Information about Tencent COS and third-party cloud storage accounts.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudModerationStorage`
+        """
+        return self._CloudModerationStorage
+
+    @CloudModerationStorage.setter
+    def CloudModerationStorage(self, CloudModerationStorage):
+        self._CloudModerationStorage = CloudModerationStorage
+
+
+    def _deserialize(self, params):
+        if params.get("CloudModerationStorage") is not None:
+            self._CloudModerationStorage = CloudModerationStorage()
+            self._CloudModerationStorage._deserialize(params.get("CloudModerationStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerationSupplierParam(AbstractModel):
+    """Parameters required for submitting content to the third-party moderation supplier.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: Moderation supplier account ID. For Tencent Tianyu, the value is not null; for NETEASE Yidun, the value is null.
+        :type AppID: str
+        :param _SecretId: Moderation supplier key ID.
+        :type SecretId: str
+        :param _SecretKey: Moderation supplier key.
+        :type SecretKey: str
+        :param _AudioBizType: Audio scenario. Policy ID or businessId.
+        :type AudioBizType: str
+        :param _ImageBizType: Image scenario. Policy ID or businessId.
+        :type ImageBizType: str
+        """
+        self._AppID = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._AudioBizType = None
+        self._ImageBizType = None
+
+    @property
+    def AppID(self):
+        """Moderation supplier account ID. For Tencent Tianyu, the value is not null; for NETEASE Yidun, the value is null.
+        :rtype: str
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def SecretId(self):
+        """Moderation supplier key ID.
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        """Moderation supplier key.
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def AudioBizType(self):
+        """Audio scenario. Policy ID or businessId.
+        :rtype: str
+        """
+        return self._AudioBizType
+
+    @AudioBizType.setter
+    def AudioBizType(self, AudioBizType):
+        self._AudioBizType = AudioBizType
+
+    @property
+    def ImageBizType(self):
+        """Image scenario. Policy ID or businessId.
+        :rtype: str
+        """
+        return self._ImageBizType
+
+    @ImageBizType.setter
+    def ImageBizType(self, ImageBizType):
+        self._ImageBizType = ImageBizType
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._AudioBizType = params.get("AudioBizType")
+        self._ImageBizType = params.get("ImageBizType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudModerationRequest(AbstractModel):
+    """ModifyCloudModeration request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :type SdkAppId: int
+        :param _TaskId: Unique ID of the moderation task, which is returned after the task is started.
+        :type TaskId: str
+        :param _SubscribeStreamUserIds: Specifies the allowlist or blocklist for the subscription stream.
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SubscribeStreamUserIds = None
+
+    @property
+    def SdkAppId(self):
+        """SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the TRTC room.
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        """Unique ID of the moderation task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SubscribeStreamUserIds(self):
+        """Specifies the allowlist or blocklist for the subscription stream.
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        return self._SubscribeStreamUserIds
+
+    @SubscribeStreamUserIds.setter
+    def SubscribeStreamUserIds(self, SubscribeStreamUserIds):
+        self._SubscribeStreamUserIds = SubscribeStreamUserIds
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self._SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self._SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudModerationResponse(AbstractModel):
+    """ModifyCloudModeration response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the moderation task, which is returned after the task is started.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        """Unique ID of the moderation task, which is returned after the task is started.
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCloudRecordingRequest(AbstractModel):
     """ModifyCloudRecording request structure.
 
@@ -10702,6 +11658,95 @@ class StorageParams(AbstractModel):
         if params.get("CloudVod") is not None:
             self._CloudVod = CloudVod()
             self._CloudVod._deserialize(params.get("CloudVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeModerationUserIds(AbstractModel):
+    """Specifies the subscription stream allowlist or blocklist. The audio allowlist and blocklist cannot be set simultaneously, and this also applies to video. Additionally, up to 25 concurrently subscribed media streams are supported, and up to 24 video screens are supported in mixed stream scenarios. It is also supported to use the ".*$" wildcard for prefix matching of UserId in the blocklist and allowlist. Note that if there are user IDs in the room that match the wildcard rule, specific users are subscribed, causing the prefix rule to become ineffective.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeAudioUserIds: Subscription audio stream allowlist. It specifies which UserIds' audio streams to subscribe to, for example, ["1", "2", "3"] indicates subscriptions to the audio streams of UserId 1, 2, and 3; ["1.*$"] indicates subscription to audio streams with UserId prefixes starting with 1. If this parameter is left unspecified, all audio streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeAudioUserIds: list of str
+        :param _UnSubscribeAudioUserIds: Subscription audio stream blocklist. It specifies which UserIds' audio streams not to subscribe to, for example, ["1", "2", "3"] indicates that the audio streams of UserId 1, 2, and 3 are not subscribed to; ["1.*$"] indicates that audio streams with UserId prefixes starting with 1 are not subscribed to. If this parameter is left unspecified, all audio streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnSubscribeAudioUserIds: list of str
+        :param _SubscribeVideoUserIds: Subscription video stream allowlist. It specifies which UserIds' video streams to subscribe to, for example, ["1", "2", "3"] indicates subscriptions to the video streams of UserId 1, 2, and 3; ["1.*$"] indicates subscription to video streams with UserId prefixes starting with 1. If this parameter is left unspecified, all video streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubscribeVideoUserIds: list of str
+        :param _UnSubscribeVideoUserIds: Subscription video stream blocklist. It specifies which UserIds' video streams not to subscribe to, for example, ["1", "2", "3"] indicates that the video streams of UserId 1, 2, and 3 are not subscribed to; ["1.*$"] indicates that video streams with UserId prefixes starting with 1 are not subscribed to. If this parameter is left unspecified, all video streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnSubscribeVideoUserIds: list of str
+        """
+        self._SubscribeAudioUserIds = None
+        self._UnSubscribeAudioUserIds = None
+        self._SubscribeVideoUserIds = None
+        self._UnSubscribeVideoUserIds = None
+
+    @property
+    def SubscribeAudioUserIds(self):
+        """Subscription audio stream allowlist. It specifies which UserIds' audio streams to subscribe to, for example, ["1", "2", "3"] indicates subscriptions to the audio streams of UserId 1, 2, and 3; ["1.*$"] indicates subscription to audio streams with UserId prefixes starting with 1. If this parameter is left unspecified, all audio streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._SubscribeAudioUserIds
+
+    @SubscribeAudioUserIds.setter
+    def SubscribeAudioUserIds(self, SubscribeAudioUserIds):
+        self._SubscribeAudioUserIds = SubscribeAudioUserIds
+
+    @property
+    def UnSubscribeAudioUserIds(self):
+        """Subscription audio stream blocklist. It specifies which UserIds' audio streams not to subscribe to, for example, ["1", "2", "3"] indicates that the audio streams of UserId 1, 2, and 3 are not subscribed to; ["1.*$"] indicates that audio streams with UserId prefixes starting with 1 are not subscribed to. If this parameter is left unspecified, all audio streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._UnSubscribeAudioUserIds
+
+    @UnSubscribeAudioUserIds.setter
+    def UnSubscribeAudioUserIds(self, UnSubscribeAudioUserIds):
+        self._UnSubscribeAudioUserIds = UnSubscribeAudioUserIds
+
+    @property
+    def SubscribeVideoUserIds(self):
+        """Subscription video stream allowlist. It specifies which UserIds' video streams to subscribe to, for example, ["1", "2", "3"] indicates subscriptions to the video streams of UserId 1, 2, and 3; ["1.*$"] indicates subscription to video streams with UserId prefixes starting with 1. If this parameter is left unspecified, all video streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._SubscribeVideoUserIds
+
+    @SubscribeVideoUserIds.setter
+    def SubscribeVideoUserIds(self, SubscribeVideoUserIds):
+        self._SubscribeVideoUserIds = SubscribeVideoUserIds
+
+    @property
+    def UnSubscribeVideoUserIds(self):
+        """Subscription video stream blocklist. It specifies which UserIds' video streams not to subscribe to, for example, ["1", "2", "3"] indicates that the video streams of UserId 1, 2, and 3 are not subscribed to; ["1.*$"] indicates that video streams with UserId prefixes starting with 1 are not subscribed to. If this parameter is left unspecified, all video streams in the room are subscribed to by default. The number of users in the subscription list should not exceed 32.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._UnSubscribeVideoUserIds
+
+    @UnSubscribeVideoUserIds.setter
+    def UnSubscribeVideoUserIds(self, UnSubscribeVideoUserIds):
+        self._UnSubscribeVideoUserIds = UnSubscribeVideoUserIds
+
+
+    def _deserialize(self, params):
+        self._SubscribeAudioUserIds = params.get("SubscribeAudioUserIds")
+        self._UnSubscribeAudioUserIds = params.get("UnSubscribeAudioUserIds")
+        self._SubscribeVideoUserIds = params.get("SubscribeVideoUserIds")
+        self._UnSubscribeVideoUserIds = params.get("UnSubscribeVideoUserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
