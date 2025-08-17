@@ -1388,14 +1388,14 @@ Parameter value is not allowed to be 7,380,86.
         :param _VerifyCode: VerifyCode. This parameter is required. 
 Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.
         :type VerifyCode: str
-        :param _Extended: Extension field, which is left empty by default.
-        :type Extended: str
         :param _TradeOne: Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181),
 such as "kghy_01".
         :type TradeOne: str
         :param _TradeTwo: Layer-2 industry id. This is a required item and can be obtained via the [ GetTradeConfigList API](https://www.tencentcloud.com/zh/document/product/1085/68181),
 such as "kghy_0101"
         :type TradeTwo: str
+        :param _Extended: Extension field, which is left empty by default.
+        :type Extended: str
         """
         self._AccountType = None
         self._Mail = None
@@ -1405,9 +1405,9 @@ such as "kghy_0101"
         self._CountryCode = None
         self._Area = None
         self._VerifyCode = None
-        self._Extended = None
         self._TradeOne = None
         self._TradeTwo = None
+        self._Extended = None
 
     @property
     def AccountType(self):
@@ -1506,17 +1506,6 @@ Use the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/
         self._VerifyCode = VerifyCode
 
     @property
-    def Extended(self):
-        """Extension field, which is left empty by default.
-        :rtype: str
-        """
-        return self._Extended
-
-    @Extended.setter
-    def Extended(self, Extended):
-        self._Extended = Extended
-
-    @property
     def TradeOne(self):
         """Layer-1 industry id. This is a required item and can be obtained via the [ GetTradeConfigList  API](https://www.tencentcloud.com/zh/document/product/1085/68181),
 such as "kghy_01".
@@ -1540,6 +1529,17 @@ such as "kghy_0101"
     def TradeTwo(self, TradeTwo):
         self._TradeTwo = TradeTwo
 
+    @property
+    def Extended(self):
+        """Extension field, which is left empty by default.
+        :rtype: str
+        """
+        return self._Extended
+
+    @Extended.setter
+    def Extended(self, Extended):
+        self._Extended = Extended
+
 
     def _deserialize(self, params):
         self._AccountType = params.get("AccountType")
@@ -1550,9 +1550,9 @@ such as "kghy_0101"
         self._CountryCode = params.get("CountryCode")
         self._Area = params.get("Area")
         self._VerifyCode = params.get("VerifyCode")
-        self._Extended = params.get("Extended")
         self._TradeOne = params.get("TradeOne")
         self._TradeTwo = params.get("TradeTwo")
+        self._Extended = params.get("Extended")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
