@@ -574,6 +574,81 @@ class ChcDeployExtraConfig(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _MiniOsType: 
+        :type MiniOsType: str
+        :param _BootType: 
+        :type BootType: str
+        :param _BootFile: 
+        :type BootFile: str
+        :param _NextServerAddress: 
+        :type NextServerAddress: str
+        """
+        self._MiniOsType = None
+        self._BootType = None
+        self._BootFile = None
+        self._NextServerAddress = None
+
+    @property
+    def MiniOsType(self):
+        """
+        :rtype: str
+        """
+        return self._MiniOsType
+
+    @MiniOsType.setter
+    def MiniOsType(self, MiniOsType):
+        self._MiniOsType = MiniOsType
+
+    @property
+    def BootType(self):
+        """
+        :rtype: str
+        """
+        return self._BootType
+
+    @BootType.setter
+    def BootType(self, BootType):
+        self._BootType = BootType
+
+    @property
+    def BootFile(self):
+        """
+        :rtype: str
+        """
+        return self._BootFile
+
+    @BootFile.setter
+    def BootFile(self, BootFile):
+        self._BootFile = BootFile
+
+    @property
+    def NextServerAddress(self):
+        """
+        :rtype: str
+        """
+        return self._NextServerAddress
+
+    @NextServerAddress.setter
+    def NextServerAddress(self, NextServerAddress):
+        self._NextServerAddress = NextServerAddress
+
+
+    def _deserialize(self, params):
+        self._MiniOsType = params.get("MiniOsType")
+        self._BootType = params.get("BootType")
+        self._BootFile = params.get("BootFile")
+        self._NextServerAddress = params.get("NextServerAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ChcHost(AbstractModel):
     """CHC host information
@@ -2112,6 +2187,8 @@ false (default): sends a normal request. after passing the check, creates an ins
         :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
         :param _DisableApiTermination: Instance destruction protection flag: indicates whether an instance is allowed to be deleted through an api. value ranges from: - **TRUE**: indicates that instance protection is enabled, deletion through apis is not allowed. - **FALSE**: indicates that instance protection is disabled, deletion through apis is allowed.  default value: FALSE.
         :type DisableApiTermination: bool
+        :param _EnableJumboFrame: 
+        :type EnableJumboFrame: bool
         :param _LaunchTemplateTagSpecification: Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.
         :type LaunchTemplateTagSpecification: list of TagSpecification
         :param _Metadata: Custom metadata. specifies that custom metadata key-value pairs can be added when creating a CVM.
@@ -2151,6 +2228,7 @@ Note: this field is in beta test.
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
         self._DisableApiTermination = None
+        self._EnableJumboFrame = None
         self._LaunchTemplateTagSpecification = None
         self._Metadata = None
         self._TemplateDataModifyAction = None
@@ -2459,6 +2537,17 @@ false (default): sends a normal request. after passing the check, creates an ins
         self._DisableApiTermination = DisableApiTermination
 
     @property
+    def EnableJumboFrame(self):
+        """
+        :rtype: bool
+        """
+        return self._EnableJumboFrame
+
+    @EnableJumboFrame.setter
+    def EnableJumboFrame(self, EnableJumboFrame):
+        self._EnableJumboFrame = EnableJumboFrame
+
+    @property
     def LaunchTemplateTagSpecification(self):
         """Description list of tags. by specifying this parameter, tags can be bound to the instance launch template.
         :rtype: list of TagSpecification
@@ -2553,6 +2642,7 @@ Note: this field is in beta test.
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self._DisableApiTermination = params.get("DisableApiTermination")
+        self._EnableJumboFrame = params.get("EnableJumboFrame")
         if params.get("LaunchTemplateTagSpecification") is not None:
             self._LaunchTemplateTagSpecification = []
             for item in params.get("LaunchTemplateTagSpecification"):
@@ -3839,7 +3929,7 @@ class DescribeChcHostsRequest(AbstractModel):
         :param _ChcIds: CHC host ID. Up to 100 instances per request is allowed. `ChcIds` and `Filters` cannot be specified at the same time.
         :type ChcIds: list of str
         :param _Filters: <li><strong>zone</strong></li>
-<p style="padding-left: 30px;">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-1`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
+<p style="padding-left: 30px;">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-6`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
 <li><strong>instance-name</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>instance name</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>instance-state</strong></li>
@@ -3875,7 +3965,7 @@ class DescribeChcHostsRequest(AbstractModel):
     @property
     def Filters(self):
         """<li><strong>zone</strong></li>
-<p style="padding-left: 30px;">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-1`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
+<p style="padding-left: 30px;">Filter by the <strong>availability zone</strong>, such as `ap-guangzhou-6`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
 <li><strong>instance-name</strong></li>
 <p style="padding-left: 30px;">Filter by the <strong>instance name</strong>.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>instance-state</strong></li>
@@ -4287,7 +4377,7 @@ class DescribeHostsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Filters: <li><strong>zone</strong></li>
-<p style="padding-left: 30px;">Filter by the availability zone, such as `ap-guangzhou-1`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
+<p style="padding-left: 30px;">Filter by the availability zone, such as `ap-guangzhou-6`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
 <li><strong>project-id</strong></li>
 <p style="padding-left: 30px;">Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. The project ID is like 1002189. </p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>host-id</strong></li>
@@ -4310,7 +4400,7 @@ Each request can have up to 10 `Filters` and 5 `Filter.Values`.
     @property
     def Filters(self):
         """<li><strong>zone</strong></li>
-<p style="padding-left: 30px;">Filter by the availability zone, such as `ap-guangzhou-1`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
+<p style="padding-left: 30px;">Filter by the availability zone, such as `ap-guangzhou-6`.</p><p style="padding-left: 30px;">Type: String</p><p style="padding-left: 30px;">Optional</p><p style="padding-left: 30px;">Valid values: See <a href="https://intl.cloud.tencent.com/document/product/213/6091?from_cn_redirect=1">Regions and Availability Zones</a></p>
 <li><strong>project-id</strong></li>
 <p style="padding-left: 30px;">Filter by the project ID. You can query the list of created projects by calling `DescribeProject` or logging in to the [CVM console](https://console.cloud.tencent.com/cvm/index). You can also call `AddProject` to create projects. The project ID is like 1002189. </p><p style="padding-left: 30px;">Type: Integer</p><p style="padding-left: 30px;">Optional</p>
 <li><strong>host-id</strong></li>
@@ -11488,71 +11578,52 @@ class ItemPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnitPrice: The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _UnitPrice: Original price of subsequent total costs, postpaid billing mode usage, unit: usd. <li>if other time interval items are returned, such as UnitPriceSecondStep, this item represents the time interval (0, 96) hr. if no other time interval items are returned, this item represents the full period (0, ∞) hr.
         :type UnitPrice: float
-        :param _ChargeUnit: Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _ChargeUnit: Billing unit for pay-as-you-go mode. valid values: <br><li>HOUR: billed on an hourly basis. it's used for hourly POSTPAID instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill BY TRAFFIC in GB. it's used for POSTPAID products that are billed BY the hourly TRAFFIC (`TRAFFIC_POSTPAID_BY_HOUR`).
         :type ChargeUnit: str
-        :param _OriginalPrice: The original price of a pay-in-advance instance, in USD.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _OriginalPrice: Original price of total prepaid costs. measurement unit: usd.
         :type OriginalPrice: float
-        :param _DiscountPrice: Discount price of a prepaid instance, in USD.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _DiscountPrice: Discount price of total prepaid costs. unit: usd.
         :type DiscountPrice: float
-        :param _Discount: Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _Discount: Discount, such as 20.0 representing 80% off.
         :type Discount: float
-        :param _UnitPriceDiscount: The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _UnitPriceDiscount: Discounted price of subsequent total cost, postpaid billing mode usage, unit: usd <li>if other time interval items are returned, such as UnitPriceDiscountSecondStep, this item represents the time interval (0, 96) hr; if no other time interval items are returned, this item represents the full period (0, ∞) hr.
         :type UnitPriceDiscount: float
-        :param _UnitPriceSecondStep: Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _UnitPriceSecondStep: Original price of subsequent total costs for usage time range (96, 360) hr in postpaid billing mode. unit: usd.
         :type UnitPriceSecondStep: float
-        :param _UnitPriceDiscountSecondStep: Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _UnitPriceDiscountSecondStep: Discounted price of subsequent total cost for usage time interval (96, 360) hr in postpaid billing mode. unit: usd.
         :type UnitPriceDiscountSecondStep: float
-        :param _UnitPriceThirdStep: Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _UnitPriceThirdStep: Specifies the original price of subsequent total costs with a usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
         :type UnitPriceThirdStep: float
-        :param _UnitPriceDiscountThirdStep: Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        :param _UnitPriceDiscountThirdStep: Discounted price of subsequent total cost for usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
         :type UnitPriceDiscountThirdStep: float
-        :param _OriginalPriceThreeYear: Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _OriginalPriceThreeYear: Specifies the original price of total 3-year prepaid costs in prepaid billing mode. measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :type OriginalPriceThreeYear: float
-        :param _DiscountPriceThreeYear: Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DiscountPriceThreeYear: Specifies the discount price for an advance payment of the total fee for three years, prepaid mode usage, measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :type DiscountPriceThreeYear: float
-        :param _DiscountThreeYear: Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DiscountThreeYear: Specifies the discount for a 3-year advance payment, for example 20.0 represents 80% off.
+Note: This field may return null, indicating that no valid value is found.
         :type DiscountThreeYear: float
-        :param _OriginalPriceFiveYear: Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _OriginalPriceFiveYear: Specifies the original price of the 5-year total cost with advance payment, using prepaid billing mode. measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :type OriginalPriceFiveYear: float
-        :param _DiscountPriceFiveYear: Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DiscountPriceFiveYear: Prepaid 5-year total cost discount price, prepaid billing mode usage. unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :type DiscountPriceFiveYear: float
-        :param _DiscountFiveYear: Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DiscountFiveYear: Specifies the discount for 5-year advance payment, such as 20.0 for 80% off.
+Note: This field may return null, indicating that no valid value is found.
         :type DiscountFiveYear: float
-        :param _OriginalPriceOneYear: Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _OriginalPriceOneYear: Original price of one-year advance payment total cost. prepaid mode usage. unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :type OriginalPriceOneYear: float
-        :param _DiscountPriceOneYear: Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DiscountPriceOneYear: Discount price for total advance payment for one year. specifies prepaid mode usage. measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :type DiscountPriceOneYear: float
-        :param _DiscountOneYear: Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        :param _DiscountOneYear: Specifies the discount for a one-year advance payment, such as 20.0 for 80% off.
+Note: This field may return null, indicating that no valid value is found.
         :type DiscountOneYear: float
         """
         self._UnitPrice = None
@@ -11577,8 +11648,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def UnitPrice(self):
-        """The original unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Original price of subsequent total costs, postpaid billing mode usage, unit: usd. <li>if other time interval items are returned, such as UnitPriceSecondStep, this item represents the time interval (0, 96) hr. if no other time interval items are returned, this item represents the full period (0, ∞) hr.
         :rtype: float
         """
         return self._UnitPrice
@@ -11589,8 +11659,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def ChargeUnit(self):
-        """Billing unit for pay-as-you-go mode. Valid values: <br><li>HOUR: billed on an hourly basis. It's used for hourly postpaid instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill by traffic in GB. It's used for postpaid products that are billed by the hourly traffic (`TRAFFIC_POSTPAID_BY_HOUR`).
-Note: this field may return null, indicating that no valid value is obtained.
+        """Billing unit for pay-as-you-go mode. valid values: <br><li>HOUR: billed on an hourly basis. it's used for hourly POSTPAID instances (`POSTPAID_BY_HOUR`). <br><li>GB: bill BY TRAFFIC in GB. it's used for POSTPAID products that are billed BY the hourly TRAFFIC (`TRAFFIC_POSTPAID_BY_HOUR`).
         :rtype: str
         """
         return self._ChargeUnit
@@ -11601,8 +11670,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def OriginalPrice(self):
-        """The original price of a pay-in-advance instance, in USD.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Original price of total prepaid costs. measurement unit: usd.
         :rtype: float
         """
         return self._OriginalPrice
@@ -11613,8 +11681,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def DiscountPrice(self):
-        """Discount price of a prepaid instance, in USD.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Discount price of total prepaid costs. unit: usd.
         :rtype: float
         """
         return self._DiscountPrice
@@ -11625,8 +11692,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def Discount(self):
-        """Percentage of the original price. For example, if you enter "20.0", the discounted price will be 20% of the original price.
-Note: this field may return null, indicating that no valid values can be obtained.
+        """Discount, such as 20.0 representing 80% off.
         :rtype: float
         """
         return self._Discount
@@ -11637,8 +11703,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
-        """The discounted unit price for pay-as-you-go mode in USD. <br><li>When a billing tier is returned, it indicates the price fo the returned billing tier. For example, if `UnitPriceSecondStep` is returned, it refers to the unit price for the usage between 0 to 96 hours. Otherwise, it refers to that the unit price for unlimited usage.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Discounted price of subsequent total cost, postpaid billing mode usage, unit: usd <li>if other time interval items are returned, such as UnitPriceDiscountSecondStep, this item represents the time interval (0, 96) hr; if no other time interval items are returned, this item represents the full period (0, ∞) hr.
         :rtype: float
         """
         return self._UnitPriceDiscount
@@ -11649,8 +11714,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def UnitPriceSecondStep(self):
-        """Original unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Original price of subsequent total costs for usage time range (96, 360) hr in postpaid billing mode. unit: usd.
         :rtype: float
         """
         return self._UnitPriceSecondStep
@@ -11661,8 +11725,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def UnitPriceDiscountSecondStep(self):
-        """Discounted unit price for the usage between 96 to 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Discounted price of subsequent total cost for usage time interval (96, 360) hr in postpaid billing mode. unit: usd.
         :rtype: float
         """
         return self._UnitPriceDiscountSecondStep
@@ -11673,8 +11736,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def UnitPriceThirdStep(self):
-        """Original unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Specifies the original price of subsequent total costs with a usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
         :rtype: float
         """
         return self._UnitPriceThirdStep
@@ -11685,8 +11747,7 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def UnitPriceDiscountThirdStep(self):
-        """Discounted unit price for the usage after 360 hours in USD. It's applicable to pay-as-you-go mode.
-Note: this field may return null, indicating that no valid value is obtained.
+        """Discounted price of subsequent total cost for usage time interval exceeding 360 hr in postpaid billing mode. measurement unit: usd.
         :rtype: float
         """
         return self._UnitPriceDiscountThirdStep
@@ -11697,9 +11758,8 @@ Note: this field may return null, indicating that no valid value is obtained.
 
     @property
     def OriginalPriceThreeYear(self):
-        """Original 3-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Specifies the original price of total 3-year prepaid costs in prepaid billing mode. measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._OriginalPriceThreeYear
@@ -11710,9 +11770,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPriceThreeYear(self):
-        """Discounted 3-year upfront payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Specifies the discount price for an advance payment of the total fee for three years, prepaid mode usage, measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._DiscountPriceThreeYear
@@ -11723,9 +11782,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountThreeYear(self):
-        """Discount for 3-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Specifies the discount for a 3-year advance payment, for example 20.0 represents 80% off.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._DiscountThreeYear
@@ -11736,9 +11794,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPriceFiveYear(self):
-        """Original 5-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Specifies the original price of the 5-year total cost with advance payment, using prepaid billing mode. measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._OriginalPriceFiveYear
@@ -11749,9 +11806,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPriceFiveYear(self):
-        """Discounted 5-year upfront payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Prepaid 5-year total cost discount price, prepaid billing mode usage. unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._DiscountPriceFiveYear
@@ -11762,9 +11818,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountFiveYear(self):
-        """Discount for 5-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Specifies the discount for 5-year advance payment, such as 20.0 for 80% off.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._DiscountFiveYear
@@ -11775,9 +11830,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OriginalPriceOneYear(self):
-        """Original 1-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Original price of one-year advance payment total cost. prepaid mode usage. unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._OriginalPriceOneYear
@@ -11788,9 +11842,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountPriceOneYear(self):
-        """Discounted 1-year payment, in USD. This parameter is only available to upfront payment mode.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Discount price for total advance payment for one year. specifies prepaid mode usage. measurement unit: usd.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._DiscountPriceOneYear
@@ -11801,9 +11854,8 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DiscountOneYear(self):
-        """Discount for 1-year upfront payment. For example, 20.0 indicates 80% off.
-Note: this field may return `null`, indicating that no valid value was found.
-Note: this field may return `null`, indicating that no valid value was found.
+        """Specifies the discount for a one-year advance payment, such as 20.0 for 80% off.
+Note: This field may return null, indicating that no valid value is found.
         :rtype: float
         """
         return self._DiscountOneYear
