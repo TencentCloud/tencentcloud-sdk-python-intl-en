@@ -17,6 +17,9 @@
 # CAM signature/authentication error.
 AUTHFAILURE = 'AuthFailure'
 
+# DryRun operation means the request will be successful, but the DryRun parameter is passed.
+DRYRUNOPERATION = 'DryRunOperation'
+
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
@@ -55,6 +58,12 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # Permission error.
 UNAUTHORIZEDOPERATION_AUTHORIZE = 'UnauthorizedOperation.Authorize'
+
+# User is not enabled.
+UNAUTHORIZEDOPERATION_INACTIVE = 'UnauthorizedOperation.Inactive'
+
+# The user does not exist.
+UNAUTHORIZEDOPERATION_USERNOTEXIST = 'UnauthorizedOperation.UserNotExist'
 
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'

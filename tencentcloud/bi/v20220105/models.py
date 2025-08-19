@@ -273,6 +273,738 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class BaseStateAction(AbstractModel):
+    """Operation attributes of every record returned by a list query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShowEdit: Whether the edit button is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShowEdit: bool
+        :param _IsEdit: Whether the edit button is clickable.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsEdit: bool
+        :param _EditText: Edit button text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EditText: str
+        :param _EditTips: Edit-disabled hint.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EditTips: str
+        :param _ShowDel: Whether the deletion button is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShowDel: bool
+        :param _IsDel: Whether the deletion button is clickable.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsDel: bool
+        :param _DelText: Delete button text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DelText: str
+        :param _DelTips: Delete-disabled hint.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DelTips: str
+        :param _ShowCopy: Whether the copy button is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShowCopy: bool
+        :param _ShowView: Whether it is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShowView: bool
+        :param _ShowRename: Whether renaming is allowed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShowRename: bool
+        """
+        self._ShowEdit = None
+        self._IsEdit = None
+        self._EditText = None
+        self._EditTips = None
+        self._ShowDel = None
+        self._IsDel = None
+        self._DelText = None
+        self._DelTips = None
+        self._ShowCopy = None
+        self._ShowView = None
+        self._ShowRename = None
+
+    @property
+    def ShowEdit(self):
+        """Whether the edit button is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ShowEdit
+
+    @ShowEdit.setter
+    def ShowEdit(self, ShowEdit):
+        self._ShowEdit = ShowEdit
+
+    @property
+    def IsEdit(self):
+        """Whether the edit button is clickable.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsEdit
+
+    @IsEdit.setter
+    def IsEdit(self, IsEdit):
+        self._IsEdit = IsEdit
+
+    @property
+    def EditText(self):
+        """Edit button text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EditText
+
+    @EditText.setter
+    def EditText(self, EditText):
+        self._EditText = EditText
+
+    @property
+    def EditTips(self):
+        """Edit-disabled hint.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EditTips
+
+    @EditTips.setter
+    def EditTips(self, EditTips):
+        self._EditTips = EditTips
+
+    @property
+    def ShowDel(self):
+        """Whether the deletion button is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ShowDel
+
+    @ShowDel.setter
+    def ShowDel(self, ShowDel):
+        self._ShowDel = ShowDel
+
+    @property
+    def IsDel(self):
+        """Whether the deletion button is clickable.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsDel
+
+    @IsDel.setter
+    def IsDel(self, IsDel):
+        self._IsDel = IsDel
+
+    @property
+    def DelText(self):
+        """Delete button text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DelText
+
+    @DelText.setter
+    def DelText(self, DelText):
+        self._DelText = DelText
+
+    @property
+    def DelTips(self):
+        """Delete-disabled hint.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DelTips
+
+    @DelTips.setter
+    def DelTips(self, DelTips):
+        self._DelTips = DelTips
+
+    @property
+    def ShowCopy(self):
+        """Whether the copy button is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ShowCopy
+
+    @ShowCopy.setter
+    def ShowCopy(self, ShowCopy):
+        self._ShowCopy = ShowCopy
+
+    @property
+    def ShowView(self):
+        """Whether it is visible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ShowView
+
+    @ShowView.setter
+    def ShowView(self, ShowView):
+        self._ShowView = ShowView
+
+    @property
+    def ShowRename(self):
+        """Whether renaming is allowed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._ShowRename
+
+    @ShowRename.setter
+    def ShowRename(self, ShowRename):
+        self._ShowRename = ShowRename
+
+
+    def _deserialize(self, params):
+        self._ShowEdit = params.get("ShowEdit")
+        self._IsEdit = params.get("IsEdit")
+        self._EditText = params.get("EditText")
+        self._EditTips = params.get("EditTips")
+        self._ShowDel = params.get("ShowDel")
+        self._IsDel = params.get("IsDel")
+        self._DelText = params.get("DelText")
+        self._DelTips = params.get("DelTips")
+        self._ShowCopy = params.get("ShowCopy")
+        self._ShowView = params.get("ShowView")
+        self._ShowRename = params.get("ShowRename")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CorpUserListData(AbstractModel):
+    """Enterprise user list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: List.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of UserIdAndUserName
+        :param _Total: Total number.
+        :type Total: int
+        :param _TotalPages: Number of pages.
+        :type TotalPages: int
+        """
+        self._List = None
+        self._Total = None
+        self._TotalPages = None
+
+    @property
+    def List(self):
+        """List.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserIdAndUserName
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        """Total number.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalPages(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UserIdAndUserName()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._TotalPages = params.get("TotalPages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatasourceCloudRequest(AbstractModel):
+    """CreateDatasourceCloud request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceType: The backend provides dictionaries: domain type. 1. Tencent Cloud, 2. local.
+        :type ServiceType: str
+        :param _DbType: Drive.
+        :type DbType: str
+        :param _Charset: Database encoding.
+        :type Charset: str
+        :param _DbUser: Username.
+        :type DbUser: str
+        :param _DbPwd: Password.
+        :type DbPwd: str
+        :param _DbName: Database name.
+        :type DbName: str
+        :param _SourceName: Database alias.
+        :type SourceName: str
+        :param _ProjectId: Project ID.
+        :type ProjectId: str
+        :param _Vip: Private network IP address of the public cloud.
+        :type Vip: str
+        :param _Vport: Private network port of the public cloud.
+        :type Vport: str
+        :param _VpcId: VPC identifier.
+        :type VpcId: str
+        :param _UniqVpcId: Unified VPC identifier.
+        :type UniqVpcId: str
+        :param _RegionId: Region identifier (gz, bj).
+        :type RegionId: str
+        :param _ExtraParam: Extension parameter.
+        :type ExtraParam: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _ProdDbName: Product name of the data source.
+        :type ProdDbName: str
+        :param _DataOrigin: Third-party data source identifier.
+        :type DataOrigin: str
+        :param _DataOriginProjectId: Third-party project ID.
+        :type DataOriginProjectId: str
+        :param _DataOriginDatasourceId: Third-party data source ID.
+        :type DataOriginDatasourceId: str
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        :param _Schema: 
+        :type Schema: str
+        :param _DbVersion: 
+        :type DbVersion: str
+        """
+        self._ServiceType = None
+        self._DbType = None
+        self._Charset = None
+        self._DbUser = None
+        self._DbPwd = None
+        self._DbName = None
+        self._SourceName = None
+        self._ProjectId = None
+        self._Vip = None
+        self._Vport = None
+        self._VpcId = None
+        self._UniqVpcId = None
+        self._RegionId = None
+        self._ExtraParam = None
+        self._InstanceId = None
+        self._ProdDbName = None
+        self._DataOrigin = None
+        self._DataOriginProjectId = None
+        self._DataOriginDatasourceId = None
+        self._ClusterId = None
+        self._Schema = None
+        self._DbVersion = None
+
+    @property
+    def ServiceType(self):
+        """The backend provides dictionaries: domain type. 1. Tencent Cloud, 2. local.
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DbType(self):
+        """Drive.
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def Charset(self):
+        """Database encoding.
+        :rtype: str
+        """
+        return self._Charset
+
+    @Charset.setter
+    def Charset(self, Charset):
+        self._Charset = Charset
+
+    @property
+    def DbUser(self):
+        """Username.
+        :rtype: str
+        """
+        return self._DbUser
+
+    @DbUser.setter
+    def DbUser(self, DbUser):
+        self._DbUser = DbUser
+
+    @property
+    def DbPwd(self):
+        """Password.
+        :rtype: str
+        """
+        return self._DbPwd
+
+    @DbPwd.setter
+    def DbPwd(self, DbPwd):
+        self._DbPwd = DbPwd
+
+    @property
+    def DbName(self):
+        """Database name.
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def SourceName(self):
+        """Database alias.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Vip(self):
+        """Private network IP address of the public cloud.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        """Private network port of the public cloud.
+        :rtype: str
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def VpcId(self):
+        """VPC identifier.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def UniqVpcId(self):
+        """Unified VPC identifier.
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def RegionId(self):
+        """Region identifier (gz, bj).
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ExtraParam(self):
+        """Extension parameter.
+        :rtype: str
+        """
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+    @property
+    def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ProdDbName(self):
+        """Product name of the data source.
+        :rtype: str
+        """
+        return self._ProdDbName
+
+    @ProdDbName.setter
+    def ProdDbName(self, ProdDbName):
+        self._ProdDbName = ProdDbName
+
+    @property
+    def DataOrigin(self):
+        """Third-party data source identifier.
+        :rtype: str
+        """
+        return self._DataOrigin
+
+    @DataOrigin.setter
+    def DataOrigin(self, DataOrigin):
+        self._DataOrigin = DataOrigin
+
+    @property
+    def DataOriginProjectId(self):
+        """Third-party project ID.
+        :rtype: str
+        """
+        return self._DataOriginProjectId
+
+    @DataOriginProjectId.setter
+    def DataOriginProjectId(self, DataOriginProjectId):
+        self._DataOriginProjectId = DataOriginProjectId
+
+    @property
+    def DataOriginDatasourceId(self):
+        """Third-party data source ID.
+        :rtype: str
+        """
+        return self._DataOriginDatasourceId
+
+    @DataOriginDatasourceId.setter
+    def DataOriginDatasourceId(self, DataOriginDatasourceId):
+        self._DataOriginDatasourceId = DataOriginDatasourceId
+
+    @property
+    def ClusterId(self):
+        """Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Schema(self):
+        """
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def DbVersion(self):
+        """
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+
+    def _deserialize(self, params):
+        self._ServiceType = params.get("ServiceType")
+        self._DbType = params.get("DbType")
+        self._Charset = params.get("Charset")
+        self._DbUser = params.get("DbUser")
+        self._DbPwd = params.get("DbPwd")
+        self._DbName = params.get("DbName")
+        self._SourceName = params.get("SourceName")
+        self._ProjectId = params.get("ProjectId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._VpcId = params.get("VpcId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._RegionId = params.get("RegionId")
+        self._ExtraParam = params.get("ExtraParam")
+        self._InstanceId = params.get("InstanceId")
+        self._ProdDbName = params.get("ProdDbName")
+        self._DataOrigin = params.get("DataOrigin")
+        self._DataOriginProjectId = params.get("DataOriginProjectId")
+        self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ClusterId = params.get("ClusterId")
+        self._Schema = params.get("Schema")
+        self._DbVersion = params.get("DbVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatasourceCloudResponse(AbstractModel):
+    """CreateDatasourceCloud response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: Success No.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        :param _Extra: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """Success No.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.IdDTO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = IdDTO()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDatasourceRequest(AbstractModel):
     """CreateDatasource request structure.
 
@@ -724,6 +1456,4246 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class CreateEmbedTokenRequest(AbstractModel):
+    """CreateEmbedToken request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Shares the project ID.
+        :type ProjectId: int
+        :param _PageId: Shares the page ID. This field is empty (0) for embedding a dashboard and is not passed for embedding ChatBI.
+        :type PageId: int
+        :param _Intention: "embed" indicates page dashboard embedding, and "chatBIEmbed" indicates ChatBI embedding.
+        :type Intention: str
+        :param _Scope: "page" indicates embedding a page, "panel" indicates embedding the entire dashboard, and "project" is used for ChatBI embedding.
+        :type Scope: str
+        :param _ExpireTime: Expiration time. Unit: minutes. Maximum value: 240 (namely, 4 hours). Default value: 240.
+        :type ExpireTime: str
+        :param _ExtraParam: Alternate field.
+        :type ExtraParam: str
+        :param _UserCorpId: User enterprise ID (only used for multi-user).
+        :type UserCorpId: str
+        :param _UserId: User ID (only used for multi-user).
+        :type UserId: str
+        :param _TicketNum: Access count limit (range: 1-99999). Leave empty to disable access restrictions.
+        :type TicketNum: int
+        :param _GlobalParam: Global filter parameters: Applies to all report filter criteria. Should be formatted as a JSON string.
+** Currently, only character-type page parameters can be bound to global parameters.
+**
+[
+    {
+"ParamKey": "name", page parameter name.
+"JoinType": "AND", // connection method. Currently, only AND is supported.
+        "WhereList": [
+            {
+"Operator": "-neq", // operator. Refer to the following instructions.
+"Value": [ action value. For a single-value array, only one value is passed.
+                    "zZWJMD",
+                    "ZzVGHX",
+"Hunan province".
+"Hebei province".
+                ]
+            }
+        ]
+    },
+    {
+        "ParamKey": "genderParam",
+        "JoinType": "AND",
+        "WhereList": [
+            {
+                "Operator": "-neq",
+                "Value": [
+"Male".
+                ]
+            }
+        ]
+    }
+]
+
+
+
+Currently supported operators.
+ -neq not equal to != operator.
+ -eq equal to = operator.
+ -is in operator.
+
+        :type GlobalParam: str
+        :param _TokenType: 100: no user bound. Create 1 token at a time. UserCorpId and UserId are optional. ChatBI embedding is not supported.
+200: single token per user. Create 1 token at a time. UserCorpId and UserId required.
+300: multiple tokens per user. Create multiple tokens at a time. UserCorpId and UserId required.
+        :type TokenType: int
+        :param _TokenNum: The number of tokens created at one time.
+        :type TokenNum: int
+        :param _ConfigParam: Embedded display configurations: Currently for ChatBI embedding scenarios; TableFilter represents data table list filtering, SqlView represents SQL view feature.
+        :type ConfigParam: str
+        """
+        self._ProjectId = None
+        self._PageId = None
+        self._Intention = None
+        self._Scope = None
+        self._ExpireTime = None
+        self._ExtraParam = None
+        self._UserCorpId = None
+        self._UserId = None
+        self._TicketNum = None
+        self._GlobalParam = None
+        self._TokenType = None
+        self._TokenNum = None
+        self._ConfigParam = None
+
+    @property
+    def ProjectId(self):
+        """Shares the project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """Shares the page ID. This field is empty (0) for embedding a dashboard and is not passed for embedding ChatBI.
+        :rtype: int
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def Intention(self):
+        """"embed" indicates page dashboard embedding, and "chatBIEmbed" indicates ChatBI embedding.
+        :rtype: str
+        """
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
+
+    @property
+    def Scope(self):
+        """"page" indicates embedding a page, "panel" indicates embedding the entire dashboard, and "project" is used for ChatBI embedding.
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def ExpireTime(self):
+        """Expiration time. Unit: minutes. Maximum value: 240 (namely, 4 hours). Default value: 240.
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ExtraParam(self):
+        """Alternate field.
+        :rtype: str
+        """
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+    @property
+    def UserCorpId(self):
+        """User enterprise ID (only used for multi-user).
+        :rtype: str
+        """
+        return self._UserCorpId
+
+    @UserCorpId.setter
+    def UserCorpId(self, UserCorpId):
+        self._UserCorpId = UserCorpId
+
+    @property
+    def UserId(self):
+        """User ID (only used for multi-user).
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TicketNum(self):
+        """Access count limit (range: 1-99999). Leave empty to disable access restrictions.
+        :rtype: int
+        """
+        return self._TicketNum
+
+    @TicketNum.setter
+    def TicketNum(self, TicketNum):
+        self._TicketNum = TicketNum
+
+    @property
+    def GlobalParam(self):
+        """Global filter parameters: Applies to all report filter criteria. Should be formatted as a JSON string.
+** Currently, only character-type page parameters can be bound to global parameters.
+**
+[
+    {
+"ParamKey": "name", page parameter name.
+"JoinType": "AND", // connection method. Currently, only AND is supported.
+        "WhereList": [
+            {
+"Operator": "-neq", // operator. Refer to the following instructions.
+"Value": [ action value. For a single-value array, only one value is passed.
+                    "zZWJMD",
+                    "ZzVGHX",
+"Hunan province".
+"Hebei province".
+                ]
+            }
+        ]
+    },
+    {
+        "ParamKey": "genderParam",
+        "JoinType": "AND",
+        "WhereList": [
+            {
+                "Operator": "-neq",
+                "Value": [
+"Male".
+                ]
+            }
+        ]
+    }
+]
+
+
+
+Currently supported operators.
+ -neq not equal to != operator.
+ -eq equal to = operator.
+ -is in operator.
+
+        :rtype: str
+        """
+        return self._GlobalParam
+
+    @GlobalParam.setter
+    def GlobalParam(self, GlobalParam):
+        self._GlobalParam = GlobalParam
+
+    @property
+    def TokenType(self):
+        """100: no user bound. Create 1 token at a time. UserCorpId and UserId are optional. ChatBI embedding is not supported.
+200: single token per user. Create 1 token at a time. UserCorpId and UserId required.
+300: multiple tokens per user. Create multiple tokens at a time. UserCorpId and UserId required.
+        :rtype: int
+        """
+        return self._TokenType
+
+    @TokenType.setter
+    def TokenType(self, TokenType):
+        self._TokenType = TokenType
+
+    @property
+    def TokenNum(self):
+        """The number of tokens created at one time.
+        :rtype: int
+        """
+        return self._TokenNum
+
+    @TokenNum.setter
+    def TokenNum(self, TokenNum):
+        self._TokenNum = TokenNum
+
+    @property
+    def ConfigParam(self):
+        """Embedded display configurations: Currently for ChatBI embedding scenarios; TableFilter represents data table list filtering, SqlView represents SQL view feature.
+        :rtype: str
+        """
+        return self._ConfigParam
+
+    @ConfigParam.setter
+    def ConfigParam(self, ConfigParam):
+        self._ConfigParam = ConfigParam
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        self._Intention = params.get("Intention")
+        self._Scope = params.get("Scope")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ExtraParam = params.get("ExtraParam")
+        self._UserCorpId = params.get("UserCorpId")
+        self._UserId = params.get("UserId")
+        self._TicketNum = params.get("TicketNum")
+        self._GlobalParam = params.get("GlobalParam")
+        self._TokenType = params.get("TokenType")
+        self._TokenNum = params.get("TokenNum")
+        self._ConfigParam = params.get("ConfigParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEmbedTokenResponse(AbstractModel):
+    """CreateEmbedToken response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.EmbedTokenInfo`
+        :param _Msg: Result description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.EmbedTokenInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Result description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = EmbedTokenInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateProjectRequest(AbstractModel):
+    """CreateProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Project name.
+        :type Name: str
+        :param _ColorCode: Background color of the logo.
+        :type ColorCode: str
+        :param _Logo: Project logo.
+        :type Logo: str
+        :param _Mark: Remarks.
+        :type Mark: str
+        :param _IsApply: Whether to allow user requests.
+        :type IsApply: bool
+        :param _DefaultPanelType: Default dashboard.
+        :type DefaultPanelType: int
+        :param _ManagePlatform: Management platform.
+        :type ManagePlatform: str
+        """
+        self._Name = None
+        self._ColorCode = None
+        self._Logo = None
+        self._Mark = None
+        self._IsApply = None
+        self._DefaultPanelType = None
+        self._ManagePlatform = None
+
+    @property
+    def Name(self):
+        """Project name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ColorCode(self):
+        """Background color of the logo.
+        :rtype: str
+        """
+        return self._ColorCode
+
+    @ColorCode.setter
+    def ColorCode(self, ColorCode):
+        self._ColorCode = ColorCode
+
+    @property
+    def Logo(self):
+        """Project logo.
+        :rtype: str
+        """
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+    @property
+    def Mark(self):
+        """Remarks.
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def IsApply(self):
+        """Whether to allow user requests.
+        :rtype: bool
+        """
+        return self._IsApply
+
+    @IsApply.setter
+    def IsApply(self, IsApply):
+        self._IsApply = IsApply
+
+    @property
+    def DefaultPanelType(self):
+        """Default dashboard.
+        :rtype: int
+        """
+        return self._DefaultPanelType
+
+    @DefaultPanelType.setter
+    def DefaultPanelType(self, DefaultPanelType):
+        self._DefaultPanelType = DefaultPanelType
+
+    @property
+    def ManagePlatform(self):
+        """Management platform.
+        :rtype: str
+        """
+        return self._ManagePlatform
+
+    @ManagePlatform.setter
+    def ManagePlatform(self, ManagePlatform):
+        self._ManagePlatform = ManagePlatform
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ColorCode = params.get("ColorCode")
+        self._Logo = params.get("Logo")
+        self._Mark = params.get("Mark")
+        self._IsApply = params.get("IsApply")
+        self._DefaultPanelType = params.get("DefaultPanelType")
+        self._ManagePlatform = params.get("ManagePlatform")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProjectResponse(AbstractModel):
+    """CreateProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Extra data.
+        :type Extra: str
+        :param _Data: Data.
+
+        :type Data: :class:`tencentcloud.bi.v20220105.models.Data`
+        :param _Msg: Returned information.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Extra data.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+
+        :rtype: :class:`tencentcloud.bi.v20220105.models.Data`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Returned information.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = Data()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUserRoleProjectRequest(AbstractModel):
+    """CreateUserRoleProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _RoleIdList: Role ID list.
+        :type RoleIdList: list of int
+        :param _UserList: User list (deprecated).
+        :type UserList: list of UserIdAndUserName
+        :param _UserInfoList: User list (new).
+        :type UserInfoList: list of UserInfo
+        """
+        self._ProjectId = None
+        self._RoleIdList = None
+        self._UserList = None
+        self._UserInfoList = None
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RoleIdList(self):
+        """Role ID list.
+        :rtype: list of int
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
+
+    @property
+    def UserList(self):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
+        """User list (deprecated).
+        :rtype: list of UserIdAndUserName
+        """
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
+        self._UserList = UserList
+
+    @property
+    def UserInfoList(self):
+        """User list (new).
+        :rtype: list of UserInfo
+        """
+        return self._UserInfoList
+
+    @UserInfoList.setter
+    def UserInfoList(self, UserInfoList):
+        self._UserInfoList = UserInfoList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._RoleIdList = params.get("RoleIdList")
+        if params.get("UserList") is not None:
+            self._UserList = []
+            for item in params.get("UserList"):
+                obj = UserIdAndUserName()
+                obj._deserialize(item)
+                self._UserList.append(obj)
+        if params.get("UserInfoList") is not None:
+            self._UserInfoList = []
+            for item in params.get("UserInfoList"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self._UserInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserRoleProjectResponse(AbstractModel):
+    """CreateUserRoleProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.DataId`
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DataId`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = DataId()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateUserRoleRequest(AbstractModel):
+    """CreateUserRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleIdList: Role ID list.
+        :type RoleIdList: list of int
+        :param _UserList: User list (deprecated).
+        :type UserList: list of UserIdAndUserName
+        :param _UserInfoList: User list (new).
+        :type UserInfoList: list of UserInfo
+        :param _UserGroups: User group ID list.
+        :type UserGroups: list of int non-negative
+        """
+        self._RoleIdList = None
+        self._UserList = None
+        self._UserInfoList = None
+        self._UserGroups = None
+
+    @property
+    def RoleIdList(self):
+        """Role ID list.
+        :rtype: list of int
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
+
+    @property
+    def UserList(self):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
+        """User list (deprecated).
+        :rtype: list of UserIdAndUserName
+        """
+        return self._UserList
+
+    @UserList.setter
+    def UserList(self, UserList):
+        warnings.warn("parameter `UserList` is deprecated", DeprecationWarning) 
+
+        self._UserList = UserList
+
+    @property
+    def UserInfoList(self):
+        """User list (new).
+        :rtype: list of UserInfo
+        """
+        return self._UserInfoList
+
+    @UserInfoList.setter
+    def UserInfoList(self, UserInfoList):
+        self._UserInfoList = UserInfoList
+
+    @property
+    def UserGroups(self):
+        """User group ID list.
+        :rtype: list of int non-negative
+        """
+        return self._UserGroups
+
+    @UserGroups.setter
+    def UserGroups(self, UserGroups):
+        self._UserGroups = UserGroups
+
+
+    def _deserialize(self, params):
+        self._RoleIdList = params.get("RoleIdList")
+        if params.get("UserList") is not None:
+            self._UserList = []
+            for item in params.get("UserList"):
+                obj = UserIdAndUserName()
+                obj._deserialize(item)
+                self._UserList.append(obj)
+        if params.get("UserInfoList") is not None:
+            self._UserInfoList = []
+            for item in params.get("UserInfoList"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self._UserInfoList.append(obj)
+        self._UserGroups = params.get("UserGroups")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserRoleResponse(AbstractModel):
+    """CreateUserRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.DataId`
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DataId`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = DataId()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class Data(AbstractModel):
+    """Data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Project ID.
+
+        :type Id: int
+        :param _EditUrl: url
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EditUrl: str
+        """
+        self._Id = None
+        self._EditUrl = None
+
+    @property
+    def Id(self):
+        """Project ID.
+
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def EditUrl(self):
+        """url
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EditUrl
+
+    @EditUrl.setter
+    def EditUrl(self, EditUrl):
+        self._EditUrl = EditUrl
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._EditUrl = params.get("EditUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataId(AbstractModel):
+    """Data ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Data ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """Data ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatasourceInfo(AbstractModel):
+    """Data source details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Database ID.
+        :type Id: int
+        :param _DbName: Database name.
+        :type DbName: str
+        :param _ServiceType: Domain type. Valid values: 1: Tencent Cloud; 2: local.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServiceType: str
+        :param _SourceName: Database alias.
+        :type SourceName: str
+        :param _DbType: Database driver.
+        :type DbType: str
+        :param _DbHost: HOST
+        :type DbHost: str
+        :param _DbPort: Port.
+        :type DbPort: int
+        :param _DbUser: Username.
+        :type DbUser: str
+        :param _Charset: Database encoding.
+        :type Charset: str
+        :param _CreatedAt: Creation time.
+
+        :type CreatedAt: str
+        :param _UpdatedAt: Modification time.
+        :type UpdatedAt: str
+        :param _CreatedUser: Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedUser: str
+        :param _Catalog: Catalog value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Catalog: str
+        :param _ConnectType: Connection type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConnectType: str
+        :param _ProjectId: Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _Desc: Data source description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Desc: str
+        :param _Status: Data source status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _SourcePlat: Source platform.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourcePlat: str
+        :param _ExtraParam: Extension parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtraParam: str
+        :param _AddInfo: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AddInfo: str
+        :param _ProjectName: Project name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param _EngineType: Engine type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EngineType: str
+        :param _Manager: Data source owner.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Manager: str
+        :param _OperatorWhitelist: Operation personnel allowlist.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OperatorWhitelist: str
+        :param _VpcId: VPC information of the data source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param _UniqVpcId: uniqVpc information of the data source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UniqVpcId: str
+        :param _RegionId: Data source region information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionId: str
+        :param _StateAction: Operation attributes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StateAction: :class:`tencentcloud.bi.v20220105.models.BaseStateAction`
+        :param _UpdatedUser: Updater.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedUser: str
+        :param _PermissionList: Permission list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PermissionList: list of PermissionGroup
+        :param _AuthList: Permission value list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthList: list of str
+        :param _DataOrigin: Third-party data source identifier.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataOrigin: str
+        :param _DataOriginProjectId: Third-party project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataOriginProjectId: str
+        :param _DataOriginDatasourceId: Third-party data source ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataOriginDatasourceId: str
+        :param _ClusterId: Cluster ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param _DbTypeName: Data source name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbTypeName: str
+        :param _UseVPC: Enable VPC.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UseVPC: bool
+        :param _Owner: Associated person ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Owner: str
+        :param _OwnerName: Associated person name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerName: str
+        """
+        self._Id = None
+        self._DbName = None
+        self._ServiceType = None
+        self._SourceName = None
+        self._DbType = None
+        self._DbHost = None
+        self._DbPort = None
+        self._DbUser = None
+        self._Charset = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._CreatedUser = None
+        self._Catalog = None
+        self._ConnectType = None
+        self._ProjectId = None
+        self._Desc = None
+        self._Status = None
+        self._SourcePlat = None
+        self._ExtraParam = None
+        self._AddInfo = None
+        self._ProjectName = None
+        self._EngineType = None
+        self._Manager = None
+        self._OperatorWhitelist = None
+        self._VpcId = None
+        self._UniqVpcId = None
+        self._RegionId = None
+        self._StateAction = None
+        self._UpdatedUser = None
+        self._PermissionList = None
+        self._AuthList = None
+        self._DataOrigin = None
+        self._DataOriginProjectId = None
+        self._DataOriginDatasourceId = None
+        self._ClusterId = None
+        self._DbTypeName = None
+        self._UseVPC = None
+        self._Owner = None
+        self._OwnerName = None
+
+    @property
+    def Id(self):
+        """Database ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DbName(self):
+        """Database name.
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def ServiceType(self):
+        """Domain type. Valid values: 1: Tencent Cloud; 2: local.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def SourceName(self):
+        """Database alias.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def DbType(self):
+        """Database driver.
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def DbHost(self):
+        """HOST
+        :rtype: str
+        """
+        return self._DbHost
+
+    @DbHost.setter
+    def DbHost(self, DbHost):
+        self._DbHost = DbHost
+
+    @property
+    def DbPort(self):
+        """Port.
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def DbUser(self):
+        """Username.
+        :rtype: str
+        """
+        return self._DbUser
+
+    @DbUser.setter
+    def DbUser(self, DbUser):
+        self._DbUser = DbUser
+
+    @property
+    def Charset(self):
+        """Database encoding.
+        :rtype: str
+        """
+        return self._Charset
+
+    @Charset.setter
+    def Charset(self, Charset):
+        self._Charset = Charset
+
+    @property
+    def CreatedAt(self):
+        """Creation time.
+
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        """Modification time.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def CreatedUser(self):
+        """Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def Catalog(self):
+        """Catalog value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ConnectType(self):
+        """Connection type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ConnectType
+
+    @ConnectType.setter
+    def ConnectType(self, ConnectType):
+        self._ConnectType = ConnectType
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Desc(self):
+        """Data source description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Status(self):
+        """Data source status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SourcePlat(self):
+        """Source platform.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._SourcePlat
+
+    @SourcePlat.setter
+    def SourcePlat(self, SourcePlat):
+        self._SourcePlat = SourcePlat
+
+    @property
+    def ExtraParam(self):
+        """Extension parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+    @property
+    def AddInfo(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AddInfo
+
+    @AddInfo.setter
+    def AddInfo(self, AddInfo):
+        self._AddInfo = AddInfo
+
+    @property
+    def ProjectName(self):
+        """Project name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def EngineType(self):
+        """Engine type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def Manager(self):
+        """Data source owner.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Manager
+
+    @Manager.setter
+    def Manager(self, Manager):
+        self._Manager = Manager
+
+    @property
+    def OperatorWhitelist(self):
+        """Operation personnel allowlist.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OperatorWhitelist
+
+    @OperatorWhitelist.setter
+    def OperatorWhitelist(self, OperatorWhitelist):
+        self._OperatorWhitelist = OperatorWhitelist
+
+    @property
+    def VpcId(self):
+        """VPC information of the data source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def UniqVpcId(self):
+        """uniqVpc information of the data source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def RegionId(self):
+        """Data source region information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def StateAction(self):
+        """Operation attributes.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.BaseStateAction`
+        """
+        return self._StateAction
+
+    @StateAction.setter
+    def StateAction(self, StateAction):
+        self._StateAction = StateAction
+
+    @property
+    def UpdatedUser(self):
+        """Updater.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def PermissionList(self):
+        """Permission list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PermissionGroup
+        """
+        return self._PermissionList
+
+    @PermissionList.setter
+    def PermissionList(self, PermissionList):
+        self._PermissionList = PermissionList
+
+    @property
+    def AuthList(self):
+        """Permission value list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._AuthList
+
+    @AuthList.setter
+    def AuthList(self, AuthList):
+        self._AuthList = AuthList
+
+    @property
+    def DataOrigin(self):
+        """Third-party data source identifier.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DataOrigin
+
+    @DataOrigin.setter
+    def DataOrigin(self, DataOrigin):
+        self._DataOrigin = DataOrigin
+
+    @property
+    def DataOriginProjectId(self):
+        """Third-party project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DataOriginProjectId
+
+    @DataOriginProjectId.setter
+    def DataOriginProjectId(self, DataOriginProjectId):
+        self._DataOriginProjectId = DataOriginProjectId
+
+    @property
+    def DataOriginDatasourceId(self):
+        """Third-party data source ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DataOriginDatasourceId
+
+    @DataOriginDatasourceId.setter
+    def DataOriginDatasourceId(self, DataOriginDatasourceId):
+        self._DataOriginDatasourceId = DataOriginDatasourceId
+
+    @property
+    def ClusterId(self):
+        """Cluster ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DbTypeName(self):
+        """Data source name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._DbTypeName
+
+    @DbTypeName.setter
+    def DbTypeName(self, DbTypeName):
+        self._DbTypeName = DbTypeName
+
+    @property
+    def UseVPC(self):
+        """Enable VPC.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._UseVPC
+
+    @UseVPC.setter
+    def UseVPC(self, UseVPC):
+        self._UseVPC = UseVPC
+
+    @property
+    def Owner(self):
+        """Associated person ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def OwnerName(self):
+        """Associated person name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DbName = params.get("DbName")
+        self._ServiceType = params.get("ServiceType")
+        self._SourceName = params.get("SourceName")
+        self._DbType = params.get("DbType")
+        self._DbHost = params.get("DbHost")
+        self._DbPort = params.get("DbPort")
+        self._DbUser = params.get("DbUser")
+        self._Charset = params.get("Charset")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._CreatedUser = params.get("CreatedUser")
+        self._Catalog = params.get("Catalog")
+        self._ConnectType = params.get("ConnectType")
+        self._ProjectId = params.get("ProjectId")
+        self._Desc = params.get("Desc")
+        self._Status = params.get("Status")
+        self._SourcePlat = params.get("SourcePlat")
+        self._ExtraParam = params.get("ExtraParam")
+        self._AddInfo = params.get("AddInfo")
+        self._ProjectName = params.get("ProjectName")
+        self._EngineType = params.get("EngineType")
+        self._Manager = params.get("Manager")
+        self._OperatorWhitelist = params.get("OperatorWhitelist")
+        self._VpcId = params.get("VpcId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._RegionId = params.get("RegionId")
+        if params.get("StateAction") is not None:
+            self._StateAction = BaseStateAction()
+            self._StateAction._deserialize(params.get("StateAction"))
+        self._UpdatedUser = params.get("UpdatedUser")
+        if params.get("PermissionList") is not None:
+            self._PermissionList = []
+            for item in params.get("PermissionList"):
+                obj = PermissionGroup()
+                obj._deserialize(item)
+                self._PermissionList.append(obj)
+        self._AuthList = params.get("AuthList")
+        self._DataOrigin = params.get("DataOrigin")
+        self._DataOriginProjectId = params.get("DataOriginProjectId")
+        self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ClusterId = params.get("ClusterId")
+        self._DbTypeName = params.get("DbTypeName")
+        self._UseVPC = params.get("UseVPC")
+        self._Owner = params.get("Owner")
+        self._OwnerName = params.get("OwnerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatasourceInfoData(AbstractModel):
+    """Data source details list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Data source details list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of DatasourceInfo
+        :param _Total: Total number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _TotalPages: Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPages: int
+        """
+        self._List = None
+        self._Total = None
+        self._TotalPages = None
+
+    @property
+    def List(self):
+        """Data source details list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DatasourceInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        """Total number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalPages(self):
+        """Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DatasourceInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._TotalPages = params.get("TotalPages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDatasourceRequest(AbstractModel):
+    """DeleteDatasource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Data source ID.
+        :type Id: int
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        """
+        self._Id = None
+        self._ProjectId = None
+
+    @property
+    def Id(self):
+        """Data source ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDatasourceResponse(AbstractModel):
+    """DeleteDatasource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Extra: Expansion.
+        :type Extra: str
+        :param _Msg: Information.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        """Expansion.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Information.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Data = params.get("Data")
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProjectRequest(AbstractModel):
+    """DeleteProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Project ID.
+        :type Id: int
+        :param _Seed: Random number.
+        :type Seed: str
+        :param _DefaultPanelType: Default dashboard.
+        :type DefaultPanelType: int
+        """
+        self._Id = None
+        self._Seed = None
+        self._DefaultPanelType = None
+
+    @property
+    def Id(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Seed(self):
+        """Random number.
+        :rtype: str
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def DefaultPanelType(self):
+        """Default dashboard.
+        :rtype: int
+        """
+        return self._DefaultPanelType
+
+    @DefaultPanelType.setter
+    def DefaultPanelType(self, DefaultPanelType):
+        self._DefaultPanelType = DefaultPanelType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Seed = params.get("Seed")
+        self._DefaultPanelType = params.get("DefaultPanelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProjectResponse(AbstractModel):
+    """DeleteProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: "".
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Msg: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """"".
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Data = params.get("Data")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUserRoleProjectRequest(AbstractModel):
+    """DeleteUserRoleProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _UserId: User ID.
+        :type UserId: str
+        """
+        self._ProjectId = None
+        self._UserId = None
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserRoleProjectResponse(AbstractModel):
+    """DeleteUserRoleProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Data = params.get("Data")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUserRoleRequest(AbstractModel):
+    """DeleteUserRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: User ID.
+        :type UserId: str
+        """
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserRoleResponse(AbstractModel):
+    """DeleteUserRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Data = params.get("Data")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatasourceListRequest(AbstractModel):
+    """DescribeDatasourceList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: None.
+        :type ProjectId: int
+        :param _AllPage: Returns all pages and defaults to false.
+        :type AllPage: bool
+        :param _DbName: Database name search.
+        :type DbName: str
+        :param _PageNo: None.
+        :type PageNo: int
+        :param _PageSize: None.
+        :type PageSize: int
+        :param _Keyword: Search keywords.
+        :type Keyword: str
+        :param _PermissionType: Permission filter (0: all permissions, 1: access permission, 2: edit permission).
+        :type PermissionType: int
+        """
+        self._ProjectId = None
+        self._AllPage = None
+        self._DbName = None
+        self._PageNo = None
+        self._PageSize = None
+        self._Keyword = None
+        self._PermissionType = None
+
+    @property
+    def ProjectId(self):
+        """None.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AllPage(self):
+        """Returns all pages and defaults to false.
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def DbName(self):
+        """Database name search.
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def PageNo(self):
+        """None.
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        """None.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        """Search keywords.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PermissionType(self):
+        """Permission filter (0: all permissions, 1: access permission, 2: edit permission).
+        :rtype: int
+        """
+        return self._PermissionType
+
+    @PermissionType.setter
+    def PermissionType(self, PermissionType):
+        self._PermissionType = PermissionType
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._AllPage = params.get("AllPage")
+        self._DbName = params.get("DbName")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        self._PermissionType = params.get("PermissionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatasourceListResponse(AbstractModel):
+    """DescribeDatasourceList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: List details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.DatasourceInfoData`
+        :param _Extra: Information.
+        :type Extra: str
+        :param _Msg: Information.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """List details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DatasourceInfoData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        """Information.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Information.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = DatasourceInfoData()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePageWidgetListRequest(AbstractModel):
+    """DescribePageWidgetList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: str
+        :param _PageId: Page ID.
+        :type PageId: str
+        """
+        self._ProjectId = None
+        self._PageId = None
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """Page ID.
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePageWidgetListResponse(AbstractModel):
+    """DescribePageWidgetList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Extension parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Returned data results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.WidgetListVO`
+        :param _Msg: Response message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Extension parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Returned data results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.WidgetListVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Response message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = WidgetListVO()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProjectInfoRequest(AbstractModel):
+    """DescribeProjectInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Project ID.
+        :type Id: int
+        :param _DefaultPanelType: Default dashboard.
+        :type DefaultPanelType: int
+        """
+        self._Id = None
+        self._DefaultPanelType = None
+
+    @property
+    def Id(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DefaultPanelType(self):
+        """Default dashboard.
+        :rtype: int
+        """
+        return self._DefaultPanelType
+
+    @DefaultPanelType.setter
+    def DefaultPanelType(self, DefaultPanelType):
+        self._DefaultPanelType = DefaultPanelType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DefaultPanelType = params.get("DefaultPanelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectInfoResponse(AbstractModel):
+    """DescribeProjectInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: Project details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.Project`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        """Project details.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.Project`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = Project()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProjectListRequest(AbstractModel):
+    """DescribeProjectList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: Page capacity. The initial version defaults to 20 and may change dynamically based on screen width in the future.
+        :type PageSize: int
+        :param _PageNo: Page marker.
+        :type PageNo: int
+        :param _Keyword: Fuzzy search field.
+        :type Keyword: str
+        :param _AllPage: Whether to display all. If true, ignore pagination.
+        :type AllPage: bool
+        :param _ModuleCollection: Role information.
+        :type ModuleCollection: str
+        :param _ModuleIdList: moduleId set.
+        :type ModuleIdList: list of str
+        """
+        self._PageSize = None
+        self._PageNo = None
+        self._Keyword = None
+        self._AllPage = None
+        self._ModuleCollection = None
+        self._ModuleIdList = None
+
+    @property
+    def PageSize(self):
+        """Page capacity. The initial version defaults to 20 and may change dynamically based on screen width in the future.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNo(self):
+        """Page marker.
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Keyword(self):
+        """Fuzzy search field.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def AllPage(self):
+        """Whether to display all. If true, ignore pagination.
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def ModuleCollection(self):
+        """Role information.
+        :rtype: str
+        """
+        return self._ModuleCollection
+
+    @ModuleCollection.setter
+    def ModuleCollection(self, ModuleCollection):
+        self._ModuleCollection = ModuleCollection
+
+    @property
+    def ModuleIdList(self):
+        """moduleId set.
+        :rtype: list of str
+        """
+        return self._ModuleIdList
+
+    @ModuleIdList.setter
+    def ModuleIdList(self, ModuleIdList):
+        self._ModuleIdList = ModuleIdList
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNo = params.get("PageNo")
+        self._Keyword = params.get("Keyword")
+        self._AllPage = params.get("AllPage")
+        self._ModuleCollection = params.get("ModuleCollection")
+        self._ModuleIdList = params.get("ModuleIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectListResponse(AbstractModel):
+    """DescribeProjectList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: API information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.ProjectListData`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """API information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ProjectListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = ProjectListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserProjectListRequest(AbstractModel):
+    """DescribeUserProjectList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _AllPage: None.
+        :type AllPage: bool
+        :param _PageNo: None.
+        :type PageNo: int
+        :param _PageSize: None.
+        :type PageSize: int
+        :param _IsFilterPerAuthUser: Whether to filter out enterprise administrators.
+        :type IsFilterPerAuthUser: bool
+        :param _IsFilterCurrentUser: Whether to filter out the current user.
+        :type IsFilterCurrentUser: bool
+        :param _Keyword: Keyword.
+        :type Keyword: str
+        """
+        self._ProjectId = None
+        self._AllPage = None
+        self._PageNo = None
+        self._PageSize = None
+        self._IsFilterPerAuthUser = None
+        self._IsFilterCurrentUser = None
+        self._Keyword = None
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AllPage(self):
+        """None.
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def PageNo(self):
+        """None.
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        """None.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def IsFilterPerAuthUser(self):
+        """Whether to filter out enterprise administrators.
+        :rtype: bool
+        """
+        return self._IsFilterPerAuthUser
+
+    @IsFilterPerAuthUser.setter
+    def IsFilterPerAuthUser(self, IsFilterPerAuthUser):
+        self._IsFilterPerAuthUser = IsFilterPerAuthUser
+
+    @property
+    def IsFilterCurrentUser(self):
+        """Whether to filter out the current user.
+        :rtype: bool
+        """
+        return self._IsFilterCurrentUser
+
+    @IsFilterCurrentUser.setter
+    def IsFilterCurrentUser(self, IsFilterCurrentUser):
+        self._IsFilterCurrentUser = IsFilterCurrentUser
+
+    @property
+    def Keyword(self):
+        """Keyword.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._AllPage = params.get("AllPage")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._IsFilterPerAuthUser = params.get("IsFilterPerAuthUser")
+        self._IsFilterCurrentUser = params.get("IsFilterCurrentUser")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserProjectListResponse(AbstractModel):
+    """DescribeUserProjectList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.CorpUserListData`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CorpUserListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        if params.get("Data") is not None:
+            self._Data = CorpUserListData()
+            self._Data._deserialize(params.get("Data"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserRoleListRequest(AbstractModel):
+    """DescribeUserRoleList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: Page number.
+        :type PageNo: int
+        :param _PageSize: Number of pages.
+        :type PageSize: int
+        :param _AllPage: All page numbers.
+        :type AllPage: bool
+        :param _UserType: 0: enterprise user. 1: visitor. If left blank, it indicates all users.
+        :type UserType: str
+        :param _Keyword: Keyword for fuzzy search.
+        :type Keyword: str
+        :param _ProjectId: Project ID.
+
+        :type ProjectId: str
+        :param _IsOnlyBindAppUser: Whether to only obtain users bound to the WeCom app.
+        :type IsOnlyBindAppUser: bool
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._AllPage = None
+        self._UserType = None
+        self._Keyword = None
+        self._ProjectId = None
+        self._IsOnlyBindAppUser = None
+
+    @property
+    def PageNo(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AllPage(self):
+        """All page numbers.
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def UserType(self):
+        """0: enterprise user. 1: visitor. If left blank, it indicates all users.
+        :rtype: str
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def Keyword(self):
+        """Keyword for fuzzy search.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def IsOnlyBindAppUser(self):
+        """Whether to only obtain users bound to the WeCom app.
+        :rtype: bool
+        """
+        return self._IsOnlyBindAppUser
+
+    @IsOnlyBindAppUser.setter
+    def IsOnlyBindAppUser(self, IsOnlyBindAppUser):
+        self._IsOnlyBindAppUser = IsOnlyBindAppUser
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._AllPage = params.get("AllPage")
+        self._UserType = params.get("UserType")
+        self._Keyword = params.get("Keyword")
+        self._ProjectId = params.get("ProjectId")
+        self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserRoleListResponse(AbstractModel):
+    """DescribeUserRoleList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Extension description information (providing more exception messages for auxiliary judgment).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Extension description information (providing more exception messages for auxiliary judgment).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = UserRoleListData()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserRoleProjectListRequest(AbstractModel):
+    """DescribeUserRoleProjectList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: Page number.
+        :type PageNo: int
+        :param _PageSize: Number of pages.
+        :type PageSize: int
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _IsOnlyBindAppUser: Whether to only obtain users bound to the WeCom app.
+        :type IsOnlyBindAppUser: bool
+        :param _AllPage: Whether to obtain all the data.
+        :type AllPage: bool
+        :param _RoleCode: Role code.
+        :type RoleCode: str
+        :param _UserIdList: User ID list.
+        :type UserIdList: list of str
+        :param _Keyword: Search keywords.
+        :type Keyword: str
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._ProjectId = None
+        self._IsOnlyBindAppUser = None
+        self._AllPage = None
+        self._RoleCode = None
+        self._UserIdList = None
+        self._Keyword = None
+
+    @property
+    def PageNo(self):
+        """Page number.
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        """Number of pages.
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def IsOnlyBindAppUser(self):
+        """Whether to only obtain users bound to the WeCom app.
+        :rtype: bool
+        """
+        return self._IsOnlyBindAppUser
+
+    @IsOnlyBindAppUser.setter
+    def IsOnlyBindAppUser(self, IsOnlyBindAppUser):
+        self._IsOnlyBindAppUser = IsOnlyBindAppUser
+
+    @property
+    def AllPage(self):
+        """Whether to obtain all the data.
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def RoleCode(self):
+        """Role code.
+        :rtype: str
+        """
+        return self._RoleCode
+
+    @RoleCode.setter
+    def RoleCode(self, RoleCode):
+        self._RoleCode = RoleCode
+
+    @property
+    def UserIdList(self):
+        """User ID list.
+        :rtype: list of str
+        """
+        return self._UserIdList
+
+    @UserIdList.setter
+    def UserIdList(self, UserIdList):
+        self._UserIdList = UserIdList
+
+    @property
+    def Keyword(self):
+        """Search keywords.
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._ProjectId = params.get("ProjectId")
+        self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
+        self._AllPage = params.get("AllPage")
+        self._RoleCode = params.get("RoleCode")
+        self._UserIdList = params.get("UserIdList")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserRoleProjectListResponse(AbstractModel):
+    """DescribeUserRoleProjectList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = UserRoleListData()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class EmbedTokenInfo(AbstractModel):
+    """Report embedding data structure with strong authentication
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Information identifier.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        :param _BIToken: Token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BIToken: str
+        :param _ProjectId: Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _CreatedUser: Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedUser: str
+        :param _CreatedAt: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedAt: str
+        :param _UpdatedUser: Updater.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedUser: str
+        :param _UpdatedAt: Update time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        :param _PageId: Page ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageId: str
+        :param _ExtraParam: Backup.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExtraParam: str
+        :param _Scope: Embedding type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Scope: str
+        :param _ExpireTime: Expiration time (in minutes), with a maximum value of 240.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpireTime: int
+        :param _UserCorpId: User enterprise ID (only used for multi-user).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserCorpId: str
+        :param _UserId: User ID (only used for multi-user).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserId: str
+        :param _TicketNum: Access count limit (range: 1–99999). Leave empty to disable access restrictions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TicketNum: int
+        :param _GlobalParam: Global parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GlobalParam: str
+        :param _Intention: "embed" indicates page dashboard embedding, and "chatBIEmbed" indicates ChatBI embedding.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Intention: str
+        :param _TokenType: 100: no bound user.
+200: single token per user.
+300: multiple tokens per user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TokenType: int
+        :param _TokenNum: Number of tokens.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TokenNum: int
+        :param _SingleUserMultiToken: Whether it is multiple tokens per user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SingleUserMultiToken: bool
+        :param _ConfigParam: Embedded display configurations: Currently for ChatBI embedding scenarios; TableFilter represents data table list filtering, SqlView represents SQL view feature.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigParam: str
+        """
+        self._Id = None
+        self._BIToken = None
+        self._ProjectId = None
+        self._CreatedUser = None
+        self._CreatedAt = None
+        self._UpdatedUser = None
+        self._UpdatedAt = None
+        self._PageId = None
+        self._ExtraParam = None
+        self._Scope = None
+        self._ExpireTime = None
+        self._UserCorpId = None
+        self._UserId = None
+        self._TicketNum = None
+        self._GlobalParam = None
+        self._Intention = None
+        self._TokenType = None
+        self._TokenNum = None
+        self._SingleUserMultiToken = None
+        self._ConfigParam = None
+
+    @property
+    def Id(self):
+        """Information identifier.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BIToken(self):
+        """Token.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._BIToken
+
+    @BIToken.setter
+    def BIToken(self, BIToken):
+        self._BIToken = BIToken
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CreatedUser(self):
+        """Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def CreatedAt(self):
+        """Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedUser(self):
+        """Updater.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def UpdatedAt(self):
+        """Update time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def PageId(self):
+        """Page ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def ExtraParam(self):
+        """Backup.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+    @property
+    def Scope(self):
+        """Embedding type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def ExpireTime(self):
+        """Expiration time (in minutes), with a maximum value of 240.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def UserCorpId(self):
+        """User enterprise ID (only used for multi-user).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserCorpId
+
+    @UserCorpId.setter
+    def UserCorpId(self, UserCorpId):
+        self._UserCorpId = UserCorpId
+
+    @property
+    def UserId(self):
+        """User ID (only used for multi-user).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TicketNum(self):
+        """Access count limit (range: 1–99999). Leave empty to disable access restrictions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TicketNum
+
+    @TicketNum.setter
+    def TicketNum(self, TicketNum):
+        self._TicketNum = TicketNum
+
+    @property
+    def GlobalParam(self):
+        """Global parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GlobalParam
+
+    @GlobalParam.setter
+    def GlobalParam(self, GlobalParam):
+        self._GlobalParam = GlobalParam
+
+    @property
+    def Intention(self):
+        """"embed" indicates page dashboard embedding, and "chatBIEmbed" indicates ChatBI embedding.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
+
+    @property
+    def TokenType(self):
+        """100: no bound user.
+200: single token per user.
+300: multiple tokens per user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TokenType
+
+    @TokenType.setter
+    def TokenType(self, TokenType):
+        self._TokenType = TokenType
+
+    @property
+    def TokenNum(self):
+        """Number of tokens.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TokenNum
+
+    @TokenNum.setter
+    def TokenNum(self, TokenNum):
+        self._TokenNum = TokenNum
+
+    @property
+    def SingleUserMultiToken(self):
+        """Whether it is multiple tokens per user.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._SingleUserMultiToken
+
+    @SingleUserMultiToken.setter
+    def SingleUserMultiToken(self, SingleUserMultiToken):
+        self._SingleUserMultiToken = SingleUserMultiToken
+
+    @property
+    def ConfigParam(self):
+        """Embedded display configurations: Currently for ChatBI embedding scenarios; TableFilter represents data table list filtering, SqlView represents SQL view feature.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ConfigParam
+
+    @ConfigParam.setter
+    def ConfigParam(self, ConfigParam):
+        self._ConfigParam = ConfigParam
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._BIToken = params.get("BIToken")
+        self._ProjectId = params.get("ProjectId")
+        self._CreatedUser = params.get("CreatedUser")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedUser = params.get("UpdatedUser")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._PageId = params.get("PageId")
+        self._ExtraParam = params.get("ExtraParam")
+        self._Scope = params.get("Scope")
+        self._ExpireTime = params.get("ExpireTime")
+        self._UserCorpId = params.get("UserCorpId")
+        self._UserId = params.get("UserId")
+        self._TicketNum = params.get("TicketNum")
+        self._GlobalParam = params.get("GlobalParam")
+        self._Intention = params.get("Intention")
+        self._TokenType = params.get("TokenType")
+        self._TokenNum = params.get("TokenNum")
+        self._SingleUserMultiToken = params.get("SingleUserMultiToken")
+        self._ConfigParam = params.get("ConfigParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ErrorInfo(AbstractModel):
     """Custom error information object
 
@@ -853,6 +5825,232 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class ExportScreenPageRequest(AbstractModel):
+    """ExportScreenPage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: str
+        :param _PageId: Page ID.
+        :type PageId: str
+        :param _CanvasType: Canvas type. Grid canvas: GRID; Free canvas: FREE.
+        :type CanvasType: str
+        :param _PicType: Image export type. Valid values: Base64, and URL (valid period: 1 day).
+        :type PicType: str
+        :param _WidgetIds: Component IDs. When empty, export the entire page.
+        :type WidgetIds: list of str
+        :param _AsyncRequest: Whether it is an async request.
+        :type AsyncRequest: bool
+        :param _TranId: Transaction ID.
+        :type TranId: str
+        """
+        self._ProjectId = None
+        self._PageId = None
+        self._CanvasType = None
+        self._PicType = None
+        self._WidgetIds = None
+        self._AsyncRequest = None
+        self._TranId = None
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """Page ID.
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def CanvasType(self):
+        """Canvas type. Grid canvas: GRID; Free canvas: FREE.
+        :rtype: str
+        """
+        return self._CanvasType
+
+    @CanvasType.setter
+    def CanvasType(self, CanvasType):
+        self._CanvasType = CanvasType
+
+    @property
+    def PicType(self):
+        """Image export type. Valid values: Base64, and URL (valid period: 1 day).
+        :rtype: str
+        """
+        return self._PicType
+
+    @PicType.setter
+    def PicType(self, PicType):
+        self._PicType = PicType
+
+    @property
+    def WidgetIds(self):
+        """Component IDs. When empty, export the entire page.
+        :rtype: list of str
+        """
+        return self._WidgetIds
+
+    @WidgetIds.setter
+    def WidgetIds(self, WidgetIds):
+        self._WidgetIds = WidgetIds
+
+    @property
+    def AsyncRequest(self):
+        """Whether it is an async request.
+        :rtype: bool
+        """
+        return self._AsyncRequest
+
+    @AsyncRequest.setter
+    def AsyncRequest(self, AsyncRequest):
+        self._AsyncRequest = AsyncRequest
+
+    @property
+    def TranId(self):
+        """Transaction ID.
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        self._CanvasType = params.get("CanvasType")
+        self._PicType = params.get("PicType")
+        self._WidgetIds = params.get("WidgetIds")
+        self._AsyncRequest = params.get("AsyncRequest")
+        self._TranId = params.get("TranId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportScreenPageResponse(AbstractModel):
+    """ExportScreenPage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Extension parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Returned data results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: :class:`tencentcloud.bi.v20220105.models.PageScreenListVO`
+        :param _Msg: Response message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Extension parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Returned data results.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.PageScreenListVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Response message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = PageScreenListVO()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class IdDTO(AbstractModel):
     """Object containing only ID
 
@@ -949,6 +6147,4149 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProjectId = params.get("ProjectId")
         self._TranId = params.get("TranId")
         self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatasourceCloudRequest(AbstractModel):
+    """ModifyDatasourceCloud request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceType: The backend provides dictionaries: domain type. 1: Tencent Cloud; 2: local.
+        :type ServiceType: str
+        :param _DbType: Drive.
+        :type DbType: str
+        :param _Charset: Database encoding.
+        :type Charset: str
+        :param _DbUser: Username.
+        :type DbUser: str
+        :param _DbPwd: Password.
+        :type DbPwd: str
+        :param _DbName: Database name.
+        :type DbName: str
+        :param _SourceName: Database alias.
+        :type SourceName: str
+        :param _ProjectId: Project ID.
+        :type ProjectId: str
+        :param _Id: Primary key.
+        :type Id: int
+        :param _Vip: Private network IP address of the public cloud.
+        :type Vip: str
+        :param _Vport: Private network port of the public cloud.
+        :type Vport: str
+        :param _VpcId: VPC identifier.
+        :type VpcId: str
+        :param _UniqVpcId: Unified VPC identifier.
+        :type UniqVpcId: str
+        :param _RegionId: Region identifier (gz, bj).
+        :type RegionId: str
+        :param _ExtraParam: Extension parameter.
+        :type ExtraParam: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _ProdDbName: Product name of the data source.
+        :type ProdDbName: str
+        :param _DataOrigin: Third-party data source identifier.
+        :type DataOrigin: str
+        :param _DataOriginProjectId: Third-party project ID.
+        :type DataOriginProjectId: str
+        :param _DataOriginDatasourceId: Third-party data source ID.
+        :type DataOriginDatasourceId: str
+        :param _ClusterId: Cluster ID.
+        :type ClusterId: str
+        """
+        self._ServiceType = None
+        self._DbType = None
+        self._Charset = None
+        self._DbUser = None
+        self._DbPwd = None
+        self._DbName = None
+        self._SourceName = None
+        self._ProjectId = None
+        self._Id = None
+        self._Vip = None
+        self._Vport = None
+        self._VpcId = None
+        self._UniqVpcId = None
+        self._RegionId = None
+        self._ExtraParam = None
+        self._InstanceId = None
+        self._ProdDbName = None
+        self._DataOrigin = None
+        self._DataOriginProjectId = None
+        self._DataOriginDatasourceId = None
+        self._ClusterId = None
+
+    @property
+    def ServiceType(self):
+        """The backend provides dictionaries: domain type. 1: Tencent Cloud; 2: local.
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DbType(self):
+        """Drive.
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def Charset(self):
+        """Database encoding.
+        :rtype: str
+        """
+        return self._Charset
+
+    @Charset.setter
+    def Charset(self, Charset):
+        self._Charset = Charset
+
+    @property
+    def DbUser(self):
+        """Username.
+        :rtype: str
+        """
+        return self._DbUser
+
+    @DbUser.setter
+    def DbUser(self, DbUser):
+        self._DbUser = DbUser
+
+    @property
+    def DbPwd(self):
+        """Password.
+        :rtype: str
+        """
+        return self._DbPwd
+
+    @DbPwd.setter
+    def DbPwd(self, DbPwd):
+        self._DbPwd = DbPwd
+
+    @property
+    def DbName(self):
+        """Database name.
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def SourceName(self):
+        """Database alias.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Id(self):
+        """Primary key.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Vip(self):
+        """Private network IP address of the public cloud.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        """Private network port of the public cloud.
+        :rtype: str
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def VpcId(self):
+        """VPC identifier.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def UniqVpcId(self):
+        """Unified VPC identifier.
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def RegionId(self):
+        """Region identifier (gz, bj).
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ExtraParam(self):
+        """Extension parameter.
+        :rtype: str
+        """
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+    @property
+    def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ProdDbName(self):
+        """Product name of the data source.
+        :rtype: str
+        """
+        return self._ProdDbName
+
+    @ProdDbName.setter
+    def ProdDbName(self, ProdDbName):
+        self._ProdDbName = ProdDbName
+
+    @property
+    def DataOrigin(self):
+        """Third-party data source identifier.
+        :rtype: str
+        """
+        return self._DataOrigin
+
+    @DataOrigin.setter
+    def DataOrigin(self, DataOrigin):
+        self._DataOrigin = DataOrigin
+
+    @property
+    def DataOriginProjectId(self):
+        """Third-party project ID.
+        :rtype: str
+        """
+        return self._DataOriginProjectId
+
+    @DataOriginProjectId.setter
+    def DataOriginProjectId(self, DataOriginProjectId):
+        self._DataOriginProjectId = DataOriginProjectId
+
+    @property
+    def DataOriginDatasourceId(self):
+        """Third-party data source ID.
+        :rtype: str
+        """
+        return self._DataOriginDatasourceId
+
+    @DataOriginDatasourceId.setter
+    def DataOriginDatasourceId(self, DataOriginDatasourceId):
+        self._DataOriginDatasourceId = DataOriginDatasourceId
+
+    @property
+    def ClusterId(self):
+        """Cluster ID.
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ServiceType = params.get("ServiceType")
+        self._DbType = params.get("DbType")
+        self._Charset = params.get("Charset")
+        self._DbUser = params.get("DbUser")
+        self._DbPwd = params.get("DbPwd")
+        self._DbName = params.get("DbName")
+        self._SourceName = params.get("SourceName")
+        self._ProjectId = params.get("ProjectId")
+        self._Id = params.get("Id")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._VpcId = params.get("VpcId")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._RegionId = params.get("RegionId")
+        self._ExtraParam = params.get("ExtraParam")
+        self._InstanceId = params.get("InstanceId")
+        self._ProdDbName = params.get("ProdDbName")
+        self._DataOrigin = params.get("DataOrigin")
+        self._DataOriginProjectId = params.get("DataOriginProjectId")
+        self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatasourceCloudResponse(AbstractModel):
+    """ModifyDatasourceCloud response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: Success No.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Extra: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """Success No.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Data = params.get("Data")
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDatasourceRequest(AbstractModel):
+    """ModifyDatasource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbHost: HOST
+        :type DbHost: str
+        :param _DbPort: Port.
+        :type DbPort: int
+        :param _ServiceType: The backend provides dictionaries: domain type. 1: Tencent Cloud; 2: local.
+        :type ServiceType: str
+        :param _DbType: Drive.
+        :type DbType: str
+        :param _Charset: Database encoding.
+        :type Charset: str
+        :param _DbUser: Username.
+        :type DbUser: str
+        :param _DbPwd: Password.
+        :type DbPwd: str
+        :param _DbName: Database name.
+        :type DbName: str
+        :param _SourceName: Database alias.
+        :type SourceName: str
+        :param _Id: Data source ID.
+        :type Id: int
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _Catalog: Catalog value.
+        :type Catalog: str
+        :param _DataOrigin: Third-party data source identifier.
+        :type DataOrigin: str
+        :param _DataOriginProjectId: Third-party project ID.
+        :type DataOriginProjectId: str
+        :param _DataOriginDatasourceId: Third-party data source ID.
+        :type DataOriginDatasourceId: str
+        :param _ExtraParam: Extension parameter.
+        :type ExtraParam: str
+        :param _UniqVpcId: Unified identifier of the Tencent Cloud VPC.
+        :type UniqVpcId: str
+        :param _Vip: VPC IP address.
+        :type Vip: str
+        :param _Vport: VPC port.
+        :type Vport: str
+        :param _VpcId: Tencent Cloud VPC identifier.
+        :type VpcId: str
+        :param _UseVPC: Enable VPC.  
+        :type UseVPC: bool
+        :param _RegionId: Region.
+        :type RegionId: str
+        """
+        self._DbHost = None
+        self._DbPort = None
+        self._ServiceType = None
+        self._DbType = None
+        self._Charset = None
+        self._DbUser = None
+        self._DbPwd = None
+        self._DbName = None
+        self._SourceName = None
+        self._Id = None
+        self._ProjectId = None
+        self._Catalog = None
+        self._DataOrigin = None
+        self._DataOriginProjectId = None
+        self._DataOriginDatasourceId = None
+        self._ExtraParam = None
+        self._UniqVpcId = None
+        self._Vip = None
+        self._Vport = None
+        self._VpcId = None
+        self._UseVPC = None
+        self._RegionId = None
+
+    @property
+    def DbHost(self):
+        """HOST
+        :rtype: str
+        """
+        return self._DbHost
+
+    @DbHost.setter
+    def DbHost(self, DbHost):
+        self._DbHost = DbHost
+
+    @property
+    def DbPort(self):
+        """Port.
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def ServiceType(self):
+        """The backend provides dictionaries: domain type. 1: Tencent Cloud; 2: local.
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DbType(self):
+        """Drive.
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def Charset(self):
+        """Database encoding.
+        :rtype: str
+        """
+        return self._Charset
+
+    @Charset.setter
+    def Charset(self, Charset):
+        self._Charset = Charset
+
+    @property
+    def DbUser(self):
+        """Username.
+        :rtype: str
+        """
+        return self._DbUser
+
+    @DbUser.setter
+    def DbUser(self, DbUser):
+        self._DbUser = DbUser
+
+    @property
+    def DbPwd(self):
+        """Password.
+        :rtype: str
+        """
+        return self._DbPwd
+
+    @DbPwd.setter
+    def DbPwd(self, DbPwd):
+        self._DbPwd = DbPwd
+
+    @property
+    def DbName(self):
+        """Database name.
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def SourceName(self):
+        """Database alias.
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def Id(self):
+        """Data source ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Catalog(self):
+        """Catalog value.
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def DataOrigin(self):
+        """Third-party data source identifier.
+        :rtype: str
+        """
+        return self._DataOrigin
+
+    @DataOrigin.setter
+    def DataOrigin(self, DataOrigin):
+        self._DataOrigin = DataOrigin
+
+    @property
+    def DataOriginProjectId(self):
+        """Third-party project ID.
+        :rtype: str
+        """
+        return self._DataOriginProjectId
+
+    @DataOriginProjectId.setter
+    def DataOriginProjectId(self, DataOriginProjectId):
+        self._DataOriginProjectId = DataOriginProjectId
+
+    @property
+    def DataOriginDatasourceId(self):
+        """Third-party data source ID.
+        :rtype: str
+        """
+        return self._DataOriginDatasourceId
+
+    @DataOriginDatasourceId.setter
+    def DataOriginDatasourceId(self, DataOriginDatasourceId):
+        self._DataOriginDatasourceId = DataOriginDatasourceId
+
+    @property
+    def ExtraParam(self):
+        """Extension parameter.
+        :rtype: str
+        """
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+    @property
+    def UniqVpcId(self):
+        """Unified identifier of the Tencent Cloud VPC.
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def Vip(self):
+        """VPC IP address.
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        """VPC port.
+        :rtype: str
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def VpcId(self):
+        """Tencent Cloud VPC identifier.
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def UseVPC(self):
+        """Enable VPC.  
+        :rtype: bool
+        """
+        return self._UseVPC
+
+    @UseVPC.setter
+    def UseVPC(self, UseVPC):
+        self._UseVPC = UseVPC
+
+    @property
+    def RegionId(self):
+        """Region.
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._DbHost = params.get("DbHost")
+        self._DbPort = params.get("DbPort")
+        self._ServiceType = params.get("ServiceType")
+        self._DbType = params.get("DbType")
+        self._Charset = params.get("Charset")
+        self._DbUser = params.get("DbUser")
+        self._DbPwd = params.get("DbPwd")
+        self._DbName = params.get("DbName")
+        self._SourceName = params.get("SourceName")
+        self._Id = params.get("Id")
+        self._ProjectId = params.get("ProjectId")
+        self._Catalog = params.get("Catalog")
+        self._DataOrigin = params.get("DataOrigin")
+        self._DataOriginProjectId = params.get("DataOriginProjectId")
+        self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ExtraParam = params.get("ExtraParam")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._VpcId = params.get("VpcId")
+        self._UseVPC = params.get("UseVPC")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatasourceResponse(AbstractModel):
+    """ModifyDatasource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Data: None.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Extra: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Data = None
+        self._Extra = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Data(self):
+        """None.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Extra(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Prompt.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Data = params.get("Data")
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProjectRequest(AbstractModel):
+    """ModifyProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Project ID.
+
+        :type Id: int
+        :param _Name: Name.
+        :type Name: str
+        :param _ColorCode: Color value.
+        :type ColorCode: str
+        :param _Logo: Icon.
+        :type Logo: str
+        :param _Mark: Remarks.
+        :type Mark: str
+        :param _IsApply: Available upon request.
+        :type IsApply: bool
+        :param _Seed: Seed.
+        :type Seed: str
+        :param _DefaultPanelType: Default dashboard.
+        :type DefaultPanelType: int
+        :param _PanelScope: 2
+        :type PanelScope: str
+        :param _ManagePlatform: Project management platform.
+        :type ManagePlatform: str
+        """
+        self._Id = None
+        self._Name = None
+        self._ColorCode = None
+        self._Logo = None
+        self._Mark = None
+        self._IsApply = None
+        self._Seed = None
+        self._DefaultPanelType = None
+        self._PanelScope = None
+        self._ManagePlatform = None
+
+    @property
+    def Id(self):
+        """Project ID.
+
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """Name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ColorCode(self):
+        """Color value.
+        :rtype: str
+        """
+        return self._ColorCode
+
+    @ColorCode.setter
+    def ColorCode(self, ColorCode):
+        self._ColorCode = ColorCode
+
+    @property
+    def Logo(self):
+        """Icon.
+        :rtype: str
+        """
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+    @property
+    def Mark(self):
+        """Remarks.
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def IsApply(self):
+        """Available upon request.
+        :rtype: bool
+        """
+        return self._IsApply
+
+    @IsApply.setter
+    def IsApply(self, IsApply):
+        self._IsApply = IsApply
+
+    @property
+    def Seed(self):
+        """Seed.
+        :rtype: str
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def DefaultPanelType(self):
+        """Default dashboard.
+        :rtype: int
+        """
+        return self._DefaultPanelType
+
+    @DefaultPanelType.setter
+    def DefaultPanelType(self, DefaultPanelType):
+        self._DefaultPanelType = DefaultPanelType
+
+    @property
+    def PanelScope(self):
+        """2
+        :rtype: str
+        """
+        return self._PanelScope
+
+    @PanelScope.setter
+    def PanelScope(self, PanelScope):
+        self._PanelScope = PanelScope
+
+    @property
+    def ManagePlatform(self):
+        """Project management platform.
+        :rtype: str
+        """
+        return self._ManagePlatform
+
+    @ManagePlatform.setter
+    def ManagePlatform(self, ManagePlatform):
+        self._ManagePlatform = ManagePlatform
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ColorCode = params.get("ColorCode")
+        self._Logo = params.get("Logo")
+        self._Mark = params.get("Mark")
+        self._IsApply = params.get("IsApply")
+        self._Seed = params.get("Seed")
+        self._DefaultPanelType = params.get("DefaultPanelType")
+        self._PanelScope = params.get("PanelScope")
+        self._ManagePlatform = params.get("ManagePlatform")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProjectResponse(AbstractModel):
+    """ModifyProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Data: Returned data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _Msg: Result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Additional information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        """Returned data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        """Result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Data = params.get("Data")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserRoleProjectRequest(AbstractModel):
+    """ModifyUserRoleProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _UserId: User ID.
+        :type UserId: str
+        :param _RoleIdList: Role ID list.
+        :type RoleIdList: list of int
+        :param _Email: Mailbox.
+        :type Email: str
+        :param _UserName: Username.
+        :type UserName: str
+        :param _AppUserId: WeCom app user ID.
+        :type AppUserId: str
+        """
+        self._ProjectId = None
+        self._UserId = None
+        self._RoleIdList = None
+        self._Email = None
+        self._UserName = None
+        self._AppUserId = None
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoleIdList(self):
+        """Role ID list.
+        :rtype: list of int
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
+
+    @property
+    def Email(self):
+        """Mailbox.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def UserName(self):
+        """Username.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def AppUserId(self):
+        """WeCom app user ID.
+        :rtype: str
+        """
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._UserId = params.get("UserId")
+        self._RoleIdList = params.get("RoleIdList")
+        self._Email = params.get("Email")
+        self._UserName = params.get("UserName")
+        self._AppUserId = params.get("AppUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserRoleProjectResponse(AbstractModel):
+    """ModifyUserRoleProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserRoleRequest(AbstractModel):
+    """ModifyUserRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: User ID.
+        :type UserId: str
+        :param _RoleIdList: Role ID list.
+        :type RoleIdList: list of int
+        :param _Email: Mailbox.
+        :type Email: str
+        :param _UserName: Username.
+        :type UserName: str
+        :param _PhoneNumber: Mobile number.
+        :type PhoneNumber: str
+        :param _AreaCode: Telephone country code.
+        :type AreaCode: str
+        :param _AppUserId: WeCom user ID.
+        :type AppUserId: str
+        :param _LoginSecurityStatus: Whether to enable mobile phone verification code login (0: disabled, 1: enabled).
+        :type LoginSecurityStatus: int
+        :param _ResetPassWordTip: Whether to enable password expiration reminder (0: disabled, 1: enabled).
+        :type ResetPassWordTip: int
+        :param _ForceResetPassWord: Force password reset (0: disabled, 1: enabled).
+        :type ForceResetPassWord: int
+        :param _PasswordExpired: Password expiration reminder period: 30, 60, 90 (default), or 180 days.
+        :type PasswordExpired: int
+        """
+        self._UserId = None
+        self._RoleIdList = None
+        self._Email = None
+        self._UserName = None
+        self._PhoneNumber = None
+        self._AreaCode = None
+        self._AppUserId = None
+        self._LoginSecurityStatus = None
+        self._ResetPassWordTip = None
+        self._ForceResetPassWord = None
+        self._PasswordExpired = None
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoleIdList(self):
+        """Role ID list.
+        :rtype: list of int
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
+
+    @property
+    def Email(self):
+        """Mailbox.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def UserName(self):
+        """Username.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PhoneNumber(self):
+        """Mobile number.
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def AreaCode(self):
+        """Telephone country code.
+        :rtype: str
+        """
+        return self._AreaCode
+
+    @AreaCode.setter
+    def AreaCode(self, AreaCode):
+        self._AreaCode = AreaCode
+
+    @property
+    def AppUserId(self):
+        """WeCom user ID.
+        :rtype: str
+        """
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def LoginSecurityStatus(self):
+        """Whether to enable mobile phone verification code login (0: disabled, 1: enabled).
+        :rtype: int
+        """
+        return self._LoginSecurityStatus
+
+    @LoginSecurityStatus.setter
+    def LoginSecurityStatus(self, LoginSecurityStatus):
+        self._LoginSecurityStatus = LoginSecurityStatus
+
+    @property
+    def ResetPassWordTip(self):
+        """Whether to enable password expiration reminder (0: disabled, 1: enabled).
+        :rtype: int
+        """
+        return self._ResetPassWordTip
+
+    @ResetPassWordTip.setter
+    def ResetPassWordTip(self, ResetPassWordTip):
+        self._ResetPassWordTip = ResetPassWordTip
+
+    @property
+    def ForceResetPassWord(self):
+        """Force password reset (0: disabled, 1: enabled).
+        :rtype: int
+        """
+        return self._ForceResetPassWord
+
+    @ForceResetPassWord.setter
+    def ForceResetPassWord(self, ForceResetPassWord):
+        self._ForceResetPassWord = ForceResetPassWord
+
+    @property
+    def PasswordExpired(self):
+        """Password expiration reminder period: 30, 60, 90 (default), or 180 days.
+        :rtype: int
+        """
+        return self._PasswordExpired
+
+    @PasswordExpired.setter
+    def PasswordExpired(self, PasswordExpired):
+        self._PasswordExpired = PasswordExpired
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._RoleIdList = params.get("RoleIdList")
+        self._Email = params.get("Email")
+        self._UserName = params.get("UserName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._AreaCode = params.get("AreaCode")
+        self._AppUserId = params.get("AppUserId")
+        self._LoginSecurityStatus = params.get("LoginSecurityStatus")
+        self._ResetPassWordTip = params.get("ResetPassWordTip")
+        self._ForceResetPassWord = params.get("ForceResetPassWord")
+        self._PasswordExpired = params.get("PasswordExpired")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserRoleResponse(AbstractModel):
+    """ModifyUserRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extra: str
+        :param _Msg: Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Msg: str
+        :param _Data: Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        """Custom error information object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        """Expansion.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        """Message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        """Data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class PageScreenListVO(AbstractModel):
+    """Screenshot list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PicType: Image export type. Valid values: Base64, and URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PicType: str
+        :param _List: Image list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of PageScreenVO
+        :param _TranId: Async transaction ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param _TranStatus: Transaction status.
+1: processing; 2: processing successful; 3: processing failed (error content in outer Msg).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranStatus: int
+        """
+        self._PicType = None
+        self._List = None
+        self._TranId = None
+        self._TranStatus = None
+
+    @property
+    def PicType(self):
+        """Image export type. Valid values: Base64, and URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PicType
+
+    @PicType.setter
+    def PicType(self, PicType):
+        self._PicType = PicType
+
+    @property
+    def List(self):
+        """Image list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PageScreenVO
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TranId(self):
+        """Async transaction ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def TranStatus(self):
+        """Transaction status.
+1: processing; 2: processing successful; 3: processing failed (error content in outer Msg).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TranStatus
+
+    @TranStatus.setter
+    def TranStatus(self, TranStatus):
+        self._TranStatus = TranStatus
+
+
+    def _deserialize(self, params):
+        self._PicType = params.get("PicType")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = PageScreenVO()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TranId = params.get("TranId")
+        self._TranStatus = params.get("TranStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PageScreenVO(AbstractModel):
+    """Page screenshot information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: Screenshot Base64 or URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Content: str
+        :param _WidgetId: Component ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WidgetId: str
+        """
+        self._Content = None
+        self._WidgetId = None
+
+    @property
+    def Content(self):
+        """Screenshot Base64 or URL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def WidgetId(self):
+        """Component ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._WidgetId = params.get("WidgetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionComponent(AbstractModel):
+    """Business edition permission unit
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModuleId: Permission value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModuleId: str
+        :param _IncludeType: Visible/Available.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncludeType: str
+        :param _UpgradeVersionType: Target upgrade version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpgradeVersionType: str
+        :param _Tips: Supplemental information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tips: str
+        :param _TipsKey: Key for supplementary information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TipsKey: str
+        """
+        self._ModuleId = None
+        self._IncludeType = None
+        self._UpgradeVersionType = None
+        self._Tips = None
+        self._TipsKey = None
+
+    @property
+    def ModuleId(self):
+        """Permission value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def IncludeType(self):
+        """Visible/Available.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IncludeType
+
+    @IncludeType.setter
+    def IncludeType(self, IncludeType):
+        self._IncludeType = IncludeType
+
+    @property
+    def UpgradeVersionType(self):
+        """Target upgrade version.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpgradeVersionType
+
+    @UpgradeVersionType.setter
+    def UpgradeVersionType(self, UpgradeVersionType):
+        self._UpgradeVersionType = UpgradeVersionType
+
+    @property
+    def Tips(self):
+        """Supplemental information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Tips
+
+    @Tips.setter
+    def Tips(self, Tips):
+        self._Tips = Tips
+
+    @property
+    def TipsKey(self):
+        """Key for supplementary information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._TipsKey
+
+    @TipsKey.setter
+    def TipsKey(self, TipsKey):
+        self._TipsKey = TipsKey
+
+
+    def _deserialize(self, params):
+        self._ModuleId = params.get("ModuleId")
+        self._IncludeType = params.get("IncludeType")
+        self._UpgradeVersionType = params.get("UpgradeVersionType")
+        self._Tips = params.get("Tips")
+        self._TipsKey = params.get("TipsKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionGroup(AbstractModel):
+    """Commercial version permission grouping
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModuleGroup: Group name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModuleGroup: str
+        :param _Components: Permission list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Components: list of PermissionComponent
+        """
+        self._ModuleGroup = None
+        self._Components = None
+
+    @property
+    def ModuleGroup(self):
+        """Group name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModuleGroup
+
+    @ModuleGroup.setter
+    def ModuleGroup(self, ModuleGroup):
+        self._ModuleGroup = ModuleGroup
+
+    @property
+    def Components(self):
+        """Permission list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PermissionComponent
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+
+    def _deserialize(self, params):
+        self._ModuleGroup = params.get("ModuleGroup")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = PermissionComponent()
+                obj._deserialize(item)
+                self._Components.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Project(AbstractModel):
+    """Project description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Project ID.
+        :type Id: int
+        :param _Logo: Project logo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Logo: str
+        :param _Name: Project name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _ColorCode: Background color of the logo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColorCode: str
+        :param _CreatedUser: Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedUser: str
+        :param _CreatedAt: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedAt: str
+        :param _MemberCount: Number of members.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MemberCount: int
+        :param _PageCount: Number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageCount: int
+        :param _LastModifyName: Last modified report and dashboard names.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastModifyName: str
+        :param _Source: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Source: str
+        :param _Apply: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Apply: bool
+        :param _UpdatedUser: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedUser: str
+        :param _UpdatedAt: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        :param _CorpId: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CorpId: str
+        :param _Mark: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mark: str
+        :param _Seed: ""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Seed: str
+        :param _AuthList: Permission list in the project.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AuthList: list of str
+        :param _PanelScope: Default dashboard.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PanelScope: str
+        :param _IsExternalManage: Whether it is managed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsExternalManage: bool
+        :param _ManagePlatform: Management platform name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ManagePlatform: str
+        :param _ConfigList: Customization parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConfigList: list of ProjectConfigList
+        :param _CreatedUserName: Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedUserName: str
+        :param _Owner: Associated person ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Owner: str
+        :param _OwnerName: Associated person.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerName: str
+        :param _NormalCount: Number of dashboard pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NormalCount: int
+        :param _FreeCount: Number of free canvas pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FreeCount: int
+        :param _AdhocCount: Number of ad-hoc analysis pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdhocCount: int
+        :param _BriefingCount: Number of pages in the briefing
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BriefingCount: int
+        """
+        self._Id = None
+        self._Logo = None
+        self._Name = None
+        self._ColorCode = None
+        self._CreatedUser = None
+        self._CreatedAt = None
+        self._MemberCount = None
+        self._PageCount = None
+        self._LastModifyName = None
+        self._Source = None
+        self._Apply = None
+        self._UpdatedUser = None
+        self._UpdatedAt = None
+        self._CorpId = None
+        self._Mark = None
+        self._Seed = None
+        self._AuthList = None
+        self._PanelScope = None
+        self._IsExternalManage = None
+        self._ManagePlatform = None
+        self._ConfigList = None
+        self._CreatedUserName = None
+        self._Owner = None
+        self._OwnerName = None
+        self._NormalCount = None
+        self._FreeCount = None
+        self._AdhocCount = None
+        self._BriefingCount = None
+
+    @property
+    def Id(self):
+        """Project ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Logo(self):
+        """Project logo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Logo
+
+    @Logo.setter
+    def Logo(self, Logo):
+        self._Logo = Logo
+
+    @property
+    def Name(self):
+        """Project name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ColorCode(self):
+        """Background color of the logo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ColorCode
+
+    @ColorCode.setter
+    def ColorCode(self, ColorCode):
+        self._ColorCode = ColorCode
+
+    @property
+    def CreatedUser(self):
+        """Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def CreatedAt(self):
+        """Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def MemberCount(self):
+        """Number of members.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
+
+    @property
+    def PageCount(self):
+        """Number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._PageCount
+
+    @PageCount.setter
+    def PageCount(self, PageCount):
+        self._PageCount = PageCount
+
+    @property
+    def LastModifyName(self):
+        """Last modified report and dashboard names.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastModifyName
+
+    @LastModifyName.setter
+    def LastModifyName(self, LastModifyName):
+        self._LastModifyName = LastModifyName
+
+    @property
+    def Source(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Apply(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._Apply
+
+    @Apply.setter
+    def Apply(self, Apply):
+        self._Apply = Apply
+
+    @property
+    def UpdatedUser(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def UpdatedAt(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def CorpId(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Mark(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Mark
+
+    @Mark.setter
+    def Mark(self, Mark):
+        self._Mark = Mark
+
+    @property
+    def Seed(self):
+        """""
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def AuthList(self):
+        """Permission list in the project.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
+        return self._AuthList
+
+    @AuthList.setter
+    def AuthList(self, AuthList):
+        self._AuthList = AuthList
+
+    @property
+    def PanelScope(self):
+        """Default dashboard.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PanelScope
+
+    @PanelScope.setter
+    def PanelScope(self, PanelScope):
+        self._PanelScope = PanelScope
+
+    @property
+    def IsExternalManage(self):
+        """Whether it is managed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._IsExternalManage
+
+    @IsExternalManage.setter
+    def IsExternalManage(self, IsExternalManage):
+        self._IsExternalManage = IsExternalManage
+
+    @property
+    def ManagePlatform(self):
+        """Management platform name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ManagePlatform
+
+    @ManagePlatform.setter
+    def ManagePlatform(self, ManagePlatform):
+        self._ManagePlatform = ManagePlatform
+
+    @property
+    def ConfigList(self):
+        """Customization parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ProjectConfigList
+        """
+        return self._ConfigList
+
+    @ConfigList.setter
+    def ConfigList(self, ConfigList):
+        self._ConfigList = ConfigList
+
+    @property
+    def CreatedUserName(self):
+        """Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedUserName
+
+    @CreatedUserName.setter
+    def CreatedUserName(self, CreatedUserName):
+        self._CreatedUserName = CreatedUserName
+
+    @property
+    def Owner(self):
+        """Associated person ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def OwnerName(self):
+        """Associated person.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OwnerName
+
+    @OwnerName.setter
+    def OwnerName(self, OwnerName):
+        self._OwnerName = OwnerName
+
+    @property
+    def NormalCount(self):
+        """Number of dashboard pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._NormalCount
+
+    @NormalCount.setter
+    def NormalCount(self, NormalCount):
+        self._NormalCount = NormalCount
+
+    @property
+    def FreeCount(self):
+        """Number of free canvas pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FreeCount
+
+    @FreeCount.setter
+    def FreeCount(self, FreeCount):
+        self._FreeCount = FreeCount
+
+    @property
+    def AdhocCount(self):
+        """Number of ad-hoc analysis pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._AdhocCount
+
+    @AdhocCount.setter
+    def AdhocCount(self, AdhocCount):
+        self._AdhocCount = AdhocCount
+
+    @property
+    def BriefingCount(self):
+        """Number of pages in the briefing
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._BriefingCount
+
+    @BriefingCount.setter
+    def BriefingCount(self, BriefingCount):
+        self._BriefingCount = BriefingCount
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Logo = params.get("Logo")
+        self._Name = params.get("Name")
+        self._ColorCode = params.get("ColorCode")
+        self._CreatedUser = params.get("CreatedUser")
+        self._CreatedAt = params.get("CreatedAt")
+        self._MemberCount = params.get("MemberCount")
+        self._PageCount = params.get("PageCount")
+        self._LastModifyName = params.get("LastModifyName")
+        self._Source = params.get("Source")
+        self._Apply = params.get("Apply")
+        self._UpdatedUser = params.get("UpdatedUser")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._CorpId = params.get("CorpId")
+        self._Mark = params.get("Mark")
+        self._Seed = params.get("Seed")
+        self._AuthList = params.get("AuthList")
+        self._PanelScope = params.get("PanelScope")
+        self._IsExternalManage = params.get("IsExternalManage")
+        self._ManagePlatform = params.get("ManagePlatform")
+        if params.get("ConfigList") is not None:
+            self._ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = ProjectConfigList()
+                obj._deserialize(item)
+                self._ConfigList.append(obj)
+        self._CreatedUserName = params.get("CreatedUserName")
+        self._Owner = params.get("Owner")
+        self._OwnerName = params.get("OwnerName")
+        self._NormalCount = params.get("NormalCount")
+        self._FreeCount = params.get("FreeCount")
+        self._AdhocCount = params.get("AdhocCount")
+        self._BriefingCount = params.get("BriefingCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProjectConfigList(AbstractModel):
+    """Customized query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModuleGroup: Module group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModuleGroup: str
+        :param _Components: Content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Components: list of ProjectConfigResult
+        """
+        self._ModuleGroup = None
+        self._Components = None
+
+    @property
+    def ModuleGroup(self):
+        """Module group.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModuleGroup
+
+    @ModuleGroup.setter
+    def ModuleGroup(self, ModuleGroup):
+        self._ModuleGroup = ModuleGroup
+
+    @property
+    def Components(self):
+        """Content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ProjectConfigResult
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+
+    def _deserialize(self, params):
+        self._ModuleGroup = params.get("ModuleGroup")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = ProjectConfigResult()
+                obj._deserialize(item)
+                self._Components.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProjectConfigResult(AbstractModel):
+    """Customized query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModuleId: Configuration name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModuleId: str
+        :param _IncludeType: Configuration mode.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncludeType: str
+        :param _Params: Additional parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Params: str
+        """
+        self._ModuleId = None
+        self._IncludeType = None
+        self._Params = None
+
+    @property
+    def ModuleId(self):
+        """Configuration name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def IncludeType(self):
+        """Configuration mode.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._IncludeType
+
+    @IncludeType.setter
+    def IncludeType(self, IncludeType):
+        self._IncludeType = IncludeType
+
+    @property
+    def Params(self):
+        """Additional parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._ModuleId = params.get("ModuleId")
+        self._IncludeType = params.get("IncludeType")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProjectListData(AbstractModel):
+    """Project list data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Array.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of Project
+        :param _Total: Total number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _TotalPages: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPages: int
+        """
+        self._List = None
+        self._Total = None
+        self._TotalPages = None
+
+    @property
+    def List(self):
+        """Array.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Project
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        """Total number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalPages(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = Project()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._TotalPages = params.get("TotalPages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserGroupDTO(AbstractModel):
+    """User group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        :param _GroupName: User group name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupName: str
+        :param _ParentId: Parent node ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ParentId: int
+        :param _IsDefault: Whether it is default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsDefault: int
+        :param _AdminUserId: Administrator user ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdminUserId: str
+        :param _Description: Description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _Location: Location.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Location: int
+        """
+        self._Id = None
+        self._GroupName = None
+        self._ParentId = None
+        self._IsDefault = None
+        self._AdminUserId = None
+        self._Description = None
+        self._Location = None
+
+    @property
+    def Id(self):
+        """id
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def GroupName(self):
+        """User group name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ParentId(self):
+        """Parent node ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def IsDefault(self):
+        """Whether it is default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def AdminUserId(self):
+        """Administrator user ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AdminUserId
+
+    @AdminUserId.setter
+    def AdminUserId(self, AdminUserId):
+        self._AdminUserId = AdminUserId
+
+    @property
+    def Description(self):
+        """Description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Location(self):
+        """Location.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._GroupName = params.get("GroupName")
+        self._ParentId = params.get("ParentId")
+        self._IsDefault = params.get("IsDefault")
+        self._AdminUserId = params.get("AdminUserId")
+        self._Description = params.get("Description")
+        self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserIdAndUserName(AbstractModel):
+    """User ID and username
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: User ID.
+        :type UserId: str
+        :param _UserName: Username.
+        :type UserName: str
+        :param _CorpId: Enterprise ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CorpId: str
+        :param _Email: Email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Email: str
+        :param _LastLogin: Last login time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastLogin: str
+        :param _Status: Enabled/Disabled status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _FirstModify: Whether to change the password during the first-time login.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FirstModify: int
+        :param _PhoneNumber: Mobile number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PhoneNumber: str
+        :param _AreaCode: Telephone country code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AreaCode: str
+        :param _CreatedUser: Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedUser: str
+        :param _CreatedAt: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedAt: str
+        :param _UpdatedUser: Modifier.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedUser: str
+        :param _UpdatedAt: Change time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        :param _GlobalUserName: Global role.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GlobalUserName: str
+        :param _GlobalUserCode: Global role code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GlobalUserCode: str
+        :param _Mobile: Mobile number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mobile: str
+        :param _AppId: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppId: str
+        :param _AppUserId: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserId: str
+        :param _AppUserAliasName: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserAliasName: str
+        :param _AppUserName: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserName: str
+        :param _InValidateAppRange: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InValidateAppRange: bool
+        :param _EmailActivationStatus:  -1: No activation required. 0: Inactivated. 1: Activated. Null value represents pending binding.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EmailActivationStatus: int
+        :param _Id: 1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        """
+        self._UserId = None
+        self._UserName = None
+        self._CorpId = None
+        self._Email = None
+        self._LastLogin = None
+        self._Status = None
+        self._FirstModify = None
+        self._PhoneNumber = None
+        self._AreaCode = None
+        self._CreatedUser = None
+        self._CreatedAt = None
+        self._UpdatedUser = None
+        self._UpdatedAt = None
+        self._GlobalUserName = None
+        self._GlobalUserCode = None
+        self._Mobile = None
+        self._AppId = None
+        self._AppUserId = None
+        self._AppUserAliasName = None
+        self._AppUserName = None
+        self._InValidateAppRange = None
+        self._EmailActivationStatus = None
+        self._Id = None
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        """Username.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def CorpId(self):
+        """Enterprise ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Email(self):
+        """Email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def LastLogin(self):
+        """Last login time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastLogin
+
+    @LastLogin.setter
+    def LastLogin(self, LastLogin):
+        self._LastLogin = LastLogin
+
+    @property
+    def Status(self):
+        """Enabled/Disabled status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FirstModify(self):
+        """Whether to change the password during the first-time login.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._FirstModify
+
+    @FirstModify.setter
+    def FirstModify(self, FirstModify):
+        self._FirstModify = FirstModify
+
+    @property
+    def PhoneNumber(self):
+        """Mobile number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def AreaCode(self):
+        """Telephone country code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AreaCode
+
+    @AreaCode.setter
+    def AreaCode(self, AreaCode):
+        self._AreaCode = AreaCode
+
+    @property
+    def CreatedUser(self):
+        """Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def CreatedAt(self):
+        """Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedUser(self):
+        """Modifier.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def UpdatedAt(self):
+        """Change time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def GlobalUserName(self):
+        """Global role.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GlobalUserName
+
+    @GlobalUserName.setter
+    def GlobalUserName(self, GlobalUserName):
+        self._GlobalUserName = GlobalUserName
+
+    @property
+    def GlobalUserCode(self):
+        """Global role code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._GlobalUserCode
+
+    @GlobalUserCode.setter
+    def GlobalUserCode(self, GlobalUserCode):
+        self._GlobalUserCode = GlobalUserCode
+
+    @property
+    def Mobile(self):
+        """Mobile number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def AppId(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppUserId(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def AppUserAliasName(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserAliasName
+
+    @AppUserAliasName.setter
+    def AppUserAliasName(self, AppUserAliasName):
+        self._AppUserAliasName = AppUserAliasName
+
+    @property
+    def AppUserName(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserName
+
+    @AppUserName.setter
+    def AppUserName(self, AppUserName):
+        self._AppUserName = AppUserName
+
+    @property
+    def InValidateAppRange(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._InValidateAppRange
+
+    @InValidateAppRange.setter
+    def InValidateAppRange(self, InValidateAppRange):
+        self._InValidateAppRange = InValidateAppRange
+
+    @property
+    def EmailActivationStatus(self):
+        """ -1: No activation required. 0: Inactivated. 1: Activated. Null value represents pending binding.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EmailActivationStatus
+
+    @EmailActivationStatus.setter
+    def EmailActivationStatus(self, EmailActivationStatus):
+        self._EmailActivationStatus = EmailActivationStatus
+
+    @property
+    def Id(self):
+        """1
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._CorpId = params.get("CorpId")
+        self._Email = params.get("Email")
+        self._LastLogin = params.get("LastLogin")
+        self._Status = params.get("Status")
+        self._FirstModify = params.get("FirstModify")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._AreaCode = params.get("AreaCode")
+        self._CreatedUser = params.get("CreatedUser")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedUser = params.get("UpdatedUser")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._GlobalUserName = params.get("GlobalUserName")
+        self._GlobalUserCode = params.get("GlobalUserCode")
+        self._Mobile = params.get("Mobile")
+        self._AppId = params.get("AppId")
+        self._AppUserId = params.get("AppUserId")
+        self._AppUserAliasName = params.get("AppUserAliasName")
+        self._AppUserName = params.get("AppUserName")
+        self._InValidateAppRange = params.get("InValidateAppRange")
+        self._EmailActivationStatus = params.get("EmailActivationStatus")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfo(AbstractModel):
+    """User ID and username
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: User ID.
+        :type UserId: str
+        :param _UserName: Username.
+        :type UserName: str
+        :param _Email: Email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Email: str
+        :param _PhoneNumber: Mobile number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PhoneNumber: str
+        :param _AreaCode: Telephone country code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AreaCode: str
+        :param _AppUserId: WeCom account ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserId: str
+        :param _AppUserName: WeCom account name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserName: str
+        """
+        self._UserId = None
+        self._UserName = None
+        self._Email = None
+        self._PhoneNumber = None
+        self._AreaCode = None
+        self._AppUserId = None
+        self._AppUserName = None
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        """Username.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Email(self):
+        """Email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def PhoneNumber(self):
+        """Mobile number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def AreaCode(self):
+        """Telephone country code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AreaCode
+
+    @AreaCode.setter
+    def AreaCode(self, AreaCode):
+        self._AreaCode = AreaCode
+
+    @property
+    def AppUserId(self):
+        """WeCom account ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def AppUserName(self):
+        """WeCom account name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserName
+
+    @AppUserName.setter
+    def AppUserName(self, AppUserName):
+        self._AppUserName = AppUserName
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._Email = params.get("Email")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._AreaCode = params.get("AreaCode")
+        self._AppUserId = params.get("AppUserId")
+        self._AppUserName = params.get("AppUserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRoleListData(AbstractModel):
+    """User role information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _TotalPages: Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalPages: int
+        :param _List: List.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type List: list of UserRoleListDataUserRoleInfo
+        """
+        self._Total = None
+        self._TotalPages = None
+        self._List = None
+
+    @property
+    def Total(self):
+        """Total number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalPages(self):
+        """Total number of pages.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def List(self):
+        """List.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserRoleListDataUserRoleInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UserRoleListDataUserRoleInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRoleListDataRoleInfo(AbstractModel):
+    """Role information of the user role list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: Role Name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoleName: str
+        :param _RoleId: Role ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoleId: int
+        :param _ProjectId: Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: int
+        :param _ProjectName: Project name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param _ScopeType: Whether it is a global role (0: no; 1: yes).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ScopeType: int
+        :param _ModuleCollection: Role key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ModuleCollection: str
+        """
+        self._RoleName = None
+        self._RoleId = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._ScopeType = None
+        self._ModuleCollection = None
+
+    @property
+    def RoleName(self):
+        """Role Name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleId(self):
+        """Role ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        """Project name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ScopeType(self):
+        """Whether it is a global role (0: no; 1: yes).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def ModuleCollection(self):
+        """Role key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ModuleCollection
+
+    @ModuleCollection.setter
+    def ModuleCollection(self, ModuleCollection):
+        self._ModuleCollection = ModuleCollection
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._RoleId = params.get("RoleId")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._ScopeType = params.get("ScopeType")
+        self._ModuleCollection = params.get("ModuleCollection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRoleListDataUserRoleInfo(AbstractModel):
+    """User role information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Business ID.
+        :type Id: int
+        :param _RoleList: This API is used to obtain the role list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoleList: list of UserRoleListDataRoleInfo
+        :param _RoleIdList: Role ID list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RoleIdList: list of int non-negative
+        :param _UserId: User ID.
+        :type UserId: str
+        :param _UserName: Username.
+        :type UserName: str
+        :param _CorpId: Enterprise ID.
+        :type CorpId: str
+        :param _Email: Email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Email: str
+        :param _CreatedUser: Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedUser: str
+        :param _CreatedAt: Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreatedAt: str
+        :param _UpdatedUser: Updater.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedUser: str
+        :param _UpdatedAt: Update time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdatedAt: str
+        :param _LastLogin: Last login time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LastLogin: str
+        :param _Status: Account status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _PhoneNumber: Mobile number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PhoneNumber: str
+        :param _AreaCode: Telephone country code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AreaCode: str
+        :param _RootAccount: Whether it is the root account.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RootAccount: bool
+        :param _CorpAdmin: Whether it is an enterprise administrator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CorpAdmin: bool
+        :param _AppUserId: WeCom user ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserId: str
+        :param _AppUserAliasName: Nickname.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserAliasName: str
+        :param _AppUserName: Application username.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppUserName: str
+        :param _InValidateAppRange: Whether it is within the visible range.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InValidateAppRange: bool
+        :param _AppOpenUserId: User openID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppOpenUserId: str
+        :param _EmailActivationStatus: Activation status of email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EmailActivationStatus: int
+        :param _UserGroupList: User group information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserGroupList: list of UserGroupDTO
+        """
+        self._Id = None
+        self._RoleList = None
+        self._RoleIdList = None
+        self._UserId = None
+        self._UserName = None
+        self._CorpId = None
+        self._Email = None
+        self._CreatedUser = None
+        self._CreatedAt = None
+        self._UpdatedUser = None
+        self._UpdatedAt = None
+        self._LastLogin = None
+        self._Status = None
+        self._PhoneNumber = None
+        self._AreaCode = None
+        self._RootAccount = None
+        self._CorpAdmin = None
+        self._AppUserId = None
+        self._AppUserAliasName = None
+        self._AppUserName = None
+        self._InValidateAppRange = None
+        self._AppOpenUserId = None
+        self._EmailActivationStatus = None
+        self._UserGroupList = None
+
+    @property
+    def Id(self):
+        """Business ID.
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RoleList(self):
+        """This API is used to obtain the role list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserRoleListDataRoleInfo
+        """
+        return self._RoleList
+
+    @RoleList.setter
+    def RoleList(self, RoleList):
+        self._RoleList = RoleList
+
+    @property
+    def RoleIdList(self):
+        """Role ID list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int non-negative
+        """
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
+
+    @property
+    def UserId(self):
+        """User ID.
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        """Username.
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def CorpId(self):
+        """Enterprise ID.
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def Email(self):
+        """Email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreatedUser(self):
+        """Creator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def CreatedAt(self):
+        """Creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedUser(self):
+        """Updater.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def UpdatedAt(self):
+        """Update time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def LastLogin(self):
+        """Last login time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._LastLogin
+
+    @LastLogin.setter
+    def LastLogin(self, LastLogin):
+        self._LastLogin = LastLogin
+
+    @property
+    def Status(self):
+        """Account status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PhoneNumber(self):
+        """Mobile number.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def AreaCode(self):
+        """Telephone country code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AreaCode
+
+    @AreaCode.setter
+    def AreaCode(self, AreaCode):
+        self._AreaCode = AreaCode
+
+    @property
+    def RootAccount(self):
+        """Whether it is the root account.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._RootAccount
+
+    @RootAccount.setter
+    def RootAccount(self, RootAccount):
+        self._RootAccount = RootAccount
+
+    @property
+    def CorpAdmin(self):
+        """Whether it is an enterprise administrator.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._CorpAdmin
+
+    @CorpAdmin.setter
+    def CorpAdmin(self, CorpAdmin):
+        self._CorpAdmin = CorpAdmin
+
+    @property
+    def AppUserId(self):
+        """WeCom user ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def AppUserAliasName(self):
+        """Nickname.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserAliasName
+
+    @AppUserAliasName.setter
+    def AppUserAliasName(self, AppUserAliasName):
+        self._AppUserAliasName = AppUserAliasName
+
+    @property
+    def AppUserName(self):
+        """Application username.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppUserName
+
+    @AppUserName.setter
+    def AppUserName(self, AppUserName):
+        self._AppUserName = AppUserName
+
+    @property
+    def InValidateAppRange(self):
+        """Whether it is within the visible range.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
+        return self._InValidateAppRange
+
+    @InValidateAppRange.setter
+    def InValidateAppRange(self, InValidateAppRange):
+        self._InValidateAppRange = InValidateAppRange
+
+    @property
+    def AppOpenUserId(self):
+        """User openID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._AppOpenUserId
+
+    @AppOpenUserId.setter
+    def AppOpenUserId(self, AppOpenUserId):
+        self._AppOpenUserId = AppOpenUserId
+
+    @property
+    def EmailActivationStatus(self):
+        """Activation status of email.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._EmailActivationStatus
+
+    @EmailActivationStatus.setter
+    def EmailActivationStatus(self, EmailActivationStatus):
+        self._EmailActivationStatus = EmailActivationStatus
+
+    @property
+    def UserGroupList(self):
+        """User group information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserGroupDTO
+        """
+        return self._UserGroupList
+
+    @UserGroupList.setter
+    def UserGroupList(self, UserGroupList):
+        self._UserGroupList = UserGroupList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("RoleList") is not None:
+            self._RoleList = []
+            for item in params.get("RoleList"):
+                obj = UserRoleListDataRoleInfo()
+                obj._deserialize(item)
+                self._RoleList.append(obj)
+        self._RoleIdList = params.get("RoleIdList")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._CorpId = params.get("CorpId")
+        self._Email = params.get("Email")
+        self._CreatedUser = params.get("CreatedUser")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedUser = params.get("UpdatedUser")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._LastLogin = params.get("LastLogin")
+        self._Status = params.get("Status")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._AreaCode = params.get("AreaCode")
+        self._RootAccount = params.get("RootAccount")
+        self._CorpAdmin = params.get("CorpAdmin")
+        self._AppUserId = params.get("AppUserId")
+        self._AppUserAliasName = params.get("AppUserAliasName")
+        self._AppUserName = params.get("AppUserName")
+        self._InValidateAppRange = params.get("InValidateAppRange")
+        self._AppOpenUserId = params.get("AppOpenUserId")
+        self._EmailActivationStatus = params.get("EmailActivationStatus")
+        if params.get("UserGroupList") is not None:
+            self._UserGroupList = []
+            for item in params.get("UserGroupList"):
+                obj = UserGroupDTO()
+                obj._deserialize(item)
+                self._UserGroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WidgetListVO(AbstractModel):
+    """Page component information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CorpId: uin
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CorpId: str
+        :param _ProjectId: Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _PageId: Page ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PageId: str
+        :param _WidgetList: Component array.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WidgetList: list of WidgetVO
+        """
+        self._CorpId = None
+        self._ProjectId = None
+        self._PageId = None
+        self._WidgetList = None
+
+    @property
+    def CorpId(self):
+        """uin
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def ProjectId(self):
+        """Project ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageId(self):
+        """Page ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def WidgetList(self):
+        """Component array.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of WidgetVO
+        """
+        return self._WidgetList
+
+    @WidgetList.setter
+    def WidgetList(self, WidgetList):
+        self._WidgetList = WidgetList
+
+
+    def _deserialize(self, params):
+        self._CorpId = params.get("CorpId")
+        self._ProjectId = params.get("ProjectId")
+        self._PageId = params.get("PageId")
+        if params.get("WidgetList") is not None:
+            self._WidgetList = []
+            for item in params.get("WidgetList"):
+                obj = WidgetVO()
+                obj._deserialize(item)
+                self._WidgetList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WidgetVO(AbstractModel):
+    """Component information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WidgetId: Component ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WidgetId: str
+        :param _WidgetName: Component name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WidgetName: str
+        """
+        self._WidgetId = None
+        self._WidgetName = None
+
+    @property
+    def WidgetId(self):
+        """Component ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WidgetId
+
+    @WidgetId.setter
+    def WidgetId(self, WidgetId):
+        self._WidgetId = WidgetId
+
+    @property
+    def WidgetName(self):
+        """Component name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._WidgetName
+
+    @WidgetName.setter
+    def WidgetName(self, WidgetName):
+        self._WidgetName = WidgetName
+
+
+    def _deserialize(self, params):
+        self._WidgetId = params.get("WidgetId")
+        self._WidgetName = params.get("WidgetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

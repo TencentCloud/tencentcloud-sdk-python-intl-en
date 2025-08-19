@@ -13,4 +13,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = '3.0.1261'
+__version__ = '3.0.1262'
