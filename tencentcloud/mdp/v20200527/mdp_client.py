@@ -256,6 +256,29 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamPackageVodRemuxTask(self, request):
+        """Create VodRemuxTask
+
+        :param request: Request instance for CreateStreamPackageVodRemuxTask.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageVodRemuxTaskRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageVodRemuxTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageVodRemuxTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageVodRemuxTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteStreamPackageChannelEndpoints(self, request):
         """This API is used to delete endpoints from a StreamPackage channel in batches.
 
@@ -500,6 +523,52 @@ class MdpClient(AbstractClient):
             body = self.call("DeleteStreamPackageSourceLocation", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageVodRemuxTask(self, request):
+        """Delete Vod remux task.
+
+        :param request: Request instance for DeleteStreamPackageVodRemuxTask.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageVodRemuxTaskRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageVodRemuxTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageVodRemuxTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageVodRemuxTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageVodRemuxTasks(self, request):
+        """Delete VOD remux tasks in batches.
+
+        :param request: Request instance for DeleteStreamPackageVodRemuxTasks.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageVodRemuxTasksRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageVodRemuxTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageVodRemuxTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageVodRemuxTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -992,6 +1061,52 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamPackageVodRemuxTask(self, request):
+        """Query VOD remux task information.
+
+        :param request: Request instance for DescribeStreamPackageVodRemuxTask.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageVodRemuxTaskRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageVodRemuxTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageVodRemuxTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageVodRemuxTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageVodRemuxTasks(self, request):
+        """Query VOD remux tasks informations.
+
+        :param request: Request instance for DescribeStreamPackageVodRemuxTasks.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageVodRemuxTasksRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageVodRemuxTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageVodRemuxTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageVodRemuxTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyStreamPackageChannel(self, request):
         """This API is used to modify a StreamPackage channel.
 
@@ -1190,6 +1305,29 @@ class MdpClient(AbstractClient):
             body = self.call("StartStreamPackageLinearAssemblyChannel", params, headers=headers)
             response = json.loads(body)
             model = models.StartStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartStreamPackageVodRemuxTask(self, request):
+        """Start VOD remux task.
+
+        :param request: Request instance for StartStreamPackageVodRemuxTask.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.StartStreamPackageVodRemuxTaskRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.StartStreamPackageVodRemuxTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStreamPackageVodRemuxTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStreamPackageVodRemuxTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

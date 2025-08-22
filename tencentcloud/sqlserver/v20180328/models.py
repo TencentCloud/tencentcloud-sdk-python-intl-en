@@ -1907,50 +1907,52 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 
+        :param _Zone: Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :type Zone: str
-        :param _Cpu: 
+        :param _Cpu: Number of CPU cores.
         :type Cpu: int
-        :param _Memory: 
+        :param _Memory: Instance memory size in GB.
         :type Memory: int
-        :param _Storage: 
+        :param _Storage: Instance storage capacity in GB.
         :type Storage: int
-        :param _SubnetId: 
+        :param _SubnetId: VPC subnet ID in the format of subnet-bdoe83fa.
         :type SubnetId: str
-        :param _VpcId: 
+        :param _VpcId: VPC ID in the format of vpc-dsp338hz.
         :type VpcId: str
-        :param _MachineType: 
+        :param _MachineType: Host type of purchased instances. CLOUD_PREMIUM: Premium Disk for virtual machines; CLOUD_SSD: Cloud SSD for virtual machines; CLOUD_HSSD: Enhanced SSD for virtual machines; CLOUD_BSSD: Balanced SSD for virtual machines.
         :type MachineType: str
-        :param _InstanceChargeType: 
+        :param _InstanceChargeType: Billing mode. Valid value: POSTPAID (pay-as-you-go).
         :type InstanceChargeType: str
-        :param _ProjectId: 
+        :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param _GoodsNum: 
+        :param _GoodsNum: Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :type GoodsNum: int
-        :param _DBVersion: 
+        :param _DBVersion: SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :type DBVersion: str
-        :param _Period: 
+        :param _Period: Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :type Period: int
-        :param _SecurityGroupList: 
+        :param _SecurityGroupList: Security group list, which contains security group IDs in the format of sg-xxx.
         :type SecurityGroupList: list of str
-        :param _AutoRenewFlag: 
+        :param _AutoRenewFlag: Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :type AutoRenewFlag: int
-        :param _AutoVoucher: 
+        :param _AutoVoucher: Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
         :type AutoVoucher: int
-        :param _VoucherIds: 
+        :param _VoucherIds: Array of voucher IDs (currently, only one voucher can be used per order).
         :type VoucherIds: list of str
-        :param _Weekly: 
+        :param _Weekly: Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
         :type Weekly: list of int
-        :param _StartTime: 
+        :param _StartTime: Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :type StartTime: str
-        :param _Span: 
+        :param _Span: Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :type Span: int
-        :param _ResourceTags: 
+        :param _ResourceTags: Tags associated with the instances to be created.
         :type ResourceTags: list of ResourceTag
-        :param _Collation: 
+        :param _Collation: Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :type Collation: str
-        :param _TimeZone: 
+        :param _TimeZone: System time zone. Default value: `China Standard Time`.
         :type TimeZone: str
+        :param _DiskEncryptFlag: Disk encryption identifier, 0-unencrypted, 1-encrypted.
+        :type DiskEncryptFlag: int
         """
         self._Zone = None
         self._Cpu = None
@@ -1974,10 +1976,11 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         self._ResourceTags = None
         self._Collation = None
         self._TimeZone = None
+        self._DiskEncryptFlag = None
 
     @property
     def Zone(self):
-        """
+        """Instance AZ, such as ap-guangzhou-1 (Guangzhou Zone 1). Purchasable AZs for an instance can be obtained through the `DescribeZones` API.
         :rtype: str
         """
         return self._Zone
@@ -1988,7 +1991,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        """
+        """Number of CPU cores.
         :rtype: int
         """
         return self._Cpu
@@ -1999,7 +2002,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """
+        """Instance memory size in GB.
         :rtype: int
         """
         return self._Memory
@@ -2010,7 +2013,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """
+        """Instance storage capacity in GB.
         :rtype: int
         """
         return self._Storage
@@ -2021,7 +2024,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        """
+        """VPC subnet ID in the format of subnet-bdoe83fa.
         :rtype: str
         """
         return self._SubnetId
@@ -2032,7 +2035,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        """
+        """VPC ID in the format of vpc-dsp338hz.
         :rtype: str
         """
         return self._VpcId
@@ -2043,7 +2046,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def MachineType(self):
-        """
+        """Host type of purchased instances. CLOUD_PREMIUM: Premium Disk for virtual machines; CLOUD_SSD: Cloud SSD for virtual machines; CLOUD_HSSD: Enhanced SSD for virtual machines; CLOUD_BSSD: Balanced SSD for virtual machines.
         :rtype: str
         """
         return self._MachineType
@@ -2054,7 +2057,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        """
+        """Billing mode. Valid value: POSTPAID (pay-as-you-go).
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2065,7 +2068,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        """
+        """Project ID.
         :rtype: int
         """
         return self._ProjectId
@@ -2076,7 +2079,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def GoodsNum(self):
-        """
+        """Number of instances purchased this time. Default value: 1. Maximum value: 10.
         :rtype: int
         """
         return self._GoodsNum
@@ -2087,7 +2090,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def DBVersion(self):
-        """
+        """SQL Server version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), 201402 (SQL Server 2014 Standard), `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The available version varies by region, and you can pull the version information by calling the `DescribeProductConfig` API.
         :rtype: str
         """
         return self._DBVersion
@@ -2098,7 +2101,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        """
+        """Length of purchase of instance. The default value is 1, indicating one month. The value cannot exceed 48.
         :rtype: int
         """
         return self._Period
@@ -2109,7 +2112,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupList(self):
-        """
+        """Security group list, which contains security group IDs in the format of sg-xxx.
         :rtype: list of str
         """
         return self._SecurityGroupList
@@ -2120,7 +2123,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        """
+        """Auto-renewal flag. 0: normal renewal, 1: auto-renewal. Default value: 1.
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2131,7 +2134,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        """
+        """Whether to automatically use voucher. 0: no, 1: yes. Default value: no.
         :rtype: int
         """
         return self._AutoVoucher
@@ -2142,7 +2145,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        """
+        """Array of voucher IDs (currently, only one voucher can be used per order).
         :rtype: list of str
         """
         return self._VoucherIds
@@ -2153,7 +2156,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Weekly(self):
-        """
+        """Configuration of the maintenance window, which specifies the day of the week when maintenance can be performed. Valid values: 1 (Monday), 2 (Tuesday), 3 (Wednesday), 4 (Thursday), 5 (Friday), 6 (Saturday), 7 (Sunday).
         :rtype: list of int
         """
         return self._Weekly
@@ -2164,7 +2167,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        """
+        """Configuration of the maintenance window, which specifies the start time of daily maintenance.
         :rtype: str
         """
         return self._StartTime
@@ -2175,7 +2178,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Span(self):
-        """
+        """Configuration of the maintenance window, which specifies the maintenance duration in hours.
         :rtype: int
         """
         return self._Span
@@ -2186,7 +2189,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
-        """
+        """Tags associated with the instances to be created.
         :rtype: list of ResourceTag
         """
         return self._ResourceTags
@@ -2197,7 +2200,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def Collation(self):
-        """
+        """Collation of system character sets. Default value: `Chinese_PRC_CI_AS`.
         :rtype: str
         """
         return self._Collation
@@ -2208,7 +2211,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        """
+        """System time zone. Default value: `China Standard Time`.
         :rtype: str
         """
         return self._TimeZone
@@ -2216,6 +2219,17 @@ class CreateBasicDBInstancesRequest(AbstractModel):
     @TimeZone.setter
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
+
+    @property
+    def DiskEncryptFlag(self):
+        """Disk encryption identifier, 0-unencrypted, 1-encrypted.
+        :rtype: int
+        """
+        return self._DiskEncryptFlag
+
+    @DiskEncryptFlag.setter
+    def DiskEncryptFlag(self, DiskEncryptFlag):
+        self._DiskEncryptFlag = DiskEncryptFlag
 
 
     def _deserialize(self, params):
@@ -2246,6 +2260,7 @@ class CreateBasicDBInstancesRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._Collation = params.get("Collation")
         self._TimeZone = params.get("TimeZone")
+        self._DiskEncryptFlag = params.get("DiskEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2263,7 +2278,7 @@ class CreateBasicDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 
+        :param _DealName: Order name.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -2273,7 +2288,7 @@ class CreateBasicDBInstancesResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """
+        """Order name.
         :rtype: str
         """
         return self._DealName
@@ -8693,6 +8708,117 @@ class DescribeBusinessIntelligenceFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCollationTimeZoneRequest(AbstractModel):
+    """DescribeCollationTimeZone request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MachineType: Host type of the purchased instance. PM: physical server; CLOUD_PREMIUM: CVM with Premium Cloud Disk;
+CLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CVM with Tremendous SSD; CLOUD_BSSD: CVM with Balanced SSD; CLOUD_BASIC: CVM with cloud disk. PM is set as the default value.
+        :type MachineType: str
+        :param _DBVersion: Version number of the purchased instance.
+        :type DBVersion: str
+        """
+        self._MachineType = None
+        self._DBVersion = None
+
+    @property
+    def MachineType(self):
+        """Host type of the purchased instance. PM: physical server; CLOUD_PREMIUM: CVM with Premium Cloud Disk;
+CLOUD_SSD: CVM with Cloud SSD; CLOUD_HSSD: CVM with Enhanced SSD; CLOUD_TSSD: CVM with Tremendous SSD; CLOUD_BSSD: CVM with Balanced SSD; CLOUD_BASIC: CVM with cloud disk. PM is set as the default value.
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def DBVersion(self):
+        """Version number of the purchased instance.
+        :rtype: str
+        """
+        return self._DBVersion
+
+    @DBVersion.setter
+    def DBVersion(self, DBVersion):
+        self._DBVersion = DBVersion
+
+
+    def _deserialize(self, params):
+        self._MachineType = params.get("MachineType")
+        self._DBVersion = params.get("DBVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCollationTimeZoneResponse(AbstractModel):
+    """DescribeCollationTimeZone response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Collation: System character set collation list.
+        :type Collation: list of str
+        :param _TimeZone: System time zone list.
+        :type TimeZone: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Collation = None
+        self._TimeZone = None
+        self._RequestId = None
+
+    @property
+    def Collation(self):
+        """System character set collation list.
+        :rtype: list of str
+        """
+        return self._Collation
+
+    @Collation.setter
+    def Collation(self, Collation):
+        self._Collation = Collation
+
+    @property
+    def TimeZone(self):
+        """System time zone list.
+        :rtype: list of str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Collation = params.get("Collation")
+        self._TimeZone = params.get("TimeZone")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBCharsetsRequest(AbstractModel):
     """DescribeDBCharsets request structure.
 
@@ -10178,7 +10304,7 @@ class DescribeInstanceByOrdersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealInstance: 
+        :param _DealInstance: Resource ID set.
         :type DealInstance: list of DealInstance
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10188,7 +10314,7 @@ class DescribeInstanceByOrdersResponse(AbstractModel):
 
     @property
     def DealInstance(self):
-        """
+        """Resource ID set.
         :rtype: list of DealInstance
         """
         return self._DealInstance
@@ -11686,6 +11812,165 @@ class DescribeSlowlogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSpecSellStatusRequest(AbstractModel):
+    """DescribeSpecSellStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: AZ ID. For example, ap-guangzhou-3.
+        :type Zone: str
+        :param _SpecIdSet: Instance specification ID, which can be obtained by calling the DescribeProductConfig API.
+        :type SpecIdSet: list of int non-negative
+        :param _DBVersion: Database version, which can be obtained by calling the DescribeProductConfig API.
+        :type DBVersion: str
+        :param _Pid: Product ID, which can be obtained by calling the DescribeProductConfig API.
+        :type Pid: int
+        :param _PayMode: Payment mode. POST: pay-as-you-go; PRE: monthly subscription.
+        :type PayMode: str
+        :param _Currency: Currency. CNY; USD.
+        :type Currency: str
+        """
+        self._Zone = None
+        self._SpecIdSet = None
+        self._DBVersion = None
+        self._Pid = None
+        self._PayMode = None
+        self._Currency = None
+
+    @property
+    def Zone(self):
+        """AZ ID. For example, ap-guangzhou-3.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SpecIdSet(self):
+        """Instance specification ID, which can be obtained by calling the DescribeProductConfig API.
+        :rtype: list of int non-negative
+        """
+        return self._SpecIdSet
+
+    @SpecIdSet.setter
+    def SpecIdSet(self, SpecIdSet):
+        self._SpecIdSet = SpecIdSet
+
+    @property
+    def DBVersion(self):
+        """Database version, which can be obtained by calling the DescribeProductConfig API.
+        :rtype: str
+        """
+        return self._DBVersion
+
+    @DBVersion.setter
+    def DBVersion(self, DBVersion):
+        self._DBVersion = DBVersion
+
+    @property
+    def Pid(self):
+        """Product ID, which can be obtained by calling the DescribeProductConfig API.
+        :rtype: int
+        """
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def PayMode(self):
+        """Payment mode. POST: pay-as-you-go; PRE: monthly subscription.
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Currency(self):
+        """Currency. CNY; USD.
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._SpecIdSet = params.get("SpecIdSet")
+        self._DBVersion = params.get("DBVersion")
+        self._Pid = params.get("Pid")
+        self._PayMode = params.get("PayMode")
+        self._Currency = params.get("Currency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpecSellStatusResponse(AbstractModel):
+    """DescribeSpecSellStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DescribeSpecSellStatusSet: Status set of specifications in different regions.
+        :type DescribeSpecSellStatusSet: list of SpecSellStatus
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DescribeSpecSellStatusSet = None
+        self._RequestId = None
+
+    @property
+    def DescribeSpecSellStatusSet(self):
+        """Status set of specifications in different regions.
+        :rtype: list of SpecSellStatus
+        """
+        return self._DescribeSpecSellStatusSet
+
+    @DescribeSpecSellStatusSet.setter
+    def DescribeSpecSellStatusSet(self, DescribeSpecSellStatusSet):
+        self._DescribeSpecSellStatusSet = DescribeSpecSellStatusSet
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DescribeSpecSellStatusSet") is not None:
+            self._DescribeSpecSellStatusSet = []
+            for item in params.get("DescribeSpecSellStatusSet"):
+                obj = SpecSellStatus()
+                obj._deserialize(item)
+                self._DescribeSpecSellStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUploadBackupInfoRequest(AbstractModel):
     """DescribeUploadBackupInfo request structure.
 
@@ -12270,6 +12555,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class DrZoneInfo(AbstractModel):
+    """AZ information on the secondary node.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DrInstanceId: Resource ID of the secondary node.
+        :type DrInstanceId: str
+        :param _Zone: AZ of the secondary node.
+        :type Zone: str
+        """
+        self._DrInstanceId = None
+        self._Zone = None
+
+    @property
+    def DrInstanceId(self):
+        """Resource ID of the secondary node.
+        :rtype: str
+        """
+        return self._DrInstanceId
+
+    @DrInstanceId.setter
+    def DrInstanceId(self, DrInstanceId):
+        self._DrInstanceId = DrInstanceId
+
+    @property
+    def Zone(self):
+        """AZ of the secondary node.
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._DrInstanceId = params.get("DrInstanceId")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EventConfig(AbstractModel):
     """Threshold setting for an extended event
 
@@ -12766,11 +13102,11 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID in the format of mssql-njj2mtpl
+        :param _InstanceId: Instance ID in the format of mssql-njj2mtpl.
         :type InstanceId: str
-        :param _Memory: Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size
+        :param _Memory: Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size.
         :type Memory: int
-        :param _Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
+        :param _Storage: Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity.
         :type Storage: int
         :param _Cpu: The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.
         :type Cpu: int
@@ -12782,7 +13118,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        """Instance ID in the format of mssql-njj2mtpl
+        """Instance ID in the format of mssql-njj2mtpl.
         :rtype: str
         """
         return self._InstanceId
@@ -12793,7 +13129,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        """Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size
+        """Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size.
         :rtype: int
         """
         return self._Memory
@@ -12804,7 +13140,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        """Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity
+        """Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity.
         :rtype: int
         """
         return self._Storage
@@ -12847,9 +13183,9 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalPrice: Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD
+        :param _OriginalPrice: Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
         :type OriginalPrice: int
-        :param _Price: The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD
+        :param _Price: The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
         :type Price: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12860,7 +13196,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        """Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD
+        """Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
         :rtype: int
         """
         return self._OriginalPrice
@@ -12871,7 +13207,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def Price(self):
-        """The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD
+        """The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD.
         :rtype: int
         """
         return self._Price
@@ -15064,18 +15400,21 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _NewVpcId: ID of the new VPC
+        :param _NewVpcId: ID of the new VPC.
         :type NewVpcId: str
-        :param _NewSubnetId: ID of the new subnet
+        :param _NewSubnetId: ID of the new subnet.
         :type NewSubnetId: str
         :param _OldIpRetainTime: Retention period (in hours) of the original VIP. Value range: `0-168`. Default value: `0`, indicating the original VIP is released immediately.
         :type OldIpRetainTime: int
-        :param _Vip: New VIP
+        :param _Vip: New VIP.
         :type Vip: str
-        :param _DRNetwork: 
+        :param _DRNetwork: Target node. 0 - modify the primary node network; 1 - modify the secondary node network. The default value is 0.
+
         :type DRNetwork: int
+        :param _DrInstanceId: Secondary server resource ID. It is required when DRNetwork = 1.
+        :type DrInstanceId: str
         """
         self._InstanceId = None
         self._NewVpcId = None
@@ -15083,10 +15422,11 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self._OldIpRetainTime = None
         self._Vip = None
         self._DRNetwork = None
+        self._DrInstanceId = None
 
     @property
     def InstanceId(self):
-        """Instance ID
+        """Instance ID.
         :rtype: str
         """
         return self._InstanceId
@@ -15097,7 +15437,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def NewVpcId(self):
-        """ID of the new VPC
+        """ID of the new VPC.
         :rtype: str
         """
         return self._NewVpcId
@@ -15108,7 +15448,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def NewSubnetId(self):
-        """ID of the new subnet
+        """ID of the new subnet.
         :rtype: str
         """
         return self._NewSubnetId
@@ -15130,7 +15470,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def Vip(self):
-        """New VIP
+        """New VIP.
         :rtype: str
         """
         return self._Vip
@@ -15141,7 +15481,8 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
 
     @property
     def DRNetwork(self):
-        """
+        """Target node. 0 - modify the primary node network; 1 - modify the secondary node network. The default value is 0.
+
         :rtype: int
         """
         return self._DRNetwork
@@ -15149,6 +15490,17 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
     @DRNetwork.setter
     def DRNetwork(self, DRNetwork):
         self._DRNetwork = DRNetwork
+
+    @property
+    def DrInstanceId(self):
+        """Secondary server resource ID. It is required when DRNetwork = 1.
+        :rtype: str
+        """
+        return self._DrInstanceId
+
+    @DrInstanceId.setter
+    def DrInstanceId(self, DrInstanceId):
+        self._DrInstanceId = DrInstanceId
 
 
     def _deserialize(self, params):
@@ -15158,6 +15510,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self._OldIpRetainTime = params.get("OldIpRetainTime")
         self._Vip = params.get("Vip")
         self._DRNetwork = params.get("DRNetwork")
+        self._DrInstanceId = params.get("DrInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16974,6 +17327,87 @@ class ParameterDetail(AbstractModel):
         
 
 
+class Price(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrepaidPrice: 
+        :type PrepaidPrice: int
+        :param _PrepaidPriceUnit: 
+        :type PrepaidPriceUnit: str
+        :param _PostpaidPrice: 
+        :type PostpaidPrice: int
+        :param _PostpaidPriceUnit: 
+        :type PostpaidPriceUnit: str
+        """
+        self._PrepaidPrice = None
+        self._PrepaidPriceUnit = None
+        self._PostpaidPrice = None
+        self._PostpaidPriceUnit = None
+
+    @property
+    def PrepaidPrice(self):
+        """
+        :rtype: int
+        """
+        return self._PrepaidPrice
+
+    @PrepaidPrice.setter
+    def PrepaidPrice(self, PrepaidPrice):
+        self._PrepaidPrice = PrepaidPrice
+
+    @property
+    def PrepaidPriceUnit(self):
+        """
+        :rtype: str
+        """
+        return self._PrepaidPriceUnit
+
+    @PrepaidPriceUnit.setter
+    def PrepaidPriceUnit(self, PrepaidPriceUnit):
+        self._PrepaidPriceUnit = PrepaidPriceUnit
+
+    @property
+    def PostpaidPrice(self):
+        """
+        :rtype: int
+        """
+        return self._PostpaidPrice
+
+    @PostpaidPrice.setter
+    def PostpaidPrice(self, PostpaidPrice):
+        self._PostpaidPrice = PostpaidPrice
+
+    @property
+    def PostpaidPriceUnit(self):
+        """
+        :rtype: str
+        """
+        return self._PostpaidPriceUnit
+
+    @PostpaidPriceUnit.setter
+    def PostpaidPriceUnit(self, PostpaidPriceUnit):
+        self._PostpaidPriceUnit = PostpaidPriceUnit
+
+
+    def _deserialize(self, params):
+        self._PrepaidPrice = params.get("PrepaidPrice")
+        self._PrepaidPriceUnit = params.get("PrepaidPriceUnit")
+        self._PostpaidPrice = params.get("PostpaidPrice")
+        self._PostpaidPriceUnit = params.get("PostpaidPriceUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecycleDBInstanceRequest(AbstractModel):
     """RecycleDBInstance request structure.
 
@@ -18494,6 +18928,199 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class SpecSellStatus(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 
+        :type Id: str
+        :param _SpecId: 
+        :type SpecId: int
+        :param _PayModeStatus: 
+        :type PayModeStatus: str
+        :param _InstanceType: 
+        :type InstanceType: str
+        :param _MultiZonesStatus: 
+        :type MultiZonesStatus: str
+        :param _Architecture: 
+        :type Architecture: str
+        :param _Style: 
+        :type Style: str
+        :param _Version: 
+        :type Version: str
+        :param _ZoneStatusSet: 
+        :type ZoneStatusSet: list of ZoneStatus
+        :param _Price: 
+        :type Price: :class:`tencentcloud.sqlserver.v20180328.models.Price`
+        :param _Status: 
+        :type Status: int
+        """
+        self._Id = None
+        self._SpecId = None
+        self._PayModeStatus = None
+        self._InstanceType = None
+        self._MultiZonesStatus = None
+        self._Architecture = None
+        self._Style = None
+        self._Version = None
+        self._ZoneStatusSet = None
+        self._Price = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        """
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SpecId(self):
+        """
+        :rtype: int
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def PayModeStatus(self):
+        """
+        :rtype: str
+        """
+        return self._PayModeStatus
+
+    @PayModeStatus.setter
+    def PayModeStatus(self, PayModeStatus):
+        self._PayModeStatus = PayModeStatus
+
+    @property
+    def InstanceType(self):
+        """
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MultiZonesStatus(self):
+        """
+        :rtype: str
+        """
+        return self._MultiZonesStatus
+
+    @MultiZonesStatus.setter
+    def MultiZonesStatus(self, MultiZonesStatus):
+        self._MultiZonesStatus = MultiZonesStatus
+
+    @property
+    def Architecture(self):
+        """
+        :rtype: str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+    @property
+    def Style(self):
+        """
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def Version(self):
+        """
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ZoneStatusSet(self):
+        """
+        :rtype: list of ZoneStatus
+        """
+        return self._ZoneStatusSet
+
+    @ZoneStatusSet.setter
+    def ZoneStatusSet(self, ZoneStatusSet):
+        self._ZoneStatusSet = ZoneStatusSet
+
+    @property
+    def Price(self):
+        """
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.Price`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def Status(self):
+        """
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._SpecId = params.get("SpecId")
+        self._PayModeStatus = params.get("PayModeStatus")
+        self._InstanceType = params.get("InstanceType")
+        self._MultiZonesStatus = params.get("MultiZonesStatus")
+        self._Architecture = params.get("Architecture")
+        self._Style = params.get("Style")
+        self._Version = params.get("Version")
+        if params.get("ZoneStatusSet") is not None:
+            self._ZoneStatusSet = []
+            for item in params.get("ZoneStatusSet"):
+                obj = ZoneStatus()
+                obj._deserialize(item)
+                self._ZoneStatusSet.append(obj)
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartBackupMigrationRequest(AbstractModel):
     """StartBackupMigration request structure.
 
@@ -18938,6 +19565,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type MultiZones: str
         :param _WaitSwitch: The time when configuration adjustment task is performed. Valid values: `0` (execute immediately), `1` (execute during maintenance time). Default value: `1`.
         :type WaitSwitch: int
+        :param _DrZones: Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.
+        :type DrZones: list of DrZoneInfo
         """
         self._InstanceId = None
         self._Memory = None
@@ -18949,6 +19578,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._HAType = None
         self._MultiZones = None
         self._WaitSwitch = None
+        self._DrZones = None
 
     @property
     def InstanceId(self):
@@ -19060,6 +19690,17 @@ class UpgradeDBInstanceRequest(AbstractModel):
     def WaitSwitch(self, WaitSwitch):
         self._WaitSwitch = WaitSwitch
 
+    @property
+    def DrZones(self):
+        """Secondary node AZ of the multi-node architecture instance. The default value is null. It should be specified when modifying the AZ of the specified secondary node needs to be performed during configuration adjustment. When MultiZones = MultiZones, the AZs of the primary nodes and secondary nodes cannot all be the same. The collection of AZs of the secondary node can include 2-5 AZs.
+        :rtype: list of DrZoneInfo
+        """
+        return self._DrZones
+
+    @DrZones.setter
+    def DrZones(self, DrZones):
+        self._DrZones = DrZones
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19072,6 +19713,12 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self._HAType = params.get("HAType")
         self._MultiZones = params.get("MultiZones")
         self._WaitSwitch = params.get("WaitSwitch")
+        if params.get("DrZones") is not None:
+            self._DrZones = []
+            for item in params.get("DrZones"):
+                obj = DrZoneInfo()
+                obj._deserialize(item)
+                self._DrZones.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19089,7 +19736,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: Order name
+        :param _DealName: Order name.
         :type DealName: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -19099,7 +19746,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        """Order name
+        """Order name.
         :rtype: str
         """
         return self._DealName
@@ -19211,6 +19858,72 @@ class ZoneInfo(AbstractModel):
         self._ZoneId = params.get("ZoneId")
         self._SpecId = params.get("SpecId")
         self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneStatus(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 
+        :type Zone: str
+        :param _Region: 
+        :type Region: str
+        :param _Status: 
+        :type Status: int
+        """
+        self._Zone = None
+        self._Region = None
+        self._Status = None
+
+    @property
+    def Zone(self):
+        """
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Region(self):
+        """
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        """
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -670,6 +670,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCollationTimeZone(self, request):
+        """This API is used to query the character set and time zone supported by the instance.
+
+        :param request: Request instance for DescribeCollationTimeZone.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCollationTimeZoneRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCollationTimeZoneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCollationTimeZone", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCollationTimeZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBCharsets(self, request):
         """This API is used to query the database character sets supported by an instance.
 
@@ -1130,6 +1153,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSpecSellStatus(self, request):
+        """This API is used to query the status information on specifications, including the sales status and reference price. (The actual price is subject to the result returned by price querying APIs.)
+
+        :param request: Request instance for DescribeSpecSellStatus.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeSpecSellStatusRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeSpecSellStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSpecSellStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSpecSellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUploadBackupInfo(self, request):
         """This API is used to query a backup upload permission.
 
@@ -1223,7 +1269,7 @@ class SqlserverClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        """This API is used to query the upgrade prices of a monthly subscribed instance
+        """This API is used to query the upgrade prices of a monthly subscribed instance.
         .
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.

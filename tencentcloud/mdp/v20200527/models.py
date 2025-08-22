@@ -818,6 +818,138 @@ class ConfigAliasesInfo(AbstractModel):
         
 
 
+class CosInputInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: 
+        :type Bucket: str
+        :param _Region: 
+        :type Region: str
+        :param _Object: 
+        :type Object: str
+        """
+        self._Bucket = None
+        self._Region = None
+        self._Object = None
+
+    @property
+    def Bucket(self):
+        """
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        """
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Object(self):
+        """
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Object = params.get("Object")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosOutputStorage(AbstractModel):
+    """VOD remux task cos output storage.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: cos bucket name.
+        :type Bucket: str
+        :param _Region: region name of your cos bucket.
+        :type Region: str
+        :param _OutputDir: cos directory of vod remux task result.
+        :type OutputDir: str
+        """
+        self._Bucket = None
+        self._Region = None
+        self._OutputDir = None
+
+    @property
+    def Bucket(self):
+        """cos bucket name.
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        """region name of your cos bucket.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def OutputDir(self):
+        """cos directory of vod remux task result.
+        :rtype: str
+        """
+        return self._OutputDir
+
+    @OutputDir.setter
+    def OutputDir(self, OutputDir):
+        self._OutputDir = OutputDir
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._OutputDir = params.get("OutputDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateStreamPackageChannelEndpointRequest(AbstractModel):
     """CreateStreamPackageChannelEndpoint request structure.
 
@@ -2071,6 +2203,138 @@ class CreateStreamPackageSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateStreamPackageVodRemuxTaskRequest(AbstractModel):
+    """CreateStreamPackageVodRemuxTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: VOD remux task name.
+        :type Name: str
+        :param _Type: The supported remuxing formats for VOD remux tasks.
+Optional values: WEBVTT.
+        :type Type: str
+        :param _InputFileInfo: Input configuration.
+        :type InputFileInfo: :class:`tencentcloud.mdp.v20200527.models.InputFileInfo`
+        :param _OutputStorage: Output configuration.
+        :type OutputStorage: :class:`tencentcloud.mdp.v20200527.models.OutputStorage`
+        """
+        self._Name = None
+        self._Type = None
+        self._InputFileInfo = None
+        self._OutputStorage = None
+
+    @property
+    def Name(self):
+        """VOD remux task name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """The supported remuxing formats for VOD remux tasks.
+Optional values: WEBVTT.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputFileInfo(self):
+        """Input configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.InputFileInfo`
+        """
+        return self._InputFileInfo
+
+    @InputFileInfo.setter
+    def InputFileInfo(self, InputFileInfo):
+        self._InputFileInfo = InputFileInfo
+
+    @property
+    def OutputStorage(self):
+        """Output configuration.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.OutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("InputFileInfo") is not None:
+            self._InputFileInfo = InputFileInfo()
+            self._InputFileInfo._deserialize(params.get("InputFileInfo"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = OutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageVodRemuxTaskResponse(AbstractModel):
+    """CreateStreamPackageVodRemuxTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Vod remux task information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.VodRemuxTaskInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """Vod remux task information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.VodRemuxTaskInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = VodRemuxTaskInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
 class DRMInfo(AbstractModel):
     """DRM configure info.
 
@@ -3056,6 +3320,134 @@ class DeleteStreamPackageSourceRequest(AbstractModel):
 
 class DeleteStreamPackageSourceResponse(AbstractModel):
     """DeleteStreamPackageSource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageVodRemuxTaskRequest(AbstractModel):
+    """DeleteStreamPackageVodRemuxTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: VOD task Id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """VOD task Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageVodRemuxTaskResponse(AbstractModel):
+    """DeleteStreamPackageVodRemuxTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageVodRemuxTasksRequest(AbstractModel):
+    """DeleteStreamPackageVodRemuxTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: List of VOD remux task ids.
+        :type Ids: list of str
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        """List of VOD remux task ids.
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageVodRemuxTasksResponse(AbstractModel):
+    """DeleteStreamPackageVodRemuxTasks response structure.
 
     """
 
@@ -5552,6 +5944,250 @@ class DescribeStreamPackageSourcesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeStreamPackageVodRemuxTaskRequest(AbstractModel):
+    """DescribeStreamPackageVodRemuxTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: VOD remux task Id.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """VOD remux task Id.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageVodRemuxTaskResponse(AbstractModel):
+    """DescribeStreamPackageVodRemuxTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: VOD remux task information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.VodRemuxTaskInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        """VOD remux task information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.VodRemuxTaskInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = VodRemuxTaskInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageVodRemuxTasksRequest(AbstractModel):
+    """DescribeStreamPackageVodRemuxTasks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: Paging query page number, the value range is [1, 1000].
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page, the value range is [1, 1000].
+        :type PageSize: int
+        """
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        """Paging query page number, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Paging query the size of each page, the value range is [1, 1000].
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageVodRemuxTasksResponse(AbstractModel):
+    """DescribeStreamPackageVodRemuxTasks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: VOD remux task lists.
+        :type Infos: list of VodRemuxTaskInfo
+        :param _PageNum: Number of pages.
+
+        :type PageNum: int
+        :param _PageSize: Size per page.
+
+        :type PageSize: int
+        :param _TotalNum: The total amount.
+        :type TotalNum: int
+        :param _TotalPage: total pages.
+        :type TotalPage: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        """VOD remux task lists.
+        :rtype: list of VodRemuxTaskInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        """Number of pages.
+
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        """Size per page.
+
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        """The total amount.
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        """total pages.
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = VodRemuxTaskInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
 class DomainRecordInfo(AbstractModel):
     """
 
@@ -6190,6 +6826,74 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Username = params.get("Username")
         self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputFileInfo(AbstractModel):
+    """VOD remux task input file information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Input file Type. The input types include COS and URL.
+        :type Type: str
+        :param _CosInputInfo: cos input informations. 
+        :type CosInputInfo: :class:`tencentcloud.mdp.v20200527.models.CosInputInfo`
+        :param _Url: input file url.
+        :type Url: str
+        """
+        self._Type = None
+        self._CosInputInfo = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        """Input file Type. The input types include COS and URL.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CosInputInfo(self):
+        """cos input informations. 
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CosInputInfo`
+        """
+        return self._CosInputInfo
+
+    @CosInputInfo.setter
+    def CosInputInfo(self, CosInputInfo):
+        self._CosInputInfo = CosInputInfo
+
+    @property
+    def Url(self):
+        """input file url.
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("CosInputInfo") is not None:
+            self._CosInputInfo = CosInputInfo()
+            self._CosInputInfo._deserialize(params.get("CosInputInfo"))
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8346,6 +9050,59 @@ class OutputReq(AbstractModel):
         
 
 
+class OutputStorage(AbstractModel):
+    """VOD remux task Output Storage.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: VOD remux task output storage type. Only support COS type.
+        :type Type: str
+        :param _CosOutputStorage: cos output storage information.
+        :type CosOutputStorage: :class:`tencentcloud.mdp.v20200527.models.CosOutputStorage`
+        """
+        self._Type = None
+        self._CosOutputStorage = None
+
+    @property
+    def Type(self):
+        """VOD remux task output storage type. Only support COS type.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CosOutputStorage(self):
+        """cos output storage information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CosOutputStorage`
+        """
+        return self._CosOutputStorage
+
+    @CosOutputStorage.setter
+    def CosOutputStorage(self, CosOutputStorage):
+        self._CosOutputStorage = CosOutputStorage
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("CosOutputStorage") is not None:
+            self._CosOutputStorage = CosOutputStorage()
+            self._CosOutputStorage._deserialize(params.get("CosOutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PlaybackInfo(AbstractModel):
     """program playback configuration.
 
@@ -10305,6 +11062,70 @@ class StartStreamPackageLinearAssemblyChannelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartStreamPackageVodRemuxTaskRequest(AbstractModel):
+    """StartStreamPackageVodRemuxTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: VOD remux task ID.
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        """VOD remux task ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamPackageVodRemuxTaskResponse(AbstractModel):
+    """StartStreamPackageVodRemuxTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StopStreamPackageLinearAssemblyChannelRequest(AbstractModel):
     """StopStreamPackageLinearAssemblyChannel request structure.
 
@@ -10985,6 +11806,211 @@ class UsageDetail(AbstractModel):
         self._PreReqNum = params.get("PreReqNum")
         self._PreReplacedNum = params.get("PreReplacedNum")
         self._PreReplaceRate = params.get("PreReplaceRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VodRemuxTaskInfo(AbstractModel):
+    """VOD remux task informations.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: VOD remux task ID.
+        :type Id: str
+        :param _Name: VOD remux task name.
+        :type Name: str
+        :param _Type: VOD remux task type.
+        :type Type: str
+        :param _InputFileInfo: VOD remux task input file information.
+        :type InputFileInfo: :class:`tencentcloud.mdp.v20200527.models.InputFileInfo`
+        :param _OutputStorage: VOD remux task output storage information.
+        :type OutputStorage: :class:`tencentcloud.mdp.v20200527.models.OutputStorage`
+        :param _CreateTime: VOD remux task created time.
+        :type CreateTime: int
+        :param _UpdateTime: VOD remux task updated time.
+        :type UpdateTime: int
+        :param _State: VOD remux task's state.
+        :type State: str
+        :param _ErrorMsg: VOD remux task's error message.
+        :type ErrorMsg: str
+        :param _StartTime: VOD remux task process started time.
+        :type StartTime: int
+        :param _EndTime: VOD remux task process end time.
+        :type EndTime: int
+        :param _Region: Common Params. For more information, please see the list of regions supported by the product.
+        :type Region: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._InputFileInfo = None
+        self._OutputStorage = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._State = None
+        self._ErrorMsg = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Region = None
+
+    @property
+    def Id(self):
+        """VOD remux task ID.
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        """VOD remux task name.
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        """VOD remux task type.
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InputFileInfo(self):
+        """VOD remux task input file information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.InputFileInfo`
+        """
+        return self._InputFileInfo
+
+    @InputFileInfo.setter
+    def InputFileInfo(self, InputFileInfo):
+        self._InputFileInfo = InputFileInfo
+
+    @property
+    def OutputStorage(self):
+        """VOD remux task output storage information.
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.OutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def CreateTime(self):
+        """VOD remux task created time.
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """VOD remux task updated time.
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def State(self):
+        """VOD remux task's state.
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ErrorMsg(self):
+        """VOD remux task's error message.
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def StartTime(self):
+        """VOD remux task process started time.
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        """VOD remux task process end time.
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Region(self):
+        """Common Params. For more information, please see the list of regions supported by the product.
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("InputFileInfo") is not None:
+            self._InputFileInfo = InputFileInfo()
+            self._InputFileInfo._deserialize(params.get("InputFileInfo"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = OutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._State = params.get("State")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -44,6 +44,9 @@ INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = 'InvalidParameter.ExceededQuantityLimit
 # Invalid `Id`.
 INVALIDPARAMETER_ID = 'InvalidParameter.Id'
 
+# The InputFileInfo is invalid.
+INVALIDPARAMETER_INPUTFILEINFO = 'InvalidParameter.InputFileInfo'
+
 # SSAI channel id is invalid.
 INVALIDPARAMETER_INVALIDPARAMETERCHANNELID = 'InvalidParameter.InvalidParameterChannelId'
 
@@ -53,11 +56,14 @@ INVALIDPARAMETER_LVBDOMAIN = 'InvalidParameter.LvbDomain'
 # Invalid name.
 INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
 
-# Failed to find the channel/input/output.
+# Failed to find the VOD remux task.
 INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
 
 # 
 INVALIDPARAMETER_OUTPUTGROUPS = 'InvalidParameter.OutputGroups'
+
+# The OutputStorage is invalid.
+INVALIDPARAMETER_OUTPUTSTORAGE = 'InvalidParameter.OutputStorage'
 
 # Invalid `PageNum`.
 INVALIDPARAMETER_PAGENUM = 'InvalidParameter.PageNum'
@@ -74,7 +80,10 @@ INVALIDPARAMETER_PROTOCOL = 'InvalidParameter.Protocol'
 # Invalid ad insertion configuration parameters.
 INVALIDPARAMETER_SSAIINFO = 'InvalidParameter.SSAIInfo'
 
-# SSAI ad type error.
+# VOD remux task state is invalid.
+INVALIDPARAMETER_STATE = 'InvalidParameter.State'
+
+# VOD remux task type error.
 INVALIDPARAMETER_TYPE = 'InvalidParameter.Type'
 
 # Invalid `Url`.
