@@ -8365,7 +8365,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         r"""
         :param _UinAccount: Root account of Tencent Cloud.
         :type UinAccount: list of str
-        :param _SubBizType: Sub-business types of Tencent Cloud Agent Development Platform/TCADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
+        :param _SubBizType: Sub-business types of Tencent Cloud Agent Development Platform/ADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
         :type SubBizType: str
         :param _ModelName: Model identifier.
         :type ModelName: str
@@ -8375,6 +8375,10 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         :type EndTime: str
         :param _AppBizIds: Application ID list.
         :type AppBizIds: list of str
+        :param _AppType: 
+        :type AppType: str
+        :param _SubScenes: 
+        :type SubScenes: list of str
         """
         self._UinAccount = None
         self._SubBizType = None
@@ -8382,6 +8386,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._AppBizIds = None
+        self._AppType = None
+        self._SubScenes = None
 
     @property
     def UinAccount(self):
@@ -8396,7 +8402,7 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business types of Tencent Cloud Agent Development Platform/TCADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
+        """Sub-business types of Tencent Cloud Agent Development Platform/ADP: fileparse (document parsing), Embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
         :rtype: str
         """
         return self._SubBizType
@@ -8449,6 +8455,28 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
     def AppBizIds(self, AppBizIds):
         self._AppBizIds = AppBizIds
 
+    @property
+    def AppType(self):
+        """
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def SubScenes(self):
+        """
+        :rtype: list of str
+        """
+        return self._SubScenes
+
+    @SubScenes.setter
+    def SubScenes(self, SubScenes):
+        self._SubScenes = SubScenes
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -8457,6 +8485,8 @@ class DescribeTokenUsageGraphRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
+        self._AppType = params.get("AppType")
+        self._SubScenes = params.get("SubScenes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8568,7 +8598,7 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type LoginUin: str
         :param _LoginSubAccountUin: Login to user's sub-account (required in integrator mode).
         :type LoginSubAccountUin: str
-        :param _SubBizType: Sub-business types of Tencent Cloud Agent Development Platform/TCADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
+        :param _SubBizType: Sub-business types of Tencent Cloud Agent Development Platform/ADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
         :type SubBizType: str
         :param _ModelName: Model identifier.
         :type ModelName: str
@@ -8580,6 +8610,10 @@ class DescribeTokenUsageRequest(AbstractModel):
         :type AppBizIds: list of str
         :param _SubScenes: Filter sub-scenario (used in document parsing scenario).
         :type SubScenes: list of str
+        :param _AppType: 
+        :type AppType: str
+        :param _SpaceId: 
+        :type SpaceId: str
         """
         self._UinAccount = None
         self._LoginUin = None
@@ -8590,6 +8624,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._EndTime = None
         self._AppBizIds = None
         self._SubScenes = None
+        self._AppType = None
+        self._SpaceId = None
 
     @property
     def UinAccount(self):
@@ -8626,7 +8662,7 @@ class DescribeTokenUsageRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        """Sub-business types of Tencent Cloud Agent Development Platform/TCADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
+        """Sub-business types of Tencent Cloud Agent Development Platform/ADP: FileParse (document parsing), embedding, Rewrite (multi-round rewriting), Concurrency, KnowledgeSummary (knowledge summary), KnowledgeQA (knowledge Q&A), KnowledgeCapacity (knowledge base capacity), SearchEngine (search engine).
         :rtype: str
         """
         return self._SubBizType
@@ -8690,6 +8726,28 @@ class DescribeTokenUsageRequest(AbstractModel):
     def SubScenes(self, SubScenes):
         self._SubScenes = SubScenes
 
+    @property
+    def AppType(self):
+        """
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def SpaceId(self):
+        """
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
 
     def _deserialize(self, params):
         self._UinAccount = params.get("UinAccount")
@@ -8701,6 +8759,8 @@ class DescribeTokenUsageRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._AppBizIds = params.get("AppBizIds")
         self._SubScenes = params.get("SubScenes")
+        self._AppType = params.get("AppType")
+        self._SpaceId = params.get("SpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8736,6 +8796,10 @@ class DescribeTokenUsageResponse(AbstractModel):
         :type RagSearchUsage: float
         :param _InternetSearchUsage: Number of online searches.
         :type InternetSearchUsage: float
+        :param _DosageTypeLimit: 
+        :type DosageTypeLimit: float
+        :param _DosageTypeCurr: 
+        :type DosageTypeCurr: float
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -8748,6 +8812,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._SplitTokenUsage = None
         self._RagSearchUsage = None
         self._InternetSearchUsage = None
+        self._DosageTypeLimit = None
+        self._DosageTypeCurr = None
         self._RequestId = None
 
     @property
@@ -8850,6 +8916,28 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._InternetSearchUsage = InternetSearchUsage
 
     @property
+    def DosageTypeLimit(self):
+        """
+        :rtype: float
+        """
+        return self._DosageTypeLimit
+
+    @DosageTypeLimit.setter
+    def DosageTypeLimit(self, DosageTypeLimit):
+        self._DosageTypeLimit = DosageTypeLimit
+
+    @property
+    def DosageTypeCurr(self):
+        """
+        :rtype: float
+        """
+        return self._DosageTypeCurr
+
+    @DosageTypeCurr.setter
+    def DosageTypeCurr(self, DosageTypeCurr):
+        self._DosageTypeCurr = DosageTypeCurr
+
+    @property
     def RequestId(self):
         """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -8871,6 +8959,8 @@ class DescribeTokenUsageResponse(AbstractModel):
         self._SplitTokenUsage = params.get("SplitTokenUsage")
         self._RagSearchUsage = params.get("RagSearchUsage")
         self._InternetSearchUsage = params.get("InternetSearchUsage")
+        self._DosageTypeLimit = params.get("DosageTypeLimit")
+        self._DosageTypeCurr = params.get("DosageTypeCurr")
         self._RequestId = params.get("RequestId")
 
 
@@ -9281,6 +9371,57 @@ class DocSegment(AbstractModel):
         self._DocId = params.get("DocId")
         self._DocBizId = params.get("DocBizId")
         self._DocUrl = params.get("DocUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DuplicateFileHandle(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckType: 
+        :type CheckType: int
+        :param _HandleType: 
+        :type HandleType: int
+        """
+        self._CheckType = None
+        self._HandleType = None
+
+    @property
+    def CheckType(self):
+        """
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def HandleType(self):
+        """
+        :rtype: int
+        """
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+
+    def _deserialize(self, params):
+        self._CheckType = params.get("CheckType")
+        self._HandleType = params.get("HandleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22500,10 +22641,18 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
         :type ExpireEnd: str
         :param _IsRefer: Whether to reference a link.
         :type IsRefer: bool
-        :param _Opt: Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/TCADP page.
+        :param _Opt: Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/ADP page.
         :type Opt: int
         :param _CateBizId: Category ID.
         :type CateBizId: str
+        :param _IsDownload: 
+        :type IsDownload: bool
+        :param _DuplicateFileHandles: 
+        :type DuplicateFileHandles: list of DuplicateFileHandle
+        :param _SplitRule: 
+        :type SplitRule: str
+        :param _UpdatePeriodInfo: 
+        :type UpdatePeriodInfo: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
         """
         self._BotBizId = None
         self._FileName = None
@@ -22522,6 +22671,10 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
         self._IsRefer = None
         self._Opt = None
         self._CateBizId = None
+        self._IsDownload = None
+        self._DuplicateFileHandles = None
+        self._SplitRule = None
+        self._UpdatePeriodInfo = None
 
     @property
     def BotBizId(self):
@@ -22691,7 +22844,7 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
 
     @property
     def Opt(self):
-        """Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/TCADP page.
+        """Document operation type: 1: batch import (import Q&A pairs in batches); 2: document import (normally import a single document). The default value is 1.<br>Please note that when opt = 1, please download the Excel template from the Tencent Cloud Agent Development Platform/ADP page.
         :rtype: int
         """
         return self._Opt
@@ -22710,6 +22863,50 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
     @CateBizId.setter
     def CateBizId(self, CateBizId):
         self._CateBizId = CateBizId
+
+    @property
+    def IsDownload(self):
+        """
+        :rtype: bool
+        """
+        return self._IsDownload
+
+    @IsDownload.setter
+    def IsDownload(self, IsDownload):
+        self._IsDownload = IsDownload
+
+    @property
+    def DuplicateFileHandles(self):
+        """
+        :rtype: list of DuplicateFileHandle
+        """
+        return self._DuplicateFileHandles
+
+    @DuplicateFileHandles.setter
+    def DuplicateFileHandles(self, DuplicateFileHandles):
+        self._DuplicateFileHandles = DuplicateFileHandles
+
+    @property
+    def SplitRule(self):
+        """
+        :rtype: str
+        """
+        return self._SplitRule
+
+    @SplitRule.setter
+    def SplitRule(self, SplitRule):
+        self._SplitRule = SplitRule
+
+    @property
+    def UpdatePeriodInfo(self):
+        """
+        :rtype: :class:`tencentcloud.lke.v20231130.models.UpdatePeriodInfo`
+        """
+        return self._UpdatePeriodInfo
+
+    @UpdatePeriodInfo.setter
+    def UpdatePeriodInfo(self, UpdatePeriodInfo):
+        self._UpdatePeriodInfo = UpdatePeriodInfo
 
 
     def _deserialize(self, params):
@@ -22735,6 +22932,17 @@ When the value is 1, the weburl field cannot be empty; otherwise, it will not ta
         self._IsRefer = params.get("IsRefer")
         self._Opt = params.get("Opt")
         self._CateBizId = params.get("CateBizId")
+        self._IsDownload = params.get("IsDownload")
+        if params.get("DuplicateFileHandles") is not None:
+            self._DuplicateFileHandles = []
+            for item in params.get("DuplicateFileHandles"):
+                obj = DuplicateFileHandle()
+                obj._deserialize(item)
+                self._DuplicateFileHandles.append(obj)
+        self._SplitRule = params.get("SplitRule")
+        if params.get("UpdatePeriodInfo") is not None:
+            self._UpdatePeriodInfo = UpdatePeriodInfo()
+            self._UpdatePeriodInfo._deserialize(params.get("UpdatePeriodInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22760,6 +22968,8 @@ class SaveDocResponse(AbstractModel):
         :type ErrorLink: str
         :param _ErrorLinkText: Error link text.
         :type ErrorLinkText: str
+        :param _DuplicateFileCheckType: 
+        :type DuplicateFileCheckType: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -22767,6 +22977,7 @@ class SaveDocResponse(AbstractModel):
         self._ErrorMsg = None
         self._ErrorLink = None
         self._ErrorLinkText = None
+        self._DuplicateFileCheckType = None
         self._RequestId = None
 
     @property
@@ -22814,6 +23025,17 @@ class SaveDocResponse(AbstractModel):
         self._ErrorLinkText = ErrorLinkText
 
     @property
+    def DuplicateFileCheckType(self):
+        """
+        :rtype: int
+        """
+        return self._DuplicateFileCheckType
+
+    @DuplicateFileCheckType.setter
+    def DuplicateFileCheckType(self, DuplicateFileCheckType):
+        self._DuplicateFileCheckType = DuplicateFileCheckType
+
+    @property
     def RequestId(self):
         """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -22830,6 +23052,7 @@ class SaveDocResponse(AbstractModel):
         self._ErrorMsg = params.get("ErrorMsg")
         self._ErrorLink = params.get("ErrorLink")
         self._ErrorLinkText = params.get("ErrorLinkText")
+        self._DuplicateFileCheckType = params.get("DuplicateFileCheckType")
         self._RequestId = params.get("RequestId")
 
 
@@ -24033,6 +24256,42 @@ class UnsatisfiedReply(AbstractModel):
         self._Question = params.get("Question")
         self._Answer = params.get("Answer")
         self._Reasons = params.get("Reasons")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePeriodInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpdatePeriodH: 
+        :type UpdatePeriodH: int
+        """
+        self._UpdatePeriodH = None
+
+    @property
+    def UpdatePeriodH(self):
+        """
+        :rtype: int
+        """
+        return self._UpdatePeriodH
+
+    @UpdatePeriodH.setter
+    def UpdatePeriodH(self, UpdatePeriodH):
+        self._UpdatePeriodH = UpdatePeriodH
+
+
+    def _deserialize(self, params):
+        self._UpdatePeriodH = params.get("UpdatePeriodH")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

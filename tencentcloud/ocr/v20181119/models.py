@@ -738,6 +738,1087 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class BrazilCardInfo(AbstractModel):
+    """Type of document in brazil.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RNE: RNE document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RNE: :class:`tencentcloud.ocr.v20181119.models.BrazilRNEInfo`
+        :param _RNM: Specifies the document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RNM: :class:`tencentcloud.ocr.v20181119.models.BrazilRNMInfo`
+        :param _DriverLicense: Driver license document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DriverLicense: :class:`tencentcloud.ocr.v20181119.models.BrazilDriverLicenseInfo`
+        :param _IDCard: ID card document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IDCard: :class:`tencentcloud.ocr.v20181119.models.BrazilIDCardInfo`
+        """
+        self._RNE = None
+        self._RNM = None
+        self._DriverLicense = None
+        self._IDCard = None
+
+    @property
+    def RNE(self):
+        """RNE document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilRNEInfo`
+        """
+        return self._RNE
+
+    @RNE.setter
+    def RNE(self, RNE):
+        self._RNE = RNE
+
+    @property
+    def RNM(self):
+        """Specifies the document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilRNMInfo`
+        """
+        return self._RNM
+
+    @RNM.setter
+    def RNM(self, RNM):
+        self._RNM = RNM
+
+    @property
+    def DriverLicense(self):
+        """Driver license document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilDriverLicenseInfo`
+        """
+        return self._DriverLicense
+
+    @DriverLicense.setter
+    def DriverLicense(self, DriverLicense):
+        self._DriverLicense = DriverLicense
+
+    @property
+    def IDCard(self):
+        """ID card document.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilIDCardInfo`
+        """
+        return self._IDCard
+
+    @IDCard.setter
+    def IDCard(self, IDCard):
+        self._IDCard = IDCard
+
+
+    def _deserialize(self, params):
+        if params.get("RNE") is not None:
+            self._RNE = BrazilRNEInfo()
+            self._RNE._deserialize(params.get("RNE"))
+        if params.get("RNM") is not None:
+            self._RNM = BrazilRNMInfo()
+            self._RNM._deserialize(params.get("RNM"))
+        if params.get("DriverLicense") is not None:
+            self._DriverLicense = BrazilDriverLicenseInfo()
+            self._DriverLicense._deserialize(params.get("DriverLicense"))
+        if params.get("IDCard") is not None:
+            self._IDCard = BrazilIDCardInfo()
+            self._IDCard._deserialize(params.get("IDCard"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BrazilDriverLicenseInfo(AbstractModel):
+    """Driver'S license type in brazil.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NOME: Name.
+        :type NOME: str
+        :param _CatHab: Specifies the driver's license type.
+        :type CatHab: str
+        :param _CNHNumber: Driver’s license id.
+        :type CNHNumber: str
+        :param _VALIDADE: Expiration date.
+        :type VALIDADE: str
+        :param _QUALIFICATION: Indicates the qualification.
+        :type QUALIFICATION: str
+        :param _IDENTIDADE: Identity card number.
+        :type IDENTIDADE: str
+        :param _CPF: Tax number of the person.
+        :type CPF: str
+        :param _NASCIMENTO: Date of birth.
+        :type NASCIMENTO: str
+        :param _MEMBERSHIP: Membership status.
+        :type MEMBERSHIP: str
+        :param _REGISTRO: Registration number.
+        :type REGISTRO: str
+        :param _OBSERVATIONS: Remarks.
+        :type OBSERVATIONS: str
+        :param _IssueDate: Issue date.
+        :type IssueDate: str
+        :param _LOCAL: Issuing location.
+        :type LOCAL: str
+        :param _BackNumber: Record number.
+        :type BackNumber: str
+        :param _PortraitImage: Specifies the avatar in base64 format.
+        :type PortraitImage: str
+        """
+        self._NOME = None
+        self._CatHab = None
+        self._CNHNumber = None
+        self._VALIDADE = None
+        self._QUALIFICATION = None
+        self._IDENTIDADE = None
+        self._CPF = None
+        self._NASCIMENTO = None
+        self._MEMBERSHIP = None
+        self._REGISTRO = None
+        self._OBSERVATIONS = None
+        self._IssueDate = None
+        self._LOCAL = None
+        self._BackNumber = None
+        self._PortraitImage = None
+
+    @property
+    def NOME(self):
+        """Name.
+        :rtype: str
+        """
+        return self._NOME
+
+    @NOME.setter
+    def NOME(self, NOME):
+        self._NOME = NOME
+
+    @property
+    def CatHab(self):
+        """Specifies the driver's license type.
+        :rtype: str
+        """
+        return self._CatHab
+
+    @CatHab.setter
+    def CatHab(self, CatHab):
+        self._CatHab = CatHab
+
+    @property
+    def CNHNumber(self):
+        """Driver’s license id.
+        :rtype: str
+        """
+        return self._CNHNumber
+
+    @CNHNumber.setter
+    def CNHNumber(self, CNHNumber):
+        self._CNHNumber = CNHNumber
+
+    @property
+    def VALIDADE(self):
+        """Expiration date.
+        :rtype: str
+        """
+        return self._VALIDADE
+
+    @VALIDADE.setter
+    def VALIDADE(self, VALIDADE):
+        self._VALIDADE = VALIDADE
+
+    @property
+    def QUALIFICATION(self):
+        """Indicates the qualification.
+        :rtype: str
+        """
+        return self._QUALIFICATION
+
+    @QUALIFICATION.setter
+    def QUALIFICATION(self, QUALIFICATION):
+        self._QUALIFICATION = QUALIFICATION
+
+    @property
+    def IDENTIDADE(self):
+        """Identity card number.
+        :rtype: str
+        """
+        return self._IDENTIDADE
+
+    @IDENTIDADE.setter
+    def IDENTIDADE(self, IDENTIDADE):
+        self._IDENTIDADE = IDENTIDADE
+
+    @property
+    def CPF(self):
+        """Tax number of the person.
+        :rtype: str
+        """
+        return self._CPF
+
+    @CPF.setter
+    def CPF(self, CPF):
+        self._CPF = CPF
+
+    @property
+    def NASCIMENTO(self):
+        """Date of birth.
+        :rtype: str
+        """
+        return self._NASCIMENTO
+
+    @NASCIMENTO.setter
+    def NASCIMENTO(self, NASCIMENTO):
+        self._NASCIMENTO = NASCIMENTO
+
+    @property
+    def MEMBERSHIP(self):
+        """Membership status.
+        :rtype: str
+        """
+        return self._MEMBERSHIP
+
+    @MEMBERSHIP.setter
+    def MEMBERSHIP(self, MEMBERSHIP):
+        self._MEMBERSHIP = MEMBERSHIP
+
+    @property
+    def REGISTRO(self):
+        """Registration number.
+        :rtype: str
+        """
+        return self._REGISTRO
+
+    @REGISTRO.setter
+    def REGISTRO(self, REGISTRO):
+        self._REGISTRO = REGISTRO
+
+    @property
+    def OBSERVATIONS(self):
+        """Remarks.
+        :rtype: str
+        """
+        return self._OBSERVATIONS
+
+    @OBSERVATIONS.setter
+    def OBSERVATIONS(self, OBSERVATIONS):
+        self._OBSERVATIONS = OBSERVATIONS
+
+    @property
+    def IssueDate(self):
+        """Issue date.
+        :rtype: str
+        """
+        return self._IssueDate
+
+    @IssueDate.setter
+    def IssueDate(self, IssueDate):
+        self._IssueDate = IssueDate
+
+    @property
+    def LOCAL(self):
+        """Issuing location.
+        :rtype: str
+        """
+        return self._LOCAL
+
+    @LOCAL.setter
+    def LOCAL(self, LOCAL):
+        self._LOCAL = LOCAL
+
+    @property
+    def BackNumber(self):
+        """Record number.
+        :rtype: str
+        """
+        return self._BackNumber
+
+    @BackNumber.setter
+    def BackNumber(self, BackNumber):
+        self._BackNumber = BackNumber
+
+    @property
+    def PortraitImage(self):
+        """Specifies the avatar in base64 format.
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+
+    def _deserialize(self, params):
+        self._NOME = params.get("NOME")
+        self._CatHab = params.get("CatHab")
+        self._CNHNumber = params.get("CNHNumber")
+        self._VALIDADE = params.get("VALIDADE")
+        self._QUALIFICATION = params.get("QUALIFICATION")
+        self._IDENTIDADE = params.get("IDENTIDADE")
+        self._CPF = params.get("CPF")
+        self._NASCIMENTO = params.get("NASCIMENTO")
+        self._MEMBERSHIP = params.get("MEMBERSHIP")
+        self._REGISTRO = params.get("REGISTRO")
+        self._OBSERVATIONS = params.get("OBSERVATIONS")
+        self._IssueDate = params.get("IssueDate")
+        self._LOCAL = params.get("LOCAL")
+        self._BackNumber = params.get("BackNumber")
+        self._PortraitImage = params.get("PortraitImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BrazilIDCardInfo(AbstractModel):
+    """Specifies the identity card type in brazil.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nome: Name.
+        :type Nome: str
+        :param _MemberShip: Parent information.
+        :type MemberShip: str
+        :param _DataNascimento: Date of birth.
+        :type DataNascimento: str
+        :param _IssuingAgency: Issuing organization.
+        :type IssuingAgency: str
+        :param _Fatorrh: Specifies the blood type.
+        :type Fatorrh: str
+        :param _NaturalIDade: Birthplace.
+        :type NaturalIDade: str
+        :param _Observations: Remarks.
+        :type Observations: str
+        :param _CPF: CPF Type
+        :type CPF: str
+        :param _DNI: DNI Type
+        :type DNI: str
+        :param _RegistroGeral: Common registration.
+        :type RegistroGeral: str
+        :param _DispatchDate: Issue date. valid values: dd/mm/yyyy.
+        :type DispatchDate: str
+        :param _Registro: Address.
+        :type Registro: str
+        :param _PortraitImage: Specifies the avatar in Base64 format of the id card.
+        :type PortraitImage: str
+        :param _DocOrigem: Original identity information.
+        :type DocOrigem: str
+        """
+        self._Nome = None
+        self._MemberShip = None
+        self._DataNascimento = None
+        self._IssuingAgency = None
+        self._Fatorrh = None
+        self._NaturalIDade = None
+        self._Observations = None
+        self._CPF = None
+        self._DNI = None
+        self._RegistroGeral = None
+        self._DispatchDate = None
+        self._Registro = None
+        self._PortraitImage = None
+        self._DocOrigem = None
+
+    @property
+    def Nome(self):
+        """Name.
+        :rtype: str
+        """
+        return self._Nome
+
+    @Nome.setter
+    def Nome(self, Nome):
+        self._Nome = Nome
+
+    @property
+    def MemberShip(self):
+        """Parent information.
+        :rtype: str
+        """
+        return self._MemberShip
+
+    @MemberShip.setter
+    def MemberShip(self, MemberShip):
+        self._MemberShip = MemberShip
+
+    @property
+    def DataNascimento(self):
+        """Date of birth.
+        :rtype: str
+        """
+        return self._DataNascimento
+
+    @DataNascimento.setter
+    def DataNascimento(self, DataNascimento):
+        self._DataNascimento = DataNascimento
+
+    @property
+    def IssuingAgency(self):
+        """Issuing organization.
+        :rtype: str
+        """
+        return self._IssuingAgency
+
+    @IssuingAgency.setter
+    def IssuingAgency(self, IssuingAgency):
+        self._IssuingAgency = IssuingAgency
+
+    @property
+    def Fatorrh(self):
+        """Specifies the blood type.
+        :rtype: str
+        """
+        return self._Fatorrh
+
+    @Fatorrh.setter
+    def Fatorrh(self, Fatorrh):
+        self._Fatorrh = Fatorrh
+
+    @property
+    def NaturalIDade(self):
+        """Birthplace.
+        :rtype: str
+        """
+        return self._NaturalIDade
+
+    @NaturalIDade.setter
+    def NaturalIDade(self, NaturalIDade):
+        self._NaturalIDade = NaturalIDade
+
+    @property
+    def Observations(self):
+        """Remarks.
+        :rtype: str
+        """
+        return self._Observations
+
+    @Observations.setter
+    def Observations(self, Observations):
+        self._Observations = Observations
+
+    @property
+    def CPF(self):
+        """CPF Type
+        :rtype: str
+        """
+        return self._CPF
+
+    @CPF.setter
+    def CPF(self, CPF):
+        self._CPF = CPF
+
+    @property
+    def DNI(self):
+        """DNI Type
+        :rtype: str
+        """
+        return self._DNI
+
+    @DNI.setter
+    def DNI(self, DNI):
+        self._DNI = DNI
+
+    @property
+    def RegistroGeral(self):
+        """Common registration.
+        :rtype: str
+        """
+        return self._RegistroGeral
+
+    @RegistroGeral.setter
+    def RegistroGeral(self, RegistroGeral):
+        self._RegistroGeral = RegistroGeral
+
+    @property
+    def DispatchDate(self):
+        """Issue date. valid values: dd/mm/yyyy.
+        :rtype: str
+        """
+        return self._DispatchDate
+
+    @DispatchDate.setter
+    def DispatchDate(self, DispatchDate):
+        self._DispatchDate = DispatchDate
+
+    @property
+    def Registro(self):
+        """Address.
+        :rtype: str
+        """
+        return self._Registro
+
+    @Registro.setter
+    def Registro(self, Registro):
+        self._Registro = Registro
+
+    @property
+    def PortraitImage(self):
+        """Specifies the avatar in Base64 format of the id card.
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def DocOrigem(self):
+        """Original identity information.
+        :rtype: str
+        """
+        return self._DocOrigem
+
+    @DocOrigem.setter
+    def DocOrigem(self, DocOrigem):
+        self._DocOrigem = DocOrigem
+
+
+    def _deserialize(self, params):
+        self._Nome = params.get("Nome")
+        self._MemberShip = params.get("MemberShip")
+        self._DataNascimento = params.get("DataNascimento")
+        self._IssuingAgency = params.get("IssuingAgency")
+        self._Fatorrh = params.get("Fatorrh")
+        self._NaturalIDade = params.get("NaturalIDade")
+        self._Observations = params.get("Observations")
+        self._CPF = params.get("CPF")
+        self._DNI = params.get("DNI")
+        self._RegistroGeral = params.get("RegistroGeral")
+        self._DispatchDate = params.get("DispatchDate")
+        self._Registro = params.get("Registro")
+        self._PortraitImage = params.get("PortraitImage")
+        self._DocOrigem = params.get("DocOrigem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BrazilRNEInfo(AbstractModel):
+    """BrazilRNEInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RNE: RNE
+        :type RNE: str
+        :param _CLASSIFICATION: CLASSIFICAÇÃO(CLASSIFICATION)
+        :type CLASSIFICATION: str
+        :param _VALIDADE: VALIDADE
+        :type VALIDADE: str
+        :param _NOME: NOME
+        :type NOME: str
+        :param _Membership: FILIAÇÃO(MEMBERSHIP)
+        :type Membership: str
+        :param _NACIONALIDADE: NACIONALIDADE
+        :type NACIONALIDADE: str
+        :param _NATURALIDADE: NATURALIDADE(PAÍS)
+        :type NATURALIDADE: str
+        :param _IssuingAgency: ORGÃO EXPEDIDOR(IssuingAgency)
+        :type IssuingAgency: str
+        :param _DateOfBirth: DATA DE NASCIMENTO(DateOfBirth)
+        :type DateOfBirth: str
+        :param _Sex: SEXO
+        :type Sex: str
+        :param _EntryDate: DATA DE ENTRADA(EntryDate)
+        :type EntryDate: str
+        :param _VIA: VIA
+        :type VIA: str
+        :param _DispatchDate: DATA DE EXPEDIÇÃO(DispatchDate)
+        :type DispatchDate: str
+        :param _MRZ: MRZ
+        :type MRZ: str
+        :param _PortraitImage: PortraitImage
+        :type PortraitImage: str
+        """
+        self._RNE = None
+        self._CLASSIFICATION = None
+        self._VALIDADE = None
+        self._NOME = None
+        self._Membership = None
+        self._NACIONALIDADE = None
+        self._NATURALIDADE = None
+        self._IssuingAgency = None
+        self._DateOfBirth = None
+        self._Sex = None
+        self._EntryDate = None
+        self._VIA = None
+        self._DispatchDate = None
+        self._MRZ = None
+        self._PortraitImage = None
+
+    @property
+    def RNE(self):
+        """RNE
+        :rtype: str
+        """
+        return self._RNE
+
+    @RNE.setter
+    def RNE(self, RNE):
+        self._RNE = RNE
+
+    @property
+    def CLASSIFICATION(self):
+        """CLASSIFICAÇÃO(CLASSIFICATION)
+        :rtype: str
+        """
+        return self._CLASSIFICATION
+
+    @CLASSIFICATION.setter
+    def CLASSIFICATION(self, CLASSIFICATION):
+        self._CLASSIFICATION = CLASSIFICATION
+
+    @property
+    def VALIDADE(self):
+        """VALIDADE
+        :rtype: str
+        """
+        return self._VALIDADE
+
+    @VALIDADE.setter
+    def VALIDADE(self, VALIDADE):
+        self._VALIDADE = VALIDADE
+
+    @property
+    def NOME(self):
+        """NOME
+        :rtype: str
+        """
+        return self._NOME
+
+    @NOME.setter
+    def NOME(self, NOME):
+        self._NOME = NOME
+
+    @property
+    def Membership(self):
+        """FILIAÇÃO(MEMBERSHIP)
+        :rtype: str
+        """
+        return self._Membership
+
+    @Membership.setter
+    def Membership(self, Membership):
+        self._Membership = Membership
+
+    @property
+    def NACIONALIDADE(self):
+        """NACIONALIDADE
+        :rtype: str
+        """
+        return self._NACIONALIDADE
+
+    @NACIONALIDADE.setter
+    def NACIONALIDADE(self, NACIONALIDADE):
+        self._NACIONALIDADE = NACIONALIDADE
+
+    @property
+    def NATURALIDADE(self):
+        """NATURALIDADE(PAÍS)
+        :rtype: str
+        """
+        return self._NATURALIDADE
+
+    @NATURALIDADE.setter
+    def NATURALIDADE(self, NATURALIDADE):
+        self._NATURALIDADE = NATURALIDADE
+
+    @property
+    def IssuingAgency(self):
+        """ORGÃO EXPEDIDOR(IssuingAgency)
+        :rtype: str
+        """
+        return self._IssuingAgency
+
+    @IssuingAgency.setter
+    def IssuingAgency(self, IssuingAgency):
+        self._IssuingAgency = IssuingAgency
+
+    @property
+    def DateOfBirth(self):
+        """DATA DE NASCIMENTO(DateOfBirth)
+        :rtype: str
+        """
+        return self._DateOfBirth
+
+    @DateOfBirth.setter
+    def DateOfBirth(self, DateOfBirth):
+        self._DateOfBirth = DateOfBirth
+
+    @property
+    def Sex(self):
+        """SEXO
+        :rtype: str
+        """
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def EntryDate(self):
+        """DATA DE ENTRADA(EntryDate)
+        :rtype: str
+        """
+        return self._EntryDate
+
+    @EntryDate.setter
+    def EntryDate(self, EntryDate):
+        self._EntryDate = EntryDate
+
+    @property
+    def VIA(self):
+        """VIA
+        :rtype: str
+        """
+        return self._VIA
+
+    @VIA.setter
+    def VIA(self, VIA):
+        self._VIA = VIA
+
+    @property
+    def DispatchDate(self):
+        """DATA DE EXPEDIÇÃO(DispatchDate)
+        :rtype: str
+        """
+        return self._DispatchDate
+
+    @DispatchDate.setter
+    def DispatchDate(self, DispatchDate):
+        self._DispatchDate = DispatchDate
+
+    @property
+    def MRZ(self):
+        """MRZ
+        :rtype: str
+        """
+        return self._MRZ
+
+    @MRZ.setter
+    def MRZ(self, MRZ):
+        self._MRZ = MRZ
+
+    @property
+    def PortraitImage(self):
+        """PortraitImage
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+
+    def _deserialize(self, params):
+        self._RNE = params.get("RNE")
+        self._CLASSIFICATION = params.get("CLASSIFICATION")
+        self._VALIDADE = params.get("VALIDADE")
+        self._NOME = params.get("NOME")
+        self._Membership = params.get("Membership")
+        self._NACIONALIDADE = params.get("NACIONALIDADE")
+        self._NATURALIDADE = params.get("NATURALIDADE")
+        self._IssuingAgency = params.get("IssuingAgency")
+        self._DateOfBirth = params.get("DateOfBirth")
+        self._Sex = params.get("Sex")
+        self._EntryDate = params.get("EntryDate")
+        self._VIA = params.get("VIA")
+        self._DispatchDate = params.get("DispatchDate")
+        self._MRZ = params.get("MRZ")
+        self._PortraitImage = params.get("PortraitImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BrazilRNMInfo(AbstractModel):
+    """Document type for brazil RNM.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SOBRENOME: SOBRENOME Type
+        :type SOBRENOME: str
+        :param _NOME: NOME Type
+        :type NOME: str
+        :param _DATADENASCIMENTO: DATA DE NASCIMENTO
+        :type DATADENASCIMENTO: str
+        :param _SEXO: SEXO F
+        :type SEXO: str
+        :param _MEMBERSHIP: FILIAÇÃO(MEMBERSHIP)
+        :type MEMBERSHIP: str
+        :param _NACIONALIDADE: NACIONALIDADE Type
+        :type NACIONALIDADE: str
+        :param _VALIDADE: VALIDADE Type
+        :type VALIDADE: str
+        :param _RNM: RNM Type
+        :type RNM: str
+        :param _CPF: CPF Type
+        :type CPF: str
+        :param _CLASSIFICATION: CLASSIFICAÇÃO(CLASSIFICATION)
+        :type CLASSIFICATION: str
+        :param _PRAZODERESIDENCIA: PRAZO DE RESIDENCIA
+        :type PRAZODERESIDENCIA: str
+        :param _ISSUANCE: EMISSÃO(ISSUANCE)
+        :type ISSUANCE: str
+        :param _AMPAROLEGAL: AMPARO LEGAL(LegalHelp)
+        :type AMPAROLEGAL: str
+        :param _MRZ: MRZCode
+        :type MRZ: str
+        :param _PortraitImage: Portrait Image
+        :type PortraitImage: str
+        :param _PortraitImageBack: PortraitImage(Back)
+        :type PortraitImageBack: str
+        """
+        self._SOBRENOME = None
+        self._NOME = None
+        self._DATADENASCIMENTO = None
+        self._SEXO = None
+        self._MEMBERSHIP = None
+        self._NACIONALIDADE = None
+        self._VALIDADE = None
+        self._RNM = None
+        self._CPF = None
+        self._CLASSIFICATION = None
+        self._PRAZODERESIDENCIA = None
+        self._ISSUANCE = None
+        self._AMPAROLEGAL = None
+        self._MRZ = None
+        self._PortraitImage = None
+        self._PortraitImageBack = None
+
+    @property
+    def SOBRENOME(self):
+        """SOBRENOME Type
+        :rtype: str
+        """
+        return self._SOBRENOME
+
+    @SOBRENOME.setter
+    def SOBRENOME(self, SOBRENOME):
+        self._SOBRENOME = SOBRENOME
+
+    @property
+    def NOME(self):
+        """NOME Type
+        :rtype: str
+        """
+        return self._NOME
+
+    @NOME.setter
+    def NOME(self, NOME):
+        self._NOME = NOME
+
+    @property
+    def DATADENASCIMENTO(self):
+        """DATA DE NASCIMENTO
+        :rtype: str
+        """
+        return self._DATADENASCIMENTO
+
+    @DATADENASCIMENTO.setter
+    def DATADENASCIMENTO(self, DATADENASCIMENTO):
+        self._DATADENASCIMENTO = DATADENASCIMENTO
+
+    @property
+    def SEXO(self):
+        """SEXO F
+        :rtype: str
+        """
+        return self._SEXO
+
+    @SEXO.setter
+    def SEXO(self, SEXO):
+        self._SEXO = SEXO
+
+    @property
+    def MEMBERSHIP(self):
+        """FILIAÇÃO(MEMBERSHIP)
+        :rtype: str
+        """
+        return self._MEMBERSHIP
+
+    @MEMBERSHIP.setter
+    def MEMBERSHIP(self, MEMBERSHIP):
+        self._MEMBERSHIP = MEMBERSHIP
+
+    @property
+    def NACIONALIDADE(self):
+        """NACIONALIDADE Type
+        :rtype: str
+        """
+        return self._NACIONALIDADE
+
+    @NACIONALIDADE.setter
+    def NACIONALIDADE(self, NACIONALIDADE):
+        self._NACIONALIDADE = NACIONALIDADE
+
+    @property
+    def VALIDADE(self):
+        """VALIDADE Type
+        :rtype: str
+        """
+        return self._VALIDADE
+
+    @VALIDADE.setter
+    def VALIDADE(self, VALIDADE):
+        self._VALIDADE = VALIDADE
+
+    @property
+    def RNM(self):
+        """RNM Type
+        :rtype: str
+        """
+        return self._RNM
+
+    @RNM.setter
+    def RNM(self, RNM):
+        self._RNM = RNM
+
+    @property
+    def CPF(self):
+        """CPF Type
+        :rtype: str
+        """
+        return self._CPF
+
+    @CPF.setter
+    def CPF(self, CPF):
+        self._CPF = CPF
+
+    @property
+    def CLASSIFICATION(self):
+        """CLASSIFICAÇÃO(CLASSIFICATION)
+        :rtype: str
+        """
+        return self._CLASSIFICATION
+
+    @CLASSIFICATION.setter
+    def CLASSIFICATION(self, CLASSIFICATION):
+        self._CLASSIFICATION = CLASSIFICATION
+
+    @property
+    def PRAZODERESIDENCIA(self):
+        """PRAZO DE RESIDENCIA
+        :rtype: str
+        """
+        return self._PRAZODERESIDENCIA
+
+    @PRAZODERESIDENCIA.setter
+    def PRAZODERESIDENCIA(self, PRAZODERESIDENCIA):
+        self._PRAZODERESIDENCIA = PRAZODERESIDENCIA
+
+    @property
+    def ISSUANCE(self):
+        """EMISSÃO(ISSUANCE)
+        :rtype: str
+        """
+        return self._ISSUANCE
+
+    @ISSUANCE.setter
+    def ISSUANCE(self, ISSUANCE):
+        self._ISSUANCE = ISSUANCE
+
+    @property
+    def AMPAROLEGAL(self):
+        """AMPARO LEGAL(LegalHelp)
+        :rtype: str
+        """
+        return self._AMPAROLEGAL
+
+    @AMPAROLEGAL.setter
+    def AMPAROLEGAL(self, AMPAROLEGAL):
+        self._AMPAROLEGAL = AMPAROLEGAL
+
+    @property
+    def MRZ(self):
+        """MRZCode
+        :rtype: str
+        """
+        return self._MRZ
+
+    @MRZ.setter
+    def MRZ(self, MRZ):
+        self._MRZ = MRZ
+
+    @property
+    def PortraitImage(self):
+        """Portrait Image
+        :rtype: str
+        """
+        return self._PortraitImage
+
+    @PortraitImage.setter
+    def PortraitImage(self, PortraitImage):
+        self._PortraitImage = PortraitImage
+
+    @property
+    def PortraitImageBack(self):
+        """PortraitImage(Back)
+        :rtype: str
+        """
+        return self._PortraitImageBack
+
+    @PortraitImageBack.setter
+    def PortraitImageBack(self, PortraitImageBack):
+        self._PortraitImageBack = PortraitImageBack
+
+
+    def _deserialize(self, params):
+        self._SOBRENOME = params.get("SOBRENOME")
+        self._NOME = params.get("NOME")
+        self._DATADENASCIMENTO = params.get("DATADENASCIMENTO")
+        self._SEXO = params.get("SEXO")
+        self._MEMBERSHIP = params.get("MEMBERSHIP")
+        self._NACIONALIDADE = params.get("NACIONALIDADE")
+        self._VALIDADE = params.get("VALIDADE")
+        self._RNM = params.get("RNM")
+        self._CPF = params.get("CPF")
+        self._CLASSIFICATION = params.get("CLASSIFICATION")
+        self._PRAZODERESIDENCIA = params.get("PRAZODERESIDENCIA")
+        self._ISSUANCE = params.get("ISSUANCE")
+        self._AMPAROLEGAL = params.get("AMPAROLEGAL")
+        self._MRZ = params.get("MRZ")
+        self._PortraitImage = params.get("PortraitImage")
+        self._PortraitImageBack = params.get("PortraitImageBack")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusInvoice(AbstractModel):
     """Bus ticket
 
@@ -7912,6 +8993,162 @@ class QuotaInvoice(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RecognizeBrazilCommonOCRRequest(AbstractModel):
+    """RecognizeBrazilCommonOCR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: no more than 3 seconds.
+        :type ImageBase64: str
+        :param _ImageUrl: The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is advisable to store images in tencent cloud. urls not stored in tencent cloud may possibly be impacted in speed and stability.
+        :type ImageUrl: str
+        :param _BackImageBase64: The Base64 value of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        :type BackImageBase64: str
+        :param _BackImageUrl: The Url address of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is recommended to store images in tencent cloud. speed and stability of non-tencent cloud storage urls may be impacted.
+        :type BackImageUrl: str
+        :param _ReturnHeadImage: Specifies whether to return the portrait photo.
+        :type ReturnHeadImage: bool
+        """
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._BackImageBase64 = None
+        self._BackImageUrl = None
+        self._ReturnHeadImage = None
+
+    @property
+    def ImageBase64(self):
+        """The Base64 value of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: no more than 3 seconds.
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        """The Url of the image. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is advisable to store images in tencent cloud. urls not stored in tencent cloud may possibly be impacted in speed and stability.
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def BackImageBase64(self):
+        """The Base64 value of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after encoding. image download time: not more than 3 seconds. either ImageUrl or ImageBase64 must be provided. if both are provided, only use ImageUrl.
+        :rtype: str
+        """
+        return self._BackImageBase64
+
+    @BackImageBase64.setter
+    def BackImageBase64(self, BackImageBase64):
+        self._BackImageBase64 = BackImageBase64
+
+    @property
+    def BackImageUrl(self):
+        """The Url address of the back side of the card. supported image formats: PNG, JPG, JPEG. GIF format is not currently supported. supported image size: no more than 7M after Base64 encoding. image download time is no more than 3 seconds. urls stored in tencent cloud guarantee higher download speed and stability. it is recommended to store images in tencent cloud. speed and stability of non-tencent cloud storage urls may be impacted.
+        :rtype: str
+        """
+        return self._BackImageUrl
+
+    @BackImageUrl.setter
+    def BackImageUrl(self, BackImageUrl):
+        self._BackImageUrl = BackImageUrl
+
+    @property
+    def ReturnHeadImage(self):
+        """Specifies whether to return the portrait photo.
+        :rtype: bool
+        """
+        return self._ReturnHeadImage
+
+    @ReturnHeadImage.setter
+    def ReturnHeadImage(self, ReturnHeadImage):
+        self._ReturnHeadImage = ReturnHeadImage
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._BackImageBase64 = params.get("BackImageBase64")
+        self._BackImageUrl = params.get("BackImageUrl")
+        self._ReturnHeadImage = params.get("ReturnHeadImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeBrazilCommonOCRResponse(AbstractModel):
+    """RecognizeBrazilCommonOCR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Specifies the type of document in brazil. valid values: 1. RNE 2. RNM 3. IDCard 4. DrivingLicense.
+        :type Type: int
+        :param _Result: Identifies the content of a brazil document.
+        :type Result: :class:`tencentcloud.ocr.v20181119.models.BrazilCardInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Type = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Type(self):
+        """Specifies the type of document in brazil. valid values: 1. RNE 2. RNM 3. IDCard 4. DrivingLicense.
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Result(self):
+        """Identifies the content of a brazil document.
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.BrazilCardInfo`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Result") is not None:
+            self._Result = BrazilCardInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class RecognizeBrazilDriverLicenseOCRRequest(AbstractModel):

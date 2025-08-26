@@ -380,6 +380,31 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeBrazilCommonOCR(self, request):
+        """This API is used to identify Brazil RNE documents.
+
+        This API is used to set the default request rate limit to 5 requests/second.
+
+        :param request: Request instance for RecognizeBrazilCommonOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeBrazilCommonOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeBrazilCommonOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeBrazilCommonOCR", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeBrazilCommonOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeBrazilDriverLicenseOCR(self, request):
         """This interface supports identification of the front and back of Brazilian driver's license. The identification fields include name, driver's license category, number, validity period, etc.
 

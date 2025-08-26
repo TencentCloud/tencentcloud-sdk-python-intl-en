@@ -2009,9 +2009,9 @@ class LkeClient(AbstractClient):
     def SaveDoc(self, request):
         """This API is used to save a knowledge base document Q&As.
         Three steps to store a file in the knowledge library of the application:
-        1. Obtain a temporary key. For more information, see [API Documentation](https://cloud.tencent.com/document/product/1759/105050). Different parameter combinations of the temporary key have different permissions. For more information, see [Tencent Cloud Agent Development Platform/TCADP COS Guide](https://cloud.tencent.com/document/product/1759/116238).
-        2. Call the COS storage API provided by Tencent Cloud to store the file in the COS of TCADP. For details, see [COS SDK Overview](https://cloud.tencent.com/document/product/436/6474). Note that the temporary key method is used to operate COS.
-        3. Call this API to store the basic information of the file in TCADP.
+        1. Obtain a temporary key. For more information, see [API Documentation](https://cloud.tencent.com/document/product/1759/105050). Different parameter combinations of the temporary key have different permissions. For more information, see [Tencent Cloud Agent Development Platform/ADP COS Guide](https://cloud.tencent.com/document/product/1759/116238).
+        2. Call the COS storage API provided by Tencent Cloud to store the file in the COS of ADP. For details, see [COS SDK Overview](https://cloud.tencent.com/document/product/436/6474). Note that the temporary key method is used to operate COS.
+        3. Call this API to store the basic information of the file in ADP.
         For the above steps, see [Documentation](https://cloud.tencent.com/document/product/1759/108903). At the end of the documentation, there is a [code demo](https://cloud.tencent.com/document/product/1759/108903#demo), which can be used as a reference.
 
         :param request: Request instance for SaveDoc.

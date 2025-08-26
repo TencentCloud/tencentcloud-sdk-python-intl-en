@@ -16783,11 +16783,14 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
         :type Comment: str
+        :param _RecordType: Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.
+        :type RecordType: str
         """
         self._HLSConfigure = None
         self._MP4Configure = None
         self._Name = None
         self._Comment = None
+        self._RecordType = None
 
     @property
     def HLSConfigure(self):
@@ -16833,6 +16836,17 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def RecordType(self):
+        """Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection. If it is left blank, the default value video is used.
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
 
     def _deserialize(self, params):
         if params.get("HLSConfigure") is not None:
@@ -16843,6 +16857,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
             self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._RecordType = params.get("RecordType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26740,6 +26755,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type BeginTime: str
         :param _EndTime: End time of the live streaming segment in ISO date and time format.	
         :type EndTime: str
+        :param _Title: Highlight title.
+        :type Title: str
+        :param _Summary: Highlight overview.
+        :type Summary: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -26747,6 +26766,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SegmentTags = None
         self._BeginTime = None
         self._EndTime = None
+        self._Title = None
+        self._Summary = None
 
     @property
     def Confidence(self):
@@ -26815,6 +26836,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def Title(self):
+        """Highlight title.
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Summary(self):
+        """Highlight overview.
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
@@ -26823,6 +26866,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SegmentTags = params.get("SegmentTags")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
+        self._Title = params.get("Title")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28653,6 +28698,8 @@ class LiveRecordTemplate(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type UpdateTime: str
+        :param _RecordType: Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection.
+        :type RecordType: str
         """
         self._Definition = None
         self._HLSConfigure = None
@@ -28662,6 +28709,7 @@ class LiveRecordTemplate(AbstractModel):
         self._Type = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._RecordType = None
 
     @property
     def Definition(self):
@@ -28754,6 +28802,17 @@ class LiveRecordTemplate(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def RecordType(self):
+        """Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection.
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -28768,6 +28827,7 @@ class LiveRecordTemplate(AbstractModel):
         self._Type = params.get("Type")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._RecordType = params.get("RecordType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29107,17 +29167,25 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Result type. Valid values:
+<li>SegmentRecognition: video splitting.</li>
+<li>Highlight: highlight.</li>
         :type Type: str
         :param _SegmentResultSet: 
         :type SegmentResultSet: list of SegmentRecognitionItem
+        :param _HighlightResultSet: Highlight result. This field is valid when Type is set to Highlight.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HighlightResultSet: list of MediaAiAnalysisHighlightItem
         """
         self._Type = None
         self._SegmentResultSet = None
+        self._HighlightResultSet = None
 
     @property
     def Type(self):
-        """
+        """Result type. Valid values:
+<li>SegmentRecognition: video splitting.</li>
+<li>Highlight: highlight.</li>
         :rtype: str
         """
         return self._Type
@@ -29137,6 +29205,18 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
     def SegmentResultSet(self, SegmentResultSet):
         self._SegmentResultSet = SegmentResultSet
 
+    @property
+    def HighlightResultSet(self):
+        """Highlight result. This field is valid when Type is set to Highlight.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MediaAiAnalysisHighlightItem
+        """
+        return self._HighlightResultSet
+
+    @HighlightResultSet.setter
+    def HighlightResultSet(self, HighlightResultSet):
+        self._HighlightResultSet = HighlightResultSet
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -29146,6 +29226,12 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
                 obj = SegmentRecognitionItem()
                 obj._deserialize(item)
                 self._SegmentResultSet.append(obj)
+        if params.get("HighlightResultSet") is not None:
+            self._HighlightResultSet = []
+            for item in params.get("HighlightResultSet"):
+                obj = MediaAiAnalysisHighlightItem()
+                obj._deserialize(item)
+                self._HighlightResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31229,22 +31315,21 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyType: Notification type:
+        :param _NotifyType: Notification Type:
+TDMQ-CMQ: TDMQ for CMQ.
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
 
-"CMQ": Callback messages are written to the CMQ queue; 
-"URL": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).
-
-<font color="red">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>
+<font color="red">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>
         :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str
-        :param _CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
+        :param _CmqModel: Queue and Topic models are provided.
         :type CmqModel: str
-        :param _CmqRegion: CMQ region, such as `sh` and `bj`.
+        :param _CmqRegion: Region when NotifyType is set to TDMQ-CMQ. For example, sh or bj.
         :type CmqRegion: str
-        :param _QueueName: This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.
+        :param _QueueName: This field is valid when the model is Queue. It indicates the name of the TDMQ for CMQ queue for receiving event notifications.
         :type QueueName: str
-        :param _TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
+        :param _TopicName: This field is valid when the model is Topic. It indicates the name of the TDMQ for CMQ topic for receiving event notifications.
         :type TopicName: str
         :param _NotifyKey: Key used to generate a callback signature.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -31260,12 +31345,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyType(self):
-        """Notification type:
+        """Notification Type:
+TDMQ-CMQ: TDMQ for CMQ.
+"URL": When a URL is specified, HTTP callbacks are pushed to the address specified by NotifyUrl. The callback protocol is HTTP+JSON. The content of the packet body is the same as the output parameters of [ParseLiveStreamProcessNotification](https://www.tencentcloud.comom/document/product/862/39229?from_cn_redirect=1).
 
-"CMQ": Callback messages are written to the CMQ queue; 
-"URL": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).
-
-<font color="red">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>
+<font color="red">Note: If it is left blank, TDMQ-CMQ is used by default. To use other types, fill in the corresponding type value.</font>
         :rtype: str
         """
         return self._NotifyType
@@ -31287,7 +31371,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CmqModel(self):
-        """CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
+        """Queue and Topic models are provided.
         :rtype: str
         """
         return self._CmqModel
@@ -31298,7 +31382,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CmqRegion(self):
-        """CMQ region, such as `sh` and `bj`.
+        """Region when NotifyType is set to TDMQ-CMQ. For example, sh or bj.
         :rtype: str
         """
         return self._CmqRegion
@@ -31309,7 +31393,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
-        """This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.
+        """This field is valid when the model is Queue. It indicates the name of the TDMQ for CMQ queue for receiving event notifications.
         :rtype: str
         """
         return self._QueueName
@@ -31320,7 +31404,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
-        """This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
+        """This field is valid when the model is Topic. It indicates the name of the TDMQ for CMQ topic for receiving event notifications.
         :rtype: str
         """
         return self._TopicName
@@ -32082,12 +32166,20 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
         :type Duration: float
         :param _SegmentSet: A list of the highlight segments.
         :type SegmentSet: list of HighlightSegmentItem
+        :param _HighlightUrl: Intelligent highlight address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HighlightUrl: str
+        :param _CovImgUrl: Intelligent highlight cover address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CovImgUrl: str
         """
         self._HighlightPath = None
         self._CovImgPath = None
         self._Confidence = None
         self._Duration = None
         self._SegmentSet = None
+        self._HighlightUrl = None
+        self._CovImgUrl = None
 
     @property
     def HighlightPath(self):
@@ -32144,6 +32236,30 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
     def SegmentSet(self, SegmentSet):
         self._SegmentSet = SegmentSet
 
+    @property
+    def HighlightUrl(self):
+        """Intelligent highlight address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._HighlightUrl
+
+    @HighlightUrl.setter
+    def HighlightUrl(self, HighlightUrl):
+        self._HighlightUrl = HighlightUrl
+
+    @property
+    def CovImgUrl(self):
+        """Intelligent highlight cover address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._CovImgUrl
+
+    @CovImgUrl.setter
+    def CovImgUrl(self, CovImgUrl):
+        self._CovImgUrl = CovImgUrl
+
 
     def _deserialize(self, params):
         self._HighlightPath = params.get("HighlightPath")
@@ -32156,6 +32272,8 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
                 obj = HighlightSegmentItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        self._HighlightUrl = params.get("HighlightUrl")
+        self._CovImgUrl = params.get("CovImgUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36775,12 +36893,15 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: Template description, with a length limit of 256 characters.
         :type Comment: str
+        :param _RecordType: Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection.
+        :type RecordType: str
         """
         self._Definition = None
         self._HLSConfigure = None
         self._MP4Configure = None
         self._Name = None
         self._Comment = None
+        self._RecordType = None
 
     @property
     def Definition(self):
@@ -36837,6 +36958,17 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def RecordType(self):
+        """Recording type. Valid values: video: audio and video recording; audio: audio recording; auto: automatic detection.
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -36848,6 +36980,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
             self._MP4Configure._deserialize(params.get("MP4Configure"))
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._RecordType = params.get("RecordType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43297,6 +43430,9 @@ Default value: 0.
         :param _EnhanceConfig: Audio/Video enhancement configuration.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        :param _SubtitleTemplate: Subtitle parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         """
         self._Container = None
         self._RemoveVideo = None
@@ -43306,6 +43442,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._TEHDConfig = None
         self._StdExtInfo = None
         self._EnhanceConfig = None
+        self._SubtitleTemplate = None
 
     @property
     def Container(self):
@@ -43402,6 +43539,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     def EnhanceConfig(self, EnhanceConfig):
         self._EnhanceConfig = EnhanceConfig
 
+    @property
+    def SubtitleTemplate(self):
+        """Subtitle parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        """
+        return self._SubtitleTemplate
+
+    @SubtitleTemplate.setter
+    def SubtitleTemplate(self, SubtitleTemplate):
+        self._SubtitleTemplate = SubtitleTemplate
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -43420,6 +43569,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        if params.get("SubtitleTemplate") is not None:
+            self._SubtitleTemplate = SubtitleTemplate()
+            self._SubtitleTemplate._deserialize(params.get("SubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48130,6 +48282,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type StreamIndex: int
+        :param _SubtitleFileInput: Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubtitleFileInput: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _FontType: Font type. valid values:.
 <li>hei.ttf: simhei.</li>.
 <li>song.ttf: simsun.</li>.
@@ -48205,9 +48360,34 @@ Note: This field may return null, indicating that no valid value can be obtained
 Default value: 0.8.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type BoardAlpha: float
+        :param _OutlineWidth: Stroke width.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutlineWidth: float
+        :param _OutlineColor: Stroke color. The value should be a 6-digit hexadecimal RGB value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutlineColor: str
+        :param _OutlineAlpha: Stroke transparency. The value should be a positive floating-point number in the range of (0, 1].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutlineAlpha: float
+        :param _ShadowWidth: Shadow width. The value should be a floating-point number in the range of [0, 1000].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShadowWidth: float
+        :param _ShadowColor: Shadow color. The value should be a 6-digit hexadecimal RGB value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShadowColor: str
+        :param _ShadowAlpha: Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ShadowAlpha: float
+        :param _LineSpacing: Line spacing. The value should be a positive integer in the range of [0, 1000].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LineSpacing: int
+        :param _Alignment: Alignment mode. Valid values: top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines. bottom: bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Alignment: str
         """
         self._Path = None
         self._StreamIndex = None
+        self._SubtitleFileInput = None
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
@@ -48218,6 +48398,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._BoardHeight = None
         self._BoardColor = None
         self._BoardAlpha = None
+        self._OutlineWidth = None
+        self._OutlineColor = None
+        self._OutlineAlpha = None
+        self._ShadowWidth = None
+        self._ShadowColor = None
+        self._ShadowAlpha = None
+        self._LineSpacing = None
+        self._Alignment = None
 
     @property
     def Path(self):
@@ -48246,6 +48434,18 @@ Note: This field may return null, indicating that no valid value can be obtained
     @StreamIndex.setter
     def StreamIndex(self, StreamIndex):
         self._StreamIndex = StreamIndex
+
+    @property
+    def SubtitleFileInput(self):
+        """Input information on the subtitle file to be embedded into the video. Currently, only subtitle files stored in COS are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._SubtitleFileInput
+
+    @SubtitleFileInput.setter
+    def SubtitleFileInput(self, SubtitleFileInput):
+        self._SubtitleFileInput = SubtitleFileInput
 
     @property
     def FontType(self):
@@ -48412,10 +48612,109 @@ Note: This field may return null, indicating that no valid value can be obtained
     def BoardAlpha(self, BoardAlpha):
         self._BoardAlpha = BoardAlpha
 
+    @property
+    def OutlineWidth(self):
+        """Stroke width.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._OutlineWidth
+
+    @OutlineWidth.setter
+    def OutlineWidth(self, OutlineWidth):
+        self._OutlineWidth = OutlineWidth
+
+    @property
+    def OutlineColor(self):
+        """Stroke color. The value should be a 6-digit hexadecimal RGB value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._OutlineColor
+
+    @OutlineColor.setter
+    def OutlineColor(self, OutlineColor):
+        self._OutlineColor = OutlineColor
+
+    @property
+    def OutlineAlpha(self):
+        """Stroke transparency. The value should be a positive floating-point number in the range of (0, 1].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._OutlineAlpha
+
+    @OutlineAlpha.setter
+    def OutlineAlpha(self, OutlineAlpha):
+        self._OutlineAlpha = OutlineAlpha
+
+    @property
+    def ShadowWidth(self):
+        """Shadow width. The value should be a floating-point number in the range of [0, 1000].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._ShadowWidth
+
+    @ShadowWidth.setter
+    def ShadowWidth(self, ShadowWidth):
+        self._ShadowWidth = ShadowWidth
+
+    @property
+    def ShadowColor(self):
+        """Shadow color. The value should be a 6-digit hexadecimal RGB value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._ShadowColor
+
+    @ShadowColor.setter
+    def ShadowColor(self, ShadowColor):
+        self._ShadowColor = ShadowColor
+
+    @property
+    def ShadowAlpha(self):
+        """Shadow transparency. The value should be a positive floating-point number in the range of (0, 1].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
+        return self._ShadowAlpha
+
+    @ShadowAlpha.setter
+    def ShadowAlpha(self, ShadowAlpha):
+        self._ShadowAlpha = ShadowAlpha
+
+    @property
+    def LineSpacing(self):
+        """Line spacing. The value should be a positive integer in the range of [0, 1000].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+    @property
+    def Alignment(self):
+        """Alignment mode. Valid values: top alignment. The top position of subtitles is fixed, while the bottom position changes according to the number of lines. bottom: bottom alignment. The bottom position of subtitles is fixed, while the top position changes according to the number of lines.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
+        return self._Alignment
+
+    @Alignment.setter
+    def Alignment(self, Alignment):
+        self._Alignment = Alignment
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
         self._StreamIndex = params.get("StreamIndex")
+        if params.get("SubtitleFileInput") is not None:
+            self._SubtitleFileInput = MediaInputInfo()
+            self._SubtitleFileInput._deserialize(params.get("SubtitleFileInput"))
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
@@ -48426,6 +48725,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._BoardHeight = params.get("BoardHeight")
         self._BoardColor = params.get("BoardColor")
         self._BoardAlpha = params.get("BoardAlpha")
+        self._OutlineWidth = params.get("OutlineWidth")
+        self._OutlineColor = params.get("OutlineColor")
+        self._OutlineAlpha = params.get("OutlineAlpha")
+        self._ShadowWidth = params.get("ShadowWidth")
+        self._ShadowColor = params.get("ShadowColor")
+        self._ShadowAlpha = params.get("ShadowAlpha")
+        self._LineSpacing = params.get("LineSpacing")
+        self._Alignment = params.get("Alignment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49924,17 +50231,25 @@ class TimeSpotCheck(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckDuration: Duration of each loop detection in the spot check policy, in seconds. Valid values:
+        :param _CheckDuration: Duration of each loop detection, in seconds. Value range:
 
  - Minimum value: 10.
  - Maximum value: 86400.
 
         :type CheckDuration: int
-        :param _CheckInterval: Detection interval of the spot check policy, which indicates how long to wait before conducting the next detection after one detection is completed.
+        :param _CheckInterval: Detection interval, in seconds. It indicates the duration after a detection is completed and before the next detection is conducted. Value range:
+ - Minimum value: 10.
+ - Maximum value: 3600.
         :type CheckInterval: int
-        :param _SkipDuration: Duration for which the opening clip is skipped.
+        :param _SkipDuration: Skipped opening duration, in seconds. Value range:
+ - Minimum value: 1.
+ - Maximum value: 1800.
         :type SkipDuration: int
-        :param _CirclesNumber: Number of loops. When this field is empty or set to 0, the default behavior is to loop until the video ends.
+        :param _CirclesNumber: Number of loops. Value range:
+ - Minimum value: 0.
+ - Maximum value: 1000.
+
+If the value is 0 or not specified, it indicates that loops are executed until the video ends.
         :type CirclesNumber: int
         """
         self._CheckDuration = None
@@ -49944,7 +50259,7 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def CheckDuration(self):
-        """Duration of each loop detection in the spot check policy, in seconds. Valid values:
+        """Duration of each loop detection, in seconds. Value range:
 
  - Minimum value: 10.
  - Maximum value: 86400.
@@ -49959,7 +50274,9 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def CheckInterval(self):
-        """Detection interval of the spot check policy, which indicates how long to wait before conducting the next detection after one detection is completed.
+        """Detection interval, in seconds. It indicates the duration after a detection is completed and before the next detection is conducted. Value range:
+ - Minimum value: 10.
+ - Maximum value: 3600.
         :rtype: int
         """
         return self._CheckInterval
@@ -49970,7 +50287,9 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def SkipDuration(self):
-        """Duration for which the opening clip is skipped.
+        """Skipped opening duration, in seconds. Value range:
+ - Minimum value: 1.
+ - Maximum value: 1800.
         :rtype: int
         """
         return self._SkipDuration
@@ -49981,7 +50300,11 @@ class TimeSpotCheck(AbstractModel):
 
     @property
     def CirclesNumber(self):
-        """Number of loops. When this field is empty or set to 0, the default behavior is to loop until the video ends.
+        """Number of loops. Value range:
+ - Minimum value: 0.
+ - Maximum value: 1000.
+
+If the value is 0 or not specified, it indicates that loops are executed until the video ends.
         :rtype: int
         """
         return self._CirclesNumber
