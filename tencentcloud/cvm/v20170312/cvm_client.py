@@ -1200,6 +1200,31 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquiryPriceRenewInstances(self, request):
+        """This API is used to inquire about the price for renewing a monthly subscription instance.
+
+        This API is used to query the renewal price of monthly subscription instances.
+
+        :param request: Request instance for InquiryPriceRenewInstances.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRenewInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InquiryPriceRenewInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRenewInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquiryPriceResetInstance(self, request):
         """This API is used to inquire about the price for reinstalling an instance.
 
@@ -1699,6 +1724,33 @@ class CvmClient(AbstractClient):
             body = self.call("RemoveChcDeployVpc", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveChcDeployVpcResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewInstances(self, request):
+        """This API is used to renew annual and monthly subscription instances.
+
+        This API is used to operate on monthly subscription instances only.
+        This API is used to ensure your account balance is sufficient for renewal. You can check the balance via the DescribeAccountBalance API (https://www.tencentcloud.comom/document/product/555/20253?from_cn_redirect=1).
+        * You can query the result of the instance operation by calling the API [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5). If the latest operation status (LatestOperationState) of the instance is **SUCCESS**, the operation is successful.
+
+        :param request: Request instance for RenewInstances.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.RenewInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.RenewInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

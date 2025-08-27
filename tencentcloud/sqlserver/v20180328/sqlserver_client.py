@@ -72,6 +72,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CompleteExpansion(self, request):
+        """This API is used to complete the instance upgrade and switch immediately without waiting for the maintenance window when the instance status is "upgrade pending switch" after scale-out is initiated. This API needs to be called during off-peak hours of the instance. Some databases cannot be accessed before the switch is completed.
+
+        :param request: Request instance for CompleteExpansion.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CompleteExpansionRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CompleteExpansionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CompleteExpansion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CompleteExpansionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccount(self, request):
         """This API is used to create an instance account.
 
@@ -362,6 +385,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("CreateReadOnlyDBInstances", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReadOnlyDBInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CutXEvents(self, request):
+        """This API is used to manually cut block logs and deadlock logs.
+
+        :param request: Request instance for CutXEvents.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CutXEventsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CutXEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CutXEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.CutXEventsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +739,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCrossRegionZone(self, request):
+        """This API is used to query the disaster recovery region and AZ of the secondary node based on the primary instance.
+
+        :param request: Request instance for DescribeCrossRegionZone.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionZoneRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionZoneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossRegionZone", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCrossRegionZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBCharsets(self, request):
         """This API is used to query the database character sets supported by an instance.
 
@@ -831,6 +900,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatabases(self, request):
+        """This API is used to query the database list.
+
+        :param request: Request instance for DescribeDatabases.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFlowStatus(self, request):
         """This API is used to query flow status.
 
@@ -937,6 +1029,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceTasks(self, request):
+        """This API is used to query the list of asynchronous tasks related to an instance.
+
+        :param request: Request instance for DescribeInstanceTasks.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTasksRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceTradeParameter(self, request):
+        """This API is used to query the instance billing parameters.
+
+        :param request: Request instance for DescribeInstanceTradeParameter.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTradeParameterRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTradeParameterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceTradeParameter", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceTradeParameterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1167,6 +1305,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeSpecSellStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSpecSellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpgradeInstanceCheck(self, request):
+        """This API is used to pre-check the impact of the instance configuration adjustment before the adjustment.
+
+        :param request: Request instance for DescribeUpgradeInstanceCheck.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUpgradeInstanceCheckRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUpgradeInstanceCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpgradeInstanceCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpgradeInstanceCheckResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1444,6 +1605,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyDBInstanceNetwork", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceNote(self, request):
+        """This API is used to modify the instance remarks.
+
+        :param request: Request instance for ModifyDBInstanceNote.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNoteRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNoteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceNote", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceNoteResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

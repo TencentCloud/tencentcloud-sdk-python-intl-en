@@ -2882,7 +2882,10 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTimingL7AnalysisData(self, request):
-        """This API is used to query the time series data of the L7 domain name. Note that there is a delay of about 10 minutes for this API. It is recommended to pull data from 10 minutes before the current time.
+        """This API is used to query time-series data for L7 domain services.
+        Notes:
+        1. There is a delay of about 10 minutes for this API. It is recommended to query data from 10 minutes before the current time.
+        2. By default, the API returns traffic and request data after Web Security mitigation (that is, the clean traffic). Users can set `Filters.mitigatedByWebSecurity ` to query data that has been mitigated by Web Security.
 
         :param request: Request instance for DescribeTimingL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingL7AnalysisDataRequest`
@@ -2928,7 +2931,10 @@ class TeoClient(AbstractClient):
 
 
     def DescribeTopL7AnalysisData(self, request):
-        """This API is used to query the top N data of the L7 domain name by a specified dimension. Note that there is a delay of about 10 minutes for this API. It is recommended to pull data from 10 minutes before the current time.
+        """This API is used to query the top N data of the L7 domain services by a specified dimension.
+        Notes:
+        1. There is a delay of about 10 minutes for this API. It is recommended to query data from 10 minutes before the current time.
+        2. By default, the API returns traffic and request data after Web Security mitigation (that is, the clean traffic). Users can set `Filters.mitigatedByWebSecurity ` to query data that has been mitigated by Web Security.
 
         :param request: Request instance for DescribeTopL7AnalysisData.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopL7AnalysisDataRequest`

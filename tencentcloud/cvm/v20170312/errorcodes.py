@@ -410,6 +410,9 @@ INVALIDPARAMETERVALUE_INCORRECTFORMAT = 'InvalidParameterValue.IncorrectFormat'
 # Invalid instance ID. Please enter a valid ID, such as ins-xxxxxxxx (“x” represents a lower-case letter or a number).
 INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = 'InvalidParameterValue.InstanceIdMalformed'
 
+# Operation not supported for instances with different billing modes.
+INVALIDPARAMETERVALUE_INSTANCENOTSUPPORTEDMIXPRICINGMODEL = 'InvalidParameterValue.InstanceNotSupportedMixPricingModel'
+
 # The specified instance type does not exist.
 INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = 'InvalidParameterValue.InstanceTypeNotFound'
 
@@ -815,6 +818,9 @@ RESOURCENOTFOUND_NODEFAULTCBS = 'ResourceNotFound.NoDefaultCbs'
 # No default CBS resources are available.
 RESOURCENOTFOUND_NODEFAULTCBSWITHREASON = 'ResourceNotFound.NoDefaultCbsWithReason'
 
+# Resources are unavailable.
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
 # This instance type is unavailable in the availability zone.
 RESOURCEUNAVAILABLE_INSTANCETYPE = 'ResourceUnavailable.InstanceType'
 
@@ -898,6 +904,9 @@ UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = 'UnsupportedOperation.InstanceChargeTy
 
 # A mixed payment mode is not supported.
 UNSUPPORTEDOPERATION_INSTANCEMIXEDPRICINGMODEL = 'UnsupportedOperation.InstanceMixedPricingModel'
+
+# Central AZ and edge zone instances cannot be mixed in batch operation.
+UNSUPPORTEDOPERATION_INSTANCEMIXEDZONETYPE = 'UnsupportedOperation.InstanceMixedZoneType'
 
 # The specified instance does not support operating system switching.
 UNSUPPORTEDOPERATION_INSTANCEOSCONVERTOSNOTSUPPORT = 'UnsupportedOperation.InstanceOsConvertOsNotSupport'
@@ -991,6 +1000,9 @@ UNSUPPORTEDOPERATION_INVALIDDATADISK = 'UnsupportedOperation.InvalidDataDisk'
 
 # The specified disk is not supported.
 UNSUPPORTEDOPERATION_INVALIDDISK = 'UnsupportedOperation.InvalidDisk'
+
+# Cloud block storage does not support backup points.
+UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = 'UnsupportedOperation.InvalidDiskBackupQuota'
 
 # 
 UNSUPPORTEDOPERATION_INVALIDDISKFASTROLLBACK = 'UnsupportedOperation.InvalidDiskFastRollback'

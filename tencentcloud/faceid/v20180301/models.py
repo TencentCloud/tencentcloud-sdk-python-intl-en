@@ -522,28 +522,20 @@ Default value: 1
 4: Motion- and reflection-based liveness detection
 Default value: 4
         :type SecurityLevel: int
-        :param _IdCardType: The identity document type. Valid values: 
-1. HK (default): Identity card of Hong Kong (China)
-2. ML: Malaysian identity card
-3. IndonesiaIDCard: Indonesian identity card
-4. PhilippinesVoteID: Philippine voters ID card
-5. PhilippinesDrivingLicense: Philippine driver's license
-6. PhilippinesTinID: Philippine TIN ID card
-7. PhilippinesSSSID: Philippine SSS ID card
-8. PhilippinesUMID: Philippine UMID card
-9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
-10..MacaoIDCard: Macao ID Card
-11.ThailandIDCard: Thailand ID Card
-12.MainlandIDCard: Mainland ID Card
-13.SingaporeIDCard: Singapore ID Card
-14.JapanIDCard: Japan ID Card
-15.MLDrivingLicense: Malaysian Driving License
-16.IndonesiaDrivingLicense: Indonesia Driving License
-17.ThailandDrivingLicense: Thailand Driving License
-18.SingaporeDrivingLicense: Singapore Driving License
-19.JapanDrivingLicense: Japan Driving License
-20.TaiWanIDCard:Taiwan ID Card
-21.HMTPermit: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
+        :param _IdCardType: Card Types Supported for Authentication: Currently supported types are as follows:
+1.HK (Default): Hong Kong (China) Identity Card
+2.ML: Malaysia Identity Card
+3.IndonesiaIDCard: Indonesia Identity Card
+4.PhilippinesVoteID: Philippines Voter ID
+5.PhilippinesDrivingLicense: Philippines Driving License
+6.PhilippinesTinID: Philippines Tin ID
+7.PhilippinesSSSID: Philippines SSS ID
+8.PhilippinesUMID: Philippines UMID
+9.MLIDPassport: Passports of Hong Kong, Macao, Taiwan Regions (China) and Foreign Countries
+10.ThailandIDCard: Thailand Identity Card
+11.MainlandIDCard: Mainland China Identity Card
+12.SingaporeIDCard: Singapore Identity Card
+13.HMTPermit: Exit-Entry Permit for Travel to and from Hong Kong, Macao and Taiwan (China)
         :type IdCardType: str
         :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
@@ -556,6 +548,8 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         :type DisableCheckOcrWarnings: bool
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
+        :param _SdkVersion: ENHANCED: Enhanced Version, BASIC: Basic Version (Default)
+        :type SdkVersion: str
         :param _ActionList: This interface is used to control th action sequences.
 Action types are as follows:
 "blink"
@@ -576,6 +570,7 @@ The default value is blink. The different action types passed in this parameter 
         self._DisableChangeOcrResult = None
         self._DisableCheckOcrWarnings = None
         self._Extra = None
+        self._SdkVersion = None
         self._ActionList = None
 
     @property
@@ -611,28 +606,20 @@ Default value: 4
 
     @property
     def IdCardType(self):
-        """The identity document type. Valid values: 
-1. HK (default): Identity card of Hong Kong (China)
-2. ML: Malaysian identity card
-3. IndonesiaIDCard: Indonesian identity card
-4. PhilippinesVoteID: Philippine voters ID card
-5. PhilippinesDrivingLicense: Philippine driver's license
-6. PhilippinesTinID: Philippine TIN ID card
-7. PhilippinesSSSID: Philippine SSS ID card
-8. PhilippinesUMID: Philippine UMID card
-9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
-10..MacaoIDCard: Macao ID Card
-11.ThailandIDCard: Thailand ID Card
-12.MainlandIDCard: Mainland ID Card
-13.SingaporeIDCard: Singapore ID Card
-14.JapanIDCard: Japan ID Card
-15.MLDrivingLicense: Malaysian Driving License
-16.IndonesiaDrivingLicense: Indonesia Driving License
-17.ThailandDrivingLicense: Thailand Driving License
-18.SingaporeDrivingLicense: Singapore Driving License
-19.JapanDrivingLicense: Japan Driving License
-20.TaiWanIDCard:Taiwan ID Card
-21.HMTPermit: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
+        """Card Types Supported for Authentication: Currently supported types are as follows:
+1.HK (Default): Hong Kong (China) Identity Card
+2.ML: Malaysia Identity Card
+3.IndonesiaIDCard: Indonesia Identity Card
+4.PhilippinesVoteID: Philippines Voter ID
+5.PhilippinesDrivingLicense: Philippines Driving License
+6.PhilippinesTinID: Philippines Tin ID
+7.PhilippinesSSSID: Philippines SSS ID
+8.PhilippinesUMID: Philippines UMID
+9.MLIDPassport: Passports of Hong Kong, Macao, Taiwan Regions (China) and Foreign Countries
+10.ThailandIDCard: Thailand Identity Card
+11.MainlandIDCard: Mainland China Identity Card
+12.SingaporeIDCard: Singapore Identity Card
+13.HMTPermit: Exit-Entry Permit for Travel to and from Hong Kong, Macao and Taiwan (China)
         :rtype: str
         """
         return self._IdCardType
@@ -702,6 +689,17 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         self._Extra = Extra
 
     @property
+    def SdkVersion(self):
+        """ENHANCED: Enhanced Version, BASIC: Basic Version (Default)
+        :rtype: str
+        """
+        return self._SdkVersion
+
+    @SdkVersion.setter
+    def SdkVersion(self, SdkVersion):
+        self._SdkVersion = SdkVersion
+
+    @property
     def ActionList(self):
         """This interface is used to control th action sequences.
 Action types are as follows:
@@ -731,6 +729,7 @@ The default value is blink. The different action types passed in this parameter 
         self._DisableChangeOcrResult = params.get("DisableChangeOcrResult")
         self._DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
         self._Extra = params.get("Extra")
+        self._SdkVersion = params.get("SdkVersion")
         self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4079,6 +4078,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _Extra: The pass-through parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Extra: str
+        :param _DeviceInfoLevel: Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:
+1 - Secure
+2 - Low Risk
+3 - Medium Risk
+4 - High Risk
+Empty - Risk level not obtained.
+Only returned for the ENHANCED version, with the default value being empty.
+        :type DeviceInfoLevel: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4089,6 +4096,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ActionVideo = None
         self._Similarity = None
         self._Extra = None
+        self._DeviceInfoLevel = None
         self._RequestId = None
 
     @property
@@ -4181,6 +4189,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Extra = Extra
 
     @property
+    def DeviceInfoLevel(self):
+        """Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:
+1 - Secure
+2 - Low Risk
+3 - Medium Risk
+4 - High Risk
+Empty - Risk level not obtained.
+Only returned for the ENHANCED version, with the default value being empty.
+        :rtype: str
+        """
+        return self._DeviceInfoLevel
+
+    @DeviceInfoLevel.setter
+    def DeviceInfoLevel(self, DeviceInfoLevel):
+        self._DeviceInfoLevel = DeviceInfoLevel
+
+    @property
     def RequestId(self):
         """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -4200,6 +4225,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ActionVideo = params.get("ActionVideo")
         self._Similarity = params.get("Similarity")
         self._Extra = params.get("Extra")
+        self._DeviceInfoLevel = params.get("DeviceInfoLevel")
         self._RequestId = params.get("RequestId")
 
 
@@ -4212,7 +4238,7 @@ class GetFaceIdTokenIntlRequest(AbstractModel):
         r"""
         :param _CheckMode: The detection mode. Valid values:
 `liveness`: Liveness detection only.
-`compare`: Selfie verification.
+`compare`: Selfie Verification(liveness detection and face comparison).
 Default value: `liveness`.
         :type CheckMode: str
         :param _SecureLevel: The verification security level. Valid values:
@@ -4237,18 +4263,21 @@ Single action example: "blink"
 Multiple action example: "blink,mouth"
 The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
         :type ActionList: str
+        :param _SdkVersion: ENHANCED: Enhanced Version, BASIC: Basic Version (Default)
+        :type SdkVersion: str
         """
         self._CheckMode = None
         self._SecureLevel = None
         self._Image = None
         self._Extra = None
         self._ActionList = None
+        self._SdkVersion = None
 
     @property
     def CheckMode(self):
         """The detection mode. Valid values:
 `liveness`: Liveness detection only.
-`compare`: Selfie verification.
+`compare`: Selfie Verification(liveness detection and face comparison).
 Default value: `liveness`.
         :rtype: str
         """
@@ -4316,6 +4345,17 @@ The default value is blink. The different action types passed in this parameter 
     def ActionList(self, ActionList):
         self._ActionList = ActionList
 
+    @property
+    def SdkVersion(self):
+        """ENHANCED: Enhanced Version, BASIC: Basic Version (Default)
+        :rtype: str
+        """
+        return self._SdkVersion
+
+    @SdkVersion.setter
+    def SdkVersion(self, SdkVersion):
+        self._SdkVersion = SdkVersion
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
@@ -4323,6 +4363,7 @@ The default value is blink. The different action types passed in this parameter 
         self._Image = params.get("Image")
         self._Extra = params.get("Extra")
         self._ActionList = params.get("ActionList")
+        self._SdkVersion = params.get("SdkVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4559,6 +4600,14 @@ class GetSdkVerificationResultResponse(AbstractModel):
         :type CompareResults: list of CompareResult
         :param _Extra: Data passed through in the process of getting the token.
         :type Extra: str
+        :param _DeviceInfoLevel: Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:
+1 - Secure
+2 - Low Risk
+3 - Medium Risk
+4 - High Risk
+Empty - Risk level not obtained.
+Only returned for the ENHANCED version, with the default value being empty.
+        :type DeviceInfoLevel: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4568,6 +4617,7 @@ class GetSdkVerificationResultResponse(AbstractModel):
         self._CardVerifyResults = None
         self._CompareResults = None
         self._Extra = None
+        self._DeviceInfoLevel = None
         self._RequestId = None
 
     @property
@@ -4637,6 +4687,23 @@ class GetSdkVerificationResultResponse(AbstractModel):
         self._Extra = Extra
 
     @property
+    def DeviceInfoLevel(self):
+        """Describe the risk level of the device where the current request is located, with a total of 4 levels. The details are as follows:
+1 - Secure
+2 - Low Risk
+3 - Medium Risk
+4 - High Risk
+Empty - Risk level not obtained.
+Only returned for the ENHANCED version, with the default value being empty.
+        :rtype: str
+        """
+        return self._DeviceInfoLevel
+
+    @DeviceInfoLevel.setter
+    def DeviceInfoLevel(self, DeviceInfoLevel):
+        self._DeviceInfoLevel = DeviceInfoLevel
+
+    @property
     def RequestId(self):
         """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :rtype: str
@@ -4665,6 +4732,7 @@ class GetSdkVerificationResultResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CompareResults.append(obj)
         self._Extra = params.get("Extra")
+        self._DeviceInfoLevel = params.get("DeviceInfoLevel")
         self._RequestId = params.get("RequestId")
 
 

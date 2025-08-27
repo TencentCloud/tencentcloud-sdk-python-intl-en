@@ -9091,6 +9091,134 @@ class InquirePricePurchaseReservedInstancesOfferingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InquiryPriceRenewInstancesRequest(AbstractModel):
+    """InquiryPriceRenewInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :type InstanceIds: list of str
+        :param _InstanceChargePrepaid: Prepaid mode, that is, monthly subscription-related parameter settings. You can specify attributes of a monthly subscription instance, such as purchase duration and whether to set auto-renewal, through this parameter.
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param _DryRun: Trial run, for testing purposes, does not execute specific logic. valid values: <li>`true`: skip execution logic</li> <li>`false`: execute logic</li>  default value: `false`.
+        :type DryRun: bool
+        :param _RenewPortableDataDisk: Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
+        :type RenewPortableDataDisk: bool
+        """
+        self._InstanceIds = None
+        self._InstanceChargePrepaid = None
+        self._DryRun = None
+        self._RenewPortableDataDisk = None
+
+    @property
+    def InstanceIds(self):
+        """One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def InstanceChargePrepaid(self):
+        """Prepaid mode, that is, monthly subscription-related parameter settings. You can specify attributes of a monthly subscription instance, such as purchase duration and whether to set auto-renewal, through this parameter.
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def DryRun(self):
+        """Trial run, for testing purposes, does not execute specific logic. valid values: <li>`true`: skip execution logic</li> <li>`false`: execute logic</li>  default value: `false`.
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def RenewPortableDataDisk(self):
+        """Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
+        :rtype: bool
+        """
+        return self._RenewPortableDataDisk
+
+    @RenewPortableDataDisk.setter
+    def RenewPortableDataDisk(self, RenewPortableDataDisk):
+        self._RenewPortableDataDisk = RenewPortableDataDisk
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._DryRun = params.get("DryRun")
+        self._RenewPortableDataDisk = params.get("RenewPortableDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRenewInstancesResponse(AbstractModel):
+    """InquiryPriceRenewInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: This parameter indicates the price for the corresponding configuration instance.
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.Price`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        """This parameter indicates the price for the corresponding configuration instance.
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.Price`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InquiryPriceResetInstanceRequest(AbstractModel):
     """InquiryPriceResetInstance request structure.
 
@@ -14973,6 +15101,104 @@ class RemoveChcDeployVpcRequest(AbstractModel):
 
 class RemoveChcDeployVpcResponse(AbstractModel):
     """RemoveChcDeployVpc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RenewInstancesRequest(AbstractModel):
+    """RenewInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :type InstanceIds: list of str
+        :param _InstanceChargePrepaid: Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
+Annual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.
+        :type InstanceChargePrepaid: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        :param _RenewPortableDataDisk: Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
+        :type RenewPortableDataDisk: bool
+        """
+        self._InstanceIds = None
+        self._InstanceChargePrepaid = None
+        self._RenewPortableDataDisk = None
+
+    @property
+    def InstanceIds(self):
+        """One or more instance IDs to be operated. You can obtain the instance ID through the `InstanceId` in the return value from the API [DescribeInstances](https://www.tencentcloud.comom/document/api/213/15728?from_cn_redirect=1). The maximum number of instances per request is 100.
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def InstanceChargePrepaid(self):
+        """Prepaid mode, that is, parameter settings related to monthly/annual subscription. specifies attributes of a monthly subscription instance, such as renewal duration and whether to enable auto-renewal, by specifying this parameter. <dx-alert infotype="explain" title="">.
+Annual and monthly subscription instances. this parameter is a required parameter.</dx-alert>.
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def RenewPortableDataDisk(self):
+        """Whether to renew the elastic data disk. valid values:<br><li>true: indicates renewing the annual and monthly subscription instance and its mounted elastic data disk simultaneously</li><li>false: indicates renewing the annual and monthly subscription instance while no longer renewing its mounted elastic data disk</li><br>default value: true.
+        :rtype: bool
+        """
+        return self._RenewPortableDataDisk
+
+    @RenewPortableDataDisk.setter
+    def RenewPortableDataDisk(self, RenewPortableDataDisk):
+        self._RenewPortableDataDisk = RenewPortableDataDisk
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._RenewPortableDataDisk = params.get("RenewPortableDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewInstancesResponse(AbstractModel):
+    """RenewInstances response structure.
 
     """
 
