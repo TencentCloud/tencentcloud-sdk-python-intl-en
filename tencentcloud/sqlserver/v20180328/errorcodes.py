@@ -29,6 +29,9 @@ FAILEDOPERATION_CREATEORDERFAILED = 'FailedOperation.CreateOrderFailed'
 # Database error.
 FAILEDOPERATION_DBERROR = 'FailedOperation.DBError'
 
+# Public network operation failed.
+FAILEDOPERATION_DOMAINOPERATIONFAILED = 'FailedOperation.DomainOperationFailed'
+
 # The operation failed or the network timed out.
 FAILEDOPERATION_GCSERROR = 'FailedOperation.GcsError'
 
@@ -46,6 +49,9 @@ FAILEDOPERATION_QUERYORDERFAILED = 'FailedOperation.QueryOrderFailed'
 
 # Billing error. Failed to query price.
 FAILEDOPERATION_QUERYPRICEFAILED = 'FailedOperation.QueryPriceFailed'
+
+# Security group operation failed.
+FAILEDOPERATION_SECURITYGROUPOPERATIONERROR = 'FailedOperation.SecurityGroupOperationError'
 
 # Failed to operate the network or the session timed out.
 FAILEDOPERATION_VPCERROR = 'FailedOperation.VPCError'
@@ -67,6 +73,9 @@ INTERNALERROR_DBCONNECTERROR = 'InternalError.DBConnectError'
 
 # Database error
 INTERNALERROR_DBERROR = 'InternalError.DBError'
+
+# A data error occurs.
+INTERNALERROR_DATAERROR = 'InternalError.DataError'
 
 # GCS API error.
 INTERNALERROR_GCSERROR = 'InternalError.GcsError'
@@ -194,8 +203,14 @@ INVALIDPARAMETERVALUE_PASSWORDISILLEGAL = 'InvalidParameterValue.PasswordIsIlleg
 # Incorrect database permission settings.
 INVALIDPARAMETERVALUE_PRIVILEGEISILLEGAL = 'InvalidParameterValue.PrivilegeIsIllegal'
 
+# The publish/subscribe name does not meet the requirements.
+INVALIDPARAMETERVALUE_PUBSUBNAMEISILLEGAL = 'InvalidParameterValue.PubSubNameIsIllegal'
+
 # Read-only group name contains invalid characters.
 INVALIDPARAMETERVALUE_ROGROUPNAMEISILLEGAL = 'InvalidParameterValue.RoGroupNameIsIllegal'
+
+# The read-only group status is abnormal.
+INVALIDPARAMETERVALUE_ROGROUPSTATUSISILLEGAL = 'InvalidParameterValue.RoGroupStatusIsIllegal'
 
 # Invalid security group ID.
 INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = 'InvalidParameterValue.SecurityGroupIdIsIllegal'

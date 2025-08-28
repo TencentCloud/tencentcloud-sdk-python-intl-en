@@ -26,6 +26,52 @@ class SqlserverClient(AbstractClient):
     _service = 'sqlserver'
 
 
+    def AssociateSecurityGroups(self, request):
+        """This API is used to bind security groups to instances in batches.
+
+        :param request: Request instance for AssociateSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BalanceReadOnlyGroup(self, request):
+        """This API is used to balance the routing weight of each read-only instance according to the predefined weights. The DescribeReadOnlyGroupAutoWeight API is used to query the predefined weights.
+
+        :param request: Request instance for BalanceReadOnlyGroup.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.BalanceReadOnlyGroupRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.BalanceReadOnlyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BalanceReadOnlyGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.BalanceReadOnlyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneDB(self, request):
         """This API is used to clone and rename databases of an instance. The clones are still in the instance from which they are cloned.
 
@@ -371,6 +417,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePublishSubscribe(self, request):
+        """This API is used to create a publish/subscribe relationship between two databases. A subscriber cannot act as a publisher, and a publisher can have multiple subscriber instances.
+
+        :param request: Request instance for CreatePublishSubscribe.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreatePublishSubscribeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreatePublishSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePublishSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePublishSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateReadOnlyDBInstances(self, request):
         """This API is used to create read-only instances (local disk).
 
@@ -509,6 +578,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDBInstance(self, request):
+        """This API is used to release SQL server instances (eliminated immediately) in the recycle bin. The released instances will be physically terminated after being retained for a period of time. Their publish-subscribe relationships will be automatically disassociated, and their RO replicas will be automatically released.
+
+        :param request: Request instance for DeleteDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteIncrementalMigration(self, request):
         """This API is used to delete an incremental backup import task.
 
@@ -555,6 +647,52 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeletePublishSubscribe(self, request):
+        """This API is used to delete the publish/subscribe relationship between two databases.
+
+        :param request: Request instance for DeletePublishSubscribe.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeletePublishSubscribeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeletePublishSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePublishSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePublishSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccountPrivilegeByDB(self, request):
+        """This API is used to query information on the account and permissions associated with the database.
+
+        :param request: Request instance for DescribeAccountPrivilegeByDB.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeAccountPrivilegeByDBRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeAccountPrivilegeByDBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountPrivilegeByDB", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountPrivilegeByDBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccounts(self, request):
         """This API is used to pull the list of instance accounts.
 
@@ -569,6 +707,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupByFlowId(self, request):
+        """This API is used to query the created backup details through the backup creation process ID. The process ID can be obtained through the CreateBackup API.
+
+        :param request: Request instance for DescribeBackupByFlowId.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupByFlowIdRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupByFlowIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupByFlowId", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupByFlowIdResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -638,6 +799,75 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeBackupMigration", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBackupMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupMonitor(self, request):
+        """This API is used to query backup space usage details.
+
+        :param request: Request instance for DescribeBackupMonitor.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMonitorRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupStatistical(self, request):
+        """This API is used to query the real-time statistics list of backups.
+
+        :param request: Request instance for DescribeBackupStatistical.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupStatisticalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupStatisticalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupStatistical", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupStatisticalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupSummary(self, request):
+        """This API is used to query the backup overview information of databases.
+
+        :param request: Request instance for DescribeBackupSummary.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupSummaryRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupSummaryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -739,6 +969,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCrossBackupStatistical(self, request):
+        """This API is used to query the real-time statistics list of cross-region backups.
+
+        :param request: Request instance for DescribeCrossBackupStatistical.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossBackupStatisticalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossBackupStatisticalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossBackupStatistical", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCrossBackupStatisticalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCrossRegionZone(self, request):
         """This API is used to query the disaster recovery region and AZ of the secondary node based on the primary instance.
 
@@ -753,6 +1006,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeCrossRegionZone", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCrossRegionZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCrossRegions(self, request):
+        """This API is used to query the target region for cross-region backups.
+
+        :param request: Request instance for DescribeCrossRegions.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCrossRegionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -854,6 +1130,75 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBPrivilegeByAccount(self, request):
+        """This API is used to query information on the databases and permissions associated with the account.
+
+        :param request: Request instance for DescribeDBPrivilegeByAccount.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBPrivilegeByAccountRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBPrivilegeByAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBPrivilegeByAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBPrivilegeByAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBRestoreTime(self, request):
+        """This API is used to query databases that can be rolled back.
+
+        :param request: Request instance for DescribeDBRestoreTime.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBRestoreTimeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBRestoreTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBRestoreTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBRestoreTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBSecurityGroups(self, request):
+        """This API is used to query the security group details of instances.
+
+        :param request: Request instance for DescribeDBSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBs(self, request):
         """This API is used to query the list of databases
 
@@ -900,6 +1245,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatabaseNames(self, request):
+        """This API is used to query the database name associated with the account.
+
+        :param request: Request instance for DescribeDatabaseNames.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabaseNamesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabaseNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatabases(self, request):
         """This API is used to query the database list.
 
@@ -923,6 +1291,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatabasesNormal(self, request):
+        """This API is used to query database configuration information. This API does not contain accounts associated with databases.
+
+        :param request: Request instance for DescribeDatabasesNormal.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesNormalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesNormalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabasesNormal", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabasesNormalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFlowStatus(self, request):
         """This API is used to query flow status.
 
@@ -937,6 +1328,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeFlowStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHASwitchLog(self, request):
+        """This API is used to perform the manual primary-secondary switch.
+
+        :param request: Request instance for DescribeHASwitchLog.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeHASwitchLogRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeHASwitchLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHASwitchLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHASwitchLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1199,6 +1613,144 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProjectSecurityGroups(self, request):
+        """This API is used to query security group details of a project.
+
+        :param request: Request instance for DescribeProjectSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProjectSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProjectSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProjectSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePublishSubscribe(self, request):
+        """This API is used to query the publish/subscribe relationship list.
+
+        :param request: Request instance for DescribePublishSubscribe.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribePublishSubscribeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribePublishSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublishSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePublishSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReadOnlyGroupAutoWeight(self, request):
+        """This API is used to query the automatic weight assignment result of the read-only group. The BalanceReadOnlyGroup API is used to perform routing weight assignment according to the automatic weight assignment result.
+
+        :param request: Request instance for DescribeReadOnlyGroupAutoWeight.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupAutoWeightRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupAutoWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupAutoWeight", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReadOnlyGroupAutoWeightResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReadOnlyGroupByReadOnlyInstance(self, request):
+        """This API is used to query the read-only group where the read-only instance is located by its ID.
+
+        :param request: Request instance for DescribeReadOnlyGroupByReadOnlyInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupByReadOnlyInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupByReadOnlyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupByReadOnlyInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReadOnlyGroupByReadOnlyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReadOnlyGroupDetails(self, request):
+        """This API is used to query read-only group details.
+
+        :param request: Request instance for DescribeReadOnlyGroupDetails.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupDetailsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReadOnlyGroupDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReadOnlyGroupList(self, request):
+        """This API is used to query the read-only group list.
+
+        :param request: Request instance for DescribeReadOnlyGroupList.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupListRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReadOnlyGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRegions(self, request):
         """This API is used to query purchasable regions.
 
@@ -1213,6 +1765,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRegularBackupPlan(self, request):
+        """This API is used to query the scheduled backup retention plans of instances.
+
+        :param request: Request instance for DescribeRegularBackupPlan.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRegularBackupPlanRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRegularBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegularBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegularBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRestoreTask(self, request):
+        """This API is used to query the list of rollback tasks.
+
+        :param request: Request instance for DescribeRestoreTask.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTaskRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRestoreTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRestoreTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1406,6 +2004,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisassociateSecurityGroups(self, request):
+        """This API is used to unbind security groups from instances in batches.
+
+        :param request: Request instance for DisassociateSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquiryPriceCreateDBInstances(self, request):
         """This API is used to query the price of requested instances.
 
@@ -1522,6 +2143,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBackupName(self, request):
+        """This API is used to modify the name of a backup task.
+
+        :param request: Request instance for ModifyBackupName.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupNameRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyBackupNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBackupStrategy(self, request):
         """This API is used to modify the backup policy.
 
@@ -1536,6 +2180,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyBackupStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBackupStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloseWanIp(self, request):
+        """This API is used to disable the public network for the instance.
+
+        :param request: Request instance for ModifyCloseWanIp.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCloseWanIpRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCloseWanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloseWanIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloseWanIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCrossBackupStrategy(self, request):
+        """This API is used to enable or disable cross-region backup policies.
+
+        :param request: Request instance for ModifyCrossBackupStrategy.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCrossBackupStrategyRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCrossBackupStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCrossBackupStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCrossBackupStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1651,6 +2341,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyDBInstanceProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceSSL(self, request):
+        """This API is used to enable/disable/update SSL encryption.
+
+        :param request: Request instance for ModifyDBInstanceSSL.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSSLRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceSecurityGroups(self, request):
+        """This API is used to modify security groups bound to an instance.
+
+        :param request: Request instance for ModifyDBInstanceSecurityGroups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceSecurityGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1798,6 +2534,52 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDatabasePrivilege(self, request):
+        """This API is used to modify instance database permissions.
+
+        :param request: Request instance for ModifyDatabasePrivilege.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabasePrivilegeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabasePrivilegeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatabasePrivilege", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatabasePrivilegeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDatabaseShrinkMDF(self, request):
+        """This API is used to shrink the database mdf (Shrink mdf).
+
+        :param request: Request instance for ModifyDatabaseShrinkMDF.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseShrinkMDFRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseShrinkMDFResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatabaseShrinkMDF", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatabaseShrinkMDFResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyIncrementalMigration(self, request):
         """This API is used to modify an incremental backup import task.
 
@@ -1869,6 +2651,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMaintenanceSpan(self, request):
+        """This API is used to modify the maintenance window of the instance.
+
+        :param request: Request instance for ModifyMaintenanceSpan.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyMaintenanceSpanRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyMaintenanceSpanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMaintenanceSpan", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMaintenanceSpanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMigration(self, request):
         """This API is used to modify an existing migration task.
 
@@ -1883,6 +2688,98 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyMigration", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOpenWanIp(self, request):
+        """This API is used to enable the public network for the instance.
+
+        :param request: Request instance for ModifyOpenWanIp.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyOpenWanIpRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyOpenWanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOpenWanIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOpenWanIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPublishSubscribe(self, request):
+        """This API is used to modify the publish/subscribe relationship of the instance.
+
+        :param request: Request instance for ModifyPublishSubscribe.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPublishSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPublishSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPublishSubscribeName(self, request):
+        """This API is used to modify the publish/subscribe names.
+
+        :param request: Request instance for ModifyPublishSubscribeName.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeNameRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPublishSubscribeName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPublishSubscribeNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyReadOnlyGroupDetails(self, request):
+        """This API is used to modify read-only group details.
+
+        :param request: Request instance for ModifyReadOnlyGroupDetails.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyReadOnlyGroupDetailsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyReadOnlyGroupDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReadOnlyGroupDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReadOnlyGroupDetailsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1929,6 +2826,75 @@ class SqlserverClient(AbstractClient):
             body = self.call("RecycleDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.RecycleDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RecycleReadOnlyGroup(self, request):
+        """This API is used to reclaim resources of read-only groups immediately. The resources, such as VIP, occupied by the read-only group will be released immediately and cannot be recovered.
+
+        :param request: Request instance for RecycleReadOnlyGroup.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RecycleReadOnlyGroupRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RecycleReadOnlyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecycleReadOnlyGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecycleReadOnlyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveBackups(self, request):
+        """This API is used to delete backup files created by users manually. The backup policy to be deleted can be instance backup or multi-database backup.
+
+        :param request: Request instance for RemoveBackups.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RemoveBackupsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RemoveBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveBackups", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveBackupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewPostpaidDBInstance(self, request):
+        """This API is used to recover the pay-as-you-go instance that is manually isolated through the API TerminateDBInstance from the recycle bin.
+
+        :param request: Request instance for RenewPostpaidDBInstance.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.RenewPostpaidDBInstanceRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.RenewPostpaidDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewPostpaidDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewPostpaidDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2113,6 +3079,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("StartInstanceXEvent", params, headers=headers)
             response = json.loads(body)
             model = models.StartInstanceXEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchCloudInstanceHA(self, request):
+        """This API is used to manually switch between primary and secondary.
+
+        :param request: Request instance for SwitchCloudInstanceHA.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.SwitchCloudInstanceHARequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.SwitchCloudInstanceHAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchCloudInstanceHA", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchCloudInstanceHAResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
