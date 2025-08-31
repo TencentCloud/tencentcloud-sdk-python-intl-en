@@ -141,6 +141,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CompleteMigration(self, request):
+        """This API is used to complete a migration task.
+
+        :param request: Request instance for CompleteMigration.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CompleteMigrationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CompleteMigrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CompleteMigration", params, headers=headers)
+            response = json.loads(body)
+            model = models.CompleteMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccount(self, request):
         """This API is used to create an instance account.
 
@@ -1512,6 +1535,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeMaintenanceSpan", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMaintenanceSpanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMigrationDatabases(self, request):
+        """This API is used to query the list of databases to be migrated.
+
+        :param request: Request instance for DescribeMigrationDatabases.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationDatabasesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeMigrationDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMigrationDatabases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMigrationDatabasesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
