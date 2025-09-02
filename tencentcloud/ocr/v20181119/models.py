@@ -2373,6 +2373,10 @@ Default true.
 -- MultiRealEstateCertificate
 -- MultiRealEstateMaterial
 -- HongKongUtilityBill
+-- OverseasCheques
+-- RegistrationCertificate
+-- GridPhoto
+-- SignaturePage
         :type ConfigId: str
         :param _EnableCoord: Whether the full-text field coordinate value recognition is enabled.
         :type EnableCoord: bool
@@ -2484,6 +2488,10 @@ Default true.
 -- MultiRealEstateCertificate
 -- MultiRealEstateMaterial
 -- HongKongUtilityBill
+-- OverseasCheques
+-- RegistrationCertificate
+-- GridPhoto
+-- SignaturePage
         :rtype: str
         """
         return self._ConfigId
