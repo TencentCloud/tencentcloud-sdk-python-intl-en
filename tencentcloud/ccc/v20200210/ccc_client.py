@@ -72,6 +72,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindNumberCallInInterface(self, request):
+        """This API is used to bind a number to a callback API for incoming calls.
+
+        :param request: Request instance for BindNumberCallInInterface.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallInInterfaceRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BindNumberCallInInterfaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindNumberCallInInterface", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindNumberCallInInterfaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindNumberCallOutSkillGroup(self, request):
         """This API is used to bind outbound skill group of number.
 
@@ -109,6 +132,29 @@ class CccClient(AbstractClient):
             body = self.call("BindStaffSkillGroupList", params, headers=headers)
             response = json.loads(body)
             model = models.BindStaffSkillGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ControlAIConversation(self, request):
+        """This API is used to provide server-side robot control feature.
+
+        :param request: Request instance for ControlAIConversation.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ControlAIConversationRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ControlAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ControlAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ControlAIConversationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -416,6 +462,29 @@ class CccClient(AbstractClient):
             body = self.call("CreateStaff", params, headers=headers)
             response = json.loads(body)
             model = models.CreateStaffResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateUserSig(self, request):
+        """This API is used to create a user data signature.
+
+        :param request: Request instance for CreateUserSig.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserSig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserSigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -885,6 +954,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSessionDetail(self, request):
+        """This API is used to query call detail.
+
+        :param request: Request instance for DescribeSessionDetail.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSessionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSessionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSkillGroupInfoList(self, request):
         """This API is used to access the skill group information list.
 
@@ -922,6 +1014,29 @@ class CccClient(AbstractClient):
             body = self.call("DescribeStaffInfoList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStaffInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStaffStatusHistory(self, request):
+        """This API is used to query agent status history.
+
+        :param request: Request instance for DescribeStaffStatusHistory.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusHistoryRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStaffStatusHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStaffStatusHistoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

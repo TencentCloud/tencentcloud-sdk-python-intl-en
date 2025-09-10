@@ -1504,6 +1504,30 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstancesDisasterRecoverGroup(self, request):
+        """This API is used to adjust the placement group of an instance.
+        * Currently only basic networks or Virtual Private Cloud (VPC) instances are supported.
+
+        :param request: Request instance for ModifyInstancesDisasterRecoverGroup.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesDisasterRecoverGroupRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesDisasterRecoverGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancesDisasterRecoverGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancesDisasterRecoverGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstancesProject(self, request):
         """This API is used to change the project to which an instance is assigned.
 

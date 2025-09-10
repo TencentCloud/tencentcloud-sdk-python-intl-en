@@ -10743,6 +10743,10 @@ The default value is blink. The different action types passed in this parameter 
         :type ActionList: str
         :param _LivenessRetryLimit: Control liveness retry number.The value range is 1-99.
         :type LivenessRetryLimit: int
+        :param _LivenessTimeout: Specifies the liveness detection timeout period in seconds. value range: (0,600].
+        :type LivenessTimeout: int
+        :param _SelectedWarningCodes: Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective.
+        :type SelectedWarningCodes: str
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -10757,6 +10761,8 @@ The default value is blink. The different action types passed in this parameter 
         self._AutoDowngrade = None
         self._ActionList = None
         self._LivenessRetryLimit = None
+        self._LivenessTimeout = None
+        self._SelectedWarningCodes = None
 
     @property
     def AutoSkipStartPage(self):
@@ -10930,6 +10936,28 @@ The default value is blink. The different action types passed in this parameter 
     def LivenessRetryLimit(self, LivenessRetryLimit):
         self._LivenessRetryLimit = LivenessRetryLimit
 
+    @property
+    def LivenessTimeout(self):
+        """Specifies the liveness detection timeout period in seconds. value range: (0,600].
+        :rtype: int
+        """
+        return self._LivenessTimeout
+
+    @LivenessTimeout.setter
+    def LivenessTimeout(self, LivenessTimeout):
+        self._LivenessTimeout = LivenessTimeout
+
+    @property
+    def SelectedWarningCodes(self):
+        """Selects OCR alarms requiring attention. When an OCR Alarm occurs, the identity verification process will be interrupted. Default value is empty, indicating all alarms are monitored. This feature requires the parameter DisableCheckOcrWarnings=false. If the Alarm is disabled, this parameter will not be effective.
+        :rtype: str
+        """
+        return self._SelectedWarningCodes
+
+    @SelectedWarningCodes.setter
+    def SelectedWarningCodes(self, SelectedWarningCodes):
+        self._SelectedWarningCodes = SelectedWarningCodes
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -10945,6 +10973,8 @@ The default value is blink. The different action types passed in this parameter 
         self._AutoDowngrade = params.get("AutoDowngrade")
         self._ActionList = params.get("ActionList")
         self._LivenessRetryLimit = params.get("LivenessRetryLimit")
+        self._LivenessTimeout = params.get("LivenessTimeout")
+        self._SelectedWarningCodes = params.get("SelectedWarningCodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5089,6 +5089,212 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class CreateOwaspWhiteRuleRequest(AbstractModel):
+    """CreateOwaspWhiteRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Rule name
+        :type Name: str
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _Strategies: Rule-Based matching policy list.
+        :type Strategies: list of Strategy
+        :param _Ids: ID list of allowlisted rules.
+        :type Ids: list of int non-negative
+        :param _Type: Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).
+        :type Type: int
+        :param _JobType: Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.
+        :type JobType: str
+        :param _JobDateTime: Scheduled task configuration
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ExpireTime: If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).
+        :type ExpireTime: int
+        :param _Status: Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.
+        :type Status: int
+        """
+        self._Name = None
+        self._Domain = None
+        self._Strategies = None
+        self._Ids = None
+        self._Type = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ExpireTime = None
+        self._Status = None
+
+    @property
+    def Name(self):
+        """Rule name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Strategies(self):
+        """Rule-Based matching policy list.
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Ids(self):
+        """ID list of allowlisted rules.
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Type(self):
+        """Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def JobType(self):
+        """Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """Scheduled task configuration
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ExpireTime(self):
+        """If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        """Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Domain = params.get("Domain")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Ids = params.get("Ids")
+        self._Type = params.get("Type")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOwaspWhiteRuleResponse(AbstractModel):
+    """CreateOwaspWhiteRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule ID
+        :type RuleId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        """Rule ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CronJob(AbstractModel):
     """Data structure of periodic rule execution
 
@@ -5096,19 +5302,13 @@ class CronJob(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Days: Days in each month for execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Days: Execution day of each month.
         :type Days: list of int non-negative
-        :param _WDays: Days of each week for execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _WDays: Execution day of each week.
         :type WDays: list of int non-negative
-        :param _StartTime: Start time
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StartTime: Start time.
         :type StartTime: str
         :param _EndTime: End time
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
         """
         self._Days = None
@@ -5118,8 +5318,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Days(self):
-        """Days in each month for execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Execution day of each month.
         :rtype: list of int non-negative
         """
         return self._Days
@@ -5130,8 +5329,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WDays(self):
-        """Days of each week for execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Execution day of each week.
         :rtype: list of int non-negative
         """
         return self._WDays
@@ -5142,9 +5340,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
-        """Start time
-
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Start time.
         :rtype: str
         """
         return self._StartTime
@@ -5156,8 +5352,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @property
     def EndTime(self):
         """End time
-
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._EndTime
@@ -5983,6 +6177,164 @@ class DeleteIpAccessControlV2Response(AbstractModel):
 
     def _deserialize(self, params):
         self._FailedCount = params.get("FailedCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOwaspRuleStatusRequest(AbstractModel):
+    """DeleteOwaspRuleStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _RuleIDs: Rule ID list
+        :type RuleIDs: list of str
+        """
+        self._Domain = None
+        self._RuleIDs = None
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleIDs(self):
+        """Rule ID list
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleIDs = params.get("RuleIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOwaspRuleStatusResponse(AbstractModel):
+    """DeleteOwaspRuleStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOwaspWhiteRuleRequest(AbstractModel):
+    """DeleteOwaspWhiteRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: ID list of allowlisted rules.
+        :type Ids: list of int non-negative
+        :param _Domain: Domain name
+        :type Domain: str
+        """
+        self._Ids = None
+        self._Domain = None
+
+    @property
+    def Ids(self):
+        """ID list of allowlisted rules.
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOwaspWhiteRuleResponse(AbstractModel):
+    """DeleteOwaspWhiteRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10865,6 +11217,513 @@ class DescribeObjectsResponse(AbstractModel):
                 obj = ClbObject()
                 obj._deserialize(item)
                 self._ClbObjects.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOwaspRuleTypesRequest(AbstractModel):
+    """DescribeOwaspRuleTypes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain names to be queried
+        :type Domain: str
+        :param _Offset: Page number, defaults to 0.
+        :type Offset: int
+        :param _Limit: Capacity per page. defaults to 10.
+        :type Limit: int
+        :param _Filters: Filter conditions. supports rule ID, CVE ID, and description.
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """Domain names to be queried
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """Page number, defaults to 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Capacity per page. defaults to 10.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        """Filter conditions. supports rule ID, CVE ID, and description.
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOwaspRuleTypesResponse(AbstractModel):
+    """DescribeOwaspRuleTypes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Number of rule types.
+        :type Total: int
+        :param _List: Rule type list and information.
+        :type List: list of OwaspRuleType
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Number of rule types.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """Rule type list and information.
+        :rtype: list of OwaspRuleType
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OwaspRuleType()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOwaspRulesRequest(AbstractModel):
+    """DescribeOwaspRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain to be queried
+        :type Domain: str
+        :param _Offset: Page number, defaults to 0.
+        :type Offset: int
+        :param _Limit: Capacity per page. defaults to 10.
+        :type Limit: int
+        :param _By: Specifies the field used to sort. valid values: RuleId, UpdateTime.
+        :type By: str
+        :param _Order: Sorting method. supports asc, desc.
+        :type Order: str
+        :param _Filters: Specifies the criteria, support rule ID, rule type, rule description, CVE ID, rule Status, and threat level.
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """Domain to be queried
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """Page number, defaults to 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Capacity per page. defaults to 10.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        """Specifies the field used to sort. valid values: RuleId, UpdateTime.
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        """Sorting method. supports asc, desc.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        """Specifies the criteria, support rule ID, rule type, rule description, CVE ID, rule Status, and threat level.
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOwaspRulesResponse(AbstractModel):
+    """DescribeOwaspRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of rules.
+        :type Total: int
+        :param _List: List of rules
+        :type List: list of OwaspRule
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Total number of rules.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """List of rules
+        :rtype: list of OwaspRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OwaspRule()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeOwaspWhiteRulesRequest(AbstractModel):
+    """DescribeOwaspWhiteRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain to be queried
+        :type Domain: str
+        :param _Offset: Paginate, defaults to 0.
+        :type Offset: int
+        :param _Limit: Capacity per page. defaults to 10.
+        :type Limit: int
+        :param _By: Specifies the field used to sort. valid values: CreateTime (creation time), UpdateTime (update time).
+        :type By: str
+        :param _Order: Sorting method. supports asc, desc.
+        :type Order: str
+        :param _Filters: Filter conditions, support RuleId: whitelist rule ID, Name: rule Name, RuleType: whitelist rule type, Status: rule enabling Status, ValidStatus: rule effective Status, TimerType: effective method, ID: specific whitelist ID, determine whether it is a rule ID or type ID based on RuleType.
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        """Domain to be queried
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        """Paginate, defaults to 0.
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        """Capacity per page. defaults to 10.
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        """Specifies the field used to sort. valid values: CreateTime (creation time), UpdateTime (update time).
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        """Sorting method. supports asc, desc.
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        """Filter conditions, support RuleId: whitelist rule ID, Name: rule Name, RuleType: whitelist rule type, Status: rule enabling Status, ValidStatus: rule effective Status, TimerType: effective method, ID: specific whitelist ID, determine whether it is a rule ID or type ID based on RuleType.
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOwaspWhiteRulesResponse(AbstractModel):
+    """DescribeOwaspWhiteRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of rules.
+        :type Total: int
+        :param _List: Rule allowlist list
+        :type List: list of OwaspWhiteRule
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        """Total number of rules.
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        """Rule allowlist list
+        :rtype: list of OwaspWhiteRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = OwaspWhiteRule()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17976,14 +18835,11 @@ class JobDateTime(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timed: Time parameters for scheduled execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Timed: Time parameter for scheduled execution.
         :type Timed: list of TimedJob
-        :param _Cron: Time parameters for periodic execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Cron: Time parameter for periodic execution.
         :type Cron: list of CronJob
-        :param _TimeTZone: Time zone
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TimeTZone: Specifies the time zone.
         :type TimeTZone: str
         """
         self._Timed = None
@@ -17992,8 +18848,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timed(self):
-        """Time parameters for scheduled execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Time parameter for scheduled execution.
         :rtype: list of TimedJob
         """
         return self._Timed
@@ -18004,8 +18859,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cron(self):
-        """Time parameters for periodic execution
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Time parameter for periodic execution.
         :rtype: list of CronJob
         """
         return self._Cron
@@ -18016,8 +18870,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeTZone(self):
-        """Time zone
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Specifies the time zone.
         :rtype: str
         """
         return self._TimeTZone
@@ -22467,6 +23320,633 @@ class ModifyObjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOwaspRuleStatusRequest(AbstractModel):
+    """ModifyOwaspRuleStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _RuleStatus: Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).
+        :type RuleStatus: int
+        :param _SelectAll: Specifies whether to select all.
+        :type SelectAll: bool
+        :param _RuleIDs: Rule ID list
+        :type RuleIDs: list of str
+        :param _TypeId: If reverse requires the input of data type.
+        :type TypeId: int
+        :param _Reason: Reason for modification. valid values: 0: none (compatibility record is empty). 1: avoid false positives due to business characteristics. 2: reporting of rule-based false positives. 3: gray release of core business rules. 4: others.
+        :type Reason: int
+        """
+        self._Domain = None
+        self._RuleStatus = None
+        self._SelectAll = None
+        self._RuleIDs = None
+        self._TypeId = None
+        self._Reason = None
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleStatus(self):
+        """Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).
+        :rtype: int
+        """
+        return self._RuleStatus
+
+    @RuleStatus.setter
+    def RuleStatus(self, RuleStatus):
+        self._RuleStatus = RuleStatus
+
+    @property
+    def SelectAll(self):
+        """Specifies whether to select all.
+        :rtype: bool
+        """
+        return self._SelectAll
+
+    @SelectAll.setter
+    def SelectAll(self, SelectAll):
+        self._SelectAll = SelectAll
+
+    @property
+    def RuleIDs(self):
+        """Rule ID list
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+    @property
+    def TypeId(self):
+        """If reverse requires the input of data type.
+        :rtype: int
+        """
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def Reason(self):
+        """Reason for modification. valid values: 0: none (compatibility record is empty). 1: avoid false positives due to business characteristics. 2: reporting of rule-based false positives. 3: gray release of core business rules. 4: others.
+        :rtype: int
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleStatus = params.get("RuleStatus")
+        self._SelectAll = params.get("SelectAll")
+        self._RuleIDs = params.get("RuleIDs")
+        self._TypeId = params.get("TypeId")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleStatusResponse(AbstractModel):
+    """ModifyOwaspRuleStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspRuleTypeActionRequest(AbstractModel):
+    """ModifyOwaspRuleTypeAction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _TypeIDs: Rule type ID list.
+        :type TypeIDs: list of str
+        :param _RuleTypeAction: Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).
+        :type RuleTypeAction: int
+        """
+        self._Domain = None
+        self._TypeIDs = None
+        self._RuleTypeAction = None
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeIDs(self):
+        """Rule type ID list.
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def RuleTypeAction(self):
+        """Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).
+        :rtype: int
+        """
+        return self._RuleTypeAction
+
+    @RuleTypeAction.setter
+    def RuleTypeAction(self, RuleTypeAction):
+        self._RuleTypeAction = RuleTypeAction
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeIDs = params.get("TypeIDs")
+        self._RuleTypeAction = params.get("RuleTypeAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleTypeActionResponse(AbstractModel):
+    """ModifyOwaspRuleTypeAction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspRuleTypeLevelRequest(AbstractModel):
+    """ModifyOwaspRuleTypeLevel request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _TypeIDs: Rule type ID list.
+        :type TypeIDs: list of str
+        :param _RuleTypeLevel: Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).
+        :type RuleTypeLevel: int
+        """
+        self._Domain = None
+        self._TypeIDs = None
+        self._RuleTypeLevel = None
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeIDs(self):
+        """Rule type ID list.
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def RuleTypeLevel(self):
+        """Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).
+        :rtype: int
+        """
+        return self._RuleTypeLevel
+
+    @RuleTypeLevel.setter
+    def RuleTypeLevel(self, RuleTypeLevel):
+        self._RuleTypeLevel = RuleTypeLevel
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeIDs = params.get("TypeIDs")
+        self._RuleTypeLevel = params.get("RuleTypeLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleTypeLevelResponse(AbstractModel):
+    """ModifyOwaspRuleTypeLevel response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspRuleTypeStatusRequest(AbstractModel):
+    """ModifyOwaspRuleTypeStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _TypeIDs: Rule type ID list.
+        :type TypeIDs: list of str
+        :param _RuleTypeStatus: The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).
+        :type RuleTypeStatus: int
+        """
+        self._Domain = None
+        self._TypeIDs = None
+        self._RuleTypeStatus = None
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TypeIDs(self):
+        """Rule type ID list.
+        :rtype: list of str
+        """
+        return self._TypeIDs
+
+    @TypeIDs.setter
+    def TypeIDs(self, TypeIDs):
+        self._TypeIDs = TypeIDs
+
+    @property
+    def RuleTypeStatus(self):
+        """The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).
+        :rtype: int
+        """
+        return self._RuleTypeStatus
+
+    @RuleTypeStatus.setter
+    def RuleTypeStatus(self, RuleTypeStatus):
+        self._RuleTypeStatus = RuleTypeStatus
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._TypeIDs = params.get("TypeIDs")
+        self._RuleTypeStatus = params.get("RuleTypeStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspRuleTypeStatusResponse(AbstractModel):
+    """ModifyOwaspRuleTypeStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOwaspWhiteRuleRequest(AbstractModel):
+    """ModifyOwaspWhiteRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule ID
+        :type RuleId: int
+        :param _Name: Rule name
+        :type Name: str
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _Strategies: Rule-Based matching policy list.
+        :type Strategies: list of Strategy
+        :param _Ids: ID list of allowlisted rules.
+        :type Ids: list of int non-negative
+        :param _Type: Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).
+        :type Type: int
+        :param _JobType: Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.
+        :type JobType: str
+        :param _JobDateTime: Scheduled task configuration
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _ExpireTime: If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).
+        :type ExpireTime: int
+        :param _Status: Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.
+        :type Status: int
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Domain = None
+        self._Strategies = None
+        self._Ids = None
+        self._Type = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._ExpireTime = None
+        self._Status = None
+
+    @property
+    def RuleId(self):
+        """Rule ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """Rule name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Domain(self):
+        """Domain name
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Strategies(self):
+        """Rule-Based matching policy list.
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Ids(self):
+        """ID list of allowlisted rules.
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Type(self):
+        """Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def JobType(self):
+        """Rule execution mode: TimedJob indicates scheduled execution. CronJob indicates periodic execution.
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """Scheduled task configuration
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def ExpireTime(self):
+        """If the JobDateTime field is not set, this field is used. 0 means permanent, other values indicate the cutoff time for scheduled effect (unit: seconds).
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Status(self):
+        """Rule status. valid values: 0 (disabled), 1 (enabled). enabled by default.
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Domain = params.get("Domain")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Ids = params.get("Ids")
+        self._Type = params.get("Type")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._ExpireTime = params.get("ExpireTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOwaspWhiteRuleResponse(AbstractModel):
+    """ModifyOwaspWhiteRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProtectionStatusRequest(AbstractModel):
     """ModifyProtectionStatus request structure.
 
@@ -23674,6 +25154,572 @@ class ModifyWebshellStatusResponse(AbstractModel):
             self._Success = ResponseCode()
             self._Success._deserialize(params.get("Success"))
         self._RequestId = params.get("RequestId")
+
+
+class OwaspRule(AbstractModel):
+    """Owasp rule.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule ID
+        :type RuleId: int
+        :param _Description: Rule description
+        :type Description: str
+        :param _Status: Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).
+        :type Status: int
+        :param _Level: Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).
+        :type Level: int
+        :param _VulLevel: Threat level. valid values: 0 (unknown), 100 (low risk), 200 (medium risk), 300 (high risk), 400 (critical).
+        :type VulLevel: int
+        :param _CveID: CVE ID
+        :type CveID: str
+        :param _TypeId: Specifies the rule type ID.
+        :type TypeId: int
+        :param _CreateTime: Creation time
+        :type CreateTime: str
+        :param _ModifyTime: Update time.
+        :type ModifyTime: str
+        :param _Locked: Whether the user is locked.
+        :type Locked: int
+        :param _Reason: Reason for modification
+
+0: none (compatibility records are empty).
+1: avoid false positives due to business characteristics.
+2: reporting of rule-based false positives.
+3: gray release of core business rules.
+4: others
+        :type Reason: int
+        """
+        self._RuleId = None
+        self._Description = None
+        self._Status = None
+        self._Level = None
+        self._VulLevel = None
+        self._CveID = None
+        self._TypeId = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Locked = None
+        self._Reason = None
+
+    @property
+    def RuleId(self):
+        """Rule ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Description(self):
+        """Rule description
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        """Rule switch. valid values: 0 (disabled), 1 (enabled), 2 (observation only).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Level(self):
+        """Protection level of the rule. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def VulLevel(self):
+        """Threat level. valid values: 0 (unknown), 100 (low risk), 200 (medium risk), 300 (high risk), 400 (critical).
+        :rtype: int
+        """
+        return self._VulLevel
+
+    @VulLevel.setter
+    def VulLevel(self, VulLevel):
+        self._VulLevel = VulLevel
+
+    @property
+    def CveID(self):
+        """CVE ID
+        :rtype: str
+        """
+        return self._CveID
+
+    @CveID.setter
+    def CveID(self, CveID):
+        self._CveID = CveID
+
+    @property
+    def TypeId(self):
+        """Specifies the rule type ID.
+        :rtype: int
+        """
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        """Update time.
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Locked(self):
+        """Whether the user is locked.
+        :rtype: int
+        """
+        return self._Locked
+
+    @Locked.setter
+    def Locked(self, Locked):
+        self._Locked = Locked
+
+    @property
+    def Reason(self):
+        """Reason for modification
+
+0: none (compatibility records are empty).
+1: avoid false positives due to business characteristics.
+2: reporting of rule-based false positives.
+3: gray release of core business rules.
+4: others
+        :rtype: int
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Level = params.get("Level")
+        self._VulLevel = params.get("VulLevel")
+        self._CveID = params.get("CveID")
+        self._TypeId = params.get("TypeId")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Locked = params.get("Locked")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwaspRuleType(AbstractModel):
+    """Owasp rule type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeId: Type ID
+        :type TypeId: int
+        :param _TypeName: Type name
+        :type TypeName: str
+        :param _Description: Type description.
+
+
+        :type Description: str
+        :param _Classification: Data type category.
+        :type Classification: str
+        :param _Action: Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).
+        :type Action: int
+        :param _Level: Protection level of the rule type. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).
+        :type Level: int
+        :param _Status: The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).
+        :type Status: int
+        :param _TotalRule: Specifies all rules under the rule type. always.
+        :type TotalRule: int
+        :param _ActiveRule: Indicates the total number of rules enabled under the rule type.
+        :type ActiveRule: int
+        """
+        self._TypeId = None
+        self._TypeName = None
+        self._Description = None
+        self._Classification = None
+        self._Action = None
+        self._Level = None
+        self._Status = None
+        self._TotalRule = None
+        self._ActiveRule = None
+
+    @property
+    def TypeId(self):
+        """Type ID
+        :rtype: int
+        """
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def TypeName(self):
+        """Type name
+        :rtype: str
+        """
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def Description(self):
+        """Type description.
+
+
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Classification(self):
+        """Data type category.
+        :rtype: str
+        """
+        return self._Classification
+
+    @Classification.setter
+    def Classification(self, Classification):
+        self._Classification = Classification
+
+    @property
+    def Action(self):
+        """Protection mode of the rule type. valid values: 0 (observation), 1 (intercept).
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Level(self):
+        """Protection level of the rule type. valid values: 100 (loose), 200 (normal), 300 (strict), 400 (ultra-strict).
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Status(self):
+        """The switch status of the rule type. valid values: 0 (disabled), 1 (enabled).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalRule(self):
+        """Specifies all rules under the rule type. always.
+        :rtype: int
+        """
+        return self._TotalRule
+
+    @TotalRule.setter
+    def TotalRule(self, TotalRule):
+        self._TotalRule = TotalRule
+
+    @property
+    def ActiveRule(self):
+        """Indicates the total number of rules enabled under the rule type.
+        :rtype: int
+        """
+        return self._ActiveRule
+
+    @ActiveRule.setter
+    def ActiveRule(self, ActiveRule):
+        self._ActiveRule = ActiveRule
+
+
+    def _deserialize(self, params):
+        self._TypeId = params.get("TypeId")
+        self._TypeName = params.get("TypeName")
+        self._Description = params.get("Description")
+        self._Classification = params.get("Classification")
+        self._Action = params.get("Action")
+        self._Level = params.get("Level")
+        self._Status = params.get("Status")
+        self._TotalRule = params.get("TotalRule")
+        self._ActiveRule = params.get("ActiveRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwaspWhiteRule(AbstractModel):
+    """Rule engine allowlist.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule ID of the allowlist.
+        :type RuleId: int
+        :param _Name: Rule Name
+        :type Name: str
+        :param _Ids: ID list of allowlisted rules.
+        :type Ids: list of int non-negative
+        :param _Status: Allowlist rule state. valid values: 0 (disabled), 1 (enabled).
+        :type Status: int
+        :param _Type: Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).
+        :type Type: int
+        :param _Strategies: Rule-Based matching policy list.
+        :type Strategies: list of Strategy
+        :param _CreateTime: Creation time
+        :type CreateTime: str
+        :param _UpdateTime: Modification time
+        :type UpdateTime: str
+        :param _JobType: Scheduled task type
+        :type JobType: str
+        :param _JobDateTime: Scheduled task configuration
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: Periodic task granularity.
+        :type CronType: str
+        :param _ValidStatus: Whether there is currently valid.
+        :type ValidStatus: bool
+        """
+        self._RuleId = None
+        self._Name = None
+        self._Ids = None
+        self._Status = None
+        self._Type = None
+        self._Strategies = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._ValidStatus = None
+
+    @property
+    def RuleId(self):
+        """Rule ID of the allowlist.
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        """Rule Name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Ids(self):
+        """ID list of allowlisted rules.
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Status(self):
+        """Allowlist rule state. valid values: 0 (disabled), 1 (enabled).
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        """Allowlist type. valid values: 0 (allowlisting by specific rule ID), 1 (allowlisting by rule type).
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Strategies(self):
+        """Rule-Based matching policy list.
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        """Modification time
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobType(self):
+        """Scheduled task type
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        """Scheduled task configuration
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        """Periodic task granularity.
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def ValidStatus(self):
+        """Whether there is currently valid.
+        :rtype: bool
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._Ids = params.get("Ids")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._ValidStatus = params.get("ValidStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PeakPointsItem(AbstractModel):
@@ -25423,59 +27469,62 @@ class SpartaProtectionPort(AbstractModel):
 
 
 class Strategy(AbstractModel):
-    """Matching criteria structure for custom rules
+    """Rule matching criteria structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _Field: Matching field
+        :param _Field: Specifies the matching field.
 
-    Different matching fields result in different matching parameters, logical operators, and matching contents. The details are as follows:
+Different matching fields result in different matching parameters, logical operators, and matching contents. the details are as follows:.
 <table><thead><tr><th>Matching Field</th> <th>Matching Parameter</th> <th>Logical Symbol</th> <th>Matching Content</th></tr></thead> <tbody><tr><td>IP (source IP)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>Multiple IP addresses are separated by commas. A maximum of 20 IP addresses are allowed.</td></tr> <tr><td>IPv6 (source IPv6)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>A single IPv6 address is supported.</td></tr> <tr><td>Referer (referer)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content, with a maximum of 512 characters.</td></tr> <tr><td>URL (request path)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is 
- less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color="Red">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color="Red">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the contentwith a maximum of 512 characters.</td></tr> <tr><td>GET_HEADERS_NAMES (header parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content with a maximum of 512 characters. The lowercase is recommended.</td> </tr><tr><td>ARGS_HEADER (header parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr></tbody></table>
-Note: This field may return null, indicating that no valid values can be obtained.
+ less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color="Red">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color="Red">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the content512 characters limit</td></tr><tr><td>GET_HEADERS_NAMES (Header parameter name)</td><td>parameter not supported</td><td>exsit (parameter exists)<br/>nexsit (parameter does not exist)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, lowercase is recommended, up to 512 characters</td></tr><tr><td>ARGS_Header (Header parameter value)</td><td>support parameter entry</td><td>contains (include)<br/>ncontains (does not include)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, up to 512 characters</td></tr><tr><td>CONTENT_LENGTH (CONTENT-LENGTH)</td><td>support parameter entry</td><td>numgt (value greater than)<br/>numlt (value smaller than)<br/>numeq (value equal to)<br/></td><td>enter an integer between 0-9999999999999</td></tr><tr><td>IP_GEO (source IP geolocation)</td><td>support parameter entry</td><td>GEO_in (belong)<br/>GEO_not_in (not_in)<br/></td><td>enter CONTENT, up to 10240 characters, format: serialized JSON, format: [{"Country":"china","Region":"guangdong","City":"shenzhen"}]</td></tr><tr><td>CAPTCHA_RISK (CAPTCHA RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter RISK level value, value range 0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK (CAPTCHA DEVICE RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter DEVICE RISK code, valid values: 101, 201, 301, 401, 501, 601, 701</td></tr><tr><td>CAPTCHAR_SCORE (CAPTCHA RISK assessment SCORE)</td><td>parameter not supported</td><td>numeq (value equal to)<br/>numgt (value greater than)<br/>numlt (value smaller than)<br/>numle (less than or equal to)<br/>numge (value is greater than or equal to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter assessment SCORE, value range 0-100</td></tr>.
+</tbody></table>
         :type Field: str
-        :param _CompareFunc: Logic symbol
+        :param _CompareFunc: Specifies the logic symbol. 
 
-    Logical symbols are divided into the following types:
-        empty (content is empty)
-        null (do not exist)
-        eq (equal to)
-        neq (not equal to)
-        contains (contain)
-        ncontains (do not contain)
-        strprefix (prefix matching)
-        strsuffix (suffix matching)
-        len_eq (length equals to)
-        len_gt (length is greater than)
-        len_lt (length is less than)
-        ipmatch (belong to)
-        ipnmatch (do not belong to)
-    Different matching fields correspond to different logical operators. For details, see the matching field table above.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+Logical symbols are divided into the following types:.
+Empty (content is empty).
+null (not found).
+Eq (equal to).
+neq (not equal to).
+contains (contain).
+ncontains (do not contain).
+strprefix (prefix matching).
+strsuffix (suffix matching).
+Len_eq (length equals to).
+Len_gt (length greater than).
+Len_lt (length less than).
+ipmatch (belong).
+ipnmatch (not_in).
+numgt (value greater than).
+NumValue smaller than].
+Value equal to.
+numneq (value not equal to).
+numle (less than or equal to).
+numge (value is greater than or equal to).
+geo_in (IP geographic belong).
+geo_not_in (IP geographic not_in).
+Specifies different logical operators for matching fields. for details, see the matching field table above.
         :type CompareFunc: str
-        :param _Content: Matching content
+        :param _Content: Specifies the match content.
 
-    Currently, when the matching field is COOKIE (cookie), the matching content  is not required. In other scenes, the matching content is required.
+Currently, when the match field is COOKIE (COOKIE), match content is not required. all others are needed.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Content: str
-        :param _Arg: Matching parameter
+        :param _Arg: Specifies the matching parameter.
 
-    There are two types of configuration parameters: unsupported parameters and supported parameters.
-    The matching parameter can be entered only when the matching field is one of the following four. Otherwise, the parameter is not supported.
-        GET (GET parameter value)		
-        POST (POST parameter value)		
-        ARGS_COOKIE (Cookie parameter value)		
-        ARGS_HEADER (Header parameter value)
+Configuration parameters are divided into two data types: parameter not supported and support parameters.
+When the match field is one of the following four, the matching parameter can be entered, otherwise not supported.
+GET (get parameter value).		
+POST (post parameter value).		
+ARGS_COOKIE (COOKIE parameter value).		
+ARGS_HEADER (HEADER parameter value).
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :type Arg: str
-        :param _CaseNotSensitive: 0: case-sensitive.
-1: case-insensitive.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CaseNotSensitive: Case-Sensitive.
+Case-Insensitive.
         :type CaseNotSensitive: int
         """
         self._Field = None
@@ -25486,12 +27535,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Field(self):
-        """Matching field
+        """Specifies the matching field.
 
-    Different matching fields result in different matching parameters, logical operators, and matching contents. The details are as follows:
+Different matching fields result in different matching parameters, logical operators, and matching contents. the details are as follows:.
 <table><thead><tr><th>Matching Field</th> <th>Matching Parameter</th> <th>Logical Symbol</th> <th>Matching Content</th></tr></thead> <tbody><tr><td>IP (source IP)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>Multiple IP addresses are separated by commas. A maximum of 20 IP addresses are allowed.</td></tr> <tr><td>IPv6 (source IPv6)</td> <td>Parameters are not supported.</td> <td>ipmatch (match)<br/>ipnmatch (mismatch)</td> <td>A single IPv6 address is supported.</td></tr> <tr><td>Referer (referer)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content, with a maximum of 512 characters.</td></tr> <tr><td>URL (request path)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)<br/>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is 
- less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color="Red">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color="Red">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the contentwith a maximum of 512 characters.</td></tr> <tr><td>GET_HEADERS_NAMES (header parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content with a maximum of 512 characters. The lowercase is recommended.</td> </tr><tr><td>ARGS_HEADER (header parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr></tbody></table>
-Note: This field may return null, indicating that no valid values can be obtained.
+ less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td> <td>Enter the content starting with /, with a maximum of 512 characters.</td></tr> <tr><td>UserAgent (UserAgent)</td> <td>Parameters are not supported.</td><td>Same logical symbols as the matching field <font color="Red">Referer</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>HTTP_METHOD (HTTP request method)</td> <td>Parameters are not supported.</td> <td>eq (equal to)<br/>neq (not equal to)</td> <td>Enter the method name. The uppercase is recommended.</td></tr> <tr><td>QUERY_STRING (request string)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET (GET parameter value)</td> <td>Parameter entry is supported.</td> <td>contains (contain)<br/>ncontains (do not contain)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_PARAMS_NAMES (GET parameter name)</td> <td>Parameters are not supported.</td> <td>exist (Parameter exists.)<br/>nexist (Parameter does not exist.)<br/>len_eq (length equals to)<br/>len_gt (length is greater than)<br/>len_lt (length is less than)<br/>strprefix (prefix matching)<br/>strsuffix (suffix matching)</td><td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST (POST parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>GET_POST_NAMES (POST parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>POST_BODY (complete body)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">Request Path</font></td><td>Enter the body content with a maximum of 512 characters.</td></tr> <tr><td>COOKIE (cookie)</td> <td>Parameters are not supported.</td> <td>empty (Content is empty.)<br/>null (do not exist)<br/>rematch (regular expression matching)</td> <td><font color="Red">Unsupported currently</font></td></tr> <tr><td>GET_COOKIES_NAMES (cookie parameter name)</td> <td>Parameters are not supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Name</font></td> <td>Enter the content with a maximum of 512 characters.</td></tr> <tr><td>ARGS_COOKIE (cookie parameter value)</td> <td>Parameter entry is supported.</td> <td>Same logical symbol as the matching field <font color="Red">GET Parameter Value</font></td> <td>Enter the content512 characters limit</td></tr><tr><td>GET_HEADERS_NAMES (Header parameter name)</td><td>parameter not supported</td><td>exsit (parameter exists)<br/>nexsit (parameter does not exist)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, lowercase is recommended, up to 512 characters</td></tr><tr><td>ARGS_Header (Header parameter value)</td><td>support parameter entry</td><td>contains (include)<br/>ncontains (does not include)<br/>len_eq (LENGTH equal)<br/>len_gt (LENGTH greater than)<br/>len_lt (LENGTH less than)<br/>strprefix (prefix match)<br/>strsuffix (suffix matching)<br/>rematch (regular expression matching)</td><td>enter CONTENT, up to 512 characters</td></tr><tr><td>CONTENT_LENGTH (CONTENT-LENGTH)</td><td>support parameter entry</td><td>numgt (value greater than)<br/>numlt (value smaller than)<br/>numeq (value equal to)<br/></td><td>enter an integer between 0-9999999999999</td></tr><tr><td>IP_GEO (source IP geolocation)</td><td>support parameter entry</td><td>GEO_in (belong)<br/>GEO_not_in (not_in)<br/></td><td>enter CONTENT, up to 10240 characters, format: serialized JSON, format: [{"Country":"china","Region":"guangdong","City":"shenzhen"}]</td></tr><tr><td>CAPTCHA_RISK (CAPTCHA RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter RISK level value, value range 0-255</td></tr><tr><td>CAPTCHA_DEVICE_RISK (CAPTCHA DEVICE RISK)</td><td>parameter not supported</td><td>eq (equal)<br/>neq (not equal to)<br/>belong (belong)<br/>not_belong (not belong to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter DEVICE RISK code, valid values: 101, 201, 301, 401, 501, 601, 701</td></tr><tr><td>CAPTCHAR_SCORE (CAPTCHA RISK assessment SCORE)</td><td>parameter not supported</td><td>numeq (value equal to)<br/>numgt (value greater than)<br/>numlt (value smaller than)<br/>numle (less than or equal to)<br/>numge (value is greater than or equal to)<br/>null (nonexistent)<br/>exist (exist)</td><td>enter assessment SCORE, value range 0-100</td></tr>.
+</tbody></table>
         :rtype: str
         """
         return self._Field
@@ -25502,25 +27551,31 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareFunc(self):
-        """Logic symbol
+        """Specifies the logic symbol. 
 
-    Logical symbols are divided into the following types:
-        empty (content is empty)
-        null (do not exist)
-        eq (equal to)
-        neq (not equal to)
-        contains (contain)
-        ncontains (do not contain)
-        strprefix (prefix matching)
-        strsuffix (suffix matching)
-        len_eq (length equals to)
-        len_gt (length is greater than)
-        len_lt (length is less than)
-        ipmatch (belong to)
-        ipnmatch (do not belong to)
-    Different matching fields correspond to different logical operators. For details, see the matching field table above.
-
-Note: This field may return null, indicating that no valid values can be obtained.
+Logical symbols are divided into the following types:.
+Empty (content is empty).
+null (not found).
+Eq (equal to).
+neq (not equal to).
+contains (contain).
+ncontains (do not contain).
+strprefix (prefix matching).
+strsuffix (suffix matching).
+Len_eq (length equals to).
+Len_gt (length greater than).
+Len_lt (length less than).
+ipmatch (belong).
+ipnmatch (not_in).
+numgt (value greater than).
+NumValue smaller than].
+Value equal to.
+numneq (value not equal to).
+numle (less than or equal to).
+numge (value is greater than or equal to).
+geo_in (IP geographic belong).
+geo_not_in (IP geographic not_in).
+Specifies different logical operators for matching fields. for details, see the matching field table above.
         :rtype: str
         """
         return self._CompareFunc
@@ -25531,11 +27586,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Content(self):
-        """Matching content
+        """Specifies the match content.
 
-    Currently, when the matching field is COOKIE (cookie), the matching content  is not required. In other scenes, the matching content is required.
+Currently, when the match field is COOKIE (COOKIE), match content is not required. all others are needed.
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Content
@@ -25546,16 +27600,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Arg(self):
-        """Matching parameter
+        """Specifies the matching parameter.
 
-    There are two types of configuration parameters: unsupported parameters and supported parameters.
-    The matching parameter can be entered only when the matching field is one of the following four. Otherwise, the parameter is not supported.
-        GET (GET parameter value)		
-        POST (POST parameter value)		
-        ARGS_COOKIE (Cookie parameter value)		
-        ARGS_HEADER (Header parameter value)
+Configuration parameters are divided into two data types: parameter not supported and support parameters.
+When the match field is one of the following four, the matching parameter can be entered, otherwise not supported.
+GET (get parameter value).		
+POST (post parameter value).		
+ARGS_COOKIE (COOKIE parameter value).		
+ARGS_HEADER (HEADER parameter value).
 
-Note: This field may return null, indicating that no valid values can be obtained.
         :rtype: str
         """
         return self._Arg
@@ -25566,9 +27619,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CaseNotSensitive(self):
-        """0: case-sensitive.
-1: case-insensitive.
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Case-Sensitive.
+Case-Insensitive.
         :rtype: int
         """
         return self._CaseNotSensitive
@@ -25959,11 +28011,9 @@ class TimedJob(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartDateTime: Start timestamp, in seconds
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StartDateTime: Start timestamp, in seconds.
         :type StartDateTime: int
-        :param _EndDateTime: End timestamp, in seconds
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EndDateTime: End timestamp, in seconds.
         :type EndDateTime: int
         """
         self._StartDateTime = None
@@ -25971,8 +28021,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartDateTime(self):
-        """Start timestamp, in seconds
-Note: This field may return null, indicating that no valid values can be obtained.
+        """Start timestamp, in seconds.
         :rtype: int
         """
         return self._StartDateTime
@@ -25983,8 +28032,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndDateTime(self):
-        """End timestamp, in seconds
-Note: This field may return null, indicating that no valid values can be obtained.
+        """End timestamp, in seconds.
         :rtype: int
         """
         return self._EndDateTime
